@@ -5,19 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>movie-web</title>
+
+    <link rel="stylesheet" href="./assets/css/style.css" type="text/css">
+
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6"></script>
     <script src="https://unpkg.com/json5@^2.0.0/dist/index.min.js"></script>
     <script src="assets/js/index.js"></script>
 </head>
+
 <body>
-    <div id='errorContainer'>
-        <h2 id='error'></h2>
+    <form action='#' onsubmit='findMovie();return false;'>
+        <input type='text' id='search' placeholder='Find movie...'><!--
+        --><input type='submit'>
+    </form>
+    
+    <div class='content'>
+        <video id="video" class="video" controls autoplay></video>
     </div>
 
-    <input id="search" placeholder="Find movie..."><!--
-    --><button onclick=findMovie()>find movie</button>
-
-    <video id="video" controls autoplay style="width: 80%"></video>
+    <div class='messages'>
+        <strong>
+            <p id='error' class='error'></p>
+            <p id='info' class='info'></p>
+        </strong>
+    </div>
 </body>
 </html>
