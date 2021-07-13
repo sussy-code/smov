@@ -5,8 +5,10 @@ import './VideoElement.css'
 // streamUrl: string
 export function VideoElement({ streamUrl }) {
     const videoRef = React.useRef(null);
+    const [error, setError] = React.useState(false);
 
     React.useEffect(() => {
+        setError(false)
         if (!videoRef || !videoRef.current) return;
         
         const hls = new Hls();
@@ -15,12 +17,16 @@ export function VideoElement({ streamUrl }) {
             videoRef.current.src = streamUrl;
             return;
         } else if (!Hls.isSupported()) {
-            return; // TODO show error
+            setError(true)
+            return;
         }
         
         hls.attachMedia(videoRef.current);
         hls.loadSource(streamUrl);
     }, [videoRef, streamUrl])
+
+    if (error)
+        return (<p className="videoElementText">Your browser is not supported</p>)
 
     return (
         <video className="videoElement" ref={videoRef} controls autoPlay />

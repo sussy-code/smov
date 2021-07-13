@@ -15,3 +15,28 @@
 .cardView > div:first-child {
     margin-top: 0;
 }
+
+.topRightCredits {
+    position: fixed;
+    right: 1rem;
+    top: 1rem;
+    margin-top: 0 !important;
+}
+
+.topRightCredits a, .topRightCredits a:visited {
+    color: #E880C5;
+    text-decoration: none;
+    margin: 0;
+}
+.topRightCredits a:hover, .topRightCredits a:active {
+    color: #f19fd6;
+    text-decoration: none;
+}
+
+.topRightCredits a .arrow {
+    transform: translateY(.1rem);
+}
+
+.topRightCredits a:hover .arrow {
+    transform: translateY(.1rem) translateX(.2rem);
+}

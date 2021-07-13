@@ -3,6 +3,7 @@ import { InputBox } from '../components/InputBox'
 import { Title } from '../components/Title'
 import { Card } from '../components/Card'
 import { MovieRow } from '../components/MovieRow'
+import { Arrow } from '../components/Arrow'
 import { Progress } from '../components/Progress'
 import { findMovie, getStreamUrl } from '../lib/lookMovie'
 import { useMovie } from '../hooks/useMovie';
@@ -91,6 +92,9 @@ export function SearchView() {
                     }}/>
                 ))}
             </Card>
+            <div className="topRightCredits">
+                <a href="https://github.com/JamesHawkinss/movie-web" target="_blank" rel="noreferrer">Check it out on GitHub <Arrow/></a>
+            </div>
         </div>
     )
 }

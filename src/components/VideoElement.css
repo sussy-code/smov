@@ -1,3 +1,10 @@
 .videoElement {
     width: 100%;
+    background-color: #111117;
+    border-radius: 5px;
+}
+
+.videoElementText {
+    color: white;
+    margin: 0;
 }
