@@ -1,0 +1,28 @@
+.card {
+    background-color: #22232A;
+    padding: 3rem 4rem;
+    width: 39rem;
+    max-width: 100%;
+    margin: 0 3rem;
+    border-radius: 10px;
+    box-sizing: border-box;
+    transition: height 500ms ease-in-out, transform 800ms ease-in-out, opacity 800ms ease-in-out;
+}
+
+.card.full {
+    width: 75rem;
+}
+
+.card-wrapper {
+  transition: height 500ms ease-in-out;
+  overflow: hidden;
+}
+
+.card.doTransition {
+    opacity: 0;
+    transform: translateY(-.7rem);
+}
+.card.doTransition.show {
+    opacity: 1;
+    transform: translateY(0rem);
+}

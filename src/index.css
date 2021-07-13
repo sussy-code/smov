@@ -1,0 +1,14 @@
+body, html {
+  margin: 0;
+  background-color: #16171D;
+  min-height: 100vh;
+}
+
+body, html, input, button {
+  font-family: 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 1rem;
+}

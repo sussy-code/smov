@@ -1,0 +1,43 @@
+.progress {
+    text-align: center;
+    color: #BCBECB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 5rem;
+    margin-top: 1rem;
+    transition: height 800ms ease-in-out, opacity 800ms ease-in-out;
+    opacity: 1;
+}
+
+.progress.hide {
+    opacity: 0;
+    height: 0rem;
+}
+
+.progress p {
+    margin: 0;
+    margin-bottom: 1rem;
+}
+
+.progress .bar {
+    width: 13rem;
+    max-width: 100%;
+    background-color: #35363D;
+    border-radius: 10px;
+    height: 7px;
+    display: inline-block;
+}
+
+.progress .bar .bar-inner {
+    transition: width 400ms ease-in-out, background-color 100ms ease-in-out;
+    background-color: #D463AE;
+    border-radius: 10px;
+    height: 100%;
+    width: 0%;
+}
+
+.progress.failed .bar .bar-inner {
+    background-color: #d85b66;
+}

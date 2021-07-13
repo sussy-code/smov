@@ -1,0 +1,45 @@
+.movieRow {
+    display: flex;
+    border-radius: 5px;
+    background-color: #35363D;
+    color: white;
+    padding: .8rem 1.5rem;
+    margin-top: .5rem;
+    cursor: pointer;
+    transition: transform 50ms ease-in-out;
+    user-select: none;
+}
+
+.movieRow p {
+    margin: 0;
+}
+
+.movieRow .left {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+}
+
+.movieRow .watch {
+    color: #D678B7;
+    display: flex;
+    align-items: center;
+}
+
+.movieRow .watch .arrow {
+    margin-left: .5rem;
+    transition: transform 50ms ease-in-out;
+    transform: translateY(.1rem);
+}
+
+.movieRow:active {
+    transform: scale(1.02);
+}
+
+.movieRow:hover {
+    background-color: #3A3B40;
+}
+
+.movieRow:hover .watch .arrow {
+    transform: translateX(.3rem) translateY(.1rem);
+}

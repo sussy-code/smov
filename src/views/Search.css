@@ -1,0 +1,17 @@
+.cardView {
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.cardView > div {
+    margin-top: 2rem;
+}
+
+.cardView > div:first-child {
+    margin-top: 0;
+}
