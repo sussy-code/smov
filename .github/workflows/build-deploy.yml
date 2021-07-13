@@ -22,8 +22,8 @@ jobs:
       with:
         node-version: 13.x
     
-    - name: Install NPM packages
-      run: npm ci
+    - name: Install Yarn packages
+      run: yarn install
     
     - name: Build project
       run: npm run build
