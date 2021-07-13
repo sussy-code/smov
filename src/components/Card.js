@@ -17,10 +17,10 @@ export function Card(props) {
     }, [props.show, measureRef])
 
     return (
-        <div className="card-wrapper" style={{
+        <div className={`card-wrapper ${ props.fullWidth ? 'full' : '' }`} style={{
             height: props.doTransition ? (showing ? height : 0) : "initial",
         }}>
-            <div className={`card ${ props.fullWidth ? 'full' : '' } ${ showing ? 'show' : '' } ${ props.doTransition ? 'doTransition' : '' }`} ref={measureRef}>
+            <div className={`card ${ showing ? 'show' : '' } ${ props.doTransition ? 'doTransition' : '' }`} ref={measureRef}>
                 {props.children}
             </div>
         </div>

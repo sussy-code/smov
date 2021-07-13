@@ -1,28 +1,26 @@
 .card {
     background-color: #22232A;
     padding: 3rem 4rem;
-    width: 39rem;
-    max-width: 100%;
     margin: 0 3rem;
     border-radius: 10px;
     box-sizing: border-box;
-    transition: height 500ms ease-in-out, transform 800ms ease-in-out, opacity 800ms ease-in-out;
+    transition: height 500ms ease-in-out;
 }
 
-.card.full {
-    width: 75rem;
+.card-wrapper.full {
+    width: 81rem;
 }
 
 .card-wrapper {
   transition: height 500ms ease-in-out;
   overflow: hidden;
+  width: 45rem;
+  max-width: 100%;
 }
 
-.card.doTransition {
-    opacity: 0;
-    transform: translateY(-.7rem);
-}
-.card.doTransition.show {
-    opacity: 1;
-    transform: translateY(0rem);
+@media screen and (max-width: 700px) {
+    .card {
+        margin: 0;
+        padding: 3rem 2rem;
+    }
 }

@@ -25,6 +25,7 @@
     padding: .7rem 1.5rem;
     height: auto;
     flex: 1;
+    box-sizing: border-box;
 }
 
 .inputSearchButton {
@@ -69,4 +70,24 @@
 
 .inputSearchButton:active {
     background-color: #8b286a;
+}
+
+@media screen and (max-width: 700px) {
+    .inputBar {
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+    }
+
+    .inputBar > *:nth-child(n) {
+        border-radius: 10px !important;
+    }
+
+    .inputSearchButton {
+        margin-top: .5rem;
+    }
+
+    .inputTextBox {
+        width: 100%;
+    }
 }

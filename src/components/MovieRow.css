@@ -43,3 +43,13 @@
 .movieRow:hover .watch .arrow {
     transform: translateX(.3rem) translateY(.1rem);
 }
+
+@media screen and (max-width: 400px) {
+    .movieRow {
+        flex-direction: column;
+    }
+
+    .movieRow .watch {
+        margin-top: .5rem;
+    }
+}
