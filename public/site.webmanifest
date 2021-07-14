@@ -1,6 +1,6 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "movie-web",
+    "short_name": "movie-web",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
@@ -15,5 +15,6 @@
     ],
     "theme_color": "#E880C5",
     "background_color": "#16171D",
-    "display": "standalone"
+    "display": "standalone",
+    "start_url": "/"
 }
