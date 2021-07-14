@@ -26,12 +26,12 @@ export function SearchView() {
         setFailed(true)
     }
 
-    async function getStream(title, slug, type) {
+    async function getStream(title, slug, type, season, episode) {
         setStreamUrl("");
         try {
             setProgress(2);
             setText(`Getting stream for "${title}"`)
-            const { url } = await getStreamUrl(slug, type);
+            const { url } = await getStreamUrl(slug, type, season, episode);
             setProgress(maxSteps);
             setStreamUrl(url);
             setStreamData({
@@ -45,9 +45,9 @@ export function SearchView() {
         }
     }
 
-    async function searchMovie(query, contentType) {
+    async function searchMovie(query, contentType, season, episode) {
         setFailed(false);
-        setText(`Searching for ${contentType} "${query}"`);
+        setText(`Searching for ${contentType} "${query}" ${contentType === 'show' ? ` (${season}x${episode})` : ''}`);
         setProgress(1)
         setShowingOptions(false)
 
@@ -65,7 +65,7 @@ export function SearchView() {
             }
 
             const { title, slug, type } = options[0];
-            getStream(title, slug, type);
+            getStream(title, slug, type, season, episode);
         } catch (err) {
             fail(`Failed to watch ${contentType}`)
         }
@@ -77,7 +77,7 @@ export function SearchView() {
                 <Title accent="Because watching content legally is boring">
                     What do you wanna watch?
                 </Title>
-                <InputBox placeholder="Hamilton" onSubmit={(str, type) => searchMovie(str, type)} />
+                <InputBox placeholder="Hamilton" onSubmit={(str, type, season, episode) => searchMovie(str, type, season, episode)} />
                 <Progress show={progress > 0} failed={failed} progress={progress} steps={maxSteps} text={text} />
             </Card>
 

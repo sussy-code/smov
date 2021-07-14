@@ -6,13 +6,15 @@ import './InputBox.css'
 export function InputBox({ onSubmit, placeholder }) {
     const [searchTerm, setSearchTerm] = React.useState("");
     const [type, setType] = React.useState("movie");
+    const [season, setSeason] = React.useState("");
+    const [episode, setEpisode] = React.useState("");
 
     const showContentType = type === "show" ? false : true;
 
     return (
         <form className="inputBar" onSubmit={(e) => {
             e.preventDefault();
-            onSubmit(searchTerm, type)
+            onSubmit(searchTerm, type, season, episode)
             return false;
         }}>
             <select name="type" id="type" className="inputDropdown" onChange={(e) => setType(e.target.value)} required>
@@ -28,8 +30,25 @@ export function InputBox({ onSubmit, placeholder }) {
                 onChange={(e) => setSearchTerm(e.target.value)}
                 required
             />
-            <input type='text' className='inputOptionBox' id='inputOptionBoxSeason' placeholder='s' required={showContentType} hidden={showContentType}/>
-            <input type='text' className='inputOptionBox' id='inputOptionBoxEpisode' placeholder='e' required={showContentType} hidden={showContentType}/>
+            <input
+                type='text'
+                className='inputOptionBox'
+                id='inputOptionBoxSeason'
+                placeholder='season'
+                value={season}
+                onChange={(e) => setSeason(e.target.value)}
+                hidden={showContentType}
+                required={!showContentType}
+            />
+            <input
+                type='text'
+                className='inputOptionBox'
+                id='inputOptionBoxEpisode'
+                placeholder='episode'
+                value={episode}
+                onChange={(e) => setEpisode(e.target.value)}
+                hidden={showContentType}
+                required={!showContentType} />
             <button className="inputSearchButton"><span className="text">Search<span className="arrow"><Arrow /></span></span></button>
         </form>
     )
