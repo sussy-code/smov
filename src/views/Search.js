@@ -5,7 +5,7 @@ import { Card } from '../components/Card'
 import { MovieRow } from '../components/MovieRow'
 import { Arrow } from '../components/Arrow'
 import { Progress } from '../components/Progress'
-import { findMovie, getStreamUrl } from '../lib/lookMovie'
+import { findContent, getStreamUrl } from '../lib/lookMovie'
 import { useMovie } from '../hooks/useMovie';
 
 import './Search.css'
@@ -45,20 +45,20 @@ export function SearchView() {
         }
     }
 
-    async function searchMovie(query) {
+    async function searchMovie(query, contentType) {
         setFailed(false);
-        setText(`Searching for "${query}"`);
+        setText(`Searching for ${contentType} "${query}"`);
         setProgress(1)
         setShowingOptions(false)
 
         try {
-            const { options } = await findMovie(query)
+            const { options } = await findContent(query, contentType)
 
             if (options.length === 0) {
-                return fail("Could not find that movie")
+                return fail(`Could not find that ${contentType}`)
             } else if (options.length > 1) {
                 setProgress(2);
-                setText("Choose your movie");
+                setText(`Choose your ${contentType}`);
                 setOptions(options);
                 setShowingOptions(true);
                 return;
@@ -67,17 +67,17 @@ export function SearchView() {
             const { title, slug, type } = options[0];
             getStream(title, slug, type);
         } catch (err) {
-            fail("Failed to watch movie")
+            fail(`Failed to watch ${contentType}`)
         }
     }
 
     return (
         <div className="cardView">
             <Card>
-                <Title accent="Because watching movies legally is boring">
-                    What movie do you wanna watch?
+                <Title accent="Because watching content legally is boring">
+                    What do you wanna watch?
                 </Title>
-                <InputBox placeholder="Hamilton" onSubmit={(str) => searchMovie(str)} />
+                <InputBox placeholder="Hamilton" onSubmit={(str, type) => searchMovie(str, type)} />
                 <Progress show={progress > 0} failed={failed} progress={progress} steps={maxSteps} text={text} />
             </Card>
 

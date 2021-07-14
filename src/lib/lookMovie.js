@@ -63,7 +63,7 @@ async function getStreamUrl(slug, type) {
     return { url: videoUrl }
 }
 
-async function findMovie(searchTerm) {
+async function findContent(searchTerm, type) {
     const searchUrl = getCorsUrl(`https://lookmovie.io/api/v1/movies/search/?q=${encodeURIComponent(searchTerm)}`);
     const searchRes = await fetch(searchUrl).then((d) => d.json());
     let results = [...searchRes.result.map((v) => ({ ...v, type: "movie" }))];
@@ -97,4 +97,4 @@ async function findMovie(searchTerm) {
     }
 }
 
-export { findMovie, getStreamUrl };
+export { findContent, getStreamUrl };

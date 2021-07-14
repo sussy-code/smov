@@ -19,7 +19,6 @@
 .inputTextBox {
     border-width: 0;
     outline: none;
-
     background-color: #36363e;
     color: white;
     padding: .7rem 1.5rem;
@@ -35,8 +34,36 @@
     padding: .5rem 2.1rem;
 
     font-weight: bold;
-
     cursor: pointer;
+}
+
+.inputDropdown {
+    border-width: 0;
+    outline: none;
+    background-color: #36363e;
+    color: white;
+    padding: .7rem;
+    height: auto;
+    width: 20%;
+    color: white;
+
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.inputOptionBox {
+    border-width: 0;
+    outline: none;
+    background-color: #36363e;
+    color: white;
+    /* padding: .7rem 1.5rem; */
+    height: auto;
+    width: 5%;
+    box-sizing: border-box;
+}
+
+.inputDropdown:hover {
+    background-color: #3C3D44;
 }
 
 .inputSearchButton:hover {
@@ -85,9 +112,15 @@
 
     .inputSearchButton {
         margin-top: .5rem;
+        align-self: center;
     }
 
     .inputTextBox {
         width: 100%;
+    }
+
+    .inputDropdown {
+        width: 100%;
+        margin-bottom: .5rem;
     }
 }
