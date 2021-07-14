@@ -79,6 +79,10 @@ async function getStreamUrl(slug, type, season, episode) {
 		}
 	}
 
+    if (id === '') {
+        return { url: '' }
+    }
+
     const videoUrl = await getVideoUrl({
         slug: slug,
         id: id,

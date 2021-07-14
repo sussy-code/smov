@@ -34,7 +34,7 @@ export function InputBox({ onSubmit, placeholder }) {
                 type='text'
                 className='inputOptionBox'
                 id='inputOptionBoxSeason'
-                placeholder='season'
+                placeholder='Season'
                 value={season}
                 onChange={(e) => setSeason(e.target.value)}
                 hidden={showContentType}
@@ -44,7 +44,7 @@ export function InputBox({ onSubmit, placeholder }) {
                 type='text'
                 className='inputOptionBox'
                 id='inputOptionBoxEpisode'
-                placeholder='episode'
+                placeholder='Episode'
                 value={episode}
                 onChange={(e) => setEpisode(e.target.value)}
                 hidden={showContentType}

@@ -11,7 +11,7 @@ export function MovieView(props) {
         <div className="cardView">
             <Card fullWidth>
                 <Title accent="Return to home" accentLink="search">
-                    { streamData.title }
+                    {streamData.title} {streamData.type === "show" ? `(${streamData.season}x${streamData.episode})` : '' }
                 </Title>
                 <VideoElement streamUrl={streamUrl}/>
             </Card>

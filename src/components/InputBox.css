@@ -56,7 +56,7 @@
     background-color: #36363e;
     color: white;
     height: auto;
-    width: 5%;
+    width: 10%;
     box-sizing: border-box;
 }
 
@@ -130,7 +130,8 @@
     .inputOptionBox {
         margin-top: .5rem;
         width: 50%;
-        align-items:stretch;
+        /* align-items:stretch; */
+        align-self: center;
         padding: .7rem 1.5rem;
     }
 }

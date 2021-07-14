@@ -32,11 +32,18 @@ export function SearchView() {
             setProgress(2);
             setText(`Getting stream for "${title}"`)
             const { url } = await getStreamUrl(slug, type, season, episode);
+
+            if (url === '') {
+                return fail(`Not found: ${title} (${season}x${episode})`)
+            }
+
             setProgress(maxSteps);
             setStreamUrl(url);
             setStreamData({
                 title,
                 type,
+                season,
+                episode
             })
             setText(`Streaming...`)
             navigate("movie")
@@ -57,6 +64,11 @@ export function SearchView() {
             if (options.length === 0) {
                 return fail(`Could not find that ${contentType}`)
             } else if (options.length > 1) {
+                options.forEach((o) => {
+                    o.season = season;
+                    o.episode = episode;
+                });
+
                 setProgress(2);
                 setText(`Choose your ${contentType}`);
                 setOptions(options);
@@ -86,9 +98,9 @@ export function SearchView() {
                     Whoops, there are a few movies like that
                 </Title>
                 {options?.map((v, i) => (
-                    <MovieRow key={i} title={v.title} type={v.type} year={v.year} onClick={() => {
+                    <MovieRow key={i} title={v.title} type={v.type} year={v.year} season={v.season} episode={v.episode} onClick={() => {
                         setShowingOptions(false)
-                        getStream(v.title, v.slug, v.type)
+                        getStream(v.title, v.slug, v.type, v.season, v.episode)
                     }}/>
                 ))}
             </Card>
