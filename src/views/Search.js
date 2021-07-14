@@ -5,7 +5,7 @@ import { Card } from '../components/Card'
 import { MovieRow } from '../components/MovieRow'
 import { Arrow } from '../components/Arrow'
 import { Progress } from '../components/Progress'
-import { findMovie, getStreamUrl } from '../lib/lookMovie'
+import { findContent, getStreamUrl } from '../lib/lookMovie'
 import { useMovie } from '../hooks/useMovie';
 
 import './Search.css'
@@ -26,17 +26,24 @@ export function SearchView() {
         setFailed(true)
     }
 
-    async function getStream(title, slug, type) {
+    async function getStream(title, slug, type, season, episode) {
         setStreamUrl("");
         try {
             setProgress(2);
             setText(`Getting stream for "${title}"`)
-            const { url } = await getStreamUrl(slug, type);
+            const { url } = await getStreamUrl(slug, type, season, episode);
+
+            if (url === '') {
+                return fail(`Not found: ${title} (${season}x${episode})`)
+            }
+
             setProgress(maxSteps);
             setStreamUrl(url);
             setStreamData({
                 title,
                 type,
+                season,
+                episode
             })
             setText(`Streaming...`)
             navigate("movie")
@@ -45,39 +52,44 @@ export function SearchView() {
         }
     }
 
-    async function searchMovie(query) {
+    async function searchMovie(query, contentType, season, episode) {
         setFailed(false);
-        setText(`Searching for "${query}"`);
+        setText(`Searching for ${contentType} "${query}" ${contentType === 'show' ? ` (${season}x${episode})` : ''}`);
         setProgress(1)
         setShowingOptions(false)
 
         try {
-            const { options } = await findMovie(query)
+            const { options } = await findContent(query, contentType)
 
             if (options.length === 0) {
-                return fail("Could not find that movie")
+                return fail(`Could not find that ${contentType}`)
             } else if (options.length > 1) {
+                options.forEach((o) => {
+                    o.season = season;
+                    o.episode = episode;
+                });
+
                 setProgress(2);
-                setText("Choose your movie");
+                setText(`Choose your ${contentType}`);
                 setOptions(options);
                 setShowingOptions(true);
                 return;
             }
 
             const { title, slug, type } = options[0];
-            getStream(title, slug, type);
+            getStream(title, slug, type, season, episode);
         } catch (err) {
-            fail("Failed to watch movie")
+            fail(`Failed to watch ${contentType}`)
         }
     }
 
     return (
         <div className="cardView">
             <Card>
-                <Title accent="Because watching movies legally is boring">
-                    What movie do you wanna watch?
+                <Title accent="Because watching content legally is boring">
+                    What do you wanna watch?
                 </Title>
-                <InputBox placeholder="Hamilton" onSubmit={(str) => searchMovie(str)} />
+                <InputBox placeholder="Hamilton" onSubmit={(str, type, season, episode) => searchMovie(str, type, season, episode)} />
                 <Progress show={progress > 0} failed={failed} progress={progress} steps={maxSteps} text={text} />
             </Card>
 
@@ -86,9 +98,9 @@ export function SearchView() {
                     Whoops, there are a few movies like that
                 </Title>
                 {options?.map((v, i) => (
-                    <MovieRow key={i} title={v.title} type={v.type} year={v.year} onClick={() => {
+                    <MovieRow key={i} title={v.title} type={v.type} year={v.year} season={v.season} episode={v.episode} onClick={() => {
                         setShowingOptions(false)
-                        getStream(v.title, v.slug, v.type)
+                        getStream(v.title, v.slug, v.type, v.season, v.episode)
                     }}/>
                 ))}
             </Card>

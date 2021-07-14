@@ -9,7 +9,13 @@ async function getVideoUrl(config) {
     const accessToken = await getAccessToken(config);
     const now = Math.floor(Date.now() / 1e3);
 
-    let url = getCorsUrl(`https://lookmovie.io/manifests/movies/json/${config.movieId}/${now}/${accessToken}/master.m3u8`);
+    let url = '';
+
+    if (config.type === 'movie') {
+        url = getCorsUrl(`https://lookmovie.io/manifests/movies/json/${config.id}/${now}/${accessToken}/master.m3u8`);
+    } else if (config.type === 'show') {
+        url = getCorsUrl(`https://lookmovie.io/manifests/shows/json/${accessToken}/${now}/${config.id}/master.m3u8`);
+    }
 
     if (url) {
         const videoOpts = await fetch(url).then((d) => d.json());
@@ -31,7 +37,13 @@ async function getVideoUrl(config) {
 }
 
 async function getAccessToken(config) {
-    let url = getCorsUrl(`https://lookmovie.io/api/v1/security/movie-access?id_movie=${config.movieId}&token=1&sk=&step=1`);
+    let url = '';
+
+    if (config.type === 'movie') {
+        url = getCorsUrl(`https://lookmovie.io/api/v1/security/movie-access?id_movie=${config.id}&token=1&sk=&step=1`);
+    } else if (config.type === 'show') {
+        url = getCorsUrl(`https://lookmovie.io/api/v1/security/show-access?slug=${config.slug}&token=&step=2`);
+    }
 
     const data = await fetch(url).then((d) => d.json());
 
@@ -41,7 +53,7 @@ async function getAccessToken(config) {
     return "Invalid type provided in config";
 }
 
-async function getStreamUrl(slug, type) {
+async function getStreamUrl(slug, type, season, episode) {
     const url = getCorsUrl(`https://lookmovie.io/${type}s/view/${slug}`);
     const pageReq = await fetch(url).then((d) => d.text());
 
@@ -54,19 +66,35 @@ async function getStreamUrl(slug, type) {
         "}"
     );
 
+    let id = '';
+
+    if (type === "movie") {
+		id = data.id_movie;
+	} else if (type === "show") {
+		const episodeObj = data.seasons.find((v) => { return v.season === season && v.episode === episode; });
+		
+        if (episodeObj) {
+			id = episodeObj.id_episode;
+		}
+	}
+
+    if (id === '') {
+        return { url: '' }
+    }
+
     const videoUrl = await getVideoUrl({
         slug: slug,
-        movieId: data.id_movie,
+        id: id,
         type: type,
     });
 
     return { url: videoUrl }
 }
 
-async function findMovie(searchTerm) {
-    const searchUrl = getCorsUrl(`https://lookmovie.io/api/v1/movies/search/?q=${encodeURIComponent(searchTerm)}`);
+async function findContent(searchTerm, type) {    
+    const searchUrl = getCorsUrl(`https://lookmovie.io/api/v1/${type}s/search/?q=${encodeURIComponent(searchTerm)}`);
     const searchRes = await fetch(searchUrl).then((d) => d.json());
-    let results = [...searchRes.result.map((v) => ({ ...v, type: "movie" }))];
+    const results = [...searchRes.result.map((v) => ({ ...v, type: type}))];
 
     const fuse = new Fuse(results, { threshold: 0.3, distance: 200, keys: ["title"] });
     const matchedResults = fuse
@@ -97,4 +125,4 @@ async function findMovie(searchTerm) {
     }
 }
 
-export { findMovie, getStreamUrl };
+export { findContent, getStreamUrl };

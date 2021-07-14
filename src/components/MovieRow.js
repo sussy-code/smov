@@ -12,6 +12,7 @@ export function MovieRow(props) {
                 <span className="year">({props.year})</span>
             </div>
             <div className="watch">
+                <span className='attribute' hidden={props.type === 'show' ? false : true }>{props.season}x{props.episode}</span>
                 <p>Watch {props.type}</p>
                 <Arrow/>
             </div>
