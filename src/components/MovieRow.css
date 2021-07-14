@@ -17,7 +17,13 @@
 .movieRow .left {
     flex: 1;
     display: flex;
+    flex-flow: row wrap;
     align-items: flex-start;
+    margin-right: 0.5rem;
+}
+
+.movieRow .left .year {
+    color: #BCBECB;
 }
 
 .movieRow .watch {

@@ -13,11 +13,11 @@
 }
 
 .cardView > div:first-child {
-    margin-top: 0;
+    margin-top: 38px;
 }
 
 .topRightCredits {
-    position: fixed;
+    position: absolute;
     right: 1rem;
     top: 1rem;
     margin-top: 0 !important;
