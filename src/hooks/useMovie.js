@@ -4,7 +4,7 @@ const MovieContext = React.createContext(null)
 export function MovieProvider(props) {
     const [page, setPage] = React.useState("search");
     const [stream, setStream] = React.useState("");
-    const [streamData, setStreamData] = React.useState({ title: "", type: "", episode: "", season: "" })
+    const [streamData, setStreamData] = React.useState({ title: "", slug: "", type: "", episodes: [], seasons: [] })
 
     return (
         <MovieContext.Provider value={{

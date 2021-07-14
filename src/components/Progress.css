@@ -1,6 +1,6 @@
 .progress {
     text-align: center;
-    color: #BCBECB;
+    color: var(--text-secondary);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -32,12 +32,12 @@
 
 .progress .bar .bar-inner {
     transition: width 400ms ease-in-out, background-color 100ms ease-in-out;
-    background-color: #D463AE;
+    background-color: var(--theme-color);
     border-radius: 10px;
     height: 100%;
     width: 0%;
 }
 
 .progress.failed .bar .bar-inner {
-    background-color: #d85b66;
+    background-color: var(--failed);
 }

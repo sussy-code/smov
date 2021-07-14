@@ -53,6 +53,22 @@ async function getAccessToken(config) {
     return "Invalid type provided in config";
 }
 
+async function getEpisodes(slug) {
+    const url = getCorsUrl(`https://lookmovie.io/shows/view/${slug}`);
+    const pageReq = await fetch(url).then((d) => d.text());
+
+    const data = JSON5.parse("{" +
+        pageReq
+            .slice(pageReq.indexOf(`show_storage`))
+            .split("};")[0]
+            .split("= {")[1]
+            .trim() +
+        "}"
+    );
+
+    return data.seasons
+}
+
 async function getStreamUrl(slug, type, season, episode) {
     const url = getCorsUrl(`https://lookmovie.io/${type}s/view/${slug}`);
     const pageReq = await fetch(url).then((d) => d.text());
@@ -72,7 +88,7 @@ async function getStreamUrl(slug, type, season, episode) {
 		id = data.id_movie;
 	} else if (type === "show") {
 		const episodeObj = data.seasons.find((v) => { return v.season === season && v.episode === episode; });
-		
+
         if (episodeObj) {
 			id = episodeObj.id_episode;
 		}
@@ -92,9 +108,22 @@ async function getStreamUrl(slug, type, season, episode) {
 }
 
 async function findContent(searchTerm, type) {    
-    const searchUrl = getCorsUrl(`https://lookmovie.io/api/v1/${type}s/search/?q=${encodeURIComponent(searchTerm)}`);
-    const searchRes = await fetch(searchUrl).then((d) => d.json());
-    const results = [...searchRes.result.map((v) => ({ ...v, type: type}))];
+    // const searchUrl = getCorsUrl(`https://lookmovie.io/api/v1/${type}s/search/?q=${encodeURIComponent(searchTerm)}`);
+    const searchUrl = getCorsUrl(`https://lookmovie.io/${type}s/search/?q=${encodeURIComponent(searchTerm)}`);
+    const searchRes = await fetch(searchUrl).then((d) => d.text());
+    
+    // Parse DOM to find search results on full search page
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(searchRes, "text/html");
+    const nodes = Array.from(doc.querySelectorAll('.movie-item-style-1'));
+    const results = nodes.map(node => {
+        return {
+            type,
+            title: node.querySelector('h6 a').innerText,
+            year: node.querySelector('.year').innerText,
+            slug: node.querySelector('a').href.split('/').pop(),
+        }
+    });
 
     const fuse = new Fuse(results, { threshold: 0.3, distance: 200, keys: ["title"] });
     const matchedResults = fuse
@@ -125,4 +154,4 @@ async function findContent(searchTerm, type) {
     }
 }
 
-export { findContent, getStreamUrl };
+export { findContent, getStreamUrl, getEpisodes };

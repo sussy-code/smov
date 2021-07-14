@@ -1,0 +1,59 @@
+
+/* TODO better responsiveness, use dropdown if more than 5 options */
+.typeSelector {
+    display: inline-flex;
+    position: relative;
+    margin-bottom: 1.5rem;
+    max-width: 100%;
+    flex-wrap: wrap;
+}
+
+.typeSelector::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    background-color: #3a3c46;
+    height: 4px;
+    border-radius: 2px;
+}
+
+.typeSelector .choice {
+    width: 7rem;
+    height: 3rem;
+    padding: .3rem .2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+    color: #585A67;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+}
+
+.typeSelector .choice:hover { 
+    color: #afb1b8;
+}
+
+.typeSelector .choice.selected {
+    color: var(--text);
+}
+
+.typeSelector .selectedBar {
+    position: absolute;
+    height: 4px;
+    width: 7rem;
+    background-color: var(--theme-color);
+    border-radius: 2px;
+    bottom: 0;
+    transition: transform 150ms ease-in-out;
+}
+
+@media screen and (max-width: 700px) {
+    .typeSelector {
+        width: 80%;
+        display: block;
+    }
+}

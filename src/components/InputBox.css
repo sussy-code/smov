@@ -19,8 +19,8 @@
 .inputTextBox {
     border-width: 0;
     outline: none;
-    background-color: #36363e;
-    color: white;
+    background-color: var(--content);
+    color: var(--text);
     padding: .7rem 1.5rem;
     height: auto;
     flex: 1;
@@ -28,52 +28,21 @@
 }
 
 .inputSearchButton {
-    background-color: #A73B83;
+    background-color: var(--button);
     border-width: 0;
-    color: white;
+    color: var(--text);
     padding: .5rem 2.1rem;
 
     font-weight: bold;
     cursor: pointer;
 }
 
-.inputDropdown {
-    border-width: 0;
-    outline: none;
-    background-color: #36363e;
-    color: white;
-    padding: .7rem 1rem;
-    height: auto;
-    width: 25%;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.inputOptionBox {
-    border-width: 0;
-    outline: none;
-    background-color: #36363e;
-    color: white;
-    height: auto;
-    width: 10%;
-    box-sizing: border-box;
-}
-
-.inputDropdown:hover {
-    background-color: #3C3D44;
-}
-
 .inputSearchButton:hover {
-    background-color: #9C3179;
+    background-color: var(--button-hover);
 }
 
 .inputTextBox:hover {
-    background-color: #3C3D44;
-}
-
-.inputOptionBox:hover {
-    background-color: #3C3D44;
+    background-color: var(--content-hover);
 }
 
 .inputSearchButton .text > .arrow {
@@ -83,11 +52,13 @@
     right: -0.8rem;
     bottom: -0.2rem;
 }
+
 .inputSearchButton .text {
     display: flex;
     position: relative;
     transition: transform 0.2s ease-in-out;
 }
+
 .inputSearchButton:hover .text > .arrow {
     transform: translateX(8px);
     opacity: 1;
@@ -98,7 +69,7 @@
 }
 
 .inputSearchButton:active {
-    background-color: #8b286a;
+    background-color: var(--button-active);
 }
 
 @media screen and (max-width: 700px) {
@@ -120,18 +91,5 @@
     .inputTextBox {
         margin-top: .5rem;
         width: 100%;
-    }
-
-    .inputDropdown {
-        width: 100%;
-        padding: .7rem 1.5rem;
-    }
-
-    .inputOptionBox {
-        margin-top: .5rem;
-        width: 50%;
-        /* align-items:stretch; */
-        align-self: center;
-        padding: .7rem 1.5rem;
     }
 }

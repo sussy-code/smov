@@ -1,6 +1,6 @@
 .title {
     font-size: 2rem;
-    color: white;
+    color: var(--text);
     /* max-width: 20rem; */
     margin: 0;
     padding: 0;
@@ -10,9 +10,13 @@
 .title-size-medium {
     font-size: 1.5rem;
 }
+.title-size-small {
+    font-size: 1.1rem;
+    color: #afb1b8;
+}
 
 .title-accent {
-    color: #E880C5;
+    color: var(--theme-color);
     font-weight: 600;
     margin: 0;
     padding: 0;
@@ -34,3 +38,4 @@
 .title-accent.title-accent-link:hover .arrow {
     transform: translateY(.1rem) translateX(-.5rem);
 }
+

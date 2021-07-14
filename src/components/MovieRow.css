@@ -1,8 +1,8 @@
 .movieRow {
     display: flex;
     border-radius: 5px;
-    background-color: #35363D;
-    color: white;
+    background-color: var(--content);
+    color: var(--text);
     padding: .8rem 1.5rem;
     margin-top: .5rem;
     cursor: pointer;
@@ -23,11 +23,11 @@
 }
 
 .movieRow .left .year {
-    color: #BCBECB;
+    color: var(--text-secondary);
 }
 
 .movieRow .watch {
-    color: #D678B7;
+    color: var(--theme-color-text);
     display: flex;
     align-items: center;
 }
@@ -43,7 +43,7 @@
 }
 
 .movieRow:hover {
-    background-color: #3A3B40;
+    background-color: var(--content-hover);
 }
 
 .movieRow:hover .watch .arrow {
@@ -51,8 +51,8 @@
 }
 
 .attribute {
-    color: white;
-    background-color: #D678B7;
+    color: var(--text);
+    background-color: var(--theme-color);
     font-size: .75rem;
     padding: .25rem;
     border-radius: 10px;

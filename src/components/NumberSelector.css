@@ -1,0 +1,48 @@
+.numberSelector {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(2.5rem, 1fr));
+    gap: 5px;
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.numberSelector .choiceWrapper {
+    position: relative;
+}
+
+.numberSelector .choiceWrapper::before {
+    content: '';
+    display: block;
+    width: 100%;
+    padding-bottom: 100%;
+}
+
+.numberSelector .choice {
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--choice);
+    margin-right: 5px;
+    padding: .2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--text);
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+    border-radius: 10%;
+    box-sizing: border-box;
+}
+
+.numberSelector .choice:hover { 
+    background-color: var(--choice-hover);
+}
+
+.numberSelector .choice.selected {
+    color: var(--text);
+    background-color: var(--choice-hover);
+}

@@ -1,6 +1,33 @@
+:root {
+
+  /* TODO finish theming for entire css */
+  --theme-color: #E880C5;
+  --theme-color-text: var(--theme-color);
+  
+  --failed: #d85b66;
+
+  --body: #16171D;
+  --card: #22232A;
+
+  --text: white;
+  --text-secondary: #BCBECB;
+
+  --content: #36363e;
+  --content-hover: #3C3D44;
+
+  --button: #A73B83;
+  --button-hover: #9C3179;
+  --button-active: #8b286a;
+
+  --choice: #2E2F37;
+  --choice-hover: #45464D;
+  --choice-active: #45464D;
+
+}
+
 body, html {
   margin: 0;
-  background-color: #16171D;
+  background-color: var(--body);
   min-height: 100vh;
 }
 

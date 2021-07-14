@@ -5,6 +5,6 @@
 }
 
 .videoElementText {
-    color: white;
+    color: var(--text);
     margin: 0;
 }

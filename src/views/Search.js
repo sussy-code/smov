@@ -7,18 +7,21 @@ import { Arrow } from '../components/Arrow'
 import { Progress } from '../components/Progress'
 import { findContent, getStreamUrl } from '../lib/lookMovie'
 import { useMovie } from '../hooks/useMovie';
+import { TypeSelector } from '../components/TypeSelector'
+import { getEpisodes } from '../lib/lookMovie'
 
 import './Search.css'
 
 export function SearchView() {
     const { navigate, setStreamUrl, setStreamData } = useMovie();
 
-    const maxSteps = 3;
+    const maxSteps = 4;
     const [options, setOptions] = React.useState([]);
     const [progress, setProgress] = React.useState(0);
     const [text, setText] = React.useState("");
     const [failed, setFailed] = React.useState(false);
     const [showingOptions, setShowingOptions] = React.useState(false);
+    const [type, setType] = React.useState("movie");
 
     const fail = (str) => {
         setProgress(maxSteps);
@@ -26,24 +29,46 @@ export function SearchView() {
         setFailed(true)
     }
 
-    async function getStream(title, slug, type, season, episode) {
+    async function getStream(title, slug, type) {
         setStreamUrl("");
+
         try {
             setProgress(2);
             setText(`Getting stream for "${title}"`)
-            const { url } = await getStreamUrl(slug, type, season, episode);
 
-            if (url === '') {
-                return fail(`Not found: ${title} (${season}x${episode})`)
+            let seasons = [];
+            let episodes = [];
+            if (type === "show") {
+                const episodeData = await getEpisodes(slug);
+                episodeData.forEach((e) => {
+                    if (!seasons.includes(e.season))
+                        seasons.push(e.season);
+                    
+                    if (!episodes[e.season])
+                        episodes[e.season] = []
+                    episodes[e.season].push(e.episode)
+                    
+                })
+            }
+
+            let realUrl = '';
+            if (type === "movie") {
+                const { url } = await getStreamUrl(slug, type);
+    
+                if (url === '') {
+                    return fail(`Not found: ${title}`)
+                }
+                realUrl = url;
             }
 
             setProgress(maxSteps);
-            setStreamUrl(url);
+            setStreamUrl(realUrl);
             setStreamData({
                 title,
                 type,
-                season,
-                episode
+                seasons,
+                episodes,
+                slug
             })
             setText(`Streaming...`)
             navigate("movie")
@@ -52,9 +77,9 @@ export function SearchView() {
         }
     }
 
-    async function searchMovie(query, contentType, season, episode) {
+    async function searchMovie(query, contentType) {
         setFailed(false);
-        setText(`Searching for ${contentType} "${query}" ${contentType === 'show' ? ` (${season}x${episode})` : ''}`);
+        setText(`Searching for ${contentType} "${query}"`);
         setProgress(1)
         setShowingOptions(false)
 
@@ -64,11 +89,6 @@ export function SearchView() {
             if (options.length === 0) {
                 return fail(`Could not find that ${contentType}`)
             } else if (options.length > 1) {
-                options.forEach((o) => {
-                    o.season = season;
-                    o.episode = episode;
-                });
-
                 setProgress(2);
                 setText(`Choose your ${contentType}`);
                 setOptions(options);
@@ -77,7 +97,7 @@ export function SearchView() {
             }
 
             const { title, slug, type } = options[0];
-            getStream(title, slug, type, season, episode);
+            getStream(title, slug, type);
         } catch (err) {
             fail(`Failed to watch ${contentType}`)
         }
@@ -89,13 +109,21 @@ export function SearchView() {
                 <Title accent="Because watching content legally is boring">
                     What do you wanna watch?
                 </Title>
-                <InputBox placeholder="Hamilton" onSubmit={(str, type, season, episode) => searchMovie(str, type, season, episode)} />
+                <TypeSelector
+                    setType={(type) => setType(type)}
+                    choices={[
+                        { label: "Movie", value: "movie" },
+                        { label: "TV Show", value: "show" }
+                    ]}
+                    selected={type}
+                />
+                <InputBox placeholder="Hamilton" onSubmit={(str) => searchMovie(str, type)} />
                 <Progress show={progress > 0} failed={failed} progress={progress} steps={maxSteps} text={text} />
             </Card>
 
             <Card show={showingOptions} doTransition>
                 <Title size="medium">
-                    Whoops, there are a few movies like that
+                    Whoops, there are a few {type}s like that
                 </Title>
                 {options?.map((v, i) => (
                     <MovieRow key={i} title={v.title} type={v.type} year={v.year} season={v.season} episode={v.episode} onClick={() => {

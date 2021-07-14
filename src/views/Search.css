@@ -24,7 +24,7 @@
 }
 
 .topRightCredits a, .topRightCredits a:visited {
-    color: #E880C5;
+    color: var(--theme-color);
     text-decoration: none;
     margin: 0;
 }
