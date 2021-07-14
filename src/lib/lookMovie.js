@@ -57,7 +57,7 @@ async function getStreamUrl(slug, type) {
     const videoUrl = await getVideoUrl({
         slug: slug,
         movieId: data.id_movie,
-        type: "movie",
+        type: type,
     });
 
     return { url: videoUrl }
@@ -83,15 +83,16 @@ async function findMovie(searchTerm) {
         matchedResults.forEach((r) => res.options.push({
             title: r.title,
             slug: r.slug,
-            type: r.type
+            type: r.type,
+            year: r.year
         }));
 
         return res;
     } else {
-        const { title, slug, type } = matchedResults[0];
+        const { title, slug, type, year } = matchedResults[0];
         
         return {
-            options: [{ title, slug, type }]
+            options: [{ title, slug, type, year }]
         }
     }
 }

@@ -44,6 +44,15 @@
     transform: translateX(.3rem) translateY(.1rem);
 }
 
+.attribute {
+    color: white;
+    background-color: #D678B7;
+    font-size: .75rem;
+    padding: .25rem;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
 @media screen and (max-width: 400px) {
     .movieRow {
         flex-direction: column;

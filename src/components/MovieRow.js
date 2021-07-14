@@ -11,7 +11,8 @@ export function MovieRow(props) {
                 {props.title}
             </div>
             <div className="watch">
-                <p>Watch movie</p>
+                <span className="attribute">year: {props.year}</span>
+                <p>Watch {props.type}</p>
                 <Arrow/>
             </div>
         </div>

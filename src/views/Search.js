@@ -58,9 +58,9 @@ export function SearchView() {
                 return fail("Could not find that movie")
             } else if (options.length > 1) {
                 setProgress(2);
-                setText("Choose your movie")
-                setOptions(options.map(v=>({ title: v.title, slug: v.slug, type: v.type })));
-                setShowingOptions(true)
+                setText("Choose your movie");
+                setOptions(options);
+                setShowingOptions(true);
                 return;
             }
 
@@ -86,7 +86,7 @@ export function SearchView() {
                     Whoops, there are a few movies like that
                 </Title>
                 {options?.map((v, i) => (
-                    <MovieRow key={i} title={v.title} onClick={() => {
+                    <MovieRow key={i} title={v.title} type={v.type} year={v.year} onClick={() => {
                         setShowingOptions(false)
                         getStream(v.title, v.slug, v.type)
                     }}/>
