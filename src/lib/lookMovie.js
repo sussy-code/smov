@@ -6,7 +6,6 @@ function getCorsUrl(url) {
 }
 
 async function getVideoUrl(config) {
-    // return getCorsUrl('https://vdoc1.sallenes.space/_eTeNnlOAFdWb-gPYTiQfg/1626297249/storage3/shows/0413573-greys-anatomy-2005/6-S1E1-1553949090/720p/v2-index.m3u8');
     const accessToken = await getAccessToken(config);
     const now = Math.floor(Date.now() / 1e3);
 
