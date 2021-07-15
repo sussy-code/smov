@@ -57,6 +57,35 @@ export function MovieView(props) {
         }
     }, [episode, streamData, setStreamUrl])
 
+    const setProgress = (evt) => {
+        console.log(streamData.slug, evt)
+        console.log(streamData)
+        let ls = JSON.parse(localStorage.getItem("video-progress") || "{}")
+
+        // We're just checking lookmovie for now since there is only one scraper
+        if(!ls.lookmovie) ls.lookmovie = {}
+        if(!ls.lookmovie[streamData.type]) ls.lookmovie[streamData.type] = {}
+        if(!ls.lookmovie[streamData.type][streamData.slug]) {
+            ls.lookmovie[streamData.type][streamData.slug] = {}
+        }
+        
+        // Store real data
+        let key = streamData.type === "show" ? `${season}-${episode.episode}` : "full"
+        ls.lookmovie[streamData.type][streamData.slug][key] = {
+            currentlyAt: Math.floor(evt.currentTarget.currentTime),
+            totalDuration: Math.floor(evt.currentTarget.duration)
+        }
+
+        if(streamData.type === "show") {
+            ls.lookmovie[streamData.type][streamData.slug][key].show = {
+                season,
+                episode: episode.episode
+            }
+        }
+
+        localStorage.setItem("video-progress", JSON.stringify(ls))
+    }
+
     return (
         <div className={`cardView showType-${streamData.type}`}>
             <Card fullWidth>
@@ -66,7 +95,7 @@ export function MovieView(props) {
                 {streamData.type === "show" ? <Title size="small">
                     Season {episode.season}: Episode {episode.episode}
                 </Title> : undefined}
-                <VideoElement streamUrl={streamUrl} loading={loading}/>
+                <VideoElement streamUrl={streamUrl} loading={loading} setProgress={setProgress} />
                 {streamData.type === "show" ? 
                     <EpisodeSelector
                         setSeason={setSeason}
