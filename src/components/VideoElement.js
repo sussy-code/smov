@@ -27,8 +27,6 @@ export function VideoElement({ streamUrl, loading }) {
         hls.loadSource(streamUrl);
     }, [videoRef, streamUrl, loading])
 
-    // TODO make better loading/error/empty state
-
     if (error)
         return (<VideoPlaceholder>Your browser is not supported</VideoPlaceholder>)
 
