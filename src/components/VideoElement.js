@@ -30,7 +30,7 @@ export function VideoElement({ streamUrl, loading }) {
     // TODO make better loading/error/empty state
 
     if (error)
-        return (<VideoPlaceholder className="videoElementText">Your browser is not supported</VideoPlaceholder>)
+        return (<VideoPlaceholder>Your browser is not supported</VideoPlaceholder>)
 
     if (loading)
         return <VideoPlaceholder>Loading episode...</VideoPlaceholder>
