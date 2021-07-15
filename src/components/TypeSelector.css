@@ -5,6 +5,8 @@
     position: relative;
     margin-bottom: 1.5rem;
     max-width: 100%;
+}
+.typeSelector:not(.nowrap) {
     flex-wrap: wrap;
 }
 
@@ -52,8 +54,7 @@
 }
 
 @media screen and (max-width: 700px) {
-    .typeSelector {
-        width: 80%;
+    .typeSelector:not(.nowrap) {
         display: block;
     }
 }

@@ -5,7 +5,7 @@ import { VideoPlaceholder } from './VideoPlaceholder'
 
 // streamUrl: string
 // loading: boolean
-export function VideoElement({ streamUrl, loading }) {
+export function VideoElement({ streamUrl, loading, setProgress }) {
     const videoRef = React.useRef(null);
     const [error, setError] = React.useState(false);
 
@@ -37,6 +37,6 @@ export function VideoElement({ streamUrl, loading }) {
         return <VideoPlaceholder>No video selected</VideoPlaceholder>
 
     return (
-        <video className="videoElement" ref={videoRef} controls autoPlay />
+        <video className="videoElement" ref={videoRef} controls autoPlay onProgress={setProgress} />
     )
 }

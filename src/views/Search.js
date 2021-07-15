@@ -115,6 +115,7 @@ export function SearchView() {
                         { label: "Movie", value: "movie" },
                         { label: "TV Show", value: "show" }
                     ]}
+                    noWrap={true}
                     selected={type}
                 />
                 <InputBox placeholder={ type === "movie" ? "Hamilton" : "Atypical" } onSubmit={(str) => searchMovie(str, type)} />
@@ -126,7 +127,7 @@ export function SearchView() {
                     Whoops, there are a few {type}s like that
                 </Title>
                 {options?.map((v, i) => (
-                    <MovieRow key={i} title={v.title} type={v.type} year={v.year} season={v.season} episode={v.episode} onClick={() => {
+                    <MovieRow key={i} title={v.title} slug={v.slug} type={v.type} year={v.year} season={v.season} episode={v.episode} onClick={() => {
                         setShowingOptions(false)
                         getStream(v.title, v.slug, v.type, v.season, v.episode)
                     }}/>

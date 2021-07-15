@@ -1,6 +1,6 @@
 .videoElement {
     width: 100%;
-    background-color: var(--content);
+    background-color: black;
     border-radius: 5px;
 }
 

@@ -8,6 +8,8 @@
 
 .numberSelector .choiceWrapper {
     position: relative;
+    border-radius: 10%;
+    overflow: hidden;
 }
 
 .numberSelector .choiceWrapper::before {
@@ -34,7 +36,6 @@
     font-weight: bold;
     cursor: pointer;
     user-select: none;
-    border-radius: 10%;
     box-sizing: border-box;
 }
 
@@ -46,3 +47,4 @@
     color: var(--choice-active-text, var(--text));
     background-color: var(--choice-active);
 }
+
