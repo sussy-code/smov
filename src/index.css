@@ -1,6 +1,4 @@
 :root {
-
-  /* TODO finish theming for entire css */
   --theme-color: #E880C5;
   --theme-color-text: var(--theme-color);
   
@@ -11,6 +9,7 @@
 
   --text: white;
   --text-secondary: #BCBECB;
+  --text-tertiary: #585A67;
 
   --content: #36363e;
   --content-hover: #3C3D44;
@@ -22,7 +21,6 @@
   --choice: #2E2F37;
   --choice-hover: #45464D;
   --choice-active: #45464D;
-
 }
 
 body, html {

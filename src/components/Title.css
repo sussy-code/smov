@@ -12,7 +12,7 @@
 }
 .title-size-small {
     font-size: 1.1rem;
-    color: #afb1b8;
+    color: var(--text-secondary);
 }
 
 .title-accent {

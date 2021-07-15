@@ -29,7 +29,7 @@
     margin: 0;
 }
 .topRightCredits a:hover, .topRightCredits a:active {
-    color: #f19fd6;
+    color: var(--theme-color);
     text-decoration: none;
 }
 
