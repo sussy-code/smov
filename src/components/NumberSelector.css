@@ -8,6 +8,8 @@
 
 .numberSelector .choiceWrapper {
     position: relative;
+    border-radius: 10%;
+    overflow: hidden;
 }
 
 .numberSelector .choiceWrapper::before {
@@ -34,7 +36,6 @@
     font-weight: bold;
     cursor: pointer;
     user-select: none;
-    border-radius: 10%;
     box-sizing: border-box;
 }
 
@@ -45,4 +46,17 @@
 .numberSelector .choice.selected {
     color: var(--choice-active-text, var(--text));
     background-color: var(--choice-active);
+}
+
+.numberSelector .progressBar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.2;
+}
+.numberSelector .progressBarInner {
+    background: var(--theme-color);
+    height: 100%;
 }

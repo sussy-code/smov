@@ -54,12 +54,10 @@ export function MovieView(props) {
             })
         return () => {
             cancel = true;
-        }
+        } 
     }, [episode, streamData, setStreamUrl])
 
     const setProgress = (evt) => {
-        console.log(streamData.slug, evt)
-        console.log(streamData)
         let ls = JSON.parse(localStorage.getItem("video-progress") || "{}")
 
         // We're just checking lookmovie for now since there is only one scraper
@@ -73,7 +71,8 @@ export function MovieView(props) {
         let key = streamData.type === "show" ? `${season}-${episode.episode}` : "full"
         ls.lookmovie[streamData.type][streamData.slug][key] = {
             currentlyAt: Math.floor(evt.currentTarget.currentTime),
-            totalDuration: Math.floor(evt.currentTarget.duration)
+            totalDuration: Math.floor(evt.currentTarget.duration),
+            updatedAt: Date.now()
         }
 
         if(streamData.type === "show") {
@@ -100,8 +99,10 @@ export function MovieView(props) {
                     <EpisodeSelector
                         setSeason={setSeason}
                         setEpisode={setEpisode}
+                        season={season}
                         seasons={seasonList}
                         episodes={episodeLists}
+                        slug={streamData.slug}
                         currentSeason={season}
                         currentEpisode={episode}
                     />
