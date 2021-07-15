@@ -33,7 +33,7 @@ export function VideoElement({ streamUrl, loading }) {
         return (<VideoPlaceholder className="videoElementText">Your browser is not supported</VideoPlaceholder>)
 
     if (loading)
-        return <VideoPlaceholder>Loading episode</VideoPlaceholder>
+        return <VideoPlaceholder>Loading episode...</VideoPlaceholder>
     
     if (!streamUrl || streamUrl.length === 0)
         return <videoPlaceholder>No video selected</videoPlaceholder>
