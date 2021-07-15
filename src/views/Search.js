@@ -115,6 +115,7 @@ export function SearchView() {
                         { label: "Movie", value: "movie" },
                         { label: "TV Show", value: "show" }
                     ]}
+                    noWrap={true}
                     selected={type}
                 />
                 <InputBox placeholder={ type === "movie" ? "Hamilton" : "Atypical" } onSubmit={(str) => searchMovie(str, type)} />
