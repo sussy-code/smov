@@ -1,4 +1,5 @@
 .movieRow {
+    position: relative;
     display: flex;
     border-radius: 5px;
     background-color: var(--content);
@@ -8,6 +9,7 @@
     cursor: pointer;
     transition: transform 50ms ease-in-out;
     user-select: none;
+    overflow: hidden;
 }
 
 .movieRow p {
