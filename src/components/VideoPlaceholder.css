@@ -1,0 +1,23 @@
+.videoPlaceholder {
+	width: 100%;
+	position: relative;
+}
+.videoPlaceholder::before {
+	content: '';
+	display: block;
+	width: 100%;
+	padding-bottom: 56.25%;
+}
+.videoPlaceholderBox {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	position: absolute;
+	background: var(--choice);
+	border-radius: 6px;
+	color: var(--text);
+}
