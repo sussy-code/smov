@@ -117,7 +117,7 @@ export function SearchView() {
                     ]}
                     selected={type}
                 />
-                <InputBox placeholder="Hamilton" onSubmit={(str) => searchMovie(str, type)} />
+                <InputBox placeholder={ type === "movie" ? "Hamilton" : "Atypical" } onSubmit={(str) => searchMovie(str, type)} />
                 <Progress show={progress > 0} failed={failed} progress={progress} steps={maxSteps} text={text} />
             </Card>
 

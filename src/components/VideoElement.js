@@ -1,6 +1,7 @@
 import React from 'react'
 import Hls from 'hls.js'
 import './VideoElement.css'
+import { VideoPlaceholder } from './VideoPlaceholder'
 
 // streamUrl: string
 // loading: boolean
@@ -29,13 +30,13 @@ export function VideoElement({ streamUrl, loading }) {
     // TODO make better loading/error/empty state
 
     if (error)
-        return (<p className="videoElementText">Your browser is not supported</p>)
+        return (<VideoPlaceholder>Your browser is not supported</VideoPlaceholder>)
 
     if (loading)
-        return <p className="videoElementText">Loading episode</p>
+        return <VideoPlaceholder>Loading episode...</VideoPlaceholder>
     
     if (!streamUrl || streamUrl.length === 0)
-        return <p className="videoElementText">No video selected</p>
+        return <videoPlaceholder>No video selected</videoPlaceholder>
 
     return (
         <video className="videoElement" ref={videoRef} controls autoPlay />
