@@ -6,7 +6,6 @@ import './EpisodeSelector.css'
 export function EpisodeSelector({ setSeason, setEpisode, seasons, season, episodes, currentSeason, currentEpisode, slug }) {
 
     const choices = episodes.map(v => {
-        console.log(slug, season, v)
 
         let progressData = JSON.parse(localStorage.getItem('video-progress') || "{}")
         
@@ -15,7 +14,6 @@ export function EpisodeSelector({ setSeason, setEpisode, seasons, season, episod
 
         const progress = progressData?.lookmovie?.show?.[slug][`${season}-${v}`]
         if(progress) {
-            console.log(progress)
             currentlyAt = progress.currentlyAt
             totalDuration = progress.totalDuration
         }
