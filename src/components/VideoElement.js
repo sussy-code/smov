@@ -27,8 +27,6 @@ export function VideoElement({ streamUrl, loading }) {
         hls.loadSource(streamUrl);
     }, [videoRef, streamUrl, loading])
 
-    // TODO make better loading/error/empty state
-
     if (error)
         return (<VideoPlaceholder>Your browser is not supported</VideoPlaceholder>)
 
@@ -36,7 +34,7 @@ export function VideoElement({ streamUrl, loading }) {
         return <VideoPlaceholder>Loading episode...</VideoPlaceholder>
     
     if (!streamUrl || streamUrl.length === 0)
-        return <videoPlaceholder>No video selected</videoPlaceholder>
+        return <VideoPlaceholder>No video selected</VideoPlaceholder>
 
     return (
         <video className="videoElement" ref={videoRef} controls autoPlay />

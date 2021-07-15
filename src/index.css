@@ -1,6 +1,4 @@
 :root {
-
-  /* TODO finish theming for entire css */
   --theme-color: #E880C5;
   --theme-color-text: var(--theme-color);
   
@@ -11,6 +9,7 @@
 
   --text: white;
   --text-secondary: #BCBECB;
+  --text-tertiary: #585A67;
 
   --content: #36363e;
   --content-hover: #3C3D44;
@@ -18,12 +17,36 @@
   --button: #A73B83;
   --button-hover: #9C3179;
   --button-active: #8b286a;
+  --button-text: var(--text);
 
   --choice: #2E2F37;
   --choice-hover: #45464D;
   --choice-active: #45464D;
-
 }
+/* @media (prefers-color-scheme: light) {
+  :root {
+    --theme-color: #457461;
+    
+    --body: white;
+    --card: #f8f9fa;
+    
+    --content: #eee;
+    --content-hover: #e7e7e7;
+  
+    --text: #333;
+    --text-secondary: #616161;
+    --text-tertiary: #aaa;
+
+    --button: #457461;
+    --button-hover: #4e836e;
+    --button-active: #437a64;
+    --button-text: white;
+
+    --choice: var(--content);
+    --choice-hover: var(--content-hover);
+    --choice-active: var(--content-hover);
+  }
+} */
 
 body, html {
   margin: 0;

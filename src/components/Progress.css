@@ -24,7 +24,7 @@
 .progress .bar {
     width: 13rem;
     max-width: 100%;
-    background-color: #35363D;
+    background-color: var(--content);
     border-radius: 10px;
     height: 7px;
     display: inline-block;
