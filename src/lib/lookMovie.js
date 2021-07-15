@@ -119,8 +119,8 @@ async function findContent(searchTerm, type) {
     const results = nodes.map(node => {
         return {
             type,
-            title: node.querySelector('h6 a').innerText,
-            year: node.querySelector('.year').innerText,
+            title: node.querySelector('h6 a').innerText.trim(),
+            year: node.querySelector('.year').innerText.trim(),
             slug: node.querySelector('a').href.split('/').pop(),
         }
     });

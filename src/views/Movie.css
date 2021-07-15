@@ -1,3 +1,6 @@
 .showType-show .title-size-big {
 	margin-bottom: 10px;
 }
+.showType-show .title-size-small, .showType-movie .title-size-big {
+	margin-bottom: 30px;
+}
