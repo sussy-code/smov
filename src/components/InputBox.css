@@ -30,7 +30,7 @@
 .inputSearchButton {
     background-color: var(--button);
     border-width: 0;
-    color: var(--text);
+    color: var(--button-text, var(--text));
     padding: .5rem 2.1rem;
 
     font-weight: bold;

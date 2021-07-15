@@ -43,6 +43,6 @@
 }
 
 .numberSelector .choice.selected {
-    color: var(--text);
-    background-color: var(--choice-hover);
+    color: var(--choice-active-text, var(--text));
+    background-color: var(--choice-active);
 }
