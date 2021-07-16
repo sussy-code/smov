@@ -2,13 +2,13 @@ import React from 'react';
 import { InputBox } from '../components/InputBox'
 import { Title } from '../components/Title'
 import { Card } from '../components/Card'
+import { ErrorBanner } from '../components/ErrorBanner'
 import { MovieRow } from '../components/MovieRow'
 import { Arrow } from '../components/Arrow'
 import { Progress } from '../components/Progress'
-import { findContent, getStreamUrl } from '../lib/lookMovie'
+import { findContent, getStreamUrl, getEpisodes } from '../lib/lookMovie'
 import { useMovie } from '../hooks/useMovie';
 import { TypeSelector } from '../components/TypeSelector'
-import { getEpisodes } from '../lib/lookMovie'
 
 import './Search.css'
 
@@ -21,6 +21,7 @@ export function SearchView() {
     const [text, setText] = React.useState("");
     const [failed, setFailed] = React.useState(false);
     const [showingOptions, setShowingOptions] = React.useState(false);
+    const [offlineStatus, setOfflineStatus] = React.useState(false);
     const [type, setType] = React.useState("movie");
 
     const fail = (str) => {
@@ -103,9 +104,21 @@ export function SearchView() {
         }
     }
 
+    React.useEffect(() => {
+        async function fetchHealth() {
+            const HOME_URL = "https://hidden-inlet-27205.herokuapp.com/https://lookmovie.io/"
+            await fetch(HOME_URL).catch(() => {
+                // Request failed; source likely offline
+                setOfflineStatus(`Our content provider is currently offline, apologies.`)
+            })
+        }
+        fetchHealth()
+    }, [])
+
     return (
         <div className="cardView">
             <Card>
+                {offlineStatus ? <ErrorBanner>{offlineStatus}</ErrorBanner> : ''}
                 <Title accent="Because watching content legally is boring">
                     What do you wanna watch?
                 </Title>
