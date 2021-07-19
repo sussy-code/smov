@@ -6,8 +6,8 @@ import { ErrorBanner } from '../components/ErrorBanner'
 import { MovieRow } from '../components/MovieRow'
 import { Arrow } from '../components/Arrow'
 import { Progress } from '../components/Progress'
-import { /* findContent, getStreamUrl,*/ getEpisodes } from '../lib/lookMovie'
-import { findContent, getStreamUrl } from '../lib/gomostream';
+import { findContent, getStreamUrl, getEpisodes } from '../lib/lookMovie'
+// import { findContentGomo, getStreamUrlGomo } from '../lib/gomostream';
 import { useMovie } from '../hooks/useMovie';
 import { TypeSelector } from '../components/TypeSelector'
 

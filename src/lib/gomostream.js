@@ -5,7 +5,7 @@ const BASE_URL = `${CORS_URL}https://gomo.to`;
 const MOVIE_URL = `${BASE_URL}/movie`
 const DECODING_URL = `${BASE_URL}/decoding_v3.php`
 
-async function findContent(searchTerm, type) {
+async function findContentGomo(searchTerm, type) {
     try {
         if (type !== 'movie') return;
 
@@ -39,7 +39,7 @@ async function findContent(searchTerm, type) {
     }
 }
 
-async function getStreamUrl(slug, type, season, episode) {
+async function getStreamUrlGomo(slug, type, season, episode) {
     if (type !== 'movie') return;
 
     // Get stream to go with IMDB ID
@@ -75,4 +75,4 @@ async function getStreamUrl(slug, type, season, episode) {
     return { url }
 }
 
-export { findContent, getStreamUrl }
+export { findContentGomo, getStreamUrlGomo }
