@@ -66,7 +66,18 @@ async function getEpisodes(slug) {
         "}"
     );
 
-    return data.seasons
+    let seasons, episodes = [];
+
+    data.forEach((e) => {
+        if (!seasons.includes(e.season))
+            seasons.push(e.season);
+        
+        if (!episodes[e.season])
+            episodes[e.season] = []
+        episodes[e.season].push(e.episode)
+    })
+
+    return { seasons, episodes }
 }
 
 async function getStreamUrl(slug, type, season, episode) {

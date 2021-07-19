@@ -40,16 +40,9 @@ export function SearchView() {
             let seasons = [];
             let episodes = [];
             if (type === "show") {
-                const episodeData = await getEpisodes(slug);
-                episodeData.forEach((e) => {
-                    if (!seasons.includes(e.season))
-                        seasons.push(e.season);
-                    
-                    if (!episodes[e.season])
-                        episodes[e.season] = []
-                    episodes[e.season].push(e.episode)
-                    
-                })
+                const data = await getEpisodes(slug);
+                seasons = data.seasons;
+                episodes = data.episodes;
             }
 
             let realUrl = '';
