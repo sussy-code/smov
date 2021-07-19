@@ -12,7 +12,7 @@ export function EpisodeSelector({ setSeason, setEpisode, seasons, season, episod
         let currentlyAt = 0;
         let totalDuration = 0;
 
-        const progress = progressData?.lookmovie?.show?.[slug][`${season}-${v}`]
+        const progress = progressData?.lookmovie?.show?.slug?.[`${season}-${v}`]
         if(progress) {
             currentlyAt = progress.currentlyAt
             totalDuration = progress.totalDuration
