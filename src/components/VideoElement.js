@@ -10,21 +10,23 @@ export function VideoElement({ streamUrl, loading, setProgress }) {
     const [error, setError] = React.useState(false);
 
     React.useEffect(() => {
-        setError(false)
-        if (!videoRef || !videoRef.current || !streamUrl || streamUrl.length === 0 || loading) return;
-        
-        const hls = new Hls();
-        
-        if (!Hls.isSupported() && videoRef.current.canPlayType('application/vnd.apple.mpegurl')) {
-            videoRef.current.src = streamUrl;
-            return;
-        } else if (!Hls.isSupported()) {
-            setError(true)
-            return;
+        if (!streamUrl.endsWith('.mp4')) {
+            setError(false)
+            if (!videoRef || !videoRef.current || !streamUrl || streamUrl.length === 0 || loading) return;
+            
+            const hls = new Hls();
+            
+            if (!Hls.isSupported() && videoRef.current.canPlayType('application/vnd.apple.mpegurl')) {
+                videoRef.current.src = streamUrl;
+                return;
+            } else if (!Hls.isSupported()) {
+                setError(true)
+                return;
+            }
+            
+            hls.attachMedia(videoRef.current);
+            hls.loadSource(streamUrl);
         }
-        
-        hls.attachMedia(videoRef.current);
-        hls.loadSource(streamUrl);
     }, [videoRef, streamUrl, loading])
 
     if (error)
@@ -36,7 +38,13 @@ export function VideoElement({ streamUrl, loading, setProgress }) {
     if (!streamUrl || streamUrl.length === 0)
         return <VideoPlaceholder>No video selected</VideoPlaceholder>
 
-    return (
-        <video className="videoElement" ref={videoRef} controls autoPlay onProgress={setProgress} />
-    )
+    if (!streamUrl.endsWith('.mp4')) {
+        return (
+            <video className="videoElement" ref={videoRef} controls autoPlay onProgress={setProgress} />
+        )
+    } else {
+        return (
+            <video className="videoElement" ref={videoRef} controls autoPlay onProgress={setProgress}><source src={streamUrl} type="video/mp4" /></video>
+        )
+    }
 }
