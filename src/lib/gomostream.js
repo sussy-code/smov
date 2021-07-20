@@ -1,4 +1,4 @@
-import { unpack } from './unpacker';
+import { unpack } from './util/unpacker';
 
 const CORS_URL = 'https://hidden-inlet-27205.herokuapp.com/';
 const BASE_URL = `${CORS_URL}https://gomo.to`;
@@ -20,17 +20,18 @@ async function findContent(searchTerm, type) {
                 title: e.l,
                 slug: e.id,
                 type: 'movie',
-                year: e.y
+                year: e.y,
+                source: 'gomostream'
             })
         });
 
         if (results.length > 1) {
             return { options: results };
         } else {
-            return { options: [results[0]] }
+            return { options: [ { ...results[0], source: 'gomostream' } ] }
         }
     } catch (err) {
-        console.log(err);
+        console.error(err);
         throw new Error(err)
     }
 }
@@ -40,6 +41,9 @@ async function getStreamUrl(slug, type, season, episode) {
 
     // Get stream to go with IMDB ID
     const site1 = await fetch(`${MOVIE_URL}/${slug}`).then((d) => d.text());
+
+    if (site1 === "Movie not available.")
+        return { url: '' };
 
     const tc = site1.match(/var tc = '(.+)';/)?.[1]
     const _token = site1.match(/"_token": "(.+)",/)?.[1]
@@ -71,4 +75,5 @@ async function getStreamUrl(slug, type, season, episode) {
     return { url }
 }
 
-export { findContent, getStreamUrl }
+const gomostream = { findContent, getStreamUrl }
+export default gomostream;

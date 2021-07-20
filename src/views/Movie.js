@@ -43,7 +43,7 @@ export function MovieView(props) {
         }
         setLoading(true);
 
-        getStreamUrl(streamData.slug, streamData.type, episode.season, episode.episode)
+        getStreamUrl(streamData.slug, streamData.type, streamData.source, episode.season, episode.episode)
             .then(({url}) => {
                 if (cancel) return;
                 setStreamUrl(url)
@@ -106,6 +106,7 @@ export function MovieView(props) {
                         slug={streamData.slug}
                         currentSeason={season}
                         currentEpisode={episode}
+                        source={streamData.source}
                     />
                 : ''}
             </Card>

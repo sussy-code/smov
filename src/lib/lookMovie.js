@@ -17,23 +17,19 @@ async function getVideoUrl(config) {
         url = getCorsUrl(`https://lookmovie.io/manifests/shows/json/${accessToken}/${now}/${config.id}/master.m3u8`);
     }
 
-    if (url) {
-        const videoOpts = await fetch(url).then((d) => d.json());
+    const videoOpts = await fetch(url).then((d) => d.json());
 
-        // Find video URL and return it (with a check for a full url if needed)
-        const opts = ["1080p", "1080", "720p", "720", "480p", "480", "auto"]
+    // Find video URL and return it (with a check for a full url if needed)
+    const opts = ["1080p", "1080", "720p", "720", "480p", "480", "auto"]
 
-        let videoUrl = "";
-        for (let res of opts) {
-            if (videoOpts[res] && !videoOpts[res].includes('dummy') && !videoOpts[res].includes('earth-1984') && !videoUrl) {
-                videoUrl = videoOpts[res]
-            }
+    let videoUrl = "";
+    for (let res of opts) {
+        if (videoOpts[res] && !videoOpts[res].includes('dummy') && !videoOpts[res].includes('earth-1984') && !videoUrl) {
+            videoUrl = videoOpts[res]
         }
-
-        return videoUrl.startsWith("/") ? getCorsUrl(`https://lookmovie.io/${videoUrl}`) : getCorsUrl(videoUrl);
     }
 
-    return "Invalid type.";
+    return videoUrl.startsWith("/") ? `https://lookmovie.io${videoUrl}` : videoUrl;
 }
 
 async function getAccessToken(config) {
@@ -151,7 +147,8 @@ async function findContent(searchTerm, type) {
             title: r.title,
             slug: r.slug,
             type: r.type,
-            year: r.year
+            year: r.year,
+            source: 'lookmovie'
         }));
 
         return res;
@@ -159,7 +156,7 @@ async function findContent(searchTerm, type) {
         const { title, slug, type, year } = matchedResults[0];
 
         return {
-            options: [{ title, slug, type, year }]
+            options: [{ title, slug, type, year, source: 'lookmovie' }]
         }
     }
 }
