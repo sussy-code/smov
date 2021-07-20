@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Arrow } from './Arrow';
 import './TypeSelector.css'
 
 // setType: (txt: string) => void

@@ -4,8 +4,9 @@ import { Card } from '../components/Card'
 import { useMovie } from '../hooks/useMovie'
 import { VideoElement } from '../components/VideoElement'
 import { EpisodeSelector } from '../components/EpisodeSelector'
+import { getStreamUrl } from '../lib/index'
+
 import './Movie.css'
-import { getStreamUrl } from '../lib/lookMovie'
 
 export function MovieView(props) {
     const { streamUrl, streamData, setStreamUrl } = useMovie();

@@ -1,11 +1,11 @@
-import { unpacker } from './unpacker';
+import { unpack } from './unpacker';
 
 const CORS_URL = 'https://hidden-inlet-27205.herokuapp.com/';
 const BASE_URL = `${CORS_URL}https://gomo.to`;
 const MOVIE_URL = `${BASE_URL}/movie`
 const DECODING_URL = `${BASE_URL}/decoding_v3.php`
 
-async function findContentGomo(searchTerm, type) {
+async function findContent(searchTerm, type) {
     try {
         if (type !== 'movie') return;
 
@@ -29,17 +29,13 @@ async function findContentGomo(searchTerm, type) {
         } else {
             return { options: [results[0]] }
         }
-        
-        // const movieId = imdbRes.d[0]?.id
-        // if (!movieId) return;
-
     } catch (err) {
         console.log(err);
         throw new Error(err)
     }
 }
 
-async function getStreamUrlGomo(slug, type, season, episode) {
+async function getStreamUrl(slug, type, season, episode) {
     if (type !== 'movie') return;
 
     // Get stream to go with IMDB ID
@@ -67,7 +63,7 @@ async function getStreamUrlGomo(slug, type, season, episode) {
     const site2Dom = parser.parseFromString(site2, "text/html");
     const script = site2Dom.querySelectorAll("script")[8].innerHTML;
     
-    let unpacked = unpacker.unpack(script).split('');
+    let unpacked = unpack(script).split('');
     unpacked.splice(0, 43);
     let index = unpacked.findIndex((e) => e === '"');
     const url = unpacked.slice(0, index).join('');
@@ -75,4 +71,4 @@ async function getStreamUrlGomo(slug, type, season, episode) {
     return { url }
 }
 
-export { findContentGomo, getStreamUrlGomo }
+export { findContent, getStreamUrl }

@@ -66,12 +66,12 @@ async function getEpisodes(slug) {
         "}"
     );
 
-    let seasons, episodes = [];
-
-    data.forEach((e) => {
+    let seasons = [];
+    let episodes = [];
+    data.seasons.forEach((e) => {
         if (!seasons.includes(e.season))
             seasons.push(e.season);
-        
+
         if (!episodes[e.season])
             episodes[e.season] = []
         episodes[e.season].push(e.episode)
@@ -96,14 +96,14 @@ async function getStreamUrl(slug, type, season, episode) {
     let id = '';
 
     if (type === "movie") {
-		id = data.id_movie;
-	} else if (type === "show") {
-		const episodeObj = data.seasons.find((v) => { return v.season === season && v.episode === episode; });
+        id = data.id_movie;
+    } else if (type === "show") {
+        const episodeObj = data.seasons.find((v) => { return v.season === season && v.episode === episode; });
 
         if (episodeObj) {
-			id = episodeObj.id_episode;
-		}
-	}
+            id = episodeObj.id_episode;
+        }
+    }
 
     if (id === '') {
         return { url: '' }
@@ -118,11 +118,10 @@ async function getStreamUrl(slug, type, season, episode) {
     return { url: videoUrl }
 }
 
-async function findContent(searchTerm, type) {    
-    // const searchUrl = getCorsUrl(`https://lookmovie.io/api/v1/${type}s/search/?q=${encodeURIComponent(searchTerm)}`);
+async function findContent(searchTerm, type) {
     const searchUrl = getCorsUrl(`https://lookmovie.io/${type}s/search/?q=${encodeURIComponent(searchTerm)}`);
     const searchRes = await fetch(searchUrl).then((d) => d.text());
-    
+
     // Parse DOM to find search results on full search page
     const parser = new DOMParser();
     const doc = parser.parseFromString(searchRes, "text/html");
@@ -147,7 +146,7 @@ async function findContent(searchTerm, type) {
 
     if (matchedResults.length > 1) {
         const res = { options: [] };
-        
+
         matchedResults.forEach((r) => res.options.push({
             title: r.title,
             slug: r.slug,
@@ -158,11 +157,12 @@ async function findContent(searchTerm, type) {
         return res;
     } else {
         const { title, slug, type, year } = matchedResults[0];
-        
+
         return {
             options: [{ title, slug, type, year }]
         }
     }
 }
 
-export { findContent, getStreamUrl, getEpisodes };
+const lookMovie = { findContent, getStreamUrl, getEpisodes };
+export default lookMovie;

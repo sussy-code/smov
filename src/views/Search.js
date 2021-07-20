@@ -1,17 +1,16 @@
 import React from 'react';
-import { InputBox } from '../components/InputBox'
-import { Title } from '../components/Title'
-import { Card } from '../components/Card'
-import { ErrorBanner } from '../components/ErrorBanner'
-import { MovieRow } from '../components/MovieRow'
-import { Arrow } from '../components/Arrow'
-import { Progress } from '../components/Progress'
-import { findContent, getStreamUrl, getEpisodes } from '../lib/lookMovie'
-// import { findContentGomo, getStreamUrlGomo } from '../lib/gomostream';
+import { InputBox } from '../components/InputBox';
+import { Title } from '../components/Title';
+import { Card } from '../components/Card';
+import { ErrorBanner } from '../components/ErrorBanner';
+import { MovieRow } from '../components/MovieRow';
+import { Arrow } from '../components/Arrow';
+import { Progress } from '../components/Progress';
+import { findContent, getStreamUrl, getEpisodes } from '../lib/index';
 import { useMovie } from '../hooks/useMovie';
-import { TypeSelector } from '../components/TypeSelector'
+import { TypeSelector } from '../components/TypeSelector';
 
-import './Search.css'
+import './Search.css';
 
 export function SearchView() {
     const { navigate, setStreamUrl, setStreamData } = useMovie();
@@ -68,6 +67,7 @@ export function SearchView() {
             setText(`Streaming...`)
             navigate("movie")
         } catch (err) {
+            console.error(err);
             fail("Failed to get stream")
         }
     }
