@@ -1,7 +1,8 @@
 import React from 'react'
 import Hls from 'hls.js'
-import './VideoElement.css'
 import { VideoPlaceholder } from './VideoPlaceholder'
+
+import './VideoElement.css'
 
 // streamUrl: string
 // loading: boolean
@@ -44,7 +45,9 @@ export function VideoElement({ streamUrl, loading, setProgress }) {
         )
     } else {
         return (
-            <video className="videoElement" ref={videoRef} controls autoPlay onProgress={setProgress}><source src={streamUrl} type="video/mp4" /></video>
+            <video className="videoElement" ref={videoRef} controls autoPlay onProgress={setProgress}>
+                <source src={streamUrl} type="video/mp4" />
+            </video>
         )
     }
 }
