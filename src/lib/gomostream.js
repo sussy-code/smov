@@ -16,6 +16,13 @@ async function findContent(searchTerm, type) {
         imdbRes.d.forEach((e) => {
             if (!e.id.startsWith('tt')) return;
 
+            // Block tv shows
+            if (e.q === "TV series") return;
+            if (e.q === "TV mini-series") return;
+            if (e.q === "video game") return;
+            if (e.q === "TV movie") return;
+            if (e.q === "TV special") return;
+
             results.push({
                 title: e.l,
                 slug: e.id,
@@ -65,6 +72,12 @@ async function getStreamUrl(slug, type, season, episode) {
 
     const parser = new DOMParser();
     const site2Dom = parser.parseFromString(site2, "text/html");
+
+    console.log(site2Dom.body)
+
+    if (site2Dom.body.innerText === "File was deleted")
+        return { url: '' }
+
     const script = site2Dom.querySelectorAll("script")[8].innerHTML;
     
     let unpacked = unpack(script).split('');
