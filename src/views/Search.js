@@ -1,16 +1,16 @@
 import React from 'react';
-import { InputBox } from '../components/InputBox'
-import { Title } from '../components/Title'
-import { Card } from '../components/Card'
-import { ErrorBanner } from '../components/ErrorBanner'
-import { MovieRow } from '../components/MovieRow'
-import { Arrow } from '../components/Arrow'
-import { Progress } from '../components/Progress'
-import { findContent, getStreamUrl, getEpisodes } from '../lib/lookMovie'
+import { InputBox } from '../components/InputBox';
+import { Title } from '../components/Title';
+import { Card } from '../components/Card';
+import { ErrorBanner } from '../components/ErrorBanner';
+import { MovieRow } from '../components/MovieRow';
+import { Arrow } from '../components/Arrow';
+import { Progress } from '../components/Progress';
+import { findContent, getStreamUrl, getEpisodes } from '../lib/index';
 import { useMovie } from '../hooks/useMovie';
-import { TypeSelector } from '../components/TypeSelector'
+import { TypeSelector } from '../components/TypeSelector';
 
-import './Search.css'
+import './Search.css';
 
 export function SearchView() {
     const { navigate, setStreamUrl, setStreamData } = useMovie();
@@ -30,7 +30,7 @@ export function SearchView() {
         setFailed(true)
     }
 
-    async function getStream(title, slug, type) {
+    async function getStream(title, slug, type, source) {
         setStreamUrl("");
 
         try {
@@ -40,21 +40,15 @@ export function SearchView() {
             let seasons = [];
             let episodes = [];
             if (type === "show") {
-                const episodeData = await getEpisodes(slug);
-                episodeData.forEach((e) => {
-                    if (!seasons.includes(e.season))
-                        seasons.push(e.season);
-                    
-                    if (!episodes[e.season])
-                        episodes[e.season] = []
-                    episodes[e.season].push(e.episode)
-                    
-                })
+                const data = await getEpisodes(slug, source);
+                seasons = data.seasons;
+                episodes = data.episodes;
             }
 
             let realUrl = '';
             if (type === "movie") {
-                const { url } = await getStreamUrl(slug, type);
+                // getStreamUrl(slug, type, source, season, episode)
+                const { url } = await getStreamUrl(slug, type, source);
     
                 if (url === '') {
                     return fail(`Not found: ${title}`)
@@ -69,11 +63,13 @@ export function SearchView() {
                 type,
                 seasons,
                 episodes,
-                slug
+                slug,
+                source
             })
             setText(`Streaming...`)
             navigate("movie")
         } catch (err) {
+            console.error(err);
             fail("Failed to get stream")
         }
     }
@@ -85,7 +81,7 @@ export function SearchView() {
         setShowingOptions(false)
 
         try {
-            const { options } = await findContent(query, contentType)
+            const { options } = await findContent(query, contentType);
 
             if (options.length === 0) {
                 return fail(`Could not find that ${contentType}`)
@@ -97,9 +93,10 @@ export function SearchView() {
                 return;
             }
 
-            const { title, slug, type } = options[0];
-            getStream(title, slug, type);
+            const { title, slug, type, source } = options[0];
+            getStream(title, slug, type, source);
         } catch (err) {
+            console.error(err);
             fail(`Failed to watch ${contentType}`)
         }
     }
@@ -140,9 +137,9 @@ export function SearchView() {
                     Whoops, there are a few {type}s like that
                 </Title>
                 {options?.map((v, i) => (
-                    <MovieRow key={i} title={v.title} slug={v.slug} type={v.type} year={v.year} season={v.season} episode={v.episode} onClick={() => {
+                    <MovieRow key={i} title={v.title} slug={v.slug} type={v.type} year={v.year} source={v.source} onClick={() => {
                         setShowingOptions(false)
-                        getStream(v.title, v.slug, v.type, v.season, v.episode)
+                        getStream(v.title, v.slug, v.type, v.source)
                     }}/>
                 ))}
             </Card>

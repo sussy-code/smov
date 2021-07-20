@@ -3,7 +3,7 @@ import { TypeSelector } from './TypeSelector';
 import { NumberSelector } from './NumberSelector';
 import './EpisodeSelector.css'
 
-export function EpisodeSelector({ setSeason, setEpisode, seasons, season, episodes, currentSeason, currentEpisode, slug }) {
+export function EpisodeSelector({ setSeason, setEpisode, seasons, season, episodes, currentSeason, currentEpisode, slug, source }) {
 
     const choices = episodes.map(v => {
 
@@ -12,7 +12,7 @@ export function EpisodeSelector({ setSeason, setEpisode, seasons, season, episod
         let currentlyAt = 0;
         let totalDuration = 0;
 
-        const progress = progressData?.lookmovie?.show?.slug?.[`${season}-${v}`]
+        const progress = progressData?.[source]?.show?.slug?.[`${season}-${v}`]
         if(progress) {
             currentlyAt = progress.currentlyAt
             totalDuration = progress.totalDuration

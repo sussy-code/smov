@@ -4,8 +4,9 @@ import { Card } from '../components/Card'
 import { useMovie } from '../hooks/useMovie'
 import { VideoElement } from '../components/VideoElement'
 import { EpisodeSelector } from '../components/EpisodeSelector'
+import { getStreamUrl } from '../lib/index'
+
 import './Movie.css'
-import { getStreamUrl } from '../lib/lookMovie'
 
 export function MovieView(props) {
     const { streamUrl, streamData, setStreamUrl } = useMovie();
@@ -42,7 +43,7 @@ export function MovieView(props) {
         }
         setLoading(true);
 
-        getStreamUrl(streamData.slug, streamData.type, episode.season, episode.episode)
+        getStreamUrl(streamData.slug, streamData.type, streamData.source, episode.season, episode.episode)
             .then(({url}) => {
                 if (cancel) return;
                 setStreamUrl(url)
@@ -105,6 +106,7 @@ export function MovieView(props) {
                         slug={streamData.slug}
                         currentSeason={season}
                         currentEpisode={episode}
+                        source={streamData.source}
                     />
                 : ''}
             </Card>

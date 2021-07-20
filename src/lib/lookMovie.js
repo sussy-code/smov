@@ -17,23 +17,19 @@ async function getVideoUrl(config) {
         url = getCorsUrl(`https://lookmovie.io/manifests/shows/json/${accessToken}/${now}/${config.id}/master.m3u8`);
     }
 
-    if (url) {
-        const videoOpts = await fetch(url).then((d) => d.json());
+    const videoOpts = await fetch(url).then((d) => d.json());
 
-        // Find video URL and return it (with a check for a full url if needed)
-        const opts = ["1080p", "1080", "720p", "720", "480p", "480", "auto"]
+    // Find video URL and return it (with a check for a full url if needed)
+    const opts = ["1080p", "1080", "720p", "720", "480p", "480", "auto"]
 
-        let videoUrl = "";
-        for (let res of opts) {
-            if (videoOpts[res] && !videoOpts[res].includes('dummy') && !videoOpts[res].includes('earth-1984') && !videoUrl) {
-                videoUrl = videoOpts[res]
-            }
+    let videoUrl = "";
+    for (let res of opts) {
+        if (videoOpts[res] && !videoOpts[res].includes('dummy') && !videoOpts[res].includes('earth-1984') && !videoUrl) {
+            videoUrl = videoOpts[res]
         }
-
-        return videoUrl.startsWith("/") ? getCorsUrl(`https://lookmovie.io/${videoUrl}`) : getCorsUrl(videoUrl);
     }
 
-    return "Invalid type.";
+    return videoUrl.startsWith("/") ? `https://lookmovie.io${videoUrl}` : videoUrl;
 }
 
 async function getAccessToken(config) {
@@ -66,7 +62,18 @@ async function getEpisodes(slug) {
         "}"
     );
 
-    return data.seasons
+    let seasons = [];
+    let episodes = [];
+    data.seasons.forEach((e) => {
+        if (!seasons.includes(e.season))
+            seasons.push(e.season);
+
+        if (!episodes[e.season])
+            episodes[e.season] = []
+        episodes[e.season].push(e.episode)
+    })
+
+    return { seasons, episodes }
 }
 
 async function getStreamUrl(slug, type, season, episode) {
@@ -85,14 +92,14 @@ async function getStreamUrl(slug, type, season, episode) {
     let id = '';
 
     if (type === "movie") {
-		id = data.id_movie;
-	} else if (type === "show") {
-		const episodeObj = data.seasons.find((v) => { return v.season === season && v.episode === episode; });
+        id = data.id_movie;
+    } else if (type === "show") {
+        const episodeObj = data.seasons.find((v) => { return v.season === season && v.episode === episode; });
 
         if (episodeObj) {
-			id = episodeObj.id_episode;
-		}
-	}
+            id = episodeObj.id_episode;
+        }
+    }
 
     if (id === '') {
         return { url: '' }
@@ -107,11 +114,10 @@ async function getStreamUrl(slug, type, season, episode) {
     return { url: videoUrl }
 }
 
-async function findContent(searchTerm, type) {    
-    // const searchUrl = getCorsUrl(`https://lookmovie.io/api/v1/${type}s/search/?q=${encodeURIComponent(searchTerm)}`);
+async function findContent(searchTerm, type) {
     const searchUrl = getCorsUrl(`https://lookmovie.io/${type}s/search/?q=${encodeURIComponent(searchTerm)}`);
     const searchRes = await fetch(searchUrl).then((d) => d.text());
-    
+
     // Parse DOM to find search results on full search page
     const parser = new DOMParser();
     const doc = parser.parseFromString(searchRes, "text/html");
@@ -136,22 +142,24 @@ async function findContent(searchTerm, type) {
 
     if (matchedResults.length > 1) {
         const res = { options: [] };
-        
+
         matchedResults.forEach((r) => res.options.push({
             title: r.title,
             slug: r.slug,
             type: r.type,
-            year: r.year
+            year: r.year,
+            source: 'lookmovie'
         }));
 
         return res;
     } else {
         const { title, slug, type, year } = matchedResults[0];
-        
+
         return {
-            options: [{ title, slug, type, year }]
+            options: [{ title, slug, type, year, source: 'lookmovie' }]
         }
     }
 }
 
-export { findContent, getStreamUrl, getEpisodes };
+const lookMovie = { findContent, getStreamUrl, getEpisodes };
+export default lookMovie;

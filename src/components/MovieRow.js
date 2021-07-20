@@ -11,7 +11,7 @@ export function MovieRow(props) {
     let progress;
     let percentage = null;
     if(props.type === "movie") {
-        progress = progressData?.lookmovie?.movie?.[props.slug]?.full
+        progress = progressData?.[props.source]?.movie?.[props.slug]?.full
         if(progress) {
             percentage = Math.floor((progress.currentlyAt / progress.totalDuration) * 100)
         }
@@ -24,6 +24,7 @@ export function MovieRow(props) {
                 <span className="year">({props.year})</span>
             </div>
             <div className="watch">
+                <span className="attribute">{props.source}</span>
                 <p>Watch {props.type}</p>
                 <Arrow/>
             </div>
