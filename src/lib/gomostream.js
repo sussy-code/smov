@@ -73,8 +73,6 @@ async function getStreamUrl(slug, type, season, episode) {
     const parser = new DOMParser();
     const site2Dom = parser.parseFromString(site2, "text/html");
 
-    console.log(site2Dom.body)
-
     if (site2Dom.body.innerText === "File was deleted")
         return { url: '' }
 
