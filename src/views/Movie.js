@@ -62,22 +62,22 @@ export function MovieView(props) {
         let ls = JSON.parse(localStorage.getItem("video-progress") || "{}")
 
         // We're just checking lookmovie for now since there is only one scraper
-        if(!ls.lookmovie) ls.lookmovie = {}
-        if(!ls.lookmovie[streamData.type]) ls.lookmovie[streamData.type] = {}
-        if(!ls.lookmovie[streamData.type][streamData.slug]) {
-            ls.lookmovie[streamData.type][streamData.slug] = {}
+        if(!ls[streamData.source]) ls[streamData.source] = {}
+        if(!ls[streamData.source][streamData.type]) ls[streamData.source][streamData.type] = {}
+        if(!ls[streamData.source][streamData.type][streamData.slug]) {
+            ls[streamData.source][streamData.type][streamData.slug] = {}
         }
         
         // Store real data
         let key = streamData.type === "show" ? `${season}-${episode.episode}` : "full"
-        ls.lookmovie[streamData.type][streamData.slug][key] = {
+        ls[streamData.source][streamData.type][streamData.slug][key] = {
             currentlyAt: Math.floor(evt.currentTarget.currentTime),
             totalDuration: Math.floor(evt.currentTarget.duration),
             updatedAt: Date.now()
         }
 
         if(streamData.type === "show") {
-            ls.lookmovie[streamData.type][streamData.slug][key].show = {
+            ls[streamData.source][streamData.type][streamData.slug][key].show = {
                 season,
                 episode: episode.episode
             }
