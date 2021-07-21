@@ -103,7 +103,7 @@ export function SearchView() {
 
     React.useEffect(() => {
         async function fetchHealth() {
-            const HOME_URL = "https://hidden-inlet-27205.herokuapp.com/https://lookmovie.io/"
+            const HOME_URL = "https://safe-reaches-91175.herokuapp.com/https://lookmovie.io/"
             await fetch(HOME_URL).catch(() => {
                 // Request failed; source likely offline
                 setOfflineStatus(`Our content provider is currently offline, apologies.`)
