@@ -22,6 +22,8 @@
   --choice: #2E2F37;
   --choice-hover: #45464D;
   --choice-active: #45464D;
+  
+  --source-headings: #5b5c63;
 }
 /* @media (prefers-color-scheme: light) {
   :root {

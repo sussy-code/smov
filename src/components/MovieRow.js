@@ -24,7 +24,6 @@ export function MovieRow(props) {
                 <span className="year">({props.year})</span>
             </div>
             <div className="watch">
-                <span className="attribute">{props.source}</span>
                 <p>Watch {props.type}</p>
                 <Arrow/>
             </div>

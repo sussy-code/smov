@@ -49,7 +49,7 @@ export function SearchView() {
             if (type === "movie") {
                 // getStreamUrl(slug, type, source, season, episode)
                 const { url } = await getStreamUrl(slug, type, source);
-    
+
                 if (url === '') {
                     return fail(`Not found: ${title}`)
                 }
@@ -128,7 +128,7 @@ export function SearchView() {
                     noWrap={true}
                     selected={type}
                 />
-                <InputBox placeholder={ type === "movie" ? "Hamilton" : "Atypical" } onSubmit={(str) => searchMovie(str, type)} />
+                <InputBox placeholder={type === "movie" ? "Hamilton" : "Atypical"} onSubmit={(str) => searchMovie(str, type)} />
                 <Progress show={progress > 0} failed={failed} progress={progress} steps={maxSteps} text={text} />
             </Card>
 
@@ -136,15 +136,25 @@ export function SearchView() {
                 <Title size="medium">
                     Whoops, there are a few {type}s like that
                 </Title>
-                {options?.map((v, i) => (
-                    <MovieRow key={i} title={v.title} slug={v.slug} type={v.type} year={v.year} source={v.source} onClick={() => {
-                        setShowingOptions(false)
-                        getStream(v.title, v.slug, v.type, v.source)
-                    }}/>
-                ))}
+                { Object.entries(options.reduce((a, v) => {
+                        if (!a[v.source]) a[v.source] = []
+                        a[v.source].push(v)
+                        return a;
+                    }, {})).map(v => (
+                        <div key={v[0]}>
+                            <p className="source">{v[0]}</p>
+                            {v[1].map((v, i) => (
+                                <MovieRow key={i} title={v.title} slug={v.slug} type={v.type} year={v.year} source={v.source} onClick={() => {
+                                    setShowingOptions(false)
+                                    getStream(v.title, v.slug, v.type, v.source)
+                                }} />
+                            ))}
+                        </div>
+                    ))
+                }
             </Card>
             <div className="topRightCredits">
-                <a href="https://github.com/JamesHawkinss/movie-web" target="_blank" rel="noreferrer">Check it out on GitHub <Arrow/></a>
+                <a href="https://github.com/JamesHawkinss/movie-web" target="_blank" rel="noreferrer">Check it out on GitHub <Arrow /></a>
             </div>
         </div>
     )

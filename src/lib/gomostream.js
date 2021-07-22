@@ -35,7 +35,7 @@ async function findContent(searchTerm, type) {
         if (results.length > 1) {
             return { options: results };
         } else {
-            return { options: [ { ...results[0], source: 'gomostream' } ] }
+            return { options: [ results[0] ] }
         }
     } catch (err) {
         console.error(err);
