@@ -1,6 +1,6 @@
 import { unpack } from './util/unpacker';
 
-const CORS_URL = 'https://safe-reaches-91175.herokuapp.com/';
+const CORS_URL = 'https://movie-web-proxy.herokuapp.com/';
 const BASE_URL = `${CORS_URL}https://gomo.to`;
 const MOVIE_URL = `${BASE_URL}/movie`
 const DECODING_URL = `${BASE_URL}/decoding_v3.php`
