@@ -1,5 +1,5 @@
-import lookMovie from './lookMovie';
-import gomostream from './gomostream';
+import lookMovie from './scraper/lookmovie';
+import gomostream from './scraper/gomostream';
 
 async function findContent(searchTerm, type) {
     const results = { options: []};

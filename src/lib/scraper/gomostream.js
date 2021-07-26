@@ -1,4 +1,4 @@
-import { unpack } from './util/unpacker';
+import { unpack } from '../util/unpacker';
 
 const CORS_URL = 'https://movie-web-proxy.herokuapp.com/';
 const BASE_URL = `${CORS_URL}https://gomo.to`;
