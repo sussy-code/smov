@@ -14,21 +14,10 @@
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <script>
-      const metaTag = document.createElement('meta');
-      let hash = document.location.hash;
-      metaTag.name = 'description';
-
-      if (!hash || ['#/movie', '#/show'].includes(hash)) {
-        metaTag.content = 'because watching movies legally is boring';
-      } else {
-        let components = hash.split('/');
-        metaTag.content = `watch the ${components[1]} "${components[3]}" from ${components[2]} on movie-web`
-      }
-
-      document.getElementsByTagName('head')[0].append(metaTag);
-    </script>
+    <meta
+      name="description"
+      content="because watching movies legally is boring"
+    />
 
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
