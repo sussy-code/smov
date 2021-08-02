@@ -3,10 +3,8 @@ import { TypeSelector } from './TypeSelector';
 import { NumberSelector } from './NumberSelector';
 import './EpisodeSelector.css'
 
-export function EpisodeSelector({ setSeason, setEpisode, seasons, season, episodes, currentSeason, currentEpisode, slug, source }) {
-
-    const choices = episodes.map(v => {
-
+export function EpisodeSelector({ setSelectedSeason, setEpisode, seasons, selectedSeason, season, episodes, currentSeason, currentEpisode, source }) {
+    const choices = episodes ? episodes.map(v => {
         let progressData = JSON.parse(localStorage.getItem('video-progress') || "{}")
         
         let currentlyAt = 0;
@@ -25,12 +23,12 @@ export function EpisodeSelector({ setSeason, setEpisode, seasons, season, episod
             label: v,
             percentage
         }
-    })
+    }) : [];
 
     return (
         <div className="episodeSelector">
-            <TypeSelector setType={setSeason} choices={seasons.map(v=>({ value: v.toString(), label: `Season ${v}`}))} selected={currentSeason}/><br></br>
-            <NumberSelector setType={(e) => setEpisode({episode: e, season: currentSeason})} choices={choices} selected={currentEpisode.season === currentSeason?currentEpisode.episode:null}/>
+            <TypeSelector setType={setSelectedSeason} choices={seasons.map(v=>({ value: v.toString(), label: `Season ${v}`}))} selected={selectedSeason}/><br></br>
+            <NumberSelector setType={(e) => setEpisode({episode: e, season: selectedSeason})} choices={choices} selected={(selectedSeason.toString() === currentSeason) ? currentEpisode : null} />
         </div>
     )
 }
