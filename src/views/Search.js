@@ -122,13 +122,8 @@ export function SearchView() {
 
     React.useEffect(() => {
         if (streamRouteMatch) {
-            if (streamRouteMatch?.params.type === 'movie' || streamRouteMatch.params.type === 'show') {
-                if (streamRouteMatch?.params.source === 'lookmovie' || streamRouteMatch.params.source === 'gomostream') {
-                    getStream(streamRouteMatch.params.title, streamRouteMatch.params.slug, streamRouteMatch.params.type, streamRouteMatch.params.source);
-                }
-                else return setErrorStatus(`I couldn't find that ${streamRouteMatch.params.type}. Please try searching below.`);
-            }
-            else return setErrorStatus("I couldn't find that movie. Please try searching below.");
+            if (streamRouteMatch?.params.type === 'movie' || streamRouteMatch.params.type === 'show') getStream(streamRouteMatch.params.title, streamRouteMatch.params.slug, streamRouteMatch.params.type, streamRouteMatch.params.source);
+            else return setErrorStatus("Failed to find movie. Please try searching below.");
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
