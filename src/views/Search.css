@@ -21,6 +21,7 @@
     right: 1rem;
     top: 1rem;
     margin-top: 0 !important;
+    text-align: right;
 }
 
 .topRightCredits a, .topRightCredits a:visited {
@@ -28,6 +29,7 @@
     text-decoration: none;
     margin: 0;
 }
+
 .topRightCredits a:hover, .topRightCredits a:active {
     color: var(--theme-color);
     text-decoration: none;
