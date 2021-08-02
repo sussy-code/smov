@@ -156,7 +156,9 @@ export function SearchView() {
                 }
             </Card>
             <div className="topRightCredits">
-                <a href="https://github.com/JamesHawkinss/movie-web" target="_blank" rel="noreferrer">Check it out on GitHub <Arrow /></a>                
+                <a href="https://github.com/JamesHawkinss/movie-web" target="_blank" rel="noreferrer">Check it out on GitHub <Arrow /></a>
+                <br />
+                <a href="https://discord.gg/vXsRvye8BS" target="_blank" rel="noreferrer">Join the Discord <Arrow /></a>
             </div>
         </div>
     )
