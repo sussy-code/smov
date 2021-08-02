@@ -1,5 +1,6 @@
 import React from 'react'
 import { useRouteMatch, useHistory } from 'react-router-dom'
+import { Helmet } from 'react-helmet';
 import { Title } from '../components/Title'
 import { Card } from '../components/Card'
 import { useMovie } from '../hooks/useMovie'
@@ -109,6 +110,10 @@ export function MovieView(props) {
 
     return (
         <div className={`cardView showType-${streamData.type}`}>
+            <Helmet>
+                <title>{streamData.title}{streamData.type === 'show' && ` | S${season}E${episode}`} | movie-web</title>
+            </Helmet>
+
             <Card fullWidth>
                 <Title accent="Return to home" accentLink="search">
                     {streamData.title}

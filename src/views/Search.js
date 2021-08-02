@@ -1,5 +1,6 @@
 import React from 'react';
 import { Redirect, useRouteMatch, useHistory } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import { InputBox } from '../components/InputBox';
 import { Title } from '../components/Title';
 import { Card } from '../components/Card';
@@ -136,6 +137,10 @@ export function SearchView() {
 
     return (
         <div className="cardView">
+            <Helmet>
+                <title>{type === 'movie' ? 'Movies' : 'TV Shows'} | movie-web</title>
+            </Helmet>
+            
             <Card>
                 <DiscordBanner />
                 {errorStatus ? <ErrorBanner>{errorStatus}</ErrorBanner> : ''}
