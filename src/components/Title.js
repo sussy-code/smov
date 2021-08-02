@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { useMovie } from '../hooks/useMovie'
 import { Arrow } from '../components/Arrow'
 import './Title.css'
@@ -7,7 +8,8 @@ import './Title.css'
 // accent: string | null
 // accentLink: string | null
 export function Title(props) {
-    const { navigate } = useMovie();
+    const { streamData, resetStreamData } = useMovie();
+    const history = useHistory();
     const size = props.size || "big";
 
     const accentLink = props.accentLink || "";
@@ -15,7 +17,12 @@ export function Title(props) {
     return (
         <div>
             {accent.length > 0 ? (
-                <p onClick={ () => accentLink.length > 0 && navigate(accentLink)} className={`title-accent ${accentLink.length > 0 ? 'title-accent-link' : ''}`}>
+                <p onClick={() => {
+                    if (accentLink.length > 0) {
+                        history.push(`/${streamData.type}`);
+                        resetStreamData();
+                    }
+                }} className={`title-accent ${accentLink.length > 0 ? 'title-accent-link' : ''}`}>
                     {accentLink.length > 0 ? (<Arrow left/>) : null}{accent}
                 </p>
             ) : null}
