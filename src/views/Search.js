@@ -12,6 +12,7 @@ import { useMovie } from '../hooks/useMovie';
 import { TypeSelector } from '../components/TypeSelector';
 
 import './Search.css';
+import { DiscordBanner } from '../components/DiscordBanner';
 
 export function SearchView() {
     const { navigate, setStreamUrl, setStreamData } = useMovie();
@@ -136,6 +137,7 @@ export function SearchView() {
     return (
         <div className="cardView">
             <Card>
+                <DiscordBanner />
                 {errorStatus ? <ErrorBanner>{errorStatus}</ErrorBanner> : ''}
                 <Title accent="Because watching content legally is boring">
                     What do you wanna watch?
@@ -176,7 +178,7 @@ export function SearchView() {
                 }
             </Card>
             <div className="topRightCredits">
-                <a href="https://github.com/JamesHawkinss/movie-web" target="_blank" rel="noreferrer">Check it out on GitHub <Arrow /></a>
+                <a href="https://github.com/JamesHawkinss/movie-web" target="_blank" rel="noreferrer">Check it out on GitHub <Arrow /></a>                
             </div>
         </div>
     )
