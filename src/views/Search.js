@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect, useRouteMatch, useHistory } from 'react-router-dom';
 import { InputBox } from '../components/InputBox';
 import { Title } from '../components/Title';
 import { Card } from '../components/Card';
@@ -15,14 +16,18 @@ import './Search.css';
 export function SearchView() {
     const { navigate, setStreamUrl, setStreamData } = useMovie();
 
+    const history = useHistory();
+    const routeMatch = useRouteMatch('/:type');
+    const type = routeMatch?.params?.type;
+    const streamRouteMatch = useRouteMatch('/:type/:source/:title/:slug');
+
     const maxSteps = 4;
     const [options, setOptions] = React.useState([]);
     const [progress, setProgress] = React.useState(0);
     const [text, setText] = React.useState("");
     const [failed, setFailed] = React.useState(false);
     const [showingOptions, setShowingOptions] = React.useState(false);
-    const [offlineStatus, setOfflineStatus] = React.useState(false);
-    const [type, setType] = React.useState("movie");
+    const [errorStatus, setErrorStatus] = React.useState(false);
 
     const fail = (str) => {
         setProgress(maxSteps);
@@ -35,7 +40,7 @@ export function SearchView() {
 
         try {
             setProgress(2);
-            setText(`Getting stream for "${title}"`)
+            setText(`Getting stream for "${title}"`);
 
             let seasons = [];
             let episodes = [];
@@ -94,6 +99,7 @@ export function SearchView() {
             }
 
             const { title, slug, type, source } = options[0];
+            history.push(`${routeMatch.url}/${source}/${title}/${slug}`);
             getStream(title, slug, type, source);
         } catch (err) {
             console.error(err);
@@ -106,21 +112,36 @@ export function SearchView() {
             const HOME_URL = "https://movie-web-proxy.herokuapp.com"
             await fetch(HOME_URL).catch(() => {
                 // Request failed; source likely offline
-                setOfflineStatus(`Our content provider is currently offline, apologies.`)
+                setErrorStatus(`Our content provider is currently offline, apologies.`)
             })
         }
         fetchHealth()
-    }, [])
+    }, []);
+
+    React.useEffect(() => {
+        if (streamRouteMatch) {
+            if (streamRouteMatch?.params.type === 'movie' || streamRouteMatch.params.type === 'show') {
+                if (streamRouteMatch?.params.source === 'lookmovie' || streamRouteMatch.params.source === 'gomostream') {
+                    getStream(streamRouteMatch.params.title, streamRouteMatch.params.slug, streamRouteMatch.params.type, streamRouteMatch.params.source);
+                }
+                else return setErrorStatus(`I couldn't find that ${streamRouteMatch.params.type}. Please try searching below.`);
+            }
+            else return setErrorStatus("I couldn't find that movie. Please try searching below.");
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    if (!type || (type !== 'movie' && type !== 'show')) return <Redirect to="/movie" />
 
     return (
         <div className="cardView">
             <Card>
-                {offlineStatus ? <ErrorBanner>{offlineStatus}</ErrorBanner> : ''}
+                {errorStatus ? <ErrorBanner>{errorStatus}</ErrorBanner> : ''}
                 <Title accent="Because watching content legally is boring">
                     What do you wanna watch?
                 </Title>
                 <TypeSelector
-                    setType={(type) => setType(type)}
+                    setType={(type) => history.push(`/${type}`)}
                     choices={[
                         { label: "Movie", value: "movie" },
                         { label: "TV Show", value: "show" }
@@ -145,6 +166,7 @@ export function SearchView() {
                             <p className="source">{v[0]}</p>
                             {v[1].map((v, i) => (
                                 <MovieRow key={i} title={v.title} slug={v.slug} type={v.type} year={v.year} source={v.source} onClick={() => {
+                                    history.push(`${routeMatch.url}/${v.source}/${v.title}/${v.slug}`);
                                     setShowingOptions(false)
                                     getStream(v.title, v.slug, v.type, v.source)
                                 }} />

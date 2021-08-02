@@ -1,23 +1,12 @@
 import './index.css';
 import { SearchView } from './views/Search';
-import { NotFound } from './views/NotFound';
 import { MovieView } from './views/Movie';
 import { useMovie, MovieProvider} from './hooks/useMovie';
 
 function Router() {
-  const { page } = useMovie();
-
-  if (page === "search") {
-    return <SearchView/>
-  }
-
-  if (page === "movie") {
-    return <MovieView/>
-  }
-
-  return (
-    <NotFound/>
-  )
+  const { streamData } = useMovie();
+  if (streamData) return <MovieView />;
+  else return <SearchView />;
 }
 
 function App() {
