@@ -111,7 +111,7 @@ export function MovieView(props) {
     return (
         <div className={`cardView showType-${streamData.type}`}>
             <Helmet>
-                <title>{streamData.title}{streamData.type === 'show' && ` | S${season}E${episode}`} | movie-web</title>
+                <title>{streamData.title}{streamData.type === 'show' ? ` | S${season}E${episode}` : ''} | movie-web</title>
             </Helmet>
 
             <Card fullWidth>

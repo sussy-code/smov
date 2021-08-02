@@ -140,7 +140,7 @@ export function SearchView() {
             <Helmet>
                 <title>{type === 'movie' ? 'Movies' : 'TV Shows'} | movie-web</title>
             </Helmet>
-            
+
             <Card>
                 <DiscordBanner />
                 {errorStatus ? <ErrorBanner>{errorStatus}</ErrorBanner> : ''}
