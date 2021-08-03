@@ -109,16 +109,16 @@ export function SearchView() {
         }
     }
 
-    // React.useEffect(() => {
-    //     async function fetchHealth() {
-    //         const HOME_URL = "https://proxy-01.movie-web.workers.dev/?"
-    //         await fetch(HOME_URL).catch(() => {
-    //             // Request failed; source likely offline
-    //             setErrorStatus(`Our content provider is currently offline, apologies.`)
-    //         })
-    //     }
-    //     fetchHealth()
-    // }, []);
+    React.useEffect(() => {
+        async function fetchHealth() {
+            const HOME_URL = "https://movie-web-proxy.herokuapp.com"
+            await fetch(HOME_URL).catch(() => {
+                // Request failed; source likely offline
+                setErrorStatus(`Our content provider is currently offline, apologies.`)
+            })
+        }
+        fetchHealth()
+    }, []);
 
     React.useEffect(() => {
         if (streamRouteMatch) {

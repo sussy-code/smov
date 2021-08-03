@@ -1,8 +1,8 @@
 import Fuse from 'fuse.js'
 import JSON5 from 'json5'
 
-const CORS_URL = `https://proxy-01.movie-web.workers.dev/?`;
-const BASE_URL = `${CORS_URL}https://lookmovie.io`;
+const CORS_URL = `https://movie-web-proxy.herokuapp.com`;
+const BASE_URL = `${CORS_URL}/https://lookmovie.io`;
 
 async function findContent(searchTerm, type) {
     const searchUrl = `${BASE_URL}/${type}s/search/?q=${encodeURIComponent(searchTerm)}`;
