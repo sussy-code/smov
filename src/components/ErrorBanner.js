@@ -3,7 +3,7 @@ import './ErrorBanner.css';
 
 export function ErrorBanner({children}) {
 	return (
-		<div class="errorBanner">
+		<div className="errorBanner">
 			{children}
 		</div>
 	)
