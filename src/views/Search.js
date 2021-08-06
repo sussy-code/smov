@@ -13,7 +13,6 @@ import { useMovie } from '../hooks/useMovie';
 import { TypeSelector } from '../components/TypeSelector';
 
 import './Search.css';
-import { DiscordBanner } from '../components/DiscordBanner';
 
 export function SearchView() {
     const { navigate, setStreamUrl, setStreamData } = useMovie();
@@ -186,7 +185,6 @@ export function SearchView() {
             {page === 'search' ?
                 <React.Fragment>
                     <Card>
-                        <DiscordBanner />
                         {errorStatus ? <ErrorBanner>{errorStatus}</ErrorBanner> : ''}
                         <Title accent="Because watching content legally is boring">
                             What do you wanna watch?
