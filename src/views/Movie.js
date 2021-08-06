@@ -70,18 +70,6 @@ export function MovieView(props) {
     }, [episode, streamData, setStreamUrl, season]);
 
     React.useEffect(() => {
-        // Cache streamData continue watching on home page
-        let movieCache = JSON.parse(localStorage.getItem("movie-cache") || "{}");
-
-        if(!movieCache[streamData.source]) movieCache[streamData.source] = {}
-        movieCache[streamData.source][streamData.slug] = {
-            cachedAt: Date.now()
-        }
-
-        localStorage.setItem("movie-cache", JSON.stringify(movieCache));
-    }, [streamData])
-
-    React.useEffect(() => {
         if (streamData.type === "show") {
             setSeasonList(streamData.seasons);
             setEpisodeList(streamData.episodes[selectedSeason]);
