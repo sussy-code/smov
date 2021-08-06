@@ -88,6 +88,30 @@ export function MovieView(props) {
         }
     }, [streamData, selectedSeason])
 
+    React.useEffect(() => {
+        let cancel = false;
+
+        if (!cancel) {
+            let ls = JSON.parse(localStorage.getItem("video-progress") || "{}")
+            let key = streamData.type === "show" ? `${season}-${episode}` : "full"
+            let time = ls?.[streamData.source]?.[streamData.type]?.[streamData.slug]?.[key]?.currentlyAt;
+
+            if (time) {
+                const element = document.getElementsByClassName('videoElement')[0];
+
+                if (!element) {
+                    return () => { cancel = false }
+                }
+
+                element.currentTime = time;
+            }
+        }
+
+        return () => {
+            cancel = true;
+        }
+    })
+
     const setProgress = (evt) => {
         let ls = JSON.parse(localStorage.getItem("video-progress") || "{}")
 

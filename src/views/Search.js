@@ -1,16 +1,16 @@
 import React from 'react';
-import { Redirect, useRouteMatch, useHistory } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import { InputBox } from '../components/InputBox';
-import { Title } from '../components/Title';
+import { Redirect, useHistory, useRouteMatch } from 'react-router-dom';
+import { Arrow } from '../components/Arrow';
 import { Card } from '../components/Card';
 import { ErrorBanner } from '../components/ErrorBanner';
+import { InputBox } from '../components/InputBox';
 import { MovieRow } from '../components/MovieRow';
-import { Arrow } from '../components/Arrow';
 import { Progress } from '../components/Progress';
-import { findContent, getStreamUrl, getEpisodes } from '../lib/index';
-import { useMovie } from '../hooks/useMovie';
+import { Title } from '../components/Title';
 import { TypeSelector } from '../components/TypeSelector';
+import { useMovie } from '../hooks/useMovie';
+import { findContent, getEpisodes, getStreamUrl } from '../lib/index';
 
 import './Search.css';
 
@@ -161,7 +161,7 @@ export function SearchView() {
 
             setContinueWatching(newContinueWatching)
         })
-    });
+    }, []);
 
     if (!type || (type !== 'movie' && type !== 'show')) {
         return <Redirect to="/movie" />
@@ -229,17 +229,26 @@ export function SearchView() {
             {/* Continue watching */}
             {continueWatching.length > 0 && page === 'watching' ? <Card>
                 <Title>Continue watching</Title>
-                {continueWatching?.map((v, i) => (
-                    <MovieRow key={i} title={v.data.meta.title} slug={v.data.meta.slug} type={v.type} year={v.data.meta.year} source={v.source} place={v.data.show} percentage={v.percentageDone} onClick={() => {
-                        if (v.type === 'show') {
-                            history.push(`${routeMatch.url}/${v.source}/${v.data.meta.title}/${v.slug}/season/${v.data.show.season}/episode/${v.data.show.episode}`)
-                        } else {
-                            history.push(`${routeMatch.url}/${v.source}/${v.data.meta.title}/${v.slug}`)
-                        }
-                        
-                        setShowingOptions(false)
-                        getStream(v.data.meta.title, v.data.meta.slug, v.type, v.source, v.data.meta.year)
-                    }} />
+                {Object.entries(continueWatching.reduce((a, v) => {
+                    if (!a[v.source]) a[v.source] = []
+                    a[v.source].push(v)
+                    return a;
+                }, {})).map(v => (
+                    <div key={v[0]}>
+                        <p className="source">{v[0]}</p>
+                        {v[1].map((v, i) => (
+                            <MovieRow key={i} title={v.data.meta.title} slug={v.data.meta.slug} type={v.type} year={v.data.meta.year} source={v.source} place={v.data.show} percentage={v.percentageDone} onClick={() => {
+                                if (v.type === 'show') {
+                                    history.push(`${routeMatch.url}/${v.source}/${v.data.meta.title}/${v.slug}/season/${v.data.show.season}/episode/${v.data.show.episode}`)
+                                } else {
+                                    history.push(`${routeMatch.url}/${v.source}/${v.data.meta.title}/${v.slug}`)
+                                }
+
+                                setShowingOptions(false)
+                                getStream(v.data.meta.title, v.data.meta.slug, v.type, v.source, v.data.meta.year)
+                            }} />
+                        ))}
+                    </div>
                 ))}
             </Card> : <React.Fragment></React.Fragment>}
 
