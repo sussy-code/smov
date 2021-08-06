@@ -26,46 +26,8 @@ export function MovieView(props) {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     function setEpisode({ season, episode }) {
-        // getStream(title, slug, type, source, year);
-        // console.log(season, episode)
-        let tmpSeason = showRouteMatch.params.season;
-        let tmpEpisode = showRouteMatch.params.episode;
-        if (tmpSeason != season && tmpEpisode != episode)
-            history.replace(`${baseRouteMatch.url}/season/${season}/episode/${episode}`);
+        history.replace(`${baseRouteMatch.url}/season/${season}/episode/${episode}`);
     }
-
-    React.useEffect(() => {
-        // Cache streamData continue watching on home page
-        let movieCache = JSON.parse(localStorage.getItem("movie-cache") || "{}");
-
-        if (!movieCache[streamData.source]) movieCache[streamData.source] = {}
-        movieCache[streamData.source][streamData.slug] = {
-            cachedAt: Date.now()
-        }
-
-        localStorage.setItem("movie-cache", JSON.stringify(movieCache));
-        
-        // Set season and episode list for GUI
-        if (streamData.type === "show") {
-            setSeasonList(streamData.seasons);
-            setSelectedSeason(streamData.seasons[0])
-            // TODO load from localstorage last watched
-            setEpisode({ episode: streamData.episodes[streamData.seasons[0]][0], season: streamData.seasons[0] })
-            setEpisodeList(streamData.episodes[streamData.seasons[0]]);
-        }
-    }, [streamData, setEpisode])
-
-    React.useEffect(() => {
-        setEpisodeList(streamData.episodes[selectedSeason]);
-    }, [selectedSeason, streamData.episodes])
-
-    React.useEffect(() => {
-        if (streamData.type === "show") {
-            setSeasonList(streamData.seasons);
-            // TODO load from localstorage last watched
-            setEpisodeList(streamData.episodes[streamData.seasons[0]]);
-        }
-    }, [streamData])
 
     React.useEffect(() => {
         if (streamData.type === "show" && !showRouteMatch) history.replace(`${baseRouteMatch.url}/season/1/episode/1`);
@@ -77,15 +39,17 @@ export function MovieView(props) {
 
     React.useEffect(() => {
         let cancel = false;
-        // ignore if not a show
+
         if (streamData.type !== "show") return () => {
             cancel = true;
         };
+
         if (!episode) {
             setLoading(false);
             setStreamUrl('');
             return;
         }
+
         setLoading(true);
 
         getStreamUrl(streamData.slug, streamData.type, streamData.source, season, episode)
@@ -94,7 +58,7 @@ export function MovieView(props) {
                 setStreamUrl(url)
                 setLoading(false);
             })
-            .catch(e => {
+            .catch((e) => {
                 if (cancel) return;
                 console.error(e)
             })
@@ -114,30 +78,28 @@ export function MovieView(props) {
         }
 
         localStorage.setItem("movie-cache", JSON.stringify(movieCache));
-        
-        // Set season and episode list for GUI
+    }, [streamData])
+
+    React.useEffect(() => {
         if (streamData.type === "show") {
             setSeasonList(streamData.seasons);
-            setSelectedSeason(streamData.seasons[0])
-            // TODO load from localstorage last watched
-            setEpisode({ episode: streamData.episodes[streamData.seasons[0]][0], season: streamData.seasons[0] })
-            setEpisodeList(streamData.episodes[streamData.seasons[0]]);
+            setSelectedSeason(selectedSeason)
+            setEpisodeList(streamData.episodes[selectedSeason]);
         }
-    }, [streamData, setEpisode])
+    }, [streamData, selectedSeason])
 
     const setProgress = (evt) => {
         let ls = JSON.parse(localStorage.getItem("video-progress") || "{}")
 
-        console.log(streamData);
-
-        if(!ls[streamData.source]) ls[streamData.source] = {}
-        if(!ls[streamData.source][streamData.type]) ls[streamData.source][streamData.type] = {}
-        if(!ls[streamData.source][streamData.type][streamData.slug]) {
+        if (!ls[streamData.source])
+            ls[streamData.source] = {}
+        if (!ls[streamData.source][streamData.type])
+            ls[streamData.source][streamData.type] = {}
+        if (!ls[streamData.source][streamData.type][streamData.slug])
             ls[streamData.source][streamData.type][streamData.slug] = {}
-        }
         
         // Store real data
-        let key = streamData.type === "show" ? `${season}-${episode.episode}` : "full"
+        let key = streamData.type === "show" ? `${season}-${episode}` : "full"
         ls[streamData.source][streamData.type][streamData.slug][key] = {
             currentlyAt: Math.floor(evt.currentTarget.currentTime),
             totalDuration: Math.floor(evt.currentTarget.duration),
@@ -148,7 +110,7 @@ export function MovieView(props) {
         if(streamData.type === "show") {
             ls[streamData.source][streamData.type][streamData.slug][key].show = {
                 season,
-                episode: episode.episode
+                episode
             }
         }
 
@@ -168,7 +130,9 @@ export function MovieView(props) {
                 {streamData.type === "show" ? <Title size="small">
                     Season {season}: Episode {episode}
                 </Title> : undefined}
+
                 <VideoElement streamUrl={streamUrl} loading={loading} setProgress={setProgress} />
+
                 {streamData.type === "show" ? 
                     <EpisodeSelector
                         setSelectedSeason={setSelectedSeason}
@@ -182,7 +146,7 @@ export function MovieView(props) {
                         currentSeason={season}
                         currentEpisode={episode}
 
-                        source={streamData.source}
+                        streamData={streamData}
                     />
                 : ''}
             </Card>

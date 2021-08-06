@@ -3,15 +3,15 @@ import { TypeSelector } from './TypeSelector';
 import { NumberSelector } from './NumberSelector';
 import './EpisodeSelector.css'
 
-export function EpisodeSelector({ setSelectedSeason, setEpisode, seasons, selectedSeason, season, episodes, currentSeason, currentEpisode, source }) {
+export function EpisodeSelector({ setSelectedSeason, setEpisode, seasons, selectedSeason, season, episodes, currentSeason, currentEpisode, streamData }) {
     const choices = episodes ? episodes.map(v => {
         let progressData = JSON.parse(localStorage.getItem('video-progress') || "{}")
         
         let currentlyAt = 0;
         let totalDuration = 0;
 
-        const progress = progressData?.[source]?.show?.slug?.[`${season}-${v}`]
-        if(progress) {
+        const progress = progressData?.[streamData.source]?.[streamData.show]?.[streamData.slug]?.[`${season}-${v}`]
+        if (progress) {
             currentlyAt = progress.currentlyAt
             totalDuration = progress.totalDuration
         }
