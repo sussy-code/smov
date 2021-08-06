@@ -56,7 +56,6 @@ export function SearchView() {
 
             let realUrl = '';
             if (type === "movie") {
-                // getStreamUrl(slug, type, source, season, episode)
                 const { url } = await getStreamUrl(slug, type, source);
 
                 if (url === '') {
@@ -64,6 +63,8 @@ export function SearchView() {
                 }
                 realUrl = url;
             }
+
+            console.log(year)
 
             setProgress(maxSteps);
             setStreamUrl(realUrl);
@@ -227,12 +228,16 @@ export function SearchView() {
             {/* Continue watching */}
             {continueWatching.length > 0 && page === 'watching' ? <Card>
                 <Title>Continue watching</Title>
-                {console.log(continueWatching)}
                 {continueWatching?.map((v, i) => (
                     <MovieRow key={i} title={v.data.meta.title} slug={v.data.meta.slug} type={v.type} year={v.data.meta.year} source={v.source} place={v.data.show} percentage={v.percentageDone} onClick={() => {
-                        history.push(`${routeMatch.url}/${v.source}/${v.data.meta.title}/${v.slug}`)
+                        if (v.type === 'show') {
+                            history.push(`${routeMatch.url}/${v.source}/${v.data.meta.title}/${v.slug}/season/${v.data.show.season}/episode/${v.data.show.episode}`)
+                        } else {
+                            history.push(`${routeMatch.url}/${v.source}/${v.data.meta.title}/${v.slug}`)
+                        }
+                        
                         setShowingOptions(false)
-                        getStream(v.data.meta.title, v.data.meta.slug, v.type, v.source, v.year)
+                        getStream(v.data.meta.title, v.data.meta.slug, v.type, v.source, v.data.meta.year)
                     }} />
                 ))}
             </Card> : <React.Fragment></React.Fragment>}
