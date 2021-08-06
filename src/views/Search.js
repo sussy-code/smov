@@ -64,8 +64,6 @@ export function SearchView() {
                 realUrl = url;
             }
 
-            console.log(year)
-
             setProgress(maxSteps);
             setStreamUrl(realUrl);
             setStreamData({
@@ -135,11 +133,13 @@ export function SearchView() {
     React.useEffect(() => {
         const progressData = JSON.parse(localStorage.getItem('video-progress') || "{}")
         let newContinueWatching = []
-        Object.keys(progressData).forEach(source => {
+
+        Object.keys(progressData).forEach((source) => {
             const all = [
                 ...Object.entries(progressData[source]?.show ?? {}),
                 ...Object.entries(progressData[source]?.movie ?? {})
-            ]
+            ];
+
             for (const [slug, data] of all) {
                 for (let subselection of Object.values(data)) {
                     let entry = {
@@ -149,17 +149,20 @@ export function SearchView() {
                         percentageDone: Math.floor((subselection.currentlyAt / subselection.totalDuration) * 100),
                         source
                     }
+
                     if (entry.percentageDone < 90) {
                         newContinueWatching.push(entry)
                     }
                 }
             }
+
             newContinueWatching = newContinueWatching.sort((a, b) => {
                 return b.data.updatedAt - a.data.updatedAt
-            })
+            });
+
             setContinueWatching(newContinueWatching)
         })
-    }, []);
+    });
 
     if (!type || (type !== 'movie' && type !== 'show')) {
         return <Redirect to="/movie" />
@@ -168,7 +171,7 @@ export function SearchView() {
     return (
         <div className="cardView">
             <Helmet>
-                <title>{type === 'movie' ? 'Movies' : 'TV Shows'} | movie-web</title>
+                <title>{type === 'movie' ? 'movies' : 'shows'} | movie-web</title>
             </Helmet>
 
             {/* Nav */}
