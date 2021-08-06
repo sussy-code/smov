@@ -24,6 +24,7 @@
     margin-right: 0.5rem;
 }
 
+.movieRow .left .seasonEpisodeSubtitle,
 .movieRow .left .year {
     color: var(--text-secondary);
 }

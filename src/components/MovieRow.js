@@ -20,14 +20,14 @@ export function MovieRow(props) {
     return (
         <div className="movieRow" onClick={() => props.onClick && props.onClick()}>
             <div className="left">
-                {props.title}&nbsp;
+                {props.title} <span className="seasonEpisodeSubtitle">{props.place ? ` — Season ${props.place.season}: episode ${props.place.episode}` : ''}</span>&nbsp;
                 <span className="year">({props.year})</span>
             </div>
             <div className="watch">
                 <p>Watch {props.type}</p>
                 <Arrow/>
             </div>
-            <PercentageOverlay percentage={percentage} />
+            <PercentageOverlay percentage={props.percentage || percentage} />
         </div>
     )
 }
