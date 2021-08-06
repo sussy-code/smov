@@ -221,8 +221,7 @@ export function SearchView() {
                                     }} />
                                 ))}
                             </div>
-                        ))
-                        }
+                        ))}
                     </Card>
                 </React.Fragment> : <React.Fragment />}
 
