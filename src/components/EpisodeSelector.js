@@ -28,7 +28,7 @@ export function EpisodeSelector({ setSelectedSeason, selectedSeason, setEpisode,
 
     return (
         <div className="episodeSelector">
-            <TypeSelector setType={setSelectedSeason} choices={seasons.map(v=>({ value: v.toString(), label: `Season ${v}`}))} selected={selectedSeason}/><br></br>
+            <TypeSelector setType={setSelectedSeason} selected={selectedSeason} choices={seasons.map(v=>({ value: v.toString(), label: `Season ${v}`}))} /><br></br>
             <NumberSelector setType={(e) => setEpisode({episode: e, season: selectedSeason})} choices={choices} selected={(selectedSeason.toString() === currentSeason) ? currentEpisode : null} />
         </div>
     )

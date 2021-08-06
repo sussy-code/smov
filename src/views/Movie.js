@@ -35,7 +35,8 @@ export function MovieView(props) {
 
     React.useEffect(() => {
         if (streamData.type === "show" && showRouteMatch) setSelectedSeason(showRouteMatch.params.season.toString());
-    }, [showRouteMatch, streamData]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     React.useEffect(() => {
         let cancel = false;
@@ -83,7 +84,6 @@ export function MovieView(props) {
     React.useEffect(() => {
         if (streamData.type === "show") {
             setSeasonList(streamData.seasons);
-            setSelectedSeason(selectedSeason)
             setEpisodeList(streamData.episodes[selectedSeason]);
         }
     }, [streamData, selectedSeason])
