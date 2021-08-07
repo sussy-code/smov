@@ -151,9 +151,12 @@ export function SearchView() {
 
                     if (entry.percentageDone < 90) {
                         newContinueWatching.push(entry)
+                    // begin next episode logic
                     } else {
+                        // we can't do next episode for movies!
                         if (!subselection.show) return;
 
+                        // if the current season has a next episode, load it
                         if (subselection.meta.episodes[subselection.show.season].includes(`${parseInt(subselection.show.episode) + 1}`)) {
                             subselection.show = {
                                 season: subselection.show.season,
@@ -161,11 +164,14 @@ export function SearchView() {
                             }
 
                             entry.percentageDone = 0;
-                        } else if (subselection.meta.episodes[`${parseInt(subselection.show.season) + 1}`]['1']) {
+                        // if the current season does not have a next epsiode, and the next season has a first episode, load that
+                        } else if (subselection.meta.episodes[`${parseInt(subselection.show.season) + 1}`][0]) {
                             subselection.show = {
                                 season: `${parseInt(subselection.show.season) + 1}`,
-                                episode: '1'
+                                episode: subselection.meta.episodes[`${parseInt(subselection.show.season) + 1}`][0]
                             }
+
+                            entry.percentageDone = 0;
                         } else {
                             return;
                         }
