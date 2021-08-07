@@ -151,6 +151,26 @@ export function SearchView() {
 
                     if (entry.percentageDone < 90) {
                         newContinueWatching.push(entry)
+                    } else {
+                        if (!subselection.show) return;
+
+                        if (subselection.meta.episodes[subselection.show.season].includes(`${parseInt(subselection.show.episode) + 1}`)) {
+                            subselection.show = {
+                                season: subselection.show.season,
+                                episode: `${parseInt(subselection.show.episode) + 1}`
+                            }
+
+                            entry.percentageDone = 0;
+                        } else if (subselection.meta.episodes[`${parseInt(subselection.show.season) + 1}`]['1']) {
+                            subselection.show = {
+                                season: `${parseInt(subselection.show.season) + 1}`,
+                                episode: '1'
+                            }
+                        } else {
+                            return;
+                        }
+
+                        newContinueWatching.push(entry);
                     }
                 }
             }
@@ -178,7 +198,7 @@ export function SearchView() {
                 <a className={page === 'search' ? 'selected-link' : ''} onClick={() => setPage('search')} href>Search</a>
                 {continueWatching.length > 0 ?
                     <a className={page === 'watching' ? 'selected-link' : ''} onClick={() => setPage('watching')} href>Continue watching</a>
-                : ''}
+                    : ''}
             </nav>
 
             {/* Search */}
@@ -228,27 +248,20 @@ export function SearchView() {
             {/* Continue watching */}
             {continueWatching.length > 0 && page === 'watching' ? <Card>
                 <Title>Continue watching</Title>
-                {Object.entries(continueWatching.reduce((a, v) => {
-                    if (!a[v.source]) a[v.source] = []
-                    a[v.source].push(v)
-                    return a;
-                }, {})).map(v => (
-                    <div key={v[0]}>
-                        <p className="source">{v[0]}</p>
-                        {v[1].map((v, i) => (
-                            <MovieRow key={i} title={v.data.meta.title} slug={v.data.meta.slug} type={v.type} year={v.data.meta.year} source={v.source} place={v.data.show} percentage={v.percentageDone} onClick={() => {
-                                if (v.type === 'show') {
-                                    history.push(`${routeMatch.url}/${v.source}/${v.data.meta.title}/${v.slug}/season/${v.data.show.season}/episode/${v.data.show.episode}`)
-                                } else {
-                                    history.push(`${routeMatch.url}/${v.source}/${v.data.meta.title}/${v.slug}`)
-                                }
-
-                                setShowingOptions(false)
-                                getStream(v.data.meta.title, v.data.meta.slug, v.type, v.source, v.data.meta.year)
-                            }} />
-                        ))}
-                    </div>
-                ))}
+                {continueWatching?.map((v, i) => (
+                    // <div>
+                        <MovieRow key={i} title={v.data.meta.title} slug={v.data.meta.slug} type={v.type} year={v.data.meta.year} source={v.source} place={v.data.show} percentage={v.percentageDone} deletable onClick={() => {
+                            if (v.type === 'show') {
+                                history.push(`${routeMatch.url}/${v.source}/${v.data.meta.title}/${v.slug}/season/${v.data.show.season}/episode/${v.data.show.episode}`)
+                            } else {
+                                history.push(`${routeMatch.url}/${v.source}/${v.data.meta.title}/${v.slug}`)
+                            }
+                            
+                            setShowingOptions(false)
+                            getStream(v.data.meta.title, v.data.meta.slug, v.type, v.source, v.data.meta.year)
+                        }} />
+                    // </div>
+                    ))}
             </Card> : <React.Fragment></React.Fragment>}
 
             <div className="topRightCredits">

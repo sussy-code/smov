@@ -1,7 +1,8 @@
 import React from 'react'
 import { Arrow } from './Arrow'
-import './MovieRow.css'
+// import { Cross } from './Crosss'
 import { PercentageOverlay } from './PercentageOverlay'
+import './MovieRow.css'
 
 // title: string
 // onClick: () => void
@@ -21,6 +22,7 @@ export function MovieRow(props) {
     return (
         <div className="movieRow" onClick={() => props.onClick && props.onClick()}>
             <div className="left">
+                {/* <Cross /> */}
                 {props.title}<span className="seasonEpisodeSubtitle">{props.place ? ` - S${props.place.season}:E${props.place.episode}` : ''}</span>&nbsp;
                 <span className="year">({props.year})</span>
             </div>

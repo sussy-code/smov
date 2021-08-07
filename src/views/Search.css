@@ -22,7 +22,7 @@
     cursor: pointer;
 }
 .cardView nav a.selected-link {
-    background: var(--button);
+    background: var(--card);
     color: var(--button-text);
     font-weight: bold;
 }
