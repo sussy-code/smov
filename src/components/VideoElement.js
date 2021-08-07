@@ -6,8 +6,16 @@ import './VideoElement.css'
 
 // streamUrl: string
 // loading: boolean
-export function VideoElement({ streamUrl, loading, setProgress, videoRef }) {
+// setProgress: (event: NativeEvent) => void
+// videoRef: useRef
+// startTime: number
+export function VideoElement({ streamUrl, loading, setProgress, videoRef, startTime }) {
     const [error, setError] = React.useState(false);
+
+    function onLoad() {
+        if (startTime)
+            videoRef.current.currentTime = startTime;
+    }
 
     React.useEffect(() => {
         if (!streamUrl.endsWith('.mp4')) {
@@ -40,11 +48,11 @@ export function VideoElement({ streamUrl, loading, setProgress, videoRef }) {
 
     if (!streamUrl.endsWith('.mp4')) {
         return (
-            <video className="videoElement" ref={videoRef} controls autoPlay onProgress={setProgress} />
+            <video className="videoElement" ref={videoRef} controls autoPlay onProgress={setProgress} onLoadedData={onLoad} />
         )
     } else {
         return (
-            <video className="videoElement" ref={videoRef} controls autoPlay onProgress={setProgress}>
+            <video className="videoElement" ref={videoRef} controls autoPlay onProgress={setProgress} onLoadedData={onLoad}>
                 <source src={streamUrl} type="video/mp4" />
             </video>
         )
