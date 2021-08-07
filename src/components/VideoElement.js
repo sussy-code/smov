@@ -6,8 +6,7 @@ import './VideoElement.css'
 
 // streamUrl: string
 // loading: boolean
-export function VideoElement({ streamUrl, loading, setProgress }) {
-    const videoRef = React.useRef(null);
+export function VideoElement({ streamUrl, loading, setProgress, videoRef }) {
     const [error, setError] = React.useState(false);
 
     React.useEffect(() => {
@@ -29,14 +28,6 @@ export function VideoElement({ streamUrl, loading, setProgress }) {
             hls.loadSource(streamUrl);
         }
     }, [videoRef, streamUrl, loading]);
-
-    React.useEffect(() => {
-        console.log('running')
-        const element = document.getElementsByClassName('videoElement')[0];
-        if (!element) return;        
-
-        element.onProgress = setProgress;
-    })
 
     if (error)
         return (<VideoPlaceholder>Your browser is not supported</VideoPlaceholder>)

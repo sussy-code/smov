@@ -20,6 +20,7 @@ export function MovieView(props) {
     const [ episodeLists, setEpisodeList ] = React.useState([]);
     const [ loading, setLoading ] = React.useState(false);
     const [ selectedSeason, setSelectedSeason ] = React.useState("1");
+    const videoRef = React.useRef(null);
     let isVideoTimeSet = React.useRef(false)
 
     const season = showRouteMatch?.params.season || "1";
@@ -34,10 +35,10 @@ export function MovieView(props) {
         if (streamData.type === "show" && !showRouteMatch) history.replace(`${baseRouteMatch.url}/season/1/episode/1`);
     }, [streamData.type, showRouteMatch, history, baseRouteMatch.url]);
 
-    // React.useEffect(() => {
-    //     if (streamData.type === "show" && showRouteMatch) setSelectedSeason(showRouteMatch.params.season.toString());
-    //     // eslint-disable-next-line react-hooks/exhaustive-deps
-    // }, []);
+    React.useEffect(() => {
+        if (streamData.type === "show" && showRouteMatch) setSelectedSeason(showRouteMatch.params.season.toString());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     React.useEffect(() => {
         let cancel = false;
@@ -84,23 +85,20 @@ export function MovieView(props) {
             let time = ls?.[streamData.source]?.[streamData.type]?.[streamData.slug]?.[key]?.currentlyAt;
 
             if (time) {
-                const element = document.getElementsByClassName('videoElement')[0];
-
-                if (!element) {
-                    return () => { isVideoTimeSet.current = false }
+                if (!videoRef.current) {
+                    isVideoTimeSet.current = false;
+                    return;
                 }
 
-                element.currentTime = time;
+                videoRef.current.currentTime = time;
             }
         }
 
-        return () => {
-            isVideoTimeSet.current = true;
-        }
+        isVideoTimeSet.current = true;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     })
 
     const setProgress = (evt) => {
-        console.log('setting progress')
         let ls = JSON.parse(localStorage.getItem("video-progress") || "{}")
 
         if (!ls[streamData.source])
@@ -143,7 +141,7 @@ export function MovieView(props) {
                     Season {season}: Episode {episode}
                 </Title> : undefined}
 
-                <VideoElement streamUrl={streamUrl} loading={loading} setProgress={setProgress} />
+                <VideoElement streamUrl={streamUrl} loading={loading} setProgress={setProgress} videoRef={videoRef} />
 
                 {streamData.type === "show" ? 
                     <EpisodeSelector
