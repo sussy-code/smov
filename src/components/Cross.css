@@ -1,7 +1,0 @@
-.cross {
-    display: inline-block;
-}
-
-.cross:hover {
-    transform: rotate(45deg);
-}
