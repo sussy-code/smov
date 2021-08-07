@@ -149,6 +149,11 @@ export function SearchView() {
                         source
                     }
 
+                    // due to a constraint with incompatible localStorage data,
+                    // we must quit here if episode and season data is not included
+                    // in the show's data. watching the show will resolve.
+                    if (!subselection.meta) continue;
+
                     if (entry.percentageDone < 90) {
                         newContinueWatching.push(entry)
                     // begin next episode logic
@@ -157,7 +162,7 @@ export function SearchView() {
                         if (!subselection.show) continue;
 
                         let newShow = {};
-
+                        
                         // if the current season has a next episode, load it
                         if (subselection.meta.episodes[subselection.show.season].includes(`${parseInt(subselection.show.episode) + 1}`)) {
                             newShow.season = subselection.show.season;
@@ -188,6 +193,8 @@ export function SearchView() {
             newContinueWatching = newContinueWatching.sort((a, b) => {
                 return b.data.updatedAt - a.data.updatedAt
             });
+
+            console.log(newContinueWatching);
 
             setContinueWatching(newContinueWatching)
         })

@@ -28,7 +28,15 @@ export function VideoElement({ streamUrl, loading, setProgress }) {
             hls.attachMedia(videoRef.current);
             hls.loadSource(streamUrl);
         }
-    }, [videoRef, streamUrl, loading])
+    }, [videoRef, streamUrl, loading]);
+
+    React.useEffect(() => {
+        console.log('running')
+        const element = document.getElementsByClassName('videoElement')[0];
+        if (!element) return;        
+
+        element.onProgress = setProgress;
+    })
 
     if (error)
         return (<VideoPlaceholder>Your browser is not supported</VideoPlaceholder>)

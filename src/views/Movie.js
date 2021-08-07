@@ -20,6 +20,7 @@ export function MovieView(props) {
     const [ episodeLists, setEpisodeList ] = React.useState([]);
     const [ loading, setLoading ] = React.useState(false);
     const [ selectedSeason, setSelectedSeason ] = React.useState("1");
+    let isVideoTimeSet = React.useRef(false)
 
     const season = showRouteMatch?.params.season || "1";
     const episode = showRouteMatch?.params.episode || "1";
@@ -31,12 +32,12 @@ export function MovieView(props) {
 
     React.useEffect(() => {
         if (streamData.type === "show" && !showRouteMatch) history.replace(`${baseRouteMatch.url}/season/1/episode/1`);
-    }, [streamData, showRouteMatch, history, baseRouteMatch.url]);
+    }, [streamData.type, showRouteMatch, history, baseRouteMatch.url]);
 
-    React.useEffect(() => {
-        if (streamData.type === "show" && showRouteMatch) setSelectedSeason(showRouteMatch.params.season.toString());
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    // React.useEffect(() => {
+    //     if (streamData.type === "show" && showRouteMatch) setSelectedSeason(showRouteMatch.params.season.toString());
+    //     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, []);
 
     React.useEffect(() => {
         let cancel = false;
@@ -74,12 +75,10 @@ export function MovieView(props) {
             setSeasonList(streamData.seasons);
             setEpisodeList(streamData.episodes[selectedSeason]);
         }
-    }, [streamData, selectedSeason])
+    }, [streamData.seasons, streamData.episodes, streamData.type, selectedSeason])
 
     React.useEffect(() => {
-        let cancel = false;
-
-        if (!cancel) {
+        if (!isVideoTimeSet.current) {
             let ls = JSON.parse(localStorage.getItem("video-progress") || "{}")
             let key = streamData.type === "show" ? `${season}-${episode}` : "full"
             let time = ls?.[streamData.source]?.[streamData.type]?.[streamData.slug]?.[key]?.currentlyAt;
@@ -88,7 +87,7 @@ export function MovieView(props) {
                 const element = document.getElementsByClassName('videoElement')[0];
 
                 if (!element) {
-                    return () => { cancel = false }
+                    return () => { isVideoTimeSet.current = false }
                 }
 
                 element.currentTime = time;
@@ -96,11 +95,12 @@ export function MovieView(props) {
         }
 
         return () => {
-            cancel = true;
+            isVideoTimeSet.current = true;
         }
     })
 
     const setProgress = (evt) => {
+        console.log('setting progress')
         let ls = JSON.parse(localStorage.getItem("video-progress") || "{}")
 
         if (!ls[streamData.source])
