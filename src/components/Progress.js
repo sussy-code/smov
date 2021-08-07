@@ -8,7 +8,7 @@ import './Progress.css'
 // failed: boolean
 export function Progress(props) {
     return (
-        <div className={`progress ${props.show?'':'hide'} ${props.failed?'failed':''}`}>
+        <div className={`progress ${props.show ? '' : 'hide'} ${props.failed ? 'failed' : ''}`}>
             { props.text && props.text.length > 0 ? (
                 <p>{props.text}</p>) : null}
             <div className="bar">

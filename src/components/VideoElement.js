@@ -6,9 +6,16 @@ import './VideoElement.css'
 
 // streamUrl: string
 // loading: boolean
-export function VideoElement({ streamUrl, loading, setProgress }) {
-    const videoRef = React.useRef(null);
+// setProgress: (event: NativeEvent) => void
+// videoRef: useRef
+// startTime: number
+export function VideoElement({ streamUrl, loading, setProgress, videoRef, startTime }) {
     const [error, setError] = React.useState(false);
+
+    function onLoad() {
+        if (startTime)
+            videoRef.current.currentTime = startTime;
+    }
 
     React.useEffect(() => {
         if (!streamUrl.endsWith('.mp4')) {
@@ -28,7 +35,7 @@ export function VideoElement({ streamUrl, loading, setProgress }) {
             hls.attachMedia(videoRef.current);
             hls.loadSource(streamUrl);
         }
-    }, [videoRef, streamUrl, loading])
+    }, [videoRef, streamUrl, loading]);
 
     if (error)
         return (<VideoPlaceholder>Your browser is not supported</VideoPlaceholder>)
@@ -41,11 +48,11 @@ export function VideoElement({ streamUrl, loading, setProgress }) {
 
     if (!streamUrl.endsWith('.mp4')) {
         return (
-            <video className="videoElement" ref={videoRef} controls autoPlay onProgress={setProgress} />
+            <video className="videoElement" ref={videoRef} controls autoPlay onProgress={setProgress} onLoadedData={onLoad} />
         )
     } else {
         return (
-            <video className="videoElement" ref={videoRef} controls autoPlay onProgress={setProgress}>
+            <video className="videoElement" ref={videoRef} controls autoPlay onProgress={setProgress} onLoadedData={onLoad}>
                 <source src={streamUrl} type="video/mp4" />
             </video>
         )

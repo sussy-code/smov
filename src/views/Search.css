@@ -8,11 +8,30 @@
     box-sizing: border-box;
 }
 
-.cardView > div {
+.cardView nav {
+    width: 100%;
+    max-width: 624px;
+}
+.cardView nav a {
+    padding: 8px 16px;
+    margin-right: 10px;
+    border-radius: 4px;
+    color: var(--text);
+}
+.cardView nav a:not(.selected-link) {
+    cursor: pointer;
+}
+.cardView nav a.selected-link {
+    background: var(--card);
+    color: var(--button-text);
+    font-weight: bold;
+}
+
+.cardView > * {
     margin-top: 2rem;
 }
 
-.cardView > div:first-child {
+.cardView > *:first-child {
     margin-top: 38px;
 }
 

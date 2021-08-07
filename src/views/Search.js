@@ -1,19 +1,18 @@
 import React from 'react';
-import { Redirect, useRouteMatch, useHistory } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import { InputBox } from '../components/InputBox';
-import { Title } from '../components/Title';
+import { Redirect, useHistory, useRouteMatch } from 'react-router-dom';
+import { Arrow } from '../components/Arrow';
 import { Card } from '../components/Card';
 import { ErrorBanner } from '../components/ErrorBanner';
+import { InputBox } from '../components/InputBox';
 import { MovieRow } from '../components/MovieRow';
-import { Arrow } from '../components/Arrow';
 import { Progress } from '../components/Progress';
-import { findContent, getStreamUrl, getEpisodes } from '../lib/index';
-import { useMovie } from '../hooks/useMovie';
+import { Title } from '../components/Title';
 import { TypeSelector } from '../components/TypeSelector';
+import { useMovie } from '../hooks/useMovie';
+import { findContent, getEpisodes, getStreamUrl } from '../lib/index';
 
 import './Search.css';
-import { DiscordBanner } from '../components/DiscordBanner';
 
 export function SearchView() {
     const { navigate, setStreamUrl, setStreamData } = useMovie();
@@ -30,6 +29,8 @@ export function SearchView() {
     const [failed, setFailed] = React.useState(false);
     const [showingOptions, setShowingOptions] = React.useState(false);
     const [errorStatus, setErrorStatus] = React.useState(false);
+    const [page, setPage] = React.useState('search');
+    const [continueWatching, setContinueWatching] = React.useState([])
 
     const fail = (str) => {
         setProgress(maxSteps);
@@ -37,7 +38,7 @@ export function SearchView() {
         setFailed(true)
     }
 
-    async function getStream(title, slug, type, source) {
+    async function getStream(title, slug, type, source, year) {
         setStreamUrl("");
 
         try {
@@ -54,7 +55,6 @@ export function SearchView() {
 
             let realUrl = '';
             if (type === "movie") {
-                // getStreamUrl(slug, type, source, season, episode)
                 const { url } = await getStreamUrl(slug, type, source);
 
                 if (url === '') {
@@ -71,7 +71,8 @@ export function SearchView() {
                 seasons,
                 episodes,
                 slug,
-                source
+                source,
+                year
             })
             setText(`Streaming...`)
             navigate("movie")
@@ -100,9 +101,9 @@ export function SearchView() {
                 return;
             }
 
-            const { title, slug, type, source } = options[0];
+            const { title, slug, type, source, year } = options[0];
             history.push(`${routeMatch.url}/${source}/${title}/${slug}`);
-            getStream(title, slug, type, source);
+            getStream(title, slug, type, source, year);
         } catch (err) {
             console.error(err);
             fail(`Failed to watch ${contentType}`)
@@ -128,55 +129,156 @@ export function SearchView() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    if (!type || (type !== 'movie' && type !== 'show')) return <Redirect to="/movie" />
+    React.useEffect(() => {
+        const progressData = JSON.parse(localStorage.getItem('video-progress') || "{}")
+        let newContinueWatching = []
+
+        Object.keys(progressData).forEach((source) => {
+            const all = [
+                ...Object.entries(progressData[source]?.show ?? {}),
+                ...Object.entries(progressData[source]?.movie ?? {})
+            ];
+
+            for (const [slug, data] of all) {
+                for (let subselection of Object.values(data)) {
+                    let entry = {
+                        slug,
+                        data: subselection,
+                        type: subselection.show ? 'show' : 'movie',
+                        percentageDone: Math.floor((subselection.currentlyAt / subselection.totalDuration) * 100),
+                        source
+                    }
+
+                    // due to a constraint with incompatible localStorage data,
+                    // we must quit here if episode and season data is not included
+                    // in the show's data. watching the show will resolve.
+                    if (!subselection.meta) continue;
+
+                    if (entry.percentageDone < 90) {
+                        newContinueWatching.push(entry)
+                    // begin next episode logic
+                    } else {
+                        // we can't do next episode for movies!
+                        if (!subselection.show) continue;
+
+                        let newShow = {};
+
+                        // if the current season has a next episode, load it
+                        if (subselection.meta.episodes[subselection.show.season].includes(`${parseInt(subselection.show.episode) + 1}`)) {
+                            newShow.season = subselection.show.season;
+                            newShow.episode = `${parseInt(subselection.show.episode) + 1}`;
+                            entry.percentageDone = 0;
+                        // if the current season does not have a next epsiode, and the next season has a first episode, load that
+                        } else if (subselection.meta.episodes[`${parseInt(subselection.show.season) + 1}`][0]) {
+                            newShow.season = `${parseInt(subselection.show.season) + 1}`;
+                            newShow.episode = subselection.meta.episodes[`${parseInt(subselection.show.season) + 1}`][0];
+                            entry.percentageDone = 0;
+                        // the next episode does not exist
+                        } else {
+                            continue;
+                        }
+                        
+                        // assign the new episode and season data
+                        entry.data.show = { ...newShow };
+                        
+                        // if the next episode exists, continue. we don't want to end up with duplicate data.
+                        let nextEpisode = progressData?.[source]?.show?.[slug]?.[`${entry.data.show.season}-${entry.data.show.episode}`];
+                        if (nextEpisode) continue;
+
+                        newContinueWatching.push(entry);
+                    }
+                }
+            }
+
+            newContinueWatching = newContinueWatching.sort((a, b) => {
+                return b.data.updatedAt - a.data.updatedAt
+            });
+
+            setContinueWatching(newContinueWatching)
+        })
+    }, []);
+
+    if (!type || (type !== 'movie' && type !== 'show')) {
+        return <Redirect to="/movie" />
+    }
 
     return (
         <div className="cardView">
             <Helmet>
-                <title>{type === 'movie' ? 'Movies' : 'TV Shows'} | movie-web</title>
+                <title>{type === 'movie' ? 'movies' : 'shows'} | movie-web</title>
             </Helmet>
 
-            <Card>
-                <DiscordBanner />
-                {errorStatus ? <ErrorBanner>{errorStatus}</ErrorBanner> : ''}
-                <Title accent="Because watching content legally is boring">
-                    What do you wanna watch?
-                </Title>
-                <TypeSelector
-                    setType={(type) => history.push(`/${type}`)}
-                    choices={[
-                        { label: "Movie", value: "movie" },
-                        { label: "TV Show", value: "show" }
-                    ]}
-                    noWrap={true}
-                    selected={type}
-                />
-                <InputBox placeholder={type === "movie" ? "Hamilton" : "Atypical"} onSubmit={(str) => searchMovie(str, type)} />
-                <Progress show={progress > 0} failed={failed} progress={progress} steps={maxSteps} text={text} />
-            </Card>
+            {/* Nav */}
+            <nav>
+                <a className={page === 'search' ? 'selected-link' : ''} onClick={() => setPage('search')} href>Search</a>
+                {continueWatching.length > 0 ?
+                    <a className={page === 'watching' ? 'selected-link' : ''} onClick={() => setPage('watching')} href>Continue watching</a>
+                    : ''}
+            </nav>
 
-            <Card show={showingOptions} doTransition>
-                <Title size="medium">
-                    Whoops, there are a few {type}s like that
-                </Title>
-                { Object.entries(options.reduce((a, v) => {
-                        if (!a[v.source]) a[v.source] = []
-                        a[v.source].push(v)
-                        return a;
-                    }, {})).map(v => (
-                        <div key={v[0]}>
-                            <p className="source">{v[0]}</p>
-                            {v[1].map((v, i) => (
-                                <MovieRow key={i} title={v.title} slug={v.slug} type={v.type} year={v.year} source={v.source} onClick={() => {
-                                    history.push(`${routeMatch.url}/${v.source}/${v.title}/${v.slug}`);
-                                    setShowingOptions(false)
-                                    getStream(v.title, v.slug, v.type, v.source)
-                                }} />
-                            ))}
-                        </div>
-                    ))
-                }
-            </Card>
+            {/* Search */}
+            {page === 'search' ?
+                <React.Fragment>
+                    <Card>
+                        {errorStatus ? <ErrorBanner>{errorStatus}</ErrorBanner> : ''}
+                        <Title accent="Because watching content legally is boring">
+                            What do you wanna watch?
+                        </Title>
+                        <TypeSelector
+                            setType={(type) => history.push(`/${type}`)}
+                            choices={[
+                                { label: "Movie", value: "movie" },
+                                { label: "TV Show", value: "show" }
+                            ]}
+                            noWrap={true}
+                            selected={type}
+                        />
+                        <InputBox placeholder={type === "movie" ? "Hamilton" : "Atypical"} onSubmit={(str) => searchMovie(str, type)} />
+                        <Progress show={progress > 0} failed={failed} progress={progress} steps={maxSteps} text={text} />
+                    </Card>
+
+                    <Card show={showingOptions} doTransition>
+                        <Title size="medium">
+                            Whoops, there are a few {type}s like that
+                        </Title>
+                        {Object.entries(options.reduce((a, v) => {
+                            if (!a[v.source]) a[v.source] = []
+                            a[v.source].push(v)
+                            return a;
+                        }, {})).map(v => (
+                            <div key={v[0]}>
+                                <p className="source">{v[0]}</p>
+                                {v[1].map((v, i) => (
+                                    <MovieRow key={i} title={v.title} slug={v.slug} type={v.type} year={v.year} source={v.source} onClick={() => {
+                                        history.push(`${routeMatch.url}/${v.source}/${v.title}/${v.slug}`);
+                                        setShowingOptions(false)
+                                        getStream(v.title, v.slug, v.type, v.source, v.year)
+                                    }} />
+                                ))}
+                            </div>
+                        ))}
+                    </Card>
+                </React.Fragment> : <React.Fragment />}
+
+            {/* Continue watching */}
+            {continueWatching.length > 0 && page === 'watching' ? <Card>
+                <Title>Continue watching</Title>
+                {continueWatching?.map((v, i) => (
+                    // <div>
+                        <MovieRow key={i} title={v.data.meta.title} slug={v.data.meta.slug} type={v.type} year={v.data.meta.year} source={v.source} place={v.data.show} percentage={v.percentageDone} deletable onClick={() => {
+                            if (v.type === 'show') {
+                                history.push(`${routeMatch.url}/${v.source}/${v.data.meta.title}/${v.slug}/season/${v.data.show.season}/episode/${v.data.show.episode}`)
+                            } else {
+                                history.push(`${routeMatch.url}/${v.source}/${v.data.meta.title}/${v.slug}`)
+                            }
+                            
+                            setShowingOptions(false)
+                            getStream(v.data.meta.title, v.data.meta.slug, v.type, v.source, v.data.meta.year)
+                        }} />
+                    // </div>
+                    ))}
+            </Card> : <React.Fragment></React.Fragment>}
+
             <div className="topRightCredits">
                 <a href="https://github.com/JamesHawkinss/movie-web" target="_blank" rel="noreferrer">Check it out on GitHub <Arrow /></a>
                 <br />
