@@ -154,27 +154,31 @@ export function SearchView() {
                     // begin next episode logic
                     } else {
                         // we can't do next episode for movies!
-                        if (!subselection.show) return;
+                        if (!subselection.show) continue;
+
+                        let newShow = {};
 
                         // if the current season has a next episode, load it
                         if (subselection.meta.episodes[subselection.show.season].includes(`${parseInt(subselection.show.episode) + 1}`)) {
-                            subselection.show = {
-                                season: subselection.show.season,
-                                episode: `${parseInt(subselection.show.episode) + 1}`
-                            }
-
+                            newShow.season = subselection.show.season;
+                            newShow.episode = `${parseInt(subselection.show.episode) + 1}`;
                             entry.percentageDone = 0;
                         // if the current season does not have a next epsiode, and the next season has a first episode, load that
                         } else if (subselection.meta.episodes[`${parseInt(subselection.show.season) + 1}`][0]) {
-                            subselection.show = {
-                                season: `${parseInt(subselection.show.season) + 1}`,
-                                episode: subselection.meta.episodes[`${parseInt(subselection.show.season) + 1}`][0]
-                            }
-
+                            newShow.season = `${parseInt(subselection.show.season) + 1}`;
+                            newShow.episode = subselection.meta.episodes[`${parseInt(subselection.show.season) + 1}`][0];
                             entry.percentageDone = 0;
+                        // the next episode does not exist
                         } else {
-                            return;
+                            continue;
                         }
+                        
+                        // assign the new episode and season data
+                        entry.data.show = { ...newShow };
+                        
+                        // if the next episode exists, continue. we don't want to end up with duplicate data.
+                        let nextEpisode = progressData?.[source]?.show?.[slug]?.[`${entry.data.show.season}-${entry.data.show.episode}`];
+                        if (nextEpisode) continue;
 
                         newContinueWatching.push(entry);
                     }
