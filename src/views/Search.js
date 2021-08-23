@@ -156,7 +156,7 @@ export function SearchView() {
 
                     if (entry.percentageDone < 90) {
                         newContinueWatching.push(entry)
-                    // begin next episode logic
+                        // begin next episode logic
                     } else {
                         // we can't do next episode for movies!
                         if (!subselection.show) continue;
@@ -168,19 +168,19 @@ export function SearchView() {
                             newShow.season = subselection.show.season;
                             newShow.episode = `${parseInt(subselection.show.episode) + 1}`;
                             entry.percentageDone = 0;
-                        // if the current season does not have a next epsiode, and the next season has a first episode, load that
-                        } else if (subselection.meta.episodes[`${parseInt(subselection.show.season) + 1}`][0]) {
+                            // if the current season does not have a next epsiode, and the next season has a first episode, load that
+                        } else if (subselection.meta.episodes?.[`${parseInt(subselection.show.season) + 1}`]?.[0]) {
                             newShow.season = `${parseInt(subselection.show.season) + 1}`;
                             newShow.episode = subselection.meta.episodes[`${parseInt(subselection.show.season) + 1}`][0];
                             entry.percentageDone = 0;
-                        // the next episode does not exist
+                            // the next episode does not exist
                         } else {
                             continue;
                         }
-                        
+
                         // assign the new episode and season data
                         entry.data.show = { ...newShow };
-                        
+
                         // if the next episode exists, continue. we don't want to end up with duplicate data.
                         let nextEpisode = progressData?.[source]?.show?.[slug]?.[`${entry.data.show.season}-${entry.data.show.episode}`];
                         if (nextEpisode) continue;
@@ -263,20 +263,19 @@ export function SearchView() {
             {/* Continue watching */}
             {continueWatching.length > 0 && page === 'watching' ? <Card>
                 <Title>Continue watching</Title>
+                <Progress show={progress > 0} failed={failed} progress={progress} steps={maxSteps} text={text} />
                 {continueWatching?.map((v, i) => (
-                    // <div>
-                        <MovieRow key={i} title={v.data.meta.title} slug={v.data.meta.slug} type={v.type} year={v.data.meta.year} source={v.source} place={v.data.show} percentage={v.percentageDone} deletable onClick={() => {
-                            if (v.type === 'show') {
-                                history.push(`${routeMatch.url}/${v.source}/${v.data.meta.title}/${v.slug}/season/${v.data.show.season}/episode/${v.data.show.episode}`)
-                            } else {
-                                history.push(`${routeMatch.url}/${v.source}/${v.data.meta.title}/${v.slug}`)
-                            }
-                            
-                            setShowingOptions(false)
-                            getStream(v.data.meta.title, v.data.meta.slug, v.type, v.source, v.data.meta.year)
-                        }} />
-                    // </div>
-                    ))}
+                    <MovieRow key={i} title={v.data.meta.title} slug={v.data.meta.slug} type={v.type} year={v.data.meta.year} source={v.source} place={v.data.show} percentage={v.percentageDone} deletable onClick={() => {
+                        if (v.type === 'show') {
+                            history.push(`/show/${v.source}/${v.data.meta.title}/${v.slug}/season/${v.data.show.season}/episode/${v.data.show.episode}`)
+                        } else {
+                            history.push(`/movie/${v.source}/${v.data.meta.title}/${v.slug}`)
+                        }
+
+                        setShowingOptions(false)
+                        getStream(v.data.meta.title, v.data.meta.slug, v.type, v.source, v.data.meta.year)
+                    }} />
+                ))}
             </Card> : <React.Fragment></React.Fragment>}
 
             <div className="topRightCredits">
