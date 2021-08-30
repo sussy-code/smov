@@ -112,8 +112,7 @@ export function SearchView() {
 
     React.useEffect(() => {
         async function fetchHealth() {
-            const HOME_URL = "https://movie-web-proxy.herokuapp.com"
-            await fetch(HOME_URL).catch(() => {
+            await fetch(process.env.REACT_APP_CORS_PROXY_URL).catch(() => {
                 // Request failed; source likely offline
                 setErrorStatus(`Our content provider is currently offline, apologies.`)
             })
