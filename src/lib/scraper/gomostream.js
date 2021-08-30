@@ -1,7 +1,6 @@
 import { unpack } from '../util/unpacker';
 
-const CORS_URL = 'https://movie-web-proxy.herokuapp.com/';
-const BASE_URL = `${CORS_URL}https://gomo.to`;
+const BASE_URL = `${process.env.REACT_APP_CORS_PROXY_URL}https://gomo.to`;
 const MOVIE_URL = `${BASE_URL}/movie`
 const DECODING_URL = `${BASE_URL}/decoding_v3.php`
 
@@ -10,7 +9,7 @@ async function findContent(searchTerm, type) {
         if (type !== 'movie') return;
 
         const term = searchTerm.toLowerCase()
-        const imdbRes = await fetch(`${CORS_URL}https://v2.sg.media-imdb.com/suggestion/${term.slice(0, 1)}/${term}.json`).then(d => d.json())
+        const imdbRes = await fetch(`${process.env.REACT_APP_CORS_PROXY_URL}https://v2.sg.media-imdb.com/suggestion/${term.slice(0, 1)}/${term}.json`).then(d => d.json())
         
         const results = [];
         imdbRes.d.forEach((e) => {
@@ -68,7 +67,7 @@ async function getStreamUrl(slug, type, season, episode) {
     }).then((d) => d.json());
 
     const embedUrl = src.find(url => url.includes('gomo.to'));
-    const site2 = await fetch(`${CORS_URL}${embedUrl}`).then((d) => d.text());
+    const site2 = await fetch(`${process.env.REACT_APP_CORS_PROXY_URL}${embedUrl}`).then((d) => d.text());
 
     const parser = new DOMParser();
     const site2Dom = parser.parseFromString(site2, "text/html");
