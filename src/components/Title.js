@@ -14,6 +14,7 @@ export function Title(props) {
 
     const accentLink = props.accentLink || "";
     const accent = props.accent || "";
+    
     return (
         <div>
             {accent.length > 0 ? (
@@ -26,7 +27,7 @@ export function Title(props) {
                     {accentLink.length > 0 ? (<Arrow left/>) : null}{accent}
                 </p>
             ) : null}
-            <h1 className={"title " + ( size ? 'title-size-' + size : '' )}>{props.children}</h1>
+            <h1 className={"title " + ( size ? `title-size-${size}` : '' )}>{props.children}</h1>
         </div>
     )
 }
