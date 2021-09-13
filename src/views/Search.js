@@ -54,13 +54,17 @@ export function SearchView() {
             }
 
             let realUrl = '';
+            let subtitles = []
+
             if (type === "movie") {
-                const { url } = await getStreamUrl(slug, type, source);
+                const { url, subtitles: subs } = await getStreamUrl(slug, type, source);
 
                 if (url === '') {
                     return fail(`Not found: ${title}`)
                 }
+
                 realUrl = url;
+                subtitles = subs
             }
 
             setProgress(maxSteps);
@@ -72,7 +76,8 @@ export function SearchView() {
                 episodes,
                 slug,
                 source,
-                year
+                year,
+                subtitles: subtitles
             })
             setText(`Streaming...`)
             navigate("movie")
