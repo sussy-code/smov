@@ -56,10 +56,10 @@ export function MovieView(props) {
         }
 
         setLoading(true);
-
         getStreamUrl(streamData.slug, streamData.type, streamData.source, season, episode)
-            .then(({url}) => {
-                if (cancel) return;
+        .then(({url, subtitles}) => {
+            if (cancel) return;
+                if (streamData.source === "lookmovie") streamData.subtitles = subtitles;
                 setStreamUrl(url)
                 setLoading(false);
             })
@@ -131,7 +131,7 @@ export function MovieView(props) {
                     Season {season}: Episode {episode}
                 </Title> : undefined}
 
-                <VideoElement streamUrl={streamUrl} loading={loading} setProgress={setProgress} videoRef={videoRef} startTime={startTime} />
+                <VideoElement streamUrl={streamUrl} loading={loading} setProgress={setProgress} videoRef={videoRef} startTime={startTime} streamData={streamData} />
 
                 {streamData.type === "show" ? 
                     <EpisodeSelector
