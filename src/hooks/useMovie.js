@@ -16,9 +16,7 @@ export function MovieProvider(props) {
             streamUrl: stream,
             streamData,
             setStreamData(d) {
-                setStreamData(p => {
-                    return {...p,...d}
-                })
+                setStreamData(p => ({...p,...d}))
             },
             resetStreamData() { setStreamData(null) }
         }}>
