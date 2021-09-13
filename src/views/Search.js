@@ -77,7 +77,7 @@ export function SearchView() {
                 slug,
                 source,
                 year,
-                subtitles: subtitles
+                subtitles
             })
             setText(`Streaming...`)
             navigate("movie")
