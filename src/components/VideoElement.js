@@ -9,7 +9,7 @@ import './VideoElement.css'
 // setProgress: (event: NativeEvent) => void
 // videoRef: useRef
 // startTime: number
-export function VideoElement({ streamUrl, loading, setProgress, videoRef, startTime }) {
+export function VideoElement({ streamUrl, loading, setProgress, videoRef, startTime, streamData }) {
     const [error, setError] = React.useState(false);
 
     function onLoad() {
@@ -48,11 +48,14 @@ export function VideoElement({ streamUrl, loading, setProgress, videoRef, startT
 
     if (!streamUrl.endsWith('.mp4')) {
         return (
-            <video className="videoElement" ref={videoRef} controls autoPlay onProgress={setProgress} onLoadedData={onLoad} />
+            <video crossorigin="anonymous" className="videoElement" ref={videoRef} controls autoPlay onProgress={setProgress} onLoadedData={onLoad}>
+                {streamData.subtitles && streamData.subtitles.map((sub, index) => {return <track key={index} kind="captions" label={sub.language} src={`${process.env.REACT_APP_CORS_PROXY_URL}https://lookmovie.io${sub.file}` }></track>})}
+            </video>
         )
     } else {
         return (
-            <video className="videoElement" ref={videoRef} controls autoPlay onProgress={setProgress} onLoadedData={onLoad}>
+            <video crossorigin="anonymous" className="videoElement" ref={videoRef} controls autoPlay onProgress={setProgress} onLoadedData={onLoad}>
+                {streamData.subtitles && streamData.subtitles.map((sub, index) => {return <track key={index} kind="captions" label={sub.language} src={`${process.env.REACT_APP_CORS_PROXY_URL}https://lookmovie.io${sub.file}` }></track>})}
                 <source src={streamUrl} type="video/mp4" />
             </video>
         )
