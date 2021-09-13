@@ -137,7 +137,6 @@ async function getEpisodes(slug) {
 }
 
 async function getStreamUrl(slug, type, season, episode) {
-
     const url = `${BASE_URL}/${type}s/view/${slug}`;
     const pageReq = await fetch(url).then((d) => d.text());
 
