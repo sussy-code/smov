@@ -50,8 +50,18 @@ async function findContent(searchTerm, type) {
     }
 }
 async function getVideoUrl(config) {
-    const accessToken = await getAccessToken(config);
+    const accessInfo = await getAccessToken(config);
+    const accessToken = accessInfo.token;
+    const subtitles = accessInfo.subtitles;
     const now = Math.floor(Date.now() / 1e3);
+
+    let subs;
+
+    if (config.type === "show") {
+        subs = await getEpisodeSubs(config)
+    } else if (config.type === "movie") {
+        subs = subtitles
+    }
 
     let url = '';
 
@@ -73,7 +83,11 @@ async function getVideoUrl(config) {
         }
     }
 
-    return videoUrl.startsWith("/") ? `${BASE_URL}${videoUrl}` : videoUrl;
+    return {videoUrl: videoUrl.startsWith("/") ? `${BASE_URL}${videoUrl}` : videoUrl, subs};
+}
+
+async function getEpisodeSubs (config) {
+    return await fetch(`${BASE_URL}/api/v1/shows/episode-subtitles/?id_episode=${config.id}`).then(res => res.json());
 }
 
 async function getAccessToken(config) {
@@ -86,9 +100,11 @@ async function getAccessToken(config) {
     }
 
     const data = await fetch(url).then((d) => d.json());
-
+    
     const token = data?.data?.accessToken;
-    if (token) return token;
+    let subtitles = data?.data?.subtitles;
+
+    if (token) return {token, subtitles};
 
     return "Invalid type provided in config";
 }
@@ -121,6 +137,7 @@ async function getEpisodes(slug) {
 }
 
 async function getStreamUrl(slug, type, season, episode) {
+
     const url = `${BASE_URL}/${type}s/view/${slug}`;
     const pageReq = await fetch(url).then((d) => d.text());
 
@@ -153,9 +170,9 @@ async function getStreamUrl(slug, type, season, episode) {
         slug: slug,
         id: id,
         type: type,
-    });
+    }); 
 
-    return { url: videoUrl }
+    return { url: videoUrl.videoUrl, subtitles: videoUrl.subs };
 }
 
 
