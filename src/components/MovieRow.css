@@ -62,8 +62,8 @@
     margin-right: 10px;
 }
 
-.subSvgWrapper {
-    height: 100%;
+.subtitleIcon {
+    width: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
