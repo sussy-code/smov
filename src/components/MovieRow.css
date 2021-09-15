@@ -24,6 +24,13 @@
     margin-right: 0.5rem;
 }
 
+.movieRow .left .titleWrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .movieRow .left .seasonEpisodeSubtitle,
 .movieRow .left .year {
     color: var(--text-secondary);
@@ -59,6 +66,14 @@
     font-size: .75rem;
     padding: .25rem;
     border-radius: 10px;
+    margin-right: 10px;
+}
+
+.subtitleIcon {
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-right: 10px;
 }
 
