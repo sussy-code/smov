@@ -32,8 +32,14 @@ export function MovieRow(props) {
         
             <div className="left">
                 {/* <Cross /> */}
-                {props.title}<span className="seasonEpisodeSubtitle">{props.place ? ` - S${props.place.season}:E${props.place.episode}` : ''}</span>&nbsp;
-                <span className="year">({props.year})</span>
+                <div className="titleWrapper">
+                    <div className="titleText">
+                        {props.title}
+                        &nbsp;
+                        <span className="year">({props.year})</span>
+                        <span className="seasonEpisodeSubtitle">{props.place ? ` - S${props.place.season}:E${props.place.episode}` : ''}</span>
+                    </div>
+                </div>
             </div>
 
             <div className="watch">
