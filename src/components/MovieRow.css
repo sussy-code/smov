@@ -24,6 +24,13 @@
     margin-right: 0.5rem;
 }
 
+.movieRow .left .titleWrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .movieRow .left .seasonEpisodeSubtitle,
 .movieRow .left .year {
     color: var(--text-secondary);
