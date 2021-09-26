@@ -2,6 +2,7 @@ import Fuse from 'fuse.js'
 import JSON5 from 'json5'
 
 const BASE_URL = `${process.env.REACT_APP_CORS_PROXY_URL}https://lookmovie.io`;
+let phpsessid;
 
 async function findContent(searchTerm, type) {
     const searchUrl = `${BASE_URL}/${type}s/search/?q=${encodeURIComponent(searchTerm)}`;
@@ -88,7 +89,9 @@ async function getVideoUrl(config) {
 }
 
 async function getEpisodeSubs (config) {
-    return await fetch(`${BASE_URL}/api/v1/shows/episode-subtitles/?id_episode=${config.id}`).then(res => res.json());
+    return await fetch(`${BASE_URL}/api/v1/shows/episode-subtitles/?id_episode=${config.id}`, {
+        headers: { phpsessid },
+    }).then(res => res.json());
 }
 
 async function getAccessInfo(config) {
@@ -100,7 +103,9 @@ async function getAccessInfo(config) {
         url = `${BASE_URL}/api/v1/security/show-access?slug=${config.slug}&token=&step=2`;
     }
 
-    const data = await fetch(url).then((d) => d.json());
+    const data = await fetch(url, {
+        headers: { phpsessid },
+    }).then((d) => d.json());
 
     const token = data?.data?.accessToken;
     const subtitles = data?.data?.subtitles;
@@ -112,7 +117,9 @@ async function getAccessInfo(config) {
 
 async function getEpisodes(slug) {
     const url = `${BASE_URL}/shows/view/${slug}`;
-    const pageReq = await fetch(url).then((d) => d.text());
+    const pageReq = await fetch(url, {
+        headers: { phpsessid },
+    }).then((d) => d.text());
 
     const data = JSON5.parse("{" +
         pageReq
@@ -139,11 +146,13 @@ async function getEpisodes(slug) {
 
 async function getStreamUrl(slug, type, season, episode) {
     const url = `${BASE_URL}/${type}s/view/${slug}`;
-    const pageReq = await fetch(url).then((d) => d.text());
+    const pageRes = await fetch(url);
+    phpsessid = pageRes.headers.get('phpsessid');
+    const pageResText = await pageRes.text();
 
     const data = JSON5.parse("{" +
-        pageReq
-            .slice(pageReq.indexOf(`${type}_storage`))
+        pageResText
+            .slice(pageResText.indexOf(`${type}_storage`))
             .split("};")[0]
             .split("= {")[1]
             .trim() +
