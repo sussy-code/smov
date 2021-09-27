@@ -147,7 +147,7 @@ async function getEpisodes(slug) {
 async function getStreamUrl(slug, type, season, episode) {
     const url = `${BASE_URL}/${type}s/view/${slug}`;
     const pageRes = await fetch(url);
-    phpsessid = pageRes.headers.get('phpsessid');
+    if (pageRes.headers.get('phpsessid')) phpsessid = pageRes.headers.get('phpsessid');
     const pageResText = await pageRes.text();
 
     const data = JSON5.parse("{" +
