@@ -8,7 +8,8 @@ const allowedDomains = [
 	'https://v2.sg.media-imdb.com',
 	'https://gomo.to',
 	'https://lookmovie.io',
-	'https://gomoplayer.com'
+	'https://gomoplayer.com',
+	'https://api.opensubtitles.org'
 ];
 
 async function handleRequest(request, destinationUrl, iteration = 0) {
