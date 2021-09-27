@@ -20,6 +20,14 @@ async function handleRequest(request, destinationUrl, iteration = 0) {
 	request = new Request(destinationUrl, request);
 	request.headers.set("Origin", new URL(destinationUrl).origin);
 
+	// Set PHPSESSID cookie
+	if (request.headers.get('PHPSESSID')) {
+		request.headers.set('Cookie', `PHPSESSID=${request.headers.get('PHPSESSID')};`);
+	}
+
+	// Set User Agent
+	request.headers.set('User-Agent', ' Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/93.0');
+
 	let response = await fetch(request);
 
     if ((response.status === 302 || response.status === 301) && response.headers.get('location')) {
@@ -39,6 +47,14 @@ async function handleRequest(request, destinationUrl, iteration = 0) {
 
 	// Set CORS headers
 	response.headers.set("Access-Control-Allow-Origin", '*');
+
+	// Get and set PHPSESSID cookie
+	const cookies = response.headers.get('Set-Cookie');
+	if (cookies && cookies.includes('PHPSESSID') && cookies.includes(';')) {
+		let phpsessid = cookies.slice(cookies.search('PHPSESSID') + 10);
+		phpsessid = phpsessid.slice(0, phpsessid.search(';'));
+		response.headers.set('PHPSESSID', phpsessid);
+	}
 
 	// Append to/Add Vary header so browser will cache response correctly
 	response.headers.append("Vary", "Origin");
