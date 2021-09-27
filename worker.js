@@ -48,6 +48,7 @@ async function handleRequest(request, destinationUrl, iteration = 0) {
 
 	// Set CORS headers
 	response.headers.set("Access-Control-Allow-Origin", '*');
+	response.headers.set('Access-Control-Expose-Headers', 'PHPSESSID');
 
 	// Get and set PHPSESSID cookie
 	const cookies = response.headers.get('Set-Cookie');
