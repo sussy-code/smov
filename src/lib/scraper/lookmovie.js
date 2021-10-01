@@ -5,49 +5,53 @@ const BASE_URL = `${process.env.REACT_APP_CORS_PROXY_URL}https://lookmovie.io`;
 let phpsessid;
 
 async function findContent(searchTerm, type) {
-    const searchUrl = `${BASE_URL}/${type}s/search/?q=${encodeURIComponent(searchTerm)}`;
-    const searchRes = await fetch(searchUrl).then((d) => d.text());
-
-    // Parse DOM to find search results on full search page
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(searchRes, "text/html");
-    const nodes = Array.from(doc.querySelectorAll('.movie-item-style-1'));
-    const results = nodes.map(node => {
-        return {
-            type,
-            title: node.querySelector('h6 a').innerText.trim(),
-            year: node.querySelector('.year').innerText.trim(),
-            slug: node.querySelector('a').href.split('/').pop(),
+    try {
+        const searchUrl = `${BASE_URL}/${type}s/search/?q=${encodeURIComponent(searchTerm)}`;
+        const searchRes = await fetch(searchUrl).then((d) => d.text());
+    
+        // Parse DOM to find search results on full search page
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(searchRes, "text/html");
+        const nodes = Array.from(doc.querySelectorAll('.movie-item-style-1'));
+        const results = nodes.map(node => {
+            return {
+                type,
+                title: node.querySelector('h6 a').innerText.trim(),
+                year: node.querySelector('.year').innerText.trim(),
+                slug: node.querySelector('a').href.split('/').pop(),
+            }
+        });
+    
+        const fuse = new Fuse(results, { threshold: 0.3, distance: 200, keys: ["title"] });
+        const matchedResults = fuse
+            .search(searchTerm.toString())
+            .map((result) => result.item);
+    
+        if (matchedResults.length === 0) {
+            return { options: [] }
         }
-    });
-
-    const fuse = new Fuse(results, { threshold: 0.3, distance: 200, keys: ["title"] });
-    const matchedResults = fuse
-        .search(searchTerm.toString())
-        .map((result) => result.item);
-
-    if (matchedResults.length === 0) {
+    
+        if (matchedResults.length > 1) {
+            const res = { options: [] };
+    
+            matchedResults.forEach((r) => res.options.push({
+                title: r.title,
+                slug: r.slug,
+                type: r.type,
+                year: r.year,
+                source: 'lookmovie'
+            }));
+    
+            return res;
+        } else {
+            const { title, slug, type, year } = matchedResults[0];
+    
+            return {
+                options: [{ title, slug, type, year, source: 'lookmovie' }]
+            }
+        }
+    } catch (e) {
         return { options: [] }
-    }
-
-    if (matchedResults.length > 1) {
-        const res = { options: [] };
-
-        matchedResults.forEach((r) => res.options.push({
-            title: r.title,
-            slug: r.slug,
-            type: r.type,
-            year: r.year,
-            source: 'lookmovie'
-        }));
-
-        return res;
-    } else {
-        const { title, slug, type, year } = matchedResults[0];
-
-        return {
-            options: [{ title, slug, type, year, source: 'lookmovie' }]
-        }
     }
 }
 async function getVideoUrl(config) {
