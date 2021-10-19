@@ -1,12 +1,13 @@
 import Fuse from 'fuse.js'
 import JSON5 from 'json5'
 
-const BASE_URL = `${process.env.REACT_APP_CORS_PROXY_URL}https://lookmovie.io`;
+const BASE_URL = `https://lookmovie.io`;
+const CORS_URL = `${process.env.REACT_APP_CORS_PROXY_URL}${BASE_URL}`;
 let phpsessid;
 
 async function findContent(searchTerm, type) {
     try {
-        const searchUrl = `${BASE_URL}/${type}s/search/?q=${encodeURIComponent(searchTerm)}`;
+        const searchUrl = `${CORS_URL}/${type}s/search/?q=${encodeURIComponent(searchTerm)}`;
         const searchRes = await fetch(searchUrl).then((d) => d.text());
     
         // Parse DOM to find search results on full search page
@@ -68,21 +69,29 @@ async function getVideoUrl(config) {
 
     let url = '';
 
+    // if (config.type === 'movie') {
+    //     url = `${CORS_URL}/manifests/movies/json/${config.id}/${now}/${accessToken}/master.m3u8`;
+    // } else if (config.type === 'show') {
+    //     url = `${CORS_URL}/manifests/shows/json/${accessToken}/${now}/${config.id}/master.m3u8`;
+    // }
+
     if (config.type === 'movie') {
-        url = `${BASE_URL}/manifests/movies/json/${config.id}/${now}/${accessToken}/master.m3u8`;
+        url = `${CORS_URL}/api/v1/security/movie-access?id_movie=${config.id}&token=1&sk=&step=1`;
     } else if (config.type === 'show') {
-        url = `${BASE_URL}/manifests/shows/json/${accessToken}/${now}/${config.id}/master.m3u8`;
+        url = `${CORS_URL}/api/v1/security/show-access?slug=${config.slug}&token=&step=2`;
     }
 
-    const videoOpts = await fetch(url).then((d) => d.json());
+    const videoOpts = await fetch(url, {
+        headers: { phpsessid },
+    }).then((d) => d.json());
 
     // Find video URL and return it (with a check for a full url if needed)
-    const opts = ["1080p", "1080", "720p", "720", "480p", "480", "auto"]
+    const opts = ["1080p", "1080", "720p", "720", "480p", "480", "auto"];
 
     let videoUrl = "";
     for (let res of opts) {
-        if (videoOpts[res] && !videoOpts[res].includes('dummy') && !videoOpts[res].includes('earth-1984') && !videoUrl) {
-            videoUrl = videoOpts[res]
+        if (videoOpts.streams[res] && !videoOpts.streams[res].includes('dummy') && !videoOpts.streams[res].includes('earth-1984') && !videoUrl) {
+            videoUrl = videoOpts.streams[res]
         }
     }
 
@@ -93,7 +102,7 @@ async function getVideoUrl(config) {
 }
 
 async function getEpisodeSubs (config) {
-    return await fetch(`${BASE_URL}/api/v1/shows/episode-subtitles/?id_episode=${config.id}`, {
+    return await fetch(`${CORS_URL}/api/v1/shows/episode-subtitles/?id_episode=${config.id}`, {
         headers: { phpsessid },
     }).then(res => res.json());
 }
@@ -102,9 +111,9 @@ async function getAccessInfo(config) {
     let url = '';
 
     if (config.type === 'movie') {
-        url = `${BASE_URL}/api/v1/security/movie-access?id_movie=${config.id}&token=1&sk=&step=1`;
+        url = `${CORS_URL}/api/v1/security/movie-access?id_movie=${config.id}&token=1&sk=&step=1`;
     } else if (config.type === 'show') {
-        url = `${BASE_URL}/api/v1/security/show-access?slug=${config.slug}&token=&step=2`;
+        url = `${CORS_URL}/api/v1/security/show-access?slug=${config.slug}&token=&step=2`;
     }
 
     const data = await fetch(url, {
@@ -120,7 +129,7 @@ async function getAccessInfo(config) {
 }
 
 async function getEpisodes(slug) {
-    const url = `${BASE_URL}/shows/view/${slug}`;
+    const url = `${CORS_URL}/shows/view/${slug}`;
     const pageReq = await fetch(url, {
         headers: { phpsessid },
     }).then((d) => d.text());
@@ -149,7 +158,7 @@ async function getEpisodes(slug) {
 }
 
 async function getStreamUrl(slug, type, season, episode) {
-    const url = `${BASE_URL}/${type}s/view/${slug}`;
+    const url = `${CORS_URL}/${type}s/view/${slug}`;
     const pageRes = await fetch(url);
     if (pageRes.headers.get('phpsessid')) phpsessid = pageRes.headers.get('phpsessid');
     const pageResText = await pageRes.text();
