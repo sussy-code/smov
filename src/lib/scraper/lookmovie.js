@@ -56,8 +56,8 @@ async function findContent(searchTerm, type) {
     }
 }
 async function getVideoUrl(config) {
-    const { subtitles, token: accessToken } = await getAccessInfo(config);
-    const now = Math.floor(Date.now() / 1e3);
+    const { subtitles } = await getAccessInfo(config);
+    // const now = Math.floor(Date.now() / 1e3);
 
     let subs;
 
