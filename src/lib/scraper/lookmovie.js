@@ -91,12 +91,6 @@ async function getVideoUrl(config) {
     };
 }
 
-async function getEpisodeSubs (config) {
-    return await fetch(`${CORS_URL}/api/v1/shows/episode-subtitles/?id_episode=${config.id}`, {
-        headers: { phpsessid },
-    }).then(res => res.json());
-}
-
 async function getEpisodes(slug) {
     const url = `${CORS_URL}/shows/view/${slug}`;
     const pageReq = await fetch(url, {
