@@ -61,20 +61,17 @@ async function getVideoUrl(config) {
     if (config.type === 'movie') {
         url = `${CORS_URL}/api/v1/security/movie-access?id_movie=${config.id}&token=1&sk=&step=1`;
     } else if (config.type === 'show') {
-        url = `${CORS_URL}/api/v1/security/show-access?slug=${config.slug}&token=&step=2`;
+        url = `${CORS_URL}/api/v1/security/episode-access?id_episode=${config.id}`;
     }
 
     const data = await fetch(url, {
         headers: { phpsessid },
     }).then((d) => d.json());
 
-    let subs;
-
-    if (config.type === "show") {
-        subs = await getEpisodeSubs(config);
-    } else if (config.type === "movie") {
-        subs = data?.data?.subtitles;
-    }
+    const subs = data?.subtitles.filter((sub) => {
+        if (typeof sub.file === 'object') return false;
+        return true;
+    })
 
     // Find video URL and return it (with a check for a full url if needed)
     const opts = ["1080p", "1080", "720p", "720", "480p", "480", "auto"];
@@ -86,9 +83,11 @@ async function getVideoUrl(config) {
         }
     }
 
+    console.log(subs);
+
     return {
         videoUrl: videoUrl.startsWith("/") ? `${BASE_URL}${videoUrl}` : videoUrl, 
-        subs, 
+        subs: subs, 
     };
 }
 
