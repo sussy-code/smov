@@ -5,14 +5,13 @@ import './index.css';
 
 function Router() {
   const { streamData } = useMovie();
-  if (streamData) return <MovieView />;
-  else return <SearchView />;
+  return streamData ? <MovieView /> : <SearchView />;
 }
 
 function App() {
   return (
     <MovieProvider>
-      <Router/>
+      <Router />
     </MovieProvider>
   );
 }
