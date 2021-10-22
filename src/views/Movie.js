@@ -57,9 +57,9 @@ export function MovieView(props) {
 
         setLoading(true);
         getStreamUrl(streamData.slug, streamData.type, streamData.source, season, episode)
-        .then(({ url }) => {
+        .then(({ url, subtitles }) => {
                 if (cancel) return;
-                streamData.subtitles = [];
+                streamData.subtitles = subtitles;
                 setStreamUrl(url)
                 setLoading(false);
             })
