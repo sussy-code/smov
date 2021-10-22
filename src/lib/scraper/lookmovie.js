@@ -83,8 +83,6 @@ async function getVideoUrl(config) {
         }
     }
 
-    console.log(subs);
-
     return {
         videoUrl: videoUrl.startsWith("/") ? `${BASE_URL}${videoUrl}` : videoUrl, 
         subs: subs, 
