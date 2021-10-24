@@ -11,7 +11,7 @@ function buildStoreObject(data) {
             while (obj["--version"] !== this.currentVersion) {
                 // get version
                 let version = obj["--version"] || 0;
-                if (version === undefined || version.constructor !== Number)
+                if (version.constructor !== Number || version < 0)
                     version = -42; // invalid on purpose so it will reset
                 else {
                     version = (version+1).toString()
@@ -98,26 +98,33 @@ export function versionedStoreBuilder() {
             this._data.storageString = str;
             return this;
         },
-        addVersion(num, updateFunc, initFunc) {
+        addVersion({ version, migrate, create }) {
+            // input checking
+            if (version < 0)
+                throw new Error("Cannot add version below 0 in store");
+            if (version > 0 && !migrate)
+                throw new Error(`Missing migration on version ${version} (needed for any version above 0)`);
+
             // update max version list
-            if (num > this._data.maxVersion)
-                this._data.maxVersion = num;
+            if (version > this._data.maxVersion)
+                this._data.maxVersion = version;
             // add to version list
-            this._data.versionList.push(num);
+            this._data.versionList.push(version);
+
 
             // register version
-            this._data.versions[num.toString()] = {
-                version: num, // version number
-                update: (data) => { // update function, and increment version
-                    updateFunc(data);
-                    data["--version"] = num;
+            this._data.versions[version.toString()] = {
+                version: version, // version number
+                update: migrate ? (data) => { // update function, and increment version
+                    migrate(data);
+                    data["--version"] = version;
                     return data;
-                },
-                init: () => { // return an initial object
-                    const data = initFunc();
-                    data["--version"] = num;
+                } : null,
+                init: create ? () => { // return an initial object
+                    const data = create();
+                    data["--version"] = version;
                     return data;
-                }
+                } : null
             }
             return this;
         },
@@ -134,6 +141,10 @@ export function versionedStoreBuilder() {
             // version zero must exist
             if (versionListSorted[0] !== 0)
                 throw new Error("Version 0 doesn't exist in version list of store");
+
+            // max version must have init function
+            if (!this._data.versions[this._data.maxVersion.toString()].init)
+                throw new Error(`Missing create function on version ${this._data.maxVersion} (needed for latest version of store)`);
 
             // check storage string
             if (!this._data.storageString)
