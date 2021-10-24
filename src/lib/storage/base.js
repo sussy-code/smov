@@ -38,6 +38,12 @@ function buildStoreObject(data) {
             // updates succesful, return
             return obj;
         },
+
+        /*
+         * get a instance of a stored item
+         * will be migrated to the latest version on fetch
+         * call .save() on it put the new modified data back
+        */
         get() {
             // get from storage api
             const store = this;
@@ -94,10 +100,22 @@ export function versionedStoreBuilder() {
             versions: {},
             storageString: null,
         },
+
+        /*
+         * set key of localstorage item, must be unique
+        */
         setKey(str) {
             this._data.storageString = str;
             return this;
         },
+
+        /*
+         * add a version to the store
+         *
+         * version: version number
+         * migrate: function to update from previous version to this version
+         * create: function to return an empty storage item from this version (in correct syntax)
+        */
         addVersion({ version, migrate, create }) {
             // input checking
             if (version < 0)
@@ -128,6 +146,10 @@ export function versionedStoreBuilder() {
             }
             return this;
         },
+
+        /*
+         * returns function store based on what has been set
+        */
         build() {
             // check if version list doesnt skip versions
             const versionListSorted = this._data.versionList.sort((a,b)=>a-b);
