@@ -1,5 +1,7 @@
 import { versionedStoreBuilder } from './base.js';
 
+// TODO implement watched store
+// TODO implement the store into the rest of the codebase
 export const store = versionedStoreBuilder()
     .setKey('test-store')
     .addVersion({
