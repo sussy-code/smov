@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap');
+body {
+	background-color: #1B1F3B;
+	font-family: 'Open Sans', Arial, sans-serif;
+}
+
+/* select box styling */
+.select-box {
+  display: flex;
+  width: 200px;
+  flex-direction: column;
+	position: relative;
+}
+
+.select-box > * {
+	box-sizing: border-box;
+}
+
+.select-box .options-container {
+  max-height: 0;
+  width: calc( 100% - 12px);
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+  overflow: hidden;
+  border-radius: 5px;
+  background-color: #272C4F;
+  order: 1;
+	position: absolute;
+	top: 50px;
+}
+
+.select-box .selected {
+  margin-bottom: 8px;
+  position: relative;
+  width: 188px;
+  height: 45px;
+  border-radius: 5px;
+	display: flex;
+	align-items: center;
+  background-color: #272C4F;
+	color: white;
+  order: 0;
+}
+
+.selected::after {
+	/* Font Awesome	 */
+	content: "\f078";
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
+	-webkit-font-smoothing: antialiased;
+	display: inline-block;
+	font-style: normal;
+	font-variant: normal;
+	text-rendering: auto;
+	line-height: 1;
+	/* BG Img	 */
+/* 	content:  url("img/arrow-down.svg");	 */
+	position: absolute;
+	right: 15px;
+	top: 50%;
+	transition: transform 150ms;
+	transform: translateY(-50%);
+}
+
+
+.select-box .option .item {
+	color: #AFB5DD;
+}
+
+.select-box .options-container.active {
+  max-height: 240px;
+  opacity: 1;
+  overflow-y: scroll;
+}
+
+.select-box .options-container.active + .selected::after {
+  transform: translateY(-50%) rotateX(180deg);
+}
+
+.select-box .options-container::-webkit-scrollbar {
+  width: 8px;
+  background: #0d141f;
+  background: #81878f;
+  background: #f1f2f3;
+  border-radius: 0 5px 5px 0;
+}
+
+.select-box .options-container::-webkit-scrollbar-thumb {
+  background: #525861;
+  background: #81878f;
+  border-radius: 0 5px 5px 0;
+}
+.select-box .option,
+.selected {
+  padding: 12px 15px;
+  cursor: pointer;
+}
+
+.select-box .option:hover {
+  background: #2F345B;
+}
+.select-box .option:hover .item {
+	color: white;
+}
+
+.select-box label {
+  cursor: pointer;
+}
+
+.select-box .option .radio {
+  display: none;
+}
