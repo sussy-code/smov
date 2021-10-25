@@ -1,13 +1,13 @@
 import React from 'react'
 import { Arrow } from './Arrow'
-// import { Cross } from './Crosss'
 import { PercentageOverlay } from './PercentageOverlay'
+import { VideoProgressStore } from '../lib/storage/VideoProgress'
 import './MovieRow.css'
 
 // title: string
 // onClick: () => void
 export function MovieRow(props) {
-    const progressData = JSON.parse(localStorage.getItem("video-progress") || "{}")
+    const progressData = VideoProgressStore.get();
     let progress;
     let percentage = null;
     

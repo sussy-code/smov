@@ -7,6 +7,7 @@ import { useMovie } from '../hooks/useMovie'
 import { VideoElement } from '../components/VideoElement'
 import { EpisodeSelector } from '../components/EpisodeSelector'
 import { getStreamUrl } from '../lib/index'
+import { VideoProgressStore } from '../lib/storage/VideoProgress'
 
 import './Movie.css'
 
@@ -81,26 +82,26 @@ export function MovieView(props) {
     }, [streamData.seasons, streamData.episodes, streamData.type, selectedSeason])
 
     React.useEffect(() => {
-        let ls = JSON.parse(localStorage.getItem("video-progress") || "{}")
+        const progressData = VideoProgressStore.get();
         let key = streamData.type === "show" ? `${season}-${episode}` : "full"
-        let time = ls?.[streamData.source]?.[streamData.type]?.[streamData.slug]?.[key]?.currentlyAt;
+        let time = progressData?.[streamData.source]?.[streamData.type]?.[streamData.slug]?.[key]?.currentlyAt;
         setStartTime(time);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [baseRouteMatch, showRouteMatch]);
 
     const setProgress = (evt) => {
-        let ls = JSON.parse(localStorage.getItem("video-progress") || "{}")
+        let progressSave = VideoProgressStore.get();
 
-        if (!ls[streamData.source])
-            ls[streamData.source] = {}
-        if (!ls[streamData.source][streamData.type])
-            ls[streamData.source][streamData.type] = {}
-        if (!ls[streamData.source][streamData.type][streamData.slug])
-            ls[streamData.source][streamData.type][streamData.slug] = {}
+        if (!progressSave[streamData.source])
+            progressSave[streamData.source] = {}
+        if (!progressSave[streamData.source][streamData.type])
+            progressSave[streamData.source][streamData.type] = {}
+        if (!progressSave[streamData.source][streamData.type][streamData.slug])
+            progressSave[streamData.source][streamData.type][streamData.slug] = {}
         
         // Store real data
         let key = streamData.type === "show" ? `${season}-${episode}` : "full"
-        ls[streamData.source][streamData.type][streamData.slug][key] = {
+        progressSave[streamData.source][streamData.type][streamData.slug][key] = {
             currentlyAt: Math.floor(evt.currentTarget.currentTime),
             totalDuration: Math.floor(evt.currentTarget.duration),
             updatedAt: Date.now(),
@@ -108,13 +109,13 @@ export function MovieView(props) {
         }
 
         if(streamData.type === "show") {
-            ls[streamData.source][streamData.type][streamData.slug][key].show = {
+            progressSave[streamData.source][streamData.type][streamData.slug][key].show = {
                 season,
                 episode
             }
         }
 
-        localStorage.setItem("video-progress", JSON.stringify(ls))
+        progressSave.save();
     }
 
     return (

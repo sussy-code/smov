@@ -1,11 +1,12 @@
 import React from 'react';
 import { TypeSelector } from './TypeSelector';
 import { NumberSelector } from './NumberSelector';
+import { VideoProgressStore } from '../lib/storage/VideoProgress'
 import './EpisodeSelector.css'
 
 export function EpisodeSelector({ setSelectedSeason, selectedSeason, setEpisode, seasons, episodes, currentSeason, currentEpisode, streamData }) {
     const choices = episodes ? episodes.map(v => {
-        let progressData = JSON.parse(localStorage.getItem('video-progress') || "{}")
+        const progressData = VideoProgressStore.get();
         
         let currentlyAt = 0;
         let totalDuration = 0;
