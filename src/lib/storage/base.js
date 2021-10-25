@@ -20,7 +20,6 @@ function buildStoreObject(d) {
             else {
                 version = (version+1).toString()
             }
-            console.log(this, version);
             
             // check if version exists
             if (!this.versions[version]) {
@@ -31,7 +30,6 @@ function buildStoreObject(d) {
 
             // update object
             obj = this.versions[version].update(obj);
-            console.log(obj);
         }
 
         // if resulting obj is null, use latest version as init object
