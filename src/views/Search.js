@@ -215,9 +215,9 @@ export function SearchView() {
 
             {/* Nav */}
             <nav>
-                <a className={page === 'search' ? 'selected-link' : ''} onClick={() => setPage('search')} href>Search</a>
+                <span className={page === 'search' ? 'selected-link' : ''} onClick={() => setPage('search')}>Search</span>
                 {continueWatching.length > 0 ?
-                    <a className={page === 'watching' ? 'selected-link' : ''} onClick={() => setPage('watching')} href>Continue watching</a>
+                    <span className={page === 'watching' ? 'selected-link' : ''} onClick={() => setPage('watching')}>Continue watching</span>
                     : ''}
             </nav>
 
