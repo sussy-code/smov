@@ -12,16 +12,16 @@
     width: 100%;
     max-width: 624px;
 }
-.cardView nav a {
+.cardView nav span {
     padding: 8px 16px;
     margin-right: 10px;
     border-radius: 4px;
     color: var(--text);
 }
-.cardView nav a:not(.selected-link) {
+.cardView nav span:not(.selected-link) {
     cursor: pointer;
 }
-.cardView nav a.selected-link {
+.cardView nav span.selected-link {
     background: var(--card);
     color: var(--button-text);
     font-weight: bold;

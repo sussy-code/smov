@@ -11,6 +11,7 @@ import { Title } from '../components/Title';
 import { TypeSelector } from '../components/TypeSelector';
 import { useMovie } from '../hooks/useMovie';
 import { findContent, getEpisodes, getStreamUrl } from '../lib/index';
+import { VideoProgressStore } from '../lib/storage/VideoProgress'
 
 import './Search.css';
 
@@ -134,7 +135,7 @@ export function SearchView() {
     }, []);
 
     React.useEffect(() => {
-        const progressData = JSON.parse(localStorage.getItem('video-progress') || "{}")
+        const progressData = VideoProgressStore.get();
         let newContinueWatching = []
 
         Object.keys(progressData).forEach((source) => {
@@ -214,9 +215,9 @@ export function SearchView() {
 
             {/* Nav */}
             <nav>
-                <a className={page === 'search' ? 'selected-link' : ''} onClick={() => setPage('search')} href>Search</a>
+                <span className={page === 'search' ? 'selected-link' : ''} onClick={() => setPage('search')}>Search</span>
                 {continueWatching.length > 0 ?
-                    <a className={page === 'watching' ? 'selected-link' : ''} onClick={() => setPage('watching')} href>Continue watching</a>
+                    <span className={page === 'watching' ? 'selected-link' : ''} onClick={() => setPage('watching')}>Continue watching</span>
                     : ''}
             </nav>
 
