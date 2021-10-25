@@ -32,7 +32,6 @@ version 0
 }
 */
 
-// TODO implement the store into the rest of the codebase
 export const VideoProgressStore = versionedStoreBuilder()
     .setKey('video-progress')
     .addVersion({
