@@ -18,6 +18,10 @@
   max-width: 100%;
 }
 
+.card-wrapper.overflow-hidden {
+    overflow: hidden;
+}
+
 @media screen and (max-width: 700px) {
     .card {
         margin: 0;
