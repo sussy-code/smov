@@ -44,7 +44,8 @@ export function SelectBox({ options, selectedItem, setSelectedItem }) {
         return () => {
             document.removeEventListener("mousedown", handleClick);
         };
-    }, [handleClick]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const onOptionClick = (e, option, i) => {
         e.stopPropagation()
