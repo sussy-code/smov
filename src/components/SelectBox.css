@@ -1,8 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap');
-body {
-	background-color: #1B1F3B;
-	font-family: 'Open Sans', Arial, sans-serif;
-}
 
 /* select box styling */
 .select-box {
@@ -23,9 +19,10 @@ body {
   transition: all 0.2s ease-in-out;
   overflow: hidden;
   border-radius: 5px;
-  background-color: #272C4F;
+  background-color: var(--choice);
   order: 1;
 	position: absolute;
+  z-index: 1;
 	top: 50px;
 }
 
@@ -37,34 +34,29 @@ body {
   border-radius: 5px;
 	display: flex;
 	align-items: center;
-  background-color: #272C4F;
+  background-color: var(--choice);
 	color: white;
   order: 0;
 }
 
-.selected::after {
-	/* Font Awesome	 */
-	content: "\f078";
-	font-family: "Font Awesome 5 Free";
-	font-weight: 900;
-	-webkit-font-smoothing: antialiased;
-	display: inline-block;
-	font-style: normal;
-	font-variant: normal;
-	text-rendering: auto;
-	line-height: 1;
-	/* BG Img	 */
-/* 	content:  url("img/arrow-down.svg");	 */
-	position: absolute;
-	right: 15px;
-	top: 50%;
-	transition: transform 150ms;
-	transform: translateY(-50%);
+.select-box .selected::after {
+  content: "";
+  width: 1.2rem;
+  height: 1.2rem;
+  background: url(../assets/down-arrow.svg);
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transition: transform 150ms;
+  transform: translateY(-50%);
+  background-size: contain;
+  background-position: center;
 }
 
 
 .select-box .option .item {
-	color: #AFB5DD;
+	color: var(--text);
+  font-weight: bold;
 }
 
 .select-box .options-container.active {
@@ -90,17 +82,20 @@ body {
   background: #81878f;
   border-radius: 0 5px 5px 0;
 }
+.select-box .option {
+  padding: 12px 15px;
+}
+
 .select-box .option,
 .selected {
-  padding: 12px 15px;
   cursor: pointer;
 }
 
-.select-box .option:hover {
-  background: #2F345B;
+.select-box .options-container .option:hover {
+  background: var(--choice-hover);
 }
-.select-box .option:hover .item {
-	color: white;
+.select-box .options-container .option:hover .item {
+	color: var(--choice-active-text, var(--text));
 }
 
 .select-box label {

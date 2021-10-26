@@ -15,12 +15,11 @@ function Option({ option, onClick }) {
     )
 }
 
-export function SelectBox({ options }) {
+export function SelectBox({ options, selectedItem, setSelectedItem }) {
     if (!Array.isArray(options)) {
-        throw "Items must be an array!"
+        throw new Error("Items must be an array!")
     }
 
-    const [selectedItem, setSelectedItem] = useState(0)
     const [active, setActive] = useState(false)
 
     const containerRef = useRef();
@@ -41,7 +40,7 @@ export function SelectBox({ options }) {
     useEffect(() => {
         // add when mounted
         document.addEventListener("mousedown", handleClick);
-        document.addEventListener("scroll", closeDropdown);
+        //document.addEventListener("scroll", closeDropdown);
         // return function to be called when unmounted
         return () => {
             document.removeEventListener("mousedown", handleClick);
@@ -49,19 +48,20 @@ export function SelectBox({ options }) {
         };
     }, []);
 
-    const onOptionClick = (option, i) => {
+    const onOptionClick = (e, option, i) => {
+        e.stopPropagation()
         setSelectedItem(i)
         closeDropdown()
     }
 
     return (
-        <div className="select-box" ref={containerRef}>
+        <div className="select-box" ref={containerRef} onClick={() => setActive(a => !a)}>
             <div className={"options-container" + (active ? " active" : "")}>
                 {options.map((opt, i) => (
-                    <Option option={opt} key={i} onClick={() => onOptionClick(opt, i)} />
+                    <Option option={opt} key={i} onClick={(e) => onOptionClick(e, opt, i)} />
                 ))}
             </div>
-            <div className="selected" onClick={() => setActive(a => !a)}>
+            <div className="selected">
                 {options ? (
                     <Option option={options[selectedItem]} />
                 ) : null}
