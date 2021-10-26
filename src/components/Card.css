@@ -2,6 +2,7 @@
     background-color: var(--card);
     padding: 3rem 4rem;
     margin: 0 3rem;
+    margin-bottom: 6rem;
     border-radius: 10px;
     box-sizing: border-box;
     transition: height 500ms ease-in-out;
@@ -13,7 +14,6 @@
 
 .card-wrapper {
   transition: height 500ms ease-in-out;
-  overflow: hidden;
   width: 45rem;
   max-width: 100%;
 }
@@ -21,6 +21,7 @@
 @media screen and (max-width: 700px) {
     .card {
         margin: 0;
+        margin-bottom: 6rem;
         padding: 3rem 2rem;
     }
 }
