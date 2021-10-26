@@ -40,13 +40,11 @@ export function SelectBox({ options, selectedItem, setSelectedItem }) {
     useEffect(() => {
         // add when mounted
         document.addEventListener("mousedown", handleClick);
-        //document.addEventListener("scroll", closeDropdown);
         // return function to be called when unmounted
         return () => {
             document.removeEventListener("mousedown", handleClick);
-            document.removeEventListener("scroll", closeDropdown)
         };
-    }, []);
+    }, [handleClick]);
 
     const onOptionClick = (e, option, i) => {
         e.stopPropagation()
