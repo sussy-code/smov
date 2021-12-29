@@ -1,7 +1,7 @@
 import Fuse from 'fuse.js'
 import JSON5 from 'json5'
 
-const BASE_URL = `https://lookmovie.io`;
+const BASE_URL = `https://lookmovie125.xyz`;
 const CORS_URL = `${process.env.REACT_APP_CORS_PROXY_URL}${BASE_URL}`;
 let phpsessid;
 
