@@ -155,7 +155,7 @@ async function getStreamUrl(slug, type, season, episode) {
         type: type,
     }); 
 
-    return { url: videoUrl.videoUrl, subtitles: videoUrl.subs };
+    return { url: `${process.env.REACT_APP_CORS_PROXY_URL}${videoUrl.videoUrl}`, subtitles: videoUrl.subs };
 }
 
 
