@@ -1,7 +1,8 @@
 import Fuse from 'fuse.js'
 import JSON5 from 'json5'
 
-const BASE_URL = `https://lookmovie125.xyz`;
+const BASE_URL = `https://lookmovie.io`;
+const API_URL = `${process.env.REACT_APP_CORS_PROXY_URL}https://lookmovie125.xyz`;
 const CORS_URL = `${process.env.REACT_APP_CORS_PROXY_URL}${BASE_URL}`;
 let phpsessid;
 
@@ -59,9 +60,9 @@ async function getVideoUrl(config) {
     let url = '';
 
     if (config.type === 'movie') {
-        url = `${CORS_URL}/api/v1/security/movie-access?id_movie=${config.id}&token=1&sk=&step=1`;
+        url = `${API_URL}/api/v1/security/movie-access?id_movie=${config.id}&token=1&sk=&step=1`;
     } else if (config.type === 'show') {
-        url = `${CORS_URL}/api/v1/security/episode-access?id_episode=${config.id}`;
+        url = `${API_URL}/api/v1/security/episode-access?id_episode=${config.id}`;
     }
 
     const data = await fetch(url, {
