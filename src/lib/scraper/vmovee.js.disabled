@@ -1,0 +1,84 @@
+// THIS SCRAPER DOES NOT CURRENTLY WORK AND IS NOT IN USE
+
+import { unpack } from '../util/unpacker';
+
+const BASE_URL = `https://www.vmovee.watch`;
+const CORS_URL = `${process.env.REACT_APP_CORS_PROXY_URL}${BASE_URL}`;
+const SHOW_URL = `${CORS_URL}/series`
+const MOVIE_URL = `${CORS_URL}/movies`
+const MOVIE_URL_NO_CORS = `${BASE_URL}/movies`
+
+async function findContent(searchTerm, type) {
+    try {
+        if (type !== 'movie') return;
+
+        const searchUrl = `${CORS_URL}/?s=${encodeURIComponent(searchTerm)}`;
+        const searchRes = await fetch(searchUrl).then((d) => d.text());
+
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(searchRes, "text/html");
+        const nodes = Array.from(doc.querySelectorAll('div.search-page > div.result-item > article'));
+        const results = nodes.map(node => {
+            const imgHolder = node.querySelector('div.image > div.thumbnail > a');
+            const titleHolder = node.querySelector('div.title > a');
+
+            return {
+                type: imgHolder.querySelector('span').textContent === 'TV' ? 'show' : 'movie',
+                title: titleHolder.textContent,
+                year: node.querySelector('div.details > div.meta > span.year').textContent,
+                slug: titleHolder.href.split('/')[4],
+                source: 'vmovee'
+            }
+        });
+
+        if (results.length > 1) {
+            return { options: results };
+        } else {
+            return { options: [ results[0] ] }
+        }
+    } catch (err) {
+        throw new Error(err)
+    }
+}
+
+async function getStreamUrl(slug, type, season, episode) {
+    let url = '';
+
+    if (type === 'movie') {
+        url = `${MOVIE_URL}/${slug}`;
+    } else if (type === 'show') {
+        url = `${SHOW_URL}/${slug}`;
+    }
+
+    const res1 = await fetch(url, { headers: new Headers().append('referer', `${BASE_URL}/dashboard/admin-ajax.php`) });
+    const id = res1.headers.get('link').split('>')[0].split('?p=')[1];
+
+    const res2Headers = new Headers().append('referer', `${BASE_URL}/dashboard/admin-ajax.php`);
+    const form = new FormData();
+    form.append('action', 'doo_player_ajax')
+    form.append('post', id)
+    form.append('nume', '2')
+    form.append('type', type)
+
+    const res2 = await fetch(`${CORS_URL}/dashboard/admin-ajax.php`, {
+        method: 'POST',
+        headers: res2Headers,
+        body: form
+    }).then((res) => res.json());
+    let realUrl = res2.embed_url;
+
+    console.log(res2)
+
+    if (realUrl.startsWith('//')) {
+        realUrl = `https:${realUrl}`;
+    }
+
+    const res3 = await fetch(`${process.env.REACT_APP_CORS_PROXY_URL}${realUrl}`);
+    res3.headers.forEach(console.log)
+
+    return { url: '' }
+
+}
+
+const vmovee = { findContent, getStreamUrl }
+export default vmovee;

@@ -1,11 +1,11 @@
-import lookMovie from './scraper/lookmovie';
-import gomostream from './scraper/gomostream';
+import lookmovie from './scraper/lookmovie';
+import theflix from './scraper/theflix';
 
 async function findContent(searchTerm, type) {
     const results = { options: []};
     const content = await Promise.all([
-        lookMovie.findContent(searchTerm, type),
-        gomostream.findContent(searchTerm, type)
+        lookmovie.findContent(searchTerm, type),
+        theflix.findContent(searchTerm, type)
     ]);
 
     content.forEach((o) => {
@@ -23,9 +23,9 @@ async function findContent(searchTerm, type) {
 async function getStreamUrl(slug, type, source, season, episode) {
     switch (source) {
         case 'lookmovie':
-            return await lookMovie.getStreamUrl(slug, type, season, episode);
-        case 'gomostream':
-            return await gomostream.getStreamUrl(slug, type, season, episode);
+            return await lookmovie.getStreamUrl(slug, type, season, episode);
+        case 'theflix':
+            return await theflix.getStreamUrl(slug, type, season, episode);
         default:
             return;
     }
@@ -34,8 +34,7 @@ async function getStreamUrl(slug, type, source, season, episode) {
 async function getEpisodes(slug, source) {
     switch (source) {
         case 'lookmovie':
-            return await lookMovie.getEpisodes(slug);
-        case 'gomostream':
+            return await lookmovie.getEpisodes(slug);
         default:
             return;
     }

@@ -1,3 +1,5 @@
+// THIS SCRAPER DOES NOT CURRENTLY WORK AND IS NOT IN USE
+
 import { unpack } from '../util/unpacker';
 
 const BASE_URL = `${process.env.REACT_APP_CORS_PROXY_URL}https://gomo.to`;
