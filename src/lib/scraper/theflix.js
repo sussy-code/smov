@@ -85,7 +85,7 @@ async function getEpisodes(slug) {
 }
 
 async function getStreamUrl(slug, type, season, episode) {
-    const res = await fetch(`${BASE_URL}/${type === 'show' ? 'tv-show' : type}/${slug}/${type === 'show' ? `season-${season}/episode-${episode}` : ""}${ type === 'movie' ? 'movieInfo=' + slug : '' }`).then(d => d.text());
+    const res = await fetch(`${BASE_URL}/${type === 'show' ? 'tv-show' : type}/${slug}/${type === 'show' ? `season-${season}/episode-${episode}` : ""}${ type === 'movie' ? '?movieInfo=' + slug : '' }`).then(d => d.text());
 
     const scripts = Array.from(new DOMParser().parseFromString(res, "text/html").querySelectorAll('script'));
     const prop = scripts.find((e) => e.textContent.includes("theflixvd.b-cdn"));
