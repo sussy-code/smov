@@ -35,6 +35,8 @@ async function getEpisodes(slug, source) {
     switch (source) {
         case 'lookmovie':
             return await lookmovie.getEpisodes(slug);
+        case 'theflix':
+            return await theflix.getEpisodes(slug);
         default:
             return;
     }

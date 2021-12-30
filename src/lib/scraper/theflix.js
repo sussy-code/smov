@@ -2,33 +2,38 @@ const BASE_URL = `${process.env.REACT_APP_CORS_PROXY_URL}https://www.theflix.to`
 
 async function findContent(searchTerm, type) {
     try {
-        if (type !== 'movie') return;
-
         const term = searchTerm.toLowerCase()
-        const tmdbRes = await fetch(`${process.env.REACT_APP_CORS_PROXY_URL}https://www.themoviedb.org/search?query=${term}`).then(d => d.text());
+        const tmdbRes = await fetch(`${process.env.REACT_APP_CORS_PROXY_URL}https://www.themoviedb.org/search/${type === 'show' ? 'tv' : type}?query=${term}`).then(d => d.text());
 
         const doc = new DOMParser().parseFromString(tmdbRes, 'text/html');
         const nodes = Array.from(doc.querySelectorAll('div.results > div > div.wrapper'));
         const results = nodes.slice(0, 10).map((node) => {
             let type = node.querySelector('div.details > div.wrapper > div.title > div > a').getAttribute('data-media-type');
-            switch (type) {
-                case 'movie':
-                    type = 'movie';
-                    break;
-                case 'tv':
-                    type = 'show';
-                    // eslint-disable-next-line array-callback-return
-                    return;
-                case 'collection':
-                    // eslint-disable-next-line array-callback-return
-                    return;
-                default:
-                    break;
-            }
+            type = type === 'tv' ? 'show' : type;
 
-            const title = node.querySelector('div.details > div.wrapper > div.title > div > a').textContent;
-            const year = node.querySelector('div.details > div.wrapper > div.title > span').textContent.trim().split(' ')[2];
-            const slug = node.querySelector('div.details > div.wrapper > div.title > div > a').getAttribute('href').split('/')[2];
+            let title;
+            let year;
+            let slug;
+
+            if (type === 'movie') {
+                try {
+                    title = node.querySelector('div.details > div.wrapper > div.title > div > a').textContent;
+                    year = node.querySelector('div.details > div.wrapper > div.title > span').textContent.trim().split(' ')[2];
+                    slug = node.querySelector('div.details > div.wrapper > div.title > div > a').getAttribute('href').split('/')[2];
+                } catch (e) {
+                    // eslint-disable-next-line array-callback-return
+                    return;
+                }
+            } else if (type === 'show') {
+                try {
+                    title = node.querySelector('div.details > div.wrapper > div.title > div > a > h2').textContent;
+                    year = node.querySelector('div.details > div.wrapper > div.title > span').textContent.trim().split(' ')[2];
+                    slug = node.querySelector('div.details > div.wrapper > div.title > div > a').getAttribute('href').split('/')[2];
+                } catch (e) {
+                    // eslint-disable-next-line array-callback-return
+                    return;
+                }
+            }
 
             return {
                 type: type,
@@ -50,10 +55,37 @@ async function findContent(searchTerm, type) {
     }
 }
 
-async function getStreamUrl(slug, type, season, episode) {
-    if (type !== 'movie') return;
+async function getEpisodes(slug) {
+    const tmdbRes = await fetch(`${process.env.REACT_APP_CORS_PROXY_URL}https://www.themoviedb.org/tv/${slug}/seasons`).then(d => d.text());
+    const sNodes = Array.from(new DOMParser().parseFromString(tmdbRes, 'text/html').querySelectorAll('div.column_wrapper > div.flex > div'));
 
-    const res = await fetch(`${BASE_URL}/${type}/${slug}?movieInfo=${slug}`).then(d => d.text());
+    let seasons = [];
+    let episodes = [];
+
+    for (let i = 0; i < sNodes.length; i++) {
+        const text = sNodes[i].querySelector('div > section > div > div > div > h2 > a').textContent;
+        if (!text.includes('Season')) return;
+
+        const season = text.split(' ')[1];
+
+        if (!seasons.includes(season)) {
+            seasons.push(season);
+        }
+
+        if (!episodes[season]) {
+            episodes[season] = [];
+        }
+        
+        const epRes = await fetch(`${process.env.REACT_APP_CORS_PROXY_URL}https://www.themoviedb.org/tv/${slug}/season/${season}`).then(d => d.text());
+        const epNodes = Array.from(new DOMParser().parseFromString(epRes, 'text/html').querySelectorAll('div.episode_list > div.card'));
+        epNodes.forEach((e, i) => episodes[season].push(++i));
+    }
+
+    return { seasons, episodes };
+}
+
+async function getStreamUrl(slug, type, season, episode) {
+    const res = await fetch(`${BASE_URL}/${type === 'show' ? 'tv-show' : type}/${slug}/${type === 'show' ? `season-${season}/episode-${episode}` : ""}${ type === 'movie' ? 'movieInfo=' + slug : '' }`).then(d => d.text());
 
     const scripts = Array.from(new DOMParser().parseFromString(res, "text/html").querySelectorAll('script'));
     const prop = scripts.find((e) => e.textContent.includes("theflixvd.b-cdn"));
@@ -66,5 +98,5 @@ async function getStreamUrl(slug, type, season, episode) {
     return { url: '' }
 }
 
-const theflix = { findContent, getStreamUrl }
+const theflix = { findContent, getStreamUrl, getEpisodes }
 export default theflix;
