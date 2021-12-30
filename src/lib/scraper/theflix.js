@@ -62,9 +62,9 @@ async function getEpisodes(slug) {
     let seasons = [];
     let episodes = [];
 
-    for (let i = 0; i < sNodes.length; i++) {
-        const text = sNodes[i].querySelector('div > section > div > div > div > h2 > a').textContent;
-        if (!text.includes('Season')) return;
+    for (let s of sNodes) {
+        const text = s.querySelector('div > section > div > div > div > h2 > a').textContent;
+        if (!text.includes('Season')) continue;
 
         const season = text.split(' ')[1];
 
@@ -80,7 +80,7 @@ async function getEpisodes(slug) {
         const epNodes = Array.from(new DOMParser().parseFromString(epRes, 'text/html').querySelectorAll('div.episode_list > div.card'));
         epNodes.forEach((e, i) => episodes[season].push(++i));
     }
-
+    
     return { seasons, episodes };
 }
 
