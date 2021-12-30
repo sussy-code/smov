@@ -18,7 +18,7 @@ export function VideoElement({ streamUrl, loading, setProgress, videoRef, startT
     }
 
     React.useEffect(() => {
-        if (!streamUrl.endsWith('.mp4')) {
+        if (!streamUrl.includes('.mp4')) {
             setError(false)
             if (!videoRef || !videoRef.current || !streamUrl || streamUrl.length === 0 || loading) return;
             
@@ -46,7 +46,7 @@ export function VideoElement({ streamUrl, loading, setProgress, videoRef, startT
     if (!streamUrl || streamUrl.length === 0)
         return <VideoPlaceholder>No video selected</VideoPlaceholder>
 
-    if (!streamUrl.endsWith('.mp4')) {
+    if (!streamUrl.includes('.mp4')) {
         return (
             <video crossOrigin="anonymous" className="videoElement" ref={videoRef} controls autoPlay onProgress={setProgress} onLoadedData={onLoad}>
                 { streamData.subtitles && streamData.subtitles.map((sub, index) => <track key={index} kind="captions" label={sub.language} src={`${process.env.REACT_APP_CORS_PROXY_URL}https://lookmovie.io${sub.file}` } />) }
