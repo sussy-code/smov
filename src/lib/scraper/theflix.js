@@ -56,7 +56,17 @@ async function findContent(searchTerm, type) {
 }
 
 async function getEpisodes(slug) {
-    const tmdbRes = await fetch(`${process.env.REACT_APP_CORS_PROXY_URL}https://www.themoviedb.org/tv/${slug}/seasons`).then(d => d.text());
+    let tmdbRes;
+    
+    try {
+        tmdbRes = await fetch(`${process.env.REACT_APP_CORS_PROXY_URL}https://www.themoviedb.org/tv/${slug}/seasons`).then(d => d.text());
+    } catch (err) {
+        tmdbRes = await fetch(`${process.env.REACT_APP_CORS_PROXY_URL}https://www.themoviedb.org/tv/${slug.split('-')[0]}/seasons`).then(d => d.text());
+
+        if (tmdbRes)
+            slug = slug.split('-')[0];
+    }
+
     const sNodes = Array.from(new DOMParser().parseFromString(tmdbRes, 'text/html').querySelectorAll('div.column_wrapper > div.flex > div'));
 
     let seasons = [];
