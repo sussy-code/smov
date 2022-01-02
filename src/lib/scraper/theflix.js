@@ -95,7 +95,15 @@ async function getEpisodes(slug) {
 }
 
 async function getStreamUrl(slug, type, season, episode) {
-    const res = await fetch(`${BASE_URL}/${type === 'show' ? 'tv-show' : type}/${slug}/${type === 'show' ? `season-${season}/episode-${episode}` : ""}${ type === 'movie' ? '?movieInfo=' + slug : '' }`).then(d => d.text());
+    let url;
+
+    if (type === 'show') {
+        url = `${BASE_URL}/tv-show/${slug}/season-${season}/episode-${episode}`;
+    } else {
+        url = `${BASE_URL}/movie/${slug}?movieInfo=${slug}`;
+    }
+
+    const res = await fetch(url).then(d => d.text());
 
     const scripts = Array.from(new DOMParser().parseFromString(res, "text/html").querySelectorAll('script'));
     const prop = scripts.find((e) => e.textContent.includes("theflixvd.b-cdn"));
