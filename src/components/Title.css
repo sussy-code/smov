@@ -29,6 +29,15 @@
     cursor: pointer;
 }
 
+.title.accent.title-accent-link:focus-visible {
+    border: 1px solid #ffffff;
+}
+
+.title.accent.title-accent-link:focus-visible .arrow {
+    transform: translateY(.1rem) translateX(-.5rem);
+}
+
+
 .title-accent.title-accent-link .arrow {
     transition: transform 100ms ease-in-out;
     transform: translateY(.1rem);
@@ -38,4 +47,6 @@
 .title-accent.title-accent-link:hover .arrow {
     transform: translateY(.1rem) translateX(-.5rem);
 }
+
+
 

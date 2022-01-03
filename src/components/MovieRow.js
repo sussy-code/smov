@@ -19,8 +19,14 @@ export function MovieRow(props) {
         }
     }
 
+    function handleKeyPress(event){
+        if ((event.code === 'Enter' || event.code === 'Space') && props.onClick){
+            props.onClick();
+        }
+    }
+
     return (
-        <div className="movieRow" onClick={() => props.onClick && props.onClick()}>
+        <div className="movieRow" tabIndex={0} onKeyPress={handleKeyPress} onClick={() => props.onClick && props.onClick()}>
         
             { props.source === "lookmovie" && (
                 <div className="subtitleIcon">

@@ -60,6 +60,15 @@
     transform: translateX(.3rem) translateY(.1rem);
 }
 
+.movieRow:focus-visible {
+    border: 1px solid #fff;
+    background-color: var(--content-hover);
+}
+
+.movieRow:focus-visible .watch .arrow {
+    transform: translateX(.3rem) translateY(.1rem);
+}
+
 .attribute {
     color: var(--text);
     background-color: var(--theme-color);

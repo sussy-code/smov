@@ -39,8 +39,13 @@
     box-sizing: border-box;
 }
 
-.numberSelector .choice:hover { 
+.numberSelector .choice:hover,
+.numberSelector .choiceWrapper:focus-visible .choice { 
     background-color: var(--choice-hover);
+}
+
+.numberSelector .choiceWrapper:focus-visible {
+    border: 1px solid #fff;
 }
 
 .numberSelector .choice.selected {

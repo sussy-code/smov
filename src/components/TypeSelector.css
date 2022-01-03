@@ -39,6 +39,11 @@
     color: var(--text-secondary);
 }
 
+.typeSelector .choice:focus-visible {
+    border: 1px solid #fff;
+    color: var(--text-secondary);
+}
+
 .typeSelector .choice.selected {
     color: var(--text);
 }
