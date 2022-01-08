@@ -64,3 +64,7 @@ body, html, input, button {
   -moz-osx-font-smoothing: grayscale;
   font-size: 1rem;
 }
+
+*:focus {
+  outline: none;
+}
