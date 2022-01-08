@@ -14,16 +14,24 @@ export function Title(props) {
 
     const accentLink = props.accentLink || "";
     const accent = props.accent || "";
+
+    function handleAccentClick(){
+        if (accentLink.length > 0) {
+            history.push(`/${streamData.type}`);
+            resetStreamData();
+        }
+    }
+
+    function handleKeyPress(event){
+        if (event.code === 'Enter' || event.code === 'Space'){
+            handleAccentClick();
+        }
+    }
     
     return (
         <div>
             {accent.length > 0 ? (
-                <p onClick={() => {
-                    if (accentLink.length > 0) {
-                        history.push(`/${streamData.type}`);
-                        resetStreamData();
-                    }
-                }} className={`title-accent ${accentLink.length > 0 ? 'title-accent-link' : ''}`}>
+                <p onClick={handleAccentClick} className={`title-accent ${accentLink.length > 0 ? 'title-accent-link' : ''}`} tabIndex={accentLink.length > 0 ? 0 : undefined} onKeyPress={handleKeyPress}>
                     {accentLink.length > 0 ? (<Arrow left/>) : null}{accent}
                 </p>
             ) : null}

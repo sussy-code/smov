@@ -207,6 +207,12 @@ export function SearchView() {
         return <Redirect to="/movie" />
     }
 
+    const handleKeyPress = page => event => {
+        if (event.code === 'Enter' || event.code === 'Space'){
+            setPage(page);
+        }
+    }
+
     return (
         <div className="cardView">
             <Helmet>
@@ -215,9 +221,9 @@ export function SearchView() {
 
             {/* Nav */}
             <nav>
-                <span className={page === 'search' ? 'selected-link' : ''} onClick={() => setPage('search')}>Search</span>
+                <span className={page === 'search' ? 'selected-link' : ''} onClick={() => setPage('search')} onKeyPress={handleKeyPress('search')} tabIndex={0}>Search</span>
                 {continueWatching.length > 0 ?
-                    <span className={page === 'watching' ? 'selected-link' : ''} onClick={() => setPage('watching')}>Continue watching</span>
+                    <span className={page === 'watching' ? 'selected-link' : ''} onClick={() => setPage('watching')} onKeyPress={handleKeyPress('watching')} tabIndex={0}>Continue watching</span>
                     : ''}
             </nav>
 

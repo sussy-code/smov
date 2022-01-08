@@ -8,6 +8,10 @@
 	position: relative;
 }
 
+.select-box:focus-visible .selected {
+  border: 1px solid #fff;
+}
+
 .select-box > * {
 	box-sizing: border-box;
 }
