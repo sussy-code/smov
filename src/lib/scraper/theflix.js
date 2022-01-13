@@ -1,4 +1,4 @@
-const BASE_URL = `${process.env.REACT_APP_CORS_PROXY_URL}https://www.theflix.to`;
+const BASE_URL = `${process.env.REACT_APP_CORS_PROXY_URL}https://theflix.to`;
 
 async function findContent(searchTerm, type) {
     try {
