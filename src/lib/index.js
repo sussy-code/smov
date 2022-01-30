@@ -1,11 +1,13 @@
 import lookmovie from './scraper/lookmovie';
 import theflix from './scraper/theflix';
+import vidzstore from './scraper/vidzstore';
 
 async function findContent(searchTerm, type) {
     const results = { options: []};
     const content = await Promise.all([
         lookmovie.findContent(searchTerm, type),
-        theflix.findContent(searchTerm, type)
+        theflix.findContent(searchTerm, type),
+        vidzstore.findContent(searchTerm, type)
     ]);
 
     content.forEach((o) => {
@@ -26,6 +28,8 @@ async function getStreamUrl(slug, type, source, season, episode) {
             return await lookmovie.getStreamUrl(slug, type, season, episode);
         case 'theflix':
             return await theflix.getStreamUrl(slug, type, season, episode);
+        case 'vidzstore':
+            return await vidzstore.getStreamUrl(slug);
         default:
             return;
     }
