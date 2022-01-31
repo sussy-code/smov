@@ -1,3 +1,5 @@
+import Fuse from 'fuse.js'
+
 const BASE_URL = `${process.env.REACT_APP_CORS_PROXY_URL}https://xemovie.co`;
 
 async function findContent(searchTerm, type) {
@@ -44,7 +46,34 @@ async function findContent(searchTerm, type) {
                 break;
         }
 
-        return { options: results };
+        const fuse = new Fuse(results, { threshold: 0.3, keys: ["title"] });
+        const matchedResults = fuse
+            .search(searchTerm)
+            .map(result => result.item);
+
+        if (matchedResults.length === 0) {
+            return { options: [] };
+        }
+
+        if (matchedResults.length > 1) {
+            const res = { options: [] };
+    
+            matchedResults.forEach((r) => res.options.push({
+                title: r.title,
+                slug: r.slug,
+                type: r.type,
+                year: r.year,
+                source: 'xemovie'
+            }));
+    
+            return res;
+        } else {
+            const { title, slug, type, year } = matchedResults[0];
+    
+            return {
+                options: [{ title, slug, type, year, source: 'xemovie' }]
+            }
+        }
     } catch {
         return { options: [] };
     }
