@@ -34,7 +34,7 @@ async function getStreamUrl(slug) {
     const res = await fetch(url).then(d => d.text());
     const DOM = new DOMParser().parseFromString(res, "text/html");
 
-    return { url: `${process.env.REACT_APP_CORS_PROXY_URL}${DOM.querySelector("source").src}` };
+    return { url: DOM.querySelector("source").src };
 }
 
 const vidzstore = { findContent, getStreamUrl }

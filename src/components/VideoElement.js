@@ -48,14 +48,14 @@ export function VideoElement({ streamUrl, loading, setProgress, videoRef, startT
 
     if (!streamUrl.includes('.mp4')) {
         return (
-            <video crossOrigin="anonymous" className="videoElement" ref={videoRef} controls autoPlay onProgress={setProgress} onLoadedData={onLoad}>
-                { streamData.subtitles && streamData.subtitles.map((sub, index) => <track key={index} kind="captions" label={sub.language} src={`${process.env.REACT_APP_CORS_PROXY_URL}https://lookmovie.io${sub.file}` } />) }
+            <video className="videoElement" ref={videoRef} controls autoPlay onProgress={setProgress} onLoadedData={onLoad}>
+                { streamData.subtitles && streamData.subtitles.map((sub, index) => <track key={index} kind="captions" label={sub.language} src={sub.file} />) }
             </video>
         )
     } else {
         return (
-            <video crossOrigin="anonymous" className="videoElement" ref={videoRef} controls autoPlay onProgress={setProgress} onLoadedData={onLoad}>
-                { streamData.subtitles && streamData.subtitles.map((sub, index) => <track key={index} kind="captions" label={sub.language} src={`${process.env.REACT_APP_CORS_PROXY_URL}https://lookmovie.io${sub.file}` } />) }
+            <video className="videoElement" ref={videoRef} controls autoPlay onProgress={setProgress} onLoadedData={onLoad}>
+                { streamData.subtitles && streamData.subtitles.map((sub, index) => <track key={index} kind="captions" label={sub.language} src={sub.file} />) }
                 <source src={streamUrl} type="video/mp4" />
             </video>
         )
