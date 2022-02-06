@@ -19,8 +19,10 @@ export interface MWQuery {
 
 export interface MWMediaProvider {
   id: string, // id of provider, must be unique
+  enabled: boolean,
   type: MWMediaType,
+  displayName: string,
 
-  getMediaFromPortable(media: MWPortableMedia): MWMedia,
-  searchForMedia(query: MWQuery): MWMedia[],
+  getMediaFromPortable(media: MWPortableMedia): Promise<MWMedia>,
+  searchForMedia(query: MWQuery): Promise<MWMedia[]>,
 }

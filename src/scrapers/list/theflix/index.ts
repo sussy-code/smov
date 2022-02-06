@@ -1,15 +1,23 @@
-import { MWMedia, MWMediaProvider, MWMediaType, MWPortableMedia, MWQuery } from "../../scrapers";
+import { MWMedia, MWMediaProvider, MWMediaType, MWPortableMedia, MWQuery } from "@/scrapers/types";
 
 export const theFlixScraper: MWMediaProvider = {
   id: "theflix",
+  enabled: true,
   type: MWMediaType.MOVIE,
-  getMediaFromPortable(media: MWPortableMedia): MWMedia {
+  displayName: "TheFlix",
+
+  async getMediaFromPortable(media: MWPortableMedia): Promise<MWMedia> {
     return {
       ...media,
       title: "title here"
     }
   },
-  searchForMedia(query: MWQuery): MWMedia[] {
-    return [];
+
+  async searchForMedia(query: MWQuery): Promise<MWMedia[]> {
+    return [{
+      mediaId: "a",
+      providerId: this.id,
+      title: "testing",
+    }];
   },
 }
