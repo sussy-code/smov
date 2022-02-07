@@ -1,6 +1,6 @@
 import { WatchedMediaCard } from "@/components/media/WatchedMediaCard";
 import { SearchBarInput } from "@/components/SearchBar";
-import { GetProviderFromId, MWMedia, MWMediaType, SearchProviders } from "@/scrapers";
+import { MWMedia, MWMediaType, SearchProviders } from "@/scrapers";
 import { useState } from "react";
 
 export function SearchView() {
