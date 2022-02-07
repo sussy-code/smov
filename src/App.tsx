@@ -1,24 +1,16 @@
-import { GetProviderFromId, SearchProviders, MWMedia, MWMediaType } from '@/scrapers';
-import { useState } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import './index.css';
+import { MovieView } from './views/MovieView';
+import { SearchView } from './views/SearchView';
+import { SeriesView } from './views/SeriesView';
 
 function App() {
-  const [results, setResults] = useState<MWMedia[]>([]);
-
-  async function runSearch() {
-    const results = await SearchProviders({ type: MWMediaType.MOVIE, searchQuery: "abc" });
-    setResults(results);
-  }
-
   return (
-    <>
-      <h1>Search</h1>
-      <button onClick={() => runSearch()}>Search</button>
-      <h1>Search results</h1>
-      {results.map(v=>(
-        <p>{v.title} ({GetProviderFromId(v.providerId)?.displayName})</p>
-      ))}
-    </>
+    <Switch>
+      <Route exact path="/" component={SearchView} />
+      <Route exact path="/media/movie" component={MovieView} />
+      <Route exact path="/media/series" component={SeriesView} />
+    </Switch>
   );
 }
 

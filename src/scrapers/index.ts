@@ -1,9 +1,11 @@
-import { theFlixScraper } from "./list/theflix";
+import { theFlixMovieScraper } from "./list/theflixmovie";
+import { theFlixSeriesScraper } from "./list/theflixseries";
 import { MWMediaProvider, MWQuery } from "./types";
 export * from "./types";
 
 const mediaProvidersUnchecked: MWMediaProvider[] = [
-  theFlixScraper
+  theFlixMovieScraper,
+  theFlixSeriesScraper,
 ]
 export const mediaProviders: MWMediaProvider[] = mediaProvidersUnchecked.filter(v=>v.enabled);
 

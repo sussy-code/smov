@@ -1,7 +1,7 @@
 import { MWMedia, MWMediaProvider, MWMediaType, MWPortableMedia, MWQuery } from "@/scrapers/types";
 
-export const theFlixScraper: MWMediaProvider = {
-  id: "theflix",
+export const theFlixMovieScraper: MWMediaProvider = {
+  id: "theflixmovie",
   enabled: true,
   type: MWMediaType.MOVIE,
   displayName: "TheFlix",
@@ -17,7 +17,7 @@ export const theFlixScraper: MWMediaProvider = {
     return [{
       mediaId: "a",
       providerId: this.id,
-      title: "testing",
+      title: `movie test`,
     }];
   },
 }
