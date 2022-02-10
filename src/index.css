@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html,
+body {
+  @apply min-h-screen bg-dink-900 text-white font-open-sans;
+}

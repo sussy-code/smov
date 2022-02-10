@@ -9,7 +9,7 @@ export const theFlixMovieScraper: MWMediaProvider = {
   async getMediaFromPortable(media: MWPortableMedia): Promise<MWMedia> {
     return {
       ...media,
-      title: "title here"
+      title: "title is here"
     }
   },
 
@@ -17,7 +17,7 @@ export const theFlixMovieScraper: MWMediaProvider = {
     return [{
       mediaId: "a",
       providerId: this.id,
-      title: `movie test`,
+      title: `movie testing in progress`,
     }];
   },
 }
