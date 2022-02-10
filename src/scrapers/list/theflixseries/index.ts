@@ -1,4 +1,4 @@
-import { MWMedia, MWMediaProvider, MWMediaType, MWPortableMedia, MWQuery } from "@/scrapers/types";
+import { MWMedia, MWMediaProvider, MWMediaType, MWPortableMedia, MWQuery } from "scrapers/types";
 
 export const theFlixSeriesScraper: MWMediaProvider = {
   id: "theflixseries",

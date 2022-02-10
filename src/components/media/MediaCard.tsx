@@ -1,4 +1,4 @@
-import { GetProviderFromId, MWMedia, MWMediaType } from "@/scrapers";
+import { GetProviderFromId, MWMedia, MWMediaType } from "scrapers";
 import { Link } from "react-router-dom";
 
 export interface MediaCardProps {
