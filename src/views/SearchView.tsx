@@ -16,7 +16,7 @@ export function SearchView() {
     <div>
       <h1>Search</h1>
       <SearchBarInput onChange={setSearch} value={search} onClick={runSearch}/>
-      <h1>Search results</h1>
+      <h1 className="bg-red-500">Search results</h1>
       {results.map((v)=>(<WatchedMediaCard media={v} />))}
     </div>
   )
