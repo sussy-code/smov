@@ -98,9 +98,7 @@ async function getStreamUrl(slug, type, season, episode) {
         if (script.textContent.match(/https:\/\/s[0-9]\.xemovie\.com/)) {
             // eslint-disable-next-line
             let data = JSON.parse(JSON.stringify(eval(`(${script.textContent.replace("const data = ", "").split("};")[0]}})`)));
-            // eslint-disable-next-line
             mediaUrl = data.playlist[0].file;
-            // eslint-disable-next-line
             for (const subtitleTrack of data.playlist[0].tracks) {
                 const subtitleBlob = URL.createObjectURL(await fetch(`${process.env.REACT_APP_CORS_PROXY_URL}${subtitleTrack.file}`).then(res => res.blob())); // do this so no need for CORS errors
                 subtitles.push({

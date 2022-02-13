@@ -2,6 +2,7 @@ import lookmovie from './scraper/lookmovie';
 import xemovie from './scraper/xemovie';
 import theflix from './scraper/theflix';
 import vidzstore from './scraper/vidzstore';
+import gdriveplayer from './scraper/gdriveplayer';
 
 async function findContent(searchTerm, type) {
     const results = { options: []};
@@ -9,7 +10,8 @@ async function findContent(searchTerm, type) {
         // lookmovie.findContent(searchTerm, type),
         xemovie.findContent(searchTerm, type),
         theflix.findContent(searchTerm, type),
-        vidzstore.findContent(searchTerm, type)
+        vidzstore.findContent(searchTerm, type),
+        gdriveplayer.findContent(searchTerm, type),
     ]);
 
     content.forEach((o) => {
@@ -34,6 +36,8 @@ async function getStreamUrl(slug, type, source, season, episode) {
             return await vidzstore.getStreamUrl(slug);
         case 'xemovie':
             return await xemovie.getStreamUrl(slug, type, season, episode);
+        case 'gdriveplayer':
+            return await gdriveplayer.getStreamUrl(slug, type, season, episode);
         default:
             return;
     }
