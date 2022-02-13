@@ -18,7 +18,8 @@ export function VideoElement({ streamUrl, loading, setProgress, videoRef, startT
     }
 
     React.useEffect(() => {
-        if (!streamUrl.includes('.mp4')) {
+        if (!streamUrl.includes('.mp4') && !streamUrl.includes('redirector.php')) {
+            console.log(streamUrl)
             setError(false)
             if (!videoRef || !videoRef.current || !streamUrl || streamUrl.length === 0 || loading) return;
             
@@ -46,7 +47,7 @@ export function VideoElement({ streamUrl, loading, setProgress, videoRef, startT
     if (!streamUrl || streamUrl.length === 0)
         return <VideoPlaceholder>No video selected</VideoPlaceholder>
 
-    if (!streamUrl.includes('.mp4')) {
+    if (!streamUrl.includes('.mp4') && !streamUrl.includes('redirector.php')) {
         return (
             <video className="videoElement" ref={videoRef} controls autoPlay onProgress={setProgress} onLoadedData={onLoad}>
                 { streamData.subtitles && streamData.subtitles.map((sub, index) => <track key={index} kind="captions" label={sub.language} src={sub.file} />) }
