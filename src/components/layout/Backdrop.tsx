@@ -46,17 +46,19 @@ export function Backdrop(props: BackdropProps) {
 
   useEffect(() => {
     setVisible(!!props.active);
-  }, [props.active]);
+    /* eslint-disable-next-line */
+  }, [props.active, setVisible]);
 
   useEffect(() => {
     if (!isVisible) animationEvent();
+    /* eslint-disable-next-line */
   }, [isVisible]);
 
   if (!isVisible) return null;
 
   return (
     <div
-      className={`fixed h-screen z-[999] top-0 left-0 right-0 bg-black bg-opacity-50 transition-opacity opacity-100 ${
+      className={`fixed top-0 left-0 right-0 z-[999] h-screen bg-black bg-opacity-50 opacity-100 transition-opacity ${
         !isVisible ? "opacity-0" : ""
       }`}
       {...fadeProps}

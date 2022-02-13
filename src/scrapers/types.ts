@@ -1,6 +1,7 @@
 export enum MWMediaType {
   MOVIE = "movie",
   SERIES = "series",
+  ANIME = "anime",
 }
 
 export interface MWPortableMedia {

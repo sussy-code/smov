@@ -1,12 +1,7 @@
 import { ButtonControlProps, ButtonControl } from "./ButtonControl";
 import { Icon, Icons } from "components/Icon";
 import React, {
-  useRef,
-  Ref,
-  Dispatch,
-  SetStateAction,
   MouseEventHandler,
-  KeyboardEvent,
   SyntheticEvent,
   useEffect,
   useState,
@@ -17,9 +12,9 @@ import { Backdrop, useBackdrop } from "components/layout/Backdrop";
 export interface DropdownButtonProps extends ButtonControlProps {
   icon: Icons;
   open: boolean;
-  setOpen: Dispatch<SetStateAction<boolean>>;
+  setOpen: (open: boolean) => void;
   selectedItem: string;
-  setSelectedItem: Dispatch<SetStateAction<string>>;
+  setSelectedItem: (value: string) => void;
   options: Array<OptionItem>;
 }
 
@@ -38,7 +33,7 @@ export interface OptionItem {
 function Option({ option, onClick, tabIndex }: OptionProps) {
   return (
     <div
-      className="text-denim-700 h-10 px-4 py-2 text-left cursor-pointer flex items-center space-x-2 hover:text-white transition-colors"
+      className="text-denim-700 flex h-10 cursor-pointer items-center space-x-2 px-4 py-2 text-left transition-colors hover:text-white"
       onClick={onClick}
       tabIndex={tabIndex}
     >
@@ -73,6 +68,7 @@ export const DropdownButton = React.forwardRef<
     return () => {
       if (id) clearTimeout(id);
     };
+    /* eslint-disable-next-line */
   }, [props.open]);
 
   const selectedItem: OptionItem = props.options.find(
@@ -81,6 +77,7 @@ export const DropdownButton = React.forwardRef<
 
   useEffect(() => {
     setBackdrop(props.open);
+    /* eslint-disable-next-line */
   }, [props.open]);
 
   const onOptionClick = (e: SyntheticEvent, option: OptionItem) => {
@@ -90,7 +87,7 @@ export const DropdownButton = React.forwardRef<
   };
 
   return (
-    <div className="w-full sm:w-auto min-w-[140px]">
+    <div className="w-full min-w-[140px] sm:w-auto">
       <div
         ref={ref}
         className="relative w-full sm:w-auto"
@@ -98,7 +95,7 @@ export const DropdownButton = React.forwardRef<
       >
         <ButtonControl
           {...props}
-          className="flex items-center justify-center sm:justify-left px-4 py-2 space-x-2 bg-bink-200 relative z-20 hover:bg-bink-300 text-white h-10 rounded-[20px] w-full"
+          className="sm:justify-left bg-bink-200 hover:bg-bink-300 relative z-20 flex h-10 w-full items-center justify-center space-x-2 rounded-[20px] px-4 py-2 text-white"
         >
           <Icon icon={selectedItem.icon} />
           <span className="flex-1">{selectedItem.name}</span>
@@ -108,22 +105,20 @@ export const DropdownButton = React.forwardRef<
           />
         </ButtonControl>
         <div
-          className={`absolute pt-[40px] top-0 duration-200 transition-all w-full rounded-[20px] z-10 bg-denim-300 ${
+          className={`bg-denim-300 absolute top-0 z-10 w-full rounded-[20px] pt-[40px] transition-all duration-200 ${
             props.open
-              ? "opacity-100 max-h-60 block"
-              : "opacity-0 max-h-0 invisible"
+              ? "block max-h-60 opacity-100"
+              : "invisible max-h-0 opacity-0"
           }`}
         >
           {props.options
-            .filter((opt) => opt.id != delayedSelectedId)
+            .filter((opt) => opt.id !== delayedSelectedId)
             .map((opt) => (
               <Option
                 option={opt}
                 key={opt.id}
                 onClick={(e) => onOptionClick(e, opt)}
-                tabIndex={
-                  props.open ? 0 : undefined
-                } /*onKeyPress={active ? handleOptionKeyPress(opt, i) : undefined}*/
+                tabIndex={props.open ? 0 : undefined}
               />
             ))}
         </div>

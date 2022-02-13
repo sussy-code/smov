@@ -1,43 +1,38 @@
 import { DropdownButton } from "./Buttons/DropdownButton";
 import { Icons } from "./Icon";
-import {
-  TextInputControl,
-  TextInputControlPropsNoLabel,
-} from "./TextInputs/TextInputControl";
+import { TextInputControl } from "./TextInputs/TextInputControl";
 
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
+import { MWMediaType, MWQuery } from "scrapers";
 
-export interface SearchBarProps extends TextInputControlPropsNoLabel {
+export interface SearchBarProps {
   buttonText?: string;
-  onClick?: () => void;
   placeholder?: string;
+  onChange: (value: MWQuery) => void;
+  value: MWQuery;
 }
 
 export function SearchBarInput(props: SearchBarProps) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [dropdownSelected, setDropdownSelected] = useState("movie");
-
-  const dropdownRef = useRef<any>();
-
-  const handleClick = (e: MouseEvent) => {
-    if (dropdownRef.current?.contains(e.target as Node)) {
-      // inside click
-      return;
-    }
-    // outside click
-    closeDropdown();
-  };
-
-  const closeDropdown = () => {
-    setDropdownOpen(false);
-  };
+  function setSearch(value: string) {
+    props.onChange({
+      ...props.value,
+      searchQuery: value,
+    });
+  }
+  function setType(type: string) {
+    props.onChange({
+      ...props.value,
+      type: type as MWMediaType,
+    });
+  }
 
   return (
-    <div className="flex flex-col sm:flex-row items-center gap-4 px-4 py-4 sm:pl-8 sm:pr-2 sm:py-2 bg-denim-300 rounded-[28px] hover:bg-denim-400 focus-within:bg-denim-400  transition-colors">
+    <div className="bg-denim-300 hover:bg-denim-400 focus-within:bg-denim-400 flex flex-col items-center gap-4 rounded-[28px] px-4 py-4 transition-colors sm:flex-row sm:py-2 sm:pl-8  sm:pr-2">
       <TextInputControl
-        onChange={props.onChange}
-        value={props.value}
-        className="placeholder-denim-700 w-full bg-transparent flex-1 focus:outline-none text-white"
+        onChange={setSearch}
+        value={props.value.searchQuery}
+        className="placeholder-denim-700 w-full flex-1 bg-transparent text-white focus:outline-none"
         placeholder={props.placeholder}
       />
 
@@ -45,27 +40,26 @@ export function SearchBarInput(props: SearchBarProps) {
         icon={Icons.SEARCH}
         open={dropdownOpen}
         setOpen={setDropdownOpen}
-        selectedItem={dropdownSelected}
-        setSelectedItem={setDropdownSelected}
+        selectedItem={props.value.type}
+        setSelectedItem={setType}
         options={[
           {
-            id: "movie",
+            id: MWMediaType.MOVIE,
             name: "Movie",
             icon: Icons.FILM,
           },
           {
-            id: "series",
+            id: MWMediaType.SERIES,
             name: "Series",
             icon: Icons.CLAPPER_BOARD,
           },
           {
-            id: "anime",
+            id: MWMediaType.ANIME,
             name: "Anime",
             icon: Icons.DRAGON,
           },
         ]}
         onClick={() => setDropdownOpen((old) => !old)}
-        ref={dropdownRef}
       >
         {props.buttonText || "Search"}
       </DropdownButton>
