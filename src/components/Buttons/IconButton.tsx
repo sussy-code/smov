@@ -9,7 +9,7 @@ export function IconButton(props: IconButtonProps) {
   return (
     <ButtonControl
       {...props}
-      className="flex items-center px-4 py-2 space-x-2 bg-pink-900 text-white rounded-full"
+      className="flex items-center px-4 py-2 space-x-2 bg-bink-200 hover:bg-bink-300 text-white rounded-full"
     >
       <Icon icon={props.icon} />
       <span>{props.children}</span>

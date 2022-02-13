@@ -5,6 +5,9 @@ import { useState } from "react";
 import { ThinContainer } from "components/layout/ThinContainer";
 import { SectionHeading } from "components/layout/SectionHeading";
 import { Icons } from "components/Icon";
+import { Loading } from "components/layout/Loading";
+import { Tagline } from "components/Text/Tagline";
+import { Title } from "components/Text/Title";
 
 export function SearchView() {
   const [results, setResults] = useState<MWMedia[]>([]);
@@ -22,12 +25,8 @@ export function SearchView() {
     <ThinContainer>
       <div className="mt-36 text-center space-y-16">
         <div className="space-y-4">
-          <p className="font-bold text-bink">
-            Because watching legally is boring
-          </p>
-          <h1 className="text-4xl font-bold">
-            What movie do you want to watch?
-          </h1>
+          <Tagline>Because watching legally is boring</Tagline>
+          <Title>What movie do you want to watch?</Title>
         </div>
         <SearchBarInput
           onChange={setSearch}
@@ -41,6 +40,7 @@ export function SearchView() {
           <WatchedMediaCard media={v} />
         ))}
       </SectionHeading>
+      <Loading />
     </ThinContainer>
   );
 }
