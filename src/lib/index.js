@@ -7,11 +7,10 @@ import gdriveplayer from './scraper/gdriveplayer';
 async function findContent(searchTerm, type) {
     const results = { options: []};
     const content = await Promise.all([
-        // lookmovie.findContent(searchTerm, type),
+        gdriveplayer.findContent(searchTerm, type),
         xemovie.findContent(searchTerm, type),
         theflix.findContent(searchTerm, type),
         vidzstore.findContent(searchTerm, type),
-        gdriveplayer.findContent(searchTerm, type),
     ]);
 
     content.forEach((o) => {
