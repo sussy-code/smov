@@ -4,5 +4,5 @@
 
 html,
 body {
-  @apply min-h-screen bg-dink-900 text-white font-open-sans;
+  @apply min-h-screen bg-denim-100 text-white font-open-sans;
 }
