@@ -3,5 +3,5 @@ export function MovieView() {
     <div>
       <p>Movie view here</p>
     </div>
-  )
+  );
 }

@@ -50,7 +50,7 @@ export function SearchView() {
           ))}
         </SectionHeading>
       ) : null}
-      {search.searchQuery !== "" && results.length == 0 ? <Loading /> : null}
+      {search.searchQuery !== "" && results.length === 0 ? <Loading /> : null}
     </ThinContainer>
   );
 }
