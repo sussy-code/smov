@@ -30,8 +30,12 @@ export function SearchView() {
     setResults(results);
   }
 
+  const isLoading = search.searchQuery !== "" && results.length === 0;
+  const hasResult = results.length > 0;
+
   return (
     <ThinContainer>
+      {/* input section */}
       <div className="mt-36 space-y-16 text-center">
         <div className="space-y-4">
           <Tagline>Because watching legally is boring</Tagline>
@@ -43,14 +47,20 @@ export function SearchView() {
           placeholder="What movie do you want to watch?"
         />
       </div>
-      {results.length > 0 ? (
+
+      {/* results */}
+      {hasResult ? (
         <SectionHeading title="Search results" icon={Icons.SEARCH}>
           {results.map((v) => (
             <WatchedMediaCard media={v} />
           ))}
         </SectionHeading>
       ) : null}
-      {search.searchQuery !== "" && results.length === 0 ? <Loading /> : null}
+
+      {/* Loading icon */}
+      {isLoading ? (
+        <Loading className="my-12" text="Fetching your favourite shows..." />
+      ) : null}
     </ThinContainer>
   );
 }

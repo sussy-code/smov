@@ -10,9 +10,9 @@ interface SectionHeadingProps {
 export function SectionHeading(props: SectionHeadingProps) {
   return (
     <div className="mt-12">
-      <p className="flex items-center uppercase font-bold text-denim-700 mb-3">
+      <p className="text-denim-700 mb-4 flex items-center font-bold uppercase">
         {props.icon ? (
-          <span className="text-xl mr-2">
+          <span className="mr-2 text-xl">
             <Icon icon={props.icon} />
           </span>
         ) : null}

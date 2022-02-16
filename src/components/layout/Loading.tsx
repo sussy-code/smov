@@ -1,10 +1,22 @@
-export function Loading() {
+export interface LoadingProps {
+  text?: string;
+  className?: string;
+}
+
+export function Loading(props: LoadingProps) {
   return (
-    <div className="flex items-center h-12 justify-center">
-      <div className="w-2 mx-1 h-2 rounded-full animate-loading-pin bg-denim-300"></div>
-      <div className="w-2 mx-1 h-2 rounded-full [animation-delay:150ms] animate-loading-pin bg-denim-300"></div>
-      <div className="w-2 mx-1 h-2 rounded-full [animation-delay:300ms] animate-loading-pin bg-denim-300"></div>
-      <div className="w-2 mx-1 h-2 rounded-full [animation-delay:450ms] animate-loading-pin bg-denim-300"></div>
+    <div className={props.className}>
+      <div className="flex flex-col items-center justify-center py-12">
+        <div className="flex h-12 items-center justify-center">
+          <div className="animate-loading-pin bg-denim-300 mx-1 h-2 w-2 rounded-full"></div>
+          <div className="animate-loading-pin bg-denim-300 mx-1 h-2 w-2 rounded-full [animation-delay:150ms]"></div>
+          <div className="animate-loading-pin bg-denim-300 mx-1 h-2 w-2 rounded-full [animation-delay:300ms]"></div>
+          <div className="animate-loading-pin bg-denim-300 mx-1 h-2 w-2 rounded-full [animation-delay:450ms]"></div>
+        </div>
+        {props.text && props.text.length ? (
+          <p className="mt-3 max-w-xs text-sm opacity-75">{props.text}</p>
+        ) : null}
+      </div>
     </div>
   );
 }
