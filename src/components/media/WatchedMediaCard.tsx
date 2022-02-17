@@ -6,5 +6,5 @@ export interface WatchedMediaCardProps {
 }
 
 export function WatchedMediaCard(props: WatchedMediaCardProps) {
-  return <MediaCard watchedPercentage={72} media={props.media} linkable />;
+  return <MediaCard watchedPercentage={0} media={props.media} linkable />;
 }

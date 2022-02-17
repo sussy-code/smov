@@ -1,4 +1,4 @@
-import { GetProviderFromId, MWMedia, MWMediaType } from "scrapers";
+import { getProviderFromId, MWMedia, MWMediaType } from "scrapers";
 import { Link } from "react-router-dom";
 import { Icon, Icons } from "components/Icon";
 
@@ -32,7 +32,7 @@ function MediaCardContent({
   linkable,
   watchedPercentage,
 }: MediaCardProps) {
-  const provider = GetProviderFromId(media.providerId);
+  const provider = getProviderFromId(media.providerId);
 
   if (!provider) {
     return null;
@@ -62,7 +62,9 @@ function MediaCardContent({
         {/* card content */}
         <div className="flex-1">
           <h1 className="mb-1 font-bold text-white">{media.title}</h1>
-          <MediaMeta content={[provider.displayName, provider.type]} />
+          <MediaMeta
+            content={[provider.displayName, media.mediaType, media.year]}
+          />
         </div>
 
         {/* hoverable chevron */}
@@ -79,9 +81,8 @@ function MediaCardContent({
 }
 
 export function MediaCard(props: MediaCardProps) {
-  const provider = GetProviderFromId(props.media.providerId);
   let link = "movie";
-  if (provider?.type === MWMediaType.SERIES) link = "series";
+  if (props.media.mediaType === MWMediaType.MOVIE) link = "series";
 
   const content = <MediaCardContent {...props} />;
 

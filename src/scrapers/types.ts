@@ -5,25 +5,31 @@ export enum MWMediaType {
 }
 
 export interface MWPortableMedia {
-  mediaId: string,
-  providerId: string,
+  mediaId: string;
+  mediaType: MWMediaType;
+  providerId: string;
+  season?: number;
+  episode?: number;
 }
 
 export interface MWMedia extends MWPortableMedia {
-  title: string,
+  title: string;
+  year: string;
 }
 
+export type MWProviderMediaResult = Omit<MWMedia, "mediaType" | "providerId">;
+
 export interface MWQuery {
-  searchQuery: string,
-  type: MWMediaType,
+  searchQuery: string;
+  type: MWMediaType;
 }
 
 export interface MWMediaProvider {
-  id: string, // id of provider, must be unique
-  enabled: boolean,
-  type: MWMediaType,
-  displayName: string,
+  id: string; // id of provider, must be unique
+  enabled: boolean;
+  type: MWMediaType[];
+  displayName: string;
 
-  getMediaFromPortable(media: MWPortableMedia): Promise<MWMedia>,
-  searchForMedia(query: MWQuery): Promise<MWMedia[]>,
+  getMediaFromPortable(media: MWPortableMedia): Promise<MWProviderMediaResult>;
+  searchForMedia(query: MWQuery): Promise<MWProviderMediaResult[]>;
 }

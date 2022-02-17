@@ -4,7 +4,6 @@
   also type safety is important, this is all spaghetti with "any" everywhere
 */
 
-
 function buildStoreObject(d: any) {
   const data: any = {
     versions: d.versions,
@@ -23,7 +22,7 @@ function buildStoreObject(d: any) {
       if (version.constructor !== Number || version < 0) version = -42;
       // invalid on purpose so it will reset
       else {
-        version = (version as number + 1).toString();
+        version = ((version as number) + 1).toString();
       }
 
       // check if version exists
@@ -190,15 +189,19 @@ export function versionedStoreBuilder(): any {
       }
 
       // register helper
-      if (type === "instance") this._data.instanceHelpers[name as string] = helper;
-      else if (type === "static") this._data.staticHelpers[name as string] = helper;
+      if (type === "instance")
+        this._data.instanceHelpers[name as string] = helper;
+      else if (type === "static")
+        this._data.staticHelpers[name as string] = helper;
 
       return this;
     },
 
     build() {
       // check if version list doesnt skip versions
-      const versionListSorted = this._data.versionList.sort((a: number, b: number) => a - b);
+      const versionListSorted = this._data.versionList.sort(
+        (a: number, b: number) => a - b
+      );
       versionListSorted.forEach((v: any, i: number, arr: any[]) => {
         if (i === 0) return;
         if (v !== arr[i - 1] + 1)

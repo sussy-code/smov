@@ -9,9 +9,57 @@ import { Loading } from "components/layout/Loading";
 import { Tagline } from "components/Text/Tagline";
 import { Title } from "components/Text/Title";
 import { useDebounce } from "hooks/useDebounce";
+import { useLoading } from "hooks/useLoading";
+
+function SearchLoading() {
+  return <Loading className="my-12" text="Fetching your favourite shows..." />;
+}
+
+function SearchResultsView({ searchQuery }: { searchQuery: MWQuery }) {
+  const [results, setResults] = useState<MWMedia[]>([]);
+  const [runSearchQuery, loading, error, success] = useLoading(
+    (query: MWQuery) => SearchProviders(query)
+  );
+
+  useEffect(() => {
+    if (searchQuery.searchQuery !== "") runSearch(searchQuery);
+  }, [searchQuery]);
+
+  async function runSearch(query: MWQuery) {
+    const results = await runSearchQuery(query);
+    if (!results) return;
+    setResults(results);
+  }
+
+  return (
+    <div>
+      {/* results */}
+      {success && results.length > 0 ? (
+        <SectionHeading title="Search results" icon={Icons.SEARCH}>
+          {results.map((v) => (
+            <WatchedMediaCard
+              key={[v.mediaId, v.providerId].join("|")}
+              media={v}
+            />
+          ))}
+        </SectionHeading>
+      ) : null}
+
+      {/* no results */}
+      {success && results.length === 0 ? <p>No results found</p> : null}
+
+      {/* error */}
+      {error ? <p>All scrapers failed</p> : null}
+
+      {/* Loading icon */}
+      {loading ? <SearchLoading /> : null}
+    </div>
+  );
+}
 
 export function SearchView() {
-  const [results, setResults] = useState<MWMedia[]>([]);
+  const [searching, setSearching] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
   const [search, setSearch] = useState<MWQuery>({
     searchQuery: "",
     type: MWMediaType.MOVIE,
@@ -19,19 +67,12 @@ export function SearchView() {
 
   const debouncedSearch = useDebounce<MWQuery>(search, 2000);
   useEffect(() => {
-    if (debouncedSearch.searchQuery !== "") runSearch(debouncedSearch);
-  }, [debouncedSearch]);
-  useEffect(() => {
-    setResults([]);
+    setSearching(search.searchQuery !== "");
+    setLoading(search.searchQuery !== "");
   }, [search]);
-
-  async function runSearch(query: MWQuery) {
-    const results = await SearchProviders(query);
-    setResults(results);
-  }
-
-  const isLoading = search.searchQuery !== "" && results.length === 0;
-  const hasResult = results.length > 0;
+  useEffect(() => {
+    setLoading(false);
+  }, [debouncedSearch]);
 
   return (
     <ThinContainer>
@@ -48,18 +89,11 @@ export function SearchView() {
         />
       </div>
 
-      {/* results */}
-      {hasResult ? (
-        <SectionHeading title="Search results" icon={Icons.SEARCH}>
-          {results.map((v) => (
-            <WatchedMediaCard media={v} />
-          ))}
-        </SectionHeading>
-      ) : null}
-
-      {/* Loading icon */}
-      {isLoading ? (
-        <Loading className="my-12" text="Fetching your favourite shows..." />
+      {/* results view */}
+      {loading ? (
+        <SearchLoading />
+      ) : searching ? (
+        <SearchResultsView searchQuery={debouncedSearch} />
       ) : null}
     </ThinContainer>
   );
