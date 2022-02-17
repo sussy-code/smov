@@ -1,3 +1,5 @@
+import Fuse from 'fuse.js'
+
 const BASE_URL = `${process.env.REACT_APP_CORS_PROXY_URL}https://stream.vidzstore.com`;
 
 async function findContent(searchTerm, type) {
@@ -21,8 +23,35 @@ async function findContent(searchTerm, type) {
                 source: "vidzstore",
             }
         });
+        
+        const fuse = new Fuse(results, { threshold: 0.3, keys: ["title"] });
+        const matchedResults = fuse
+            .search(searchTerm)
+            .map(result => result.item);
 
-        return { options: results };
+        if (matchedResults.length === 0) {
+            return { options: [] };
+        }
+
+        if (matchedResults.length > 1) {
+            const res = { options: [] };
+    
+            matchedResults.forEach((r) => res.options.push({
+                title: r.title,
+                slug: r.slug,
+                type: r.type,
+                year: r.year,
+                source: 'vidzstore'
+            }));
+    
+            return res;
+        } else {
+            const { title, slug, type, year } = matchedResults[0];
+    
+            return {
+                options: [{ title, slug, type, year, source: 'vidzstore' }]
+            }
+        }
     } catch {
         return { options: [] };
     }

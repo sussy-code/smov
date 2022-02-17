@@ -1,13 +1,14 @@
-import lookmovie from './scraper/lookmovie';
 import xemovie from './scraper/xemovie';
 import theflix from './scraper/theflix';
 import vidzstore from './scraper/vidzstore';
 import gdriveplayer from './scraper/gdriveplayer';
+import gomostream from './scraper/gomostream';
 
 async function findContent(searchTerm, type) {
     const results = { options: []};
     const content = await Promise.all([
         theflix.findContent(searchTerm, type),
+        gomostream.findContent(searchTerm, type),
         gdriveplayer.findContent(searchTerm, type),
         xemovie.findContent(searchTerm, type),
         vidzstore.findContent(searchTerm, type),
@@ -27,8 +28,6 @@ async function findContent(searchTerm, type) {
 
 async function getStreamUrl(slug, type, source, season, episode) {
     switch (source) {
-        case 'lookmovie':
-            return await lookmovie.getStreamUrl(slug, type, season, episode);
         case 'theflix':
             return await theflix.getStreamUrl(slug, type, season, episode);
         case 'vidzstore':
@@ -37,6 +36,8 @@ async function getStreamUrl(slug, type, source, season, episode) {
             return await xemovie.getStreamUrl(slug, type, season, episode);
         case 'gdriveplayer':
             return await gdriveplayer.getStreamUrl(slug, type, season, episode);
+        case 'gomostream':
+            return await gomostream.getStreamUrl(slug, type, season, episode);
         default:
             return;
     }
@@ -44,8 +45,6 @@ async function getStreamUrl(slug, type, source, season, episode) {
 
 async function getEpisodes(slug, source) {
     switch (source) {
-        case 'lookmovie':
-            return await lookmovie.getEpisodes(slug);
         case 'theflix':
             return await theflix.getEpisodes(slug);
         case 'xemovie':
