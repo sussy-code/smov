@@ -1,4 +1,4 @@
-import { MWMedia } from "scrapers";
+import { MWMedia } from "providers";
 import { MediaCard } from "./MediaCard";
 
 export interface WatchedMediaCardProps {

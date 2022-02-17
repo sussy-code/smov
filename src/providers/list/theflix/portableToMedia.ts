@@ -1,5 +1,5 @@
 import { CORS_PROXY_URL } from "mw_constants";
-import { MWMediaType, MWPortableMedia } from "scrapers/types";
+import { MWMediaType, MWPortableMedia } from "providers/types";
 
 const getTheFlixUrl = (media: MWPortableMedia, params?: URLSearchParams) => {
   if (media.mediaType === MWMediaType.MOVIE) {

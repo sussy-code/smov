@@ -1,6 +1,6 @@
 import { WatchedMediaCard } from "components/media/WatchedMediaCard";
 import { SearchBarInput } from "components/SearchBar";
-import { MWMedia, MWMediaType, MWQuery, SearchProviders } from "scrapers";
+import { MWMedia, MWMediaType, MWQuery, SearchProviders } from "providers";
 import { useEffect, useState } from "react";
 import { ThinContainer } from "components/layout/ThinContainer";
 import { SectionHeading } from "components/layout/SectionHeading";

@@ -1,4 +1,4 @@
-import { getProviderFromId, MWMedia, MWMediaType } from "scrapers";
+import { getProviderFromId, MWMedia, MWMediaType } from "providers";
 import { Link } from "react-router-dom";
 import { Icon, Icons } from "components/Icon";
 

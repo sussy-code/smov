@@ -3,16 +3,16 @@ import {
   MWMediaType,
   MWPortableMedia,
   MWQuery,
-} from "scrapers/types";
+} from "providers/types";
 
 import {
   searchTheFlix,
   getDataFromSearch,
   turnDataIntoMedia,
-} from "scrapers/list/theflix/search";
+} from "providers/list/theflix/search";
 
-import { getDataFromPortableSearch } from "scrapers/list/theflix/portableToMedia";
-import { MWProviderMediaResult } from "scrapers";
+import { getDataFromPortableSearch } from "providers/list/theflix/portableToMedia";
+import { MWProviderMediaResult } from "providers";
 
 export const theFlixScraper: MWMediaProvider = {
   id: "theflix",

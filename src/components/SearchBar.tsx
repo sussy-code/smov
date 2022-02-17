@@ -3,7 +3,7 @@ import { Icons } from "./Icon";
 import { TextInputControl } from "./TextInputs/TextInputControl";
 
 import { useState } from "react";
-import { MWMediaType, MWQuery } from "scrapers";
+import { MWMediaType, MWQuery } from "providers";
 
 export interface SearchBarProps {
   buttonText?: string;
