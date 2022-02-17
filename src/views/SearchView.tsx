@@ -1,6 +1,12 @@
 import { WatchedMediaCard } from "components/media/WatchedMediaCard";
 import { SearchBarInput } from "components/SearchBar";
-import { MWMedia, MWMediaType, MWQuery, SearchProviders } from "providers";
+import {
+  MWMassProviderOutput,
+  MWMedia,
+  MWMediaType,
+  MWQuery,
+  SearchProviders,
+} from "providers";
 import { useEffect, useState } from "react";
 import { ThinContainer } from "components/layout/ThinContainer";
 import { SectionHeading } from "components/layout/SectionHeading";
@@ -15,8 +21,29 @@ function SearchLoading() {
   return <Loading className="my-12" text="Fetching your favourite shows..." />;
 }
 
+function SearchSuffix(props: {
+  fails: number;
+  total: number;
+  resultsSize: number;
+}) {
+  return (
+    <div>
+      {props.fails > 0 ? (
+        <p>
+          {props.fails}/{props.total} providers failed
+        </p>
+      ) : null}
+      {props.resultsSize > 0 ? (
+        <p>Thats all we have to show</p>
+      ) : (
+        <p>No results to show</p>
+      )}
+    </div>
+  );
+}
+
 function SearchResultsView({ searchQuery }: { searchQuery: MWQuery }) {
-  const [results, setResults] = useState<MWMedia[]>([]);
+  const [results, setResults] = useState<MWMassProviderOutput | undefined>();
   const [runSearchQuery, loading, error, success] = useLoading(
     (query: MWQuery) => SearchProviders(query)
   );
@@ -34,9 +61,9 @@ function SearchResultsView({ searchQuery }: { searchQuery: MWQuery }) {
   return (
     <div>
       {/* results */}
-      {success && results.length > 0 ? (
+      {success && results?.results.length ? (
         <SectionHeading title="Search results" icon={Icons.SEARCH}>
-          {results.map((v) => (
+          {results.results.map((v) => (
             <WatchedMediaCard
               key={[v.mediaId, v.providerId].join("|")}
               media={v}
@@ -45,8 +72,14 @@ function SearchResultsView({ searchQuery }: { searchQuery: MWQuery }) {
         </SectionHeading>
       ) : null}
 
-      {/* no results */}
-      {success && results.length === 0 ? <p>No results found</p> : null}
+      {/* search suffix */}
+      {success && results ? (
+        <SearchSuffix
+          resultsSize={results.results.length}
+          fails={results.stats.failed}
+          total={results.stats.total}
+        />
+      ) : null}
 
       {/* error */}
       {error ? <p>All scrapers failed</p> : null}

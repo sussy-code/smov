@@ -1,10 +1,12 @@
+import { tempScraper } from "./list/temp";
 import { theFlixScraper } from "./list/theflix";
-import { MWMedia, MWMediaType, MWPortableMedia, MWQuery } from "./types";
+import { MWMassProviderOutput, MWMedia, MWMediaType, MWPortableMedia, MWQuery } from "./types";
 import { MWWrappedMediaProvider, WrapProvider } from "./wrapper";
 export * from "./types";
 
 const mediaProvidersUnchecked: MWWrappedMediaProvider[] = [
   WrapProvider(theFlixScraper),
+  WrapProvider(tempScraper),
 ];
 export const mediaProviders: MWWrappedMediaProvider[] =
   mediaProvidersUnchecked.filter((v) => v.enabled);
@@ -19,12 +21,38 @@ export function GetProvidersForType(type: MWMediaType) {
 /*
  ** Call search on all providers that matches query type
  */
-export async function SearchProviders(query: MWQuery): Promise<MWMedia[]> {
-  const allQueries = GetProvidersForType(query.type).map((provider) =>
-    provider.searchForMedia(query)
-  );
+export async function SearchProviders(query: MWQuery): Promise<MWMassProviderOutput> {
+  const allQueries = GetProvidersForType(query.type).map<Promise<{ media: MWMedia[], success: boolean, id: string, }>>(async (provider) => {
+    try {
+      return {
+        media: await provider.searchForMedia(query),
+        success: true,
+        id: provider.id,
+      }
+    } catch (err) {
+      console.error(`Failed running provider ${provider.id}`, err, query);
+      return {
+        media: [],
+        success: false,
+        id: provider.id,
+      }
+    }
+  });
   const allResults = await Promise.all(allQueries);
-  return allResults.flatMap((results) => results);
+  const providerResults = allResults.map(provider => ({ success: provider.success, id: provider.id }));
+  const output = {
+    results: allResults.flatMap((results) => results.media),
+    providers: providerResults,
+    stats: {
+      total: providerResults.length,
+      failed: providerResults.filter(v=>!v.success).length,
+      succeeded: providerResults.filter(v=>v.success).length,
+    },
+  };
+
+  if (output.stats.total === output.stats.failed)
+    throw new Error("All Scrapers failed");
+  return output;
 }
 
 /*

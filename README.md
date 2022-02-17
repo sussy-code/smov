@@ -33,10 +33,10 @@ Check out [this project's issues](https://github.com/JamesHawkinss/movie-web/iss
 
 ## Rewrite TODO's
 
-- [ ] Better provider errors (only fail if all failed, show individual fails somewhere)
-- [ ] Better no results view
+- [x] Better provider errors (only fail if all failed, show individual fails somewhere)
+- [ ] Better search suffix view
 - [ ] Add back link of results view
-- [ ] Add results list end
+- [x] Add results list end
 - [ ] Add Brand tag top left
 - [ ] Add github and discord top right
 - [ ] Store watched percentage

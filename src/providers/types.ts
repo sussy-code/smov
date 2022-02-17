@@ -33,3 +33,16 @@ export interface MWMediaProvider {
   getMediaFromPortable(media: MWPortableMedia): Promise<MWProviderMediaResult>;
   searchForMedia(query: MWQuery): Promise<MWProviderMediaResult[]>;
 }
+
+export interface MWMassProviderOutput {
+  providers: {
+    id: string,
+    success: boolean,
+  }[];
+  results: MWMedia[],
+  stats: {
+    total: number,
+    failed: number,
+    succeeded: number,
+  }
+}
