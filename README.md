@@ -33,7 +33,7 @@ Check out [this project's issues](https://github.com/JamesHawkinss/movie-web/iss
 
 ## Rewrite TODO's
 
-- [ ] Better scraper errors
+- [ ] Better provider errors (only fail if all failed, show individual fails somewhere)
 - [ ] Better no results view
 - [ ] Add back link of results view
 - [ ] Add results list end
