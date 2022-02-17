@@ -44,3 +44,4 @@ Check out [this project's issues](https://github.com/JamesHawkinss/movie-web/iss
 - [ ] Add provider stream method
 - [ ] Better looking error boundary
 - [ ] sort search results so they aren't sorted by provider
+- [ ] Get rid of react warnings
