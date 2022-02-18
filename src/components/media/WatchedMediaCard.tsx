@@ -1,4 +1,5 @@
 import { MWMedia } from "providers";
+import { useWatchedContext, getWatchedFromPortable } from "state/watched";
 import { MediaCard } from "./MediaCard";
 
 export interface WatchedMediaCardProps {
@@ -6,5 +7,15 @@ export interface WatchedMediaCardProps {
 }
 
 export function WatchedMediaCard(props: WatchedMediaCardProps) {
-  return <MediaCard watchedPercentage={0} media={props.media} linkable />;
+  const { watched } = useWatchedContext();
+  const foundWatched = getWatchedFromPortable(watched, props.media);
+  const watchedPercentage = (foundWatched && foundWatched.percentage) || 0;
+
+  return (
+    <MediaCard
+      watchedPercentage={watchedPercentage}
+      media={props.media}
+      linkable
+    />
+  );
 }

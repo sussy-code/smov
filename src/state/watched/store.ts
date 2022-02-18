@@ -36,15 +36,16 @@ export const VideoProgressStore = versionedStoreBuilder()
     .setKey('video-progress')
     .addVersion({
         version: 0,
-        migrate(data: any) {
-          // TODO migration
-          throw new Error("Migration not been written yet!!")
-        },
     })
     .addVersion({
       version: 1,
+      migrate(data: any) {
+        // TODO migration
+      },
       create() {
-        return {}
+        return {
+          items: [],
+        }
       }
     })
     .build()

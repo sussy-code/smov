@@ -85,8 +85,9 @@ function buildStoreObject(d: any) {
     data = this.update(data);
 
     // add a save object to return value
-    data.save = function save() {
-      localStorage.setItem(store.id, JSON.stringify(data));
+    data.save = function save(newData: any) {
+      let dataToStore = newData || data;
+      localStorage.setItem(store.id, JSON.stringify(dataToStore));
     };
 
     // add instance helpers
