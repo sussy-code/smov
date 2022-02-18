@@ -34,7 +34,7 @@ Check out [this project's issues](https://github.com/JamesHawkinss/movie-web/iss
 ## Rewrite TODO's
 
 - [x] Better provider errors (only fail if all failed, show individual fails somewhere)
-- [ ] Better search suffix view
+- [x] Better search suffix view
 - [ ] Add back link of results view
 - [x] Add results list end
 - [ ] Add Brand tag top left
@@ -42,6 +42,6 @@ Check out [this project's issues](https://github.com/JamesHawkinss/movie-web/iss
 - [ ] Store watched percentage
 - [ ] Implement movie + series view
 - [ ] Add provider stream method
-- [ ] Better looking error boundary
+- [x] Better looking error boundary
 - [ ] sort search results so they aren't sorted by provider
 - [ ] Get rid of react warnings
