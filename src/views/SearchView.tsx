@@ -63,7 +63,13 @@ function SearchSuffix(props: {
   );
 }
 
-function SearchResultsView({ searchQuery }: { searchQuery: MWQuery }) {
+function SearchResultsView({
+  searchQuery,
+  clear,
+}: {
+  searchQuery: MWQuery;
+  clear: () => void;
+}) {
   const [results, setResults] = useState<MWMassProviderOutput | undefined>();
   const [runSearchQuery, loading, error, success] = useLoading(
     (query: MWQuery) => SearchProviders(query)
@@ -83,7 +89,12 @@ function SearchResultsView({ searchQuery }: { searchQuery: MWQuery }) {
     <div>
       {/* results */}
       {success && results?.results.length ? (
-        <SectionHeading title="Search results" icon={Icons.SEARCH}>
+        <SectionHeading
+          title="Search results"
+          icon={Icons.SEARCH}
+          linkText="Back to home"
+          onClick={() => clear()}
+        >
           {results.results.map((v) => (
             <WatchedMediaCard
               key={[v.mediaId, v.providerId].join("|")}
@@ -147,7 +158,10 @@ export function SearchView() {
       {loading ? (
         <SearchLoading />
       ) : searching ? (
-        <SearchResultsView searchQuery={debouncedSearch} />
+        <SearchResultsView
+          searchQuery={debouncedSearch}
+          clear={() => setSearch((v) => ({ searchQuery: "", type: v.type }))}
+        />
       ) : null}
     </ThinContainer>
   );
