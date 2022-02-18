@@ -19,7 +19,6 @@ import { useLoading } from "hooks/useLoading";
 import { IconPatch } from "components/Buttons/IconPatch";
 
 function SearchLoading() {
-  throw new Error("testing");
   return <Loading className="my-12" text="Fetching your favourite shows..." />;
 }
 

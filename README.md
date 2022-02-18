@@ -45,3 +45,4 @@ Check out [this project's issues](https://github.com/JamesHawkinss/movie-web/iss
 - [x] Better looking error boundary
 - [ ] sort search results so they aren't sorted by provider
 - [ ] Get rid of react warnings
+- [ ] Link Github and Discord in error boundary

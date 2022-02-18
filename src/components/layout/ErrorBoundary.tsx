@@ -42,7 +42,6 @@ export class ErrorBoundary extends Component<{}, ErrorBoundaryState> {
   render() {
     if (!this.state.hasError) return this.props.children;
 
-    // TODO make pretty
     return (
       <div className="flex min-h-screen w-full flex-col items-center justify-center px-4 py-12">
         <div className="flex flex-col items-center justify-start text-center">
@@ -54,8 +53,8 @@ export class ErrorBoundary extends Component<{}, ErrorBoundaryState> {
           </p>
         </div>
         {this.state.error ? (
-          <div className="bg-denim-300 mt-12 max-w-4xl rounded px-6 py-4">
-            <p className="mb-2 break-words font-bold text-white">
+          <div className="bg-denim-300 w-4xl mt-12 max-w-full rounded px-6 py-4">
+            <p className="mb-1 break-words font-bold text-white">
               {this.state.error.name} - {this.state.error.description}
             </p>
             <p className="break-words">{this.state.error.path}</p>
