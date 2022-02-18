@@ -24,7 +24,6 @@ export const tempScraper: MWMediaProvider = {
   },
 
   async searchForMedia(query: MWQuery): Promise<MWProviderMediaResult[]> {
-
     return [];
   },
 };

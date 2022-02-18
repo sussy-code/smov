@@ -16,6 +16,7 @@ import { Tagline } from "components/Text/Tagline";
 import { Title } from "components/Text/Title";
 import { useDebounce } from "hooks/useDebounce";
 import { useLoading } from "hooks/useLoading";
+import { IconPatch } from "components/Buttons/IconPatch";
 
 function SearchLoading() {
   return <Loading className="my-12" text="Fetching your favourite shows..." />;
@@ -26,18 +27,38 @@ function SearchSuffix(props: {
   total: number;
   resultsSize: number;
 }) {
+  const allFailed: boolean = props.fails === props.total;
+  const icon: Icons = allFailed ? Icons.WARNING : Icons.EYE_SLASH;
+
   return (
-    <div>
-      {props.fails > 0 ? (
-        <p>
-          {props.fails}/{props.total} providers failed
-        </p>
+    <div className="my-24 flex flex-col items-center justify-center space-y-3 text-center">
+      <IconPatch
+        icon={icon}
+        className={`text-xl ${allFailed ? "text-red-400" : "text-bink-600"}`}
+      />
+
+      {/* standard suffix */}
+      {!allFailed ? (
+        <div>
+          {props.fails > 0 ? (
+            <p className="text-red-400">
+              {props.fails}/{props.total} providers failed
+            </p>
+          ) : null}
+          {props.resultsSize > 0 ? (
+            <p>That's all we have &mdash; sorry</p>
+          ) : (
+            <p>We couldn't find anything &mdash; sorry</p>
+          )}
+        </div>
       ) : null}
-      {props.resultsSize > 0 ? (
-        <p>Thats all we have to show</p>
-      ) : (
-        <p>No results to show</p>
-      )}
+
+      {/* Error result */}
+      {allFailed ? (
+        <div>
+          <p>All providers failed &mdash; whoops</p>
+        </div>
+      ) : null}
     </div>
   );
 }
@@ -82,7 +103,7 @@ function SearchResultsView({ searchQuery }: { searchQuery: MWQuery }) {
       ) : null}
 
       {/* error */}
-      {error ? <p>All scrapers failed</p> : null}
+      {error ? <SearchSuffix resultsSize={0} fails={1} total={1} /> : null}
 
       {/* Loading icon */}
       {loading ? <SearchLoading /> : null}
