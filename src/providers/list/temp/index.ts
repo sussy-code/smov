@@ -5,7 +5,7 @@ import {
   MWQuery,
 } from "providers/types";
 
-import { MWProviderMediaResult } from "providers";
+import { MWMediaStream, MWProviderMediaResult } from "providers";
 
 export const tempScraper: MWMediaProvider = {
   id: "temp",
@@ -24,6 +24,14 @@ export const tempScraper: MWMediaProvider = {
   },
 
   async searchForMedia(query: MWQuery): Promise<MWProviderMediaResult[]> {
-    return [];
+    return [
+    ];
+  },
+
+  async getStream(media: MWPortableMedia): Promise<MWMediaStream> {
+    return {
+      url: "hi",
+      type: "mp4",
+    };
   },
 };

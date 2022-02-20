@@ -12,6 +12,12 @@ export interface MWPortableMedia {
   episode?: number;
 }
 
+export type MWMediaStreamType = "m3u8" | "mp4";
+export interface MWMediaStream {
+  url: string;
+  type: MWMediaStreamType;
+}
+
 export interface MWMedia extends MWPortableMedia {
   title: string;
   year: string;
@@ -32,17 +38,18 @@ export interface MWMediaProvider {
 
   getMediaFromPortable(media: MWPortableMedia): Promise<MWProviderMediaResult>;
   searchForMedia(query: MWQuery): Promise<MWProviderMediaResult[]>;
+  getStream(media: MWPortableMedia): Promise<MWMediaStream>;
 }
 
 export interface MWMassProviderOutput {
   providers: {
-    id: string,
-    success: boolean,
+    id: string;
+    success: boolean;
   }[];
-  results: MWMedia[],
+  results: MWMedia[];
   stats: {
-    total: number,
-    failed: number,
-    succeeded: number,
-  }
+    total: number;
+    failed: number;
+    succeeded: number;
+  };
 }

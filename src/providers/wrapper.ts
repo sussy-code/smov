@@ -1,8 +1,9 @@
-import { MWMedia, MWMediaProvider, MWPortableMedia, MWQuery } from "./types";
+import { MWMedia, MWMediaProvider, MWMediaStream, MWPortableMedia, MWQuery } from "./types";
 
 export interface MWWrappedMediaProvider extends MWMediaProvider {
   getMediaFromPortable(media: MWPortableMedia): Promise<MWMedia>;
   searchForMedia(query: MWQuery): Promise<MWMedia[]>;
+  getStream(media: MWPortableMedia): Promise<MWMediaStream>;
 }
 
 export function WrapProvider(
