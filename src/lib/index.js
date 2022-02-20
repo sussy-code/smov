@@ -11,7 +11,7 @@ async function findContent(searchTerm, type) {
         gomostream.findContent(searchTerm, type),
         gdriveplayer.findContent(searchTerm, type),
         xemovie.findContent(searchTerm, type),
-        vidzstore.findContent(searchTerm, type),
+        // vidzstore.findContent(searchTerm, type),
     ]);
 
     content.forEach((o) => {
