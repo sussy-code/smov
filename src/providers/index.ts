@@ -7,6 +7,7 @@ import {
   MWMediaType,
   MWPortableMedia,
   MWQuery,
+  MWMediaStream,
 } from "./types";
 import { MWWrappedMediaProvider, WrapProvider } from "./wrapper";
 export * from "./types";
@@ -101,4 +102,16 @@ export async function convertPortableToMedia(
 ): Promise<MWMedia | undefined> {
   const provider = getProviderFromId(portable.providerId);
   return await provider?.getMediaFromPortable(portable);
+}
+
+/*
+ ** find provider from portable and get stream from that provider
+ */
+export async function getStream(
+  media: MWPortableMedia
+): Promise<MWMediaStream | undefined> {
+  const provider = getProviderFromId(media.providerId);
+  if (!provider) return undefined;
+
+  return await provider.getStream(media);
 }

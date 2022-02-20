@@ -42,7 +42,7 @@ Check out [this project's issues](https://github.com/JamesHawkinss/movie-web/iss
 - [ ] Link Github and Discord in error boundary
 - [x] Store watched percentage
 - [ ] Implement movie + series view
-- [ ] Add provider stream method
+- [x] Add provider stream method
 - [x] Better looking error boundary
 - [x] sort search results so they aren't sorted by provider
 - [ ] Get rid of react warnings

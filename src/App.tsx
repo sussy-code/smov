@@ -10,8 +10,8 @@ function App() {
     <WatchedContextProvider>
       <Switch>
         <Route exact path="/" component={SearchView} />
-        <Route exact path="/media/movie" component={MovieView} />
-        <Route exact path="/media/series" component={SeriesView} />
+        <Route exact path="/media/movie/:media" component={MovieView} />
+        <Route exact path="/media/series/:media" component={SeriesView} />
       </Switch>
     </WatchedContextProvider>
   );

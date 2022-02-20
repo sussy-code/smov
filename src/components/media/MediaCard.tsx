@@ -1,6 +1,12 @@
-import { getProviderFromId, MWMedia, MWMediaType } from "providers";
+import {
+  convertMediaToPortable,
+  getProviderFromId,
+  MWMedia,
+  MWMediaType,
+} from "providers";
 import { Link } from "react-router-dom";
 import { Icon, Icons } from "components/Icon";
+import { serializePortableMedia } from "hooks/usePortableMedia";
 
 export interface MediaCardProps {
   media: MWMedia;
@@ -87,5 +93,13 @@ export function MediaCard(props: MediaCardProps) {
   const content = <MediaCardContent {...props} />;
 
   if (!props.linkable) return <span>{content}</span>;
-  return <Link to={`/media/${link}`}>{content}</Link>;
+  return (
+    <Link
+      to={`/media/${link}/${serializePortableMedia(
+        convertMediaToPortable(props.media)
+      )}`}
+    >
+      {content}
+    </Link>
+  );
 }

@@ -13,11 +13,13 @@ interface WatchedStoreData {
 
 interface WatchedStoreDataWrapper {
   setWatched: React.Dispatch<React.SetStateAction<WatchedStoreData>>;
+  updateProgress(media: MWPortableMedia, progress: number, total: number): void;
   watched: WatchedStoreData;
 }
 
 const WatchedContext = createContext<WatchedStoreDataWrapper>({
   setWatched: () => {},
+  updateProgress: () => {},
   watched: {
     items: [],
   },
@@ -26,18 +28,50 @@ WatchedContext.displayName = "WatchedContext";
 
 export function WatchedContextProvider(props: { children: ReactNode }) {
   const watchedLocalstorage = VideoProgressStore.get();
-  const [watched, setWatched] = useState<WatchedStoreData>(
+  const [watched, setWatchedReal] = useState<WatchedStoreData>(
     watchedLocalstorage as WatchedStoreData
   );
+
+  function setWatched(data: any) {
+    setWatchedReal((old) => {
+      let newData = data;
+      if (data.constructor === Function) {
+        newData = data(old);
+      }
+      watchedLocalstorage.save(newData);
+      return newData;
+    });
+  }
+
   const contextValue = {
     setWatched(data: any) {
-      setWatched((old) => {
-        let newData = data;
-        if (data.constructor === Function) {
-          newData = data(old);
+      return setWatched(data);
+    },
+    updateProgress(
+      media: MWPortableMedia,
+      progress: number,
+      total: number
+    ): void {
+      setWatched((data: WatchedStoreData) => {
+        let item = getWatchedFromPortable(data, media);
+        if (!item) {
+          item = {
+            mediaId: media.mediaId,
+            mediaType: media.mediaType,
+            providerId: media.providerId,
+            percentage: 0,
+            progress: 0,
+            episode: media.episode,
+            season: media.season,
+          };
+          data.items.push(item);
         }
-        watchedLocalstorage.save(newData);
-        return newData;
+
+        // update actual item
+        item.progress = progress;
+        item.percentage = Math.round((progress / total) * 100);
+
+        return data;
       });
     },
     watched,
