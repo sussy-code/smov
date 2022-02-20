@@ -39,13 +39,16 @@ Check out [this project's issues](https://github.com/JamesHawkinss/movie-web/iss
 - [x] Add results list end
 - [ ] Add Brand tag top left
 - [ ] Add github and discord top right
+- [ ] Link Github and Discord in error boundary
 - [x] Store watched percentage
 - [ ] Implement movie + series view
 - [ ] Add provider stream method
 - [x] Better looking error boundary
-- [ ] sort search results so they aren't sorted by provider
+- [x] sort search results so they aren't sorted by provider
 - [ ] Get rid of react warnings
-- [ ] Link Github and Discord in error boundary
+- [ ] Subtitles
+- [ ] Migrate old video progress
+- [ ] Implement more scrapers
 
 ## Todo's overall
 
