@@ -45,6 +45,7 @@ Check out [this project's issues](https://github.com/JamesHawkinss/movie-web/iss
   - [ ] Global state for media objects
   - [ ] Styling for pages
   - [ ] Series episodes+seasons
+- [ ] On back button, persist the search query and results
 - [ ] Bookmarking
 - [ ] Resume from where you left of
 - [ ] Less spaghett video player view
