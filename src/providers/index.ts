@@ -1,6 +1,13 @@
+import Fuse from "fuse.js";
 import { tempScraper } from "./list/temp";
 import { theFlixScraper } from "./list/theflix";
-import { MWMassProviderOutput, MWMedia, MWMediaType, MWPortableMedia, MWQuery } from "./types";
+import {
+  MWMassProviderOutput,
+  MWMedia,
+  MWMediaType,
+  MWPortableMedia,
+  MWQuery,
+} from "./types";
 import { MWWrappedMediaProvider, WrapProvider } from "./wrapper";
 export * from "./types";
 
@@ -21,34 +28,45 @@ export function GetProvidersForType(type: MWMediaType) {
 /*
  ** Call search on all providers that matches query type
  */
-export async function SearchProviders(query: MWQuery): Promise<MWMassProviderOutput> {
-  const allQueries = GetProvidersForType(query.type).map<Promise<{ media: MWMedia[], success: boolean, id: string, }>>(async (provider) => {
+export async function SearchProviders(
+  query: MWQuery
+): Promise<MWMassProviderOutput> {
+  const allQueries = GetProvidersForType(query.type).map<
+    Promise<{ media: MWMedia[]; success: boolean; id: string }>
+  >(async (provider) => {
     try {
       return {
         media: await provider.searchForMedia(query),
         success: true,
         id: provider.id,
-      }
+      };
     } catch (err) {
       console.error(`Failed running provider ${provider.id}`, err, query);
       return {
         media: [],
         success: false,
         id: provider.id,
-      }
+      };
     }
   });
   const allResults = await Promise.all(allQueries);
-  const providerResults = allResults.map(provider => ({ success: provider.success, id: provider.id }));
+  const providerResults = allResults.map((provider) => ({
+    success: provider.success,
+    id: provider.id,
+  }));
   const output = {
     results: allResults.flatMap((results) => results.media),
     providers: providerResults,
     stats: {
       total: providerResults.length,
-      failed: providerResults.filter(v=>!v.success).length,
-      succeeded: providerResults.filter(v=>v.success).length,
+      failed: providerResults.filter((v) => !v.success).length,
+      succeeded: providerResults.filter((v) => v.success).length,
     },
   };
+
+  // sort results
+  const fuse = new Fuse(output.results, { threshold: 0.3, keys: ["title"] });
+  output.results = fuse.search(query.searchQuery).map((v) => v.item);
 
   if (output.stats.total === output.stats.failed)
     throw new Error("All Scrapers failed");

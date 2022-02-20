@@ -82,7 +82,7 @@ function MediaCardContent({
 
 export function MediaCard(props: MediaCardProps) {
   let link = "movie";
-  if (props.media.mediaType === MWMediaType.MOVIE) link = "series";
+  if (props.media.mediaType === MWMediaType.SERIES) link = "series";
 
   const content = <MediaCardContent {...props} />;
 
