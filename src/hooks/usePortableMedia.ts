@@ -1,4 +1,4 @@
-import { MWMedia, MWPortableMedia } from "providers";
+import { MWPortableMedia } from "providers";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 

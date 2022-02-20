@@ -37,19 +37,28 @@ Check out [this project's issues](https://github.com/JamesHawkinss/movie-web/iss
 - [x] Better search suffix view
 - [x] Add back link of results view
 - [x] Add results list end
+- [x] Store watched percentage
 - [ ] Add Brand tag top left
 - [ ] Add github and discord top right
 - [ ] Link Github and Discord in error boundary
-- [x] Store watched percentage
 - [ ] Implement movie + series view
+  - [ ] Global state for media objects
+  - [ ] Styling for pages
+  - [ ] Series episodes+seasons
+- [ ] Bookmarking
+- [ ] Resume from where you left of
+- [ ] Less spaghett video player view
+- [ ] Homepage continue watching + bookmarks
 - [x] Add provider stream method
 - [x] Better looking error boundary
 - [x] sort search results so they aren't sorted by provider
-- [ ] Get rid of react warnings
 - [ ] Subtitles
 - [ ] Migrate old video progress
+- [ ] Get rid of react warnings
 - [ ] Implement more scrapers
 
-## Todo's overall
+## Todo's after rewrite
 
 - [ ] Less spaghetti versioned storage (typesafe and works functionally)
+- [ ] better mobile search type selector
+- [ ] Custom video player

@@ -1,4 +1,4 @@
-import { MWMediaStream, MWPortableMedia } from "providers";
+import { MWMediaStream } from "providers";
 import { useRef } from "react";
 
 export interface VideoPlayerProps {
