@@ -108,7 +108,7 @@ async function getStreamUrl(slug, type, season, episode) {
             }
         }
     }
-    return { url: mediaUrl, subtitles: subtitles }
+    return { url: `${process.env.REACT_APP_CORS_PROXY_URL}${mediaUrl}`, subtitles: subtitles }
 }
 
 async function getEpisodes(slug) {
