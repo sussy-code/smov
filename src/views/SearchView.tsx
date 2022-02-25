@@ -17,6 +17,7 @@ import { Title } from "components/text/Title";
 import { useDebounce } from "hooks/useDebounce";
 import { useLoading } from "hooks/useLoading";
 import { IconPatch } from "components/buttons/IconPatch";
+import { BrandHeader } from "components/layout/BrandHeader";
 
 function SearchLoading() {
   return <Loading className="my-12" text="Fetching your favourite shows..." />;
@@ -140,29 +141,32 @@ export function SearchView() {
   }, [debouncedSearch]);
 
   return (
-    <ThinContainer>
-      {/* input section */}
-      <div className="mt-36 space-y-16 text-center">
-        <div className="space-y-4">
-          <Tagline>Because watching legally is boring</Tagline>
-          <Title>What movie do you want to watch?</Title>
+    <>
+      <BrandHeader/>
+      <ThinContainer>
+        {/* input section */}
+        <div className="mt-44 space-y-16 text-center">
+          <div className="space-y-4">
+            <Tagline>Because watching legally is boring</Tagline>
+            <Title>What movie do you want to watch?</Title>
+          </div>
+          <SearchBarInput
+            onChange={setSearch}
+            value={search}
+            placeholder="What movie do you want to watch?"
+          />
         </div>
-        <SearchBarInput
-          onChange={setSearch}
-          value={search}
-          placeholder="What movie do you want to watch?"
-        />
-      </div>
 
-      {/* results view */}
-      {loading ? (
-        <SearchLoading />
-      ) : searching ? (
-        <SearchResultsView
-          searchQuery={debouncedSearch}
-          clear={() => setSearch((v) => ({ searchQuery: "", type: v.type }))}
-        />
-      ) : null}
-    </ThinContainer>
+        {/* results view */}
+        {loading ? (
+          <SearchLoading />
+        ) : searching ? (
+          <SearchResultsView
+            searchQuery={debouncedSearch}
+            clear={() => setSearch((v) => ({ searchQuery: "", type: v.type }))}
+          />
+        ) : null}
+      </ThinContainer>
+    </>
   );
 }

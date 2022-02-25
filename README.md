@@ -38,8 +38,8 @@ Check out [this project's issues](https://github.com/JamesHawkinss/movie-web/iss
 - [x] Add back link of results view
 - [x] Add results list end
 - [x] Store watched percentage
-- [ ] Add Brand tag top left
-- [ ] Add github and discord top right
+- [x] Add Brand tag top left
+- [X] Add github and discord top right
 - [x] Link Github and Discord in error boundary
 - [ ] Implement movie + series view
   - [ ] Global state for media objects
