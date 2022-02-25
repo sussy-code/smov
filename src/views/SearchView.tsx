@@ -12,11 +12,11 @@ import { ThinContainer } from "components/layout/ThinContainer";
 import { SectionHeading } from "components/layout/SectionHeading";
 import { Icons } from "components/Icon";
 import { Loading } from "components/layout/Loading";
-import { Tagline } from "components/Text/Tagline";
-import { Title } from "components/Text/Title";
+import { Tagline } from "components/text/Tagline";
+import { Title } from "components/text/Title";
 import { useDebounce } from "hooks/useDebounce";
 import { useLoading } from "hooks/useLoading";
-import { IconPatch } from "components/Buttons/IconPatch";
+import { IconPatch } from "components/buttons/IconPatch";
 
 function SearchLoading() {
   return <Loading className="my-12" text="Fetching your favourite shows..." />;

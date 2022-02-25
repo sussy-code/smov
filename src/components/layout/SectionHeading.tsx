@@ -1,5 +1,5 @@
 import { Icon, Icons } from "components/Icon";
-import { ArrowLink } from "components/Text/ArrowLink";
+import { ArrowLink } from "components/text/ArrowLink";
 import { ReactNode } from "react";
 
 interface SectionHeadingProps {

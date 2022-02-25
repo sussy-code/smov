@@ -1,7 +1,7 @@
-import { IconPatch } from "components/Buttons/IconPatch";
+import { IconPatch } from "components/buttons/IconPatch";
 import { Icons } from "components/Icon";
-import { Link } from "components/Text/Link";
-import { Title } from "components/Text/Title";
+import { Link } from "components/text/Link";
+import { Title } from "components/text/Title";
 import { DISCORD_LINK, GITHUB_LINK } from "mw_constants";
 import { Component } from "react";
 

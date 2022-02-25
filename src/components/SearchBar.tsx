@@ -1,6 +1,6 @@
-import { DropdownButton } from "./Buttons/DropdownButton";
+import { DropdownButton } from "./buttons/DropdownButton";
 import { Icons } from "./Icon";
-import { TextInputControl } from "./TextInputs/TextInputControl";
+import { TextInputControl } from "./text-inputs/TextInputControl";
 
 import { useState } from "react";
 import { MWMediaType, MWQuery } from "providers";
