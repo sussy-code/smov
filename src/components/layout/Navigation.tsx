@@ -3,9 +3,9 @@ import { Icons } from "components/Icon";
 import { DISCORD_LINK, GITHUB_LINK } from "mw_constants";
 import { BrandPill } from "./BrandPill";
 
-export function BrandHeader() {
+export function Navigation() {
   return (
-    <div className="flex justify-between items-center absolute left-0 right-0 top-0 p-3">
+    <div className="flex justify-between items-center absolute left-0 right-0 top-0 py-5 px-7">
       <div>
         <BrandPill />
       </div>

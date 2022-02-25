@@ -2,7 +2,6 @@ import { WatchedMediaCard } from "components/media/WatchedMediaCard";
 import { SearchBarInput } from "components/SearchBar";
 import {
   MWMassProviderOutput,
-  MWMedia,
   MWMediaType,
   MWQuery,
   SearchProviders,
@@ -17,7 +16,7 @@ import { Title } from "components/text/Title";
 import { useDebounce } from "hooks/useDebounce";
 import { useLoading } from "hooks/useLoading";
 import { IconPatch } from "components/buttons/IconPatch";
-import { BrandHeader } from "components/layout/BrandHeader";
+import { Navigation } from "components/layout/Navigation";
 
 function SearchLoading() {
   return <Loading className="my-12" text="Fetching your favourite shows..." />;
@@ -142,7 +141,7 @@ export function SearchView() {
 
   return (
     <>
-      <BrandHeader/>
+      <Navigation />
       <ThinContainer>
         {/* input section */}
         <div className="mt-44 space-y-16 text-center">
