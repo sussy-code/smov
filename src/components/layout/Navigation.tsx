@@ -10,8 +10,8 @@ export function Navigation() {
         <BrandPill />
       </div>
       <div className="flex">
-        <a href={DISCORD_LINK} target="_blank" className="text-2xl text-white"><IconPatch icon={Icons.DISCORD} clickable/></a>
-        <a href={GITHUB_LINK} target="_blank" className="text-2xl text-white"><IconPatch icon={Icons.GITHUB} clickable/></a>
+        <a href={DISCORD_LINK} target="_blank" rel="noreferrer" className="text-2xl text-white"><IconPatch icon={Icons.DISCORD} clickable/></a>
+        <a href={GITHUB_LINK} target="_blank" rel="noreferrer" className="text-2xl text-white"><IconPatch icon={Icons.GITHUB} clickable/></a>
       </div>
     </div>
   )

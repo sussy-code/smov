@@ -1,5 +1,4 @@
 import { Icon, Icons } from 'components/Icon'
-import { ReactNode } from 'react' 
 
 export function BrandPill() {
 
