@@ -1,5 +1,5 @@
 import { Icon, Icons } from "components/Icon";
-import { Link } from "components/Text/Link";
+import { ArrowLink } from "components/Text/ArrowLink";
 import { ReactNode } from "react";
 
 interface SectionHeadingProps {
@@ -23,7 +23,7 @@ export function SectionHeading(props: SectionHeadingProps) {
           {props.title}
         </p>
         {props.linkText ? (
-          <Link
+          <ArrowLink
             linkText={props.linkText}
             direction="left"
             onClick={props.onClick}

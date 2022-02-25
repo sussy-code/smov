@@ -1,6 +1,8 @@
 import { IconPatch } from "components/Buttons/IconPatch";
 import { Icons } from "components/Icon";
+import { Link } from "components/Text/Link";
 import { Title } from "components/Text/Title";
+import { DISCORD_LINK, GITHUB_LINK } from "mw_constants";
 import { Component } from "react";
 
 interface ErrorBoundaryState {
@@ -49,7 +51,7 @@ export class ErrorBoundary extends Component<{}, ErrorBoundaryState> {
           <Title>Whoops, it broke</Title>
           <p className="my-6 max-w-lg">
             The app encountered an error and wasn't able to recover, please
-            report it to the discord server or on GitHub.
+            report it to the <Link url={DISCORD_LINK} newTab>Discord server</Link> or on <Link url={GITHUB_LINK} newTab>GitHub</Link>.
           </p>
         </div>
         {this.state.error ? (

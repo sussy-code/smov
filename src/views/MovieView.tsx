@@ -10,6 +10,7 @@ export function MovieView() {
   const store = useWatchedContext();
 
   useEffect(() => {
+    throw new Error("Hi");
     (async () => {
       setStreamUrl(mediaPortable && (await getStream(mediaPortable)));
     })();
