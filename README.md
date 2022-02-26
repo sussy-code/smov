@@ -57,6 +57,7 @@ Check out [this project's issues](https://github.com/JamesHawkinss/movie-web/iss
 - [ ] Migrate old video progress
 - [ ] Get rid of react warnings
 - [ ] Implement more scrapers
+- [ ] Add 404 page for media (media not found, provider disabled, provider not found) & general (page not found)
 
 ## Todo's after rewrite
 
