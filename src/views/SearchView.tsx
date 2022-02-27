@@ -17,6 +17,7 @@ import { useDebounce } from "hooks/useDebounce";
 import { useLoading } from "hooks/useLoading";
 import { IconPatch } from "components/buttons/IconPatch";
 import { Navigation } from "components/layout/Navigation";
+import { useSearchQuery } from "hooks/useSearchQuery";
 
 function SearchLoading() {
   return <Loading className="my-12" text="Fetching your favourite shows..." />;
@@ -125,10 +126,7 @@ function SearchResultsView({
 export function SearchView() {
   const [searching, setSearching] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
-  const [search, setSearch] = useState<MWQuery>({
-    searchQuery: "",
-    type: MWMediaType.MOVIE,
-  });
+  const [search, setSearch] = useSearchQuery();
 
   const debouncedSearch = useDebounce<MWQuery>(search, 2000);
   useEffect(() => {
@@ -153,7 +151,7 @@ export function SearchView() {
             onChange={setSearch}
             value={search}
             placeholder="What movie do you want to watch?"
-          />
+          /> 
         </div>
 
         {/* results view */}
@@ -162,7 +160,7 @@ export function SearchView() {
         ) : searching ? (
           <SearchResultsView
             searchQuery={debouncedSearch}
-            clear={() => setSearch((v) => ({ searchQuery: "", type: v.type }))}
+            clear={() => setSearch({ searchQuery: "" })}
           />
         ) : null}
       </ThinContainer>
