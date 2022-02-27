@@ -41,25 +41,33 @@ Check out [this project's issues](https://github.com/JamesHawkinss/movie-web/iss
 - [x] Add Brand tag top left
 - [x] Add github and discord top right
 - [x] Link Github and Discord in error boundary
-- [ ] Implement movie + series view
-  - [x] Global state for media objects
-  - [x] Styling for pages
-  - [ ] loading video player view + error
-  - [ ] Series episodes+seasons
 - [x] On back button, persist the search query and results
 - [x] Bookmarking
 - [x] Resume from where you left of
-- [ ] Less spaghett video player view (implement source that are not mp4)
 - [x] Homepage continue watching + bookmarks
 - [x] Add provider stream method
 - [x] Better looking error boundary
 - [x] sort search results so they aren't sorted by provider
+- [x] Change text of "thats all we have"
+- [ ] Implement movie + series view
+  - [x] Global state for media objects
+  - [x] Styling for pages
+  - [x] loading stream player view + error
+  - [ ] video load error, video loading (from actual video player)
+  - [ ] Series episodes+seasons
+- [ ] implement source that are not mp4
 - [ ] Subtitles
 - [ ] Migrate old video progress
 - [ ] Get rid of react warnings
 - [ ] Implement more scrapers
-- [ ] Add 404 page for media (media not found, provider disabled, provider not found) & general (page not found) <---
-- [x] Change text of "thats all we have"
+- [ ] Add 404 page for media (media not found, provider disabled, provider not found) & general (page not found)
+- [ ] Brand tag hover state and cursor
+- [ ] Handle disabled providers (continue watching, bookmarks & router)
+
+## After all rewrite code has been written
+
+- [ ] Make better readme
+- [ ] Make cool announcement with cool gif animation
 
 ## Todo's after rewrite
 
