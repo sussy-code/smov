@@ -1,9 +1,9 @@
-import { MWMedia } from "providers";
+import { MWMediaMeta } from "providers";
 import { useWatchedContext, getWatchedFromPortable } from "state/watched";
 import { MediaCard } from "./MediaCard";
 
 export interface WatchedMediaCardProps {
-  media: MWMedia;
+  media: MWMediaMeta;
 }
 
 export function WatchedMediaCard(props: WatchedMediaCardProps) {

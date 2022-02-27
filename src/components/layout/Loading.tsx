@@ -6,7 +6,7 @@ export interface LoadingProps {
 export function Loading(props: LoadingProps) {
   return (
     <div className={props.className}>
-      <div className="flex flex-col items-center justify-center py-12">
+      <div className="flex flex-col items-center justify-center">
         <div className="flex h-12 items-center justify-center">
           <div className="animate-loading-pin bg-denim-300 mx-1 h-2 w-2 rounded-full"></div>
           <div className="animate-loading-pin bg-denim-300 mx-1 h-2 w-2 rounded-full [animation-delay:150ms]"></div>

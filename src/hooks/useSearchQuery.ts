@@ -13,7 +13,7 @@ export function useSearchQuery(): [MWQuery, (inp: Partial<MWQuery>) => void] {
   const updateParams = (inp: Partial<MWQuery>) => {
     const copySearch: MWQuery = {...search};
     Object.assign(copySearch, inp);
-    history.push(generatePath(path, { query: copySearch.searchQuery.length == 0 ? undefined : inp.searchQuery, type: copySearch.type }))
+    history.push(generatePath(path, { query: copySearch.searchQuery.length === 0 ? undefined : inp.searchQuery, type: copySearch.type }))
   }
 
   React.useEffect(() => {

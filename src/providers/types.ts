@@ -18,10 +18,12 @@ export interface MWMediaStream {
   type: MWMediaStreamType;
 }
 
-export interface MWMedia extends MWPortableMedia {
+export interface MWMediaMeta extends MWPortableMedia {
   title: string;
   year: string;
 }
+
+export interface MWMedia extends MWMediaMeta {}
 
 export type MWProviderMediaResult = Omit<MWMedia, "mediaType" | "providerId">;
 

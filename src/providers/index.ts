@@ -4,6 +4,7 @@ import {
   MWPortableMedia,
   MWMediaStream,
 } from "./types";
+import contentCache from "./methods/contentCache";
 export * from "./types";
 export * from "./methods/helpers";
 export * from "./methods/providers";
@@ -28,6 +29,10 @@ export function convertMediaToPortable(media: MWMedia): MWPortableMedia {
 export async function convertPortableToMedia(
   portable: MWPortableMedia
 ): Promise<MWMedia | undefined> {
+  // consult cache first
+  let output = contentCache.get(portable);
+  if (output) return output;
+
   const provider = getProviderFromId(portable.providerId);
   return await provider?.getMediaFromPortable(portable);
 }

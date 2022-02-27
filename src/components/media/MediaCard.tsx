@@ -1,36 +1,18 @@
 import {
   convertMediaToPortable,
   getProviderFromId,
-  MWMedia,
+  MWMediaMeta,
   MWMediaType,
 } from "providers";
 import { Link } from "react-router-dom";
 import { Icon, Icons } from "components/Icon";
 import { serializePortableMedia } from "hooks/usePortableMedia";
+import { DotList } from "components/text/DotList";
 
 export interface MediaCardProps {
-  media: MWMedia;
+  media: MWMediaMeta;
   watchedPercentage: Number;
   linkable?: boolean;
-}
-
-export interface MediaMetaProps {
-  content: string[];
-}
-
-function MediaMeta(props: MediaMetaProps) {
-  return (
-    <p className="text-denim-700 text-xs font-semibold">
-      {props.content.map((item, index) => (
-        <span key={item}>
-          {index !== 0 ? (
-            <span className="mx-[0.6em] text-[1em]">&#9679;</span>
-          ) : null}
-          {item}
-        </span>
-      ))}
-    </p>
-  );
 }
 
 function MediaCardContent({
@@ -68,7 +50,8 @@ function MediaCardContent({
         {/* card content */}
         <div className="flex-1">
           <h1 className="mb-1 font-bold text-white">{media.title}</h1>
-          <MediaMeta
+          <DotList
+            className="text-xs"
             content={[provider.displayName, media.mediaType, media.year]}
           />
         </div>

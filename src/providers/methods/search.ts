@@ -1,7 +1,8 @@
 import Fuse from "fuse.js";
-import { MWMassProviderOutput, MWMedia, MWQuery } from "providers";
+import { MWMassProviderOutput, MWMedia, MWQuery, convertMediaToPortable } from "providers";
 import { SimpleCache } from "utils/cache";
 import { GetProvidersForType } from "./helpers";
+import contentCache from "./contentCache";
 
 // cache
 const resultCache = new SimpleCache<MWQuery, MWMassProviderOutput>();
@@ -51,6 +52,10 @@ async function callProviders(
   if (output.stats.failed === 0) {
     resultCache.set(query, output, 60 * 60); // cache for an hour
   }
+
+  output.results.forEach((result: MWMedia) => {
+    contentCache.set(convertMediaToPortable(result), result, 60 * 60);
+  })
 
   return output;
 }

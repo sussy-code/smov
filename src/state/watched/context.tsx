@@ -1,8 +1,8 @@
-import { MWPortableMedia } from "providers";
+import { MWMediaMeta } from "providers";
 import React, { createContext, ReactNode, useContext, useState } from "react";
 import { VideoProgressStore } from "./store";
 
-interface WatchedStoreItem extends MWPortableMedia {
+interface WatchedStoreItem extends MWMediaMeta {
   progress: number;
   percentage: number;
 }
@@ -12,13 +12,11 @@ interface WatchedStoreData {
 }
 
 interface WatchedStoreDataWrapper {
-  setWatched: React.Dispatch<React.SetStateAction<WatchedStoreData>>;
-  updateProgress(media: MWPortableMedia, progress: number, total: number): void;
+  updateProgress(media: MWMediaMeta, progress: number, total: number): void;
   watched: WatchedStoreData;
 }
 
 const WatchedContext = createContext<WatchedStoreDataWrapper>({
-  setWatched: () => {},
   updateProgress: () => {},
   watched: {
     items: [],
@@ -44,11 +42,8 @@ export function WatchedContextProvider(props: { children: ReactNode }) {
   }
 
   const contextValue = {
-    setWatched(data: any) {
-      return setWatched(data);
-    },
     updateProgress(
-      media: MWPortableMedia,
+      media: MWMediaMeta,
       progress: number,
       total: number
     ): void {
@@ -59,6 +54,8 @@ export function WatchedContextProvider(props: { children: ReactNode }) {
             mediaId: media.mediaId,
             mediaType: media.mediaType,
             providerId: media.providerId,
+            title: media.title,
+            year: media.year,
             percentage: 0,
             progress: 0,
             episode: media.episode,
@@ -90,7 +87,7 @@ export function useWatchedContext() {
 
 export function getWatchedFromPortable(
   store: WatchedStoreData,
-  media: MWPortableMedia
+  media: MWMediaMeta
 ): WatchedStoreItem | undefined {
   return store.items.find((v) => {
     return (

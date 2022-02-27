@@ -39,17 +39,18 @@ Check out [this project's issues](https://github.com/JamesHawkinss/movie-web/iss
 - [x] Add results list end
 - [x] Store watched percentage
 - [x] Add Brand tag top left
-- [X] Add github and discord top right
+- [x] Add github and discord top right
 - [x] Link Github and Discord in error boundary
 - [ ] Implement movie + series view
-  - [ ] Global state for media objects
-  - [ ] Styling for pages
+  - [x] Global state for media objects
+  - [x] Styling for pages
+  - [ ] loading video player view + error
   - [ ] Series episodes+seasons
-- [ ] On back button, persist the search query and results
-- [ ] Bookmarking
-- [ ] Resume from where you left of
-- [ ] Less spaghett video player view
-- [ ] Homepage continue watching + bookmarks
+- [x] On back button, persist the search query and results
+- [x] Bookmarking
+- [x] Resume from where you left of
+- [ ] Less spaghett video player view (implement source that are not mp4)
+- [x] Homepage continue watching + bookmarks
 - [x] Add provider stream method
 - [x] Better looking error boundary
 - [x] sort search results so they aren't sorted by provider
@@ -57,10 +58,13 @@ Check out [this project's issues](https://github.com/JamesHawkinss/movie-web/iss
 - [ ] Migrate old video progress
 - [ ] Get rid of react warnings
 - [ ] Implement more scrapers
-- [ ] Add 404 page for media (media not found, provider disabled, provider not found) & general (page not found)
+- [ ] Add 404 page for media (media not found, provider disabled, provider not found) & general (page not found) <---
+- [x] Change text of "thats all we have"
 
 ## Todo's after rewrite
 
 - [ ] Less spaghetti versioned storage (typesafe and works functionally)
+- [ ] Add a way to remove from continue watching
+- [ ] i18n
 - [ ] better mobile search type selector
 - [ ] Custom video player

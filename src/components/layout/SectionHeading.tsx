@@ -8,11 +8,12 @@ interface SectionHeadingProps {
   children?: ReactNode;
   linkText?: string;
   onClick?: () => void;
+  className?: string;
 }
 
 export function SectionHeading(props: SectionHeadingProps) {
   return (
-    <div className="mt-12">
+    <div className={`mt-12 ${props.className}`}>
       <div className="mb-4 flex items-end">
         <p className="text-denim-700 flex flex-1 items-center font-bold uppercase">
           {props.icon ? (

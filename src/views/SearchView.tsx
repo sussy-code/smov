@@ -1,11 +1,6 @@
 import { WatchedMediaCard } from "components/media/WatchedMediaCard";
 import { SearchBarInput } from "components/SearchBar";
-import {
-  MWMassProviderOutput,
-  MWMediaType,
-  MWQuery,
-  SearchProviders,
-} from "providers";
+import { MWMassProviderOutput, MWQuery, SearchProviders } from "providers";
 import { useEffect, useState } from "react";
 import { ThinContainer } from "components/layout/ThinContainer";
 import { SectionHeading } from "components/layout/SectionHeading";
@@ -18,9 +13,14 @@ import { useLoading } from "hooks/useLoading";
 import { IconPatch } from "components/buttons/IconPatch";
 import { Navigation } from "components/layout/Navigation";
 import { useSearchQuery } from "hooks/useSearchQuery";
+import { useWatchedContext } from "state/watched/context";
+import {
+  getIfBookmarkedFromPortable,
+  useBookmarkContext,
+} from "state/bookmark/context";
 
 function SearchLoading() {
-  return <Loading className="my-12" text="Fetching your favourite shows..." />;
+  return <Loading className="my-24" text="Fetching your favourite shows..." />;
 }
 
 function SearchSuffix(props: {
@@ -43,13 +43,13 @@ function SearchSuffix(props: {
         <div>
           {props.fails > 0 ? (
             <p className="text-red-400">
-              {props.fails}/{props.total} providers failed
+              {props.fails}/{props.total} providers failed!
             </p>
           ) : null}
           {props.resultsSize > 0 ? (
-            <p>That's all we have &mdash; sorry</p>
+            <p>That's all we have!</p>
           ) : (
-            <p>We couldn't find anything &mdash; sorry</p>
+            <p>We couldn't find anything!</p>
           )}
         </div>
       ) : null}
@@ -57,7 +57,7 @@ function SearchSuffix(props: {
       {/* Error result */}
       {allFailed ? (
         <div>
-          <p>All providers failed &mdash; whoops</p>
+          <p>All providers have failed!</p>
         </div>
       ) : null}
     </div>
@@ -151,7 +151,7 @@ export function SearchView() {
             onChange={setSearch}
             value={search}
             placeholder="What movie do you want to watch?"
-          /> 
+          />
         </div>
 
         {/* results view */}
@@ -162,8 +162,46 @@ export function SearchView() {
             searchQuery={debouncedSearch}
             clear={() => setSearch({ searchQuery: "" })}
           />
-        ) : null}
+        ) : (
+          <ExtraItems />
+        )}
       </ThinContainer>
     </>
+  );
+}
+
+function ExtraItems() {
+  const { bookmarkStore } = useBookmarkContext();
+  const { watched } = useWatchedContext();
+  const watchedItems = watched.items.filter(
+    (v) => !getIfBookmarkedFromPortable(bookmarkStore, v)
+  );
+
+  if (watchedItems.length === 0 && bookmarkStore.bookmarks.length === 0)
+    return null;
+
+  return (
+    <div className="mb-16 mt-32">
+      {bookmarkStore.bookmarks.length > 0 ? (
+        <SectionHeading title="Bookmarks" icon={Icons.BOOKMARK}>
+          {bookmarkStore.bookmarks.map((v) => (
+            <WatchedMediaCard
+              key={[v.mediaId, v.providerId].join("|")}
+              media={v}
+            />
+          ))}
+        </SectionHeading>
+      ) : null}
+      {watchedItems.length > 0 ? (
+        <SectionHeading title="Continue Watching" icon={Icons.CLOCK}>
+          {watchedItems.map((v) => (
+            <WatchedMediaCard
+              key={[v.mediaId, v.providerId].join("|")}
+              media={v}
+            />
+          ))}
+        </SectionHeading>
+      ) : null}
+    </div>
   );
 }
