@@ -53,7 +53,7 @@ Check out [this project's issues](https://github.com/JamesHawkinss/movie-web/iss
   - [x] Global state for media objects
   - [x] Styling for pages
   - [x] loading stream player view + error
-  - [ ] video load error, video loading (from actual video player)
+  - [x] video load error, video loading (from actual video player)
   - [ ] Series episodes+seasons
 - [ ] implement source that are not mp4
 - [ ] Subtitles
@@ -61,7 +61,7 @@ Check out [this project's issues](https://github.com/JamesHawkinss/movie-web/iss
 - [ ] Get rid of react warnings
 - [ ] Implement more scrapers
 - [ ] Add 404 page for media (media not found, provider disabled, provider not found) & general (page not found)
-- [ ] Brand tag hover state and cursor
+- [x] Brand tag hover state and cursor
 - [ ] Handle disabled providers (continue watching, bookmarks & router)
 
 ## After all rewrite code has been written
