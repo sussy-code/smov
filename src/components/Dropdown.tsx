@@ -104,7 +104,7 @@ export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>(
             />
           </ButtonControl>
           <div
-            className={`bg-denim-300 options-scrollbar absolute top-0 z-10 w-full overflow-y-auto rounded-[20px] pt-[40px] transition-all duration-200 ${
+            className={`bg-denim-300 scrollbar scrollbar-thumb-gray-900 scrollbar-track-gray-100 absolute top-0 z-10 w-full overflow-y-auto rounded-[20px] pt-[40px] transition-all duration-200 ${
               props.open
                 ? "block max-h-60 opacity-100"
                 : "invisible max-h-0 opacity-0"

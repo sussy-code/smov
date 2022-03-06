@@ -17,6 +17,7 @@ import {
   convertPortableToMedia,
   getProviderFromId,
   MWMediaProvider,
+  MWMediaType,
 } from "providers";
 import { ReactElement, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
@@ -92,7 +93,9 @@ function StyledMediaFooter(props: StyledMediaFooterProps) {
           />
         </div>
       </div>
-      <Seasons media={props.media} />
+      {props.media.mediaType !== MWMediaType.MOVIE ? (
+        <Seasons media={props.media} />
+      ) : null}
     </Paper>
   );
 }
@@ -150,7 +153,7 @@ function MediaViewContent(props: { portable: MWPortableMedia }) {
   let footerContent: ReactElement | null = null;
   if (loadingPortable) footerContent = <LoadingMediaFooter />;
   else if (errorPortable) footerContent = <LoadingMediaFooter error />;
-  else if (mediaPortable && media && streamUrl)
+  else if (mediaPortable && media)
     footerContent = (
       <StyledMediaFooter
         provider={
