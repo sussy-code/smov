@@ -1,20 +1,30 @@
-# movie-web
+<h1>movie-web&nbsp;&nbsp;<span><span>
+</h1>
 
-Small web app for watching movies easily. Check it out at **[movie.squeezebox.dev](https://movie.squeezebox.dev)**.
+<p align="center">
+<a href="https://github.com/JamesHawkinss/movie-web/actions"><img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/JamesHawkinss/movie-web/Build%20&%20deploy?style=flat-square"></a>
+<a href="https://github.com/JamesHawkinss/movie-web/blob/master/LICENSE.md"><img alt="GitHub license" src="https://img.shields.io/github/license/JamesHawkinss/movie-web?style=flat-square"></a>
+<a href="https://github.com/JamesHawkinss/movie-web/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/JamesHawkinss/movie-web?style=flat-square"></a>
+<a href="https://github.com/JamesHawkinss/movie-web/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/JamesHawkinss/movie-web?style=flat-square"></a>
+<a href="https://discord.gg/vXsRvye8BS"><img src="https://discordapp.com/api/guilds/871713465100816424/widget.png?style=banner2" alt="Discord Server"></a>
+</p>
 
-**[Join the Discord community](https://discord.gg/vXsRvye8BS)**
+movie-web is a web app for watching movies easily. Check it out at **[movie.squeezebox.dev](https://movie.squeezebox.dev)**.
 
-## Credits
+This service works by displaying video files from third-party providers inside an intuitive and aesthic user interface.
 
-- Thanks to [@JipFr](https://github.com/JipFr) for initial work on [movie-cli](https://github.com/JipFr/movie-cli)
-- Thanks to [@mrjvs](https://github.com/mrjvs) for help porting to React, and for the beautiful design
-- Thanks to [@JoshHeng](https://github.com/JoshHeng/) for the Cloudflare CORS Proxy and URL routing
+Features include:
 
-## Installation
+- 🕑 Saving of your progress so you can come back to a video at any time!
+- 🔖 Bookmarks to keep track of videos you would like to watch.
+- 🎞️ Easy switching between seasons and episodes for a TV series; binge away!
+- ✖️ Supports multiple types of content including movies, TV shows and Anime (coming soon™️)
+
+## Self-hosting
 
 To run this project locally for contributing or testing, run the following commands:
 
-```
+```bash
 git clone https://github.com/JamesHawkinss/movie-web
 cd movie-web
 yarn install
@@ -23,57 +33,33 @@ yarn start
 
 To build production files, simply run `yarn build`.
 
-## Environment
-
-- `REACT_APP_CORS_PROXY_URL` - The Cloudflare CORS Proxy, will be something like `https://PROXY.workers.dev?destination=`
-
-## Contributing
+<h2>Contributing - <a href="https://github.com/JamesHawkinss/movie-web/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/JamesHawkinss/movie-web?style=flat-square"></a>
+<a href="https://github.com/JamesHawkinss/movie-web/pulls"><img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/JamesHawkinss/movie-web?style=flat-square"></a></h2>
 
 Check out [this project's issues](https://github.com/JamesHawkinss/movie-web/issues) for inspiration for contribution. Pull requests are always welcome.
 
-## Rewrite TODO's
+## Credits
 
-- [x] Better provider errors (only fail if all failed, show individual fails somewhere)
-- [x] Better search suffix view
-- [x] Add back link of results view
-- [x] Add results list end
-- [x] Store watched percentage
-- [x] Add Brand tag top left
-- [x] Add github and discord top right
-- [x] Link Github and Discord in error boundary
-- [x] On back button, persist the search query and results
-- [x] Bookmarking
-- [x] Resume from where you left of
-- [x] Homepage continue watching + bookmarks
-- [x] Add provider stream method
-- [x] Better looking error boundary
-- [x] sort search results so they aren't sorted by provider
-- [x] Change text of "thats all we have"
-- [x] Brand tag hover state and cursor
-- [ ] Implement movie + series view
-  - [x] Global state for media objects
-  - [x] Styling for pages
-  - [x] loading stream player view + error
-  - [x] video load error, video loading (from actual video player)
-  - [ ] Series episodes+seasons
-- [ ] Get rid of react warnings
-- [x] Add 404 page for media (media not found, provider disabled, provider not found) & general (page not found)
-- [x] Handle disabled providers (continue watching, bookmarks & router)
-- [ ] Subtitles
-- [ ] Implement all scrapers
-  - [ ] implement sources that are not mp4
-- [x] Bug: go back doesn't work if used directly from link
-- [ ] Migrate old video progress
+This project would not be possible without our amazing contributors and the community.
 
-## After all rewrite code has been written
+<a href="https://github.com/JamesHawkinss/movie-web/graphs/contributors"><img alt="GitHub contributors" src="https://img.shields.io/github/contributors/JamesHawkinss/movie-web?style=flat-square"></a>
 
-- [ ] Make better readme (with binary in credits)
-- [ ] Make cool announcement with cool gif animation
+<div style="display:flex;align-items:center;grid-gap:10px">
+<img src="https://github.com/JipFr.png?size=20" width="20"><span><a href="https://github.com/JipFr">@JipFr</a> for initial work on <a href="https://github.com/JipFr/movie-cli">movie-cli</a>.</span>
+</div>
 
-## Todo's after rewrite
+<div style="display:flex;align-items:center;grid-gap:10px">
+<img src="https://github.com/mrjvs.png?size=20" width="20"><span><a href="https://github.com/mrjvs">@mrjvs</a> for leading the port to React, and for the beautiful design.</span>
+</div>
 
-- [ ] Less spaghetti versioned storage (typesafe and works functionally)
-- [ ] Add a way to remove from continue watching
-- [ ] i18n
-- [ ] better mobile search type selector
-- [ ] Custom video player
+<div style="display:flex;align-items:center;grid-gap:10px">
+<img src="https://github.com/JoshHeng.png?size=20" width="20"><span><a href="https://github.com/JoshHeng">@JoshHeng</a> for the Cloudflare CORS Proxy and URL routing.</span>
+</div>
+
+<div style="display:flex;align-items:center;grid-gap:10px">
+<img src="https://github.com/binaryoverload.png?size=20" width="20"><span><a href="https://github.com/binaryoverload">@binaryoverload</a> for help rewriting the application into React.</span>
+</div>
+
+<div style="display:flex;align-items:center;grid-gap:10px">
+<img src="https://github.com/lem6ns.png?size=20" width="20"><span><a href="https://github.com/lem6ns">@lem6ns</a> for helpfully implementing extra scrapers.</span>
+</div>

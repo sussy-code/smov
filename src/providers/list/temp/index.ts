@@ -1,5 +1,6 @@
 import {
   MWMediaProvider,
+  MWMediaSeasons,
   MWMediaType,
   MWPortableMedia,
   MWQuery,
@@ -31,6 +32,12 @@ export const tempScraper: MWMediaProvider = {
     return {
       url: "hi",
       type: "mp4",
+    };
+  },
+
+  async getSeasonDataFromMedia(media): Promise<MWMediaSeasons> {
+    return {
+      seasons: [],
     };
   },
 };

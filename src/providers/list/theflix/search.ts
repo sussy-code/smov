@@ -37,5 +37,12 @@ export function turnDataIntoMedia(data: any): MWProviderMediaResult {
       .toLowerCase()}`,
     title: data.name,
     year: new Date(data.releaseDate).getFullYear().toString(),
+    seasonCount: data.numberOfSeasons,
+    episode: data.lastReleasedEpisode
+      ? data.lastReleasedEpisode.episodeNumber
+      : null,
+    season: data.lastReleasedEpisode
+      ? data.lastReleasedEpisode.seasonNumber
+      : null,
   };
 }

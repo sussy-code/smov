@@ -1,3 +1,4 @@
+import contentCache from "./methods/contentCache";
 import {
   MWMedia,
   MWMediaProvider,
@@ -19,11 +20,21 @@ export function WrapProvider(
     ...provider,
 
     async getMediaFromPortable(media: MWPortableMedia): Promise<MWMedia> {
-      return {
+      // consult cache first
+      const output = contentCache.get(media);
+      if (output) {
+        output.season = media.season;
+        output.episode = media.episode;
+        return output;
+      }
+
+      const mediaObject = {
         ...(await provider.getMediaFromPortable(media)),
         providerId: provider.id,
         mediaType: media.mediaType,
       };
+      contentCache.set(media, mediaObject, 60 * 60);
+      return mediaObject;
     },
 
     async searchForMedia(query: MWQuery): Promise<MWMedia[]> {

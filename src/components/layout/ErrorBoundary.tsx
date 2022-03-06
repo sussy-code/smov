@@ -18,8 +18,8 @@ export class ErrorBoundary extends Component<
   Record<string, unknown>,
   ErrorBoundaryState
 > {
-  constructor() {
-    super({});
+  constructor(props: { children: any }) {
+    super(props);
     this.state = {
       hasError: false,
     };

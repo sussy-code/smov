@@ -4,6 +4,7 @@ import {
   MWPortableMedia,
   MWMediaStream,
   MWQuery,
+  MWMediaSeasons,
 } from "providers/types";
 
 import {
@@ -69,5 +70,30 @@ export const theFlixScraper: MWMediaProvider = {
 
     const data = JSON.parse(prop.textContent);
     return { url: data.props.pageProps.videoUrl, type: "mp4" };
+  },
+
+  async getSeasonDataFromMedia(
+    media: MWPortableMedia
+  ): Promise<MWMediaSeasons> {
+    const url = `${CORS_PROXY_URL}https://theflix.to/tv-show/${media.mediaId}/season-${media.season}/episode-${media.episode}`;
+    const res = await fetch(url).then((d) => d.text());
+
+    const node: Element = Array.from(
+      new DOMParser()
+        .parseFromString(res, "text/html")
+        .querySelectorAll(`script[id="__NEXT_DATA__"]`)
+    )[0];
+
+    const data = JSON.parse(node.innerHTML).props.pageProps.selectedTv.seasons;
+    return {
+      seasons: data.map((d: any) => ({
+        seasonNumber: d.seasonNumber === 0 ? 999 : d.seasonNumber,
+        type: d.seasonNumber === 0 ? "special" : "season",
+        episodes: d.episodes.map((e: any) => ({
+          title: e.name,
+          episodeNumber: e.episodeNumber,
+        })),
+      })),
+    };
   },
 };

@@ -35,5 +35,5 @@ module.exports = {
       animation: { "loading-pin": "loading-pin 1.8s ease-in-out infinite" },
     },
   },
-  plugins: [],
+  plugins: [require("tailwind-scrollbar")],
 };

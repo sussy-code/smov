@@ -2,6 +2,7 @@ import { IconPatch } from "components/buttons/IconPatch";
 import { Icons } from "components/Icon";
 import { Navigation } from "components/layout/Navigation";
 import { Paper } from "components/layout/Paper";
+import { Seasons } from "components/layout/Seasons";
 import { SkeletonVideoPlayer, VideoPlayer } from "components/media/VideoPlayer";
 import { ArrowLink } from "components/text/ArrowLink";
 import { DotList } from "components/text/DotList";
@@ -29,7 +30,6 @@ import { NotFoundChecks } from "./notfound/NotFoundChecks";
 interface StyledMediaViewProps {
   media: MWMedia;
   stream: MWMediaStream;
-  provider: MWMediaProvider;
 }
 
 function StyledMediaView(props: StyledMediaViewProps) {
@@ -38,11 +38,6 @@ function StyledMediaView(props: StyledMediaViewProps) {
     watchedStore.watched.items,
     props.media
   )?.progress;
-  const { setItemBookmark, getFilteredBookmarks } = useBookmarkContext();
-  const isBookmarked = getIfBookmarkedFromPortable(
-    getFilteredBookmarks(),
-    props.media
-  );
 
   function updateProgress(e: Event) {
     if (!props.media) return;
@@ -54,55 +49,68 @@ function StyledMediaView(props: StyledMediaViewProps) {
   }
 
   return (
-    <>
-      <VideoPlayer
-        source={props.stream}
-        onProgress={(e) => updateProgress(e)}
-        startAt={startAtTime}
-      />
-      <Paper className="mt-5">
-        <div className="flex">
-          <div className="flex-1">
-            <Title>{props.media.title}</Title>
-            <DotList
-              className="mt-3 text-sm"
-              content={[
-                props.provider.displayName,
-                props.media.mediaType,
-                props.media.year,
-              ]}
-            />
-          </div>
-          <div>
-            <IconPatch
-              icon={Icons.BOOKMARK}
-              active={isBookmarked}
-              onClick={() => setItemBookmark(props.media, !isBookmarked)}
-              clickable
-            />
-          </div>
-        </div>
-      </Paper>
-    </>
+    <VideoPlayer
+      source={props.stream}
+      onProgress={(e) => updateProgress(e)}
+      startAt={startAtTime}
+    />
   );
 }
 
-function LoadingMediaView(props: { error?: boolean }) {
+interface StyledMediaFooterProps {
+  media: MWMedia;
+  provider: MWMediaProvider;
+}
+
+function StyledMediaFooter(props: StyledMediaFooterProps) {
+  const { setItemBookmark, getFilteredBookmarks } = useBookmarkContext();
+  const isBookmarked = getIfBookmarkedFromPortable(
+    getFilteredBookmarks(),
+    props.media
+  );
+
   return (
-    <>
-      <SkeletonVideoPlayer error={props.error} />
-      <Paper className="mt-5">
-        <div className="flex">
-          <div className="flex-1">
-            <div className="bg-denim-500 mb-2 h-4 w-48 rounded-full" />
-            <div>
-              <span className="bg-denim-400 mr-4 inline-block h-2 w-12 rounded-full" />
-              <span className="bg-denim-400 mr-4 inline-block h-2 w-12 rounded-full" />
-            </div>
-          </div>
+    <Paper className="mt-5">
+      <div className="flex">
+        <div className="flex-1">
+          <Title>{props.media.title}</Title>
+          <DotList
+            className="mt-3 text-sm"
+            content={[
+              props.provider.displayName,
+              props.media.mediaType,
+              props.media.year,
+            ]}
+          />
         </div>
-      </Paper>
-    </>
+        <div>
+          <IconPatch
+            icon={Icons.BOOKMARK}
+            active={isBookmarked}
+            onClick={() => setItemBookmark(props.media, !isBookmarked)}
+            clickable
+          />
+        </div>
+      </div>
+      <Seasons media={props.media} />
+    </Paper>
+  );
+}
+
+function LoadingMediaFooter(props: { error?: boolean }) {
+  return (
+    <Paper className="mt-5">
+      <div className="flex">
+        <div className="flex-1">
+          <div className="bg-denim-500 mb-2 h-4 w-48 rounded-full" />
+          <div>
+            <span className="bg-denim-400 mr-4 inline-block h-2 w-12 rounded-full" />
+            <span className="bg-denim-400 mr-4 inline-block h-2 w-12 rounded-full" />
+          </div>
+          {props.error ? "error!" : null}
+        </div>
+      </div>
+    </Paper>
   );
 }
 
@@ -110,40 +118,54 @@ function MediaViewContent(props: { portable: MWPortableMedia }) {
   const mediaPortable = props.portable;
   const [streamUrl, setStreamUrl] = useState<MWMediaStream | undefined>();
   const [media, setMedia] = useState<MWMedia | undefined>();
-  const [fetchAllData, loading, error] = useLoading(
-    (portable: MWPortableMedia) => {
-      const streamPromise = getStream(portable);
-      const mediaPromise = convertPortableToMedia(portable);
-      return Promise.all([streamPromise, mediaPromise]);
-    }
+  const [fetchMedia, loadingPortable, errorPortable] = useLoading(
+    (portable: MWPortableMedia) => convertPortableToMedia(portable)
+  );
+  const [fetchStream, loadingStream, errorStream] = useLoading(
+    (portable: MWPortableMedia) => getStream(portable)
   );
 
   useEffect(() => {
     (async () => {
       if (mediaPortable) {
-        const resultData = await fetchAllData(mediaPortable);
-        if (!resultData) return;
-        setStreamUrl(resultData[0]);
-        setMedia(resultData[1]);
+        setMedia(await fetchMedia(mediaPortable));
       }
     })();
-  }, [mediaPortable, setStreamUrl, fetchAllData]);
+  }, [mediaPortable, setMedia, fetchMedia]);
 
-  let content: ReactElement | null = null;
-  if (loading) content = <LoadingMediaView />;
-  else if (error) content = <LoadingMediaView error />;
+  useEffect(() => {
+    (async () => {
+      if (mediaPortable) {
+        setStreamUrl(await fetchStream(mediaPortable));
+      }
+    })();
+  }, [mediaPortable, setStreamUrl, fetchStream]);
+
+  let playerContent: ReactElement | null = null;
+  if (loadingStream) playerContent = <SkeletonVideoPlayer />;
+  else if (errorStream) playerContent = <SkeletonVideoPlayer error />;
+  else if (media && streamUrl)
+    playerContent = <StyledMediaView media={media} stream={streamUrl} />;
+
+  let footerContent: ReactElement | null = null;
+  if (loadingPortable) footerContent = <LoadingMediaFooter />;
+  else if (errorPortable) footerContent = <LoadingMediaFooter error />;
   else if (mediaPortable && media && streamUrl)
-    content = (
-      <StyledMediaView
+    footerContent = (
+      <StyledMediaFooter
         provider={
           getProviderFromId(mediaPortable.providerId) as MWMediaProvider
         }
         media={media}
-        stream={streamUrl}
       />
     );
 
-  return content;
+  return (
+    <>
+      {playerContent}
+      {footerContent}
+    </>
+  );
 }
 
 export function MediaView() {

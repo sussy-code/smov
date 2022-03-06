@@ -21,9 +21,23 @@ export interface MWMediaStream {
 export interface MWMediaMeta extends MWPortableMedia {
   title: string;
   year: string;
+  seasonCount?: number;
 }
 
-export type MWMedia = MWMediaMeta;
+export interface MWMediaSeasons {
+  seasons: {
+    seasonNumber: number;
+    type: "season" | "special";
+    episodes: {
+      title: string;
+      episodeNumber: number;
+    }[];
+  }[];
+}
+
+export interface MWMedia extends MWMediaMeta {
+  seriesData?: MWMediaSeasons;
+}
 
 export type MWProviderMediaResult = Omit<MWMedia, "mediaType" | "providerId">;
 
@@ -41,6 +55,7 @@ export interface MWMediaProvider {
   getMediaFromPortable(media: MWPortableMedia): Promise<MWProviderMediaResult>;
   searchForMedia(query: MWQuery): Promise<MWProviderMediaResult[]>;
   getStream(media: MWPortableMedia): Promise<MWMediaStream>;
+  getSeasonDataFromMedia(media: MWPortableMedia): Promise<MWMediaSeasons>;
 }
 
 export interface MWMediaProviderMetadata {
