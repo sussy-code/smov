@@ -47,9 +47,9 @@ function SearchSuffix(props: {
             </p>
           ) : null}
           {props.resultsSize > 0 ? (
-            <p>That's all we have!</p>
+            <p>That&apos;s all we have!</p>
           ) : (
-            <p>We couldn't find anything!</p>
+            <p>We couldn&apos;t find anything!</p>
           )}
         </div>
       ) : null}
@@ -77,14 +77,14 @@ function SearchResultsView({
   );
 
   useEffect(() => {
-    if (searchQuery.searchQuery !== "") runSearch(searchQuery);
-  }, [searchQuery]);
+    async function runSearch(query: MWQuery) {
+      const results = await runSearchQuery(query);
+      if (!results) return;
+      setResults(results);
+    }
 
-  async function runSearch(query: MWQuery) {
-    const results = await runSearchQuery(query);
-    if (!results) return;
-    setResults(results);
-  }
+    if (searchQuery.searchQuery !== "") runSearch(searchQuery);
+  }, [searchQuery, runSearchQuery]);
 
   return (
     <div>

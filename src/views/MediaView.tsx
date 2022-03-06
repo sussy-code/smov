@@ -125,7 +125,7 @@ function MediaViewContent(props: { portable: MWPortableMedia }) {
         setMedia(resultData[1]);
       }
     })();
-  }, [mediaPortable, setStreamUrl]);
+  }, [mediaPortable, setStreamUrl, fetchAllData]);
 
   let content: ReactNode;
   if (loading) content = <LoadingMediaView />;

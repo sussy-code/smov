@@ -1,16 +1,18 @@
 import { getProviderMetadata, MWPortableMedia } from "providers";
-import { ReactNode } from "react";
+import { ReactElement } from "react";
 import { NotFoundMedia, NotFoundProvider } from "./NotFoundView";
 
 export interface NotFoundChecksProps {
   portable: MWPortableMedia | undefined;
-  children?: ReactNode;
+  children?: ReactElement;
 }
 
 /*
  ** Component that only renders children if the passed-in portable is fully correct
  */
-export function NotFoundChecks(props: NotFoundChecksProps) {
+export function NotFoundChecks(
+  props: NotFoundChecksProps
+): ReactElement | null {
   const providerMeta = props.portable
     ? getProviderMetadata(props.portable.providerId)
     : undefined;
@@ -23,5 +25,5 @@ export function NotFoundChecks(props: NotFoundChecksProps) {
     return <NotFoundProvider />;
   }
 
-  return <>{props.children}</>;
+  return props.children || null;
 }

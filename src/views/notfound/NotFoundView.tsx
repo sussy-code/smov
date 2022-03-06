@@ -23,10 +23,10 @@ export function NotFoundMedia() {
         icon={Icons.EYE_SLASH}
         className="text-bink-600 mb-6 text-xl"
       />
-      <Title>Couldn't find that media</Title>
+      <Title>Couldn&apos;t find that media</Title>
       <p className="mt-5 mb-12 max-w-sm">
-        We couldn't find the media you requested. Either it's been removed or
-        you tampered with the URL
+        We couldn&apos;t find the media you requested. Either it&apos;s been
+        removed or you tampered with the URL
       </p>
       <ArrowLink to="/" linkText="Back to home" />
     </div>
@@ -57,10 +57,10 @@ export function NotFoundPage() {
         icon={Icons.EYE_SLASH}
         className="text-bink-600 mb-6 text-xl"
       />
-      <Title>Couldn't find that page</Title>
+      <Title>Couldn&apos;t find that page</Title>
       <p className="mt-5 mb-12 max-w-sm">
         We looked everywhere: under the bins, in the closet, behind the proxy
-        but ultimately couldn't find the page you are looking for.
+        but ultimately couldn&apos;t find the page you are looking for.
       </p>
       <ArrowLink to="/" linkText="Back to home" />
     </NotFoundWrapper>
