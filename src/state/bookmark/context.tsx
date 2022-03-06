@@ -1,4 +1,4 @@
-import { MWMediaMeta } from "providers";
+import { getProviderMetadata, MWMediaMeta } from "providers";
 import { createContext, ReactNode, useContext, useState } from "react";
 import { BookmarkStore } from "./store";
 
@@ -8,11 +8,13 @@ interface BookmarkStoreData {
 
 interface BookmarkStoreDataWrapper {
   setItemBookmark(media: MWMediaMeta, bookedmarked: boolean): void;
+  getFilteredBookmarks(): MWMediaMeta[];
   bookmarkStore: BookmarkStoreData;
 }
 
 const BookmarkedContext = createContext<BookmarkStoreDataWrapper>({
   setItemBookmark: () => {},
+  getFilteredBookmarks: () => [],
   bookmarkStore: {
     bookmarks: [],
   },
@@ -40,7 +42,7 @@ export function BookmarkContextProvider(props: { children: ReactNode }) {
     setItemBookmark(media: MWMediaMeta, bookmarked: boolean) {
       setBookmarked((data: BookmarkStoreData) => {
         if (bookmarked) {
-          const itemIndex = getBookmarkIndexFromPortable(data, media);
+          const itemIndex = getBookmarkIndexFromMedia(data.bookmarks, media);
           if (itemIndex === -1) {
             const item = {
               mediaId: media.mediaId,
@@ -54,12 +56,17 @@ export function BookmarkContextProvider(props: { children: ReactNode }) {
             data.bookmarks.push(item);
           }
         } else {
-          const itemIndex = getBookmarkIndexFromPortable(data, media);
+          const itemIndex = getBookmarkIndexFromMedia(data.bookmarks, media);
           if (itemIndex !== -1) {
             data.bookmarks.splice(itemIndex);
           }
         }
         return data;
+      });
+    },
+    getFilteredBookmarks() {
+      return bookmarkStorage.bookmarks.filter((bookmark) => {
+        return getProviderMetadata(bookmark.providerId)?.enabled;
       });
     },
     bookmarkStore: bookmarkStorage,
@@ -76,11 +83,11 @@ export function useBookmarkContext() {
   return useContext(BookmarkedContext);
 }
 
-function getBookmarkIndexFromPortable(
-  store: BookmarkStoreData,
+function getBookmarkIndexFromMedia(
+  bookmarks: MWMediaMeta[],
   media: MWMediaMeta
 ): number {
-  const a = store.bookmarks.findIndex((v) => {
+  const a = bookmarks.findIndex((v) => {
     return (
       v.mediaId === media.mediaId &&
       v.providerId === media.providerId &&
@@ -92,9 +99,9 @@ function getBookmarkIndexFromPortable(
 }
 
 export function getIfBookmarkedFromPortable(
-  store: BookmarkStoreData,
+  bookmarks: MWMediaMeta[],
   media: MWMediaMeta
 ): boolean {
-  const bookmarked = getBookmarkIndexFromPortable(store, media);
+  const bookmarked = getBookmarkIndexFromMedia(bookmarks, media);
   return bookmarked !== -1;
 }

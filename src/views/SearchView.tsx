@@ -171,20 +171,22 @@ export function SearchView() {
 }
 
 function ExtraItems() {
-  const { bookmarkStore } = useBookmarkContext();
+  const { getFilteredBookmarks } = useBookmarkContext();
   const { watched } = useWatchedContext();
+
+  const bookmarks = getFilteredBookmarks();
+
   const watchedItems = watched.items.filter(
-    (v) => !getIfBookmarkedFromPortable(bookmarkStore, v)
+    (v) => !getIfBookmarkedFromPortable(bookmarks, v)
   );
 
-  if (watchedItems.length === 0 && bookmarkStore.bookmarks.length === 0)
-    return null;
+  if (watchedItems.length === 0 && bookmarks.length === 0) return null;
 
   return (
     <div className="mb-16 mt-32">
-      {bookmarkStore.bookmarks.length > 0 ? (
+      {bookmarks.length > 0 ? (
         <SectionHeading title="Bookmarks" icon={Icons.BOOKMARK}>
-          {bookmarkStore.bookmarks.map((v) => (
+          {bookmarks.map((v) => (
             <WatchedMediaCard
               key={[v.mediaId, v.providerId].join("|")}
               media={v}

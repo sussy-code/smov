@@ -43,6 +43,14 @@ export interface MWMediaProvider {
   getStream(media: MWPortableMedia): Promise<MWMediaStream>;
 }
 
+export interface MWMediaProviderMetadata {
+  exists: boolean;
+  id?: string;
+  enabled: boolean;
+  type: MWMediaType[];
+  provider?: MWMediaProvider;
+}
+
 export interface MWMassProviderOutput {
   providers: {
     id: string;

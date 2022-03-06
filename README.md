@@ -63,6 +63,7 @@ Check out [this project's issues](https://github.com/JamesHawkinss/movie-web/iss
 - [ ] Implement all scrapers
   - [ ] implement sources that are not mp4
 - [ ] Migrate old video progress
+- [ ] Bug: go back doesn't work if used directly from link
 
 ## After all rewrite code has been written
 

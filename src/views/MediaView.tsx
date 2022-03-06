@@ -36,8 +36,11 @@ function StyledMediaView(props: StyledMediaViewProps) {
     store.watched,
     props.media
   )?.progress;
-  const { setItemBookmark, bookmarkStore } = useBookmarkContext();
-  const isBookmarked = getIfBookmarkedFromPortable(bookmarkStore, props.media);
+  const { setItemBookmark, getFilteredBookmarks } = useBookmarkContext();
+  const isBookmarked = getIfBookmarkedFromPortable(
+    getFilteredBookmarks(),
+    props.media
+  );
 
   function updateProgress(e: Event) {
     if (!props.media) return;
