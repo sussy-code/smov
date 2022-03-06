@@ -172,11 +172,11 @@ export function SearchView() {
 
 function ExtraItems() {
   const { getFilteredBookmarks } = useBookmarkContext();
-  const { watched } = useWatchedContext();
+  const { getFilteredWatched } = useWatchedContext();
 
   const bookmarks = getFilteredBookmarks();
 
-  const watchedItems = watched.items.filter(
+  const watchedItems = getFilteredWatched().filter(
     (v) => !getIfBookmarkedFromPortable(bookmarks, v)
   );
 

@@ -8,7 +8,7 @@ export interface WatchedMediaCardProps {
 
 export function WatchedMediaCard(props: WatchedMediaCardProps) {
   const { watched } = useWatchedContext();
-  const foundWatched = getWatchedFromPortable(watched, props.media);
+  const foundWatched = getWatchedFromPortable(watched.items, props.media);
   const watchedPercentage = (foundWatched && foundWatched.percentage) || 0;
 
   return (

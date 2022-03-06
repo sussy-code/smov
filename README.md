@@ -57,13 +57,13 @@ Check out [this project's issues](https://github.com/JamesHawkinss/movie-web/iss
   - [x] video load error, video loading (from actual video player)
   - [ ] Series episodes+seasons
 - [ ] Get rid of react warnings
-- [ ] Add 404 page for media (media not found, provider disabled, provider not found) & general (page not found)
-- [ ] Handle disabled providers (continue watching, bookmarks & router)
+- [x] Add 404 page for media (media not found, provider disabled, provider not found) & general (page not found)
+- [x] Handle disabled providers (continue watching, bookmarks & router)
 - [ ] Subtitles
 - [ ] Implement all scrapers
   - [ ] implement sources that are not mp4
+- [x] Bug: go back doesn't work if used directly from link
 - [ ] Migrate old video progress
-- [ ] Bug: go back doesn't work if used directly from link
 
 ## After all rewrite code has been written
 

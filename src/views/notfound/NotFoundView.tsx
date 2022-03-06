@@ -18,7 +18,7 @@ function NotFoundWrapper(props: { children?: ReactNode }) {
 
 export function NotFoundMedia() {
   return (
-    <NotFoundWrapper>
+    <div className="flex flex-1 flex-col items-center justify-center p-5 text-center">
       <IconPatch
         icon={Icons.EYE_SLASH}
         className="text-bink-600 mb-6 text-xl"
@@ -29,13 +29,13 @@ export function NotFoundMedia() {
         you tampered with the URL
       </p>
       <ArrowLink to="/" linkText="Back to home" />
-    </NotFoundWrapper>
+    </div>
   );
 }
 
 export function NotFoundProvider() {
   return (
-    <NotFoundWrapper>
+    <div className="flex flex-1 flex-col items-center justify-center p-5 text-center">
       <IconPatch
         icon={Icons.EYE_SLASH}
         className="text-bink-600 mb-6 text-xl"
@@ -46,7 +46,7 @@ export function NotFoundProvider() {
         to disable it.
       </p>
       <ArrowLink to="/" linkText="Back to home" />
-    </NotFoundWrapper>
+    </div>
   );
 }
 

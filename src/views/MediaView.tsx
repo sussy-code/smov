@@ -18,11 +18,13 @@ import {
   MWMediaProvider,
 } from "providers";
 import { ReactNode, useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import {
   getIfBookmarkedFromPortable,
   useBookmarkContext,
 } from "state/bookmark";
 import { getWatchedFromPortable, useWatchedContext } from "state/watched";
+import { NotFoundChecks } from "./notfound/NotFoundChecks";
 
 interface StyledMediaViewProps {
   media: MWMedia;
@@ -31,9 +33,9 @@ interface StyledMediaViewProps {
 }
 
 function StyledMediaView(props: StyledMediaViewProps) {
-  const store = useWatchedContext();
+  const watchedStore = useWatchedContext();
   const startAtTime: number | undefined = getWatchedFromPortable(
-    store.watched,
+    watchedStore.watched.items,
     props.media
   )?.progress;
   const { setItemBookmark, getFilteredBookmarks } = useBookmarkContext();
@@ -48,7 +50,7 @@ function StyledMediaView(props: StyledMediaViewProps) {
     if (el.currentTime <= 30) {
       return; // Don't update stored progress if less than 30s into the video
     }
-    store.updateProgress(props.media, el.currentTime, el.duration);
+    watchedStore.updateProgress(props.media, el.currentTime, el.duration);
   }
 
   return (
@@ -104,8 +106,8 @@ function LoadingMediaView(props: { error?: boolean }) {
   );
 }
 
-export function MediaView() {
-  const mediaPortable: MWPortableMedia | undefined = usePortableMedia();
+function MediaViewContent(props: { portable: MWPortableMedia }) {
+  const mediaPortable = props.portable;
   const [streamUrl, setStreamUrl] = useState<MWMediaStream | undefined>();
   const [media, setMedia] = useState<MWMedia | undefined>();
   const [fetchAllData, loading, error] = useLoading((mediaPortable) => {
@@ -139,18 +141,31 @@ export function MediaView() {
       />
     );
 
+  return <>{content}</>;
+}
+
+export function MediaView() {
+  const mediaPortable: MWPortableMedia | undefined = usePortableMedia();
+  const reactHistory = useHistory();
+
   return (
-    <div className="w-full">
+    <div className="flex min-h-screen w-full">
       <Navigation>
         <ArrowLink
-          onClick={() => window.history.back()}
+          onClick={() => {
+            reactHistory.action !== "POP"
+              ? reactHistory.goBack()
+              : reactHistory.push("/");
+          }}
           direction="left"
           linkText="Go back"
         />
       </Navigation>
-      <div className="container mx-auto mt-40 mb-16 max-w-[1100px]">
-        {content}
-      </div>
+      <NotFoundChecks portable={mediaPortable}>
+        <div className="container mx-auto mt-40 mb-16 max-w-[1100px]">
+          <MediaViewContent portable={mediaPortable as MWPortableMedia} />
+        </div>
+      </NotFoundChecks>
     </div>
   );
 }
