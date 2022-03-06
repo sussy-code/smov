@@ -1,4 +1,4 @@
-import { versionedStoreBuilder } from 'utils/storage';
+import { versionedStoreBuilder } from "utils/storage";
 
 /*
 version 0
@@ -33,19 +33,19 @@ version 0
 */
 
 export const VideoProgressStore = versionedStoreBuilder()
-    .setKey('video-progress')
-    .addVersion({
-        version: 0,
-    })
-    .addVersion({
-      version: 1,
-      migrate(data: any) {
-        // TODO migration
-      },
-      create() {
-        return {
-          items: [],
-        }
-      }
-    })
-    .build()
+  .setKey("video-progress")
+  .addVersion({
+    version: 0,
+  })
+  .addVersion({
+    version: 1,
+    migrate(data: any) {
+      // TODO migration
+    },
+    create() {
+      return {
+        items: [],
+      };
+    },
+  })
+  .build();
