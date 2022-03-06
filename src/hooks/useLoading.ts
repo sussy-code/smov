@@ -6,7 +6,7 @@ export function useLoading<T extends (...args: any) => Promise<any>>(
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<any | undefined>(undefined);
-  let isMounted = useRef(true);
+  const isMounted = useRef(true);
 
   // we want action to be memoized forever
   const actionMemo = useMemo(() => action, []); // eslint-disable-line react-hooks/exhaustive-deps

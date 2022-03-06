@@ -39,7 +39,7 @@ export const theFlixScraper: MWMediaProvider = {
     const searchData = await getDataFromSearch(searchRes, 10);
 
     const results: MWProviderMediaResult[] = [];
-    for (let item of searchData) {
+    for (const item of searchData) {
       results.push(turnDataIntoMedia(item));
     }
 

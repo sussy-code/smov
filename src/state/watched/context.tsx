@@ -70,9 +70,7 @@ export function WatchedContextProvider(props: { children: ReactNode }) {
       });
     },
     getFilteredWatched() {
-      return watched.items.filter((item) => {
-        return getProviderMetadata(item.providerId)?.enabled;
-      });
+      return watched.items.filter((item) => getProviderMetadata(item.providerId)?.enabled);
     },
     watched,
   };
@@ -92,12 +90,10 @@ export function getWatchedFromPortable(
   items: WatchedStoreItem[],
   media: MWMediaMeta
 ): WatchedStoreItem | undefined {
-  return items.find((v) => {
-    return (
+  return items.find((v) => (
       v.mediaId === media.mediaId &&
       v.providerId === media.providerId &&
       v.episode === media.episode &&
       v.season === media.season
-    );
-  });
+    ));
 }

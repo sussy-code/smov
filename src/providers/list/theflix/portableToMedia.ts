@@ -4,7 +4,7 @@ import { MWMediaType, MWPortableMedia } from "providers/types";
 const getTheFlixUrl = (media: MWPortableMedia, params?: URLSearchParams) => {
   if (media.mediaType === MWMediaType.MOVIE) {
     return `https://theflix.to/movie/${media.mediaId}?${params}`;
-  } else if (media.mediaType === MWMediaType.SERIES) {
+  } if (media.mediaType === MWMediaType.SERIES) {
     return `https://theflix.to/tv-show/${media.mediaId}/season-${media.season}/episode-${media.episode}`;
   }
 
@@ -29,7 +29,7 @@ export async function getDataFromPortableSearch(
 
   if (media.mediaType === MWMediaType.MOVIE) {
     return JSON.parse(node.innerHTML).props.pageProps.movie;
-  } else if (media.mediaType === MWMediaType.SERIES) {
+  } if (media.mediaType === MWMediaType.SERIES) {
     return JSON.parse(node.innerHTML).props.pageProps.selectedTv;
   }
 }

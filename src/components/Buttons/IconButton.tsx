@@ -1,5 +1,5 @@
-import { ButtonControlProps, ButtonControl } from "./ButtonControl";
 import { Icon, Icons } from "components/Icon";
+import { ButtonControlProps, ButtonControl } from "./ButtonControl";
 
 export interface IconButtonProps extends ButtonControlProps {
   icon: Icons;

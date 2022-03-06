@@ -86,7 +86,7 @@ function buildStoreObject(d: any) {
 
     // add a save object to return value
     data.save = function save(newData: any) {
-      let dataToStore = newData || data;
+      const dataToStore = newData || data;
       localStorage.setItem(store.id, JSON.stringify(dataToStore));
     };
 
@@ -153,7 +153,7 @@ export function versionedStoreBuilder(): any {
 
       // register version
       this._data.versions[version.toString()] = {
-        version: version, // version number
+        version, // version number
         update: migrate
           ? (data: any) => {
               // update function, and increment version

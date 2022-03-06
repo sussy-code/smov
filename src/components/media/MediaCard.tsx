@@ -11,7 +11,7 @@ import { DotList } from "components/text/DotList";
 
 export interface MediaCardProps {
   media: MWMediaMeta;
-  watchedPercentage: Number;
+  watchedPercentage: number;
   linkable?: boolean;
 }
 

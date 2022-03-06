@@ -63,6 +63,6 @@ export function Backdrop(props: BackdropProps) {
       }`}
       {...fadeProps}
       onClick={(e) => clickEvent(e.nativeEvent)}
-    ></div>
+     />
   );
 }

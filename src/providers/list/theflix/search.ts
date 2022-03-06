@@ -16,7 +16,7 @@ export async function searchTheFlix(query: MWQuery): Promise<string> {
   ).then((d) => d.text());
 }
 
-export function getDataFromSearch(page: string, limit: number = 10): any[] {
+export function getDataFromSearch(page: string, limit = 10): any[] {
   const node: Element = Array.from(
     new DOMParser()
       .parseFromString(page, "text/html")
@@ -31,13 +31,13 @@ export function getDataFromSearch(page: string, limit: number = 10): any[] {
 export function turnDataIntoMedia(data: any): MWProviderMediaResult {
   return {
     mediaId:
-      data.id +
-      "-" +
+      `${data.id 
+      }-${ 
       data.name
         .replace(/[^a-z0-9]+|\s+/gim, " ")
         .trim()
         .replace(/\s+/g, "-")
-        .toLowerCase(),
+        .toLowerCase()}`,
     title: data.name,
     year: new Date(data.releaseDate).getFullYear().toString(),
   };

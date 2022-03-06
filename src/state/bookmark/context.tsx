@@ -28,7 +28,7 @@ export function BookmarkContextProvider(props: { children: ReactNode }) {
 
   function setBookmarked(data: any) {
     setBookmarkStore((old) => {
-      let old2 = JSON.parse(JSON.stringify(old));
+      const old2 = JSON.parse(JSON.stringify(old));
       let newData = data;
       if (data.constructor === Function) {
         newData = data(old2);
@@ -65,9 +65,7 @@ export function BookmarkContextProvider(props: { children: ReactNode }) {
       });
     },
     getFilteredBookmarks() {
-      return bookmarkStorage.bookmarks.filter((bookmark) => {
-        return getProviderMetadata(bookmark.providerId)?.enabled;
-      });
+      return bookmarkStorage.bookmarks.filter((bookmark) => getProviderMetadata(bookmark.providerId)?.enabled);
     },
     bookmarkStore: bookmarkStorage,
   };
@@ -87,14 +85,12 @@ function getBookmarkIndexFromMedia(
   bookmarks: MWMediaMeta[],
   media: MWMediaMeta
 ): number {
-  const a = bookmarks.findIndex((v) => {
-    return (
+  const a = bookmarks.findIndex((v) => (
       v.mediaId === media.mediaId &&
       v.providerId === media.providerId &&
       v.episode === media.episode &&
       v.season === media.season
-    );
-  });
+    ));
   return a;
 }
 

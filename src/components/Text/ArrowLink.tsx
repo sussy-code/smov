@@ -43,7 +43,7 @@ export function ArrowLink(props: ArrowLinkProps) {
 
   if (isExternal)
     return <a href={(props as IArrowLinkPropsExternal).url}>{content}</a>;
-  else if (isInternal)
+  if (isInternal)
     return (
       <LinkRouter to={(props as IArrowLinkPropsInternal).to}>{content}</LinkRouter>
     );

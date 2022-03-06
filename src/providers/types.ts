@@ -23,7 +23,7 @@ export interface MWMediaMeta extends MWPortableMedia {
   year: string;
 }
 
-export interface MWMedia extends MWMediaMeta {}
+export type MWMedia = MWMediaMeta
 
 export type MWProviderMediaResult = Omit<MWMedia, "mediaType" | "providerId">;
 

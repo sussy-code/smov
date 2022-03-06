@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import './useFade.css'
 
-export const useFade = (initial: boolean = false): [boolean, React.Dispatch<React.SetStateAction<boolean>>, any] => {
+export const useFade = (initial = false): [boolean, React.Dispatch<React.SetStateAction<boolean>>, any] => {
   const [show, setShow] = useState<boolean>(initial);
   const [isVisible, setVisible] = useState<boolean>(show);
 

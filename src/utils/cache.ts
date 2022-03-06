@@ -2,7 +2,9 @@ export class SimpleCache<Key, Value> {
   protected readonly INTERVAL_MS = 2 * 60 * 1000; // 2 minutes
 
   protected _interval: NodeJS.Timer | null = null;
+
   protected _compare: ((a: Key, b: Key) => boolean) | null = null;
+
   protected _storage: { key: Key; value: Value; expiry: Date }[] = [];
 
   /*

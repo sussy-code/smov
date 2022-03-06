@@ -1,4 +1,3 @@
-import { ButtonControlProps, ButtonControl } from "./ButtonControl";
 import { Icon, Icons } from "components/Icon";
 import React, {
   MouseEventHandler,
@@ -8,6 +7,7 @@ import React, {
 } from "react";
 
 import { Backdrop, useBackdrop } from "components/layout/Backdrop";
+import { ButtonControlProps, ButtonControl } from "./ButtonControl";
 
 export interface DropdownButtonProps extends ButtonControlProps {
   icon: Icons;

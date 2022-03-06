@@ -32,7 +32,7 @@ export function Link(props: LinkProps) {
 
   if (isExternal)
     return <a target={(props as ILinkPropsExternal).newTab ? "_blank" : undefined} rel="noreferrer" href={(props as ILinkPropsExternal).url}>{content}</a>;
-  else if (isInternal)
+  if (isInternal)
     return (
       <LinkRouter to={(props as ILinkPropsInternal).to}>{content}</LinkRouter>
     );

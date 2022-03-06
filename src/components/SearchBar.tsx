@@ -1,9 +1,9 @@
+import { useState } from "react";
+import { MWMediaType, MWQuery } from "providers";
 import { DropdownButton } from "./buttons/DropdownButton";
 import { Icons } from "./Icon";
 import { TextInputControl } from "./text-inputs/TextInputControl";
 
-import { useState } from "react";
-import { MWMediaType, MWQuery } from "providers";
 
 export interface SearchBarProps {
   buttonText?: string;
