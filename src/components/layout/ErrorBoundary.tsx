@@ -14,10 +14,16 @@ interface ErrorBoundaryState {
   };
 }
 
-export class ErrorBoundary extends Component<{}, ErrorBoundaryState> {
-  state: ErrorBoundaryState = {
-    hasError: false,
-  };
+export class ErrorBoundary extends Component<
+  Record<string, unknown>,
+  ErrorBoundaryState
+> {
+  constructor() {
+    super({});
+    this.state = {
+      hasError: false,
+    };
+  }
 
   static getDerivedStateFromError() {
     return {
@@ -50,8 +56,16 @@ export class ErrorBoundary extends Component<{}, ErrorBoundaryState> {
           <IconPatch icon={Icons.WARNING} className="mb-6 text-red-400" />
           <Title>Whoops, it broke</Title>
           <p className="my-6 max-w-lg">
-            The app encountered an error and wasn't able to recover, please
-            report it to the <Link url={DISCORD_LINK} newTab>Discord server</Link> or on <Link url={GITHUB_LINK} newTab>GitHub</Link>.
+            The app encountered an error and wasn&apos;t able to recover, please
+            report it to the{" "}
+            <Link url={DISCORD_LINK} newTab>
+              Discord server
+            </Link>{" "}
+            or on{" "}
+            <Link url={GITHUB_LINK} newTab>
+              GitHub
+            </Link>
+            .
           </p>
         </div>
         {this.state.error ? (

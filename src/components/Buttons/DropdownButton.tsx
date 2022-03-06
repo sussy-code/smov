@@ -9,7 +9,13 @@ import React, {
 import { Backdrop, useBackdrop } from "components/layout/Backdrop";
 import { ButtonControlProps, ButtonControl } from "./ButtonControl";
 
-export interface DropdownButtonProps extends ButtonControlProps {
+export interface OptionItem {
+  id: string;
+  name: string;
+  icon: Icons;
+}
+
+interface DropdownButtonProps extends ButtonControlProps {
   icon: Icons;
   open: boolean;
   setOpen: (open: boolean) => void;
@@ -22,12 +28,6 @@ export interface OptionProps {
   option: OptionItem;
   onClick: MouseEventHandler<HTMLDivElement>;
   tabIndex?: number;
-}
-
-export interface OptionItem {
-  id: string;
-  name: string;
-  icon: Icons;
 }
 
 function Option({ option, onClick, tabIndex }: OptionProps) {
@@ -49,7 +49,7 @@ function Option({ option, onClick, tabIndex }: OptionProps) {
 export const DropdownButton = React.forwardRef<
   HTMLDivElement,
   DropdownButtonProps
->((props, ref) => {
+>((props: DropdownButtonProps, ref) => {
   const [setBackdrop, backdropProps, highlightedProps] = useBackdrop();
   const [delayedSelectedId, setDelayedSelectedId] = useState(
     props.selectedItem

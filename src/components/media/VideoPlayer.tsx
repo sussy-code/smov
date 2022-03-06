@@ -2,7 +2,7 @@ import { IconPatch } from "components/buttons/IconPatch";
 import { Icons } from "components/Icon";
 import { Loading } from "components/layout/Loading";
 import { MWMediaStream } from "providers";
-import { useEffect, useRef, useState } from "react";
+import { ReactElement, useEffect, useRef, useState } from "react";
 
 export interface VideoPlayerProps {
   source: MWMediaStream;
@@ -16,7 +16,7 @@ export function SkeletonVideoPlayer(props: { error?: boolean }) {
       {props.error ? (
         <div className="flex flex-col items-center">
           <IconPatch icon={Icons.WARNING} className="text-red-400" />
-          <p className="mt-5 text-white">Couldn't get your stream</p>
+          <p className="mt-5 text-white">Couldn&apos;t get your stream</p>
         </div>
       ) : (
         <div className="flex flex-col items-center">
@@ -41,13 +41,16 @@ export function VideoPlayer(props: VideoPlayerProps) {
     setErrored(false);
   }, [props.source.url]);
 
+  let skeletonUi: null | ReactElement = null;
+  if (hasErrored) {
+    skeletonUi = <SkeletonVideoPlayer error />;
+  } else if (isLoading) {
+    skeletonUi = <SkeletonVideoPlayer />;
+  }
+
   return (
     <>
-      {hasErrored ? (
-        <SkeletonVideoPlayer error />
-      ) : isLoading ? (
-        <SkeletonVideoPlayer />
-      ) : null}
+      {skeletonUi}
       <video
         className={`bg-denim-500 w-full rounded-xl ${
           !showVideo ? "hidden" : ""

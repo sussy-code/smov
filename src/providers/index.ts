@@ -1,9 +1,5 @@
 import { getProviderFromId } from "./methods/helpers";
-import {
-  MWMedia,
-  MWPortableMedia,
-  MWMediaStream,
-} from "./types";
+import { MWMedia, MWPortableMedia, MWMediaStream } from "./types";
 import contentCache from "./methods/contentCache";
 
 export * from "./types";
@@ -35,7 +31,7 @@ export async function convertPortableToMedia(
   if (output) return output;
 
   const provider = getProviderFromId(portable.providerId);
-  return await provider?.getMediaFromPortable(portable);
+  return provider?.getMediaFromPortable(portable);
 }
 
 /*
@@ -47,5 +43,5 @@ export async function getStream(
   const provider = getProviderFromId(media.providerId);
   if (!provider) return undefined;
 
-  return await provider.getStream(media);
+  return provider.getStream(media);
 }

@@ -42,7 +42,7 @@ const iconList: Record<Icons, string> = {
 export function Icon(props: IconProps) {
   return (
     <span
-      dangerouslySetInnerHTML={{ __html: iconList[props.icon] }}
+      dangerouslySetInnerHTML={{ __html: iconList[props.icon] }} // eslint-disable-line react/no-danger
       className={props.className}
     />
   );

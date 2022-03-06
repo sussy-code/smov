@@ -11,7 +11,8 @@ function buildStoreObject(d: any) {
     id: d.storageString,
   };
 
-  function update(this: any, obj: any) {
+  function update(this: any, obj2: any) {
+    let obj = obj2;
     if (!obj) throw new Error("object to update is not an object");
 
     // repeat until object fully updated
@@ -53,54 +54,54 @@ function buildStoreObject(d: any) {
   function get(this: any) {
     // get from storage api
     const store = this;
-    let data: any = localStorage.getItem(this.id);
+    let gottenData: any = localStorage.getItem(this.id);
 
     // parse json if item exists
-    if (data) {
+    if (gottenData) {
       try {
-        data = JSON.parse(data);
-        if (!data.constructor) {
+        gottenData = JSON.parse(gottenData);
+        if (!gottenData.constructor) {
           console.error(
             `Storage item for store ${this.id} has not constructor`
           );
           throw new Error("storage item has no constructor");
         }
-        if (data.constructor !== Object) {
+        if (gottenData.constructor !== Object) {
           console.error(`Storage item for store ${this.id} is not an object`);
           throw new Error("storage item is not an object");
         }
       } catch (_) {
         // if errored, set to null so it generates new one, see below
         console.error(`Failed to parse storage item for store ${this.id}`);
-        data = null;
+        gottenData = null;
       }
     }
 
     // if item doesnt exist, generate from version init
-    if (!data) {
-      data = this.versions[this.currentVersion.toString()].init();
+    if (!gottenData) {
+      gottenData = this.versions[this.currentVersion.toString()].init();
     }
 
     // update the data if needed
-    data = this.update(data);
+    gottenData = this.update(gottenData);
 
     // add a save object to return value
-    data.save = function save(newData: any) {
-      const dataToStore = newData || data;
+    gottenData.save = function save(newData: any) {
+      const dataToStore = newData || gottenData;
       localStorage.setItem(store.id, JSON.stringify(dataToStore));
     };
 
     // add instance helpers
     Object.entries(d.instanceHelpers).forEach(([name, helper]: any) => {
-      if (data[name] !== undefined)
+      if (gottenData[name] !== undefined)
         throw new Error(
           `helper name: ${name} on instance of store ${this.id} is reserved`
         );
-      data[name] = helper.bind(data);
+      gottenData[name] = helper.bind(gottenData);
     });
 
     // return data
-    return data;
+    return gottenData;
   }
 
   // add functions to store
@@ -158,7 +159,7 @@ export function versionedStoreBuilder(): any {
           ? (data: any) => {
               // update function, and increment version
               migrate(data);
-              data["--version"] = version;
+              data["--version"] = version; // eslint-disable-line no-param-reassign
               return data;
             }
           : undefined,
@@ -176,7 +177,8 @@ export function versionedStoreBuilder(): any {
 
     registerHelper({ name, helper, type }: any) {
       // type
-      if (!type) type = "instance";
+      let helperType: string = type;
+      if (!helperType) helperType = "instance";
 
       // input checking
       if (!name || name.constructor !== String) {
@@ -185,14 +187,14 @@ export function versionedStoreBuilder(): any {
       if (!helper || helper.constructor !== Function) {
         throw new Error("helper function is not a function");
       }
-      if (!["instance", "static"].includes(type)) {
+      if (!["instance", "static"].includes(helperType)) {
         throw new Error("helper type must be either 'instance' or 'static'");
       }
 
       // register helper
-      if (type === "instance")
+      if (helperType === "instance")
         this._data.instanceHelpers[name as string] = helper;
-      else if (type === "static")
+      else if (helperType === "static")
         this._data.staticHelpers[name as string] = helper;
 
       return this;

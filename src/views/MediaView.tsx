@@ -17,7 +17,7 @@ import {
   getProviderFromId,
   MWMediaProvider,
 } from "providers";
-import { ReactNode, useEffect, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import {
   getIfBookmarkedFromPortable,
@@ -57,7 +57,7 @@ function StyledMediaView(props: StyledMediaViewProps) {
     <>
       <VideoPlayer
         source={props.stream}
-        onProgress={updateProgress}
+        onProgress={(e) => updateProgress(e)}
         startAt={startAtTime}
       />
       <Paper className="mt-5">
@@ -110,11 +110,13 @@ function MediaViewContent(props: { portable: MWPortableMedia }) {
   const mediaPortable = props.portable;
   const [streamUrl, setStreamUrl] = useState<MWMediaStream | undefined>();
   const [media, setMedia] = useState<MWMedia | undefined>();
-  const [fetchAllData, loading, error] = useLoading((mediaPortable) => {
-    const streamPromise = getStream(mediaPortable);
-    const mediaPromise = convertPortableToMedia(mediaPortable);
-    return Promise.all([streamPromise, mediaPromise]);
-  });
+  const [fetchAllData, loading, error] = useLoading(
+    (portable: MWPortableMedia) => {
+      const streamPromise = getStream(portable);
+      const mediaPromise = convertPortableToMedia(portable);
+      return Promise.all([streamPromise, mediaPromise]);
+    }
+  );
 
   useEffect(() => {
     (async () => {
@@ -127,7 +129,7 @@ function MediaViewContent(props: { portable: MWPortableMedia }) {
     })();
   }, [mediaPortable, setStreamUrl, fetchAllData]);
 
-  let content: ReactNode;
+  let content: ReactElement | null = null;
   if (loading) content = <LoadingMediaView />;
   else if (error) content = <LoadingMediaView error />;
   else if (mediaPortable && media && streamUrl)
@@ -141,7 +143,7 @@ function MediaViewContent(props: { portable: MWPortableMedia }) {
       />
     );
 
-  return <>{content}</>;
+  return content;
 }
 
 export function MediaView() {
@@ -152,11 +154,11 @@ export function MediaView() {
     <div className="flex min-h-screen w-full">
       <Navigation>
         <ArrowLink
-          onClick={() => {
+          onClick={() =>
             reactHistory.action !== "POP"
               ? reactHistory.goBack()
-              : reactHistory.push("/");
-          }}
+              : reactHistory.push("/")
+          }
           direction="left"
           linkText="Go back"
         />

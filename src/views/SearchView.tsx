@@ -1,7 +1,7 @@
 import { WatchedMediaCard } from "components/media/WatchedMediaCard";
 import { SearchBarInput } from "components/SearchBar";
 import { MWMassProviderOutput, MWQuery, SearchProviders } from "providers";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ThinContainer } from "components/layout/ThinContainer";
 import { SectionHeading } from "components/layout/SectionHeading";
 import { Icons } from "components/Icon";
@@ -78,9 +78,9 @@ function SearchResultsView({
 
   useEffect(() => {
     async function runSearch(query: MWQuery) {
-      const results = await runSearchQuery(query);
-      if (!results) return;
-      setResults(results);
+      const searchResults = await runSearchQuery(query);
+      if (!searchResults) return;
+      setResults(searchResults);
     }
 
     if (searchQuery.searchQuery !== "") runSearch(searchQuery);
@@ -123,53 +123,6 @@ function SearchResultsView({
   );
 }
 
-export function SearchView() {
-  const [searching, setSearching] = useState<boolean>(false);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [search, setSearch] = useSearchQuery();
-
-  const debouncedSearch = useDebounce<MWQuery>(search, 2000);
-  useEffect(() => {
-    setSearching(search.searchQuery !== "");
-    setLoading(search.searchQuery !== "");
-  }, [search]);
-  useEffect(() => {
-    setLoading(false);
-  }, [debouncedSearch]);
-
-  return (
-    <>
-      <Navigation />
-      <ThinContainer>
-        {/* input section */}
-        <div className="mt-44 space-y-16 text-center">
-          <div className="space-y-4">
-            <Tagline>Because watching legally is boring</Tagline>
-            <Title>What movie do you want to watch?</Title>
-          </div>
-          <SearchBarInput
-            onChange={setSearch}
-            value={search}
-            placeholder="What movie do you want to watch?"
-          />
-        </div>
-
-        {/* results view */}
-        {loading ? (
-          <SearchLoading />
-        ) : searching ? (
-          <SearchResultsView
-            searchQuery={debouncedSearch}
-            clear={() => setSearch({ searchQuery: "" })}
-          />
-        ) : (
-          <ExtraItems />
-        )}
-      </ThinContainer>
-    </>
-  );
-}
-
 function ExtraItems() {
   const { getFilteredBookmarks } = useBookmarkContext();
   const { getFilteredWatched } = useWatchedContext();
@@ -205,5 +158,55 @@ function ExtraItems() {
         </SectionHeading>
       ) : null}
     </div>
+  );
+}
+
+export function SearchView() {
+  const [searching, setSearching] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [search, setSearch] = useSearchQuery();
+
+  const debouncedSearch = useDebounce<MWQuery>(search, 2000);
+  useEffect(() => {
+    setSearching(search.searchQuery !== "");
+    setLoading(search.searchQuery !== "");
+  }, [search]);
+  useEffect(() => {
+    setLoading(false);
+  }, [debouncedSearch]);
+
+  const resultView = useMemo(() => {
+    if (loading) return <SearchLoading />;
+    if (searching)
+      return (
+        <SearchResultsView
+          searchQuery={debouncedSearch}
+          clear={() => setSearch({ searchQuery: "" })}
+        />
+      );
+    return <ExtraItems />;
+  }, [loading, searching, debouncedSearch, setSearch]);
+
+  return (
+    <>
+      <Navigation />
+      <ThinContainer>
+        {/* input section */}
+        <div className="mt-44 space-y-16 text-center">
+          <div className="space-y-4">
+            <Tagline>Because watching legally is boring</Tagline>
+            <Title>What movie do you want to watch?</Title>
+          </div>
+          <SearchBarInput
+            onChange={setSearch}
+            value={search}
+            placeholder="What movie do you want to watch?"
+          />
+        </div>
+
+        {/* results view */}
+        {resultView}
+      </ThinContainer>
+    </>
   );
 }

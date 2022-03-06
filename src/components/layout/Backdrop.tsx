@@ -40,7 +40,7 @@ export function useBackdrop(): [
 }
 
 export function Backdrop(props: BackdropProps) {
-  const clickEvent = props.onClick || ((e: MouseEvent) => {});
+  const clickEvent = props.onClick || (() => {});
   const animationEvent = props.onBackdropHide || (() => {});
   const [isVisible, setVisible, fadeProps] = useFade();
 
@@ -63,6 +63,6 @@ export function Backdrop(props: BackdropProps) {
       }`}
       {...fadeProps}
       onClick={(e) => clickEvent(e.nativeEvent)}
-     />
+    />
   );
 }

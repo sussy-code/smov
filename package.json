@@ -7,6 +7,7 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "@types/react-router": "^5.1.18",
     "crypto-js": "^4.0.0",
     "fuse.js": "^6.4.6",
     "hls.js": "^1.0.7",
@@ -23,13 +24,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "lint": "eslint src/**"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "lint": "eslint --ext .tsx,.ts src"
   },
   "browserslist": {
     "production": [
@@ -57,7 +52,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-typescript": "^2.5.0",
     "eslint-plugin-import": "^2.25.4",
-    "eslint-plugin-jsx-a11y": "6.5.1",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "7.28.0",
     "eslint-plugin-react-hooks": "4.3.0",
     "postcss": "^8.4.6",

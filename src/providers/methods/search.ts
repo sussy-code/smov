@@ -1,20 +1,25 @@
 import Fuse from "fuse.js";
-import { MWMassProviderOutput, MWMedia, MWQuery, convertMediaToPortable } from "providers";
+import {
+  MWMassProviderOutput,
+  MWMedia,
+  MWQuery,
+  convertMediaToPortable,
+} from "providers";
 import { SimpleCache } from "utils/cache";
 import { GetProvidersForType } from "./helpers";
 import contentCache from "./contentCache";
 
 // cache
 const resultCache = new SimpleCache<MWQuery, MWMassProviderOutput>();
-resultCache.setCompare((a,b) => a.searchQuery === b.searchQuery && a.type === b.type);
+resultCache.setCompare(
+  (a, b) => a.searchQuery === b.searchQuery && a.type === b.type
+);
 resultCache.initialize();
 
 /*
-** actually call all providers with the search query
-*/
-async function callProviders(
-  query: MWQuery
-): Promise<MWMassProviderOutput> {
+ ** actually call all providers with the search query
+ */
+async function callProviders(query: MWQuery): Promise<MWMassProviderOutput> {
   const allQueries = GetProvidersForType(query.type).map<
     Promise<{ media: MWMedia[]; success: boolean; id: string }>
   >(async (provider) => {
@@ -55,33 +60,37 @@ async function callProviders(
 
   output.results.forEach((result: MWMedia) => {
     contentCache.set(convertMediaToPortable(result), result, 60 * 60);
-  })
+  });
 
   return output;
 }
 
 /*
-** sort results based on query
-*/
-function sortResults(query: MWQuery, providerResults: MWMassProviderOutput): MWMassProviderOutput {
-  const fuse = new Fuse(providerResults.results, { threshold: 0.3, keys: ["title"] });
-  providerResults.results = fuse.search(query.searchQuery).map((v) => v.item);
-  return providerResults;
+ ** sort results based on query
+ */
+function sortResults(
+  query: MWQuery,
+  providerResults: MWMassProviderOutput
+): MWMassProviderOutput {
+  const results: MWMassProviderOutput = { ...providerResults };
+  const fuse = new Fuse(results.results, { threshold: 0.3, keys: ["title"] });
+  results.results = fuse.search(query.searchQuery).map((v) => v.item);
+  return results;
 }
 
 /*
  ** Call search on all providers that matches query type
  */
 export async function SearchProviders(
-  query: MWQuery
+  inputQuery: MWQuery
 ): Promise<MWMassProviderOutput> {
   // input normalisation
+  const query = { ...inputQuery };
   query.searchQuery = query.searchQuery.toLowerCase().trim();
 
   // consult cache first
   let output = resultCache.get(query);
-  if (!output)
-    output = await callProviders(query);
+  if (!output) output = await callProviders(query);
 
   // sort results
   output = sortResults(query, output);

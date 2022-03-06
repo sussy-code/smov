@@ -4,6 +4,14 @@ export interface ButtonControlProps {
   className?: string;
 }
 
-export function ButtonControl({ onClick, children, className }: ButtonControlProps) {
-  return <button onClick={onClick} className={className}>{children}</button>
+export function ButtonControl({
+  onClick,
+  children,
+  className,
+}: ButtonControlProps) {
+  return (
+    <button onClick={onClick} className={className} type="button">
+      {children}
+    </button>
+  );
 }

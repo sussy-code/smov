@@ -30,6 +30,7 @@ export function useLoading<T extends (...args: any) => Promise<any>>(
               if (!isMounted.current) return resolve(undefined);
               setSuccess(true);
               resolve(v);
+              return null;
             })
             .catch((err) => {
               if (isMounted) {

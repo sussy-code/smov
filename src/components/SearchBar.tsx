@@ -4,7 +4,6 @@ import { DropdownButton } from "./buttons/DropdownButton";
 import { Icons } from "./Icon";
 import { TextInputControl } from "./text-inputs/TextInputControl";
 
-
 export interface SearchBarProps {
   buttonText?: string;
   placeholder?: string;
@@ -30,7 +29,7 @@ export function SearchBarInput(props: SearchBarProps) {
   return (
     <div className="bg-denim-300 hover:bg-denim-400 focus-within:bg-denim-400 flex flex-col items-center gap-4 rounded-[28px] px-4 py-4 transition-colors sm:flex-row sm:py-2 sm:pl-8  sm:pr-2">
       <TextInputControl
-        onChange={setSearch}
+        onChange={(val) => setSearch(val)}
         value={props.value.searchQuery}
         className="placeholder-denim-700 w-full flex-1 bg-transparent text-white focus:outline-none"
         placeholder={props.placeholder}
@@ -39,9 +38,9 @@ export function SearchBarInput(props: SearchBarProps) {
       <DropdownButton
         icon={Icons.SEARCH}
         open={dropdownOpen}
-        setOpen={setDropdownOpen}
+        setOpen={(val) => setDropdownOpen(val)}
         selectedItem={props.value.type}
-        setSelectedItem={setType}
+        setSelectedItem={(val) => setType(val)}
         options={[
           {
             id: MWMediaType.MOVIE,

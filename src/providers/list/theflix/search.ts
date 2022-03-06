@@ -4,10 +4,10 @@ import { MWMediaType, MWProviderMediaResult, MWQuery } from "providers";
 const getTheFlixUrl = (type: "tv-shows" | "movies", params: URLSearchParams) =>
   `https://theflix.to/${type}/trending?${params}`;
 
-export async function searchTheFlix(query: MWQuery): Promise<string> {
+export function searchTheFlix(query: MWQuery): Promise<string> {
   const params = new URLSearchParams();
   params.append("search", query.searchQuery);
-  return await fetch(
+  return fetch(
     CORS_PROXY_URL +
       getTheFlixUrl(
         query.type === MWMediaType.MOVIE ? "movies" : "tv-shows",
@@ -30,14 +30,11 @@ export function getDataFromSearch(page: string, limit = 10): any[] {
 
 export function turnDataIntoMedia(data: any): MWProviderMediaResult {
   return {
-    mediaId:
-      `${data.id 
-      }-${ 
-      data.name
-        .replace(/[^a-z0-9]+|\s+/gim, " ")
-        .trim()
-        .replace(/\s+/g, "-")
-        .toLowerCase()}`,
+    mediaId: `${data.id}-${data.name
+      .replace(/[^a-z0-9]+|\s+/gim, " ")
+      .trim()
+      .replace(/\s+/g, "-")
+      .toLowerCase()}`,
     title: data.name,
     year: new Date(data.releaseDate).getFullYear().toString(),
   };
