@@ -1,9 +1,4 @@
-import {
-  MWMediaMeta,
-  getProviderMetadata,
-  MWMediaType,
-  getEpisodeFromMedia,
-} from "providers";
+import { MWMediaMeta, getProviderMetadata, MWMediaType } from "providers";
 import React, {
   createContext,
   ReactNode,
