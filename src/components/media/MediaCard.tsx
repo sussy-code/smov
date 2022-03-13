@@ -13,12 +13,14 @@ export interface MediaCardProps {
   media: MWMediaMeta;
   watchedPercentage: number;
   linkable?: boolean;
+  series?: boolean;
 }
 
 function MediaCardContent({
   media,
   linkable,
   watchedPercentage,
+  series,
 }: MediaCardProps) {
   const provider = getProviderFromId(media.providerId);
 
@@ -49,7 +51,14 @@ function MediaCardContent({
       <div className="relative flex flex-1">
         {/* card content */}
         <div className="flex-1">
-          <h1 className="mb-1 font-bold text-white">{media.title}</h1>
+          <h1 className="mb-1 font-bold text-white">
+            {media.title}
+            {series ? (
+              <span className="text-denim-700 ml-2 text-xs">
+                S{media.season} E{media.episode}
+              </span>
+            ) : null}
+          </h1>
           <DotList
             className="text-xs"
             content={[provider.displayName, media.mediaType, media.year]}

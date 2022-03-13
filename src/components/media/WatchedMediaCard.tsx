@@ -4,6 +4,7 @@ import { MediaCard } from "./MediaCard";
 
 export interface WatchedMediaCardProps {
   media: MWMediaMeta;
+  series?: boolean;
 }
 
 export function WatchedMediaCard(props: WatchedMediaCardProps) {
@@ -15,6 +16,7 @@ export function WatchedMediaCard(props: WatchedMediaCardProps) {
     <MediaCard
       watchedPercentage={watchedPercentage}
       media={props.media}
+      series={props.series && props.media.episode !== undefined}
       linkable
     />
   );

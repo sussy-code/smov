@@ -153,6 +153,7 @@ function ExtraItems() {
             <WatchedMediaCard
               key={[v.mediaId, v.providerId].join("|")}
               media={v}
+              series
             />
           ))}
         </SectionHeading>

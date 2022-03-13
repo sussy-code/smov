@@ -1,4 +1,4 @@
-import { MWMediaMeta, getProviderMetadata } from "providers";
+import { MWMediaMeta, getProviderMetadata, MWMediaType } from "providers";
 import React, {
   createContext,
   ReactNode,
@@ -98,9 +98,43 @@ export function WatchedContextProvider(props: { children: ReactNode }) {
         });
       },
       getFilteredWatched() {
-        return watched.items.filter(
+        // remove disabled providers
+        let filtered = watched.items.filter(
           (item) => getProviderMetadata(item.providerId)?.enabled
         );
+
+        // get highest episode number for every anime/season
+        const highestEpisode: Record<string, [number, number]> = {};
+        const highestWatchedItem: Record<string, WatchedStoreItem> = {};
+        filtered = filtered.filter((item) => {
+          if (
+            [MWMediaType.ANIME, MWMediaType.SERIES].includes(item.mediaType)
+          ) {
+            const key = `${item.mediaType}-${item.mediaId}`;
+            const current: [number, number] = [
+              item.season ?? -1,
+              item.episode ?? -1,
+            ];
+            let existing = highestEpisode[key];
+            if (!existing) {
+              existing = current;
+              highestEpisode[key] = current;
+              highestWatchedItem[key] = item;
+            }
+
+            if (
+              current[0] > existing[0] ||
+              (current[0] === existing[0] && current[1] > existing[1])
+            ) {
+              highestEpisode[key] = current;
+              highestWatchedItem[key] = item;
+            }
+            return false;
+          }
+          return true;
+        });
+
+        return [...filtered, ...Object.values(highestWatchedItem)];
       },
       watched,
     }),

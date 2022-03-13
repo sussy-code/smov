@@ -25,8 +25,6 @@ export function Seasons(props: SeasonsProps) {
   const seasonSelected = props.media.season as number;
   const episodeSelected = props.media.episode as number;
 
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-
   useEffect(() => {
     (async () => {
       const seasonData = await searchSeasons(props.media);
@@ -45,6 +43,16 @@ export function Seasons(props: SeasonsProps) {
     );
   }
 
+  const options = seasons.seasons.map((season) => ({
+    id: season.seasonNumber,
+    name: `Season ${season.seasonNumber}`,
+  }));
+
+  const selectedItem = {
+    id: seasonSelected,
+    name: `Season ${seasonSelected}`,
+  };
+
   return (
     <>
       {loading ? <p>Loading...</p> : null}
@@ -52,17 +60,12 @@ export function Seasons(props: SeasonsProps) {
       {success && seasons.seasons.length ? (
         <>
           <Dropdown
-            open={dropdownOpen}
-            setOpen={setDropdownOpen}
-            selectedItem={`${seasonSelected}`}
-            options={seasons.seasons.map((season) => ({
-              id: `${season.seasonNumber}`,
-              name: `Season ${season.seasonNumber}`,
-            }))}
-            setSelectedItem={(id) =>
+            selectedItem={selectedItem}
+            options={options}
+            setSelectedItem={(seasonItem) =>
               navigateToSeasonAndEpisode(
-                +id,
-                seasons.seasons[+id]?.episodes[0].episodeNumber
+                seasonItem.id,
+                seasons.seasons[seasonItem.id]?.episodes[0].episodeNumber
               )
             }
           />
