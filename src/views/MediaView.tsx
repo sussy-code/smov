@@ -2,7 +2,7 @@ import { IconPatch } from "components/buttons/IconPatch";
 import { Icons } from "components/Icon";
 import { Navigation } from "components/layout/Navigation";
 import { Paper } from "components/layout/Paper";
-import { Seasons } from "components/layout/Seasons";
+import { LoadingSeasons, Seasons } from "components/layout/Seasons";
 import { SkeletonVideoPlayer, VideoPlayer } from "components/media/VideoPlayer";
 import { ArrowLink } from "components/text/ArrowLink";
 import { DotList } from "components/text/DotList";
@@ -110,7 +110,14 @@ function LoadingMediaFooter(props: { error?: boolean }) {
             <span className="bg-denim-400 mr-4 inline-block h-2 w-12 rounded-full" />
             <span className="bg-denim-400 mr-4 inline-block h-2 w-12 rounded-full" />
           </div>
-          {props.error ? "error!" : null}
+          {props.error ? (
+            <div className="flex items-center space-x-3">
+              <IconPatch icon={Icons.WARNING} className="text-red-400" />
+              <p>Your url may be invalid</p>
+            </div>
+          ) : (
+            <LoadingSeasons />
+          )}
         </div>
       </div>
     </Paper>

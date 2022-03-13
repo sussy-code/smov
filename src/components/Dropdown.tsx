@@ -16,7 +16,7 @@ interface DropdownProps {
 
 export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>(
   (props: DropdownProps) => (
-    <div className="relative my-4 w-72 ">
+    <div className="relative my-4 max-w-[18rem]">
       <Listbox value={props.selectedItem} onChange={props.setSelectedItem}>
         {({ open }) => (
           <>
@@ -37,7 +37,7 @@ export const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>(
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Listbox.Options className="bg-denim-500 scrollbar-thin scrollbar-track-denim-400 scrollbar-thumb-denim-200 absolute bottom-11 z-10 mt-1 max-h-60 w-72 overflow-auto rounded-md py-1 text-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:bottom-10 sm:text-sm">
+              <Listbox.Options className="bg-denim-500 scrollbar-thin scrollbar-track-denim-400 scrollbar-thumb-denim-200 absolute bottom-11 left-0 right-0 z-10 mt-1 max-h-60 overflow-auto rounded-md py-1 text-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:bottom-10 sm:text-sm">
                 {props.options.map((opt) => (
                   <Listbox.Option
                     className={({ active }) =>

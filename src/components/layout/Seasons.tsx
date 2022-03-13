@@ -1,4 +1,6 @@
+import { IconPatch } from "components/buttons/IconPatch";
 import { Dropdown, OptionItem } from "components/Dropdown";
+import { Icons } from "components/Icon";
 import { WatchedEpisode } from "components/media/WatchedEpisodeButton";
 import { useLoading } from "hooks/useLoading";
 import { serializePortableMedia } from "hooks/usePortableMedia";
@@ -15,6 +17,28 @@ import { useHistory } from "react-router-dom";
 
 export interface SeasonsProps {
   media: MWMedia;
+}
+
+export function LoadingSeasons(props: { error?: boolean }) {
+  return (
+    <div>
+      <div>
+        <div className="bg-denim-400 mb-3 mt-5  h-10 w-56 rounded opacity-50" />
+      </div>
+      {!props.error ? (
+        <>
+          <div className="bg-denim-400 mr-3 mb-3 inline-block h-10 w-10 rounded opacity-50" />
+          <div className="bg-denim-400 mr-3 mb-3 inline-block h-10 w-10 rounded opacity-50" />
+          <div className="bg-denim-400 mr-3 mb-3 inline-block h-10 w-10 rounded opacity-50" />
+        </>
+      ) : (
+        <div className="flex items-center space-x-3">
+          <IconPatch icon={Icons.WARNING} className="text-red-400" />
+          <p>Failed to load seasons and episodes</p>
+        </div>
+      )}
+    </div>
+  );
 }
 
 export function Seasons(props: SeasonsProps) {
@@ -58,8 +82,8 @@ export function Seasons(props: SeasonsProps) {
 
   return (
     <>
-      {loading ? <p>Loading...</p> : null}
-      {error ? <p>error!</p> : null}
+      {loading ? <LoadingSeasons /> : null}
+      {error ? <LoadingSeasons error /> : null}
       {success && seasons.seasons.length ? (
         <>
           <Dropdown

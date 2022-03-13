@@ -1,6 +1,5 @@
 import {
   convertMediaToPortable,
-  getEpisodeFromMedia,
   getProviderFromId,
   MWMediaMeta,
   MWMediaType,

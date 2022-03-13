@@ -84,13 +84,22 @@ export const theFlixScraper: MWMediaProvider = {
         .querySelectorAll(`script[id="__NEXT_DATA__"]`)
     )[0];
 
-    const data = JSON.parse(node.innerHTML).props.pageProps.selectedTv.seasons;
+    let data = JSON.parse(node.innerHTML).props.pageProps.selectedTv.seasons;
+
+    data = data.filter((season: any) => season.releaseDate != null);
+    data = data.map((season: any) => {
+      const episodes = season.episodes.filter(
+        (episode: any) => episode.releaseDate != null
+      );
+      return { ...season, episodes };
+    });
+
     return {
       seasons: data.map((d: any) => ({
         sort: d.seasonNumber === 0 ? 999 : d.seasonNumber,
         id: d.seasonNumber.toString(),
         type: d.seasonNumber === 0 ? "special" : "season",
-        title: d.seasonNumber === 0 ? "Specials" : undefined,
+        title: d.name,
         episodes: d.episodes.map((e: any) => ({
           title: e.name,
           sort: e.episodeNumber,
