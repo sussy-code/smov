@@ -52,6 +52,7 @@ function StyledMediaView(props: StyledMediaViewProps) {
   return (
     <VideoPlayer
       source={props.stream}
+      captions={props.stream.captions}
       onProgress={(e) => updateProgress(e)}
       startAt={startAtTime}
     />

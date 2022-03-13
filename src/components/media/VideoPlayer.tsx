@@ -1,11 +1,12 @@
 import { IconPatch } from "components/buttons/IconPatch";
 import { Icons } from "components/Icon";
 import { Loading } from "components/layout/Loading";
-import { MWMediaStream } from "providers";
+import { MWMediaCaption, MWMediaStream } from "providers";
 import { ReactElement, useEffect, useRef, useState } from "react";
 
 export interface VideoPlayerProps {
   source: MWMediaStream;
+  captions: MWMediaCaption[];
   startAt?: number;
   onProgress?: (event: ProgressEvent) => void;
 }
@@ -74,6 +75,9 @@ export function VideoPlayer(props: VideoPlayerProps) {
         {!mustUseHls ? (
           <source src={props.source.url} type="video/mp4" />
         ) : null}
+        {props.captions.map((v) => (
+          <track key={v.id} kind="captions" label={v.label} src={v.url} />
+        ))}
       </video>
     </>
   );

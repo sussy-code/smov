@@ -69,7 +69,8 @@ export const theFlixScraper: MWMediaProvider = {
     }
 
     const data = JSON.parse(prop.textContent);
-    return { url: data.props.pageProps.videoUrl, type: "mp4" };
+
+    return { url: data.props.pageProps.videoUrl, type: "mp4", captions: [] };
   },
 
   async getSeasonDataFromMedia(

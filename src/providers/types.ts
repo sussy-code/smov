@@ -13,9 +13,15 @@ export interface MWPortableMedia {
 }
 
 export type MWMediaStreamType = "m3u8" | "mp4";
+export interface MWMediaCaption {
+  id: string;
+  url: string;
+  label: string;
+}
 export interface MWMediaStream {
   url: string;
   type: MWMediaStreamType;
+  captions: MWMediaCaption[];
 }
 
 export interface MWMediaMeta extends MWPortableMedia {
