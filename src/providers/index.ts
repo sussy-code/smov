@@ -14,8 +14,8 @@ export function convertMediaToPortable(media: MWMedia): MWPortableMedia {
     mediaId: media.mediaId,
     providerId: media.providerId,
     mediaType: media.mediaType,
-    episode: media.episode,
-    season: media.season,
+    episodeId: media.episodeId,
+    seasonId: media.seasonId,
   };
 }
 

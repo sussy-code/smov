@@ -1,9 +1,9 @@
-import { MWMediaMeta } from "providers";
+import { getEpisodeFromMedia, MWMedia } from "providers";
 import { useWatchedContext, getWatchedFromPortable } from "state/watched";
 import { Episode } from "./EpisodeButton";
 
 export interface WatchedEpisodeProps {
-  media: MWMediaMeta;
+  media: MWMedia;
   onClick?: () => void;
   active?: boolean;
 }
@@ -11,12 +11,13 @@ export interface WatchedEpisodeProps {
 export function WatchedEpisode(props: WatchedEpisodeProps) {
   const { watched } = useWatchedContext();
   const foundWatched = getWatchedFromPortable(watched.items, props.media);
+  const episode = getEpisodeFromMedia(props.media);
   const watchedPercentage = (foundWatched && foundWatched.percentage) || 0;
 
   return (
     <Episode
       progress={watchedPercentage}
-      episodeNumber={props.media.episode ?? 1}
+      episodeNumber={episode?.episode?.sort ?? 1}
       active={props.active}
       onClick={props.onClick}
     />

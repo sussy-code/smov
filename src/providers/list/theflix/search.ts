@@ -38,11 +38,11 @@ export function turnDataIntoMedia(data: any): MWProviderMediaResult {
     title: data.name,
     year: new Date(data.releaseDate).getFullYear().toString(),
     seasonCount: data.numberOfSeasons,
-    episode: data.lastReleasedEpisode
-      ? data.lastReleasedEpisode.episodeNumber
+    episodeId: data.lastReleasedEpisode
+      ? data.lastReleasedEpisode.episodeNumber.toString()
       : null,
-    season: data.lastReleasedEpisode
-      ? data.lastReleasedEpisode.seasonNumber
+    seasonId: data.lastReleasedEpisode
+      ? data.lastReleasedEpisode.seasonNumber.toString()
       : null,
   };
 }

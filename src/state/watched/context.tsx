@@ -1,4 +1,9 @@
-import { MWMediaMeta, getProviderMetadata, MWMediaType } from "providers";
+import {
+  MWMediaMeta,
+  getProviderMetadata,
+  MWMediaType,
+  getEpisodeFromMedia,
+} from "providers";
 import React, {
   createContext,
   ReactNode,
@@ -32,8 +37,8 @@ export function getWatchedFromPortable(
     (v) =>
       v.mediaId === media.mediaId &&
       v.providerId === media.providerId &&
-      v.episode === media.episode &&
-      v.season === media.season
+      v.episodeId === media.episodeId &&
+      v.seasonId === media.seasonId
   );
 }
 
@@ -84,8 +89,8 @@ export function WatchedContextProvider(props: { children: ReactNode }) {
               year: media.year,
               percentage: 0,
               progress: 0,
-              episode: media.episode,
-              season: media.season,
+              episodeId: media.episodeId,
+              seasonId: media.seasonId,
             };
             data.items.push(item);
           }
@@ -112,8 +117,8 @@ export function WatchedContextProvider(props: { children: ReactNode }) {
           ) {
             const key = `${item.mediaType}-${item.mediaId}`;
             const current: [number, number] = [
-              item.season ?? -1,
-              item.episode ?? -1,
+              item.episodeId ? parseInt(item.episodeId, 10) : -1,
+              item.seasonId ? parseInt(item.seasonId, 10) : -1,
             ];
             let existing = highestEpisode[key];
             if (!existing) {

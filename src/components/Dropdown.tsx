@@ -4,7 +4,7 @@ import React, { Fragment } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 
 export interface OptionItem {
-  id: number;
+  id: string;
   name: string;
 }
 

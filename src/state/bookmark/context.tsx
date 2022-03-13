@@ -35,8 +35,8 @@ function getBookmarkIndexFromMedia(
     (v) =>
       v.mediaId === media.mediaId &&
       v.providerId === media.providerId &&
-      v.episode === media.episode &&
-      v.season === media.season
+      v.episodeId === media.episodeId &&
+      v.seasonId === media.seasonId
   );
   return a;
 }
@@ -75,8 +75,8 @@ export function BookmarkContextProvider(props: { children: ReactNode }) {
                 providerId: media.providerId,
                 title: media.title,
                 year: media.year,
-                episode: media.episode,
-                season: media.season,
+                episodeId: media.episodeId,
+                seasonId: media.seasonId,
               };
               data.bookmarks.push(item);
             }

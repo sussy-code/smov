@@ -23,8 +23,8 @@ export function WrapProvider(
       // consult cache first
       const output = contentCache.get(media);
       if (output) {
-        output.season = media.season;
-        output.episode = media.episode;
+        output.seasonId = media.seasonId;
+        output.episodeId = media.episodeId;
         return output;
       }
 

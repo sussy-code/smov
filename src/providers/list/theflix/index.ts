@@ -53,7 +53,7 @@ export const theFlixScraper: MWMediaProvider = {
     if (media.mediaType === MWMediaType.MOVIE) {
       url = `${CORS_PROXY_URL}https://theflix.to/movie/${media.mediaId}?movieInfo=${media.mediaId}`;
     } else if (media.mediaType === MWMediaType.SERIES) {
-      url = `${CORS_PROXY_URL}https://theflix.to/tv-show/${media.mediaId}/season-${media.season}/episode-${media.episode}`;
+      url = `${CORS_PROXY_URL}https://theflix.to/tv-show/${media.mediaId}/season-${media.seasonId}/episode-${media.episodeId}`;
     }
 
     const res = await fetch(url).then((d) => d.text());
@@ -75,7 +75,7 @@ export const theFlixScraper: MWMediaProvider = {
   async getSeasonDataFromMedia(
     media: MWPortableMedia
   ): Promise<MWMediaSeasons> {
-    const url = `${CORS_PROXY_URL}https://theflix.to/tv-show/${media.mediaId}/season-${media.season}/episode-${media.episode}`;
+    const url = `${CORS_PROXY_URL}https://theflix.to/tv-show/${media.mediaId}/season-${media.seasonId}/episode-${media.episodeId}`;
     const res = await fetch(url).then((d) => d.text());
 
     const node: Element = Array.from(
@@ -87,10 +87,14 @@ export const theFlixScraper: MWMediaProvider = {
     const data = JSON.parse(node.innerHTML).props.pageProps.selectedTv.seasons;
     return {
       seasons: data.map((d: any) => ({
-        seasonNumber: d.seasonNumber === 0 ? 999 : d.seasonNumber,
+        sort: d.seasonNumber === 0 ? 999 : d.seasonNumber,
+        id: d.seasonNumber.toString(),
         type: d.seasonNumber === 0 ? "special" : "season",
+        title: d.seasonNumber === 0 ? "Specials" : undefined,
         episodes: d.episodes.map((e: any) => ({
           title: e.name,
+          sort: e.episodeNumber,
+          id: e.episodeNumber.toString(),
           episodeNumber: e.episodeNumber,
         })),
       })),

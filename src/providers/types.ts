@@ -8,8 +8,8 @@ export interface MWPortableMedia {
   mediaId: string;
   mediaType: MWMediaType;
   providerId: string;
-  season?: number;
-  episode?: number;
+  seasonId?: string;
+  episodeId?: string;
 }
 
 export type MWMediaStreamType = "m3u8" | "mp4";
@@ -24,15 +24,20 @@ export interface MWMediaMeta extends MWPortableMedia {
   seasonCount?: number;
 }
 
+export interface MWMediaEpisode {
+  sort: number;
+  id: string;
+  title: string;
+}
+export interface MWMediaSeason {
+  sort: number;
+  id: string;
+  title?: string;
+  type: "season" | "special";
+  episodes: MWMediaEpisode[];
+}
 export interface MWMediaSeasons {
-  seasons: {
-    seasonNumber: number;
-    type: "season" | "special";
-    episodes: {
-      title: string;
-      episodeNumber: number;
-    }[];
-  }[];
+  seasons: MWMediaSeason[];
 }
 
 export interface MWMedia extends MWMediaMeta {

@@ -6,7 +6,7 @@ const getTheFlixUrl = (media: MWPortableMedia, params?: URLSearchParams) => {
     return `https://theflix.to/movie/${media.mediaId}?${params}`;
   }
   if (media.mediaType === MWMediaType.SERIES) {
-    return `https://theflix.to/tv-show/${media.mediaId}/season-${media.season}/episode-${media.episode}`;
+    return `https://theflix.to/tv-show/${media.mediaId}/season-${media.seasonId}/episode-${media.episodeId}`;
   }
 
   return "";

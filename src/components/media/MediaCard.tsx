@@ -1,5 +1,6 @@
 import {
   convertMediaToPortable,
+  getEpisodeFromMedia,
   getProviderFromId,
   MWMediaMeta,
   MWMediaType,
@@ -53,9 +54,9 @@ function MediaCardContent({
         <div className="flex-1">
           <h1 className="mb-1 font-bold text-white">
             {media.title}
-            {series ? (
+            {series && media.seasonId && media.episodeId ? (
               <span className="text-denim-700 ml-2 text-xs">
-                S{media.season} E{media.episode}
+                S{media.seasonId} E{media.episodeId}
               </span>
             ) : null}
           </h1>

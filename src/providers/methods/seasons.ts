@@ -28,10 +28,8 @@ export async function getSeasonDataFromMedia(
   }
 
   const seasonData = await provider.getSeasonDataFromMedia(media);
-  seasonData.seasons.sort((a, b) => a.seasonNumber - b.seasonNumber);
-  seasonData.seasons.forEach((s) =>
-    s.episodes.sort((a, b) => a.episodeNumber - b.episodeNumber)
-  );
+  seasonData.seasons.sort((a, b) => a.sort - b.sort);
+  seasonData.seasons.forEach((s) => s.episodes.sort((a, b) => a.sort - b.sort));
 
   // cache it
   seasonCache.set(media, seasonData, 60 * 60); // cache it for an hour

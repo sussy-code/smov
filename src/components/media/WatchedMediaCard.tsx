@@ -16,7 +16,7 @@ export function WatchedMediaCard(props: WatchedMediaCardProps) {
     <MediaCard
       watchedPercentage={watchedPercentage}
       media={props.media}
-      series={props.series && props.media.episode !== undefined}
+      series={props.series && props.media.episodeId !== undefined}
       linkable
     />
   );

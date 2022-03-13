@@ -1,4 +1,4 @@
-import { Dropdown } from "components/Dropdown";
+import { Dropdown, OptionItem } from "components/Dropdown";
 import { WatchedEpisode } from "components/media/WatchedEpisodeButton";
 import { useLoading } from "hooks/useLoading";
 import { serializePortableMedia } from "hooks/usePortableMedia";
@@ -6,6 +6,7 @@ import {
   convertMediaToPortable,
   MWMedia,
   MWMediaSeasons,
+  MWMediaSeason,
   MWPortableMedia,
 } from "providers";
 import { getSeasonDataFromMedia } from "providers/methods/seasons";
@@ -22,8 +23,8 @@ export function Seasons(props: SeasonsProps) {
   );
   const history = useHistory();
   const [seasons, setSeasons] = useState<MWMediaSeasons>({ seasons: [] });
-  const seasonSelected = props.media.season as number;
-  const episodeSelected = props.media.episode as number;
+  const seasonSelected = props.media.seasonId as string;
+  const episodeSelected = props.media.episodeId as string;
 
   useEffect(() => {
     (async () => {
@@ -32,10 +33,10 @@ export function Seasons(props: SeasonsProps) {
     })();
   }, [searchSeasons, props.media]);
 
-  function navigateToSeasonAndEpisode(season: number, episode: number) {
+  function navigateToSeasonAndEpisode(seasonId: string, episodeId: string) {
     const newMedia: MWMedia = { ...props.media };
-    newMedia.episode = episode;
-    newMedia.season = season;
+    newMedia.episodeId = episodeId;
+    newMedia.seasonId = seasonId;
     history.replace(
       `/media/${newMedia.mediaType}/${serializePortableMedia(
         convertMediaToPortable(newMedia)
@@ -43,15 +44,17 @@ export function Seasons(props: SeasonsProps) {
     );
   }
 
-  const options = seasons.seasons.map((season) => ({
-    id: season.seasonNumber,
-    name: `Season ${season.seasonNumber}`,
-  }));
+  const mapSeason = (season: MWMediaSeason) => ({
+    id: season.id,
+    name: season.title || `Season ${season.sort}`,
+  });
 
-  const selectedItem = {
-    id: seasonSelected,
-    name: `Season ${seasonSelected}`,
-  };
+  const options = seasons.seasons.map(mapSeason);
+
+  const foundSeason = seasons.seasons.find(
+    (season) => season.id === seasonSelected
+  );
+  const selectedItem = foundSeason ? mapSeason(foundSeason) : null;
 
   return (
     <>
@@ -60,29 +63,31 @@ export function Seasons(props: SeasonsProps) {
       {success && seasons.seasons.length ? (
         <>
           <Dropdown
-            selectedItem={selectedItem}
+            selectedItem={selectedItem as OptionItem}
             options={options}
             setSelectedItem={(seasonItem) =>
               navigateToSeasonAndEpisode(
                 seasonItem.id,
-                seasons.seasons[seasonItem.id]?.episodes[0].episodeNumber
+                seasons.seasons.find((s) => s.id === seasonItem.id)?.episodes[0]
+                  .id as string
               )
             }
           />
-          {seasons.seasons[seasonSelected]?.episodes.map((v) => (
-            <WatchedEpisode
-              key={v.episodeNumber}
-              media={{
-                ...props.media,
-                episode: v.episodeNumber,
-                season: seasonSelected,
-              }}
-              active={v.episodeNumber === episodeSelected}
-              onClick={() =>
-                navigateToSeasonAndEpisode(seasonSelected, v.episodeNumber)
-              }
-            />
-          ))}
+          {seasons.seasons
+            .find((s) => s.id === seasonSelected)
+            ?.episodes.map((v) => (
+              <WatchedEpisode
+                key={v.id}
+                media={{
+                  ...props.media,
+                  seriesData: seasons,
+                  episodeId: v.id,
+                  seasonId: seasonSelected,
+                }}
+                active={v.id === episodeSelected}
+                onClick={() => navigateToSeasonAndEpisode(seasonSelected, v.id)}
+              />
+            ))}
         </>
       ) : null}
     </>
