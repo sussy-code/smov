@@ -1,5 +1,6 @@
 import { Dropdown } from "components/Dropdown";
 import { Episode } from "components/media/EpisodeButton";
+import { WatchedEpisode } from "components/media/WatchedEpisodeButton";
 import { useLoading } from "hooks/useLoading";
 import { serializePortableMedia } from "hooks/usePortableMedia";
 import {
@@ -70,9 +71,13 @@ export function Seasons(props: SeasonsProps) {
             }
           />
           {seasons.seasons[seasonSelected]?.episodes.map((v) => (
-            <Episode
+            <WatchedEpisode
               key={v.episodeNumber}
-              episodeNumber={v.episodeNumber}
+              media={{
+                ...props.media,
+                episode: v.episodeNumber,
+                season: seasonSelected,
+              }}
               active={v.episodeNumber === episodeSelected}
               onClick={() =>
                 navigateToSeasonAndEpisode(seasonSelected, v.episodeNumber)
