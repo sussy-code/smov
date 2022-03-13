@@ -1,5 +1,4 @@
 import { Dropdown } from "components/Dropdown";
-import { Episode } from "components/media/EpisodeButton";
 import { WatchedEpisode } from "components/media/WatchedEpisodeButton";
 import { useLoading } from "hooks/useLoading";
 import { serializePortableMedia } from "hooks/usePortableMedia";
