@@ -7,7 +7,7 @@ import gomostream from './scraper/gomostream';
 async function findContent(searchTerm, type) {
     const results = { options: []};
     const content = await Promise.all([
-        theflix.findContent(searchTerm, type),
+        // theflix.findContent(searchTerm, type),
         gomostream.findContent(searchTerm, type),
         gdriveplayer.findContent(searchTerm, type),
         xemovie.findContent(searchTerm, type),
