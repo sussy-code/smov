@@ -79,11 +79,13 @@ export const gDrivePlayerScraper: MWMediaProvider = {
       throw new Error("Could not find stream");
     }
 
+    /// NOTE: this code requires re-write, it's not safe
     const data = unpack(script.textContent).split("var data=\\'")[1].split("\\'")[0].replace(/\\/g, "");
     const decryptedData = unpack(CryptoJS.AES.decrypt(data, "alsfheafsjklNIWORNiolNIOWNKLNXakjsfwnBdwjbwfkjbJjkopfjweopjASoiwnrflakefneiofrt", { format }).toString(CryptoJS.enc.Utf8));
     // eslint-disable-next-line
     const sources = JSON.parse(JSON.stringify(eval(decryptedData.split("sources:")[1].split(",image")[0].replace(/\\/g, "").replace(/document\.referrer/g, "\"\""))));
     const source = sources[sources.length - 1];
+    /// END
 
     return { url: `https:${source.file}`, type: source.type, captions: [] };
   },
