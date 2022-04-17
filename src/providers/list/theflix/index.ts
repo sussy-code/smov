@@ -5,6 +5,7 @@ import {
   MWMediaStream,
   MWQuery,
   MWMediaSeasons,
+  MWProviderMediaResult
 } from "providers/types";
 
 import {
@@ -14,12 +15,11 @@ import {
 } from "providers/list/theflix/search";
 
 import { getDataFromPortableSearch } from "providers/list/theflix/portableToMedia";
-import { MWProviderMediaResult } from "providers";
 import { CORS_PROXY_URL } from "mw_constants";
 
 export const theFlixScraper: MWMediaProvider = {
   id: "theflix",
-  enabled: true,
+  enabled: false,
   type: [MWMediaType.MOVIE, MWMediaType.SERIES],
   displayName: "theflix",
 

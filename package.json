@@ -8,8 +8,9 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "@types/crypto-js": "^4.1.1",
     "@types/react-router": "^5.1.18",
-    "crypto-js": "^4.0.0",
+    "crypto-js": "^4.1.1",
     "fuse.js": "^6.4.6",
     "hls.js": "^1.0.7",
     "json5": "^2.2.0",
@@ -20,6 +21,7 @@
     "react-scripts": "^5.0.0",
     "react-tracked": "^1.7.6",
     "scheduler": "^0.20.2",
+    "unpacker": "^1.0.1",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
