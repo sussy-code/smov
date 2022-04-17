@@ -88,7 +88,7 @@ export const gomostreamScraper: MWMediaProvider = {
     const index = unpacked.findIndex((e) => e === '"');
     const streamUrl = unpacked.slice(0, index).join('');
 
-    return { url: streamUrl, type: 'mp4', captions: [] };
+    return { url: streamUrl, type: streamUrl.split('.').at(-1) || "mp4", captions: [] };
   },
 
   async getSeasonDataFromMedia(media: MWPortableMedia): Promise<MWMediaSeasons> {
