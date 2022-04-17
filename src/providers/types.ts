@@ -20,8 +20,7 @@ export interface MWMediaCaption {
 }
 export interface MWMediaStream {
   url: string;
-  // type: MWMediaStreamType;
-  type: string;
+  type: MWMediaStreamType;
   captions: MWMediaCaption[];
 }
 

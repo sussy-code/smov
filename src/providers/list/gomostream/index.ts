@@ -88,7 +88,10 @@ export const gomostreamScraper: MWMediaProvider = {
     const index = unpacked.findIndex((e) => e === '"');
     const streamUrl = unpacked.slice(0, index).join('');
 
-    return { url: streamUrl, type: streamUrl.split('.').at(-1) || "mp4", captions: [] };
+    const streamType = streamUrl.split('.').at(-1);
+    if (streamType !== "mp4" && streamType !== "m3u8") throw new Error("Unsupported stream type");
+
+    return { url: streamUrl, type: streamType, captions: [] };
   },
 
   async getSeasonDataFromMedia(media: MWPortableMedia): Promise<MWMediaSeasons> {
