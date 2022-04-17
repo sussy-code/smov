@@ -57,16 +57,14 @@ export const gDrivePlayerScraper: MWMediaProvider = {
   async searchForMedia(query: MWQuery): Promise<MWProviderMediaResult[]> {
     const searchRes = await fetch(`${CORS_PROXY_URL}https://api.gdriveplayer.us/v1/movie/search?title=${query.searchQuery}`).then((d) => d.json());
 
-    const results: MWProviderMediaResult[] = [];
-    for (const item of searchRes) {
-      results.push({
-        title: item.title,
-        year: item.year,
-        mediaId: item.imdb,
-      });
-    }
+    const results: MWProviderMediaResult[] = searchRes.map((item: any) => ({
+      title: item.title,
+      year: item.year,
+      mediaId: item.imdb,
+    }));
 
     return results;
+
   },
 
   async getStream(media: MWPortableMedia): Promise<MWMediaStream> {
