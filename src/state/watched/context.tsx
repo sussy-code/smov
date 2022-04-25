@@ -14,7 +14,7 @@ interface WatchedStoreItem extends MWMediaMeta {
   percentage: number;
 }
 
-interface WatchedStoreData {
+export interface WatchedStoreData {
   items: WatchedStoreItem[];
 }
 
@@ -38,7 +38,7 @@ export function getWatchedFromPortable(
 }
 
 const WatchedContext = createContext<WatchedStoreDataWrapper>({
-  updateProgress: () => {},
+  updateProgress: () => { },
   getFilteredWatched: () => [],
   watched: {
     items: [],
