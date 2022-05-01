@@ -4,7 +4,6 @@ import {
   MWPortableMedia,
   MWMediaStream,
   MWQuery,
-  MWMediaSeasons,
   MWProviderMediaResult
 } from "providers/types";
 
@@ -47,7 +46,7 @@ export const gomostreamScraper: MWMediaProvider = {
       `${CORS_PROXY_URL}http://www.omdbapi.com/?${encodeURIComponent(params.toString())}`,
     ).then(d => d.json())
 
-    const results: MWProviderMediaResult[] = searchRes.Search.map((d: any) => ({
+    const results: MWProviderMediaResult[] = (searchRes.Search || []).map((d: any) => ({
       title: d.Title,
       year: d.Year,
       mediaId: d.imdbID
@@ -92,9 +91,5 @@ export const gomostreamScraper: MWMediaProvider = {
     if (streamType !== "mp4" && streamType !== "m3u8") throw new Error("Unsupported stream type");
 
     return { url: streamUrl, type: streamType, captions: [] };
-  },
-
-  async getSeasonDataFromMedia(media: MWPortableMedia): Promise<MWMediaSeasons> {
-    return {} as MWMediaSeasons;
   }
 };
