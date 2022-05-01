@@ -13,6 +13,7 @@ export function useSearchQuery(): [MWQuery, (inp: Partial<MWQuery>) => void] {
   const updateParams = (inp: Partial<MWQuery>) => {
     const copySearch: MWQuery = { ...search };
     Object.assign(copySearch, inp);
+    setSearch(copySearch);
     history.replace(
       generatePath(path, {
         query:
