@@ -9,7 +9,8 @@ const allowedDomains = [
 	'https://gomo.to',
 	'https://lookmovie.io',
 	'https://gomoplayer.com',
-	'https://api.opensubtitles.org'
+	'https://api.opensubtitles.org',
+	'https://www.vmovee.watch'
 ];
 
 async function handleRequest(request, destinationUrl, iteration = 0) {
@@ -48,7 +49,7 @@ async function handleRequest(request, destinationUrl, iteration = 0) {
 
 	// Set CORS headers
 	response.headers.set("Access-Control-Allow-Origin", '*');
-	response.headers.set('Access-Control-Expose-Headers', 'PHPSESSID');
+	response.headers.set('Access-Control-Expose-Headers', '*');
 
 	// Get and set PHPSESSID cookie
 	const cookies = response.headers.get('Set-Cookie');
@@ -112,13 +113,13 @@ addEventListener("fetch", event => {
 			}),
 		);
 	}
-	else if (!allowedDomains.find(domain => destinationUrl.startsWith(domain))) {
-		event.respondWith(
-			new Response('404 Not Found', {
-				status: 404,
-			}),
-		);
-	}
+	// else if (!allowedDomains.find(domain => destinationUrl.startsWith(domain))) {
+	// 	event.respondWith(
+	// 		new Response('404 Not Found', {
+	// 			status: 404,
+	// 		}),
+	// 	);
+	// }
 	else if (request.method === "GET" || request.method === "HEAD" || request.method === "POST") {
 		// Handle request
 		event.respondWith(handleRequest(request, destinationUrl));
