@@ -38,6 +38,8 @@ yarn start
 
 To build production files, simply run `yarn build`.
 
+You can also deploy the Cloudflare Worker (in worker.js) and update the proxy URL constant in `/src/mw-constants.ts`.
+
 <h2>Contributing - <a href="https://github.com/JamesHawkinss/movie-web/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/JamesHawkinss/movie-web?style=flat-square"></a>
 <a href="https://github.com/JamesHawkinss/movie-web/pulls"><img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/JamesHawkinss/movie-web?style=flat-square"></a></h2>
 
