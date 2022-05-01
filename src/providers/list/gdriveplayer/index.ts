@@ -4,7 +4,6 @@ import {
   MWPortableMedia,
   MWMediaStream,
   MWQuery,
-  MWMediaSeasons,
   MWProviderMediaResult
 } from "providers/types";
 
@@ -57,14 +56,13 @@ export const gDrivePlayerScraper: MWMediaProvider = {
   async searchForMedia(query: MWQuery): Promise<MWProviderMediaResult[]> {
     const searchRes = await fetch(`${CORS_PROXY_URL}https://api.gdriveplayer.us/v1/movie/search?title=${query.searchQuery}`).then((d) => d.json());
 
-    const results: MWProviderMediaResult[] = searchRes.map((item: any) => ({
+    const results: MWProviderMediaResult[] = (searchRes || []).map((item: any) => ({
       title: item.title,
       year: item.year,
       mediaId: item.imdb,
     }));
 
     return results;
-
   },
 
   async getStream(media: MWPortableMedia): Promise<MWMediaStream> {
@@ -89,8 +87,4 @@ export const gDrivePlayerScraper: MWMediaProvider = {
 
     return { url: `https:${source.file}`, type: source.type, captions: [] };
   },
-
-  async getSeasonDataFromMedia(media: MWPortableMedia): Promise<MWMediaSeasons> {
-    return {} as MWMediaSeasons;
-  }
 };

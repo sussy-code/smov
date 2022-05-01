@@ -3,6 +3,7 @@ import { Icons } from "components/Icon";
 import { Loading } from "components/layout/Loading";
 import { MWMediaCaption, MWMediaStream } from "providers";
 import { ReactElement, useEffect, useRef, useState } from "react";
+import Hls from "hls.js";
 
 export interface VideoPlayerProps {
   source: MWMediaStream;
@@ -40,7 +41,34 @@ export function VideoPlayer(props: VideoPlayerProps) {
   useEffect(() => {
     setLoading(true);
     setErrored(false);
-  }, [props.source.url]);
+
+    // hls support
+    if (mustUseHls) {
+      if (!videoRef.current)
+        return;
+
+      if (!Hls.isSupported()) {
+        setLoading(false);
+        setErrored(true);
+        return;
+      }
+
+      const hls = new Hls();
+
+      if (videoRef.current.canPlayType('application/vnd.apple.mpegurl')) {
+        videoRef.current.src = props.source.url;
+        return;
+      }
+
+      hls.attachMedia(videoRef.current);
+      hls.loadSource(props.source.url);
+
+      hls.on(Hls.Events.ERROR, (event, data) => {
+        setErrored(true);
+        console.error(data);
+      });
+    }
+  }, [props.source.url, videoRef, mustUseHls]);
 
   let skeletonUi: null | ReactElement = null;
   if (hasErrored) {
@@ -53,9 +81,8 @@ export function VideoPlayer(props: VideoPlayerProps) {
     <>
       {skeletonUi}
       <video
-        className={`bg-denim-500 w-full rounded-xl ${
-          !showVideo ? "hidden" : ""
-        }`}
+        className={`bg-denim-500 w-full rounded-xl ${!showVideo ? "hidden" : ""
+          }`}
         ref={videoRef}
         onProgress={(e) =>
           props.onProgress && props.onProgress(e.nativeEvent as ProgressEvent)

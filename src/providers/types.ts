@@ -57,7 +57,7 @@ export interface MWQuery {
   type: MWMediaType;
 }
 
-export interface MWMediaProvider {
+export interface MWMediaProviderBase {
   id: string; // id of provider, must be unique
   enabled: boolean;
   type: MWMediaType[];
@@ -66,8 +66,14 @@ export interface MWMediaProvider {
   getMediaFromPortable(media: MWPortableMedia): Promise<MWProviderMediaResult>;
   searchForMedia(query: MWQuery): Promise<MWProviderMediaResult[]>;
   getStream(media: MWPortableMedia): Promise<MWMediaStream>;
-  getSeasonDataFromMedia(media: MWPortableMedia): Promise<MWMediaSeasons>;
+  getSeasonDataFromMedia?: (media: MWPortableMedia) => Promise<MWMediaSeasons>;
 }
+
+export type MWMediaProviderSeries = MWMediaProviderBase & {
+  getSeasonDataFromMedia: (media: MWPortableMedia) => Promise<MWMediaSeasons>;
+};
+
+export type MWMediaProvider = MWMediaProviderBase;
 
 export interface MWMediaProviderMetadata {
   exists: boolean;

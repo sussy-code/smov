@@ -1,6 +1,6 @@
 import { SimpleCache } from "utils/cache";
 import { MWPortableMedia } from "providers";
-import { MWMediaSeasons } from "providers/types";
+import { MWMediaSeasons, MWMediaType, MWMediaProviderSeries } from "providers/types";
 import { getProviderFromId } from "./helpers";
 
 // cache
@@ -16,8 +16,14 @@ seasonCache.initialize();
 export async function getSeasonDataFromMedia(
   media: MWPortableMedia
 ): Promise<MWMediaSeasons> {
-  const provider = getProviderFromId(media.providerId);
+  const provider = getProviderFromId(media.providerId) as MWMediaProviderSeries;
   if (!provider) {
+    return {
+      seasons: [],
+    };
+  }
+
+  if (!provider.type.includes(MWMediaType.SERIES) && !provider.type.includes(MWMediaType.ANIME)) {
     return {
       seasons: [],
     };
