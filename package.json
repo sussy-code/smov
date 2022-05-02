@@ -27,7 +27,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "lint": "eslint --ext .tsx,.ts src"
+    "lint": "eslint --ext .tsx,.ts src",
+    "lint:strict": "eslint --ext .tsx,.ts --max-warnings 0 src"
   },
   "browserslist": {
     "production": [
