@@ -1,10 +1,7 @@
-name: Build & deploy
+name: Deploying
 
 on:
   push:
-    branches:
-      - master
-  pull_request:
     branches:
       - master
 
@@ -33,12 +30,11 @@ jobs:
       with:
         name: production-files
         path: ./build
-  
+
   deploy:
     name: Deploy
     needs: build
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
     
     steps:
     - name: Download artifact
