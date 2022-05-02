@@ -3,9 +3,9 @@ name: Testing
 on:
   push:
     branches:
-      - next
+      - dev
   pull_request:
-    types: [opened, reopened]
+    types: [opened, reopened, synchronize]
 
 permissions: read-all
 

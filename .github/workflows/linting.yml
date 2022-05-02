@@ -4,9 +4,9 @@ on:
   push:
     branches:
       - master
-      - next
+      - dev
   pull_request_target:
-    types: [opened, reopened]
+    types: [opened, reopened, synchronize]
 
 # needs write to add annotations
 permissions:
