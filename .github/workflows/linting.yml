@@ -1,0 +1,36 @@
+name: Linting
+
+on:
+  push:
+    branches:
+      - master
+      - next
+  pull_request:
+    types: [opened, reopened]
+
+permissions: read-all
+
+jobs:
+  linting:
+    name: Run linters
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+
+      - name: Install Node.js dependencies
+        run: npm ci
+
+      - name: Run linters
+        uses: wearerequired/lint-action@v2
+        with:
+          eslint: true
+          eslint_dir: src
+          eslint_extensions: tsx,ts
+          eslint_auto_fix: false
