@@ -8,6 +8,7 @@ import { MediaView } from "./views/MediaView";
 import { SearchView } from "./views/SearchView";
 
 function App() {
+  const test = "abasdf";
   return (
     <WatchedContextProvider>
       <BookmarkContextProvider>
