@@ -53,7 +53,6 @@ export const xemovieScraper: MWMediaProvider = {
       const aElement = parent.querySelector("a");
       if (!aElement) return;
 
-      // eslint-disable-next-line consistent-return
       return {
         title: parent.querySelector("div > div > a > h6")?.textContent,
         year: parent.querySelector("div.float-right")?.textContent,
@@ -76,17 +75,14 @@ export const xemovieScraper: MWMediaProvider = {
     const scripts = Array.from(new DOMParser().parseFromString(res, "text/html").querySelectorAll("script"));
 
     for (const script of scripts) {
-      // eslint-disable-next-line no-continue
       if (!script.textContent) continue;
 
       if (script.textContent.match(/https:\/\/[a-z][0-9]\.xemovie\.com/)) {
-        // eslint-disable-next-line
-        let data = JSON.parse(JSON.stringify(eval(`(${script.textContent.replace("const data = ", "").split("};")[0]}})`)));
+        const data = JSON.parse(JSON.stringify(eval(`(${script.textContent.replace("const data = ", "").split("};")[0]}})`)));
         streamUrl = data.playlist[0].file;
 
         for (const [index, subtitleTrack] of data.playlist[0].tracks.entries()) {
           const subtitleBlob = URL.createObjectURL(
-            // eslint-disable-next-line no-await-in-loop
             await fetch(`${CORS_PROXY_URL}${subtitleTrack.file}`).then((captionRes) => captionRes.blob())
           ); // do this so no need for CORS errors
 
