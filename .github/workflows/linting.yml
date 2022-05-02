@@ -5,10 +5,13 @@ on:
     branches:
       - master
       - next
-  pull_request:
+  pull_request_target:
     types: [opened, reopened]
 
-permissions: read-all
+# needs write to add annotations
+permissions:
+  checks: write
+  contents: write
 
 jobs:
   linting:
