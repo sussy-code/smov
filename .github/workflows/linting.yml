@@ -8,11 +8,6 @@ on:
   pull_request_target:
     types: [opened, reopened, synchronize]
 
-# needs write to add annotations
-permissions:
-  checks: write
-  contents: write
-
 jobs:
   linting:
     name: Run linters
