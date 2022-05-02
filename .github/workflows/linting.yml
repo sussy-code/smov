@@ -5,7 +5,7 @@ on:
     branches:
       - master
       - dev
-  pull_request_target:
+  pull_request:
     types: [opened, reopened, synchronize]
 
 jobs:
@@ -14,21 +14,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out Git repository
+      - name: Checkout code
         uses: actions/checkout@v2
-
-      - name: Set up Node.js
+      
+      - name: Install Node.js
         uses: actions/setup-node@v1
         with:
           node-version: 16
-
-      - name: Install Node.js dependencies
+      
+      - name: Install Yarn packages
         run: yarn install
-
+      
       - name: Run linters
-        uses: wearerequired/lint-action@v2
-        with:
-          eslint: true
-          eslint_args: --max-warnings=0 src
-          eslint_extensions: tsx,ts
-          eslint_auto_fix: false
+        run: yarn lint:strict
