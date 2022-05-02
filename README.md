@@ -25,9 +25,10 @@ Features include:
 - No BS: just a search bar and a video player
 - No responsibility on the hoster, no databases or api's hosted by us, just a static site
 
-## Self-hosting
+## Self-hosting / running locally
 
 To run this project locally for contributing or testing, run the following commands:
+<h5><b>note: must use yarn to install packages</b></h5>
 
 ```bash
 git clone https://github.com/JamesHawkinss/movie-web
@@ -44,6 +45,8 @@ You can also deploy the Cloudflare Worker (in worker.js) and update the proxy UR
 <a href="https://github.com/JamesHawkinss/movie-web/pulls"><img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/JamesHawkinss/movie-web?style=flat-square"></a></h2>
 
 Check out [this project's issues](https://github.com/JamesHawkinss/movie-web/issues) for inspiration for contribution. Pull requests are always welcome.
+
+**All pull requests must be merged into the `next` branch. it will then be deployed with the next version**
 
 ## Credits
 
