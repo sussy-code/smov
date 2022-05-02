@@ -9,6 +9,7 @@ import {
 
 import { CORS_PROXY_URL, OMDB_API_KEY } from "mw_constants";
 import { unpack } from "unpacker";
+import json5 from "json5";
 
 export const gomostreamScraper: MWMediaProvider = {
   id: "gomostream",
@@ -74,18 +75,24 @@ export const gomostreamScraper: MWMediaProvider = {
         'x-token': `${tc.slice(5, 13).split("").reverse().join("")}13574199`
       }
     }).then((d) => d.json());
+    const embeds = src.filter((url: string) => url.includes('gomo.to'));
 
-    const embedUrl = src.find((url: string) => url.includes('gomo.to'));
+    // maybe try all embeds in the future
+    const embedUrl = embeds[1];
     const res2 = await fetch(`${CORS_PROXY_URL}${embedUrl}`).then((d) => d.text());
 
     const res2DOM = new DOMParser().parseFromString(res2, "text/html");
     if (res2DOM.body.innerText === "File was deleted") throw new Error("File was deleted");
 
-    const script = res2DOM.querySelectorAll("script")[8].innerHTML;
-    const unpacked = unpack(script).split('');
-    unpacked.splice(0, 43);
-    const index = unpacked.findIndex((e) => e === '"');
-    const streamUrl = unpacked.slice(0, index).join('');
+    const script = Array.from(res2DOM.querySelectorAll("script")).find((s: HTMLScriptElement) => s.innerHTML.includes("eval(function(p,a,c,k,e,d"))?.innerHTML;
+    if (!script) throw new Error("Could not get packed data")
+
+    const unpacked = unpack(script);
+    const rawSources = /sources:(\[.*?\])/.exec(unpacked);
+    if (!rawSources) throw new Error("Could not get rawSources");
+
+    const sources = json5.parse(rawSources[1]);
+    const streamUrl = sources[0].file;
 
     const streamType = streamUrl.split('.').at(-1);
     if (streamType !== "mp4" && streamType !== "m3u8") throw new Error("Unsupported stream type");
