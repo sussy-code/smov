@@ -28,7 +28,7 @@ Features include:
 ## Self-hosting / running locally
 
 To run this project locally for contributing or testing, run the following commands:
-<h5><b>note: must use yarn to install packages</b></h5>
+<h5><b>note: must use yarn to install packages and run NodeJS 16</b></h5>
 
 ```bash
 git clone https://github.com/JamesHawkinss/movie-web
@@ -46,7 +46,7 @@ You can also deploy the Cloudflare Worker (in worker.js) and update the proxy UR
 
 Check out [this project's issues](https://github.com/JamesHawkinss/movie-web/issues) for inspiration for contribution. Pull requests are always welcome.
 
-**All pull requests must be merged into the `next` branch. it will then be deployed with the next version**
+**All pull requests must be merged into the `dev` branch. it will then be deployed with the next version**
 
 ## Credits
 
