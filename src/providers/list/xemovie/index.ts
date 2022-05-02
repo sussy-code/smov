@@ -69,7 +69,7 @@ export const xemovieScraper: MWMediaProvider = {
 
     const url = `${CORS_PROXY_URL}https://xemovie.co/movies/${media.mediaId}/watch`;
 
-    let mediaUrl = "";
+    let streamUrl = "";
     const subtitles: MWMediaCaption[] = [];
 
     const res = await fetch(url).then(d => d.text());
@@ -82,9 +82,8 @@ export const xemovieScraper: MWMediaProvider = {
       if (script.textContent.match(/https:\/\/[a-z][0-9]\.xemovie\.com/)) {
         // eslint-disable-next-line
         let data = JSON.parse(JSON.stringify(eval(`(${script.textContent.replace("const data = ", "").split("};")[0]}})`)));
-        mediaUrl = data.playlist[0].file;
+        streamUrl = data.playlist[0].file;
 
-        // eslint-disable-next-line
         for (const [index, subtitleTrack] of data.playlist[0].tracks.entries()) {
           const subtitleBlob = URL.createObjectURL(
             // eslint-disable-next-line no-await-in-loop
@@ -100,6 +99,9 @@ export const xemovieScraper: MWMediaProvider = {
       }
     }
 
-    return { url: mediaUrl, type: "mp4", captions: subtitles } as MWMediaStream;
+    const streamType = streamUrl.split('.').at(-1);
+    if (streamType !== "mp4" && streamType !== "m3u8") throw new Error("Unsupported stream type");
+
+    return { url: streamUrl, type: streamType, captions: subtitles } as MWMediaStream;
   }
 };
