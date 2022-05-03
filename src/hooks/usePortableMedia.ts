@@ -1,6 +1,6 @@
 import { MWPortableMedia } from "providers";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 
 export function deserializePortableMedia(media: string): MWPortableMedia {
   return JSON.parse(atob(decodeURIComponent(media)));
