@@ -8,7 +8,7 @@ export function useSearchQuery(): [
   () => void
 ] {
   const history = useHistory();
-  const isFirstRender = useRef(false);
+  const isFirstRender = useRef(true);
   const { path, params } = useRouteMatch<{ type: string; query: string }>();
   const [search, setSearch] = useState<MWQuery>({
     searchQuery: "",
@@ -40,11 +40,10 @@ export function useSearchQuery(): [
 
   // only run on first load of the page
   React.useEffect(() => {
-    if (isFirstRender.current === true) {
-      isFirstRender.current = false;
+    if (isFirstRender.current === false) {
       return;
     }
-    isFirstRender.current = true;
+    isFirstRender.current = false;
     const type =
       Object.values(MWMediaType).find((v) => params.type === v) ||
       MWMediaType.MOVIE;
