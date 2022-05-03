@@ -7,31 +7,39 @@ import { TextInputControl } from "./text-inputs/TextInputControl";
 export interface SearchBarProps {
   buttonText?: string;
   placeholder?: string;
-  onChange: (value: MWQuery) => void;
+  onChange: (value: MWQuery, force: boolean) => void;
+  onUnFocus: () => void;
   value: MWQuery;
 }
 
 export function SearchBarInput(props: SearchBarProps) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   function setSearch(value: string) {
-    props.onChange({
-      ...props.value,
-      searchQuery: value,
-    });
+    props.onChange(
+      {
+        ...props.value,
+        searchQuery: value,
+      },
+      false
+    );
   }
   function setType(type: string) {
-    props.onChange({
-      ...props.value,
-      type: type as MWMediaType,
-    });
+    props.onChange(
+      {
+        ...props.value,
+        type: type as MWMediaType,
+      },
+      true
+    );
   }
 
   return (
-    <div className="bg-denim-300 hover:bg-denim-400 focus-within:bg-denim-400 flex flex-col items-center gap-4 rounded-[28px] px-4 py-4 transition-colors sm:flex-row sm:py-2 sm:pl-8  sm:pr-2">
+    <div className="flex flex-col items-center gap-4 rounded-[28px] bg-denim-300 px-4 py-4 transition-colors focus-within:bg-denim-400 hover:bg-denim-400 sm:flex-row sm:py-2 sm:pl-8  sm:pr-2">
       <TextInputControl
+        onUnFocus={props.onUnFocus}
         onChange={(val) => setSearch(val)}
         value={props.value.searchQuery}
-        className="placeholder-denim-700 w-full flex-1 bg-transparent text-white focus:outline-none"
+        className="w-full flex-1 bg-transparent text-white placeholder-denim-700 focus:outline-none"
         placeholder={props.placeholder}
       />
 

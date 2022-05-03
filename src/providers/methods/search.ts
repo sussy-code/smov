@@ -73,7 +73,11 @@ function sortResults(
   providerResults: MWMassProviderOutput
 ): MWMassProviderOutput {
   const results: MWMassProviderOutput = { ...providerResults };
-  const fuse = new Fuse(results.results, { threshold: 0.3, keys: ["title"] });
+  const fuse = new Fuse(results.results, {
+    threshold: 0.3,
+    keys: ["title"],
+    fieldNormWeight: 0.5,
+  });
   results.results = fuse.search(query.searchQuery).map((v) => v.item);
   return results;
 }
