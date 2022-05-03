@@ -11,13 +11,9 @@
     "json5": "^2.2.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-helmet": "^6.1.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^5.0.0",
-    "react-tracked": "^1.7.6",
-    "scheduler": "^0.20.2",
-    "unpacker": "^1.0.1",
-    "web-vitals": "^1.0.1"
+    "react-scripts": "5.0.1",
+    "unpacker": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -38,12 +34,11 @@
     ]
   },
   "devDependencies": {
-    "@types/jest": "^27.4.0",
+    "@types/crypto-js": "^4.1.1",
     "@types/node": "^17.0.15",
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
     "@types/react-router-dom": "^5.3.3",
-    "@types/crypto-js": "^4.1.1",
     "@types/react-router": "^5.1.18",
     "@typescript-eslint/eslint-plugin": "^5.13.0",
     "@typescript-eslint/parser": "^5.13.0",
@@ -54,7 +49,7 @@
     "eslint-import-resolver-typescript": "^2.5.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-react": "7.28.0",
+    "eslint-plugin-react": "7.29.4",
     "eslint-plugin-react-hooks": "4.3.0",
     "postcss": "^8.4.6",
     "prettier": "^2.5.1",
