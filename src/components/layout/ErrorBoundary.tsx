@@ -48,7 +48,7 @@ export class ErrorBoundary extends Component<
   }
 
   render() {
-    if (!this.state.hasError) return this.props.children;
+    if (!this.state.hasError) return this.props.children as any;
 
     return (
       <div className="flex min-h-screen w-full flex-col items-center justify-center px-4 py-12">
@@ -69,7 +69,7 @@ export class ErrorBoundary extends Component<
           </p>
         </div>
         {this.state.error ? (
-          <div className="bg-denim-300 w-4xl mt-12 max-w-full rounded px-6 py-4">
+          <div className="w-4xl mt-12 max-w-full rounded bg-denim-300 px-6 py-4">
             <p className="mb-1 break-words font-bold text-white">
               {this.state.error.name} - {this.state.error.description}
             </p>

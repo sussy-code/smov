@@ -1,5 +1,5 @@
 const a11yOff = Object.keys(require('eslint-plugin-jsx-a11y').rules)
-    .reduce((acc, rule) => { acc[`jsx-a11y/${rule}`] = 'off'; return acc }, {})
+  .reduce((acc, rule) => { acc[`jsx-a11y/${rule}`] = 'off'; return acc }, {})
 
 module.exports = {
   extends: [
@@ -37,6 +37,10 @@ module.exports = {
     "@typescript-eslint/no-shadow": ["error"],
     "no-restricted-syntax": "off",
     "react/jsx-props-no-spreading": "off",
+    "consistent-return": "off",
+    "no-continue": "off",
+    "no-eval": "off",
+    "no-await-in-loop": "off",
     "react/jsx-filename-extension": [
       "error",
       { extensions: [".js", ".tsx", ".jsx"] },

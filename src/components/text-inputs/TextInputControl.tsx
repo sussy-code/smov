@@ -1,5 +1,6 @@
 export interface TextInputControlPropsNoLabel {
   onChange?: (data: string) => void;
+  onUnFocus?: () => void;
   value?: string;
   placeholder?: string;
   className?: string;
@@ -11,6 +12,7 @@ export interface TextInputControlProps extends TextInputControlPropsNoLabel {
 
 export function TextInputControl({
   onChange,
+  onUnFocus,
   value,
   label,
   className,
@@ -23,6 +25,7 @@ export function TextInputControl({
       placeholder={placeholder}
       onChange={(e) => onChange && onChange(e.target.value)}
       value={value}
+      onBlur={() => onUnFocus && onUnFocus()}
     />
   );
 
