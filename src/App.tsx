@@ -8,7 +8,6 @@ import { MediaView } from "./views/MediaView";
 import { SearchView } from "./views/SearchView";
 
 function App() {
-
   return (
     <WatchedContextProvider>
       <BookmarkContextProvider>

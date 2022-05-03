@@ -165,7 +165,7 @@ function ExtraItems() {
 export function SearchView() {
   const [searching, setSearching] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
-  const [search, setSearch] = useSearchQuery();
+  const [search, setSearch, setSearchUnFocus] = useSearchQuery();
 
   const debouncedSearch = useDebounce<MWQuery>(search, 2000);
   useEffect(() => {
@@ -182,7 +182,7 @@ export function SearchView() {
       return (
         <SearchResultsView
           searchQuery={debouncedSearch}
-          clear={() => setSearch({ searchQuery: "" })}
+          clear={() => setSearch({ searchQuery: "" }, true)}
         />
       );
     return <ExtraItems />;
@@ -201,6 +201,7 @@ export function SearchView() {
           <SearchBarInput
             onChange={setSearch}
             value={search}
+            onUnFocus={setSearchUnFocus}
             placeholder="What movie do you want to watch?"
           />
         </div>
