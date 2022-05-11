@@ -12,7 +12,7 @@ import { CORS_PROXY_URL } from "mw_constants";
 
 export const xemovieScraper: MWMediaProvider = {
   id: "xemovie",
-  enabled: true,
+  enabled: false,
   type: [MWMediaType.MOVIE],
   displayName: "xemovie",
 
