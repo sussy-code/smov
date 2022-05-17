@@ -7,7 +7,7 @@ export interface PaperProps {
 
 export function Paper(props: PaperProps) {
   return (
-    <div className={`bg-denim-200 rounded-xl p-12 ${props.className}`}>
+    <div className={`bg-denim-200 lg:rounded-xl px-4 sm:px-8 md:px-12 py-6 sm:py-8 md:py-12 ${props.className}`}>
       {props.children}
     </div>
   )

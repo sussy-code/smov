@@ -26,7 +26,7 @@ export function ArrowLink(props: ArrowLinkProps) {
   const isExternal = !!(props as IArrowLinkPropsExternal).url;
   const isInternal = !!(props as IArrowLinkPropsInternal).to;
   const content = (
-    <span className="text-bink-600 hover:text-bink-700 group inline-flex cursor-pointer items-center space-x-1 font-bold active:scale-95">
+    <span className="text-bink-600 hover:text-bink-700 group inline-flex cursor-pointer items-center space-x-1 font-bold active:scale-95 mt-1 pr-1">
       {direction === "left" ? (
         <span className="text-xl transition-transform group-hover:-translate-x-1">
           <Icon icon={Icons.ARROW_LEFT} />
