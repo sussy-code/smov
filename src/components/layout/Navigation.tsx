@@ -11,16 +11,16 @@ export interface NavigationProps {
 
 export function Navigation(props: NavigationProps) {
   return (
-    <div className="absolute left-0 right-0 top-0 flex items-center justify-between py-5 px-7">
-      <div className="flex items-center justify-center">
-        <div className="mr-6">
+    <div className="absolute left-0 right-0 top-0 flex items-center justify-between py-5 px-7 min-h-[88px]">
+      <div className="flex items-center justify-center w-full sm:w-fit">
+        <div className="mr-auto sm:mr-6">
           <Link to="/">
             <BrandPill clickable />
           </Link>
         </div>
         {props.children}
       </div>
-      <div className="flex">
+      <div className={props.children ? "hidden sm:flex" : "flex"}>
         <a
           href={DISCORD_LINK}
           target="_blank"
