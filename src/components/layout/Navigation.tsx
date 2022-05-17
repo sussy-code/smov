@@ -20,7 +20,7 @@ export function Navigation(props: NavigationProps) {
         </div>
         {props.children}
       </div>
-      <div className={props.children ? "hidden sm:flex" : "flex"}>
+      <div className={`${props.children ? "hidden sm:flex" : "flex"} flex-row	gap-4`}>
         <a
           href={DISCORD_LINK}
           target="_blank"
