@@ -14,7 +14,7 @@ export interface VideoPlayerProps {
 
 export function SkeletonVideoPlayer(props: { error?: boolean }) {
   return (
-    <div className="bg-denim-200 flex aspect-video w-full items-center justify-center rounded-xl">
+    <div className="bg-denim-200 flex aspect-video w-full items-center justify-center lg:rounded-xl">
       {props.error ? (
         <div className="flex flex-col items-center">
           <IconPatch icon={Icons.WARNING} className="text-red-400" />
