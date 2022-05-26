@@ -81,7 +81,7 @@ export function VideoPlayer(props: VideoPlayerProps) {
     <>
       {skeletonUi}
       <video
-        className={`bg-denim-500 w-full rounded-xl ${!showVideo ? "hidden" : ""
+        className={`bg-black w-full rounded-xl ${!showVideo ? "hidden" : ""
           }`}
         ref={videoRef}
         onProgress={(e) =>
