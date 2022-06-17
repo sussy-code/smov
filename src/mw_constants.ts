@@ -2,4 +2,4 @@ export const CORS_PROXY_URL = "https://proxy-1.movie-web.workers.dev/?destinatio
 export const OMDB_API_KEY = "aa0937c0";
 export const DISCORD_LINK = "https://discord.gg/Jhqt4Xzpfb";
 export const GITHUB_LINK = "https://github.com/JamesHawkinss/movie-web";
-export const APP_VERSION = "2.0.2";
+export const APP_VERSION = "2.0.3";
