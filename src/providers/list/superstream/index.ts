@@ -8,8 +8,9 @@ import {
 	MWMediaSeasons,
 	MWProviderMediaResult,
 } from "providers/types";
-import { CORS_PROXY_URL } from "mw_constants";
+import { CORS_PROXY_URL, TMDB_API_KEY } from "mw_constants";
 import { customAlphabet } from "nanoid";
+import toWebVTT from "srt-webvtt";
 import CryptoJS from "crypto-js";
 
 const nanoid = customAlphabet("0123456789abcdef", 32);
@@ -94,9 +95,8 @@ const get = (data: object, altApi = false) => {
 export const superStreamScraper: MWMediaProvider = {
 	id: "superstream",
 	enabled: true,
-	// type: [MWMediaType.MOVIE, MWMediaType.SERIES],
-	type: [MWMediaType.MOVIE],
-	displayName: "superstream",
+	type: [MWMediaType.MOVIE, MWMediaType.SERIES],
+	displayName: "SuperStream",
 
 	async getMediaFromPortable(
 		media: MWPortableMedia,
@@ -147,8 +147,8 @@ export const superStreamScraper: MWMediaProvider = {
 				title: item.title,
 				year: item.year,
 				mediaId: item.id,
-				seasonId: 1,
-				episodeId: 1,
+				seasonId: "1",
+				episodeId: "1",
 			}));
 
 		if (query.type === "movie") {
@@ -171,7 +171,29 @@ export const superStreamScraper: MWMediaProvider = {
 				mediaRes.list.find((quality: any) => quality.quality === "1080p") ??
 				mediaRes.list.find((quality: any) => quality.quality === "720p");
 
-			return { url: hdQuality.path, type: "mp4", captions: [] };
+			const subtitleApiQuery = {
+				fid: hdQuality.fid,
+				uid: "",
+				module: "Movie_srt_list_v2",
+				mid: media.mediaId,
+			};
+			const subtitleRes = (await get(subtitleApiQuery).then((r) => r.json()))
+				.data;
+			const mappedCaptions = await Promise.all(
+				subtitleRes.list.map(async (subtitle: any) => {
+					const captionBlob = await fetch(
+						`${CORS_PROXY_URL}${subtitle.subtitles[0].file_path}`,
+					).then((captionRes) => captionRes.blob()); // cross-origin bypass
+					const captionUrl = await toWebVTT(captionBlob); // convert to vtt so it's playable
+					return {
+						id: subtitle.language,
+						url: captionUrl,
+						label: subtitle.language,
+					};
+				}),
+			);
+
+			return { url: hdQuality.path, type: "mp4", captions: mappedCaptions };
 		}
 
 		const apiQuery = {
@@ -188,49 +210,64 @@ export const superStreamScraper: MWMediaProvider = {
 			mediaRes.list.find((quality: any) => quality.quality === "1080p") ??
 			mediaRes.list.find((quality: any) => quality.quality === "720p");
 
-		return { url: hdQuality.path, type: "mp4", captions: [] };
+		const subtitleApiQuery = {
+			fid: hdQuality.fid,
+			uid: "",
+			module: "TV_srt_list_v2",
+			episode: media.episodeId,
+			tid: media.mediaId,
+			season: media.seasonId,
+		};
+		const subtitleRes = (await get(subtitleApiQuery).then((r) => r.json()))
+			.data;
+		const mappedCaptions = await Promise.all(
+			subtitleRes.list.map(async (subtitle: any) => {
+				const captionBlob = await fetch(
+					`${CORS_PROXY_URL}${subtitle.subtitles[0].file_path}`,
+				).then((captionRes) => captionRes.blob()); // cross-origin bypass
+				const captionUrl = await toWebVTT(captionBlob); // convert to vtt so it's playable
+				return {
+					id: subtitle.language,
+					url: captionUrl,
+					label: subtitle.language,
+				};
+			}),
+		);
+
+		return { url: hdQuality.path, type: "mp4", captions: mappedCaptions };
 	},
-	// async getSeasonDataFromMedia(
-	// 	media: MWPortableMedia,
-	// ): Promise<MWMediaSeasons> {
-	// 	const allSeasonEpisodes = [];
-	// 	const apiQuery = {
-	// 		module: "TV_detail_1",
-	// 		display_all: "1",
-	// 		tid: media.mediaId,
-	// 	};
-	// 	const detailRes = (await get(apiQuery, true).then((r) => r.json())).data;
-	// 	allSeasonEpisodes.push(...detailRes.episode);
+	async getSeasonDataFromMedia(
+		media: MWPortableMedia,
+	): Promise<MWMediaSeasons> {
+		const apiQuery = {
+			module: "TV_detail_1",
+			display_all: "1",
+			tid: media.mediaId,
+		};
+		const detailRes = (await get(apiQuery, true).then((r) => r.json())).data;
+		const firstSearchResult = (
+			await fetch(
+				`https://api.themoviedb.org/3/search/tv?api_key=${TMDB_API_KEY}&language=en-US&page=1&query=${detailRes.title}&include_adult=false&first_air_date_year=${detailRes.year}`,
+			).then((r) => r.json())
+		).results[0];
+		const showDetails = await fetch(
+			`https://api.themoviedb.org/3/tv/${firstSearchResult.id}?api_key=${TMDB_API_KEY}`,
+		).then((r) => r.json());
 
-	// 	if (detailRes.seasons.length > 1) {
-	// 		for (const season of detailRes.seasons.slice(1)) {
-	// 			const seasonApiQuery = {
-	// 				module: "TV_detail_1",
-	// 				season: season.toString(),
-	// 				display_all: "1",
-	// 				tid: media.mediaId,
-	// 			};
-	// 			const seasonRes = (
-	// 				await get(seasonApiQuery, true).then((r) => r.json())
-	// 			).data;
-	// 			allSeasonEpisodes.push(...seasonRes.episode);
-	// 		}
-	// 	}
-
-	// 	return {
-	// 		seasons: detailRes.season.map((season: number) => ({
-	// 			sort: season,
-	// 			id: season.toString(),
-	// 			type: season === 0 ? "special" : "season",
-	// 			episodes: detailRes.episode
-	// 				.filter((episode: any) => episode.season === season)
-	// 				.map((episode: any) => ({
-	// 					title: episode.title,
-	// 					sort: episode.episode,
-	// 					id: episode.episode.toString(),
-	// 					episodeNumber: episode.episode,
-	// 				})),
-	// 		})),
-	// 	};
-	// },
+		return {
+			seasons: showDetails.seasons.map((season: any) => ({
+				sort: season.season_number,
+				id: season.season_number.toString(),
+				type: season.season_number === 0 ? "special" : "season",
+				episodes: Array.from({ length: season.episode_count }).map(
+					(_, epNum) => ({
+						title: `Episode ${epNum + 1}`,
+						sort: epNum + 1,
+						id: (epNum + 1).toString(),
+						episodeNumber: epNum + 1,
+					}),
+				),
+			})),
+		};
+	},
 };
