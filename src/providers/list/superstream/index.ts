@@ -105,7 +105,7 @@ export const superStreamScraper: MWMediaProvider = {
     media: MWPortableMedia,
   ): Promise<MWProviderMediaResult> {
     let apiQuery: any;
-    if (media.mediaType === MWMediaType.MOVIE) {
+    if (media.mediaType === MWMediaType.SERIES) {
       apiQuery = {
         module: "TV_detail_1",
         display_all: "1",
@@ -175,7 +175,9 @@ export const superStreamScraper: MWMediaProvider = {
       const mediaRes = (await get(apiQuery).then((r) => r.json())).data;
       const hdQuality =
         mediaRes.list.find((quality: any) => quality.quality === "1080p") ??
-        mediaRes.list.find((quality: any) => quality.quality === "720p");
+        mediaRes.list.find((quality: any) => quality.quality === "720p") ??
+        mediaRes.list.find((quality: any) => quality.quality === "480p") ??
+        mediaRes.list.find((quality: any) => quality.quality === "360p");
 
       const subtitleApiQuery = {
         fid: hdQuality.fid,
