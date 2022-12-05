@@ -102,7 +102,7 @@ export const superStreamScraper: MWMediaProvider = {
     media: MWPortableMedia,
   ): Promise<MWProviderMediaResult> {
     let apiQuery: any;
-    if (media.mediaType == MWMediaType.MOVIE) {
+    if (media.mediaType === MWMediaType.MOVIE) {
       apiQuery = {
         module: "TV_detail_1",
         display_all: "1",
@@ -153,7 +153,8 @@ export const superStreamScraper: MWMediaProvider = {
 
     if (query.type === MWMediaType.MOVIE) {
       return movieResults;
-    } else if (query.type === MWMediaType.SERIES) {
+    }
+    if (query.type === MWMediaType.SERIES) {
       return seriesResults;
     }
     return [];
