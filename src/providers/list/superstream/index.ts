@@ -174,10 +174,12 @@ export const superStreamScraper: MWMediaProvider = {
       };
       const mediaRes = (await get(apiQuery).then((r) => r.json())).data;
       const hdQuality =
-        mediaRes.list.find((quality: any) => quality.quality === "1080p") ??
-        mediaRes.list.find((quality: any) => quality.quality === "720p") ??
-        mediaRes.list.find((quality: any) => quality.quality === "480p") ??
-        mediaRes.list.find((quality: any) => quality.quality === "360p");
+        mediaRes.list.find((quality: any) => (quality.quality === "1080p" && quality.path)) ??
+        mediaRes.list.find((quality: any) => (quality.quality === "720p" && quality.path)) ??
+        mediaRes.list.find((quality: any) => (quality.quality === "480p" && quality.path)) ??
+        mediaRes.list.find((quality: any) => (quality.quality === "360p" && quality.path));
+
+      if (!hdQuality) throw new Error("No quality could be found.");
 
       const subtitleApiQuery = {
         fid: hdQuality.fid,
@@ -215,8 +217,12 @@ export const superStreamScraper: MWMediaProvider = {
     };
     const mediaRes = (await get(apiQuery).then((r) => r.json())).data;
     const hdQuality =
-      mediaRes.list.find((quality: any) => quality.quality === "1080p") ??
-      mediaRes.list.find((quality: any) => quality.quality === "720p");
+      mediaRes.list.find((quality: any) => (quality.quality === "1080p" && quality.path)) ??
+      mediaRes.list.find((quality: any) => (quality.quality === "720p" && quality.path)) ??
+      mediaRes.list.find((quality: any) => (quality.quality === "480p" && quality.path)) ??
+      mediaRes.list.find((quality: any) => (quality.quality === "360p" && quality.path));
+
+    if (!hdQuality) throw new Error("No quality could be found.");
 
     const subtitleApiQuery = {
       fid: hdQuality.fid,
