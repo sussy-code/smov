@@ -261,7 +261,7 @@ export const superStreamScraper: MWMediaProvider = {
     const detailRes = (await get(apiQuery, true).then((r) => r.json())).data;
     const firstSearchResult = (
       await fetch(
-        `https://api.themoviedb.org/3/search/tv?api_key=${TMDB_API_KEY}&language=en-US&page=1&query=${detailRes.title}&include_adult=false&first_air_date_year=${detailRes.year}`,
+        `https://api.themoviedb.org/3/search/tv?api_key=${TMDB_API_KEY}&language=en-US&page=1&query=${detailRes.title}&include_adult=false`,
       ).then((r) => r.json())
     ).results[0];
     const showDetails = await fetch(
