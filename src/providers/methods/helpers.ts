@@ -1,5 +1,5 @@
-import { MWMediaType, MWMediaProviderMetadata } from "providers";
-import { MWMedia, MWMediaEpisode, MWMediaSeason } from "providers/types";
+import { MWMediaType, MWMediaProviderMetadata } from "@/providers";
+import { MWMedia, MWMediaEpisode, MWMediaSeason } from "@/providers/types";
 import { mediaProviders, mediaProvidersUnchecked } from "./providers";
 
 /*

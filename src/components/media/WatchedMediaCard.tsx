@@ -1,5 +1,5 @@
-import { MWMediaMeta } from "providers";
-import { useWatchedContext, getWatchedFromPortable } from "state/watched";
+import { MWMediaMeta } from "@/providers";
+import { useWatchedContext, getWatchedFromPortable } from "@/state/watched";
 import { MediaCard } from "./MediaCard";
 
 export interface WatchedMediaCardProps {

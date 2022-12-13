@@ -1,13 +1,13 @@
-import { versionedStoreBuilder } from 'utils/storage';
+import { versionedStoreBuilder } from "@/utils/storage";
 
 export const BookmarkStore = versionedStoreBuilder()
-  .setKey('mw-bookmarks')
+  .setKey("mw-bookmarks")
   .addVersion({
     version: 0,
     create() {
       return {
-        bookmarks: []
-      }
-    }
+        bookmarks: [],
+      };
+    },
   })
-  .build()
+  .build();

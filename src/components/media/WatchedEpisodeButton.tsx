@@ -1,5 +1,5 @@
-import { getEpisodeFromMedia, MWMedia } from "providers";
-import { useWatchedContext, getWatchedFromPortable } from "state/watched";
+import { getEpisodeFromMedia, MWMedia } from "@/providers";
+import { useWatchedContext, getWatchedFromPortable } from "@/state/watched";
 import { Episode } from "./EpisodeButton";
 
 export interface WatchedEpisodeProps {

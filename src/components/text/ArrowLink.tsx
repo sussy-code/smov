@@ -1,5 +1,5 @@
-import { Icon, Icons } from "components/Icon";
 import { Link as LinkRouter } from "react-router-dom";
+import { Icon, Icons } from "@/components/Icon";
 
 interface IArrowLinkPropsBase {
   linkText: string;
@@ -26,7 +26,7 @@ export function ArrowLink(props: ArrowLinkProps) {
   const isExternal = !!(props as IArrowLinkPropsExternal).url;
   const isInternal = !!(props as IArrowLinkPropsInternal).to;
   const content = (
-    <span className="text-bink-600 hover:text-bink-700 group inline-flex cursor-pointer items-center space-x-1 font-bold active:scale-95 mt-1 pr-1">
+    <span className="group mt-1 inline-flex cursor-pointer items-center space-x-1 pr-1 font-bold text-bink-600 hover:text-bink-700 active:scale-95">
       {direction === "left" ? (
         <span className="text-xl transition-transform group-hover:-translate-x-1">
           <Icon icon={Icons.ARROW_LEFT} />
@@ -45,7 +45,9 @@ export function ArrowLink(props: ArrowLinkProps) {
     return <a href={(props as IArrowLinkPropsExternal).url}>{content}</a>;
   if (isInternal)
     return (
-      <LinkRouter to={(props as IArrowLinkPropsInternal).to}>{content}</LinkRouter>
+      <LinkRouter to={(props as IArrowLinkPropsInternal).to}>
+        {content}
+      </LinkRouter>
     );
   return (
     <span onClick={() => props.onClick && props.onClick()}>{content}</span>

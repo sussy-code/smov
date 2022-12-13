@@ -1,6 +1,10 @@
 // this is derived from https://github.com/recloudstream/cloudstream-extensions
 // for more info please check the LICENSE file in the same directory
 
+import { customAlphabet } from "nanoid";
+import toWebVTT from "srt-webvtt";
+import CryptoJS from "crypto-js";
+import { CORS_PROXY_URL, TMDB_API_KEY } from "@/mw_constants";
 import {
   MWMediaProvider,
   MWMediaType,
@@ -9,11 +13,7 @@ import {
   MWQuery,
   MWMediaSeasons,
   MWProviderMediaResult,
-} from "providers/types";
-import { CORS_PROXY_URL, TMDB_API_KEY } from "mw_constants";
-import { customAlphabet } from "nanoid";
-import toWebVTT from "srt-webvtt";
-import CryptoJS from "crypto-js";
+} from "@/providers/types";
 
 const nanoid = customAlphabet("0123456789abcdef", 32);
 
@@ -41,7 +41,7 @@ const crypto = {
   getVerify(str: string, str2: string, str3: string) {
     if (str) {
       return CryptoJS.MD5(
-        CryptoJS.MD5(str2).toString() + str3 + str,
+        CryptoJS.MD5(str2).toString() + str3 + str
       ).toString();
     }
     return null;
@@ -66,7 +66,7 @@ const get = (data: object, altApi = false) => {
     JSON.stringify({
       ...defaultData,
       ...data,
-    }),
+    })
   );
   const appKeyHash = CryptoJS.MD5(appKey).toString();
   const verify = crypto.getVerify(encryptedData, appKey, key);
@@ -102,7 +102,7 @@ export const superStreamScraper: MWMediaProvider = {
   displayName: "SuperStream",
 
   async getMediaFromPortable(
-    media: MWPortableMedia,
+    media: MWPortableMedia
   ): Promise<MWProviderMediaResult> {
     let apiQuery: any;
     if (media.mediaType === MWMediaType.SERIES) {
@@ -174,10 +174,18 @@ export const superStreamScraper: MWMediaProvider = {
       };
       const mediaRes = (await get(apiQuery).then((r) => r.json())).data;
       const hdQuality =
-        mediaRes.list.find((quality: any) => (quality.quality === "1080p" && quality.path)) ??
-        mediaRes.list.find((quality: any) => (quality.quality === "720p" && quality.path)) ??
-        mediaRes.list.find((quality: any) => (quality.quality === "480p" && quality.path)) ??
-        mediaRes.list.find((quality: any) => (quality.quality === "360p" && quality.path));
+        mediaRes.list.find(
+          (quality: any) => quality.quality === "1080p" && quality.path
+        ) ??
+        mediaRes.list.find(
+          (quality: any) => quality.quality === "720p" && quality.path
+        ) ??
+        mediaRes.list.find(
+          (quality: any) => quality.quality === "480p" && quality.path
+        ) ??
+        mediaRes.list.find(
+          (quality: any) => quality.quality === "360p" && quality.path
+        );
 
       if (!hdQuality) throw new Error("No quality could be found.");
 
@@ -192,7 +200,7 @@ export const superStreamScraper: MWMediaProvider = {
       const mappedCaptions = await Promise.all(
         subtitleRes.list.map(async (subtitle: any) => {
           const captionBlob = await fetch(
-            `${CORS_PROXY_URL}${subtitle.subtitles[0].file_path}`,
+            `${CORS_PROXY_URL}${subtitle.subtitles[0].file_path}`
           ).then((captionRes) => captionRes.blob()); // cross-origin bypass
           const captionUrl = await toWebVTT(captionBlob); // convert to vtt so it's playable
           return {
@@ -200,7 +208,7 @@ export const superStreamScraper: MWMediaProvider = {
             url: captionUrl,
             label: subtitle.language,
           };
-        }),
+        })
       );
 
       return { url: hdQuality.path, type: "mp4", captions: mappedCaptions };
@@ -217,10 +225,18 @@ export const superStreamScraper: MWMediaProvider = {
     };
     const mediaRes = (await get(apiQuery).then((r) => r.json())).data;
     const hdQuality =
-      mediaRes.list.find((quality: any) => (quality.quality === "1080p" && quality.path)) ??
-      mediaRes.list.find((quality: any) => (quality.quality === "720p" && quality.path)) ??
-      mediaRes.list.find((quality: any) => (quality.quality === "480p" && quality.path)) ??
-      mediaRes.list.find((quality: any) => (quality.quality === "360p" && quality.path));
+      mediaRes.list.find(
+        (quality: any) => quality.quality === "1080p" && quality.path
+      ) ??
+      mediaRes.list.find(
+        (quality: any) => quality.quality === "720p" && quality.path
+      ) ??
+      mediaRes.list.find(
+        (quality: any) => quality.quality === "480p" && quality.path
+      ) ??
+      mediaRes.list.find(
+        (quality: any) => quality.quality === "360p" && quality.path
+      );
 
     if (!hdQuality) throw new Error("No quality could be found.");
 
@@ -237,7 +253,7 @@ export const superStreamScraper: MWMediaProvider = {
     const mappedCaptions = await Promise.all(
       subtitleRes.list.map(async (subtitle: any) => {
         const captionBlob = await fetch(
-          `${CORS_PROXY_URL}${subtitle.subtitles[0].file_path}`,
+          `${CORS_PROXY_URL}${subtitle.subtitles[0].file_path}`
         ).then((captionRes) => captionRes.blob()); // cross-origin bypass
         const captionUrl = await toWebVTT(captionBlob); // convert to vtt so it's playable
         return {
@@ -245,13 +261,13 @@ export const superStreamScraper: MWMediaProvider = {
           url: captionUrl,
           label: subtitle.language,
         };
-      }),
+      })
     );
 
     return { url: hdQuality.path, type: "mp4", captions: mappedCaptions };
   },
   async getSeasonDataFromMedia(
-    media: MWPortableMedia,
+    media: MWPortableMedia
   ): Promise<MWMediaSeasons> {
     const apiQuery = {
       module: "TV_detail_1",
@@ -261,11 +277,11 @@ export const superStreamScraper: MWMediaProvider = {
     const detailRes = (await get(apiQuery, true).then((r) => r.json())).data;
     const firstSearchResult = (
       await fetch(
-        `https://api.themoviedb.org/3/search/tv?api_key=${TMDB_API_KEY}&language=en-US&page=1&query=${detailRes.title}&include_adult=false`,
+        `https://api.themoviedb.org/3/search/tv?api_key=${TMDB_API_KEY}&language=en-US&page=1&query=${detailRes.title}&include_adult=false`
       ).then((r) => r.json())
     ).results[0];
     const showDetails = await fetch(
-      `https://api.themoviedb.org/3/tv/${firstSearchResult.id}?api_key=${TMDB_API_KEY}`,
+      `https://api.themoviedb.org/3/tv/${firstSearchResult.id}?api_key=${TMDB_API_KEY}`
     ).then((r) => r.json());
 
     return {
@@ -279,7 +295,7 @@ export const superStreamScraper: MWMediaProvider = {
             sort: epNum + 1,
             id: (epNum + 1).toString(),
             episodeNumber: epNum + 1,
-          }),
+          })
         ),
       })),
     };

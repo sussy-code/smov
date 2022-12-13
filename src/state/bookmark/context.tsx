@@ -1,4 +1,3 @@
-import { getProviderMetadata, MWMediaMeta } from "providers";
 import {
   createContext,
   ReactNode,
@@ -7,6 +6,7 @@ import {
   useMemo,
   useState,
 } from "react";
+import { getProviderMetadata, MWMediaMeta } from "@/providers";
 import { BookmarkStore } from "./store";
 
 interface BookmarkStoreData {

@@ -1,4 +1,4 @@
-import { Icon, Icons } from "components/Icon";
+import { Icon, Icons } from "@/components/Icon";
 import { ButtonControlProps, ButtonControl } from "./ButtonControl";
 
 export interface IconButtonProps extends ButtonControlProps {
@@ -9,7 +9,7 @@ export function IconButton(props: IconButtonProps) {
   return (
     <ButtonControl
       {...props}
-      className="flex items-center px-4 py-2 space-x-2 bg-bink-200 hover:bg-bink-300 text-white rounded-full"
+      className="flex items-center space-x-2 rounded-full bg-bink-200 px-4 py-2 text-white hover:bg-bink-300"
     >
       <Icon icon={props.icon} />
       <span>{props.children}</span>
