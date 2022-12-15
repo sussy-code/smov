@@ -1,5 +1,5 @@
-import { useFade } from "hooks/useFade";
 import { useEffect, useState } from "react";
+import { useFade } from "@/hooks/useFade";
 
 interface BackdropProps {
   onClick?: (e: MouseEvent) => void;

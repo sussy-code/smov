@@ -1,23 +1,23 @@
-import { WatchedMediaCard } from "components/media/WatchedMediaCard";
-import { SearchBarInput } from "components/SearchBar";
-import { MWMassProviderOutput, MWQuery, SearchProviders } from "providers";
 import { useEffect, useMemo, useState } from "react";
-import { ThinContainer } from "components/layout/ThinContainer";
-import { SectionHeading } from "components/layout/SectionHeading";
-import { Icons } from "components/Icon";
-import { Loading } from "components/layout/Loading";
-import { Tagline } from "components/text/Tagline";
-import { Title } from "components/text/Title";
-import { useDebounce } from "hooks/useDebounce";
-import { useLoading } from "hooks/useLoading";
-import { IconPatch } from "components/buttons/IconPatch";
-import { Navigation } from "components/layout/Navigation";
-import { useSearchQuery } from "hooks/useSearchQuery";
-import { useWatchedContext } from "state/watched/context";
+import { WatchedMediaCard } from "@/components/media/WatchedMediaCard";
+import { SearchBarInput } from "@/components/SearchBar";
+import { MWMassProviderOutput, MWQuery, SearchProviders } from "@/providers";
+import { ThinContainer } from "@/components/layout/ThinContainer";
+import { SectionHeading } from "@/components/layout/SectionHeading";
+import { Icons } from "@/components/Icon";
+import { Loading } from "@/components/layout/Loading";
+import { Tagline } from "@/components/text/Tagline";
+import { Title } from "@/components/text/Title";
+import { useDebounce } from "@/hooks/useDebounce";
+import { useLoading } from "@/hooks/useLoading";
+import { IconPatch } from "@/components/buttons/IconPatch";
+import { Navigation } from "@/components/layout/Navigation";
+import { useSearchQuery } from "@/hooks/useSearchQuery";
+import { useWatchedContext } from "@/state/watched/context";
 import {
   getIfBookmarkedFromPortable,
   useBookmarkContext,
-} from "state/bookmark/context";
+} from "@/state/bookmark/context";
 
 function SearchLoading() {
   return <Loading className="my-24" text="Fetching your favourite shows..." />;

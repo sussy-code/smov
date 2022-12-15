@@ -1,5 +1,5 @@
-import { getProviderMetadata, MWPortableMedia } from "providers";
 import { ReactElement } from "react";
+import { getProviderMetadata, MWPortableMedia } from "@/providers";
 import { NotFoundMedia, NotFoundProvider } from "./NotFoundView";
 
 export interface NotFoundChecksProps {

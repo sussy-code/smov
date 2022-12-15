@@ -1,8 +1,8 @@
-import { MWMediaType } from "providers";
 import { Redirect, Route, Switch } from "react-router-dom";
-import { BookmarkContextProvider } from "state/bookmark";
-import { WatchedContextProvider } from "state/watched";
-import { NotFoundPage } from "views/notfound/NotFoundView";
+import { MWMediaType } from "@/providers";
+import { BookmarkContextProvider } from "@/state/bookmark";
+import { WatchedContextProvider } from "@/state/watched";
+import { NotFoundPage } from "@/views/notfound/NotFoundView";
 import "./index.css";
 import { MediaView } from "./views/MediaView";
 import { SearchView } from "./views/SearchView";

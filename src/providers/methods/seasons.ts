@@ -1,6 +1,10 @@
-import { SimpleCache } from "utils/cache";
-import { MWPortableMedia } from "providers";
-import { MWMediaSeasons, MWMediaType, MWMediaProviderSeries } from "providers/types";
+import { SimpleCache } from "@/utils/cache";
+import { MWPortableMedia } from "@/providers";
+import {
+  MWMediaSeasons,
+  MWMediaType,
+  MWMediaProviderSeries,
+} from "@/providers/types";
 import { getProviderFromId } from "./helpers";
 
 // cache
@@ -23,7 +27,10 @@ export async function getSeasonDataFromMedia(
     };
   }
 
-  if (!provider.type.includes(MWMediaType.SERIES) && !provider.type.includes(MWMediaType.ANIME)) {
+  if (
+    !provider.type.includes(MWMediaType.SERIES) &&
+    !provider.type.includes(MWMediaType.ANIME)
+  ) {
     return {
       seasons: [],
     };
