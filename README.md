@@ -1,7 +1,7 @@
 <h1>movie-web</h1>
 
 <p align="center">
-<a href="https://github.com/JamesHawkinss/movie-web/actions"><img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/JamesHawkinss/movie-web/.github/workflows/deploying.yml?branch=master&style=flat-square"></a>
+<a href="https://github.com/JamesHawkinss/movie-web/actions"><img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/JamesHawkinss/movie-web/deploying.yml?branch=master&style=flat-square"></a>
 <a href="https://github.com/JamesHawkinss/movie-web/blob/master/LICENSE.md"><img alt="GitHub license" src="https://img.shields.io/github/license/JamesHawkinss/movie-web?style=flat-square"></a>
 <a href="https://github.com/JamesHawkinss/movie-web/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/JamesHawkinss/movie-web?style=flat-square"></a>
 <a href="https://github.com/JamesHawkinss/movie-web/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/JamesHawkinss/movie-web?style=flat-square"></a><br/>
