@@ -4,6 +4,7 @@ import { HashRouter } from "react-router-dom";
 import "./index.css";
 import { ErrorBoundary } from "@/components/layout/ErrorBoundary";
 import App from "./App";
+import './i18n';
 
 ReactDOM.render(
   <React.StrictMode>
