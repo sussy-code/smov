@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { MWMediaType, MWQuery } from "@/providers";
+import { useTranslation } from "react-i18next";
 import { DropdownButton } from "./buttons/DropdownButton";
 import { Icons } from "./Icon";
 import { TextInputControl } from "./text-inputs/TextInputControl";
@@ -13,6 +14,8 @@ export interface SearchBarProps {
 }
 
 export function SearchBarInput(props: SearchBarProps) {
+  const { t } = useTranslation();
+
   const [dropdownOpen, setDropdownOpen] = useState(false);
   function setSearch(value: string) {
     props.onChange(
@@ -52,12 +55,12 @@ export function SearchBarInput(props: SearchBarProps) {
         options={[
           {
             id: MWMediaType.MOVIE,
-            name: "Movie",
+            name: t('searchBar.movie'),
             icon: Icons.FILM,
           },
           {
             id: MWMediaType.SERIES,
-            name: "Series",
+            name: t('searchBar.series'),
             icon: Icons.CLAPPER_BOARD,
           },
           // {
@@ -68,7 +71,7 @@ export function SearchBarInput(props: SearchBarProps) {
         ]}
         onClick={() => setDropdownOpen((old) => !old)}
       >
-        {props.buttonText || "Search"}
+        {props.buttonText || t('searchBar.search')}
       </DropdownButton>
     </div>
   );
