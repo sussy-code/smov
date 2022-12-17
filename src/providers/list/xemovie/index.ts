@@ -100,8 +100,7 @@ export const xemovieScraper: MWMediaProvider = {
         const data = JSON.parse(
           JSON.stringify(
             eval(
-              `(${
-                script.textContent.replace("const data = ", "").split("};")[0]
+              `(${script.textContent.replace("const data = ", "").split("};")[0]
               }})`
             )
           )

@@ -29,6 +29,7 @@ import {
   useBookmarkContext,
 } from "@/state/bookmark";
 import { getWatchedFromPortable, useWatchedContext } from "@/state/watched";
+import { useTranslation } from "react-i18next";
 import { NotFoundChecks } from "./notfound/NotFoundChecks";
 
 interface StyledMediaViewProps {
@@ -105,6 +106,8 @@ function StyledMediaFooter(props: StyledMediaFooterProps) {
 }
 
 function LoadingMediaFooter(props: { error?: boolean }) {
+  const { t } = useTranslation();
+
   return (
     <Paper className="mt-5">
       <div className="flex">
@@ -117,7 +120,7 @@ function LoadingMediaFooter(props: { error?: boolean }) {
           {props.error ? (
             <div className="flex items-center space-x-3">
               <IconPatch icon={Icons.WARNING} className="text-red-400" />
-              <p>Your url may be invalid</p>
+              <p>{t('media.invalidUrl')}</p>
             </div>
           ) : (
             <LoadingSeasons />
@@ -183,6 +186,7 @@ function MediaViewContent(props: { portable: MWPortableMedia }) {
 }
 
 export function MediaView() {
+  const { t } = useTranslation();
   const mediaPortable: MWPortableMedia | undefined = usePortableMedia();
   const reactHistory = useHistory();
 
@@ -196,7 +200,7 @@ export function MediaView() {
               : reactHistory.push("/")
           }
           direction="left"
-          linkText="Go back"
+          linkText={t('media.arrowText')}
         />
       </Navigation>
       <NotFoundChecks portable={mediaPortable}>
