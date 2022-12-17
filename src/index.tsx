@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 import { HashRouter } from "react-router-dom";
 import "./index.css";
@@ -10,7 +10,9 @@ ReactDOM.render(
   <React.StrictMode>
     <ErrorBoundary>
       <HashRouter>
-        <App />
+        <Suspense fallback="">
+          <App />
+        </Suspense>
       </HashRouter>
     </ErrorBoundary>
   </React.StrictMode>,
