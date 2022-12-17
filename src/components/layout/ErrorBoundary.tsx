@@ -1,9 +1,9 @@
-import { IconPatch } from "components/buttons/IconPatch";
-import { Icons } from "components/Icon";
-import { Link } from "components/text/Link";
-import { Title } from "components/text/Title";
-import { DISCORD_LINK, GITHUB_LINK } from "mw_constants";
 import { Component } from "react";
+import { IconPatch } from "@/components/buttons/IconPatch";
+import { Icons } from "@/components/Icon";
+import { Link } from "@/components/text/Link";
+import { Title } from "@/components/text/Title";
+import { DISCORD_LINK, GITHUB_LINK } from "@/mw_constants";
 
 interface ErrorBoundaryState {
   hasError: boolean;

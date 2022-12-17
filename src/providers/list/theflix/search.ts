@@ -1,5 +1,5 @@
-import { CORS_PROXY_URL } from "mw_constants";
-import { MWMediaType, MWProviderMediaResult, MWQuery } from "providers";
+import { CORS_PROXY_URL } from "@/mw_constants";
+import { MWMediaType, MWProviderMediaResult, MWQuery } from "@/providers";
 
 const getTheFlixUrl = (type: "tv-shows" | "movies", params: URLSearchParams) =>
   `https://theflix.to/${type}/trending?${params}`;

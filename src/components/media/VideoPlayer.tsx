@@ -1,9 +1,9 @@
-import { IconPatch } from "components/buttons/IconPatch";
-import { Icons } from "components/Icon";
-import { Loading } from "components/layout/Loading";
-import { MWMediaCaption, MWMediaStream } from "providers";
 import { ReactElement, useEffect, useRef, useState } from "react";
 import Hls from "hls.js";
+import { IconPatch } from "@/components/buttons/IconPatch";
+import { Icons } from "@/components/Icon";
+import { Loading } from "@/components/layout/Loading";
+import { MWMediaCaption, MWMediaStream } from "@/providers";
 
 export interface VideoPlayerProps {
   source: MWMediaStream;
@@ -14,7 +14,7 @@ export interface VideoPlayerProps {
 
 export function SkeletonVideoPlayer(props: { error?: boolean }) {
   return (
-    <div className="bg-denim-200 flex aspect-video w-full items-center justify-center lg:rounded-xl">
+    <div className="flex aspect-video w-full items-center justify-center bg-denim-200 lg:rounded-xl">
       {props.error ? (
         <div className="flex flex-col items-center">
           <IconPatch icon={Icons.WARNING} className="text-red-400" />
@@ -44,8 +44,7 @@ export function VideoPlayer(props: VideoPlayerProps) {
 
     // hls support
     if (mustUseHls) {
-      if (!videoRef.current)
-        return;
+      if (!videoRef.current) return;
 
       if (!Hls.isSupported()) {
         setLoading(false);
@@ -55,7 +54,7 @@ export function VideoPlayer(props: VideoPlayerProps) {
 
       const hls = new Hls();
 
-      if (videoRef.current.canPlayType('application/vnd.apple.mpegurl')) {
+      if (videoRef.current.canPlayType("application/vnd.apple.mpegurl")) {
         videoRef.current.src = props.source.url;
         return;
       }
@@ -81,8 +80,7 @@ export function VideoPlayer(props: VideoPlayerProps) {
     <>
       {skeletonUi}
       <video
-        className={`bg-black w-full rounded-xl ${!showVideo ? "hidden" : ""
-          }`}
+        className={`w-full rounded-xl bg-black ${!showVideo ? "hidden" : ""}`}
         ref={videoRef}
         onProgress={(e) =>
           props.onProgress && props.onProgress(e.nativeEvent as ProgressEvent)

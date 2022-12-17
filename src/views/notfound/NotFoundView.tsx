@@ -1,9 +1,9 @@
-import { IconPatch } from "components/buttons/IconPatch";
-import { Icons } from "components/Icon";
-import { Navigation } from "components/layout/Navigation";
-import { ArrowLink } from "components/text/ArrowLink";
-import { Title } from "components/text/Title";
 import { ReactNode } from "react";
+import { IconPatch } from "@/components/buttons/IconPatch";
+import { Icons } from "@/components/Icon";
+import { Navigation } from "@/components/layout/Navigation";
+import { ArrowLink } from "@/components/text/ArrowLink";
+import { Title } from "@/components/text/Title";
 
 function NotFoundWrapper(props: { children?: ReactNode }) {
   return (
@@ -21,7 +21,7 @@ export function NotFoundMedia() {
     <div className="flex flex-1 flex-col items-center justify-center p-5 text-center">
       <IconPatch
         icon={Icons.EYE_SLASH}
-        className="text-bink-600 mb-6 text-xl"
+        className="mb-6 text-xl text-bink-600"
       />
       <Title>Couldn&apos;t find that media</Title>
       <p className="mt-5 mb-12 max-w-sm">
@@ -38,7 +38,7 @@ export function NotFoundProvider() {
     <div className="flex flex-1 flex-col items-center justify-center p-5 text-center">
       <IconPatch
         icon={Icons.EYE_SLASH}
-        className="text-bink-600 mb-6 text-xl"
+        className="mb-6 text-xl text-bink-600"
       />
       <Title>This provider has been disabled</Title>
       <p className="mt-5 mb-12 max-w-sm">
@@ -55,7 +55,7 @@ export function NotFoundPage() {
     <NotFoundWrapper>
       <IconPatch
         icon={Icons.EYE_SLASH}
-        className="text-bink-600 mb-6 text-xl"
+        className="mb-6 text-xl text-bink-600"
       />
       <Title>Couldn&apos;t find that page</Title>
       <p className="mt-5 mb-12 max-w-sm">

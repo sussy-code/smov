@@ -4,10 +4,10 @@ import {
   MWPortableMedia,
   MWMediaStream,
   MWQuery,
-  MWProviderMediaResult
-} from "providers/types";
+  MWProviderMediaResult,
+} from "@/providers/types";
 
-import { CORS_PROXY_URL } from "mw_constants";
+import { CORS_PROXY_URL } from "@/mw_constants";
 
 export const flixhqProvider: MWMediaProvider = {
   id: "flixhq",
@@ -15,9 +15,13 @@ export const flixhqProvider: MWMediaProvider = {
   type: [MWMediaType.MOVIE],
   displayName: "flixhq",
 
-  async getMediaFromPortable(media: MWPortableMedia): Promise<MWProviderMediaResult> {
+  async getMediaFromPortable(
+    media: MWPortableMedia
+  ): Promise<MWProviderMediaResult> {
     const searchRes = await fetch(
-      `${CORS_PROXY_URL}https://api.consumet.org/movies/flixhq/info?id=${encodeURIComponent(media.mediaId)}`
+      `${CORS_PROXY_URL}https://api.consumet.org/movies/flixhq/info?id=${encodeURIComponent(
+        media.mediaId
+      )}`
     ).then((d) => d.json());
 
     return {
@@ -29,39 +33,49 @@ export const flixhqProvider: MWMediaProvider = {
 
   async searchForMedia(query: MWQuery): Promise<MWProviderMediaResult[]> {
     const searchRes = await fetch(
-      `${CORS_PROXY_URL}https://api.consumet.org/movies/flixhq/${encodeURIComponent(query.searchQuery)}`
+      `${CORS_PROXY_URL}https://api.consumet.org/movies/flixhq/${encodeURIComponent(
+        query.searchQuery
+      )}`
     ).then((d) => d.json());
 
-    const results: MWProviderMediaResult[] = (searchRes || []).results.map((item: any) => ({
-      title: item.title,
-      year: item.releaseDate,
-      mediaId: item.id,
-      type: MWMediaType.MOVIE,
-    }));
+    const results: MWProviderMediaResult[] = (searchRes || []).results.map(
+      (item: any) => ({
+        title: item.title,
+        year: item.releaseDate,
+        mediaId: item.id,
+        type: MWMediaType.MOVIE,
+      })
+    );
 
     return results;
   },
 
   async getStream(media: MWPortableMedia): Promise<MWMediaStream> {
     const searchRes = await fetch(
-      `${CORS_PROXY_URL}https://api.consumet.org/movies/flixhq/info?id=${encodeURIComponent(media.mediaId)}`
+      `${CORS_PROXY_URL}https://api.consumet.org/movies/flixhq/info?id=${encodeURIComponent(
+        media.mediaId
+      )}`
     ).then((d) => d.json());
 
     const params = new URLSearchParams({
       episodeId: searchRes.episodes[0].id,
-      mediaId: media.mediaId
-    })
+      mediaId: media.mediaId,
+    });
 
     const watchRes = await fetch(
-      `${CORS_PROXY_URL}https://api.consumet.org/movies/flixhq/watch?${encodeURIComponent(params.toString())}`
+      `${CORS_PROXY_URL}https://api.consumet.org/movies/flixhq/watch?${encodeURIComponent(
+        params.toString()
+      )}`
     ).then((d) => d.json());
 
-    const source = watchRes.sources.reduce((p: any, c: any) => (c.quality > p.quality) ? c : p);
+    const source = watchRes.sources.reduce((p: any, c: any) =>
+      c.quality > p.quality ? c : p
+    );
 
     return {
       url: source.url,
       type: source.isM3U8 ? "m3u8" : "mp4",
-      captions: []
+      captions: [],
     } as MWMediaStream;
   },
 };

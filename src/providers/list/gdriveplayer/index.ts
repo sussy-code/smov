@@ -1,15 +1,15 @@
+import { unpack } from "unpacker";
+import CryptoJS from "crypto-js";
 import {
   MWMediaProvider,
   MWMediaType,
   MWPortableMedia,
   MWMediaStream,
   MWQuery,
-  MWProviderMediaResult
-} from "providers/types";
+  MWProviderMediaResult,
+} from "@/providers/types";
 
-import { CORS_PROXY_URL } from "mw_constants";
-import { unpack } from "unpacker";
-import CryptoJS from "crypto-js";
+import { CORS_PROXY_URL } from "@/mw_constants";
 
 const format = {
   stringify: (cipher: any) => {
@@ -34,7 +34,7 @@ const format = {
       salt,
     });
     return cipher;
-  }
+  },
 };
 
 export const gDrivePlayerScraper: MWMediaProvider = {
@@ -43,8 +43,12 @@ export const gDrivePlayerScraper: MWMediaProvider = {
   type: [MWMediaType.MOVIE],
   displayName: "gdriveplayer",
 
-  async getMediaFromPortable(media: MWPortableMedia): Promise<MWProviderMediaResult> {
-    const res = await fetch(`${CORS_PROXY_URL}https://api.gdriveplayer.us/v1/imdb/${media.mediaId}`).then((d) => d.json());
+  async getMediaFromPortable(
+    media: MWPortableMedia
+  ): Promise<MWProviderMediaResult> {
+    const res = await fetch(
+      `${CORS_PROXY_URL}https://api.gdriveplayer.us/v1/imdb/${media.mediaId}`
+    ).then((d) => d.json());
 
     return {
       ...media,
@@ -54,19 +58,25 @@ export const gDrivePlayerScraper: MWMediaProvider = {
   },
 
   async searchForMedia(query: MWQuery): Promise<MWProviderMediaResult[]> {
-    const searchRes = await fetch(`${CORS_PROXY_URL}https://api.gdriveplayer.us/v1/movie/search?title=${query.searchQuery}`).then((d) => d.json());
+    const searchRes = await fetch(
+      `${CORS_PROXY_URL}https://api.gdriveplayer.us/v1/movie/search?title=${query.searchQuery}`
+    ).then((d) => d.json());
 
-    const results: MWProviderMediaResult[] = (searchRes || []).map((item: any) => ({
-      title: item.title,
-      year: item.year,
-      mediaId: item.imdb,
-    }));
+    const results: MWProviderMediaResult[] = (searchRes || []).map(
+      (item: any) => ({
+        title: item.title,
+        year: item.year,
+        mediaId: item.imdb,
+      })
+    );
 
     return results;
   },
 
   async getStream(media: MWPortableMedia): Promise<MWMediaStream> {
-    const streamRes = await fetch(`${CORS_PROXY_URL}https://database.gdriveplayer.us/player.php?imdb=${media.mediaId}`).then((d) => d.text());
+    const streamRes = await fetch(
+      `${CORS_PROXY_URL}https://database.gdriveplayer.us/player.php?imdb=${media.mediaId}`
+    ).then((d) => d.text());
     const page = new DOMParser().parseFromString(streamRes, "text/html");
 
     const script: HTMLElement | undefined = Array.from(
@@ -78,10 +88,29 @@ export const gDrivePlayerScraper: MWMediaProvider = {
     }
 
     /// NOTE: this code requires re-write, it's not safe
-    const data = unpack(script.textContent).split("var data=\\'")[1].split("\\'")[0].replace(/\\/g, "");
-    const decryptedData = unpack(CryptoJS.AES.decrypt(data, "alsfheafsjklNIWORNiolNIOWNKLNXakjsfwnBdwjbwfkjbJjkopfjweopjASoiwnrflakefneiofrt", { format }).toString(CryptoJS.enc.Utf8));
+    const data = unpack(script.textContent)
+      .split("var data=\\'")[1]
+      .split("\\'")[0]
+      .replace(/\\/g, "");
+    const decryptedData = unpack(
+      CryptoJS.AES.decrypt(
+        data,
+        "alsfheafsjklNIWORNiolNIOWNKLNXakjsfwnBdwjbwfkjbJjkopfjweopjASoiwnrflakefneiofrt",
+        { format }
+      ).toString(CryptoJS.enc.Utf8)
+    );
     // eslint-disable-next-line
-    const sources = JSON.parse(JSON.stringify(eval(decryptedData.split("sources:")[1].split(",image")[0].replace(/\\/g, "").replace(/document\.referrer/g, "\"\""))));
+    const sources = JSON.parse(
+      JSON.stringify(
+        eval(
+          decryptedData
+            .split("sources:")[1]
+            .split(",image")[0]
+            .replace(/\\/g, "")
+            .replace(/document\.referrer/g, '""')
+        )
+      )
+    );
     const source = sources[sources.length - 1];
     /// END
 

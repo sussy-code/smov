@@ -1,13 +1,13 @@
+import { Link } from "react-router-dom";
 import {
   convertMediaToPortable,
   getProviderFromId,
   MWMediaMeta,
   MWMediaType,
-} from "providers";
-import { Link } from "react-router-dom";
-import { Icon, Icons } from "components/Icon";
-import { serializePortableMedia } from "hooks/usePortableMedia";
-import { DotList } from "components/text/DotList";
+} from "@/providers";
+import { Icon, Icons } from "@/components/Icon";
+import { serializePortableMedia } from "@/hooks/usePortableMedia";
+import { DotList } from "@/components/text/DotList";
 
 export interface MediaCardProps {
   media: MWMediaMeta;
@@ -30,7 +30,7 @@ function MediaCardContent({
 
   return (
     <article
-      className={`bg-denim-300 group relative mb-4 flex overflow-hidden rounded py-4 px-5 ${
+      className={`group relative mb-4 flex overflow-hidden rounded bg-denim-300 py-4 px-5 ${
         linkable ? "hover:bg-denim-400" : ""
       }`}
     >
@@ -38,12 +38,12 @@ function MediaCardContent({
       {watchedPercentage > 0 ? (
         <div className="absolute top-0 left-0 right-0 bottom-0">
           <div
-            className="bg-bink-300 relative h-full bg-opacity-30"
+            className="relative h-full bg-bink-300 bg-opacity-30"
             style={{
               width: `${watchedPercentage}%`,
             }}
           >
-            <div className="from-bink-400 absolute right-0 top-0 bottom-0 ml-auto w-40 bg-gradient-to-l to-transparent opacity-40" />
+            <div className="absolute right-0 top-0 bottom-0 ml-auto w-40 bg-gradient-to-l from-bink-400 to-transparent opacity-40" />
           </div>
         </div>
       ) : null}
@@ -54,7 +54,7 @@ function MediaCardContent({
           <h1 className="mb-1 font-bold text-white">
             {media.title}
             {series && media.seasonId && media.episodeId ? (
-              <span className="text-denim-700 ml-2 text-xs">
+              <span className="ml-2 text-xs text-denim-700">
                 S{media.seasonId} E{media.episodeId}
               </span>
             ) : null}

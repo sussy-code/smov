@@ -1,19 +1,19 @@
-import { IconPatch } from "components/buttons/IconPatch";
-import { Dropdown, OptionItem } from "components/Dropdown";
-import { Icons } from "components/Icon";
-import { WatchedEpisode } from "components/media/WatchedEpisodeButton";
-import { useLoading } from "hooks/useLoading";
-import { serializePortableMedia } from "hooks/usePortableMedia";
+import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+import { IconPatch } from "@/components/buttons/IconPatch";
+import { Dropdown, OptionItem } from "@/components/Dropdown";
+import { Icons } from "@/components/Icon";
+import { WatchedEpisode } from "@/components/media/WatchedEpisodeButton";
+import { useLoading } from "@/hooks/useLoading";
+import { serializePortableMedia } from "@/hooks/usePortableMedia";
 import {
   convertMediaToPortable,
   MWMedia,
   MWMediaSeasons,
   MWMediaSeason,
   MWPortableMedia,
-} from "providers";
-import { getSeasonDataFromMedia } from "providers/methods/seasons";
-import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+} from "@/providers";
+import { getSeasonDataFromMedia } from "@/providers/methods/seasons";
 
 export interface SeasonsProps {
   media: MWMedia;
@@ -23,13 +23,13 @@ export function LoadingSeasons(props: { error?: boolean }) {
   return (
     <div>
       <div>
-        <div className="bg-denim-400 mb-3 mt-5  h-10 w-56 rounded opacity-50" />
+        <div className="mb-3 mt-5 h-10  w-56 rounded bg-denim-400 opacity-50" />
       </div>
       {!props.error ? (
         <>
-          <div className="bg-denim-400 mr-3 mb-3 inline-block h-10 w-10 rounded opacity-50" />
-          <div className="bg-denim-400 mr-3 mb-3 inline-block h-10 w-10 rounded opacity-50" />
-          <div className="bg-denim-400 mr-3 mb-3 inline-block h-10 w-10 rounded opacity-50" />
+          <div className="mr-3 mb-3 inline-block h-10 w-10 rounded bg-denim-400 opacity-50" />
+          <div className="mr-3 mb-3 inline-block h-10 w-10 rounded bg-denim-400 opacity-50" />
+          <div className="mr-3 mb-3 inline-block h-10 w-10 rounded bg-denim-400 opacity-50" />
         </>
       ) : (
         <div className="flex items-center space-x-3">

@@ -1,4 +1,3 @@
-import { MWMediaMeta, getProviderMetadata, MWMediaType } from "providers";
 import React, {
   createContext,
   ReactNode,
@@ -7,6 +6,7 @@ import React, {
   useMemo,
   useState,
 } from "react";
+import { MWMediaMeta, getProviderMetadata, MWMediaType } from "@/providers";
 import { VideoProgressStore } from "./store";
 
 interface WatchedStoreItem extends MWMediaMeta {
@@ -38,7 +38,7 @@ export function getWatchedFromPortable(
 }
 
 const WatchedContext = createContext<WatchedStoreDataWrapper>({
-  updateProgress: () => { },
+  updateProgress: () => {},
   getFilteredWatched: () => [],
   watched: {
     items: [],
