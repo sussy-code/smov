@@ -75,7 +75,7 @@ export function Seasons(props: SeasonsProps) {
 
   const mapSeason = (season: MWMediaSeason) => ({
     id: season.id,
-    name: season.title || `${t('seasons.season')} ${season.sort}`,
+    name: season.title || `${t('seasons.season', { season: season.sort })}`,
   });
 
   const options = seasons.seasons.map(mapSeason);
