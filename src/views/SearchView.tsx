@@ -1,26 +1,28 @@
-import { WatchedMediaCard } from "components/media/WatchedMediaCard";
-import { SearchBarInput } from "components/SearchBar";
-import { MWMassProviderOutput, MWQuery, SearchProviders } from "providers";
 import { useEffect, useMemo, useState } from "react";
-import { ThinContainer } from "components/layout/ThinContainer";
-import { SectionHeading } from "components/layout/SectionHeading";
-import { Icons } from "components/Icon";
-import { Loading } from "components/layout/Loading";
-import { Tagline } from "components/text/Tagline";
-import { Title } from "components/text/Title";
-import { useDebounce } from "hooks/useDebounce";
-import { useLoading } from "hooks/useLoading";
-import { IconPatch } from "components/buttons/IconPatch";
-import { Navigation } from "components/layout/Navigation";
-import { useSearchQuery } from "hooks/useSearchQuery";
-import { useWatchedContext } from "state/watched/context";
+import { WatchedMediaCard } from "@/components/media/WatchedMediaCard";
+import { SearchBarInput } from "@/components/SearchBar";
+import { MWMassProviderOutput, MWQuery, SearchProviders } from "@/providers";
+import { ThinContainer } from "@/components/layout/ThinContainer";
+import { SectionHeading } from "@/components/layout/SectionHeading";
+import { Icons } from "@/components/Icon";
+import { Loading } from "@/components/layout/Loading";
+import { Tagline } from "@/components/text/Tagline";
+import { Title } from "@/components/text/Title";
+import { useDebounce } from "@/hooks/useDebounce";
+import { useLoading } from "@/hooks/useLoading";
+import { IconPatch } from "@/components/buttons/IconPatch";
+import { Navigation } from "@/components/layout/Navigation";
+import { useSearchQuery } from "@/hooks/useSearchQuery";
+import { useWatchedContext } from "@/state/watched/context";
 import {
   getIfBookmarkedFromPortable,
   useBookmarkContext,
-} from "state/bookmark/context";
+} from "@/state/bookmark/context";
+import { useTranslation } from "react-i18next";
 
 function SearchLoading() {
-  return <Loading className="my-24" text="Fetching your favourite shows..." />;
+  const { t } = useTranslation();
+  return <Loading className="my-24" text={t('search.loading') || "Fetching your favourite shows..."} />;
 }
 
 function SearchSuffix(props: {
@@ -28,6 +30,8 @@ function SearchSuffix(props: {
   total: number;
   resultsSize: number;
 }) {
+  const { t } = useTranslation();
+
   const allFailed: boolean = props.fails === props.total;
   const icon: Icons = allFailed ? Icons.WARNING : Icons.EYE_SLASH;
 
@@ -43,13 +47,13 @@ function SearchSuffix(props: {
         <div>
           {props.fails > 0 ? (
             <p className="text-red-400">
-              {props.fails}/{props.total} providers failed!
+              {t('search.providersFailed', { fails: props.fails, total: props.total })}
             </p>
           ) : null}
           {props.resultsSize > 0 ? (
-            <p>That&apos;s all we have!</p>
+            <p>{t('search.allResults')}</p>
           ) : (
-            <p>We couldn&apos;t find anything!</p>
+            <p>{t('search.noResults')}</p>
           )}
         </div>
       ) : null}
@@ -57,7 +61,7 @@ function SearchSuffix(props: {
       {/* Error result */}
       {allFailed ? (
         <div>
-          <p>All providers have failed!</p>
+          <p>{t('search.allFailed')}</p>
         </div>
       ) : null}
     </div>
@@ -71,6 +75,8 @@ function SearchResultsView({
   searchQuery: MWQuery;
   clear: () => void;
 }) {
+  const { t } = useTranslation();
+
   const [results, setResults] = useState<MWMassProviderOutput | undefined>();
   const [runSearchQuery, loading, error, success] = useLoading(
     (query: MWQuery) => SearchProviders(query)
@@ -91,9 +97,9 @@ function SearchResultsView({
       {/* results */}
       {success && results?.results.length ? (
         <SectionHeading
-          title="Search results"
+          title={t('search.headingTitle') || "Search results"}
           icon={Icons.SEARCH}
-          linkText="Back to home"
+          linkText={t('search.headingLink') || "Back to home"}
           onClick={() => clear()}
         >
           {results.results.map((v) => (
@@ -124,6 +130,8 @@ function SearchResultsView({
 }
 
 function ExtraItems() {
+  const { t } = useTranslation();
+
   const { getFilteredBookmarks } = useBookmarkContext();
   const { getFilteredWatched } = useWatchedContext();
 
@@ -138,7 +146,7 @@ function ExtraItems() {
   return (
     <div className="mb-16 mt-32">
       {bookmarks.length > 0 ? (
-        <SectionHeading title="Bookmarks" icon={Icons.BOOKMARK}>
+        <SectionHeading title={t('search.bookmarks') || "Bookmarks"} icon={Icons.BOOKMARK}>
           {bookmarks.map((v) => (
             <WatchedMediaCard
               key={[v.mediaId, v.providerId].join("|")}
@@ -148,7 +156,7 @@ function ExtraItems() {
         </SectionHeading>
       ) : null}
       {watchedItems.length > 0 ? (
-        <SectionHeading title="Continue Watching" icon={Icons.CLOCK}>
+        <SectionHeading title={t('search.continueWatching') || "Continue Watching"} icon={Icons.CLOCK}>
           {watchedItems.map((v) => (
             <WatchedMediaCard
               key={[v.mediaId, v.providerId].join("|")}
@@ -163,6 +171,8 @@ function ExtraItems() {
 }
 
 export function SearchView() {
+  const { t } = useTranslation();
+
   const [searching, setSearching] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [search, setSearch, setSearchUnFocus] = useSearchQuery();
@@ -195,14 +205,14 @@ export function SearchView() {
         {/* input section */}
         <div className="mt-44 space-y-16 text-center">
           <div className="space-y-4">
-            <Tagline>Because watching legally is boring</Tagline>
-            <Title>What movie do you want to watch?</Title>
+            <Tagline>{t('search.tagline')}</Tagline>
+            <Title>{t('search.title')}</Title>
           </div>
           <SearchBarInput
             onChange={setSearch}
             value={search}
             onUnFocus={setSearchUnFocus}
-            placeholder="What movie do you want to watch?"
+            placeholder={t('search.placeholder') || "What do you want to watch?"}
           />
         </div>
 

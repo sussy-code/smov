@@ -1,40 +1,43 @@
-import { IconPatch } from "components/buttons/IconPatch";
-import { Dropdown, OptionItem } from "components/Dropdown";
-import { Icons } from "components/Icon";
-import { WatchedEpisode } from "components/media/WatchedEpisodeButton";
-import { useLoading } from "hooks/useLoading";
-import { serializePortableMedia } from "hooks/usePortableMedia";
+import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+import { IconPatch } from "@/components/buttons/IconPatch";
+import { Dropdown, OptionItem } from "@/components/Dropdown";
+import { Icons } from "@/components/Icon";
+import { WatchedEpisode } from "@/components/media/WatchedEpisodeButton";
+import { useLoading } from "@/hooks/useLoading";
+import { serializePortableMedia } from "@/hooks/usePortableMedia";
 import {
   convertMediaToPortable,
   MWMedia,
   MWMediaSeasons,
   MWMediaSeason,
   MWPortableMedia,
-} from "providers";
-import { getSeasonDataFromMedia } from "providers/methods/seasons";
-import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+} from "@/providers";
+import { getSeasonDataFromMedia } from "@/providers/methods/seasons";
+import { useTranslation } from "react-i18next";
 
 export interface SeasonsProps {
   media: MWMedia;
 }
 
 export function LoadingSeasons(props: { error?: boolean }) {
+  const { t } = useTranslation();
+
   return (
     <div>
       <div>
-        <div className="bg-denim-400 mb-3 mt-5  h-10 w-56 rounded opacity-50" />
+        <div className="mb-3 mt-5 h-10  w-56 rounded bg-denim-400 opacity-50" />
       </div>
       {!props.error ? (
         <>
-          <div className="bg-denim-400 mr-3 mb-3 inline-block h-10 w-10 rounded opacity-50" />
-          <div className="bg-denim-400 mr-3 mb-3 inline-block h-10 w-10 rounded opacity-50" />
-          <div className="bg-denim-400 mr-3 mb-3 inline-block h-10 w-10 rounded opacity-50" />
+          <div className="mr-3 mb-3 inline-block h-10 w-10 rounded bg-denim-400 opacity-50" />
+          <div className="mr-3 mb-3 inline-block h-10 w-10 rounded bg-denim-400 opacity-50" />
+          <div className="mr-3 mb-3 inline-block h-10 w-10 rounded bg-denim-400 opacity-50" />
         </>
       ) : (
         <div className="flex items-center space-x-3">
           <IconPatch icon={Icons.WARNING} className="text-red-400" />
-          <p>Failed to load seasons and episodes</p>
+          <p>{t('seasons.failed')}</p>
         </div>
       )}
     </div>
@@ -42,6 +45,8 @@ export function LoadingSeasons(props: { error?: boolean }) {
 }
 
 export function Seasons(props: SeasonsProps) {
+  const { t } = useTranslation();
+
   const [searchSeasons, loading, error, success] = useLoading(
     (portableMedia: MWPortableMedia) => getSeasonDataFromMedia(portableMedia)
   );
@@ -70,7 +75,7 @@ export function Seasons(props: SeasonsProps) {
 
   const mapSeason = (season: MWMediaSeason) => ({
     id: season.id,
-    name: season.title || `Season ${season.sort}`,
+    name: season.title || `${t('seasons.season')} ${season.sort}`,
   });
 
   const options = seasons.seasons.map(mapSeason);

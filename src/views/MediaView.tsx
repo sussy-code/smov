@@ -1,14 +1,19 @@
-import { IconPatch } from "components/buttons/IconPatch";
-import { Icons } from "components/Icon";
-import { Navigation } from "components/layout/Navigation";
-import { Paper } from "components/layout/Paper";
-import { LoadingSeasons, Seasons } from "components/layout/Seasons";
-import { SkeletonVideoPlayer, VideoPlayer } from "components/media/VideoPlayer";
-import { ArrowLink } from "components/text/ArrowLink";
-import { DotList } from "components/text/DotList";
-import { Title } from "components/text/Title";
-import { useLoading } from "hooks/useLoading";
-import { usePortableMedia } from "hooks/usePortableMedia";
+import { ReactElement, useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+import { IconPatch } from "@/components/buttons/IconPatch";
+import { Icons } from "@/components/Icon";
+import { Navigation } from "@/components/layout/Navigation";
+import { Paper } from "@/components/layout/Paper";
+import { LoadingSeasons, Seasons } from "@/components/layout/Seasons";
+import {
+  SkeletonVideoPlayer,
+  VideoPlayer,
+} from "@/components/media/VideoPlayer";
+import { ArrowLink } from "@/components/text/ArrowLink";
+import { DotList } from "@/components/text/DotList";
+import { Title } from "@/components/text/Title";
+import { useLoading } from "@/hooks/useLoading";
+import { usePortableMedia } from "@/hooks/usePortableMedia";
 import {
   MWPortableMedia,
   getStream,
@@ -18,14 +23,13 @@ import {
   getProviderFromId,
   MWMediaProvider,
   MWMediaType,
-} from "providers";
-import { ReactElement, useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+} from "@/providers";
 import {
   getIfBookmarkedFromPortable,
   useBookmarkContext,
-} from "state/bookmark";
-import { getWatchedFromPortable, useWatchedContext } from "state/watched";
+} from "@/state/bookmark";
+import { getWatchedFromPortable, useWatchedContext } from "@/state/watched";
+import { useTranslation } from "react-i18next";
 import { NotFoundChecks } from "./notfound/NotFoundChecks";
 
 interface StyledMediaViewProps {
@@ -102,19 +106,21 @@ function StyledMediaFooter(props: StyledMediaFooterProps) {
 }
 
 function LoadingMediaFooter(props: { error?: boolean }) {
+  const { t } = useTranslation();
+
   return (
     <Paper className="mt-5">
       <div className="flex">
         <div className="flex-1">
-          <div className="bg-denim-500 mb-2 h-4 w-48 rounded-full" />
+          <div className="mb-2 h-4 w-48 rounded-full bg-denim-500" />
           <div>
-            <span className="bg-denim-400 mr-4 inline-block h-2 w-12 rounded-full" />
-            <span className="bg-denim-400 mr-4 inline-block h-2 w-12 rounded-full" />
+            <span className="mr-4 inline-block h-2 w-12 rounded-full bg-denim-400" />
+            <span className="mr-4 inline-block h-2 w-12 rounded-full bg-denim-400" />
           </div>
           {props.error ? (
             <div className="flex items-center space-x-3">
               <IconPatch icon={Icons.WARNING} className="text-red-400" />
-              <p>Your url may be invalid</p>
+              <p>{t('media.invalidUrl')}</p>
             </div>
           ) : (
             <LoadingSeasons />
@@ -180,6 +186,7 @@ function MediaViewContent(props: { portable: MWPortableMedia }) {
 }
 
 export function MediaView() {
+  const { t } = useTranslation();
   const mediaPortable: MWPortableMedia | undefined = usePortableMedia();
   const reactHistory = useHistory();
 
@@ -193,7 +200,7 @@ export function MediaView() {
               : reactHistory.push("/")
           }
           direction="left"
-          linkText="Go back"
+          linkText={t('media.arrowText')}
         />
       </Navigation>
       <NotFoundChecks portable={mediaPortable}>

@@ -1,12 +1,12 @@
-import { Icon, Icons } from "components/Icon";
 import React, {
   MouseEventHandler,
   SyntheticEvent,
   useEffect,
   useState,
 } from "react";
+import { Icon, Icons } from "@/components/Icon";
 
-import { Backdrop, useBackdrop } from "components/layout/Backdrop";
+import { Backdrop, useBackdrop } from "@/components/layout/Backdrop";
 import { ButtonControlProps, ButtonControl } from "./ButtonControl";
 
 export interface OptionItem {
@@ -33,7 +33,7 @@ export interface OptionProps {
 function Option({ option, onClick, tabIndex }: OptionProps) {
   return (
     <div
-      className="text-denim-700 flex h-10 cursor-pointer items-center space-x-2 px-4 py-2 text-left transition-colors hover:text-white"
+      className="flex h-10 cursor-pointer items-center space-x-2 px-4 py-2 text-left text-denim-700 transition-colors hover:text-white"
       onClick={onClick}
       tabIndex={tabIndex}
     >
@@ -95,7 +95,7 @@ export const DropdownButton = React.forwardRef<
       >
         <ButtonControl
           {...props}
-          className="sm:justify-left bg-bink-200 hover:bg-bink-300 relative z-20 flex h-10 w-full items-center justify-center space-x-2 rounded-[20px] px-4 py-2 text-white"
+          className="sm:justify-left relative z-20 flex h-10 w-full items-center justify-center space-x-2 rounded-[20px] bg-bink-200 px-4 py-2 text-white hover:bg-bink-300"
         >
           <Icon icon={selectedItem.icon} />
           <span className="flex-1">{selectedItem.name}</span>
@@ -105,7 +105,7 @@ export const DropdownButton = React.forwardRef<
           />
         </ButtonControl>
         <div
-          className={`bg-denim-300 absolute top-0 z-10 w-full rounded-[20px] pt-[40px] transition-all duration-200 ${
+          className={`absolute top-0 z-10 w-full rounded-[20px] bg-denim-300 pt-[40px] transition-all duration-200 ${
             props.open
               ? "block max-h-60 opacity-100"
               : "invisible max-h-0 opacity-0"

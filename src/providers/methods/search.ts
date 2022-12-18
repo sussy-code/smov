@@ -4,8 +4,8 @@ import {
   MWMedia,
   MWQuery,
   convertMediaToPortable,
-} from "providers";
-import { SimpleCache } from "utils/cache";
+} from "@/providers";
+import { SimpleCache } from "@/utils/cache";
 import { GetProvidersForType } from "./helpers";
 import contentCache from "./contentCache";
 

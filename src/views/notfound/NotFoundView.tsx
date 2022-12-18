@@ -1,9 +1,10 @@
-import { IconPatch } from "components/buttons/IconPatch";
-import { Icons } from "components/Icon";
-import { Navigation } from "components/layout/Navigation";
-import { ArrowLink } from "components/text/ArrowLink";
-import { Title } from "components/text/Title";
 import { ReactNode } from "react";
+import { IconPatch } from "@/components/buttons/IconPatch";
+import { Icons } from "@/components/Icon";
+import { Navigation } from "@/components/layout/Navigation";
+import { ArrowLink } from "@/components/text/ArrowLink";
+import { Title } from "@/components/text/Title";
+import { useTranslation } from "react-i18next";
 
 function NotFoundWrapper(props: { children?: ReactNode }) {
   return (
@@ -17,52 +18,55 @@ function NotFoundWrapper(props: { children?: ReactNode }) {
 }
 
 export function NotFoundMedia() {
+  const { t } = useTranslation();
+
   return (
     <div className="flex flex-1 flex-col items-center justify-center p-5 text-center">
       <IconPatch
         icon={Icons.EYE_SLASH}
-        className="text-bink-600 mb-6 text-xl"
+        className="mb-6 text-xl text-bink-600"
       />
-      <Title>Couldn&apos;t find that media</Title>
+      <Title>{t('notFound.media.title')}</Title>
       <p className="mt-5 mb-12 max-w-sm">
-        We couldn&apos;t find the media you requested. Either it&apos;s been
-        removed or you tampered with the URL
+        {t('notFound.media.description')}
       </p>
-      <ArrowLink to="/" linkText="Back to home" />
+      <ArrowLink to="/" linkText={t('notFound.backArrow')} />
     </div>
   );
 }
 
 export function NotFoundProvider() {
+  const { t } = useTranslation();
+
   return (
     <div className="flex flex-1 flex-col items-center justify-center p-5 text-center">
       <IconPatch
         icon={Icons.EYE_SLASH}
-        className="text-bink-600 mb-6 text-xl"
+        className="mb-6 text-xl text-bink-600"
       />
-      <Title>This provider has been disabled</Title>
+      <Title>{t('notFound.provider.title')}</Title>
       <p className="mt-5 mb-12 max-w-sm">
-        We had issues with the provider or it was too unstable to use, so we had
-        to disable it.
+        {t('notFound.provider.description')}
       </p>
-      <ArrowLink to="/" linkText="Back to home" />
+      <ArrowLink to="/" linkText={t('notFound.backArrow')} />
     </div>
   );
 }
 
 export function NotFoundPage() {
+  const { t } = useTranslation();
+
   return (
     <NotFoundWrapper>
       <IconPatch
         icon={Icons.EYE_SLASH}
-        className="text-bink-600 mb-6 text-xl"
+        className="mb-6 text-xl text-bink-600"
       />
-      <Title>Couldn&apos;t find that page</Title>
+      <Title>{t('notFound.page.title')}</Title>
       <p className="mt-5 mb-12 max-w-sm">
-        We looked everywhere: under the bins, in the closet, behind the proxy
-        but ultimately couldn&apos;t find the page you are looking for.
+        {t('notFound.page.description')}
       </p>
-      <ArrowLink to="/" linkText="Back to home" />
+      <ArrowLink to="/" linkText={t('notFound.backArrow')} />
     </NotFoundWrapper>
   );
 }
