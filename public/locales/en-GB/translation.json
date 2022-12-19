@@ -20,6 +20,10 @@
     "invalidUrl": "Your URL may be invalid",
     "arrowText": "Go back"
   },
+  "seasons": {
+    "season": "Season {{season}}",
+    "failed": "Failed to get season data"
+  },
   "notFound": {
     "backArrow": "Back to home",
     "media": {
