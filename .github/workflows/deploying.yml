@@ -65,8 +65,10 @@ jobs:
         name: production-files
         path: ./dist
 
+    - name: List files
+      run: cd dist && ls -la
     - name: Zip files
-      run: zip -r ./movie-web.zip ./dist/*
+      run: cd dist && zip -r ./movie-web.zip .
 
     - name: Get version
       id: package-version
