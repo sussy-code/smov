@@ -3,7 +3,7 @@ import { IconPatch } from "@/components/buttons/IconPatch";
 import { Icons } from "@/components/Icon";
 import { Link } from "@/components/text/Link";
 import { Title } from "@/components/text/Title";
-import { DISCORD_LINK, GITHUB_LINK } from "@/mw_constants";
+import { conf } from "@/config";
 
 interface ErrorBoundaryState {
   hasError: boolean;
@@ -58,11 +58,11 @@ export class ErrorBoundary extends Component<
           <p className="my-6 max-w-lg">
             The app encountered an error and wasn&apos;t able to recover, please
             report it to the{" "}
-            <Link url={DISCORD_LINK} newTab>
+            <Link url={conf().DISCORD_LINK} newTab>
               Discord server
             </Link>{" "}
             or on{" "}
-            <Link url={GITHUB_LINK} newTab>
+            <Link url={conf().GITHUB_LINK} newTab>
               GitHub
             </Link>
             .

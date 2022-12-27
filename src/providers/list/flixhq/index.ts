@@ -7,7 +7,7 @@ import {
   MWProviderMediaResult,
 } from "@/providers/types";
 
-import { CORS_PROXY_URL } from "@/mw_constants";
+import { conf } from "@/config";
 
 export const flixhqProvider: MWMediaProvider = {
   id: "flixhq",
@@ -19,7 +19,9 @@ export const flixhqProvider: MWMediaProvider = {
     media: MWPortableMedia
   ): Promise<MWProviderMediaResult> {
     const searchRes = await fetch(
-      `${CORS_PROXY_URL}https://api.consumet.org/movies/flixhq/info?id=${encodeURIComponent(
+      `${
+        conf().CORS_PROXY_URL
+      }https://api.consumet.org/movies/flixhq/info?id=${encodeURIComponent(
         media.mediaId
       )}`
     ).then((d) => d.json());
@@ -33,7 +35,9 @@ export const flixhqProvider: MWMediaProvider = {
 
   async searchForMedia(query: MWQuery): Promise<MWProviderMediaResult[]> {
     const searchRes = await fetch(
-      `${CORS_PROXY_URL}https://api.consumet.org/movies/flixhq/${encodeURIComponent(
+      `${
+        conf().CORS_PROXY_URL
+      }https://api.consumet.org/movies/flixhq/${encodeURIComponent(
         query.searchQuery
       )}`
     ).then((d) => d.json());
@@ -52,7 +56,9 @@ export const flixhqProvider: MWMediaProvider = {
 
   async getStream(media: MWPortableMedia): Promise<MWMediaStream> {
     const searchRes = await fetch(
-      `${CORS_PROXY_URL}https://api.consumet.org/movies/flixhq/info?id=${encodeURIComponent(
+      `${
+        conf().CORS_PROXY_URL
+      }https://api.consumet.org/movies/flixhq/info?id=${encodeURIComponent(
         media.mediaId
       )}`
     ).then((d) => d.json());
@@ -63,7 +69,9 @@ export const flixhqProvider: MWMediaProvider = {
     });
 
     const watchRes = await fetch(
-      `${CORS_PROXY_URL}https://api.consumet.org/movies/flixhq/watch?${encodeURIComponent(
+      `${
+        conf().CORS_PROXY_URL
+      }https://api.consumet.org/movies/flixhq/watch?${encodeURIComponent(
         params.toString()
       )}`
     ).then((d) => d.json());

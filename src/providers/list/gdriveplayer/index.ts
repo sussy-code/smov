@@ -9,7 +9,7 @@ import {
   MWProviderMediaResult,
 } from "@/providers/types";
 
-import { CORS_PROXY_URL } from "@/mw_constants";
+import { conf } from "@/config";
 
 const format = {
   stringify: (cipher: any) => {
@@ -47,7 +47,9 @@ export const gDrivePlayerScraper: MWMediaProvider = {
     media: MWPortableMedia
   ): Promise<MWProviderMediaResult> {
     const res = await fetch(
-      `${CORS_PROXY_URL}https://api.gdriveplayer.us/v1/imdb/${media.mediaId}`
+      `${conf().CORS_PROXY_URL}https://api.gdriveplayer.us/v1/imdb/${
+        media.mediaId
+      }`
     ).then((d) => d.json());
 
     return {
@@ -59,7 +61,9 @@ export const gDrivePlayerScraper: MWMediaProvider = {
 
   async searchForMedia(query: MWQuery): Promise<MWProviderMediaResult[]> {
     const searchRes = await fetch(
-      `${CORS_PROXY_URL}https://api.gdriveplayer.us/v1/movie/search?title=${query.searchQuery}`
+      `${
+        conf().CORS_PROXY_URL
+      }https://api.gdriveplayer.us/v1/movie/search?title=${query.searchQuery}`
     ).then((d) => d.json());
 
     const results: MWProviderMediaResult[] = (searchRes || []).map(
@@ -75,7 +79,9 @@ export const gDrivePlayerScraper: MWMediaProvider = {
 
   async getStream(media: MWPortableMedia): Promise<MWMediaStream> {
     const streamRes = await fetch(
-      `${CORS_PROXY_URL}https://database.gdriveplayer.us/player.php?imdb=${media.mediaId}`
+      `${
+        conf().CORS_PROXY_URL
+      }https://database.gdriveplayer.us/player.php?imdb=${media.mediaId}`
     ).then((d) => d.text());
     const page = new DOMParser().parseFromString(streamRes, "text/html");
 

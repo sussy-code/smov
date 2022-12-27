@@ -15,7 +15,7 @@ import {
 } from "@/providers/list/theflix/search";
 
 import { getDataFromPortableSearch } from "@/providers/list/theflix/portableToMedia";
-import { CORS_PROXY_URL } from "@/mw_constants";
+import { conf } from "@/config";
 
 export const theFlixScraper: MWMediaProvider = {
   id: "theflix",
@@ -51,9 +51,13 @@ export const theFlixScraper: MWMediaProvider = {
     let url = "";
 
     if (media.mediaType === MWMediaType.MOVIE) {
-      url = `${CORS_PROXY_URL}https://theflix.to/movie/${media.mediaId}?movieInfo=${media.mediaId}`;
+      url = `${conf().CORS_PROXY_URL}https://theflix.to/movie/${
+        media.mediaId
+      }?movieInfo=${media.mediaId}`;
     } else if (media.mediaType === MWMediaType.SERIES) {
-      url = `${CORS_PROXY_URL}https://theflix.to/tv-show/${media.mediaId}/season-${media.seasonId}/episode-${media.episodeId}`;
+      url = `${conf().CORS_PROXY_URL}https://theflix.to/tv-show/${
+        media.mediaId
+      }/season-${media.seasonId}/episode-${media.episodeId}`;
     }
 
     const res = await fetch(url).then((d) => d.text());
@@ -76,7 +80,9 @@ export const theFlixScraper: MWMediaProvider = {
   async getSeasonDataFromMedia(
     media: MWPortableMedia
   ): Promise<MWMediaSeasons> {
-    const url = `${CORS_PROXY_URL}https://theflix.to/tv-show/${media.mediaId}/season-${media.seasonId}/episode-${media.episodeId}`;
+    const url = `${conf().CORS_PROXY_URL}https://theflix.to/tv-show/${
+      media.mediaId
+    }/season-${media.seasonId}/episode-${media.episodeId}`;
     const res = await fetch(url).then((d) => d.text());
 
     const node: Element = Array.from(
