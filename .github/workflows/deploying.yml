@@ -42,10 +42,12 @@ jobs:
       with:
         name: production-files
         path: ./dist
+
     - name: Insert config
       env:
         DEPLOY_CONFIG: ${{ secrets.DEPLOY_CONFIG }}
       run: cat "$DEPLOY_CONFIG" > ./dist/config.js
+
     - name: Deploy to gh-pages
       uses: peaceiris/actions-gh-pages@v3
       with:
