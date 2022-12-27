@@ -25,7 +25,13 @@ Features include:
 - No BS: just a search bar and a video player
 - No responsibility on the hoster, no databases or api's hosted by us, just a static site
 
-## Self-hosting / running locally
+## Self-hosting
+
+A simple guide has been written to assist in hosting your own instance of movie-web.
+
+Check it out here: [https://github.com/movie-web/movie-web/blob/dev/SELFHOSTING.md](https://github.com/movie-web/movie-web/blob/dev/SELFHOSTING.md)
+
+## Running locally for development
 
 To run this project locally for contributing or testing, run the following commands:
 <h5><b>note: must use yarn to install packages and run NodeJS 16</b></h5>
@@ -39,7 +45,7 @@ yarn start
 
 To build production files, simply run `yarn build`.
 
-You can also deploy the Cloudflare Worker (in worker.js) and update the proxy URL constant in `/src/mw-constants.ts`.
+You'll need to deploy a cloudflare service worker as well. Check the [selfhosting guide](https://github.com/movie-web/movie-web/blob/dev/SELFHOSTING.md) on how to run the service worker. Afterwards update the proxy URL constant in `/src/mw-constants.ts` with your service worker.
 
 <h2>Contributing - <a href="https://github.com/JamesHawkinss/movie-web/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/JamesHawkinss/movie-web?style=flat-square"></a>
 <a href="https://github.com/JamesHawkinss/movie-web/pulls"><img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/JamesHawkinss/movie-web?style=flat-square"></a></h2>
