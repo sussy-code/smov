@@ -66,7 +66,7 @@ jobs:
         path: ./dist
 
     - name: Zip files
-      run: zip -r ./movie-web.zip ./dist
+      run: zip -r ./movie-web.zip ./dist/*
 
     - name: Get version
       id: package-version
@@ -91,5 +91,5 @@ jobs:
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./movie-web.zip
-        asset_name: movie-web.js
+        asset_name: movie-web.zip
         asset_content_type: application/zip
