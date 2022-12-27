@@ -12,7 +12,7 @@ function App() {
     <WatchedContextProvider>
       <BookmarkContextProvider>
         <Switch>
-          <Route exact path="/">
+          <Route exact={true} path="/">
             <Redirect to={`/search/${MWMediaType.MOVIE}`} />
           </Route>
           <Route exact path="/media/movie/:media" component={MediaView} />

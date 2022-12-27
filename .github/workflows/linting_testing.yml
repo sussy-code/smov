@@ -1,0 +1,40 @@
+name: Linting and Testing
+
+on:
+  push:
+    branches:
+      - master
+      - dev
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+jobs:
+  linting:
+    name: Run Linters
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Install Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+      
+      - name: Install Yarn packages
+        run: yarn install
+      
+      - name: Run ESLint Report
+        run: yarn lint:report
+        # continue on error, so it still reports it in the next step
+        continue-on-error: true
+
+      - name: Annotate Code Linting Results
+        uses: ataylorme/eslint-annotate-action@v2
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+          report-json: "eslint_report.json"
+
+      - name: Build Project
+        run: npm run build
