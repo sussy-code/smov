@@ -18,7 +18,7 @@ module.exports = {
       typescript: {}
     }
   },
-  ignorePatterns: ["public/*", "/*.js", "/*.ts"],
+  ignorePatterns: ["public/*", "dist/*", "/*.js", "/*.ts"],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     project: "./tsconfig.json",
