@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { IconPatch } from "@/components/buttons/IconPatch";
 import { Icons } from "@/components/Icon";
-import { DISCORD_LINK, GITHUB_LINK } from "@/mw_constants";
+import { conf } from "@/config";
 import { BrandPill } from "./BrandPill";
 
 export interface NavigationProps {
@@ -26,7 +26,7 @@ export function Navigation(props: NavigationProps) {
         } flex-row	gap-4`}
       >
         <a
-          href={DISCORD_LINK}
+          href={conf().DISCORD_LINK}
           target="_blank"
           rel="noreferrer"
           className="text-2xl text-white"
@@ -34,7 +34,7 @@ export function Navigation(props: NavigationProps) {
           <IconPatch icon={Icons.DISCORD} clickable />
         </a>
         <a
-          href={GITHUB_LINK}
+          href={conf().GITHUB_LINK}
           target="_blank"
           rel="noreferrer"
           className="text-2xl text-white"

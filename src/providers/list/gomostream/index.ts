@@ -9,7 +9,7 @@ import {
   MWProviderMediaResult,
 } from "@/providers/types";
 
-import { CORS_PROXY_URL, OMDB_API_KEY } from "@/mw_constants";
+import { conf } from "@/config";
 
 export const gomostreamScraper: MWMediaProvider = {
   id: "gomostream",
@@ -21,13 +21,13 @@ export const gomostreamScraper: MWMediaProvider = {
     media: MWPortableMedia
   ): Promise<MWProviderMediaResult> {
     const params = new URLSearchParams({
-      apikey: OMDB_API_KEY,
+      apikey: conf().OMDB_API_KEY,
       i: media.mediaId,
       type: media.mediaType,
     });
 
     const res = await fetch(
-      `${CORS_PROXY_URL}http://www.omdbapi.com/?${encodeURIComponent(
+      `${conf().CORS_PROXY_URL}http://www.omdbapi.com/?${encodeURIComponent(
         params.toString()
       )}`
     ).then((d) => d.json());
@@ -43,12 +43,12 @@ export const gomostreamScraper: MWMediaProvider = {
     const term = query.searchQuery.toLowerCase();
 
     const params = new URLSearchParams({
-      apikey: OMDB_API_KEY,
+      apikey: conf().OMDB_API_KEY,
       s: term,
       type: query.type,
     });
     const searchRes = await fetch(
-      `${CORS_PROXY_URL}http://www.omdbapi.com/?${encodeURIComponent(
+      `${conf().CORS_PROXY_URL}http://www.omdbapi.com/?${encodeURIComponent(
         params.toString()
       )}`
     ).then((d) => d.json());
@@ -69,7 +69,7 @@ export const gomostreamScraper: MWMediaProvider = {
     const type =
       media.mediaType === MWMediaType.SERIES ? "show" : media.mediaType;
     const res1 = await fetch(
-      `${CORS_PROXY_URL}https://gomo.to/${type}/${media.mediaId}`
+      `${conf().CORS_PROXY_URL}https://gomo.to/${type}/${media.mediaId}`
     ).then((d) => d.text());
     if (res1 === "Movie not available." || res1 === "Episode not available.")
       throw new Error(res1);
@@ -82,7 +82,7 @@ export const gomostreamScraper: MWMediaProvider = {
     fd.append("_token", _token);
 
     const src = await fetch(
-      `${CORS_PROXY_URL}https://gomo.to/decoding_v3.php`,
+      `${conf().CORS_PROXY_URL}https://gomo.to/decoding_v3.php`,
       {
         method: "POST",
         body: fd,
@@ -95,7 +95,7 @@ export const gomostreamScraper: MWMediaProvider = {
 
     // maybe try all embeds in the future
     const embedUrl = embeds[1];
-    const res2 = await fetch(`${CORS_PROXY_URL}${embedUrl}`).then((d) =>
+    const res2 = await fetch(`${conf().CORS_PROXY_URL}${embedUrl}`).then((d) =>
       d.text()
     );
 

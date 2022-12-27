@@ -28,6 +28,11 @@ Your proxy is now hosted on cloudflare. Note the url of your worker. you will ne
 
 1. Download the file `movie-web.zip` from the latest release: [https://github.com/movie-web/movie-web/releases/latest](https://github.com/movie-web/movie-web/releases/latest)
 2. Extract the zip file so you can edit the files.
+3. Open `config.js` in notepad, VScode or similar.
+4. Put your cloudflare proxy URL inbetween the double qoutes of `VITE_CORS_PROXY_URL: "",`.
 
-> Whoops, the rest of this guide hasn't been written yet.
-Check back soon.
+   Example (THIS IS MINE, IT WONT WORK FOR YOU): `VITE_CORS_PROXY_URL: "https://test-proxy.test.workers.dev/",`
+5. Save the file
+
+Your client has been prepared, you can now host it on any webhost.
+It doesn't require php, its just a standard static page.

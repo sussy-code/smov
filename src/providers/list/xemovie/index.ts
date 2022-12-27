@@ -8,7 +8,7 @@ import {
   MWMediaCaption,
 } from "@/providers/types";
 
-import { CORS_PROXY_URL } from "@/mw_constants";
+import { conf } from "@/config";
 
 export const xemovieScraper: MWMediaProvider = {
   id: "xemovie",
@@ -20,7 +20,7 @@ export const xemovieScraper: MWMediaProvider = {
     media: MWPortableMedia
   ): Promise<MWProviderMediaResult> {
     const res = await fetch(
-      `${CORS_PROXY_URL}https://xemovie.co/movies/${media.mediaId}/watch`
+      `${conf().CORS_PROXY_URL}https://xemovie.co/movies/${media.mediaId}/watch`
     ).then((d) => d.text());
 
     const DOM = new DOMParser().parseFromString(res, "text/html");
@@ -42,9 +42,9 @@ export const xemovieScraper: MWMediaProvider = {
   async searchForMedia(query: MWQuery): Promise<MWProviderMediaResult[]> {
     const term = query.searchQuery.toLowerCase();
 
-    const searchUrl = `${CORS_PROXY_URL}https://xemovie.co/search?q=${encodeURIComponent(
-      term
-    )}`;
+    const searchUrl = `${
+      conf().CORS_PROXY_URL
+    }https://xemovie.co/search?q=${encodeURIComponent(term)}`;
     const searchRes = await fetch(searchUrl).then((d) => d.text());
 
     const parser = new DOMParser();
@@ -81,7 +81,9 @@ export const xemovieScraper: MWMediaProvider = {
     if (media.mediaType !== MWMediaType.MOVIE)
       throw new Error("Incorrect type");
 
-    const url = `${CORS_PROXY_URL}https://xemovie.co/movies/${media.mediaId}/watch`;
+    const url = `${conf().CORS_PROXY_URL}https://xemovie.co/movies/${
+      media.mediaId
+    }/watch`;
 
     let streamUrl = "";
     const subtitles: MWMediaCaption[] = [];
@@ -100,7 +102,8 @@ export const xemovieScraper: MWMediaProvider = {
         const data = JSON.parse(
           JSON.stringify(
             eval(
-              `(${script.textContent.replace("const data = ", "").split("};")[0]
+              `(${
+                script.textContent.replace("const data = ", "").split("};")[0]
               }})`
             )
           )
@@ -112,7 +115,7 @@ export const xemovieScraper: MWMediaProvider = {
           subtitleTrack,
         ] of data.playlist[0].tracks.entries()) {
           const subtitleBlob = URL.createObjectURL(
-            await fetch(`${CORS_PROXY_URL}${subtitleTrack.file}`).then(
+            await fetch(`${conf().CORS_PROXY_URL}${subtitleTrack.file}`).then(
               (captionRes) => captionRes.blob()
             )
           ); // do this so no need for CORS errors

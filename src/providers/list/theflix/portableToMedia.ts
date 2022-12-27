@@ -1,4 +1,4 @@
-import { CORS_PROXY_URL } from "@/mw_constants";
+import { conf } from "@/config";
 import { MWMediaType, MWPortableMedia } from "@/providers/types";
 
 const getTheFlixUrl = (media: MWPortableMedia, params?: URLSearchParams) => {
@@ -18,9 +18,9 @@ export async function getDataFromPortableSearch(
   const params = new URLSearchParams();
   params.append("movieInfo", media.mediaId);
 
-  const res = await fetch(CORS_PROXY_URL + getTheFlixUrl(media, params)).then(
-    (d) => d.text()
-  );
+  const res = await fetch(
+    conf().CORS_PROXY_URL + getTheFlixUrl(media, params)
+  ).then((d) => d.text());
 
   const node: Element = Array.from(
     new DOMParser()

@@ -1,4 +1,4 @@
-import { CORS_PROXY_URL } from "@/mw_constants";
+import { conf } from "@/config";
 import { MWMediaType, MWProviderMediaResult, MWQuery } from "@/providers";
 
 const getTheFlixUrl = (type: "tv-shows" | "movies", params: URLSearchParams) =>
@@ -8,7 +8,7 @@ export function searchTheFlix(query: MWQuery): Promise<string> {
   const params = new URLSearchParams();
   params.append("search", query.searchQuery);
   return fetch(
-    CORS_PROXY_URL +
+    conf().CORS_PROXY_URL +
       getTheFlixUrl(
         query.type === MWMediaType.MOVIE ? "movies" : "tv-shows",
         params

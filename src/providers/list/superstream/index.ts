@@ -4,7 +4,7 @@
 import { customAlphabet } from "nanoid";
 import toWebVTT from "srt-webvtt";
 import CryptoJS from "crypto-js";
-import { CORS_PROXY_URL, TMDB_API_KEY } from "@/mw_constants";
+import { conf } from "@/config";
 import {
   MWMediaProvider,
   MWMediaType,
@@ -85,7 +85,7 @@ const get = (data: object, altApi = false) => {
   formatted.append("medium", "Website");
 
   const requestUrl = altApi ? apiUrls[1] : apiUrls[0];
-  return fetch(`${CORS_PROXY_URL}${requestUrl}`, {
+  return fetch(`${conf().CORS_PROXY_URL}${requestUrl}`, {
     method: "POST",
     headers: {
       Platform: "android",
@@ -200,7 +200,7 @@ export const superStreamScraper: MWMediaProvider = {
       const mappedCaptions = await Promise.all(
         subtitleRes.list.map(async (subtitle: any) => {
           const captionBlob = await fetch(
-            `${CORS_PROXY_URL}${subtitle.subtitles[0].file_path}`
+            `${conf().CORS_PROXY_URL}${subtitle.subtitles[0].file_path}`
           ).then((captionRes) => captionRes.blob()); // cross-origin bypass
           const captionUrl = await toWebVTT(captionBlob); // convert to vtt so it's playable
           return {
@@ -253,7 +253,7 @@ export const superStreamScraper: MWMediaProvider = {
     const mappedCaptions = await Promise.all(
       subtitleRes.list.map(async (subtitle: any) => {
         const captionBlob = await fetch(
-          `${CORS_PROXY_URL}${subtitle.subtitles[0].file_path}`
+          `${conf().CORS_PROXY_URL}${subtitle.subtitles[0].file_path}`
         ).then((captionRes) => captionRes.blob()); // cross-origin bypass
         const captionUrl = await toWebVTT(captionBlob); // convert to vtt so it's playable
         return {
@@ -277,11 +277,15 @@ export const superStreamScraper: MWMediaProvider = {
     const detailRes = (await get(apiQuery, true).then((r) => r.json())).data;
     const firstSearchResult = (
       await fetch(
-        `https://api.themoviedb.org/3/search/tv?api_key=${TMDB_API_KEY}&language=en-US&page=1&query=${detailRes.title}&include_adult=false`
+        `https://api.themoviedb.org/3/search/tv?api_key=${
+          conf().TMDB_API_KEY
+        }&language=en-US&page=1&query=${detailRes.title}&include_adult=false`
       ).then((r) => r.json())
     ).results[0];
     const showDetails = await fetch(
-      `https://api.themoviedb.org/3/tv/${firstSearchResult.id}?api_key=${TMDB_API_KEY}`
+      `https://api.themoviedb.org/3/tv/${firstSearchResult.id}?api_key=${
+        conf().TMDB_API_KEY
+      }`
     ).then((r) => r.json());
 
     return {
