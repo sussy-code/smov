@@ -73,10 +73,6 @@ This project would not be possible without our amazing contributors and the comm
 </div>
 
 <div style="display:flex;align-items:center;grid-gap:10px">
-<img src="https://github.com/JoshHeng.png?size=20" width="20"><span><a href="https://github.com/JoshHeng">@JoshHeng</a> for the Cloudflare CORS Proxy and URL routing.</span>
-</div>
-
-<div style="display:flex;align-items:center;grid-gap:10px">
 <img src="https://github.com/binaryoverload.png?size=20" width="20"><span><a href="https://github.com/binaryoverload">@binaryoverload</a> for help rewriting the application into React and making the README look ✨ pretty ✨.</span>
 </div>
 
