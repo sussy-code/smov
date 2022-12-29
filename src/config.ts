@@ -1,12 +1,16 @@
 import { APP_VERSION, GITHUB_LINK, DISCORD_LINK } from "@/constants";
 
-export interface Config {
+interface Config {
   APP_VERSION: string;
   GITHUB_LINK: string;
   DISCORD_LINK: string;
   OMDB_API_KEY: string;
   TMDB_API_KEY: string;
   CORS_PROXY_URL: string;
+}
+
+export interface RuntimeConfig extends Config {
+  BASE_PROXY_URL: string;
 }
 
 const env: Record<keyof Config, undefined | string> = {
@@ -38,13 +42,14 @@ function getKey(key: keyof Config): string {
   return value;
 }
 
-export function conf(): Config {
+export function conf(): RuntimeConfig {
   return {
     APP_VERSION,
     GITHUB_LINK,
     DISCORD_LINK,
     OMDB_API_KEY: getKey("OMDB_API_KEY"),
     TMDB_API_KEY: getKey("TMDB_API_KEY"),
+    BASE_PROXY_URL: getKey("CORS_PROXY_URL"),
     CORS_PROXY_URL: `${getKey("CORS_PROXY_URL")}/?destination=`,
   };
 }
