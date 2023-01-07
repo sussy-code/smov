@@ -26,7 +26,7 @@ export function SearchView() {
         <ThinContainer>
           <div className="mt-44 space-y-16 text-center">
             <div className="absolute left-0 bottom-0 right-0 flex h-0 justify-center">
-              <div className="absolute bottom-4 h-[100vh] w-[300vh] rounded-[100%] bg-denim-300" />
+              <div className="absolute bottom-4 h-[100vh] w-[3000px] rounded-[100%] bg-denim-300 md:w-[200vw]" />
             </div>
             <div className="relative z-20">
               <div className="mb-16">
