@@ -157,19 +157,19 @@ export function versionedStoreBuilder(): any {
         version, // version number
         update: migrate
           ? (data: any) => {
-            // update function, and increment version
-            const newData = migrate(data);
-            newData["--version"] = version; // eslint-disable-line no-param-reassign
-            return newData;
-          }
+              // update function, and increment version
+              const newData = migrate(data);
+              newData["--version"] = version; // eslint-disable-line no-param-reassign
+              return newData;
+            }
           : undefined,
         init: create
           ? () => {
-            // return an initial object
-            const data = create();
-            data["--version"] = version;
-            return data;
-          }
+              // return an initial object
+              const data = create();
+              data["--version"] = version;
+              return data;
+            }
           : undefined,
       };
       return this;

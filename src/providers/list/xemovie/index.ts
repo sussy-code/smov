@@ -8,7 +8,7 @@ import {
   MWMediaCaption,
 } from "@/providers/types";
 
-import { conf } from "@/config";
+import { conf } from "@/setup/config";
 
 export const xemovieScraper: MWMediaProvider = {
   id: "xemovie",

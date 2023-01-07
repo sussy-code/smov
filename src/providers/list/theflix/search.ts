@@ -1,4 +1,4 @@
-import { conf } from "@/config";
+import { conf } from "@/setup/config";
 import { MWMediaType, MWProviderMediaResult, MWQuery } from "@/providers";
 
 const getTheFlixUrl = (type: "tv-shows" | "movies", params: URLSearchParams) =>

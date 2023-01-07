@@ -120,7 +120,7 @@ function LoadingMediaFooter(props: { error?: boolean }) {
           {props.error ? (
             <div className="flex items-center space-x-3">
               <IconPatch icon={Icons.WARNING} className="text-red-400" />
-              <p>{t('media.invalidUrl')}</p>
+              <p>{t("media.invalidUrl")}</p>
             </div>
           ) : (
             <LoadingSeasons />
@@ -200,7 +200,7 @@ export function MediaView() {
               : reactHistory.push("/")
           }
           direction="left"
-          linkText={t('media.arrowText')}
+          linkText={t("media.arrowText")}
         />
       </Navigation>
       <NotFoundChecks portable={mediaPortable}>

@@ -15,7 +15,7 @@ import {
 } from "@/providers/list/theflix/search";
 
 import { getDataFromPortableSearch } from "@/providers/list/theflix/portableToMedia";
-import { conf } from "@/config";
+import { conf } from "@/setup/config";
 
 export const theFlixScraper: MWMediaProvider = {
   id: "theflix",

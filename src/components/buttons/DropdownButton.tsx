@@ -6,7 +6,11 @@ import React, {
 } from "react";
 import { Icon, Icons } from "@/components/Icon";
 
-import { Backdrop, useBackdrop } from "@/components/layout/Backdrop";
+import {
+  Backdrop,
+  BackdropContainer,
+  useBackdrop,
+} from "@/components/layout/Backdrop";
 import { ButtonControlProps, ButtonControl } from "./ButtonControl";
 
 export interface OptionItem {
@@ -56,7 +60,7 @@ export const DropdownButton = React.forwardRef<
   );
 
   useEffect(() => {
-    let id: NodeJS.Timeout;
+    let id: ReturnType<typeof setTimeout>;
 
     if (props.open) {
       setDelayedSelectedId(props.selectedItem);
@@ -93,37 +97,43 @@ export const DropdownButton = React.forwardRef<
         className="relative w-full sm:w-auto"
         {...highlightedProps}
       >
-        <ButtonControl
-          {...props}
-          className="sm:justify-left relative z-20 flex h-10 w-full items-center justify-center space-x-2 rounded-[20px] bg-bink-200 px-4 py-2 text-white hover:bg-bink-300"
+        <BackdropContainer
+          onClick={() => props.setOpen(false)}
+          {...backdropProps}
         >
-          <Icon icon={selectedItem.icon} />
-          <span className="flex-1">{selectedItem.name}</span>
-          <Icon
-            icon={Icons.CHEVRON_DOWN}
-            className={`transition-transform ${props.open ? "rotate-180" : ""}`}
-          />
-        </ButtonControl>
-        <div
-          className={`absolute top-0 z-10 w-full rounded-[20px] bg-denim-300 pt-[40px] transition-all duration-200 ${
-            props.open
-              ? "block max-h-60 opacity-100"
-              : "invisible max-h-0 opacity-0"
-          }`}
-        >
-          {props.options
-            .filter((opt) => opt.id !== delayedSelectedId)
-            .map((opt) => (
-              <Option
-                option={opt}
-                key={opt.id}
-                onClick={(e) => onOptionClick(e, opt)}
-                tabIndex={props.open ? 0 : undefined}
-              />
-            ))}
-        </div>
+          <ButtonControl
+            {...props}
+            className="sm:justify-left relative z-20 flex h-10 w-full items-center justify-center space-x-2 rounded-[20px] bg-bink-400 px-4 py-2 text-white hover:bg-bink-300"
+          >
+            <Icon icon={selectedItem.icon} />
+            <span className="flex-1">{selectedItem.name}</span>
+            <Icon
+              icon={Icons.CHEVRON_DOWN}
+              className={`transition-transform ${
+                props.open ? "rotate-180" : ""
+              }`}
+            />
+          </ButtonControl>
+          <div
+            className={`absolute top-0 z-10 w-full rounded-[20px] bg-denim-300 pt-[40px] transition-all duration-200 ${
+              props.open
+                ? "block max-h-60 opacity-100"
+                : "invisible max-h-0 opacity-0"
+            }`}
+          >
+            {props.options
+              .filter((opt) => opt.id !== delayedSelectedId)
+              .map((opt) => (
+                <Option
+                  option={opt}
+                  key={opt.id}
+                  onClick={(e) => onOptionClick(e, opt)}
+                  tabIndex={props.open ? 0 : undefined}
+                />
+              ))}
+          </div>
+        </BackdropContainer>
       </div>
-      <Backdrop onClick={() => props.setOpen(false)} {...backdropProps} />
     </div>
   );
 });

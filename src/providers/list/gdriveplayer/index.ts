@@ -9,7 +9,7 @@ import {
   MWProviderMediaResult,
 } from "@/providers/types";
 
-import { conf } from "@/config";
+import { conf } from "@/setup/config";
 
 const format = {
   stringify: (cipher: any) => {

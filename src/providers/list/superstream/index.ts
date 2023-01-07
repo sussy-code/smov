@@ -4,7 +4,7 @@
 import { customAlphabet } from "nanoid";
 import toWebVTT from "srt-webvtt";
 import CryptoJS from "crypto-js";
-import { conf } from "@/config";
+import { conf } from "@/setup/config";
 import {
   MWMediaProvider,
   MWMediaType,

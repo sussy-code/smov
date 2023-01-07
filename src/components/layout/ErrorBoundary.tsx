@@ -3,7 +3,7 @@ import { IconPatch } from "@/components/buttons/IconPatch";
 import { Icons } from "@/components/Icon";
 import { Link } from "@/components/text/Link";
 import { Title } from "@/components/text/Title";
-import { conf } from "@/config";
+import { conf } from "@/setup/config";
 
 interface ErrorBoundaryState {
   hasError: boolean;

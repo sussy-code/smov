@@ -26,11 +26,9 @@ export function NotFoundMedia() {
         icon={Icons.EYE_SLASH}
         className="mb-6 text-xl text-bink-600"
       />
-      <Title>{t('notFound.media.title')}</Title>
-      <p className="mt-5 mb-12 max-w-sm">
-        {t('notFound.media.description')}
-      </p>
-      <ArrowLink to="/" linkText={t('notFound.backArrow')} />
+      <Title>{t("notFound.media.title")}</Title>
+      <p className="mt-5 mb-12 max-w-sm">{t("notFound.media.description")}</p>
+      <ArrowLink to="/" linkText={t("notFound.backArrow")} />
     </div>
   );
 }
@@ -44,11 +42,11 @@ export function NotFoundProvider() {
         icon={Icons.EYE_SLASH}
         className="mb-6 text-xl text-bink-600"
       />
-      <Title>{t('notFound.provider.title')}</Title>
+      <Title>{t("notFound.provider.title")}</Title>
       <p className="mt-5 mb-12 max-w-sm">
-        {t('notFound.provider.description')}
+        {t("notFound.provider.description")}
       </p>
-      <ArrowLink to="/" linkText={t('notFound.backArrow')} />
+      <ArrowLink to="/" linkText={t("notFound.backArrow")} />
     </div>
   );
 }
@@ -62,11 +60,9 @@ export function NotFoundPage() {
         icon={Icons.EYE_SLASH}
         className="mb-6 text-xl text-bink-600"
       />
-      <Title>{t('notFound.page.title')}</Title>
-      <p className="mt-5 mb-12 max-w-sm">
-        {t('notFound.page.description')}
-      </p>
-      <ArrowLink to="/" linkText={t('notFound.backArrow')} />
+      <Title>{t("notFound.page.title")}</Title>
+      <p className="mt-5 mb-12 max-w-sm">{t("notFound.page.description")}</p>
+      <ArrowLink to="/" linkText={t("notFound.backArrow")} />
     </NotFoundWrapper>
   );
 }

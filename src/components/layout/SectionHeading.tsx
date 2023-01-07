@@ -1,13 +1,10 @@
 import { ReactNode } from "react";
 import { Icon, Icons } from "@/components/Icon";
-import { ArrowLink } from "@/components/text/ArrowLink";
 
 interface SectionHeadingProps {
   icon?: Icons;
   title: string;
   children?: ReactNode;
-  linkText?: string;
-  onClick?: () => void;
   className?: string;
 }
 
@@ -23,13 +20,6 @@ export function SectionHeading(props: SectionHeadingProps) {
           ) : null}
           {props.title}
         </p>
-        {props.linkText ? (
-          <ArrowLink
-            linkText={props.linkText}
-            direction="left"
-            onClick={props.onClick}
-          />
-        ) : null}
       </div>
       {props.children}
     </div>

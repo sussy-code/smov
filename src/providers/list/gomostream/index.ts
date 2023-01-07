@@ -9,7 +9,7 @@ import {
   MWProviderMediaResult,
 } from "@/providers/types";
 
-import { conf } from "@/config";
+import { conf } from "@/setup/config";
 
 export const gomostreamScraper: MWMediaProvider = {
   id: "gomostream",

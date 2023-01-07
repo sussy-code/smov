@@ -1,4 +1,4 @@
-import { conf } from "@/config";
+import { conf } from "@/setup/config";
 import { MWMediaType, MWPortableMedia } from "@/providers/types";
 
 const getTheFlixUrl = (media: MWPortableMedia, params?: URLSearchParams) => {

@@ -1,11 +1,12 @@
 import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 import { HashRouter } from "react-router-dom";
-import "./index.css";
 import { ErrorBoundary } from "@/components/layout/ErrorBoundary";
-import App from "./App";
-import "./i18n";
-import { conf } from "./config";
+import { conf } from "@/setup/config";
+
+import App from "@/setup/App";
+import "@/setup/i18n";
+import "@/setup/index.css";
 
 // initialize
 const key =
