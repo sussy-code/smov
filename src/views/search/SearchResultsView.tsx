@@ -20,7 +20,7 @@ function SearchSuffix(props: {
   const icon: Icons = allFailed ? Icons.WARNING : Icons.EYE_SLASH;
 
   return (
-    <div className="mt-40 flex flex-col items-center justify-center space-y-3 text-center">
+    <div className="mt-40 mb-24  flex flex-col items-center justify-center space-y-3 text-center">
       <IconPatch
         icon={icon}
         className={`text-xl ${allFailed ? "text-red-400" : "text-bink-600"}`}
