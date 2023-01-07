@@ -1,5 +1,6 @@
 import { Icons } from "@/components/Icon";
 import { SectionHeading } from "@/components/layout/SectionHeading";
+import { MediaGrid } from "@/components/media/MediaGrid";
 import { WatchedMediaCard } from "@/components/media/WatchedMediaCard";
 import {
   getIfBookmarkedFromPortable,
@@ -20,9 +21,14 @@ function Bookmarks() {
       title={t("search.bookmarks") || "Bookmarks"}
       icon={Icons.BOOKMARK}
     >
-      {bookmarks.map((v) => (
-        <WatchedMediaCard key={[v.mediaId, v.providerId].join("|")} media={v} />
-      ))}
+      <MediaGrid>
+        {bookmarks.map((v) => (
+          <WatchedMediaCard
+            key={[v.mediaId, v.providerId].join("|")}
+            media={v}
+          />
+        ))}
+      </MediaGrid>
     </SectionHeading>
   );
 }
@@ -44,13 +50,15 @@ function Watched() {
       title={t("search.continueWatching") || "Continue Watching"}
       icon={Icons.CLOCK}
     >
-      {watchedItems.map((v) => (
-        <WatchedMediaCard
-          key={[v.mediaId, v.providerId].join("|")}
-          media={v}
-          series
-        />
-      ))}
+      <MediaGrid>
+        {watchedItems.map((v) => (
+          <WatchedMediaCard
+            key={[v.mediaId, v.providerId].join("|")}
+            media={v}
+            series
+          />
+        ))}
+      </MediaGrid>
     </SectionHeading>
   );
 }

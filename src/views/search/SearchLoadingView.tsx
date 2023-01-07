@@ -5,7 +5,7 @@ export function SearchLoadingView() {
   const { t } = useTranslation();
   return (
     <Loading
-      className="my-24"
+      className="mt-40"
       text={t("search.loading") || "Fetching your favourite shows..."}
     />
   );

@@ -1,6 +1,7 @@
 import { IconPatch } from "@/components/buttons/IconPatch";
 import { Icons } from "@/components/Icon";
 import { SectionHeading } from "@/components/layout/SectionHeading";
+import { MediaGrid } from "@/components/media/MediaGrid";
 import { WatchedMediaCard } from "@/components/media/WatchedMediaCard";
 import { useLoading } from "@/hooks/useLoading";
 import { MWMassProviderOutput, MWQuery, SearchProviders } from "@/providers";
@@ -19,7 +20,7 @@ function SearchSuffix(props: {
   const icon: Icons = allFailed ? Icons.WARNING : Icons.EYE_SLASH;
 
   return (
-    <div className="my-24 flex flex-col items-center justify-center space-y-3 text-center">
+    <div className="mt-40 flex flex-col items-center justify-center space-y-3 text-center">
       <IconPatch
         icon={icon}
         className={`text-xl ${allFailed ? "text-red-400" : "text-bink-600"}`}
@@ -83,12 +84,14 @@ export function SearchResultsView({ searchQuery }: { searchQuery: MWQuery }) {
           title={t("search.headingTitle") || "Search results"}
           icon={Icons.SEARCH}
         >
-          {results.results.map((v) => (
-            <WatchedMediaCard
-              key={[v.mediaId, v.providerId].join("|")}
-              media={v}
-            />
-          ))}
+          <MediaGrid>
+            {results.results.map((v) => (
+              <WatchedMediaCard
+                key={[v.mediaId, v.providerId].join("|")}
+                media={v}
+              />
+            ))}
+          </MediaGrid>
         </SectionHeading>
       ) : null}
 

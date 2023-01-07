@@ -40,7 +40,7 @@ export function useBackdrop(): [
   return [setBackdrop, backdropProps, highlightedProps];
 }
 
-export function Backdrop(props: BackdropProps) {
+function Backdrop(props: BackdropProps) {
   const clickEvent = props.onClick || (() => {});
   const animationEvent = props.onBackdropHide || (() => {});
   const [isVisible, setVisible, fadeProps] = useFade();
@@ -59,7 +59,7 @@ export function Backdrop(props: BackdropProps) {
 
   return (
     <div
-      className={`fixed left-0 right-0 top-0 h-screen w-screen bg-black bg-opacity-50 opacity-100 transition-opacity ${
+      className={`pointer-events-auto fixed left-0 right-0 top-0 h-screen w-screen bg-black bg-opacity-50 opacity-100 transition-opacity ${
         !isVisible ? "opacity-0" : ""
       }`}
       {...fadeProps}
@@ -99,9 +99,9 @@ export function BackdropContainer(
   return (
     <div ref={root}>
       {createPortal(
-        <div className="absolute top-0 left-0 z-[999]">
+        <div className="pointer-events-none fixed top-0 left-0 z-[999]">
           <Backdrop active={props.active} {...props} />
-          <div ref={copy} className="absolute">
+          <div ref={copy} className="pointer-events-auto absolute">
             {props.children}
           </div>
         </div>,

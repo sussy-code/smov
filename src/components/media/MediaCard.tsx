@@ -5,23 +5,20 @@ import {
   MWMediaMeta,
   MWMediaType,
 } from "@/providers";
-import { Icon, Icons } from "@/components/Icon";
 import { serializePortableMedia } from "@/hooks/usePortableMedia";
 import { DotList } from "@/components/text/DotList";
 
 export interface MediaCardProps {
   media: MWMediaMeta;
+  // eslint-disable-next-line react/no-unused-prop-types
   watchedPercentage: number;
   linkable?: boolean;
   series?: boolean;
 }
 
-function MediaCardContent({
-  media,
-  linkable,
-  watchedPercentage,
-  series,
-}: MediaCardProps) {
+// TODO add progress back
+
+function MediaCardContent({ media, series, linkable }: MediaCardProps) {
   const provider = getProviderFromId(media.providerId);
 
   if (!provider) {
@@ -29,52 +26,31 @@ function MediaCardContent({
   }
 
   return (
-    <article
-      className={`group relative mb-4 flex overflow-hidden rounded bg-denim-300 py-4 px-5 ${
-        linkable ? "hover:bg-denim-400" : ""
+    <div
+      className={`group -m-3 mb-2 rounded-xl bg-denim-300 bg-opacity-0 transition-colors duration-100 ${
+        linkable ? "hover:bg-opacity-100" : ""
       }`}
     >
-      {/* progress background */}
-      {watchedPercentage > 0 ? (
-        <div className="absolute top-0 left-0 right-0 bottom-0">
-          <div
-            className="relative h-full bg-bink-300 bg-opacity-30"
-            style={{
-              width: `${watchedPercentage}%`,
-            }}
-          >
-            <div className="absolute right-0 top-0 bottom-0 ml-auto w-40 bg-gradient-to-l from-bink-400 to-transparent opacity-40" />
-          </div>
-        </div>
-      ) : null}
-
-      <div className="relative flex flex-1">
-        {/* card content */}
-        <div className="flex-1">
-          <h1 className="mb-1 font-bold text-white">
-            {media.title}
-            {series && media.seasonId && media.episodeId ? (
-              <span className="ml-2 text-xs text-denim-700">
-                S{media.seasonId} E{media.episodeId}
-              </span>
-            ) : null}
-          </h1>
-          <DotList
-            className="text-xs"
-            content={[provider.displayName, media.mediaType, media.year]}
-          />
-        </div>
-
-        {/* hoverable chevron */}
-        <div
-          className={`flex translate-x-3 items-center justify-end text-xl text-white opacity-0 transition-[opacity,transform] ${
-            linkable ? "group-hover:translate-x-0 group-hover:opacity-100" : ""
-          }`}
-        >
-          <Icon icon={Icons.CHEVRON_RIGHT} />
-        </div>
-      </div>
-    </article>
+      <article
+        className={`relative mb-2 p-3 transition-transform duration-100 ${
+          linkable ? "group-hover:scale-95" : ""
+        }`}
+      >
+        <div className="mb-4 aspect-[2/3] w-full rounded-xl bg-denim-500" />
+        <h1 className="mb-1 max-h-[4.5rem] text-ellipsis break-words font-bold text-white line-clamp-3">
+          <span>{media.title}</span>
+          {series && media.seasonId && media.episodeId ? (
+            <span className="ml-2 text-xs text-denim-700">
+              S{media.seasonId} E{media.episodeId}
+            </span>
+          ) : null}
+        </h1>
+        <DotList
+          className="text-xs"
+          content={[provider.displayName, media.mediaType, media.year]}
+        />
+      </article>
+    </div>
   );
 }
 
