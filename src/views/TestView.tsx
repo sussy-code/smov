@@ -20,6 +20,8 @@ import { VideoPlayer } from "@/components/video/VideoPlayer";
 //  - improve pausing while seeking/buffering
 //  - captions
 //  - show formatted time
+//  - IOS support: (no volume, fullscreen video element instead of wrapper)
+//  - IpadOS support: (fullscreen video wrapper should work, see (lookmovie.io) )
 export function TestView() {
   return (
     <div className="w-[40rem] max-w-full">
