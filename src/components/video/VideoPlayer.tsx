@@ -9,7 +9,7 @@ const VideoPlayerInternals = forwardRef<HTMLVideoElement>((_, ref) => {
   const video = useContext(VideoPlayerContext);
 
   return (
-    <video ref={ref} className="h-full w-full">
+    <video ref={ref} preload="auto" playsInline className="h-full w-full">
       {video.source ? <source src={video.source} type="video/mp4" /> : null}
     </video>
   );

@@ -4,12 +4,17 @@ import {
   PlayerControls,
   populateControls,
 } from "./controlVideo";
+import { handleBuffered } from "./utils";
 
 export type PlayerState = {
   isPlaying: boolean;
   isPaused: boolean;
   isSeeking: boolean;
   isFullscreen: boolean;
+  time: number;
+  duration: number;
+  volume: number;
+  buffered: number;
 } & PlayerControls;
 
 export const initialPlayerState: PlayerState = {
@@ -17,6 +22,10 @@ export const initialPlayerState: PlayerState = {
   isPaused: true,
   isFullscreen: false,
   isSeeking: false,
+  time: 0,
+  duration: 0,
+  volume: 0,
+  buffered: 0,
   ...initialControls,
 };
 
@@ -30,26 +39,77 @@ function readState(player: HTMLVideoElement, update: SetPlayer) {
   state.isPlaying = !player.paused;
   state.isFullscreen = !!document.fullscreenElement;
   state.isSeeking = player.seeking;
+  state.time = player.currentTime;
+  state.duration = player.duration;
+  state.volume = player.volume;
+  state.buffered = handleBuffered(player.currentTime, player.buffered);
 
   update(state);
 }
 
 function registerListeners(player: HTMLVideoElement, update: SetPlayer) {
-  player.addEventListener("pause", () => {
+  const pause = () => {
     update((s) => ({ ...s, isPaused: true, isPlaying: false }));
-  });
-  player.addEventListener("play", () => {
+  };
+  const play = () => {
     update((s) => ({ ...s, isPaused: false, isPlaying: true }));
-  });
-  player.addEventListener("seeking", () => {
+  };
+  const seeking = () => {
     update((s) => ({ ...s, isSeeking: true }));
-  });
-  player.addEventListener("seeked", () => {
+  };
+  const seeked = () => {
     update((s) => ({ ...s, isSeeking: false }));
-  });
-  document.addEventListener("fullscreenchange", () => {
+  };
+  const fullscreenchange = () => {
     update((s) => ({ ...s, isFullscreen: !!document.fullscreenElement }));
-  });
+  };
+  const timeupdate = () => {
+    update((s) => ({
+      ...s,
+      duration: player.duration,
+      time: player.currentTime,
+    }));
+  };
+  const loadedmetadata = () => {
+    update((s) => ({
+      ...s,
+      duration: player.duration,
+    }));
+  };
+  const volumechange = () => {
+    update((s) => ({
+      ...s,
+      volume: player.volume,
+    }));
+  };
+  const progress = () => {
+    update((s) => ({
+      ...s,
+      buffered: handleBuffered(player.currentTime, player.buffered),
+    }));
+  };
+
+  player.addEventListener("pause", pause);
+  player.addEventListener("play", play);
+  player.addEventListener("seeking", seeking);
+  player.addEventListener("seeked", seeked);
+  document.addEventListener("fullscreenchange", fullscreenchange);
+  player.addEventListener("timeupdate", timeupdate);
+  player.addEventListener("loadedmetadata", loadedmetadata);
+  player.addEventListener("volumechange", volumechange);
+  player.addEventListener("progress", progress);
+
+  return () => {
+    player.removeEventListener("pause", pause);
+    player.removeEventListener("play", play);
+    player.removeEventListener("seeking", seeking);
+    player.removeEventListener("seeked", seeked);
+    document.removeEventListener("fullscreenchange", fullscreenchange);
+    player.removeEventListener("timeupdate", timeupdate);
+    player.removeEventListener("loadedmetadata", loadedmetadata);
+    player.removeEventListener("volumechange", volumechange);
+    player.removeEventListener("progress", progress);
+  };
 }
 
 export function useVideoPlayer(

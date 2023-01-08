@@ -9,7 +9,7 @@ export function PauseControl() {
     else videoState.play();
   }, [videoState]);
 
-  let text =
+  const text =
     videoState.isPlaying || videoState.isSeeking ? "playing" : "paused";
 
   return (
