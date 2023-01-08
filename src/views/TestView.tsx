@@ -22,6 +22,7 @@ import { VideoPlayer } from "@/components/video/VideoPlayer";
 //  - show formatted time
 //  - IOS support: (no volume, fullscreen video element instead of wrapper)
 //  - IpadOS support: (fullscreen video wrapper should work, see (lookmovie.io) )
+//  - HLS support: feature detection otherwise use HLS.js
 export function TestView() {
   return (
     <div className="w-[40rem] max-w-full">
