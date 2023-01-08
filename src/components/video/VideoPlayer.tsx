@@ -1,7 +1,7 @@
 import { forwardRef, useContext, useRef } from "react";
 import { VideoPlayerContext, VideoPlayerContextProvider } from "./VideoContext";
 
-interface VideoPlayerProps {
+export interface VideoPlayerProps {
   autoPlay?: boolean;
   children?: React.ReactNode;
 }
