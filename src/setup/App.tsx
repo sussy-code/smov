@@ -6,6 +6,7 @@ import { WatchedContextProvider } from "@/state/watched";
 import { NotFoundPage } from "@/views/notfound/NotFoundView";
 import { MediaView } from "@/views/MediaView";
 import { SearchView } from "@/views/search/SearchView";
+import { TestView } from "@/views/TestView";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route exact path="/media/movie/:media" component={MediaView} />
           <Route exact path="/media/series/:media" component={MediaView} />
           <Route exact path="/search/:type/:query?" component={SearchView} />
+          <Route exact path="/test" component={TestView} />
           <Route path="*" component={NotFoundPage} />
         </Switch>
       </BookmarkContextProvider>
