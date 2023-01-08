@@ -9,11 +9,15 @@ export function PauseControl() {
     else videoState.play();
   }, [videoState]);
 
-  let text = "paused";
-  if (videoState?.isPlaying) text = "playing";
+  let text =
+    videoState.isPlaying || videoState.isSeeking ? "playing" : "paused";
 
   return (
-    <button type="button" onClick={handleClick}>
+    <button
+      className="m-1 rounded bg-denim-100 p-1 text-white hover:opacity-75"
+      type="button"
+      onClick={handleClick}
+    >
       {text}
     </button>
   );

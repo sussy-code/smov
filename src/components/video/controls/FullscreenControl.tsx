@@ -1,27 +1,24 @@
-// import { useCallback, useContext } from "react";
-// import {
-//   VideoPlayerContext,
-//   VideoPlayerDispatchContext,
-// } from "../VideoContext";
+import { useCallback } from "react";
+import { useVideoPlayerState } from "../VideoContext";
 
 export function FullscreenControl() {
-  return <p>Hello world</p>;
-  // const dispatch = useContext(VideoPlayerDispatchContext);
-  // const video = useContext(VideoPlayerContext);
+  const { videoState } = useVideoPlayerState();
 
-  // const handleClick = useCallback(() => {
-  //   dispatch({
-  //     type: "FULLSCREEN",
-  //     do: video.fullscreen ? "EXIT" : "ENTER",
-  //   });
-  // }, [video, dispatch]);
+  const handleClick = useCallback(() => {
+    if (videoState.isFullscreen) videoState.exitFullscreen();
+    else videoState.enterFullscreen();
+  }, [videoState]);
 
-  // let text = "not fullscreen";
-  // if (video.fullscreen) text = "in fullscreen";
+  let text = "not fullscreen";
+  if (videoState.isFullscreen) text = "in fullscreen";
 
-  // return (
-  //   <button type="button" onClick={handleClick}>
-  //     {text}
-  //   </button>
-  // );
+  return (
+    <button
+      className="m-1 rounded bg-denim-100 p-1 text-white hover:opacity-75"
+      type="button"
+      onClick={handleClick}
+    >
+      {text}
+    </button>
+  );
 }

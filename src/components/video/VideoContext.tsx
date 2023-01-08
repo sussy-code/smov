@@ -53,8 +53,9 @@ export const VideoPlayerDispatchContext = createContext<
 export function VideoPlayerContextProvider(props: {
   children: React.ReactNode;
   player: MutableRefObject<HTMLVideoElement | null>;
+  wrapper: MutableRefObject<HTMLDivElement | null>;
 }) {
-  const { playerState } = useVideoPlayer(props.player);
+  const { playerState } = useVideoPlayer(props.player, props.wrapper);
   const [videoData, dispatch] = useReducer<typeof videoPlayerContextReducer>(
     videoPlayerContextReducer,
     initial

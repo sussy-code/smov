@@ -7,10 +7,12 @@ import { VideoPlayer } from "@/components/video/VideoPlayer";
 
 export function TestView() {
   return (
-    <VideoPlayer>
-      <PauseControl />
-      <FullscreenControl />
-      <SourceControl source="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" />
-    </VideoPlayer>
+    <div className="w-[40rem] max-w-full">
+      <VideoPlayer>
+        <PauseControl />
+        <FullscreenControl />
+        <SourceControl source="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" />
+      </VideoPlayer>
+    </div>
   );
 }
