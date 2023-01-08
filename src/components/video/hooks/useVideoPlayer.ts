@@ -10,6 +10,7 @@ export type PlayerState = {
   isPlaying: boolean;
   isPaused: boolean;
   isSeeking: boolean;
+  isLoading: boolean;
   isFullscreen: boolean;
   time: number;
   duration: number;
@@ -21,6 +22,7 @@ export const initialPlayerState: PlayerState = {
   isPlaying: false,
   isPaused: true,
   isFullscreen: false,
+  isLoading: false,
   isSeeking: false,
   time: 0,
   duration: 0,
@@ -43,22 +45,35 @@ function readState(player: HTMLVideoElement, update: SetPlayer) {
   state.duration = player.duration;
   state.volume = player.volume;
   state.buffered = handleBuffered(player.currentTime, player.buffered);
+  state.isLoading = false;
 
   update(state);
 }
 
 function registerListeners(player: HTMLVideoElement, update: SetPlayer) {
   const pause = () => {
-    update((s) => ({ ...s, isPaused: true, isPlaying: false }));
+    update((s) => ({
+      ...s,
+      isPaused: true,
+      isPlaying: false,
+    }));
   };
-  const play = () => {
-    update((s) => ({ ...s, isPaused: false, isPlaying: true }));
+  const playing = () => {
+    update((s) => ({
+      ...s,
+      isPaused: false,
+      isPlaying: true,
+      isLoading: false,
+    }));
   };
   const seeking = () => {
     update((s) => ({ ...s, isSeeking: true }));
   };
   const seeked = () => {
     update((s) => ({ ...s, isSeeking: false }));
+  };
+  const waiting = () => {
+    update((s) => ({ ...s, isLoading: true }));
   };
   const fullscreenchange = () => {
     update((s) => ({ ...s, isFullscreen: !!document.fullscreenElement }));
@@ -90,7 +105,7 @@ function registerListeners(player: HTMLVideoElement, update: SetPlayer) {
   };
 
   player.addEventListener("pause", pause);
-  player.addEventListener("play", play);
+  player.addEventListener("playing", playing);
   player.addEventListener("seeking", seeking);
   player.addEventListener("seeked", seeked);
   document.addEventListener("fullscreenchange", fullscreenchange);
@@ -98,10 +113,11 @@ function registerListeners(player: HTMLVideoElement, update: SetPlayer) {
   player.addEventListener("loadedmetadata", loadedmetadata);
   player.addEventListener("volumechange", volumechange);
   player.addEventListener("progress", progress);
+  player.addEventListener("waiting", waiting);
 
   return () => {
     player.removeEventListener("pause", pause);
-    player.removeEventListener("play", play);
+    player.removeEventListener("playing", playing);
     player.removeEventListener("seeking", seeking);
     player.removeEventListener("seeked", seeked);
     document.removeEventListener("fullscreenchange", fullscreenchange);
@@ -109,6 +125,7 @@ function registerListeners(player: HTMLVideoElement, update: SetPlayer) {
     player.removeEventListener("loadedmetadata", loadedmetadata);
     player.removeEventListener("volumechange", volumechange);
     player.removeEventListener("progress", progress);
+    player.removeEventListener("waiting", waiting);
   };
 }
 
