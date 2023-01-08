@@ -2,14 +2,23 @@ import { forwardRef, useContext, useRef } from "react";
 import { VideoPlayerContext, VideoPlayerContextProvider } from "./VideoContext";
 
 interface VideoPlayerProps {
+  autoPlay?: boolean;
   children?: React.ReactNode;
 }
 
-const VideoPlayerInternals = forwardRef<HTMLVideoElement>((_, ref) => {
+const VideoPlayerInternals = forwardRef<
+  HTMLVideoElement,
+  { autoPlay: boolean }
+>((props, ref) => {
   const video = useContext(VideoPlayerContext);
 
   return (
-    <video ref={ref} preload="auto" playsInline className="h-full w-full">
+    <video
+      ref={ref}
+      autoPlay={props.autoPlay}
+      playsInline
+      className="h-full w-full"
+    >
       {video.source ? <source src={video.source} type="video/mp4" /> : null}
     </video>
   );
@@ -25,7 +34,10 @@ export function VideoPlayer(props: VideoPlayerProps) {
         className="relative aspect-video w-full bg-black"
         ref={playerWrapperRef}
       >
-        <VideoPlayerInternals ref={playerRef} />
+        <VideoPlayerInternals
+          autoPlay={props.autoPlay ?? false}
+          ref={playerRef}
+        />
         <div className="absolute inset-0">{props.children}</div>
       </div>
     </VideoPlayerContextProvider>

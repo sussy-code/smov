@@ -1,6 +1,8 @@
 import { useCallback } from "react";
 import { useVideoPlayerState } from "../VideoContext";
 
+const canFullscreen = document.fullscreenEnabled;
+
 export function FullscreenControl() {
   const { videoState } = useVideoPlayerState();
 
@@ -8,6 +10,8 @@ export function FullscreenControl() {
     if (videoState.isFullscreen) videoState.exitFullscreen();
     else videoState.enterFullscreen();
   }, [videoState]);
+
+  if (!canFullscreen) return null;
 
   let text = "not fullscreen";
   if (videoState.isFullscreen) text = "in fullscreen";
