@@ -1,10 +1,10 @@
 import { ReactNode } from "react";
+import { useTranslation } from "react-i18next";
 import { IconPatch } from "@/components/buttons/IconPatch";
 import { Icons } from "@/components/Icon";
 import { Navigation } from "@/components/layout/Navigation";
 import { ArrowLink } from "@/components/text/ArrowLink";
 import { Title } from "@/components/text/Title";
-import { useTranslation } from "react-i18next";
 
 function NotFoundWrapper(props: { children?: ReactNode }) {
   return (

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { IconPatch } from "@/components/buttons/IconPatch";
 import { Dropdown, OptionItem } from "@/components/Dropdown";
 import { Icons } from "@/components/Icon";
@@ -14,7 +15,6 @@ import {
   MWPortableMedia,
 } from "@/providers";
 import { getSeasonDataFromMedia } from "@/providers/methods/seasons";
-import { useTranslation } from "react-i18next";
 
 export interface SeasonsProps {
   media: MWMedia;
@@ -37,7 +37,7 @@ export function LoadingSeasons(props: { error?: boolean }) {
       ) : (
         <div className="flex items-center space-x-3">
           <IconPatch icon={Icons.WARNING} className="text-red-400" />
-          <p>{t('seasons.failed')}</p>
+          <p>{t("seasons.failed")}</p>
         </div>
       )}
     </div>
@@ -75,7 +75,7 @@ export function Seasons(props: SeasonsProps) {
 
   const mapSeason = (season: MWMediaSeason) => ({
     id: season.id,
-    name: season.title || `${t('seasons.season', { season: season.sort })}`,
+    name: season.title || `${t("seasons.season", { season: season.sort })}`,
   });
 
   const options = seasons.seasons.map(mapSeason);

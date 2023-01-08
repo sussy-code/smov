@@ -23,6 +23,11 @@ module.exports = {
     project: "./tsconfig.json",
     tsconfigRootDir: "./",
   },
+  settings: {
+    "import/resolver": {
+      typescript: {},
+    },
+  },
   plugins: ["@typescript-eslint", "import"],
   rules: {
     "react/jsx-uses-react": "off",

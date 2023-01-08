@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import './useFade.css'
+import "./useFade.css";
 
-export const useFade = (initial = false): [boolean, React.Dispatch<React.SetStateAction<boolean>>, any] => {
+export const useFade = (
+  initial = false
+): [boolean, React.Dispatch<React.SetStateAction<boolean>>, any] => {
   const [show, setShow] = useState<boolean>(initial);
   const [isVisible, setVisible] = useState<boolean>(show);
 
@@ -20,7 +22,7 @@ export const useFade = (initial = false): [boolean, React.Dispatch<React.SetStat
   // These props go on the fading DOM element
   const fadeProps = {
     style,
-    onAnimationEnd
+    onAnimationEnd,
   };
 
   return [isVisible, setShow, fadeProps];

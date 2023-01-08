@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { IconPatch } from "@/components/buttons/IconPatch";
 import { Icons } from "@/components/Icon";
 import { SectionHeading } from "@/components/layout/SectionHeading";
@@ -5,8 +7,6 @@ import { MediaGrid } from "@/components/media/MediaGrid";
 import { WatchedMediaCard } from "@/components/media/WatchedMediaCard";
 import { useLoading } from "@/hooks/useLoading";
 import { MWMassProviderOutput, MWQuery, SearchProviders } from "@/providers";
-import { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
 import { SearchLoadingView } from "./SearchLoadingView";
 
 function SearchSuffix(props: {

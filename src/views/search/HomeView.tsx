@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Icons } from "@/components/Icon";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 import { MediaGrid } from "@/components/media/MediaGrid";
@@ -7,7 +8,6 @@ import {
   useBookmarkContext,
 } from "@/state/bookmark";
 import { useWatchedContext } from "@/state/watched";
-import { useTranslation } from "react-i18next";
 
 function Bookmarks() {
   const { t } = useTranslation();

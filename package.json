@@ -26,7 +26,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint --ext .tsx,.ts src",
-    "lint:strict": "eslint --ext .tsx,.ts --max-warnings 0 src",
+    "lint:fix": "eslint --fix --ext .tsx,.ts src",
     "lint:report": "eslint --ext .tsx,.ts --output-file eslint_report.json --format json src"
   },
   "browserslist": {

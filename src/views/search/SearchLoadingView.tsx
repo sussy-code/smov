@@ -1,5 +1,5 @@
-import { Loading } from "@/components/layout/Loading";
 import { useTranslation } from "react-i18next";
+import { Loading } from "@/components/layout/Loading";
 
 export function SearchLoadingView() {
   const { t } = useTranslation();

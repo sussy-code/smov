@@ -1,5 +1,6 @@
 import { ReactElement, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { IconPatch } from "@/components/buttons/IconPatch";
 import { Icons } from "@/components/Icon";
 import { Navigation } from "@/components/layout/Navigation";
@@ -29,7 +30,6 @@ import {
   useBookmarkContext,
 } from "@/state/bookmark";
 import { getWatchedFromPortable, useWatchedContext } from "@/state/watched";
-import { useTranslation } from "react-i18next";
 import { NotFoundChecks } from "./notfound/NotFoundChecks";
 
 interface StyledMediaViewProps {

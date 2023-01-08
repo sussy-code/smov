@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { MWMediaType, MWQuery } from "@/providers";
 import { useTranslation } from "react-i18next";
+import { MWMediaType, MWQuery } from "@/providers";
 import { DropdownButton } from "./buttons/DropdownButton";
 import { Icon, Icons } from "./Icon";
 import { TextInputControl } from "./text-inputs/TextInputControl";

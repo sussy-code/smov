@@ -1,6 +1,6 @@
 import React, { createRef, useEffect, useState } from "react";
-import { useFade } from "@/hooks/useFade";
 import { createPortal } from "react-dom";
+import { useFade } from "@/hooks/useFade";
 
 interface BackdropProps {
   onClick?: (e: MouseEvent) => void;

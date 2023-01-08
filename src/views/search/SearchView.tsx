@@ -1,12 +1,12 @@
 import { useCallback, useState } from "react";
+import Sticky from "react-stickynode";
+import { useTranslation } from "react-i18next";
 import { Navigation } from "@/components/layout/Navigation";
 import { ThinContainer } from "@/components/layout/ThinContainer";
 import { SearchBarInput } from "@/components/SearchBar";
-import Sticky from "react-stickynode";
 import { Title } from "@/components/text/Title";
 import { useSearchQuery } from "@/hooks/useSearchQuery";
 import { WideContainer } from "@/components/layout/WideContainer";
-import { useTranslation } from "react-i18next";
 import { SearchResultsPartial } from "./SearchResultsPartial";
 
 export function SearchView() {
