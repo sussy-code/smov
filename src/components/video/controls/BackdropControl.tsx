@@ -5,6 +5,8 @@ interface BackdropControlProps {
   children?: React.ReactNode;
 }
 
+// TODO add double click to toggle fullscreen
+
 export function BackdropControl(props: BackdropControlProps) {
   const { videoState } = useVideoPlayerState();
   const [moved, setMoved] = useState(false);
@@ -50,12 +52,12 @@ export function BackdropControl(props: BackdropControlProps) {
         }`}
       />
       <div
-        className={`pointer-events-none absolute inset-x-0 bottom-0 h-[30%] bg-gradient-to-t from-black to-transparent opacity-75 transition-opacity duration-200 ${
+        className={`pointer-events-none absolute inset-x-0 bottom-0 h-[20%] bg-gradient-to-t from-black to-transparent transition-opacity duration-200 ${
           !showUI ? "!opacity-0" : ""
         }`}
       />
       <div
-        className={`pointer-events-none absolute inset-x-0 top-0 h-[30%] bg-gradient-to-b from-black to-transparent opacity-75 transition-opacity duration-200 ${
+        className={`pointer-events-none absolute inset-x-0 top-0 h-[20%] bg-gradient-to-b from-black to-transparent transition-opacity duration-200 ${
           !showUI ? "!opacity-0" : ""
         }`}
       />

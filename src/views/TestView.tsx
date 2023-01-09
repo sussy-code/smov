@@ -5,13 +5,18 @@ import { useCallback, useState } from "react";
 // test videos: https://gist.github.com/jsturgis/3b19447b304616f18657
 
 // TODO video todos:
-//  - make pretty
-//  - improve seekables
+//  - improve seekables (if possible)
 //  - error handling
 //  - middle pause button
+//  - double click backdrop to toggle fullscreen
+//  - make volume bar collapse when hovering away from left control section
+//  - animate UI when showing/hiding
+//  - shortcuts when player is active
+//  - save volume in localstorage so persists between page reloads
 //  - improve pausing while seeking/buffering
+//  - volume control flashes old value when updating
+//  - progress control flashes old value when updating
 //  - captions
-//  - backdrop better click handling
 //  - IOS support: (no volume, fullscreen video element instead of wrapper)
 //  - IpadOS support: (fullscreen video wrapper should work, see (lookmovie.io) )
 //  - HLS support: feature detection otherwise use HLS.js

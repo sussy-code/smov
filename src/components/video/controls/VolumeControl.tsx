@@ -60,12 +60,12 @@ export function VolumeControl(props: Props) {
         </div>
         <div
           className={`-ml-2 w-0 overflow-hidden transition-[width,opacity] duration-300 ease-in ${
-            hoveredOnce ? "!w-20 opacity-100" : "w-4 opacity-0"
+            hoveredOnce ? "!w-24 opacity-100" : "w-4 opacity-0"
           }`}
         >
           <div
             ref={ref}
-            className="flex h-10 w-16 items-center px-2"
+            className="flex h-10 w-20 items-center px-2"
             onMouseDown={dragMouseDown}
           >
             <div className="relative h-1 flex-1 rounded-full bg-gray-500 bg-opacity-50">

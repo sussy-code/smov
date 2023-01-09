@@ -44,13 +44,13 @@ export function ProgressControl() {
           }`}
         >
           <div
-            className="absolute inset-y-0 left-0 flex items-center justify-end rounded-full bg-gray-300 bg-opacity-50"
+            className="absolute inset-y-0 left-0 flex items-center justify-end rounded-full bg-gray-300 bg-opacity-20"
             style={{
               width: bufferProgress,
             }}
           />
           <div
-            className="absolute inset-y-0 left-0 flex items-center justify-end rounded-full bg-bink-500"
+            className="absolute inset-y-0 left-0 flex items-center justify-end rounded-full bg-bink-600"
             style={{
               width: watchProgress,
             }}
