@@ -31,7 +31,7 @@ export function VideoPlayer(props: VideoPlayerProps) {
   return (
     <VideoPlayerContextProvider player={playerRef} wrapper={playerWrapperRef}>
       <div
-        className="relative aspect-video w-full bg-black"
+        className="relative aspect-video w-full select-none bg-black"
         ref={playerWrapperRef}
       >
         <VideoPlayerInternals

@@ -1,74 +1,68 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import {
+  makePercentage,
+  makePercentageString,
+  useProgressBar,
+} from "@/hooks/useProgressBar";
+import { useCallback, useRef } from "react";
 import { useVideoPlayerState } from "../VideoContext";
 
 export function ProgressControl() {
   const { videoState } = useVideoPlayerState();
   const ref = useRef<HTMLDivElement>(null);
-  const [mouseDown, setMouseDown] = useState<boolean>(false);
-  const [progress, setProgress] = useState<number>(0);
 
-  let watchProgress = `${(
-    (videoState.time / videoState.duration) *
-    100
-  ).toFixed(2)}%`;
-  if (mouseDown) watchProgress = `${progress}%`;
+  const commitTime = useCallback(
+    (percentage) => {
+      videoState.setTime(percentage * videoState.duration);
+    },
+    [videoState]
+  );
+  const { dragging, dragPercentage, dragMouseDown } = useProgressBar(
+    ref,
+    commitTime
+  );
 
-  const bufferProgress = `${(
-    (videoState.buffered / videoState.duration) *
-    100
-  ).toFixed(2)}%`;
+  let watchProgress = makePercentageString(
+    makePercentage((videoState.time / videoState.duration) * 100)
+  );
+  if (dragging)
+    watchProgress = makePercentageString(makePercentage(dragPercentage));
 
-  useEffect(() => {
-    function mouseMove(ev: MouseEvent) {
-      if (!mouseDown || !ref.current) return;
-      const rect = ref.current.getBoundingClientRect();
-      const pos = ((ev.pageX - rect.left) / ref.current.offsetWidth) * 100;
-      setProgress(pos);
-    }
-
-    function mouseUp(ev: MouseEvent) {
-      if (!mouseDown) return;
-      setMouseDown(false);
-      document.body.removeAttribute("data-no-select");
-
-      if (!ref.current) return;
-      const rect = ref.current.getBoundingClientRect();
-      const pos = (ev.pageX - rect.left) / ref.current.offsetWidth;
-      videoState.setTime(pos * videoState.duration);
-    }
-
-    document.addEventListener("mousemove", mouseMove);
-    document.addEventListener("mouseup", mouseUp);
-
-    return () => {
-      document.removeEventListener("mousemove", mouseMove);
-      document.removeEventListener("mouseup", mouseUp);
-    };
-  }, [mouseDown, videoState]);
-
-  const handleMouseDown = useCallback(() => {
-    setMouseDown(true);
-    document.body.setAttribute("data-no-select", "true");
-  }, []);
+  const bufferProgress = makePercentageString(
+    makePercentage((videoState.buffered / videoState.duration) * 100)
+  );
 
   return (
-    <div
-      ref={ref}
-      className="relative m-1 my-4 h-4 w-48 overflow-hidden rounded-full border border-white bg-denim-100"
-      onMouseDown={handleMouseDown}
-    >
+    <div className="group pointer-events-auto cursor-pointer rounded-full px-2">
       <div
-        className="absolute inset-y-0 left-0 bg-denim-700 opacity-50"
-        style={{
-          width: bufferProgress,
-        }}
-      />
-      <div
-        className="absolute inset-y-0 left-0 bg-denim-700"
-        style={{
-          width: watchProgress,
-        }}
-      />
+        ref={ref}
+        className="-my-3 flex h-8 items-center"
+        onMouseDown={dragMouseDown}
+      >
+        <div
+          className={`relative h-1 flex-1 rounded-full bg-gray-500 bg-opacity-50 transition-[height] duration-100 group-hover:h-2 ${
+            dragging ? "!h-2" : ""
+          }`}
+        >
+          <div
+            className="absolute inset-y-0 left-0 flex items-center justify-end rounded-full bg-gray-300 bg-opacity-50"
+            style={{
+              width: bufferProgress,
+            }}
+          />
+          <div
+            className="absolute inset-y-0 left-0 flex items-center justify-end rounded-full bg-bink-500"
+            style={{
+              width: watchProgress,
+            }}
+          >
+            <div
+              className={`absolute h-1 w-1 translate-x-1/2 rounded-full bg-white opacity-0 transition-[transform,opacity] group-hover:scale-[400%] group-hover:opacity-100 ${
+                dragging ? "!scale-[400%] !opacity-100" : ""
+              }`}
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

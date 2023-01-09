@@ -1,7 +1,13 @@
+import { Icons } from "@/components/Icon";
 import { useCallback } from "react";
+import { VideoPlayerIconButton } from "../parts/VideoPlayerIconButton";
 import { useVideoPlayerState } from "../VideoContext";
 
-export function PauseControl() {
+interface Props {
+  className?: string;
+}
+
+export function PauseControl(props: Props) {
   const { videoState } = useVideoPlayerState();
 
   const handleClick = useCallback(() => {
@@ -9,16 +15,14 @@ export function PauseControl() {
     else videoState.play();
   }, [videoState]);
 
-  const text =
-    videoState.isPlaying || videoState.isSeeking ? "playing" : "paused";
+  const icon =
+    videoState.isPlaying || videoState.isSeeking ? Icons.PAUSE : Icons.PLAY;
 
   return (
-    <button
-      className="m-1 rounded bg-denim-100 p-1 text-white hover:opacity-75"
-      type="button"
+    <VideoPlayerIconButton
+      className={props.className}
+      icon={icon}
       onClick={handleClick}
-    >
-      {text}
-    </button>
+    />
   );
 }

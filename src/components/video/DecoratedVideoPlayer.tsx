@@ -11,12 +11,19 @@ export function DecoratedVideoPlayer(props: VideoPlayerProps) {
   return (
     <VideoPlayer autoPlay={props.autoPlay}>
       <BackdropControl>
-        <PauseControl />
-        <FullscreenControl />
-        <ProgressControl />
-        <VolumeControl />
-        <LoadingControl />
-        <TimeControl />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <LoadingControl />
+        </div>
+        <div className="pointer-events-auto absolute inset-x-0 bottom-0 mb-4 flex flex-col px-6">
+          <ProgressControl />
+          <div className="flex items-center">
+            <PauseControl />
+            <VolumeControl className="mr-2" />
+            <TimeControl />
+            <div className="flex-1" />
+            <FullscreenControl />
+          </div>
+        </div>
       </BackdropControl>
       {props.children}
     </VideoPlayer>

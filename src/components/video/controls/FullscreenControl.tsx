@@ -1,9 +1,15 @@
+import { Icons } from "@/components/Icon";
 import { useCallback } from "react";
+import { VideoPlayerIconButton } from "../parts/VideoPlayerIconButton";
 import { useVideoPlayerState } from "../VideoContext";
 
 const canFullscreen = document.fullscreenEnabled;
 
-export function FullscreenControl() {
+interface Props {
+  className?: string;
+}
+
+export function FullscreenControl(props: Props) {
   const { videoState } = useVideoPlayerState();
 
   const handleClick = useCallback(() => {
@@ -13,16 +19,11 @@ export function FullscreenControl() {
 
   if (!canFullscreen) return null;
 
-  let text = "not fullscreen";
-  if (videoState.isFullscreen) text = "in fullscreen";
-
   return (
-    <button
-      className="m-1 rounded bg-denim-100 p-1 text-white hover:opacity-75"
-      type="button"
+    <VideoPlayerIconButton
+      className={props.className}
       onClick={handleClick}
-    >
-      {text}
-    </button>
+      icon={videoState.isFullscreen ? Icons.COMPRESS : Icons.EXPAND}
+    />
   );
 }

@@ -22,15 +22,21 @@ function formatSeconds(secs: number, showHours = false): string {
   return `${Math.round(hours).toString()}:${minuteString}`;
 }
 
-export function TimeControl() {
+interface Props {
+  className?: string;
+}
+
+export function TimeControl(props: Props) {
   const { videoState } = useVideoPlayerState();
   const hasHours = durationExceedsHour(videoState.duration);
   const time = formatSeconds(videoState.time, hasHours);
   const duration = formatSeconds(videoState.duration, hasHours);
 
   return (
-    <p>
-      {time} / {duration}
-    </p>
+    <div className={props.className}>
+      <p className="select-none text-white">
+        {time} / {duration}
+      </p>
+    </div>
   );
 }
