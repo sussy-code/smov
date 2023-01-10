@@ -6,38 +6,26 @@ import { SectionHeading } from "@/components/layout/SectionHeading";
 import { MediaGrid } from "@/components/media/MediaGrid";
 import { WatchedMediaCard } from "@/components/media/WatchedMediaCard";
 import { useLoading } from "@/hooks/useLoading";
-import { MWMassProviderOutput, MWQuery, SearchProviders } from "@/providers";
+import { MWQuery } from "@/providers";
+import { MWSearchResult, searchForMedia } from "@/backend/metadata/search";
 import { SearchLoadingView } from "./SearchLoadingView";
 
-function SearchSuffix(props: {
-  fails: number;
-  total: number;
-  resultsSize: number;
-}) {
+function SearchSuffix(props: { failed?: boolean; results?: number }) {
   const { t } = useTranslation();
 
-  const allFailed: boolean = props.fails === props.total;
-  const icon: Icons = allFailed ? Icons.WARNING : Icons.EYE_SLASH;
+  const icon: Icons = props.failed ? Icons.WARNING : Icons.EYE_SLASH;
 
   return (
     <div className="mt-40 mb-24  flex flex-col items-center justify-center space-y-3 text-center">
       <IconPatch
         icon={icon}
-        className={`text-xl ${allFailed ? "text-red-400" : "text-bink-600"}`}
+        className={`text-xl ${props.failed ? "text-red-400" : "text-bink-600"}`}
       />
 
       {/* standard suffix */}
-      {!allFailed ? (
+      {!props.failed ? (
         <div>
-          {props.fails > 0 ? (
-            <p className="text-red-400">
-              {t("search.providersFailed", {
-                fails: props.fails,
-                total: props.total,
-              })}
-            </p>
-          ) : null}
-          {props.resultsSize > 0 ? (
+          {(props.results ?? 0) > 0 ? (
             <p>{t("search.allResults")}</p>
           ) : (
             <p>{t("search.noResults")}</p>
@@ -46,7 +34,7 @@ function SearchSuffix(props: {
       ) : null}
 
       {/* Error result */}
-      {allFailed ? (
+      {props.failed ? (
         <div>
           <p>{t("search.allFailed")}</p>
         </div>
@@ -58,9 +46,9 @@ function SearchSuffix(props: {
 export function SearchResultsView({ searchQuery }: { searchQuery: MWQuery }) {
   const { t } = useTranslation();
 
-  const [results, setResults] = useState<MWMassProviderOutput | undefined>();
+  const [results, setResults] = useState<MWSearchResult[]>([]);
   const [runSearchQuery, loading, error] = useLoading((query: MWQuery) =>
-    SearchProviders(query)
+    searchForMedia(query)
   );
 
   useEffect(() => {
@@ -74,32 +62,25 @@ export function SearchResultsView({ searchQuery }: { searchQuery: MWQuery }) {
   }, [searchQuery, runSearchQuery]);
 
   if (loading) return <SearchLoadingView />;
-  if (error) return <SearchSuffix resultsSize={0} fails={1} total={1} />;
+  if (error) return <SearchSuffix failed />;
   if (!results) return null;
 
   return (
     <div>
-      {results?.results.length > 0 ? (
+      {results.length > 0 ? (
         <SectionHeading
           title={t("search.headingTitle") || "Search results"}
           icon={Icons.SEARCH}
         >
           <MediaGrid>
-            {results.results.map((v) => (
-              <WatchedMediaCard
-                key={[v.mediaId, v.providerId].join("|")}
-                media={v}
-              />
+            {results.map((v) => (
+              <WatchedMediaCard key={v.id.toString()} media={v} />
             ))}
           </MediaGrid>
         </SectionHeading>
       ) : null}
 
-      <SearchSuffix
-        resultsSize={results.results.length}
-        fails={results.stats.failed}
-        total={results.stats.total}
-      />
+      <SearchSuffix results={results.length} />
     </div>
   );
 }

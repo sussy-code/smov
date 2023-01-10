@@ -85,6 +85,15 @@ export const VideoProgressStore = versionedStoreBuilder()
 
       return output;
     },
+  })
+  .addVersion({
+    version: 2,
+    migrate() {
+      // TODO actually migrate
+      return {
+        items: [],
+      };
+    },
     create() {
       return {
         items: [],

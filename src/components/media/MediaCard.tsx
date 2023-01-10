@@ -1,30 +1,16 @@
 import { Link } from "react-router-dom";
-import {
-  convertMediaToPortable,
-  getProviderFromId,
-  MWMediaMeta,
-  MWMediaType,
-} from "@/providers";
-import { serializePortableMedia } from "@/hooks/usePortableMedia";
 import { DotList } from "@/components/text/DotList";
+import { MWSearchResult } from "@/backend/metadata/search";
+import { MWMediaType } from "@/providers";
 
 export interface MediaCardProps {
-  media: MWMediaMeta;
-  // eslint-disable-next-line react/no-unused-prop-types
-  watchedPercentage: number;
+  media: MWSearchResult;
   linkable?: boolean;
-  series?: boolean;
 }
 
 // TODO add progress back
 
-function MediaCardContent({ media, series, linkable }: MediaCardProps) {
-  const provider = getProviderFromId(media.providerId);
-
-  if (!provider) {
-    return null;
-  }
-
+function MediaCardContent({ media, linkable }: MediaCardProps) {
   return (
     <div
       className={`group -m-3 mb-2 rounded-xl bg-denim-300 bg-opacity-0 transition-colors duration-100 ${
@@ -36,19 +22,16 @@ function MediaCardContent({ media, series, linkable }: MediaCardProps) {
           linkable ? "group-hover:scale-95" : ""
         }`}
       >
-        <div className="mb-4 aspect-[2/3] w-full rounded-xl bg-denim-500" />
+        <div
+          className="mb-4 aspect-[2/3] w-full rounded-xl bg-denim-500 bg-cover"
+          style={{
+            backgroundImage: media.poster ? `url(${media.poster})` : undefined,
+          }}
+        />
         <h1 className="mb-1 max-h-[4.5rem] text-ellipsis break-words font-bold text-white line-clamp-3">
           <span>{media.title}</span>
-          {series && media.seasonId && media.episodeId ? (
-            <span className="ml-2 text-xs text-denim-700">
-              S{media.seasonId} E{media.episodeId}
-            </span>
-          ) : null}
         </h1>
-        <DotList
-          className="text-xs"
-          content={[provider.displayName, media.mediaType, media.year]}
-        />
+        <DotList className="text-xs" content={[media.type, media.year]} />
       </article>
     </div>
   );
@@ -56,17 +39,13 @@ function MediaCardContent({ media, series, linkable }: MediaCardProps) {
 
 export function MediaCard(props: MediaCardProps) {
   let link = "movie";
-  if (props.media.mediaType === MWMediaType.SERIES) link = "series";
+  if (props.media.type === MWMediaType.SERIES) link = "series";
 
   const content = <MediaCardContent {...props} />;
 
   if (!props.linkable) return <span>{content}</span>;
   return (
-    <Link
-      to={`/media/${link}/${serializePortableMedia(
-        convertMediaToPortable(props.media)
-      )}`}
-    >
+    <Link to={`/media/${link}/${encodeURIComponent(props.media.id)}`}>
       {content}
     </Link>
   );

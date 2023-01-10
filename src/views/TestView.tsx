@@ -1,6 +1,8 @@
+import { searchForMedia } from "@/backend/metadata/search";
 import { ProgressListenerControl } from "@/components/video/controls/ProgressListenerControl";
 import { SourceControl } from "@/components/video/controls/SourceControl";
 import { DecoratedVideoPlayer } from "@/components/video/DecoratedVideoPlayer";
+import { MWMediaType } from "@/providers";
 import { useCallback, useState } from "react";
 
 // test videos: https://gist.github.com/jsturgis/3b19447b304616f18657
@@ -32,6 +34,14 @@ export function TestView() {
     return <p onClick={handleClick}>Click me to show</p>;
   }
 
+  async function search() {
+    const test = await searchForMedia({
+      searchQuery: "tron",
+      type: MWMediaType.MOVIE,
+    });
+    console.log(test);
+  }
+
   return (
     <div className="w-[40rem] max-w-full">
       <DecoratedVideoPlayer>
@@ -44,6 +54,7 @@ export function TestView() {
           onProgress={(a, b) => console.log(a, b)}
         />
       </DecoratedVideoPlayer>
+      <p onClick={() => search()}>click me to search</p>
     </div>
   );
 }

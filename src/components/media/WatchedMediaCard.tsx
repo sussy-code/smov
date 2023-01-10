@@ -1,23 +1,10 @@
-import { MWMediaMeta } from "@/providers";
-import { useWatchedContext, getWatchedFromPortable } from "@/state/watched";
+import { MWSearchResult } from "@/backend/metadata/search";
 import { MediaCard } from "./MediaCard";
 
 export interface WatchedMediaCardProps {
-  media: MWMediaMeta;
-  series?: boolean;
+  media: MWSearchResult;
 }
 
 export function WatchedMediaCard(props: WatchedMediaCardProps) {
-  const { watched } = useWatchedContext();
-  const foundWatched = getWatchedFromPortable(watched.items, props.media);
-  const watchedPercentage = (foundWatched && foundWatched.percentage) || 0;
-
-  return (
-    <MediaCard
-      watchedPercentage={watchedPercentage}
-      media={props.media}
-      series={props.series && props.media.episodeId !== undefined}
-      linkable
-    />
-  );
+  return <MediaCard media={props.media} linkable />;
 }
