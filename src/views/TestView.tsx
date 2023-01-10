@@ -20,7 +20,7 @@ import { useCallback, useState } from "react";
 //  - browser: firefox, chrome, edge, safari desktop
 //  - phones: android firefox, android chrome, iphone safari
 //  - devices: ipadOS
-//  - features: HLS, error handling
+//  - features: HLS, error handling, preload interactions
 
 export function TestView() {
   const [show, setShow] = useState(true);

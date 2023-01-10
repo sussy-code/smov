@@ -6,7 +6,6 @@ import { Icons } from "@/components/Icon";
 import { Navigation } from "@/components/layout/Navigation";
 import { Paper } from "@/components/layout/Paper";
 import { LoadingSeasons, Seasons } from "@/components/layout/Seasons";
-import { SkeletonVideoPlayer } from "@/components/media/VideoPlayer";
 import { DecoratedVideoPlayer } from "@/components/video/DecoratedVideoPlayer";
 import { ArrowLink } from "@/components/text/ArrowLink";
 import { DotList } from "@/components/text/DotList";
@@ -30,11 +29,30 @@ import {
 import { getWatchedFromPortable, useWatchedContext } from "@/state/watched";
 import { SourceControl } from "@/components/video/controls/SourceControl";
 import { ProgressListenerControl } from "@/components/video/controls/ProgressListenerControl";
+import { Loading } from "@/components/layout/Loading";
 import { NotFoundChecks } from "./notfound/NotFoundChecks";
 
 interface StyledMediaViewProps {
   media: MWMedia;
   stream: MWMediaStream;
+}
+
+export function SkeletonVideoPlayer(props: { error?: boolean }) {
+  return (
+    <div className="flex aspect-video w-full items-center justify-center bg-denim-200 lg:rounded-xl">
+      {props.error ? (
+        <div className="flex flex-col items-center">
+          <IconPatch icon={Icons.WARNING} className="text-red-400" />
+          <p className="mt-5 text-white">Couldn&apos;t get your stream</p>
+        </div>
+      ) : (
+        <div className="flex flex-col items-center">
+          <Loading />
+          <p className="mt-3 text-white">Getting your stream...</p>
+        </div>
+      )}
+    </div>
+  );
 }
 
 function StyledMediaView(props: StyledMediaViewProps) {
