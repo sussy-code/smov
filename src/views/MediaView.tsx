@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { IconPatch } from "@/components/buttons/IconPatch";
@@ -6,10 +6,8 @@ import { Icons } from "@/components/Icon";
 import { Navigation } from "@/components/layout/Navigation";
 import { Paper } from "@/components/layout/Paper";
 import { LoadingSeasons, Seasons } from "@/components/layout/Seasons";
-import {
-  SkeletonVideoPlayer,
-  VideoPlayer,
-} from "@/components/media/VideoPlayer";
+import { SkeletonVideoPlayer } from "@/components/media/VideoPlayer";
+import { DecoratedVideoPlayer } from "@/components/video/DecoratedVideoPlayer";
 import { ArrowLink } from "@/components/text/ArrowLink";
 import { DotList } from "@/components/text/DotList";
 import { Title } from "@/components/text/Title";
@@ -30,6 +28,8 @@ import {
   useBookmarkContext,
 } from "@/state/bookmark";
 import { getWatchedFromPortable, useWatchedContext } from "@/state/watched";
+import { SourceControl } from "@/components/video/controls/SourceControl";
+import { ProgressListenerControl } from "@/components/video/controls/ProgressListenerControl";
 import { NotFoundChecks } from "./notfound/NotFoundChecks";
 
 interface StyledMediaViewProps {
@@ -38,28 +38,37 @@ interface StyledMediaViewProps {
 }
 
 function StyledMediaView(props: StyledMediaViewProps) {
+  const reactHistory = useHistory();
   const watchedStore = useWatchedContext();
   const startAtTime: number | undefined = getWatchedFromPortable(
     watchedStore.watched.items,
     props.media
   )?.progress;
 
-  function updateProgress(e: Event) {
-    if (!props.media) return;
-    const el: HTMLVideoElement = e.currentTarget as HTMLVideoElement;
-    if (el.currentTime <= 30) {
-      return; // Don't update stored progress if less than 30s into the video
-    }
-    watchedStore.updateProgress(props.media, el.currentTime, el.duration);
-  }
+  const updateProgress = useCallback(
+    (time: number, duration: number) => {
+      // Don't update stored progress if less than 30s into the video
+      if (time <= 30) return;
+      watchedStore.updateProgress(props.media, time, duration);
+    },
+    [props, watchedStore]
+  );
+
+  const goBack = useCallback(() => {
+    if (reactHistory.action !== "POP") reactHistory.goBack();
+    else reactHistory.push("/");
+  }, [reactHistory]);
 
   return (
-    <VideoPlayer
-      source={props.stream}
-      captions={props.stream.captions}
-      onProgress={(e) => updateProgress(e)}
-      startAt={startAtTime}
-    />
+    <div className="overflow-hidden lg:rounded-xl">
+      <DecoratedVideoPlayer title={props.media.title} onGoBack={goBack}>
+        <SourceControl source={props.stream.url} type={props.stream.type} />
+        <ProgressListenerControl
+          startAt={startAtTime}
+          onProgress={updateProgress}
+        />
+      </DecoratedVideoPlayer>
+    </div>
   );
 }
 

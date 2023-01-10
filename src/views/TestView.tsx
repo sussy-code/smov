@@ -10,11 +10,17 @@ import { useCallback, useState } from "react";
 //  - captions
 //  - mobile UI
 //  - safari fullscreen will make video overlap player controls
-//  - safari progress bar is fucked
+//  - safari progress bar is fucked (video doesnt change time but video.currentTime does change)
 
 // TODO optional todos:
 //  - shortcuts when player is active
 //  - improve seekables (if possible)
+
+// TODO stuff to test:
+//  - browser: firefox, chrome, edge, safari desktop
+//  - phones: android firefox, android chrome, iphone safari
+//  - devices: ipadOS
+//  - features: HLS, error handling
 
 export function TestView() {
   const [show, setShow] = useState(true);

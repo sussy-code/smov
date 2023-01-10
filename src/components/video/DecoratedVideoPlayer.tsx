@@ -12,6 +12,11 @@ import { VideoPlayerHeader } from "./parts/VideoPlayerHeader";
 import { useVideoPlayerState } from "./VideoContext";
 import { VideoPlayer, VideoPlayerProps } from "./VideoPlayer";
 
+interface DecoratedVideoPlayerProps {
+  title?: string;
+  onGoBack?: () => void;
+}
+
 function LeftSideControls() {
   const { videoState } = useVideoPlayerState();
 
@@ -35,7 +40,9 @@ function LeftSideControls() {
   );
 }
 
-export function DecoratedVideoPlayer(props: VideoPlayerProps) {
+export function DecoratedVideoPlayer(
+  props: VideoPlayerProps & DecoratedVideoPlayerProps
+) {
   const top = useRef<HTMLDivElement>(null);
   const bottom = useRef<HTMLDivElement>(null);
   const [show, setShow] = useState(false);
@@ -98,7 +105,7 @@ export function DecoratedVideoPlayer(props: VideoPlayerProps) {
             ref={top}
             className="pointer-events-auto absolute inset-x-0 top-0 flex flex-col py-6 px-8 pb-2"
           >
-            <VideoPlayerHeader title="Spiderman: Coming House" />
+            <VideoPlayerHeader title={props.title} onClick={props.onGoBack} />
           </div>
         </CSSTransition>
       </BackdropControl>

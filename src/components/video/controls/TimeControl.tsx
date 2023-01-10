@@ -17,7 +17,7 @@ function formatSeconds(secs: number, showHours = false): string {
   const minutes = time % 60;
 
   time /= 60;
-  const hours = minutes % 60;
+  const hours = time % 60;
 
   if (!showHours)
     return `${Math.round(minutes).toString()}:${Math.round(seconds)
