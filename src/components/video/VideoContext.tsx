@@ -7,24 +7,26 @@ import React, {
 } from "react";
 import {
   initialPlayerState,
-  PlayerState,
+  PlayerContext,
   useVideoPlayer,
 } from "./hooks/useVideoPlayer";
 
 interface VideoPlayerContextType {
   source: string | null;
-  state: PlayerState;
+  sourceType: "m3u8" | "mp4";
+  state: PlayerContext;
 }
 const initial: VideoPlayerContextType = {
   source: null,
+  sourceType: "mp4",
   state: initialPlayerState,
 };
 
 type VideoPlayerContextAction =
-  | { type: "SET_SOURCE"; url: string }
+  | { type: "SET_SOURCE"; url: string; sourceType: "m3u8" | "mp4" }
   | {
       type: "UPDATE_PLAYER";
-      state: PlayerState;
+      state: PlayerContext;
     };
 
 function videoPlayerContextReducer(
@@ -34,6 +36,7 @@ function videoPlayerContextReducer(
   const video = { ...original };
   if (action.type === "SET_SOURCE") {
     video.source = action.url;
+    video.sourceType = action.sourceType;
     return video;
   }
   if (action.type === "UPDATE_PLAYER") {

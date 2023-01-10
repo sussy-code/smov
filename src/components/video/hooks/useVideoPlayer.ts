@@ -1,5 +1,6 @@
+import { canChangeVolume } from "@/utils/detectFeatures";
 import fscreen from "fscreen";
-import React, { MutableRefObject, useEffect, useState } from "react";
+import React, { MutableRefObject, useEffect, useRef, useState } from "react";
 import {
   initialControls,
   PlayerControls,
@@ -17,9 +18,15 @@ export type PlayerState = {
   duration: number;
   volume: number;
   buffered: number;
-} & PlayerControls;
+  pausedWhenSeeking: boolean;
+  hasInitialized: boolean;
+  leftControlHovering: boolean;
+  hasPlayedOnce: boolean;
+};
 
-export const initialPlayerState: PlayerState = {
+export type PlayerContext = PlayerState & PlayerControls;
+
+export const initialPlayerState: PlayerContext = {
   isPlaying: false,
   isPaused: true,
   isFullscreen: false,
@@ -29,10 +36,14 @@ export const initialPlayerState: PlayerState = {
   duration: 0,
   volume: 0,
   buffered: 0,
+  pausedWhenSeeking: false,
+  hasInitialized: false,
+  leftControlHovering: false,
+  hasPlayedOnce: false,
   ...initialControls,
 };
 
-type SetPlayer = (s: React.SetStateAction<PlayerState>) => void;
+type SetPlayer = (s: React.SetStateAction<PlayerContext>) => void;
 
 function readState(player: HTMLVideoElement, update: SetPlayer) {
   const state = {
@@ -47,8 +58,13 @@ function readState(player: HTMLVideoElement, update: SetPlayer) {
   state.volume = player.volume;
   state.buffered = handleBuffered(player.currentTime, player.buffered);
   state.isLoading = false;
+  state.hasInitialized = true;
 
-  update(state);
+  update((s) => ({
+    ...state,
+    pausedWhenSeeking: s.pausedWhenSeeking,
+    hasPlayedOnce: s.hasPlayedOnce,
+  }));
 }
 
 function registerListeners(player: HTMLVideoElement, update: SetPlayer) {
@@ -65,6 +81,7 @@ function registerListeners(player: HTMLVideoElement, update: SetPlayer) {
       isPaused: false,
       isPlaying: true,
       isLoading: false,
+      hasPlayedOnce: true,
     }));
   };
   const seeking = () => {
@@ -92,11 +109,12 @@ function registerListeners(player: HTMLVideoElement, update: SetPlayer) {
       duration: player.duration,
     }));
   };
-  const volumechange = () => {
-    update((s) => ({
-      ...s,
-      volume: player.volume,
-    }));
+  const volumechange = async () => {
+    if (await canChangeVolume())
+      update((s) => ({
+        ...s,
+        volume: player.volume,
+      }));
   };
   const progress = () => {
     update((s) => ({
@@ -135,6 +153,7 @@ export function useVideoPlayer(
   wrapperRef: MutableRefObject<HTMLDivElement | null>
 ) {
   const [state, setState] = useState(initialPlayerState);
+  const stateRef = useRef<PlayerState | null>(null);
 
   useEffect(() => {
     const player = ref.current;
@@ -142,9 +161,16 @@ export function useVideoPlayer(
     if (player && wrapper) {
       readState(player, setState);
       registerListeners(player, setState);
-      setState((s) => ({ ...s, ...populateControls(player, wrapper) }));
+      setState((s) => ({
+        ...s,
+        ...populateControls(player, wrapper, setState as any, stateRef),
+      }));
     }
-  }, [ref, wrapperRef]);
+  }, [ref, wrapperRef, stateRef]);
+
+  useEffect(() => {
+    stateRef.current = state;
+  }, [state, stateRef]);
 
   return {
     playerState: state,

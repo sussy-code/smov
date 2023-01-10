@@ -3,12 +3,13 @@ import {
   makePercentageString,
   useProgressBar,
 } from "@/hooks/useProgressBar";
-import { useCallback, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { useVideoPlayerState } from "../VideoContext";
 
 export function ProgressControl() {
   const { videoState } = useVideoPlayerState();
   const ref = useRef<HTMLDivElement>(null);
+  const dragRef = useRef<boolean>(false);
 
   const commitTime = useCallback(
     (percentage) => {
@@ -20,6 +21,11 @@ export function ProgressControl() {
     ref,
     commitTime
   );
+  useEffect(() => {
+    if (dragRef.current === dragging) return;
+    dragRef.current = dragging;
+    videoState.setSeeking(dragging);
+  }, [dragRef, dragging, videoState]);
 
   let watchProgress = makePercentageString(
     makePercentage((videoState.time / videoState.duration) * 100)

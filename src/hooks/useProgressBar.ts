@@ -20,8 +20,8 @@ export function useProgressBar(
     function mouseMove(ev: MouseEvent) {
       if (!mouseDown || !barRef.current) return;
       const rect = barRef.current.getBoundingClientRect();
-      const pos = ((ev.pageX - rect.left) / barRef.current.offsetWidth) * 100;
-      setProgress(pos);
+      const pos = (ev.pageX - rect.left) / barRef.current.offsetWidth;
+      setProgress(pos * 100);
       if (commitImmediately) commit(pos);
     }
 

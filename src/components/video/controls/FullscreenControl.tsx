@@ -1,8 +1,8 @@
 import { Icons } from "@/components/Icon";
+import { canFullscreen } from "@/utils/detectFeatures";
 import { useCallback } from "react";
 import { VideoPlayerIconButton } from "../parts/VideoPlayerIconButton";
 import { useVideoPlayerState } from "../VideoContext";
-import { canFullscreen } from "../hooks/fullscreen";
 
 interface Props {
   className?: string;
@@ -16,7 +16,7 @@ export function FullscreenControl(props: Props) {
     else videoState.enterFullscreen();
   }, [videoState]);
 
-  if (!canFullscreen) return null;
+  if (!canFullscreen()) return null;
 
   return (
     <VideoPlayerIconButton

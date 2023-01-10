@@ -5,6 +5,11 @@ function durationExceedsHour(secs: number): boolean {
 }
 
 function formatSeconds(secs: number, showHours = false): string {
+  if (Number.isNaN(secs)) {
+    if (showHours) return "0:00:00";
+    return "0:00";
+  }
+
   let time = secs;
   const seconds = time % 60;
 
@@ -14,12 +19,13 @@ function formatSeconds(secs: number, showHours = false): string {
   time /= 60;
   const hours = minutes % 60;
 
-  const minuteString = `${Math.round(minutes)
+  if (!showHours)
+    return `${Math.round(minutes).toString()}:${Math.round(seconds)
+      .toString()
+      .padStart(2, "0")}`;
+  return `${Math.round(hours).toString()}:${Math.round(minutes)
     .toString()
-    .padStart(2)}:${Math.round(seconds).toString().padStart(2, "0")}`;
-
-  if (!showHours) return minuteString;
-  return `${Math.round(hours).toString()}:${minuteString}`;
+    .padStart(2, "0")}:${Math.round(seconds).toString().padStart(2, "0")}`;
 }
 
 interface Props {

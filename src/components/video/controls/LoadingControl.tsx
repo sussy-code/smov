@@ -1,3 +1,4 @@
+import { Spinner } from "@/components/layout/Spinner";
 import { useVideoPlayerState } from "../VideoContext";
 
 export function LoadingControl() {
@@ -5,5 +6,5 @@ export function LoadingControl() {
 
   if (!videoState.isLoading) return null;
 
-  return <p>Loading...</p>;
+  return <Spinner />;
 }

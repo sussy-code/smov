@@ -3,6 +3,7 @@ import { VideoPlayerDispatchContext } from "../VideoContext";
 
 interface SourceControlProps {
   source: string;
+  type: "m3u8" | "mp4";
 }
 
 export function SourceControl(props: SourceControlProps) {
@@ -12,8 +13,9 @@ export function SourceControl(props: SourceControlProps) {
     dispatch({
       type: "SET_SOURCE",
       url: props.source,
+      sourceType: props.type,
     });
-  }, [props.source, dispatch]);
+  }, [props, dispatch]);
 
   return null;
 }

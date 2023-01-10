@@ -1,11 +1,10 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useVideoPlayerState } from "../VideoContext";
 
 interface BackdropControlProps {
   children?: React.ReactNode;
+  onBackdropChange?: (showing: boolean) => void;
 }
-
-// TODO add double click to toggle fullscreen
 
 export function BackdropControl(props: BackdropControlProps) {
   const { videoState } = useVideoPlayerState();
@@ -35,7 +34,19 @@ export function BackdropControl(props: BackdropControlProps) {
     },
     [videoState, clickareaRef]
   );
+  const handleDoubleClick = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      if (!clickareaRef.current || clickareaRef.current !== e.target) return;
 
+      if (!videoState.isFullscreen) videoState.enterFullscreen();
+      else videoState.exitFullscreen();
+    },
+    [videoState, clickareaRef]
+  );
+
+  useEffect(() => {
+    props.onBackdropChange?.(moved || videoState.isPaused);
+  }, [videoState, moved, props]);
   const showUI = moved || videoState.isPaused;
 
   return (
@@ -45,6 +56,7 @@ export function BackdropControl(props: BackdropControlProps) {
       onMouseLeave={handleMouseLeave}
       ref={clickareaRef}
       onClick={handleClick}
+      onDoubleClick={handleDoubleClick}
     >
       <div
         className={`pointer-events-none absolute inset-0 bg-black bg-opacity-20 transition-opacity duration-200 ${
@@ -62,7 +74,7 @@ export function BackdropControl(props: BackdropControlProps) {
         }`}
       />
       <div className="pointer-events-none absolute inset-0">
-        {showUI ? props.children : null}
+        {props.children}
       </div>
     </div>
   );

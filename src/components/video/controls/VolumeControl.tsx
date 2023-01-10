@@ -4,14 +4,13 @@ import {
   makePercentageString,
   useProgressBar,
 } from "@/hooks/useProgressBar";
-import { useCallback, useRef, useState } from "react";
+import { canChangeVolume } from "@/utils/detectFeatures";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useVideoPlayerState } from "../VideoContext";
 
 interface Props {
   className?: string;
 }
-
-// TODO make hoveredOnce false when control bar appears
 
 export function VolumeControl(props: Props) {
   const { videoState } = useVideoPlayerState();
@@ -32,6 +31,10 @@ export function VolumeControl(props: Props) {
     true
   );
 
+  useEffect(() => {
+    if (!videoState.leftControlHovering) setHoveredOnce(false);
+  }, [videoState, setHoveredOnce]);
+
   const handleClick = useCallback(() => {
     if (videoState.volume > 0) {
       videoState.setVolume(0);
@@ -41,8 +44,8 @@ export function VolumeControl(props: Props) {
     }
   }, [videoState, setStoredVolume, storedVolume]);
 
-  const handleMouseEnter = useCallback(() => {
-    setHoveredOnce(true);
+  const handleMouseEnter = useCallback(async () => {
+    if (await canChangeVolume()) setHoveredOnce(true);
   }, [setHoveredOnce]);
 
   let percentage = makePercentage(videoState.volume * 100);
@@ -59,7 +62,7 @@ export function VolumeControl(props: Props) {
           <Icon icon={percentage > 0 ? Icons.VOLUME : Icons.VOLUME_X} />
         </div>
         <div
-          className={`-ml-2 w-0 overflow-hidden transition-[width,opacity] duration-300 ease-in ${
+          className={`linear -ml-2 w-0 overflow-hidden transition-[width,opacity] duration-300 ${
             hoveredOnce ? "!w-24 opacity-100" : "w-4 opacity-0"
           }`}
         >
