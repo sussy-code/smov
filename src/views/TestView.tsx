@@ -17,8 +17,7 @@ import { useCallback, useState } from "react";
 //  - volume control flashes old value when updating
 //  - progress control flashes old value when updating
 //  - captions
-//  - IOS support: (no volume, fullscreen video element instead of wrapper)
-//  - IpadOS support: (fullscreen video wrapper should work, see (lookmovie.io) )
+//  - IOS & IpadOS support: (no volume)
 //  - HLS support: feature detection otherwise use HLS.js
 export function TestView() {
   const [show, setShow] = useState(true);

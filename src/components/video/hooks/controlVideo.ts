@@ -1,3 +1,6 @@
+import fscreen from "fscreen";
+import { canFullscreen, isSafari } from "./fullscreen";
+
 export interface PlayerControls {
   play(): void;
   pause(): void;
@@ -28,12 +31,18 @@ export function populateControls(
       player.pause();
     },
     enterFullscreen() {
-      if (!document.fullscreenEnabled || document.fullscreenElement) return;
-      wrapper.requestFullscreen();
+      if (!canFullscreen || fscreen.fullscreenElement) return;
+      if (fscreen.fullscreenEnabled) {
+        fscreen.requestFullscreen(wrapper);
+        return;
+      }
+      if (isSafari) {
+        (player as any).webkitEnterFullscreen();
+      }
     },
     exitFullscreen() {
-      if (!document.fullscreenElement) return;
-      document.exitFullscreen();
+      if (!fscreen.fullscreenElement) return;
+      fscreen.exitFullscreen();
     },
     setTime(t) {
       // clamp time between 0 and max duration

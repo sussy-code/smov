@@ -1,3 +1,4 @@
+import fscreen from "fscreen";
 import React, { MutableRefObject, useEffect, useState } from "react";
 import {
   initialControls,
@@ -108,7 +109,7 @@ function registerListeners(player: HTMLVideoElement, update: SetPlayer) {
   player.addEventListener("playing", playing);
   player.addEventListener("seeking", seeking);
   player.addEventListener("seeked", seeked);
-  document.addEventListener("fullscreenchange", fullscreenchange);
+  fscreen.addEventListener("fullscreenchange", fullscreenchange);
   player.addEventListener("timeupdate", timeupdate);
   player.addEventListener("loadedmetadata", loadedmetadata);
   player.addEventListener("volumechange", volumechange);
@@ -120,7 +121,7 @@ function registerListeners(player: HTMLVideoElement, update: SetPlayer) {
     player.removeEventListener("playing", playing);
     player.removeEventListener("seeking", seeking);
     player.removeEventListener("seeked", seeked);
-    document.removeEventListener("fullscreenchange", fullscreenchange);
+    fscreen.removeEventListener("fullscreenchange", fullscreenchange);
     player.removeEventListener("timeupdate", timeupdate);
     player.removeEventListener("loadedmetadata", loadedmetadata);
     player.removeEventListener("volumechange", volumechange);

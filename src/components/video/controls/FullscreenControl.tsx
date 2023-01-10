@@ -2,8 +2,7 @@ import { Icons } from "@/components/Icon";
 import { useCallback } from "react";
 import { VideoPlayerIconButton } from "../parts/VideoPlayerIconButton";
 import { useVideoPlayerState } from "../VideoContext";
-
-const canFullscreen = document.fullscreenEnabled;
+import { canFullscreen } from "../hooks/fullscreen";
 
 interface Props {
   className?: string;
