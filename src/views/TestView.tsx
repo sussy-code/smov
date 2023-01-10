@@ -7,6 +7,7 @@ import { useCallback, useState } from "react";
 // TODO video todos:
 //  - improve seekables (if possible)
 //  - error handling
+//  - buffering
 //  - middle pause button
 //  - double click backdrop to toggle fullscreen
 //  - make volume bar collapse when hovering away from left control section
