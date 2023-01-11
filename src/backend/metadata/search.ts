@@ -1,4 +1,5 @@
 import { MWMediaType, MWQuery } from "@/providers";
+import { MWMediaMeta } from "./types";
 
 const JW_API_BASE = "https://apis.justwatch.com";
 
@@ -27,18 +28,10 @@ type JWPage<T> = {
   total_results: number;
 };
 
-export type MWSearchResult = {
-  title: string;
-  id: string;
-  year: string;
-  poster?: string;
-  type: MWMediaType;
-};
-
 export async function searchForMedia({
   searchQuery,
   type,
-}: MWQuery): Promise<MWSearchResult[]> {
+}: MWQuery): Promise<MWMediaMeta[]> {
   const body: JWSearchQuery = {
     content_types: [],
     page: 1,
@@ -56,7 +49,7 @@ export async function searchForMedia({
     )}`
   ).then((res) => res.json() as Promise<JWPage<JWSearchResults>>);
 
-  return data.items.map<MWSearchResult>((v) => ({
+  return data.items.map<MWMediaMeta>((v) => ({
     title: v.title,
     id: v.id.toString(),
     year: v.original_release_year.toString(),

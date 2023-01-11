@@ -7,6 +7,7 @@ import { conf } from "@/setup/config";
 import App from "@/setup/App";
 import "@/setup/i18n";
 import "@/setup/index.css";
+import "@/backend";
 
 // initialize
 const key =
