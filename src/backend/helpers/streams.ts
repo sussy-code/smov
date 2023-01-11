@@ -3,7 +3,13 @@ export enum MWStreamType {
   HLS = "hls",
 }
 
+export enum MWStreamQuality {
+  Q360P = "360p",
+  Q1080P = "1080p",
+}
+
 export type MWStream = {
   streamUrl: string;
   type: MWStreamType;
+  quality: MWStreamQuality;
 };

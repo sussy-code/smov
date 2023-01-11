@@ -1,6 +1,6 @@
 import { MWEmbedType } from "../helpers/embed";
 import { registerEmbedScraper } from "../helpers/register";
-import { MWStreamType } from "../helpers/streams";
+import { MWStreamQuality, MWStreamType } from "../helpers/streams";
 
 registerEmbedScraper({
   id: "testembed",
@@ -15,6 +15,7 @@ registerEmbedScraper({
     return {
       streamUrl: "hello-world",
       type: MWStreamType.MP4,
+      quality: MWStreamQuality.Q1080P,
     };
   },
 });

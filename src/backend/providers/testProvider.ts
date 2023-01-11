@@ -1,6 +1,6 @@
 import { MWEmbedType } from "../helpers/embed";
 import { registerProvider } from "../helpers/register";
-import { MWStreamType } from "../helpers/streams";
+import { MWStreamQuality, MWStreamType } from "../helpers/streams";
 import { MWMediaType } from "../metadata/types";
 
 registerProvider({
@@ -20,6 +20,7 @@ registerProvider({
       stream: {
         streamUrl: "hello-world",
         type: MWStreamType.HLS,
+        quality: MWStreamQuality.Q1080P,
       },
       embeds: [
         {
