@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useDebounce } from "@/hooks/useDebounce";
-import { MWQuery } from "@/providers";
+import { MWQuery } from "@/backend/metadata/types";
 import { HomeView } from "./HomeView";
 import { SearchLoadingView } from "./SearchLoadingView";
 import { SearchResultsView } from "./SearchResultsView";

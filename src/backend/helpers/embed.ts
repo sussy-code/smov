@@ -2,6 +2,7 @@ import { MWStream } from "./streams";
 
 export enum MWEmbedType {
   OPENLOAD = "openload",
+  ANOTHER = "another",
 }
 
 export type MWEmbed = {

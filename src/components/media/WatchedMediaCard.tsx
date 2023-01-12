@@ -1,8 +1,8 @@
-import { MWSearchResult } from "@/backend/metadata/search";
+import { MWMediaMeta } from "@/backend/metadata/types";
 import { MediaCard } from "./MediaCard";
 
 export interface WatchedMediaCardProps {
-  media: MWSearchResult;
+  media: MWMediaMeta;
 }
 
 export function WatchedMediaCard(props: WatchedMediaCardProps) {

@@ -7,17 +7,9 @@ import { Icons } from "@/components/Icon";
 import { WatchedEpisode } from "@/components/media/WatchedEpisodeButton";
 import { useLoading } from "@/hooks/useLoading";
 import { serializePortableMedia } from "@/hooks/usePortableMedia";
-import {
-  convertMediaToPortable,
-  MWMedia,
-  MWMediaSeasons,
-  MWMediaSeason,
-  MWPortableMedia,
-} from "@/providers";
-import { getSeasonDataFromMedia } from "@/providers/methods/seasons";
 
 export interface SeasonsProps {
-  media: MWMedia;
+  media: any;
 }
 
 export function LoadingSeasons(props: { error?: boolean }) {
@@ -45,80 +37,73 @@ export function LoadingSeasons(props: { error?: boolean }) {
 }
 
 export function Seasons(props: SeasonsProps) {
-  const { t } = useTranslation();
-
-  const [searchSeasons, loading, error, success] = useLoading(
-    (portableMedia: MWPortableMedia) => getSeasonDataFromMedia(portableMedia)
-  );
-  const history = useHistory();
-  const [seasons, setSeasons] = useState<MWMediaSeasons>({ seasons: [] });
-  const seasonSelected = props.media.seasonId as string;
-  const episodeSelected = props.media.episodeId as string;
-
-  useEffect(() => {
-    (async () => {
-      const seasonData = await searchSeasons(props.media);
-      setSeasons(seasonData);
-    })();
-  }, [searchSeasons, props.media]);
-
-  function navigateToSeasonAndEpisode(seasonId: string, episodeId: string) {
-    const newMedia: MWMedia = { ...props.media };
-    newMedia.episodeId = episodeId;
-    newMedia.seasonId = seasonId;
-    history.replace(
-      `/media/${newMedia.mediaType}/${serializePortableMedia(
-        convertMediaToPortable(newMedia)
-      )}`
-    );
-  }
-
-  const mapSeason = (season: MWMediaSeason) => ({
-    id: season.id,
-    name: season.title || `${t("seasons.season", { season: season.sort })}`,
-  });
-
-  const options = seasons.seasons.map(mapSeason);
-
-  const foundSeason = seasons.seasons.find(
-    (season) => season.id === seasonSelected
-  );
-  const selectedItem = foundSeason ? mapSeason(foundSeason) : null;
-
-  return (
-    <>
-      {loading ? <LoadingSeasons /> : null}
-      {error ? <LoadingSeasons error /> : null}
-      {success && seasons.seasons.length ? (
-        <>
-          <Dropdown
-            selectedItem={selectedItem as OptionItem}
-            options={options}
-            setSelectedItem={(seasonItem) =>
-              navigateToSeasonAndEpisode(
-                seasonItem.id,
-                seasons.seasons.find((s) => s.id === seasonItem.id)?.episodes[0]
-                  .id as string
-              )
-            }
-          />
-          {seasons.seasons
-            .find((s) => s.id === seasonSelected)
-            ?.episodes.map((v) => (
-              <WatchedEpisode
-                key={v.id}
-                media={{
-                  ...props.media,
-                  seriesData: seasons,
-                  episodeId: v.id,
-                  seasonId: seasonSelected,
-                }}
-                active={v.id === episodeSelected}
-                onClick={() => navigateToSeasonAndEpisode(seasonSelected, v.id)}
-              />
-            ))}
-        </>
-      ) : null}
-    </>
-  );
+  // const { t } = useTranslation();
+  // const [searchSeasons, loading, error, success] = useLoading(
+  //   (portableMedia: MWPortableMedia) => getSeasonDataFromMedia(portableMedia)
+  // );
+  // const history = useHistory();
+  // const [seasons, setSeasons] = useState<MWMediaSeasons>({ seasons: [] });
+  // const seasonSelected = props.media.seasonId as string;
+  // const episodeSelected = props.media.episodeId as string;
+  // useEffect(() => {
+  //   (async () => {
+  //     const seasonData = await searchSeasons(props.media);
+  //     setSeasons(seasonData);
+  //   })();
+  // }, [searchSeasons, props.media]);
+  // function navigateToSeasonAndEpisode(seasonId: string, episodeId: string) {
+  //   const newMedia: MWMedia = { ...props.media };
+  //   newMedia.episodeId = episodeId;
+  //   newMedia.seasonId = seasonId;
+  //   history.replace(
+  //     `/media/${newMedia.mediaType}/${serializePortableMedia(
+  //       convertMediaToPortable(newMedia)
+  //     )}`
+  //   );
+  // }
+  // const mapSeason = (season: MWMediaSeason) => ({
+  //   id: season.id,
+  //   name: season.title || `${t("seasons.season", { season: season.sort })}`,
+  // });
+  // const options = seasons.seasons.map(mapSeason);
+  // const foundSeason = seasons.seasons.find(
+  //   (season) => season.id === seasonSelected
+  // );
+  // const selectedItem = foundSeason ? mapSeason(foundSeason) : null;
+  // return (
+  //   <>
+  //     {loading ? <LoadingSeasons /> : null}
+  //     {error ? <LoadingSeasons error /> : null}
+  //     {success && seasons.seasons.length ? (
+  //       <>
+  //         <Dropdown
+  //           selectedItem={selectedItem as OptionItem}
+  //           options={options}
+  //           setSelectedItem={(seasonItem) =>
+  //             navigateToSeasonAndEpisode(
+  //               seasonItem.id,
+  //               seasons.seasons.find((s) => s.id === seasonItem.id)?.episodes[0]
+  //                 .id as string
+  //             )
+  //           }
+  //         />
+  //         {seasons.seasons
+  //           .find((s) => s.id === seasonSelected)
+  //           ?.episodes.map((v) => (
+  //             <WatchedEpisode
+  //               key={v.id}
+  //               media={{
+  //                 ...props.media,
+  //                 seriesData: seasons,
+  //                 episodeId: v.id,
+  //                 seasonId: seasonSelected,
+  //               }}
+  //               active={v.id === episodeSelected}
+  //               onClick={() => navigateToSeasonAndEpisode(seasonSelected, v.id)}
+  //             />
+  //           ))}
+  //       </>
+  //     ) : null}
+  //   </>
+  // );
 }

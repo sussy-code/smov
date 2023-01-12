@@ -1,3 +1,4 @@
+import { MWEmbedType } from "../helpers/embed";
 import { registerProvider } from "../helpers/register";
 import { MWMediaType } from "../metadata/types";
 
@@ -7,8 +8,8 @@ const timeout = (time: number) =>
   });
 
 registerProvider({
-  id: "testprov",
-  rank: 42,
+  id: "testprov2",
+  rank: 40,
   type: [MWMediaType.MOVIE],
 
   async scrape({ progress }) {
@@ -22,14 +23,14 @@ registerProvider({
 
     return {
       embeds: [
-        // {
-        //   type: MWEmbedType.OPENLOAD,
-        //   url: "https://google.com",
-        // },
-        // {
-        //   type: MWEmbedType.ANOTHER,
-        //   url: "https://google.com",
-        // },
+        {
+          type: MWEmbedType.OPENLOAD,
+          url: "https://google.com",
+        },
+        {
+          type: MWEmbedType.ANOTHER,
+          url: "https://google.com",
+        },
       ],
     };
   },

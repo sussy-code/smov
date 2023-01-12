@@ -6,8 +6,8 @@ import { SectionHeading } from "@/components/layout/SectionHeading";
 import { MediaGrid } from "@/components/media/MediaGrid";
 import { WatchedMediaCard } from "@/components/media/WatchedMediaCard";
 import { useLoading } from "@/hooks/useLoading";
-import { MWQuery } from "@/providers";
-import { MWSearchResult, searchForMedia } from "@/backend/metadata/search";
+import { searchForMedia } from "@/backend/metadata/search";
+import { MWMediaMeta, MWQuery } from "@/backend/metadata/types";
 import { SearchLoadingView } from "./SearchLoadingView";
 
 function SearchSuffix(props: { failed?: boolean; results?: number }) {
@@ -46,7 +46,7 @@ function SearchSuffix(props: { failed?: boolean; results?: number }) {
 export function SearchResultsView({ searchQuery }: { searchQuery: MWQuery }) {
   const { t } = useTranslation();
 
-  const [results, setResults] = useState<MWSearchResult[]>([]);
+  const [results, setResults] = useState<MWMediaMeta[]>([]);
   const [runSearchQuery, loading, error] = useLoading((query: MWQuery) =>
     searchForMedia(query)
   );

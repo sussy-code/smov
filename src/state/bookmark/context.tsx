@@ -1,3 +1,4 @@
+import { MWMediaMeta } from "@/backend/metadata/types";
 import {
   createContext,
   ReactNode,
@@ -6,7 +7,6 @@ import {
   useMemo,
   useState,
 } from "react";
-import { getProviderMetadata, MWMediaMeta } from "@/providers";
 import { BookmarkStore } from "./store";
 
 interface BookmarkStoreData {
@@ -64,7 +64,7 @@ export function BookmarkContextProvider(props: { children: ReactNode }) {
 
   const contextValue = useMemo(
     () => ({
-      setItemBookmark(media: MWMediaMeta, bookmarked: boolean) {
+      setItemBookmark(media: any, bookmarked: boolean) {
         setBookmarked((data: BookmarkStoreData) => {
           if (bookmarked) {
             const itemIndex = getBookmarkIndexFromMedia(data.bookmarks, media);
@@ -90,9 +90,7 @@ export function BookmarkContextProvider(props: { children: ReactNode }) {
         });
       },
       getFilteredBookmarks() {
-        return bookmarkStorage.bookmarks.filter(
-          (bookmark) => getProviderMetadata(bookmark.providerId)?.enabled
-        );
+        return [];
       },
       bookmarkStore: bookmarkStorage,
     }),

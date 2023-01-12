@@ -1,5 +1,4 @@
-import { MWMediaType, MWQuery } from "@/providers";
-import { MWMediaMeta } from "./types";
+import { MWMediaMeta, MWMediaType, MWQuery } from "./types";
 
 const JW_API_BASE = "https://apis.justwatch.com";
 

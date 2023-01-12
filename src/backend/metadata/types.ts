@@ -11,3 +11,8 @@ export type MWMediaMeta = {
   poster?: string;
   type: MWMediaType;
 };
+
+export interface MWQuery {
+  searchQuery: string;
+  type: MWMediaType;
+}

@@ -8,21 +8,15 @@ const timeout = (time: number) =>
   });
 
 registerEmbedScraper({
-  id: "testembed",
-  rank: 23,
-  for: MWEmbedType.OPENLOAD,
+  id: "testembedtwo",
+  rank: 19,
+  for: MWEmbedType.ANOTHER,
 
   async getStream({ progress }) {
-    await timeout(1000);
-    progress(25);
-    await timeout(1000);
-    progress(50);
-    await timeout(1000);
     progress(75);
-    throw new Error("failed to load or something");
     await timeout(1000);
     return {
-      streamUrl: "hello-world",
+      streamUrl: "hello-world-5",
       type: MWStreamType.MP4,
       quality: MWStreamQuality.Q1080P,
     };

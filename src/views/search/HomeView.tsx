@@ -2,7 +2,6 @@ import { useTranslation } from "react-i18next";
 import { Icons } from "@/components/Icon";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 import { MediaGrid } from "@/components/media/MediaGrid";
-import { WatchedMediaCard } from "@/components/media/WatchedMediaCard";
 import {
   getIfBookmarkedFromPortable,
   useBookmarkContext,
@@ -22,12 +21,12 @@ function Bookmarks() {
       icon={Icons.BOOKMARK}
     >
       <MediaGrid>
-        {bookmarks.map((v) => (
+        {/* {bookmarks.map((v) => (
           <WatchedMediaCard
             key={[v.mediaId, v.providerId].join("|")}
             media={v}
           />
-        ))}
+        ))} */}
       </MediaGrid>
     </SectionHeading>
   );
@@ -51,13 +50,13 @@ function Watched() {
       icon={Icons.CLOCK}
     >
       <MediaGrid>
-        {watchedItems.map((v) => (
+        {/* {watchedItems.map((v) => (
           <WatchedMediaCard
             key={[v.mediaId, v.providerId].join("|")}
             media={v}
             series
           />
-        ))}
+        ))} */}
       </MediaGrid>
     </SectionHeading>
   );

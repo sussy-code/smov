@@ -1,6 +1,6 @@
+import { MWMediaType, MWQuery } from "@/backend/metadata/types";
 import React, { useRef, useState } from "react";
 import { generatePath, useHistory, useRouteMatch } from "react-router-dom";
-import { MWMediaType, MWQuery } from "@/providers";
 
 export function useSearchQuery(): [
   MWQuery,

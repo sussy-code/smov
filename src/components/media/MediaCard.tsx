@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
 import { DotList } from "@/components/text/DotList";
-import { MWSearchResult } from "@/backend/metadata/search";
-import { MWMediaType } from "@/providers";
+import { MWMediaMeta, MWMediaType } from "@/backend/metadata/types";
 
 export interface MediaCardProps {
-  media: MWSearchResult;
+  media: MWMediaMeta;
   linkable?: boolean;
 }
 

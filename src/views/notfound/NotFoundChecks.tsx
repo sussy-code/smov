@@ -1,9 +1,8 @@
 import { ReactElement } from "react";
-import { getProviderMetadata, MWPortableMedia } from "@/providers";
-import { NotFoundMedia, NotFoundProvider } from "./NotFoundView";
+// import { NotFoundMedia, NotFoundProvider } from "./NotFoundView";
 
 export interface NotFoundChecksProps {
-  portable: MWPortableMedia | undefined;
+  // portable: MWPortableMedia | undefined;
   children?: ReactElement;
 }
 
@@ -13,17 +12,17 @@ export interface NotFoundChecksProps {
 export function NotFoundChecks(
   props: NotFoundChecksProps
 ): ReactElement | null {
-  const providerMeta = props.portable
-    ? getProviderMetadata(props.portable.providerId)
-    : undefined;
+  // const providerMeta = props.portable
+  //   ? getProviderMetadata(props.portable.providerId)
+  //   : undefined;
 
-  if (!providerMeta || !providerMeta.exists) {
-    return <NotFoundMedia />;
-  }
+  // if (!providerMeta || !providerMeta.exists) {
+  //   return <NotFoundMedia />;
+  // }
 
-  if (!providerMeta.enabled) {
-    return <NotFoundProvider />;
-  }
+  // if (!providerMeta.enabled) {
+  //   return <NotFoundProvider />;
+  // }
 
   return props.children || null;
 }
