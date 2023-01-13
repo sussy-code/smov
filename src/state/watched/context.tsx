@@ -1,4 +1,4 @@
-import { MWMediaMeta } from "@/backend/metadata/types";
+import { MWMediaMeta, MWMediaType } from "@/backend/metadata/types";
 import React, {
   createContext,
   ReactNode,
@@ -94,42 +94,40 @@ export function WatchedContextProvider(props: { children: ReactNode }) {
         // let filtered = watched.items.filter(
         //   (item) => getProviderMetadata(item.providerId)?.enabled
         // );
+        let filtered = watched.items;
+
         // // get highest episode number for every anime/season
-        // const highestEpisode: Record<string, [number, number]> = {};
-        // const highestWatchedItem: Record<string, WatchedStoreItem> = {};
-        // filtered = filtered.filter((item) => {
-        //   if (
-        //     [MWMediaType.ANIME, MWMediaType.SERIES].includes(item.mediaType)
-        //   ) {
-        //     const key = `${item.mediaType}-${item.mediaId}`;
-        //     const current: [number, number] = [
-        //       item.episodeId ? parseInt(item.episodeId, 10) : -1,
-        //       item.seasonId ? parseInt(item.seasonId, 10) : -1,
-        //     ];
-        //     let existing = highestEpisode[key];
-        //     if (!existing) {
-        //       existing = current;
-        //       highestEpisode[key] = current;
-        //       highestWatchedItem[key] = item;
-        //     }
-        //     if (
-        //       current[0] > existing[0] ||
-        //       (current[0] === existing[0] && current[1] > existing[1])
-        //     ) {
-        //       highestEpisode[key] = current;
-        //       highestWatchedItem[key] = item;
-        //     }
-        //     return false;
-        //   }
-        //   return true;
-        // });
-        // return [...filtered, ...Object.values(highestWatchedItem)];
+        const highestEpisode: Record<string, [number, number]> = {};
+        const highestWatchedItem: Record<string, WatchedStoreItem> = {};
+        filtered = filtered.filter((item) => {
+          if ([MWMediaType.ANIME, MWMediaType.SERIES].includes(item.type)) {
+            const key = `${item.type}-${item.id}`;
+            const current: [number, number] = [
+              item.episodeId ? parseInt(item.episodeId, 10) : -1,
+              item.seasonId ? parseInt(item.seasonId, 10) : -1,
+            ];
+            let existing = highestEpisode[key];
+            if (!existing) {
+              existing = current;
+              highestEpisode[key] = current;
+              highestWatchedItem[key] = item;
+            }
+            if (
+              current[0] > existing[0] ||
+              (current[0] === existing[0] && current[1] > existing[1])
+            ) {
+              highestEpisode[key] = current;
+              highestWatchedItem[key] = item;
+            }
+            return false;
+          }
+          return true;
+        });
+        return [...filtered, ...Object.values(highestWatchedItem)];
       },
       watched,
     }),
-    [
-      /*watched, setWatched*/
-    ]
+    [watched]
   );
 
   return (

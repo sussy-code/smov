@@ -5,6 +5,7 @@ import {
   canFullscreenAnyElement,
   canWebkitFullscreen,
 } from "@/utils/detectFeatures";
+import { MWStreamType } from "@/backend/helpers/streams";
 import fscreen from "fscreen";
 import React, { RefObject } from "react";
 import { PlayerState } from "./useVideoPlayer";
@@ -19,7 +20,7 @@ export interface PlayerControls {
   setVolume(volume: number): void;
   setSeeking(active: boolean): void;
   setLeftControlsHover(hovering: boolean): void;
-  initPlayer(sourceUrl: string, sourceType: "m3u8" | "mp4"): void;
+  initPlayer(sourceUrl: string, sourceType: MWStreamType): void;
 }
 
 export const initialControls: PlayerControls = {
@@ -104,10 +105,10 @@ export function populateControls(
     setLeftControlsHover(hovering) {
       update((s) => ({ ...s, leftControlHovering: hovering }));
     },
-    initPlayer(sourceUrl: string, sourceType: "m3u8" | "mp4") {
+    initPlayer(sourceUrl: string, sourceType: MWStreamType) {
       this.setVolume(getStoredVolume());
 
-      if (sourceType === "m3u8") {
+      if (sourceType === MWStreamType.HLS) {
         if (player.canPlayType("application/vnd.apple.mpegurl")) {
           player.src = sourceUrl;
         } else {
@@ -125,7 +126,7 @@ export function populateControls(
           hls.attachMedia(player);
           hls.loadSource(sourceUrl);
         }
-      } else if (sourceType === "mp4") {
+      } else if (sourceType === MWStreamType.MP4) {
         player.src = sourceUrl;
       }
     },

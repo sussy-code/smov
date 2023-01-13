@@ -1,9 +1,10 @@
+import { MWStreamType } from "@/backend/helpers/streams";
 import { useContext, useEffect } from "react";
 import { VideoPlayerDispatchContext } from "../VideoContext";
 
 interface SourceControlProps {
   source: string;
-  type: "m3u8" | "mp4";
+  type: MWStreamType;
 }
 
 export function SourceControl(props: SourceControlProps) {

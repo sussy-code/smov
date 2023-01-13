@@ -1,22 +1,16 @@
+import {
+  formatJWMeta,
+  JWContentTypes,
+  JWMediaResult,
+  JW_API_BASE,
+} from "./justwatch";
 import { MWMediaMeta, MWMediaType, MWQuery } from "./types";
-
-const JW_API_BASE = "https://apis.justwatch.com";
-
-type JWContentTypes = "movie" | "show";
 
 type JWSearchQuery = {
   content_types: JWContentTypes[];
   page: number;
   page_size: number;
   query: string;
-};
-
-type JWSearchResults = {
-  title: string;
-  poster?: string;
-  id: number;
-  original_release_year: number;
-  jw_entity_id: string;
 };
 
 type JWPage<T> = {
@@ -46,15 +40,7 @@ export async function searchForMedia({
     `${JW_API_BASE}/content/titles/en_US/popular?body=${encodeURIComponent(
       JSON.stringify(body)
     )}`
-  ).then((res) => res.json() as Promise<JWPage<JWSearchResults>>);
+  ).then((res) => res.json() as Promise<JWPage<JWMediaResult>>);
 
-  return data.items.map<MWMediaMeta>((v) => ({
-    title: v.title,
-    id: v.id.toString(),
-    year: v.original_release_year.toString(),
-    poster: v.poster
-      ? `https://images.justwatch.com${v.poster.replace("{profile}", "s166")}`
-      : undefined,
-    type,
-  }));
+  return data.items.map<MWMediaMeta>((v) => formatJWMeta(v));
 }

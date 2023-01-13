@@ -28,7 +28,7 @@ export async function runProvider(
     const data = await provider.scrape(ctx);
     return sortProviderResult(data);
   } catch (err) {
-    console.error("Failed to run provider", {
+    console.error("Failed to run provider", err, {
       id: provider.id,
       ctx: { ...ctx },
     });

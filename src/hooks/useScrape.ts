@@ -1,5 +1,6 @@
 import { findBestStream } from "@/backend/helpers/scrape";
 import { MWStream } from "@/backend/helpers/streams";
+import { DetailedMeta } from "@/backend/metadata/getmeta";
 import { useEffect, useState } from "react";
 
 interface ScrapeEventLog {
@@ -9,7 +10,7 @@ interface ScrapeEventLog {
   id: string;
 }
 
-export function useScrape() {
+export function useScrape(meta: DetailedMeta) {
   const [eventLog, setEventLog] = useState<ScrapeEventLog[]>([]);
   const [stream, setStream] = useState<MWStream | null>(null);
   const [pending, setPending] = useState(true);
@@ -19,10 +20,8 @@ export function useScrape() {
     setStream(null);
     setEventLog([]);
     (async () => {
-      // TODO has test inputs
       const scrapedStream = await findBestStream({
-        imdb: "test1",
-        tmdb: "test2",
+        media: meta,
         onNext(ctx) {
           setEventLog((arr) => [
             ...arr,
@@ -49,7 +48,7 @@ export function useScrape() {
       setPending(false);
       setStream(scrapedStream);
     })();
-  }, []);
+  }, [meta]);
 
   return {
     stream,

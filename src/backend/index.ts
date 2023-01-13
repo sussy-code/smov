@@ -8,12 +8,9 @@ import { initializeScraperStore } from "./helpers/register";
 
 // providers
 // -- nothing here yet
-import "./providers/testProvider";
-import "./providers/testProviderTwo";
+import "./providers/gdriveplayer";
 
 // embeds
 // -- nothing here yet
-import "./embeds/testEmbedScraper";
-import "./embeds/testEmbedScraperTwo";
 
 initializeScraperStore();

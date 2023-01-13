@@ -1,3 +1,4 @@
+import { DetailedMeta } from "../metadata/getmeta";
 import { MWMediaType } from "../metadata/types";
 import { MWEmbed } from "./embed";
 import { MWStream } from "./streams";
@@ -9,8 +10,7 @@ export type MWProviderScrapeResult = {
 
 export type MWProviderContext = {
   progress(percentage: number): void;
-  imdbId: string;
-  tmdbId: string;
+  media: DetailedMeta;
 };
 
 export type MWProvider = {

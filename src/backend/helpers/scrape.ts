@@ -2,6 +2,7 @@ import { MWProviderScrapeResult } from "./provider";
 import { getEmbedScraperByType, getProviders } from "./register";
 import { runEmbedScraper, runProvider } from "./run";
 import { MWStream } from "./streams";
+import { DetailedMeta } from "../metadata/getmeta";
 
 interface MWProgressData {
   type: "embed" | "provider";
@@ -15,8 +16,7 @@ interface MWNextData {
 }
 
 export interface MWProviderRunContext {
-  tmdb: string;
-  imdb: string;
+  media: DetailedMeta;
   onProgress?: (data: MWProgressData) => void;
   onNext?: (data: MWNextData) => void;
 }
@@ -80,8 +80,7 @@ export async function findBestStream(
     let result: MWProviderScrapeResult;
     try {
       result = await runProvider(provider, {
-        imdbId: ctx.imdb,
-        tmdbId: ctx.tmdb,
+        media: ctx.media,
         progress(num) {
           ctx.onProgress?.({
             percentage: num,

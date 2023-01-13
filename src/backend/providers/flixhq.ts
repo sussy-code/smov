@@ -10,6 +10,7 @@ registerProvider({
   id: "testprov",
   rank: 42,
   type: [MWMediaType.MOVIE],
+  disabled: true,
 
   async scrape({ progress }) {
     await timeout(1000);

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { DotList } from "@/components/text/DotList";
-import { MWMediaMeta, MWMediaType } from "@/backend/metadata/types";
+import { MWMediaMeta } from "@/backend/metadata/types";
 
 export interface MediaCardProps {
   media: MWMediaMeta;
@@ -37,14 +37,15 @@ function MediaCardContent({ media, linkable }: MediaCardProps) {
 }
 
 export function MediaCard(props: MediaCardProps) {
-  let link = "movie";
-  if (props.media.type === MWMediaType.SERIES) link = "series";
-
   const content = <MediaCardContent {...props} />;
 
   if (!props.linkable) return <span>{content}</span>;
   return (
-    <Link to={`/media/${link}/${encodeURIComponent(props.media.id)}`}>
+    <Link
+      to={`/media/${encodeURIComponent(props.media.type)}-${encodeURIComponent(
+        props.media.id
+      )}`}
+    >
       {content}
     </Link>
   );

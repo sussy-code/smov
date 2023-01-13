@@ -31,13 +31,7 @@ function getBookmarkIndexFromMedia(
   bookmarks: MWMediaMeta[],
   media: MWMediaMeta
 ): number {
-  const a = bookmarks.findIndex(
-    (v) =>
-      v.mediaId === media.mediaId &&
-      v.providerId === media.providerId &&
-      v.episodeId === media.episodeId &&
-      v.seasonId === media.seasonId
-  );
+  const a = bookmarks.findIndex((v) => v.id === media.id);
   return a;
 }
 
@@ -64,19 +58,19 @@ export function BookmarkContextProvider(props: { children: ReactNode }) {
 
   const contextValue = useMemo(
     () => ({
-      setItemBookmark(media: any, bookmarked: boolean) {
+      setItemBookmark(media: MWMediaMeta, bookmarked: boolean) {
         setBookmarked((data: BookmarkStoreData) => {
           if (bookmarked) {
             const itemIndex = getBookmarkIndexFromMedia(data.bookmarks, media);
             if (itemIndex === -1) {
               const item = {
-                mediaId: media.mediaId,
-                mediaType: media.mediaType,
-                providerId: media.providerId,
+                id: media.id,
+                type: media.type,
+                // providerId: media.providerId,
                 title: media.title,
                 year: media.year,
-                episodeId: media.episodeId,
-                seasonId: media.seasonId,
+                // episodeId: media.episodeId,
+                // seasonId: media.seasonId,
               };
               data.bookmarks.push(item);
             }

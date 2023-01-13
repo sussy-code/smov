@@ -5,7 +5,9 @@ export enum MWStreamType {
 
 export enum MWStreamQuality {
   Q360P = "360p",
+  Q720P = "720p",
   Q1080P = "1080p",
+  QUNKNOWN = "unknown",
 }
 
 export type MWStream = {

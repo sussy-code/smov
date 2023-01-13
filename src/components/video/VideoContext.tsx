@@ -1,3 +1,4 @@
+import { MWStreamType } from "@/backend/helpers/streams";
 import React, {
   createContext,
   MutableRefObject,
@@ -13,17 +14,17 @@ import {
 
 interface VideoPlayerContextType {
   source: string | null;
-  sourceType: "m3u8" | "mp4";
+  sourceType: MWStreamType;
   state: PlayerContext;
 }
 const initial: VideoPlayerContextType = {
   source: null,
-  sourceType: "mp4",
+  sourceType: MWStreamType.MP4,
   state: initialPlayerState,
 };
 
 type VideoPlayerContextAction =
-  | { type: "SET_SOURCE"; url: string; sourceType: "m3u8" | "mp4" }
+  | { type: "SET_SOURCE"; url: string; sourceType: MWStreamType }
   | {
       type: "UPDATE_PLAYER";
       state: PlayerContext;

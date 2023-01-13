@@ -65,8 +65,6 @@ export function SearchResultsView({ searchQuery }: { searchQuery: MWQuery }) {
   if (error) return <SearchSuffix failed />;
   if (!results) return null;
 
-  // TODO on click go to the right page with id instead of portable
-
   return (
     <div>
       {results.length > 0 ? (
