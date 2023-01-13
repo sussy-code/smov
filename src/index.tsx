@@ -16,6 +16,23 @@ if (key) {
   (window as any).initMW(conf().BASE_PROXY_URL, key);
 }
 
+// TODO video todos:
+//  - error handling
+//  - captions
+//  - mobile UI
+//  - safari fullscreen will make video overlap player controls
+//  - safari progress bar is fucked (video doesnt change time but video.currentTime does change)
+
+// TODO optional todos:
+//  - shortcuts when player is active
+//  - improve seekables (if possible)
+
+// TODO stuff to test:
+//  - browser: firefox, chrome, edge, safari desktop
+//  - phones: android firefox, android chrome, iphone safari
+//  - devices: ipadOS
+//  - features: HLS, error handling, preload interactions
+
 ReactDOM.render(
   <React.StrictMode>
     <ErrorBoundary>
