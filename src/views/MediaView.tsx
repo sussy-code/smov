@@ -60,6 +60,7 @@ export function MediaView() {
   const [stream, setStream] = useState<MWStream | null>(null);
 
   useEffect(() => {
+    // TODO handle errors
     (async () => {
       const [t, id] = params.media.split("-", 2);
       const type = JWMediaToMediaType(t);
@@ -68,7 +69,6 @@ export function MediaView() {
     })();
   }, [setMeta, params]);
 
-  // TODO not found checks
   // TODO watched store
   // TODO scrape loading state
   // TODO error page with video header

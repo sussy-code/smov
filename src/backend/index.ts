@@ -5,6 +5,7 @@ import { initializeScraperStore } from "./helpers/register";
 //  - hooks to run all providers one by one
 //  - move over old providers to new system
 //  - implement jons providers/embedscrapers
+//  - show/episode support
 
 // providers
 // -- nothing here yet
