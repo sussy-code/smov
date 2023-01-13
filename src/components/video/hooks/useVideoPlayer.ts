@@ -13,6 +13,7 @@ export type PlayerState = {
   isPaused: boolean;
   isSeeking: boolean;
   isLoading: boolean;
+  isFirstLoading: boolean;
   isFullscreen: boolean;
   time: number;
   duration: number;
@@ -32,6 +33,7 @@ export const initialPlayerState: PlayerContext = {
   isFullscreen: false,
   isLoading: false,
   isSeeking: false,
+  isFirstLoading: true,
   time: 0,
   duration: 0,
   volume: 0,
@@ -64,6 +66,7 @@ function readState(player: HTMLVideoElement, update: SetPlayer) {
     ...state,
     pausedWhenSeeking: s.pausedWhenSeeking,
     hasPlayedOnce: s.hasPlayedOnce,
+    isFirstLoading: s.isFirstLoading,
   }));
 }
 
@@ -122,6 +125,12 @@ function registerListeners(player: HTMLVideoElement, update: SetPlayer) {
       buffered: handleBuffered(player.currentTime, player.buffered),
     }));
   };
+  const canplay = () => {
+    update((s) => ({
+      ...s,
+      isFirstLoading: false,
+    }));
+  };
 
   player.addEventListener("pause", pause);
   player.addEventListener("playing", playing);
@@ -133,6 +142,7 @@ function registerListeners(player: HTMLVideoElement, update: SetPlayer) {
   player.addEventListener("volumechange", volumechange);
   player.addEventListener("progress", progress);
   player.addEventListener("waiting", waiting);
+  player.addEventListener("canplay", canplay);
 
   return () => {
     player.removeEventListener("pause", pause);
@@ -145,6 +155,7 @@ function registerListeners(player: HTMLVideoElement, update: SetPlayer) {
     player.removeEventListener("volumechange", volumechange);
     player.removeEventListener("progress", progress);
     player.removeEventListener("waiting", waiting);
+    player.removeEventListener("canplay", canplay);
   };
 }
 

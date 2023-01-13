@@ -4,7 +4,9 @@ import { useVideoPlayerState } from "../VideoContext";
 export function LoadingControl() {
   const { videoState } = useVideoPlayerState();
 
-  if (!videoState.isLoading) return null;
+  const isLoading = videoState.isFirstLoading || videoState.isLoading;
+
+  if (!isLoading) return null;
 
   return <Spinner />;
 }

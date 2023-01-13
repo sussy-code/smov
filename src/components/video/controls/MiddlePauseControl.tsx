@@ -12,6 +12,7 @@ export function MiddlePauseControl() {
 
   if (videoState.hasPlayedOnce) return null;
   if (videoState.isPlaying) return null;
+  if (videoState.isFirstLoading) return null;
 
   return (
     <div
