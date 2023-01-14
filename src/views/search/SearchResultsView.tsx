@@ -53,7 +53,6 @@ export function SearchResultsView({ searchQuery }: { searchQuery: MWQuery }) {
 
   useEffect(() => {
     // TODO use cache
-    // TODO run immediately without debounce on mount
     async function runSearch(query: MWQuery) {
       const searchResults = await runSearchQuery(query);
       if (!searchResults) return;
