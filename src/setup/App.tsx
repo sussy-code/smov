@@ -3,7 +3,7 @@ import { BookmarkContextProvider } from "@/state/bookmark";
 import { WatchedContextProvider } from "@/state/watched";
 
 import { NotFoundPage } from "@/views/notfound/NotFoundView";
-import { MediaView } from "@/views/MediaView";
+import { MediaView } from "@/views/media/MediaView";
 import { SearchView } from "@/views/search/SearchView";
 import { MWMediaType } from "@/backend/metadata/types";
 

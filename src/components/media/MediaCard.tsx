@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { DotList } from "@/components/text/DotList";
 import { MWMediaMeta } from "@/backend/metadata/types";
+import { mediaTypeToJW } from "@/backend/metadata/justwatch";
 
 export interface MediaCardProps {
   media: MWMediaMeta;
@@ -42,9 +43,9 @@ export function MediaCard(props: MediaCardProps) {
   if (!props.linkable) return <span>{content}</span>;
   return (
     <Link
-      to={`/media/${encodeURIComponent(props.media.type)}-${encodeURIComponent(
-        props.media.id
-      )}`}
+      to={`/media/${encodeURIComponent(
+        mediaTypeToJW(props.media.type)
+      )}-${encodeURIComponent(props.media.id)}`}
     >
       {content}
     </Link>

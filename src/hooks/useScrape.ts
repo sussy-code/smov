@@ -3,7 +3,7 @@ import { MWStream } from "@/backend/helpers/streams";
 import { DetailedMeta } from "@/backend/metadata/getmeta";
 import { useEffect, useState } from "react";
 
-interface ScrapeEventLog {
+export interface ScrapeEventLog {
   type: "provider" | "embed";
   errored: boolean;
   percentage: number;

@@ -37,12 +37,14 @@ registerProvider({
   rank: 69,
   type: [MWMediaType.MOVIE],
 
-  async scrape({ media: { imdbId } }) {
+  async scrape({ progress, media: { imdbId } }) {
+    progress(10);
     const streamRes = await fetch(
       `${
         conf().CORS_PROXY_URL
       }https://database.gdriveplayer.us/player.php?imdb=${imdbId}`
     ).then((d) => d.text());
+    progress(90);
     const page = new DOMParser().parseFromString(streamRes, "text/html");
 
     const script: HTMLElement | undefined = Array.from(

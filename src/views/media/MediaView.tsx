@@ -7,9 +7,21 @@ import { VideoPlayerHeader } from "@/components/video/parts/VideoPlayerHeader";
 import { DetailedMeta, getMetaFromId } from "@/backend/metadata/getmeta";
 import { JWMediaToMediaType } from "@/backend/metadata/justwatch";
 import { SourceControl } from "@/components/video/controls/SourceControl";
+import { Loading } from "@/components/layout/Loading";
+import { MediaScrapeLog } from "./MediaScrapeLog";
 
-function MediaViewLoading() {
-  return <p>Loading meta...</p>;
+function MediaViewLoading(props: { onGoBack(): void }) {
+  return (
+    <div className="relative flex h-screen items-center justify-center">
+      <div className="absolute inset-x-0 top-0 p-6">
+        <VideoPlayerHeader onClick={props.onGoBack} />
+      </div>
+      <div className="flex flex-col items-center">
+        <Loading className="mb-4" />
+        <p className="mb-8 text-denim-700">Finding the best video for you</p>
+      </div>
+    </div>
+  );
 }
 
 interface MediaViewScrapingProps {
@@ -18,7 +30,7 @@ interface MediaViewScrapingProps {
   meta: DetailedMeta;
 }
 function MediaViewScraping(props: MediaViewScrapingProps) {
-  const { eventLog, pending, stream } = useScrape(props.meta);
+  const { eventLog, stream } = useScrape(props.meta);
 
   useEffect(() => {
     if (stream) {
@@ -26,24 +38,21 @@ function MediaViewScraping(props: MediaViewScrapingProps) {
     }
   }, [stream, props]);
 
+  // TODO error screen if no streams found
+
   return (
-    <div>
-      <VideoPlayerHeader
-        onClick={props.onGoBack}
-        title={props.meta.meta.title}
-      />
-      <p>pending: {pending.toString()}</p>
-      <p>
-        stream: {stream?.streamUrl} - {stream?.type} - {stream?.quality}
-      </p>
-      <hr />
-      {eventLog.map((v) => (
-        <div className="rounded-xl p-1 text-white">
-          <p>
-            {v.percentage}% - {v.type} - {v.errored ? "ERROR" : "pending"}
-          </p>
-        </div>
-      ))}
+    <div className="relative flex h-screen items-center justify-center">
+      <div className="absolute inset-x-0 top-0 py-6 px-8">
+        <VideoPlayerHeader
+          onClick={props.onGoBack}
+          title={props.meta.meta.title}
+        />
+      </div>
+      <div className="flex flex-col items-center">
+        <Loading className="mb-4" />
+        <p className="mb-8 text-denim-700">Finding the best video for you</p>
+        <MediaScrapeLog events={eventLog} />
+      </div>
     </div>
   );
 }
@@ -70,10 +79,9 @@ export function MediaView() {
   }, [setMeta, params]);
 
   // TODO watched store
-  // TODO scrape loading state
   // TODO error page with video header
 
-  if (!meta) return <MediaViewLoading />;
+  if (!meta) return <MediaViewLoading onGoBack={goBack} />;
   if (!stream)
     return (
       <MediaViewScraping meta={meta} onGoBack={goBack} onStream={setStream} />
