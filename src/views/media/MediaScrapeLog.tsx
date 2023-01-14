@@ -16,11 +16,17 @@ function MediaScrapePillSkeleton() {
 function MediaScrapePill({ event }: MediaScrapePillProps) {
   return (
     <div className="flex h-9 w-[220px] items-center rounded-full bg-slate-800 p-3 text-denim-700">
-      <div className="mr-2">
+      <div className="mr-2 flex w-[18px] items-center justify-center">
         {!event.errored ? (
           <svg className="h-[18px] w-[18px] -rotate-90" viewBox="0 0 100 100">
             <circle
-              className="fill-transparent stroke-denim-700 stroke-[15] transition-[stroke-dashoffset] duration-150"
+              className="fill-transparent stroke-denim-700 stroke-[15] opacity-25"
+              r="40"
+              cx="50"
+              cy="50"
+            />
+            <circle
+              className="fill-transparent stroke-bink-700 stroke-[15] transition-[stroke-dashoffset] duration-150"
               r="40"
               cx="50"
               cy="50"
