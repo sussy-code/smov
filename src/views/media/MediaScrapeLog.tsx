@@ -71,7 +71,7 @@ export function MediaScrapeLog(props: MediaScrapeLogProps) {
           >
             <MediaScrapePillSkeleton />
             {props.events.map((v) => (
-              <MediaScrapePill event={v} key={v.id} />
+              <MediaScrapePill event={v} key={v.eventId} />
             ))}
             <MediaScrapePillSkeleton />
           </div>

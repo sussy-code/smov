@@ -33,6 +33,9 @@ if (key) {
 //  - devices: ipadOS
 //  - features: HLS, error handling, preload interactions
 
+// TODO general todos:
+//  - localize everything
+
 ReactDOM.render(
   <React.StrictMode>
     <ErrorBoundary>

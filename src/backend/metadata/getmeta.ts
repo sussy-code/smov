@@ -1,9 +1,12 @@
-import { formatJWMeta, JWMediaResult } from "./justwatch";
+import { FetchError } from "ofetch";
+import { makeUrl, mwFetch } from "../helpers/fetch";
+import {
+  formatJWMeta,
+  JWMediaResult,
+  JW_API_BASE,
+  mediaTypeToJW,
+} from "./justwatch";
 import { MWMediaMeta, MWMediaType } from "./types";
-
-const JW_API_BASE = "https://apis.justwatch.com";
-
-// http://localhost:5173/#/media/movie-439596/
 
 type JWExternalIdType =
   | "eidr"
@@ -31,18 +34,23 @@ export interface DetailedMeta {
 export async function getMetaFromId(
   type: MWMediaType,
   id: string
-): Promise<DetailedMeta> {
-  let queryType = "";
-  if (type === MWMediaType.MOVIE) queryType = "movie";
-  else if (type === MWMediaType.SERIES) queryType = "show";
-  else if (type === MWMediaType.ANIME)
-    throw new Error("Anime search type is not supported");
+): Promise<DetailedMeta | null> {
+  const queryType = mediaTypeToJW(type);
 
-  const data = await fetch(
-    `${JW_API_BASE}/content/titles/${queryType}/${encodeURIComponent(
-      id
-    )}/locale/en_US`
-  ).then((res) => res.json() as Promise<JWDetailedMeta>);
+  let data: JWDetailedMeta;
+  try {
+    const url = makeUrl("/content/titles/{type}/{id}/locale/en_US", {
+      type: queryType,
+      id,
+    });
+    data = await mwFetch<JWDetailedMeta>(url, { baseURL: JW_API_BASE });
+  } catch (err) {
+    if (err instanceof FetchError) {
+      // 400 and 404 are treated as not found
+      if (err.statusCode === 400 || err.statusCode === 404) return null;
+    }
+    throw err;
+  }
 
   const imdbId = data.external_ids.find(
     (v) => v.provider === "imdb_latest"

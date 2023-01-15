@@ -8,13 +8,26 @@ export type MWProviderScrapeResult = {
   embeds: MWEmbed[];
 };
 
-export type MWProviderContext = {
+type MWProviderBase = {
   progress(percentage: number): void;
   media: DetailedMeta;
 };
+type MWProviderTypeSpecific =
+  | {
+      type: MWMediaType.MOVIE | MWMediaType.ANIME;
+      episode?: undefined;
+      season?: undefined;
+    }
+  | {
+      type: MWMediaType.SERIES;
+      episode: number;
+      season: number;
+    };
+export type MWProviderContext = MWProviderTypeSpecific & MWProviderBase;
 
 export type MWProvider = {
   id: string;
+  displayName: string;
   rank: number;
   disabled?: boolean;
   type: MWMediaType[];

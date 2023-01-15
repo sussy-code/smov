@@ -5,11 +5,24 @@ import { Icons } from "@/components/Icon";
 import { Navigation } from "@/components/layout/Navigation";
 import { ArrowLink } from "@/components/text/ArrowLink";
 import { Title } from "@/components/text/Title";
+import { useGoBack } from "@/hooks/useGoBack";
+import { VideoPlayerHeader } from "@/components/video/parts/VideoPlayerHeader";
 
-function NotFoundWrapper(props: { children?: ReactNode }) {
+export function NotFoundWrapper(props: {
+  children?: ReactNode;
+  video?: boolean;
+}) {
+  const goBack = useGoBack();
+
   return (
     <div className="h-screen flex-1">
-      <Navigation />
+      {props.video ? (
+        <div className="fixed inset-x-0 top-0 py-6 px-8">
+          <VideoPlayerHeader onClick={goBack} />
+        </div>
+      ) : (
+        <Navigation />
+      )}
       <div className="flex h-full flex-col items-center justify-center p-5 text-center">
         {props.children}
       </div>

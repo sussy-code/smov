@@ -1,14 +1,21 @@
-import { useHistory, useParams } from "react-router-dom";
-import { useCallback, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { DecoratedVideoPlayer } from "@/components/video/DecoratedVideoPlayer";
 import { MWStream } from "@/backend/helpers/streams";
-import { useScrape } from "@/hooks/useScrape";
+import { SelectedMediaData, useScrape } from "@/hooks/useScrape";
 import { VideoPlayerHeader } from "@/components/video/parts/VideoPlayerHeader";
 import { DetailedMeta, getMetaFromId } from "@/backend/metadata/getmeta";
 import { JWMediaToMediaType } from "@/backend/metadata/justwatch";
 import { SourceControl } from "@/components/video/controls/SourceControl";
 import { Loading } from "@/components/layout/Loading";
+import { useLoading } from "@/hooks/useLoading";
+import { MWMediaType } from "@/backend/metadata/types";
+import { useGoBack } from "@/hooks/useGoBack";
+import { IconPatch } from "@/components/buttons/IconPatch";
+import { Icons } from "@/components/Icon";
+import { MediaFetchErrorView } from "./MediaErrorView";
 import { MediaScrapeLog } from "./MediaScrapeLog";
+import { NotFoundMedia, NotFoundWrapper } from "../notfound/NotFoundView";
 
 function MediaViewLoading(props: { onGoBack(): void }) {
   return (
@@ -28,17 +35,16 @@ interface MediaViewScrapingProps {
   onStream(stream: MWStream): void;
   onGoBack(): void;
   meta: DetailedMeta;
+  selected: SelectedMediaData;
 }
 function MediaViewScraping(props: MediaViewScrapingProps) {
-  const { eventLog, stream } = useScrape(props.meta);
+  const { eventLog, stream, pending } = useScrape(props.meta, props.selected);
 
   useEffect(() => {
     if (stream) {
       props.onStream(stream);
     }
   }, [stream, props]);
-
-  // TODO error screen if no streams found
 
   return (
     <div className="relative flex h-screen items-center justify-center">
@@ -48,44 +54,91 @@ function MediaViewScraping(props: MediaViewScrapingProps) {
           title={props.meta.meta.title}
         />
       </div>
-      <div className="flex flex-col items-center">
-        <Loading className="mb-4" />
-        <p className="mb-8 text-denim-700">Finding the best video for you</p>
-        <MediaScrapeLog events={eventLog} />
+      <div className="flex flex-col items-center transition-opacity duration-200">
+        {pending ? (
+          <>
+            <Loading />
+            <p className="mb-8 text-denim-700">
+              Finding the best video for you
+            </p>
+          </>
+        ) : (
+          <>
+            <IconPatch icon={Icons.EYE_SLASH} className="mb-8 text-bink-700" />
+            <p className="mb-8 text-denim-700">
+              Whoops, could&apos;t find any videos for you
+            </p>
+          </>
+        )}
+        <div
+          className={`flex flex-col items-center transition-opacity duration-200 ${
+            pending ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <MediaScrapeLog events={eventLog} />
+        </div>
       </div>
     </div>
   );
 }
 
 export function MediaView() {
-  const reactHistory = useHistory();
   const params = useParams<{ media: string }>();
-  const goBack = useCallback(() => {
-    if (reactHistory.action !== "POP") reactHistory.goBack();
-    else reactHistory.push("/");
-  }, [reactHistory]);
+  const goBack = useGoBack();
 
   const [meta, setMeta] = useState<DetailedMeta | null>(null);
+  const [selected, setSelected] = useState<SelectedMediaData | null>(null);
+  const [exec, loading, error] = useLoading(async (mediaParams: string) => {
+    let type: MWMediaType;
+    let id = "";
+    try {
+      const [t, i] = mediaParams.split("-", 2);
+      type = JWMediaToMediaType(t);
+      id = i;
+    } catch (err) {
+      return null;
+    }
+    return getMetaFromId(type, id);
+  });
   const [stream, setStream] = useState<MWStream | null>(null);
 
   useEffect(() => {
-    // TODO handle errors
-    (async () => {
-      const [t, id] = params.media.split("-", 2);
-      const type = JWMediaToMediaType(t);
-      const fetchedMeta = await getMetaFromId(type, id);
-      setMeta(fetchedMeta);
-    })();
-  }, [setMeta, params]);
+    exec(params.media).then((v) => {
+      setMeta(v ?? null);
+      if (v)
+        setSelected({
+          type: v.meta.type,
+          episode: 0 as any,
+          season: 0 as any,
+        });
+      else setSelected(null);
+    });
+  }, [exec, params.media]);
 
   // TODO watched store
   // TODO error page with video header
 
-  if (!meta) return <MediaViewLoading onGoBack={goBack} />;
+  if (loading) return <MediaViewLoading onGoBack={goBack} />;
+  if (error) return <MediaFetchErrorView />;
+  if (!meta || !selected)
+    return (
+      <NotFoundWrapper video>
+        <NotFoundMedia />
+      </NotFoundWrapper>
+    );
+
+  // scraping view will start scraping and return with onStream
   if (!stream)
     return (
-      <MediaViewScraping meta={meta} onGoBack={goBack} onStream={setStream} />
+      <MediaViewScraping
+        meta={meta}
+        selected={selected}
+        onGoBack={goBack}
+        onStream={setStream}
+      />
     );
+
+  // show stream once we have a stream
   return (
     <div className="h-screen w-screen">
       <DecoratedVideoPlayer title={meta.meta.title} onGoBack={goBack} autoPlay>

@@ -1,10 +1,19 @@
+import { SimpleCache } from "@/utils/cache";
+import { mwFetch } from "../helpers/fetch";
 import {
   formatJWMeta,
   JWContentTypes,
   JWMediaResult,
   JW_API_BASE,
+  mediaTypeToJW,
 } from "./justwatch";
-import { MWMediaMeta, MWMediaType, MWQuery } from "./types";
+import { MWMediaMeta, MWQuery } from "./types";
+
+const cache = new SimpleCache<MWQuery, MWMediaMeta[]>();
+cache.setCompare((a, b) => {
+  return a.type === b.type && a.searchQuery.trim() === b.searchQuery.trim();
+});
+cache.initialize();
 
 type JWSearchQuery = {
   content_types: JWContentTypes[];
@@ -21,26 +30,29 @@ type JWPage<T> = {
   total_results: number;
 };
 
-export async function searchForMedia({
-  searchQuery,
-  type,
-}: MWQuery): Promise<MWMediaMeta[]> {
+export async function searchForMedia(query: MWQuery): Promise<MWMediaMeta[]> {
+  if (cache.has(query)) return cache.get(query) as MWMediaMeta[];
+  const { searchQuery, type } = query;
+
+  const contentType = mediaTypeToJW(type);
   const body: JWSearchQuery = {
-    content_types: [],
+    content_types: [contentType],
     page: 1,
     query: searchQuery,
     page_size: 40,
   };
-  if (type === MWMediaType.MOVIE) body.content_types.push("movie");
-  else if (type === MWMediaType.SERIES) body.content_types.push("show");
-  else if (type === MWMediaType.ANIME)
-    throw new Error("Anime search type is not supported");
 
-  const data = await fetch(
-    `${JW_API_BASE}/content/titles/en_US/popular?body=${encodeURIComponent(
-      JSON.stringify(body)
-    )}`
-  ).then((res) => res.json() as Promise<JWPage<JWMediaResult>>);
+  const data = await mwFetch<JWPage<JWMediaResult>>(
+    "/content/titles/en_US/popular",
+    {
+      baseURL: JW_API_BASE,
+      params: {
+        body: JSON.stringify(body),
+      },
+    }
+  );
 
-  return data.items.map<MWMediaMeta>((v) => formatJWMeta(v));
+  const returnData = data.items.map<MWMediaMeta>((v) => formatJWMeta(v));
+  cache.set(query, returnData, 3600); // cache for an hour
+  return returnData;
 }

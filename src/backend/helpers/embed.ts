@@ -2,7 +2,6 @@ import { MWStream } from "./streams";
 
 export enum MWEmbedType {
   OPENLOAD = "openload",
-  ANOTHER = "another",
 }
 
 export type MWEmbed = {
@@ -17,6 +16,7 @@ export type MWEmbedContext = {
 
 export type MWEmbedScraper = {
   id: string;
+  displayName: string;
   for: MWEmbedType;
   rank: number;
   disabled?: boolean;

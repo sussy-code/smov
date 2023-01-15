@@ -52,7 +52,6 @@ export function SearchResultsView({ searchQuery }: { searchQuery: MWQuery }) {
   );
 
   useEffect(() => {
-    // TODO use cache
     async function runSearch(query: MWQuery) {
       const searchResults = await runSearchQuery(query);
       if (!searchResults) return;

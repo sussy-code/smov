@@ -1,10 +1,10 @@
-import { conf } from "@/setup/config";
+import { unpack } from "unpacker";
+import CryptoJS from "crypto-js";
+
 import { registerProvider } from "@/backend/helpers/register";
 import { MWMediaType } from "@/backend/metadata/types";
 import { MWStreamQuality } from "@/backend/helpers/streams";
-
-import { unpack } from "unpacker";
-import CryptoJS from "crypto-js";
+import { proxiedFetch } from "../helpers/fetch";
 
 const format = {
   stringify: (cipher: any) => {
@@ -34,16 +34,20 @@ const format = {
 
 registerProvider({
   id: "gdriveplayer",
+  displayName: "gdriveplayer",
   rank: 69,
   type: [MWMediaType.MOVIE],
 
   async scrape({ progress, media: { imdbId } }) {
     progress(10);
-    const streamRes = await fetch(
-      `${
-        conf().CORS_PROXY_URL
-      }https://database.gdriveplayer.us/player.php?imdb=${imdbId}`
-    ).then((d) => d.text());
+    const streamRes = await proxiedFetch<string>(
+      "https://database.gdriveplayer.us/player.php",
+      {
+        params: {
+          imdb: imdbId,
+        },
+      }
+    );
     progress(90);
     const page = new DOMParser().parseFromString(streamRes, "text/html");
 
@@ -67,6 +71,7 @@ registerProvider({
         { format }
       ).toString(CryptoJS.enc.Utf8)
     );
+
     // eslint-disable-next-line
     const sources = JSON.parse(
       JSON.stringify(

@@ -7,7 +7,7 @@ interface VideoPlayerHeaderProps {
 }
 
 export function VideoPlayerHeader(props: VideoPlayerHeaderProps) {
-  const showDivider = props.title || props.onClick;
+  const showDivider = props.title && props.onClick;
   return (
     <div className="flex items-center">
       <div className="flex flex-1 items-center">

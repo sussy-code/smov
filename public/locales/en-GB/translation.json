@@ -4,15 +4,13 @@
   },
   "search": {
     "loading": "Fetching your favourite shows...",
-    "providersFailed": "{{fails}}/{{total}} providers failed!",
     "allResults": "That's all we have!",
     "noResults": "We couldn't find anything!",
-    "allFailed": "All providers have failed!",
+    "allFailed": "Failed to find media, try again!",
     "headingTitle": "Search results",
     "headingLink": "Back to home",
     "bookmarks": "Bookmarks",
     "continueWatching": "Continue Watching",
-    "tagline": "Because watching legally is boring",
     "title": "What do you want to watch?",
     "placeholder": "What do you want to watch?"
   },

@@ -1,6 +1,7 @@
 import { MWMediaType } from "./types";
 
 export const JW_API_BASE = "https://apis.justwatch.com";
+export const JW_IMAGE_BASE = "https://images.justwatch.com";
 
 export type JWContentTypes = "movie" | "show";
 
@@ -32,10 +33,7 @@ export function formatJWMeta(media: JWMediaResult) {
     id: media.id.toString(),
     year: media.original_release_year.toString(),
     poster: media.poster
-      ? `https://images.justwatch.com${media.poster.replace(
-          "{profile}",
-          "s166"
-        )}`
+      ? `${JW_IMAGE_BASE}${media.poster.replace("{profile}", "s166")}`
       : undefined,
     type,
   };
