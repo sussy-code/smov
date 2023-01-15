@@ -23,6 +23,10 @@ export type PlayerState = {
   hasInitialized: boolean;
   leftControlHovering: boolean;
   hasPlayedOnce: boolean;
+  error: null | {
+    name: string;
+    description: string;
+  };
 };
 
 export type PlayerContext = PlayerState & PlayerControls;
@@ -42,6 +46,7 @@ export const initialPlayerState: PlayerContext = {
   hasInitialized: false,
   leftControlHovering: false,
   hasPlayedOnce: false,
+  error: null,
   ...initialControls,
 };
 
@@ -61,6 +66,7 @@ function readState(player: HTMLVideoElement, update: SetPlayer) {
   state.buffered = handleBuffered(player.currentTime, player.buffered);
   state.isLoading = false;
   state.hasInitialized = true;
+  state.error = null;
 
   update((s) => ({
     ...state,
@@ -131,6 +137,19 @@ function registerListeners(player: HTMLVideoElement, update: SetPlayer) {
       isFirstLoading: false,
     }));
   };
+  const error = () => {
+    console.error("Native video player threw error", player.error);
+    // TODO check if these errors are actually fatal
+    update((s) => ({
+      ...s,
+      error: player.error
+        ? {
+            description: player.error.message,
+            name: `Error ${player.error.code}`,
+          }
+        : null,
+    }));
+  };
 
   player.addEventListener("pause", pause);
   player.addEventListener("playing", playing);
@@ -143,6 +162,7 @@ function registerListeners(player: HTMLVideoElement, update: SetPlayer) {
   player.addEventListener("progress", progress);
   player.addEventListener("waiting", waiting);
   player.addEventListener("canplay", canplay);
+  player.addEventListener("error", error);
 
   return () => {
     player.removeEventListener("pause", pause);
@@ -156,6 +176,7 @@ function registerListeners(player: HTMLVideoElement, update: SetPlayer) {
     player.removeEventListener("progress", progress);
     player.removeEventListener("waiting", waiting);
     player.removeEventListener("canplay", canplay);
+    player.removeEventListener("error", error);
   };
 }
 

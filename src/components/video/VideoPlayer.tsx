@@ -1,4 +1,6 @@
+import { useGoBack } from "@/hooks/useGoBack";
 import { forwardRef, useContext, useEffect, useRef } from "react";
+import { VideoErrorBoundary } from "./parts/VideoErrorBoundary";
 import { VideoPlayerContext, VideoPlayerContextProvider } from "./VideoContext";
 
 export interface VideoPlayerProps {
@@ -35,6 +37,9 @@ const VideoPlayerInternals = forwardRef<
 export function VideoPlayer(props: VideoPlayerProps) {
   const playerRef = useRef<HTMLVideoElement | null>(null);
   const playerWrapperRef = useRef<HTMLDivElement | null>(null);
+  const goBack = useGoBack();
+
+  // TODO move error boundary to only decorated, <VideoPlayer /> shouldn't have styling
 
   return (
     <VideoPlayerContextProvider player={playerRef} wrapper={playerWrapperRef}>
@@ -42,11 +47,13 @@ export function VideoPlayer(props: VideoPlayerProps) {
         className="relative h-full w-full select-none overflow-hidden bg-black"
         ref={playerWrapperRef}
       >
-        <VideoPlayerInternals
-          autoPlay={props.autoPlay ?? false}
-          ref={playerRef}
-        />
-        <div className="absolute inset-0">{props.children}</div>
+        <VideoErrorBoundary onGoBack={goBack}>
+          <VideoPlayerInternals
+            autoPlay={props.autoPlay ?? false}
+            ref={playerRef}
+          />
+          <div className="absolute inset-0">{props.children}</div>
+        </VideoErrorBoundary>
       </div>
     </VideoPlayerContextProvider>
   );

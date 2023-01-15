@@ -30,17 +30,22 @@ interface ErrorMessageProps {
     description: string;
     path: string;
   };
+  localSize?: boolean;
   children?: React.ReactNode;
 }
 
 export function ErrorMessage(props: ErrorMessageProps) {
   return (
-    <div className="flex min-h-screen w-full flex-col items-center justify-center px-4 py-12">
+    <div
+      className={`${
+        props.localSize ? "h-full" : "min-h-screen"
+      } flex w-full flex-col items-center justify-center px-4 py-12`}
+    >
       <div className="flex flex-col items-center justify-start text-center">
         <IconPatch icon={Icons.WARNING} className="mb-6 text-red-400" />
         <Title>Whoops, it broke</Title>
         {props.children ? (
-          props.children
+          <p className="my-6 max-w-lg">{props.children}</p>
         ) : (
           <p className="my-6 max-w-lg">
             The app encountered an error and wasn&apos;t able to recover, please

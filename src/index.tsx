@@ -17,7 +17,6 @@ if (key) {
 }
 
 // TODO video todos:
-//  - error handling
 //  - captions
 //  - mobile UI
 //  - safari fullscreen will make video overlap player controls
@@ -35,6 +34,7 @@ if (key) {
 
 // TODO general todos:
 //  - localize everything
+//  - add titles to pages
 
 ReactDOM.render(
   <React.StrictMode>

@@ -108,19 +108,36 @@ export function populateControls(
     initPlayer(sourceUrl: string, sourceType: MWStreamType) {
       this.setVolume(getStoredVolume());
 
+      // TODO test HLS errors
       if (sourceType === MWStreamType.HLS) {
         if (player.canPlayType("application/vnd.apple.mpegurl")) {
           player.src = sourceUrl;
         } else {
           // HLS support
-          if (!Hls.isSupported()) throw new Error("HLS not supported"); // TODO handle errors
+          if (!Hls.isSupported()) {
+            update((s) => ({
+              ...s,
+              error: {
+                name: `Not supported`,
+                description: "Your browser does not support HLS video",
+              },
+            }));
+            return;
+          }
 
           const hls = new Hls();
 
           hls.on(Hls.Events.ERROR, (event, data) => {
-            // eslint-disable-next-line no-alert
-            if (data.fatal) alert("HLS fatal error");
-            console.error("HLS error", data); // TODO handle errors
+            if (data.fatal) {
+              update((s) => ({
+                ...s,
+                error: {
+                  name: `error ${data.details}`,
+                  description: data.error?.message ?? "Something went wrong",
+                },
+              }));
+            }
+            console.error("HLS error", data);
           });
 
           hls.attachMedia(player);

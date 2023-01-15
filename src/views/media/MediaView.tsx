@@ -116,7 +116,6 @@ export function MediaView() {
   }, [exec, params.media]);
 
   // TODO watched store
-  // TODO error page with video header
 
   if (loading) return <MediaViewLoading onGoBack={goBack} />;
   if (error) return <MediaFetchErrorView />;
