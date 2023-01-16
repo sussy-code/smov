@@ -1,5 +1,6 @@
-import { MWMediaMeta, MWMediaType } from "@/backend/metadata/types";
-import React, {
+import { DetailedMeta } from "@/backend/metadata/getmeta";
+import { MWMediaMeta } from "@/backend/metadata/types";
+import {
   createContext,
   ReactNode,
   useCallback,
@@ -9,7 +10,16 @@ import React, {
 } from "react";
 import { VideoProgressStore } from "./store";
 
-interface WatchedStoreItem extends MWMediaMeta {
+interface MediaItem {
+  meta: MWMediaMeta;
+  series?: {
+    episode: number;
+    season: number;
+  };
+}
+
+interface WatchedStoreItem {
+  item: MediaItem;
   progress: number;
   percentage: number;
 }
@@ -19,16 +29,9 @@ export interface WatchedStoreData {
 }
 
 interface WatchedStoreDataWrapper {
-  updateProgress(media: MWMediaMeta, progress: number, total: number): void;
+  updateProgress(media: MediaItem, progress: number, total: number): void;
   getFilteredWatched(): WatchedStoreItem[];
   watched: WatchedStoreData;
-}
-
-export function getWatchedFromPortable(
-  items: WatchedStoreItem[],
-  media: MWMediaMeta
-): WatchedStoreItem | undefined {
-  return undefined;
 }
 
 const WatchedContext = createContext<WatchedStoreDataWrapper>({
@@ -62,49 +65,39 @@ export function WatchedContextProvider(props: { children: ReactNode }) {
 
   const contextValue = useMemo(
     () => ({
-      updateProgress(
-        media: MWMediaMeta,
-        progress: number,
-        total: number
-      ): void {
-        // setWatched((data: WatchedStoreData) => {
-        //   let item = getWatchedFromPortable(data.items, media);
-        //   if (!item) {
-        //     item = {
-        //       mediaId: media.mediaId,
-        //       mediaType: media.mediaType,
-        //       providerId: media.providerId,
-        //       title: media.title,
-        //       year: media.year,
-        //       percentage: 0,
-        //       progress: 0,
-        //       episodeId: media.episodeId,
-        //       seasonId: media.seasonId,
-        //     };
-        //     data.items.push(item);
-        //   }
-        //   // update actual item
-        //   item.progress = progress;
-        //   item.percentage = Math.round((progress / total) * 100);
-        //   return data;
-        // });
+      updateProgress(media: MediaItem, progress: number, total: number): void {
+        setWatched((data: WatchedStoreData) => {
+          let item = data.items.find((v) => v.item.meta.id === media.meta.id);
+          if (!item) {
+            item = {
+              item: {
+                ...media,
+                meta: { ...media.meta },
+                series: media.series ? { ...media.series } : undefined,
+              },
+              progress: 0,
+              percentage: 0,
+            };
+            data.items.push(item);
+          }
+          // update actual item
+          item.progress = progress;
+          item.percentage = Math.round((progress / total) * 100);
+          return data;
+        });
       },
       getFilteredWatched() {
-        // remove disabled providers
-        // let filtered = watched.items.filter(
-        //   (item) => getProviderMetadata(item.providerId)?.enabled
-        // );
         let filtered = watched.items;
 
-        // // get highest episode number for every anime/season
+        // get highest episode number for every anime/season
         const highestEpisode: Record<string, [number, number]> = {};
         const highestWatchedItem: Record<string, WatchedStoreItem> = {};
         filtered = filtered.filter((item) => {
-          if ([MWMediaType.ANIME, MWMediaType.SERIES].includes(item.type)) {
-            const key = `${item.type}-${item.id}`;
+          if (item.item.series) {
+            const key = item.item.meta.id;
             const current: [number, number] = [
-              item.episodeId ? parseInt(item.episodeId, 10) : -1,
-              item.seasonId ? parseInt(item.seasonId, 10) : -1,
+              item.item.series.episode,
+              item.item.series.season,
             ];
             let existing = highestEpisode[key];
             if (!existing) {
@@ -127,7 +120,7 @@ export function WatchedContextProvider(props: { children: ReactNode }) {
       },
       watched,
     }),
-    [watched]
+    [watched, setWatched]
   );
 
   return (
@@ -139,4 +132,24 @@ export function WatchedContextProvider(props: { children: ReactNode }) {
 
 export function useWatchedContext() {
   return useContext(WatchedContext);
+}
+
+export function useWatchedItem(meta: DetailedMeta | null) {
+  const { watched, updateProgress } = useContext(WatchedContext);
+  const item = useMemo(
+    () => watched.items.find((v) => meta && v.item.meta.id === meta?.meta.id),
+    [watched, meta]
+  );
+
+  const callback = useCallback(
+    (progress: number, total: number) => {
+      if (meta) {
+        // TODO add series support
+        updateProgress({ meta: meta.meta }, progress, total);
+      }
+    },
+    [updateProgress, meta]
+  );
+
+  return { updateProgress: callback, watchedItem: item };
 }

@@ -13,6 +13,8 @@ import { MWMediaType } from "@/backend/metadata/types";
 import { useGoBack } from "@/hooks/useGoBack";
 import { IconPatch } from "@/components/buttons/IconPatch";
 import { Icons } from "@/components/Icon";
+import { useWatchedItem } from "@/state/watched";
+import { ProgressListenerControl } from "@/components/video/controls/ProgressListenerControl";
 import { MediaFetchErrorView } from "./MediaErrorView";
 import { MediaScrapeLog } from "./MediaScrapeLog";
 import { NotFoundMedia, NotFoundWrapper } from "../notfound/NotFoundView";
@@ -102,6 +104,8 @@ export function MediaView() {
   });
   const [stream, setStream] = useState<MWStream | null>(null);
 
+  const { updateProgress, watchedItem } = useWatchedItem(meta);
+
   useEffect(() => {
     exec(params.media).then((v) => {
       setMeta(v ?? null);
@@ -114,8 +118,6 @@ export function MediaView() {
       else setSelected(null);
     });
   }, [exec, params.media]);
-
-  // TODO watched store
 
   if (loading) return <MediaViewLoading onGoBack={goBack} />;
   if (error) return <MediaFetchErrorView />;
@@ -142,6 +144,10 @@ export function MediaView() {
     <div className="h-screen w-screen">
       <DecoratedVideoPlayer title={meta.meta.title} onGoBack={goBack} autoPlay>
         <SourceControl source={stream.streamUrl} type={stream.type} />
+        <ProgressListenerControl
+          startAt={watchedItem?.progress}
+          onProgress={updateProgress}
+        />
       </DecoratedVideoPlayer>
     </div>
   );

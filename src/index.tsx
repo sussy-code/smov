@@ -35,6 +35,8 @@ if (key) {
 // TODO general todos:
 //  - localize everything
 //  - add titles to pages
+//  - find place for bookmarks
+//  - find place for progress bar for "continue watching" section
 
 ReactDOM.render(
   <React.StrictMode>

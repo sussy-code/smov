@@ -8,8 +8,6 @@ export interface MediaCardProps {
   linkable?: boolean;
 }
 
-// TODO add progress back
-
 function MediaCardContent({ media, linkable }: MediaCardProps) {
   return (
     <div

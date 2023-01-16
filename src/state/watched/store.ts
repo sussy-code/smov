@@ -8,7 +8,6 @@ export const VideoProgressStore = versionedStoreBuilder()
   .addVersion({
     version: 1,
     migrate() {
-      // TODO add migration back
       return {
         items: [],
       };
@@ -17,7 +16,6 @@ export const VideoProgressStore = versionedStoreBuilder()
   .addVersion({
     version: 2,
     migrate() {
-      // TODO actually migrate
       return {
         items: [],
       };

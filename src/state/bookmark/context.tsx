@@ -63,15 +63,7 @@ export function BookmarkContextProvider(props: { children: ReactNode }) {
           if (bookmarked) {
             const itemIndex = getBookmarkIndexFromMedia(data.bookmarks, media);
             if (itemIndex === -1) {
-              const item = {
-                id: media.id,
-                type: media.type,
-                // providerId: media.providerId,
-                title: media.title,
-                year: media.year,
-                // episodeId: media.episodeId,
-                // seasonId: media.seasonId,
-              };
+              const item: MWMediaMeta = { ...media };
               data.bookmarks.push(item);
             }
           } else {

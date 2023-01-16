@@ -9,7 +9,6 @@ export const BookmarkStore = versionedStoreBuilder()
     version: 1,
     migrate() {
       return {
-        // TODO actually migrate
         bookmarks: [],
       };
     },
