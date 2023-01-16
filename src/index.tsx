@@ -30,12 +30,20 @@ if (key) {
 //  - browser: firefox, chrome, edge, safari desktop
 //  - phones: android firefox, android chrome, iphone safari
 //  - devices: ipadOS
-//  - features: HLS, error handling, preload interactions
+//  - HLS
+//  - HLS error handling
+//  - video player error handling
+
+// TODO backend system:
+//  - caption support
+//  - move over old providers to new system
+//  - implement jons providers/embedscrapers
+//  - AFTER all that: rank providers/embedscrapers
 
 // TODO general todos:
 //  - localize everything
 //  - add titles to pages
-//  - find place for bookmarks
+//  - find place for bookmark button
 //  - find place for progress bar for "continue watching" section
 
 ReactDOM.render(

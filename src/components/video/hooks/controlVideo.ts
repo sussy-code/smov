@@ -108,7 +108,6 @@ export function populateControls(
     initPlayer(sourceUrl: string, sourceType: MWStreamType) {
       this.setVolume(getStoredVolume());
 
-      // TODO test HLS errors
       if (sourceType === MWStreamType.HLS) {
         if (player.canPlayType("application/vnd.apple.mpegurl")) {
           player.src = sourceUrl;

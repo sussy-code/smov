@@ -139,7 +139,6 @@ function registerListeners(player: HTMLVideoElement, update: SetPlayer) {
   };
   const error = () => {
     console.error("Native video player threw error", player.error);
-    // TODO check if these errors are actually fatal
     update((s) => ({
       ...s,
       error: player.error
