@@ -11,13 +11,13 @@ function formatSeconds(secs: number, showHours = false): string {
   }
 
   let time = secs;
-  const seconds = time % 60;
+  const seconds = Math.floor(time % 60);
 
-  time = Math.floor(time / 60);
-  const minutes = time % 60;
+  time /= 60;
+  const minutes = Math.floor(time % 60);
 
-  time = Math.floor(time / 60);
-  const hours = time;
+  time /= 60;
+  const hours = Math.floor(time);
 
   const paddedSecs = seconds.toString().padStart(2, "0");
   const paddedMins = minutes.toString().padStart(2, "0");
