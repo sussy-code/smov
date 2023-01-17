@@ -21,6 +21,7 @@ if (key) {
 //  - mobile UI
 //  - season/episode select
 //  - chrome cast support
+//  - airplay support
 //  - source selection
 //  - safari fullscreen will make video overlap player controls
 //  - safari progress bar is fucked (video doesnt change time but video.currentTime does change)
@@ -47,7 +48,6 @@ if (key) {
 //  - localize everything
 //  - add titles to pages
 //  - find place for bookmark button
-//  - find place for progress bar for "continue watching" section
 
 ReactDOM.render(
   <React.StrictMode>

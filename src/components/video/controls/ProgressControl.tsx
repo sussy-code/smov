@@ -21,6 +21,8 @@ export function ProgressControl() {
     ref,
     commitTime
   );
+
+  // TODO make dragging update timer
   useEffect(() => {
     if (dragRef.current === dragging) return;
     dragRef.current = dragging;

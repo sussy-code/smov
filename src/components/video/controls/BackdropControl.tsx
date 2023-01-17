@@ -12,6 +12,7 @@ export function BackdropControl(props: BackdropControlProps) {
   const timeout = useRef<ReturnType<typeof setTimeout> | null>(null);
   const clickareaRef = useRef<HTMLDivElement>(null);
 
+  // TODO fix infinite loop
   const handleMouseMove = useCallback(() => {
     setMoved(true);
     if (timeout.current) clearTimeout(timeout.current);

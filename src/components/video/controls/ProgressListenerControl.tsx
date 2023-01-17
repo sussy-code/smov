@@ -7,25 +7,7 @@ interface Props {
   onProgress?: (time: number, duration: number) => void;
 }
 
-const FIVETEEN_MINUTES = 15 * 60;
-const FIVE_MINUTES = 5 * 60;
-
-function shouldRestoreTime(time: number, duration: number): boolean {
-  const timeFromEnd = Math.max(0, duration - time);
-
-  // short movie
-  if (duration < FIVETEEN_MINUTES) {
-    if (time < 5) return false;
-    if (timeFromEnd < 60) return false;
-    return true;
-  }
-
-  // long movie
-  if (time < 30) return false;
-  if (timeFromEnd < FIVE_MINUTES) return false;
-  return true;
-}
-
+// TODO fix infinite loops
 export function ProgressListenerControl(props: Props) {
   const { videoState } = useVideoPlayerState();
   const didInitialize = useRef<true | null>(null);
@@ -50,14 +32,11 @@ export function ProgressListenerControl(props: Props) {
   useEffect(() => {
     if (didInitialize.current) return;
     if (!videoState.hasInitialized || Number.isNaN(videoState.duration)) return;
-    if (
-      props.startAt !== undefined &&
-      shouldRestoreTime(props.startAt, videoState.duration)
-    ) {
+    if (props.startAt !== undefined) {
       videoState.setTime(props.startAt);
     }
     didInitialize.current = true;
-  }, [didInitialize, videoState, props]);
+  }, [didInitialize, props, videoState]);
 
   return null;
 }

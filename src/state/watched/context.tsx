@@ -10,6 +10,25 @@ import {
 } from "react";
 import { VideoProgressStore } from "./store";
 
+const FIVETEEN_MINUTES = 15 * 60;
+const FIVE_MINUTES = 5 * 60;
+
+function shouldSave(time: number, duration: number): boolean {
+  const timeFromEnd = Math.max(0, duration - time);
+
+  // short movie
+  if (duration < FIVETEEN_MINUTES) {
+    if (time < 5) return false;
+    if (timeFromEnd < 60) return false;
+    return true;
+  }
+
+  // long movie
+  if (time < 30) return false;
+  if (timeFromEnd < FIVE_MINUTES) return false;
+  return true;
+}
+
 interface MediaItem {
   meta: MWMediaMeta;
   series?: {
@@ -66,8 +85,12 @@ export function WatchedContextProvider(props: { children: ReactNode }) {
   const contextValue = useMemo(
     () => ({
       updateProgress(media: MediaItem, progress: number, total: number): void {
+        // TODO series support
         setWatched((data: WatchedStoreData) => {
-          let item = data.items.find((v) => v.item.meta.id === media.meta.id);
+          const newData = { ...data };
+          let item = newData.items.find(
+            (v) => v.item.meta.id === media.meta.id
+          );
           if (!item) {
             item = {
               item: {
@@ -78,12 +101,20 @@ export function WatchedContextProvider(props: { children: ReactNode }) {
               progress: 0,
               percentage: 0,
             };
-            data.items.push(item);
+            newData.items.push(item);
           }
           // update actual item
           item.progress = progress;
           item.percentage = Math.round((progress / total) * 100);
-          return data;
+
+          // remove item if shouldnt save
+          if (!shouldSave(progress, total)) {
+            newData.items = data.items.filter(
+              (v) => v.item.meta.id !== media.meta.id
+            );
+          }
+
+          return newData;
         });
       },
       getFilteredWatched() {
