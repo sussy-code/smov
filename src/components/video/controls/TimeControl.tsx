@@ -13,19 +13,17 @@ function formatSeconds(secs: number, showHours = false): string {
   let time = secs;
   const seconds = time % 60;
 
-  time /= 60;
+  time = Math.floor(time / 60);
   const minutes = time % 60;
 
-  time /= 60;
+  time = Math.floor(time / 60);
   const hours = time;
 
-  if (!showHours)
-    return `${Math.floor(minutes).toString()}:${Math.floor(seconds)
-      .toString()
-      .padStart(2, "0")}`;
-  return `${Math.floor(hours).toString()}:${Math.floor(minutes)
-    .toString()
-    .padStart(2, "0")}:${Math.floor(seconds).toString().padStart(2, "0")}`;
+  const paddedSecs = seconds.toString().padStart(2, "0");
+  const paddedMins = minutes.toString().padStart(2, "0");
+
+  if (!showHours) return [minutes, paddedSecs].join(":");
+  return [hours, paddedMins, paddedSecs].join(":");
 }
 
 interface Props {
