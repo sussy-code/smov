@@ -17,15 +17,15 @@ function formatSeconds(secs: number, showHours = false): string {
   const minutes = time % 60;
 
   time /= 60;
-  const hours = time % 60;
+  const hours = time;
 
   if (!showHours)
-    return `${Math.round(minutes).toString()}:${Math.round(seconds)
+    return `${Math.floor(minutes).toString()}:${Math.floor(seconds)
       .toString()
       .padStart(2, "0")}`;
-  return `${Math.round(hours).toString()}:${Math.round(minutes)
+  return `${Math.floor(hours).toString()}:${Math.floor(minutes)
     .toString()
-    .padStart(2, "0")}:${Math.round(seconds).toString().padStart(2, "0")}`;
+    .padStart(2, "0")}:${Math.floor(seconds).toString().padStart(2, "0")}`;
 }
 
 interface Props {
