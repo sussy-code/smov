@@ -47,7 +47,6 @@ if (key) {
 // TODO general todos:
 //  - localize everything
 //  - add titles to pages
-//  - find place for bookmark button
 
 ReactDOM.render(
   <React.StrictMode>
