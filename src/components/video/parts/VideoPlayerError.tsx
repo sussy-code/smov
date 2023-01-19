@@ -1,3 +1,4 @@
+import { MWMediaMeta } from "@/backend/metadata/types";
 import { IconPatch } from "@/components/buttons/IconPatch";
 import { Icons } from "@/components/Icon";
 import { Title } from "@/components/text/Title";
@@ -6,7 +7,7 @@ import { useVideoPlayerState } from "../VideoContext";
 import { VideoPlayerHeader } from "./VideoPlayerHeader";
 
 interface VideoPlayerErrorProps {
-  title?: string;
+  media?: MWMediaMeta;
   onGoBack?: () => void;
   children?: ReactNode;
 }
@@ -28,7 +29,7 @@ export function VideoPlayerError(props: VideoPlayerErrorProps) {
         </p>
       </div>
       <div className="pointer-events-auto absolute inset-x-0 top-0 flex flex-col py-6 px-8 pb-2">
-        <VideoPlayerHeader title={props.title} onClick={props.onGoBack} />
+        <VideoPlayerHeader media={props.media} onClick={props.onGoBack} />
       </div>
     </div>
   );

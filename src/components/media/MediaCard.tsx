@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { DotList } from "@/components/text/DotList";
 import { MWMediaMeta } from "@/backend/metadata/types";
 import { mediaTypeToJW } from "@/backend/metadata/justwatch";
+import { Icons } from "../Icon";
+import { IconPatch } from "../buttons/IconPatch";
 
 export interface MediaCardProps {
   media: MWMediaMeta;
@@ -11,6 +13,8 @@ export interface MediaCardProps {
     season: number;
   };
   percentage?: number;
+  closable?: boolean;
+  onClose?: () => void;
 }
 
 function MediaCardContent({
@@ -18,18 +22,22 @@ function MediaCardContent({
   linkable,
   series,
   percentage,
+  closable,
+  onClose,
 }: MediaCardProps) {
   const percentageString = `${Math.round(percentage ?? 0).toFixed(0)}%`;
+
+  const canLink = linkable && !closable;
 
   return (
     <div
       className={`group -m-3 mb-2 rounded-xl bg-denim-300 bg-opacity-0 transition-colors duration-100 ${
-        linkable ? "hover:bg-opacity-100" : ""
+        canLink ? "hover:bg-opacity-100" : ""
       }`}
     >
       <article
-        className={`relative mb-2 p-3 transition-transform duration-100 ${
-          linkable ? "group-hover:scale-95" : ""
+        className={`pointer-events-auto relative mb-2 p-3 transition-transform duration-100 ${
+          canLink ? "group-hover:scale-95" : ""
         }`}
       >
         <div
@@ -48,8 +56,16 @@ function MediaCardContent({
 
           {percentage !== undefined ? (
             <>
-              <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-denim-300 to-transparent transition-colors group-hover:from-denim-100" />
-              <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-denim-300 to-transparent transition-colors group-hover:from-denim-100" />
+              <div
+                className={`absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-denim-300 to-transparent transition-colors ${
+                  canLink ? "group-hover:from-denim-100" : ""
+                }`}
+              />
+              <div
+                className={`absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-denim-300 to-transparent transition-colors ${
+                  canLink ? "group-hover:from-denim-100" : ""
+                }`}
+              />
               <div className="absolute inset-x-0 bottom-0 p-3">
                 <div className="relative h-1 overflow-hidden rounded-full bg-denim-600">
                   <div
@@ -62,6 +78,19 @@ function MediaCardContent({
               </div>
             </>
           ) : null}
+
+          <div
+            className={`absolute inset-0 flex items-center justify-center bg-denim-200 bg-opacity-80 transition-opacity duration-200 ${
+              closable ? "opacity-100" : "pointer-events-none opacity-0"
+            }`}
+          >
+            <IconPatch
+              clickable
+              className="text-2xl text-slate-400"
+              onClick={() => closable && onClose?.()}
+              icon={Icons.X}
+            />
+          </div>
         </div>
         <h1 className="mb-1 max-h-[4.5rem] text-ellipsis break-words font-bold text-white line-clamp-3">
           <span>{media.title}</span>
@@ -75,14 +104,14 @@ function MediaCardContent({
 export function MediaCard(props: MediaCardProps) {
   const content = <MediaCardContent {...props} />;
 
-  if (!props.linkable) return <span>{content}</span>;
-  return (
-    <Link
-      to={`/media/${encodeURIComponent(
+  const canLink = props.linkable && !props.closable;
+
+  const link = canLink
+    ? `/media/${encodeURIComponent(
         mediaTypeToJW(props.media.type)
-      )}-${encodeURIComponent(props.media.id)}`}
-    >
-      {content}
-    </Link>
-  );
+      )}-${encodeURIComponent(props.media.id)}`
+    : "#";
+
+  if (!props.linkable) return <span>{content}</span>;
+  return <Link to={link}>{content}</Link>;
 }

@@ -20,8 +20,8 @@ export function SectionHeading(props: SectionHeadingProps) {
           ) : null}
           {props.title}
         </p>
+        {props.children}
       </div>
-      {props.children}
     </div>
   );
 }

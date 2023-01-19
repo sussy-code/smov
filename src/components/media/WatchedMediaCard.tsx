@@ -5,6 +5,8 @@ import { MediaCard } from "./MediaCard";
 
 export interface WatchedMediaCardProps {
   media: MWMediaMeta;
+  closable?: boolean;
+  onClose?: () => void;
 }
 
 export function WatchedMediaCard(props: WatchedMediaCardProps) {
@@ -19,6 +21,8 @@ export function WatchedMediaCard(props: WatchedMediaCardProps) {
       series={watchedMedia?.item?.series}
       linkable
       percentage={watchedMedia?.percentage}
+      onClose={props.onClose}
+      closable={props.closable}
     />
   );
 }

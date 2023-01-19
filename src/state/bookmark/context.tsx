@@ -59,24 +59,17 @@ export function BookmarkContextProvider(props: { children: ReactNode }) {
   const contextValue = useMemo(
     () => ({
       setItemBookmark(media: MWMediaMeta, bookmarked: boolean) {
-        setBookmarked((data: BookmarkStoreData) => {
-          if (bookmarked) {
-            const itemIndex = getBookmarkIndexFromMedia(data.bookmarks, media);
-            if (itemIndex === -1) {
-              const item: MWMediaMeta = { ...media };
-              data.bookmarks.push(item);
-            }
-          } else {
-            const itemIndex = getBookmarkIndexFromMedia(data.bookmarks, media);
-            if (itemIndex !== -1) {
-              data.bookmarks.splice(itemIndex);
-            }
-          }
-          return data;
+        setBookmarked((data: BookmarkStoreData): BookmarkStoreData => {
+          let bookmarks = [...data.bookmarks];
+          bookmarks = bookmarks.filter((v) => v.id !== media.id);
+          if (bookmarked) bookmarks.push({ ...media });
+          return {
+            bookmarks,
+          };
         });
       },
       getFilteredBookmarks() {
-        return [];
+        return [...bookmarkStorage.bookmarks];
       },
       bookmarkStore: bookmarkStorage,
     }),

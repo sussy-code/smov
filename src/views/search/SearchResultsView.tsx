@@ -68,16 +68,17 @@ export function SearchResultsView({ searchQuery }: { searchQuery: MWQuery }) {
   return (
     <div>
       {results.length > 0 ? (
-        <SectionHeading
-          title={t("search.headingTitle") || "Search results"}
-          icon={Icons.SEARCH}
-        >
+        <div>
+          <SectionHeading
+            title={t("search.headingTitle") || "Search results"}
+            icon={Icons.SEARCH}
+          />
           <MediaGrid>
             {results.map((v) => (
               <WatchedMediaCard key={v.id.toString()} media={v} />
             ))}
           </MediaGrid>
-        </SectionHeading>
+        </div>
       ) : null}
 
       <SearchSuffix results={results.length} />

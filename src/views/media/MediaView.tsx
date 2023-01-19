@@ -51,10 +51,7 @@ function MediaViewScraping(props: MediaViewScrapingProps) {
   return (
     <div className="relative flex h-screen items-center justify-center">
       <div className="absolute inset-x-0 top-0 py-6 px-8">
-        <VideoPlayerHeader
-          onClick={props.onGoBack}
-          title={props.meta.meta.title}
-        />
+        <VideoPlayerHeader onClick={props.onGoBack} media={props.meta.meta} />
       </div>
       <div className="flex flex-col items-center transition-opacity duration-200">
         {pending ? (
@@ -142,7 +139,7 @@ export function MediaView() {
   // show stream once we have a stream
   return (
     <div className="h-screen w-screen">
-      <DecoratedVideoPlayer title={meta.meta.title} onGoBack={goBack} autoPlay>
+      <DecoratedVideoPlayer media={meta.meta} onGoBack={goBack} autoPlay>
         <SourceControl source={stream.streamUrl} type={stream.type} />
         <ProgressListenerControl
           startAt={watchedItem?.progress}

@@ -1,3 +1,4 @@
+import { MWMediaMeta } from "@/backend/metadata/types";
 import { useCallback, useRef, useState } from "react";
 import { CSSTransition } from "react-transition-group";
 import { BackdropControl } from "./controls/BackdropControl";
@@ -14,7 +15,7 @@ import { useVideoPlayerState } from "./VideoContext";
 import { VideoPlayer, VideoPlayerProps } from "./VideoPlayer";
 
 interface DecoratedVideoPlayerProps {
-  title?: string;
+  media?: MWMediaMeta;
   onGoBack?: () => void;
 }
 
@@ -57,7 +58,7 @@ export function DecoratedVideoPlayer(
 
   return (
     <VideoPlayer autoPlay={props.autoPlay}>
-      <VideoPlayerError title={props.title} onGoBack={props.onGoBack}>
+      <VideoPlayerError media={props.media} onGoBack={props.onGoBack}>
         <BackdropControl onBackdropChange={onBackdropChange}>
           <div className="absolute inset-0 flex items-center justify-center">
             <LoadingControl />
@@ -107,7 +108,7 @@ export function DecoratedVideoPlayer(
               ref={top}
               className="pointer-events-auto absolute inset-x-0 top-0 flex flex-col py-6 px-8 pb-2"
             >
-              <VideoPlayerHeader title={props.title} onClick={props.onGoBack} />
+              <VideoPlayerHeader media={props.media} onClick={props.onGoBack} />
             </div>
           </CSSTransition>
         </BackdropControl>

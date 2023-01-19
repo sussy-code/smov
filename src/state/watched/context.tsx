@@ -50,12 +50,14 @@ export interface WatchedStoreData {
 interface WatchedStoreDataWrapper {
   updateProgress(media: MediaItem, progress: number, total: number): void;
   getFilteredWatched(): WatchedStoreItem[];
+  removeProgress(id: string): void;
   watched: WatchedStoreData;
 }
 
 const WatchedContext = createContext<WatchedStoreDataWrapper>({
   updateProgress: () => {},
   getFilteredWatched: () => [],
+  removeProgress: () => {},
   watched: {
     items: [],
   },
@@ -84,6 +86,13 @@ export function WatchedContextProvider(props: { children: ReactNode }) {
 
   const contextValue = useMemo(
     () => ({
+      removeProgress(id: string) {
+        setWatched((data: WatchedStoreData) => {
+          const newData = { ...data };
+          newData.items = newData.items.filter((v) => v.item.meta.id !== id);
+          return newData;
+        });
+      },
       updateProgress(media: MediaItem, progress: number, total: number): void {
         // TODO series support
         setWatched((data: WatchedStoreData) => {

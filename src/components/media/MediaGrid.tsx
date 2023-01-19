@@ -1,11 +1,15 @@
+import { forwardRef } from "react";
+
 interface MediaGridProps {
   children?: React.ReactNode;
 }
 
-export function MediaGrid(props: MediaGridProps) {
-  return (
-    <div className="grid grid-cols-2 gap-6 sm:grid-cols-3">
-      {props.children}
-    </div>
-  );
-}
+export const MediaGrid = forwardRef<HTMLDivElement, MediaGridProps>(
+  (props, ref) => {
+    return (
+      <div className="grid grid-cols-2 gap-6 sm:grid-cols-3" ref={ref}>
+        {props.children}
+      </div>
+    );
+  }
+);

@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://movie.squeezebox.dev",
   "dependencies": {
+    "@formkit/auto-animate": "^1.0.0-beta.5",
     "@headlessui/react": "^1.5.0",
     "crypto-js": "^4.1.1",
     "fscreen": "^1.2.0",

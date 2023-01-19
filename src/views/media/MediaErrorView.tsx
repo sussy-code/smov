@@ -1,3 +1,4 @@
+import { MWMediaMeta } from "@/backend/metadata/types";
 import { ErrorMessage } from "@/components/layout/ErrorBoundary";
 import { Link } from "@/components/text/Link";
 import { VideoPlayerHeader } from "@/components/video/parts/VideoPlayerHeader";
@@ -22,13 +23,13 @@ export function MediaFetchErrorView() {
   );
 }
 
-export function MediaPlaybackErrorView(props: { title?: string }) {
+export function MediaPlaybackErrorView(props: { media?: MWMediaMeta }) {
   const goBack = useGoBack();
 
   return (
     <div className="h-screen flex-1">
       <div className="fixed inset-x-0 top-0 py-6 px-8">
-        <VideoPlayerHeader onClick={goBack} title={props.title} />
+        <VideoPlayerHeader onClick={goBack} media={props.media} />
       </div>
       <ErrorMessage>
         <p className="my-6 max-w-lg">

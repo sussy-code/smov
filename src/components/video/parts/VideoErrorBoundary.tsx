@@ -1,3 +1,4 @@
+import { MWMediaMeta } from "@/backend/metadata/types";
 import { ErrorMessage } from "@/components/layout/ErrorBoundary";
 import { Link } from "@/components/text/Link";
 import { conf } from "@/setup/config";
@@ -15,7 +16,7 @@ interface ErrorBoundaryState {
 
 interface VideoErrorBoundaryProps {
   children?: ReactNode;
-  title?: string;
+  media?: MWMediaMeta;
   onGoBack?: () => void;
 }
 
@@ -61,7 +62,7 @@ export class VideoErrorBoundary extends Component<
       <div className="absolute inset-0 bg-denim-100">
         <div className="pointer-events-auto absolute inset-x-0 top-0 flex flex-col py-6 px-8 pb-2">
           <VideoPlayerHeader
-            title={this.props.title}
+            media={this.props.media}
             onClick={this.props.onGoBack}
           />
         </div>

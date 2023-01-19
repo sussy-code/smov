@@ -8,32 +8,47 @@ import {
 } from "@/state/bookmark";
 import { useWatchedContext } from "@/state/watched";
 import { WatchedMediaCard } from "@/components/media/WatchedMediaCard";
+import { EditButton } from "@/components/buttons/EditButton";
+import { useState } from "react";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 function Bookmarks() {
   const { t } = useTranslation();
-  const { getFilteredBookmarks } = useBookmarkContext();
+  const { getFilteredBookmarks, setItemBookmark } = useBookmarkContext();
   const bookmarks = getFilteredBookmarks();
+  const [editing, setEditing] = useState(false);
+  const [gridRef] = useAutoAnimate<HTMLDivElement>();
 
   if (bookmarks.length === 0) return null;
 
   return (
-    <SectionHeading
-      title={t("search.bookmarks") || "Bookmarks"}
-      icon={Icons.BOOKMARK}
-    >
-      <MediaGrid>
+    <div>
+      <SectionHeading
+        title={t("search.bookmarks") || "Bookmarks"}
+        icon={Icons.BOOKMARK}
+      >
+        <EditButton editing={editing} onEdit={setEditing} />
+      </SectionHeading>
+      <MediaGrid ref={gridRef}>
         {bookmarks.map((v) => (
-          <WatchedMediaCard key={v.id} media={v} />
+          <WatchedMediaCard
+            key={v.id}
+            media={v}
+            closable={editing}
+            onClose={() => setItemBookmark(v, false)}
+          />
         ))}
       </MediaGrid>
-    </SectionHeading>
+    </div>
   );
 }
 
 function Watched() {
   const { t } = useTranslation();
   const { getFilteredBookmarks } = useBookmarkContext();
-  const { getFilteredWatched } = useWatchedContext();
+  const { getFilteredWatched, removeProgress } = useWatchedContext();
+  const [editing, setEditing] = useState(false);
+  const [gridRef] = useAutoAnimate<HTMLDivElement>();
 
   const bookmarks = getFilteredBookmarks();
   const watchedItems = getFilteredWatched().filter(
@@ -43,16 +58,24 @@ function Watched() {
   if (watchedItems.length === 0) return null;
 
   return (
-    <SectionHeading
-      title={t("search.continueWatching") || "Continue Watching"}
-      icon={Icons.CLOCK}
-    >
-      <MediaGrid>
+    <div>
+      <SectionHeading
+        title={t("search.continueWatching") || "Continue Watching"}
+        icon={Icons.CLOCK}
+      >
+        <EditButton editing={editing} onEdit={setEditing} />
+      </SectionHeading>
+      <MediaGrid ref={gridRef}>
         {watchedItems.map((v) => (
-          <WatchedMediaCard key={v.item.meta.id} media={v.item.meta} />
+          <WatchedMediaCard
+            key={v.item.meta.id}
+            media={v.item.meta}
+            closable={editing}
+            onClose={() => removeProgress(v.item.meta.id)}
+          />
         ))}
       </MediaGrid>
-    </SectionHeading>
+    </div>
   );
 }
 
