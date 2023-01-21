@@ -35,19 +35,22 @@ export function VideoPlayerHeader(props: VideoPlayerHeaderProps) {
             <span className="mx-4 h-6 w-[1.5px] rotate-[30deg] bg-white opacity-50" />
           ) : null}
           {props.media ? (
-            <span className="flex items-center space-x-2 text-white">
+            <span className="flex items-center text-white">
               <span>{props.media.title}</span>
-              <IconPatch
-                clickable
-                transparent
-                icon={isBookmarked ? Icons.BOOKMARK : Icons.BOOKMARK_OUTLINE}
-                onClick={() =>
-                  props.media && setItemBookmark(props.media, !isBookmarked)
-                }
-              />
             </span>
           ) : null}
         </p>
+        {props.media ? (
+          <IconPatch
+            clickable
+            transparent
+            icon={isBookmarked ? Icons.BOOKMARK : Icons.BOOKMARK_OUTLINE}
+            className="ml-2 text-white"
+            onClick={() =>
+              props.media && setItemBookmark(props.media, !isBookmarked)
+            }
+          />
+        ) : null}
       </div>
       <BrandPill />
     </div>

@@ -23,6 +23,14 @@ export type PlayerState = {
   hasInitialized: boolean;
   leftControlHovering: boolean;
   hasPlayedOnce: boolean;
+  seasonData: {
+    isSeries: boolean;
+    current?: {
+      episode: number;
+      season: number;
+    };
+    title?: string;
+  };
   error: null | {
     name: string;
     description: string;
@@ -47,6 +55,9 @@ export const initialPlayerState: PlayerContext = {
   leftControlHovering: false,
   hasPlayedOnce: false,
   error: null,
+  seasonData: {
+    isSeries: false,
+  },
   ...initialControls,
 };
 

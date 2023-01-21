@@ -6,6 +6,7 @@ import {
   useCallback,
   useContext,
   useMemo,
+  useRef,
   useState,
 } from "react";
 import { VideoProgressStore } from "./store";
@@ -180,15 +181,20 @@ export function useWatchedItem(meta: DetailedMeta | null) {
     () => watched.items.find((v) => meta && v.item.meta.id === meta?.meta.id),
     [watched, meta]
   );
+  const lastCommitedTime = useRef([0, 0]);
 
   const callback = useCallback(
     (progress: number, total: number) => {
-      if (meta) {
-        // TODO add series support
+      // TODO add series support
+      const hasChanged =
+        lastCommitedTime.current[0] !== progress ||
+        lastCommitedTime.current[1] !== total;
+      if (meta && hasChanged) {
+        lastCommitedTime.current = [progress, total];
         updateProgress({ meta: meta.meta }, progress, total);
       }
     },
-    [updateProgress, meta]
+    [meta, updateProgress]
   );
 
   return { updateProgress: callback, watchedItem: item };

@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { DecoratedVideoPlayer } from "@/components/video/DecoratedVideoPlayer";
 import { MWStream } from "@/backend/helpers/streams";
 import { SelectedMediaData, useScrape } from "@/hooks/useScrape";
@@ -15,6 +15,7 @@ import { IconPatch } from "@/components/buttons/IconPatch";
 import { Icons } from "@/components/Icon";
 import { useWatchedItem } from "@/state/watched";
 import { ProgressListenerControl } from "@/components/video/controls/ProgressListenerControl";
+import { ShowControl } from "@/components/video/controls/ShowControl";
 import { MediaFetchErrorView } from "./MediaErrorView";
 import { MediaScrapeLog } from "./MediaScrapeLog";
 import { NotFoundMedia, NotFoundWrapper } from "../notfound/NotFoundView";
@@ -81,6 +82,37 @@ function MediaViewScraping(props: MediaViewScrapingProps) {
   );
 }
 
+interface MediaViewPlayerProps {
+  meta: DetailedMeta;
+  stream: MWStream;
+}
+export function MediaViewPlayer(props: MediaViewPlayerProps) {
+  const goBack = useGoBack();
+  const { updateProgress, watchedItem } = useWatchedItem(props.meta);
+  const firstStartTime = useRef(watchedItem?.progress);
+  useEffect(() => {
+    firstStartTime.current = watchedItem?.progress;
+    // only want it to change when stream changes
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.stream]);
+
+  return (
+    <div className="h-screen w-screen">
+      <DecoratedVideoPlayer media={props.meta.meta} onGoBack={goBack} autoPlay>
+        <SourceControl
+          source={props.stream.streamUrl}
+          type={props.stream.type}
+        />
+        <ProgressListenerControl
+          startAt={firstStartTime.current}
+          onProgress={updateProgress}
+        />
+        <ShowControl series={{ episode: 5, season: 2 }} title="hello world" />
+      </DecoratedVideoPlayer>
+    </div>
+  );
+}
+
 export function MediaView() {
   const params = useParams<{ media: string }>();
   const goBack = useGoBack();
@@ -100,8 +132,6 @@ export function MediaView() {
     return getMetaFromId(type, id);
   });
   const [stream, setStream] = useState<MWStream | null>(null);
-
-  const { updateProgress, watchedItem } = useWatchedItem(meta);
 
   useEffect(() => {
     exec(params.media).then((v) => {
@@ -137,15 +167,5 @@ export function MediaView() {
     );
 
   // show stream once we have a stream
-  return (
-    <div className="h-screen w-screen">
-      <DecoratedVideoPlayer media={meta.meta} onGoBack={goBack} autoPlay>
-        <SourceControl source={stream.streamUrl} type={stream.type} />
-        <ProgressListenerControl
-          startAt={watchedItem?.progress}
-          onProgress={updateProgress}
-        />
-      </DecoratedVideoPlayer>
-    </div>
-  );
+  return <MediaViewPlayer meta={meta} stream={stream} />;
 }

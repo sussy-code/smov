@@ -7,6 +7,7 @@ import { LoadingControl } from "./controls/LoadingControl";
 import { MiddlePauseControl } from "./controls/MiddlePauseControl";
 import { PauseControl } from "./controls/PauseControl";
 import { ProgressControl } from "./controls/ProgressControl";
+import { ShowTitleControl } from "./controls/ShowTitleControl";
 import { TimeControl } from "./controls/TimeControl";
 import { VolumeControl } from "./controls/VolumeControl";
 import { VideoPlayerError } from "./parts/VideoPlayerError";
@@ -30,15 +31,18 @@ function LeftSideControls() {
   }, [videoState]);
 
   return (
-    <div
-      className="flex items-center px-2"
-      onMouseLeave={handleMouseLeave}
-      onMouseEnter={handleMouseEnter}
-    >
-      <PauseControl />
-      <VolumeControl className="mr-2" />
-      <TimeControl />
-    </div>
+    <>
+      <div
+        className="flex items-center px-2"
+        onMouseLeave={handleMouseLeave}
+        onMouseEnter={handleMouseEnter}
+      >
+        <PauseControl />
+        <VolumeControl className="mr-2" />
+        <TimeControl />
+      </div>
+      <ShowTitleControl />
+    </>
   );
 }
 

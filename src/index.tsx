@@ -26,10 +26,6 @@ if (key) {
 //  - safari fullscreen will make video overlap player controls
 //  - safari progress bar is fucked (video doesnt change time but video.currentTime does change)
 
-// TODO optional todos:
-//  - shortcuts when player is active
-//  - improve seekables (if possible)
-
 // TODO stuff to test:
 //  - browser: firefox, chrome, edge, safari desktop
 //  - phones: android firefox, android chrome, iphone safari

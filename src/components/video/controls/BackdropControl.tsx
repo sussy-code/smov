@@ -12,15 +12,14 @@ export function BackdropControl(props: BackdropControlProps) {
   const timeout = useRef<ReturnType<typeof setTimeout> | null>(null);
   const clickareaRef = useRef<HTMLDivElement>(null);
 
-  // TODO fix infinite loop
   const handleMouseMove = useCallback(() => {
-    setMoved(true);
+    if (!moved) setMoved(true);
     if (timeout.current) clearTimeout(timeout.current);
     timeout.current = setTimeout(() => {
-      setMoved(false);
+      if (moved) setMoved(false);
       timeout.current = null;
     }, 3000);
-  }, [timeout, setMoved]);
+  }, [setMoved, moved]);
 
   const handleMouseLeave = useCallback(() => {
     setMoved(false);
@@ -45,8 +44,13 @@ export function BackdropControl(props: BackdropControlProps) {
     [videoState, clickareaRef]
   );
 
+  const lastBackdropValue = useRef<boolean | null>(null);
   useEffect(() => {
-    props.onBackdropChange?.(moved || videoState.isPaused);
+    const currentValue = moved || videoState.isPaused;
+    if (currentValue !== lastBackdropValue.current) {
+      lastBackdropValue.current = currentValue;
+      props.onBackdropChange?.(currentValue);
+    }
   }, [videoState, moved, props]);
   const showUI = moved || videoState.isPaused;
 

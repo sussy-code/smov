@@ -7,7 +7,6 @@ interface Props {
   onProgress?: (time: number, duration: number) => void;
 }
 
-// TODO fix infinite loops
 export function ProgressListenerControl(props: Props) {
   const { videoState } = useVideoPlayerState();
   const didInitialize = useRef<true | null>(null);

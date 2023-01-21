@@ -11,6 +11,15 @@ import React, { RefObject } from "react";
 import { PlayerState } from "./useVideoPlayer";
 import { getStoredVolume, setStoredVolume } from "./volumeStore";
 
+interface ShowData {
+  current?: {
+    episode: number;
+    season: number;
+  };
+  isSeries: boolean;
+  title?: string;
+}
+
 export interface PlayerControls {
   play(): void;
   pause(): void;
@@ -21,6 +30,7 @@ export interface PlayerControls {
   setSeeking(active: boolean): void;
   setLeftControlsHover(hovering: boolean): void;
   initPlayer(sourceUrl: string, sourceType: MWStreamType): void;
+  setShowData(data: ShowData): void;
 }
 
 export const initialControls: PlayerControls = {
@@ -33,6 +43,7 @@ export const initialControls: PlayerControls = {
   setSeeking: () => null,
   setLeftControlsHover: () => null,
   initPlayer: () => null,
+  setShowData: () => null,
 };
 
 export function populateControls(
@@ -104,6 +115,9 @@ export function populateControls(
     },
     setLeftControlsHover(hovering) {
       update((s) => ({ ...s, leftControlHovering: hovering }));
+    },
+    setShowData(data) {
+      update((s) => ({ ...s, seasonData: data }));
     },
     initPlayer(sourceUrl: string, sourceType: MWStreamType) {
       this.setVolume(getStoredVolume());
