@@ -3,6 +3,7 @@ import { useCallback, useRef, useState } from "react";
 import { CSSTransition } from "react-transition-group";
 import { AirplayControl } from "./controls/AirplayControl";
 import { BackdropControl } from "./controls/BackdropControl";
+import { ChromeCastControl } from "./controls/ChromeCastControl";
 import { FullscreenControl } from "./controls/FullscreenControl";
 import { LoadingControl } from "./controls/LoadingControl";
 import { MiddlePauseControl } from "./controls/MiddlePauseControl";
@@ -93,6 +94,7 @@ export function DecoratedVideoPlayer(
                 <LeftSideControls />
                 <div className="flex-1" />
                 <AirplayControl />
+                <ChromeCastControl />
                 <FullscreenControl />
               </div>
             </div>

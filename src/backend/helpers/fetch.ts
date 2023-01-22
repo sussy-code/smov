@@ -16,11 +16,11 @@ export function makeUrl(url: string, data: Record<string, string>) {
   return parsedUrl;
 }
 
-export function mwFetch<T>(url: string, ops: P<T>[1]): R<T> {
+export function mwFetch<T>(url: string, ops: P<T>[1] = {}): R<T> {
   return baseFetch<T>(url, ops);
 }
 
-export function proxiedFetch<T>(url: string, ops: P<T>[1]): R<T> {
+export function proxiedFetch<T>(url: string, ops: P<T>[1] = {}): R<T> {
   let combinedUrl = ops?.baseURL ?? "";
   if (
     combinedUrl.length > 0 &&

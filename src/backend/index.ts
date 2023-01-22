@@ -4,6 +4,7 @@ import { initializeScraperStore } from "./helpers/register";
 import "./providers/gdriveplayer";
 import "./providers/flixhq";
 import "./providers/superstream";
+import "./providers/gomostream";
 
 // embeds
 // -- nothing here yet
