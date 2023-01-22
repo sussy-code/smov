@@ -98,6 +98,16 @@ const get = (data: object, altApi = false) => {
   });
 };
 
+// Find best resolution
+const getBestQuality = (list: any[]) => {
+  return (
+    list.find((quality: any) => quality.quality === "1080p" && quality.path) ??
+    list.find((quality: any) => quality.quality === "720p" && quality.path) ??
+    list.find((quality: any) => quality.quality === "480p" && quality.path) ??
+    list.find((quality: any) => quality.quality === "360p" && quality.path)
+  );
+};
+
 registerProvider({
   id: "superstream",
   displayName: "Superstream",
@@ -138,23 +148,9 @@ registerProvider({
       const mediaRes = (await get(apiQuery)).data;
       progress(50);
 
-      const hdQuality =
-        mediaRes.list.find(
-          (quality: any) => quality.quality === "1080p" && quality.path
-        ) ??
-        mediaRes.list.find(
-          (quality: any) => quality.quality === "720p" && quality.path
-        ) ??
-        mediaRes.list.find(
-          (quality: any) => quality.quality === "480p" && quality.path
-        ) ??
-        mediaRes.list.find(
-          (quality: any) => quality.quality === "360p" && quality.path
-        );
+      const hdQuality = getBestQuality(mediaRes.list);
 
       if (!hdQuality) throw new Error("No quality could be found.");
-
-      console.log(hdQuality);
 
       // const subtitleApiQuery = {
       //   fid: hdQuality.fid,
@@ -210,19 +206,7 @@ registerProvider({
     const mediaRes = (await get(apiQuery)).data;
     progress(66);
 
-    const hdQuality =
-      mediaRes.list.find(
-        (quality: any) => quality.quality === "1080p" && quality.path
-      ) ??
-      mediaRes.list.find(
-        (quality: any) => quality.quality === "720p" && quality.path
-      ) ??
-      mediaRes.list.find(
-        (quality: any) => quality.quality === "480p" && quality.path
-      ) ??
-      mediaRes.list.find(
-        (quality: any) => quality.quality === "360p" && quality.path
-      );
+    const hdQuality = getBestQuality(mediaRes.list);
 
     if (!hdQuality) throw new Error("No quality could be found.");
 
