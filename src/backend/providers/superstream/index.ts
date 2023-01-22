@@ -152,8 +152,6 @@ registerProvider({
 
       if (!hdQuality) throw new Error("No quality could be found.");
 
-      console.log(hdQuality);
-
       // const subtitleApiQuery = {
       //   fid: hdQuality.fid,
       //   uid: "",
