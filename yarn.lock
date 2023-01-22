@@ -20,9 +20,9 @@
 "@colors/colors@1.5.0":
   "version" "1.5.0"
 
-"@esbuild/linux-x64@0.16.5":
-  "integrity" "sha512-vsOwzKN+4NenUTyuoWLmg5dAuO8JKuLD9MXSeENA385XucuOZbblmOMwwgPlHsgVRtSjz38riqPJU2ALI/CWYQ=="
-  "resolved" "https://registry.npmjs.org/@esbuild/linux-x64/-/linux-x64-0.16.5.tgz"
+"@esbuild/darwin-arm64@0.16.5":
+  "integrity" "sha512-4HlbUMy50cRaHGVriBjShs46WRPshtnVOqkxEGhEuDuJhgZ3regpWzaQxXOcDXFvVwue8RiqDAAcOi/QlVLE6Q=="
+  "resolved" "https://registry.npmjs.org/@esbuild/darwin-arm64/-/darwin-arm64-0.16.5.tgz"
   "version" "0.16.5"
 
 "@eslint/eslintrc@^1.3.3":
@@ -98,8 +98,8 @@
     "@nodelib/fs.scandir" "2.1.5"
     "fastq" "^1.6.0"
 
-"@npmcli/arborist@^6.1.5":
-  "version" "6.1.5"
+"@npmcli/arborist@^6.1.6":
+  "version" "6.1.6"
   dependencies:
     "@isaacs/string-locale-compare" "^1.1.0"
     "@npmcli/fs" "^3.1.0"
@@ -135,8 +135,8 @@
     "treeverse" "^3.0.0"
     "walk-up-path" "^1.0.0"
 
-"@npmcli/config@^6.1.0":
-  "version" "6.1.0"
+"@npmcli/config@^6.1.1":
+  "version" "6.1.1"
   dependencies:
     "@npmcli/map-workspaces" "^3.0.0"
     "ini" "^3.0.0"
@@ -233,14 +233,9 @@
     "read-package-json-fast" "^3.0.0"
     "which" "^3.0.0"
 
-"@swc/core-linux-x64-gnu@1.3.22":
-  "integrity" "sha512-FLkbiqsdXsVIFZi6iedx4rSBGX8x0vo/5aDlklSxJAAYOcQpO0QADKP5Yr65iMT1d6ABCt2d+/StpGLF7GWOcA=="
-  "resolved" "https://registry.npmjs.org/@swc/core-linux-x64-gnu/-/core-linux-x64-gnu-1.3.22.tgz"
-  "version" "1.3.22"
-
-"@swc/core-linux-x64-musl@1.3.22":
-  "integrity" "sha512-giBuw+Z0Bq6fpZ0Y5TcfpcQwf9p/cE1fOQyO/K1XSTn/haQOqFi7421Jq/dFThSARZiXw1u9Om9VFbwxr8VI+A=="
-  "resolved" "https://registry.npmjs.org/@swc/core-linux-x64-musl/-/core-linux-x64-musl-1.3.22.tgz"
+"@swc/core-darwin-arm64@1.3.22":
+  "integrity" "sha512-MMhtPsuXp8gpUgr9bs+RZQ2IyFGiUNDG93usCDAFgAF+6VVp+YaAVjET/3/Bx5Lk2WAt0RxT62C9KTEw1YMo3w=="
+  "resolved" "https://registry.npmjs.org/@swc/core-darwin-arm64/-/core-darwin-arm64-1.3.22.tgz"
   "version" "1.3.22"
 
 "@swc/core@^1.3.21":
@@ -891,9 +886,9 @@
   "version" "3.26.1"
 
 "core-js@^3.6.5":
-  "integrity" "sha512-GutwJLBChfGCpwwhbYoqfv03LAfmiz7e7D/BNxzeMxwQf10GRSzqiOjx7AmtEk+heiD/JWmBuyBPgFtx0Sg1ww=="
-  "resolved" "https://registry.npmjs.org/core-js/-/core-js-3.27.1.tgz"
-  "version" "3.27.1"
+  "integrity" "sha512-9ashVQskuh5AZEZ1JdQWp1GqSoC1e1G87MzRqg2gIfVAQ7Qn9K+uFj8EcniUFA4P2NLZfV+TOlX1SzoKfo+s7w=="
+  "resolved" "https://registry.npmjs.org/core-js/-/core-js-3.27.2.tgz"
+  "version" "3.27.2"
 
 "cross-fetch@3.1.5":
   "integrity" "sha512-lvb1SBsI0Z7GDwmuid+mU3kWVBwTVUbe7S0H52yaaAdQOXq2YktTCZdlAcNKFzE6QtRz0snpw9bNiPeOIkkQvw=="
@@ -1054,13 +1049,6 @@
   "integrity" "sha512-L18DaJsXSUk2+42pv8mLs5jJT2hqFkFE4j21wOmgbUqsZ2hL72NsUU785g9RXgo3s0ZNgVl42TiHp3ZtOv/Vyg=="
   "resolved" "https://registry.npmjs.org/emoji-regex/-/emoji-regex-9.2.2.tgz"
   "version" "9.2.2"
-
-"encoding@^0.1.0":
-  "integrity" "sha512-ETBauow1T35Y/WZMkio9jiM0Z5xjHHmJ4XmjZOq1l/dXz3lr2sRn87nJy20RupqSh1F2m3HHPSp8ShIPQJrJ3A=="
-  "resolved" "https://registry.npmjs.org/encoding/-/encoding-0.1.13.tgz"
-  "version" "0.1.13"
-  dependencies:
-    "iconv-lite" "^0.6.2"
 
 "encoding@^0.1.13":
   "version" "0.1.13"
@@ -1500,6 +1488,11 @@
   "integrity" "sha512-hlq4+BU0hlPmwsFjwGGzZ+OZ9N/wq9Ljg/sq3pX+2CD7hrJsX9tJgWWK/wiNTFM212CLHWhicOoqwXyZGGetJg=="
   "resolved" "https://registry.npmjs.org/fscreen/-/fscreen-1.2.0.tgz"
   "version" "1.2.0"
+
+"fsevents@~2.3.2":
+  "integrity" "sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA=="
+  "resolved" "https://registry.npmjs.org/fsevents/-/fsevents-2.3.2.tgz"
+  "version" "2.3.2"
 
 "function-bind@^1.1.1":
   "integrity" "sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A=="
@@ -2022,16 +2015,16 @@
   "version" "1.1.4"
 
 "json5@^1.0.1":
-  "integrity" "sha512-g1MWMLBiz8FKi1e4w0UyVL3w+iJceWAFBAaBnnGKOpNa5f8TLktkbre1+s6oICydWAm+HRUGTmI+//xv2hvXYA=="
-  "resolved" "https://registry.npmjs.org/json5/-/json5-1.0.2.tgz"
-  "version" "1.0.2"
+  "integrity" "sha512-aKS4WQjPenRxiQsC93MNfjx+nbF4PAdYzmd/1JIj8HYzqfbu86beTuNgXDzPknWk0n0uARlyewZo4s++ES36Ow=="
+  "resolved" "https://registry.npmjs.org/json5/-/json5-1.0.1.tgz"
+  "version" "1.0.1"
   dependencies:
     "minimist" "^1.2.0"
 
 "json5@^2.2.0":
-  "integrity" "sha512-XmOWe7eyHYH14cLdVPoyg+GOH3rYX++KpzrylJwSW98t3Nk+U8XOl8FWKOgwtzdb8lXGf6zYwDUzeHMWfxasyg=="
-  "resolved" "https://registry.npmjs.org/json5/-/json5-2.2.3.tgz"
-  "version" "2.2.3"
+  "integrity" "sha512-1hqLFMSrGHRHxav9q9gNjJ5EXznIxGVO09xQRrwplcS8qs28pZ8s8hupZAmqDwZUmVZ2Qb2jnyPOWcDH8m8dlA=="
+  "resolved" "https://registry.npmjs.org/json5/-/json5-2.2.1.tgz"
+  "version" "2.2.1"
 
 "jsonparse@^1.3.1":
   "version" "1.3.1"
@@ -2076,10 +2069,10 @@
     "npm-package-arg" "^10.1.0"
     "npm-registry-fetch" "^14.0.3"
 
-"libnpmdiff@^5.0.6":
-  "version" "5.0.6"
+"libnpmdiff@^5.0.7":
+  "version" "5.0.7"
   dependencies:
-    "@npmcli/arborist" "^6.1.5"
+    "@npmcli/arborist" "^6.1.6"
     "@npmcli/disparity-colors" "^3.0.0"
     "@npmcli/installed-package-contents" "^2.0.0"
     "binary-extensions" "^2.2.0"
@@ -2089,10 +2082,10 @@
     "pacote" "^15.0.7"
     "tar" "^6.1.13"
 
-"libnpmexec@^5.0.6":
-  "version" "5.0.6"
+"libnpmexec@^5.0.7":
+  "version" "5.0.7"
   dependencies:
-    "@npmcli/arborist" "^6.1.5"
+    "@npmcli/arborist" "^6.1.6"
     "@npmcli/run-script" "^6.0.0"
     "chalk" "^4.1.0"
     "ci-info" "^3.7.0"
@@ -2105,10 +2098,10 @@
     "semver" "^7.3.7"
     "walk-up-path" "^1.0.0"
 
-"libnpmfund@^4.0.6":
-  "version" "4.0.6"
+"libnpmfund@^4.0.7":
+  "version" "4.0.7"
   dependencies:
-    "@npmcli/arborist" "^6.1.5"
+    "@npmcli/arborist" "^6.1.6"
 
 "libnpmhook@^9.0.1":
   "version" "9.0.1"
@@ -2122,10 +2115,10 @@
     "aproba" "^2.0.0"
     "npm-registry-fetch" "^14.0.3"
 
-"libnpmpack@^5.0.6":
-  "version" "5.0.6"
+"libnpmpack@^5.0.7":
+  "version" "5.0.7"
   dependencies:
-    "@npmcli/arborist" "^6.1.5"
+    "@npmcli/arborist" "^6.1.6"
     "@npmcli/run-script" "^6.0.0"
     "npm-package-arg" "^10.1.0"
     "pacote" "^15.0.7"
@@ -2288,9 +2281,9 @@
     "encoding" "^0.1.13"
 
 "minipass-fetch@^3.0.0":
-  "version" "3.0.0"
+  "version" "3.0.1"
   dependencies:
-    "minipass" "^3.1.6"
+    "minipass" "^4.0.0"
     "minipass-sized" "^1.0.3"
     "minizlib" "^2.1.2"
   optionalDependencies:
@@ -2499,13 +2492,13 @@
   "version" "1.0.1"
 
 "npm@^9.2.0":
-  "integrity" "sha512-oypVdaWGHDuV79RXLvp+B9gh6gDyAmoHKrQ0/JBYTWWx5D8/+AAxFdZC84fSIiyDdyW4qfrSyYGKhekxDOaMXQ=="
-  "resolved" "https://registry.npmjs.org/npm/-/npm-9.2.0.tgz"
-  "version" "9.2.0"
+  "integrity" "sha512-ydRVmnWEVXmc3DCM+F9BjiNj3IHkZ3Mwz5VbJYS2BpY/6d4PcKxNW+Xb0vzGeE6PkVhLcPxwhoIi+RFV2fSfEA=="
+  "resolved" "https://registry.npmjs.org/npm/-/npm-9.3.1.tgz"
+  "version" "9.3.1"
   dependencies:
     "@isaacs/string-locale-compare" "^1.1.0"
-    "@npmcli/arborist" "^6.1.5"
-    "@npmcli/config" "^6.1.0"
+    "@npmcli/arborist" "^6.1.6"
+    "@npmcli/config" "^6.1.1"
     "@npmcli/map-workspaces" "^3.0.0"
     "@npmcli/package-json" "^3.0.0"
     "@npmcli/run-script" "^6.0.0"
@@ -2527,12 +2520,12 @@
     "is-cidr" "^4.0.2"
     "json-parse-even-better-errors" "^3.0.0"
     "libnpmaccess" "^7.0.1"
-    "libnpmdiff" "^5.0.6"
-    "libnpmexec" "^5.0.6"
-    "libnpmfund" "^4.0.6"
+    "libnpmdiff" "^5.0.7"
+    "libnpmexec" "^5.0.7"
+    "libnpmfund" "^4.0.7"
     "libnpmhook" "^9.0.1"
     "libnpmorg" "^5.0.1"
-    "libnpmpack" "^5.0.6"
+    "libnpmpack" "^5.0.7"
     "libnpmpublish" "^7.0.6"
     "libnpmsearch" "^6.0.1"
     "libnpmteam" "^5.0.1"
@@ -2561,7 +2554,6 @@
     "read" "~1.0.7"
     "read-package-json" "^6.0.0"
     "read-package-json-fast" "^3.0.1"
-    "rimraf" "^3.0.2"
     "semver" "^7.3.8"
     "ssri" "^10.0.1"
     "tar" "^6.1.13"
