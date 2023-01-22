@@ -5,8 +5,19 @@ import { conf } from "@/setup/config";
 import { customAlphabet } from "nanoid";
 // import toWebVTT from "srt-webvtt";
 import CryptoJS from "crypto-js";
+import { proxiedFetch } from "@/backend/helpers/fetch";
+import { MWStreamQuality, MWStreamType } from "@/backend/helpers/streams";
+import { MetadataSchema } from "hls.js";
 
 const nanoid = customAlphabet("0123456789abcdef", 32);
+
+const qualityMap = {
+  "360p": MWStreamQuality.Q360P,
+  "480p": MWStreamQuality.Q480P,
+  "720p": MWStreamQuality.Q720P,
+  "1080p": MWStreamQuality.Q1080P,
+};
+type QualityInMap = keyof typeof qualityMap;
 
 // CONSTANTS, read below (taken from og)
 // We do not want content scanners to notice this scraping going on so we've hidden all constants
@@ -76,8 +87,9 @@ const get = (data: object, altApi = false) => {
   formatted.append("medium", "Website");
 
   const requestUrl = altApi ? apiUrls[1] : apiUrls[0];
-  return fetch(`${conf().CORS_PROXY_URL}${requestUrl}`, {
+  return proxiedFetch<any>(requestUrl, {
     method: "POST",
+    parseResponse: JSON.parse,
     headers: {
       Platform: "android",
       "Content-Type": "application/x-www-form-urlencoded",
@@ -88,26 +100,44 @@ const get = (data: object, altApi = false) => {
 
 registerProvider({
   id: "superstream",
-  rank: 50,
+  displayName: "Superstream",
+  rank: 200,
   type: [MWMediaType.MOVIE, MWMediaType.SERIES],
-  disabled: true,
 
-  async scrape({
-    media: {
-      meta: { type },
-      tmdbId,
-    },
-  }) {
-    if (type === MWMediaType.MOVIE) {
+  async scrape({ media, episode, progress }) {
+    // Find Superstream ID for show
+    const searchQuery = {
+      module: "Search3",
+      page: "1",
+      type: "all",
+      keyword: media.meta.title,
+      pagelimit: "20",
+    };
+    const searchRes = (await get(searchQuery, true)).data;
+    progress(33);
+
+    // TODO: add fuzzy search and normalise strings before matching
+    const superstreamEntry = searchRes.find(
+      (res: any) =>
+        res.title === media.meta.title && res.year === Number(media.meta.year)
+    );
+
+    if (!superstreamEntry) throw new Error("No entry found on SuperStream");
+    const superstreamId = superstreamEntry.id;
+
+    // Movie logic
+    if (media.meta.type === MWMediaType.MOVIE) {
       const apiQuery = {
         uid: "",
         module: "Movie_downloadurl_v3",
-        mid: tmdbId,
+        mid: superstreamId,
         oss: "1",
         group: "",
       };
 
-      const mediaRes = (await get(apiQuery).then((r) => r.json())).data;
+      const mediaRes = (await get(apiQuery)).data;
+      progress(50);
+
       const hdQuality =
         mediaRes.list.find(
           (quality: any) => quality.quality === "1080p" && quality.path
@@ -123,6 +153,8 @@ registerProvider({
         );
 
       if (!hdQuality) throw new Error("No quality could be found.");
+
+      console.log(hdQuality);
 
       // const subtitleApiQuery = {
       //   fid: hdQuality.fid,
@@ -147,34 +179,52 @@ registerProvider({
       //   })
       // );
 
-      return { embeds: [], stream: hdQuality.path };
+      return {
+        embeds: [],
+        stream: {
+          streamUrl: hdQuality.path,
+          quality: qualityMap[hdQuality.quality as QualityInMap],
+          type: MWStreamType.MP4,
+        },
+      };
     }
 
-    // const apiQuery = {
-    //   uid: "",
-    //   module: "TV_downloadurl_v3",
-    //   episode: media.episodeId,
-    //   tid: media.mediaId,
-    //   season: media.seasonId,
-    //   oss: "1",
-    //   group: "",
-    // };
-    // const mediaRes = (await get(apiQuery).then((r) => r.json())).data;
-    // const hdQuality =
-    //   mediaRes.list.find(
-    //     (quality: any) => quality.quality === "1080p" && quality.path
-    //   ) ??
-    //   mediaRes.list.find(
-    //     (quality: any) => quality.quality === "720p" && quality.path
-    //   ) ??
-    //   mediaRes.list.find(
-    //     (quality: any) => quality.quality === "480p" && quality.path
-    //   ) ??
-    //   mediaRes.list.find(
-    //     (quality: any) => quality.quality === "360p" && quality.path
-    //   );
+    if (media.meta.type !== MWMediaType.SERIES)
+      throw new Error("Unsupported type");
 
-    // if (!hdQuality) throw new Error("No quality could be found.");
+    // Fetch requested episode
+    const apiQuery = {
+      uid: "",
+      module: "TV_downloadurl_v3",
+      tid: superstreamId,
+      season: media.meta.seasonData.number.toString(),
+      episode: (
+        media.meta.seasonData.episodes.find(
+          (episodeInfo) => episodeInfo.id === episode
+        )?.number ?? 1
+      ).toString(),
+      oss: "1",
+      group: "",
+    };
+
+    const mediaRes = (await get(apiQuery)).data;
+    progress(66);
+
+    const hdQuality =
+      mediaRes.list.find(
+        (quality: any) => quality.quality === "1080p" && quality.path
+      ) ??
+      mediaRes.list.find(
+        (quality: any) => quality.quality === "720p" && quality.path
+      ) ??
+      mediaRes.list.find(
+        (quality: any) => quality.quality === "480p" && quality.path
+      ) ??
+      mediaRes.list.find(
+        (quality: any) => quality.quality === "360p" && quality.path
+      );
+
+    if (!hdQuality) throw new Error("No quality could be found.");
 
     // const subtitleApiQuery = {
     //   fid: hdQuality.fid,
@@ -200,6 +250,15 @@ registerProvider({
     //   })
     // );
 
-    return { embeds: [] };
+    return {
+      embeds: [],
+      stream: {
+        quality: qualityMap[
+          hdQuality.quality as QualityInMap
+        ] as MWStreamQuality,
+        streamUrl: hdQuality.path,
+        type: MWStreamType.MP4,
+      },
+    };
   },
 });
