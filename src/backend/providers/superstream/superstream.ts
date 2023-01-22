@@ -1,13 +1,11 @@
 import { registerProvider } from "@/backend/helpers/register";
 import { MWMediaType } from "@/backend/metadata/types";
-import { conf } from "@/setup/config";
 
 import { customAlphabet } from "nanoid";
 // import toWebVTT from "srt-webvtt";
 import CryptoJS from "crypto-js";
 import { proxiedFetch } from "@/backend/helpers/fetch";
 import { MWStreamQuality, MWStreamType } from "@/backend/helpers/streams";
-import { MetadataSchema } from "hls.js";
 
 const nanoid = customAlphabet("0123456789abcdef", 32);
 
@@ -153,8 +151,6 @@ registerProvider({
         );
 
       if (!hdQuality) throw new Error("No quality could be found.");
-
-      console.log(hdQuality);
 
       // const subtitleApiQuery = {
       //   fid: hdQuality.fid,

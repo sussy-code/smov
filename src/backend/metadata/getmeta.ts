@@ -54,7 +54,6 @@ export async function getMetaFromId(
     throw err;
   }
 
-  console.log(data.external_ids);
   const imdbId = data.external_ids.find(
     (v) => v.provider === "imdb_latest"
   )?.external_id;
