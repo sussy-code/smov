@@ -31,8 +31,8 @@ type MWProviderRunContextTypeSpecific =
     }
   | {
       type: MWMediaType.SERIES;
-      episode: number;
-      season: number;
+      episode: string;
+      season: string;
     };
 
 export type MWProviderRunContext = MWProviderRunContextBase &

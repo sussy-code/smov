@@ -42,7 +42,6 @@ if (key) {
 
 // TODO general todos:
 //  - localize everything
-//  - add titles to pages
 
 ReactDOM.render(
   <React.StrictMode>

@@ -7,6 +7,7 @@ import { SearchBarInput } from "@/components/SearchBar";
 import { Title } from "@/components/text/Title";
 import { useSearchQuery } from "@/hooks/useSearchQuery";
 import { WideContainer } from "@/components/layout/WideContainer";
+import { Helmet } from "react-helmet";
 import { SearchResultsPartial } from "./SearchResultsPartial";
 
 export function SearchView() {
@@ -22,6 +23,9 @@ export function SearchView() {
   return (
     <>
       <div className="relative z-10 mb-24">
+        <Helmet>
+          <title>movie-web</title>
+        </Helmet>
         <Navigation bg={showBg} />
         <ThinContainer>
           <div className="mt-44 space-y-16 text-center">

@@ -22,7 +22,7 @@ export function EditButton(props: EditButtonProps) {
     >
       <span ref={parent}>
         {props.editing ? (
-          <span className="mx-4">Stop editing</span>
+          <span className="mx-4 whitespace-nowrap">Stop editing</span>
         ) : (
           <Icon icon={Icons.EDIT} />
         )}

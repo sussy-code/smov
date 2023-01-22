@@ -4,12 +4,16 @@ import { Link } from "@/components/text/Link";
 import { VideoPlayerHeader } from "@/components/video/parts/VideoPlayerHeader";
 import { useGoBack } from "@/hooks/useGoBack";
 import { conf } from "@/setup/config";
+import { Helmet } from "react-helmet";
 
 export function MediaFetchErrorView() {
   const goBack = useGoBack();
 
   return (
     <div className="h-screen flex-1">
+      <Helmet>
+        <title>Failed to load meta</title>
+      </Helmet>
       <div className="fixed inset-x-0 top-0 py-6 px-8">
         <VideoPlayerHeader onClick={goBack} />
       </div>

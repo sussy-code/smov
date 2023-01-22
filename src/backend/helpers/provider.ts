@@ -20,8 +20,8 @@ type MWProviderTypeSpecific =
     }
   | {
       type: MWMediaType.SERIES;
-      episode: number;
-      season: number;
+      episode: string;
+      season: string;
     };
 export type MWProviderContext = MWProviderTypeSpecific & MWProviderBase;
 

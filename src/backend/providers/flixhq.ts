@@ -1,37 +1,63 @@
+import { proxiedFetch } from "../helpers/fetch";
 import { registerProvider } from "../helpers/register";
+import { MWStreamQuality, MWStreamType } from "../helpers/streams";
 import { MWMediaType } from "../metadata/types";
 
-const timeout = (time: number) =>
-  new Promise<void>((resolve) => {
-    setTimeout(() => resolve(), time);
-  });
+const flixHqBase = "https://api.consumet.org/movies/flixhq";
 
 registerProvider({
-  id: "testprov",
-  rank: 42,
+  id: "flixhq",
+  displayName: "FlixHQ",
+  rank: 100,
   type: [MWMediaType.MOVIE],
-  disabled: true,
 
-  async scrape({ progress }) {
-    await timeout(1000);
+  async scrape({ media, progress }) {
+    // search for relevant item
+    const searchResults = await proxiedFetch<any>(
+      `/${encodeURIComponent(media.meta.title)}`,
+      {
+        baseURL: flixHqBase,
+      }
+    );
+    // TODO fuzzy match or normalize title before comparison
+    const foundItem = searchResults.results.find((v: any) => {
+      return v.title === media.meta.title && v.releaseDate === media.meta.year;
+    });
+    if (!foundItem) throw new Error("No watchable item found");
+    const flixId = foundItem.id;
+
+    // get media info
     progress(25);
-    await timeout(1000);
-    progress(50);
-    await timeout(1000);
+    const mediaInfo = await proxiedFetch<any>("/info", {
+      baseURL: flixHqBase,
+      params: {
+        id: flixId,
+      },
+    });
+
+    // get stream info from media
     progress(75);
-    await timeout(1000);
+    const watchInfo = await proxiedFetch<any>("/watch", {
+      baseURL: flixHqBase,
+      params: {
+        episodeId: mediaInfo.episodes[0].id,
+        mediaId: flixId,
+      },
+    });
+
+    // get best quality source
+    const source = watchInfo.sources.reduce((p: any, c: any) =>
+      c.quality > p.quality ? c : p
+    );
 
     return {
-      embeds: [
-        // {
-        //   type: MWEmbedType.OPENLOAD,
-        //   url: "https://google.com",
-        // },
-        // {
-        //   type: MWEmbedType.ANOTHER,
-        //   url: "https://google.com",
-        // },
-      ],
+      embeds: [],
+      stream: {
+        streamUrl: source.url,
+        quality: MWStreamQuality.QUNKNOWN,
+        type: source.isM3U8 ? MWStreamType.HLS : MWStreamType.MP4,
+        captions: [],
+      },
     };
   },
 });

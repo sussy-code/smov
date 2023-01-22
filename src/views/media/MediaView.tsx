@@ -1,11 +1,12 @@
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import { useEffect, useRef, useState } from "react";
 import { DecoratedVideoPlayer } from "@/components/video/DecoratedVideoPlayer";
 import { MWStream } from "@/backend/helpers/streams";
 import { SelectedMediaData, useScrape } from "@/hooks/useScrape";
 import { VideoPlayerHeader } from "@/components/video/parts/VideoPlayerHeader";
 import { DetailedMeta, getMetaFromId } from "@/backend/metadata/getmeta";
-import { JWMediaToMediaType } from "@/backend/metadata/justwatch";
+import { decodeJWId } from "@/backend/metadata/justwatch";
 import { SourceControl } from "@/components/video/controls/SourceControl";
 import { Loading } from "@/components/layout/Loading";
 import { useLoading } from "@/hooks/useLoading";
@@ -23,6 +24,9 @@ import { NotFoundMedia, NotFoundWrapper } from "../notfound/NotFoundView";
 function MediaViewLoading(props: { onGoBack(): void }) {
   return (
     <div className="relative flex h-screen items-center justify-center">
+      <Helmet>
+        <title>Loading...</title>
+      </Helmet>
       <div className="absolute inset-x-0 top-0 p-6">
         <VideoPlayerHeader onClick={props.onGoBack} />
       </div>
@@ -51,6 +55,9 @@ function MediaViewScraping(props: MediaViewScrapingProps) {
 
   return (
     <div className="relative flex h-screen items-center justify-center">
+      <Helmet>
+        <title>{props.meta.meta.title}</title>
+      </Helmet>
       <div className="absolute inset-x-0 top-0 py-6 px-8">
         <VideoPlayerHeader onClick={props.onGoBack} media={props.meta.meta} />
       </div>
@@ -85,6 +92,7 @@ function MediaViewScraping(props: MediaViewScrapingProps) {
 interface MediaViewPlayerProps {
   meta: DetailedMeta;
   stream: MWStream;
+  selected: SelectedMediaData;
 }
 export function MediaViewPlayer(props: MediaViewPlayerProps) {
   const goBack = useGoBack();
@@ -96,8 +104,13 @@ export function MediaViewPlayer(props: MediaViewPlayerProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.stream]);
 
+  // TODO show episode title
+
   return (
     <div className="h-screen w-screen">
+      <Helmet>
+        <title>{props.meta.meta.title}</title>
+      </Helmet>
       <DecoratedVideoPlayer media={props.meta.meta} onGoBack={goBack} autoPlay>
         <SourceControl
           source={props.stream.streamUrl}
@@ -107,44 +120,71 @@ export function MediaViewPlayer(props: MediaViewPlayerProps) {
           startAt={firstStartTime.current}
           onProgress={updateProgress}
         />
-        <ShowControl series={{ episode: 5, season: 2 }} title="hello world" />
+        {props.selected.type === MWMediaType.SERIES ? (
+          <ShowControl
+            series={{
+              seasonId: props.selected.season,
+              episodeId: props.selected.episode,
+            }}
+            onSelect={(d) => console.log("selected stuff", d)}
+          />
+        ) : null}
       </DecoratedVideoPlayer>
     </div>
   );
 }
 
 export function MediaView() {
-  const params = useParams<{ media: string }>();
+  const params = useParams<{
+    media: string;
+    episode?: string;
+    season?: string;
+  }>();
   const goBack = useGoBack();
+  const history = useHistory();
 
   const [meta, setMeta] = useState<DetailedMeta | null>(null);
   const [selected, setSelected] = useState<SelectedMediaData | null>(null);
-  const [exec, loading, error] = useLoading(async (mediaParams: string) => {
-    let type: MWMediaType;
-    let id = "";
-    try {
-      const [t, i] = mediaParams.split("-", 2);
-      type = JWMediaToMediaType(t);
-      id = i;
-    } catch (err) {
-      return null;
+  const [exec, loading, error] = useLoading(
+    async (mediaParams: string, seasonId?: string) => {
+      const data = decodeJWId(mediaParams);
+      if (!data) return null;
+      return getMetaFromId(data.type, data.id, seasonId);
     }
-    return getMetaFromId(type, id);
-  });
+  );
   const [stream, setStream] = useState<MWStream | null>(null);
 
   useEffect(() => {
-    exec(params.media).then((v) => {
+    console.log("I am being ran");
+    exec(params.media, params.season).then((v) => {
       setMeta(v ?? null);
-      if (v)
-        setSelected({
-          type: v.meta.type,
-          episode: 0 as any,
-          season: 0 as any,
-        });
-      else setSelected(null);
+      if (v) {
+        if (v.meta.type !== MWMediaType.SERIES) {
+          setSelected({
+            type: v.meta.type,
+            season: undefined,
+            episode: undefined,
+          });
+        } else {
+          const season = params.season ?? v.meta.seasonData.id;
+          const episode = params.episode ?? v.meta.seasonData.episodes[0].id;
+          setSelected({
+            type: MWMediaType.SERIES,
+            season,
+            episode,
+          });
+          if (season !== params.season || episode !== params.episode)
+            history.replace(
+              `/media/${encodeURIComponent(params.media)}/${encodeURIComponent(
+                season
+              )}/${encodeURIComponent(episode)}`
+            );
+        }
+      } else setSelected(null);
     });
-  }, [exec, params.media]);
+    // dont rerender when params changes
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [exec, history]);
 
   if (loading) return <MediaViewLoading onGoBack={goBack} />;
   if (error) return <MediaFetchErrorView />;
@@ -167,5 +207,5 @@ export function MediaView() {
     );
 
   // show stream once we have a stream
-  return <MediaViewPlayer meta={meta} stream={stream} />;
+  return <MediaViewPlayer meta={meta} stream={stream} selected={selected} />;
 }

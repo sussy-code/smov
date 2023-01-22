@@ -16,6 +16,11 @@ function App() {
             <Redirect to={`/search/${MWMediaType.MOVIE}`} />
           </Route>
           <Route exact path="/media/:media" component={MediaView} />
+          <Route
+            exact
+            path="/media/:media/:season/:episode"
+            component={MediaView}
+          />
           <Route exact path="/search/:type/:query?" component={SearchView} />
           <Route path="*" component={NotFoundPage} />
         </Switch>

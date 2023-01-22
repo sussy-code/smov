@@ -4,13 +4,42 @@ export enum MWMediaType {
   ANIME = "anime",
 }
 
-export type MWMediaMeta = {
+export type MWSeasonMeta = {
+  id: string;
+  number: number;
+  title: string;
+};
+
+export type MWSeasonWithEpisodeMeta = {
+  id: string;
+  number: number;
+  title: string;
+  episodes: {
+    id: string;
+    number: number;
+    title: string;
+  }[];
+};
+
+type MWMediaMetaBase = {
   title: string;
   id: string;
   year: string;
   poster?: string;
-  type: MWMediaType;
 };
+
+type MWMediaMetaSpecific =
+  | {
+      type: MWMediaType.MOVIE | MWMediaType.ANIME;
+      seasons: undefined;
+    }
+  | {
+      type: MWMediaType.SERIES;
+      seasons: MWSeasonMeta[];
+      seasonData: MWSeasonWithEpisodeMeta;
+    };
+
+export type MWMediaMeta = MWMediaMetaBase & MWMediaMetaSpecific;
 
 export interface MWQuery {
   searchQuery: string;

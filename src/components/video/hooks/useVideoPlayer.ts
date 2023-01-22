@@ -26,10 +26,9 @@ export type PlayerState = {
   seasonData: {
     isSeries: boolean;
     current?: {
-      episode: number;
-      season: number;
+      episodeId: string;
+      seasonId: string;
     };
-    title?: string;
   };
   error: null | {
     name: string;

@@ -13,11 +13,10 @@ import { getStoredVolume, setStoredVolume } from "./volumeStore";
 
 interface ShowData {
   current?: {
-    episode: number;
-    season: number;
+    episodeId: string;
+    seasonId: string;
   };
   isSeries: boolean;
-  title?: string;
 }
 
 export interface PlayerControls {

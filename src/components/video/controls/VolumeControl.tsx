@@ -63,7 +63,7 @@ export function VolumeControl(props: Props) {
         </div>
         <div
           className={`linear -ml-2 w-0 overflow-hidden transition-[width,opacity] duration-300 ${
-            hoveredOnce ? "!w-24 opacity-100" : "w-4 opacity-0"
+            hoveredOnce || dragging ? "!w-24 opacity-100" : "w-4 opacity-0"
           }`}
         >
           <div

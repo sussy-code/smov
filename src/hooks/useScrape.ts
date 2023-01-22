@@ -15,8 +15,8 @@ export interface ScrapeEventLog {
 export type SelectedMediaData =
   | {
       type: MWMediaType.SERIES;
-      episode: number;
-      season: number;
+      episode: string;
+      season: string;
     }
   | {
       type: MWMediaType.MOVIE | MWMediaType.ANIME;

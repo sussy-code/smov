@@ -3,6 +3,7 @@ import { makeUrl, mwFetch } from "../helpers/fetch";
 import {
   formatJWMeta,
   JWMediaResult,
+  JWSeasonMetaResult,
   JW_API_BASE,
   mediaTypeToJW,
 } from "./justwatch";
@@ -33,7 +34,8 @@ export interface DetailedMeta {
 
 export async function getMetaFromId(
   type: MWMediaType,
-  id: string
+  id: string,
+  seasonId?: string
 ): Promise<DetailedMeta | null> {
   const queryType = mediaTypeToJW(type);
 
@@ -61,8 +63,17 @@ export async function getMetaFromId(
 
   if (!imdbId || !tmdbId) throw new Error("not enough info");
 
+  let seasonData: JWSeasonMetaResult | undefined;
+  if (data.object_type === "show") {
+    const seasonToScrape = seasonId ?? data.seasons?.[0].id.toString() ?? "";
+    const url = makeUrl("/content/titles/show_season/{id}/locale/en_US", {
+      id: seasonToScrape,
+    });
+    seasonData = await mwFetch<any>(url, { baseURL: JW_API_BASE });
+  }
+
   return {
-    meta: formatJWMeta(data),
+    meta: formatJWMeta(data, seasonData),
     imdbId,
     tmdbId,
   };

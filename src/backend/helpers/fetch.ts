@@ -21,7 +21,22 @@ export function mwFetch<T>(url: string, ops: P<T>[1]): R<T> {
 }
 
 export function proxiedFetch<T>(url: string, ops: P<T>[1]): R<T> {
-  const parsedUrl = new URL(url);
+  let combinedUrl = ops?.baseURL ?? "";
+  if (
+    combinedUrl.length > 0 &&
+    combinedUrl.endsWith("/") &&
+    url.startsWith("/")
+  )
+    combinedUrl += url.slice(1);
+  else if (
+    combinedUrl.length > 0 &&
+    !combinedUrl.endsWith("/") &&
+    !url.startsWith("/")
+  )
+    combinedUrl += `/${url}`;
+  else combinedUrl += url;
+
+  const parsedUrl = new URL(combinedUrl);
   Object.entries(ops?.params ?? {}).forEach(([k, v]) => {
     parsedUrl.searchParams.set(k, v);
   });

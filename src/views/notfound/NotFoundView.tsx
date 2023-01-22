@@ -7,6 +7,7 @@ import { ArrowLink } from "@/components/text/ArrowLink";
 import { Title } from "@/components/text/Title";
 import { useGoBack } from "@/hooks/useGoBack";
 import { VideoPlayerHeader } from "@/components/video/parts/VideoPlayerHeader";
+import { Helmet } from "react-helmet";
 
 export function NotFoundWrapper(props: {
   children?: ReactNode;
@@ -16,6 +17,9 @@ export function NotFoundWrapper(props: {
 
   return (
     <div className="h-screen flex-1">
+      <Helmet>
+        <title>Not found</title>
+      </Helmet>
       {props.video ? (
         <div className="fixed inset-x-0 top-0 py-6 px-8">
           <VideoPlayerHeader onClick={goBack} />

@@ -13,7 +13,7 @@ export function SearchResultsPartial({ search }: SearchResultsPartialProps) {
   const [searching, setSearching] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
 
-  const debouncedSearch = useDebounce<MWQuery>(search, 2000);
+  const debouncedSearch = useDebounce<MWQuery>(search, 500);
   useEffect(() => {
     setSearching(search.searchQuery !== "");
     setLoading(search.searchQuery !== "");

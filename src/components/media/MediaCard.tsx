@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { DotList } from "@/components/text/DotList";
 import { MWMediaMeta } from "@/backend/metadata/types";
-import { mediaTypeToJW } from "@/backend/metadata/justwatch";
+import { JWMediaToId } from "@/backend/metadata/justwatch";
 import { Icons } from "../Icon";
 import { IconPatch } from "../buttons/IconPatch";
 
@@ -107,9 +107,7 @@ export function MediaCard(props: MediaCardProps) {
   const canLink = props.linkable && !props.closable;
 
   const link = canLink
-    ? `/media/${encodeURIComponent(
-        mediaTypeToJW(props.media.type)
-      )}-${encodeURIComponent(props.media.id)}`
+    ? `/media/${encodeURIComponent(JWMediaToId(props.media))}`
     : "#";
 
   if (!props.linkable) return <span>{content}</span>;
