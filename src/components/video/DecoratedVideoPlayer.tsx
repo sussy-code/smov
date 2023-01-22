@@ -1,6 +1,7 @@
 import { MWMediaMeta } from "@/backend/metadata/types";
 import { useCallback, useRef, useState } from "react";
 import { CSSTransition } from "react-transition-group";
+import { AirplayControl } from "./controls/AirplayControl";
 import { BackdropControl } from "./controls/BackdropControl";
 import { FullscreenControl } from "./controls/FullscreenControl";
 import { LoadingControl } from "./controls/LoadingControl";
@@ -91,6 +92,7 @@ export function DecoratedVideoPlayer(
               <div className="flex items-center">
                 <LeftSideControls />
                 <div className="flex-1" />
+                <AirplayControl />
                 <FullscreenControl />
               </div>
             </div>

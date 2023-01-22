@@ -1,5 +1,5 @@
 import { FetchError } from "ofetch";
-import { makeUrl, mwFetch } from "../helpers/fetch";
+import { makeUrl, proxiedFetch } from "../helpers/fetch";
 import {
   formatJWMeta,
   JWMediaResult,
@@ -45,7 +45,7 @@ export async function getMetaFromId(
       type: queryType,
       id,
     });
-    data = await mwFetch<JWDetailedMeta>(url, { baseURL: JW_API_BASE });
+    data = await proxiedFetch<JWDetailedMeta>(url, { baseURL: JW_API_BASE });
   } catch (err) {
     if (err instanceof FetchError) {
       // 400 and 404 are treated as not found
@@ -69,7 +69,7 @@ export async function getMetaFromId(
     const url = makeUrl("/content/titles/show_season/{id}/locale/en_US", {
       id: seasonToScrape,
     });
-    seasonData = await mwFetch<any>(url, { baseURL: JW_API_BASE });
+    seasonData = await proxiedFetch<any>(url, { baseURL: JW_API_BASE });
   }
 
   return {

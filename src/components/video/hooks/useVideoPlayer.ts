@@ -34,6 +34,7 @@ export type PlayerState = {
     name: string;
     description: string;
   };
+  canAirplay: boolean;
 };
 
 export type PlayerContext = PlayerState & PlayerControls;
@@ -57,6 +58,7 @@ export const initialPlayerState: PlayerContext = {
   seasonData: {
     isSeries: false,
   },
+  canAirplay: false,
   ...initialControls,
 };
 
@@ -159,6 +161,14 @@ function registerListeners(player: HTMLVideoElement, update: SetPlayer) {
         : null,
     }));
   };
+  const canAirplay = (e: any) => {
+    if (e.availability === "available") {
+      update((s) => ({
+        ...s,
+        canAirplay: true,
+      }));
+    }
+  };
 
   player.addEventListener("pause", pause);
   player.addEventListener("playing", playing);
@@ -172,6 +182,10 @@ function registerListeners(player: HTMLVideoElement, update: SetPlayer) {
   player.addEventListener("waiting", waiting);
   player.addEventListener("canplay", canplay);
   player.addEventListener("error", error);
+  player.addEventListener(
+    "webkitplaybacktargetavailabilitychanged",
+    canAirplay
+  );
 
   return () => {
     player.removeEventListener("pause", pause);
@@ -186,6 +200,10 @@ function registerListeners(player: HTMLVideoElement, update: SetPlayer) {
     player.removeEventListener("waiting", waiting);
     player.removeEventListener("canplay", canplay);
     player.removeEventListener("error", error);
+    player.removeEventListener(
+      "webkitplaybacktargetavailabilitychanged",
+      canAirplay
+    );
   };
 }
 

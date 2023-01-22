@@ -30,6 +30,7 @@ export interface PlayerControls {
   setLeftControlsHover(hovering: boolean): void;
   initPlayer(sourceUrl: string, sourceType: MWStreamType): void;
   setShowData(data: ShowData): void;
+  startAirplay(): void;
 }
 
 export const initialControls: PlayerControls = {
@@ -43,6 +44,7 @@ export const initialControls: PlayerControls = {
   setLeftControlsHover: () => null,
   initPlayer: () => null,
   setShowData: () => null,
+  startAirplay: () => null,
 };
 
 export function populateControls(
@@ -117,6 +119,11 @@ export function populateControls(
     },
     setShowData(data) {
       update((s) => ({ ...s, seasonData: data }));
+    },
+    startAirplay() {
+      const videoPlayer = player as any;
+      if (videoPlayer.webkitShowPlaybackTargetPicker)
+        videoPlayer.webkitShowPlaybackTargetPicker();
     },
     initPlayer(sourceUrl: string, sourceType: MWStreamType) {
       this.setVolume(getStoredVolume());

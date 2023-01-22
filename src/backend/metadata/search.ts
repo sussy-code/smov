@@ -1,5 +1,5 @@
 import { SimpleCache } from "@/utils/cache";
-import { mwFetch } from "../helpers/fetch";
+import { proxiedFetch } from "../helpers/fetch";
 import {
   formatJWMeta,
   JWContentTypes,
@@ -42,7 +42,7 @@ export async function searchForMedia(query: MWQuery): Promise<MWMediaMeta[]> {
     page_size: 40,
   };
 
-  const data = await mwFetch<JWPage<JWMediaResult>>(
+  const data = await proxiedFetch<JWPage<JWMediaResult>>(
     "/content/titles/en_US/popular",
     {
       baseURL: JW_API_BASE,

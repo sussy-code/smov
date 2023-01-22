@@ -155,7 +155,6 @@ export function MediaView() {
   const [stream, setStream] = useState<MWStream | null>(null);
 
   useEffect(() => {
-    console.log("I am being ran");
     exec(params.media, params.season).then((v) => {
       setMeta(v ?? null);
       if (v) {

@@ -25,6 +25,7 @@ if (key) {
 //  - source selection
 //  - safari fullscreen will make video overlap player controls
 //  - safari progress bar is fucked (video doesnt change time but video.currentTime does change)
+//  - safari progress bar cannot be dragged
 
 // TODO stuff to test:
 //  - browser: firefox, chrome, edge, safari desktop
@@ -41,7 +42,8 @@ if (key) {
 //  - AFTER all that: rank providers/embedscrapers
 
 // TODO general todos:
-//  - localize everything
+//  - localize everything (fix loading screen text (series vs movies))
+//  - make mobile friendly
 
 ReactDOM.render(
   <React.StrictMode>
