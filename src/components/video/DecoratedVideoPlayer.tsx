@@ -9,6 +9,7 @@ import { LoadingControl } from "./controls/LoadingControl";
 import { MiddlePauseControl } from "./controls/MiddlePauseControl";
 import { PauseControl } from "./controls/PauseControl";
 import { ProgressControl } from "./controls/ProgressControl";
+import { SeriesSelectionControl } from "./controls/SeriesSelectionControl";
 import { ShowTitleControl } from "./controls/ShowTitleControl";
 import { TimeControl } from "./controls/TimeControl";
 import { VolumeControl } from "./controls/VolumeControl";
@@ -93,6 +94,7 @@ export function DecoratedVideoPlayer(
               <div className="flex items-center">
                 <LeftSideControls />
                 <div className="flex-1" />
+                <SeriesSelectionControl />
                 <AirplayControl />
                 <ChromeCastControl />
                 <FullscreenControl />

@@ -93,6 +93,7 @@ interface MediaViewPlayerProps {
   meta: DetailedMeta;
   stream: MWStream;
   selected: SelectedMediaData;
+  onChangeStream: (sId: string, eId: string) => void;
 }
 export function MediaViewPlayer(props: MediaViewPlayerProps) {
   const goBack = useGoBack();
@@ -120,13 +121,20 @@ export function MediaViewPlayer(props: MediaViewPlayerProps) {
           startAt={firstStartTime.current}
           onProgress={updateProgress}
         />
-        {props.selected.type === MWMediaType.SERIES ? (
+        {props.selected.type === MWMediaType.SERIES &&
+        props.meta.meta.type === MWMediaType.SERIES ? (
           <ShowControl
             series={{
               seasonId: props.selected.season,
               episodeId: props.selected.episode,
             }}
-            onSelect={(d) => console.log("selected stuff", d)}
+            onSelect={(d) =>
+              d.seasonId &&
+              d.episodeId &&
+              props.onChangeStream?.(d.seasonId, d.episodeId)
+            }
+            seasonData={props.meta.meta.seasonData}
+            seasons={props.meta.meta.seasons}
           />
         ) : null}
       </DecoratedVideoPlayer>
@@ -154,9 +162,25 @@ export function MediaView() {
   );
   const [stream, setStream] = useState<MWStream | null>(null);
 
+  const lastSearchValue = useRef<(string | undefined)[] | null>(null);
   useEffect(() => {
+    const newValue = [params.media, params.season, params.episode];
+    const lastVal = lastSearchValue.current;
+
+    const isSame =
+      lastVal?.[0] === newValue[0] &&
+      (lastVal?.[1] === newValue[1] || !lastVal?.[1]) &&
+      (lastVal?.[2] === newValue[2] || !lastVal?.[2]);
+
+    lastSearchValue.current = newValue;
+    if (isSame && lastVal !== null) return;
+
+    setMeta(null);
+    setStream(null);
+    setSelected(null);
     exec(params.media, params.season).then((v) => {
       setMeta(v ?? null);
+      setStream(null);
       if (v) {
         if (v.meta.type !== MWMediaType.SERIES) {
           setSelected({
@@ -181,9 +205,7 @@ export function MediaView() {
         }
       } else setSelected(null);
     });
-    // dont rerender when params changes
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [exec, history]);
+  }, [exec, history, params]);
 
   if (loading) return <MediaViewLoading onGoBack={goBack} />;
   if (error) return <MediaFetchErrorView />;
@@ -206,5 +228,18 @@ export function MediaView() {
     );
 
   // show stream once we have a stream
-  return <MediaViewPlayer meta={meta} stream={stream} selected={selected} />;
+  return (
+    <MediaViewPlayer
+      meta={meta}
+      stream={stream}
+      selected={selected}
+      onChangeStream={(sId, eId) => {
+        history.replace(
+          `/media/${encodeURIComponent(params.media)}/${encodeURIComponent(
+            sId
+          )}/${encodeURIComponent(eId)}`
+        );
+      }}
+    />
+  );
 }

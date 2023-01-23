@@ -29,6 +29,12 @@ export type PlayerState = {
       episodeId: string;
       seasonId: string;
     };
+    seasons?: {
+      id: string;
+      number: number;
+      title: string;
+      episodes?: { id: string; number: number; title: string }[];
+    }[];
   };
   error: null | {
     name: string;

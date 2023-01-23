@@ -1,4 +1,9 @@
+import {
+  MWSeasonMeta,
+  MWSeasonWithEpisodeMeta,
+} from "@/backend/metadata/types";
 import { useEffect, useRef } from "react";
+import { PlayerContext } from "../hooks/useVideoPlayer";
 import { useVideoPlayerState } from "../VideoContext";
 
 interface ShowControlProps {
@@ -6,7 +11,26 @@ interface ShowControlProps {
     episodeId: string;
     seasonId: string;
   };
+  seasons: MWSeasonMeta[];
+  seasonData: MWSeasonWithEpisodeMeta;
   onSelect?: (state: { episodeId?: string; seasonId?: string }) => void;
+}
+
+function setVideoShowState(videoState: PlayerContext, props: ShowControlProps) {
+  const seasonsWithEpisodes = props.seasons.map((v) => {
+    if (v.id === props.seasonData.id)
+      return {
+        ...v,
+        episodes: props.seasonData.episodes,
+      };
+    return v;
+  });
+
+  videoState.setShowData({
+    current: props.series,
+    isSeries: !!props.series,
+    seasons: seasonsWithEpisodes,
+  });
 }
 
 export function ShowControl(props: ShowControlProps) {
@@ -19,14 +43,13 @@ export function ShowControl(props: ShowControlProps) {
     seasonId: props.series?.seasonId,
   });
 
+  const hasInitialized = useRef(false);
   useEffect(() => {
-    videoState.setShowData({
-      current: props.series,
-      isSeries: !!props.series,
-    });
-    // we only want it to run when props change, not when videoState changes
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props]);
+    if (hasInitialized.current) return;
+    if (!videoState.hasInitialized) return;
+    setVideoShowState(videoState, props);
+    hasInitialized.current = true;
+  }, [props, videoState]);
 
   useEffect(() => {
     const currentState = {

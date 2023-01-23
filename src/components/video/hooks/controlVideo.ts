@@ -17,6 +17,16 @@ interface ShowData {
     seasonId: string;
   };
   isSeries: boolean;
+  seasons?: {
+    id: string;
+    number: number;
+    title: string;
+    episodes?: {
+      id: string;
+      number: number;
+      title: string;
+    }[];
+  }[];
 }
 
 export interface PlayerControls {
@@ -30,6 +40,7 @@ export interface PlayerControls {
   setLeftControlsHover(hovering: boolean): void;
   initPlayer(sourceUrl: string, sourceType: MWStreamType): void;
   setShowData(data: ShowData): void;
+  setCurrentEpisode(sId: string, eId: string): void;
   startAirplay(): void;
 }
 
@@ -45,6 +56,7 @@ export const initialControls: PlayerControls = {
   initPlayer: () => null,
   setShowData: () => null,
   startAirplay: () => null,
+  setCurrentEpisode: () => null,
 };
 
 export function populateControls(
@@ -119,6 +131,18 @@ export function populateControls(
     },
     setShowData(data) {
       update((s) => ({ ...s, seasonData: data }));
+    },
+    setCurrentEpisode(sId: string, eId: string) {
+      update((s) => ({
+        ...s,
+        seasonData: {
+          ...s.seasonData,
+          current: {
+            seasonId: sId,
+            episodeId: eId,
+          },
+        },
+      }));
     },
     startAirplay() {
       const videoPlayer = player as any;
