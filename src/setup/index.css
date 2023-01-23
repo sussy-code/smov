@@ -9,6 +9,10 @@ body {
   min-height: 100dvh;
 }
 
+html[data-full], html[data-full] body {
+  overscroll-behavior-y: none;
+}
+
 #root {
   padding: 0.05px;
   min-height: 100vh;

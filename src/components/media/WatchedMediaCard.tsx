@@ -9,16 +9,32 @@ export interface WatchedMediaCardProps {
   onClose?: () => void;
 }
 
+function formatSeries(
+  obj:
+    | { episodeId: string; seasonId: string; episode: number; season: number }
+    | undefined
+) {
+  if (!obj) return undefined;
+  return {
+    season: obj.season,
+    episode: obj.episode,
+    episodeId: obj.episodeId,
+    seasonId: obj.seasonId,
+  };
+}
+
 export function WatchedMediaCard(props: WatchedMediaCardProps) {
   const { watched } = useWatchedContext();
   const watchedMedia = useMemo(() => {
-    return watched.items.find((v) => v.item.meta.id === props.media.id);
+    return watched.items
+      .sort((a, b) => b.watchedAt - a.watchedAt)
+      .find((v) => v.item.meta.id === props.media.id);
   }, [watched, props.media]);
 
   return (
     <MediaCard
       media={props.media}
-      series={watchedMedia?.item?.series}
+      series={formatSeries(watchedMedia?.item?.series)}
       linkable
       percentage={watchedMedia?.percentage}
       onClose={props.onClose}

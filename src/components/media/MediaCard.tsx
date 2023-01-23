@@ -11,6 +11,8 @@ export interface MediaCardProps {
   series?: {
     episode: number;
     season: number;
+    episodeId: string;
+    seasonId: string;
   };
   percentage?: number;
   closable?: boolean;
@@ -106,9 +108,13 @@ export function MediaCard(props: MediaCardProps) {
 
   const canLink = props.linkable && !props.closable;
 
-  const link = canLink
+  let link = canLink
     ? `/media/${encodeURIComponent(JWMediaToId(props.media))}`
     : "#";
+  if (canLink && props.series)
+    link += `/${encodeURIComponent(props.series.seasonId)}/${encodeURIComponent(
+      props.series.episodeId
+    )}`;
 
   if (!props.linkable) return <span>{content}</span>;
   return <Link to={link}>{content}</Link>;

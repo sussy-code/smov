@@ -97,7 +97,10 @@ interface MediaViewPlayerProps {
 }
 export function MediaViewPlayer(props: MediaViewPlayerProps) {
   const goBack = useGoBack();
-  const { updateProgress, watchedItem } = useWatchedItem(props.meta);
+  const { updateProgress, watchedItem } = useWatchedItem(
+    props.meta,
+    props.selected.episode
+  );
   const firstStartTime = useRef(watchedItem?.progress);
   useEffect(() => {
     firstStartTime.current = watchedItem?.progress;
@@ -106,9 +109,10 @@ export function MediaViewPlayer(props: MediaViewPlayerProps) {
   }, [props.stream]);
 
   return (
-    <div className="h-[100dvh] w-screen">
+    <div className="fixed top-0 left-0 h-[100dvh] w-screen">
       <Helmet>
         <title>{props.meta.meta.title}</title>
+        <html data-full="true" />
       </Helmet>
       <DecoratedVideoPlayer media={props.meta.meta} onGoBack={goBack} autoPlay>
         <SourceControl

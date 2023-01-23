@@ -1,5 +1,5 @@
 import { DetailedMeta } from "@/backend/metadata/getmeta";
-import { MWMediaMeta } from "@/backend/metadata/types";
+import { MWMediaMeta, MWMediaType } from "@/backend/metadata/types";
 import {
   createContext,
   ReactNode,
@@ -33,6 +33,8 @@ function shouldSave(time: number, duration: number): boolean {
 interface MediaItem {
   meta: MWMediaMeta;
   series?: {
+    episodeId: string;
+    seasonId: string;
     episode: number;
     season: number;
   };
@@ -42,6 +44,7 @@ interface WatchedStoreItem {
   item: MediaItem;
   progress: number;
   percentage: number;
+  watchedAt: number;
 }
 
 export interface WatchedStoreData {
@@ -64,6 +67,15 @@ const WatchedContext = createContext<WatchedStoreDataWrapper>({
   },
 });
 WatchedContext.displayName = "WatchedContext";
+
+function isSameEpisode(media: MediaItem, v: MediaItem) {
+  return (
+    media.meta.id === v.meta.id &&
+    (!media.series ||
+      (media.series.seasonId === v.series?.seasonId &&
+        media.series.episodeId === v.series?.episodeId))
+  );
+}
 
 export function WatchedContextProvider(props: { children: ReactNode }) {
   const watchedLocalstorage = VideoProgressStore.get();
@@ -95,12 +107,9 @@ export function WatchedContextProvider(props: { children: ReactNode }) {
         });
       },
       updateProgress(media: MediaItem, progress: number, total: number): void {
-        // TODO series support
         setWatched((data: WatchedStoreData) => {
           const newData = { ...data };
-          let item = newData.items.find(
-            (v) => v.item.meta.id === media.meta.id
-          );
+          let item = newData.items.find((v) => isSameEpisode(media, v.item));
           if (!item) {
             item = {
               item: {
@@ -110,6 +119,7 @@ export function WatchedContextProvider(props: { children: ReactNode }) {
               },
               progress: 0,
               percentage: 0,
+              watchedAt: Date.now(),
             };
             newData.items.push(item);
           }
@@ -120,7 +130,7 @@ export function WatchedContextProvider(props: { children: ReactNode }) {
           // remove item if shouldnt save
           if (!shouldSave(progress, total)) {
             newData.items = data.items.filter(
-              (v) => v.item.meta.id !== media.meta.id
+              (v) => !isSameEpisode(v.item, media)
             );
           }
 
@@ -130,34 +140,19 @@ export function WatchedContextProvider(props: { children: ReactNode }) {
       getFilteredWatched() {
         let filtered = watched.items;
 
-        // get highest episode number for every anime/season
-        const highestEpisode: Record<string, [number, number]> = {};
-        const highestWatchedItem: Record<string, WatchedStoreItem> = {};
-        filtered = filtered.filter((item) => {
-          if (item.item.series) {
-            const key = item.item.meta.id;
-            const current: [number, number] = [
-              item.item.series.episode,
-              item.item.series.season,
-            ];
-            let existing = highestEpisode[key];
-            if (!existing) {
-              existing = current;
-              highestEpisode[key] = current;
-              highestWatchedItem[key] = item;
-            }
-            if (
-              current[0] > existing[0] ||
-              (current[0] === existing[0] && current[1] > existing[1])
-            ) {
-              highestEpisode[key] = current;
-              highestWatchedItem[key] = item;
-            }
-            return false;
-          }
-          return true;
-        });
-        return [...filtered, ...Object.values(highestWatchedItem)];
+        // get most recently watched for every single item
+        const alreadyFoundMedia: string[] = [];
+        filtered = filtered
+          .sort((a, b) => {
+            return b.watchedAt - a.watchedAt;
+          })
+          .filter((item) => {
+            const mediaId = item.item.meta.id;
+            if (alreadyFoundMedia.includes(mediaId)) return false;
+            alreadyFoundMedia.push(mediaId);
+            return true;
+          });
+        return filtered;
       },
       watched,
     }),
@@ -175,26 +170,60 @@ export function useWatchedContext() {
   return useContext(WatchedContext);
 }
 
-export function useWatchedItem(meta: DetailedMeta | null) {
+function isSameEpisodeMeta(
+  media: MediaItem,
+  mediaTwo: DetailedMeta | null,
+  episodeId?: string
+) {
+  if (mediaTwo?.meta.type === MWMediaType.SERIES && episodeId) {
+    return isSameEpisode(media, {
+      meta: mediaTwo.meta,
+      series: {
+        season: 0,
+        episode: 0,
+        episodeId,
+        seasonId: mediaTwo.meta.seasonData.id,
+      },
+    });
+  }
+  if (!mediaTwo) return () => false;
+  return isSameEpisode(media, { meta: mediaTwo.meta });
+}
+
+export function useWatchedItem(meta: DetailedMeta | null, episodeId?: string) {
   const { watched, updateProgress } = useContext(WatchedContext);
   const item = useMemo(
-    () => watched.items.find((v) => meta && v.item.meta.id === meta?.meta.id),
-    [watched, meta]
+    () => watched.items.find((v) => isSameEpisodeMeta(v.item, meta, episodeId)),
+    [watched, meta, episodeId]
   );
   const lastCommitedTime = useRef([0, 0]);
 
   const callback = useCallback(
     (progress: number, total: number) => {
-      // TODO add series support
       const hasChanged =
         lastCommitedTime.current[0] !== progress ||
         lastCommitedTime.current[1] !== total;
       if (meta && hasChanged) {
         lastCommitedTime.current = [progress, total];
-        updateProgress({ meta: meta.meta }, progress, total);
+        const obj = {
+          meta: meta.meta,
+          series:
+            meta.meta.type === MWMediaType.SERIES && episodeId
+              ? {
+                  seasonId: meta.meta.seasonData.id,
+                  episodeId,
+                  season: meta.meta.seasonData.number,
+                  episode:
+                    meta.meta.seasonData.episodes.find(
+                      (ep) => ep.id === episodeId
+                    )?.number || 0,
+                }
+              : undefined,
+        };
+        updateProgress(obj, progress, total);
       }
     },
-    [meta, updateProgress]
+    [meta, updateProgress, episodeId]
   );
 
   return { updateProgress: callback, watchedItem: item };

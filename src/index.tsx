@@ -19,9 +19,7 @@ if (key) {
 // TODO video todos:
 //  - captions
 //  - mobile UI
-//  - season/episode select
 //  - chrome cast support
-//  - airplay support
 //  - source selection
 //  - safari fullscreen will make video overlap player controls
 //  - safari progress bar is fucked (video doesnt change time but video.currentTime does change)
@@ -43,7 +41,6 @@ if (key) {
 
 // TODO general todos:
 //  - localize everything (fix loading screen text (series vs movies))
-//  - make mobile friendly
 
 ReactDOM.render(
   <React.StrictMode>
