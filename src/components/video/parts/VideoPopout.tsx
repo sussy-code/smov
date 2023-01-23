@@ -7,6 +7,7 @@ interface Props {
   className?: string;
 }
 
+// TODO store popout in router history so you can press back to yeet
 export function VideoPopout(props: Props) {
   const { videoState } = useVideoPlayerState();
   const popoutRef = useRef<HTMLDivElement>(null);
