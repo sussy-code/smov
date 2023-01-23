@@ -105,10 +105,8 @@ export function MediaViewPlayer(props: MediaViewPlayerProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.stream]);
 
-  // TODO show episode title
-
   return (
-    <div className="h-screen w-screen">
+    <div className="h-[100dvh] w-screen">
       <Helmet>
         <title>{props.meta.meta.title}</title>
       </Helmet>

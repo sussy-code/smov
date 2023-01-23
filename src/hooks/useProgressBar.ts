@@ -2,7 +2,9 @@ import React, { RefObject, useCallback, useEffect, useState } from "react";
 
 type ActivityEvent =
   | React.MouseEvent<HTMLElement>
-  | React.TouchEvent<HTMLElement>;
+  | React.TouchEvent<HTMLElement>
+  | MouseEvent
+  | TouchEvent;
 
 export function makePercentageString(num: number) {
   return `${num.toFixed(2)}%`;
@@ -13,15 +15,13 @@ export function makePercentage(num: number) {
 }
 
 function isClickEvent(
-  evt: React.MouseEvent<HTMLElement> | React.TouchEvent<HTMLElement>
-): evt is React.MouseEvent<HTMLElement> {
-  return evt.type === "mousedown";
+  evt: ActivityEvent
+): evt is React.MouseEvent<HTMLElement> | MouseEvent {
+  return evt.type === "mousedown" || evt.type === "mouseup";
 }
 
-const getEventX = (
-  evt: React.MouseEvent<HTMLElement> | React.TouchEvent<HTMLElement>
-) => {
-  return isClickEvent(evt) ? evt.pageX : evt.touches[0].pageX;
+const getEventX = (evt: ActivityEvent) => {
+  return isClickEvent(evt) ? evt.pageX : evt.changedTouches[0].pageX;
 };
 
 export function useProgressBar(
@@ -33,15 +33,15 @@ export function useProgressBar(
   const [progress, setProgress] = useState<number>(0);
 
   useEffect(() => {
-    function mouseMove(ev: MouseEvent) {
+    function mouseMove(ev: ActivityEvent) {
       if (!mouseDown || !barRef.current) return;
       const rect = barRef.current.getBoundingClientRect();
-      const pos = (ev.pageX - rect.left) / barRef.current.offsetWidth;
+      const pos = (getEventX(ev) - rect.left) / barRef.current.offsetWidth;
       setProgress(pos * 100);
       if (commitImmediately) commit(pos);
     }
 
-    function mouseUp(ev: MouseEvent | TouchEvent) {
+    function mouseUp(ev: ActivityEvent) {
       if (!mouseDown) return;
       setMouseDown(false);
       document.body.removeAttribute("data-no-select");
@@ -53,17 +53,20 @@ export function useProgressBar(
     }
 
     document.addEventListener("mousemove", mouseMove);
+    document.addEventListener("touchmove", mouseMove);
     document.addEventListener("mouseup", mouseUp);
     document.addEventListener("touchend", mouseUp);
 
     return () => {
       document.removeEventListener("mousemove", mouseMove);
+      document.removeEventListener("touchmove", mouseMove);
       document.removeEventListener("mouseup", mouseUp);
+      document.removeEventListener("touchend", mouseUp);
     };
   }, [mouseDown, barRef, commit, commitImmediately]);
 
   const dragMouseDown = useCallback(
-    (ev: React.MouseEvent<HTMLElement> | React.TouchEvent<HTMLElement>) => {
+    (ev: ActivityEvent) => {
       setMouseDown(true);
       document.body.setAttribute("data-no-select", "true");
 

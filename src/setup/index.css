@@ -4,12 +4,15 @@
 
 html,
 body {
-  @apply bg-denim-100 text-denim-700 font-open-sans min-h-screen overflow-x-hidden;
+  @apply bg-denim-100 text-denim-700 font-open-sans overflow-x-hidden;
+  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 #root {
   padding: 0.05px;
   min-height: 100vh;
+  min-height: 100dvh;
   width: 100%;
 }
 

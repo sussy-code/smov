@@ -90,7 +90,7 @@ export function DecoratedVideoPlayer(
           >
             <div
               ref={bottom}
-              className="pointer-events-auto absolute inset-x-0 bottom-0 flex flex-col px-4 pb-2"
+              className="pointer-events-auto absolute inset-x-0 bottom-0 flex flex-col px-4 pb-2 [margin-bottom:env(safe-area-inset-bottom)]"
             >
               <ProgressControl />
               <div className="flex items-center">
