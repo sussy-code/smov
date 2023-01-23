@@ -131,7 +131,7 @@ function PopupEpisodeSelect() {
 
   return (
     <>
-      <PopupSection className="flex items-center space-x-3 border-b border-denim-600 font-bold text-white">
+      <PopupSection className="flex items-center space-x-3 border-b border-denim-500 font-bold text-white">
         <button
           className="-m-1.5 rounded p-1.5 hover:bg-denim-600"
           onClick={toggleIsPickingSeason}
