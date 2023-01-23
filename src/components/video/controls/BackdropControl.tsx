@@ -29,6 +29,8 @@ export function BackdropControl(props: BackdropControlProps) {
     (e: React.MouseEvent<HTMLDivElement>) => {
       if (!clickareaRef.current || clickareaRef.current !== e.target) return;
 
+      if (videoState.popout !== null) return;
+
       if (videoState.isPlaying) videoState.pause();
       else videoState.play();
     },
@@ -49,6 +51,7 @@ export function BackdropControl(props: BackdropControlProps) {
     const currentValue = moved || videoState.isPaused;
     if (currentValue !== lastBackdropValue.current) {
       lastBackdropValue.current = currentValue;
+      if (!currentValue) videoState.closePopout();
       props.onBackdropChange?.(currentValue);
     }
   }, [videoState, moved, props]);

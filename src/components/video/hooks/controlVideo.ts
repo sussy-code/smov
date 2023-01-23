@@ -42,6 +42,8 @@ export interface PlayerControls {
   setShowData(data: ShowData): void;
   setCurrentEpisode(sId: string, eId: string): void;
   startAirplay(): void;
+  openPopout(id: string): void;
+  closePopout(): void;
 }
 
 export const initialControls: PlayerControls = {
@@ -57,6 +59,8 @@ export const initialControls: PlayerControls = {
   setShowData: () => null,
   startAirplay: () => null,
   setCurrentEpisode: () => null,
+  openPopout: () => null,
+  closePopout: () => null,
 };
 
 export function populateControls(
@@ -128,6 +132,12 @@ export function populateControls(
     },
     setLeftControlsHover(hovering) {
       update((s) => ({ ...s, leftControlHovering: hovering }));
+    },
+    openPopout(id: string) {
+      update((s) => ({ ...s, popout: id }));
+    },
+    closePopout() {
+      update((s) => ({ ...s, popout: null }));
     },
     setShowData(data) {
       update((s) => ({ ...s, seasonData: data }));

@@ -1,5 +1,3 @@
-import { Icon, Icons } from "@/components/Icon";
-import { VideoPlayerIconButton } from "../parts/VideoPlayerIconButton";
 import { useVideoPlayerState } from "../VideoContext";
 
 function durationExceedsHour(secs: number): boolean {
@@ -32,28 +30,16 @@ interface Props {
   className?: string;
 }
 
-export function TimeControl(props: Props) {
+export function SkipTime(props: Props) {
   const { videoState } = useVideoPlayerState();
-
-  const skipForward = () => {
-    videoState.setTime(videoState.time + 10);
-  };
-
-  const skipBackward = () => {
-    videoState.setTime(videoState.time - 10);
-  };
+  const hasHours = durationExceedsHour(videoState.duration);
+  const time = formatSeconds(videoState.time, hasHours);
+  const duration = formatSeconds(videoState.duration, hasHours);
 
   return (
     <div className={props.className}>
-      <p className="flex select-none items-center text-white">
-        <VideoPlayerIconButton
-          icon={Icons.SKIP_BACKWARD}
-          onClick={skipBackward}
-        />
-        <VideoPlayerIconButton
-          icon={Icons.SKIP_FORWARD}
-          onClick={skipForward}
-        />
+      <p className="select-none text-white">
+        {time} / {duration}
       </p>
     </div>
   );

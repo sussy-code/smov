@@ -23,6 +23,7 @@ export type PlayerState = {
   hasInitialized: boolean;
   leftControlHovering: boolean;
   hasPlayedOnce: boolean;
+  popout: string | null;
   seasonData: {
     isSeries: boolean;
     current?: {
@@ -61,6 +62,7 @@ export const initialPlayerState: PlayerContext = {
   leftControlHovering: false,
   hasPlayedOnce: false,
   error: null,
+  popout: null,
   seasonData: {
     isSeries: false,
   },

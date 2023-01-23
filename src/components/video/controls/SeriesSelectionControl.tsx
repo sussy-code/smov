@@ -9,24 +9,10 @@ import { Loading } from "@/components/layout/Loading";
 import { IconPatch } from "@/components/buttons/IconPatch";
 import { useVideoPlayerState } from "../VideoContext";
 import { VideoPlayerIconButton } from "../parts/VideoPlayerIconButton";
+import { VideoPopout } from "../parts/VideoPopout";
 
 interface Props {
   className?: string;
-}
-
-export function PopupThingy(props: {
-  children?: React.ReactNode;
-  containerClassName?: string;
-}) {
-  return (
-    <div className="absolute inset-x-0 h-0">
-      <div className="absolute bottom-10 right-0 h-96 w-72 rounded-lg bg-denim-400">
-        <div className={["h-full w-full", props.containerClassName].join(" ")}>
-          {props.children}
-        </div>
-      </div>
-    </div>
-  );
 }
 
 function PopupSection(props: {
@@ -185,22 +171,22 @@ function PopupEpisodeSelect() {
 
 export function SeriesSelectionControl(props: Props) {
   const { videoState } = useVideoPlayerState();
-  const [open, setOpen] = useState(false);
 
   if (!videoState.seasonData.isSeries) return null;
 
   return (
     <div className={props.className}>
       <div className="relative">
-        {open ? (
-          <PopupThingy containerClassName="grid grid-rows-[auto,minmax(0,1fr)]">
-            <PopupEpisodeSelect />
-          </PopupThingy>
-        ) : null}
+        <VideoPopout
+          id="episodes"
+          className="grid grid-rows-[auto,minmax(0,1fr)]"
+        >
+          <PopupEpisodeSelect />
+        </VideoPopout>
         <VideoPlayerIconButton
           icon={Icons.EPISODES}
           text="Episodes"
-          onClick={() => setOpen((s) => !s)}
+          onClick={() => videoState.openPopout("episodes")}
         />
       </div>
     </div>

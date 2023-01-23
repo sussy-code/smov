@@ -11,6 +11,7 @@ import { PauseControl } from "./controls/PauseControl";
 import { ProgressControl } from "./controls/ProgressControl";
 import { SeriesSelectionControl } from "./controls/SeriesSelectionControl";
 import { ShowTitleControl } from "./controls/ShowTitleControl";
+import { SkipTime } from "./controls/SkipTime";
 import { TimeControl } from "./controls/TimeControl";
 import { VolumeControl } from "./controls/VolumeControl";
 import { VideoPlayerError } from "./parts/VideoPlayerError";
@@ -41,8 +42,9 @@ function LeftSideControls() {
         onMouseEnter={handleMouseEnter}
       >
         <PauseControl />
-        <VolumeControl className="mr-2" />
         <TimeControl />
+        <VolumeControl className="mr-2" />
+        <SkipTime />
       </div>
       <ShowTitleControl />
     </>

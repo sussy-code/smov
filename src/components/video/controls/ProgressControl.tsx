@@ -45,6 +45,7 @@ export function ProgressControl() {
         ref={ref}
         className="-my-3 flex h-8 items-center"
         onMouseDown={dragMouseDown}
+        onTouchStart={dragMouseDown}
       >
         <div
           className={`relative h-1 flex-1 rounded-full bg-gray-500 bg-opacity-50 transition-[height] duration-100 group-hover:h-2 ${
