@@ -22,11 +22,11 @@ export function useCurrentSeriesEpisodeInfo() {
 
   if (!isSeries) return { isSeries: false };
 
-  const episodeIdentifier = `S${currentSeasonInfo?.number} E${currentEpisodeInfo?.number}`;
+  const humanizedEpisodeId = `S${currentSeasonInfo?.number} E${currentEpisodeInfo?.number}`;
 
   return {
     isSeries: true,
-    episodeIdentifier,
+    humanizedEpisodeId,
     currentSeasonInfo,
     currentEpisodeInfo,
   };

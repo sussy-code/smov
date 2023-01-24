@@ -7,12 +7,12 @@ interface PageTitleControlProps {
 }
 
 export function PageTitleControl(props: PageTitleControlProps) {
-  const { isSeries, episodeIdentifier } = useCurrentSeriesEpisodeInfo();
+  const { isSeries, humanizedEpisodeId } = useCurrentSeriesEpisodeInfo();
 
   if (!props.media) return null;
 
   const title = isSeries
-    ? `${props.media.title} - ${episodeIdentifier}`
+    ? `${props.media.title} - ${humanizedEpisodeId}`
     : props.media.title;
 
   return (
