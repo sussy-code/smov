@@ -6,10 +6,13 @@ import {
   getIfBookmarkedFromPortable,
   useBookmarkContext,
 } from "@/state/bookmark";
+import { AirplayControl } from "../controls/AirplayControl";
+import { ChromeCastControl } from "../controls/ChromeCastControl";
 
 interface VideoPlayerHeaderProps {
   media?: MWMediaMeta;
   onClick?: () => void;
+  isMobile?: boolean;
 }
 
 export function VideoPlayerHeader(props: VideoPlayerHeaderProps) {
@@ -40,7 +43,7 @@ export function VideoPlayerHeader(props: VideoPlayerHeaderProps) {
             </span>
           ) : null}
         </p>
-        {props.media ? (
+        {props.media && (
           <IconPatch
             clickable
             transparent
@@ -50,9 +53,16 @@ export function VideoPlayerHeader(props: VideoPlayerHeaderProps) {
               props.media && setItemBookmark(props.media, !isBookmarked)
             }
           />
-        ) : null}
+        )}
       </div>
-      <BrandPill />
+      {props.isMobile ? (
+        <>
+          <AirplayControl />
+          <ChromeCastControl />
+        </>
+      ) : (
+        <BrandPill />
+      )}
     </div>
   );
 }

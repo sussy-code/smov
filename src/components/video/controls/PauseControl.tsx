@@ -5,6 +5,7 @@ import { useVideoPlayerState } from "../VideoContext";
 
 interface Props {
   className?: string;
+  iconSize?: string;
 }
 
 export function PauseControl(props: Props) {
@@ -20,6 +21,7 @@ export function PauseControl(props: Props) {
 
   return (
     <VideoPlayerIconButton
+      iconSize={props.iconSize}
       className={props.className}
       icon={icon}
       onClick={handleClick}

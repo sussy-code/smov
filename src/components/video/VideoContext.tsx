@@ -1,4 +1,4 @@
-import { MWStreamType } from "@/backend/helpers/streams";
+import { MWStreamQuality, MWStreamType } from "@/backend/helpers/streams";
 import React, {
   createContext,
   MutableRefObject,
@@ -15,16 +15,23 @@ import {
 interface VideoPlayerContextType {
   source: string | null;
   sourceType: MWStreamType;
+  quality: MWStreamQuality;
   state: PlayerContext;
 }
 const initial: VideoPlayerContextType = {
   source: null,
   sourceType: MWStreamType.MP4,
+  quality: MWStreamQuality.QUNKNOWN,
   state: initialPlayerState,
 };
 
 type VideoPlayerContextAction =
-  | { type: "SET_SOURCE"; url: string; sourceType: MWStreamType }
+  | {
+      type: "SET_SOURCE";
+      url: string;
+      sourceType: MWStreamType;
+      quality: MWStreamQuality;
+    }
   | {
       type: "UPDATE_PLAYER";
       state: PlayerContext;
@@ -38,6 +45,7 @@ function videoPlayerContextReducer(
   if (action.type === "SET_SOURCE") {
     video.source = action.url;
     video.sourceType = action.sourceType;
+    video.quality = action.quality;
     return video;
   }
   if (action.type === "UPDATE_PLAYER") {

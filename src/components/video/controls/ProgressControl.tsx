@@ -40,7 +40,7 @@ export function ProgressControl() {
   );
 
   return (
-    <div className="group pointer-events-auto cursor-pointer rounded-full px-2">
+    <div className="group pointer-events-auto w-full cursor-pointer rounded-full px-2">
       <div
         ref={ref}
         className="-my-3 flex h-8 items-center"

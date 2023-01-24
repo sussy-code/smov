@@ -28,6 +28,7 @@ function formatSeconds(secs: number, showHours = false): string {
 
 interface Props {
   className?: string;
+  noDuration?: boolean;
 }
 
 export function SkipTime(props: Props) {
@@ -39,7 +40,7 @@ export function SkipTime(props: Props) {
   return (
     <div className={props.className}>
       <p className="select-none text-white">
-        {time} / {duration}
+        {time} {props.noDuration ? "" : `/ ${duration}`}
       </p>
     </div>
   );

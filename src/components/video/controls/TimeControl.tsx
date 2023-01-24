@@ -6,29 +6,37 @@ interface Props {
   className?: string;
 }
 
-export function TimeControl(props: Props) {
+export function SkipTimeBackward() {
   const { videoState } = useVideoPlayerState();
-
-  const skipForward = () => {
-    videoState.setTime(videoState.time + 10);
-  };
 
   const skipBackward = () => {
     videoState.setTime(videoState.time - 10);
   };
 
   return (
+    <VideoPlayerIconButton icon={Icons.SKIP_BACKWARD} onClick={skipBackward} />
+  );
+}
+
+export function SkipTimeForward() {
+  const { videoState } = useVideoPlayerState();
+
+  const skipForward = () => {
+    videoState.setTime(videoState.time + 10);
+  };
+
+  return (
+    <VideoPlayerIconButton icon={Icons.SKIP_FORWARD} onClick={skipForward} />
+  );
+}
+
+export function TimeControl(props: Props) {
+  return (
     <div className={props.className}>
-      <p className="flex select-none items-center text-white">
-        <VideoPlayerIconButton
-          icon={Icons.SKIP_BACKWARD}
-          onClick={skipBackward}
-        />
-        <VideoPlayerIconButton
-          icon={Icons.SKIP_FORWARD}
-          onClick={skipForward}
-        />
-      </p>
+      <div className="flex select-none items-center text-white">
+        <SkipTimeBackward />
+        <SkipTimeForward />
+      </div>
     </div>
   );
 }

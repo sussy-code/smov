@@ -18,12 +18,9 @@ if (key) {
 
 // TODO video todos:
 //  - captions
-//  - mobile UI
 //  - chrome cast support
-//  - source selection
 //  - safari fullscreen will make video overlap player controls
 //  - safari progress bar is fucked (video doesnt change time but video.currentTime does change)
-//  - safari progress bar cannot be dragged
 
 // TODO stuff to test:
 //  - browser: firefox, chrome, edge, safari desktop
@@ -35,12 +32,11 @@ if (key) {
 
 // TODO backend system:
 //  - caption support
-//  - move over old providers to new system
 //  - implement jons providers/embedscrapers
 //  - AFTER all that: rank providers/embedscrapers
 
 // TODO general todos:
-//  - localize everything (fix loading screen text (series vs movies))
+//  - localize everything (fix loading screen text (series vs movies)) (and have EN file instead)
 
 ReactDOM.render(
   <React.StrictMode>

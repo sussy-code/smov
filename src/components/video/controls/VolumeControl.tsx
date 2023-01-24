@@ -4,6 +4,7 @@ import {
   makePercentageString,
   useProgressBar,
 } from "@/hooks/useProgressBar";
+import { useVolumeControl } from "@/hooks/useVolumeToggle";
 import { canChangeVolume } from "@/utils/detectFeatures";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useVideoPlayerState } from "../VideoContext";
@@ -15,7 +16,7 @@ interface Props {
 export function VolumeControl(props: Props) {
   const { videoState } = useVideoPlayerState();
   const ref = useRef<HTMLDivElement>(null);
-  const [storedVolume, setStoredVolume] = useState(1);
+  const { setStoredVolume, toggleVolume } = useVolumeControl();
   const [hoveredOnce, setHoveredOnce] = useState(false);
 
   const commitVolume = useCallback(
@@ -36,13 +37,8 @@ export function VolumeControl(props: Props) {
   }, [videoState, setHoveredOnce]);
 
   const handleClick = useCallback(() => {
-    if (videoState.volume > 0) {
-      videoState.setVolume(0);
-      setStoredVolume(videoState.volume);
-    } else {
-      videoState.setVolume(storedVolume > 0 ? storedVolume : 1);
-    }
-  }, [videoState, setStoredVolume, storedVolume]);
+    toggleVolume();
+  }, [toggleVolume]);
 
   const handleMouseEnter = useCallback(async () => {
     if (await canChangeVolume()) setHoveredOnce(true);

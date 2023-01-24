@@ -17,7 +17,11 @@ export function makePercentage(num: number) {
 function isClickEvent(
   evt: ActivityEvent
 ): evt is React.MouseEvent<HTMLElement> | MouseEvent {
-  return evt.type === "mousedown" || evt.type === "mouseup";
+  return (
+    evt.type === "mousedown" ||
+    evt.type === "mouseup" ||
+    evt.type === "mousemove"
+  );
 }
 
 const getEventX = (evt: ActivityEvent) => {

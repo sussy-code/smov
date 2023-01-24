@@ -24,6 +24,7 @@ export type PlayerState = {
   leftControlHovering: boolean;
   hasPlayedOnce: boolean;
   popout: string | null;
+  isFocused: boolean;
   seasonData: {
     isSeries: boolean;
     current?: {
@@ -50,6 +51,7 @@ export const initialPlayerState: PlayerContext = {
   isPlaying: false,
   isPaused: true,
   isFullscreen: false,
+  isFocused: false,
   isLoading: false,
   isSeeking: false,
   isFirstLoading: true,
@@ -177,7 +179,19 @@ function registerListeners(player: HTMLVideoElement, update: SetPlayer) {
       }));
     }
   };
+  const isFocused = (evt: any) => {
+    update((s) => ({
+      ...s,
+      isFocused: evt.type !== "mouseleave",
+    }));
+  };
 
+  const playerWrapper = player.closest(".is-video-player");
+  if (!playerWrapper) return;
+
+  playerWrapper.addEventListener("click", isFocused);
+  playerWrapper.addEventListener("mouseenter", isFocused);
+  playerWrapper.addEventListener("mouseleave", isFocused);
   player.addEventListener("pause", pause);
   player.addEventListener("playing", playing);
   player.addEventListener("seeking", seeking);
@@ -196,6 +210,9 @@ function registerListeners(player: HTMLVideoElement, update: SetPlayer) {
   );
 
   return () => {
+    playerWrapper.removeEventListener("click", isFocused);
+    playerWrapper.removeEventListener("mouseenter", isFocused);
+    playerWrapper.removeEventListener("mouseleave", isFocused);
     player.removeEventListener("pause", pause);
     player.removeEventListener("playing", playing);
     player.removeEventListener("seeking", seeking);

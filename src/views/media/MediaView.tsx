@@ -113,10 +113,11 @@ export function MediaViewPlayer(props: MediaViewPlayerProps) {
       <Helmet>
         <html data-full="true" />
       </Helmet>
-      <DecoratedVideoPlayer media={props.meta.meta} onGoBack={goBack} autoPlay>
+      <DecoratedVideoPlayer media={props.meta} onGoBack={goBack} autoPlay>
         <SourceControl
           source={props.stream.streamUrl}
           type={props.stream.type}
+          quality={props.stream.quality}
         />
         <ProgressListenerControl
           startAt={firstStartTime.current}

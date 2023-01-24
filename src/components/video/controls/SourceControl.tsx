@@ -1,10 +1,11 @@
-import { MWStreamType } from "@/backend/helpers/streams";
+import { MWStreamQuality, MWStreamType } from "@/backend/helpers/streams";
 import { useContext, useEffect, useRef } from "react";
 import { VideoPlayerDispatchContext } from "../VideoContext";
 
 interface SourceControlProps {
   source: string;
   type: MWStreamType;
+  quality: MWStreamQuality;
 }
 
 export function SourceControl(props: SourceControlProps) {
@@ -17,6 +18,7 @@ export function SourceControl(props: SourceControlProps) {
       type: "SET_SOURCE",
       url: props.source,
       sourceType: props.type,
+      quality: props.quality,
     });
     didInitialize.current = true;
   }, [props, dispatch]);
