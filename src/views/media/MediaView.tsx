@@ -111,7 +111,6 @@ export function MediaViewPlayer(props: MediaViewPlayerProps) {
   return (
     <div className="fixed top-0 left-0 h-[100dvh] w-screen">
       <Helmet>
-        <title>{props.meta.meta.title}</title>
         <html data-full="true" />
       </Helmet>
       <DecoratedVideoPlayer media={props.meta.meta} onGoBack={goBack} autoPlay>
