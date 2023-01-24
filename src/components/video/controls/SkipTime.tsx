@@ -22,7 +22,7 @@ function formatSeconds(secs: number, showHours = false): string {
   const paddedSecs = seconds.toString().padStart(2, "0");
   const paddedMins = minutes.toString().padStart(2, "0");
 
-  if (!showHours) return [minutes, paddedSecs].join(":");
+  if (!showHours) return [paddedMins, paddedSecs].join(":");
   return [hours, paddedMins, paddedSecs].join(":");
 }
 
