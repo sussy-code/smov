@@ -14,6 +14,7 @@ import { ShowTitleControl } from "./controls/ShowTitleControl";
 import { SkipTime } from "./controls/SkipTime";
 import { TimeControl } from "./controls/TimeControl";
 import { VolumeControl } from "./controls/VolumeControl";
+import { PageTitleControl } from "./controls/PageTitleControl";
 import { VideoPlayerError } from "./parts/VideoPlayerError";
 import { VideoPlayerHeader } from "./parts/VideoPlayerHeader";
 import { useVideoPlayerState } from "./VideoContext";
@@ -67,6 +68,7 @@ export function DecoratedVideoPlayer(
 
   return (
     <VideoPlayer autoPlay={props.autoPlay}>
+      <PageTitleControl media={props.media} />
       <VideoPlayerError media={props.media} onGoBack={props.onGoBack}>
         <BackdropControl onBackdropChange={onBackdropChange}>
           <div className="absolute inset-0 flex items-center justify-center">
