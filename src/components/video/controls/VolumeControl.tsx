@@ -70,6 +70,7 @@ export function VolumeControl(props: Props) {
             ref={ref}
             className="flex h-10 w-20 items-center px-2"
             onMouseDown={dragMouseDown}
+            onTouchStart={dragMouseDown}
           >
             <div className="relative h-1 flex-1 rounded-full bg-gray-500 bg-opacity-50">
               <div
