@@ -1,14 +1,22 @@
 import { proxiedFetch } from "../helpers/fetch";
 import { registerProvider } from "../helpers/register";
-import { MWStreamType } from "../helpers/streams";
+import { MWStreamQuality, MWStreamType } from "../helpers/streams";
 import { MWMediaType } from "../metadata/types";
 
 const netfilmBase = "https://net-film.vercel.app";
 
+const qualityMap = {
+  "360": MWStreamQuality.Q360P,
+  "480": MWStreamQuality.Q480P,
+  "720": MWStreamQuality.Q720P,
+  "1080": MWStreamQuality.Q1080P,
+};
+type QualityInMap = keyof typeof qualityMap;
+
 registerProvider({
   id: "netfilm",
   displayName: "NetFilm",
-  rank: 999,
+  rank: 150,
   type: [MWMediaType.MOVIE, MWMediaType.SERIES],
 
   async scrape({ media, episode, progress }) {
@@ -50,7 +58,7 @@ registerProvider({
         embeds: [],
         stream: {
           streamUrl: source.url,
-          quality: source.quality,
+          quality: qualityMap[source.quality as QualityInMap],
           type: MWStreamType.HLS,
           // captions: [],
         },
@@ -111,7 +119,7 @@ registerProvider({
       embeds: [],
       stream: {
         streamUrl: source.url,
-        quality: source.quality,
+        quality: qualityMap[source.quality as QualityInMap],
         type: MWStreamType.HLS,
         // captions: [],
       },
