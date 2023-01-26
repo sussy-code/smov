@@ -178,7 +178,7 @@ export function populateControls(
             return;
           }
 
-          const hls = new Hls();
+          const hls = new Hls({ enableWorker: false });
 
           hls.on(Hls.Events.ERROR, (event, data) => {
             if (data.fatal) {
