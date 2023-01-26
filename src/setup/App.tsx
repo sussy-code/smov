@@ -6,7 +6,9 @@ import { NotFoundPage } from "@/views/notfound/NotFoundView";
 import { MediaView } from "@/views/media/MediaView";
 import { SearchView } from "@/views/search/SearchView";
 import { MWMediaType } from "@/backend/metadata/types";
+import { TestView } from "@/views/TestView";
 
+// TODO remove test view
 function App() {
   return (
     <WatchedContextProvider>
@@ -16,6 +18,7 @@ function App() {
             <Redirect to={`/search/${MWMediaType.MOVIE}`} />
           </Route>
           <Route exact path="/media/:media" component={MediaView} />
+          <Route exact path="/test" component={TestView} />
           <Route
             exact
             path="/media/:media/:season/:episode"

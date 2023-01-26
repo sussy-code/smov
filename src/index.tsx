@@ -8,6 +8,7 @@ import App from "@/setup/App";
 import "@/setup/i18n";
 import "@/setup/index.css";
 import "@/backend";
+import { initializeChromecast } from "./setup/chromecast";
 
 // initialize
 const key =
@@ -15,6 +16,7 @@ const key =
 if (key) {
   (window as any).initMW(conf().BASE_PROXY_URL, key);
 }
+initializeChromecast();
 
 // TODO video todos:
 //  - captions

@@ -117,7 +117,6 @@ export function VideoPlayer(props: VideoPlayerProps) {
   return (
     <VideoPlayerContextProvider player={playerRef} wrapper={playerWrapperRef}>
       <div
-        // Fite me 1v1
         className="is-video-player relative h-full w-full select-none overflow-hidden bg-black [border-left:env(safe-area-inset-left)_solid_transparent] [border-right:env(safe-area-inset-right)_solid_transparent]"
         ref={playerWrapperRef}
       >

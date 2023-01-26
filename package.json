@@ -50,6 +50,7 @@
   },
   "devDependencies": {
     "@tailwindcss/line-clamp": "^0.4.2",
+    "@types/chromecast-caf-sender": "^1.0.5",
     "@types/crypto-js": "^4.1.1",
     "@types/fscreen": "^1.0.1",
     "@types/lodash.throttle": "^4.1.7",
