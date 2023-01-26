@@ -69,7 +69,7 @@ registerProvider({
       .map((v: any) => {
         return {
           ...v,
-          season: parseInt(v.name.split(" ").at(-1), 10),
+          season: parseInt(v.name.split(" ").at(-1), 10) || 1,
         };
       });
 
