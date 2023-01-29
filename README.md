@@ -10,7 +10,7 @@
 
 movie-web is a web app for watching movies easily. Check it out at **[movie.squeezebox.dev](https://movie.squeezebox.dev)**.
 
-This service works by displaying video files from third-party providers inside an intuitive and aesthic user interface.
+This service works by displaying video files from third-party providers inside an intuitive and aesthetic user interface.
 
 Features include:
 
