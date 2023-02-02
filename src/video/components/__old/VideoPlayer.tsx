@@ -1,12 +1,12 @@
 import { useGoBack } from "@/hooks/useGoBack";
 import { useVolumeControl } from "@/hooks/useVolumeToggle";
 import { forwardRef, useContext, useEffect, useRef } from "react";
-import { VideoErrorBoundary } from "./parts/VideoErrorBoundary";
+import { VideoErrorBoundary } from "../../components/video/parts/VideoErrorBoundary";
 import {
   useVideoPlayerState,
   VideoPlayerContext,
   VideoPlayerContextProvider,
-} from "./VideoContext";
+} from "../../video/components./../components/video/VideoContext";
 
 export interface VideoPlayerProps {
   autoPlay?: boolean;

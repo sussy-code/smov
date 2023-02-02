@@ -1,7 +1,7 @@
 import { useHistory, useParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { useEffect, useRef, useState } from "react";
-import { DecoratedVideoPlayer } from "@/components/video/DecoratedVideoPlayer";
+import { DecoratedVideoPlayer } from "@/video/components/__old/DecoratedVideoPlayer";
 import { MWStream } from "@/backend/helpers/streams";
 import { SelectedMediaData, useScrape } from "@/hooks/useScrape";
 import { VideoPlayerHeader } from "@/components/video/parts/VideoPlayerHeader";
