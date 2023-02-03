@@ -1,4 +1,4 @@
-import { useVideoPlayerState } from "@/components/video/VideoContext";
+import { useVideoPlayerState } from "@/../__old/VideoContext";
 import { useState } from "react";
 
 export function useVolumeControl() {

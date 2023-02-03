@@ -6,7 +6,7 @@ import { Navigation } from "@/components/layout/Navigation";
 import { ArrowLink } from "@/components/text/ArrowLink";
 import { Title } from "@/components/text/Title";
 import { useGoBack } from "@/hooks/useGoBack";
-import { VideoPlayerHeader } from "@/components/video/parts/VideoPlayerHeader";
+import { VideoPlayerHeader } from "@/../__old/parts/VideoPlayerHeader";
 import { Helmet } from "react-helmet";
 
 export function NotFoundWrapper(props: {

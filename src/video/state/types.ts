@@ -1,3 +1,5 @@
+import { VideoPlayerStateProvider } from "./providers/providerTypes";
+
 export type VideoPlayerState = {
   isPlaying: boolean;
   isPaused: boolean;
@@ -33,4 +35,5 @@ export type VideoPlayerState = {
     description: string;
   };
   canAirplay: boolean;
+  stateProvider: VideoPlayerStateProvider | null;
 };

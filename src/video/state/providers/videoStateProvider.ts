@@ -1,4 +1,5 @@
 import { getPlayerState } from "../cache";
+import { updateMediaPlaying } from "../logic/mediaplaying";
 import { VideoPlayerStateProvider } from "./providerTypes";
 
 export function createVideoStateProvider(
@@ -15,16 +16,17 @@ export function createVideoStateProvider(
       player.pause();
     },
     providerStart() {
-      // TODO reactivity through events
       const pause = () => {
         state.isPaused = true;
         state.isPlaying = false;
+        updateMediaPlaying(descriptor, state);
       };
       const playing = () => {
         state.isPaused = false;
         state.isPlaying = true;
         state.isLoading = false;
         state.hasPlayedOnce = true;
+        updateMediaPlaying(descriptor, state);
       };
 
       player.addEventListener("pause", pause);

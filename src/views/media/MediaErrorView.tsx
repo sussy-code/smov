@@ -1,7 +1,7 @@
 import { MWMediaMeta } from "@/backend/metadata/types";
 import { ErrorMessage } from "@/components/layout/ErrorBoundary";
 import { Link } from "@/components/text/Link";
-import { VideoPlayerHeader } from "@/components/video/parts/VideoPlayerHeader";
+import { VideoPlayerHeader } from "@/../__old/parts/VideoPlayerHeader";
 import { useGoBack } from "@/hooks/useGoBack";
 import { conf } from "@/setup/config";
 import { Helmet } from "react-helmet";
