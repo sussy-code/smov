@@ -25,6 +25,8 @@ function initPlayer(): VideoPlayerState {
       isSeries: false,
     },
     canAirplay: false,
+    stateProvider: null,
+    source: null,
   };
 }
 

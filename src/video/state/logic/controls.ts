@@ -11,5 +11,14 @@ export function useControls(descriptor: string): VideoPlayerStateController {
     play() {
       state.stateProvider?.play();
     },
+    setSource(source) {
+      state.stateProvider?.setSource(source);
+    },
+    setSeeking(active) {
+      state.stateProvider?.setSeeking(active);
+    },
+    setTime(time) {
+      state.stateProvider?.setTime(time);
+    },
   };
 }

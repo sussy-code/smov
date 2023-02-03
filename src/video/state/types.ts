@@ -1,3 +1,4 @@
+import { MWStreamQuality, MWStreamType } from "@/backend/helpers/streams";
 import { VideoPlayerStateProvider } from "./providers/providerTypes";
 
 export type VideoPlayerState = {
@@ -30,10 +31,16 @@ export type VideoPlayerState = {
       episodes?: { id: string; number: number; title: string }[];
     }[];
   };
+
   error: null | {
     name: string;
     description: string;
   };
   canAirplay: boolean;
   stateProvider: VideoPlayerStateProvider | null;
+  source: null | {
+    quality: MWStreamQuality;
+    url: string;
+    type: MWStreamType;
+  };
 };

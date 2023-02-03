@@ -19,12 +19,6 @@ export function VideoElementInternal() {
   }, [descriptor]);
 
   // TODO autoplay and muted
-  return (
-    <video
-      ref={ref}
-      playsInline
-      className="h-full w-full"
-      src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4"
-    />
-  );
+  // this element is remotely controlled by a state provider
+  return <video ref={ref} playsInline className="h-full w-full" />;
 }
