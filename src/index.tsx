@@ -19,12 +19,13 @@ if (key) {
 initializeChromecast();
 
 // TODO video todos:
-//  - mobile controls start showing when resizing
-//  - bug: popouts sometimes stop working when selecting different episode
 //  - captions
 //  - chrome cast support
-//  - safari fullscreen will make video overlap player controls
-//  - safari progress bar is fucked (video doesnt change time but video.currentTime does change)
+//  - bug: mobile controls start showing when resizing
+//  - bug: popouts sometimes stop working when selecting different episode
+//  - bug: unmounting player throws errors in console
+//  - bug: safari fullscreen will make video overlap player controls
+//  - bug: safari progress bar is fucked (video doesnt change time but video.currentTime does change)
 
 // TODO stuff to test:
 //  - browser: firefox, chrome, edge, safari desktop
@@ -40,7 +41,7 @@ initializeChromecast();
 //  - AFTER all that: rank providers/embedscrapers
 
 // TODO general todos:
-//  - localize everything (fix loading screen text (series vs movies)) (and have EN file instead)
+//  - localize everything (fix loading screen text (series vs movies)) (and have EN file instead of en-gb)
 
 ReactDOM.render(
   <React.StrictMode>
