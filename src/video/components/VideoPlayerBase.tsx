@@ -12,7 +12,6 @@ export function VideoPlayerBase(props: VideoPlayerBaseProps) {
   const ref = useRef<HTMLDivElement>(null);
   // TODO error boundary
   // TODO move error boundary to only decorated, <VideoPlayer /> shouldn't have styling
-  // TODO internal controls
 
   return (
     <VideoPlayerContextProvider>

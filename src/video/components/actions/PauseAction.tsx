@@ -20,8 +20,8 @@ export function PauseAction(props: Props) {
     else controls.play();
   }, [mediaPlaying, controls]);
 
-  // TODO add seeking back
-  const icon = mediaPlaying.isPlaying ? Icons.PAUSE : Icons.PLAY;
+  const icon =
+    mediaPlaying.isPlaying || mediaPlaying.isSeeking ? Icons.PAUSE : Icons.PLAY;
 
   return (
     <VideoPlayerIconButton

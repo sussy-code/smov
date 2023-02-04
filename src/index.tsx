@@ -20,6 +20,7 @@ initializeChromecast();
 
 // TODO video todos:
 //  - mobile controls start showing when resizing
+//  - bug: popouts sometimes stop working when selecting different episode
 //  - captions
 //  - chrome cast support
 //  - safari fullscreen will make video overlap player controls
