@@ -76,6 +76,8 @@ export function VideoPlayer(props: Props) {
   );
 
   // TODO safe area only if full screen or fill screen
+  // TODO airplay
+  // TODO source selection
   return (
     <VideoPlayerBase autoPlay={props.autoPlay}>
       <PageTitleAction />
