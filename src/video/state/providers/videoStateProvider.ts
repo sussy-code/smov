@@ -1,5 +1,12 @@
 import Hls from "hls.js";
+import fscreen from "fscreen";
+import {
+  canFullscreen,
+  canFullscreenAnyElement,
+  canWebkitFullscreen,
+} from "@/utils/detectFeatures";
 import { MWStreamType } from "@/backend/helpers/streams";
+import { updateInterface } from "@/video/state/logic/interface";
 import { getPlayerState } from "../cache";
 import { updateMediaPlaying } from "../logic/mediaplaying";
 import { VideoPlayerStateProvider } from "./providerTypes";
@@ -19,6 +26,21 @@ export function createVideoStateProvider(
     },
     pause() {
       player.pause();
+    },
+    exitFullscreen() {
+      if (!fscreen.fullscreenElement) return;
+      fscreen.exitFullscreen();
+    },
+    enterFullscreen() {
+      if (!canFullscreen() || fscreen.fullscreenElement) return;
+      if (canFullscreenAnyElement()) {
+        if (state.wrapperElement)
+          fscreen.requestFullscreen(state.wrapperElement);
+        return;
+      }
+      if (canWebkitFullscreen()) {
+        (player as any).webkitEnterFullscreen();
+      }
     },
     setTime(t) {
       // clamp time between 0 and max duration
@@ -127,6 +149,10 @@ export function createVideoStateProvider(
         state.isFirstLoading = false;
         updateMediaPlaying(descriptor, state);
       };
+      const fullscreenchange = () => {
+        state.isFullscreen = !!document.fullscreenElement;
+        updateInterface(descriptor, state);
+      };
 
       player.addEventListener("pause", pause);
       player.addEventListener("playing", playing);
@@ -137,6 +163,7 @@ export function createVideoStateProvider(
       player.addEventListener("timeupdate", timeupdate);
       player.addEventListener("loadedmetadata", loadedmetadata);
       player.addEventListener("canplay", canplay);
+      fscreen.addEventListener("fullscreenchange", fullscreenchange);
       return {
         destroy: () => {
           player.removeEventListener("pause", pause);
@@ -148,6 +175,7 @@ export function createVideoStateProvider(
           player.removeEventListener("progress", progress);
           player.removeEventListener("waiting", waiting);
           player.removeEventListener("canplay", canplay);
+          fscreen.removeEventListener("fullscreenchange", fullscreenchange);
         },
       };
     },

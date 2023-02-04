@@ -12,6 +12,7 @@ import { ProgressAction } from "@/video/components/actions/ProgressAction";
 import { SkipTimeAction } from "@/video/components/actions/SkipTimeAction";
 import { TimeAction } from "@/video/components/actions/TimeAction";
 import { SourceController } from "@/video/components/controllers/SourceController";
+import { VideoPlayer } from "@/video/components/VideoPlayer";
 import { VideoPlayerBase } from "@/video/components/VideoPlayerBase";
 
 // function ChromeCastButton() {
@@ -30,18 +31,12 @@ import { VideoPlayerBase } from "@/video/components/VideoPlayerBase";
 
 export function TestView() {
   return (
-    <VideoPlayerBase>
-      <PauseAction />
+    <VideoPlayer>
       <SourceController
         quality={MWStreamQuality.QUNKNOWN}
         source="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4"
         type={MWStreamType.MP4}
       />
-      <MiddlePauseAction />
-      <ProgressAction />
-      <LoadingAction />
-      <TimeAction />
-      <SkipTimeAction />
-    </VideoPlayerBase>
+    </VideoPlayer>
   );
 }

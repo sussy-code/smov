@@ -27,6 +27,7 @@ function initPlayer(): VideoPlayerState {
     canAirplay: false,
     stateProvider: null,
     source: null,
+    wrapperElement: null,
   };
 }
 

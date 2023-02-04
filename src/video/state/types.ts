@@ -43,4 +43,5 @@ export type VideoPlayerState = {
     url: string;
     type: MWStreamType;
   };
+  wrapperElement: HTMLDivElement | null;
 };

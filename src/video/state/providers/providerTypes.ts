@@ -12,6 +12,8 @@ export type VideoPlayerStateController = {
   setSource: (source: VideoPlayerSource) => void;
   setTime(time: number): void;
   setSeeking(active: boolean): void;
+  exitFullscreen(): void;
+  enterFullscreen(): void;
 };
 
 export type VideoPlayerStateProvider = VideoPlayerStateController & {

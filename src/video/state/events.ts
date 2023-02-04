@@ -1,4 +1,8 @@
-export type VideoPlayerEvent = "mediaplaying" | "source" | "progress";
+export type VideoPlayerEvent =
+  | "mediaplaying"
+  | "source"
+  | "progress"
+  | "interface";
 
 function createEventString(id: string, event: VideoPlayerEvent): string {
   return `_vid:::${id}:::${event}`;
