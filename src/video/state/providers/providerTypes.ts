@@ -14,6 +14,7 @@ export type VideoPlayerStateController = {
   setSeeking(active: boolean): void;
   exitFullscreen(): void;
   enterFullscreen(): void;
+  setVolume(volume: number): void;
 };
 
 export type VideoPlayerStateProvider = VideoPlayerStateController & {

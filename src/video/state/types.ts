@@ -31,8 +31,9 @@ export type VideoPlayerState = {
     isPaused: boolean;
     isSeeking: boolean; // seeking with progress bar
     isLoading: boolean; // buffering or not
-    isFirstLoading: boolean; // first buffering of the video, used to show
+    isFirstLoading: boolean; // first buffering of the video, when set to false the video can start playing
     hasPlayedOnce: boolean; // has the video played at all?
+    volume: number;
   };
 
   // state related to video progress
@@ -55,9 +56,7 @@ export type VideoPlayerState = {
   };
 
   // misc
-  volume: number;
-  pausedWhenSeeking: boolean;
-  hasInitialized: boolean;
+  pausedWhenSeeking: boolean; // when seeking, used to store if paused when started to seek
   canAirplay: boolean;
 
   // backing fields

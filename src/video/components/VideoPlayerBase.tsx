@@ -5,6 +5,7 @@ import { VideoElementInternal } from "./internal/VideoElementInternal";
 
 export interface VideoPlayerBaseProps {
   children?: React.ReactNode;
+  autoPlay?: boolean;
 }
 
 export function VideoPlayerBase(props: VideoPlayerBaseProps) {
@@ -19,7 +20,7 @@ export function VideoPlayerBase(props: VideoPlayerBaseProps) {
         ref={ref}
         className="is-video-player relative h-full w-full select-none overflow-hidden bg-black [border-left:env(safe-area-inset-left)_solid_transparent] [border-right:env(safe-area-inset-right)_solid_transparent]"
       >
-        <VideoElementInternal />
+        <VideoElementInternal autoPlay={props.autoPlay} />
         <WrapperRegisterInternal wrapper={ref.current} />
         <div className="absolute inset-0">{props.children}</div>
       </div>

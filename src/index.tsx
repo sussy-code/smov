@@ -19,6 +19,7 @@ if (key) {
 initializeChromecast();
 
 // TODO video todos:
+//  - mobile controls start showing when resizing
 //  - captions
 //  - chrome cast support
 //  - safari fullscreen will make video overlap player controls

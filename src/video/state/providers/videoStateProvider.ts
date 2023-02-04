@@ -1,6 +1,7 @@
 import Hls from "hls.js";
 import fscreen from "fscreen";
 import {
+  canChangeVolume,
   canFullscreen,
   canFullscreenAnyElement,
   canWebkitFullscreen,
@@ -8,6 +9,10 @@ import {
 import { MWStreamType } from "@/backend/helpers/streams";
 import { updateInterface } from "@/video/state/logic/interface";
 import { updateSource } from "@/video/state/logic/source";
+import {
+  getStoredVolume,
+  setStoredVolume,
+} from "@/video/components/hooks/volumeStore";
 import { getPlayerState } from "../cache";
 import { updateMediaPlaying } from "../logic/mediaplaying";
 import { VideoPlayerStateProvider } from "./providerTypes";
@@ -67,6 +72,19 @@ export function createVideoStateProvider(
       state.pausedWhenSeeking = state.mediaPlaying.isPaused;
       this.pause();
     },
+    async setVolume(v) {
+      // clamp time between 0 and 1
+      let volume = Math.min(v, 1);
+      volume = Math.max(0, volume);
+
+      // update state
+      if (await canChangeVolume()) player.volume = volume;
+      state.mediaPlaying.volume = volume;
+      updateMediaPlaying(descriptor, state);
+
+      // update localstorage
+      setStoredVolume(volume);
+    },
     setSource(source) {
       if (!source) {
         player.src = "";
@@ -118,7 +136,8 @@ export function createVideoStateProvider(
       updateSource(descriptor, state);
     },
     providerStart() {
-      // TODO stored volume
+      this.setVolume(getStoredVolume());
+
       const pause = () => {
         state.mediaPlaying.isPaused = true;
         state.mediaPlaying.isPlaying = false;
@@ -167,7 +186,37 @@ export function createVideoStateProvider(
         state.interface.isFullscreen = !!document.fullscreenElement;
         updateInterface(descriptor, state);
       };
+      const volumechange = async () => {
+        if (await canChangeVolume()) {
+          state.mediaPlaying.volume = player.volume;
+          updateMediaPlaying(descriptor, state);
+        }
+      };
+      const isFocused = (evt: any) => {
+        state.interface.isFocused = evt.type !== "mouseleave";
+        updateInterface(descriptor, state);
+      };
+      const canAirplay = (e: any) => {
+        if (e.availability === "available") {
+          state.canAirplay = true;
+          // TODO dispatch airplay
+        }
+      };
+      const error = () => {
+        console.error("Native video player threw error", player.error);
+        state.error = player.error
+          ? {
+              description: player.error.message,
+              name: `Error ${player.error.code}`,
+            }
+          : null;
+        // TODO dispatch error
+      };
 
+      state.wrapperElement?.addEventListener("click", isFocused);
+      state.wrapperElement?.addEventListener("mouseenter", isFocused);
+      state.wrapperElement?.addEventListener("mouseleave", isFocused);
+      player.addEventListener("volumechange", volumechange);
       player.addEventListener("pause", pause);
       player.addEventListener("playing", playing);
       player.addEventListener("seeking", seeking);
@@ -178,18 +227,33 @@ export function createVideoStateProvider(
       player.addEventListener("loadedmetadata", loadedmetadata);
       player.addEventListener("canplay", canplay);
       fscreen.addEventListener("fullscreenchange", fullscreenchange);
+      player.addEventListener("error", error);
+      player.addEventListener(
+        "webkitplaybacktargetavailabilitychanged",
+        canAirplay
+      );
+
       return {
         destroy: () => {
           player.removeEventListener("pause", pause);
           player.removeEventListener("playing", playing);
           player.removeEventListener("seeking", seeking);
+          player.removeEventListener("volumechange", volumechange);
           player.removeEventListener("seeked", seeked);
           player.removeEventListener("timeupdate", timeupdate);
           player.removeEventListener("loadedmetadata", loadedmetadata);
           player.removeEventListener("progress", progress);
           player.removeEventListener("waiting", waiting);
+          player.removeEventListener("error", error);
           player.removeEventListener("canplay", canplay);
           fscreen.removeEventListener("fullscreenchange", fullscreenchange);
+          state.wrapperElement?.removeEventListener("click", isFocused);
+          state.wrapperElement?.removeEventListener("mouseenter", isFocused);
+          state.wrapperElement?.removeEventListener("mouseleave", isFocused);
+          player.removeEventListener(
+            "webkitplaybacktargetavailabilitychanged",
+            canAirplay
+          );
         },
       };
     },

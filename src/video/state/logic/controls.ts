@@ -40,6 +40,9 @@ export function useControls(
     enterFullscreen() {
       state.stateProvider?.enterFullscreen();
     },
+    setVolume(volume) {
+      state.stateProvider?.setVolume(volume);
+    },
 
     // other controls
     setLeftControlsHover(hovering) {

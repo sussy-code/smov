@@ -13,6 +13,7 @@ import { QualityDisplayAction } from "@/video/components/actions/QualityDisplayA
 import { ShowTitleAction } from "@/video/components/actions/ShowTitleAction";
 import { SkipTimeAction } from "@/video/components/actions/SkipTimeAction";
 import { TimeAction } from "@/video/components/actions/TimeAction";
+import { VolumeAction } from "@/video/components/actions/VolumeAction";
 import { VideoPlayerError } from "@/video/components/parts/VideoPlayerError";
 import {
   VideoPlayerBase,
@@ -54,7 +55,7 @@ function LeftSideControls() {
       >
         <PauseAction />
         <SkipTimeAction />
-        {/* <VolumeControl className="mr-2" /> */}
+        <VolumeAction className="mr-2" />
         <TimeAction />
       </div>
       <ShowTitleAction />
@@ -73,10 +74,9 @@ export function VideoPlayer(props: Props) {
     [setShow]
   );
 
-  // TODO autoplay
   // TODO safe area only if full screen or fill screen
   return (
-    <VideoPlayerBase>
+    <VideoPlayerBase autoPlay={props.autoPlay}>
       <PageTitleAction />
       <VideoPlayerError onGoBack={props.onGoBack}>
         <BackdropAction onBackdropChange={onBackdropChange}>

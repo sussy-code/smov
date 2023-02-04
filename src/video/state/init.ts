@@ -18,6 +18,7 @@ function initPlayer(): VideoPlayerState {
       isSeeking: false,
       isFirstLoading: true,
       hasPlayedOnce: false,
+      volume: 0,
     },
 
     progress: {
@@ -30,9 +31,7 @@ function initPlayer(): VideoPlayerState {
     source: null,
     error: null,
 
-    volume: 0,
     pausedWhenSeeking: false,
-    hasInitialized: false,
     canAirplay: false,
 
     stateProvider: null,

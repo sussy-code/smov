@@ -1,16 +1,18 @@
-import { useVideoPlayerState } from "@/../__old/VideoContext";
+import { useControls } from "@/video/state/logic/controls";
+import { useMediaPlaying } from "@/video/state/logic/mediaplaying";
 import { useState } from "react";
 
-export function useVolumeControl() {
+export function useVolumeControl(descriptor: string) {
   const [storedVolume, setStoredVolume] = useState(1);
-  const { videoState } = useVideoPlayerState();
+  const controls = useControls(descriptor);
+  const mediaPlaying = useMediaPlaying(descriptor);
 
   const toggleVolume = () => {
-    if (videoState.volume > 0) {
-      setStoredVolume(videoState.volume);
-      videoState.setVolume(0);
+    if (mediaPlaying.volume > 0) {
+      setStoredVolume(mediaPlaying.volume);
+      controls.setVolume(0);
     } else {
-      videoState.setVolume(storedVolume > 0 ? storedVolume : 1);
+      controls.setVolume(storedVolume > 0 ? storedVolume : 1);
     }
   };
 

@@ -15,6 +15,7 @@ import { MetaController } from "@/video/components/controllers/MetaController";
 import { SourceController } from "@/video/components/controllers/SourceController";
 import { Icons } from "@/components/Icon";
 import { VideoPlayerHeader } from "@/video/components/parts/VideoPlayerHeader";
+import { ProgressListenerController } from "@/video/components/controllers/ProgressListenerController";
 import { useWatchedItem } from "@/state/watched";
 import { MediaFetchErrorView } from "./MediaErrorView";
 import { MediaScrapeLog } from "./MediaScrapeLog";
@@ -112,17 +113,17 @@ export function MediaViewPlayer(props: MediaViewPlayerProps) {
       <Helmet>
         <html data-full="true" />
       </Helmet>
-      <VideoPlayer onGoBack={goBack}>
+      <VideoPlayer autoPlay onGoBack={goBack}>
         <MetaController meta={props.meta.meta} />
         <SourceController
           source={props.stream.streamUrl}
           type={props.stream.type}
           quality={props.stream.quality}
         />
-        {/* <ProgressListenerControl
+        <ProgressListenerController
           startAt={firstStartTime.current}
           onProgress={updateProgress}
-        /> */}
+        />
         {/* {props.selected.type === MWMediaType.SERIES &&
         props.meta.meta.type === MWMediaType.SERIES ? (
           <ShowControl
