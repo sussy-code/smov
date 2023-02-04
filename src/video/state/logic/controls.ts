@@ -1,15 +1,16 @@
-import { MWMediaMeta } from "@/backend/metadata/types";
 import { updateInterface } from "@/video/state/logic/interface";
 import { updateMeta } from "@/video/state/logic/meta";
+import { VideoPlayerMeta } from "@/video/state/types";
 import { getPlayerState } from "../cache";
 import { VideoPlayerStateController } from "../providers/providerTypes";
 
-type ControlMethods = {
+export type ControlMethods = {
   openPopout(id: string): void;
   closePopout(): void;
   setLeftControlsHover(hovering: boolean): void;
   setFocused(focused: boolean): void;
-  setMeta(meta?: MWMediaMeta): void;
+  setMeta(data?: VideoPlayerMeta): void;
+  setCurrentEpisode(sId: string, eId: string): void;
 };
 
 export function useControls(
@@ -65,11 +66,18 @@ export function useControls(
       if (!meta) {
         state.meta = null;
       } else {
-        state.meta = {
-          meta,
-        };
+        state.meta = meta;
       }
       updateMeta(descriptor, state);
+    },
+    setCurrentEpisode(sId, eId) {
+      if (state.meta) {
+        state.meta.episode = {
+          seasonId: sId,
+          episodeId: eId,
+        };
+        updateMeta(descriptor, state);
+      }
     },
   };
 }

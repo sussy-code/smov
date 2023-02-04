@@ -10,6 +10,7 @@ import { PageTitleAction } from "@/video/components/actions/PageTitleAction";
 import { PauseAction } from "@/video/components/actions/PauseAction";
 import { ProgressAction } from "@/video/components/actions/ProgressAction";
 import { QualityDisplayAction } from "@/video/components/actions/QualityDisplayAction";
+import { SeriesSelectionAction } from "@/video/components/actions/SeriesSelectionAction";
 import { ShowTitleAction } from "@/video/components/actions/ShowTitleAction";
 import { SkipTimeAction } from "@/video/components/actions/SkipTimeAction";
 import { TimeAction } from "@/video/components/actions/TimeAction";
@@ -118,7 +119,7 @@ export function VideoPlayer(props: Props) {
                 <div className="grid w-full grid-cols-[56px,1fr,56px] items-center">
                   <div />
                   <div className="flex items-center justify-center">
-                    {/* <SeriesSelectionControl /> */}
+                    <SeriesSelectionAction />
                     {/* <SourceSelectionControl media={props.media} /> */}
                   </div>
                   <FullscreenAction />
@@ -128,8 +129,8 @@ export function VideoPlayer(props: Props) {
                   <LeftSideControls />
                   <div className="flex-1" />
                   <QualityDisplayAction />
-                  {/* <SeriesSelectionControl />
-                    <SourceSelectionControl media={props.media} />
+                  <SeriesSelectionAction />
+                  {/* <SourceSelectionControl media={props.media} />
                     <AirplayControl />
                     <ChromeCastControl /> */}
                   <FullscreenAction />

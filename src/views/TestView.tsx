@@ -5,8 +5,8 @@
 // import { useEffect, useRef } from "react";
 
 import { MWStreamQuality, MWStreamType } from "@/backend/helpers/streams";
-import { MWMediaType } from "@/backend/metadata/types";
-import { MetaController } from "@/video/components/controllers/MetaController";
+// import { MWMediaType } from "@/backend/metadata/types";
+// import { MetaController } from "@/video/components/controllers/MetaController";
 import { SourceController } from "@/video/components/controllers/SourceController";
 import { VideoPlayer } from "@/video/components/VideoPlayer";
 
@@ -32,15 +32,15 @@ export function TestView() {
         source="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4"
         type={MWStreamType.MP4}
       />
-      <MetaController
+      {/* <MetaController
         meta={{
           id: "test",
           title: "Hello world",
           type: MWMediaType.MOVIE,
           year: "1234",
           seasons: undefined,
-        }}
-      />
+        }} */}
+      {/* /> */}
     </VideoPlayer>
   );
 }

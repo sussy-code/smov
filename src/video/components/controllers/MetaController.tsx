@@ -1,10 +1,33 @@
-import { MWMediaMeta } from "@/backend/metadata/types";
+import { MWSeasonWithEpisodeMeta } from "@/backend/metadata/types";
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useControls } from "@/video/state/logic/controls";
+import { VideoPlayerMeta } from "@/video/state/types";
 import { useEffect } from "react";
 
 interface MetaControllerProps {
-  meta?: MWMediaMeta;
+  data?: VideoPlayerMeta;
+  seasonData?: MWSeasonWithEpisodeMeta;
+}
+
+function formatMetadata(
+  props: MetaControllerProps
+): VideoPlayerMeta | undefined {
+  const seasonsWithEpisodes = props.data?.seasons?.map((v) => {
+    if (v.id === props.seasonData?.id)
+      return {
+        ...v,
+        episodes: props.seasonData.episodes,
+      };
+    return v;
+  });
+
+  if (!props.data) return undefined;
+
+  return {
+    meta: props.data.meta,
+    episode: props.data.episode,
+    seasons: seasonsWithEpisodes,
+  };
 }
 
 export function MetaController(props: MetaControllerProps) {
@@ -12,7 +35,7 @@ export function MetaController(props: MetaControllerProps) {
   const controls = useControls(descriptor);
 
   useEffect(() => {
-    controls.setMeta(props.meta);
+    controls.setMeta(formatMetadata(props));
   }, [props, controls]);
 
   return null;

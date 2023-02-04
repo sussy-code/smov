@@ -1,9 +1,9 @@
 import { MWMediaMeta } from "@/backend/metadata/types";
 import { ErrorMessage } from "@/components/layout/ErrorBoundary";
 import { Link } from "@/components/text/Link";
-import { VideoPlayerHeader } from "@/../__old/parts/VideoPlayerHeader";
 import { useGoBack } from "@/hooks/useGoBack";
 import { conf } from "@/setup/config";
+import { VideoPlayerHeader } from "@/video/components/parts/VideoPlayerHeader";
 import { Helmet } from "react-helmet";
 
 export function MediaFetchErrorView() {

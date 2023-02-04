@@ -7,7 +7,7 @@ import { DetailedMeta, getMetaFromId } from "@/backend/metadata/getmeta";
 import { decodeJWId } from "@/backend/metadata/justwatch";
 import { Loading } from "@/components/layout/Loading";
 import { useLoading } from "@/hooks/useLoading";
-import { MWMediaType } from "@/backend/metadata/types";
+import { MWMediaType, MWSeasonWithEpisodeMeta } from "@/backend/metadata/types";
 import { useGoBack } from "@/hooks/useGoBack";
 import { IconPatch } from "@/components/buttons/IconPatch";
 import { VideoPlayer } from "@/video/components/VideoPlayer";
@@ -16,6 +16,8 @@ import { SourceController } from "@/video/components/controllers/SourceControlle
 import { Icons } from "@/components/Icon";
 import { VideoPlayerHeader } from "@/video/components/parts/VideoPlayerHeader";
 import { ProgressListenerController } from "@/video/components/controllers/ProgressListenerController";
+import { VideoPlayerMeta } from "@/video/state/types";
+import { SeriesController } from "@/video/components/controllers/SeriesController";
 import { useWatchedItem } from "@/state/watched";
 import { MediaFetchErrorView } from "./MediaErrorView";
 import { MediaScrapeLog } from "./MediaScrapeLog";
@@ -108,13 +110,29 @@ export function MediaViewPlayer(props: MediaViewPlayerProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.stream]);
 
+  const metaProps: VideoPlayerMeta = {
+    meta: props.meta.meta,
+  };
+  let metaSeasonData: MWSeasonWithEpisodeMeta | undefined;
+  if (
+    props.selected.type === MWMediaType.SERIES &&
+    props.meta.meta.type === MWMediaType.SERIES
+  ) {
+    metaProps.episode = {
+      seasonId: props.selected.season,
+      episodeId: props.selected.episode,
+    };
+    metaProps.seasons = props.meta.meta.seasons;
+    metaSeasonData = props.meta.meta.seasonData;
+  }
+
   return (
     <div className="fixed top-0 left-0 h-[100dvh] w-screen">
       <Helmet>
         <html data-full="true" />
       </Helmet>
       <VideoPlayer autoPlay onGoBack={goBack}>
-        <MetaController meta={props.meta.meta} />
+        <MetaController data={metaProps} seasonData={metaSeasonData} />
         <SourceController
           source={props.stream.streamUrl}
           type={props.stream.type}
@@ -124,22 +142,13 @@ export function MediaViewPlayer(props: MediaViewPlayerProps) {
           startAt={firstStartTime.current}
           onProgress={updateProgress}
         />
-        {/* {props.selected.type === MWMediaType.SERIES &&
-        props.meta.meta.type === MWMediaType.SERIES ? (
-          <ShowControl
-            series={{
-              seasonId: props.selected.season,
-              episodeId: props.selected.episode,
-            }}
-            onSelect={(d) =>
-              d.seasonId &&
-              d.episodeId &&
-              props.onChangeStream?.(d.seasonId, d.episodeId)
-            }
-            seasonData={props.meta.meta.seasonData}
-            seasons={props.meta.meta.seasons}
-          />
-        ) : null} */}
+        <SeriesController
+          onSelect={(d) =>
+            d.seasonId &&
+            d.episodeId &&
+            props.onChangeStream?.(d.seasonId, d.episodeId)
+          }
+        />
       </VideoPlayer>
     </div>
   );
