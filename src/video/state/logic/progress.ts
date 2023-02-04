@@ -11,9 +11,9 @@ export type VideoProgressEvent = {
 
 function getProgressFromState(state: VideoPlayerState): VideoProgressEvent {
   return {
-    time: state.time,
-    duration: state.duration,
-    buffered: state.buffered,
+    time: state.progress.time,
+    duration: state.progress.duration,
+    buffered: state.progress.buffered,
   };
 }
 

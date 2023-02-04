@@ -12,10 +12,10 @@ export type VideoInterfaceEvent = {
 
 function getInterfaceFromState(state: VideoPlayerState): VideoInterfaceEvent {
   return {
-    popout: state.popout,
-    leftControlHovering: state.leftControlHovering,
-    isFocused: state.isFocused,
-    isFullscreen: state.isFullscreen,
+    popout: state.interface.popout,
+    leftControlHovering: state.interface.leftControlHovering,
+    isFocused: state.interface.isFocused,
+    isFullscreen: state.interface.isFullscreen,
   };
 }
 

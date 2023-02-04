@@ -4,29 +4,38 @@ import { VideoPlayerState } from "./types";
 
 function initPlayer(): VideoPlayerState {
   return {
-    isPlaying: false,
-    isPaused: true,
-    isFullscreen: false,
-    isFocused: false,
-    isLoading: false,
-    isSeeking: false,
-    isFirstLoading: true,
-    time: 0,
-    duration: 0,
+    interface: {
+      popout: null,
+      isFullscreen: false,
+      isFocused: false,
+      leftControlHovering: false,
+    },
+
+    mediaPlaying: {
+      isPlaying: false,
+      isPaused: true,
+      isLoading: false,
+      isSeeking: false,
+      isFirstLoading: true,
+      hasPlayedOnce: false,
+    },
+
+    progress: {
+      time: 0,
+      duration: 0,
+      buffered: 0,
+    },
+
+    meta: null,
+    source: null,
+    error: null,
+
     volume: 0,
-    buffered: 0,
     pausedWhenSeeking: false,
     hasInitialized: false,
-    leftControlHovering: false,
-    hasPlayedOnce: false,
-    error: null,
-    popout: null,
-    seasonData: {
-      isSeries: false,
-    },
     canAirplay: false,
+
     stateProvider: null,
-    source: null,
     wrapperElement: null,
   };
 }

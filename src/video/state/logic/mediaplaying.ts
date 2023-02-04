@@ -16,12 +16,12 @@ function getMediaPlayingFromState(
   state: VideoPlayerState
 ): VideoMediaPlayingEvent {
   return {
-    hasPlayedOnce: state.hasPlayedOnce,
-    isLoading: state.isLoading,
-    isPaused: state.isPaused,
-    isPlaying: state.isPlaying,
-    isSeeking: state.isSeeking,
-    isFirstLoading: state.isFirstLoading,
+    hasPlayedOnce: state.mediaPlaying.hasPlayedOnce,
+    isLoading: state.mediaPlaying.isLoading,
+    isPaused: state.mediaPlaying.isPaused,
+    isPlaying: state.mediaPlaying.isPlaying,
+    isSeeking: state.mediaPlaying.isSeeking,
+    isFirstLoading: state.mediaPlaying.isFirstLoading,
   };
 }
 

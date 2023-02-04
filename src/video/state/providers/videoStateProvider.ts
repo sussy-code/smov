@@ -7,6 +7,7 @@ import {
 } from "@/utils/detectFeatures";
 import { MWStreamType } from "@/backend/helpers/streams";
 import { updateInterface } from "@/video/state/logic/interface";
+import { updateSource } from "@/video/state/logic/source";
 import { getPlayerState } from "../cache";
 import { updateMediaPlaying } from "../logic/mediaplaying";
 import { VideoPlayerStateProvider } from "./providerTypes";
@@ -51,7 +52,7 @@ export function createVideoStateProvider(
 
       // update state
       player.currentTime = time;
-      state.time = time;
+      state.progress.time = time;
       updateProgress(descriptor, state);
     },
     setSeeking(active) {
@@ -63,12 +64,14 @@ export function createVideoStateProvider(
 
       // when seeking we pause the video
       // this variables isnt reactive, just used so the state can be remembered next unseek
-      state.pausedWhenSeeking = state.isPaused;
+      state.pausedWhenSeeking = state.mediaPlaying.isPaused;
       this.pause();
     },
     setSource(source) {
       if (!source) {
         player.src = "";
+        state.source = null;
+        updateSource(descriptor, state);
         return;
       }
 
@@ -105,52 +108,63 @@ export function createVideoStateProvider(
       } else if (source.type === MWStreamType.MP4) {
         player.src = source.source;
       }
+
+      // update state
+      state.source = {
+        quality: source.quality,
+        type: source.type,
+        url: source.source,
+      };
+      updateSource(descriptor, state);
     },
     providerStart() {
       // TODO stored volume
       const pause = () => {
-        state.isPaused = true;
-        state.isPlaying = false;
+        state.mediaPlaying.isPaused = true;
+        state.mediaPlaying.isPlaying = false;
         updateMediaPlaying(descriptor, state);
       };
       const playing = () => {
-        state.isPaused = false;
-        state.isPlaying = true;
-        state.isLoading = false;
-        state.hasPlayedOnce = true;
+        state.mediaPlaying.isPaused = false;
+        state.mediaPlaying.isPlaying = true;
+        state.mediaPlaying.isLoading = false;
+        state.mediaPlaying.hasPlayedOnce = true;
         updateMediaPlaying(descriptor, state);
       };
       const waiting = () => {
-        state.isLoading = true;
+        state.mediaPlaying.isLoading = true;
         updateMediaPlaying(descriptor, state);
       };
       const seeking = () => {
-        state.isSeeking = true;
+        state.mediaPlaying.isSeeking = true;
         updateMediaPlaying(descriptor, state);
       };
       const seeked = () => {
-        state.isSeeking = false;
+        state.mediaPlaying.isSeeking = false;
         updateMediaPlaying(descriptor, state);
       };
       const loadedmetadata = () => {
-        state.duration = player.duration;
+        state.progress.duration = player.duration;
         updateProgress(descriptor, state);
       };
       const timeupdate = () => {
-        state.duration = player.duration;
-        state.time = player.currentTime;
+        state.progress.duration = player.duration;
+        state.progress.time = player.currentTime;
         updateProgress(descriptor, state);
       };
       const progress = () => {
-        state.buffered = handleBuffered(player.currentTime, player.buffered);
+        state.progress.buffered = handleBuffered(
+          player.currentTime,
+          player.buffered
+        );
         updateProgress(descriptor, state);
       };
       const canplay = () => {
-        state.isFirstLoading = false;
+        state.mediaPlaying.isFirstLoading = false;
         updateMediaPlaying(descriptor, state);
       };
       const fullscreenchange = () => {
-        state.isFullscreen = !!document.fullscreenElement;
+        state.interface.isFullscreen = !!document.fullscreenElement;
         updateInterface(descriptor, state);
       };
 

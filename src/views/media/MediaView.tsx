@@ -1,22 +1,21 @@
 import { useHistory, useParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { useEffect, useRef, useState } from "react";
-import { DecoratedVideoPlayer } from "@/../__old/DecoratedVideoPlayer";
 import { MWStream } from "@/backend/helpers/streams";
 import { SelectedMediaData, useScrape } from "@/hooks/useScrape";
-import { VideoPlayerHeader } from "@/../__old/parts/VideoPlayerHeader";
 import { DetailedMeta, getMetaFromId } from "@/backend/metadata/getmeta";
 import { decodeJWId } from "@/backend/metadata/justwatch";
-import { SourceControl } from "@/../__old/controls/SourceControl";
 import { Loading } from "@/components/layout/Loading";
 import { useLoading } from "@/hooks/useLoading";
 import { MWMediaType } from "@/backend/metadata/types";
 import { useGoBack } from "@/hooks/useGoBack";
 import { IconPatch } from "@/components/buttons/IconPatch";
+import { VideoPlayer } from "@/video/components/VideoPlayer";
+import { MetaController } from "@/video/components/controllers/MetaController";
+import { SourceController } from "@/video/components/controllers/SourceController";
 import { Icons } from "@/components/Icon";
+import { VideoPlayerHeader } from "@/video/components/parts/VideoPlayerHeader";
 import { useWatchedItem } from "@/state/watched";
-import { ProgressListenerControl } from "@/../__old/controls/ProgressListenerControl";
-import { ShowControl } from "@/../__old/controls/ShowControl";
 import { MediaFetchErrorView } from "./MediaErrorView";
 import { MediaScrapeLog } from "./MediaScrapeLog";
 import { NotFoundMedia, NotFoundWrapper } from "../notfound/NotFoundView";
@@ -113,17 +112,18 @@ export function MediaViewPlayer(props: MediaViewPlayerProps) {
       <Helmet>
         <html data-full="true" />
       </Helmet>
-      <DecoratedVideoPlayer media={props.meta} onGoBack={goBack} autoPlay>
-        <SourceControl
+      <VideoPlayer onGoBack={goBack}>
+        <MetaController meta={props.meta.meta} />
+        <SourceController
           source={props.stream.streamUrl}
           type={props.stream.type}
           quality={props.stream.quality}
         />
-        <ProgressListenerControl
+        {/* <ProgressListenerControl
           startAt={firstStartTime.current}
           onProgress={updateProgress}
-        />
-        {props.selected.type === MWMediaType.SERIES &&
+        /> */}
+        {/* {props.selected.type === MWMediaType.SERIES &&
         props.meta.meta.type === MWMediaType.SERIES ? (
           <ShowControl
             series={{
@@ -138,8 +138,8 @@ export function MediaViewPlayer(props: MediaViewPlayerProps) {
             seasonData={props.meta.meta.seasonData}
             seasons={props.meta.meta.seasons}
           />
-        ) : null}
-      </DecoratedVideoPlayer>
+        ) : null} */}
+      </VideoPlayer>
     </div>
   );
 }

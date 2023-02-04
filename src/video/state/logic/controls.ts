@@ -1,4 +1,6 @@
+import { MWMediaMeta } from "@/backend/metadata/types";
 import { updateInterface } from "@/video/state/logic/interface";
+import { updateMeta } from "@/video/state/logic/meta";
 import { getPlayerState } from "../cache";
 import { VideoPlayerStateController } from "../providers/providerTypes";
 
@@ -7,6 +9,7 @@ type ControlMethods = {
   closePopout(): void;
   setLeftControlsHover(hovering: boolean): void;
   setFocused(focused: boolean): void;
+  setMeta(meta?: MWMediaMeta): void;
 };
 
 export function useControls(
@@ -40,20 +43,30 @@ export function useControls(
 
     // other controls
     setLeftControlsHover(hovering) {
-      state.leftControlHovering = hovering;
+      state.interface.leftControlHovering = hovering;
       updateInterface(descriptor, state);
     },
     openPopout(id: string) {
-      state.popout = id;
+      state.interface.popout = id;
       updateInterface(descriptor, state);
     },
     closePopout() {
-      state.popout = null;
+      state.interface.popout = null;
       updateInterface(descriptor, state);
     },
     setFocused(focused) {
-      state.isFocused = focused;
+      state.interface.isFocused = focused;
       updateInterface(descriptor, state);
+    },
+    setMeta(meta) {
+      if (!meta) {
+        state.meta = null;
+      } else {
+        state.meta = {
+          meta,
+        };
+      }
+      updateMeta(descriptor, state);
     },
   };
 }
