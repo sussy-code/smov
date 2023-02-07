@@ -99,8 +99,7 @@ export function createVideoStateProvider(
     },
     setSeeking(active) {
       state.mediaPlaying.isSeeking = active;
-      updateInterface(descriptor, state);
-      // TODO is seeking is bugged when buffering (recursive seeking as well)
+      updateMediaPlaying(descriptor, state);
 
       // if it was playing when starting to seek, play again
       if (!active) {

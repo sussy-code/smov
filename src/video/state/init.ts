@@ -25,6 +25,7 @@ function initPlayer(): VideoPlayerState {
       time: 0,
       duration: 0,
       buffered: 0,
+      draggingTime: 0,
     },
 
     meta: null,

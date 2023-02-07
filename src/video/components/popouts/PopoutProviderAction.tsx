@@ -4,7 +4,7 @@ import { EpisodeSelectionPopout } from "@/video/components/popouts/EpisodeSelect
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useControls } from "@/video/state/logic/controls";
 import { useInterface } from "@/video/state/logic/interface";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import "./Popouts.css";
 
@@ -20,8 +20,9 @@ function ShowPopout(props: { popoutId: string | null }) {
   return null;
 }
 
-// TODO improve anti offscreen math
+// TODO bug: first load ref is null
 export function PopoutProviderAction() {
+  const ref = useRef<HTMLDivElement>(null);
   const descriptor = useVideoPlayerDescriptor();
   const videoInterface = useInterface(descriptor);
   const controls = useControls(descriptor);
@@ -32,19 +33,23 @@ export function PopoutProviderAction() {
   }, [controls]);
 
   const distanceFromRight = useMemo(() => {
-    return videoInterface.popoutBounds
-      ? `${Math.max(
-          window.innerWidth -
-            videoInterface.popoutBounds.right -
-            videoInterface.popoutBounds.width / 2,
-          30
-        )}px`
-      : "30px";
+    if (!videoInterface.popoutBounds) return 30;
+
+    const buttonCenter =
+      videoInterface.popoutBounds.left + videoInterface.popoutBounds.width / 2;
+
+    return Math.max(
+      window.innerWidth -
+        buttonCenter -
+        (ref.current?.getBoundingClientRect().width ?? 0) / 2,
+      30
+    );
   }, [videoInterface.popoutBounds]);
+
   const distanceFromBottom = useMemo(() => {
     return videoInterface.popoutBounds
-      ? `${videoInterface.popoutBounds.height + 30}px`
-      : "30px";
+      ? videoInterface.popoutBounds.height + 30
+      : 30;
   }, [videoInterface.popoutBounds]);
 
   return (
@@ -56,10 +61,11 @@ export function PopoutProviderAction() {
       <div className="popout-wrapper pointer-events-auto absolute inset-0">
         <div onClick={handleClick} className="absolute inset-0" />
         <div
+          ref={ref}
           className="absolute z-10 grid h-[500px] w-80 grid-rows-[auto,minmax(0,1fr)] overflow-hidden rounded-lg bg-ash-200"
           style={{
-            right: distanceFromRight,
-            bottom: distanceFromBottom,
+            right: `${distanceFromRight}px`,
+            bottom: `${distanceFromBottom}px`,
           }}
         >
           <ShowPopout popoutId={videoInterface.popout} />

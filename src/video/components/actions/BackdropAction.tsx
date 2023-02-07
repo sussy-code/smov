@@ -9,6 +9,7 @@ interface BackdropActionProps {
   onBackdropChange?: (showing: boolean) => void;
 }
 
+// TODO tap on mobile should remove backdrop instead of pausing
 export function BackdropAction(props: BackdropActionProps) {
   const descriptor = useVideoPlayerDescriptor();
   const controls = useControls(descriptor);

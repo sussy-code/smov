@@ -3,6 +3,7 @@ import {
   makePercentageString,
   useProgressBar,
 } from "@/hooks/useProgressBar";
+import { getPlayerState } from "@/video/state/cache";
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useControls } from "@/video/state/logic/controls";
 import { useProgress } from "@/video/state/logic/progress";
@@ -34,9 +35,12 @@ export function ProgressAction() {
 
   useEffect(() => {
     if (dragging) {
-      controls.setDraggingTime(videoTime.duration * (dragPercentage / 100));
+      const state = getPlayerState(descriptor);
+      controls.setDraggingTime(
+        state.progress.duration * (dragPercentage / 100)
+      );
     }
-  }, [videoTime, dragging, dragPercentage, controls]);
+  }, [descriptor, dragging, dragPercentage, controls]);
 
   let watchProgress = makePercentageString(
     makePercentage((videoTime.time / videoTime.duration) * 100)
