@@ -40,7 +40,7 @@ export function TimeAction(props: Props) {
 
   const hasHours = durationExceedsHour(videoTime.duration);
   const time = formatSeconds(
-    mediaPlaying.isSeeking ? videoTime.draggingTime : videoTime.time,
+    mediaPlaying.isDragSeeking ? videoTime.draggingTime : videoTime.time,
     hasHours
   );
   const duration = formatSeconds(videoTime.duration, hasHours);

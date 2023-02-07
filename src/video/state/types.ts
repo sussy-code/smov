@@ -31,6 +31,7 @@ export type VideoPlayerState = {
     isPlaying: boolean;
     isPaused: boolean;
     isSeeking: boolean; // seeking with progress bar
+    isDragSeeking: boolean; // is seeking for our custom progress bar
     isLoading: boolean; // buffering or not
     isFirstLoading: boolean; // first buffering of the video, when set to false the video can start playing
     hasPlayedOnce: boolean; // has the video played at all?

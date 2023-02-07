@@ -9,6 +9,7 @@ function initPlayer(): VideoPlayerState {
       isFullscreen: false,
       isFocused: false,
       leftControlHovering: false,
+      popoutBounds: null,
     },
 
     mediaPlaying: {
@@ -16,6 +17,7 @@ function initPlayer(): VideoPlayerState {
       isPaused: true,
       isLoading: false,
       isSeeking: false,
+      isDragSeeking: false,
       isFirstLoading: true,
       hasPlayedOnce: false,
       volume: 0,

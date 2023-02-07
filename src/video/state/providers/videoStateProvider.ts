@@ -99,6 +99,7 @@ export function createVideoStateProvider(
     },
     setSeeking(active) {
       state.mediaPlaying.isSeeking = active;
+      state.mediaPlaying.isDragSeeking = active;
       updateMediaPlaying(descriptor, state);
 
       // if it was playing when starting to seek, play again

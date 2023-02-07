@@ -8,6 +8,7 @@ export type VideoMediaPlayingEvent = {
   isPaused: boolean;
   isLoading: boolean;
   isSeeking: boolean;
+  isDragSeeking: boolean;
   hasPlayedOnce: boolean;
   isFirstLoading: boolean;
   volume: number;
@@ -22,6 +23,7 @@ function getMediaPlayingFromState(
     isPaused: state.mediaPlaying.isPaused,
     isPlaying: state.mediaPlaying.isPlaying,
     isSeeking: state.mediaPlaying.isSeeking,
+    isDragSeeking: state.mediaPlaying.isDragSeeking,
     isFirstLoading: state.mediaPlaying.isFirstLoading,
     volume: state.mediaPlaying.volume,
   };
