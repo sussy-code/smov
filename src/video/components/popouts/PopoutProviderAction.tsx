@@ -1,3 +1,4 @@
+import { Transition } from "@/components/Transition";
 import { EpisodeSelectionPopout } from "@/video/components/popouts/EpisodeSelectionPopout";
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useControls } from "@/video/state/logic/controls";
@@ -6,7 +7,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 
 import "./Popouts.css";
 
-function ShowPopout(props: { popoutId: string }) {
+function ShowPopout(props: { popoutId: string | null }) {
   // only updates popout id when a new one is set, so transitions look good
   const [popoutId, setPopoutId] = useState<string | null>(props.popoutId);
   useEffect(() => {
@@ -20,7 +21,6 @@ function ShowPopout(props: { popoutId: string }) {
 
 // TODO use new design for popouts
 // TODO improve anti offscreen math
-// TODO in and out transition
 // TODO attach router history to popout state, so you can use back button to remove popout
 export function PopoutProviderAction() {
   const descriptor = useVideoPlayerDescriptor();
@@ -51,20 +51,20 @@ export function PopoutProviderAction() {
       : "30px";
   }, [videoInterface]);
 
-  if (!videoInterface.popout) return null;
-
   return (
-    <div className="popout-wrapper pointer-events-auto absolute inset-0">
-      <div onClick={handleClick} className="absolute inset-0" />
-      <div
-        className="grid-template-rows-[auto,minmax(0px,1fr)] absolute z-10 grid h-[500px] w-72 rounded-lg bg-denim-300"
-        style={{
-          right: distanceFromRight,
-          bottom: distanceFromBottom,
-        }}
-      >
-        <ShowPopout popoutId={videoInterface.popout ?? ""} />
+    <Transition show={!!videoInterface.popout} animation="fade">
+      <div className="popout-wrapper pointer-events-auto absolute inset-0">
+        <div onClick={handleClick} className="absolute inset-0" />
+        <div
+          className="grid-template-rows-[auto,minmax(0px,1fr)] absolute z-10 grid h-[500px] w-72 rounded-lg bg-denim-300"
+          style={{
+            right: distanceFromRight,
+            bottom: distanceFromBottom,
+          }}
+        >
+          <ShowPopout popoutId={videoInterface.popout} />
+        </div>
       </div>
-    </div>
+    </Transition>
   );
 }

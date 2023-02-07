@@ -1,12 +1,14 @@
-import { ReactNode, useRef } from "react";
-import { CSSTransition } from "react-transition-group";
-import { CSSTransitionClassNames } from "react-transition-group/CSSTransition";
+import { ReactNode } from "react";
+import {
+  Transition as HeadlessTransition,
+  TransitionClasses,
+} from "@headlessui/react";
 
-type TransitionAnimations = "slide-down" | "slide-up" | "fade" | "fade-inverse";
+type TransitionAnimations = "slide-down" | "slide-up" | "fade";
 
 interface Props {
   show: boolean;
-  durationClass?: string;
+  durationClass?: "duration-200" | string; // default is specified so tailwind doesnt remove the class in prod builds
   animation: TransitionAnimations;
   className?: string;
   children?: ReactNode;
@@ -15,44 +17,37 @@ interface Props {
 function getClasses(
   animation: TransitionAnimations,
   duration: number
-): CSSTransitionClassNames {
+): TransitionClasses {
   if (animation === "slide-down") {
     return {
-      exit: `transition-[transform,opacity] translate-y-0 duration-${duration} opacity-100`,
-      exitActive: "!-translate-y-4 !opacity-0",
-      exitDone: "hidden",
-      enter: `transition-[transform,opacity] -translate-y-4 duration-${duration} opacity-0`,
-      enterActive: "!translate-y-0 !opacity-100",
+      leave: `transition-[transform,opacity] duration-${duration}`,
+      leaveFrom: "opacity-100 translate-y-0",
+      leaveTo: "-translate-y-4 opacity-0",
+      enter: `transition-[transform,opacity] duration-${duration}`,
+      enterFrom: "opacity-0 -translate-y-4",
+      enterTo: "translate-y-0 opacity-100",
     };
   }
 
   if (animation === "slide-up") {
     return {
-      exit: `transition-[transform,opacity] translate-y-0 duration-${duration} opacity-100`,
-      exitActive: "!translate-y-4 !opacity-0",
-      exitDone: "hidden",
-      enter: `transition-[transform,opacity] translate-y-4 duration-${duration} opacity-0`,
-      enterActive: "!translate-y-0 !opacity-100",
+      leave: `transition-[transform,opacity] duration-${duration}`,
+      leaveFrom: "opacity-100 translate-y-0",
+      leaveTo: "translate-y-4 opacity-0",
+      enter: `transition-[transform,opacity] duration-${duration}`,
+      enterFrom: "opacity-0 translate-y-4",
+      enterTo: "translate-y-0 opacity-100",
     };
   }
 
   if (animation === "fade") {
     return {
-      exit: `transition-[transform,opacity] duration-${duration} opacity-100`,
-      exitActive: "!opacity-0",
-      exitDone: "hidden",
-      enter: `transition-[transform,opacity] duration-${duration} opacity-0`,
-      enterActive: "!opacity-100",
-    };
-  }
-
-  if (animation === "fade-inverse") {
-    return {
-      enter: `transition-[transform,opacity] duration-${duration} opacity-100`,
-      enterActive: "!opacity-0",
-      exit: `transition-[transform,opacity] duration-${duration} opacity-0`,
-      exitActive: "!opacity-100",
-      enterDone: "hidden",
+      leave: `transition-[transform,opacity] duration-${duration}`,
+      leaveFrom: "opacity-100",
+      leaveTo: "opacity-0",
+      enter: `transition-[transform,opacity] duration-${duration}`,
+      enterFrom: "opacity-0",
+      enterTo: "opacity-100",
     };
   }
 
@@ -60,25 +55,16 @@ function getClasses(
 }
 
 export function Transition(props: Props) {
-  const ref = useRef<HTMLDivElement>(null);
   const duration = props.durationClass
     ? parseInt(props.durationClass.split("-")[1], 10)
     : 200;
   const classes = getClasses(props.animation, duration);
 
   return (
-    <CSSTransition
-      nodeRef={ref}
-      in={props.show}
-      timeout={duration}
-      classNames={classes}
-    >
-      <div
-        ref={ref}
-        className={[props.className ?? "", classes.enter ?? ""].join(" ")}
-      >
+    <div className={props.className}>
+      <HeadlessTransition show={props.show} {...classes}>
         {props.children}
-      </div>
-    </CSSTransition>
+      </HeadlessTransition>
+    </div>
   );
 }
