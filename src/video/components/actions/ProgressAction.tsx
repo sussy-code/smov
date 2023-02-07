@@ -15,6 +15,11 @@ export function ProgressAction() {
   const videoTime = useProgress(descriptor);
   const ref = useRef<HTMLDivElement>(null);
   const dragRef = useRef<boolean>(false);
+  const controlRef = useRef<typeof controls>(controls);
+
+  useEffect(() => {
+    controlRef.current = controls;
+  }, [controls]);
 
   const commitTime = useCallback(
     (percentage) => {
@@ -36,11 +41,11 @@ export function ProgressAction() {
   useEffect(() => {
     if (dragging) {
       const state = getPlayerState(descriptor);
-      controls.setDraggingTime(
+      controlRef.current.setDraggingTime(
         state.progress.duration * (dragPercentage / 100)
       );
     }
-  }, [descriptor, dragging, dragPercentage, controls]);
+  }, [descriptor, dragging, dragPercentage]);
 
   let watchProgress = makePercentageString(
     makePercentage((videoTime.time / videoTime.duration) * 100)
