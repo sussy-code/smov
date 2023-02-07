@@ -98,6 +98,9 @@ export function createVideoStateProvider(
       updateProgress(descriptor, state);
     },
     setSeeking(active) {
+      state.mediaPlaying.isSeeking = active;
+      updateInterface(descriptor, state);
+
       // if it was playing when starting to seek, play again
       if (!active) {
         if (!state.pausedWhenSeeking) this.play();

@@ -1,4 +1,5 @@
 import { Transition } from "@/components/Transition";
+import { useSyncPopouts } from "@/video/components/hooks/useSyncPopouts";
 import { EpisodeSelectionPopout } from "@/video/components/popouts/EpisodeSelectionPopout";
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useControls } from "@/video/state/logic/controls";
@@ -19,13 +20,12 @@ function ShowPopout(props: { popoutId: string | null }) {
   return null;
 }
 
-// TODO use new design for popouts
 // TODO improve anti offscreen math
-// TODO attach router history to popout state, so you can use back button to remove popout
 export function PopoutProviderAction() {
   const descriptor = useVideoPlayerDescriptor();
   const videoInterface = useInterface(descriptor);
   const controls = useControls(descriptor);
+  useSyncPopouts(descriptor);
 
   const handleClick = useCallback(() => {
     controls.closePopout();
@@ -40,12 +40,12 @@ export function PopoutProviderAction() {
           30
         )}px`
       : "30px";
-  }, [videoInterface]);
+  }, [videoInterface.popoutBounds]);
   const distanceFromBottom = useMemo(() => {
     return videoInterface.popoutBounds
       ? `${videoInterface.popoutBounds.height + 30}px`
       : "30px";
-  }, [videoInterface]);
+  }, [videoInterface.popoutBounds]);
 
   return (
     <Transition
@@ -56,7 +56,7 @@ export function PopoutProviderAction() {
       <div className="popout-wrapper pointer-events-auto absolute inset-0">
         <div onClick={handleClick} className="absolute inset-0" />
         <div
-          className="grid-template-rows-[auto,minmax(0px,1fr)] absolute z-10 grid h-[500px] w-72 rounded-lg bg-denim-300"
+          className="absolute z-10 grid h-[500px] w-80 grid-rows-[auto,minmax(0,1fr)] overflow-hidden rounded-lg bg-ash-200"
           style={{
             right: distanceFromRight,
             bottom: distanceFromBottom,

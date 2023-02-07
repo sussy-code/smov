@@ -26,12 +26,17 @@ export function ProgressAction() {
     commitTime
   );
 
-  // TODO make dragging update timer
   useEffect(() => {
     if (dragRef.current === dragging) return;
     dragRef.current = dragging;
     controls.setSeeking(dragging);
   }, [dragRef, dragging, controls]);
+
+  useEffect(() => {
+    if (dragging) {
+      controls.setDraggingTime(videoTime.duration * (dragPercentage / 100));
+    }
+  }, [videoTime, dragging, dragPercentage, controls]);
 
   let watchProgress = makePercentageString(
     makePercentage((videoTime.time / videoTime.duration) * 100)

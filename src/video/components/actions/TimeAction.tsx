@@ -1,4 +1,5 @@
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
+import { useMediaPlaying } from "@/video/state/logic/mediaplaying";
 import { useProgress } from "@/video/state/logic/progress";
 
 function durationExceedsHour(secs: number): boolean {
@@ -35,9 +36,13 @@ interface Props {
 export function TimeAction(props: Props) {
   const descriptor = useVideoPlayerDescriptor();
   const videoTime = useProgress(descriptor);
+  const mediaPlaying = useMediaPlaying(descriptor);
 
   const hasHours = durationExceedsHour(videoTime.duration);
-  const time = formatSeconds(videoTime.time, hasHours);
+  const time = formatSeconds(
+    mediaPlaying.isSeeking ? videoTime.draggingTime : videoTime.time,
+    hasHours
+  );
   const duration = formatSeconds(videoTime.duration, hasHours);
 
   return (

@@ -10,14 +10,66 @@ import { IconPatch } from "@/components/buttons/IconPatch";
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useMeta } from "@/video/state/logic/meta";
 import { useControls } from "@/video/state/logic/controls";
+import { useWatchedContext } from "@/state/watched";
+import { ProgressRing } from "@/components/layout/ProgressRing";
 
 function PopupSection(props: {
   children?: React.ReactNode;
   className?: string;
 }) {
   return (
-    <div className={["p-4", props.className || ""].join(" ")}>
+    <div className={["p-5", props.className || ""].join(" ")}>
       {props.children}
+    </div>
+  );
+}
+
+interface PopoutListEntryTypes {
+  active?: boolean;
+  children: React.ReactNode;
+  onClick?: () => void;
+  isOnDarkBackground?: boolean;
+  percentageCompleted?: number;
+}
+
+function PopoutListEntry(props: PopoutListEntryTypes) {
+  const bg = props.isOnDarkBackground ? "bg-ash-200" : "bg-ash-400";
+  const hover = props.isOnDarkBackground
+    ? "hover:bg-ash-200"
+    : "hover:bg-ash-400";
+
+  return (
+    <div
+      className={[
+        "group -mx-2 flex items-center justify-between space-x-1 rounded p-2 font-semibold transition-[background-color,color] duration-150",
+        hover,
+        props.active
+          ? `${bg} text-white outline-denim-700`
+          : "text-denim-700 hover:text-white",
+      ].join(" ")}
+      onClick={props.onClick}
+    >
+      {props.active && (
+        <div className="absolute left-0 h-8 w-0.5 bg-bink-500" />
+      )}
+      <span className="truncate">{props.children}</span>
+      <div className="relative h-4 w-4">
+        <Icon
+          className="absolute inset-0 translate-x-2 text-white opacity-0 transition-[opacity,transform] duration-100 group-hover:translate-x-0 group-hover:opacity-100"
+          icon={Icons.CHEVRON_RIGHT}
+        />
+        {props.percentageCompleted ? (
+          <ProgressRing
+            className="absolute inset-0 text-bink-600 opacity-100 transition-[opacity] group-hover:opacity-0"
+            backingRingClassname="stroke-ash-500"
+            percentage={
+              props.percentageCompleted > 90 ? 100 : props.percentageCompleted
+            }
+          />
+        ) : (
+          ""
+        )}
+      </div>
     </div>
   );
 }
@@ -90,80 +142,113 @@ export function EpisodeSelectionPopout() {
     setCurrentVisibleSeason({ seasonId: id });
   };
 
-  if (isPickingSeason)
-    return (
-      <>
-        <PopupSection className="flex items-center space-x-3 border-b border-denim-500 font-bold text-white">
-          Pick a season
-        </PopupSection>
-        <PopupSection className="overflow-y-auto">
-          <div className="space-y-1">
-            {currentSeasonInfo
-              ? meta?.seasons?.map?.((season) => (
-                  <div
-                    className="text-denim-800 -mx-2 flex items-center space-x-1 rounded p-2 text-white hover:bg-denim-600"
-                    key={season.id}
-                    onClick={() => setSeason(season.id)}
-                  >
-                    {season.title}
-                  </div>
-                ))
-              : "No season"}
-          </div>
-        </PopupSection>
-      </>
-    );
+  const { watched } = useWatchedContext();
+
+  const titlePositionClass = useMemo(() => {
+    const offset = isPickingSeason ? "left-0" : "left-10";
+    return [
+      "absolute w-full transition-[left,opacity] duration-200",
+      offset,
+    ].join(" ");
+  }, [isPickingSeason]);
 
   return (
     <>
-      <PopupSection className="flex items-center space-x-3 border-b border-denim-500 font-bold text-white">
-        <button
-          className="-m-1.5 rounded p-1.5 hover:bg-denim-600"
-          onClick={toggleIsPickingSeason}
-          type="button"
+      <PopupSection className="bg-ash-100 font-bold text-white">
+        <div className="relative flex items-center">
+          <button
+            className={[
+              "-m-1.5 rounded-lg p-1.5 transition-opacity duration-100 hover:bg-ash-200",
+              isPickingSeason ? "pointer-events-none opacity-0" : "opacity-1",
+            ].join(" ")}
+            onClick={toggleIsPickingSeason}
+            type="button"
+          >
+            <Icon icon={Icons.CHEVRON_LEFT} />
+          </button>
+          <span
+            className={[
+              titlePositionClass,
+              !isPickingSeason ? "opacity-1" : "opacity-0",
+            ].join(" ")}
+          >
+            {currentSeasonInfo?.title || ""}
+          </span>
+          <span
+            className={[
+              titlePositionClass,
+              isPickingSeason ? "opacity-1" : "opacity-0",
+            ].join(" ")}
+          >
+            Seasons
+          </span>
+        </div>
+      </PopupSection>
+      <div className="relative grid h-full grid-rows-[minmax(1px,1fr)]">
+        <PopupSection
+          className={[
+            "absolute inset-0 z-30 overflow-y-auto border-ash-400 bg-ash-100 transition-[max-height,padding] duration-200",
+            isPickingSeason
+              ? "max-h-full border-t"
+              : "max-h-0 overflow-hidden py-0",
+          ].join(" ")}
         >
-          <Icon icon={Icons.CHEVRON_LEFT} />
-        </button>
-        <span>{currentSeasonInfo?.title || ""}</span>
-      </PopupSection>
-      <PopupSection className="h-full overflow-y-auto">
-        {loading ? (
-          <div className="flex h-full w-full items-center justify-center">
-            <Loading />
-          </div>
-        ) : error ? (
-          <div className="flex h-full w-full items-center justify-center">
-            <div className="flex flex-col flex-wrap items-center text-slate-400">
-              <IconPatch
-                icon={Icons.EYE_SLASH}
-                className="text-xl text-bink-600"
-              />
-              <p className="mt-6 w-full text-center">
-                Something went wrong loading the episodes for{" "}
-                {currentSeasonInfo?.title?.toLowerCase()}
-              </p>
+          {currentSeasonInfo
+            ? meta?.seasons?.map?.((season) => (
+                <PopoutListEntry
+                  key={season.id}
+                  active={meta?.episode?.seasonId === season.id}
+                  onClick={() => setSeason(season.id)}
+                  isOnDarkBackground
+                >
+                  {season.title}
+                </PopoutListEntry>
+              ))
+            : "No season"}
+        </PopupSection>
+        <PopupSection className="relative h-full overflow-y-auto">
+          {loading ? (
+            <div className="flex h-full w-full items-center justify-center">
+              <Loading />
             </div>
-          </div>
-        ) : (
-          <div className="space-y-1">
-            {currentSeasonEpisodes && currentSeasonInfo
-              ? currentSeasonEpisodes.map((e) => (
-                  <div
-                    className={[
-                      "text-denim-800 -mx-2 flex items-center space-x-1 rounded p-2 text-white hover:bg-denim-600",
-                      meta?.episode?.episodeId === e.id &&
-                        "outline outline-2 outline-denim-700",
-                    ].join(" ")}
-                    onClick={() => setCurrent(currentSeasonInfo.id, e.id)}
-                    key={e.id}
-                  >
-                    {e.number}. {e.title}
-                  </div>
-                ))
-              : "No episodes"}
-          </div>
-        )}
-      </PopupSection>
+          ) : error ? (
+            <div className="flex h-full w-full items-center justify-center">
+              <div className="flex flex-col flex-wrap items-center text-slate-400">
+                <IconPatch
+                  icon={Icons.EYE_SLASH}
+                  className="text-xl text-bink-600"
+                />
+                <p className="mt-6 w-full text-center">
+                  Something went wrong loading the episodes for{" "}
+                  {currentSeasonInfo?.title?.toLowerCase()}
+                </p>
+              </div>
+            </div>
+          ) : (
+            <div className="space-y-1">
+              {currentSeasonEpisodes && currentSeasonInfo
+                ? currentSeasonEpisodes.map((e) => (
+                    <PopoutListEntry
+                      key={e.id}
+                      active={e.id === meta?.episode?.episodeId}
+                      onClick={() => setCurrent(currentSeasonInfo.id, e.id)}
+                      percentageCompleted={
+                        watched.items.find(
+                          (item) =>
+                            item.item?.series?.seasonId ===
+                              currentSeasonInfo.id &&
+                            item.item?.series?.episodeId === e.id
+                        )?.percentage
+                      }
+                    >
+                      E{e.number} - {e.title}
+                    </PopoutListEntry>
+                  ))
+                : "No episodes"}
+            </div>
+          )}
+        </PopupSection>
+      </div>
     </>
   );
 }

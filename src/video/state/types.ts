@@ -42,6 +42,7 @@ export type VideoPlayerState = {
     time: number;
     duration: number;
     buffered: number;
+    draggingTime: number;
   };
 
   // meta data of video

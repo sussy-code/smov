@@ -1,4 +1,5 @@
 import { Icon, Icons } from "@/components/Icon";
+import { ProgressRing } from "@/components/layout/ProgressRing";
 import { ScrapeEventLog } from "@/hooks/useScrape";
 
 interface MediaScrapeLogProps {
@@ -18,27 +19,11 @@ function MediaScrapePill({ event }: MediaScrapePillProps) {
     <div className="flex h-9 w-[220px] items-center rounded-full bg-slate-800 p-3 text-denim-700">
       <div className="mr-2 flex w-[18px] items-center justify-center">
         {!event.errored ? (
-          <svg className="h-[18px] w-[18px] -rotate-90" viewBox="0 0 100 100">
-            <circle
-              className="fill-transparent stroke-denim-700 stroke-[15] opacity-25"
-              r="40"
-              cx="50"
-              cy="50"
-            />
-            <circle
-              className="fill-transparent stroke-bink-700 stroke-[15] transition-[stroke-dashoffset] duration-150"
-              r="40"
-              cx="50"
-              cy="50"
-              style={{
-                strokeDasharray: `${2 * Math.PI * 40} ${2 * Math.PI * 40}`,
-                strokeDashoffset: `${
-                  2 * Math.PI * 40 -
-                  (event.percentage / 100) * (2 * Math.PI * 40)
-                }`,
-              }}
-            />
-          </svg>
+          <ProgressRing
+            className="h-[18px] w-[18px] text-bink-700"
+            percentage={event.percentage}
+            radius={40}
+          />
         ) : (
           <Icon icon={Icons.X} className="text-[0.85em] text-rose-400" />
         )}

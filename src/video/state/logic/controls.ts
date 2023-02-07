@@ -1,5 +1,6 @@
 import { updateInterface } from "@/video/state/logic/interface";
 import { updateMeta } from "@/video/state/logic/meta";
+import { updateProgress } from "@/video/state/logic/progress";
 import { VideoPlayerMeta } from "@/video/state/types";
 import { getPlayerState } from "../cache";
 import { VideoPlayerStateController } from "../providers/providerTypes";
@@ -11,6 +12,7 @@ export type ControlMethods = {
   setFocused(focused: boolean): void;
   setMeta(data?: VideoPlayerMeta): void;
   setCurrentEpisode(sId: string, eId: string): void;
+  setDraggingTime(num: number): void;
 };
 
 export function useControls(
@@ -52,6 +54,13 @@ export function useControls(
     setLeftControlsHover(hovering) {
       state.interface.leftControlHovering = hovering;
       updateInterface(descriptor, state);
+    },
+    setDraggingTime(num) {
+      state.progress.draggingTime = Math.max(
+        0,
+        Math.min(state.progress.duration, num)
+      );
+      updateProgress(descriptor, state);
     },
     openPopout(id: string) {
       state.interface.popout = id;
