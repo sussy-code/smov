@@ -12,7 +12,7 @@ export interface NavigationProps {
 
 export function Navigation(props: NavigationProps) {
   return (
-    <div className="fixed left-0 right-0 top-0 z-10 flex min-h-[88px] items-center justify-between py-5 px-7">
+    <div className="fixed left-0 right-0 top-0 z-10 mt-[env(safea-area-inset-top)] flex min-h-[88px] items-center justify-between py-5 px-7">
       <div
         className={`${
           props.bg ? "opacity-100" : "opacity-0"
