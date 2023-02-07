@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { Fragment, ReactNode } from "react";
 import {
   Transition as HeadlessTransition,
   TransitionClasses,
@@ -16,15 +16,14 @@ interface Props {
 
 function getClasses(
   animation: TransitionAnimations,
-  extraClasses: string,
   duration: string
 ): TransitionClasses {
   if (animation === "slide-down") {
     return {
-      leave: `transition-[transform,opacity] ${duration} ${extraClasses}`,
+      leave: `transition-[transform,opacity] ${duration}`,
       leaveFrom: "opacity-100 translate-y-0",
       leaveTo: "-translate-y-4 opacity-0",
-      enter: `transition-[transform,opacity] ${duration} ${extraClasses}`,
+      enter: `transition-[transform,opacity] ${duration}`,
       enterFrom: "opacity-0 -translate-y-4",
       enterTo: "translate-y-0 opacity-100",
     };
@@ -32,10 +31,10 @@ function getClasses(
 
   if (animation === "slide-up") {
     return {
-      leave: `transition-[transform,opacity] ${duration} ${extraClasses}`,
+      leave: `transition-[transform,opacity] ${duration}`,
       leaveFrom: "opacity-100 translate-y-0",
       leaveTo: "translate-y-4 opacity-0",
-      enter: `transition-[transform,opacity] ${duration} ${extraClasses}`,
+      enter: `transition-[transform,opacity] ${duration}`,
       enterFrom: "opacity-0 translate-y-4",
       enterTo: "translate-y-0 opacity-100",
     };
@@ -43,10 +42,10 @@ function getClasses(
 
   if (animation === "fade") {
     return {
-      leave: `transition-[transform,opacity] ${duration} ${extraClasses}`,
+      leave: `transition-[transform,opacity] ${duration}`,
       leaveFrom: "opacity-100",
       leaveTo: "opacity-0",
-      enter: `transition-[transform,opacity] ${duration} ${extraClasses}`,
+      enter: `transition-[transform,opacity] ${duration}`,
       enterFrom: "opacity-0",
       enterTo: "opacity-100",
     };
@@ -57,15 +56,11 @@ function getClasses(
 
 export function Transition(props: Props) {
   const duration = props.durationClass ?? "duration-200";
-  const classes = getClasses(props.animation, props.className ?? "", duration);
+  const classes = getClasses(props.animation, duration);
 
   return (
-    <HeadlessTransition
-      show={props.show}
-      {...classes}
-      entered={props.className}
-    >
-      {props.children}
+    <HeadlessTransition show={props.show} as={Fragment} {...classes}>
+      <div className={props.className}>{props.children}</div>
     </HeadlessTransition>
   );
 }
