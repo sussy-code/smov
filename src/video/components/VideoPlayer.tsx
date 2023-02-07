@@ -25,6 +25,7 @@ import {
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useControls } from "@/video/state/logic/controls";
 import { ReactNode, useCallback, useState } from "react";
+import { PopoutProviderAction } from "@/video/components/popouts/PopoutProviderAction";
 
 type Props = VideoPlayerBaseProps;
 
@@ -153,6 +154,7 @@ export function VideoPlayer(props: Props) {
                   )}
                 </div>
               </Transition>
+              {show ? <PopoutProviderAction /> : null}
             </BackdropAction>
             {props.children}
           </VideoPlayerError>

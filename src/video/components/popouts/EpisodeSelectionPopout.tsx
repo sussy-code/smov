@@ -9,15 +9,7 @@ import { Loading } from "@/components/layout/Loading";
 import { IconPatch } from "@/components/buttons/IconPatch";
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useMeta } from "@/video/state/logic/meta";
-import { VideoPlayerIconButton } from "@/video/components/parts/VideoPlayerIconButton";
 import { useControls } from "@/video/state/logic/controls";
-import { VideoPopout } from "@/video/components/parts/VideoPopout";
-import { PopoutAnchor } from "@/video/components/popouts/PopoutAnchor";
-import { useInterface } from "@/video/state/logic/interface";
-
-interface Props {
-  className?: string;
-}
 
 function PopupSection(props: {
   children?: React.ReactNode;
@@ -30,7 +22,7 @@ function PopupSection(props: {
   );
 }
 
-function PopupEpisodeSelect() {
+export function EpisodeSelectionPopout() {
   const params = useParams<{
     media: string;
   }>();
@@ -134,7 +126,7 @@ function PopupEpisodeSelect() {
         </button>
         <span>{currentSeasonInfo?.title || ""}</span>
       </PopupSection>
-      <PopupSection className="overflow-y-auto">
+      <PopupSection className="h-full overflow-y-auto">
         {loading ? (
           <div className="flex h-full w-full items-center justify-center">
             <Loading />
@@ -173,36 +165,5 @@ function PopupEpisodeSelect() {
         )}
       </PopupSection>
     </>
-  );
-}
-
-export function SeriesSelectionAction(props: Props) {
-  const descriptor = useVideoPlayerDescriptor();
-  const meta = useMeta(descriptor);
-  const videoInterface = useInterface(descriptor);
-  const controls = useControls(descriptor);
-
-  if (meta?.meta.type !== MWMediaType.SERIES) return null;
-
-  return (
-    <div className={props.className}>
-      <div className="relative">
-        <PopoutAnchor for="episodes">
-          <VideoPlayerIconButton
-            active={videoInterface.popout === "episodes"}
-            icon={Icons.EPISODES}
-            text="Episodes"
-            wide
-            onClick={() => controls.openPopout("episodes")}
-          />
-        </PopoutAnchor>
-        {/* <VideoPopout
-          id="episodes"
-          className="grid grid-rows-[auto,minmax(0,1fr)]"
-        >
-          <PopupEpisodeSelect />
-        </VideoPopout> */}
-      </div>
-    </div>
   );
 }

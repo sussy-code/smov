@@ -2,11 +2,11 @@ import { ReactNode, useRef } from "react";
 import { CSSTransition } from "react-transition-group";
 import { CSSTransitionClassNames } from "react-transition-group/CSSTransition";
 
-type TransitionAnimations = "slide-down" | "slide-up" | "fade";
+type TransitionAnimations = "slide-down" | "slide-up" | "fade" | "fade-inverse";
 
 interface Props {
   show: boolean;
-  duration?: number;
+  durationClass?: string;
   animation: TransitionAnimations;
   className?: string;
   children?: ReactNode;
@@ -46,21 +46,37 @@ function getClasses(
     };
   }
 
+  if (animation === "fade-inverse") {
+    return {
+      enter: `transition-[transform,opacity] duration-${duration} opacity-100`,
+      enterActive: "!opacity-0",
+      exit: `transition-[transform,opacity] duration-${duration} opacity-0`,
+      exitActive: "!opacity-100",
+      enterDone: "hidden",
+    };
+  }
+
   return {};
 }
 
 export function Transition(props: Props) {
   const ref = useRef<HTMLDivElement>(null);
-  const duration = props.duration ?? 200;
+  const duration = props.durationClass
+    ? parseInt(props.durationClass.split("-")[1], 10)
+    : 200;
+  const classes = getClasses(props.animation, duration);
 
   return (
     <CSSTransition
       nodeRef={ref}
       in={props.show}
-      timeout={200}
-      classNames={getClasses(props.animation, duration)}
+      timeout={duration}
+      classNames={classes}
     >
-      <div ref={ref} className={props.className}>
+      <div
+        ref={ref}
+        className={[props.className ?? "", classes.enter ?? ""].join(" ")}
+      >
         {props.children}
       </div>
     </CSSTransition>

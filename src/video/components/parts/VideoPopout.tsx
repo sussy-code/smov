@@ -9,8 +9,6 @@ interface Props {
   className?: string;
 }
 
-// TODO store popout in router history so you can press back to yeet
-// TODO add transition
 export function VideoPopout(props: Props) {
   const descriptor = useVideoPlayerDescriptor();
   const videoInterface = useInterface(descriptor);

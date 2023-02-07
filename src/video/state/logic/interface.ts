@@ -8,6 +8,7 @@ export type VideoInterfaceEvent = {
   leftControlHovering: boolean;
   isFocused: boolean;
   isFullscreen: boolean;
+  popoutBounds: null | DOMRect;
 };
 
 function getInterfaceFromState(state: VideoPlayerState): VideoInterfaceEvent {
@@ -16,6 +17,7 @@ function getInterfaceFromState(state: VideoPlayerState): VideoInterfaceEvent {
     leftControlHovering: state.interface.leftControlHovering,
     isFocused: state.interface.isFocused,
     isFullscreen: state.interface.isFullscreen,
+    popoutBounds: state.interface.popoutBounds,
   };
 }
 

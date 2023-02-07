@@ -1,0 +1,15 @@
+.popout-wrapper ::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.popout-wrapper ::-webkit-scrollbar-thumb {
+  background-color: theme("colors.denim-500");
+  border: 5px solid transparent;
+  border-left: 0;
+  background-clip: content-box;
+}
+
+.popout-wrapper ::-webkit-scrollbar {
+  /* For some reason the styles don't get applied without the width */
+  width: 13px;
+}
