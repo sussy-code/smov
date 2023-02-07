@@ -8,7 +8,7 @@ type TransitionAnimations = "slide-down" | "slide-up" | "fade";
 
 interface Props {
   show: boolean;
-  durationClass?: "duration-200" | string; // default is specified so tailwind doesnt remove the class in prod builds
+  durationClass?: string;
   animation: TransitionAnimations;
   className?: string;
   children?: ReactNode;
@@ -16,14 +16,15 @@ interface Props {
 
 function getClasses(
   animation: TransitionAnimations,
-  duration: number
+  extraClasses: string,
+  duration: string
 ): TransitionClasses {
   if (animation === "slide-down") {
     return {
-      leave: `transition-[transform,opacity] duration-${duration}`,
+      leave: `transition-[transform,opacity] ${duration} ${extraClasses}`,
       leaveFrom: "opacity-100 translate-y-0",
       leaveTo: "-translate-y-4 opacity-0",
-      enter: `transition-[transform,opacity] duration-${duration}`,
+      enter: `transition-[transform,opacity] ${duration} ${extraClasses}`,
       enterFrom: "opacity-0 -translate-y-4",
       enterTo: "translate-y-0 opacity-100",
     };
@@ -31,10 +32,10 @@ function getClasses(
 
   if (animation === "slide-up") {
     return {
-      leave: `transition-[transform,opacity] duration-${duration}`,
+      leave: `transition-[transform,opacity] ${duration} ${extraClasses}`,
       leaveFrom: "opacity-100 translate-y-0",
       leaveTo: "translate-y-4 opacity-0",
-      enter: `transition-[transform,opacity] duration-${duration}`,
+      enter: `transition-[transform,opacity] ${duration} ${extraClasses}`,
       enterFrom: "opacity-0 translate-y-4",
       enterTo: "translate-y-0 opacity-100",
     };
@@ -42,10 +43,10 @@ function getClasses(
 
   if (animation === "fade") {
     return {
-      leave: `transition-[transform,opacity] duration-${duration}`,
+      leave: `transition-[transform,opacity] ${duration} ${extraClasses}`,
       leaveFrom: "opacity-100",
       leaveTo: "opacity-0",
-      enter: `transition-[transform,opacity] duration-${duration}`,
+      enter: `transition-[transform,opacity] ${duration} ${extraClasses}`,
       enterFrom: "opacity-0",
       enterTo: "opacity-100",
     };
@@ -55,16 +56,16 @@ function getClasses(
 }
 
 export function Transition(props: Props) {
-  const duration = props.durationClass
-    ? parseInt(props.durationClass.split("-")[1], 10)
-    : 200;
-  const classes = getClasses(props.animation, duration);
+  const duration = props.durationClass ?? "duration-200";
+  const classes = getClasses(props.animation, props.className ?? "", duration);
 
   return (
-    <div className={props.className}>
-      <HeadlessTransition show={props.show} {...classes}>
-        {props.children}
-      </HeadlessTransition>
-    </div>
+    <HeadlessTransition
+      show={props.show}
+      {...classes}
+      entered={props.className}
+    >
+      {props.children}
+    </HeadlessTransition>
   );
 }

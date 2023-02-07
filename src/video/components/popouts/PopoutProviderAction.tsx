@@ -43,16 +43,16 @@ export function PopoutProviderAction() {
   }, [videoInterface]);
   const distanceFromBottom = useMemo(() => {
     return videoInterface.popoutBounds
-      ? `${Math.max(
-          videoInterface.popoutBounds.bottom -
-            videoInterface.popoutBounds.top +
-            videoInterface.popoutBounds.height
-        )}px`
+      ? `${videoInterface.popoutBounds.height + 30}px`
       : "30px";
   }, [videoInterface]);
 
   return (
-    <Transition show={!!videoInterface.popout} animation="fade">
+    <Transition
+      show={!!videoInterface.popout}
+      animation="slide-up"
+      className="h-full"
+    >
       <div className="popout-wrapper pointer-events-auto absolute inset-0">
         <div onClick={handleClick} className="absolute inset-0" />
         <div
