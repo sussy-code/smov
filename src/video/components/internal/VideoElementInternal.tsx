@@ -1,8 +1,9 @@
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useMediaPlaying } from "@/video/state/logic/mediaplaying";
+import { useMisc } from "@/video/state/logic/misc";
 import { setProvider, unsetStateProvider } from "@/video/state/providers/utils";
 import { createVideoStateProvider } from "@/video/state/providers/videoStateProvider";
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 
 interface Props {
   autoPlay?: boolean;
@@ -11,9 +12,13 @@ interface Props {
 export function VideoElementInternal(props: Props) {
   const descriptor = useVideoPlayerDescriptor();
   const mediaPlaying = useMediaPlaying(descriptor);
+  const misc = useMisc(descriptor);
   const ref = useRef<HTMLVideoElement>(null);
 
+  const initalized = useMemo(() => !!misc.wrapperInitialized, [misc]);
+
   useEffect(() => {
+    if (!initalized) return;
     if (!ref.current) return;
     const provider = createVideoStateProvider(descriptor, ref.current);
     setProvider(descriptor, provider);
@@ -22,9 +27,7 @@ export function VideoElementInternal(props: Props) {
       unsetStateProvider(descriptor);
       destroy();
     };
-  }, [descriptor]);
-
-  // TODO shortcuts
+  }, [descriptor, initalized]);
 
   // this element is remotely controlled by a state provider
   return (

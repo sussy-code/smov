@@ -1,28 +1,58 @@
 import { WrapperRegisterInternal } from "@/video/components/internal/WrapperRegisterInternal";
+import { VideoErrorBoundary } from "@/video/components/parts/VideoErrorBoundary";
+import { useInterface } from "@/video/state/logic/interface";
+import { useMeta } from "@/video/state/logic/meta";
 import { useRef } from "react";
-import { VideoPlayerContextProvider } from "../state/hooks";
+import {
+  useVideoPlayerDescriptor,
+  VideoPlayerContextProvider,
+} from "../state/hooks";
 import { VideoElementInternal } from "./internal/VideoElementInternal";
 
 export interface VideoPlayerBaseProps {
-  children?: React.ReactNode;
+  children?:
+    | React.ReactNode
+    | ((data: { isFullscreen: boolean }) => React.ReactNode);
   autoPlay?: boolean;
+  includeSafeArea?: boolean;
+  onGoBack?: () => void;
 }
 
-export function VideoPlayerBase(props: VideoPlayerBaseProps) {
+function VideoPlayerBaseWithState(props: VideoPlayerBaseProps) {
   const ref = useRef<HTMLDivElement>(null);
-  // TODO error boundary
-  // TODO move error boundary to only decorated, <VideoPlayer /> shouldn't have styling
+  const descriptor = useVideoPlayerDescriptor();
+  const videoInterface = useInterface(descriptor);
+  const media = useMeta(descriptor);
 
+  const children =
+    typeof props.children === "function"
+      ? props.children({ isFullscreen: videoInterface.isFullscreen })
+      : props.children;
+
+  // TODO move error boundary to only decorated, <VideoPlayer /> shouldn't have styling
   return (
-    <VideoPlayerContextProvider>
+    <VideoErrorBoundary onGoBack={props.onGoBack} media={media?.meta}>
       <div
         ref={ref}
-        className="is-video-player relative h-full w-full select-none overflow-hidden bg-black [border-left:env(safe-area-inset-left)_solid_transparent] [border-right:env(safe-area-inset-right)_solid_transparent]"
+        className={[
+          "is-video-player relative h-full w-full select-none overflow-hidden bg-black",
+          props.includeSafeArea || videoInterface.isFullscreen
+            ? "[border-left:env(safe-area-inset-left)_solid_transparent] [border-right:env(safe-area-inset-right)_solid_transparent]"
+            : "",
+        ].join(" ")}
       >
         <VideoElementInternal autoPlay={props.autoPlay} />
         <WrapperRegisterInternal wrapper={ref.current} />
-        <div className="absolute inset-0">{props.children}</div>
+        <div className="absolute inset-0">{children}</div>
       </div>
+    </VideoErrorBoundary>
+  );
+}
+
+export function VideoPlayerBase(props: VideoPlayerBaseProps) {
+  return (
+    <VideoPlayerContextProvider>
+      <VideoPlayerBaseWithState {...props} />
     </VideoPlayerContextProvider>
   );
 }

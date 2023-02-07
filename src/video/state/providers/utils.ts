@@ -1,3 +1,4 @@
+import { updateMisc } from "@/video/state/logic/misc";
 import { getPlayerState } from "../cache";
 import { VideoPlayerStateProvider } from "./providerTypes";
 
@@ -7,6 +8,8 @@ export function setProvider(
 ) {
   const state = getPlayerState(descriptor);
   state.stateProvider = provider;
+  state.initalized = true;
+  updateMisc(descriptor, state);
 }
 
 /**

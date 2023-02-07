@@ -50,16 +50,17 @@ export type VideoPlayerState = {
     url: string;
     type: MWStreamType;
   };
+
+  // misc
+  canAirplay: boolean;
+  initalized: boolean;
   error: null | {
     name: string;
     description: string;
   };
 
-  // misc
-  pausedWhenSeeking: boolean; // when seeking, used to store if paused when started to seek
-  canAirplay: boolean;
-
   // backing fields
+  pausedWhenSeeking: boolean; // when seeking, used to store if paused when started to seek
   stateProvider: VideoPlayerStateProvider | null;
   wrapperElement: HTMLDivElement | null;
 };

@@ -13,11 +13,43 @@ import {
   getStoredVolume,
   setStoredVolume,
 } from "@/video/components/hooks/volumeStore";
+import { updateError } from "@/video/state/logic/error";
+import { updateMisc } from "@/video/state/logic/misc";
 import { getPlayerState } from "../cache";
 import { updateMediaPlaying } from "../logic/mediaplaying";
 import { VideoPlayerStateProvider } from "./providerTypes";
 import { updateProgress } from "../logic/progress";
 import { handleBuffered } from "./utils";
+
+function errorMessage(err: MediaError) {
+  switch (err.code) {
+    case MediaError.MEDIA_ERR_ABORTED:
+      return {
+        code: "ABORTED",
+        description: "Video was aborted",
+      };
+    case MediaError.MEDIA_ERR_NETWORK:
+      return {
+        code: "NETWORK_ERROR",
+        description: "A network error occured, the video failed to stream",
+      };
+    case MediaError.MEDIA_ERR_DECODE:
+      return {
+        code: "DECODE_ERROR",
+        description: "Video stream could not be decoded",
+      };
+    case MediaError.MEDIA_ERR_SRC_NOT_SUPPORTED:
+      return {
+        code: "SRC_NOT_SUPPORTED",
+        description: "The video type is not supported by your browser",
+      };
+    default:
+      return {
+        code: "UNKNOWN_ERROR",
+        description: "Unknown media error occured",
+      };
+  }
+}
 
 export function createVideoStateProvider(
   descriptor: string,
@@ -47,6 +79,11 @@ export function createVideoStateProvider(
       if (canWebkitFullscreen()) {
         (player as any).webkitEnterFullscreen();
       }
+    },
+    startAirplay() {
+      const videoPlayer = player as any;
+      if (videoPlayer.webkitShowPlaybackTargetPicker)
+        videoPlayer.webkitShowPlaybackTargetPicker();
     },
     setTime(t) {
       // clamp time between 0 and max duration
@@ -103,7 +140,7 @@ export function createVideoStateProvider(
               name: `Not supported`,
               description: "Your browser does not support HLS video",
             };
-            // TODO dispatch error
+            updateError(descriptor, state);
             return;
           }
 
@@ -115,7 +152,7 @@ export function createVideoStateProvider(
                 name: `error ${data.details}`,
                 description: data.error?.message ?? "Something went wrong",
               };
-              // TODO dispatch error
+              updateError(descriptor, state);
             }
             console.error("HLS error", data);
           });
@@ -199,18 +236,22 @@ export function createVideoStateProvider(
       const canAirplay = (e: any) => {
         if (e.availability === "available") {
           state.canAirplay = true;
-          // TODO dispatch airplay
+          updateMisc(descriptor, state);
         }
       };
       const error = () => {
-        console.error("Native video player threw error", player.error);
-        state.error = player.error
-          ? {
-              description: player.error.message,
-              name: `Error ${player.error.code}`,
-            }
-          : null;
-        // TODO dispatch error
+        if (player.error) {
+          const err = errorMessage(player.error);
+          console.error("Native video player threw error", player.error);
+          state.error = {
+            description: err.description,
+            name: `Error ${err.code}`,
+          };
+          this.pause(); // stop video from playing
+        } else {
+          state.error = null;
+        }
+        updateError(descriptor, state);
       };
 
       state.wrapperElement?.addEventListener("click", isFocused);

@@ -44,6 +44,9 @@ export function useControls(
     setVolume(volume) {
       state.stateProvider?.setVolume(volume);
     },
+    startAirplay() {
+      state.stateProvider?.startAirplay();
+    },
 
     // other controls
     setLeftControlsHover(hovering) {

@@ -14,7 +14,11 @@ import { VideoProgressStore } from "./store";
 const FIVETEEN_MINUTES = 15 * 60;
 const FIVE_MINUTES = 5 * 60;
 
-function shouldSave(time: number, duration: number): boolean {
+function shouldSave(
+  time: number,
+  duration: number,
+  isSeries: boolean
+): boolean {
   const timeFromEnd = Math.max(0, duration - time);
 
   // short movie
@@ -26,7 +30,7 @@ function shouldSave(time: number, duration: number): boolean {
 
   // long movie
   if (time < 30) return false;
-  if (timeFromEnd < FIVE_MINUTES) return false;
+  if (timeFromEnd < FIVE_MINUTES && !isSeries) return false;
   return true;
 }
 
@@ -126,9 +130,10 @@ export function WatchedContextProvider(props: { children: ReactNode }) {
           // update actual item
           item.progress = progress;
           item.percentage = Math.round((progress / total) * 100);
+          item.watchedAt = Date.now();
 
           // remove item if shouldnt save
-          if (!shouldSave(progress, total)) {
+          if (!shouldSave(progress, total, !!media.series)) {
             newData.items = data.items.filter(
               (v) => !isSameEpisode(v.item, media)
             );

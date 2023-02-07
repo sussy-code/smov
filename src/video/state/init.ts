@@ -29,11 +29,12 @@ function initPlayer(): VideoPlayerState {
 
     meta: null,
     source: null,
+
     error: null,
+    canAirplay: false,
+    initalized: false,
 
     pausedWhenSeeking: false,
-    canAirplay: false,
-
     stateProvider: null,
     wrapperElement: null,
   };

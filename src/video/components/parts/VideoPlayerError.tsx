@@ -2,6 +2,7 @@ import { IconPatch } from "@/components/buttons/IconPatch";
 import { Icons } from "@/components/Icon";
 import { Title } from "@/components/text/Title";
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
+import { useError } from "@/video/state/logic/error";
 import { useMeta } from "@/video/state/logic/meta";
 import { ReactNode } from "react";
 import { VideoPlayerHeader } from "./VideoPlayerHeader";
@@ -14,9 +15,9 @@ interface VideoPlayerErrorProps {
 export function VideoPlayerError(props: VideoPlayerErrorProps) {
   const descriptor = useVideoPlayerDescriptor();
   const meta = useMeta(descriptor);
-  // TODO add error state
+  const errorData = useError(descriptor);
 
-  const err = null as any;
+  const err = errorData.error;
 
   if (!err) return props.children as any;
 
@@ -25,7 +26,7 @@ export function VideoPlayerError(props: VideoPlayerErrorProps) {
       <div className="absolute inset-0 flex flex-col items-center justify-center bg-denim-100">
         <IconPatch icon={Icons.WARNING} className="mb-6 text-red-400" />
         <Title>Failed to load media</Title>
-        <p className="my-6 max-w-lg">
+        <p className="my-6 max-w-lg text-center">
           {err?.name}: {err?.description}
         </p>
       </div>

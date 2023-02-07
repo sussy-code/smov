@@ -131,7 +131,7 @@ export function MediaViewPlayer(props: MediaViewPlayerProps) {
       <Helmet>
         <html data-full="true" />
       </Helmet>
-      <VideoPlayer autoPlay onGoBack={goBack}>
+      <VideoPlayer includeSafeArea autoPlay onGoBack={goBack}>
         <MetaController data={metaProps} seasonData={metaSeasonData} />
         <SourceController
           source={props.stream.streamUrl}
