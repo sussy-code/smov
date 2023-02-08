@@ -3,6 +3,11 @@ export enum MWStreamType {
   HLS = "hls",
 }
 
+export enum MWCaptionType {
+  VTT = "vtt",
+  SRT = "srt",
+}
+
 export enum MWStreamQuality {
   Q360P = "360p",
   Q480P = "480p",
@@ -11,8 +16,16 @@ export enum MWStreamQuality {
   QUNKNOWN = "unknown",
 }
 
+export type MWCaption = {
+  needsProxy?: boolean;
+  url: string;
+  type: MWCaptionType;
+  langIso: string;
+};
+
 export type MWStream = {
   streamUrl: string;
   type: MWStreamType;
   quality: MWStreamQuality;
+  captions: MWCaption[];
 };

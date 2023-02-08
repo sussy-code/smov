@@ -49,6 +49,12 @@ export function useControls(
     startAirplay() {
       state.stateProvider?.startAirplay();
     },
+    setCaption(id, url) {
+      state.stateProvider?.setCaption(id, url);
+    },
+    clearCaption() {
+      state.stateProvider?.clearCaption();
+    },
 
     // other controls
     setLeftControlsHover(hovering) {

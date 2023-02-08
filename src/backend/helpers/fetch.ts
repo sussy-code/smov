@@ -40,6 +40,7 @@ export function proxiedFetch<T>(url: string, ops: P<T>[1] = {}): R<T> {
   Object.entries(ops?.params ?? {}).forEach(([k, v]) => {
     parsedUrl.searchParams.set(k, v);
   });
+
   return baseFetch<T>(conf().BASE_PROXY_URL, {
     ...ops,
     baseURL: undefined,

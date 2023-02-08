@@ -1,7 +1,8 @@
 .spinner {
-  width: 48px;
-  height: 48px;
-  border: 5px solid white;
+  font-size: 48px;
+  width: 1em;
+  height: 1em;
+  border: 0.12em solid var(--color,white);
   border-bottom-color: transparent;
   border-radius: 50%;
   display: inline-block;

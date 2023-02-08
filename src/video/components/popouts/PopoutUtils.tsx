@@ -1,5 +1,7 @@
 import { Icon, Icons } from "@/components/Icon";
+import { Spinner } from "@/components/layout/Spinner";
 import { ProgressRing } from "@/components/layout/ProgressRing";
+import { createRef, useEffect, useRef } from "react";
 
 interface PopoutListEntryTypes {
   active?: boolean;
@@ -7,14 +9,37 @@ interface PopoutListEntryTypes {
   onClick?: () => void;
   isOnDarkBackground?: boolean;
   percentageCompleted?: number;
+  loading?: boolean;
+  errored?: boolean;
 }
 
 export function PopoutSection(props: {
   children?: React.ReactNode;
   className?: string;
 }) {
+  const ref = createRef<HTMLDivElement>();
+  const inited = useRef<boolean>(false);
+
+  // Scroll to "active" child on first load (AKA mount except React dumb)
+  useEffect(() => {
+    if (inited.current) return;
+    if (!ref.current) return;
+    const el = ref.current as HTMLDivElement;
+    const active: HTMLDivElement | null = el.querySelector(".active");
+    if (active) {
+      active?.scrollIntoView({
+        block: "nearest",
+        inline: "nearest",
+      });
+      el.scrollTo({
+        top: el.scrollTop + el.offsetHeight / 2 - active.offsetHeight / 2,
+      });
+    }
+    inited.current = true;
+  }, [ref]);
+
   return (
-    <div className={["p-5", props.className || ""].join(" ")}>
+    <div className={["p-5", props.className || ""].join(" ")} ref={ref}>
       {props.children}
     </div>
   );
@@ -32,7 +57,7 @@ export function PopoutListEntry(props: PopoutListEntryTypes) {
         "group -mx-2 flex cursor-pointer items-center justify-between space-x-1 rounded p-2 font-semibold transition-[background-color,color] duration-150",
         hover,
         props.active
-          ? `${bg} text-white outline-denim-700`
+          ? `${bg} active text-white outline-denim-700`
           : "text-denim-700 hover:text-white",
       ].join(" ")}
       onClick={props.onClick}
@@ -42,11 +67,22 @@ export function PopoutListEntry(props: PopoutListEntryTypes) {
       )}
       <span className="truncate">{props.children}</span>
       <div className="relative h-4 w-4 min-w-[1rem]">
-        <Icon
-          className="absolute inset-0 translate-x-2 text-white opacity-0 transition-[opacity,transform] duration-100 group-hover:translate-x-0 group-hover:opacity-100"
-          icon={Icons.CHEVRON_RIGHT}
-        />
-        {props.percentageCompleted ? (
+        {props.errored && (
+          <Icon
+            icon={Icons.WARNING}
+            className="absolute inset-0 text-rose-400"
+          />
+        )}
+        {props.loading && !props.errored && (
+          <Spinner className="absolute inset-0 text-base [--color:#9C93B5]" />
+        )}
+        {!props.loading && !props.errored && (
+          <Icon
+            className="absolute inset-0 translate-x-2 text-white opacity-0 transition-[opacity,transform] duration-100 group-hover:translate-x-0 group-hover:opacity-100"
+            icon={Icons.CHEVRON_RIGHT}
+          />
+        )}
+        {props.percentageCompleted && !props.loading && !props.errored ? (
           <ProgressRing
             className="absolute inset-0 text-bink-600 opacity-100 transition-[opacity] group-hover:opacity-0"
             backingRingClassname="stroke-ash-500"

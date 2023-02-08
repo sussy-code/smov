@@ -173,8 +173,24 @@ export function createVideoStateProvider(
         quality: source.quality,
         type: source.type,
         url: source.source,
+        caption: null,
       };
       updateSource(descriptor, state);
+    },
+    setCaption(id, url) {
+      if (state.source) {
+        state.source.caption = {
+          id,
+          url,
+        };
+        updateSource(descriptor, state);
+      }
+    },
+    clearCaption() {
+      if (state.source) {
+        state.source.caption = null;
+        updateSource(descriptor, state);
+      }
     },
     providerStart() {
       this.setVolume(getStoredVolume());

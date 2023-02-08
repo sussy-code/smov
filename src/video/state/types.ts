@@ -1,9 +1,14 @@
-import { MWStreamQuality, MWStreamType } from "@/backend/helpers/streams";
+import {
+  MWCaption,
+  MWStreamQuality,
+  MWStreamType,
+} from "@/backend/helpers/streams";
 import { MWMediaMeta } from "@/backend/metadata/types";
 import { VideoPlayerStateProvider } from "./providers/providerTypes";
 
 export type VideoPlayerMeta = {
   meta: MWMediaMeta;
+  captions: MWCaption[];
   episode?: {
     episodeId: string;
     seasonId: string;
@@ -52,6 +57,10 @@ export type VideoPlayerState = {
     quality: MWStreamQuality;
     url: string;
     type: MWStreamType;
+    caption: null | {
+      url: string;
+      id: string;
+    };
   };
 
   // misc

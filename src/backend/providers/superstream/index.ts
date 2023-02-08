@@ -2,10 +2,14 @@ import { registerProvider } from "@/backend/helpers/register";
 import { MWMediaType } from "@/backend/metadata/types";
 
 import { customAlphabet } from "nanoid";
-// import toWebVTT from "srt-webvtt";
 import CryptoJS from "crypto-js";
 import { proxiedFetch } from "@/backend/helpers/fetch";
-import { MWStreamQuality, MWStreamType } from "@/backend/helpers/streams";
+import {
+  MWCaption,
+  MWCaptionType,
+  MWStreamQuality,
+  MWStreamType,
+} from "@/backend/helpers/streams";
 
 const nanoid = customAlphabet("0123456789abcdef", 32);
 
@@ -150,28 +154,27 @@ registerProvider({
 
       if (!hdQuality) throw new Error("No quality could be found.");
 
-      // const subtitleApiQuery = {
-      //   fid: hdQuality.fid,
-      //   uid: "",
-      //   module: "Movie_srt_list_v2",
-      //   mid: tmdbId,
-      // };
+      const subtitleApiQuery = {
+        fid: hdQuality.fid,
+        uid: "",
+        module: "Movie_srt_list_v2",
+        mid: superstreamId,
+      };
 
-      // const subtitleRes = (await get(subtitleApiQuery).then((r) => r.json()))
-      //   .data;
-      // const mappedCaptions = await Promise.all(
-      //   subtitleRes.list.map(async (subtitle: any) => {
-      //     const captionBlob = await fetch(
-      //       `${conf().CORS_PROXY_URL}${subtitle.subtitles[0].file_path}`
-      //     ).then((captionRes) => captionRes.blob()); // cross-origin bypass
-      //     const captionUrl = await toWebVTT(captionBlob); // convert to vtt so it's playable
-      //     return {
-      //       id: subtitle.language,
-      //       url: captionUrl,
-      //       label: subtitle.language,
-      //     };
-      //   })
-      // );
+      const subtitleRes = (await get(subtitleApiQuery)).data;
+
+      console.log(subtitleRes);
+
+      const mappedCaptions = subtitleRes.list.map(
+        (subtitle: any): MWCaption => {
+          return {
+            needsProxy: true,
+            langIso: subtitle.language,
+            url: subtitle.subtitles[0].file_path,
+            type: MWCaptionType.SRT,
+          };
+        }
+      );
 
       return {
         embeds: [],
@@ -179,6 +182,7 @@ registerProvider({
           streamUrl: hdQuality.path,
           quality: qualityMap[hdQuality.quality as QualityInMap],
           type: MWStreamType.MP4,
+          captions: mappedCaptions,
         },
       };
     }
@@ -208,29 +212,28 @@ registerProvider({
 
     if (!hdQuality) throw new Error("No quality could be found.");
 
-    // const subtitleApiQuery = {
-    //   fid: hdQuality.fid,
-    //   uid: "",
-    //   module: "TV_srt_list_v2",
-    //   episode: media.episodeId,
-    //   tid: media.mediaId,
-    //   season: media.seasonId,
-    // };
-    // const subtitleRes = (await get(subtitleApiQuery).then((r) => r.json()))
-    //   .data;
-    // const mappedCaptions = await Promise.all(
-    //   subtitleRes.list.map(async (subtitle: any) => {
-    //     const captionBlob = await fetch(
-    //       `${conf().CORS_PROXY_URL}${subtitle.subtitles[0].file_path}`
-    //     ).then((captionRes) => captionRes.blob()); // cross-origin bypass
-    //     const captionUrl = await toWebVTT(captionBlob); // convert to vtt so it's playable
-    //     return {
-    //       id: subtitle.language,
-    //       url: captionUrl,
-    //       label: subtitle.language,
-    //     };
-    //   })
-    // );
+    const subtitleApiQuery = {
+      fid: hdQuality.fid,
+      uid: "",
+      module: "TV_srt_list_v2",
+      episode:
+        media.meta.seasonData.episodes.find(
+          (episodeInfo) => episodeInfo.id === episode
+        )?.number ?? 1,
+      tid: superstreamId,
+      season: media.meta.seasonData.number.toString(),
+    };
+
+    const subtitleRes = (await get(subtitleApiQuery)).data;
+
+    const mappedCaptions = subtitleRes.list.map((subtitle: any): MWCaption => {
+      return {
+        needsProxy: true,
+        langIso: subtitle.language,
+        url: subtitle.subtitles[0].file_path,
+        type: MWCaptionType.SRT,
+      };
+    });
 
     return {
       embeds: [],
@@ -240,6 +243,7 @@ registerProvider({
         ] as MWStreamQuality,
         streamUrl: hdQuality.path,
         type: MWStreamType.MP4,
+        captions: mappedCaptions,
       },
     };
   },

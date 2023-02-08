@@ -112,6 +112,7 @@ export function MediaViewPlayer(props: MediaViewPlayerProps) {
 
   const metaProps: VideoPlayerMeta = {
     meta: props.meta.meta,
+    captions: [],
   };
   let metaSeasonData: MWSeasonWithEpisodeMeta | undefined;
   if (
@@ -132,7 +133,11 @@ export function MediaViewPlayer(props: MediaViewPlayerProps) {
         <html data-full="true" />
       </Helmet>
       <VideoPlayer includeSafeArea autoPlay onGoBack={goBack}>
-        <MetaController data={metaProps} seasonData={metaSeasonData} />
+        <MetaController
+          data={metaProps}
+          seasonData={metaSeasonData}
+          linkedCaptions={props.stream.captions}
+        />
         <SourceController
           source={props.stream.streamUrl}
           type={props.stream.type}

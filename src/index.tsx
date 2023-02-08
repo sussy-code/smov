@@ -19,7 +19,7 @@ if (key) {
 initializeChromecast();
 
 // TODO video todos:
-//  - captions
+//  - finish captions
 //  - chrome cast support
 //  - bug: mobile controls start showing when resizing
 //  - bug: popouts sometimes stop working when selecting different episode
@@ -36,12 +36,11 @@ initializeChromecast();
 //  - video player error handling
 
 // TODO backend system:
-//  - caption support
 //  - implement jons providers/embedscrapers
 //  - AFTER all that: rank providers/embedscrapers
 
 // TODO general todos:
-//  - localize everything (fix loading screen text (series vs movies)) (and have EN file instead of en-gb)
+//  - localize everything (fix loading screen text (series vs movies))
 
 ReactDOM.render(
   <React.StrictMode>

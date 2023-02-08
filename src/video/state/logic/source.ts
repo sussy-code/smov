@@ -9,6 +9,10 @@ export type VideoSourceEvent = {
     quality: MWStreamQuality;
     url: string;
     type: MWStreamType;
+    caption: null | {
+      id: string;
+      url: string;
+    };
   };
 };
 

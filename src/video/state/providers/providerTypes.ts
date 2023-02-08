@@ -16,6 +16,8 @@ export type VideoPlayerStateController = {
   enterFullscreen(): void;
   setVolume(volume: number): void;
   startAirplay(): void;
+  setCaption(id: string, url: string): void;
+  clearCaption(): void;
 };
 
 export type VideoPlayerStateProvider = VideoPlayerStateController & {

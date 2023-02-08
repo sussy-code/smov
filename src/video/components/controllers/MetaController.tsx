@@ -1,3 +1,4 @@
+import { MWCaption } from "@/backend/helpers/streams";
 import { MWSeasonWithEpisodeMeta } from "@/backend/metadata/types";
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useControls } from "@/video/state/logic/controls";
@@ -7,6 +8,7 @@ import { useEffect } from "react";
 interface MetaControllerProps {
   data?: VideoPlayerMeta;
   seasonData?: MWSeasonWithEpisodeMeta;
+  linkedCaptions?: MWCaption[];
 }
 
 function formatMetadata(
@@ -27,6 +29,7 @@ function formatMetadata(
     meta: props.data.meta,
     episode: props.data.episode,
     seasons: seasonsWithEpisodes,
+    captions: props.linkedCaptions ?? [],
   };
 }
 

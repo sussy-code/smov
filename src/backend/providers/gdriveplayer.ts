@@ -96,6 +96,7 @@ registerProvider({
         streamUrl: `https:${source.file}`,
         type: source.type,
         quality,
+        captions: [],
       },
       embeds: [],
     };

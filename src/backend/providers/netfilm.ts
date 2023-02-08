@@ -60,7 +60,7 @@ registerProvider({
           streamUrl: source.url,
           quality: qualityMap[source.quality as QualityInMap],
           type: MWStreamType.HLS,
-          // captions: [],
+          captions: [],
         },
       };
     }
@@ -121,7 +121,7 @@ registerProvider({
         streamUrl: source.url,
         quality: qualityMap[source.quality as QualityInMap],
         type: MWStreamType.HLS,
-        // captions: [],
+        captions: [],
       },
     };
   },

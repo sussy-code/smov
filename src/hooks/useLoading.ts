@@ -40,6 +40,7 @@ export function useLoading<T extends (...args: any) => Promise<any>>(
             .catch((err) => {
               if (isMounted) {
                 setError(err);
+                console.error("USELOADING ERROR", err);
                 setSuccess(false);
               }
               resolve(undefined);
