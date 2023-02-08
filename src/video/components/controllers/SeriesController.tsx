@@ -21,6 +21,7 @@ export function SeriesController(props: SeriesControllerProps) {
       seasonId: meta?.episode?.seasonId,
     };
     if (lastState.current === null) {
+      if (!meta) return;
       lastState.current = currentState;
       return;
     }

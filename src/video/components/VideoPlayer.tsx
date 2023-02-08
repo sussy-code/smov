@@ -12,6 +12,7 @@ import { PauseAction } from "@/video/components/actions/PauseAction";
 import { ProgressAction } from "@/video/components/actions/ProgressAction";
 import { QualityDisplayAction } from "@/video/components/actions/QualityDisplayAction";
 import { SeriesSelectionAction } from "@/video/components/actions/SeriesSelectionAction";
+import { CaptionsSelectionAction } from "@/video/components/actions/CaptionsSelectionAction";
 import { ShowTitleAction } from "@/video/components/actions/ShowTitleAction";
 import { KeyboardShortcutsAction } from "@/video/components/actions/KeyboardShortcutsAction";
 import { SkipTimeAction } from "@/video/components/actions/SkipTimeAction";
@@ -135,6 +136,7 @@ export function VideoPlayer(props: Props) {
                     <div className="grid w-full grid-cols-[56px,1fr,56px] items-center">
                       <div />
                       <div className="flex items-center justify-center">
+                        <CaptionsSelectionAction />
                         <SeriesSelectionAction />
                         {/* <SourceSelectionControl media={props.media} /> */}
                       </div>
@@ -147,8 +149,10 @@ export function VideoPlayer(props: Props) {
                       <QualityDisplayAction />
                       <SeriesSelectionAction />
                       {/* <SourceSelectionControl media={props.media} /> */}
-                      <AirplayAction />
+                      <div className="mx-2 h-6 w-px bg-white opacity-50" />
                       {/* <ChromeCastControl /> */}
+                      <AirplayAction />
+                      <CaptionsSelectionAction />
                       <FullscreenAction />
                     </>
                   )}

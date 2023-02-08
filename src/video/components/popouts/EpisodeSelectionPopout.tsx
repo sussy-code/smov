@@ -11,68 +11,7 @@ import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useMeta } from "@/video/state/logic/meta";
 import { useControls } from "@/video/state/logic/controls";
 import { useWatchedContext } from "@/state/watched";
-import { ProgressRing } from "@/components/layout/ProgressRing";
-
-function PopupSection(props: {
-  children?: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <div className={["p-5", props.className || ""].join(" ")}>
-      {props.children}
-    </div>
-  );
-}
-
-interface PopoutListEntryTypes {
-  active?: boolean;
-  children: React.ReactNode;
-  onClick?: () => void;
-  isOnDarkBackground?: boolean;
-  percentageCompleted?: number;
-}
-
-function PopoutListEntry(props: PopoutListEntryTypes) {
-  const bg = props.isOnDarkBackground ? "bg-ash-200" : "bg-ash-400";
-  const hover = props.isOnDarkBackground
-    ? "hover:bg-ash-200"
-    : "hover:bg-ash-400";
-
-  return (
-    <div
-      className={[
-        "group -mx-2 flex items-center justify-between space-x-1 rounded p-2 font-semibold transition-[background-color,color] duration-150",
-        hover,
-        props.active
-          ? `${bg} text-white outline-denim-700`
-          : "text-denim-700 hover:text-white",
-      ].join(" ")}
-      onClick={props.onClick}
-    >
-      {props.active && (
-        <div className="absolute left-0 h-8 w-0.5 bg-bink-500" />
-      )}
-      <span className="truncate">{props.children}</span>
-      <div className="relative h-4 w-4">
-        <Icon
-          className="absolute inset-0 translate-x-2 text-white opacity-0 transition-[opacity,transform] duration-100 group-hover:translate-x-0 group-hover:opacity-100"
-          icon={Icons.CHEVRON_RIGHT}
-        />
-        {props.percentageCompleted ? (
-          <ProgressRing
-            className="absolute inset-0 text-bink-600 opacity-100 transition-[opacity] group-hover:opacity-0"
-            backingRingClassname="stroke-ash-500"
-            percentage={
-              props.percentageCompleted > 90 ? 100 : props.percentageCompleted
-            }
-          />
-        ) : (
-          ""
-        )}
-      </div>
-    </div>
-  );
-}
+import { PopoutListEntry, PopoutSection } from "./PopoutUtils";
 
 export function EpisodeSelectionPopout() {
   const params = useParams<{
@@ -154,7 +93,7 @@ export function EpisodeSelectionPopout() {
 
   return (
     <>
-      <PopupSection className="bg-ash-100 font-bold text-white">
+      <PopoutSection className="bg-ash-100 font-bold text-white">
         <div className="relative flex items-center">
           <button
             className={[
@@ -183,9 +122,9 @@ export function EpisodeSelectionPopout() {
             Seasons
           </span>
         </div>
-      </PopupSection>
+      </PopoutSection>
       <div className="relative grid h-full grid-rows-[minmax(1px,1fr)]">
-        <PopupSection
+        <PopoutSection
           className={[
             "absolute inset-0 z-30 overflow-y-auto border-ash-400 bg-ash-100 transition-[max-height,padding] duration-200",
             isPickingSeason
@@ -205,8 +144,8 @@ export function EpisodeSelectionPopout() {
                 </PopoutListEntry>
               ))
             : "No season"}
-        </PopupSection>
-        <PopupSection className="relative h-full overflow-y-auto">
+        </PopoutSection>
+        <PopoutSection className="relative h-full overflow-y-auto">
           {loading ? (
             <div className="flex h-full w-full items-center justify-center">
               <Loading />
@@ -225,13 +164,17 @@ export function EpisodeSelectionPopout() {
               </div>
             </div>
           ) : (
-            <div className="space-y-1">
+            <div>
               {currentSeasonEpisodes && currentSeasonInfo
                 ? currentSeasonEpisodes.map((e) => (
                     <PopoutListEntry
                       key={e.id}
                       active={e.id === meta?.episode?.episodeId}
-                      onClick={() => setCurrent(currentSeasonInfo.id, e.id)}
+                      onClick={() => {
+                        if (e.id === meta?.episode?.episodeId)
+                          controls.closePopout();
+                        else setCurrent(currentSeasonInfo.id, e.id);
+                      }}
                       percentageCompleted={
                         watched.items.find(
                           (item) =>
@@ -247,7 +190,7 @@ export function EpisodeSelectionPopout() {
                 : "No episodes"}
             </div>
           )}
-        </PopupSection>
+        </PopoutSection>
       </div>
     </>
   );

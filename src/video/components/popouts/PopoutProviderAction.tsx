@@ -1,6 +1,7 @@
 import { Transition } from "@/components/Transition";
 import { useSyncPopouts } from "@/video/components/hooks/useSyncPopouts";
 import { EpisodeSelectionPopout } from "@/video/components/popouts/EpisodeSelectionPopout";
+import { CaptionSelectionPopout } from "@/video/components/popouts/CaptionSelectionPopout";
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useControls } from "@/video/state/logic/controls";
 import { useInterface } from "@/video/state/logic/interface";
@@ -17,10 +18,11 @@ function ShowPopout(props: { popoutId: string | null }) {
   }, [props]);
 
   if (popoutId === "episodes") return <EpisodeSelectionPopout />;
+  if (popoutId === "captions") return <CaptionSelectionPopout />;
   return null;
 }
 
-// TODO bug: first load ref is null
+// TODO bug: coords are sometimes completely broken
 export function PopoutProviderAction() {
   const ref = useRef<HTMLDivElement>(null);
   const descriptor = useVideoPlayerDescriptor();

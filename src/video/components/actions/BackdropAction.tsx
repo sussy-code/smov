@@ -9,7 +9,6 @@ interface BackdropActionProps {
   onBackdropChange?: (showing: boolean) => void;
 }
 
-// TODO tap on mobile should remove backdrop instead of pausing
 export function BackdropAction(props: BackdropActionProps) {
   const descriptor = useVideoPlayerDescriptor();
   const controls = useControls(descriptor);
@@ -33,16 +32,32 @@ export function BackdropAction(props: BackdropActionProps) {
     setMoved(false);
   }, [setMoved]);
 
+  const [lastTouchEnd, setLastTouchEnd] = useState(0);
+
   const handleClick = useCallback(
-    (e: React.MouseEvent<HTMLDivElement>) => {
+    (
+      e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>
+    ) => {
       if (!clickareaRef.current || clickareaRef.current !== e.target) return;
 
       if (videoInterface.popout !== null) return;
 
-      if (mediaPlaying.isPlaying) controls.pause();
-      else controls.play();
+      if ((e as React.TouchEvent).type === "touchend") {
+        setLastTouchEnd(Date.now());
+        return;
+      }
+
+      setTimeout(() => {
+        if (Date.now() - lastTouchEnd < 200) {
+          setMoved(!moved);
+          return;
+        }
+
+        if (mediaPlaying.isPlaying) controls.pause();
+        else controls.play();
+      }, 20);
     },
-    [controls, mediaPlaying, videoInterface]
+    [controls, mediaPlaying, videoInterface, lastTouchEnd, moved]
   );
   const handleDoubleClick = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
@@ -56,14 +71,14 @@ export function BackdropAction(props: BackdropActionProps) {
 
   const lastBackdropValue = useRef<boolean | null>(null);
   useEffect(() => {
-    const currentValue = moved || mediaPlaying.isPaused;
+    const currentValue =
+      moved || mediaPlaying.isPaused || !!videoInterface.popout;
     if (currentValue !== lastBackdropValue.current) {
       lastBackdropValue.current = currentValue;
-      if (!currentValue) controls.closePopout();
       props.onBackdropChange?.(currentValue);
     }
-  }, [controls, moved, mediaPlaying, props]);
-  const showUI = moved || mediaPlaying.isPaused;
+  }, [moved, mediaPlaying, props, videoInterface]);
+  const showUI = moved || mediaPlaying.isPaused || !!videoInterface.popout;
 
   return (
     <div
@@ -71,7 +86,8 @@ export function BackdropAction(props: BackdropActionProps) {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       ref={clickareaRef}
-      onClick={handleClick}
+      onMouseUp={handleClick}
+      onTouchEnd={handleClick}
       onDoubleClick={handleDoubleClick}
     >
       <div

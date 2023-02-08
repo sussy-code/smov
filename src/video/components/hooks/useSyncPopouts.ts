@@ -1,4 +1,3 @@
-import { useInitialized } from "@/video/components/hooks/useInitialized";
 import { ControlMethods, useControls } from "@/video/state/logic/controls";
 import { useInterface } from "@/video/state/logic/interface";
 import { useEffect, useRef } from "react";
@@ -14,13 +13,11 @@ function syncRouteToPopout(
   else controls.closePopout();
 }
 
-// TODO make closing a popout go backwords in history
-// TODO fix first event breaking (clicking on page somehow resolves it)
+// TODO when opening with an open modal url, closing popout will close tab
 export function useSyncPopouts(descriptor: string) {
   const history = useHistory();
   const videoInterface = useInterface(descriptor);
   const controls = useControls(descriptor);
-  const intialized = useInitialized(descriptor);
   const loc = useLocation();
 
   const lastKnownValue = useRef<string | null>(null);
@@ -44,15 +41,20 @@ export function useSyncPopouts(descriptor: string) {
         state: "popout",
       });
     } else {
-      history.push({
-        search: "",
-        state: "popout",
-      });
+      // dont do anything if no modal is even open
+      if (!new URLSearchParams(history.location.search).has("modal")) return;
+      if (history.length > 0) history.goBack();
+      else
+        history.replace({
+          search: "",
+          state: "popout",
+        });
     }
   }, [videoInterface, history]);
 
   // sync router to popout state (but only if its not done by block of code above)
   useEffect(() => {
+    // if location update a push from the block above
     if (loc.state === "popout") return;
 
     // sync popout state
@@ -63,8 +65,7 @@ export function useSyncPopouts(descriptor: string) {
   const routerInitialized = useRef(false);
   useEffect(() => {
     if (routerInitialized.current) return;
-    if (!intialized) return;
     syncRouteToPopout(loc, controlsRef.current);
     routerInitialized.current = true;
-  }, [loc, intialized]);
+  }, [loc]);
 }
