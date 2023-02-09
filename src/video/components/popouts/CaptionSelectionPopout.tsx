@@ -13,7 +13,6 @@ function makeCaptionId(caption: MWCaption, isLinked: boolean): string {
   return isLinked ? `linked-${caption.langIso}` : `external-${caption.langIso}`;
 }
 
-// TODO add option to clear captions
 export function CaptionSelectionPopout() {
   const descriptor = useVideoPlayerDescriptor();
   const meta = useMeta(descriptor);
@@ -42,10 +41,23 @@ export function CaptionSelectionPopout() {
         <div>Captions</div>
       </PopoutSection>
       <div className="relative overflow-y-auto">
+        <PopoutSection>
+          <PopoutListEntry
+            active={!currentCaption}
+            onClick={() => {
+              controls.clearCaption();
+              controls.closePopout();
+            }}
+          >
+            No captions
+          </PopoutListEntry>
+        </PopoutSection>
+
         <p className="sticky top-0 z-10 flex items-center space-x-1 bg-ash-200 px-5 py-3 text-sm font-bold uppercase">
           <Icon className="text-base" icon={Icons.LINK} />
           <span>Linked captions</span>
         </p>
+
         <PopoutSection className="pt-0">
           <div>
             {linkedCaptions.map((link) => (

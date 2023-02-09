@@ -74,7 +74,6 @@ export function useControls(
     },
     closePopout() {
       state.interface.popout = null;
-      state.interface.popoutBounds = null;
       updateInterface(descriptor, state);
     },
     setFocused(focused) {

@@ -4,8 +4,11 @@ import { EpisodeSelectionPopout } from "@/video/components/popouts/EpisodeSelect
 import { CaptionSelectionPopout } from "@/video/components/popouts/CaptionSelectionPopout";
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useControls } from "@/video/state/logic/controls";
-import { useInterface } from "@/video/state/logic/interface";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  useInterface,
+  VideoInterfaceEvent,
+} from "@/video/state/logic/interface";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import "./Popouts.css";
 
@@ -22,9 +25,44 @@ function ShowPopout(props: { popoutId: string | null }) {
   return null;
 }
 
-// TODO bug: coords are sometimes completely broken
-export function PopoutProviderAction() {
+function PopoutContainer(props: { videoInterface: VideoInterfaceEvent }) {
   const ref = useRef<HTMLDivElement>(null);
+  const [right, setRight] = useState<number>(0);
+  const [bottom, setBottom] = useState<number>(0);
+  const [width, setWidth] = useState<number>(0);
+
+  const calculateAndSetCoords = useCallback((rect: DOMRect, w: number) => {
+    const buttonCenter = rect.left + rect.width / 2;
+
+    setBottom(rect ? rect.height + 30 : 30);
+    setRight(Math.max(window.innerWidth - buttonCenter - w / 2, 30));
+  }, []);
+
+  useEffect(() => {
+    if (!props.videoInterface.popoutBounds) return;
+    calculateAndSetCoords(props.videoInterface.popoutBounds, width);
+  }, [props.videoInterface.popoutBounds, calculateAndSetCoords, width]);
+
+  useEffect(() => {
+    const rect = ref.current?.getBoundingClientRect();
+    setWidth(rect?.width ?? 0);
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className="absolute z-10 grid h-[500px] w-80 grid-rows-[auto,minmax(0,1fr)] overflow-hidden rounded-lg bg-ash-200"
+      style={{
+        right: `${right}px`,
+        bottom: `${bottom}px`,
+      }}
+    >
+      <ShowPopout popoutId={props.videoInterface.popout} />
+    </div>
+  );
+}
+
+export function PopoutProviderAction() {
   const descriptor = useVideoPlayerDescriptor();
   const videoInterface = useInterface(descriptor);
   const controls = useControls(descriptor);
@@ -34,26 +72,6 @@ export function PopoutProviderAction() {
     controls.closePopout();
   }, [controls]);
 
-  const distanceFromRight = useMemo(() => {
-    if (!videoInterface.popoutBounds) return 30;
-
-    const buttonCenter =
-      videoInterface.popoutBounds.left + videoInterface.popoutBounds.width / 2;
-
-    return Math.max(
-      window.innerWidth -
-        buttonCenter -
-        (ref.current?.getBoundingClientRect().width ?? 0) / 2,
-      30
-    );
-  }, [videoInterface.popoutBounds]);
-
-  const distanceFromBottom = useMemo(() => {
-    return videoInterface.popoutBounds
-      ? videoInterface.popoutBounds.height + 30
-      : 30;
-  }, [videoInterface.popoutBounds]);
-
   return (
     <Transition
       show={!!videoInterface.popout}
@@ -62,16 +80,7 @@ export function PopoutProviderAction() {
     >
       <div className="popout-wrapper pointer-events-auto absolute inset-0">
         <div onClick={handleClick} className="absolute inset-0" />
-        <div
-          ref={ref}
-          className="absolute z-10 grid h-[500px] w-80 grid-rows-[auto,minmax(0,1fr)] overflow-hidden rounded-lg bg-ash-200"
-          style={{
-            right: `${distanceFromRight}px`,
-            bottom: `${distanceFromBottom}px`,
-          }}
-        >
-          <ShowPopout popoutId={videoInterface.popout} />
-        </div>
+        <PopoutContainer videoInterface={videoInterface} />
       </div>
     </Transition>
   );

@@ -45,11 +45,6 @@ export function ScrollToActive(props: ScrollToActiveProps) {
       wrapper?.querySelector(".active");
 
     if (wrapper && active) {
-      active.scrollIntoView({
-        block: "nearest",
-        inline: "nearest",
-      });
-
       let activeYPositionCentered = 0;
       const setActiveYPositionCentered = () => {
         activeYPositionCentered =

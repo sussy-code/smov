@@ -18,8 +18,10 @@ export function PopoutAnchor(props: Props) {
 
     if (state.interface.popout !== props.for) return;
 
-    let handle = -1;
+    let cancelled = false;
     function render() {
+      if (cancelled) return;
+
       if (ref.current) {
         const current = JSON.stringify(state.interface.popoutBounds);
         const newer = ref.current.getBoundingClientRect();
@@ -28,12 +30,12 @@ export function PopoutAnchor(props: Props) {
           updateInterface(descriptor, state);
         }
       }
-      handle = window.requestAnimationFrame(render);
+      window.requestAnimationFrame(render);
     }
 
-    handle = window.requestAnimationFrame(render);
+    window.requestAnimationFrame(render);
     return () => {
-      window.cancelAnimationFrame(handle);
+      cancelled = true;
     };
   }, [descriptor, props]);
 
