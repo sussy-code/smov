@@ -13,10 +13,17 @@ interface PopoutListEntryTypes {
   errored?: boolean;
 }
 
-export function PopoutSection(props: {
+interface ScrollToActiveProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+interface PopoutSectionProps {
   children?: React.ReactNode;
   className?: string;
-}) {
+}
+
+export function ScrollToActive(props: ScrollToActiveProps) {
   const ref = createRef<HTMLDivElement>();
   const inited = useRef<boolean>(false);
 
@@ -43,10 +50,14 @@ export function PopoutSection(props: {
         inline: "nearest",
       });
 
-      const activeYPositionCentered =
-        active.getBoundingClientRect().top -
-        wrapper.getBoundingClientRect().top +
-        active.offsetHeight / 2;
+      let activeYPositionCentered = 0;
+      const setActiveYPositionCentered = () => {
+        activeYPositionCentered =
+          active.getBoundingClientRect().top -
+          wrapper.getBoundingClientRect().top +
+          active.offsetHeight / 2;
+      };
+      setActiveYPositionCentered();
 
       if (activeYPositionCentered >= wrapper.offsetHeight / 2) {
         // Check if the active element is below the vertical center line, then scroll it into center
@@ -54,14 +65,30 @@ export function PopoutSection(props: {
           top: activeYPositionCentered - wrapper.offsetHeight / 2,
         });
       }
+
+      setActiveYPositionCentered();
+      if (activeYPositionCentered > wrapper.offsetHeight / 2) {
+        // If the element is over the vertical center line, scroll to the end
+        wrapper.scrollTo({
+          top: wrapper.scrollHeight,
+        });
+      }
     }
     inited.current = true;
   }, [ref]);
 
   return (
-    <div className={["p-5", props.className || ""].join(" ")} ref={ref}>
+    <div className={props.className} ref={ref}>
       {props.children}
     </div>
+  );
+}
+
+export function PopoutSection(props: PopoutSectionProps) {
+  return (
+    <ScrollToActive className={["p-5", props.className || ""].join(" ")}>
+      {props.children}
+    </ScrollToActive>
   );
 }
 
