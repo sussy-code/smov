@@ -24,16 +24,36 @@ export function PopoutSection(props: {
   useEffect(() => {
     if (inited.current) return;
     if (!ref.current) return;
+
     const el = ref.current as HTMLDivElement;
-    const active: HTMLDivElement | null = el.querySelector(".active");
-    if (active) {
-      active?.scrollIntoView({
+
+    // Find nearest scroll container, or self
+    const wrapper: HTMLDivElement | null = el.classList.contains(
+      "overflow-y-auto"
+    )
+      ? el
+      : el.closest(".overflow-y-auto");
+
+    const active: HTMLDivElement | null | undefined =
+      wrapper?.querySelector(".active");
+
+    if (wrapper && active) {
+      active.scrollIntoView({
         block: "nearest",
         inline: "nearest",
       });
-      el.scrollTo({
-        top: el.scrollTop + el.offsetHeight / 2 - active.offsetHeight / 2,
-      });
+
+      const activeYPositionCentered =
+        active.getBoundingClientRect().top -
+        wrapper.getBoundingClientRect().top +
+        active.offsetHeight / 2;
+
+      if (activeYPositionCentered >= wrapper.offsetHeight / 2) {
+        // Check if the active element is below the vertical center line, then scroll it into center
+        wrapper.scrollTo({
+          top: activeYPositionCentered - wrapper.offsetHeight / 2,
+        });
+      }
     }
     inited.current = true;
   }, [ref]);
