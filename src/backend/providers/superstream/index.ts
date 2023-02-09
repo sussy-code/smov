@@ -163,8 +163,6 @@ registerProvider({
 
       const subtitleRes = (await get(subtitleApiQuery)).data;
 
-      console.log(subtitleRes);
-
       const mappedCaptions = subtitleRes.list.map(
         (subtitle: any): MWCaption => {
           return {

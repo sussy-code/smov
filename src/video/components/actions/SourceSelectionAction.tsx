@@ -3,27 +3,27 @@ import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { VideoPlayerIconButton } from "@/video/components/parts/VideoPlayerIconButton";
 import { useControls } from "@/video/state/logic/controls";
 import { PopoutAnchor } from "@/video/components/popouts/PopoutAnchor";
-import { useIsMobile } from "@/hooks/useIsMobile";
+import { useInterface } from "@/video/state/logic/interface";
 
 interface Props {
   className?: string;
 }
 
-export function CaptionsSelectionAction(props: Props) {
+export function SourceSelectionAction(props: Props) {
   const descriptor = useVideoPlayerDescriptor();
+  const videoInterface = useInterface(descriptor);
   const controls = useControls(descriptor);
-  const { isMobile } = useIsMobile();
 
   return (
     <div className={props.className}>
       <div className="relative">
-        <PopoutAnchor for="captions">
+        <PopoutAnchor for="source">
           <VideoPlayerIconButton
-            className={props.className}
-            text={isMobile ? "Captions" : ""}
-            wide={isMobile}
-            onClick={() => controls.openPopout("captions")}
-            icon={Icons.CAPTIONS}
+            active={videoInterface.popout === "source"}
+            icon={Icons.FILE}
+            text="Source"
+            wide
+            onClick={() => controls.openPopout("source")}
           />
         </PopoutAnchor>
       </div>

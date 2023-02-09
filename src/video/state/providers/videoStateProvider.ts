@@ -15,6 +15,7 @@ import {
 } from "@/video/components/hooks/volumeStore";
 import { updateError } from "@/video/state/logic/error";
 import { updateMisc } from "@/video/state/logic/misc";
+import { resetStateForSource } from "@/video/state/providers/helpers";
 import { getPlayerState } from "../cache";
 import { updateMediaPlaying } from "../logic/mediaplaying";
 import { VideoPlayerStateProvider } from "./providerTypes";
@@ -130,6 +131,7 @@ export function createVideoStateProvider(
       if (!source) {
         player.src = "";
         state.source = null;
+        resetStateForSource(descriptor, state);
         updateSource(descriptor, state);
         return;
       }
@@ -149,6 +151,7 @@ export function createVideoStateProvider(
           }
 
           const hls = new Hls({ enableWorker: false });
+          state.hlsInstance = hls;
 
           hls.on(Hls.Events.ERROR, (event, data) => {
             if (data.fatal) {
@@ -175,6 +178,7 @@ export function createVideoStateProvider(
         url: source.source,
         caption: null,
       };
+      resetStateForSource(descriptor, state);
       updateSource(descriptor, state);
     },
     setCaption(id, url) {

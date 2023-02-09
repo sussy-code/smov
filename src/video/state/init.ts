@@ -2,6 +2,27 @@ import { nanoid } from "nanoid";
 import { _players } from "./cache";
 import { VideoPlayerState } from "./types";
 
+export function resetForSource(s: VideoPlayerState) {
+  const state = s;
+  state.mediaPlaying = {
+    isPlaying: false,
+    isPaused: true,
+    isLoading: false,
+    isSeeking: false,
+    isDragSeeking: false,
+    isFirstLoading: true,
+    hasPlayedOnce: false,
+    volume: 0,
+  };
+  state.progress = {
+    time: 0,
+    duration: 0,
+    buffered: 0,
+    draggingTime: 0,
+  };
+  state.initalized = false;
+}
+
 function initPlayer(): VideoPlayerState {
   return {
     interface: {
@@ -38,6 +59,7 @@ function initPlayer(): VideoPlayerState {
     initalized: false,
 
     pausedWhenSeeking: false,
+    hlsInstance: null,
     stateProvider: null,
     wrapperElement: null,
   };

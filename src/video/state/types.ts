@@ -4,6 +4,7 @@ import {
   MWStreamType,
 } from "@/backend/helpers/streams";
 import { MWMediaMeta } from "@/backend/metadata/types";
+import Hls from "hls.js";
 import { VideoPlayerStateProvider } from "./providers/providerTypes";
 
 export type VideoPlayerMeta = {
@@ -73,6 +74,7 @@ export type VideoPlayerState = {
 
   // backing fields
   pausedWhenSeeking: boolean; // when seeking, used to store if paused when started to seek
+  hlsInstance: null | Hls; // HLS video player instance storage
   stateProvider: VideoPlayerStateProvider | null;
   wrapperElement: HTMLDivElement | null;
 };

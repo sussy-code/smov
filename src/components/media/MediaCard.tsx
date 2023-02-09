@@ -97,7 +97,13 @@ function MediaCardContent({
         <h1 className="mb-1 max-h-[4.5rem] text-ellipsis break-words font-bold text-white line-clamp-3">
           <span>{media.title}</span>
         </h1>
-        <DotList className="text-xs" content={[media.type, media.year]} />
+        <DotList
+          className="text-xs"
+          content={[
+            media.type.slice(0, 1).toUpperCase() + media.type.slice(1),
+            media.year,
+          ]}
+        />
       </article>
     </div>
   );

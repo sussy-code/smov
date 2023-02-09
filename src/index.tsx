@@ -19,13 +19,11 @@ if (key) {
 initializeChromecast();
 
 // TODO video todos:
-//  - finish captions
 //  - chrome cast support
-//  - bug: mobile controls start showing when resizing
-//  - bug: popouts sometimes stop working when selecting different episode
 //  - bug: unmounting player throws errors in console
 //  - bug: safari fullscreen will make video overlap player controls
-//  - bug: safari progress bar is fucked (video doesnt change time but video.currentTime does change)
+//  - improvement: make scrapers use fuzzy matching on normalized titles
+//  - bug: source selection doesnt work with HLS
 
 // TODO stuff to test:
 //  - browser: firefox, chrome, edge, safari desktop
