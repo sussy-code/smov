@@ -25,6 +25,7 @@ initializeChromecast();
 //  - improvement: make scrapers use fuzzy matching on normalized titles
 //  - bug: source selection doesnt work with HLS
 //  - bug: .ass subtitle files are fucked
+//  - improvement: episode watch at the ending should not startAt
 
 // TODO stuff to test:
 //  - browser: firefox, chrome, edge, safari desktop
