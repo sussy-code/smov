@@ -44,7 +44,7 @@ interface MediaItem {
   };
 }
 
-interface WatchedStoreItem {
+export interface WatchedStoreItem {
   item: MediaItem;
   progress: number;
   percentage: number;

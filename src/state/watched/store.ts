@@ -1,7 +1,7 @@
 import { versionedStoreBuilder } from "@/utils/storage";
 
 export const VideoProgressStore = versionedStoreBuilder()
-  .setKey("video-progress")
+  .setKey("video-progress-v3")
   .addVersion({
     version: 0,
   })
