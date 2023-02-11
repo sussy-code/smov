@@ -1,232 +1,188 @@
-// TODO make type and react safe!!
-/*
-  it needs to be react-ified by having a save function not on the instance itself.
-  also type safety is important, this is all spaghetti with "any" everywhere
-*/
+import { useEffect, useState } from "react";
 
-function buildStoreObject(d: any) {
-  const data: any = {
-    versions: d.versions,
-    currentVersion: d.maxVersion,
-    id: d.storageString,
+interface StoreVersion<A> {
+  version: number;
+  migrate?(data: A): any;
+  create?: () => A;
+}
+interface StoreRet<T> {
+  save: (data: T) => void;
+  get: () => T;
+  _raw: () => any;
+  onChange: (cb: (data: T) => void) => {
+    destroy: () => void;
   };
-
-  function update(this: any, obj2: any) {
-    let obj = obj2;
-    if (!obj) throw new Error("object to update is not an object");
-
-    // repeat until object fully updated
-    if (obj["--version"] === undefined) obj["--version"] = 0;
-    while (obj["--version"] !== this.currentVersion) {
-      // get version
-      let version: any = obj["--version"] || 0;
-      if (version.constructor !== Number || version < 0) version = -42;
-      // invalid on purpose so it will reset
-      else {
-        version = ((version as number) + 1).toString();
-      }
-
-      // check if version exists
-      if (!this.versions[version]) {
-        console.error(
-          `Version not found for storage item in store ${this.id}, resetting`
-        );
-        obj = null;
-        break;
-      }
-
-      // update object
-      obj = this.versions[version].update(obj);
-    }
-
-    // if resulting obj is null, use latest version as init object
-    if (obj === null) {
-      console.error(
-        `Storage item for store ${this.id} has been reset due to faulty updates`
-      );
-      return this.versions[this.currentVersion.toString()].init();
-    }
-
-    // updates succesful, return
-    return obj;
-  }
-
-  function get(this: any) {
-    // get from storage api
-    const store = this;
-    let gottenData: any = localStorage.getItem(this.id);
-
-    // parse json if item exists
-    if (gottenData) {
-      try {
-        gottenData = JSON.parse(gottenData);
-        if (!gottenData.constructor) {
-          console.error(
-            `Storage item for store ${this.id} has not constructor`
-          );
-          throw new Error("storage item has no constructor");
-        }
-        if (gottenData.constructor !== Object) {
-          console.error(`Storage item for store ${this.id} is not an object`);
-          throw new Error("storage item is not an object");
-        }
-      } catch (_) {
-        // if errored, set to null so it generates new one, see below
-        console.error(`Failed to parse storage item for store ${this.id}`);
-        gottenData = null;
-      }
-    }
-
-    // if item doesnt exist, generate from version init
-    if (!gottenData) {
-      gottenData = this.versions[this.currentVersion.toString()].init();
-    }
-
-    // update the data if needed
-    gottenData = this.update(gottenData);
-
-    // add a save object to return value
-    gottenData.save = function save(newData: any) {
-      const dataToStore = newData || gottenData;
-      localStorage.setItem(store.id, JSON.stringify(dataToStore));
-    };
-
-    // add instance helpers
-    Object.entries(d.instanceHelpers).forEach(([name, helper]: any) => {
-      if (gottenData[name] !== undefined)
-        throw new Error(
-          `helper name: ${name} on instance of store ${this.id} is reserved`
-        );
-      gottenData[name] = helper.bind(gottenData);
-    });
-
-    // return data
-    return gottenData;
-  }
-
-  // add functions to store
-  data.get = get.bind(data);
-  data.update = update.bind(data);
-
-  // add static helpers
-  Object.entries(d.staticHelpers).forEach(([name, helper]: any) => {
-    if (data[name] !== undefined)
-      throw new Error(`helper name: ${name} on store ${data.id} is reserved`);
-    data[name] = helper.bind({});
-  });
-
-  return data;
 }
 
-/*
- * Builds a versioned store
- *
- * manages versioning of localstorage items
- */
-export function versionedStoreBuilder(): any {
+export interface StoreBuilder<T> {
+  setKey: (key: string) => StoreBuilder<T>;
+  addVersion: <A>(ver: StoreVersion<A>) => StoreBuilder<T>;
+  build: () => StoreRet<T>;
+}
+
+interface InternalStoreData {
+  versions: StoreVersion<any>[];
+  key: string | null;
+}
+
+const storeCallbacks: Record<string, ((data: any) => void)[]> = {};
+const stores: Record<string, [StoreRet<any>, InternalStoreData]> = {};
+
+export async function initializeStores() {
+  // migrate all stores
+  for (const [store, internal] of Object.values(stores)) {
+    const versions = internal.versions.sort((a, b) => a.version - b.version);
+
+    const data = store._raw();
+    const dataVersion =
+      data["--version"] && typeof data["--version"] === "number"
+        ? data["--version"]
+        : 0;
+
+    // Find which versions need to be used for migrations
+    const relevantVersions = versions.filter((v) => v.version >= dataVersion);
+
+    // Migrate over each version
+    let mostRecentData = data;
+    for (const version of relevantVersions) {
+      if (version.migrate)
+        mostRecentData = await version.migrate(mostRecentData);
+    }
+
+    store.save(mostRecentData);
+  }
+}
+
+function buildStorageObject<T>(store: InternalStoreData): StoreRet<T> {
+  const key = store.key ?? "";
+  const latestVersion = store.versions.sort((a, b) => b.version - a.version)[0];
+
+  function onChange(cb: (data: T) => void) {
+    if (!storeCallbacks[key]) storeCallbacks[key] = [];
+    storeCallbacks[key].push(cb);
+    return {
+      destroy() {
+        // remove function pointer from callbacks
+        storeCallbacks[key] = storeCallbacks[key].filter((v) => v === cb);
+      },
+    };
+  }
+
+  function makeRaw() {
+    const data = latestVersion.create?.() ?? {};
+    data["--version"] = latestVersion.version;
+    return data;
+  }
+
+  function getRaw() {
+    const item = localStorage.getItem(key);
+    if (!item) return makeRaw();
+    try {
+      return JSON.parse(item);
+    } catch (err) {
+      // we assume user has fucked with the data, give them a fresh store
+      console.error(`FAILED TO PARSE LOCALSTORAGE FOR KEY ${key}`, err);
+      return makeRaw();
+    }
+  }
+
+  function save(data: T) {
+    const withVersion: any = { ...data };
+    withVersion["--version"] = latestVersion.version;
+    localStorage.setItem(key, JSON.stringify(withVersion));
+
+    if (!storeCallbacks[key]) storeCallbacks[key] = [];
+    storeCallbacks[key].forEach((v) => v(structuredClone(data)));
+  }
+
   return {
-    _data: {
-      versionList: [],
-      maxVersion: 0,
-      versions: {},
-      storageString: undefined,
-      instanceHelpers: {},
-      staticHelpers: {},
+    get() {
+      const data = getRaw();
+      delete data["--version"];
+      return data as T;
     },
+    _raw() {
+      return getRaw();
+    },
+    onChange,
+    save,
+  };
+}
 
-    setKey(str: string) {
-      this._data.storageString = str;
+function assertStore(store: InternalStoreData) {
+  const versionListSorted = store.versions.sort(
+    (a, b) => a.version - b.version
+  );
+  versionListSorted.forEach((v, i, arr) => {
+    if (i === 0) return;
+    if (v.version !== arr[i - 1].version + 1)
+      throw new Error("Version list of store is not incremental");
+  });
+  versionListSorted.forEach((v) => {
+    if (v.version < 0) throw new Error("Versions cannot be negative");
+  });
+
+  // version zero must exist
+  if (versionListSorted[0]?.version !== 0)
+    throw new Error("Version 0 doesn't exist in version list of store");
+
+  // max version must have create function
+  if (!store.versions[store.versions.length - 1].create)
+    throw new Error(`Missing create function on latest version of store`);
+
+  // check storage string
+  if (!store.key) throw new Error("storage key not set in store");
+
+  // check if all parts have migratio
+  const migrations = [...versionListSorted];
+  migrations.pop();
+  migrations.forEach((v) => {
+    if (!v.migrate)
+      throw new Error(`Migration missing on version ${v.version}`);
+  });
+}
+
+export function createVersionedStore<T>(): StoreBuilder<T> {
+  const _data: InternalStoreData = {
+    versions: [],
+    key: null,
+  };
+
+  return {
+    setKey(key) {
+      _data.key = key;
       return this;
     },
-
-    addVersion({ version, migrate, create }: any) {
-      // input checking
-      if (version < 0) throw new Error("Cannot add version below 0 in store");
-      if (version > 0 && !migrate)
-        throw new Error(
-          `Missing migration on version ${version} (needed for any version above 0)`
-        );
-
-      // update max version list
-      if (version > this._data.maxVersion) this._data.maxVersion = version;
-      // add to version list
-      this._data.versionList.push(version);
-
-      // register version
-      this._data.versions[version.toString()] = {
-        version, // version number
-        update: migrate
-          ? (data: any) => {
-              // update function, and increment version
-              const newData = migrate(data);
-              newData["--version"] = version; // eslint-disable-line no-param-reassign
-              return newData;
-            }
-          : undefined,
-        init: create
-          ? () => {
-              // return an initial object
-              const data = create();
-              data["--version"] = version;
-              return data;
-            }
-          : undefined,
-      };
+    addVersion(ver) {
+      _data.versions.push(ver);
       return this;
     },
-
-    registerHelper({ name, helper, type }: any) {
-      // type
-      let helperType: string = type;
-      if (!helperType) helperType = "instance";
-
-      // input checking
-      if (!name || name.constructor !== String) {
-        throw new Error("helper name is not a string");
-      }
-      if (!helper || helper.constructor !== Function) {
-        throw new Error("helper function is not a function");
-      }
-      if (!["instance", "static"].includes(helperType)) {
-        throw new Error("helper type must be either 'instance' or 'static'");
-      }
-
-      // register helper
-      if (helperType === "instance")
-        this._data.instanceHelpers[name as string] = helper;
-      else if (helperType === "static")
-        this._data.staticHelpers[name as string] = helper;
-
-      return this;
-    },
-
     build() {
-      // check if version list doesnt skip versions
-      const versionListSorted = this._data.versionList.sort(
-        (a: number, b: number) => a - b
-      );
-      versionListSorted.forEach((v: any, i: number, arr: any[]) => {
-        if (i === 0) return;
-        if (v !== arr[i - 1] + 1)
-          throw new Error("Version list of store is not incremental");
-      });
-
-      // version zero must exist
-      if (versionListSorted[0] !== 0)
-        throw new Error("Version 0 doesn't exist in version list of store");
-
-      // max version must have init function
-      if (!this._data.versions[this._data.maxVersion.toString()].init)
-        throw new Error(
-          `Missing create function on version ${this._data.maxVersion} (needed for latest version of store)`
-        );
-
-      // check storage string
-      if (!this._data.storageString)
-        throw new Error("storage key not set in store");
-
-      // build versioned store
-      return buildStoreObject(this._data);
+      assertStore(_data);
+      const storageObject = buildStorageObject<T>(_data);
+      stores[_data.key ?? ""] = [storageObject, _data];
+      return storageObject;
     },
   };
+}
+
+export function useStore<T>(
+  store: StoreRet<T>
+): [T, (cb: (old: T) => T) => void] {
+  const [data, setData] = useState<T>(store.get());
+  useEffect(() => {
+    const { destroy } = store.onChange((newData) => {
+      setData(newData);
+    });
+    return () => {
+      destroy();
+    };
+  }, [store]);
+
+  function setNewData(cb: (old: T) => T) {
+    const newData = cb(data);
+    store.save(newData);
+  }
+
+  return [data, setNewData];
 }

@@ -1,5 +1,6 @@
 import { DetailedMeta } from "@/backend/metadata/getmeta";
-import { MWMediaMeta, MWMediaType } from "@/backend/metadata/types";
+import { MWMediaType } from "@/backend/metadata/types";
+import { useStore } from "@/utils/storage";
 import {
   createContext,
   ReactNode,
@@ -7,9 +8,9 @@ import {
   useContext,
   useMemo,
   useRef,
-  useState,
 } from "react";
 import { VideoProgressStore } from "./store";
+import { StoreMediaItem, WatchedStoreItem, WatchedStoreData } from "./types";
 
 const FIVETEEN_MINUTES = 15 * 60;
 const FIVE_MINUTES = 5 * 60;
@@ -34,29 +35,8 @@ function shouldSave(
   return true;
 }
 
-interface MediaItem {
-  meta: MWMediaMeta;
-  series?: {
-    episodeId: string;
-    seasonId: string;
-    episode: number;
-    season: number;
-  };
-}
-
-export interface WatchedStoreItem {
-  item: MediaItem;
-  progress: number;
-  percentage: number;
-  watchedAt: number;
-}
-
-export interface WatchedStoreData {
-  items: WatchedStoreItem[];
-}
-
 interface WatchedStoreDataWrapper {
-  updateProgress(media: MediaItem, progress: number, total: number): void;
+  updateProgress(media: StoreMediaItem, progress: number, total: number): void;
   getFilteredWatched(): WatchedStoreItem[];
   removeProgress(id: string): void;
   watched: WatchedStoreData;
@@ -72,7 +52,7 @@ const WatchedContext = createContext<WatchedStoreDataWrapper>({
 });
 WatchedContext.displayName = "WatchedContext";
 
-function isSameEpisode(media: MediaItem, v: MediaItem) {
+function isSameEpisode(media: StoreMediaItem, v: StoreMediaItem) {
   return (
     media.meta.id === v.meta.id &&
     (!media.series ||
@@ -82,24 +62,7 @@ function isSameEpisode(media: MediaItem, v: MediaItem) {
 }
 
 export function WatchedContextProvider(props: { children: ReactNode }) {
-  const watchedLocalstorage = VideoProgressStore.get();
-  const [watched, setWatchedReal] = useState<WatchedStoreData>(
-    watchedLocalstorage as WatchedStoreData
-  );
-
-  const setWatched = useCallback(
-    (data: any) => {
-      setWatchedReal((old) => {
-        let newData = data;
-        if (data.constructor === Function) {
-          newData = data(old);
-        }
-        watchedLocalstorage.save(newData);
-        return newData;
-      });
-    },
-    [setWatchedReal, watchedLocalstorage]
-  );
+  const [watched, setWatched] = useStore(VideoProgressStore);
 
   const contextValue = useMemo(
     () => ({
@@ -110,7 +73,11 @@ export function WatchedContextProvider(props: { children: ReactNode }) {
           return newData;
         });
       },
-      updateProgress(media: MediaItem, progress: number, total: number): void {
+      updateProgress(
+        media: StoreMediaItem,
+        progress: number,
+        total: number
+      ): void {
         setWatched((data: WatchedStoreData) => {
           const newData = { ...data };
           let item = newData.items.find((v) => isSameEpisode(media, v.item));
@@ -176,7 +143,7 @@ export function useWatchedContext() {
 }
 
 function isSameEpisodeMeta(
-  media: MediaItem,
+  media: StoreMediaItem,
   mediaTwo: DetailedMeta | null,
   episodeId?: string
 ) {

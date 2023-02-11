@@ -9,6 +9,7 @@ import "@/setup/i18n";
 import "@/setup/index.css";
 import "@/backend";
 import { initializeChromecast } from "./setup/chromecast";
+import { initializeStores } from "./utils/storage";
 
 // initialize
 const key =
@@ -42,12 +43,19 @@ initializeChromecast();
 // TODO general todos:
 //  - localize everything (fix loading screen text (series vs movies))
 
+const LazyLoadedApp = React.lazy(async () => {
+  await initializeStores();
+  return {
+    default: App,
+  };
+});
+
 ReactDOM.render(
   <React.StrictMode>
     <ErrorBoundary>
       <HashRouter>
         <Suspense fallback="">
-          <App />
+          <LazyLoadedApp />
         </Suspense>
       </HashRouter>
     </ErrorBoundary>
