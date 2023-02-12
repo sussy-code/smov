@@ -16,10 +16,15 @@ export function ProgressListenerController(props: Props) {
   const progress = useProgress(descriptor);
   const controls = useControls(descriptor);
   const didInitialize = useRef<true | null>(null);
+  const lastTime = useRef<number>(props.startAt ?? 0);
 
   // time updates (throttled)
   const updateTime = useMemo(
-    () => throttle((a: number, b: number) => props.onProgress?.(a, b), 1000),
+    () =>
+      throttle((a: number, b: number) => {
+        lastTime.current = a;
+        props.onProgress?.(a, b);
+      }, 1000),
     [props]
   );
   useEffect(() => {
@@ -37,11 +42,16 @@ export function ProgressListenerController(props: Props) {
   useEffect(() => {
     if (didInitialize.current) return;
     if (mediaPlaying.isFirstLoading || Number.isNaN(progress.duration)) return;
-    if (props.startAt !== undefined) {
-      controls.setTime(props.startAt);
-    }
+    controls.setTime(lastTime.current);
     didInitialize.current = true;
   }, [didInitialize, props, progress, mediaPlaying, controls]);
+
+  useEffect(() => {
+    // if it initialized, but media starts loading for the first time again.
+    // reset initalized so it will restore time again
+    if (didInitialize.current && mediaPlaying.isFirstLoading)
+      didInitialize.current = null;
+  }, [mediaPlaying]);
 
   return null;
 }
