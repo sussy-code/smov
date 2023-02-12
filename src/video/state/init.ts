@@ -12,7 +12,7 @@ export function resetForSource(s: VideoPlayerState) {
     isDragSeeking: false,
     isFirstLoading: true,
     hasPlayedOnce: false,
-    volume: 0,
+    volume: state.mediaPlaying.volume, // volume settings needs to persist through resets
   };
   state.progress = {
     time: 0,

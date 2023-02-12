@@ -129,18 +129,22 @@ export function createVideoStateProvider(
     },
     setSource(source) {
       if (!source) {
+        resetStateForSource(descriptor, state);
         player.src = "";
         state.source = null;
-        resetStateForSource(descriptor, state);
         updateSource(descriptor, state);
         return;
       }
 
+      // reset before assign new one so the old HLS instance gets destroyed
+      resetStateForSource(descriptor, state);
+
       if (source?.type === MWStreamType.HLS) {
         if (player.canPlayType("application/vnd.apple.mpegurl")) {
+          // HLS supported natively by browser
           player.src = source.source;
         } else {
-          // HLS support
+          // HLS through HLS.js
           if (!Hls.isSupported()) {
             state.error = {
               name: `Not supported`,
@@ -168,6 +172,7 @@ export function createVideoStateProvider(
           hls.loadSource(source.source);
         }
       } else if (source.type === MWStreamType.MP4) {
+        // standard MP4 stream
         player.src = source.source;
       }
 
@@ -178,7 +183,6 @@ export function createVideoStateProvider(
         url: source.source,
         caption: null,
       };
-      resetStateForSource(descriptor, state);
       updateSource(descriptor, state);
     },
     setCaption(id, url) {
