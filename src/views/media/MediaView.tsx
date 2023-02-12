@@ -251,6 +251,7 @@ export function MediaView() {
       stream={stream}
       selected={selected}
       onChangeStream={(sId, eId) => {
+        // TODO changing episode breaks useGoBack
         history.replace(
           `/media/${encodeURIComponent(params.media)}/${encodeURIComponent(
             sId
