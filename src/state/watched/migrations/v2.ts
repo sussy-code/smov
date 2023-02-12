@@ -27,7 +27,7 @@ export interface OldData {
   items: (OldMovie | OldSeries)[];
 }
 
-interface OldBookmarks {
+export interface OldBookmarks {
   bookmarks: (OldMovie | OldSeries)[];
 }
 
