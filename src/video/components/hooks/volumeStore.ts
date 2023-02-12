@@ -1,6 +1,10 @@
-import { versionedStoreBuilder } from "@/utils/storage";
+import { createVersionedStore } from "@/utils/storage";
 
-export const volumeStore = versionedStoreBuilder()
+interface VolumeStoreData {
+  volume: number;
+}
+
+export const volumeStore = createVersionedStore<VolumeStoreData>()
   .setKey("mw-volume")
   .addVersion({
     version: 0,
@@ -18,8 +22,7 @@ export function getStoredVolume(): number {
 }
 
 export function setStoredVolume(volume: number) {
-  const store = volumeStore.get();
-  store.save({
+  volumeStore.save({
     volume,
   });
 }

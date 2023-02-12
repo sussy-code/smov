@@ -1,17 +1,17 @@
-import { versionedStoreBuilder } from "@/utils/storage";
+import { createVersionedStore } from "@/utils/storage";
+import { migrateV1Bookmarks, OldBookmarks } from "../watched/migrations/v2";
+import { BookmarkStoreData } from "./types";
 
-export const BookmarkStore = versionedStoreBuilder()
+export const BookmarkStore = createVersionedStore<BookmarkStoreData>()
   .setKey("mw-bookmarks")
   .addVersion({
     version: 0,
+    migrate(oldBookmarks: OldBookmarks) {
+      return migrateV1Bookmarks(oldBookmarks);
+    },
   })
   .addVersion({
     version: 1,
-    migrate() {
-      return {
-        bookmarks: [],
-      };
-    },
     create() {
       return {
         bookmarks: [],
