@@ -1,5 +1,5 @@
 import { createVersionedStore } from "@/utils/storage";
-import { migrateV2, OldData } from "./migrations/v2";
+import { migrateV2Videos, OldData } from "./migrations/v2";
 import { WatchedStoreData } from "./types";
 
 export const VideoProgressStore = createVersionedStore<WatchedStoreData>()
@@ -15,7 +15,7 @@ export const VideoProgressStore = createVersionedStore<WatchedStoreData>()
   .addVersion({
     version: 1,
     async migrate(old: OldData) {
-      return migrateV2(old);
+      return migrateV2Videos(old);
     },
   })
   .addVersion({

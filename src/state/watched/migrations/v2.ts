@@ -27,16 +27,14 @@ export interface OldData {
   items: (OldMovie | OldSeries)[];
 }
 
-export async function migrateV2(old: OldData) {
-  const oldData = old;
-  if (!oldData) return;
+interface OldBookmarks {
+  bookmarks: (OldMovie | OldSeries)[];
+}
 
-  const uniqueMedias: Record<string, any> = {};
-  oldData.items.forEach((item: any) => {
-    if (uniqueMedias[item.mediaId]) return;
-    uniqueMedias[item.mediaId] = item;
-  });
-
+async function getMetas(
+  uniqueMedias: Record<string, any>,
+  oldData?: OldData
+): Promise<Record<string, Record<string, DetailedMeta | null>> | undefined> {
   const yearsAreClose = (a: number, b: number) => {
     return Math.abs(a - b) <= 1;
   };
@@ -74,14 +72,16 @@ export async function migrateV2(old: OldData) {
       if (!meta || !meta?.meta.seasons) return;
       const seasonNumbers = [
         ...new Set(
-          oldData.items
-            .filter((watchedEntry: any) => watchedEntry.mediaId === item.id)
-            .map((watchedEntry: any) => watchedEntry.seasonId)
+          oldData?.items
+            ? oldData.items
+                .filter((watchedEntry: any) => watchedEntry.mediaId === item.id)
+                .map((watchedEntry: any) => watchedEntry.seasonId)
+            : ["0"]
         ),
       ];
       const seasons = seasonNumbers.map((num) => ({
         num,
-        season: meta.meta?.seasons?.[(num as number) - 1],
+        season: meta.meta?.seasons?.[Math.max(0, (num as number) - 1)],
       }));
       keys = seasons
         .map((season) => (season ? [season.num, season?.season?.id] : []))
@@ -100,6 +100,45 @@ export async function migrateV2(old: OldData) {
       })
     );
   }
+
+  return mediaMetas;
+}
+
+export async function migrateV1Bookmarks(old: OldBookmarks) {
+  const oldData = old;
+  if (!oldData) return;
+
+  const uniqueMedias: Record<string, any> = {};
+  oldData.bookmarks.forEach((item: any) => {
+    if (uniqueMedias[item.mediaId]) return;
+    uniqueMedias[item.mediaId] = item;
+  });
+
+  const mediaMetas = await getMetas(uniqueMedias);
+  if (!mediaMetas) return;
+
+  const bookmarks = Object.keys(mediaMetas)
+    .map((key) => mediaMetas[key]["0"])
+    .map((t) => t?.meta)
+    .filter(Boolean);
+
+  return {
+    bookmarks,
+  };
+}
+
+export async function migrateV2Videos(old: OldData) {
+  const oldData = old;
+  if (!oldData) return;
+
+  const uniqueMedias: Record<string, any> = {};
+  oldData.items.forEach((item: any) => {
+    if (uniqueMedias[item.mediaId]) return;
+    uniqueMedias[item.mediaId] = item;
+  });
+
+  const mediaMetas = await getMetas(uniqueMedias, oldData);
+  if (!mediaMetas) return;
 
   // We've got all the metadata you can dream of now
   // Now let's convert stuff into the new format.
