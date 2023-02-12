@@ -44,9 +44,16 @@ export async function initializeStores() {
 
     // Migrate over each version
     let mostRecentData = data;
-    for (const version of relevantVersions) {
-      if (version.migrate)
-        mostRecentData = await version.migrate(mostRecentData);
+    try {
+      for (const version of relevantVersions) {
+        if (version.migrate)
+          mostRecentData = await version.migrate(mostRecentData);
+      }
+    } catch (err) {
+      console.error(`FAILED TO MIGRATE STORE ${internal.key}`, err);
+      // reset store to lastest version create
+      mostRecentData =
+        relevantVersions[relevantVersions.length - 1].create?.() ?? {};
     }
 
     store.save(mostRecentData);
