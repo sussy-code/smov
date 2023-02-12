@@ -106,9 +106,8 @@ function NewDomainInfo() {
       </p>
       <p className="text-purple-200">
         We also have a new domain! Please be sure to update your bookmarks, as
-        the old domain is going to stop working on{" "}
-        <strong>May 31st, 2023</strong>. The new domain is{" "}
-        <strong>movie-web.app</strong>
+        the old domain is going to stop working on <strong>May 31st</strong>.
+        The new domain is <strong>movie-web.app</strong>
       </p>
     </div>
   );
