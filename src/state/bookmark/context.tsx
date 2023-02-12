@@ -1,17 +1,8 @@
 import { MWMediaMeta } from "@/backend/metadata/types";
-import {
-  createContext,
-  ReactNode,
-  useCallback,
-  useContext,
-  useMemo,
-  useState,
-} from "react";
+import { useStore } from "@/utils/storage";
+import { createContext, ReactNode, useContext, useMemo } from "react";
 import { BookmarkStore } from "./store";
-
-interface BookmarkStoreData {
-  bookmarks: MWMediaMeta[];
-}
+import { BookmarkStoreData } from "./types";
 
 interface BookmarkStoreDataWrapper {
   setItemBookmark(media: MWMediaMeta, bookedmarked: boolean): void;
@@ -36,25 +27,7 @@ function getBookmarkIndexFromMedia(
 }
 
 export function BookmarkContextProvider(props: { children: ReactNode }) {
-  const bookmarkLocalstorage = BookmarkStore.get();
-  const [bookmarkStorage, setBookmarkStore] = useState<BookmarkStoreData>(
-    bookmarkLocalstorage as BookmarkStoreData
-  );
-
-  const setBookmarked = useCallback(
-    (data: any) => {
-      setBookmarkStore((old) => {
-        const old2 = JSON.parse(JSON.stringify(old));
-        let newData = data;
-        if (data.constructor === Function) {
-          newData = data(old2);
-        }
-        bookmarkLocalstorage.save(newData);
-        return newData;
-      });
-    },
-    [bookmarkLocalstorage, setBookmarkStore]
-  );
+  const [bookmarkStorage, setBookmarked] = useStore(BookmarkStore);
 
   const contextValue = useMemo(
     () => ({
