@@ -22,6 +22,9 @@ export function useControls(
 
   return {
     // state provider controls
+    getId() {
+      return state.stateProvider?.getId() ?? "";
+    },
     pause() {
       state.stateProvider?.pause();
     },

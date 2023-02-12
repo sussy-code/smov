@@ -7,6 +7,8 @@ export type VideoMiscError = {
   canAirplay: boolean;
   wrapperInitialized: boolean;
   initalized: boolean;
+  isCasting: boolean;
+  stateProviderId: string;
 };
 
 function getMiscFromState(state: VideoPlayerState): VideoMiscError {
@@ -14,6 +16,8 @@ function getMiscFromState(state: VideoPlayerState): VideoMiscError {
     canAirplay: state.canAirplay,
     wrapperInitialized: !!state.wrapperElement,
     initalized: state.initalized,
+    isCasting: state.casting.isCasting,
+    stateProviderId: state.stateProviderId,
   };
 }
 

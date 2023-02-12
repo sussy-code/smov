@@ -49,6 +49,7 @@ module.exports = {
     "no-eval": "off",
     "no-await-in-loop": "off",
     "no-nested-ternary": "off",
+    "prefer-destructuring": "off",
     "react/jsx-filename-extension": [
       "error",
       { extensions: [".js", ".tsx", ".jsx"] }

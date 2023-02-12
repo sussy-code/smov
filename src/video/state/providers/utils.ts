@@ -9,15 +9,28 @@ export function setProvider(
   const state = getPlayerState(descriptor);
   state.stateProvider = provider;
   state.initalized = true;
+  state.stateProviderId = provider.getId();
   updateMisc(descriptor, state);
 }
 
 /**
  * Note: This only sets the state provider to null. it does not destroy the listener
  */
-export function unsetStateProvider(descriptor: string) {
+export function unsetStateProvider(
+  descriptor: string,
+  stateProviderId: string
+) {
   const state = getPlayerState(descriptor);
+  // dont do anything if state provider doesnt match the thing to unset
+  if (
+    !state.stateProvider ||
+    state.stateProvider?.getId() !== stateProviderId
+  ) {
+    state.stateProviderId = "video"; // go back to video when casting stops
+    return;
+  }
   state.stateProvider = null;
+  state.stateProviderId = "video"; // go back to video when casting stops
 }
 
 export function handleBuffered(time: number, buffered: TimeRanges): number {

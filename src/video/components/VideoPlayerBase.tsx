@@ -1,3 +1,4 @@
+import { CastingInternal } from "@/video/components/internal/CastingInternal";
 import { WrapperRegisterInternal } from "@/video/components/internal/WrapperRegisterInternal";
 import { VideoErrorBoundary } from "@/video/components/parts/VideoErrorBoundary";
 import { useInterface } from "@/video/state/logic/interface";
@@ -42,6 +43,7 @@ function VideoPlayerBaseWithState(props: VideoPlayerBaseProps) {
         ].join(" ")}
       >
         <VideoElementInternal autoPlay={props.autoPlay} />
+        <CastingInternal />
         <WrapperRegisterInternal wrapper={ref.current} />
         <div className="absolute inset-0">{children}</div>
       </div>

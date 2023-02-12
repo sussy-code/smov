@@ -18,6 +18,7 @@ export type VideoPlayerStateController = {
   startAirplay(): void;
   setCaption(id: string, url: string): void;
   clearCaption(): void;
+  getId(): string;
 };
 
 export type VideoPlayerStateProvider = VideoPlayerStateController & {

@@ -64,9 +64,18 @@ export type VideoPlayerState = {
     };
   };
 
+  // casting state
+  casting: {
+    isCasting: boolean;
+    controller: cast.framework.RemotePlayerController | null;
+    player: cast.framework.RemotePlayer | null;
+    instance: cast.framework.CastContext | null;
+  };
+
   // misc
   canAirplay: boolean;
   initalized: boolean;
+  stateProviderId: string;
   error: null | {
     name: string;
     description: string;

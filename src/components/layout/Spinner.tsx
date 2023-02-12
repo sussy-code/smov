@@ -1,9 +1,9 @@
 import "./Spinner.css";
 
 interface SpinnerProps {
-  className: string;
+  className?: string;
 }
 
 export function Spinner(props: SpinnerProps) {
-  return <div className={["spinner", props.className].join(" ")} />;
+  return <div className={["spinner", props.className ?? ""].join(" ")} />;
 }

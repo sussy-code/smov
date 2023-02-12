@@ -60,6 +60,9 @@ export function createVideoStateProvider(
   const state = getPlayerState(descriptor);
 
   return {
+    getId() {
+      return "video";
+    },
     play() {
       player.play();
     },
@@ -130,7 +133,8 @@ export function createVideoStateProvider(
     setSource(source) {
       if (!source) {
         resetStateForSource(descriptor, state);
-        player.src = "";
+        player.removeAttribute("src");
+        player.load();
         state.source = null;
         updateSource(descriptor, state);
         return;
@@ -301,6 +305,13 @@ export function createVideoStateProvider(
         "webkitplaybacktargetavailabilitychanged",
         canAirplay
       );
+
+      if (state.source)
+        this.setSource({
+          quality: state.source.quality,
+          source: state.source.url,
+          type: state.source.type,
+        });
 
       return {
         destroy: () => {

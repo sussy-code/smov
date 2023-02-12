@@ -10,7 +10,7 @@ interface Props {
   autoPlay?: boolean;
 }
 
-export function VideoElementInternal(props: Props) {
+function VideoElement(props: Props) {
   const descriptor = useVideoPlayerDescriptor();
   const mediaPlaying = useMediaPlaying(descriptor);
   const source = useSource(descriptor);
@@ -18,6 +18,7 @@ export function VideoElementInternal(props: Props) {
   const ref = useRef<HTMLVideoElement>(null);
 
   const initalized = useMemo(() => !!misc.wrapperInitialized, [misc]);
+  const stateProviderId = useMemo(() => misc.stateProviderId, [misc]);
 
   useEffect(() => {
     if (!initalized) return;
@@ -26,10 +27,10 @@ export function VideoElementInternal(props: Props) {
     setProvider(descriptor, provider);
     const { destroy } = provider.providerStart();
     return () => {
-      unsetStateProvider(descriptor);
+      unsetStateProvider(descriptor, provider.getId());
       destroy();
     };
-  }, [descriptor, initalized]);
+  }, [descriptor, initalized, stateProviderId]);
 
   // this element is remotely controlled by a state provider
   return (
@@ -45,4 +46,13 @@ export function VideoElementInternal(props: Props) {
       ) : null}
     </video>
   );
+}
+
+export function VideoElementInternal(props: Props) {
+  const descriptor = useVideoPlayerDescriptor();
+  const misc = useMisc(descriptor);
+
+  // this element is remotely controlled by a state provider
+  if (misc.stateProviderId !== "video") return null;
+  return <VideoElement {...props} />;
 }

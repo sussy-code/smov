@@ -7,6 +7,7 @@ import {
   useBookmarkContext,
 } from "@/state/bookmark";
 import { AirplayAction } from "@/video/components/actions/AirplayAction";
+import { ChromecastAction } from "@/video/components/actions/ChromecastAction";
 
 interface VideoPlayerHeaderProps {
   media?: MWMediaMeta;
@@ -55,9 +56,11 @@ export function VideoPlayerHeader(props: VideoPlayerHeaderProps) {
         )}
       </div>
       {props.showControls ? (
-        <AirplayAction />
+        <>
+          <AirplayAction />
+          <ChromecastAction />
+        </>
       ) : (
-        // chromecontrol
         <BrandPill />
       )}
     </div>

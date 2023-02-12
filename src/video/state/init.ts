@@ -51,12 +51,20 @@ function initPlayer(): VideoPlayerState {
       draggingTime: 0,
     },
 
+    casting: {
+      isCasting: false,
+      controller: null,
+      instance: null,
+      player: null,
+    },
+
     meta: null,
     source: null,
 
     error: null,
     canAirplay: false,
     initalized: false,
+    stateProviderId: "video",
 
     pausedWhenSeeking: false,
     hlsInstance: null,

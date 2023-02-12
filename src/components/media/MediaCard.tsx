@@ -43,7 +43,7 @@ function MediaCardContent({
         }`}
       >
         <div
-          className="relative mb-4 aspect-[2/3] w-full overflow-hidden rounded-xl bg-denim-500 bg-cover transition-[border-radius] duration-100 group-hover:rounded-lg"
+          className="relative mb-4 aspect-[2/3] w-full overflow-hidden rounded-xl bg-denim-500 bg-cover bg-center transition-[border-radius] duration-100 group-hover:rounded-lg"
           style={{
             backgroundImage: media.poster ? `url(${media.poster})` : undefined,
           }}

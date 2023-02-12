@@ -28,6 +28,7 @@ import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useControls } from "@/video/state/logic/controls";
 import { ReactNode, useCallback, useState } from "react";
 import { PopoutProviderAction } from "@/video/components/popouts/PopoutProviderAction";
+import { ChromecastAction } from "@/video/components/actions/ChromecastAction";
 
 type Props = VideoPlayerBaseProps;
 
@@ -138,7 +139,7 @@ export function VideoPlayer(props: Props) {
                       <div className="flex items-center justify-center">
                         <CaptionsSelectionAction />
                         <SeriesSelectionAction />
-                        {/* <SourceSelectionControl media={props.media} /> */}
+                        <SourceSelectionAction />
                       </div>
                       <FullscreenAction />
                     </div>
@@ -149,9 +150,8 @@ export function VideoPlayer(props: Props) {
                       <QualityDisplayAction />
                       <SeriesSelectionAction />
                       <SourceSelectionAction />
-                      {/* <SourceSelectionControl media={props.media} /> */}
                       <div className="mx-2 h-6 w-px bg-white opacity-50" />
-                      {/* <ChromeCastControl /> */}
+                      <ChromecastAction />
                       <AirplayAction />
                       <CaptionsSelectionAction />
                       <FullscreenAction />

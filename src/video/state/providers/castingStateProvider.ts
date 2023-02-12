@@ -1,0 +1,236 @@
+import fscreen from "fscreen";
+import {
+  canChangeVolume,
+  canFullscreen,
+  canFullscreenAnyElement,
+  canWebkitFullscreen,
+} from "@/utils/detectFeatures";
+import { updateSource } from "@/video/state/logic/source";
+import {
+  getStoredVolume,
+  setStoredVolume,
+} from "@/video/components/hooks/volumeStore";
+import { resetStateForSource } from "@/video/state/providers/helpers";
+import { updateInterface } from "@/video/state/logic/interface";
+import { getPlayerState } from "../cache";
+import { updateMediaPlaying } from "../logic/mediaplaying";
+import { VideoPlayerStateProvider } from "./providerTypes";
+import { updateProgress } from "../logic/progress";
+
+// TODO startAt when switching state providers
+// TODO cast -> uncast -> cast will break
+// TODO chromecast button has incorrect hitbox and badly styled
+// TODO casting text middle of screen
+export function createCastingStateProvider(
+  descriptor: string
+): VideoPlayerStateProvider {
+  const state = getPlayerState(descriptor);
+  const ins = state.casting.instance;
+  const player = state.casting.player;
+  const controller = state.casting.controller;
+
+  return {
+    getId() {
+      return "casting";
+    },
+    play() {
+      if (state.mediaPlaying.isPaused) controller?.playOrPause();
+    },
+    pause() {
+      if (state.mediaPlaying.isPlaying) controller?.playOrPause();
+    },
+    exitFullscreen() {
+      if (!fscreen.fullscreenElement) return;
+      fscreen.exitFullscreen();
+    },
+    enterFullscreen() {
+      if (!canFullscreen() || fscreen.fullscreenElement) return;
+      if (canFullscreenAnyElement()) {
+        if (state.wrapperElement)
+          fscreen.requestFullscreen(state.wrapperElement);
+        return;
+      }
+      if (canWebkitFullscreen()) {
+        (player as any).webkitEnterFullscreen();
+      }
+    },
+    startAirplay() {
+      // no airplay while casting
+    },
+    setTime(t) {
+      // clamp time between 0 and max duration
+      let time = Math.min(t, player?.duration ?? 0);
+      time = Math.max(0, time);
+
+      if (Number.isNaN(time)) return;
+
+      // update state
+      if (player) player.currentTime = time;
+      state.progress.time = time;
+      controller?.seek();
+      updateProgress(descriptor, state);
+    },
+    setSeeking(active) {
+      state.mediaPlaying.isSeeking = active;
+      state.mediaPlaying.isDragSeeking = active;
+      updateMediaPlaying(descriptor, state);
+
+      // if it was playing when starting to seek, play again
+      if (!active) {
+        if (!state.pausedWhenSeeking) this.play();
+        return;
+      }
+
+      // when seeking we pause the video
+      // this variables isnt reactive, just used so the state can be remembered next unseek
+      state.pausedWhenSeeking = state.mediaPlaying.isPaused;
+      this.pause();
+    },
+    async setVolume(v) {
+      // clamp time between 0 and 1
+      let volume = Math.min(v, 1);
+      volume = Math.max(0, volume);
+
+      // update state
+      if ((await canChangeVolume()) && player) player.volumeLevel = volume;
+      state.mediaPlaying.volume = volume;
+      controller?.setVolumeLevel();
+      updateMediaPlaying(descriptor, state);
+
+      // update localstorage
+      setStoredVolume(volume);
+    },
+    setSource(source) {
+      if (!source) {
+        resetStateForSource(descriptor, state);
+        controller?.stop();
+        state.source = null;
+        updateSource(descriptor, state);
+        return;
+      }
+
+      const movieMeta = new chrome.cast.media.MovieMediaMetadata();
+      movieMeta.title = state.meta?.meta.title ?? "";
+
+      // TODO contentId?
+      const mediaInfo = new chrome.cast.media.MediaInfo("hello", "video/mp4");
+      (mediaInfo as any).contentUrl = source?.source;
+      mediaInfo.streamType = chrome.cast.media.StreamType.BUFFERED;
+      mediaInfo.metadata = movieMeta;
+
+      const request = new chrome.cast.media.LoadRequest(mediaInfo);
+      request.autoplay = true;
+
+      const session = ins?.getCurrentSession();
+      session?.loadMedia(request);
+
+      // update state
+      state.source = {
+        quality: source.quality,
+        type: source.type,
+        url: source.source,
+        caption: null,
+      };
+      resetStateForSource(descriptor, state);
+      updateSource(descriptor, state);
+    },
+    setCaption(id, url) {
+      if (state.source) {
+        state.source.caption = {
+          id,
+          url,
+        };
+        updateSource(descriptor, state);
+      }
+    },
+    clearCaption() {
+      if (state.source) {
+        state.source.caption = null;
+        updateSource(descriptor, state);
+      }
+    },
+    providerStart() {
+      this.setVolume(getStoredVolume());
+
+      const listenToEvents = async (
+        e: cast.framework.RemotePlayerChangedEvent
+      ) => {
+        switch (e.field) {
+          case "volumeLevel":
+            if (await canChangeVolume()) {
+              state.mediaPlaying.volume = e.value;
+              updateMediaPlaying(descriptor, state);
+            }
+            break;
+          case "currentTime":
+            state.progress.time = e.value;
+            updateProgress(descriptor, state);
+            break;
+          case "mediaInfo":
+            state.progress.duration = e.value.duration;
+            updateProgress(descriptor, state);
+            break;
+          case "playerState":
+            state.mediaPlaying.isLoading = e.value === "BUFFERING";
+            updateMediaPlaying(descriptor, state);
+            break;
+          case "isPaused":
+            state.mediaPlaying.isPaused = e.value;
+            state.mediaPlaying.isPlaying = !e.value;
+            if (!e.value) state.mediaPlaying.hasPlayedOnce = true;
+            updateMediaPlaying(descriptor, state);
+            break;
+          case "isMuted":
+            state.mediaPlaying.volume = e.value ? 1 : 0;
+            // TODO better mute handling
+            updateMediaPlaying(descriptor, state);
+            break;
+          case "displayStatus":
+          case "canSeek":
+          case "title":
+            break;
+          default:
+            console.log(e.type, e.field, e.value);
+            break;
+        }
+      };
+      const fullscreenchange = () => {
+        state.interface.isFullscreen = !!document.fullscreenElement;
+        updateInterface(descriptor, state);
+      };
+      const isFocused = (evt: any) => {
+        state.interface.isFocused = evt.type !== "mouseleave";
+        updateInterface(descriptor, state);
+      };
+
+      controller?.addEventListener(
+        cast.framework.RemotePlayerEventType.ANY_CHANGE,
+        listenToEvents
+      );
+      state.wrapperElement?.addEventListener("click", isFocused);
+      state.wrapperElement?.addEventListener("mouseenter", isFocused);
+      state.wrapperElement?.addEventListener("mouseleave", isFocused);
+      fscreen.addEventListener("fullscreenchange", fullscreenchange);
+
+      if (state.source)
+        this.setSource({
+          quality: state.source.quality,
+          source: state.source.url,
+          type: state.source.type,
+        });
+
+      return {
+        destroy: () => {
+          controller?.removeEventListener(
+            cast.framework.RemotePlayerEventType.ANY_CHANGE,
+            listenToEvents
+          );
+          state.wrapperElement?.removeEventListener("click", isFocused);
+          state.wrapperElement?.removeEventListener("mouseenter", isFocused);
+          state.wrapperElement?.removeEventListener("mouseleave", isFocused);
+          fscreen.removeEventListener("fullscreenchange", fullscreenchange);
+        },
+      };
+    },
+  };
+}
