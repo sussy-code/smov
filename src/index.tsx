@@ -22,8 +22,6 @@ initializeChromecast();
 // TODO video todos:
 //  - chrome cast support
 //  - bug: safari fullscreen will make video overlap player controls
-//  - improvement: make scrapers use fuzzy matching on normalized titles
-//  - bug: .ass subtitle files are fucked
 
 // TODO stuff to test:
 //  - browser: firefox, chrome, edge, safari desktop
@@ -36,9 +34,6 @@ initializeChromecast();
 // TODO backend system:
 //  - implement jons providers/embedscrapers
 //  - AFTER all that: rank providers/embedscrapers
-
-// TODO general todos:
-//  - localize everything (fix loading screen text (series vs movies))
 
 const LazyLoadedApp = React.lazy(async () => {
   await initializeStores();

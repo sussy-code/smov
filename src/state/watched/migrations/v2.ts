@@ -148,6 +148,8 @@ export async function migrateV2Videos(old: OldData) {
     items: [],
   };
 
+  const now = Date.now();
+
   for (const oldWatched of oldData.items) {
     if (oldWatched.mediaType === "movie") {
       if (!mediaMetas[oldWatched.mediaId]["0"]?.meta) continue;
@@ -186,8 +188,8 @@ export async function migrateV2Videos(old: OldData) {
         },
         progress: oldWatched.progress,
         percentage: oldWatched.percentage,
-        watchedAt: Date.now(), // There was no watchedAt in V2
-        // Put watchedAt in the future to show last episode as most recently
+        watchedAt: now + Number(oldWatched.seasonId) * 1000 + Number(oldWatched.episodeId), // There was no watchedAt in V2
+        // JANK ALERT: Put watchedAt in the future to show last episode as most recently
       };
 
       if (
