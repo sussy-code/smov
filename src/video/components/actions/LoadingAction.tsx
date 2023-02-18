@@ -3,7 +3,6 @@ import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useMediaPlaying } from "@/video/state/logic/mediaplaying";
 import { useMisc } from "@/video/state/logic/misc";
 
-// TODO pausing before first frame will infinitely show spinner until unpaused
 export function LoadingAction() {
   const descriptor = useVideoPlayerDescriptor();
   const mediaPlaying = useMediaPlaying(descriptor);

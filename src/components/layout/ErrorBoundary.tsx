@@ -4,6 +4,7 @@ import { Icons } from "@/components/Icon";
 import { Link } from "@/components/text/Link";
 import { Title } from "@/components/text/Title";
 import { conf } from "@/setup/config";
+import { Trans, useTranslation } from "react-i18next";
 
 interface ErrorShowcaseProps {
   error: {
@@ -35,29 +36,24 @@ interface ErrorMessageProps {
 }
 
 export function ErrorMessage(props: ErrorMessageProps) {
+  const { t } = useTranslation()
+
   return (
     <div
-      className={`${
-        props.localSize ? "h-full" : "min-h-screen"
-      } flex w-full flex-col items-center justify-center px-4 py-12`}
+      className={`${props.localSize ? "h-full" : "min-h-screen"
+        } flex w-full flex-col items-center justify-center px-4 py-12`}
     >
       <div className="flex flex-col items-center justify-start text-center">
         <IconPatch icon={Icons.WARNING} className="mb-6 text-red-400" />
-        <Title>Whoops, it broke</Title>
+        <Title>{t("media.errors.genericTitle")}</Title>
         {props.children ? (
           <p className="my-6 max-w-lg">{props.children}</p>
         ) : (
           <p className="my-6 max-w-lg">
-            The app encountered an error and wasn&apos;t able to recover, please
-            report it to the{" "}
-            <Link url={conf().DISCORD_LINK} newTab>
-              Discord server
-            </Link>{" "}
-            or on{" "}
-            <Link url={conf().GITHUB_LINK} newTab>
-              GitHub
-            </Link>
-            .
+            <Trans i18nKey="media.errors.videoFailed">
+              <Link url={conf().DISCORD_LINK} newTab />
+              <Link url={conf().GITHUB_LINK} newTab />
+            </Trans>
           </p>
         )}
       </div>

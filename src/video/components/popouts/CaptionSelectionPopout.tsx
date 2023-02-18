@@ -7,6 +7,7 @@ import { useControls } from "@/video/state/logic/controls";
 import { useMeta } from "@/video/state/logic/meta";
 import { useSource } from "@/video/state/logic/source";
 import { useMemo, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { PopoutListEntry, PopoutSection } from "./PopoutUtils";
 
 function makeCaptionId(caption: MWCaption, isLinked: boolean): string {
@@ -14,6 +15,8 @@ function makeCaptionId(caption: MWCaption, isLinked: boolean): string {
 }
 
 export function CaptionSelectionPopout() {
+  const { t } = useTranslation()
+
   const descriptor = useVideoPlayerDescriptor();
   const meta = useMeta(descriptor);
   const source = useSource(descriptor);
@@ -38,7 +41,7 @@ export function CaptionSelectionPopout() {
   return (
     <>
       <PopoutSection className="bg-ash-100 font-bold text-white">
-        <div>Captions</div>
+        <div>{t("videoPlayer.popouts.captions")}</div>
       </PopoutSection>
       <div className="relative overflow-y-auto">
         <PopoutSection>
@@ -49,13 +52,13 @@ export function CaptionSelectionPopout() {
               controls.closePopout();
             }}
           >
-            No captions
+            {t("videoPlayer.popouts.noCaptions")}
           </PopoutListEntry>
         </PopoutSection>
 
         <p className="sticky top-0 z-10 flex items-center space-x-1 bg-ash-200 px-5 py-3 text-sm font-bold uppercase">
           <Icon className="text-base" icon={Icons.LINK} />
-          <span>Linked captions</span>
+          <span>{t("videoPlayer.popouts.linkedCaptions")}</span>
         </p>
 
         <PopoutSection className="pt-0">

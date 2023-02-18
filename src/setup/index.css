@@ -44,3 +44,8 @@ body[data-no-select] {
   -webkit-box-orient: vertical;  
   overflow: hidden;
 }
+
+google-cast-launcher {
+  @apply pointer-events-auto m-2 text-white flex items-center justify-center p-2;
+  @apply transition-[background-color,transform] duration-100 rounded-full bg-denim-600 bg-opacity-0 hover:bg-opacity-50 active:bg-denim-500 active:bg-opacity-100 active:scale-110;
+}

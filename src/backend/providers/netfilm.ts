@@ -20,7 +20,7 @@ registerProvider({
   type: [MWMediaType.MOVIE, MWMediaType.SERIES],
 
   async scrape({ media, episode, progress }) {
-    // // search for relevant item
+    // search for relevant item
     const searchResponse = await proxiedFetch<any>(
       `/api/search?keyword=${encodeURIComponent(media.meta.title)}`,
       {

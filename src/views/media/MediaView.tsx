@@ -22,19 +22,22 @@ import { useWatchedItem } from "@/state/watched";
 import { MediaFetchErrorView } from "./MediaErrorView";
 import { MediaScrapeLog } from "./MediaScrapeLog";
 import { NotFoundMedia, NotFoundWrapper } from "../notfound/NotFoundView";
+import { useTranslation } from "react-i18next";
 
 function MediaViewLoading(props: { onGoBack(): void }) {
+  const { t } = useTranslation()
+
   return (
     <div className="relative flex h-screen items-center justify-center">
       <Helmet>
-        <title>Loading...</title>
+        <title>{t("videoPlayer.loading")}</title>
       </Helmet>
       <div className="absolute inset-x-0 top-0 p-6">
         <VideoPlayerHeader onClick={props.onGoBack} />
       </div>
       <div className="flex flex-col items-center">
         <Loading className="mb-4" />
-        <p className="mb-8 text-denim-700">Finding the best video for you</p>
+        <p className="mb-8 text-denim-700">{t("videoPlaye.findingBestVideo")}</p>
       </div>
     </div>
   );
@@ -48,6 +51,7 @@ interface MediaViewScrapingProps {
 }
 function MediaViewScraping(props: MediaViewScrapingProps) {
   const { eventLog, stream, pending } = useScrape(props.meta, props.selected);
+  const { t } = useTranslation()
 
   useEffect(() => {
     if (stream) {
@@ -68,21 +72,20 @@ function MediaViewScraping(props: MediaViewScrapingProps) {
           <>
             <Loading />
             <p className="mb-8 text-denim-700">
-              Finding the best video for you
+              {t("videoPlayer.findingBestVideo")}
             </p>
           </>
         ) : (
           <>
             <IconPatch icon={Icons.EYE_SLASH} className="mb-8 text-bink-700" />
             <p className="mb-8 text-denim-700">
-              Whoops, could&apos;t find any videos for you
+              {t("videoPlayer.noVideos")}
             </p>
           </>
         )}
         <div
-          className={`flex flex-col items-center transition-opacity duration-200 ${
-            pending ? "opacity-100" : "opacity-0"
-          }`}
+          className={`flex flex-col items-center transition-opacity duration-200 ${pending ? "opacity-100" : "opacity-0"
+            }`}
         >
           <MediaScrapeLog events={eventLog} />
         </div>

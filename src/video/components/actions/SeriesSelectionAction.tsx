@@ -6,12 +6,14 @@ import { VideoPlayerIconButton } from "@/video/components/parts/VideoPlayerIconB
 import { useControls } from "@/video/state/logic/controls";
 import { PopoutAnchor } from "@/video/components/popouts/PopoutAnchor";
 import { useInterface } from "@/video/state/logic/interface";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   className?: string;
 }
 
 export function SeriesSelectionAction(props: Props) {
+  const { t } = useTranslation()
   const descriptor = useVideoPlayerDescriptor();
   const meta = useMeta(descriptor);
   const videoInterface = useInterface(descriptor);
@@ -26,7 +28,7 @@ export function SeriesSelectionAction(props: Props) {
           <VideoPlayerIconButton
             active={videoInterface.popout === "episodes"}
             icon={Icons.EPISODES}
-            text="Episodes"
+            text={t("videoPlayer.buttons.episodes") as string}
             wide
             onClick={() => controls.openPopout("episodes")}
           />

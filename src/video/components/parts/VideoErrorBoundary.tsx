@@ -3,6 +3,7 @@ import { ErrorMessage } from "@/components/layout/ErrorBoundary";
 import { Link } from "@/components/text/Link";
 import { conf } from "@/setup/config";
 import { Component, ReactNode } from "react";
+import { Trans } from "react-i18next";
 import { VideoPlayerHeader } from "./VideoPlayerHeader";
 
 interface ErrorBoundaryState {
@@ -67,15 +68,10 @@ export class VideoErrorBoundary extends Component<
           />
         </div>
         <ErrorMessage error={this.state.error} localSize>
-          The video player encounted a fatal error, please report it to the{" "}
-          <Link url={conf().DISCORD_LINK} newTab>
-            Discord server
-          </Link>{" "}
-          or on{" "}
-          <Link url={conf().GITHUB_LINK} newTab>
-            GitHub
-          </Link>
-          .
+          <Trans i18nKey="videoPlayer.errors.fatalError">
+            <Link url={conf().DISCORD_LINK} newTab />
+            <Link url={conf().GITHUB_LINK} newTab />
+          </Trans>
         </ErrorMessage>
       </div>
     );

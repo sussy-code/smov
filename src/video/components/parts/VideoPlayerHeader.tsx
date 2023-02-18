@@ -8,6 +8,7 @@ import {
 } from "@/state/bookmark";
 import { AirplayAction } from "@/video/components/actions/AirplayAction";
 import { ChromecastAction } from "@/video/components/actions/ChromecastAction";
+import { useTranslation } from "react-i18next";
 
 interface VideoPlayerHeaderProps {
   media?: MWMediaMeta;
@@ -21,6 +22,8 @@ export function VideoPlayerHeader(props: VideoPlayerHeaderProps) {
     ? getIfBookmarkedFromPortable(bookmarkStore.bookmarks, props.media)
     : false;
   const showDivider = props.media && props.onClick;
+  const { t } = useTranslation();
+
   return (
     <div className="flex items-center">
       <div className="flex flex-1 items-center">
@@ -31,7 +34,7 @@ export function VideoPlayerHeader(props: VideoPlayerHeaderProps) {
               className="flex cursor-pointer items-center py-1 text-white opacity-50 transition-opacity hover:opacity-100"
             >
               <Icon className="mr-2" icon={Icons.ARROW_LEFT} />
-              <span>Back to home</span>
+              <span>{t("videoPlayer.backToHome")}</span>
             </span>
           ) : null}
           {showDivider ? (

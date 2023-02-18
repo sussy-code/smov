@@ -12,11 +12,14 @@ import { useMeta } from "@/video/state/logic/meta";
 import { useControls } from "@/video/state/logic/controls";
 import { useWatchedContext } from "@/state/watched";
 import { PopoutListEntry, PopoutSection } from "./PopoutUtils";
+import { useTranslation } from "react-i18next";
 
 export function EpisodeSelectionPopout() {
   const params = useParams<{
     media: string;
   }>();
+  const { t } = useTranslation()
+
   const descriptor = useVideoPlayerDescriptor();
   const meta = useMeta(descriptor);
   const controls = useControls(descriptor);
@@ -119,7 +122,7 @@ export function EpisodeSelectionPopout() {
               isPickingSeason ? "opacity-1" : "opacity-0",
             ].join(" ")}
           >
-            Seasons
+            {t("videoPlayer.popouts.seasons")}
           </span>
         </div>
       </PopoutSection>
@@ -134,15 +137,15 @@ export function EpisodeSelectionPopout() {
         >
           {currentSeasonInfo
             ? meta?.seasons?.map?.((season) => (
-                <PopoutListEntry
-                  key={season.id}
-                  active={meta?.episode?.seasonId === season.id}
-                  onClick={() => setSeason(season.id)}
-                  isOnDarkBackground
-                >
-                  {season.title}
-                </PopoutListEntry>
-              ))
+              <PopoutListEntry
+                key={season.id}
+                active={meta?.episode?.seasonId === season.id}
+                onClick={() => setSeason(season.id)}
+                isOnDarkBackground
+              >
+                {season.title}
+              </PopoutListEntry>
+            ))
             : "No season"}
         </PopoutSection>
         <PopoutSection className="relative h-full overflow-y-auto">
@@ -158,8 +161,9 @@ export function EpisodeSelectionPopout() {
                   className="text-xl text-bink-600"
                 />
                 <p className="mt-6 w-full text-center">
-                  Something went wrong loading the episodes for{" "}
-                  {currentSeasonInfo?.title?.toLowerCase()}
+                  {t("videoPLayer.popouts.errors.loadingWentWrong", {
+                    seasonTitle: currentSeasonInfo?.title?.toLowerCase()
+                  })}
                 </p>
               </div>
             </div>
@@ -167,26 +171,29 @@ export function EpisodeSelectionPopout() {
             <div>
               {currentSeasonEpisodes && currentSeasonInfo
                 ? currentSeasonEpisodes.map((e) => (
-                    <PopoutListEntry
-                      key={e.id}
-                      active={e.id === meta?.episode?.episodeId}
-                      onClick={() => {
-                        if (e.id === meta?.episode?.episodeId)
-                          controls.closePopout();
-                        else setCurrent(currentSeasonInfo.id, e.id);
-                      }}
-                      percentageCompleted={
-                        watched.items.find(
-                          (item) =>
-                            item.item?.series?.seasonId ===
-                              currentSeasonInfo.id &&
-                            item.item?.series?.episodeId === e.id
-                        )?.percentage
-                      }
-                    >
-                      E{e.number} - {e.title}
-                    </PopoutListEntry>
-                  ))
+                  <PopoutListEntry
+                    key={e.id}
+                    active={e.id === meta?.episode?.episodeId}
+                    onClick={() => {
+                      if (e.id === meta?.episode?.episodeId)
+                        controls.closePopout();
+                      else setCurrent(currentSeasonInfo.id, e.id);
+                    }}
+                    percentageCompleted={
+                      watched.items.find(
+                        (item) =>
+                          item.item?.series?.seasonId ===
+                          currentSeasonInfo.id &&
+                          item.item?.series?.episodeId === e.id
+                      )?.percentage
+                    }
+                  >
+                    {t("videoPlayer.popouts.episode", {
+                      index: e.number,
+                      title: e.title
+                    })}
+                  </PopoutListEntry>
+                ))
                 : "No episodes"}
             </div>
           )}

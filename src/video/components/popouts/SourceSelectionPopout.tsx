@@ -11,9 +11,11 @@ import { getProviders } from "@/backend/helpers/register";
 import { runProvider } from "@/backend/helpers/run";
 import { MWProviderScrapeResult } from "@/backend/helpers/provider";
 import { PopoutListEntry, PopoutSection } from "./PopoutUtils";
+import { useTranslation } from "react-i18next";
 
-// TODO HLS does not work
 export function SourceSelectionPopout() {
+  const { t } = useTranslation()
+
   const descriptor = useVideoPlayerDescriptor();
   const controls = useControls(descriptor);
   const meta = useMeta(descriptor);
@@ -42,7 +44,7 @@ export function SourceSelectionPopout() {
           tmdbId: "",
           meta: meta.meta,
         },
-        progress: () => {},
+        progress: () => { },
         type: meta.meta.type,
         episode: meta.episode?.episodeId as any,
         season: meta.episode?.seasonId as any,
@@ -129,7 +131,7 @@ export function SourceSelectionPopout() {
               !showingProvider ? "opacity-1" : "opacity-0",
             ].join(" ")}
           >
-            Sources
+            {t("videoPlayer.popouts.sources")}
           </span>
         </div>
       </PopoutSection>
@@ -154,8 +156,7 @@ export function SourceSelectionPopout() {
                   className="text-xl text-bink-600"
                 />
                 <p className="mt-6 w-full text-center">
-                  Something went wrong loading the embeds for this thing that
-                  you like
+                  {t("videoPlayer.popouts.errors.embedsError")}
                 </p>
               </div>
             </div>

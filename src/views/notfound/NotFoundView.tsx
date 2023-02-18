@@ -13,12 +13,13 @@ export function NotFoundWrapper(props: {
   children?: ReactNode;
   video?: boolean;
 }) {
+  const { t } = useTranslation()
   const goBack = useGoBack();
 
   return (
     <div className="h-screen flex-1">
       <Helmet>
-        <title>Not found</title>
+        <title>{t("notFound.genericTitle")}</title>
       </Helmet>
       {props.video ? (
         <div className="fixed inset-x-0 top-0 py-6 px-8">

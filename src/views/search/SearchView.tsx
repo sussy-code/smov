@@ -24,7 +24,7 @@ export function SearchView() {
     <>
       <div className="relative z-10 mb-24">
         <Helmet>
-          <title>movie-web</title>
+          <title>{t("global.name")}</title>
         </Helmet>
         <Navigation bg={showBg} />
         <ThinContainer>

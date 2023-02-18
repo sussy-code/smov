@@ -249,6 +249,7 @@ export function createVideoStateProvider(
       };
       const canplay = () => {
         state.mediaPlaying.isFirstLoading = false;
+        state.mediaPlaying.isLoading = false;
         updateMediaPlaying(descriptor, state);
       };
       const fullscreenchange = () => {

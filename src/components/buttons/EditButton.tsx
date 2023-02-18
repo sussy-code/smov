@@ -1,6 +1,7 @@
 import { Icon, Icons } from "@/components/Icon";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { useCallback } from "react";
+import { useTranslation } from "react-i18next";
 import { ButtonControl } from "./ButtonControl";
 
 export interface EditButtonProps {
@@ -9,6 +10,7 @@ export interface EditButtonProps {
 }
 
 export function EditButton(props: EditButtonProps) {
+  const { t } = useTranslation()
   const [parent] = useAutoAnimate<HTMLSpanElement>();
 
   const onClick = useCallback(() => {
@@ -22,7 +24,7 @@ export function EditButton(props: EditButtonProps) {
     >
       <span ref={parent}>
         {props.editing ? (
-          <span className="mx-4 whitespace-nowrap">Stop editing</span>
+          <span className="mx-4 whitespace-nowrap">{t("media.stopEditing")}</span>
         ) : (
           <Icon icon={Icons.EDIT} />
         )}

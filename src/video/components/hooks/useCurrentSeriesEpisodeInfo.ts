@@ -1,9 +1,11 @@
 import { MWMediaType } from "@/backend/metadata/types";
 import { useMeta } from "@/video/state/logic/meta";
 import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 
 export function useCurrentSeriesEpisodeInfo(descriptor: string) {
   const meta = useMeta(descriptor);
+  const {t} = useTranslation()
 
   const currentSeasonInfo = useMemo(() => {
     return meta?.seasons?.find(
@@ -22,8 +24,11 @@ export function useCurrentSeriesEpisodeInfo(descriptor: string) {
   );
 
   if (!isSeries) return { isSeries: false };
-
-  const humanizedEpisodeId = `S${currentSeasonInfo?.number} E${currentEpisodeInfo?.number}`;
+  
+  const humanizedEpisodeId = t("videoPlayer.seasonAndEpisode", {
+    season: currentSeasonInfo?.number,
+    episode: currentEpisodeInfo?.number
+  });
 
   return {
     isSeries: true,

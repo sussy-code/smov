@@ -3,26 +3,34 @@
     "name": "movie-web"
   },
   "search": {
-    "loading": "Fetching your favourite shows...",
+    "loading_series": "Fetching your favourite series...",
+    "loading_movie": "Fetching your favourite movies...",
+    "loading": "Loading...",
     "allResults": "That's all we have!",
     "noResults": "We couldn't find anything!",
     "allFailed": "Failed to find media, try again!",
     "headingTitle": "Search results",
-    "headingLink": "Back to home",
     "bookmarks": "Bookmarks",
     "continueWatching": "Continue Watching",
     "title": "What do you want to watch?",
     "placeholder": "What do you want to watch?"
   },
   "media": {
-    "invalidUrl": "Your URL may be invalid",
-    "arrowText": "Go back"
+    "movie": "Movie",
+    "series": "Series",
+    "stopEditing": "Stop editing",
+    "errors": {
+      "genericTitle": "Whoops, it broke!",
+      "failedMeta": "Failed to load meta",
+      "mediaFailed": "We failed to request the media you asked for, check your internet connection and try again.",
+      "videoFailed": "We encountered an error while playing the video you requested. If this keeps happening please report the issue to the <0>Discord server</0> or on <1>GitHub</1>."
+    }
   },
   "seasons": {
-    "season": "Season {{season}}",
-    "failed": "Failed to get season data"
+    "seasonAndEpisode": "S{{season}} E{{episode}}"
   },
   "notFound": {
+    "genericTitle": "Not found",
     "backArrow": "Back to home",
     "media": {
       "title": "Couldn't find that media",
@@ -42,7 +50,31 @@
     "series": "Series",
     "Search": "Search"
   },
-  "errorBoundary": {
-    "text": "The app encountered an error and wasn't able to recover, please report it to the"
+  "videoPlayer": {
+    "findingBestVideo": "Finding the best video for you",
+    "noVideos": "Whoops, couldn't find any videos for you",
+    "loading": "Loading...",
+    "backToHome": "Back to home",
+    "seasonAndEpisode": "S{{season}} E{{episode}}",
+    "buttons": {
+      "episodes": "Episodes",
+      "source": "Source",
+      "captions": "Captions"
+    },
+    "popouts": {
+      "sources": "Sources",
+      "seasons": "Seasons",
+      "captions": "Captions",
+      "episode": "E{{index}} - {{title}}",
+      "noCaptions": "No captions",
+      "linkedCaptions": "Linked captions",
+      "errors": {
+        "loadingWentWong": "Something went wrong loading the episodes for {{seasonTitle}}",
+        "embedsError": "Something went wrong loading the embeds for this thing that you like"
+      }
+    },
+    "errors": {
+      "fatalError": "The video player encounted a fatal error, please report it to the <0>Discord server</0> or on <1>GitHub</1>."
+    }
   }
 }

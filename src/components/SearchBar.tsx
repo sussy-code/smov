@@ -67,12 +67,7 @@ export function SearchBarInput(props: SearchBarProps) {
               id: MWMediaType.SERIES,
               name: t("searchBar.series"),
               icon: Icons.CLAPPER_BOARD,
-            },
-            // {
-            //   id: MWMediaType.ANIME,
-            //   name: "Anime",
-            //   icon: Icons.DRAGON,
-            // },
+            }
           ]}
           onClick={() => setDropdownOpen((old) => !old)}
         >
