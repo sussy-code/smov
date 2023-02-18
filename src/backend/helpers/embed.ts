@@ -1,7 +1,9 @@
 import { MWStream } from "./streams";
 
 export enum MWEmbedType {
-  OPENLOAD = "openload",
+  M4UFREE = "m4ufree",
+  STREAMM4U = "streamm4u",
+  PLAYM4U = "playm4u"
 }
 
 export type MWEmbed = {

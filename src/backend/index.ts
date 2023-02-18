@@ -5,8 +5,10 @@ import "./providers/gdriveplayer";
 import "./providers/flixhq";
 import "./providers/superstream";
 import "./providers/netfilm";
+import "./providers/m4ufree";
 
 // embeds
-// -- nothing here yet
+import "./embeds/streamm4u"
+import "./embeds/playm4u"
 
 initializeScraperStore();
