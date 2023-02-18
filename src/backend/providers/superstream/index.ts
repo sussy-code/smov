@@ -10,6 +10,7 @@ import {
   MWStreamQuality,
   MWStreamType,
 } from "@/backend/helpers/streams";
+import { compareTitle } from "@/utils/titleMatch";
 
 const nanoid = customAlphabet("0123456789abcdef", 32);
 
@@ -128,10 +129,9 @@ registerProvider({
     const searchRes = (await get(searchQuery, true)).data;
     progress(33);
 
-    // TODO: add fuzzy search and normalise strings before matching
     const superstreamEntry = searchRes.find(
       (res: any) =>
-        res.title === media.meta.title && res.year === Number(media.meta.year)
+      compareTitle(res.title, media.meta.title) && res.year === Number(media.meta.year)
     );
 
     if (!superstreamEntry) throw new Error("No entry found on SuperStream");

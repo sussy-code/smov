@@ -1,3 +1,4 @@
+import { compareTitle } from "@/utils/titleMatch";
 import { proxiedFetch } from "../helpers/fetch";
 import { registerProvider } from "../helpers/register";
 import { MWStreamQuality, MWStreamType } from "../helpers/streams";
@@ -19,9 +20,8 @@ registerProvider({
         baseURL: flixHqBase,
       }
     );
-    // TODO fuzzy match or normalize title before comparison
     const foundItem = searchResults.results.find((v: any) => {
-      return v.title === media.meta.title && v.releaseDate === media.meta.year;
+      return compareTitle(v.title, media.meta.title) && v.releaseDate === media.meta.year;
     });
     if (!foundItem) throw new Error("No watchable item found");
     const flixId = foundItem.id;
