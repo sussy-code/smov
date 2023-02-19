@@ -19,22 +19,6 @@ if (key) {
 }
 initializeChromecast();
 
-// TODO video todos:
-//  - chrome cast support
-//  - bug: safari fullscreen will make video overlap player controls
-
-// TODO stuff to test:
-//  - browser: firefox, chrome, edge, safari desktop
-//  - phones: android firefox, android chrome, iphone safari
-//  - devices: ipadOS
-//  - HLS
-//  - HLS error handling
-//  - video player error handling
-
-// TODO backend system:
-//  - implement jons providers/embedscrapers
-//  - AFTER all that: rank providers/embedscrapers
-
 const LazyLoadedApp = React.lazy(async () => {
   await initializeStores();
   return {

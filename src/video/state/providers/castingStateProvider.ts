@@ -17,8 +17,7 @@ import { updateMediaPlaying } from "../logic/mediaplaying";
 import { VideoPlayerStateProvider } from "./providerTypes";
 import { updateProgress } from "../logic/progress";
 
-// TODO startAt when switching state providers
-// TODO test HLS
+// TODO HLS for casting?
 export function createCastingStateProvider(
   descriptor: string
 ): VideoPlayerStateProvider {
@@ -184,7 +183,6 @@ export function createCastingStateProvider(
             break;
           case "isMuted":
             state.mediaPlaying.volume = e.value ? 1 : 0;
-            // TODO better mute handling
             updateMediaPlaying(descriptor, state);
             break;
           case "displayStatus":

@@ -70,7 +70,6 @@ async function getMetas(
 
     let keys: (string | null)[][] = [["0", "0"]];
     if (item.data.type === "series") {
-      // TODO sort episodes by season & episode so it shows the "highest" episode as last
       const meta = await getMetaFromId(item.data.type, item.data.id);
       if (!meta || !meta?.meta.seasons) return;
       const seasonNumbers = [
