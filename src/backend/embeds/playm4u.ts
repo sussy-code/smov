@@ -9,7 +9,7 @@ registerEmbedScraper({
 	for: MWEmbedType.PLAYM4U,
 	rank: 0,
 	async getStream(ctx) {
-		throw new Error("Oh well 2")
+		// throw new Error("Oh well 2")
 		return {
 			streamUrl: '',
 			quality: MWStreamQuality.Q1080P,

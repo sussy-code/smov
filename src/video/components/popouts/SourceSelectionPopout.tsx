@@ -7,11 +7,42 @@ import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useMeta } from "@/video/state/logic/meta";
 import { useControls } from "@/video/state/logic/controls";
 import { MWStream } from "@/backend/helpers/streams";
-import { getProviders } from "@/backend/helpers/register";
-import { runProvider } from "@/backend/helpers/run";
+import { getEmbedScraperByType, getProviders } from "@/backend/helpers/register";
+import { runEmbedScraper, runProvider } from "@/backend/helpers/run";
 import { MWProviderScrapeResult } from "@/backend/helpers/provider";
 import { PopoutListEntry, PopoutSection } from "./PopoutUtils";
 import { useTranslation } from "react-i18next";
+import { MWEmbed, MWEmbedType } from "@/backend/helpers/embed";
+
+interface EmbedEntryProps {
+  name: string;
+  type: MWEmbedType;
+  url: string;
+  onSelect: (stream: MWStream) => void;
+}
+
+export function EmbedEntry(props: EmbedEntryProps) {
+  const [scrapeEmbed, loading, error] = useLoading(async () => {
+    const scraper = getEmbedScraperByType(props.type);
+    if (!scraper) throw new Error("Embed scraper not found")
+    const stream = await runEmbedScraper(scraper, {
+      progress: () => { }, // no progress tracking for inline scraping
+      url: props.url,
+    })
+    props.onSelect(stream);
+  });
+
+  return (<PopoutListEntry
+    isOnDarkBackground
+    loading={loading}
+    errored={!!error}
+    onClick={() => {
+      scrapeEmbed();
+    }}
+  >
+    {props.name}
+  </PopoutListEntry>)
+}
 
 export function SourceSelectionPopout() {
   const { t } = useTranslation()
@@ -71,15 +102,23 @@ export function SourceSelectionPopout() {
       return;
     }
 
-    runScraper(providerId).then((v) => {
+    runScraper(providerId).then(async (v) => {
       if (!providerRef.current) return;
       if (v) {
         const len = v.embeds.length + (v.stream ? 1 : 0);
         if (len === 1) {
           const realStream = v.stream;
           if (!realStream) {
-            // TODO scrape embed
-            throw new Error("no embed scraper configured");
+            const embed = v?.embeds[0];
+            if (!embed) throw new Error("Embed scraper not found")
+            const scraper = getEmbedScraperByType(embed.type);
+            if (!scraper) throw new Error("Embed scraper not found")
+            const stream = await runEmbedScraper(scraper, {
+              progress: () => { }, // no progress tracking for inline scraping
+              url: embed.url,
+            })
+            selectSource(stream);
+            return;
           }
           selectSource(realStream);
           return;
@@ -98,6 +137,33 @@ export function SourceSelectionPopout() {
       offset,
     ].join(" ");
   }, [showingProvider]);
+
+  const visibleEmbeds = useMemo(() => {
+    const embeds = scrapeResult?.embeds || [];
+
+    // Count embed types to determine if it should show a number behind the name
+    const embedsPerType: Record<string, (MWEmbed & { displayName: string })[]> = {}
+    for (const embed of embeds) {
+      if (!embed.type) continue;
+      if (!embedsPerType[embed.type]) embedsPerType[embed.type] = [];
+      embedsPerType[embed.type].push({
+        ...embed,
+        displayName: embed.type
+      })
+    }
+
+    const embedsRes = Object.entries(embedsPerType).flatMap(([type, entries]) => {
+      if (entries.length > 1) return entries.map((embed, i) => ({
+        ...embed,
+        displayName: `${embed.type} ${i + 1}`
+      }))
+      return entries;
+    })
+
+    console.log(embedsRes)
+
+    return embedsRes;
+  }, [scrapeResult?.embeds])
 
   return (
     <>
@@ -168,17 +234,27 @@ export function SourceSelectionPopout() {
                   Native source
                 </PopoutListEntry>
               ) : null}
-              {scrapeResult?.embeds.map((v) => (
-                <PopoutListEntry
-                  isOnDarkBackground
+              {(visibleEmbeds?.length || 0) > 0 ? visibleEmbeds?.map((v) => (
+                <EmbedEntry
+                  type={v.type}
+                  name={v.displayName ?? ""}
                   key={v.url}
-                  onClick={() => {
-                    console.log("EMBED CHOSEN");
+                  url={v.url}
+                  onSelect={(stream) => {
+                    selectSource(stream);
                   }}
-                >
-                  {v.type}
-                </PopoutListEntry>
-              ))}
+                />
+              )) : (<div className="flex h-full w-full items-center justify-center">
+                <div className="flex flex-col flex-wrap items-center text-slate-400">
+                  <IconPatch
+                    icon={Icons.EYE_SLASH}
+                    className="text-xl text-bink-600"
+                  />
+                  <p className="mt-6 w-full text-center">
+                    {t("videoPlayer.popouts.noEmbeds")}
+                  </p>
+                </div>
+              </div>)}
             </>
           )}
         </PopoutSection>

@@ -22,18 +22,7 @@ registerEmbedScraper({
 
 		const sources = (await scrape(url)).sort((a, b) => Number(b.quality.replace("p", "")) - Number(a.quality.replace("p", "")));
 		let preferredSourceIndex = 0;
-		let preferredSource;
-
-		while (!preferredSource && sources[preferredSourceIndex]) {
-			console.log('Testing', preferredSourceIndex)
-			console.log(sources[preferredSourceIndex]?.streamUrl)
-			// try {
-			// 	await proxiedFetch(sources[preferredSourceIndex]?.streamUrl)
-			// } catch (err) { }
-			preferredSource = sources[0]
-			preferredSourceIndex++
-		}
-		console.log(preferredSource)
+		let preferredSource = sources[0];
 
 		if (!preferredSource) throw new Error("No source found")
 

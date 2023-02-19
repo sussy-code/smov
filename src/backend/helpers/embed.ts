@@ -7,7 +7,7 @@ export enum MWEmbedType {
 }
 
 export type MWEmbed = {
-  type: MWEmbedType | null;
+  type: MWEmbedType;
   url: string;
 };
 

@@ -110,7 +110,7 @@ export function createCastingStateProvider(
       }
 
       const movieMeta = new chrome.cast.media.MovieMediaMetadata();
-      movieMeta.title = state.meta?.meta.title ?? "";
+      movieMeta.title = state.meta?.meta.meta.title ?? "";
 
       // TODO contentId?
       const mediaInfo = new chrome.cast.media.MediaInfo("hello", "video/mp4");

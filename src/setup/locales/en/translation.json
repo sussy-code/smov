@@ -68,6 +68,7 @@
       "episode": "E{{index}} - {{title}}",
       "noCaptions": "No captions",
       "linkedCaptions": "Linked captions",
+      "noEmbeds": "No embeds were found for this source",
       "errors": {
         "loadingWentWong": "Something went wrong loading the episodes for {{seasonTitle}}",
         "embedsError": "Something went wrong loading the embeds for this thing that you like"
