@@ -1,6 +1,6 @@
-import React, { Suspense } from "react";
+import React, { ReactNode, Suspense } from "react";
 import ReactDOM from "react-dom";
-import { HashRouter } from "react-router-dom";
+import { BrowserRouter, HashRouter } from "react-router-dom";
 import { ErrorBoundary } from "@/components/layout/ErrorBoundary";
 import { conf } from "@/setup/config";
 
@@ -42,14 +42,22 @@ const LazyLoadedApp = React.lazy(async () => {
   };
 });
 
+function TheRouter(props: { children: ReactNode }) {
+  const normalRouter = conf().NORMAL_ROUTER;
+  
+  if (normalRouter)
+    return <BrowserRouter children={props.children} />
+  return <HashRouter children={props.children} />
+}
+
 ReactDOM.render(
   <React.StrictMode>
     <ErrorBoundary>
-      <HashRouter>
+      <TheRouter>
         <Suspense fallback="">
           <LazyLoadedApp />
         </Suspense>
-      </HashRouter>
+      </TheRouter>
     </ErrorBoundary>
   </React.StrictMode>,
   document.getElementById("root")

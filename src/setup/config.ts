@@ -7,6 +7,7 @@ interface Config {
   OMDB_API_KEY: string;
   TMDB_API_KEY: string;
   CORS_PROXY_URL: string;
+  NORMAL_ROUTER: boolean;
 }
 
 export interface RuntimeConfig extends Config {
@@ -20,6 +21,7 @@ const env: Record<keyof Config, undefined | string> = {
   GITHUB_LINK: undefined,
   DISCORD_LINK: undefined,
   CORS_PROXY_URL: import.meta.env.VITE_CORS_PROXY_URL,
+  NORMAL_ROUTER: import.meta.env.VITE_NORMAL_ROUTER,
 };
 
 const alerts = [] as string[];
@@ -51,5 +53,6 @@ export function conf(): RuntimeConfig {
     TMDB_API_KEY: getKey("TMDB_API_KEY"),
     BASE_PROXY_URL: getKey("CORS_PROXY_URL"),
     CORS_PROXY_URL: `${getKey("CORS_PROXY_URL")}/?destination=`,
+    NORMAL_ROUTER: (getKey("NORMAL_ROUTER") ?? "false") === "true",
   };
 }

@@ -29,6 +29,7 @@ registerProvider({
   id: "m4ufree",
   displayName: "m4ufree",
   rank: -1,
+  disabled: true, // Disables because the redirector URLs it returns will throw 404 / 403 depending on if you view it in the browser or fetch it respectively. It just does not work.
   type: [MWMediaType.MOVIE, MWMediaType.SERIES],
 
   async scrape({ media, progress, type, episode: episodeId, season: seasonId }) {
