@@ -1,97 +1,129 @@
 import { Link } from "react-router-dom";
-import {
-  convertMediaToPortable,
-  getProviderFromId,
-  MWMediaMeta,
-  MWMediaType,
-} from "@/providers";
-import { Icon, Icons } from "@/components/Icon";
-import { serializePortableMedia } from "@/hooks/usePortableMedia";
+import { useTranslation } from "react-i18next";
 import { DotList } from "@/components/text/DotList";
+import { MWMediaMeta } from "@/backend/metadata/types";
+import { JWMediaToId } from "@/backend/metadata/justwatch";
+import { Icons } from "../Icon";
+import { IconPatch } from "../buttons/IconPatch";
 
 export interface MediaCardProps {
   media: MWMediaMeta;
-  watchedPercentage: number;
   linkable?: boolean;
-  series?: boolean;
+  series?: {
+    episode: number;
+    season: number;
+    episodeId: string;
+    seasonId: string;
+  };
+  percentage?: number;
+  closable?: boolean;
+  onClose?: () => void;
 }
 
 function MediaCardContent({
   media,
   linkable,
-  watchedPercentage,
   series,
+  percentage,
+  closable,
+  onClose,
 }: MediaCardProps) {
-  const provider = getProviderFromId(media.providerId);
+  const { t } = useTranslation();
+  const percentageString = `${Math.round(percentage ?? 0).toFixed(0)}%`;
 
-  if (!provider) {
-    return null;
-  }
+  const canLink = linkable && !closable;
 
   return (
-    <article
-      className={`group relative mb-4 flex overflow-hidden rounded bg-denim-300 py-4 px-5 ${
-        linkable ? "hover:bg-denim-400" : ""
+    <div
+      className={`group -m-3 mb-2 rounded-xl bg-denim-300 bg-opacity-0 transition-colors duration-100 ${
+        canLink ? "hover:bg-opacity-100" : ""
       }`}
     >
-      {/* progress background */}
-      {watchedPercentage > 0 ? (
-        <div className="absolute top-0 left-0 right-0 bottom-0">
+      <article
+        className={`pointer-events-auto relative mb-2 p-3 transition-transform duration-100 ${
+          canLink ? "group-hover:scale-95" : ""
+        }`}
+      >
+        <div
+          className="relative mb-4 aspect-[2/3] w-full overflow-hidden rounded-xl bg-denim-500 bg-cover bg-center transition-[border-radius] duration-100 group-hover:rounded-lg"
+          style={{
+            backgroundImage: media.poster ? `url(${media.poster})` : undefined,
+          }}
+        >
+          {series ? (
+            <div className="absolute right-2 top-2 rounded-md bg-denim-200 py-1 px-2 transition-colors group-hover:bg-denim-500">
+              <p className="text-center text-xs font-bold text-slate-400 transition-colors group-hover:text-white">
+                {t("seasons.seasonAndEpisode", {
+                  season: series.season,
+                  episode: series.episode,
+                })}
+              </p>
+            </div>
+          ) : null}
+
+          {percentage !== undefined ? (
+            <>
+              <div
+                className={`absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-denim-300 to-transparent transition-colors ${
+                  canLink ? "group-hover:from-denim-100" : ""
+                }`}
+              />
+              <div
+                className={`absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-denim-300 to-transparent transition-colors ${
+                  canLink ? "group-hover:from-denim-100" : ""
+                }`}
+              />
+              <div className="absolute inset-x-0 bottom-0 p-3">
+                <div className="relative h-1 overflow-hidden rounded-full bg-denim-600">
+                  <div
+                    className="absolute inset-y-0 left-0 rounded-full bg-bink-700"
+                    style={{
+                      width: percentageString,
+                    }}
+                  />
+                </div>
+              </div>
+            </>
+          ) : null}
+
           <div
-            className="relative h-full bg-bink-300 bg-opacity-30"
-            style={{
-              width: `${watchedPercentage}%`,
-            }}
+            className={`absolute inset-0 flex items-center justify-center bg-denim-200 bg-opacity-80 transition-opacity duration-200 ${
+              closable ? "opacity-100" : "pointer-events-none opacity-0"
+            }`}
           >
-            <div className="absolute right-0 top-0 bottom-0 ml-auto w-40 bg-gradient-to-l from-bink-400 to-transparent opacity-40" />
+            <IconPatch
+              clickable
+              className="text-2xl text-slate-400"
+              onClick={() => closable && onClose?.()}
+              icon={Icons.X}
+            />
           </div>
         </div>
-      ) : null}
-
-      <div className="relative flex flex-1">
-        {/* card content */}
-        <div className="flex-1">
-          <h1 className="mb-1 font-bold text-white">
-            {media.title}
-            {series && media.seasonId && media.episodeId ? (
-              <span className="ml-2 text-xs text-denim-700">
-                S{media.seasonId} E{media.episodeId}
-              </span>
-            ) : null}
-          </h1>
-          <DotList
-            className="text-xs"
-            content={[provider.displayName, media.mediaType, media.year]}
-          />
-        </div>
-
-        {/* hoverable chevron */}
-        <div
-          className={`flex translate-x-3 items-center justify-end text-xl text-white opacity-0 transition-[opacity,transform] ${
-            linkable ? "group-hover:translate-x-0 group-hover:opacity-100" : ""
-          }`}
-        >
-          <Icon icon={Icons.CHEVRON_RIGHT} />
-        </div>
-      </div>
-    </article>
+        <h1 className="mb-1 max-h-[4.5rem] text-ellipsis break-words font-bold text-white line-clamp-3">
+          <span>{media.title}</span>
+        </h1>
+        <DotList
+          className="text-xs"
+          content={[t(`media.${media.type}`), media.year]}
+        />
+      </article>
+    </div>
   );
 }
 
 export function MediaCard(props: MediaCardProps) {
-  let link = "movie";
-  if (props.media.mediaType === MWMediaType.SERIES) link = "series";
-
   const content = <MediaCardContent {...props} />;
 
+  const canLink = props.linkable && !props.closable;
+
+  let link = canLink
+    ? `/media/${encodeURIComponent(JWMediaToId(props.media))}`
+    : "#";
+  if (canLink && props.series)
+    link += `/${encodeURIComponent(props.series.seasonId)}/${encodeURIComponent(
+      props.series.episodeId
+    )}`;
+
   if (!props.linkable) return <span>{content}</span>;
-  return (
-    <Link
-      to={`/media/${link}/${serializePortableMedia(
-        convertMediaToPortable(props.media)
-      )}`}
-    >
-      {content}
-    </Link>
-  );
+  return <Link to={link}>{content}</Link>;
 }

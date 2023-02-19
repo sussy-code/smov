@@ -31,30 +31,6 @@ jobs:
         name: production-files
         path: ./dist
 
-  deploy:
-    name: Deploy
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Download artifact
-      uses: actions/download-artifact@v3
-      with:
-        name: production-files
-        path: ./dist
-
-    - name: Insert config
-      env:
-        DEPLOY_CONFIG: ${{ secrets.DEPLOY_CONFIG }}
-      run: echo "$DEPLOY_CONFIG" > ./dist/config.js
-
-    - name: Deploy to gh-pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist
-        cname: movie.squeezebox.dev
-
   release:
     name: Release
     needs: build

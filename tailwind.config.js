@@ -12,29 +12,35 @@ module.exports = {
         "bink-500": "#8D66B5",
         "bink-600": "#A87FD1",
         "bink-700": "#CD97D6",
-        "denim-100": "#131119",
-        "denim-200": "#1E1A29",
-        "denim-300": "#282336",
-        "denim-400": "#322D43",
-        "denim-500": "#433D55",
-        "denim-600": "#5A5370",
-        "denim-700": "#817998",
+        "denim-100": "#120F1D",
+        "denim-200": "#191526",
+        "denim-300": "#211D30",
+        "denim-400": "#2B263D",
+        "denim-500": "#38334A",
+        "denim-600": "#504B64",
+        "denim-700": "#7A758F",
+        "ash-600": "#817998",
+        "ash-500": "#9C93B5",
+        "ash-400": "#3D394D",
+        "ash-300": "#2C293A",
+        "ash-200": "#2B2836",
+        "ash-100": "#1E1C26"
       },
 
       /* fonts */
       fontFamily: {
-        "open-sans": "'Open Sans'",
+        "open-sans": "'Open Sans'"
       },
 
       /* animations */
       keyframes: {
         "loading-pin": {
           "0%, 40%, 100%": { height: "0.5em", "background-color": "#282336" },
-          "20%": { height: "1em", "background-color": "white" },
-        },
+          "20%": { height: "1em", "background-color": "white" }
+        }
       },
-      animation: { "loading-pin": "loading-pin 1.8s ease-in-out infinite" },
-    },
+      animation: { "loading-pin": "loading-pin 1.8s ease-in-out infinite" }
+    }
   },
-  plugins: [require("tailwind-scrollbar")],
+  plugins: [require("tailwind-scrollbar"), require("@tailwindcss/line-clamp")]
 };

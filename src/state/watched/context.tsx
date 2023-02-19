@@ -1,140 +1,130 @@
-import React, {
+import { DetailedMeta } from "@/backend/metadata/getmeta";
+import { MWMediaType } from "@/backend/metadata/types";
+import { useStore } from "@/utils/storage";
+import {
   createContext,
   ReactNode,
   useCallback,
   useContext,
   useMemo,
-  useState,
+  useRef,
 } from "react";
-import { MWMediaMeta, getProviderMetadata, MWMediaType } from "@/providers";
 import { VideoProgressStore } from "./store";
+import { StoreMediaItem, WatchedStoreItem, WatchedStoreData } from "./types";
 
-interface WatchedStoreItem extends MWMediaMeta {
-  progress: number;
-  percentage: number;
-}
+const FIVETEEN_MINUTES = 15 * 60;
+const FIVE_MINUTES = 5 * 60;
 
-export interface WatchedStoreData {
-  items: WatchedStoreItem[];
+function shouldSave(
+  time: number,
+  duration: number,
+  isSeries: boolean
+): boolean {
+  const timeFromEnd = Math.max(0, duration - time);
+
+  // short movie
+  if (duration < FIVETEEN_MINUTES) {
+    if (time < 5) return false;
+    if (timeFromEnd < 60) return false;
+    return true;
+  }
+
+  // long movie
+  if (time < 30) return false;
+  if (timeFromEnd < FIVE_MINUTES && !isSeries) return false;
+  return true;
 }
 
 interface WatchedStoreDataWrapper {
-  updateProgress(media: MWMediaMeta, progress: number, total: number): void;
+  updateProgress(media: StoreMediaItem, progress: number, total: number): void;
   getFilteredWatched(): WatchedStoreItem[];
+  removeProgress(id: string): void;
   watched: WatchedStoreData;
-}
-
-export function getWatchedFromPortable(
-  items: WatchedStoreItem[],
-  media: MWMediaMeta
-): WatchedStoreItem | undefined {
-  return items.find(
-    (v) =>
-      v.mediaId === media.mediaId &&
-      v.providerId === media.providerId &&
-      v.episodeId === media.episodeId &&
-      v.seasonId === media.seasonId
-  );
 }
 
 const WatchedContext = createContext<WatchedStoreDataWrapper>({
   updateProgress: () => {},
   getFilteredWatched: () => [],
+  removeProgress: () => {},
   watched: {
     items: [],
   },
 });
 WatchedContext.displayName = "WatchedContext";
 
-export function WatchedContextProvider(props: { children: ReactNode }) {
-  const watchedLocalstorage = VideoProgressStore.get();
-  const [watched, setWatchedReal] = useState<WatchedStoreData>(
-    watchedLocalstorage as WatchedStoreData
+function isSameEpisode(media: StoreMediaItem, v: StoreMediaItem) {
+  return (
+    media.meta.id === v.meta.id &&
+    (!media.series ||
+      (media.series.seasonId === v.series?.seasonId &&
+        media.series.episodeId === v.series?.episodeId))
   );
+}
 
-  const setWatched = useCallback(
-    (data: any) => {
-      setWatchedReal((old) => {
-        let newData = data;
-        if (data.constructor === Function) {
-          newData = data(old);
-        }
-        watchedLocalstorage.save(newData);
-        return newData;
-      });
-    },
-    [setWatchedReal, watchedLocalstorage]
-  );
+export function WatchedContextProvider(props: { children: ReactNode }) {
+  const [watched, setWatched] = useStore(VideoProgressStore);
 
   const contextValue = useMemo(
     () => ({
+      removeProgress(id: string) {
+        setWatched((data: WatchedStoreData) => {
+          const newData = { ...data };
+          newData.items = newData.items.filter((v) => v.item.meta.id !== id);
+          return newData;
+        });
+      },
       updateProgress(
-        media: MWMediaMeta,
+        media: StoreMediaItem,
         progress: number,
         total: number
       ): void {
         setWatched((data: WatchedStoreData) => {
-          let item = getWatchedFromPortable(data.items, media);
+          const newData = { ...data };
+          let item = newData.items.find((v) => isSameEpisode(media, v.item));
           if (!item) {
             item = {
-              mediaId: media.mediaId,
-              mediaType: media.mediaType,
-              providerId: media.providerId,
-              title: media.title,
-              year: media.year,
-              percentage: 0,
+              item: {
+                ...media,
+                meta: { ...media.meta },
+                series: media.series ? { ...media.series } : undefined,
+              },
               progress: 0,
-              episodeId: media.episodeId,
-              seasonId: media.seasonId,
+              percentage: 0,
+              watchedAt: Date.now(),
             };
-            data.items.push(item);
+            newData.items.push(item);
           }
-
           // update actual item
           item.progress = progress;
           item.percentage = Math.round((progress / total) * 100);
+          item.watchedAt = Date.now();
 
-          return data;
+          // remove item if shouldnt save
+          if (!shouldSave(progress, total, !!media.series)) {
+            newData.items = data.items.filter(
+              (v) => !isSameEpisode(v.item, media)
+            );
+          }
+
+          return newData;
         });
       },
       getFilteredWatched() {
-        // remove disabled providers
-        let filtered = watched.items.filter(
-          (item) => getProviderMetadata(item.providerId)?.enabled
-        );
+        let filtered = watched.items;
 
-        // get highest episode number for every anime/season
-        const highestEpisode: Record<string, [number, number]> = {};
-        const highestWatchedItem: Record<string, WatchedStoreItem> = {};
-        filtered = filtered.filter((item) => {
-          if (
-            [MWMediaType.ANIME, MWMediaType.SERIES].includes(item.mediaType)
-          ) {
-            const key = `${item.mediaType}-${item.mediaId}`;
-            const current: [number, number] = [
-              item.episodeId ? parseInt(item.episodeId, 10) : -1,
-              item.seasonId ? parseInt(item.seasonId, 10) : -1,
-            ];
-            let existing = highestEpisode[key];
-            if (!existing) {
-              existing = current;
-              highestEpisode[key] = current;
-              highestWatchedItem[key] = item;
-            }
-
-            if (
-              current[0] > existing[0] ||
-              (current[0] === existing[0] && current[1] > existing[1])
-            ) {
-              highestEpisode[key] = current;
-              highestWatchedItem[key] = item;
-            }
-            return false;
-          }
-          return true;
-        });
-
-        return [...filtered, ...Object.values(highestWatchedItem)];
+        // get most recently watched for every single item
+        const alreadyFoundMedia: string[] = [];
+        filtered = filtered
+          .sort((a, b) => {
+            return b.watchedAt - a.watchedAt;
+          })
+          .filter((item) => {
+            const mediaId = item.item.meta.id;
+            if (alreadyFoundMedia.includes(mediaId)) return false;
+            alreadyFoundMedia.push(mediaId);
+            return true;
+          });
+        return filtered;
       },
       watched,
     }),
@@ -142,7 +132,7 @@ export function WatchedContextProvider(props: { children: ReactNode }) {
   );
 
   return (
-    <WatchedContext.Provider value={contextValue}>
+    <WatchedContext.Provider value={contextValue as any}>
       {props.children}
     </WatchedContext.Provider>
   );
@@ -150,4 +140,63 @@ export function WatchedContextProvider(props: { children: ReactNode }) {
 
 export function useWatchedContext() {
   return useContext(WatchedContext);
+}
+
+function isSameEpisodeMeta(
+  media: StoreMediaItem,
+  mediaTwo: DetailedMeta | null,
+  episodeId?: string
+) {
+  if (mediaTwo?.meta.type === MWMediaType.SERIES && episodeId) {
+    return isSameEpisode(media, {
+      meta: mediaTwo.meta,
+      series: {
+        season: 0,
+        episode: 0,
+        episodeId,
+        seasonId: mediaTwo.meta.seasonData.id,
+      },
+    });
+  }
+  if (!mediaTwo) return () => false;
+  return isSameEpisode(media, { meta: mediaTwo.meta });
+}
+
+export function useWatchedItem(meta: DetailedMeta | null, episodeId?: string) {
+  const { watched, updateProgress } = useContext(WatchedContext);
+  const item = useMemo(
+    () => watched.items.find((v) => isSameEpisodeMeta(v.item, meta, episodeId)),
+    [watched, meta, episodeId]
+  );
+  const lastCommitedTime = useRef([0, 0]);
+
+  const callback = useCallback(
+    (progress: number, total: number) => {
+      const hasChanged =
+        lastCommitedTime.current[0] !== progress ||
+        lastCommitedTime.current[1] !== total;
+      if (meta && hasChanged) {
+        lastCommitedTime.current = [progress, total];
+        const obj = {
+          meta: meta.meta,
+          series:
+            meta.meta.type === MWMediaType.SERIES && episodeId
+              ? {
+                  seasonId: meta.meta.seasonData.id,
+                  episodeId,
+                  season: meta.meta.seasonData.number,
+                  episode:
+                    meta.meta.seasonData.episodes.find(
+                      (ep) => ep.id === episodeId
+                    )?.number || 0,
+                }
+              : undefined,
+        };
+        updateProgress(obj, progress, total);
+      }
+    },
+    [meta, updateProgress, episodeId]
+  );
+
+  return { updateProgress: callback, watchedItem: item };
 }

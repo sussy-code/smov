@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  @apply bg-denim-100 text-denim-700 font-open-sans overflow-x-hidden;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+html[data-full], html[data-full] body {
+  overscroll-behavior-y: none;
+}
+
+body[data-no-scroll] {
+  overflow-y: hidden;
+  height: 100vh;
+}
+
+#root {
+  padding: 0.05px;
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+}
+
+body[data-no-select] {
+  user-select: none;
+}
+
+.roll {
+  animation: roll 1s;
+}
+
+@keyframes roll {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.line-clamp {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+
+.google-cast-button:not(.casting) google-cast-launcher {
+  @apply brightness-[500];
+}
