@@ -16,7 +16,7 @@ type QualityInMap = keyof typeof qualityMap;
 registerProvider({
   id: "netfilm",
   displayName: "NetFilm",
-  rank: 150,
+  rank: 15,
   type: [MWMediaType.MOVIE, MWMediaType.SERIES],
 
   async scrape({ media, episode, progress }) {
