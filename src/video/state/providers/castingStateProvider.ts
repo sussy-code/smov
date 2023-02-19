@@ -18,9 +18,7 @@ import { VideoPlayerStateProvider } from "./providerTypes";
 import { updateProgress } from "../logic/progress";
 
 // TODO startAt when switching state providers
-// TODO cast -> uncast -> cast will break
-// TODO chromecast button has incorrect hitbox and badly styled
-// TODO casting text middle of screen
+// TODO test HLS
 export function createCastingStateProvider(
   descriptor: string
 ): VideoPlayerStateProvider {
@@ -112,8 +110,10 @@ export function createCastingStateProvider(
       const movieMeta = new chrome.cast.media.MovieMediaMetadata();
       movieMeta.title = state.meta?.meta.meta.title ?? "";
 
-      // TODO contentId?
-      const mediaInfo = new chrome.cast.media.MediaInfo("hello", "video/mp4");
+      const mediaInfo = new chrome.cast.media.MediaInfo(
+        state.meta?.meta.meta.id ?? "hello",
+        "video/mp4"
+      );
       (mediaInfo as any).contentUrl = source?.source;
       mediaInfo.streamType = chrome.cast.media.StreamType.BUFFERED;
       mediaInfo.metadata = movieMeta;
@@ -167,17 +167,16 @@ export function createCastingStateProvider(
             updateProgress(descriptor, state);
             break;
           case "mediaInfo":
-            state.progress.duration = e.value.duration;
-            updateProgress(descriptor, state);
+            if (e.value) {
+              state.progress.duration = e.value.duration;
+              updateProgress(descriptor, state);
+            }
             break;
           case "playerState":
             state.mediaPlaying.isLoading = e.value === "BUFFERING";
-            updateMediaPlaying(descriptor, state);
-            break;
-          case "isPaused":
-            state.mediaPlaying.isPaused = e.value;
-            state.mediaPlaying.isPlaying = !e.value;
-            if (!e.value) state.mediaPlaying.hasPlayedOnce = true;
+            state.mediaPlaying.isPaused = e.value !== "PLAYING";
+            state.mediaPlaying.isPlaying = e.value === "PLAYING";
+            if (e.value === "PLAYING") state.mediaPlaying.hasPlayedOnce = true;
             updateMediaPlaying(descriptor, state);
             break;
           case "isMuted":
@@ -188,6 +187,7 @@ export function createCastingStateProvider(
           case "displayStatus":
           case "canSeek":
           case "title":
+          case "isPaused":
             break;
           default:
             console.log(e.type, e.field, e.value);
@@ -229,6 +229,7 @@ export function createCastingStateProvider(
           state.wrapperElement?.removeEventListener("mouseenter", isFocused);
           state.wrapperElement?.removeEventListener("mouseleave", isFocused);
           fscreen.removeEventListener("fullscreenchange", fullscreenchange);
+          ins?.endCurrentSession(true);
         },
       };
     },

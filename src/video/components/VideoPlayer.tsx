@@ -29,6 +29,7 @@ import { useControls } from "@/video/state/logic/controls";
 import { ReactNode, useCallback, useState } from "react";
 import { PopoutProviderAction } from "@/video/components/popouts/PopoutProviderAction";
 import { ChromecastAction } from "@/video/components/actions/ChromecastAction";
+import { CastingTextAction } from "@/video/components/actions/CastingTextAction";
 
 type Props = VideoPlayerBaseProps;
 
@@ -93,6 +94,9 @@ export function VideoPlayer(props: Props) {
             <BackdropAction onBackdropChange={onBackdropChange}>
               <CenterPosition>
                 <LoadingAction />
+              </CenterPosition>
+              <CenterPosition>
+                <CastingTextAction />
               </CenterPosition>
               <CenterPosition>
                 <MiddlePauseAction />

@@ -27,7 +27,11 @@ function VideoElement(props: Props) {
     setProvider(descriptor, provider);
     const { destroy } = provider.providerStart();
     return () => {
-      unsetStateProvider(descriptor, provider.getId());
+      try {
+        unsetStateProvider(descriptor, provider.getId());
+      } catch {
+        // ignore errors from missing player state, we need to run destroy()!
+      }
       destroy();
     };
   }, [descriptor, initalized, stateProviderId]);

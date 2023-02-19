@@ -79,9 +79,13 @@
     }
   },
   "v3": {
-    "newSiteTitle": "Version 3 has released!",
+    "newSiteTitle": "New version now released!",
     "newDomain": "https://movie-web.app",
-    "newDomainText": "We have a new domain. You can now access our website on <0>https://movie-web.app</0>. Make sure to update all your bookmarks as <1>the old link will stop working on {{date}}.</1>",
-    "tireless": "We've worked tirelessly on this new update, we hope you will enjoy what we've been cooking up for the past months."
+    "newDomainText": "movie-web will soon be moving to a new domain: <0>https://movie-web.app</0>. Make sure to update all your bookmarks as <1>the old website will stop working on {{date}}.</1>",
+    "tireless": "We've worked tirelessly on this new update, we hope you will enjoy what we've been cooking up for the past months.",
+    "leaveAnnouncement": "Take me there!"
+  },
+  "casting": {
+    "casting": "Casting to device..."
   }
 }

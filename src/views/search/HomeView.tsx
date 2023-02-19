@@ -161,7 +161,7 @@ function NewDomainModal() {
         </div>
         <div className="mt-16 mb-6 flex items-center justify-center">
           <Button icon={Icons.PLAY} onClick={() => setShow(false)}>
-            Take me to the app
+            {t("v3.leaveAnnouncement")}
           </Button>
         </div>
       </ModalCard>

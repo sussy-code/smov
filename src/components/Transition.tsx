@@ -12,7 +12,6 @@ interface Props {
   animation: TransitionAnimations;
   className?: string;
   children?: ReactNode;
-  appearOnMount?: boolean;
   isChild?: boolean;
 }
 
@@ -62,23 +61,14 @@ export function Transition(props: Props) {
 
   if (props.isChild) {
     return (
-      <HeadlessTransition.Child
-        as={Fragment}
-        appear={props.appearOnMount}
-        {...classes}
-      >
+      <HeadlessTransition.Child as={Fragment} {...classes}>
         <div className={props.className}>{props.children}</div>
       </HeadlessTransition.Child>
     );
   }
 
   return (
-    <HeadlessTransition
-      show={props.show}
-      as={Fragment}
-      appear={props.appearOnMount}
-      {...classes}
-    >
+    <HeadlessTransition show={props.show} as={Fragment} {...classes}>
       <div className={props.className}>{props.children}</div>
     </HeadlessTransition>
   );

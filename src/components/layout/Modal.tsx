@@ -13,13 +13,11 @@ export function ModalFrame(props: Props) {
     <Transition
       className="fixed inset-0 z-[9999]"
       animation="none"
-      appearOnMount
       show={props.show}
     >
       <Overlay>
         <Transition
           isChild
-          appearOnMount
           className="flex h-full w-full items-center justify-center"
           animation="slide-up"
         >

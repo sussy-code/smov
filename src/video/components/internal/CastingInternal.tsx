@@ -16,13 +16,17 @@ export function CastingInternal() {
 
   useEffect(() => {
     if (lastValue.current === isCasting) return;
-    if (!isCasting) return;
     lastValue.current = isCasting;
+    if (!isCasting) return;
     const provider = createCastingStateProvider(descriptor);
     setProvider(descriptor, provider);
     const { destroy } = provider.providerStart();
     return () => {
-      unsetStateProvider(descriptor, provider.getId());
+      try {
+        unsetStateProvider(descriptor, provider.getId());
+      } catch {
+        // ignore errors from missing player state, we need to run destroy()!
+      }
       destroy();
     };
   }, [descriptor, isCasting]);
