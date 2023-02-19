@@ -176,7 +176,10 @@ export function createCastingStateProvider(
             state.mediaPlaying.isLoading = e.value === "BUFFERING";
             state.mediaPlaying.isPaused = e.value !== "PLAYING";
             state.mediaPlaying.isPlaying = e.value === "PLAYING";
-            if (e.value === "PLAYING") state.mediaPlaying.hasPlayedOnce = true;
+            if (e.value === "PLAYING") {
+              state.mediaPlaying.hasPlayedOnce = true;
+              state.mediaPlaying.isFirstLoading = false;
+            }
             updateMediaPlaying(descriptor, state);
             break;
           case "isMuted":

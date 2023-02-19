@@ -26,11 +26,11 @@ export function unsetStateProvider(
     !state.stateProvider ||
     state.stateProvider?.getId() !== stateProviderId
   ) {
-    state.stateProviderId = "video"; // go back to video when casting stops
     return;
   }
   state.stateProvider = null;
   state.stateProviderId = "video"; // go back to video when casting stops
+  updateMisc(descriptor, state);
 }
 
 export function handleBuffered(time: number, buffered: TimeRanges): number {

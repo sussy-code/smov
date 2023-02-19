@@ -4,6 +4,7 @@ import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useMediaPlaying } from "@/video/state/logic/mediaplaying";
 import { useProgress } from "@/video/state/logic/progress";
 import { useControls } from "@/video/state/logic/controls";
+import { useMisc } from "@/video/state/logic/misc";
 
 interface Props {
   startAt?: number;
@@ -15,6 +16,7 @@ export function ProgressListenerController(props: Props) {
   const mediaPlaying = useMediaPlaying(descriptor);
   const progress = useProgress(descriptor);
   const controls = useControls(descriptor);
+  const misc = useMisc(descriptor);
   const didInitialize = useRef<true | null>(null);
   const lastTime = useRef<number>(props.startAt ?? 0);
 
@@ -45,6 +47,17 @@ export function ProgressListenerController(props: Props) {
     controls.setTime(lastTime.current);
     didInitialize.current = true;
   }, [didInitialize, props, progress, mediaPlaying, controls]);
+
+  // when switching state providers
+  // TODO stateProviderId is somehow ALWAYS "video"
+  const lastStateProviderId = useRef<string | null>(null);
+  const stateProviderId = useMemo(() => misc.stateProviderId, [misc]);
+  useEffect(() => {
+    if (lastStateProviderId.current === stateProviderId) return;
+    if (mediaPlaying.isFirstLoading) return;
+    lastStateProviderId.current = stateProviderId;
+    controls.setTime(lastTime.current);
+  }, [controls, mediaPlaying, stateProviderId]);
 
   useEffect(() => {
     // if it initialized, but media starts loading for the first time again.
