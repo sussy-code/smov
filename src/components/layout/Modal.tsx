@@ -1,4 +1,5 @@
 import { Overlay } from "@/components/Overlay";
+import { Transition } from "@/components/Transition";
 import { ReactNode } from "react";
 import { createPortal } from "react-dom";
 
@@ -7,18 +8,38 @@ interface Props {
   children?: ReactNode;
 }
 
-export function ModalFrame(props: { children?: ReactNode }) {
-  return <Overlay>{props.children}</Overlay>;
+export function ModalFrame(props: Props) {
+  return (
+    <Transition
+      className="fixed inset-0 z-[9999]"
+      animation="none"
+      appearOnMount
+      show={props.show}
+    >
+      <Overlay>
+        <Transition
+          isChild
+          appearOnMount
+          className="flex h-full w-full items-center justify-center"
+          animation="slide-up"
+        >
+          {props.children}
+        </Transition>
+      </Overlay>
+    </Transition>
+  );
 }
 
 export function Modal(props: Props) {
-  if (!props.show) return null;
-  return createPortal(<ModalFrame>{props.children}</ModalFrame>, document.body);
+  return createPortal(
+    <ModalFrame show={props.show}>{props.children}</ModalFrame>,
+    document.body
+  );
 }
 
 export function ModalCard(props: { children?: ReactNode }) {
   return (
-    <div className="relative w-4/5 max-w-[600px] overflow-hidden rounded-lg bg-denim-200 px-10 py-10">
+    <div className="relative mx-2 max-w-[600px] overflow-hidden rounded-lg bg-denim-200 px-10 py-10">
       {props.children}
     </div>
   );

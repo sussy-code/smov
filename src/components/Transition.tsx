@@ -4,14 +4,16 @@ import {
   TransitionClasses,
 } from "@headlessui/react";
 
-type TransitionAnimations = "slide-down" | "slide-up" | "fade";
+type TransitionAnimations = "slide-down" | "slide-up" | "fade" | "none";
 
 interface Props {
-  show: boolean;
+  show?: boolean;
   durationClass?: string;
   animation: TransitionAnimations;
   className?: string;
   children?: ReactNode;
+  appearOnMount?: boolean;
+  isChild?: boolean;
 }
 
 function getClasses(
@@ -58,8 +60,25 @@ export function Transition(props: Props) {
   const duration = props.durationClass ?? "duration-200";
   const classes = getClasses(props.animation, duration);
 
+  if (props.isChild) {
+    return (
+      <HeadlessTransition.Child
+        as={Fragment}
+        appear={props.appearOnMount}
+        {...classes}
+      >
+        <div className={props.className}>{props.children}</div>
+      </HeadlessTransition.Child>
+    );
+  }
+
   return (
-    <HeadlessTransition show={props.show} as={Fragment} {...classes}>
+    <HeadlessTransition
+      show={props.show}
+      as={Fragment}
+      appear={props.appearOnMount}
+      {...classes}
+    >
       <div className={props.className}>{props.children}</div>
     </HeadlessTransition>
   );

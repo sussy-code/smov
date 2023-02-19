@@ -1,5 +1,5 @@
 import { Trans, useTranslation } from "react-i18next";
-import { Icon, Icons } from "@/components/Icon";
+import { Icons } from "@/components/Icon";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 import { MediaGrid } from "@/components/media/MediaGrid";
 import {
@@ -86,6 +86,7 @@ function NewDomainModal() {
   const [show, setShow] = useState(
     new URLSearchParams(window.location.search).get("migrated") === "1"
   );
+  const [loaded, setLoaded] = useState(false);
   const history = useHistory();
   const { t } = useTranslation();
 
@@ -97,9 +98,41 @@ function NewDomainModal() {
     });
   }, [history]);
 
-  // Hi Isra! (TODO remove this in the future lol)
+  useEffect(() => {
+    setTimeout(() => {
+      setLoaded(true);
+    }, 500);
+  }, []);
+
+  // If you see this bit of code, don't snitch!
+  // We need to urge users to update their bookmarks and usage,
+  // so we're putting a fake deadline that's only 2 weeks away.
+  const day = 1e3 * 60 * 60 * 24;
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const firstVisitToSite = new Date(
+    localStorage.getItem("firstVisitToSite") || Date.now()
+  );
+  localStorage.setItem("firstVisitToSite", firstVisitToSite.toISOString());
+  const fakeEndResult = new Date(firstVisitToSite.getTime() + 14 * day);
+  const endDateString = `${fakeEndResult.getDate()} ${
+    months[fakeEndResult.getMonth()]
+  } ${fakeEndResult.getFullYear()}`;
+
   return (
-    <Modal show={show}>
+    <Modal show={show && loaded}>
       <ModalCard>
         <div className="mb-12">
           <div
@@ -109,7 +142,7 @@ function NewDomainModal() {
             }}
           />
           <div className="relative flex items-center justify-center">
-            <div className="rounded-full bg-bink-200 py-4 px-12 text-xl font-bold text-white">
+            <div className="rounded-full bg-bink-200 py-4 px-12 text-center text-sm font-bold text-white md:text-xl">
               {t("v3.newDomain")}
             </div>
           </div>
@@ -119,8 +152,8 @@ function NewDomainModal() {
             {t("v3.newSiteTitle")}
           </h2>
           <p className="leading-7">
-            <Trans i18nKey="v3.newDomainText">
-              <span className="font-bold text-white" />
+            <Trans i18nKey="v3.newDomainText" values={{ date: endDateString }}>
+              <span className="text-slate-300" />
               <span className="font-bold text-white" />
             </Trans>
           </p>

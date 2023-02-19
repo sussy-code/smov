@@ -1,3 +1,4 @@
+import { Transition } from "@/components/Transition";
 import { Helmet } from "react-helmet";
 
 export function Overlay(props: { children: React.ReactNode }) {
@@ -6,7 +7,12 @@ export function Overlay(props: { children: React.ReactNode }) {
       <Helmet>
         <body data-no-scroll />
       </Helmet>
-      <div className="fixed inset-0 z-[99999] flex h-full w-full items-center justify-center bg-[rgba(8,6,18,0.85)]">
+      <div className="fixed inset-0 z-[99999]">
+        <Transition
+          animation="fade"
+          className="absolute inset-0 bg-[rgba(8,6,18,0.85)]"
+          isChild
+        />
         {props.children}
       </div>
     </>

@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import pako from "pako";
+import { MWMediaType } from "@/backend/metadata/types";
+import { conf } from "@/setup/config";
 
 function fromBinary(str: string): Uint8Array {
   const result = new Uint8Array(str.length);
@@ -57,8 +59,13 @@ export function V2MigrationView() {
     const newParams = [] as string[];
     newUrl.searchParams.forEach((_, key) => newParams.push(key));
     newParams.forEach((v) => newUrl.searchParams.delete(v));
+    newUrl.searchParams.append("migrated", "1");
 
-    newUrl.hash = "";
+    // hash router compatibility
+    newUrl.hash = conf().NORMAL_ROUTER ? "" : `/search/${MWMediaType.MOVIE}`;
+    newUrl.pathname = conf().NORMAL_ROUTER
+      ? `/search/${MWMediaType.MOVIE}`
+      : "";
 
     window.location.href = newUrl.toString();
   }, [done]);
