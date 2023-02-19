@@ -3,12 +3,13 @@ import {
   MWStreamQuality,
   MWStreamType,
 } from "@/backend/helpers/streams";
+import { DetailedMeta } from "@/backend/metadata/getmeta";
 import { MWMediaMeta } from "@/backend/metadata/types";
 import Hls from "hls.js";
 import { VideoPlayerStateProvider } from "./providers/providerTypes";
 
 export type VideoPlayerMeta = {
-  meta: MWMediaMeta;
+  meta: DetailedMeta;
   captions: MWCaption[];
   episode?: {
     episodeId: string;

@@ -20,7 +20,7 @@ export function useCurrentSeriesEpisodeInfo(descriptor: string) {
   }, [currentSeasonInfo, meta]);
 
   const isSeries = Boolean(
-    meta?.meta?.type === MWMediaType.SERIES && meta?.episode
+    meta?.meta.meta.type === MWMediaType.SERIES && meta?.episode
   );
 
   if (!isSeries) return { isSeries: false };

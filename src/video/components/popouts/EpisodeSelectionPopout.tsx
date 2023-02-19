@@ -57,7 +57,11 @@ export function EpisodeSelectionPopout() {
 
   const setCurrent = useCallback(
     (seasonId: string, episodeId: string) => {
-      controls.setCurrentEpisode(seasonId, episodeId);
+      controls.closePopout();
+      // race condition, jank solution but it works.
+      setTimeout(() => {
+        controls.setCurrentEpisode(seasonId, episodeId);
+      }, 100)
     },
     [controls]
   );

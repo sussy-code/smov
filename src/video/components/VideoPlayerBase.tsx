@@ -32,7 +32,7 @@ function VideoPlayerBaseWithState(props: VideoPlayerBaseProps) {
 
   // TODO move error boundary to only decorated, <VideoPlayer /> shouldn't have styling
   return (
-    <VideoErrorBoundary onGoBack={props.onGoBack} media={media?.meta}>
+    <VideoErrorBoundary onGoBack={props.onGoBack} media={media?.meta.meta}>
       <div
         ref={ref}
         className={[

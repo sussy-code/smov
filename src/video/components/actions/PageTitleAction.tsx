@@ -9,7 +9,7 @@ export function PageTitleAction() {
 
   if (!meta) return null;
 
-  const title = isSeries ? `${meta.title} - ${humanizedEpisodeId}` : meta.title;
+  const title = isSeries ? `${meta.meta.title} - ${humanizedEpisodeId}` : meta.meta.title;
 
   return (
     <Helmet>

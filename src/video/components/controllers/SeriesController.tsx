@@ -1,6 +1,7 @@
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useMeta } from "@/video/state/logic/meta";
 import { useEffect, useRef } from "react";
+import { useHistory } from "react-router-dom";
 
 interface SeriesControllerProps {
   onSelect?: (state: { episodeId?: string; seasonId?: string }) => void;
@@ -9,6 +10,7 @@ interface SeriesControllerProps {
 export function SeriesController(props: SeriesControllerProps) {
   const descriptor = useVideoPlayerDescriptor();
   const meta = useMeta(descriptor);
+  const history = useHistory();
 
   const lastState = useRef<{
     episodeId?: string;
@@ -34,7 +36,7 @@ export function SeriesController(props: SeriesControllerProps) {
       lastState.current = currentState;
       props.onSelect?.(currentState);
     }
-  }, [meta, props]);
+  }, [meta, props, history]);
 
   return null;
 }

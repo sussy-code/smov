@@ -11,5 +11,5 @@ export function HeaderAction(props: Props) {
   const descriptor = useVideoPlayerDescriptor();
   const meta = useMeta(descriptor);
 
-  return <VideoPlayerHeader media={meta?.meta} {...props} />;
+  return <VideoPlayerHeader media={meta?.meta.meta} {...props} />;
 }

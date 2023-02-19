@@ -21,7 +21,7 @@ export function SourceSelectionPopout() {
   const meta = useMeta(descriptor);
   const providers = useMemo(
     () =>
-      meta ? getProviders().filter((v) => v.type.includes(meta.meta.type)) : [],
+      meta ? getProviders().filter((v) => v.type.includes(meta.meta.meta.type)) : [],
     [meta]
   );
 
@@ -39,13 +39,9 @@ export function SourceSelectionPopout() {
       if (!theProvider) throw new Error("Invalid provider");
       if (!meta) throw new Error("need meta");
       return runProvider(theProvider, {
-        media: {
-          imdbId: "", // TODO get actual ids
-          tmdbId: "",
-          meta: meta.meta,
-        },
+        media: meta.meta,
         progress: () => { },
-        type: meta.meta.type,
+        type: meta.meta.meta.type,
         episode: meta.episode?.episodeId as any,
         season: meta.episode?.seasonId as any,
       });

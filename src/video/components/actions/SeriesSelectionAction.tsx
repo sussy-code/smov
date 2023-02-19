@@ -19,7 +19,7 @@ export function SeriesSelectionAction(props: Props) {
   const videoInterface = useInterface(descriptor);
   const controls = useControls(descriptor);
 
-  if (meta?.meta.type !== MWMediaType.SERIES) return null;
+  if (meta?.meta.meta.type !== MWMediaType.SERIES) return null;
 
   return (
     <div className={props.className}>

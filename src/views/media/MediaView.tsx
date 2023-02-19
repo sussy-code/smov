@@ -37,7 +37,7 @@ function MediaViewLoading(props: { onGoBack(): void }) {
       </div>
       <div className="flex flex-col items-center">
         <Loading className="mb-4" />
-        <p className="mb-8 text-denim-700">{t("videoPlaye.findingBestVideo")}</p>
+        <p className="mb-8 text-denim-700">{t("videoPlayer.findingBestVideo")}</p>
       </div>
     </div>
   );
@@ -114,7 +114,7 @@ export function MediaViewPlayer(props: MediaViewPlayerProps) {
   }, [props.stream]);
 
   const metaProps: VideoPlayerMeta = {
-    meta: props.meta.meta,
+    meta: props.meta,
     captions: [],
   };
   let metaSeasonData: MWSeasonWithEpisodeMeta | undefined;
@@ -254,7 +254,6 @@ export function MediaView() {
       stream={stream}
       selected={selected}
       onChangeStream={(sId, eId) => {
-        // TODO changing episode breaks useGoBack
         history.replace(
           `/media/${encodeURIComponent(params.media)}/${encodeURIComponent(
             sId
