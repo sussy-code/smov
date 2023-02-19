@@ -13,7 +13,7 @@ interface Props {
 }
 
 export function SeriesSelectionAction(props: Props) {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   const descriptor = useVideoPlayerDescriptor();
   const meta = useMeta(descriptor);
   const videoInterface = useInterface(descriptor);

@@ -36,12 +36,13 @@ interface ErrorMessageProps {
 }
 
 export function ErrorMessage(props: ErrorMessageProps) {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   return (
     <div
-      className={`${props.localSize ? "h-full" : "min-h-screen"
-        } flex w-full flex-col items-center justify-center px-4 py-12`}
+      className={`${
+        props.localSize ? "h-full" : "min-h-screen"
+      } flex w-full flex-col items-center justify-center px-4 py-12`}
     >
       <div className="flex flex-col items-center justify-start text-center">
         <IconPatch icon={Icons.WARNING} className="mb-6 text-red-400" />

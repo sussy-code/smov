@@ -25,15 +25,15 @@ type MWProviderRunContextBase = {
 };
 type MWProviderRunContextTypeSpecific =
   | {
-    type: MWMediaType.MOVIE | MWMediaType.ANIME;
-    episode: undefined;
-    season: undefined;
-  }
+      type: MWMediaType.MOVIE | MWMediaType.ANIME;
+      episode: undefined;
+      season: undefined;
+    }
   | {
-    type: MWMediaType.SERIES;
-    episode: string;
-    season: string;
-  };
+      type: MWMediaType.SERIES;
+      episode: string;
+      season: string;
+    };
 
 export type MWProviderRunContext = MWProviderRunContextBase &
   MWProviderRunContextTypeSpecific;
@@ -50,7 +50,7 @@ async function findBestEmbedStream(
     embedNum += 1;
     if (!embed.type) continue;
     const scraper = getEmbedScraperByType(embed.type);
-    if (!scraper) throw new Error("Type for embed not found: " + embed.type);
+    if (!scraper) throw new Error(`Type for embed not found: ${embed.type}`);
 
     const eventId = [providerId, scraper.id, embedNum].join("|");
 

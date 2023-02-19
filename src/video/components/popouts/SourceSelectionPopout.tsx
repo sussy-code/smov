@@ -7,12 +7,15 @@ import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useMeta } from "@/video/state/logic/meta";
 import { useControls } from "@/video/state/logic/controls";
 import { MWStream } from "@/backend/helpers/streams";
-import { getEmbedScraperByType, getProviders } from "@/backend/helpers/register";
+import {
+  getEmbedScraperByType,
+  getProviders,
+} from "@/backend/helpers/register";
 import { runEmbedScraper, runProvider } from "@/backend/helpers/run";
 import { MWProviderScrapeResult } from "@/backend/helpers/provider";
-import { PopoutListEntry, PopoutSection } from "./PopoutUtils";
 import { useTranslation } from "react-i18next";
 import { MWEmbed, MWEmbedType } from "@/backend/helpers/embed";
+import { PopoutListEntry, PopoutSection } from "./PopoutUtils";
 
 interface EmbedEntryProps {
   name: string;
@@ -24,35 +27,39 @@ interface EmbedEntryProps {
 export function EmbedEntry(props: EmbedEntryProps) {
   const [scrapeEmbed, loading, error] = useLoading(async () => {
     const scraper = getEmbedScraperByType(props.type);
-    if (!scraper) throw new Error("Embed scraper not found")
+    if (!scraper) throw new Error("Embed scraper not found");
     const stream = await runEmbedScraper(scraper, {
-      progress: () => { }, // no progress tracking for inline scraping
+      progress: () => {}, // no progress tracking for inline scraping
       url: props.url,
-    })
+    });
     props.onSelect(stream);
   });
 
-  return (<PopoutListEntry
-    isOnDarkBackground
-    loading={loading}
-    errored={!!error}
-    onClick={() => {
-      scrapeEmbed();
-    }}
-  >
-    {props.name}
-  </PopoutListEntry>)
+  return (
+    <PopoutListEntry
+      isOnDarkBackground
+      loading={loading}
+      errored={!!error}
+      onClick={() => {
+        scrapeEmbed();
+      }}
+    >
+      {props.name}
+    </PopoutListEntry>
+  );
 }
 
 export function SourceSelectionPopout() {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   const descriptor = useVideoPlayerDescriptor();
   const controls = useControls(descriptor);
   const meta = useMeta(descriptor);
   const providers = useMemo(
     () =>
-      meta ? getProviders().filter((v) => v.type.includes(meta.meta.meta.type)) : [],
+      meta
+        ? getProviders().filter((v) => v.type.includes(meta.meta.meta.type))
+        : [],
     [meta]
   );
 
@@ -71,7 +78,7 @@ export function SourceSelectionPopout() {
       if (!meta) throw new Error("need meta");
       return runProvider(theProvider, {
         media: meta.meta,
-        progress: () => { },
+        progress: () => {},
         type: meta.meta.meta.type,
         episode: meta.episode?.episodeId as any,
         season: meta.episode?.seasonId as any,
@@ -110,13 +117,13 @@ export function SourceSelectionPopout() {
           const realStream = v.stream;
           if (!realStream) {
             const embed = v?.embeds[0];
-            if (!embed) throw new Error("Embed scraper not found")
+            if (!embed) throw new Error("Embed scraper not found");
             const scraper = getEmbedScraperByType(embed.type);
-            if (!scraper) throw new Error("Embed scraper not found")
+            if (!scraper) throw new Error("Embed scraper not found");
             const stream = await runEmbedScraper(scraper, {
-              progress: () => { }, // no progress tracking for inline scraping
+              progress: () => {}, // no progress tracking for inline scraping
               url: embed.url,
-            })
+            });
             selectSource(stream);
             return;
           }
@@ -142,28 +149,30 @@ export function SourceSelectionPopout() {
     const embeds = scrapeResult?.embeds || [];
 
     // Count embed types to determine if it should show a number behind the name
-    const embedsPerType: Record<string, (MWEmbed & { displayName: string })[]> = {}
+    const embedsPerType: Record<string, (MWEmbed & { displayName: string })[]> =
+      {};
     for (const embed of embeds) {
       if (!embed.type) continue;
       if (!embedsPerType[embed.type]) embedsPerType[embed.type] = [];
       embedsPerType[embed.type].push({
         ...embed,
-        displayName: embed.type
-      })
+        displayName: embed.type,
+      });
     }
 
-    const embedsRes = Object.entries(embedsPerType).flatMap(([type, entries]) => {
-      if (entries.length > 1) return entries.map((embed, i) => ({
-        ...embed,
-        displayName: `${embed.type} ${i + 1}`
-      }))
+    const embedsRes = Object.entries(embedsPerType).flatMap(([_, entries]) => {
+      if (entries.length > 1)
+        return entries.map((embed, i) => ({
+          ...embed,
+          displayName: `${embed.type} ${i + 1}`,
+        }));
       return entries;
-    })
+    });
 
-    console.log(embedsRes)
+    console.log(embedsRes);
 
     return embedsRes;
-  }, [scrapeResult?.embeds])
+  }, [scrapeResult?.embeds]);
 
   return (
     <>
@@ -234,27 +243,31 @@ export function SourceSelectionPopout() {
                   Native source
                 </PopoutListEntry>
               ) : null}
-              {(visibleEmbeds?.length || 0) > 0 ? visibleEmbeds?.map((v) => (
-                <EmbedEntry
-                  type={v.type}
-                  name={v.displayName ?? ""}
-                  key={v.url}
-                  url={v.url}
-                  onSelect={(stream) => {
-                    selectSource(stream);
-                  }}
-                />
-              )) : (<div className="flex h-full w-full items-center justify-center">
-                <div className="flex flex-col flex-wrap items-center text-slate-400">
-                  <IconPatch
-                    icon={Icons.EYE_SLASH}
-                    className="text-xl text-bink-600"
+              {(visibleEmbeds?.length || 0) > 0 ? (
+                visibleEmbeds?.map((v) => (
+                  <EmbedEntry
+                    type={v.type}
+                    name={v.displayName ?? ""}
+                    key={v.url}
+                    url={v.url}
+                    onSelect={(stream) => {
+                      selectSource(stream);
+                    }}
                   />
-                  <p className="mt-6 w-full text-center">
-                    {t("videoPlayer.popouts.noEmbeds")}
-                  </p>
+                ))
+              ) : (
+                <div className="flex h-full w-full items-center justify-center">
+                  <div className="flex flex-col flex-wrap items-center text-slate-400">
+                    <IconPatch
+                      icon={Icons.EYE_SLASH}
+                      className="text-xl text-bink-600"
+                    />
+                    <p className="mt-6 w-full text-center">
+                      {t("videoPlayer.popouts.noEmbeds")}
+                    </p>
+                  </div>
                 </div>
-              </div>)}
+              )}
             </>
           )}
         </PopoutSection>

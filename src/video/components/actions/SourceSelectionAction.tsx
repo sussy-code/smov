@@ -11,7 +11,7 @@ interface Props {
 }
 
 export function SourceSelectionAction(props: Props) {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   const descriptor = useVideoPlayerDescriptor();
   const videoInterface = useInterface(descriptor);
   const controls = useControls(descriptor);

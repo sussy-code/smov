@@ -15,7 +15,7 @@ function makeCaptionId(caption: MWCaption, isLinked: boolean): string {
 }
 
 export function CaptionSelectionPopout() {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   const descriptor = useVideoPlayerDescriptor();
   const meta = useMeta(descriptor);

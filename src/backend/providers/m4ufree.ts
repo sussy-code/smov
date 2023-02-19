@@ -1,11 +1,9 @@
-import { compareTitle } from "@/utils/titleMatch";
-import { MWEmbedType } from "../helpers/embed";
+import { MWEmbed, MWEmbedType } from "@/backend/helpers/embed";
 import { proxiedFetch } from "../helpers/fetch";
 import { registerProvider } from "../helpers/register";
 import { MWMediaType } from "../metadata/types";
-import { MWEmbed } from "@/backend/helpers/embed";
 
-const HOST = 'm4ufree.com';
+const HOST = "m4ufree.com";
 const URL_BASE = `https://${HOST}`;
 const URL_SEARCH = `${URL_BASE}/search`;
 const URL_AJAX = `${URL_BASE}/ajax`;
@@ -22,7 +20,7 @@ const REGEX_COOKIES = /XSRF-TOKEN=(.*?);.*laravel_session=(.*?);/;
 const REGEX_SEASON_EPISODE = /S(\d*)-E(\d*)/;
 
 function toDom(html: string) {
-  return new DOMParser().parseFromString(html, "text/html")
+  return new DOMParser().parseFromString(html, "text/html");
 }
 
 registerProvider({
@@ -32,9 +30,14 @@ registerProvider({
   disabled: true, // Disables because the redirector URLs it returns will throw 404 / 403 depending on if you view it in the browser or fetch it respectively. It just does not work.
   type: [MWMediaType.MOVIE, MWMediaType.SERIES],
 
-  async scrape({ media, progress, type, episode: episodeId, season: seasonId }) {
-    const season = media.meta.seasons?.find(s => s.id === seasonId)?.number || 1
-    const episode = media.meta.type === MWMediaType.SERIES ? media.meta.seasonData.episodes.find(ep => ep.id === episodeId)?.number || 1 : undefined
+  async scrape({ media, type, episode: episodeId, season: seasonId }) {
+    const season =
+      media.meta.seasons?.find((s) => s.id === seasonId)?.number || 1;
+    const episode =
+      media.meta.type === MWMediaType.SERIES
+        ? media.meta.seasonData.episodes.find((ep) => ep.id === episodeId)
+            ?.number || 1
+        : undefined;
 
     const embeds: MWEmbed[] = [];
 
@@ -43,39 +46,49 @@ registerProvider({
       responseType: "text" as any,
     }
     */
-    let responseText = await proxiedFetch<string>(`${URL_SEARCH}/${encodeURIComponent(media.meta.title)}.html`);
+    const responseText = await proxiedFetch<string>(
+      `${URL_SEARCH}/${encodeURIComponent(media.meta.title)}.html`
+    );
     let dom = toDom(responseText);
 
-    const searchResults = [...dom.querySelectorAll('.item')].map(element => {
-      const tooltipText = element.querySelector('.tiptitle p')?.innerHTML;
-      if (!tooltipText) return;
+    const searchResults = [...dom.querySelectorAll(".item")]
+      .map((element) => {
+        const tooltipText = element.querySelector(".tiptitle p")?.innerHTML;
+        if (!tooltipText) return;
 
-      let regexResult = REGEX_TITLE_AND_YEAR.exec(tooltipText);
+        let regexResult = REGEX_TITLE_AND_YEAR.exec(tooltipText);
 
-      if (!regexResult || !regexResult[1] || !regexResult[2]) {
-        return;
-      }
+        if (!regexResult || !regexResult[1] || !regexResult[2]) {
+          return;
+        }
 
-      const title = regexResult[1];
-      const year = Number(regexResult[2].slice(0, 4)); // * Some media stores the start AND end year. Only need start year
-      const a = element.querySelector('a');
-      if (!a) return;
-      const href = a.href;
+        const title = regexResult[1];
+        const year = Number(regexResult[2].slice(0, 4)); // * Some media stores the start AND end year. Only need start year
+        const a = element.querySelector("a");
+        if (!a) return;
+        const href = a.href;
 
-      regexResult = REGEX_TYPE.exec(href);
+        regexResult = REGEX_TYPE.exec(href);
 
-      if (!regexResult || !regexResult[1]) {
-        return;
-      }
+        if (!regexResult || !regexResult[1]) {
+          return;
+        }
 
-      let scraperDeterminedType = regexResult[1];
+        let scraperDeterminedType = regexResult[1];
 
-      scraperDeterminedType = scraperDeterminedType === 'tvshow' ? 'show' : 'movie'; // * Map to Trakt type
+        scraperDeterminedType =
+          scraperDeterminedType === "tvshow" ? "show" : "movie"; // * Map to Trakt type
 
-      return { type: scraperDeterminedType, title, year, href };
-    }).filter(item => item);
+        return { type: scraperDeterminedType, title, year, href };
+      })
+      .filter((item) => item);
 
-    const mediaInResults = searchResults.find(item => item && item.title === media.meta.title && item.year.toString() === media.meta.year);
+    const mediaInResults = searchResults.find(
+      (item) =>
+        item &&
+        item.title === media.meta.title &&
+        item.year.toString() === media.meta.year
+    );
 
     if (!mediaInResults) {
       // * Nothing found
@@ -84,109 +97,124 @@ registerProvider({
       };
     }
 
-    let cookies: string | null = '';
-    const responseTextFromMedia = await proxiedFetch<string>(mediaInResults.href, {
-      onResponse(context) {
-        cookies = context.response.headers.get('X-Set-Cookie')
-      },
-    });
+    let cookies: string | null = "";
+    const responseTextFromMedia = await proxiedFetch<string>(
+      mediaInResults.href,
+      {
+        onResponse(context) {
+          cookies = context.response.headers.get("X-Set-Cookie");
+        },
+      }
+    );
     dom = toDom(responseTextFromMedia);
 
     let regexResult = REGEX_COOKIES.exec(cookies);
 
     if (!regexResult || !regexResult[1] || !regexResult[2]) {
       // * DO SOMETHING?
-      throw new Error("No regexResults, yikesssssss kinda gross idk")
+      throw new Error("No regexResults, yikesssssss kinda gross idk");
     }
 
     const cookieHeader = `XSRF-TOKEN=${regexResult[1]}; laravel_session=${regexResult[2]}`;
 
-    const token = dom.querySelector('meta[name="csrf-token"]')?.getAttribute("content");
+    const token = dom
+      .querySelector('meta[name="csrf-token"]')
+      ?.getAttribute("content");
     if (!token) return { embeds };
 
     if (type === MWMediaType.SERIES) {
       // * Get the season/episode data
-      const episodes = [...dom.querySelectorAll('.episode')].map(element => {
-        regexResult = REGEX_SEASON_EPISODE.exec(element.innerHTML);
+      const episodes = [...dom.querySelectorAll(".episode")]
+        .map((element) => {
+          regexResult = REGEX_SEASON_EPISODE.exec(element.innerHTML);
 
-        if (!regexResult || !regexResult[1] || !regexResult[2]) {
-          return;
-        }
+          if (!regexResult || !regexResult[1] || !regexResult[2]) {
+            return;
+          }
 
-        const episode = Number(regexResult[1]);
-        const season = Number(regexResult[2]);
+          const newEpisode = Number(regexResult[1]);
+          const newSeason = Number(regexResult[2]);
 
-        return {
-          id: element.getAttribute('idepisode'),
-          episode: episode,
-          season: season
-        };
-      }).filter(item => item);
+          return {
+            id: element.getAttribute("idepisode"),
+            episode: newEpisode,
+            season: newSeason,
+          };
+        })
+        .filter((item) => item);
 
-      const ep = episodes.find(ep => ep && ep.episode === episode && ep.season === season);
-      if (!ep) return { embeds }
+      const ep = episodes.find(
+        (newEp) => newEp && newEp.episode === episode && newEp.season === season
+      );
+      if (!ep) return { embeds };
 
       const form = `idepisode=${ep.id}&_token=${token}`;
 
-      let response = await proxiedFetch<string>(URL_AJAX_TV, {
-        method: 'POST',
+      const response = await proxiedFetch<string>(URL_AJAX_TV, {
+        method: "POST",
         headers: {
-          'Accept': '*/*',
-          'Accept-Encoding': 'gzip, deflate, br',
-          'Accept-Language': "en-US,en;q=0.9",
-          'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
-          'X-Requested-With': 'XMLHttpRequest',
-          'Sec-CH-UA': '"Not?A_Brand";v="8", "Chromium";v="108", "Microsoft Edge";v="108"',
-          'Sec-CH-UA-Mobile': '?0',
-          'Sec-CH-UA-Platform': '"Linux"',
-          'Sec-Fetch-Site': 'same-origin',
-          'Sec-Fetch-Mode': 'cors',
-          'Sec-Fetch-Dest': 'empty',
-          'X-Cookie': cookieHeader,
-          'X-Origin': URL_BASE,
-          'X-Referer': mediaInResults.href
+          Accept: "*/*",
+          "Accept-Encoding": "gzip, deflate, br",
+          "Accept-Language": "en-US,en;q=0.9",
+          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+          "X-Requested-With": "XMLHttpRequest",
+          "Sec-CH-UA":
+            '"Not?A_Brand";v="8", "Chromium";v="108", "Microsoft Edge";v="108"',
+          "Sec-CH-UA-Mobile": "?0",
+          "Sec-CH-UA-Platform": '"Linux"',
+          "Sec-Fetch-Site": "same-origin",
+          "Sec-Fetch-Mode": "cors",
+          "Sec-Fetch-Dest": "empty",
+          "X-Cookie": cookieHeader,
+          "X-Origin": URL_BASE,
+          "X-Referer": mediaInResults.href,
         },
-        body: form
+        body: form,
       });
 
       dom = toDom(response);
     }
 
-    const servers = [...dom.querySelectorAll('.singlemv')].map(element => element.getAttribute('data'));
+    const servers = [...dom.querySelectorAll(".singlemv")].map((element) =>
+      element.getAttribute("data")
+    );
 
     for (const server of servers) {
       const form = `m4u=${server}&_token=${token}`;
 
       const response = await proxiedFetch<string>(URL_AJAX, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Accept': '*/*',
-          'Accept-Encoding': 'gzip, deflate, br',
-          'Accept-Language': "en-US,en;q=0.9",
-          'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
-          'X-Requested-With': 'XMLHttpRequest',
-          'Sec-CH-UA': '"Not?A_Brand";v="8", "Chromium";v="108", "Microsoft Edge";v="108"',
-          'Sec-CH-UA-Mobile': '?0',
-          'Sec-CH-UA-Platform': '"Linux"',
-          'Sec-Fetch-Site': 'same-origin',
-          'Sec-Fetch-Mode': 'cors',
-          'Sec-Fetch-Dest': 'empty',
-          'X-Cookie': cookieHeader,
-          'X-Origin': URL_BASE,
-          'X-Referer': mediaInResults.href
+          Accept: "*/*",
+          "Accept-Encoding": "gzip, deflate, br",
+          "Accept-Language": "en-US,en;q=0.9",
+          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+          "X-Requested-With": "XMLHttpRequest",
+          "Sec-CH-UA":
+            '"Not?A_Brand";v="8", "Chromium";v="108", "Microsoft Edge";v="108"',
+          "Sec-CH-UA-Mobile": "?0",
+          "Sec-CH-UA-Platform": '"Linux"',
+          "Sec-Fetch-Site": "same-origin",
+          "Sec-Fetch-Mode": "cors",
+          "Sec-Fetch-Dest": "empty",
+          "X-Cookie": cookieHeader,
+          "X-Origin": URL_BASE,
+          "X-Referer": mediaInResults.href,
         },
-        body: form
+        body: form,
       });
 
-      const dom = toDom(response);
+      const serverDom = toDom(response);
 
-      const link = dom.querySelector('iframe')?.src;
+      const link = serverDom.querySelector("iframe")?.src;
 
       const getEmbedType = (url: string) => {
-        if (url.startsWith("https://streamm4u.club")) return MWEmbedType.STREAMM4U
-        if (url.startsWith("https://play.playm4u.xyz")) return MWEmbedType.PLAYM4U
+        if (url.startsWith("https://streamm4u.club"))
+          return MWEmbedType.STREAMM4U;
+        if (url.startsWith("https://play.playm4u.xyz"))
+          return MWEmbedType.PLAYM4U;
         return null;
-      }
+      };
 
       if (!link) continue;
 
@@ -194,15 +222,14 @@ registerProvider({
       if (embedType) {
         embeds.push({
           url: link,
-          type: embedType
-        })
-      };
+          type: embedType,
+        });
+      }
     }
 
     console.log(embeds);
     return {
       embeds,
-    }
-
-  }
+    };
+  },
 });

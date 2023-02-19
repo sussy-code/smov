@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 
 export function useCurrentSeriesEpisodeInfo(descriptor: string) {
   const meta = useMeta(descriptor);
-  const {t} = useTranslation()
+  const { t } = useTranslation();
 
   const currentSeasonInfo = useMemo(() => {
     return meta?.seasons?.find(
@@ -24,10 +24,10 @@ export function useCurrentSeriesEpisodeInfo(descriptor: string) {
   );
 
   if (!isSeries) return { isSeries: false };
-  
+
   const humanizedEpisodeId = t("videoPlayer.seasonAndEpisode", {
     season: currentSeasonInfo?.number,
-    episode: currentEpisodeInfo?.number
+    episode: currentEpisodeInfo?.number,
   });
 
   return {

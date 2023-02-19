@@ -4,7 +4,6 @@ import {
   MWStreamType,
 } from "@/backend/helpers/streams";
 import { DetailedMeta } from "@/backend/metadata/getmeta";
-import { MWMediaMeta } from "@/backend/metadata/types";
 import Hls from "hls.js";
 import { VideoPlayerStateProvider } from "./providers/providerTypes";
 

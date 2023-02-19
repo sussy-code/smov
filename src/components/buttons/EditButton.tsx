@@ -10,7 +10,7 @@ export interface EditButtonProps {
 }
 
 export function EditButton(props: EditButtonProps) {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   const [parent] = useAutoAnimate<HTMLSpanElement>();
 
   const onClick = useCallback(() => {
@@ -24,7 +24,9 @@ export function EditButton(props: EditButtonProps) {
     >
       <span ref={parent}>
         {props.editing ? (
-          <span className="mx-4 whitespace-nowrap">{t("media.stopEditing")}</span>
+          <span className="mx-4 whitespace-nowrap">
+            {t("media.stopEditing")}
+          </span>
         ) : (
           <Icon icon={Icons.EDIT} />
         )}

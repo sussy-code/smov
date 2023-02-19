@@ -21,7 +21,10 @@ registerProvider({
       }
     );
     const foundItem = searchResults.results.find((v: any) => {
-      return compareTitle(v.title, media.meta.title) && v.releaseDate === media.meta.year;
+      return (
+        compareTitle(v.title, media.meta.title) &&
+        v.releaseDate === media.meta.year
+      );
     });
     if (!foundItem) throw new Error("No watchable item found");
     const flixId = foundItem.id;

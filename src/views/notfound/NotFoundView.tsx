@@ -13,7 +13,7 @@ export function NotFoundWrapper(props: {
   children?: ReactNode;
   video?: boolean;
 }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   const goBack = useGoBack();
 
   return (

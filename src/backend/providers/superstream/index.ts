@@ -131,7 +131,8 @@ registerProvider({
 
     const superstreamEntry = searchRes.find(
       (res: any) =>
-      compareTitle(res.title, media.meta.title) && res.year === Number(media.meta.year)
+        compareTitle(res.title, media.meta.title) &&
+        res.year === Number(media.meta.year)
     );
 
     if (!superstreamEntry) throw new Error("No entry found on SuperStream");

@@ -8,7 +8,7 @@ import "./providers/netfilm";
 import "./providers/m4ufree";
 
 // embeds
-import "./embeds/streamm4u"
-import "./embeds/playm4u"
+import "./embeds/streamm4u";
+import "./embeds/playm4u";
 
 initializeScraperStore();

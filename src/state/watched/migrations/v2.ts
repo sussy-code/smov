@@ -49,11 +49,13 @@ async function getMetas(
         searchQuery: `${item.title} ${year}`,
         type: item.mediaType,
       });
-      const relevantItem = data.find((res) =>
-        yearsAreClose(Number(res.year), year) && compareTitle(res.title, item.title)
+      const relevantItem = data.find(
+        (res) =>
+          yearsAreClose(Number(res.year), year) &&
+          compareTitle(res.title, item.title)
       );
       if (!relevantItem) {
-        console.error("No item found for migration: " + item.title);
+        console.error(`No item found for migration: ${item.title}`);
         return;
       }
       return {
@@ -188,7 +190,10 @@ export async function migrateV2Videos(old: OldData) {
         },
         progress: oldWatched.progress,
         percentage: oldWatched.percentage,
-        watchedAt: now + Number(oldWatched.seasonId) * 1000 + Number(oldWatched.episodeId), // There was no watchedAt in V2
+        watchedAt:
+          now +
+          Number(oldWatched.seasonId) * 1000 +
+          Number(oldWatched.episodeId), // There was no watchedAt in V2
         // JANK ALERT: Put watchedAt in the future to show last episode as most recently
       };
 

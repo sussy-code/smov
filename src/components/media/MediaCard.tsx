@@ -35,12 +35,14 @@ function MediaCardContent({
 
   return (
     <div
-      className={`group -m-3 mb-2 rounded-xl bg-denim-300 bg-opacity-0 transition-colors duration-100 ${canLink ? "hover:bg-opacity-100" : ""
-        }`}
+      className={`group -m-3 mb-2 rounded-xl bg-denim-300 bg-opacity-0 transition-colors duration-100 ${
+        canLink ? "hover:bg-opacity-100" : ""
+      }`}
     >
       <article
-        className={`pointer-events-auto relative mb-2 p-3 transition-transform duration-100 ${canLink ? "group-hover:scale-95" : ""
-          }`}
+        className={`pointer-events-auto relative mb-2 p-3 transition-transform duration-100 ${
+          canLink ? "group-hover:scale-95" : ""
+        }`}
       >
         <div
           className="relative mb-4 aspect-[2/3] w-full overflow-hidden rounded-xl bg-denim-500 bg-cover bg-center transition-[border-radius] duration-100 group-hover:rounded-lg"
@@ -53,7 +55,7 @@ function MediaCardContent({
               <p className="text-center text-xs font-bold text-slate-400 transition-colors group-hover:text-white">
                 {t("seasons.seasonAndEpisode", {
                   season: series.season,
-                  episode: series.episode
+                  episode: series.episode,
                 })}
               </p>
             </div>
@@ -62,12 +64,14 @@ function MediaCardContent({
           {percentage !== undefined ? (
             <>
               <div
-                className={`absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-denim-300 to-transparent transition-colors ${canLink ? "group-hover:from-denim-100" : ""
-                  }`}
+                className={`absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-denim-300 to-transparent transition-colors ${
+                  canLink ? "group-hover:from-denim-100" : ""
+                }`}
               />
               <div
-                className={`absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-denim-300 to-transparent transition-colors ${canLink ? "group-hover:from-denim-100" : ""
-                  }`}
+                className={`absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-denim-300 to-transparent transition-colors ${
+                  canLink ? "group-hover:from-denim-100" : ""
+                }`}
               />
               <div className="absolute inset-x-0 bottom-0 p-3">
                 <div className="relative h-1 overflow-hidden rounded-full bg-denim-600">
@@ -83,8 +87,9 @@ function MediaCardContent({
           ) : null}
 
           <div
-            className={`absolute inset-0 flex items-center justify-center bg-denim-200 bg-opacity-80 transition-opacity duration-200 ${closable ? "opacity-100" : "pointer-events-none opacity-0"
-              }`}
+            className={`absolute inset-0 flex items-center justify-center bg-denim-200 bg-opacity-80 transition-opacity duration-200 ${
+              closable ? "opacity-100" : "pointer-events-none opacity-0"
+            }`}
           >
             <IconPatch
               clickable
@@ -99,10 +104,7 @@ function MediaCardContent({
         </h1>
         <DotList
           className="text-xs"
-          content={[
-            t(`media.${media.type}`),
-            media.year,
-          ]}
+          content={[t(`media.${media.type}`), media.year]}
         />
       </article>
     </div>

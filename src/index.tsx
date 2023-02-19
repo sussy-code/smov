@@ -44,10 +44,9 @@ const LazyLoadedApp = React.lazy(async () => {
 
 function TheRouter(props: { children: ReactNode }) {
   const normalRouter = conf().NORMAL_ROUTER;
-  
-  if (normalRouter)
-    return <BrowserRouter children={props.children} />
-  return <HashRouter children={props.children} />
+
+  if (normalRouter) return <BrowserRouter>{props.children}</BrowserRouter>;
+  return <HashRouter>{props.children}</HashRouter>;
 }
 
 ReactDOM.render(
