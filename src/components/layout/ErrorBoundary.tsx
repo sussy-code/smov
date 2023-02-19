@@ -3,7 +3,65 @@ import { IconPatch } from "@/components/buttons/IconPatch";
 import { Icons } from "@/components/Icon";
 import { Link } from "@/components/text/Link";
 import { Title } from "@/components/text/Title";
-import { conf } from "@/config";
+import { conf } from "@/setup/config";
+import { Trans, useTranslation } from "react-i18next";
+
+interface ErrorShowcaseProps {
+  error: {
+    name: string;
+    description: string;
+    path: string;
+  };
+}
+
+export function ErrorShowcase(props: ErrorShowcaseProps) {
+  return (
+    <div className="w-4xl mt-12 max-w-full rounded bg-denim-300 px-6 py-4">
+      <p className="mb-1 break-words font-bold text-white">
+        {props.error.name} - {props.error.description}
+      </p>
+      <p className="break-words">{props.error.path}</p>
+    </div>
+  );
+}
+
+interface ErrorMessageProps {
+  error?: {
+    name: string;
+    description: string;
+    path: string;
+  };
+  localSize?: boolean;
+  children?: React.ReactNode;
+}
+
+export function ErrorMessage(props: ErrorMessageProps) {
+  const { t } = useTranslation();
+
+  return (
+    <div
+      className={`${
+        props.localSize ? "h-full" : "min-h-screen"
+      } flex w-full flex-col items-center justify-center px-4 py-12`}
+    >
+      <div className="flex flex-col items-center justify-start text-center">
+        <IconPatch icon={Icons.WARNING} className="mb-6 text-red-400" />
+        <Title>{t("media.errors.genericTitle")}</Title>
+        {props.children ? (
+          <p className="my-6 max-w-lg">{props.children}</p>
+        ) : (
+          <p className="my-6 max-w-lg">
+            <Trans i18nKey="media.errors.videoFailed">
+              <Link url={conf().DISCORD_LINK} newTab />
+              <Link url={conf().GITHUB_LINK} newTab />
+            </Trans>
+          </p>
+        )}
+      </div>
+      {props.error ? <ErrorShowcase error={props.error} /> : null}
+    </div>
+  );
+}
 
 interface ErrorBoundaryState {
   hasError: boolean;
@@ -50,33 +108,6 @@ export class ErrorBoundary extends Component<
   render() {
     if (!this.state.hasError) return this.props.children as any;
 
-    return (
-      <div className="flex min-h-screen w-full flex-col items-center justify-center px-4 py-12">
-        <div className="flex flex-col items-center justify-start text-center">
-          <IconPatch icon={Icons.WARNING} className="mb-6 text-red-400" />
-          <Title>Whoops, it broke</Title>
-          <p className="my-6 max-w-lg">
-            The app encountered an error and wasn&apos;t able to recover, please
-            report it to the{" "}
-            <Link url={conf().DISCORD_LINK} newTab>
-              Discord server
-            </Link>{" "}
-            or on{" "}
-            <Link url={conf().GITHUB_LINK} newTab>
-              GitHub
-            </Link>
-            .
-          </p>
-        </div>
-        {this.state.error ? (
-          <div className="w-4xl mt-12 max-w-full rounded bg-denim-300 px-6 py-4">
-            <p className="mb-1 break-words font-bold text-white">
-              {this.state.error.name} - {this.state.error.description}
-            </p>
-            <p className="break-words">{this.state.error.path}</p>
-          </div>
-        ) : null}
-      </div>
-    );
+    return <ErrorMessage error={this.state.error} />;
   }
 }

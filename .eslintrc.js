@@ -7,27 +7,28 @@ const a11yOff = Object.keys(require("eslint-plugin-jsx-a11y").rules).reduce(
 );
 
 module.exports = {
+  env: {
+    browser: true
+  },
   extends: [
     "airbnb",
     "airbnb/hooks",
     "plugin:@typescript-eslint/recommended",
-    "prettier"
+    "prettier",
+    "plugin:prettier/recommended"
   ],
-  settings: {
-    "import/resolver": {
-      typescript: {}
-    }
-  },
   ignorePatterns: ["public/*", "dist/*", "/*.js", "/*.ts"],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     project: "./tsconfig.json",
     tsconfigRootDir: "./"
   },
-  plugins: ["@typescript-eslint", "import"],
-  env: {
-    browser: true
+  settings: {
+    "import/resolver": {
+      typescript: {}
+    }
   },
+  plugins: ["@typescript-eslint", "import"],
   rules: {
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
@@ -47,6 +48,9 @@ module.exports = {
     "no-continue": "off",
     "no-eval": "off",
     "no-await-in-loop": "off",
+    "no-nested-ternary": "off",
+    "prefer-destructuring": "off",
+    "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
     "react/jsx-filename-extension": [
       "error",
       { extensions: [".js", ".tsx", ".jsx"] }

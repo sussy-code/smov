@@ -2,7 +2,12 @@ import React, { useMemo, useRef, useState } from "react";
 
 export function useLoading<T extends (...args: any) => Promise<any>>(
   action: T
-) {
+): [
+  (...args: Parameters<T>) => ReturnType<T> | Promise<undefined>,
+  boolean,
+  Error | undefined,
+  boolean
+] {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<any | undefined>(undefined);
@@ -20,11 +25,11 @@ export function useLoading<T extends (...args: any) => Promise<any>>(
 
   const doAction = useMemo(
     () =>
-      async (...args: Parameters<T>) => {
+      async (...args: any) => {
         setLoading(true);
         setSuccess(false);
         setError(undefined);
-        return new Promise((resolve) => {
+        return new Promise<any>((resolve) => {
           actionMemo(...args)
             .then((v) => {
               if (!isMounted.current) return resolve(undefined);
@@ -35,6 +40,7 @@ export function useLoading<T extends (...args: any) => Promise<any>>(
             .catch((err) => {
               if (isMounted) {
                 setError(err);
+                console.error("USELOADING ERROR", err);
                 setSuccess(false);
               }
               resolve(undefined);

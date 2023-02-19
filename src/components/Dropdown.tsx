@@ -57,5 +57,5 @@ export function Dropdown(props: DropdownProps) {
         )}
       </Listbox>
     </div>
-  )
+  );
 }

@@ -1,6 +1,14 @@
-import React, { useRef, useState } from "react";
+import { MWMediaType, MWQuery } from "@/backend/metadata/types";
+import { useState } from "react";
 import { generatePath, useHistory, useRouteMatch } from "react-router-dom";
-import { MWMediaType, MWQuery } from "@/providers";
+
+function getInitialValue(params: { type: string; query: string }) {
+  const type =
+    Object.values(MWMediaType).find((v) => params.type === v) ||
+    MWMediaType.MOVIE;
+  const searchQuery = params.query || "";
+  return { type, searchQuery };
+}
 
 export function useSearchQuery(): [
   MWQuery,
@@ -8,12 +16,8 @@ export function useSearchQuery(): [
   () => void
 ] {
   const history = useHistory();
-  const isFirstRender = useRef(true);
   const { path, params } = useRouteMatch<{ type: string; query: string }>();
-  const [search, setSearch] = useState<MWQuery>({
-    searchQuery: "",
-    type: MWMediaType.MOVIE,
-  });
+  const [search, setSearch] = useState<MWQuery>(getInitialValue(params));
 
   const updateParams = (inp: Partial<MWQuery>, force: boolean) => {
     const copySearch: MWQuery = { ...search };
@@ -37,19 +41,6 @@ export function useSearchQuery(): [
       })
     );
   };
-
-  // only run on first load of the page
-  React.useEffect(() => {
-    if (isFirstRender.current === false) {
-      return;
-    }
-    isFirstRender.current = false;
-    const type =
-      Object.values(MWMediaType).find((v) => params.type === v) ||
-      MWMediaType.MOVIE;
-    const searchQuery = params.query || "";
-    setSearch({ type, searchQuery });
-  }, [setSearch, params, isFirstRender]);
 
   return [search, updateParams, onUnFocus];
 }

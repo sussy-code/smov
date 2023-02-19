@@ -8,7 +8,9 @@ interface ThinContainerProps {
 export function ThinContainer(props: ThinContainerProps) {
   return (
     <div
-      className={`max-w-[600px] mx-auto px-2 sm:px-0 ${props.classNames || ""}`}
+      className={`mx-auto w-[600px] max-w-full px-2 sm:px-0 ${
+        props.classNames || ""
+      }`}
     >
       {props.children}
     </div>

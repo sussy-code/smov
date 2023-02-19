@@ -1,11 +1,15 @@
-import React, { Suspense } from "react";
+import React, { ReactNode, Suspense } from "react";
 import ReactDOM from "react-dom";
-import { HashRouter } from "react-router-dom";
-import "./index.css";
+import { BrowserRouter, HashRouter } from "react-router-dom";
 import { ErrorBoundary } from "@/components/layout/ErrorBoundary";
-import App from "./App";
-import "./i18n";
-import { conf } from "./config";
+import { conf } from "@/setup/config";
+
+import App from "@/setup/App";
+import "@/setup/i18n";
+import "@/setup/index.css";
+import "@/backend";
+import { initializeChromecast } from "./setup/chromecast";
+import { initializeStores } from "./utils/storage";
 
 // initialize
 const key =
@@ -13,15 +17,30 @@ const key =
 if (key) {
   (window as any).initMW(conf().BASE_PROXY_URL, key);
 }
+initializeChromecast();
+
+const LazyLoadedApp = React.lazy(async () => {
+  await initializeStores();
+  return {
+    default: App,
+  };
+});
+
+function TheRouter(props: { children: ReactNode }) {
+  const normalRouter = conf().NORMAL_ROUTER;
+
+  if (normalRouter) return <BrowserRouter>{props.children}</BrowserRouter>;
+  return <HashRouter>{props.children}</HashRouter>;
+}
 
 ReactDOM.render(
   <React.StrictMode>
     <ErrorBoundary>
-      <HashRouter>
+      <TheRouter>
         <Suspense fallback="">
-          <App />
+          <LazyLoadedApp />
         </Suspense>
-      </HashRouter>
+      </TheRouter>
     </ErrorBoundary>
   </React.StrictMode>,
   document.getElementById("root")
