@@ -77,5 +77,11 @@
     "errors": {
       "fatalError": "The video player encounted a fatal error, please report it to the <0>Discord server</0> or on <1>GitHub</1>."
     }
+  },
+  "v3": {
+    "newSiteTitle": "We have a new site!",
+    "newDomain": "https://movie-web.app",
+    "newDomainText": "We've moved from domain, you can now access our website on <0>https://movie-web.app</0>. Make sure to change all your bookmarks as <1>the old link will stop working on 25 Febuary 2023.</1>",
+    "tireless": "We've worked tirelessly on this new update, we hope you will enjoy what we've been cooking up for the past months."
   }
 }

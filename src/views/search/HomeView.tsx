@@ -1,5 +1,5 @@
-import { useTranslation } from "react-i18next";
-import { Icons } from "@/components/Icon";
+import { Trans, useTranslation } from "react-i18next";
+import { Icon, Icons } from "@/components/Icon";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 import { MediaGrid } from "@/components/media/MediaGrid";
 import {
@@ -9,10 +9,11 @@ import {
 import { useWatchedContext } from "@/state/watched";
 import { WatchedMediaCard } from "@/components/media/WatchedMediaCard";
 import { EditButton } from "@/components/buttons/EditButton";
-import { useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
-import { VideoPlayerIconButton } from "@/video/components/parts/VideoPlayerIconButton";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { Modal, ModalCard } from "@/components/layout/Modal";
+import { Button } from "@/components/Button";
 
 function Bookmarks() {
   const { t } = useTranslation();
@@ -81,48 +82,64 @@ function Watched() {
   );
 }
 
-function NewDomainInfo() {
-  const location = useLocation();
+function NewDomainModal() {
+  const [show, setShow] = useState(
+    new URLSearchParams(window.location.search).get("migrated") === "1"
+  );
   const history = useHistory();
+  const { t } = useTranslation();
 
+  useEffect(() => {
+    const newParams = new URLSearchParams(history.location.search);
+    newParams.delete("migrated");
+    history.replace({
+      search: newParams.toString(),
+    });
+  }, [history]);
+
+  // Hi Isra! (TODO remove this in the future lol)
   return (
-    <div className="relative -mx-5 rounded-r-lg rounded-l border-l-4 border-bink-400 bg-denim-300 px-5 py-6">
-      <VideoPlayerIconButton
-        icon={Icons.X}
-        className="absolute top-0 right-0 m-2"
-        onClick={() => {
-          const queryParams = new URLSearchParams(location.search);
-          queryParams.delete("redirected");
-          history.replace({
-            search: queryParams.toString(),
-          });
-        }}
-      />
-      <h2 className="text-lg font-bold text-white">Hey there!</h2>
-      <p className="my-3">
-        Welcome to the long-awaited shiny new update of movie-web. This awesome
-        updates includes an awesome new look, updated functionality, and even a
-        fully custom-built video player.
-      </p>
-      <p className="text-purple-200">
-        We also have a new domain! Please be sure to update your bookmarks, as
-        the old domain is going to stop working on <strong>May 31st</strong>.
-        The new domain is <strong>movie-web.app</strong>
-      </p>
-    </div>
+    <Modal show={show}>
+      <ModalCard>
+        <div className="mb-12">
+          <div
+            className="absolute left-0 top-0 h-[300px] w-full -translate-y-1/2 opacity-50"
+            style={{
+              backgroundImage: `radial-gradient(ellipse 70% 9rem, #7831C1 0%, transparent 100%)`,
+            }}
+          />
+          <div className="relative flex items-center justify-center">
+            <div className="rounded-full bg-bink-200 py-4 px-12 text-xl font-bold text-white">
+              {t("v3.newDomain")}
+            </div>
+          </div>
+        </div>
+        <div className="space-y-6">
+          <h2 className="text-2xl font-bold text-white">
+            {t("v3.newSiteTitle")}
+          </h2>
+          <p className="leading-7">
+            <Trans i18nKey="v3.newDomainText">
+              <span className="font-bold text-white" />
+              <span className="font-bold text-white" />
+            </Trans>
+          </p>
+          <p>{t("v3.tireless")}</p>
+        </div>
+        <div className="mt-16 mb-6 flex items-center justify-center">
+          <Button icon={Icons.PLAY} onClick={() => setShow(false)}>
+            Take me to the app
+          </Button>
+        </div>
+      </ModalCard>
+    </Modal>
   );
 }
 
 export function HomeView() {
-  const location = useLocation();
-
-  const showNewDomainInfo = useMemo(() => {
-    return location.search.includes("redirected=1");
-  }, [location.search]);
-
   return (
-    <div className={["mb-16", showNewDomainInfo ? "mt-16" : "mt-32"].join(" ")}>
-      {showNewDomainInfo ? <NewDomainInfo /> : ""}
+    <div className="mb-16 mt-32">
+      <NewDomainModal />
       <Bookmarks />
       <Watched />
     </div>

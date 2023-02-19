@@ -18,7 +18,7 @@ export function Modal(props: Props) {
 
 export function ModalCard(props: { children?: ReactNode }) {
   return (
-    <div className="relative w-4/5 max-w-[645px] overflow-hidden rounded-lg bg-denim-200 px-10 py-16">
+    <div className="relative w-4/5 max-w-[600px] overflow-hidden rounded-lg bg-denim-200 px-10 py-10">
       {props.children}
     </div>
   );

@@ -13,6 +13,11 @@ html[data-full], html[data-full] body {
   overscroll-behavior-y: none;
 }
 
+body[data-no-scroll] {
+  overflow-y: hidden;
+  height: 100vh;
+}
+
 #root {
   padding: 0.05px;
   min-height: 100vh;
