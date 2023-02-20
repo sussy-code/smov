@@ -1,7 +1,10 @@
 import { useTranslation } from "react-i18next";
 import { Icon, Icons } from "@/components/Icon";
 
-export function BrandPill(props: { clickable?: boolean }) {
+export function BrandPill(props: {
+  clickable?: boolean;
+  hideTextOnMobile?: boolean;
+}) {
   const { t } = useTranslation();
 
   return (
@@ -13,7 +16,13 @@ export function BrandPill(props: { clickable?: boolean }) {
       }`}
     >
       <Icon className="text-xl" icon={Icons.MOVIE_WEB} />
-      <span className="font-semibold text-white">{t("global.name")}</span>
+      <span
+        className={`font-semibold text-white ${
+          props.hideTextOnMobile ? "hidden sm:block" : ""
+        }`}
+      >
+        {t("global.name")}
+      </span>
     </div>
   );
 }

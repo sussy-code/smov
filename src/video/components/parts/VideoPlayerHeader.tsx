@@ -26,8 +26,8 @@ export function VideoPlayerHeader(props: VideoPlayerHeaderProps) {
 
   return (
     <div className="flex items-center">
-      <div className="flex flex-1 items-center">
-        <p className="flex items-center">
+      <div className="flex min-w-0 flex-1 items-center">
+        <p className="flex items-center truncate">
           {props.onClick ? (
             <span
               onClick={props.onClick}
@@ -41,9 +41,7 @@ export function VideoPlayerHeader(props: VideoPlayerHeaderProps) {
             <span className="mx-4 h-6 w-[1.5px] rotate-[30deg] bg-white opacity-50" />
           ) : null}
           {props.media ? (
-            <span className="flex items-center text-white">
-              <span>{props.media.title}</span>
-            </span>
+            <span className="truncate text-white">{props.media.title}</span>
           ) : null}
         </p>
         {props.media && (
@@ -64,7 +62,7 @@ export function VideoPlayerHeader(props: VideoPlayerHeaderProps) {
           <ChromecastAction />
         </>
       ) : (
-        <BrandPill />
+        <BrandPill hideTextOnMobile />
       )}
     </div>
   );

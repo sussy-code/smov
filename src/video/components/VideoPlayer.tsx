@@ -138,8 +138,8 @@ export function VideoPlayer(props: Props) {
                 </div>
                 <div className="flex items-center">
                   {isMobile ? (
-                    <div className="grid w-full grid-cols-[56px,1fr,56px] items-center">
-                      <div />
+                    <div className="flex w-full grid-cols-[56px,1fr,56px] items-center justify-between sm:grid">
+                      <div className="hidden sm:block" />
                       <div className="flex items-center justify-center">
                         <CaptionsSelectionAction />
                         <SeriesSelectionAction />
