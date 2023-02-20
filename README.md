@@ -40,7 +40,7 @@ To run this project locally for contributing or testing, run the following comma
 git clone https://github.com/movie-web/movie-web
 cd movie-web
 yarn install
-yarn start
+yarn dev
 ```
 
 To build production files, simply run `yarn build`.
