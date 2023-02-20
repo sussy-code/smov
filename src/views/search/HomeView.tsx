@@ -14,8 +14,7 @@ import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { useHistory } from "react-router-dom";
 import { Modal, ModalCard } from "@/components/layout/Modal";
 import { Button } from "@/components/Button";
-import pako from "pako";
-import { EmbedMigration, importV2Data } from "../other/v2Migration";
+import { EmbedMigration } from "../other/v2Migration";
 
 function Bookmarks() {
   const { t } = useTranslation();
