@@ -11,6 +11,52 @@ function fromBinary(str: string): Uint8Array {
   return result;
 }
 
+export function importV2Data({ data, time }: { data: any; time: Date }) {
+  const savedTime = localStorage.getItem("mw-migration-date");
+  if (savedTime) {
+    if (new Date(savedTime) >= time) {
+      // has already migrated this or something newer, skip
+      return false;
+    }
+  }
+
+  // restore migration data
+  if (data.bookmarks)
+    localStorage.setItem("mw-bookmarks", JSON.stringify(data.bookmarks));
+  if (data.videoProgress)
+    localStorage.setItem("video-progress", JSON.stringify(data.videoProgress));
+
+  localStorage.setItem("mw-migration-date", time.toISOString());
+
+  return true;
+}
+
+export function EmbedMigration() {
+  let hasReceivedMigrationData = false;
+
+  const onMessage = (e: any) => {
+    const data = e.data;
+    if (data && data.isMigrationData && !hasReceivedMigrationData) {
+      hasReceivedMigrationData = true;
+      const didImport = importV2Data({
+        data: data.data,
+        time: data.date,
+      });
+      if (didImport) window.location.reload();
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("message", onMessage);
+
+    return () => {
+      window.removeEventListener("message", onMessage);
+    };
+  });
+
+  return <iframe src="https://movie.squeezebox.dev" hidden />;
+}
+
 export function V2MigrationView() {
   const [done, setDone] = useState(false);
   useEffect(() => {
@@ -28,24 +74,10 @@ export function V2MigrationView() {
     );
     const timeOfMigration = new Date(params.get("m-time") as string);
 
-    const savedTime = localStorage.getItem("mw-migration-date");
-    if (savedTime) {
-      if (new Date(savedTime) >= timeOfMigration) {
-        // has already migrated this or something newer, skip
-        setDone(true);
-        return;
-      }
-    }
-
-    // restore migration data
-    if (data.bookmarks)
-      localStorage.setItem("mw-bookmarks", JSON.stringify(data.bookmarks));
-    if (data.videoProgress)
-      localStorage.setItem(
-        "video-progress",
-        JSON.stringify(data.videoProgress)
-      );
-    localStorage.setItem("mw-migration-date", timeOfMigration.toISOString());
+    importV2Data({
+      data,
+      time: timeOfMigration,
+    });
 
     // finished
     setDone(true);
