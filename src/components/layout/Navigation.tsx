@@ -13,7 +13,7 @@ export interface NavigationProps {
 export function Navigation(props: NavigationProps) {
   return (
     <div className="fixed left-0 right-0 top-0 z-20 min-h-[150px] bg-gradient-to-b from-denim-300 via-denim-300 to-transparent sm:from-transparent">
-      <div className="flex items-center justify-between py-5 px-7">
+      <div className="fixed left-0 right-0 flex items-center justify-between py-5 px-7">
         <div
           className={`${
             props.bg ? "opacity-100" : "opacity-0"
