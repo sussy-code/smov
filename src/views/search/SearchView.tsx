@@ -32,10 +32,10 @@ export function SearchView() {
             <div className="absolute left-0 bottom-0 right-0 flex h-0 justify-center">
               <div className="absolute bottom-4 h-[100vh] w-[3000px] rounded-[100%] bg-denim-300 md:w-[200vw]" />
             </div>
-            <div className="relative z-20">
-              <div className="mb-16">
-                <Title className="mx-auto max-w-xs">{t("search.title")}</Title>
-              </div>
+            <div className="relative z-10 mb-16">
+              <Title className="mx-auto max-w-xs">{t("search.title")}</Title>
+            </div>
+            <div className="relative z-30">
               <Sticky enabled top={16} onStateChange={stickStateChanged}>
                 <SearchBarInput
                   onChange={setSearch}
