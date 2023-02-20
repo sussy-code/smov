@@ -22,7 +22,7 @@ export function SearchView() {
 
   return (
     <>
-      <div className="relative z-10 mb-24">
+      <div className="relative z-10 mb-16 sm:mb-24">
         <Helmet>
           <title>{t("global.name")}</title>
         </Helmet>

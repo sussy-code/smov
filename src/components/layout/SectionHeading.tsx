@@ -10,8 +10,8 @@ interface SectionHeadingProps {
 
 export function SectionHeading(props: SectionHeadingProps) {
   return (
-    <div className={`mt-12 ${props.className}`}>
-      <div className="mb-4 flex items-end">
+    <div className={`${props.className}`}>
+      <div className="mb-3 flex items-center">
         <p className="flex flex-1 items-center font-bold uppercase text-denim-700">
           {props.icon ? (
             <span className="mr-2 text-xl">
