@@ -9,6 +9,7 @@ import {
 import { AirplayAction } from "@/video/components/actions/AirplayAction";
 import { ChromecastAction } from "@/video/components/actions/ChromecastAction";
 import { useTranslation } from "react-i18next";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 interface VideoPlayerHeaderProps {
   media?: MWMediaMeta;
@@ -17,6 +18,7 @@ interface VideoPlayerHeaderProps {
 }
 
 export function VideoPlayerHeader(props: VideoPlayerHeaderProps) {
+  const { isMobile } = useIsMobile();
   const { bookmarkStore, setItemBookmark } = useBookmarkContext();
   const isBookmarked = props.media
     ? getIfBookmarkedFromPortable(bookmarkStore.bookmarks, props.media)
@@ -34,7 +36,11 @@ export function VideoPlayerHeader(props: VideoPlayerHeaderProps) {
               className="flex cursor-pointer items-center py-1 text-white opacity-50 transition-opacity hover:opacity-100"
             >
               <Icon className="mr-2" icon={Icons.ARROW_LEFT} />
-              <span>{t("videoPlayer.backToHome")}</span>
+              {isMobile ? (
+                <span>{t("videoPlayer.backToHomeShort")}</span>
+              ) : (
+                <span>{t("videoPlayer.backToHome")}</span>
+              )}
             </span>
           ) : null}
           {showDivider ? (

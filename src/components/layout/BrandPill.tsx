@@ -17,9 +17,10 @@ export function BrandPill(props: {
     >
       <Icon className="text-xl" icon={Icons.MOVIE_WEB} />
       <span
-        className={`font-semibold text-white ${
-          props.hideTextOnMobile ? "hidden sm:block" : ""
-        }`}
+        className={[
+          "font-semibold text-white",
+          props.hideTextOnMobile ? "hidden sm:block" : "",
+        ].join(" ")}
       >
         {t("global.name")}
       </span>

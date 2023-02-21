@@ -60,9 +60,10 @@ function PopoutContainer(props: { videoInterface: VideoInterfaceEvent }) {
   return (
     <div
       ref={ref}
-      className={`absolute z-10 grid w-80 grid-rows-[auto,minmax(0,1fr)] overflow-hidden rounded-lg bg-ash-200 ${
-        isMobile ? "h-[230px]" : " h-[500px]"
-      }`}
+      className={[
+        "absolute z-10 grid w-80 grid-rows-[auto,minmax(0,1fr)] overflow-hidden rounded-lg bg-ash-200",
+        isMobile ? "h-[230px]" : " h-[500px]",
+      ].join(" ")}
       style={{
         right: `${right}px`,
         bottom: `${bottom}px`,
