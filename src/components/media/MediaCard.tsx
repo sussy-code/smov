@@ -45,14 +45,27 @@ function MediaCardContent({
         }`}
       >
         <div
-          className="relative mb-4 aspect-[2/3] w-full overflow-hidden rounded-xl bg-denim-500 bg-cover bg-center transition-[border-radius] duration-100 group-hover:rounded-lg"
+          className={[
+            "relative mb-4 aspect-[2/3] w-full overflow-hidden rounded-xl bg-denim-500 bg-cover bg-center transition-[border-radius] duration-100",
+            closable ? "" : "group-hover:rounded-lg",
+          ].join(" ")}
           style={{
             backgroundImage: media.poster ? `url(${media.poster})` : undefined,
           }}
         >
           {series ? (
-            <div className="absolute right-2 top-2 rounded-md bg-denim-200 py-1 px-2 transition-colors group-hover:bg-denim-500">
-              <p className="text-center text-xs font-bold text-slate-400 transition-colors group-hover:text-white">
+            <div
+              className={[
+                "absolute right-2 top-2 rounded-md bg-denim-200 py-1 px-2 transition-colors",
+                closable ? "" : "group-hover:bg-denim-500",
+              ].join(" ")}
+            >
+              <p
+                className={[
+                  "text-center text-xs font-bold text-slate-400 transition-colors",
+                  closable ? "" : "group-hover:text-white",
+                ].join(" ")}
+              >
                 {t("seasons.seasonAndEpisode", {
                   season: series.season,
                   episode: series.episode,
@@ -125,5 +138,9 @@ export function MediaCard(props: MediaCardProps) {
     )}`;
 
   if (!props.linkable) return <span>{content}</span>;
-  return <Link to={link}>{content}</Link>;
+  return (
+    <Link to={link} className={props.closable ? "hover:cursor-default" : ""}>
+      {content}
+    </Link>
+  );
 }
