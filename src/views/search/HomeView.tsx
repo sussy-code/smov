@@ -14,6 +14,7 @@ import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { useHistory } from "react-router-dom";
 import { Modal, ModalCard } from "@/components/layout/Modal";
 import { Button } from "@/components/Button";
+import { EmbedMigration } from "../other/v2Migration";
 
 function Bookmarks() {
   const { t } = useTranslation();
@@ -172,6 +173,7 @@ function NewDomainModal() {
 export function HomeView() {
   return (
     <div className="mb-16">
+      <EmbedMigration />
       <NewDomainModal />
       <Bookmarks />
       <Watched />
