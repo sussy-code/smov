@@ -169,8 +169,6 @@ export function SourceSelectionPopout() {
       return entries;
     });
 
-    console.log(embedsRes);
-
     return embedsRes;
   }, [scrapeResult?.embeds]);
 

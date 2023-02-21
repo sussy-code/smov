@@ -5,6 +5,7 @@ import { SourceSelectionPopout } from "@/video/components/popouts/SourceSelectio
 import { CaptionSelectionPopout } from "@/video/components/popouts/CaptionSelectionPopout";
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useControls } from "@/video/state/logic/controls";
+import { useIsMobile } from "@/hooks/useIsMobile";
 import {
   useInterface,
   VideoInterfaceEvent,
@@ -37,6 +38,8 @@ function PopoutContainer(props: { videoInterface: VideoInterfaceEvent }) {
   const [bottom, setBottom] = useState<number>(0);
   const [width, setWidth] = useState<number>(0);
 
+  const { isMobile } = useIsMobile(true);
+
   const calculateAndSetCoords = useCallback((rect: DOMRect, w: number) => {
     const buttonCenter = rect.left + rect.width / 2;
 
@@ -57,7 +60,10 @@ function PopoutContainer(props: { videoInterface: VideoInterfaceEvent }) {
   return (
     <div
       ref={ref}
-      className="absolute z-10 grid h-[500px] w-80 grid-rows-[auto,minmax(0,1fr)] overflow-hidden rounded-lg bg-ash-200"
+      className={[
+        "absolute z-10 grid w-80 grid-rows-[auto,minmax(0,1fr)] overflow-hidden rounded-lg bg-ash-200",
+        isMobile ? "h-[230px]" : " h-[500px]",
+      ].join(" ")}
       style={{
         right: `${right}px`,
         bottom: `${bottom}px`,
