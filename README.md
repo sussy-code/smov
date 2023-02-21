@@ -78,4 +78,4 @@ This project would not be possible without our amazing contributors and the comm
 
 <div style="display:flex;align-items:center;grid-gap:10px">
 <img src="https://github.com/lem6ns.png?size=20" width="20"><span><a href="https://github.com/lem6ns">@lem6ns</a> for helpfully implementing extra scrapers.</span>
-</div>
+</div> 
