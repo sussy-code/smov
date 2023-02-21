@@ -172,7 +172,7 @@ function NewDomainModal() {
 
 export function HomeView() {
   return (
-    <div className="mb-16 mt-32">
+    <div className="mb-16">
       <EmbedMigration />
       <NewDomainModal />
       <Bookmarks />
