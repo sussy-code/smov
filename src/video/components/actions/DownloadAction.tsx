@@ -5,8 +5,7 @@ import { MWStreamType } from "@/backend/helpers/streams";
 import { normalizeTitle } from "@/utils/normalizeTitle";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { useTranslation } from "react-i18next";
-
-import { useCurrentSeriesEpisodeInfo } from "../hooks/useCurrentSeriesEpisodeInfo";
+import { useMeta } from "@/video/state/logic/meta";
 import { VideoPlayerIconButton } from "../parts/VideoPlayerIconButton";
 
 interface Props {
@@ -16,25 +15,20 @@ interface Props {
 export function DownloadAction(props: Props) {
   const descriptor = useVideoPlayerDescriptor();
   const sourceInterface = useSource(descriptor);
-  const { isSeries, humanizedEpisodeId, meta } =
-    useCurrentSeriesEpisodeInfo(descriptor);
   const { isMobile } = useIsMobile();
   const { t } = useTranslation();
+  const meta = useMeta(descriptor);
 
-  /* if (!meta) return null;
-
-  const title = isSeries
-    ? `${meta?.meta.title} - ${humanizedEpisodeId}`
-    : meta?.meta.title;
-  */
   const isHLS = sourceInterface.source?.type === MWStreamType.HLS;
+
+  const title = meta?.meta.meta.title;
 
   return (
     <a
       href={isHLS ? undefined : sourceInterface.source?.url}
       rel="noreferrer"
       target="_blank"
-      //    download={normalizeTitle(title)}
+      download={title ? normalizeTitle(title) : undefined}
     >
       <VideoPlayerIconButton
         className={props.className}
