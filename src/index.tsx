@@ -5,6 +5,7 @@ import { ErrorBoundary } from "@/components/layout/ErrorBoundary";
 import { conf } from "@/setup/config";
 
 import App from "@/setup/App";
+import "@/setup/ga";
 import "@/setup/i18n";
 import "@/setup/index.css";
 import "@/backend";
