@@ -142,6 +142,7 @@ export function VideoPlayer(props: Props) {
                     <div className="grid w-full grid-cols-[56px,1fr,56px] items-center">
                       <div />
                       <div className="flex items-center justify-center">
+                        <DownloadAction />
                         <CaptionsSelectionAction />
                         <SeriesSelectionAction />
                         <SourceSelectionAction />
@@ -152,13 +153,13 @@ export function VideoPlayer(props: Props) {
                     <>
                       <LeftSideControls />
                       <div className="flex-1" />
-                      <DownloadAction />
                       <QualityDisplayAction />
                       <SeriesSelectionAction />
                       <SourceSelectionAction />
                       <div className="mx-2 h-6 w-px bg-white opacity-50" />
                       <ChromecastAction />
                       <AirplayAction />
+                      <DownloadAction />
                       <CaptionsSelectionAction />
                       <FullscreenAction />
                     </>
