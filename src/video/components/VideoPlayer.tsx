@@ -30,7 +30,7 @@ import { ReactNode, useCallback, useState } from "react";
 import { PopoutProviderAction } from "@/video/components/popouts/PopoutProviderAction";
 import { ChromecastAction } from "@/video/components/actions/ChromecastAction";
 import { CastingTextAction } from "@/video/components/actions/CastingTextAction";
-import { DownloadAction } from "@/video/components/actions/DownloadAction"
+import { DownloadAction } from "@/video/components/actions/DownloadAction";
 
 type Props = VideoPlayerBaseProps;
 
