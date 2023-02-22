@@ -19,7 +19,7 @@
     "paths": {
       "@/*": ["./*"]
     },
-    "types": ["vite/client"]
+    "types": ["vite/client", "jest"]
   },
   "include": ["src"]
 }
