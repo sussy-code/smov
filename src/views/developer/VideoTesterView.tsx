@@ -2,6 +2,7 @@ import { MWStreamQuality, MWStreamType } from "@/backend/helpers/streams";
 import { DetailedMeta } from "@/backend/metadata/getmeta";
 import { MWMediaType } from "@/backend/metadata/types";
 import { Button } from "@/components/Button";
+import { Dropdown } from "@/components/Dropdown";
 import { Navigation } from "@/components/layout/Navigation";
 import { ThinContainer } from "@/components/layout/ThinContainer";
 import { MetaController } from "@/video/components/controllers/MetaController";
@@ -12,11 +13,13 @@ import { Helmet } from "react-helmet";
 
 interface VideoData {
   streamUrl: string;
+  type: MWStreamType;
 }
 
 const testData: VideoData = {
   streamUrl:
     "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+  type: MWStreamType.MP4,
 };
 const testMeta: DetailedMeta = {
   imdbId: "",
@@ -32,13 +35,18 @@ const testMeta: DetailedMeta = {
 
 export function VideoTesterView() {
   const [video, setVideo] = useState<VideoData | null>(null);
+  const [videoType, setVideoType] = useState<MWStreamType>(MWStreamType.MP4);
   const [url, setUrl] = useState("");
 
-  const playVideo = useCallback((streamUrl: string) => {
-    setVideo({
-      streamUrl,
-    });
-  }, []);
+  const playVideo = useCallback(
+    (streamUrl: string) => {
+      setVideo({
+        streamUrl,
+        type: videoType,
+      });
+    },
+    [videoType]
+  );
 
   if (video) {
     return (
@@ -65,18 +73,36 @@ export function VideoTesterView() {
   }
 
   return (
-    <div className="py-48">
+    <div className="py-64">
       <Navigation />
       <ThinContainer classNames="flex items-start flex-col space-y-4">
+        <div className="w-48">
+          <Dropdown
+            options={[
+              { id: MWStreamType.MP4, name: "Mp4" },
+              { id: MWStreamType.HLS, name: "hls/m3u8" },
+            ]}
+            selectedItem={{ id: videoType, name: videoType }}
+            setSelectedItem={(a) => setVideoType(a.id as MWStreamType)}
+          />
+        </div>
         <div className="mb-4 flex gap-4">
           <input
             type="text"
+            placeholder="stream url here..."
             value={url}
             onChange={(e) => setUrl(e.target.value)}
           />
           <Button onClick={() => playVideo(url)}>Play video</Button>
         </div>
-        <Button onClick={() => playVideo(testData.streamUrl)}>
+        <Button
+          onClick={() =>
+            setVideo({
+              streamUrl: testData.streamUrl,
+              type: testData.type,
+            })
+          }
+        >
           Play default video
         </Button>
       </ThinContainer>

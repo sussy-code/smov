@@ -9,6 +9,8 @@ import { MWMediaType } from "@/backend/metadata/types";
 import { V2MigrationView } from "@/views/other/v2Migration";
 import { DeveloperView } from "@/views/developer/DeveloperView";
 import { VideoTesterView } from "@/views/developer/VideoTesterView";
+import { ProviderTesterView } from "@/views/developer/ProviderTesterView";
+import { EmbedTesterView } from "@/views/developer/EmbedTesterView";
 
 function App() {
   return (
@@ -33,6 +35,8 @@ function App() {
           {/* other */}
           <Route exact path="/dev" component={DeveloperView} />
           <Route exact path="/dev/video" component={VideoTesterView} />
+          <Route exact path="/dev/providers" component={ProviderTesterView} />
+          <Route exact path="/dev/embeds" component={EmbedTesterView} />
           <Route path="*" component={NotFoundPage} />
         </Switch>
       </BookmarkContextProvider>

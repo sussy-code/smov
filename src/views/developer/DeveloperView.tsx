@@ -14,6 +14,11 @@ export function DeveloperView() {
           direction="right"
           linkText="Provider tester"
         />
+        <ArrowLink
+          to="/dev/embeds"
+          direction="right"
+          linkText="Embed scraper tester"
+        />
         <ArrowLink to="/dev/video" direction="right" linkText="Video tester" />
       </ThinContainer>
     </div>
