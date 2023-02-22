@@ -1,6 +1,15 @@
 import { conf } from "@/setup/config";
 import { ofetch } from "ofetch";
 
+let proxyUrlIndex = Math.floor(Math.random() * conf().PROXY_URLS.length);
+
+// round robins all proxy urls
+function getProxyUrl(): string {
+  const url = conf().PROXY_URLS[proxyUrlIndex];
+  proxyUrlIndex = (proxyUrlIndex + 1) % conf().PROXY_URLS.length;
+  return url;
+}
+
 type P<T> = Parameters<typeof ofetch<T>>;
 type R<T> = ReturnType<typeof ofetch<T>>;
 
@@ -41,7 +50,7 @@ export function proxiedFetch<T>(url: string, ops: P<T>[1] = {}): R<T> {
     parsedUrl.searchParams.set(k, v);
   });
 
-  return baseFetch<T>(conf().BASE_PROXY_URL, {
+  return baseFetch<T>(getProxyUrl(), {
     ...ops,
     baseURL: undefined,
     params: {
