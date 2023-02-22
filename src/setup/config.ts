@@ -33,12 +33,13 @@ const env: Record<keyof Config, undefined | string> = {
 const alerts = [] as string[];
 
 // loads from different locations, in order: environment (VITE_{KEY}), window (public/config.js)
-function getKey(key: keyof Config): string {
+function getKey(key: keyof Config, defaultString?: string): string {
   let windowValue = (window as any)?.__CONFIG__?.[`VITE_${key}`];
   if (windowValue !== undefined && windowValue.length === 0)
     windowValue = undefined;
   const value = env[key] ?? windowValue ?? undefined;
   if (value === undefined) {
+    if (defaultString) return defaultString;
     if (!alerts.includes(key)) {
       // eslint-disable-next-line no-alert
       window.alert(`Misconfigured instance, missing key: ${key}`);
@@ -60,6 +61,6 @@ export function conf(): RuntimeConfig {
     PROXY_URLS: getKey("CORS_PROXY_URL")
       .split(",")
       .map((v) => v.trim()),
-    NORMAL_ROUTER: (getKey("NORMAL_ROUTER") ?? "false") === "true",
+    NORMAL_ROUTER: getKey("NORMAL_ROUTER", "false") === "true",
   };
 }
