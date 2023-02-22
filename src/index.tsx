@@ -16,7 +16,7 @@ import { initializeStores } from "./utils/storage";
 const key =
   (window as any)?.__CONFIG__?.VITE_KEY ?? import.meta.env.VITE_KEY ?? null;
 if (key) {
-  (window as any).initMW(conf().BASE_PROXY_URL, key);
+  (window as any).initMW(conf().PROXY_URLS, key);
 }
 initializeChromecast();
 
