@@ -55,6 +55,7 @@
     "noVideos": "Whoops, couldn't find any videos for you",
     "loading": "Loading...",
     "backToHome": "Back to home",
+    "backToHomeShort": "Back",
     "seasonAndEpisode": "S{{season}} E{{episode}}",
     "buttons": {
       "episodes": "Episodes",

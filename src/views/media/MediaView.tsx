@@ -32,7 +32,7 @@ function MediaViewLoading(props: { onGoBack(): void }) {
       <Helmet>
         <title>{t("videoPlayer.loading")}</title>
       </Helmet>
-      <div className="absolute inset-x-0 top-0 p-6">
+      <div className="absolute inset-x-0 top-0 py-6 px-8">
         <VideoPlayerHeader onClick={props.onGoBack} />
       </div>
       <div className="flex flex-col items-center">

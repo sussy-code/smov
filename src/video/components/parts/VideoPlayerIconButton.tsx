@@ -40,7 +40,9 @@ export const VideoPlayerIconButton = forwardRef<
           ].join(" ")}
         >
           <Icon icon={props.icon} className={props.iconSize ?? "text-2xl"} />
-          {props.text ? <span className="ml-2">{props.text}</span> : null}
+          <p className="hidden sm:block">
+            {props.text ? <span className="ml-2">{props.text}</span> : null}
+          </p>
         </div>
       </button>
     </div>
