@@ -11,8 +11,8 @@ export default defineConfig({
     VitePWA({
       registerType: "autoUpdate",
       injectRegister: "inline",
-      devOptions: {
-        enabled: true,
+      workbox: {
+        skipWaiting: true,
       },
       includeAssets: [
         "favicon.ico",
