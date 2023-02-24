@@ -13,6 +13,7 @@ export default defineConfig({
       injectRegister: "inline",
       workbox: {
         skipWaiting: true,
+        globIgnores: ["**ping.txt**"],
       },
       includeAssets: [
         "favicon.ico",

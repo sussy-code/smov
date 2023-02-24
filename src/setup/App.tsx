@@ -11,36 +11,48 @@ import { DeveloperView } from "@/views/developer/DeveloperView";
 import { VideoTesterView } from "@/views/developer/VideoTesterView";
 import { ProviderTesterView } from "@/views/developer/ProviderTesterView";
 import { EmbedTesterView } from "@/views/developer/EmbedTesterView";
-
-// TODO add "you are offline" status bar
+import { BannerContextProvider } from "@/hooks/useBanner";
+import { Layout } from "@/setup/Layout";
 
 function App() {
   return (
     <WatchedContextProvider>
       <BookmarkContextProvider>
-        <Switch>
-          {/* functional routes */}
-          <Route exact path="/v2-migration" component={V2MigrationView} />
-          <Route exact path="/">
-            <Redirect to={`/search/${MWMediaType.MOVIE}`} />
-          </Route>
+        <BannerContextProvider>
+          <Layout>
+            <Switch>
+              {/* functional routes */}
+              <Route exact path="/v2-migration" component={V2MigrationView} />
+              <Route exact path="/">
+                <Redirect to={`/search/${MWMediaType.MOVIE}`} />
+              </Route>
 
-          {/* pages */}
-          <Route exact path="/media/:media" component={MediaView} />
-          <Route
-            exact
-            path="/media/:media/:season/:episode"
-            component={MediaView}
-          />
-          <Route exact path="/search/:type/:query?" component={SearchView} />
+              {/* pages */}
+              <Route exact path="/media/:media" component={MediaView} />
+              <Route
+                exact
+                path="/media/:media/:season/:episode"
+                component={MediaView}
+              />
+              <Route
+                exact
+                path="/search/:type/:query?"
+                component={SearchView}
+              />
 
-          {/* other */}
-          <Route exact path="/dev" component={DeveloperView} />
-          <Route exact path="/dev/video" component={VideoTesterView} />
-          <Route exact path="/dev/providers" component={ProviderTesterView} />
-          <Route exact path="/dev/embeds" component={EmbedTesterView} />
-          <Route path="*" component={NotFoundPage} />
-        </Switch>
+              {/* other */}
+              <Route exact path="/dev" component={DeveloperView} />
+              <Route exact path="/dev/video" component={VideoTesterView} />
+              <Route
+                exact
+                path="/dev/providers"
+                component={ProviderTesterView}
+              />
+              <Route exact path="/dev/embeds" component={EmbedTesterView} />
+              <Route path="*" component={NotFoundPage} />
+            </Switch>
+          </Layout>
+        </BannerContextProvider>
       </BookmarkContextProvider>
     </WatchedContextProvider>
   );
