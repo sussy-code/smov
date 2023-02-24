@@ -43,6 +43,7 @@ module.exports = {
     "no-shadow": "off",
     "@typescript-eslint/no-shadow": ["error"],
     "no-restricted-syntax": "off",
+    "import/no-unresolved": ["error", { ignore: ["^virtual:"] }],
     "react/jsx-props-no-spreading": "off",
     "consistent-return": "off",
     "no-continue": "off",
