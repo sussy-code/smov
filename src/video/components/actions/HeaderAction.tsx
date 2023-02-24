@@ -5,6 +5,7 @@ import { useMeta } from "@/video/state/logic/meta";
 interface Props {
   onClick?: () => void;
   showControls?: boolean;
+  isFullScreen: boolean;
 }
 
 export function HeaderAction(props: Props) {

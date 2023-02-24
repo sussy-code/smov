@@ -35,6 +35,7 @@ const format = {
 registerProvider({
   id: "gdriveplayer",
   displayName: "gdriveplayer",
+  disabled: true,
   rank: 69,
   type: [MWMediaType.MOVIE],
 

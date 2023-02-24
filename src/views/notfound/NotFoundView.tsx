@@ -17,18 +17,18 @@ export function NotFoundWrapper(props: {
   const goBack = useGoBack();
 
   return (
-    <div className="h-screen flex-1">
+    <div className="relative flex flex-1 flex-col">
       <Helmet>
         <title>{t("notFound.genericTitle")}</title>
       </Helmet>
       {props.video ? (
-        <div className="fixed inset-x-0 top-0 py-6 px-8">
+        <div className="absolute inset-x-0 top-0 py-6 px-8">
           <VideoPlayerHeader onClick={goBack} />
         </div>
       ) : (
         <Navigation />
       )}
-      <div className="flex h-full flex-col items-center justify-center p-5 text-center">
+      <div className="flex h-full flex-1 flex-col items-center justify-center p-5 text-center">
         {props.children}
       </div>
     </div>

@@ -10,11 +10,13 @@ import { AirplayAction } from "@/video/components/actions/AirplayAction";
 import { ChromecastAction } from "@/video/components/actions/ChromecastAction";
 import { useTranslation } from "react-i18next";
 import { useIsMobile } from "@/hooks/useIsMobile";
+import { useBannerSize } from "@/hooks/useBanner";
 
 interface VideoPlayerHeaderProps {
   media?: MWMediaMeta;
   onClick?: () => void;
   showControls?: boolean;
+  isFullScreen?: boolean;
 }
 
 export function VideoPlayerHeader(props: VideoPlayerHeaderProps) {
@@ -25,9 +27,15 @@ export function VideoPlayerHeader(props: VideoPlayerHeaderProps) {
     : false;
   const showDivider = props.media && props.onClick;
   const { t } = useTranslation();
+  const bannerHeight = useBannerSize();
 
   return (
-    <div className="flex items-center">
+    <div
+      className="flex items-center"
+      style={{
+        paddingTop: props.isFullScreen ? `${bannerHeight}px` : undefined,
+      }}
+    >
       <div className="flex min-w-0 flex-1 items-center">
         <p className="flex items-center truncate">
           {props.onClick ? (

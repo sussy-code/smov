@@ -4,7 +4,10 @@ import { registerProvider } from "../helpers/register";
 import { MWStreamQuality, MWStreamType } from "../helpers/streams";
 import { MWMediaType } from "../metadata/types";
 
-const flixHqBase = "https://api.consumet.org/movies/flixhq";
+// const flixHqBase = "https://api.consumet.org/movies/flixhq";
+// *** TEMPORARY FIX - use other instance
+// SEE ISSUE: https://github.com/consumet/api.consumet.org/issues/326
+const flixHqBase = "https://c.delusionz.xyz/movies/flixhq";
 
 registerProvider({
   id: "flixhq",

@@ -30,6 +30,7 @@ import { ReactNode, useCallback, useState } from "react";
 import { PopoutProviderAction } from "@/video/components/popouts/PopoutProviderAction";
 import { ChromecastAction } from "@/video/components/actions/ChromecastAction";
 import { CastingTextAction } from "@/video/components/actions/CastingTextAction";
+import { DownloadAction } from "@/video/components/actions/DownloadAction";
 
 type Props = VideoPlayerBaseProps;
 
@@ -120,6 +121,7 @@ export function VideoPlayer(props: Props) {
                 <HeaderAction
                   showControls={isMobile}
                   onClick={props.onGoBack}
+                  isFullScreen
                 />
               </Transition>
               <Transition
@@ -141,6 +143,7 @@ export function VideoPlayer(props: Props) {
                     <div className="grid w-full grid-cols-[56px,1fr,56px] items-center">
                       <div />
                       <div className="flex items-center justify-center">
+                        <DownloadAction />
                         <CaptionsSelectionAction />
                         <SeriesSelectionAction />
                         <SourceSelectionAction />
@@ -157,6 +160,7 @@ export function VideoPlayer(props: Props) {
                       <div className="mx-2 h-6 w-px bg-white opacity-50" />
                       <ChromecastAction />
                       <AirplayAction />
+                      <DownloadAction />
                       <CaptionsSelectionAction />
                       <FullscreenAction />
                     </>
