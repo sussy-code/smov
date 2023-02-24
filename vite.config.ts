@@ -12,7 +12,6 @@ export default defineConfig({
       registerType: "autoUpdate",
       injectRegister: "inline",
       workbox: {
-        skipWaiting: true,
         globIgnores: ["**ping.txt**"],
       },
       includeAssets: [
