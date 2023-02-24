@@ -60,7 +60,8 @@
     "buttons": {
       "episodes": "Episodes",
       "source": "Source",
-      "captions": "Captions"
+      "captions": "Captions",
+      "download": "Download"
     },
     "popouts": {
       "sources": "Sources",
