@@ -18,6 +18,7 @@ registerProvider({
   displayName: "NetFilm",
   rank: 15,
   type: [MWMediaType.MOVIE, MWMediaType.SERIES],
+  disabled: true, // https://github.com/lamhoang1256/netfilm/issues/25
 
   async scrape({ media, episode, progress }) {
     // search for relevant item
