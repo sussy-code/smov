@@ -11,16 +11,17 @@ export function Banner(props: { children: React.ReactNode; type: "error" }) {
   };
 
   return (
-    <div
-      ref={ref}
-      className={[
-        styles[props.type],
-        "flex items-center justify-center p-1",
-      ].join(" ")}
-    >
-      <div className="flex items-center space-x-3">
-        <Icon icon={icons[props.type]} />
-        <div>{props.children}</div>
+    <div ref={ref}>
+      <div
+        className={[
+          styles[props.type],
+          "flex items-center justify-center p-1",
+        ].join(" ")}
+      >
+        <div className="flex items-center space-x-3">
+          <Icon icon={icons[props.type]} />
+          <div>{props.children}</div>
+        </div>
       </div>
     </div>
   );

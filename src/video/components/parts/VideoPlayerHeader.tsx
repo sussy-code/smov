@@ -16,6 +16,7 @@ interface VideoPlayerHeaderProps {
   media?: MWMediaMeta;
   onClick?: () => void;
   showControls?: boolean;
+  isFullScreen?: boolean;
 }
 
 export function VideoPlayerHeader(props: VideoPlayerHeaderProps) {
@@ -31,7 +32,9 @@ export function VideoPlayerHeader(props: VideoPlayerHeaderProps) {
   return (
     <div
       className="flex items-center"
-      style={{ paddingTop: `${bannerHeight}px` }}
+      style={{
+        paddingTop: props.isFullScreen ? `${bannerHeight}px` : undefined,
+      }}
     >
       <div className="flex min-w-0 flex-1 items-center">
         <p className="flex items-center truncate">
