@@ -89,5 +89,8 @@
   },
   "casting": {
     "casting": "Casting to device..."
+  },
+  "errors": {
+    "offline": "Check your internet connection"
   }
 }

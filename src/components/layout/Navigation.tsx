@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { IconPatch } from "@/components/buttons/IconPatch";
 import { Icons } from "@/components/Icon";
 import { conf } from "@/setup/config";
+import { useBannerSize } from "@/hooks/useBanner";
 import { BrandPill } from "./BrandPill";
 
 export interface NavigationProps {
@@ -11,8 +12,15 @@ export interface NavigationProps {
 }
 
 export function Navigation(props: NavigationProps) {
+  const bannerHeight = useBannerSize();
+
   return (
-    <div className="fixed left-0 right-0 top-0 z-20 min-h-[150px] bg-gradient-to-b from-denim-300 via-denim-300 to-transparent sm:from-transparent">
+    <div
+      className="fixed left-0 right-0 top-0 z-20 min-h-[150px] bg-gradient-to-b from-denim-300 via-denim-300 to-transparent sm:from-transparent"
+      style={{
+        top: `${bannerHeight}px`,
+      }}
+    >
       <div className="fixed left-0 right-0 flex items-center justify-between py-5 px-7">
         <div
           className={`${

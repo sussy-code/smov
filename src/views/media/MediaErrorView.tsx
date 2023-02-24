@@ -9,7 +9,7 @@ export function MediaFetchErrorView() {
   const goBack = useGoBack();
 
   return (
-    <div className="h-screen flex-1">
+    <div className="flex-1">
       <Helmet>
         <title>{t("media.errors.failedMeta")}</title>
       </Helmet>

@@ -7,6 +7,7 @@ import { SearchBarInput } from "@/components/SearchBar";
 import { Title } from "@/components/text/Title";
 import { useSearchQuery } from "@/hooks/useSearchQuery";
 import { WideContainer } from "@/components/layout/WideContainer";
+import { useBannerSize } from "@/hooks/useBanner";
 import { Helmet } from "react-helmet";
 import { SearchResultsPartial } from "./SearchResultsPartial";
 
@@ -14,6 +15,7 @@ export function SearchView() {
   const { t } = useTranslation();
   const [search, setSearch, setSearchUnFocus] = useSearchQuery();
   const [showBg, setShowBg] = useState(false);
+  const bannerSize = useBannerSize();
 
   const stickStateChanged = useCallback(
     ({ status }: Sticky.Status) => setShowBg(status === Sticky.STATUS_FIXED),
@@ -36,7 +38,11 @@ export function SearchView() {
               <Title className="mx-auto max-w-xs">{t("search.title")}</Title>
             </div>
             <div className="relative z-30">
-              <Sticky enabled top={16} onStateChange={stickStateChanged}>
+              <Sticky
+                enabled
+                top={16 + bannerSize}
+                onStateChange={stickStateChanged}
+              >
                 <SearchBarInput
                   onChange={setSearch}
                   value={search}

@@ -121,6 +121,7 @@ export function VideoPlayer(props: Props) {
                 <HeaderAction
                   showControls={isMobile}
                   onClick={props.onGoBack}
+                  isFullScreen
                 />
               </Transition>
               <Transition

@@ -28,7 +28,7 @@ function MediaViewLoading(props: { onGoBack(): void }) {
   const { t } = useTranslation();
 
   return (
-    <div className="relative flex h-screen items-center justify-center">
+    <div className="relative flex flex-1 items-center justify-center">
       <Helmet>
         <title>{t("videoPlayer.loading")}</title>
       </Helmet>
@@ -62,7 +62,7 @@ function MediaViewScraping(props: MediaViewScrapingProps) {
   }, [stream, props]);
 
   return (
-    <div className="relative flex h-screen items-center justify-center">
+    <div className="relative flex flex-1 items-center justify-center">
       <Helmet>
         <title>{props.meta.meta.title}</title>
       </Helmet>
