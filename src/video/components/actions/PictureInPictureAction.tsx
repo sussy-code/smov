@@ -4,7 +4,10 @@ import { useTranslation } from "react-i18next";
 import { useControls } from "@/video/state/logic/controls";
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useCallback } from "react";
-import { canPictureInPicture } from "@/utils/detectFeatures";
+import {
+  canPictureInPicture,
+  canWebkitPictureInPicture,
+} from "@/utils/detectFeatures";
 import { VideoPlayerIconButton } from "../parts/VideoPlayerIconButton";
 
 interface Props {
@@ -22,7 +25,7 @@ export function PictureInPictureAction(props: Props) {
     controls.togglePictureInPicture();
   }, [controls]);
 
-  if (!canPictureInPicture()) return null;
+  if (!canPictureInPicture() && !canWebkitPictureInPicture()) return null;
 
   return (
     <VideoPlayerIconButton
