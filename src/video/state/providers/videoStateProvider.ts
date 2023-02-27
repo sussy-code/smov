@@ -6,6 +6,7 @@ import {
   canFullscreenAnyElement,
   canWebkitFullscreen,
   canPictureInPicture,
+  canWebkitPictureInPicture,
 } from "@/utils/detectFeatures";
 import { MWStreamType } from "@/backend/helpers/streams";
 import { updateInterface } from "@/video/state/logic/interface";
@@ -205,18 +206,27 @@ export function createVideoStateProvider(
         updateSource(descriptor, state);
       }
     },
-    async togglePictureInPicture() {
-      if (!canPictureInPicture()) return;
-      if (player !== document.pictureInPictureElement) {
-        try {
-          await player.requestPictureInPicture();
-        } catch {
+    togglePictureInPicture() {
+      if (canWebkitPictureInPicture()) {
+        const webkitPlayer = player as any;
+        webkitPlayer.webkitSetPresentationMode(
+          webkitPlayer.webkitPresentationMode === "picture-in-picture"
+            ? "inline"
+            : "picture-in-picture"
+        );
+      }
+      if (canPictureInPicture()) {
+        if (player !== document.pictureInPictureElement) {
+          try {
+            player.requestPictureInPicture();
+          } catch {
+            state.interface.isPictureInPicture = false;
+          }
+          state.interface.isPictureInPicture = true;
+        } else {
+          document.exitPictureInPicture();
           state.interface.isPictureInPicture = false;
         }
-        state.interface.isPictureInPicture = true;
-      } else {
-        await document.exitPictureInPicture();
-        state.interface.isPictureInPicture = false;
       }
     },
     providerStart() {

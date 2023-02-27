@@ -54,8 +54,3 @@ body[data-no-select] {
 .google-cast-button:not(.casting) google-cast-launcher {
   @apply brightness-[500];
 }
-
-:picture-in-picture {
-  opacity: 0.3;
-  filter: blur(5px);
-}

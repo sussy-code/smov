@@ -42,3 +42,7 @@ export function canFullscreen(): boolean {
 export function canPictureInPicture(): boolean {
   return "pictureInPictureEnabled" in document;
 }
+
+export function canWebkitPictureInPicture(): boolean {
+  return "webkitSupportsPresentationMode" in document.createElement("video");
+}
