@@ -19,6 +19,7 @@ export type VideoPlayerStateController = {
   setCaption(id: string, url: string): void;
   clearCaption(): void;
   getId(): string;
+  togglePictureInPicture(): void;
 };
 
 export type VideoPlayerStateProvider = VideoPlayerStateController & {

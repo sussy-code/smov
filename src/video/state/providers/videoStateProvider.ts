@@ -5,6 +5,7 @@ import {
   canFullscreen,
   canFullscreenAnyElement,
   canWebkitFullscreen,
+  canPictureInPicture,
 } from "@/utils/detectFeatures";
 import { MWStreamType } from "@/backend/helpers/streams";
 import { updateInterface } from "@/video/state/logic/interface";
@@ -202,6 +203,20 @@ export function createVideoStateProvider(
       if (state.source) {
         state.source.caption = null;
         updateSource(descriptor, state);
+      }
+    },
+    async togglePictureInPicture() {
+      if (!canPictureInPicture()) return;
+      if (player !== document.pictureInPictureElement) {
+        try {
+          await player.requestPictureInPicture();
+        } catch {
+          state.interface.isPictureInPicture = false;
+        }
+        state.interface.isPictureInPicture = true;
+      } else {
+        await document.exitPictureInPicture();
+        state.interface.isPictureInPicture = false;
       }
     },
     providerStart() {

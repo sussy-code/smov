@@ -148,6 +148,10 @@ export function createCastingStateProvider(
         updateSource(descriptor, state);
       }
     },
+    togglePictureInPicture() {
+      controller?.togglePictureInPicture();
+      updateSource(descriptor, state);
+    },
     providerStart() {
       this.setVolume(getStoredVolume());
 

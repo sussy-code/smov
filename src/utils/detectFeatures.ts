@@ -38,3 +38,7 @@ export function canWebkitFullscreen(): boolean {
 export function canFullscreen(): boolean {
   return canFullscreenAnyElement() || canWebkitFullscreen();
 }
+
+export function canPictureInPicture(): boolean {
+  return "pictureInPictureEnabled" in document;
+}
