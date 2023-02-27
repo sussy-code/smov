@@ -61,7 +61,8 @@
       "episodes": "Episodes",
       "source": "Source",
       "captions": "Captions",
-      "download": "Download"
+      "download": "Download",
+      "settings": "Settings"
     },
     "popouts": {
       "sources": "Sources",

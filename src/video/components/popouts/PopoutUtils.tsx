@@ -3,14 +3,30 @@ import { Spinner } from "@/components/layout/Spinner";
 import { ProgressRing } from "@/components/layout/ProgressRing";
 import { createRef, useEffect, useRef } from "react";
 
-interface PopoutListEntryTypes {
+interface PopoutListEntryBaseTypes {
   active?: boolean;
   children: React.ReactNode;
   onClick?: () => void;
   isOnDarkBackground?: boolean;
+}
+
+interface PopoutListEntryTypes extends PopoutListEntryBaseTypes {
   percentageCompleted?: number;
   loading?: boolean;
   errored?: boolean;
+}
+
+interface PopoutListEntryRootTypes extends PopoutListEntryBaseTypes {
+  right?: React.ReactNode;
+  noChevron?: boolean;
+}
+
+interface PopoutListActionTypes extends PopoutListEntryBaseTypes {
+  icon?: Icons;
+  right?: React.ReactNode;
+  download?: string;
+  href?: string;
+  noChevron?: boolean;
 }
 
 interface ScrollToActiveProps {
@@ -87,7 +103,7 @@ export function PopoutSection(props: PopoutSectionProps) {
   );
 }
 
-export function PopoutListEntry(props: PopoutListEntryTypes) {
+export function PopoutListEntryBase(props: PopoutListEntryRootTypes) {
   const bg = props.isOnDarkBackground ? "bg-ash-200" : "bg-ash-400";
   const hover = props.isOnDarkBackground
     ? "hover:bg-ash-200"
@@ -108,34 +124,83 @@ export function PopoutListEntry(props: PopoutListEntryTypes) {
         <div className="absolute left-0 h-8 w-0.5 bg-bink-500" />
       )}
       <span className="truncate">{props.children}</span>
-      <div className="relative h-4 w-4 min-w-[1rem]">
-        {props.errored && (
-          <Icon
-            icon={Icons.WARNING}
-            className="absolute inset-0 text-rose-400"
-          />
-        )}
-        {props.loading && !props.errored && (
-          <Spinner className="absolute inset-0 text-base [--color:#9C93B5]" />
-        )}
-        {!props.loading && !props.errored && (
+      <div className="relative min-h-[1rem] min-w-[1rem]">
+        {!props.noChevron && (
           <Icon
             className="absolute inset-0 translate-x-2 text-white opacity-0 transition-[opacity,transform] duration-100 group-hover:translate-x-0 group-hover:opacity-100"
             icon={Icons.CHEVRON_RIGHT}
           />
         )}
-        {props.percentageCompleted && !props.loading && !props.errored ? (
-          <ProgressRing
-            className="absolute inset-0 text-bink-600 opacity-100 transition-[opacity] group-hover:opacity-0"
-            backingRingClassname="stroke-ash-500"
-            percentage={
-              props.percentageCompleted > 90 ? 100 : props.percentageCompleted
-            }
-          />
-        ) : (
-          ""
-        )}
+        {props.right}
       </div>
     </div>
+  );
+}
+
+export function PopoutListEntry(props: PopoutListEntryTypes) {
+  return (
+    <PopoutListEntryBase
+      isOnDarkBackground={props.isOnDarkBackground}
+      active={props.active}
+      onClick={props.onClick}
+      noChevron={!props.loading && !props.errored}
+      right={
+        <>
+          {props.errored && (
+            <Icon
+              icon={Icons.WARNING}
+              className="absolute inset-0 text-rose-400"
+            />
+          )}
+          {props.loading && !props.errored && (
+            <Spinner className="absolute inset-0 text-base [--color:#9C93B5]" />
+          )}
+          {props.percentageCompleted && !props.loading && !props.errored ? (
+            <ProgressRing
+              className="absolute inset-0 text-bink-600 opacity-100 transition-[opacity] group-hover:opacity-0"
+              backingRingClassname="stroke-ash-500"
+              percentage={
+                props.percentageCompleted > 90 ? 100 : props.percentageCompleted
+              }
+            />
+          ) : (
+            ""
+          )}
+        </>
+      }
+    >
+      {props.children}
+    </PopoutListEntryBase>
+  );
+}
+
+export function PopoutListAction(props: PopoutListActionTypes) {
+  const entry = (
+    <PopoutListEntryBase
+      active={props.active}
+      isOnDarkBackground={props.isOnDarkBackground}
+      right={props.right}
+      onClick={props.href ? undefined : props.onClick}
+      noChevron={props.noChevron}
+    >
+      <div className="flex items-center space-x-3">
+        {props.icon ? <Icon className="text-xl" icon={props.icon} /> : null}
+        <div>{props.children}</div>
+      </div>
+    </PopoutListEntryBase>
+  );
+
+  return props.href ? (
+    <a
+      href={props.href ? props.href : undefined}
+      rel="noreferrer"
+      target="_blank"
+      download={props.download ? props.download : undefined}
+      onClick={props.onClick}
+    >
+      {entry}
+    </a>
+  ) : (
+    entry
   );
 }
