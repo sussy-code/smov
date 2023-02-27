@@ -4,12 +4,13 @@
 
 html,
 body {
-  @apply bg-denim-100 text-denim-700 font-open-sans overflow-x-hidden;
+  @apply bg-denim-100 font-open-sans text-denim-700 overflow-x-hidden;
   min-height: 100vh;
   min-height: 100dvh;
 }
 
-html[data-full], html[data-full] body {
+html[data-full],
+html[data-full] body {
   overscroll-behavior-y: none;
 }
 
@@ -46,10 +47,15 @@ body[data-no-select] {
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;  
+  -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
 .google-cast-button:not(.casting) google-cast-launcher {
   @apply brightness-[500];
+}
+
+:picture-in-picture {
+  opacity: 0.3;
+  filter: blur(5px);
 }
