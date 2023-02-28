@@ -143,7 +143,7 @@ export function PopoutListEntry(props: PopoutListEntryTypes) {
       isOnDarkBackground={props.isOnDarkBackground}
       active={props.active}
       onClick={props.onClick}
-      noChevron={!props.loading && !props.errored}
+      noChevron={props.loading || props.errored}
       right={
         <>
           {props.errored && (

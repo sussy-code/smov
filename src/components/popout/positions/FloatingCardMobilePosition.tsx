@@ -10,7 +10,6 @@ interface MobilePositionProps {
 
 export function FloatingCardMobilePosition(props: MobilePositionProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const height = 500;
   const closing = useRef<boolean>(false);
   const [cardRect, setCardRect] = useState<DOMRect | null>(null);
   const [{ y }, api] = useSpring(() => ({
@@ -24,6 +23,7 @@ export function FloatingCardMobilePosition(props: MobilePositionProps) {
   const bind = useDrag(
     ({ last, velocity: [, vy], direction: [, dy], movement: [, my] }) => {
       if (closing.current) return;
+      const height = cardRect?.height ?? 0;
       if (last) {
         // if past half height downwards
         // OR Y velocity is past 0.5 AND going down AND 20 pixels below start position
@@ -84,7 +84,7 @@ export function FloatingCardMobilePosition(props: MobilePositionProps) {
         }}
         {...bind()}
       >
-        <div className="mx-auto my-2 mb-4 h-1 w-12 rounded-full bg-ash-500 bg-opacity-30" />
+        <div className="mx-auto my-2 mb-2 h-1 w-12 rounded-full bg-ash-500 bg-opacity-30" />
         {props.children}
         <div className="h-[200px]" />
       </animated.div>

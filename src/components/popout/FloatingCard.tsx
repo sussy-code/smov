@@ -7,7 +7,7 @@ import { ReactNode, useCallback, useEffect, useRef } from "react";
 interface FloatingCardProps {
   children?: ReactNode;
   onClose?: () => void;
-  id: string;
+  for: string;
 }
 
 interface RootFloatingCardProps extends FloatingCardProps {
@@ -27,7 +27,7 @@ function CardBase(props: { children: ReactNode }) {
   const getNewHeight = useCallback(() => {
     if (!ref.current) return;
     const children = ref.current.querySelectorAll(
-      ":scope > *[data-floating-page='true']"
+      ":scope *[data-floating-page='true']"
     );
     if (children.length === 0) {
       height.start(0);
@@ -54,7 +54,7 @@ function CardBase(props: { children: ReactNode }) {
     observer.observe(ref.current, {
       attributes: false,
       childList: true,
-      subtree: false,
+      subtree: true,
     });
     return () => {
       observer.disconnect();
@@ -90,12 +90,17 @@ export function FloatingCard(props: RootFloatingCardProps) {
     );
 
   return (
-    <FloatingCardAnchorPosition id={props.id} className={props.className}>
+    <FloatingCardAnchorPosition id={props.for} className={props.className}>
       {content}
     </FloatingCardAnchorPosition>
   );
 }
 
 export function PopoutFloatingCard(props: FloatingCardProps) {
-  return <FloatingCard className="rounded-md bg-ash-400 p-2" {...props} />;
+  return (
+    <FloatingCard
+      className="overflow-hidden rounded-md bg-ash-300"
+      {...props}
+    />
+  );
 }

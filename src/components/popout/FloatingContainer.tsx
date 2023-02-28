@@ -36,7 +36,7 @@ export function FloatingContainer(props: Props) {
 
   return createPortal(
     <Transition show={props.show} animation="none">
-      <div className="pointer-events-auto fixed inset-0">
+      <div className="popout-wrapper pointer-events-auto fixed inset-0 select-none">
         <Transition animation="fade" isChild>
           <div
             onClick={click}

@@ -5,7 +5,7 @@ export function createFloatingAnchorEvent(id: string): string {
 }
 
 interface Props {
-  for: string;
+  id: string;
   children?: ReactNode;
 }
 
@@ -26,9 +26,9 @@ export function FloatingAnchor(props: Props) {
         const newerStr = JSON.stringify(newer);
         if (current !== newerStr) {
           old.current = newerStr;
-          const evtStr = createFloatingAnchorEvent(props.for);
+          const evtStr = createFloatingAnchorEvent(props.id);
           (window as any)[evtStr] = newer;
-          const evObj = new CustomEvent(createFloatingAnchorEvent(props.for), {
+          const evObj = new CustomEvent(createFloatingAnchorEvent(props.id), {
             detail: newer,
           });
           document.dispatchEvent(evObj);

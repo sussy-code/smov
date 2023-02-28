@@ -32,7 +32,7 @@ export function TestView() {
   return (
     <div className="relative h-[800px] w-full rounded border border-white">
       <FloatingContainer show={show} onClose={() => setShow(false)}>
-        <PopoutFloatingCard id="test" onClose={() => setShow(false)}>
+        <PopoutFloatingCard for="test" onClose={() => setShow(false)}>
           <FloatingView
             show={page === "main"}
             height={400}
@@ -58,7 +58,7 @@ export function TestView() {
           left: `${left}px`,
         }}
       >
-        <FloatingAnchor for="test">
+        <FloatingAnchor id="test">
           <div
             className="h-8 w-8 bg-white"
             onClick={() => setShow((v) => !v)}
