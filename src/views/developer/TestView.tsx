@@ -3,12 +3,13 @@ import { FloatingAnchor } from "@/components/popout/FloatingAnchor";
 import { PopoutFloatingCard } from "@/components/popout/FloatingCard";
 import { FloatingContainer } from "@/components/popout/FloatingContainer";
 import { FloatingView } from "@/components/popout/FloatingView";
+import { useFloatingRouter } from "@/hooks/useFloatingRouter";
 import { useEffect, useRef, useState } from "react";
 
 // simple empty view, perfect for putting in tests
 export function TestView() {
   const [show, setShow] = useState(false);
-  const [page, setPage] = useState("main");
+  const { pageProps, navigate } = useFloatingRouter();
   const [left, setLeft] = useState(600);
   const direction = useRef(1);
 
@@ -34,21 +35,30 @@ export function TestView() {
       <FloatingContainer show={show} onClose={() => setShow(false)}>
         <PopoutFloatingCard for="test" onClose={() => setShow(false)}>
           <FloatingView
-            show={page === "main"}
+            {...pageProps("/")}
             height={400}
             width={400}
             className="bg-ash-200"
           >
             <p>Hello world</p>
-            <Button onClick={() => setPage("second")}>Next</Button>
+            <Button onClick={() => navigate("/second")}>Next</Button>
           </FloatingView>
           <FloatingView
-            show={page === "second"}
+            {...pageProps("second")}
             height={300}
             width={500}
             className="bg-ash-200"
           >
-            <Button onClick={() => setPage("main")}>Previous</Button>
+            <Button onClick={() => navigate("/")}>Previous</Button>
+            <Button onClick={() => navigate("/second/third")}>Next</Button>
+          </FloatingView>
+          <FloatingView
+            {...pageProps("third")}
+            height={300}
+            width={500}
+            className="bg-ash-200"
+          >
+            <Button onClick={() => navigate("/second")}>Previous</Button>
           </FloatingView>
         </PopoutFloatingCard>
       </FloatingContainer>

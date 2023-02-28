@@ -8,16 +8,22 @@ interface Props {
   className?: string;
   height?: number;
   width?: number;
+  active?: boolean; // true if a child view is loaded
 }
 
 export function FloatingView(props: Props) {
   const { isMobile } = useIsMobile();
   const width = !isMobile ? `${props.width}px` : "100%";
   return (
-    <Transition animation="slide-up" show={props.show}>
+    <Transition
+      animation={props.active ? "slide-full-left" : "slide-full-right"}
+      className="absolute inset-0"
+      durationClass="duration-[400ms]"
+      show={props.show}
+    >
       <div
-        className={[props.className ?? "", "absolute left-0 top-0"].join(" ")}
-        data-floating-page="true"
+        className={[props.className ?? ""].join(" ")}
+        data-floating-page={props.show ? "true" : undefined}
         style={{
           height: props.height ? `${props.height}px` : undefined,
           width: props.width ? width : undefined,

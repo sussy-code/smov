@@ -100,7 +100,7 @@ export function EpisodeSelectionPopout() {
   }, [isPickingSeason]);
 
   return (
-    <FloatingView show height={300} width={500}>
+    <FloatingView show height={500} width={320}>
       <div className="grid h-full grid-rows-[auto,minmax(0,1fr)]">
         <PopoutSection className="bg-ash-100 font-bold text-white">
           <div className="relative flex items-center">

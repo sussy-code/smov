@@ -2,10 +2,10 @@ import { Icons } from "@/components/Icon";
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { VideoPlayerIconButton } from "@/video/components/parts/VideoPlayerIconButton";
 import { useControls } from "@/video/state/logic/controls";
-import { PopoutAnchor } from "@/video/components/popouts/PopoutAnchor";
 import { useInterface } from "@/video/state/logic/interface";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { useTranslation } from "react-i18next";
+import { FloatingAnchor } from "@/components/popout/FloatingAnchor";
 
 interface Props {
   className?: string;
@@ -21,7 +21,7 @@ export function SettingsAction(props: Props) {
   return (
     <div className={props.className}>
       <div className="relative">
-        <PopoutAnchor for="settings">
+        <FloatingAnchor id="settings">
           <VideoPlayerIconButton
             active={videoInterface.popout === "settings"}
             className={props.className}
@@ -33,7 +33,7 @@ export function SettingsAction(props: Props) {
             }
             icon={Icons.GEAR}
           />
-        </PopoutAnchor>
+        </FloatingAnchor>
       </div>
     </div>
   );

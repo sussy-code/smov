@@ -54,7 +54,7 @@ function CardBase(props: { children: ReactNode }) {
     observer.observe(ref.current, {
       attributes: false,
       childList: true,
-      subtree: true,
+      subtree: false,
     });
     return () => {
       observer.disconnect();
