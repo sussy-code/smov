@@ -84,7 +84,6 @@ export function createCastingStateProvider(
       this.pause();
     },
     togglePictureInPicture() {
-      controller?.togglePictureInPicture();
       updateSource(descriptor, state);
     },
     async setVolume(v) {
