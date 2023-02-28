@@ -83,6 +83,10 @@ export function createCastingStateProvider(
       state.pausedWhenSeeking = state.mediaPlaying.isPaused;
       this.pause();
     },
+    togglePictureInPicture() {
+      controller?.togglePictureInPicture();
+      updateSource(descriptor, state);
+    },
     async setVolume(v) {
       // clamp time between 0 and 1
       let volume = Math.min(v, 1);
@@ -147,10 +151,6 @@ export function createCastingStateProvider(
         state.source.caption = null;
         updateSource(descriptor, state);
       }
-    },
-    togglePictureInPicture() {
-      controller?.togglePictureInPicture();
-      updateSource(descriptor, state);
     },
     providerStart() {
       this.setVolume(getStoredVolume());
