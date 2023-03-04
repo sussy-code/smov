@@ -214,20 +214,12 @@ export function createVideoStateProvider(
             ? "inline"
             : "picture-in-picture"
         );
-        state.interface.isPictureInPicture =
-          webkitPlayer.webkitPresentationMode === "picture-in-picture";
       }
       if (canPictureInPicture()) {
         if (player !== document.pictureInPictureElement) {
-          try {
-            player.requestPictureInPicture();
-            state.interface.isPictureInPicture = true;
-          } catch {
-            state.interface.isPictureInPicture = false;
-          }
+          player.requestPictureInPicture();
         } else {
           document.exitPictureInPicture();
-          state.interface.isPictureInPicture = false;
         }
       }
     },

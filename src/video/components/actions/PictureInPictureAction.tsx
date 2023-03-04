@@ -32,7 +32,6 @@ export function PictureInPictureAction(props: Props) {
       className={props.className}
       icon={Icons.PICTURE_IN_PICTURE}
       onClick={handleClick}
-      disabled={false}
       text={
         isMobile ? (t("videoPlayer.buttons.pictureInPicture") as string) : ""
       }

@@ -84,7 +84,7 @@ export function createCastingStateProvider(
       this.pause();
     },
     togglePictureInPicture() {
-      updateSource(descriptor, state);
+      // no picture in picture while casting
     },
     async setVolume(v) {
       // clamp time between 0 and 1

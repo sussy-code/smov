@@ -30,7 +30,6 @@ export type VideoPlayerState = {
     isFocused: boolean; // is the video player the users focus? (shortcuts only works when its focused)
     leftControlHovering: boolean; // is the cursor hovered over the left side of player controls
     popoutBounds: null | DOMRect; // bounding box of current popout
-    isPictureInPicture: boolean; // is picture in picture active
   };
 
   // state related to the playing state of the media
