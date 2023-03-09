@@ -44,12 +44,19 @@ registerProvider({
         baseURL: netfilmBase,
       });
 
-      const { qualities } = watchInfo.data;
+      const data = watchInfo.data;
 
       // get best quality source
-      const source = qualities.reduce((p: any, c: any) =>
+      const source = data.qualities.reduce((p: any, c: any) =>
         c.quality > p.quality ? c : p
       );
+
+      const mappedCaptions = data.subtitles.map((sub: Record<string, any>) => ({
+        needsProxy: false,
+        url: sub.url.replace("https://convert-srt-to-vtt.vercel.app/?url=", ""),
+        type: MWCaptionType.SRT,
+        langIso: sub.language,
+      }))
 
       return {
         embeds: [],
@@ -57,7 +64,7 @@ registerProvider({
           streamUrl: source.url.replace("akm-cdn", "aws-cdn").replace("gg-cdn", "aws-cdn"),
           quality: qualityMap[source.quality as QualityInMap],
           type: MWStreamType.HLS,
-          captions: [],
+          captions: mappedCaptions,
         },
       };
     }
@@ -112,13 +119,20 @@ registerProvider({
       c.quality > p.quality ? c : p
     );
 
+    const mappedCaptions = data.subtitles.map((sub: Record<string, any>) => ({
+      needsProxy: false,
+      url: sub.url.replace("https://convert-srt-to-vtt.vercel.app/?url=", ""),
+      type: MWCaptionType.SRT,
+      langIso: sub.language,
+    }))
+
     return {
       embeds: [],
       stream: {
         streamUrl: source.url.replace("akm-cdn", "aws-cdn").replace("gg-cdn", "aws-cdn"),
         quality: qualityMap[source.quality as QualityInMap],
         type: MWStreamType.HLS,
-        captions: [],
+        captions: mappedCaptions,
       },
     };
   },
