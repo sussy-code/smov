@@ -31,6 +31,7 @@ import { PopoutProviderAction } from "@/video/components/popouts/PopoutProviderA
 import { ChromecastAction } from "@/video/components/actions/ChromecastAction";
 import { CastingTextAction } from "@/video/components/actions/CastingTextAction";
 import { DownloadAction } from "@/video/components/actions/DownloadAction";
+import { CaptionRenderer } from "./CaptionRenderer";
 
 type Props = VideoPlayerBaseProps;
 
@@ -169,6 +170,7 @@ export function VideoPlayer(props: Props) {
               </Transition>
               {show ? <PopoutProviderAction /> : null}
             </BackdropAction>
+            <CaptionRenderer isControlsShown={show} />
             {props.children}
           </VideoPlayerError>
         </>

@@ -1,7 +1,7 @@
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useMediaPlaying } from "@/video/state/logic/mediaplaying";
 import { useMisc } from "@/video/state/logic/misc";
-import { useSource } from "@/video/state/logic/source";
+// import { useSource } from "@/video/state/logic/source";
 import { setProvider, unsetStateProvider } from "@/video/state/providers/utils";
 import { createVideoStateProvider } from "@/video/state/providers/videoStateProvider";
 import { useEffect, useMemo, useRef } from "react";
@@ -13,7 +13,7 @@ interface Props {
 function VideoElement(props: Props) {
   const descriptor = useVideoPlayerDescriptor();
   const mediaPlaying = useMediaPlaying(descriptor);
-  const source = useSource(descriptor);
+  // const source = useSource(descriptor);
   const misc = useMisc(descriptor);
   const ref = useRef<HTMLVideoElement>(null);
 
@@ -45,9 +45,9 @@ function VideoElement(props: Props) {
       playsInline
       className="h-full w-full"
     >
-      {source.source?.caption ? (
+      {/* {source.source?.caption ? (
         <track default kind="captions" src={source.source.caption.url} />
-      ) : null}
+      ) : null} */}
     </video>
   );
 }
