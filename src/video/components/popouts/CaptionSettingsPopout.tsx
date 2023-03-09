@@ -83,7 +83,7 @@ export function CaptionSettingsPopout() {
           Background Color
         </label>
         <input
-          onChange={(e) => setCaptionBackgroundColor(`${e.target.value}cc`)}
+          onChange={(e) => setCaptionBackgroundColor(`${e.target.value}`)}
           type="color"
           name="backgroundColor"
           id="backgroundColor"
