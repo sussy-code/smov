@@ -4,14 +4,16 @@ import {
   CUSTOM_CAPTION_ID,
 } from "@/backend/helpers/captions";
 import { MWCaption } from "@/backend/helpers/streams";
+import { IconButton } from "@/components/buttons/IconButton";
 import { Icon, Icons } from "@/components/Icon";
 import { useLoading } from "@/hooks/useLoading";
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useControls } from "@/video/state/logic/controls";
 import { useMeta } from "@/video/state/logic/meta";
 import { useSource } from "@/video/state/logic/source";
-import { ChangeEvent, useMemo, useRef } from "react";
+import { ChangeEvent, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { CaptionSettingsPopout } from "./CaptionSettingsPopout";
 import { PopoutListEntry, PopoutSection } from "./PopoutUtils";
 
 function makeCaptionId(caption: MWCaption, isLinked: boolean): string {
@@ -64,69 +66,80 @@ export function CaptionSelectionPopout() {
     const captionFile = e.target.files[0];
     setCustomCaption(captionFile);
   }
-
+  const [showCaptionSettings, setShowCaptionSettings] =
+    useState<boolean>(false);
   return (
     <>
-      <PopoutSection className="bg-ash-100 font-bold text-white">
+      <PopoutSection className="flex flex-row justify-between bg-ash-100 font-bold text-white">
         <div>{t("videoPlayer.popouts.captions")}</div>
+        <IconButton
+          icon={Icons.SETTINGS}
+          onClick={() => {
+            setShowCaptionSettings((old) => !old);
+          }}
+        />
       </PopoutSection>
-      <div className="relative overflow-y-auto">
-        <PopoutSection>
-          <PopoutListEntry
-            active={!currentCaption}
-            onClick={() => {
-              controls.clearCaption();
-              controls.closePopout();
-            }}
-          >
-            {t("videoPlayer.popouts.noCaptions")}
-          </PopoutListEntry>
-          <PopoutListEntry
-            key={CUSTOM_CAPTION_ID}
-            active={currentCaption === CUSTOM_CAPTION_ID}
-            loading={loadingCustomCaption}
-            errored={!!errorCustomCaption}
-            onClick={() => {
-              customCaptionUploadElement.current?.click();
-            }}
-          >
-            {currentCaption === CUSTOM_CAPTION_ID
-              ? t("videoPlayer.popouts.customCaption")
-              : t("videoPlayer.popouts.uploadCustomCaption")}
-            <input
-              ref={customCaptionUploadElement}
-              type="file"
-              onChange={handleUploadCaption}
-              className="hidden"
-              accept=".vtt, .srt"
-            />
-          </PopoutListEntry>
-        </PopoutSection>
+      {showCaptionSettings ? (
+        <CaptionSettingsPopout />
+      ) : (
+        <div className="relative overflow-y-auto">
+          <PopoutSection>
+            <PopoutListEntry
+              active={!currentCaption}
+              onClick={() => {
+                controls.clearCaption();
+                controls.closePopout();
+              }}
+            >
+              {t("videoPlayer.popouts.noCaptions")}
+            </PopoutListEntry>
+            <PopoutListEntry
+              key={CUSTOM_CAPTION_ID}
+              active={currentCaption === CUSTOM_CAPTION_ID}
+              loading={loadingCustomCaption}
+              errored={!!errorCustomCaption}
+              onClick={() => {
+                customCaptionUploadElement.current?.click();
+              }}
+            >
+              {currentCaption === CUSTOM_CAPTION_ID
+                ? t("videoPlayer.popouts.customCaption")
+                : t("videoPlayer.popouts.uploadCustomCaption")}
+              <input
+                ref={customCaptionUploadElement}
+                type="file"
+                onChange={handleUploadCaption}
+                className="hidden"
+                accept=".vtt, .srt"
+              />
+            </PopoutListEntry>
+          </PopoutSection>
 
-        <p className="sticky top-0 z-10 flex items-center space-x-1 bg-ash-200 px-5 py-3 text-sm font-bold uppercase">
-          <Icon className="text-base" icon={Icons.LINK} />
-          <span>{t("videoPlayer.popouts.linkedCaptions")}</span>
-        </p>
+          <p className="sticky top-0 z-10 flex items-center space-x-1 bg-ash-200 px-5 py-3 text-sm font-bold uppercase">
+            <Icon className="text-base" icon={Icons.LINK} />
+            <span>{t("videoPlayer.popouts.linkedCaptions")}</span>
+          </p>
 
-        <PopoutSection className="pt-0">
-          <div>
-            {linkedCaptions.map((link) => (
-              <PopoutListEntry
-                key={link.langIso}
-                active={link.id === currentCaption}
-                loading={loading && link.id === loadingId.current}
-                errored={error && link.id === loadingId.current}
-                onClick={() => {
-                  loadingId.current = link.id;
-                  setCaption(link, true);
-                }}
-              >
-                {link.langIso}
-              </PopoutListEntry>
-            ))}
-          </div>
-        </PopoutSection>
-      </div>
+          <PopoutSection className="pt-0">
+            <div>
+              {linkedCaptions.map((link) => (
+                <PopoutListEntry
+                  key={link.langIso}
+                  active={link.id === currentCaption}
+                  loading={loading && link.id === loadingId.current}
+                  errored={error && link.id === loadingId.current}
+                  onClick={() => {
+                    loadingId.current = link.id;
+                    setCaption(link, true);
+                  }}
+                >
+                  {link.langIso}
+                </PopoutListEntry>
+              ))}
+            </div>
+          </PopoutSection>
+        </div>
+      )}
     </>
   );
 }
