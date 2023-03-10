@@ -5,8 +5,7 @@ on:
     branches:
       - master
       - dev
-  pull_request_target:
-    types: [opened, reopened, synchronize]
+  pull_request:
 
 jobs:
   linting:
@@ -21,6 +20,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
+          cache: 'yarn'
       
       - name: Install Yarn packages
         run: yarn install
@@ -30,11 +30,27 @@ jobs:
         # continue on error, so it still reports it in the next step
         continue-on-error: true
 
-      - name: Annotate Code Linting Results
-        uses: ataylorme/eslint-annotate-action@v2
+      - uses: actions/upload-artifact@v3
         with:
-          repo-token: "${{ secrets.GITHUB_TOKEN }}"
-          report-json: "eslint_report.json"
+          name: eslint_report.json
+          path: eslint_report.json
+
+  building:
+    name: Build project
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'yarn'
+      
+      - name: Install Yarn packages
+        run: yarn install
 
       - name: Build Project
-        run: npm run build
+        run: yarn build

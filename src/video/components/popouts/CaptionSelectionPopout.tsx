@@ -1,4 +1,8 @@
-import { getCaptionUrl } from "@/backend/helpers/captions";
+import {
+  getCaptionUrl,
+  convertCustomCaptionFileToWebVTT,
+  CUSTOM_CAPTION_ID,
+} from "@/backend/helpers/captions";
 import { MWCaption } from "@/backend/helpers/streams";
 import { Icon, Icons } from "@/components/Icon";
 import { useLoading } from "@/hooks/useLoading";
@@ -6,7 +10,7 @@ import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useControls } from "@/video/state/logic/controls";
 import { useMeta } from "@/video/state/logic/meta";
 import { useSource } from "@/video/state/logic/source";
-import { useMemo, useRef } from "react";
+import { ChangeEvent, useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { PopoutListEntry, PopoutSection } from "./PopoutUtils";
 
@@ -37,6 +41,29 @@ export function CaptionSelectionPopout() {
   );
 
   const currentCaption = source.source?.caption?.id;
+  const customCaptionUploadElement = useRef<HTMLInputElement>(null);
+  const [setCustomCaption, loadingCustomCaption, errorCustomCaption] =
+    useLoading(async (captionFile: File) => {
+      if (
+        !captionFile.name.endsWith(".srt") &&
+        !captionFile.name.endsWith(".vtt")
+      ) {
+        throw new Error("Only SRT or VTT files are allowed");
+      }
+      controls.setCaption(
+        CUSTOM_CAPTION_ID,
+        await convertCustomCaptionFileToWebVTT(captionFile)
+      );
+      controls.closePopout();
+    });
+
+  async function handleUploadCaption(e: ChangeEvent<HTMLInputElement>) {
+    if (!e.target.files) {
+      return;
+    }
+    const captionFile = e.target.files[0];
+    setCustomCaption(captionFile);
+  }
 
   return (
     <>
@@ -53,6 +80,26 @@ export function CaptionSelectionPopout() {
             }}
           >
             {t("videoPlayer.popouts.noCaptions")}
+          </PopoutListEntry>
+          <PopoutListEntry
+            key={CUSTOM_CAPTION_ID}
+            active={currentCaption === CUSTOM_CAPTION_ID}
+            loading={loadingCustomCaption}
+            errored={!!errorCustomCaption}
+            onClick={() => {
+              customCaptionUploadElement.current?.click();
+            }}
+          >
+            {currentCaption === CUSTOM_CAPTION_ID
+              ? t("videoPlayer.popouts.customCaption")
+              : t("videoPlayer.popouts.uploadCustomCaption")}
+            <input
+              ref={customCaptionUploadElement}
+              type="file"
+              onChange={handleUploadCaption}
+              className="hidden"
+              accept=".vtt, .srt"
+            />
           </PopoutListEntry>
         </PopoutSection>
 
