@@ -20,12 +20,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
+          cache: 'yarn'
       
       - name: Install Yarn packages
         run: yarn install
-
-      - name: Build Project
-        run: npm run build
       
       - name: Run ESLint Report
         run: yarn lint:report
@@ -36,3 +34,23 @@ jobs:
         with:
           name: eslint_report.zip
           path: eslint_report.json
+
+  building:
+    name: Build project
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'yarn'
+      
+      - name: Install Yarn packages
+        run: yarn install
+
+      - name: Build Project
+        run: yarn build
