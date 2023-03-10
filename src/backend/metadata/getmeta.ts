@@ -56,9 +56,13 @@ export async function getMetaFromId(
 
   const imdbId = data.external_ids.find(
     (v) => v.provider === "imdb_latest"
+  )?.external_id ?? data.external_ids.find(
+    (v) => v.provider === "imdb"
   )?.external_id;
   const tmdbId = data.external_ids.find(
     (v) => v.provider === "tmdb_latest"
+  )?.external_id ?? data.external_ids.find(
+    (v) => v.provider === "tmdb"
   )?.external_id;
 
   if (!imdbId || !tmdbId) throw new Error("not enough info");
