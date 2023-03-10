@@ -1,6 +1,10 @@
 import { proxiedFetch } from "../helpers/fetch";
 import { registerProvider } from "../helpers/register";
-import { MWCaptionType, MWStreamQuality, MWStreamType } from "../helpers/streams";
+import {
+  MWCaptionType,
+  MWStreamQuality,
+  MWStreamType,
+} from "../helpers/streams";
 import { MWMediaType } from "../metadata/types";
 
 const netfilmBase = "https://net-film.vercel.app";
@@ -40,9 +44,12 @@ registerProvider({
 
       // get stream info from media
       progress(75);
-      const watchInfo = await proxiedFetch<any>(`/api/episode?id=${netfilmId}`, {
-        baseURL: netfilmBase,
-      });
+      const watchInfo = await proxiedFetch<any>(
+        `/api/episode?id=${netfilmId}`,
+        {
+          baseURL: netfilmBase,
+        }
+      );
 
       const data = watchInfo.data;
 
@@ -56,12 +63,14 @@ registerProvider({
         url: sub.url.replace("https://convert-srt-to-vtt.vercel.app/?url=", ""),
         type: MWCaptionType.SRT,
         langIso: sub.language,
-      }))
+      }));
 
       return {
         embeds: [],
         stream: {
-          streamUrl: source.url.replace("akm-cdn", "aws-cdn").replace("gg-cdn", "aws-cdn"),
+          streamUrl: source.url
+            .replace("akm-cdn", "aws-cdn")
+            .replace("gg-cdn", "aws-cdn"),
           quality: qualityMap[source.quality as QualityInMap],
           type: MWStreamType.HLS,
           captions: mappedCaptions,
@@ -124,12 +133,14 @@ registerProvider({
       url: sub.url.replace("https://convert-srt-to-vtt.vercel.app/?url=", ""),
       type: MWCaptionType.SRT,
       langIso: sub.language,
-    }))
+    }));
 
     return {
       embeds: [],
       stream: {
-        streamUrl: source.url.replace("akm-cdn", "aws-cdn").replace("gg-cdn", "aws-cdn"),
+        streamUrl: source.url
+          .replace("akm-cdn", "aws-cdn")
+          .replace("gg-cdn", "aws-cdn"),
         quality: qualityMap[source.quality as QualityInMap],
         type: MWStreamType.HLS,
         captions: mappedCaptions,
