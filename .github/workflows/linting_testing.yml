@@ -5,8 +5,7 @@ on:
     branches:
       - master
       - dev
-  pull_request_target:
-    types: [opened, reopened, synchronize]
+  pull_request:
 
 jobs:
   linting:
@@ -24,17 +23,16 @@ jobs:
       
       - name: Install Yarn packages
         run: yarn install
+
+      - name: Build Project
+        run: npm run build
       
       - name: Run ESLint Report
         run: yarn lint:report
         # continue on error, so it still reports it in the next step
         continue-on-error: true
 
-      - name: Annotate Code Linting Results
-        uses: ataylorme/eslint-annotate-action@v2
+      - uses: actions/upload-artifact@v2
         with:
-          repo-token: "${{ secrets.GITHUB_TOKEN }}"
-          report-json: "eslint_report.json"
-
-      - name: Build Project
-        run: npm run build
+          name: eslint_report.zip
+          path: eslint_report.json
