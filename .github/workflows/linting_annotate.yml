@@ -21,21 +21,21 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            var artifacts = await github.actions.listWorkflowRunArtifacts({
+            const artifacts = await github.rest.actions.listWorkflowRunArtifacts({
                owner: context.repo.owner,
                repo: context.repo.repo,
                run_id: ${{github.event.workflow_run.id }},
             });
-            var matchArtifact = artifacts.data.artifacts.filter((artifact) => {
+            const matchArtifact = artifacts.data.artifacts.filter((artifact) => {
               return artifact.name == "eslint_report.json"
             })[0];
-            var download = await github.actions.downloadArtifact({
+            const download = await github.rest.actions.downloadArtifact({
                owner: context.repo.owner,
                repo: context.repo.repo,
                artifact_id: matchArtifact.id,
                archive_format: 'zip',
             });
-            var fs = require('fs');
+            const fs = require('fs');
             fs.writeFileSync('${{github.workspace}}/eslint_report.zip', Buffer.from(download.data));
       
       - run: unzip eslint_report.zip
