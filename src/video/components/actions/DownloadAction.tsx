@@ -28,7 +28,7 @@ export function DownloadAction(props: Props) {
       href={isHLS ? undefined : sourceInterface.source?.url}
       rel="noreferrer"
       target="_blank"
-      download={title ? normalizeTitle(title) : undefined}
+      download={title ? `${normalizeTitle(title)}.mp4` : undefined}
     >
       <VideoPlayerIconButton
         className={props.className}

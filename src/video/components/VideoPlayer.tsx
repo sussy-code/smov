@@ -31,6 +31,7 @@ import { PopoutProviderAction } from "@/video/components/popouts/PopoutProviderA
 import { ChromecastAction } from "@/video/components/actions/ChromecastAction";
 import { CastingTextAction } from "@/video/components/actions/CastingTextAction";
 import { DownloadAction } from "@/video/components/actions/DownloadAction";
+import { PictureInPictureAction } from "@/video/components/actions/PictureInPictureAction";
 
 type Props = VideoPlayerBaseProps;
 
@@ -144,6 +145,7 @@ export function VideoPlayer(props: Props) {
                       <div />
                       <div className="flex items-center justify-center">
                         <DownloadAction />
+                        <PictureInPictureAction />
                         <CaptionsSelectionAction />
                         <SeriesSelectionAction />
                         <SourceSelectionAction />
@@ -161,6 +163,7 @@ export function VideoPlayer(props: Props) {
                       <ChromecastAction />
                       <AirplayAction />
                       <DownloadAction />
+                      <PictureInPictureAction />
                       <CaptionsSelectionAction />
                       <FullscreenAction />
                     </>
