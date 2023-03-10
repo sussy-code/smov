@@ -18,7 +18,7 @@ jobs:
 
     steps:
       - name: Download linting report
-        uses: actions/github-script@v3.1.0
+        uses: actions/github-script@v6
         with:
           script: |
             var artifacts = await github.actions.listWorkflowRunArtifacts({
@@ -27,7 +27,7 @@ jobs:
                run_id: ${{github.event.workflow_run.id }},
             });
             var matchArtifact = artifacts.data.artifacts.filter((artifact) => {
-              return artifact.name == "eslint_report.zip"
+              return artifact.name == "eslint_report.json"
             })[0];
             var download = await github.actions.downloadArtifact({
                owner: context.repo.owner,
@@ -43,7 +43,7 @@ jobs:
       - run: ls -la
 
       - name: Annotate linting
-        uses: ataylorme/eslint-annotate-action@v2
+        uses: ataylorme/eslint-annotate-action@v6
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
           report-json: "eslint_report.json"
