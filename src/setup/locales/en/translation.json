@@ -61,7 +61,8 @@
       "episodes": "Episodes",
       "source": "Source",
       "captions": "Captions",
-      "download": "Download"
+      "download": "Download",
+      "pictureInPicture": "Picture in Picture"
     },
     "popouts": {
       "sources": "Sources",
@@ -70,6 +71,8 @@
       "episode": "E{{index}} - {{title}}",
       "noCaptions": "No captions",
       "linkedCaptions": "Linked captions",
+      "customCaption": "Custom caption",
+      "uploadCustomCaption": "Upload caption (SRT, VTT)",
       "noEmbeds": "No embeds were found for this source",
       "errors": {
         "loadingWentWong": "Something went wrong loading the episodes for {{seasonTitle}}",

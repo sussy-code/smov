@@ -5,6 +5,8 @@ import {
   canFullscreen,
   canFullscreenAnyElement,
   canWebkitFullscreen,
+  canPictureInPicture,
+  canWebkitPictureInPicture,
 } from "@/utils/detectFeatures";
 import { MWStreamType } from "@/backend/helpers/streams";
 import { updateInterface } from "@/video/state/logic/interface";
@@ -16,6 +18,7 @@ import {
 import { updateError } from "@/video/state/logic/error";
 import { updateMisc } from "@/video/state/logic/misc";
 import { resetStateForSource } from "@/video/state/providers/helpers";
+import { revokeCaptionBlob } from "@/backend/helpers/captions";
 import { getPlayerState } from "../cache";
 import { updateMediaPlaying } from "../logic/mediaplaying";
 import { VideoPlayerStateProvider } from "./providerTypes";
@@ -191,6 +194,7 @@ export function createVideoStateProvider(
     },
     setCaption(id, url) {
       if (state.source) {
+        revokeCaptionBlob(state.source.caption?.url);
         state.source.caption = {
           id,
           url,
@@ -200,8 +204,26 @@ export function createVideoStateProvider(
     },
     clearCaption() {
       if (state.source) {
+        revokeCaptionBlob(state.source.caption?.url);
         state.source.caption = null;
         updateSource(descriptor, state);
+      }
+    },
+    togglePictureInPicture() {
+      if (canWebkitPictureInPicture()) {
+        const webkitPlayer = player as any;
+        webkitPlayer.webkitSetPresentationMode(
+          webkitPlayer.webkitPresentationMode === "picture-in-picture"
+            ? "inline"
+            : "picture-in-picture"
+        );
+      }
+      if (canPictureInPicture()) {
+        if (player !== document.pictureInPictureElement) {
+          player.requestPictureInPicture();
+        } else {
+          document.exitPictureInPicture();
+        }
       }
     },
     providerStart() {

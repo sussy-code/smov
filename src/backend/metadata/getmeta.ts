@@ -54,12 +54,17 @@ export async function getMetaFromId(
     throw err;
   }
 
-  const imdbId = data.external_ids.find(
+  let imdbId = data.external_ids.find(
     (v) => v.provider === "imdb_latest"
   )?.external_id;
-  const tmdbId = data.external_ids.find(
+  if (!imdbId)
+    imdbId = data.external_ids.find((v) => v.provider === "imdb")?.external_id;
+
+  let tmdbId = data.external_ids.find(
     (v) => v.provider === "tmdb_latest"
   )?.external_id;
+  if (!tmdbId)
+    tmdbId = data.external_ids.find((v) => v.provider === "tmdb")?.external_id;
 
   if (!imdbId || !tmdbId) throw new Error("not enough info");
 
