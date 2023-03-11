@@ -1,7 +1,9 @@
 import { mwFetch, proxiedFetch } from "@/backend/helpers/fetch";
 import { MWCaption, MWCaptionType } from "@/backend/helpers/streams";
 import toWebVTT from "srt-webvtt";
+import DOMPurify from "dompurify";
 
+export const sanitize = DOMPurify.sanitize;
 export const CUSTOM_CAPTION_ID = "customCaption";
 export async function getCaptionUrl(caption: MWCaption): Promise<string> {
   if (caption.type === MWCaptionType.SRT) {

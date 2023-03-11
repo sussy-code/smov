@@ -22,7 +22,9 @@ export function CaptionRenderer({
     const url = source?.caption?.url;
     if (url) {
       // Is there a better way?
-      const text = await (await fetch(url)).text();
+      const result = await fetch(url);
+      // Uses UTF-8 by default
+      const text = await result.text();
       captions.current = parse(text, { strict: false }).cues;
     } else {
       captions.current = [];
@@ -43,7 +45,7 @@ export function CaptionRenderer({
       {captions.current.map(
         ({ identifier, end, start, text }) =>
           isVisible(start, end) && (
-            <Caption key={identifier ?? Math.random() * 9999999} text={text} />
+            <Caption key={identifier || `${start}-${end}`} text={text} />
           )
       )}
       {isControlsShown ? (
