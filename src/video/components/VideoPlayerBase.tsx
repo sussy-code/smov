@@ -27,7 +27,9 @@ function VideoPlayerBaseWithState(props: VideoPlayerBaseProps) {
 
   const children =
     typeof props.children === "function"
-      ? props.children({ isFullscreen: videoInterface.isFullscreen })
+      ? props.children({
+          isFullscreen: videoInterface.isFullscreen,
+        })
       : props.children;
 
   // TODO move error boundary to only decorated, <VideoPlayer /> shouldn't have styling

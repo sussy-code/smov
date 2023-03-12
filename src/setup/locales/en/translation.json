@@ -75,6 +75,13 @@
       "errors": {
         "loadingWentWong": "Something went wrong loading the episodes for {{seasonTitle}}",
         "embedsError": "Something went wrong loading the embeds for this thing that you like"
+      },
+      "descriptions": {
+        "sources": "What provider do you want to use?",
+        "embeds": "Choose which video to view",
+        "seasons": "Choose which season you want to watch",
+        "episode": "Pick an episode",
+        "captions": "Choose a subtitle language"
       }
     },
     "errors": {

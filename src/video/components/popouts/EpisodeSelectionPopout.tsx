@@ -22,7 +22,7 @@ export function EpisodeSelectionPopout() {
     media: string;
   }>();
   const { t } = useTranslation();
-  const { pageProps, navigate } = useFloatingRouter("/season/episodes");
+  const { pageProps, navigate } = useFloatingRouter("/episodes");
 
   const descriptor = useVideoPlayerDescriptor();
   const meta = useMeta(descriptor);
@@ -84,7 +84,7 @@ export function EpisodeSelectionPopout() {
   const setSeason = (id: string) => {
     requestSeason(id);
     setCurrentVisibleSeason({ seasonId: id });
-    navigate("/season");
+    navigate("/episodes");
   };
 
   const { watched } = useWatchedContext();
@@ -95,11 +95,11 @@ export function EpisodeSelectionPopout() {
 
   return (
     <>
-      <FloatingView {...pageProps("episodes")} height={600} width={375}>
+      <FloatingView {...pageProps("seasons")} height={600} width={375}>
         <FloatingCardView.Header
-          title="Seasons"
-          description="Choose which season you want to watch"
-          goBack={() => navigate("/season")}
+          title={t("videoPlayer.popouts.seasons")}
+          description={t("videoPlayer.popouts.descriptions.seasons")}
+          goBack={() => navigate("/episodes")}
           backText={`To ${currentSeasonInfo?.title.toLowerCase()}`}
         />
         <FloatingCardView.Content>
@@ -116,16 +116,16 @@ export function EpisodeSelectionPopout() {
             : "No season"}
         </FloatingCardView.Content>
       </FloatingView>
-      <FloatingView {...pageProps("season")} height={600} width={375}>
+      <FloatingView {...pageProps("episodes")} height={600} width={375}>
         <FloatingCardView.Header
           title={currentSeasonInfo?.title ?? "Unknown season"}
-          description="Pick an episode"
+          description={t("videoPlayer.popouts.descriptions.episode")}
           goBack={closePopout}
           close
           action={
             <button
               type="button"
-              onClick={() => navigate("/season/episodes")}
+              onClick={() => navigate("/episodes/seasons")}
               className="flex cursor-pointer items-center space-x-2 transition-colors duration-200 hover:text-white"
             >
               <span>Other seasons</span>
@@ -146,7 +146,7 @@ export function EpisodeSelectionPopout() {
                   className="text-xl text-bink-600"
                 />
                 <p className="mt-6 w-full text-center">
-                  {t("videoPLayer.popouts.errors.loadingWentWrong", {
+                  {t("videoPlayer.popouts.errors.loadingWentWrong", {
                     seasonTitle: currentSeasonInfo?.title?.toLowerCase(),
                   })}
                 </p>
@@ -185,112 +185,5 @@ export function EpisodeSelectionPopout() {
         </FloatingCardView.Content>
       </FloatingView>
     </>
-    // <FloatingView show height={500} width={320}>
-    //   <div className="grid h-full grid-rows-[auto,minmax(0,1fr)]">
-    //     <PopoutSection className="bg-ash-100 font-bold text-white">
-    //       <div className="relative flex items-center">
-    //         <button
-    //           className={[
-    //             "-m-1.5 rounded-lg p-1.5 transition-opacity duration-100 hover:bg-ash-200",
-    //             isPickingSeason ? "pointer-events-none opacity-0" : "opacity-1",
-    //           ].join(" ")}
-    //           onClick={toggleIsPickingSeason}
-    //           type="button"
-    //         >
-    //           <Icon icon={Icons.CHEVRON_LEFT} />
-    //         </button>
-    //         <span
-    //           className={[
-    //             titlePositionClass,
-    //             !isPickingSeason ? "opacity-1" : "opacity-0",
-    //           ].join(" ")}
-    //         >
-    //           {currentSeasonInfo?.title || ""}
-    //         </span>
-    //         <span
-    //           className={[
-    //             titlePositionClass,
-    //             isPickingSeason ? "opacity-1" : "opacity-0",
-    //           ].join(" ")}
-    //         >
-    //           {t("videoPlayer.popouts.seasons")}
-    //         </span>
-    //       </div>
-    //     </PopoutSection>
-    //     <div className="relative grid h-full grid-rows-[minmax(1px,1fr)]">
-    //       <PopoutSection
-    //         className={[
-    //           "absolute inset-0 z-30 overflow-y-auto border-ash-400 bg-ash-100 transition-[max-height,padding] duration-200",
-    //           isPickingSeason
-    //             ? "max-h-full border-t"
-    //             : "max-h-0 overflow-hidden py-0",
-    //         ].join(" ")}
-    //       >
-    //         {currentSeasonInfo
-    //           ? meta?.seasons?.map?.((season) => (
-    //               <PopoutListEntry
-    //                 key={season.id}
-    //                 active={meta?.episode?.seasonId === season.id}
-    //                 onClick={() => setSeason(season.id)}
-    //                 isOnDarkBackground
-    //               >
-    //                 {season.title}
-    //               </PopoutListEntry>
-    //             ))
-    //           : "No season"}
-    //       </PopoutSection>
-    //       <PopoutSection className="relative h-full overflow-y-auto">
-    //         {loading ? (
-    //           <div className="flex h-full w-full items-center justify-center">
-    //             <Loading />
-    //           </div>
-    //         ) : error ? (
-    //           <div className="flex h-full w-full items-center justify-center">
-    //             <div className="flex flex-col flex-wrap items-center text-slate-400">
-    //               <IconPatch
-    //                 icon={Icons.EYE_SLASH}
-    //                 className="text-xl text-bink-600"
-    //               />
-    //               <p className="mt-6 w-full text-center">
-    //                 {t("videoPLayer.popouts.errors.loadingWentWrong", {
-    //                   seasonTitle: currentSeasonInfo?.title?.toLowerCase(),
-    //                 })}
-    //               </p>
-    //             </div>
-    //           </div>
-    //         ) : (
-    //           <div>
-    //             {currentSeasonEpisodes && currentSeasonInfo
-    //               ? currentSeasonEpisodes.map((e) => (
-    //                   <PopoutListEntry
-    //                     key={e.id}
-    //                     active={e.id === meta?.episode?.episodeId}
-    //                     onClick={() => {
-    //                       if (e.id === meta?.episode?.episodeId)
-    //                         controls.closePopout();
-    //                       else setCurrent(currentSeasonInfo.id, e.id);
-    //                     }}
-    //                     percentageCompleted={
-    //                       watched.items.find(
-    //                         (item) =>
-    //                           item.item?.series?.seasonId ===
-    //                             currentSeasonInfo.id &&
-    //                           item.item?.series?.episodeId === e.id
-    //                       )?.percentage
-    //                     }
-    //                   >
-    //                     {t("videoPlayer.popouts.episode", {
-    //                       index: e.number,
-    //                       title: e.title,
-    //                     })}
-    //                   </PopoutListEntry>
-    //                 ))
-    //               : "No episodes"}
-    //           </div>
-    //         )}
-    //       </PopoutSection>
-    //     </div>
-    //   </div>
-    // </FloatingView>
   );
 }

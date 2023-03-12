@@ -172,7 +172,7 @@ export const FloatingCardView = {
   },
   Content(props: { children: React.ReactNode; noSection?: boolean }) {
     return (
-      <div className="grid h-full grid-rows-[auto,minmax(0,1fr)]">
+      <div className="grid h-full grid-rows-[1fr]">
         {props.noSection ? (
           <div className="relative h-full overflow-y-auto bg-ash-300">
             {props.children}

@@ -181,7 +181,7 @@ export function SourceSelectionPopout(props: {
       >
         <FloatingCardView.Header
           title={t("videoPlayer.popouts.sources")}
-          description="What provider do you want to use?"
+          description={t("videoPlayer.popouts.descriptions.sources")}
           goBack={() => props.router.navigate("/")}
         />
         <FloatingCardView.Content>
@@ -206,7 +206,7 @@ export function SourceSelectionPopout(props: {
       >
         <FloatingCardView.Header
           title={selectedProviderPopulated?.displayName ?? ""}
-          description="Choose which video to view"
+          description={t("videoPlayer.popouts.descriptions.embeds")}
           goBack={() => props.router.navigate(`/${props.prefix}`)}
         />
         <FloatingCardView.Content>

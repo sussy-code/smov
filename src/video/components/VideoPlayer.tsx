@@ -28,6 +28,7 @@ import { PopoutProviderAction } from "@/video/components/popouts/PopoutProviderA
 import { ChromecastAction } from "@/video/components/actions/ChromecastAction";
 import { CastingTextAction } from "@/video/components/actions/CastingTextAction";
 import { SettingsAction } from "./actions/SettingsAction";
+import { DividerAction } from "./actions/DividerAction";
 
 type Props = VideoPlayerBaseProps;
 
@@ -150,7 +151,7 @@ export function VideoPlayer(props: Props) {
                       <LeftSideControls />
                       <div className="flex-1" />
                       <SeriesSelectionAction />
-                      <div className="mx-2 h-6 w-px bg-white opacity-50" />
+                      <DividerAction />
                       <SettingsAction />
                       <ChromecastAction />
                       <AirplayAction />

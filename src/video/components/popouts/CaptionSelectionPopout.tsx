@@ -51,8 +51,8 @@ export function CaptionSelectionPopout(props: {
       height={500}
     >
       <FloatingCardView.Header
-        title={t("videoPlayer.popouts.sources")}
-        description="What provider do you want to use?"
+        title={t("videoPlayer.popouts.captions")}
+        description={t("videoPlayer.popouts.descriptions.captions")}
         goBack={() => props.router.navigate("/")}
       />
       <FloatingCardView.Content noSection>
