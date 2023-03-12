@@ -3,7 +3,7 @@ import { FloatingCardMobilePosition } from "@/components/popout/positions/Floati
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { PopoutSection } from "@/video/components/popouts/PopoutUtils";
 import { useSpringValue, animated, easings } from "@react-spring/web";
-import { ReactNode, useCallback, useEffect, useRef } from "react";
+import { ReactNode, useCallback, useEffect, useRef, useState } from "react";
 import { Icon, Icons } from "../Icon";
 import { FloatingDragHandle, MobilePopoutSpacer } from "./FloatingDragHandle";
 
@@ -26,27 +26,33 @@ function CardBase(props: { children: ReactNode }) {
   const width = useSpringValue(0, {
     config: { easing: easings.easeInOutSine, duration: 300 },
   });
+  const [pages, setPages] = useState<NodeListOf<Element> | null>(null);
 
-  const getNewHeight = useCallback(() => {
-    if (!ref.current) return;
-    const children = ref.current.querySelectorAll(
-      ":scope *[data-floating-page='true']"
-    );
-    if (children.length === 0) {
-      height.start(0);
-      width.start(0);
-      return;
-    }
-    const lastChild = children[children.length - 1];
-    const rect = lastChild.getBoundingClientRect();
-    if (height.get() === 0) {
-      height.set(rect.height);
-      width.set(rect.width);
-    } else {
-      height.start(rect.height);
-      width.start(rect.width);
-    }
-  }, [height, width]);
+  const getNewHeight = useCallback(
+    (updateList = true) => {
+      if (!ref.current) return;
+      const children = ref.current.querySelectorAll(
+        ":scope *[data-floating-page='true']"
+      );
+      if (updateList) setPages(children);
+      if (children.length === 0) {
+        height.start(0);
+        width.start(0);
+        return;
+      }
+      const lastChild = children[children.length - 1];
+      const rect = lastChild.getBoundingClientRect();
+      const rectHeight = lastChild.scrollHeight;
+      if (height.get() === 0) {
+        height.set(rectHeight);
+        width.set(rect.width);
+      } else {
+        height.start(rectHeight);
+        width.start(rect.width);
+      }
+    },
+    [height, width]
+  );
 
   useEffect(() => {
     if (!ref.current) return;
@@ -65,22 +71,14 @@ function CardBase(props: { children: ReactNode }) {
   }, [getNewHeight]);
 
   useEffect(() => {
-    if (!ref.current) return;
-    const children = ref.current.querySelectorAll(
-      ":scope *[data-floating-page='true']"
-    );
     const observer = new ResizeObserver(() => {
-      getNewHeight();
+      getNewHeight(false);
     });
-    observer.observe(ref.current, {
-      attributes: false,
-      childList: true,
-      subtree: false,
-    });
+    pages?.forEach((el) => observer.observe(el));
     return () => {
       observer.disconnect();
     };
-  }, [getNewHeight]);
+  }, [pages, getNewHeight]);
 
   return (
     <animated.div

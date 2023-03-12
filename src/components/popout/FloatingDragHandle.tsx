@@ -6,7 +6,7 @@ export function FloatingDragHandle() {
   if (!isMobile) return null;
 
   return (
-    <div className="mx-auto my-2 mb-2 h-1 w-12 rounded-full bg-ash-500 bg-opacity-30" />
+    <div className="mx-auto my-3 -mb-3 h-1 w-12 rounded-full bg-ash-500 bg-opacity-30" />
   );
 }
 
