@@ -47,6 +47,10 @@ export function BackdropAction(props: BackdropActionProps) {
         return;
       }
 
+      if ((e as React.MouseEvent<HTMLDivElement>).button !== 0) {
+        return; // not main button (left click), exit event
+      }
+
       setTimeout(() => {
         if (Date.now() - lastTouchEnd < 200) {
           setMoved(!moved);
