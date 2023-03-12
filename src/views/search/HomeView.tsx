@@ -9,7 +9,7 @@ import {
 import { useWatchedContext } from "@/state/watched";
 import { WatchedMediaCard } from "@/components/media/WatchedMediaCard";
 import { EditButton } from "@/components/buttons/EditButton";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { useHistory } from "react-router-dom";
 import { Modal, ModalCard } from "@/components/layout/Modal";
@@ -85,15 +85,23 @@ function Watched() {
 
 function NewDomainModal() {
   const [show, setShow] = useState(
-    new URLSearchParams(window.location.search).get("migrated") === "1"
+    new URLSearchParams(window.location.search).get("migrated") === "1" ||
+      localStorage.getItem("mw-show-domain-modal") === "true"
   );
   const [loaded, setLoaded] = useState(false);
   const history = useHistory();
   const { t } = useTranslation();
 
+  const closeModal = useCallback(() => {
+    localStorage.setItem("mw-show-domain-modal", "false");
+    setShow(false);
+  }, []);
+
   useEffect(() => {
     const newParams = new URLSearchParams(history.location.search);
     newParams.delete("migrated");
+    if (newParams.get("migrated") === "1")
+      localStorage.setItem("mw-show-domain-modal", "true");
     history.replace({
       search: newParams.toString(),
     });
@@ -161,7 +169,7 @@ function NewDomainModal() {
           <p>{t("v3.tireless")}</p>
         </div>
         <div className="mt-16 mb-6 flex items-center justify-center">
-          <Button icon={Icons.PLAY} onClick={() => setShow(false)}>
+          <Button icon={Icons.PLAY} onClick={() => closeModal()}>
             {t("v3.leaveAnnouncement")}
           </Button>
         </div>
