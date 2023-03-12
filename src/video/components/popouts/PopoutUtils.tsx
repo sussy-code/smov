@@ -112,7 +112,7 @@ export function PopoutListEntryBase(props: PopoutListEntryRootTypes) {
   return (
     <div
       className={[
-        "group -mx-2 flex cursor-pointer items-center justify-between space-x-1 rounded p-2 font-semibold transition-[background-color,color] duration-150",
+        "group my-2 -mx-2 flex cursor-pointer items-center justify-between space-x-1 rounded p-2 font-semibold transition-[background-color,color] duration-150",
         hover,
         props.active
           ? `${bg} active text-white outline-denim-700`

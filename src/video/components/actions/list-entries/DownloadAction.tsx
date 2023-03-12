@@ -22,7 +22,7 @@ export function DownloadAction() {
   return (
     <PopoutListAction
       href={isHLS ? undefined : sourceInterface.source?.url}
-      download={title ? normalizeTitle(title) : undefined}
+      download={title ? `${normalizeTitle(title)}.mp4` : undefined}
       icon={Icons.DOWNLOAD}
     >
       {t("videoPlayer.buttons.download")}

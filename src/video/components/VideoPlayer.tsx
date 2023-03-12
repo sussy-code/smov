@@ -29,6 +29,7 @@ import { ChromecastAction } from "@/video/components/actions/ChromecastAction";
 import { CastingTextAction } from "@/video/components/actions/CastingTextAction";
 import { SettingsAction } from "./actions/SettingsAction";
 import { DividerAction } from "./actions/DividerAction";
+import { PictureInPictureAction } from "./actions/PictureInPictureAction";
 
 type Props = VideoPlayerBaseProps;
 
@@ -142,6 +143,7 @@ export function VideoPlayer(props: Props) {
                       <div />
                       <div className="flex items-center justify-center">
                         <SeriesSelectionAction />
+                        <PictureInPictureAction />
                         <SettingsAction />
                       </div>
                       <FullscreenAction />
@@ -155,6 +157,7 @@ export function VideoPlayer(props: Props) {
                       <SettingsAction />
                       <ChromecastAction />
                       <AirplayAction />
+                      <PictureInPictureAction />
                       <FullscreenAction />
                     </>
                   )}

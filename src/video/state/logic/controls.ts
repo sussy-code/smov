@@ -13,6 +13,7 @@ export type ControlMethods = {
   setMeta(data?: VideoPlayerMeta): void;
   setCurrentEpisode(sId: string, eId: string): void;
   setDraggingTime(num: number): void;
+  togglePictureInPicture(): void;
 };
 
 export function useControls(
@@ -99,6 +100,10 @@ export function useControls(
         };
         updateMeta(descriptor, state);
       }
+    },
+    togglePictureInPicture() {
+      state.stateProvider?.togglePictureInPicture();
+      updateInterface(descriptor, state);
     },
   };
 }
