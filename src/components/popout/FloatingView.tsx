@@ -22,7 +22,10 @@ export function FloatingView(props: Props) {
       show={props.show}
     >
       <div
-        className={[props.className ?? ""].join(" ")}
+        className={[
+          props.className ?? "",
+          "grid grid-rows-[auto,minmax(0,1fr)]",
+        ].join(" ")}
         data-floating-page={props.show ? "true" : undefined}
         style={{
           height: props.height ? `${props.height}px` : undefined,

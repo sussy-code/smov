@@ -1,7 +1,5 @@
 import { useSyncPopouts } from "@/video/components/hooks/useSyncPopouts";
 import { EpisodeSelectionPopout } from "@/video/components/popouts/EpisodeSelectionPopout";
-import { SourceSelectionPopout } from "@/video/components/popouts/SourceSelectionPopout";
-import { CaptionSelectionPopout } from "@/video/components/popouts/CaptionSelectionPopout";
 import { SettingsPopout } from "@/video/components/popouts/SettingsPopout";
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useControls } from "@/video/state/logic/controls";
@@ -14,8 +12,6 @@ import "./Popouts.css";
 
 function ShowPopout(props: { popoutId: string | null; onClose: () => void }) {
   const popoutMap = {
-    source: <SourceSelectionPopout />,
-    captions: <CaptionSelectionPopout />,
     settings: <SettingsPopout />,
     episodes: <EpisodeSelectionPopout />,
   };

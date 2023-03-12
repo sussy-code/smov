@@ -10,10 +10,7 @@ import { MobileCenterAction } from "@/video/components/actions/MobileCenterActio
 import { PageTitleAction } from "@/video/components/actions/PageTitleAction";
 import { PauseAction } from "@/video/components/actions/PauseAction";
 import { ProgressAction } from "@/video/components/actions/ProgressAction";
-import { QualityDisplayAction } from "@/video/components/actions/QualityDisplayAction";
 import { SeriesSelectionAction } from "@/video/components/actions/SeriesSelectionAction";
-import { SourceSelectionAction } from "@/video/components/actions/SourceSelectionAction";
-import { CaptionsSelectionAction } from "@/video/components/actions/CaptionsSelectionAction";
 import { ShowTitleAction } from "@/video/components/actions/ShowTitleAction";
 import { KeyboardShortcutsAction } from "@/video/components/actions/KeyboardShortcutsAction";
 import { SkipTimeAction } from "@/video/components/actions/SkipTimeAction";

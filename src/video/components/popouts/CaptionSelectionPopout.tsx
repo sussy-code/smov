@@ -1,6 +1,9 @@
 import { getCaptionUrl } from "@/backend/helpers/captions";
 import { MWCaption } from "@/backend/helpers/streams";
 import { Icon, Icons } from "@/components/Icon";
+import { FloatingCardView } from "@/components/popout/FloatingCard";
+import { FloatingView } from "@/components/popout/FloatingView";
+import { useFloatingRouter } from "@/hooks/useFloatingRouter";
 import { useLoading } from "@/hooks/useLoading";
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useControls } from "@/video/state/logic/controls";
@@ -14,7 +17,10 @@ function makeCaptionId(caption: MWCaption, isLinked: boolean): string {
   return isLinked ? `linked-${caption.langIso}` : `external-${caption.langIso}`;
 }
 
-export function CaptionSelectionPopout() {
+export function CaptionSelectionPopout(props: {
+  router: ReturnType<typeof useFloatingRouter>;
+  prefix: string;
+}) {
   const { t } = useTranslation();
 
   const descriptor = useVideoPlayerDescriptor();
@@ -39,11 +45,17 @@ export function CaptionSelectionPopout() {
   const currentCaption = source.source?.caption?.id;
 
   return (
-    <>
-      <PopoutSection className="bg-ash-100 font-bold text-white">
-        <div>{t("videoPlayer.popouts.captions")}</div>
-      </PopoutSection>
-      <div className="relative overflow-y-auto">
+    <FloatingView
+      {...props.router.pageProps(props.prefix)}
+      width={320}
+      height={500}
+    >
+      <FloatingCardView.Header
+        title={t("videoPlayer.popouts.sources")}
+        description="What provider do you want to use?"
+        goBack={() => props.router.navigate("/")}
+      />
+      <FloatingCardView.Content noSection>
         <PopoutSection>
           <PopoutListEntry
             active={!currentCaption}
@@ -56,7 +68,7 @@ export function CaptionSelectionPopout() {
           </PopoutListEntry>
         </PopoutSection>
 
-        <p className="sticky top-0 z-10 flex items-center space-x-1 bg-ash-200 px-5 py-3 text-sm font-bold uppercase">
+        <p className="sticky top-0 z-10 flex items-center space-x-1 bg-ash-300 px-5 py-3 text-xs font-bold uppercase">
           <Icon className="text-base" icon={Icons.LINK} />
           <span>{t("videoPlayer.popouts.linkedCaptions")}</span>
         </p>
@@ -79,7 +91,7 @@ export function CaptionSelectionPopout() {
             ))}
           </div>
         </PopoutSection>
-      </div>
-    </>
+      </FloatingCardView.Content>
+    </FloatingView>
   );
 }

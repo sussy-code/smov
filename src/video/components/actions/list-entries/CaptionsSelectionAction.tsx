@@ -1,6 +1,6 @@
 import { Icons } from "@/components/Icon";
 import { useTranslation } from "react-i18next";
-import { PopoutListAction } from "../popouts/PopoutUtils";
+import { PopoutListAction } from "../../popouts/PopoutUtils";
 
 interface Props {
   onClick: () => any;

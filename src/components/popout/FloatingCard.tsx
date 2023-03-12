@@ -116,7 +116,12 @@ export function FloatingCard(props: RootFloatingCardProps) {
 }
 
 export function PopoutFloatingCard(props: FloatingCardProps) {
-  return <FloatingCard className="overflow-hidden rounded-md" {...props} />;
+  return (
+    <FloatingCard
+      className="overflow-hidden rounded-md bg-ash-300"
+      {...props}
+    />
+  );
 }
 
 export const FloatingCardView = {
@@ -149,7 +154,7 @@ export const FloatingCardView = {
       );
 
     return (
-      <div className="mb-[-1px] flex flex-col bg-[#1C161B] bg-opacity-80 backdrop-blur-xl">
+      <div className="flex flex-col bg-[#1C161B]">
         <FloatingDragHandle />
         <PopoutSection>
           <div className="flex justify-between">
@@ -165,12 +170,20 @@ export const FloatingCardView = {
       </div>
     );
   },
-  Content(props: { children: React.ReactNode }) {
+  Content(props: { children: React.ReactNode; noSection?: boolean }) {
     return (
-      <PopoutSection className="bg-ash-300">
-        {props.children}
+      <div className="grid h-full grid-rows-[auto,minmax(0,1fr)]">
+        {props.noSection ? (
+          <div className="relative h-full overflow-y-auto bg-ash-300">
+            {props.children}
+          </div>
+        ) : (
+          <PopoutSection className="relative h-full overflow-y-auto bg-ash-300">
+            {props.children}
+          </PopoutSection>
+        )}
         <MobilePopoutSpacer />
-      </PopoutSection>
+      </div>
     );
   },
 };
