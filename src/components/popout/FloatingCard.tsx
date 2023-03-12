@@ -1,8 +1,11 @@
 import { FloatingCardAnchorPosition } from "@/components/popout/positions/FloatingCardAnchorPosition";
 import { FloatingCardMobilePosition } from "@/components/popout/positions/FloatingCardMobilePosition";
 import { useIsMobile } from "@/hooks/useIsMobile";
+import { PopoutSection } from "@/video/components/popouts/PopoutUtils";
 import { useSpringValue, animated, easings } from "@react-spring/web";
 import { ReactNode, useCallback, useEffect, useRef } from "react";
+import { Icon, Icons } from "../Icon";
+import { FloatingDragHandle, MobilePopoutSpacer } from "./FloatingDragHandle";
 
 interface FloatingCardProps {
   children?: ReactNode;
@@ -61,6 +64,24 @@ function CardBase(props: { children: ReactNode }) {
     };
   }, [getNewHeight]);
 
+  useEffect(() => {
+    if (!ref.current) return;
+    const children = ref.current.querySelectorAll(
+      ":scope *[data-floating-page='true']"
+    );
+    const observer = new ResizeObserver(() => {
+      getNewHeight();
+    });
+    observer.observe(ref.current, {
+      attributes: false,
+      childList: true,
+      subtree: false,
+    });
+    return () => {
+      observer.disconnect();
+    };
+  }, [getNewHeight]);
+
   return (
     <animated.div
       ref={ref}
@@ -97,10 +118,61 @@ export function FloatingCard(props: RootFloatingCardProps) {
 }
 
 export function PopoutFloatingCard(props: FloatingCardProps) {
-  return (
-    <FloatingCard
-      className="overflow-hidden rounded-md bg-ash-300"
-      {...props}
-    />
-  );
+  return <FloatingCard className="overflow-hidden rounded-md" {...props} />;
 }
+
+export const FloatingCardView = {
+  Header(props: {
+    title: string;
+    description: string;
+    close?: boolean;
+    goBack: () => any;
+    action?: React.ReactNode;
+    backText?: string;
+  }) {
+    let left = (
+      <div
+        onClick={props.goBack}
+        className="flex cursor-pointer items-center space-x-2 transition-colors duration-200 hover:text-white"
+      >
+        <Icon icon={Icons.ARROW_LEFT} />
+        <span>{props.backText || "Go back"}</span>
+      </div>
+    );
+    if (props.close)
+      left = (
+        <div
+          onClick={props.goBack}
+          className="flex cursor-pointer items-center space-x-2 transition-colors duration-200 hover:text-white"
+        >
+          <Icon icon={Icons.X} />
+          <span>Close</span>
+        </div>
+      );
+
+    return (
+      <div className="mb-[-1px] flex flex-col bg-[#1C161B] bg-opacity-80 backdrop-blur-xl">
+        <FloatingDragHandle />
+        <PopoutSection>
+          <div className="flex justify-between">
+            <div>{left}</div>
+            <div>{props.action ?? null}</div>
+          </div>
+
+          <h2 className="mt-8 mb-2 text-3xl font-bold text-white">
+            {props.title}
+          </h2>
+          <p>{props.description}</p>
+        </PopoutSection>
+      </div>
+    );
+  },
+  Content(props: { children: React.ReactNode }) {
+    return (
+      <PopoutSection className="bg-ash-300">
+        {props.children}
+        <MobilePopoutSpacer />
+      </PopoutSection>
+    );
+  },
+};

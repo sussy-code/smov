@@ -5,6 +5,7 @@ import { CaptionsSelectionAction } from "../actions/CaptionsSelectionAction";
 import { SourceSelectionAction } from "../actions/SourceSelectionAction";
 import { CaptionSelectionPopout } from "./CaptionSelectionPopout";
 import { PopoutSection } from "./PopoutUtils";
+import { SourceSelectionPopout } from "./SourceSelectionPopout";
 
 function TestPopout(props: { router: ReturnType<typeof useFloatingRouter> }) {
   const isCollapsed = props.router.isLoaded("embed");
@@ -37,8 +38,8 @@ export function SettingsPopout() {
         height={500}
         width={320}
       >
-        <TestPopout router={floatingRouter} />
-        {/* <SourceSelectionPopout /> */}
+        {/* <TestPopout router={floatingRouter} /> */}
+        <SourceSelectionPopout />
       </FloatingView>
       <FloatingView {...pageProps("captions")} height={500} width={320}>
         <CaptionSelectionPopout />
