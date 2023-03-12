@@ -1,7 +1,11 @@
 import { compareTitle } from "@/utils/titleMatch";
 import { proxiedFetch } from "../helpers/fetch";
 import { registerProvider } from "../helpers/register";
-import { MWStreamQuality, MWStreamType } from "../helpers/streams";
+import {
+  MWCaptionType,
+  MWStreamQuality,
+  MWStreamType,
+} from "../helpers/streams";
 import { MWMediaType } from "../metadata/types";
 
 // const flixHqBase = "https://api.consumet.org/movies/flixhq";
@@ -9,13 +13,52 @@ import { MWMediaType } from "../metadata/types";
 // SEE ISSUE: https://github.com/consumet/api.consumet.org/issues/326
 const flixHqBase = "https://c.delusionz.xyz/movies/flixhq";
 
+interface FLIXMediaBase {
+  id: number;
+  title: string;
+  url: string;
+  image: string;
+}
+
+interface FLIXTVSerie extends FLIXMediaBase {
+  type: "TV Series";
+  seasons: number;
+}
+
+interface FLIXMovie extends FLIXMediaBase {
+  type: "Movie";
+  releaseDate: number;
+}
+
+function castSubtitles({ url, lang }: { url: string; lang: string }) {
+  return {
+    url,
+    langIso: lang,
+    type:
+      url.substring(url.length - 3) === "vtt"
+        ? MWCaptionType.VTT
+        : MWCaptionType.SRT,
+  };
+}
+
+const qualityMap: Record<string, MWStreamQuality> = {
+  "360": MWStreamQuality.Q360P,
+  "540": MWStreamQuality.Q540P,
+  "480": MWStreamQuality.Q480P,
+  "720": MWStreamQuality.Q720P,
+  "1080": MWStreamQuality.Q1080P,
+};
+
 registerProvider({
   id: "flixhq",
   displayName: "FlixHQ",
   rank: 100,
-  type: [MWMediaType.MOVIE],
+  type: [MWMediaType.MOVIE, MWMediaType.SERIES],
 
   async scrape({ media, progress }) {
+    if (!this.type.includes(media.meta.type)) {
+      throw new Error("Unsupported type");
+    }
     // search for relevant item
     const searchResults = await proxiedFetch<any>(
       `/${encodeURIComponent(media.meta.title)}`,
@@ -23,11 +66,22 @@ registerProvider({
         baseURL: flixHqBase,
       }
     );
-    const foundItem = searchResults.results.find((v: any) => {
-      return (
-        compareTitle(v.title, media.meta.title) &&
-        v.releaseDate === media.meta.year
-      );
+    const foundItem = searchResults.results.find((v: FLIXMediaBase) => {
+      if (media.meta.type === MWMediaType.MOVIE) {
+        const movie = v as FLIXMovie;
+        return (
+          compareTitle(movie.title, media.meta.title) &&
+          movie.releaseDate === Number(media.meta.year)
+        );
+      }
+      const serie = v as FLIXTVSerie;
+      if (media.meta.seasons) {
+        return (
+          compareTitle(serie.title, media.meta.title) &&
+          serie.seasons === Number(media.meta.seasons.length)
+        );
+      }
+      return compareTitle(serie.title, media.meta.title);
     });
     if (!foundItem) throw new Error("No watchable item found");
     const flixId = foundItem.id;
@@ -51,18 +105,23 @@ registerProvider({
       },
     });
 
+    if (!watchInfo.sources) {
+      throw new Error("No watchable item found");
+    }
     // get best quality source
-    const source = watchInfo.sources.reduce((p: any, c: any) =>
-      c.quality > p.quality ? c : p
-    );
-
+    // comes sorted by quality in descending order
+    const source = watchInfo.sources[0];
     return {
       embeds: [],
       stream: {
         streamUrl: source.url,
-        quality: MWStreamQuality.QUNKNOWN,
+        quality: qualityMap[source.quality],
         type: source.isM3U8 ? MWStreamType.HLS : MWStreamType.MP4,
-        captions: [],
+        captions: watchInfo.subtitles
+          .filter(
+            (x: { url: string; lang: string }) => !x.lang.includes("(maybe)")
+          )
+          .map(castSubtitles),
       },
     };
   },
