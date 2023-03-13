@@ -43,7 +43,13 @@ async function findBestEmbedStream(
   providerId: string,
   ctx: MWProviderRunContext
 ): Promise<MWStream | null> {
-  if (result.stream) return result.stream;
+  if (result.stream) {
+    return {
+      ...result.stream,
+      providerId,
+      embedId: providerId,
+    };
+  }
 
   let embedNum = 0;
   for (const embed of result.embeds) {
@@ -89,6 +95,7 @@ async function findBestEmbedStream(
       type: "embed",
     });
 
+    stream.providerId = providerId;
     return stream;
   }
 

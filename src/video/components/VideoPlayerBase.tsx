@@ -8,6 +8,7 @@ import {
   useVideoPlayerDescriptor,
   VideoPlayerContextProvider,
 } from "../state/hooks";
+import { MetaAction } from "./actions/MetaAction";
 import { VideoElementInternal } from "./internal/VideoElementInternal";
 
 export interface VideoPlayerBaseProps {
@@ -44,6 +45,7 @@ function VideoPlayerBaseWithState(props: VideoPlayerBaseProps) {
             : "",
         ].join(" ")}
       >
+        <MetaAction />
         <VideoElementInternal autoPlay={props.autoPlay} />
         <CastingInternal />
         <WrapperRegisterInternal wrapper={ref.current} />

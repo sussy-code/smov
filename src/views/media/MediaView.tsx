@@ -146,6 +146,8 @@ export function MediaViewPlayer(props: MediaViewPlayerProps) {
           source={props.stream.streamUrl}
           type={props.stream.type}
           quality={props.stream.quality}
+          embedId={props.stream.embedId}
+          providerId={props.stream.providerId}
         />
         <ProgressListenerController
           startAt={firstStartTime.current}
@@ -181,6 +183,7 @@ export function MediaView() {
       return getMetaFromId(data.type, data.id, seasonId);
     }
   );
+  // TODO get stream from someplace that actually gets updated
   const [stream, setStream] = useState<MWStream | null>(null);
 
   const lastSearchValue = useRef<(string | undefined)[] | null>(null);

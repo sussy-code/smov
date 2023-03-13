@@ -3,7 +3,7 @@ import { registerEmbedScraper } from "@/backend/helpers/register";
 import {
   MWStreamQuality,
   MWStreamType,
-  MWStream,
+  MWEmbedStream,
 } from "@/backend/helpers/streams";
 import { proxiedFetch } from "@/backend/helpers/fetch";
 
@@ -13,7 +13,7 @@ const URL_API = `${URL_BASE}/api`;
 const URL_API_SOURCE = `${URL_API}/source`;
 
 async function scrape(embed: string) {
-  const sources: MWStream[] = [];
+  const sources: MWEmbedStream[] = [];
 
   const embedID = embed.split("/").pop();
 
@@ -28,6 +28,7 @@ async function scrape(embed: string) {
 
     for (const stream of streams) {
       sources.push({
+        embedId: "",
         streamUrl: stream.file as string,
         quality: stream.label as MWStreamQuality,
         type: stream.type as MWStreamType,

@@ -10,6 +10,7 @@ registerEmbedScraper({
   async getStream() {
     // throw new Error("Oh well 2")
     return {
+      embedId: "",
       streamUrl: "",
       quality: MWStreamQuality.Q1080P,
       captions: [],

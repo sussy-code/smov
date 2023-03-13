@@ -18,12 +18,14 @@ import { MWEmbed, MWEmbedType } from "@/backend/helpers/embed";
 import { FloatingCardView } from "@/components/popout/FloatingCard";
 import { FloatingView } from "@/components/popout/FloatingView";
 import { useFloatingRouter } from "@/hooks/useFloatingRouter";
+import { useSource } from "@/video/state/logic/source";
 import { PopoutListEntry } from "./PopoutUtils";
 
 interface EmbedEntryProps {
   name: string;
   type: MWEmbedType;
   url: string;
+  active: boolean;
   onSelect: (stream: MWStream) => void;
 }
 
@@ -43,6 +45,7 @@ export function EmbedEntry(props: EmbedEntryProps) {
       isOnDarkBackground
       loading={loading}
       errored={!!error}
+      active={props.active}
       onClick={() => {
         scrapeEmbed();
       }}
@@ -61,6 +64,9 @@ export function SourceSelectionPopout(props: {
   const descriptor = useVideoPlayerDescriptor();
   const controls = useControls(descriptor);
   const meta = useMeta(descriptor);
+  const { source } = useSource(descriptor);
+  const providerRef = useRef<string | null>(null);
+
   const providers = useMemo(
     () =>
       meta
@@ -96,6 +102,8 @@ export function SourceSelectionPopout(props: {
       quality: stream.quality,
       source: stream.streamUrl,
       type: stream.type,
+      embedId: stream.embedId,
+      providerId: providerRef.current ?? undefined,
     });
     if (meta) {
       controls.setMeta({
@@ -106,7 +114,6 @@ export function SourceSelectionPopout(props: {
     controls.closePopout();
   }
 
-  const providerRef = useRef<string | null>(null);
   const selectProvider = (providerId?: string) => {
     if (!providerId) {
       providerRef.current = null;
@@ -188,6 +195,7 @@ export function SourceSelectionPopout(props: {
           {providers.map((v) => (
             <PopoutListEntry
               key={v.id}
+              active={v.id === source?.providerId}
               onClick={() => {
                 selectProvider(v.id);
               }}
@@ -234,6 +242,10 @@ export function SourceSelectionPopout(props: {
                   onClick={() => {
                     if (scrapeResult.stream) selectSource(scrapeResult.stream);
                   }}
+                  active={
+                    selectedProviderPopulated?.id === source?.providerId &&
+                    selectedProviderPopulated?.id === source?.embedId
+                  }
                 >
                   Native source
                 </PopoutListEntry>
@@ -245,6 +257,7 @@ export function SourceSelectionPopout(props: {
                     name={v.displayName ?? ""}
                     key={v.url}
                     url={v.url}
+                    active={false} // TODO add embed id extractor
                     onSelect={(stream) => {
                       selectSource(stream);
                     }}
