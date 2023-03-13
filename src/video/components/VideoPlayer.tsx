@@ -10,10 +10,7 @@ import { MobileCenterAction } from "@/video/components/actions/MobileCenterActio
 import { PageTitleAction } from "@/video/components/actions/PageTitleAction";
 import { PauseAction } from "@/video/components/actions/PauseAction";
 import { ProgressAction } from "@/video/components/actions/ProgressAction";
-import { QualityDisplayAction } from "@/video/components/actions/QualityDisplayAction";
 import { SeriesSelectionAction } from "@/video/components/actions/SeriesSelectionAction";
-import { SourceSelectionAction } from "@/video/components/actions/SourceSelectionAction";
-import { CaptionsSelectionAction } from "@/video/components/actions/CaptionsSelectionAction";
 import { ShowTitleAction } from "@/video/components/actions/ShowTitleAction";
 import { KeyboardShortcutsAction } from "@/video/components/actions/KeyboardShortcutsAction";
 import { SkipTimeAction } from "@/video/components/actions/SkipTimeAction";
@@ -30,9 +27,10 @@ import { ReactNode, useCallback, useState } from "react";
 import { PopoutProviderAction } from "@/video/components/popouts/PopoutProviderAction";
 import { ChromecastAction } from "@/video/components/actions/ChromecastAction";
 import { CastingTextAction } from "@/video/components/actions/CastingTextAction";
-import { DownloadAction } from "@/video/components/actions/DownloadAction";
 import { PictureInPictureAction } from "@/video/components/actions/PictureInPictureAction";
 import { CaptionRenderer } from "./CaptionRenderer";
+import { SettingsAction } from "./actions/SettingsAction";
+import { DividerAction } from "./actions/DividerAction";
 
 type Props = VideoPlayerBaseProps;
 
@@ -145,11 +143,9 @@ export function VideoPlayer(props: Props) {
                     <div className="grid w-full grid-cols-[56px,1fr,56px] items-center">
                       <div />
                       <div className="flex items-center justify-center">
-                        <DownloadAction />
-                        <PictureInPictureAction />
-                        <CaptionsSelectionAction />
                         <SeriesSelectionAction />
-                        <SourceSelectionAction />
+                        <PictureInPictureAction />
+                        <SettingsAction />
                       </div>
                       <FullscreenAction />
                     </div>
@@ -157,15 +153,12 @@ export function VideoPlayer(props: Props) {
                     <>
                       <LeftSideControls />
                       <div className="flex-1" />
-                      <QualityDisplayAction />
                       <SeriesSelectionAction />
-                      <SourceSelectionAction />
-                      <div className="mx-2 h-6 w-px bg-white opacity-50" />
+                      <DividerAction />
+                      <SettingsAction />
                       <ChromecastAction />
                       <AirplayAction />
-                      <DownloadAction />
                       <PictureInPictureAction />
-                      <CaptionsSelectionAction />
                       <FullscreenAction />
                     </>
                   )}

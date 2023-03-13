@@ -6,6 +6,8 @@
   "dependencies": {
     "@formkit/auto-animate": "^1.0.0-beta.5",
     "@headlessui/react": "^1.5.0",
+    "@react-spring/web": "^9.7.1",
+    "@use-gesture/react": "^10.2.24",
     "crypto-js": "^4.1.1",
     "dompurify": "^3.0.1",
     "fscreen": "^1.2.0",
@@ -63,7 +65,6 @@
     "@types/pako": "^2.0.0",
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
-    "@types/react-helmet": "^6.1.6",
     "@types/react-router": "^5.1.18",
     "@types/react-router-dom": "^5.3.3",
     "@types/react-stickynode": "^4.0.0",

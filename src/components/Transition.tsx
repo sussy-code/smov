@@ -4,7 +4,13 @@ import {
   TransitionClasses,
 } from "@headlessui/react";
 
-type TransitionAnimations = "slide-down" | "slide-up" | "fade" | "none";
+type TransitionAnimations =
+  | "slide-down"
+  | "slide-full-left"
+  | "slide-full-right"
+  | "slide-up"
+  | "fade"
+  | "none";
 
 interface Props {
   show?: boolean;
@@ -38,6 +44,28 @@ function getClasses(
       enter: `transition-[transform,opacity] ${duration}`,
       enterFrom: "opacity-0 translate-y-4",
       enterTo: "translate-y-0 opacity-100",
+    };
+  }
+
+  if (animation === "slide-full-left") {
+    return {
+      leave: `transition-[transform] ${duration}`,
+      leaveFrom: "translate-x-0",
+      leaveTo: "-translate-x-full",
+      enter: `transition-[transform] ${duration}`,
+      enterFrom: "-translate-x-full",
+      enterTo: "translate-x-0",
+    };
+  }
+
+  if (animation === "slide-full-right") {
+    return {
+      leave: `transition-[transform] ${duration}`,
+      leaveFrom: "translate-x-0",
+      leaveTo: "translate-x-full",
+      enter: `transition-[transform] ${duration}`,
+      enterFrom: "translate-x-full",
+      enterTo: "translate-x-0",
     };
   }
 

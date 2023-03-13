@@ -33,7 +33,7 @@ export const VideoPlayerIconButton = forwardRef<
           className={[
             "flex items-center justify-center rounded-full bg-denim-600 bg-opacity-0 transition-colors duration-100",
             props.active ? "!bg-denim-500 !bg-opacity-100" : "",
-            !props.noPadding ? (props.wide ? "py-2 px-4" : "p-2") : "",
+            !props.noPadding ? (props.wide ? "p-2 sm:px-4" : "p-2") : "",
             !props.disabled
               ? "group-hover:bg-opacity-50 group-active:bg-denim-500 group-active:bg-opacity-100"
               : "",

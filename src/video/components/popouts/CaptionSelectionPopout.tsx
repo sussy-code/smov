@@ -6,6 +6,9 @@ import {
 import { MWCaption } from "@/backend/helpers/streams";
 import { IconButton } from "@/components/buttons/IconButton";
 import { Icon, Icons } from "@/components/Icon";
+import { FloatingCardView } from "@/components/popout/FloatingCard";
+import { FloatingView } from "@/components/popout/FloatingView";
+import { useFloatingRouter } from "@/hooks/useFloatingRouter";
 import { useLoading } from "@/hooks/useLoading";
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useControls } from "@/video/state/logic/controls";
@@ -20,7 +23,10 @@ function makeCaptionId(caption: MWCaption, isLinked: boolean): string {
   return isLinked ? `linked-${caption.langIso}` : `external-${caption.langIso}`;
 }
 
-export function CaptionSelectionPopout() {
+export function CaptionSelectionPopout(props: {
+  router: ReturnType<typeof useFloatingRouter>;
+  prefix: string;
+}) {
   const { t } = useTranslation();
 
   const descriptor = useVideoPlayerDescriptor();
@@ -69,77 +75,73 @@ export function CaptionSelectionPopout() {
   const [showCaptionSettings, setShowCaptionSettings] =
     useState<boolean>(false);
   return (
-    <>
-      <PopoutSection className="flex flex-row justify-between bg-ash-100 font-bold text-white">
-        <div>{t("videoPlayer.popouts.captions")}</div>
-        <IconButton
-          icon={Icons.SETTINGS}
-          onClick={() => {
-            setShowCaptionSettings((old) => !old);
-          }}
-        />
-      </PopoutSection>
-      {showCaptionSettings ? (
-        <CaptionSettingsPopout />
-      ) : (
-        <div className="relative overflow-y-auto">
-          <PopoutSection>
-            <PopoutListEntry
-              active={!currentCaption}
-              onClick={() => {
-                controls.clearCaption();
-                controls.closePopout();
-              }}
-            >
-              {t("videoPlayer.popouts.noCaptions")}
-            </PopoutListEntry>
-            <PopoutListEntry
-              key={CUSTOM_CAPTION_ID}
-              active={currentCaption === CUSTOM_CAPTION_ID}
-              loading={loadingCustomCaption}
-              errored={!!errorCustomCaption}
-              onClick={() => {
-                customCaptionUploadElement.current?.click();
-              }}
-            >
-              {currentCaption === CUSTOM_CAPTION_ID
-                ? t("videoPlayer.popouts.customCaption")
-                : t("videoPlayer.popouts.uploadCustomCaption")}
-              <input
-                ref={customCaptionUploadElement}
-                type="file"
-                onChange={handleUploadCaption}
-                className="hidden"
-                accept=".vtt, .srt"
-              />
-            </PopoutListEntry>
-          </PopoutSection>
+    <FloatingView
+      {...props.router.pageProps(props.prefix)}
+      width={320}
+      height={500}
+    >
+      <FloatingCardView.Header
+        title={t("videoPlayer.popouts.captions")}
+        description={t("videoPlayer.popouts.descriptions.captions")}
+        goBack={() => props.router.navigate("/")}
+      />
+      <FloatingCardView.Content noSection>
+        <PopoutSection>
+          <PopoutListEntry
+            active={!currentCaption}
+            onClick={() => {
+              controls.clearCaption();
+              controls.closePopout();
+            }}
+          >
+            {t("videoPlayer.popouts.noCaptions")}
+          </PopoutListEntry>
+          <PopoutListEntry
+            key={CUSTOM_CAPTION_ID}
+            active={currentCaption === CUSTOM_CAPTION_ID}
+            loading={loadingCustomCaption}
+            errored={!!errorCustomCaption}
+            onClick={() => {
+              customCaptionUploadElement.current?.click();
+            }}
+          >
+            {currentCaption === CUSTOM_CAPTION_ID
+              ? t("videoPlayer.popouts.customCaption")
+              : t("videoPlayer.popouts.uploadCustomCaption")}
+            <input
+              ref={customCaptionUploadElement}
+              type="file"
+              onChange={handleUploadCaption}
+              className="hidden"
+              accept=".vtt, .srt"
+            />
+          </PopoutListEntry>
+        </PopoutSection>
 
-          <p className="sticky top-0 z-10 flex items-center space-x-1 bg-ash-200 px-5 py-3 text-sm font-bold uppercase">
-            <Icon className="text-base" icon={Icons.LINK} />
-            <span>{t("videoPlayer.popouts.linkedCaptions")}</span>
-          </p>
+        <p className="sticky top-0 z-10 flex items-center space-x-1 bg-ash-300 px-5 py-3 text-xs font-bold uppercase">
+          <Icon className="text-base" icon={Icons.LINK} />
+          <span>{t("videoPlayer.popouts.linkedCaptions")}</span>
+        </p>
 
-          <PopoutSection className="pt-0">
-            <div>
-              {linkedCaptions.map((link) => (
-                <PopoutListEntry
-                  key={link.langIso}
-                  active={link.id === currentCaption}
-                  loading={loading && link.id === loadingId.current}
-                  errored={error && link.id === loadingId.current}
-                  onClick={() => {
-                    loadingId.current = link.id;
-                    setCaption(link, true);
-                  }}
-                >
-                  {link.langIso}
-                </PopoutListEntry>
-              ))}
-            </div>
-          </PopoutSection>
-        </div>
-      )}
-    </>
+        <PopoutSection className="pt-0">
+          <div>
+            {linkedCaptions.map((link) => (
+              <PopoutListEntry
+                key={link.langIso}
+                active={link.id === currentCaption}
+                loading={loading && link.id === loadingId.current}
+                errored={error && link.id === loadingId.current}
+                onClick={() => {
+                  loadingId.current = link.id;
+                  setCaption(link, true);
+                }}
+              >
+                {link.langIso}
+              </PopoutListEntry>
+            ))}
+          </div>
+        </PopoutSection>
+      </FloatingCardView.Content>
+    </FloatingView>
   );
 }
