@@ -2,6 +2,7 @@ import { MWCaption } from "@/backend/helpers/streams";
 import { DetailedMeta } from "@/backend/metadata/getmeta";
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useMeta } from "@/video/state/logic/meta";
+import { useProgress } from "@/video/state/logic/progress";
 import { useEffect } from "react";
 
 export type WindowMeta = {
@@ -17,6 +18,10 @@ export type WindowMeta = {
     title: string;
     episodes?: { id: string; number: number; title: string }[];
   }[];
+  progress: {
+    time: number;
+    duration: number;
+  };
 } | null;
 
 declare global {
@@ -28,6 +33,7 @@ declare global {
 export function MetaAction() {
   const descriptor = useVideoPlayerDescriptor();
   const meta = useMeta(descriptor);
+  const progress = useProgress(descriptor);
 
   useEffect(() => {
     if (!window.meta) window.meta = {};
@@ -37,13 +43,17 @@ export function MetaAction() {
         captions: meta.captions,
         seasons: meta.seasons,
         episode: meta.episode,
+        progress: {
+          time: progress.time,
+          duration: progress.duration,
+        },
       };
     }
 
     return () => {
       if (window.meta) delete window.meta[descriptor];
     };
-  }, [meta, descriptor]);
+  }, [meta, descriptor, progress]);
 
   return null;
 }
