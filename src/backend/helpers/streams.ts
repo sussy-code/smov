@@ -27,5 +27,11 @@ export type MWStream = {
   streamUrl: string;
   type: MWStreamType;
   quality: MWStreamQuality;
+  providerId?: string;
+  embedId?: string;
   captions: MWCaption[];
+};
+
+export type MWEmbedStream = MWStream & {
+  embedId: string;
 };
