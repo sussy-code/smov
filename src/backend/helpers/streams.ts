@@ -10,6 +10,7 @@ export enum MWCaptionType {
 
 export enum MWStreamQuality {
   Q360P = "360p",
+  Q540P = "540p",
   Q480P = "480p",
   Q720P = "720p",
   Q1080P = "1080p",
