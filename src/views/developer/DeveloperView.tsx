@@ -20,6 +20,7 @@ export function DeveloperView() {
           linkText="Embed scraper tester"
         />
         <ArrowLink to="/dev/video" direction="right" linkText="Video tester" />
+        <ArrowLink to="/dev/test" direction="right" linkText="Test page" />
       </ThinContainer>
     </div>
   );

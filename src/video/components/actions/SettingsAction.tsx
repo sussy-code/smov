@@ -2,33 +2,38 @@ import { Icons } from "@/components/Icon";
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { VideoPlayerIconButton } from "@/video/components/parts/VideoPlayerIconButton";
 import { useControls } from "@/video/state/logic/controls";
-import { PopoutAnchor } from "@/video/components/popouts/PopoutAnchor";
 import { useInterface } from "@/video/state/logic/interface";
+import { useIsMobile } from "@/hooks/useIsMobile";
 import { useTranslation } from "react-i18next";
+import { FloatingAnchor } from "@/components/popout/FloatingAnchor";
 
 interface Props {
   className?: string;
 }
 
-export function SourceSelectionAction(props: Props) {
+export function SettingsAction(props: Props) {
   const { t } = useTranslation();
   const descriptor = useVideoPlayerDescriptor();
-  const videoInterface = useInterface(descriptor);
   const controls = useControls(descriptor);
+  const videoInterface = useInterface(descriptor);
+  const { isMobile } = useIsMobile(false);
 
   return (
     <div className={props.className}>
       <div className="relative">
-        <PopoutAnchor for="source">
+        <FloatingAnchor id="settings">
           <VideoPlayerIconButton
-            active={videoInterface.popout === "source"}
-            icon={Icons.CLAPPER_BOARD}
-            iconSize="text-xl"
-            text={t("videoPlayer.buttons.source") as string}
-            wide
-            onClick={() => controls.openPopout("source")}
+            active={videoInterface.popout === "settings"}
+            className={props.className}
+            onClick={() => controls.openPopout("settings")}
+            text={
+              isMobile
+                ? (t("videoPlayer.buttons.settings") as string)
+                : undefined
+            }
+            icon={Icons.GEAR}
           />
-        </PopoutAnchor>
+        </FloatingAnchor>
       </div>
     </div>
   );

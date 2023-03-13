@@ -1,5 +1,5 @@
 import { useMemo, useRef, useState } from "react";
-import { Icon, Icons } from "@/components/Icon";
+import { Icons } from "@/components/Icon";
 import { useLoading } from "@/hooks/useLoading";
 import { Loading } from "@/components/layout/Loading";
 import { IconPatch } from "@/components/buttons/IconPatch";
@@ -15,7 +15,10 @@ import { runEmbedScraper, runProvider } from "@/backend/helpers/run";
 import { MWProviderScrapeResult } from "@/backend/helpers/provider";
 import { useTranslation } from "react-i18next";
 import { MWEmbed, MWEmbedType } from "@/backend/helpers/embed";
-import { PopoutListEntry, PopoutSection } from "./PopoutUtils";
+import { FloatingCardView } from "@/components/popout/FloatingCard";
+import { FloatingView } from "@/components/popout/FloatingView";
+import { useFloatingRouter } from "@/hooks/useFloatingRouter";
+import { PopoutListEntry } from "./PopoutUtils";
 
 interface EmbedEntryProps {
   name: string;
@@ -49,7 +52,10 @@ export function EmbedEntry(props: EmbedEntryProps) {
   );
 }
 
-export function SourceSelectionPopout() {
+export function SourceSelectionPopout(props: {
+  router: ReturnType<typeof useFloatingRouter>;
+  prefix: string;
+}) {
   const { t } = useTranslation();
 
   const descriptor = useVideoPlayerDescriptor();
@@ -66,7 +72,6 @@ export function SourceSelectionPopout() {
   const [selectedProvider, setSelectedProvider] = useState<string | null>(null);
   const [scrapeResult, setScrapeResult] =
     useState<MWProviderScrapeResult | null>(null);
-  const showingProvider = !!selectedProvider;
   const selectedProviderPopulated = useMemo(
     () => providers.find((v) => v.id === selectedProvider) ?? null,
     [providers, selectedProvider]
@@ -106,6 +111,7 @@ export function SourceSelectionPopout() {
     if (!providerId) {
       providerRef.current = null;
       setSelectedProvider(null);
+      props.router.navigate(`/${props.prefix}/source`);
       return;
     }
 
@@ -135,15 +141,8 @@ export function SourceSelectionPopout() {
     });
     providerRef.current = providerId;
     setSelectedProvider(providerId);
+    props.router.navigate(`/${props.prefix}/source/embeds`);
   };
-
-  const titlePositionClass = useMemo(() => {
-    const offset = !showingProvider ? "left-0" : "left-10";
-    return [
-      "absolute w-full transition-[left,opacity] duration-200",
-      offset,
-    ].join(" ");
-  }, [showingProvider]);
 
   const visibleEmbeds = useMemo(() => {
     const embeds = scrapeResult?.embeds || [];
@@ -174,45 +173,43 @@ export function SourceSelectionPopout() {
 
   return (
     <>
-      <PopoutSection className="bg-ash-100 font-bold text-white">
-        <div className="relative flex items-center">
-          <button
-            className={[
-              "-m-1.5 rounded-lg p-1.5 transition-opacity duration-100 hover:bg-ash-200",
-              !showingProvider ? "pointer-events-none opacity-0" : "opacity-1",
-            ].join(" ")}
-            onClick={() => selectProvider()}
-            type="button"
-          >
-            <Icon icon={Icons.CHEVRON_LEFT} />
-          </button>
-          <span
-            className={[
-              titlePositionClass,
-              showingProvider ? "opacity-1" : "opacity-0",
-            ].join(" ")}
-          >
-            {selectedProviderPopulated?.displayName ?? ""}
-          </span>
-          <span
-            className={[
-              titlePositionClass,
-              !showingProvider ? "opacity-1" : "opacity-0",
-            ].join(" ")}
-          >
-            {t("videoPlayer.popouts.sources")}
-          </span>
-        </div>
-      </PopoutSection>
-      <div className="relative grid h-full grid-rows-[minmax(1px,1fr)]">
-        <PopoutSection
-          className={[
-            "absolute inset-0 z-30 overflow-y-auto border-ash-400 bg-ash-100 transition-[max-height,padding] duration-200",
-            showingProvider
-              ? "max-h-full border-t"
-              : "max-h-0 overflow-hidden py-0",
-          ].join(" ")}
-        >
+      {/* List providers */}
+      <FloatingView
+        {...props.router.pageProps(props.prefix)}
+        width={320}
+        height={500}
+      >
+        <FloatingCardView.Header
+          title={t("videoPlayer.popouts.sources")}
+          description={t("videoPlayer.popouts.descriptions.sources")}
+          goBack={() => props.router.navigate("/")}
+        />
+        <FloatingCardView.Content>
+          {providers.map((v) => (
+            <PopoutListEntry
+              key={v.id}
+              onClick={() => {
+                selectProvider(v.id);
+              }}
+            >
+              {v.displayName}
+            </PopoutListEntry>
+          ))}
+        </FloatingCardView.Content>
+      </FloatingView>
+
+      {/* List embeds */}
+      <FloatingView
+        {...props.router.pageProps(`embeds`)}
+        width={320}
+        height={500}
+      >
+        <FloatingCardView.Header
+          title={selectedProviderPopulated?.displayName ?? ""}
+          description={t("videoPlayer.popouts.descriptions.embeds")}
+          goBack={() => props.router.navigate(`/${props.prefix}`)}
+        />
+        <FloatingCardView.Content>
           {loading ? (
             <div className="flex h-full w-full items-center justify-center">
               <Loading />
@@ -268,22 +265,8 @@ export function SourceSelectionPopout() {
               )}
             </>
           )}
-        </PopoutSection>
-        <PopoutSection className="relative h-full overflow-y-auto">
-          <div>
-            {providers.map((v) => (
-              <PopoutListEntry
-                key={v.id}
-                onClick={() => {
-                  selectProvider(v.id);
-                }}
-              >
-                {v.displayName}
-              </PopoutListEntry>
-            ))}
-          </div>
-        </PopoutSection>
-      </div>
+        </FloatingCardView.Content>
+      </FloatingView>
     </>
   );
 }
