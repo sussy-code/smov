@@ -22,12 +22,12 @@ interface FLIXMediaBase {
 
 interface FLIXTVSerie extends FLIXMediaBase {
   type: "TV Series";
-  seasons: number;
+  seasons: number | null;
 }
 
 interface FLIXMovie extends FLIXMediaBase {
   type: "Movie";
-  releaseDate: number;
+  releaseDate: string;
 }
 
 function castSubtitles({ url, lang }: { url: string; lang: string }) {
@@ -42,6 +42,7 @@ function castSubtitles({ url, lang }: { url: string; lang: string }) {
 }
 
 const qualityMap: Record<string, MWStreamQuality> = {
+  auto: MWStreamQuality.QAUTO,
   "360": MWStreamQuality.Q360P,
   "540": MWStreamQuality.Q540P,
   "480": MWStreamQuality.Q480P,
@@ -71,14 +72,14 @@ registerProvider({
         const movie = v as FLIXMovie;
         return (
           compareTitle(movie.title, media.meta.title) &&
-          movie.releaseDate === Number(media.meta.year)
+          movie.releaseDate === media.meta.year
         );
       }
       const serie = v as FLIXTVSerie;
-      if (media.meta.seasons) {
+      if (serie.seasons && media.meta.seasons) {
         return (
           compareTitle(serie.title, media.meta.title) &&
-          serie.seasons === Number(media.meta.seasons.length)
+          serie.seasons === media.meta.seasons.length
         );
       }
       return compareTitle(serie.title, media.meta.title);
@@ -94,7 +95,7 @@ registerProvider({
         id: flixId,
       },
     });
-
+    if (!mediaInfo.episodes) throw new Error("No watchable item found");
     // get stream info from media
     progress(75);
     const watchInfo = await proxiedFetch<any>("/watch", {
@@ -105,9 +106,8 @@ registerProvider({
       },
     });
 
-    if (!watchInfo.sources) {
-      throw new Error("No watchable item found");
-    }
+    if (!watchInfo.sources) throw new Error("No watchable item found");
+
     // get best quality source
     // comes sorted by quality in descending order
     const source = watchInfo.sources[0];
