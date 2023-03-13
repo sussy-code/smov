@@ -14,7 +14,6 @@ export enum MWStreamQuality {
   Q480P = "480p",
   Q720P = "720p",
   Q1080P = "1080p",
-  QAUTO = "auto",
   QUNKNOWN = "unknown",
 }
 

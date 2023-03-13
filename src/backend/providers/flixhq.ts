@@ -42,7 +42,6 @@ function castSubtitles({ url, lang }: { url: string; lang: string }) {
 }
 
 const qualityMap: Record<string, MWStreamQuality> = {
-  auto: MWStreamQuality.QAUTO,
   "360": MWStreamQuality.Q360P,
   "540": MWStreamQuality.Q540P,
   "480": MWStreamQuality.Q480P,
