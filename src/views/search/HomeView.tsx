@@ -9,7 +9,7 @@ import {
 import { useWatchedContext } from "@/state/watched";
 import { WatchedMediaCard } from "@/components/media/WatchedMediaCard";
 import { EditButton } from "@/components/buttons/EditButton";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { useHistory } from "react-router-dom";
 import { Modal, ModalCard } from "@/components/layout/Modal";
@@ -22,6 +22,22 @@ function Bookmarks() {
   const bookmarks = getFilteredBookmarks();
   const [editing, setEditing] = useState(false);
   const [gridRef] = useAutoAnimate<HTMLDivElement>();
+  const { watched } = useWatchedContext();
+
+  const bookmarksSorted = useMemo(() => {
+    return bookmarks
+      .map((v) => {
+        return {
+          ...v,
+          watched: watched.items
+            .sort((a, b) => b.watchedAt - a.watchedAt)
+            .find((watchedItem) => watchedItem.item.meta.id === v.id),
+        };
+      })
+      .sort(
+        (a, b) => (b.watched?.watchedAt || 0) - (a.watched?.watchedAt || 0)
+      );
+  }, [watched.items, bookmarks]);
 
   if (bookmarks.length === 0) return null;
 
@@ -34,7 +50,7 @@ function Bookmarks() {
         <EditButton editing={editing} onEdit={setEditing} />
       </SectionHeading>
       <MediaGrid ref={gridRef}>
-        {bookmarks.map((v) => (
+        {bookmarksSorted.map((v) => (
           <WatchedMediaCard
             key={v.id}
             media={v}
@@ -85,15 +101,23 @@ function Watched() {
 
 function NewDomainModal() {
   const [show, setShow] = useState(
-    new URLSearchParams(window.location.search).get("migrated") === "1"
+    new URLSearchParams(window.location.search).get("migrated") === "1" ||
+      localStorage.getItem("mw-show-domain-modal") === "true"
   );
   const [loaded, setLoaded] = useState(false);
   const history = useHistory();
   const { t } = useTranslation();
 
+  const closeModal = useCallback(() => {
+    localStorage.setItem("mw-show-domain-modal", "false");
+    setShow(false);
+  }, []);
+
   useEffect(() => {
     const newParams = new URLSearchParams(history.location.search);
     newParams.delete("migrated");
+    if (newParams.get("migrated") === "1")
+      localStorage.setItem("mw-show-domain-modal", "true");
     history.replace({
       search: newParams.toString(),
     });
@@ -161,7 +185,7 @@ function NewDomainModal() {
           <p>{t("v3.tireless")}</p>
         </div>
         <div className="mt-16 mb-6 flex items-center justify-center">
-          <Button icon={Icons.PLAY} onClick={() => setShow(false)}>
+          <Button icon={Icons.PLAY} onClick={() => closeModal()}>
             {t("v3.leaveAnnouncement")}
           </Button>
         </div>

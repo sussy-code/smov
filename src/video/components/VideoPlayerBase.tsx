@@ -8,6 +8,7 @@ import {
   useVideoPlayerDescriptor,
   VideoPlayerContextProvider,
 } from "../state/hooks";
+import { MetaAction } from "./actions/MetaAction";
 import { VideoElementInternal } from "./internal/VideoElementInternal";
 
 export interface VideoPlayerBaseProps {
@@ -27,7 +28,9 @@ function VideoPlayerBaseWithState(props: VideoPlayerBaseProps) {
 
   const children =
     typeof props.children === "function"
-      ? props.children({ isFullscreen: videoInterface.isFullscreen })
+      ? props.children({
+          isFullscreen: videoInterface.isFullscreen,
+        })
       : props.children;
 
   // TODO move error boundary to only decorated, <VideoPlayer /> shouldn't have styling
@@ -42,6 +45,7 @@ function VideoPlayerBaseWithState(props: VideoPlayerBaseProps) {
             : "",
         ].join(" ")}
       >
+        <MetaAction />
         <VideoElementInternal autoPlay={props.autoPlay} />
         <CastingInternal />
         <WrapperRegisterInternal wrapper={ref.current} />

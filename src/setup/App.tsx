@@ -13,6 +13,7 @@ import { ProviderTesterView } from "@/views/developer/ProviderTesterView";
 import { EmbedTesterView } from "@/views/developer/EmbedTesterView";
 import { BannerContextProvider } from "@/hooks/useBanner";
 import { Layout } from "@/setup/Layout";
+import { TestView } from "@/views/developer/TestView";
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
 
               {/* other */}
               <Route exact path="/dev" component={DeveloperView} />
+              <Route exact path="/dev/test" component={TestView} />
               <Route exact path="/dev/video" component={VideoTesterView} />
               <Route
                 exact
