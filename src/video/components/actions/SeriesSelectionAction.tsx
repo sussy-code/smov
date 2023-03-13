@@ -4,9 +4,9 @@ import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useMeta } from "@/video/state/logic/meta";
 import { VideoPlayerIconButton } from "@/video/components/parts/VideoPlayerIconButton";
 import { useControls } from "@/video/state/logic/controls";
-import { PopoutAnchor } from "@/video/components/popouts/PopoutAnchor";
 import { useInterface } from "@/video/state/logic/interface";
 import { useTranslation } from "react-i18next";
+import { FloatingAnchor } from "@/components/popout/FloatingAnchor";
 
 interface Props {
   className?: string;
@@ -24,7 +24,7 @@ export function SeriesSelectionAction(props: Props) {
   return (
     <div className={props.className}>
       <div className="relative">
-        <PopoutAnchor for="episodes">
+        <FloatingAnchor id="episodes">
           <VideoPlayerIconButton
             active={videoInterface.popout === "episodes"}
             icon={Icons.EPISODES}
@@ -32,7 +32,7 @@ export function SeriesSelectionAction(props: Props) {
             wide
             onClick={() => controls.openPopout("episodes")}
           />
-        </PopoutAnchor>
+        </FloatingAnchor>
       </div>
     </div>
   );

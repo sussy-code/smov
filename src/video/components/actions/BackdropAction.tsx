@@ -19,8 +19,20 @@ export function BackdropAction(props: BackdropActionProps) {
   const timeout = useRef<ReturnType<typeof setTimeout> | null>(null);
   const clickareaRef = useRef<HTMLDivElement>(null);
 
+  const lastTouchEnd = useRef<number>(0);
+
   const handleMouseMove = useCallback(() => {
-    if (!moved) setMoved(true);
+    if (!moved) {
+      setTimeout(() => {
+        const isTouch = Date.now() - lastTouchEnd.current < 200;
+        if (!isTouch) {
+          setMoved(true);
+        }
+      }, 20);
+      return;
+    }
+
+    // remove after all
     if (timeout.current) clearTimeout(timeout.current);
     timeout.current = setTimeout(() => {
       if (moved) setMoved(false);
@@ -32,8 +44,6 @@ export function BackdropAction(props: BackdropActionProps) {
     setMoved(false);
   }, [setMoved]);
 
-  const [lastTouchEnd, setLastTouchEnd] = useState(0);
-
   const handleClick = useCallback(
     (
       e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>
@@ -43,13 +53,17 @@ export function BackdropAction(props: BackdropActionProps) {
       if (videoInterface.popout !== null) return;
 
       if ((e as React.TouchEvent).type === "touchend") {
-        setLastTouchEnd(Date.now());
+        lastTouchEnd.current = Date.now();
         return;
       }
 
+      if ((e as React.MouseEvent<HTMLDivElement>).button !== 0) {
+        return; // not main button (left click), exit event
+      }
+
       setTimeout(() => {
-        if (Date.now() - lastTouchEnd < 200) {
-          setMoved(!moved);
+        if (Date.now() - lastTouchEnd.current < 200) {
+          setMoved((v) => !v);
           return;
         }
 
@@ -57,7 +71,7 @@ export function BackdropAction(props: BackdropActionProps) {
         else controls.play();
       }, 20);
     },
-    [controls, mediaPlaying, videoInterface, lastTouchEnd, moved]
+    [controls, mediaPlaying, videoInterface]
   );
   const handleDoubleClick = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
