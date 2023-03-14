@@ -8,6 +8,8 @@ interface SourceControllerProps {
   source: string;
   type: MWStreamType;
   quality: MWStreamQuality;
+  providerId?: string;
+  embedId?: string;
 }
 
 export function SourceController(props: SourceControllerProps) {

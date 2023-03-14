@@ -8,6 +8,7 @@ import {
   useVideoPlayerDescriptor,
   VideoPlayerContextProvider,
 } from "../state/hooks";
+import { MetaAction } from "./actions/MetaAction";
 import { VideoElementInternal } from "./internal/VideoElementInternal";
 
 export interface VideoPlayerBaseProps {
@@ -38,12 +39,13 @@ function VideoPlayerBaseWithState(props: VideoPlayerBaseProps) {
       <div
         ref={ref}
         className={[
-          "is-video-player relative h-full w-full select-none overflow-hidden bg-black",
+          "is-video-player popout-location relative h-full w-full select-none overflow-hidden bg-black",
           props.includeSafeArea || videoInterface.isFullscreen
             ? "[border-left:env(safe-area-inset-left)_solid_transparent] [border-right:env(safe-area-inset-right)_solid_transparent]"
             : "",
         ].join(" ")}
       >
+        <MetaAction />
         <VideoElementInternal autoPlay={props.autoPlay} />
         <CastingInternal />
         <WrapperRegisterInternal wrapper={ref.current} />

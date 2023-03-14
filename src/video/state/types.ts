@@ -58,6 +58,8 @@ export type VideoPlayerState = {
     quality: MWStreamQuality;
     url: string;
     type: MWStreamType;
+    providerId?: string;
+    embedId?: string;
     caption: null | {
       url: string;
       id: string;

@@ -1,6 +1,6 @@
 {
   "name": "movie-web",
-  "version": "3.0.5",
+  "version": "3.0.6",
   "private": true,
   "homepage": "https://movie.squeezebox.dev",
   "dependencies": {
@@ -65,7 +65,6 @@
     "@types/pako": "^2.0.0",
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
-    "@types/react-helmet": "^6.1.6",
     "@types/react-router": "^5.1.18",
     "@types/react-router-dom": "^5.3.3",
     "@types/react-stickynode": "^4.0.0",
@@ -95,6 +94,7 @@
     "vite-plugin-package-version": "^1.0.2",
     "vite-plugin-pwa": "^0.14.4",
     "vitest": "^0.28.5",
-    "workbox-window": "^6.5.4"
+    "workbox-window": "^6.5.4",
+    "@types/react-helmet": "^6.1.6"
   }
 }

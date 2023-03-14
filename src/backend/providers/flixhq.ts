@@ -55,7 +55,7 @@ registerProvider({
   rank: 100,
   type: [MWMediaType.MOVIE, MWMediaType.SERIES],
 
-  async scrape({ media, progress }) {
+  async scrape({ media, episode, progress }) {
     if (!this.type.includes(media.meta.type)) {
       throw new Error("Unsupported type");
     }
@@ -97,10 +97,23 @@ registerProvider({
     if (!mediaInfo.episodes) throw new Error("No watchable item found");
     // get stream info from media
     progress(75);
+
+    // By default we assume it is a movie
+    let episodeId: string | undefined = mediaInfo.episodes[0].id;
+    if (media.meta.type === MWMediaType.SERIES) {
+      const seasonNo = media.meta.seasonData.number;
+      const episodeNo = media.meta.seasonData.episodes.find(
+        (e) => e.id === episode
+      )?.number;
+      episodeId = mediaInfo.episodes.find(
+        (e: any) => e.season === seasonNo && e.number === episodeNo
+      )?.id;
+    }
+    if (!episodeId) throw new Error("No watchable item found");
     const watchInfo = await proxiedFetch<any>("/watch", {
       baseURL: flixHqBase,
       params: {
-        episodeId: mediaInfo.episodes[0].id,
+        episodeId,
         mediaId: flixId,
       },
     });
