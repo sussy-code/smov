@@ -1,5 +1,11 @@
 import { Transition } from "@/components/Transition";
-import React, { ReactNode, useCallback, useEffect, useRef } from "react";
+import React, {
+  ReactNode,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { createPortal } from "react-dom";
 
 interface Props {
@@ -10,6 +16,8 @@ interface Props {
 }
 
 export function FloatingContainer(props: Props) {
+  const [portalElement, setPortalElement] = useState<Element | null>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const target = useRef<Element | null>(null);
 
   useEffect(() => {
@@ -34,23 +42,34 @@ export function FloatingContainer(props: Props) {
     [props]
   );
 
-  return createPortal(
-    <Transition show={props.show} animation="none">
-      <div className="popout-wrapper pointer-events-auto fixed inset-0 z-[999] select-none">
-        <Transition animation="fade" isChild>
-          <div
-            onClick={click}
-            className={[
-              "absolute inset-0",
-              props.darken ? "bg-black opacity-90" : "",
-            ].join(" ")}
-          />
-        </Transition>
-        <Transition animation="slide-up" className="h-0" isChild>
-          {props.children}
-        </Transition>
-      </div>
-    </Transition>,
-    document.body
+  useEffect(() => {
+    const element = ref.current?.closest(".popout-location");
+    setPortalElement(element ?? document.body);
+  }, []);
+
+  return (
+    <div ref={ref}>
+      {portalElement
+        ? createPortal(
+            <Transition show={props.show} animation="none">
+              <div className="popout-wrapper pointer-events-auto fixed inset-0 z-[999] select-none">
+                <Transition animation="fade" isChild>
+                  <div
+                    onClick={click}
+                    className={[
+                      "absolute inset-0",
+                      props.darken ? "bg-black opacity-90" : "",
+                    ].join(" ")}
+                  />
+                </Transition>
+                <Transition animation="slide-up" className="h-0" isChild>
+                  {props.children}
+                </Transition>
+              </div>
+            </Transition>,
+            portalElement
+          )
+        : null}
+    </div>
   );
 }

@@ -4,6 +4,8 @@ type VideoPlayerSource = {
   source: string;
   type: MWStreamType;
   quality: MWStreamQuality;
+  providerId?: string;
+  embedId?: string;
 } | null;
 
 export type VideoPlayerStateController = {

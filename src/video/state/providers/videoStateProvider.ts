@@ -189,6 +189,8 @@ export function createVideoStateProvider(
         type: source.type,
         url: source.source,
         caption: null,
+        embedId: source.embedId,
+        providerId: source.providerId,
       };
       updateSource(descriptor, state);
     },
@@ -334,6 +336,8 @@ export function createVideoStateProvider(
           quality: state.source.quality,
           source: state.source.url,
           type: state.source.type,
+          embedId: state.source.embedId,
+          providerId: state.source.providerId,
         });
 
       return {

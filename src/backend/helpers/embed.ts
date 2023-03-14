@@ -1,4 +1,4 @@
-import { MWStream } from "./streams";
+import { MWEmbedStream } from "./streams";
 
 export enum MWEmbedType {
   M4UFREE = "m4ufree",
@@ -23,5 +23,5 @@ export type MWEmbedScraper = {
   rank: number;
   disabled?: boolean;
 
-  getStream(ctx: MWEmbedContext): Promise<MWStream>;
+  getStream(ctx: MWEmbedContext): Promise<MWEmbedStream>;
 };
