@@ -1,103 +1,109 @@
-import { Dropdown, OptionItem } from "@/components/Dropdown";
+import { FloatingCardView } from "@/components/popout/FloatingCard";
+import { FloatingView } from "@/components/popout/FloatingView";
+import { useFloatingRouter } from "@/hooks/useFloatingRouter";
 import { useSettings } from "@/state/settings";
-// import { useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
+import { ChangeEventHandler } from "react";
 import { PopoutSection } from "./PopoutUtils";
 
-export function CaptionSettingsPopout() {
+type SliderProps = {
+  label: string;
+  min: number;
+  max: number;
+  step: number;
+  value: number;
+  valueDisplay?: string;
+  onChange: ChangeEventHandler<HTMLInputElement>;
+  stops?: number[];
+};
+
+function Slider(params: SliderProps) {
+  const stops = params.stops ?? [Math.floor((params.max + params.min) / 2)];
+  return (
+    <div className="mb-6 flex flex-row gap-4">
+      <div className="flex w-full flex-col gap-2">
+        <label className="font-bold">{params.label}</label>
+        <input
+          type="range"
+          onChange={params.onChange}
+          value={params.value}
+          max={params.max}
+          min={params.min}
+          step={params.step}
+          list="stops"
+        />
+        <datalist id="stops">
+          {stops.map((s) => (
+            <option value={s} />
+          ))}
+        </datalist>
+      </div>
+      <div className="mt-1 aspect-[2/1] h-8 rounded-sm bg-[#1C161B] pt-1">
+        <div className="text-center font-bold text-white">
+          {params.valueDisplay ?? params.value}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function CaptionSettingsPopout(props: {
+  router: ReturnType<typeof useFloatingRouter>;
+  prefix: string;
+}) {
   // For now, won't add label texts to language files since options are prone to change
-  // const { t } = useTranslation();
+  const { t } = useTranslation();
   const {
     captionSettings,
     setCaptionBackgroundColor,
     setCaptionColor,
     setCaptionDelay,
     setCaptionFontSize,
-    setCaptionFontFamily,
-    setCaptionTextShadow,
   } = useSettings();
-  // TODO: move it to context and specify which fonts to use
-  const fontFamilies: OptionItem[] = [
-    { id: "Times New Roman", name: "Times New Roman" },
-    { id: "monospace", name: "Monospace" },
-    { id: "sans-serif", name: "Sans Serif" },
-  ];
-
-  const selectedFont = fontFamilies.find(
-    (f) => f.id === captionSettings.style.fontFamily
-  ) ?? { id: "monospace", name: "Monospace" };
-
-  // TODO: Slider and color picker styling or complete re-write
+  const colors = ["#ffffff", "#00ffff", "#ffff00"];
   return (
-    <PopoutSection className="overflow-auto">
-      <Dropdown
-        setSelectedItem={(e) => {
-          setCaptionFontFamily(e.id);
-        }}
-        selectedItem={selectedFont}
-        options={fontFamilies}
+    <FloatingView {...props.router.pageProps(props.prefix)} width={375}>
+      <FloatingCardView.Header
+        title={t("videoPlayer.popouts.captionPreferences.title")}
+        description={t("videoPlayer.popouts.descriptions.captionPreferences")}
+        goBack={() => props.router.navigate("/captions")}
       />
-      <div className="flex flex-row justify-between py-2">
-        <label className="font-bold text-white" htmlFor="fontSize">
-          Font Size ({captionSettings.style.fontSize})
-        </label>
-        <input
-          onChange={(e) => setCaptionFontSize(e.target.valueAsNumber)}
-          type="range"
-          name="fontSize"
-          id="fontSize"
-          max={30}
+      <FloatingCardView.Content>
+        <Slider
+          label={t("videoPlayer.popouts.captionPreferences.delay")}
+          max={10}
+          min={-10}
+          step={0.1}
+          valueDisplay={`${captionSettings.delay.toFixed(1)}s`}
+          value={captionSettings.delay}
+          onChange={(e) => setCaptionDelay(e.target.valueAsNumber)}
+          stops={[-5, 0, 5]}
+        />
+        <Slider
+          label="Size"
           min={10}
           step={1}
+          max={30}
           value={captionSettings.style.fontSize}
+          onChange={(e) => setCaptionFontSize(e.target.valueAsNumber)}
         />
-      </div>
-
-      <div className="flex flex-row justify-between py-2">
-        <label className="font-bold text-white">
-          Delay ({captionSettings.delay}s)
-        </label>
-        <input
-          onChange={(e) => setCaptionDelay(e.target.valueAsNumber)}
-          type="range"
-          max={10 * 1000}
-          min={-10 * 1000}
+        <Slider
+          label={t("videoPlayer.popouts.captionPreferences.opacity")}
           step={1}
-        />
-      </div>
-
-      <div className="flex flex-row justify-between py-2">
-        <label className="font-bold text-white" htmlFor="captionColor">
-          Color
-        </label>
-        <input
-          onChange={(e) => setCaptionColor(e.target.value)}
-          type="color"
-          name="captionColor"
-          id="captionColor"
-          value={captionSettings.style.color}
-        />
-      </div>
-
-      <div className="flex flex-row justify-between py-2">
-        <label className="font-bold text-white" htmlFor="backgroundColor">
-          Background Color
-        </label>
-        <input
-          onChange={(e) => setCaptionBackgroundColor(`${e.target.value}`)}
-          type="color"
-          name="backgroundColor"
-          id="backgroundColor"
-          value={captionSettings.style.backgroundColor}
-        />
-      </div>
-      <div className="flex flex-row justify-between py-2">
-        <label
-          className="font-bold text-white"
-          htmlFor="backgroundColorOpacity"
-        >
-          Background Color Opacity
-        </label>
-        <input
+          min={0}
+          max={255}
+          valueDisplay={`${(
+            (parseInt(
+              captionSettings.style.backgroundColor.substring(7, 9),
+              16
+            ) /
+              255) *
+            100
+          ).toFixed(0)}%`}
+          value={parseInt(
+            captionSettings.style.backgroundColor.substring(7, 9),
+            16
+          )}
           onChange={(e) =>
             setCaptionBackgroundColor(
               `${captionSettings.style.backgroundColor.substring(
@@ -106,84 +112,34 @@ export function CaptionSettingsPopout() {
               )}${e.target.valueAsNumber.toString(16)}`
             )
           }
-          type="range"
-          min={0}
-          max={255}
-          name="backgroundColorOpacity"
-          id="backgroundColorOpacity"
-          value={Number.parseInt(
-            captionSettings.style.backgroundColor.substring(7, 9),
-            16
-          )}
         />
-      </div>
-      <div className="flex flex-row justify-between py-2">
-        <label className="font-bold text-white" htmlFor="textShadowColor">
-          Text Shadow Color
-        </label>
-        <input
-          onChange={(e) => {
-            const [offsetX, offsetY, blurRadius, color] =
-              captionSettings.style.textShadow.split(" ");
-            return setCaptionTextShadow(
-              `${offsetX} ${offsetY} ${blurRadius} ${e.target.value}`
-            );
-          }}
-          type="color"
-          name="textShadowColor"
-          id="textShadowColor"
-          value={captionSettings.style.textShadow.split(" ")[3]}
-        />
-      </div>
-      <div className="flex flex-row justify-between py-2">
-        <label className="font-bold text-white">Text Shadow (Offset X)</label>
-        <input
-          onChange={(e) => {
-            const [offsetX, offsetY, blurRadius, color] =
-              captionSettings.style.textShadow.split(" ");
-            return setCaptionTextShadow(
-              `${e.target.valueAsNumber}px ${offsetY} ${blurRadius} ${color}`
-            );
-          }}
-          type="range"
-          min={-10}
-          max={10}
-          value={parseFloat(captionSettings.style.textShadow.split("px")[0])}
-        />
-      </div>
-
-      <div className="flex flex-row justify-between py-2">
-        <label className="font-bold text-white">Text Shadow (Offset Y)</label>
-        <input
-          onChange={(e) => {
-            const [offsetX, offsetY, blurRadius, color] =
-              captionSettings.style.textShadow.split(" ");
-            return setCaptionTextShadow(
-              `${offsetX} ${e.target.value}px ${blurRadius} ${color}`
-            );
-          }}
-          type="range"
-          min={-10}
-          max={10}
-          value={parseFloat(captionSettings.style.textShadow.split("px")[1])}
-        />
-      </div>
-
-      <div className="flex flex-row justify-between py-2">
-        <label className="font-bold text-white">Text Shadow Blur</label>
-        <input
-          onChange={(e) => {
-            const [offsetX, offsetY, blurRadius, color] =
-              captionSettings.style.textShadow.split(" ");
-
-            return setCaptionTextShadow(
-              `${offsetX} ${offsetY} ${e.target.valueAsNumber}px ${color}`
-            );
-          }}
-          type="range"
-          value={parseFloat(captionSettings.style.textShadow.split("px")[2])}
-        />
-      </div>
-    </PopoutSection>
+        <div className="flex flex-row justify-between">
+          <label className="font-bold" htmlFor="color">
+            {t("videoPlayer.popouts.captionPreferences.color")}
+          </label>
+          <div className="flex flex-row gap-2">
+            {colors.map((color) => (
+              <div
+                className={`flex h-8 w-8 items-center justify-center rounded ${
+                  color === captionSettings.style.color ? "bg-[#1C161B]" : ""
+                }`}
+              >
+                <input
+                  className="h-4 w-4 cursor-pointer appearance-none rounded-full"
+                  type="radio"
+                  name="color"
+                  key={color}
+                  value={color}
+                  style={{
+                    backgroundColor: color,
+                  }}
+                  onChange={(e) => setCaptionColor(e.target.value)}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </FloatingCardView.Content>
+    </FloatingView>
   );
 }

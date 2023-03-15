@@ -11,11 +11,11 @@ export const SettingsStore = createVersionedStore<MWSettingsData>()
         captionSettings: {
           delay: 0,
           style: {
-            color: "white",
+            color: "#ffffff",
             fontSize: 20,
             fontFamily: "inherit",
             textShadow: "2px 2px 2px black",
-            backgroundColor: "black",
+            backgroundColor: "#000000ff",
           },
         },
       } as MWSettingsData;

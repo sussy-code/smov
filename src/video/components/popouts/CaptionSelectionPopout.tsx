@@ -4,7 +4,6 @@ import {
   CUSTOM_CAPTION_ID,
 } from "@/backend/helpers/captions";
 import { MWCaption } from "@/backend/helpers/streams";
-import { IconButton } from "@/components/buttons/IconButton";
 import { Icon, Icons } from "@/components/Icon";
 import { FloatingCardView } from "@/components/popout/FloatingCard";
 import { FloatingView } from "@/components/popout/FloatingView";
@@ -14,9 +13,8 @@ import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useControls } from "@/video/state/logic/controls";
 import { useMeta } from "@/video/state/logic/meta";
 import { useSource } from "@/video/state/logic/source";
-import { ChangeEvent, useMemo, useRef, useState } from "react";
+import { ChangeEvent, useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { CaptionSettingsPopout } from "./CaptionSettingsPopout";
 import { PopoutListEntry, PopoutSection } from "./PopoutUtils";
 
 function makeCaptionId(caption: MWCaption, isLinked: boolean): string {
@@ -72,8 +70,6 @@ export function CaptionSelectionPopout(props: {
     const captionFile = e.target.files[0];
     setCustomCaption(captionFile);
   }
-  const [showCaptionSettings, setShowCaptionSettings] =
-    useState<boolean>(false);
   return (
     <FloatingView
       {...props.router.pageProps(props.prefix)}
@@ -84,6 +80,16 @@ export function CaptionSelectionPopout(props: {
         title={t("videoPlayer.popouts.captions")}
         description={t("videoPlayer.popouts.descriptions.captions")}
         goBack={() => props.router.navigate("/")}
+        action={
+          <button
+            type="button"
+            onClick={() => props.router.navigate("/caption-settings")}
+            className="flex cursor-pointer items-center space-x-2 transition-colors duration-200 hover:text-white"
+          >
+            <span>{t("videoPlayer.popouts.captionPreferences.title")}</span>
+            <Icon icon={Icons.GEAR} />
+          </button>
+        }
       />
       <FloatingCardView.Content noSection>
         <PopoutSection>

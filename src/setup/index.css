@@ -54,3 +54,35 @@ body[data-no-select] {
 .google-cast-button:not(.casting) google-cast-launcher {
   @apply brightness-[500];
 }
+
+input[type=range] {
+  @apply bg-[#1C161B];
+  height: 0.25rem;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  outline: none;
+  line-height: normal;
+  border-radius: 5px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 1rem;
+  background: white;
+  aspect-ratio: 1;
+  cursor: pointer;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+input[type=range]::-moz-range-thumb {
+  aspect-ratio: 1;
+  height: 1rem;
+  background: white;
+  aspect-ratio: 1;
+  cursor: pointer;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}

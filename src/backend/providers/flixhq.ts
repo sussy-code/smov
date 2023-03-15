@@ -18,15 +18,14 @@ interface FLIXMediaBase {
   title: string;
   url: string;
   image: string;
+  type: "Movie" | "TV Series";
 }
 
 interface FLIXTVSerie extends FLIXMediaBase {
-  type: "TV Series";
   seasons: number | null;
 }
 
 interface FLIXMovie extends FLIXMediaBase {
-  type: "Movie";
   releaseDate: string;
 }
 
@@ -66,22 +65,28 @@ registerProvider({
         baseURL: flixHqBase,
       }
     );
+
     const foundItem = searchResults.results.find((v: FLIXMediaBase) => {
       if (media.meta.type === MWMediaType.MOVIE) {
+        if (v.type !== "Movie") return false;
         const movie = v as FLIXMovie;
         return (
           compareTitle(movie.title, media.meta.title) &&
           movie.releaseDate === media.meta.year
         );
       }
-      const serie = v as FLIXTVSerie;
-      if (serie.seasons && media.meta.seasons) {
-        return (
-          compareTitle(serie.title, media.meta.title) &&
-          serie.seasons === media.meta.seasons.length
-        );
+      if (media.meta.type === MWMediaType.SERIES) {
+        if (v.type !== "TV Series") return false;
+        const serie = v as FLIXTVSerie;
+        if (serie.seasons && media.meta.seasons) {
+          return (
+            compareTitle(serie.title, media.meta.title) &&
+            serie.seasons === media.meta.seasons.length
+          );
+        }
+        return false;
       }
-      return compareTitle(serie.title, media.meta.title);
+      return false;
     });
     if (!foundItem) throw new Error("No watchable item found");
     const flixId = foundItem.id;
@@ -110,6 +115,7 @@ registerProvider({
       )?.id;
     }
     if (!episodeId) throw new Error("No watchable item found");
+
     const watchInfo = await proxiedFetch<any>("/watch", {
       baseURL: flixHqBase,
       params: {

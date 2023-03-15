@@ -34,11 +34,7 @@ export function SettingsProvider(props: { children: ReactNode }) {
       setCaptionDelay(delay: number) {
         setSettings((oldSettings) => {
           const captionSettings = oldSettings.captionSettings;
-          captionSettings.delay = enforceRange(
-            -10 * 1000,
-            delay / 1000,
-            10 * 1000
-          );
+          captionSettings.delay = enforceRange(-10, delay, 10);
           const newSettings = oldSettings;
           return newSettings;
         });
