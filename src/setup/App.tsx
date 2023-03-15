@@ -12,7 +12,6 @@ import { DeveloperView } from "@/views/developer/DeveloperView";
 import { VideoTesterView } from "@/views/developer/VideoTesterView";
 import { ProviderTesterView } from "@/views/developer/ProviderTesterView";
 import { EmbedTesterView } from "@/views/developer/EmbedTesterView";
-import { SettingsView } from "@/views/settings/SettingsView";
 import { BannerContextProvider } from "@/hooks/useBanner";
 import { Layout } from "@/setup/Layout";
 import { TestView } from "@/views/developer/TestView";
@@ -43,7 +42,6 @@ function App() {
                   path="/search/:type/:query?"
                   component={SearchView}
                 />
-                <Route exact path="/settings" component={SettingsView} />
 
                 {/* other */}
                 <Route exact path="/dev" component={DeveloperView} />
