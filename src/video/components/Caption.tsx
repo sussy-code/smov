@@ -17,7 +17,6 @@ export function Caption({ text }: { text?: string }) {
         }),
       }}
       style={{
-        whiteSpace: "pre-wrap",
         ...captionSettings.style,
       }}
     />

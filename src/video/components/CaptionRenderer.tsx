@@ -1,3 +1,4 @@
+import { Transition } from "@/components/Transition";
 import { useSettings } from "@/state/settings";
 import { parse, Cue } from "node-webvtt";
 import { useRef } from "react";
@@ -29,7 +30,7 @@ export function CaptionRenderer({
     } else {
       captions.current = [];
     }
-  }, [source]);
+  }, [source?.caption?.url]);
 
   if (!captions.current.length) return null;
   const isVisible = (start: number, end: number): boolean => {
@@ -41,18 +42,22 @@ export function CaptionRenderer({
     );
   };
   return (
-    <span className="flex h-full flex-col items-center justify-end">
-      {captions.current.map(
-        ({ identifier, end, start, text }) =>
-          isVisible(start, end) && (
-            <Caption key={identifier || `${start}-${end}`} text={text} />
-          )
-      )}
-      {isControlsShown ? (
-        <div className="h-[100px]" />
-      ) : (
-        <div className="h-[50px]" />
-      )}
-    </span>
+    <Transition
+      className={[
+        "absolute flex w-full flex-col items-center transition-[bottom]",
+        isControlsShown ? "bottom-24" : "bottom-12",
+      ].join(" ")}
+      animation="slide-up"
+      show
+    >
+      <span>
+        {captions.current.map(
+          ({ identifier, end, start, text }) =>
+            isVisible(start, end) && (
+              <Caption key={identifier || `${start}-${end}`} text={text} />
+            )
+        )}
+      </span>
+    </Transition>
   );
 }
