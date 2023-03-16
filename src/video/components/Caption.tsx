@@ -17,6 +17,7 @@ export function Caption({ text }: { text?: string }) {
         }),
       }}
       style={{
+        whiteSpace: "pre-line",
         ...captionSettings.style,
       }}
     />

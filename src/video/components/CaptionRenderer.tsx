@@ -50,14 +50,12 @@ export function CaptionRenderer({
       animation="slide-up"
       show
     >
-      <span>
-        {captions.current.map(
-          ({ identifier, end, start, text }) =>
-            isVisible(start, end) && (
-              <Caption key={identifier || `${start}-${end}`} text={text} />
-            )
-        )}
-      </span>
+      {captions.current.map(
+        ({ identifier, end, start, text }) =>
+          isVisible(start, end) && (
+            <Caption key={identifier || `${start}-${end}`} text={text} />
+          )
+      )}
     </Transition>
   );
 }
