@@ -10,23 +10,32 @@ import { useSource } from "../../state/logic/source";
 
 function CaptionCue({ text }: { text?: string }) {
   const { captionSettings } = useSettings();
+  const textWithNewlines = (text || "").replaceAll(/\r?\n/g, "<br />");
+
+  // https://www.w3.org/TR/webvtt1/#dom-construction-rules
+  // added a <br /> for newlines
+  const html = sanitize(textWithNewlines, {
+    ALLOWED_TAGS: ["c", "b", "i", "u", "span", "ruby", "rt", "br"],
+    ADD_TAGS: ["v", "lang"],
+    ALLOWED_ATTR: ["title", "lang"],
+  });
+
   return (
-    <span
-      className="pointer-events-none mb-1 select-none whitespace-pre-line rounded px-4 py-1 text-center [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]"
-      dir="auto"
-      // eslint-disable-next-line react/no-danger
-      dangerouslySetInnerHTML={{
-        __html: sanitize(text || "", {
-          // https://www.w3.org/TR/webvtt1/#dom-construction-rules
-          ALLOWED_TAGS: ["c", "b", "i", "u", "span", "ruby", "rt"],
-          ADD_TAGS: ["v", "lang"],
-          ALLOWED_ATTR: ["title", "lang"],
-        }),
-      }}
+    <p
+      className="pointer-events-none mb-1 select-none rounded px-4 py-1 text-center [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]"
       style={{
         ...captionSettings.style,
       }}
-    />
+    >
+      <span
+        // its sanitised a few lines up
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{
+          __html: html,
+        }}
+        dir="auto"
+      />
+    </p>
   );
 }
 
