@@ -70,7 +70,6 @@ export function CaptionSelectionPopout(props: {
     const captionFile = e.target.files[0];
     setCustomCaption(captionFile);
   }
-
   return (
     <FloatingView
       {...props.router.pageProps(props.prefix)}
@@ -81,6 +80,18 @@ export function CaptionSelectionPopout(props: {
         title={t("videoPlayer.popouts.captions")}
         description={t("videoPlayer.popouts.descriptions.captions")}
         goBack={() => props.router.navigate("/")}
+        action={
+          <button
+            type="button"
+            onClick={() =>
+              props.router.navigate(`${props.prefix}/caption-settings`)
+            }
+            className="flex cursor-pointer items-center space-x-2 transition-colors duration-200 hover:text-white"
+          >
+            <span>{t("videoPlayer.popouts.captionPreferences.title")}</span>
+            <Icon icon={Icons.GEAR} />
+          </button>
+        }
       />
       <FloatingCardView.Content noSection>
         <PopoutSection>
