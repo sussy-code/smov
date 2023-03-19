@@ -1,14 +1,36 @@
 import { Transition } from "@/components/Transition";
 import { useSettings } from "@/state/settings";
+import { sanitize } from "@/backend/helpers/captions";
 import { parse, Cue } from "node-webvtt";
 import { useRef } from "react";
 import { useAsync } from "react-use";
-import { useVideoPlayerDescriptor } from "../state/hooks";
-import { useProgress } from "../state/logic/progress";
-import { useSource } from "../state/logic/source";
-import { Caption } from "./Caption";
+import { useVideoPlayerDescriptor } from "../../state/hooks";
+import { useProgress } from "../../state/logic/progress";
+import { useSource } from "../../state/logic/source";
 
-export function CaptionRenderer({
+function CaptionCue({ text }: { text?: string }) {
+  const { captionSettings } = useSettings();
+  return (
+    <span
+      className="pointer-events-none mb-1 select-none whitespace-pre-line rounded px-4 py-1 text-center [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]"
+      dir="auto"
+      // eslint-disable-next-line react/no-danger
+      dangerouslySetInnerHTML={{
+        __html: sanitize(text || "", {
+          // https://www.w3.org/TR/webvtt1/#dom-construction-rules
+          ALLOWED_TAGS: ["c", "b", "i", "u", "span", "ruby", "rt"],
+          ADD_TAGS: ["v", "lang"],
+          ALLOWED_ATTR: ["title", "lang"],
+        }),
+      }}
+      style={{
+        ...captionSettings.style,
+      }}
+    />
+  );
+}
+
+export function CaptionRendererAction({
   isControlsShown,
 }: {
   isControlsShown: boolean;
@@ -44,7 +66,7 @@ export function CaptionRenderer({
   return (
     <Transition
       className={[
-        "absolute flex w-full flex-col items-center transition-[bottom]",
+        "pointer-events-none absolute flex w-full flex-col items-center transition-[bottom]",
         isControlsShown ? "bottom-24" : "bottom-12",
       ].join(" ")}
       animation="slide-up"
@@ -53,7 +75,7 @@ export function CaptionRenderer({
       {captions.current.map(
         ({ identifier, end, start, text }) =>
           isVisible(start, end) && (
-            <Caption key={identifier || `${start}-${end}`} text={text} />
+            <CaptionCue key={identifier || `${start}-${end}`} text={text} />
           )
       )}
     </Transition>

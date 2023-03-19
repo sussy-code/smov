@@ -4,8 +4,6 @@ export interface CaptionStyleSettings {
    * Range is [10, 30]
    */
   fontSize: number;
-  fontFamily: string;
-  textShadow: string;
   backgroundColor: string;
 }
 

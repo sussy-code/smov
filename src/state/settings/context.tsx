@@ -8,8 +8,6 @@ interface MWSettingsDataSetters {
   setCaptionDelay(delay: number): void;
   setCaptionColor(color: string): void;
   setCaptionFontSize(size: number): void;
-  setCaptionFontFamily(fontFamily: string): void;
-  setCaptionTextShadow(textShadow: string): void;
   setCaptionBackgroundColor(backgroundColor: string): void;
 }
 type MWSettingsDataWrapper = MWSettingsData & MWSettingsDataSetters;
@@ -50,23 +48,7 @@ export function SettingsProvider(props: { children: ReactNode }) {
       setCaptionFontSize(size) {
         setSettings((oldSettings) => {
           const style = oldSettings.captionSettings.style;
-          style.fontSize = enforceRange(10, size, 30);
-          const newSettings = oldSettings;
-          return newSettings;
-        });
-      },
-      setCaptionFontFamily(fontFamily) {
-        setSettings((oldSettings) => {
-          const captionStyle = oldSettings.captionSettings.style;
-          captionStyle.fontFamily = fontFamily;
-          const newSettings = oldSettings;
-          return newSettings;
-        });
-      },
-      setCaptionTextShadow(textShadow) {
-        setSettings((oldSettings) => {
-          const captionStyle = oldSettings.captionSettings.style;
-          captionStyle.textShadow = textShadow;
+          style.fontSize = enforceRange(10, size, 60);
           const newSettings = oldSettings;
           return newSettings;
         });

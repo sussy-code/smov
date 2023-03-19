@@ -5,20 +5,18 @@ export const SettingsStore = createVersionedStore<MWSettingsData>()
   .setKey("mw-settings")
   .addVersion({
     version: 0,
-    create() {
+    create(): MWSettingsData {
       return {
         language: "en",
         captionSettings: {
           delay: 0,
           style: {
             color: "#ffffff",
-            fontSize: 20,
-            fontFamily: "inherit",
-            textShadow: "2px 2px 2px black",
-            backgroundColor: "#000000ff",
+            fontSize: 25,
+            backgroundColor: "#00000096",
           },
         },
-      } as MWSettingsData;
+      };
     },
   })
   .build();

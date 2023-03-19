@@ -14,12 +14,10 @@ export type SliderProps = {
   value: number;
   valueDisplay?: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
-  stops?: number[];
 };
 
 export function Slider(props: SliderProps) {
   const ref = useRef<HTMLInputElement>(null);
-  const stops = props.stops ?? [Math.floor((props.max + props.min) / 2)];
   useEffect(() => {
     const e = ref.current as HTMLInputElement;
     e.style.setProperty("--value", e.value);
@@ -41,13 +39,7 @@ export function Slider(props: SliderProps) {
           max={props.max}
           min={props.min}
           step={props.step}
-          list="stops"
         />
-        <datalist id="stops">
-          {stops.map((s) => (
-            <option value={s} />
-          ))}
-        </datalist>
       </div>
       <div className="mt-1 aspect-[2/1] h-8 rounded-sm bg-[#1C161B] pt-1">
         <div className="text-center font-bold text-white">
@@ -88,13 +80,12 @@ export function CaptionSettingsPopout(props: {
           valueDisplay={`${captionSettings.delay.toFixed(1)}s`}
           value={captionSettings.delay}
           onChange={(e) => setCaptionDelay(e.target.valueAsNumber)}
-          stops={[-5, 0, 5]}
         />
         <Slider
           label="Size"
-          min={10}
+          min={14}
           step={1}
-          max={30}
+          max={60}
           value={captionSettings.style.fontSize}
           onChange={(e) => setCaptionFontSize(e.target.valueAsNumber)}
         />
@@ -131,20 +122,16 @@ export function CaptionSettingsPopout(props: {
           <div className="flex flex-row gap-2">
             {colors.map((color) => (
               <div
-                className={`flex h-8 w-8 items-center justify-center rounded ${
+                className={`flex h-8 w-8 items-center justify-center rounded transition-[background-color,transform] duration-100 hover:bg-[#1c161b79] active:scale-110 ${
                   color === captionSettings.style.color ? "bg-[#1C161B]" : ""
                 }`}
+                onClick={() => setCaptionColor(color)}
               >
-                <input
+                <div
                   className="h-4 w-4 cursor-pointer appearance-none rounded-full"
-                  type="radio"
-                  name="color"
-                  key={color}
-                  value={color}
                   style={{
                     backgroundColor: color,
                   }}
-                  onChange={(e) => setCaptionColor(e.target.value)}
                 />
                 <Icon
                   className={[

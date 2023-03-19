@@ -44,11 +44,7 @@ function VideoElement(props: Props) {
       muted={mediaPlaying.volume === 0}
       playsInline
       className="h-full w-full"
-    >
-      {/* {source.source?.caption ? (
-        <track default kind="captions" src={source.source.caption.url} />
-      ) : null} */}
-    </video>
+    />
   );
 }
 
