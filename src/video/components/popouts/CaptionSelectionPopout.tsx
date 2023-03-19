@@ -83,7 +83,9 @@ export function CaptionSelectionPopout(props: {
         action={
           <button
             type="button"
-            onClick={() => props.router.navigate("/caption-settings")}
+            onClick={() =>
+              props.router.navigate(`${props.prefix}/caption-settings`)
+            }
             className="flex cursor-pointer items-center space-x-2 transition-colors duration-200 hover:text-white"
           >
             <span>{t("videoPlayer.popouts.captionPreferences.title")}</span>
