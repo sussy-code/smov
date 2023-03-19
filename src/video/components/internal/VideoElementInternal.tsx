@@ -43,7 +43,7 @@ function VideoElement(props: Props) {
       autoPlay={props.autoPlay}
       muted={mediaPlaying.volume === 0}
       playsInline
-      className="h-full w-full"
+      className="z-0 h-full w-full"
     >
       {source.source?.caption ? (
         <track default kind="captions" src={source.source.caption.url} />
