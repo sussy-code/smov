@@ -55,34 +55,122 @@ body[data-no-select] {
   @apply brightness-[500];
 }
 
-input[type=range] {
-  @apply bg-[#1C161B];
-  height: 0.25rem;
+/*generated with Input range slider CSS style generator (version 20211225)
+https://toughengineer.github.io/demo/slider-styler*/
+:root {
+  --slider-height: 0.25rem;
+  --slider-border-radius: 1em;
+  --slider-progress-background: #8652bb;
+}
+input[type=range].styled-slider {
+  height: var(--slider-height);
   -webkit-appearance: none;
   appearance: none;
-  width: 100%;
-  outline: none;
-  line-height: normal;
-  border-radius: 5px;
+  border-radius: var(--slider-border-radius);
+  background: #1C161B;
 }
 
-input[type=range]::-webkit-slider-thumb {
+/*progress support*/
+input[type=range].styled-slider.slider-progress {
+  --range: calc(var(--max) - var(--min));
+  --ratio: calc((var(--value) - var(--min)) / var(--range));
+  --sx: calc(0.5 * 1rem + var(--ratio) * (100% - 1rem));
+}
+
+/*webkit*/
+input[type=range].styled-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
-  appearance: none;
+  width: 1rem;
   height: 1rem;
-  background: white;
-  aspect-ratio: 1;
-  cursor: pointer;
-  border-radius: 50%;
-  margin-bottom: 1rem;
+  border-radius: var(--slider-border-radius);
+  background: #FFFFFF;
+  border: none;
+  box-shadow: 0 0 2px #000000;
+  margin-top: calc(0.25em * 0.5 - 1rem * 0.5);
 }
 
-input[type=range]::-moz-range-thumb {
-  aspect-ratio: 1;
+input[type=range].styled-slider::-webkit-slider-runnable-track {
+  height: var(--slider-height);
+  border: none;
+  box-shadow: none;
+  border-radius: var(--slider-border-radius);
+  margin-bottom: 1.1em;
+}
+
+input[type=range].styled-slider::-webkit-slider-thumb:hover {
+  background: #DCDCDC;
+}
+
+input[type=range].styled-slider.slider-progress::-webkit-slider-runnable-track {
+  background: linear-gradient(var(--slider-progress-background),var(--slider-progress-background)) 0/var(--sx) 100% no-repeat, #1C161B;
+}
+
+/*mozilla*/
+input[type=range].styled-slider::-moz-range-thumb {
+  width: 1rem;
   height: 1rem;
-  background: white;
-  aspect-ratio: 1;
-  cursor: pointer;
-  border-radius: 50%;
-  margin-bottom: 1rem;
+  border-radius: var(--slider-border-radius);
+  background: #FFFFFF;
+  border: none;
+  box-shadow: 0 0 2px #000000;
+}
+
+input[type=range].styled-slider::-moz-range-track {
+  height: var(--slider-height);
+  border: none;
+  border-radius: var(--slider-border-radius);
+  background: #1C161B;
+  box-shadow: none;
+}
+
+input[type=range].styled-slider::-moz-range-thumb:hover {
+  background: #DCDCDC;
+}
+
+input[type=range].styled-slider.slider-progress::-moz-range-track {
+  background: linear-gradient(var(--slider-progress-background),var(--slider-progress-background)) 0/var(--sx) 100% no-repeat, #1C161B;
+}
+
+/*ms*/
+input[type=range].styled-slider::-ms-fill-upper {
+  background: transparent;
+  border-color: transparent;
+}
+
+input[type=range].styled-slider::-ms-fill-lower {
+  background: transparent;
+  border-color: transparent;
+}
+
+input[type=range].styled-slider::-ms-thumb {
+  width: 1rem;
+  height: 1rem;
+  border-radius: var(--slider-border-radius);
+  background: #FFFFFF;
+  border: none;
+  box-shadow: 0 0 2px #000000;
+  margin-top: 0;
+  box-sizing: border-box;
+}
+
+input[type=range].styled-slider::-ms-track {
+  height: var(--slider-height);
+  border-radius: var(--slider-border-radius);
+  background: #1C161B;
+  border: none;
+  box-shadow: none;
+  box-sizing: border-box;
+}
+
+input[type=range].styled-slider::-ms-thumb:hover {
+  background: #DCDCDC;
+}
+
+input[type=range].styled-slider.slider-progress::-ms-fill-lower {
+  height: var(--slider-height);
+  border-radius: var(--slider-border-radius) 0 0 5px;
+  margin: -undefined 0 -undefined -undefined;
+  background: var(--slider-progress-background);
+  border: none;
+  border-right-width: 0;
 }

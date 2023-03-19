@@ -3,10 +3,10 @@ import { FloatingView } from "@/components/popout/FloatingView";
 import { useFloatingRouter } from "@/hooks/useFloatingRouter";
 import { useSettings } from "@/state/settings";
 import { useTranslation } from "react-i18next";
-import { ChangeEventHandler } from "react";
-import { PopoutSection } from "./PopoutUtils";
+import { ChangeEventHandler, useEffect, useRef } from "react";
+import { Icon, Icons } from "@/components/Icon";
 
-type SliderProps = {
+export type SliderProps = {
   label: string;
   min: number;
   max: number;
@@ -17,19 +17,30 @@ type SliderProps = {
   stops?: number[];
 };
 
-function Slider(params: SliderProps) {
-  const stops = params.stops ?? [Math.floor((params.max + params.min) / 2)];
+export function Slider(props: SliderProps) {
+  const ref = useRef<HTMLInputElement>(null);
+  const stops = props.stops ?? [Math.floor((props.max + props.min) / 2)];
+  useEffect(() => {
+    const e = ref.current as HTMLInputElement;
+    e.style.setProperty("--value", e.value);
+    e.style.setProperty("--min", e.min === "" ? "0" : e.min);
+    e.style.setProperty("--max", e.max === "" ? "100" : e.max);
+    e.addEventListener("input", () => e.style.setProperty("--value", e.value));
+  }, [ref]);
+
   return (
     <div className="mb-6 flex flex-row gap-4">
       <div className="flex w-full flex-col gap-2">
-        <label className="font-bold">{params.label}</label>
+        <label className="font-bold">{props.label}</label>
         <input
           type="range"
-          onChange={params.onChange}
-          value={params.value}
-          max={params.max}
-          min={params.min}
-          step={params.step}
+          ref={ref}
+          className="styled-slider slider-progress"
+          onChange={props.onChange}
+          value={props.value}
+          max={props.max}
+          min={props.min}
+          step={props.step}
           list="stops"
         />
         <datalist id="stops">
@@ -40,7 +51,7 @@ function Slider(params: SliderProps) {
       </div>
       <div className="mt-1 aspect-[2/1] h-8 rounded-sm bg-[#1C161B] pt-1">
         <div className="text-center font-bold text-white">
-          {params.valueDisplay ?? params.value}
+          {props.valueDisplay ?? props.value}
         </div>
       </div>
     </div>
@@ -134,6 +145,13 @@ export function CaptionSettingsPopout(props: {
                     backgroundColor: color,
                   }}
                   onChange={(e) => setCaptionColor(e.target.value)}
+                />
+                <Icon
+                  className={[
+                    "absolute text-[#1C161B]",
+                    color === captionSettings.style.color ? "" : "hidden",
+                  ].join(" ")}
+                  icon={Icons.CHECKMARK}
                 />
               </div>
             ))}
