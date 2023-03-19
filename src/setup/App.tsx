@@ -1,6 +1,7 @@
 import { Redirect, Route, Switch } from "react-router-dom";
 import { BookmarkContextProvider } from "@/state/bookmark";
 import { WatchedContextProvider } from "@/state/watched";
+import { SettingsProvider } from "@/state/settings";
 
 import { NotFoundPage } from "@/views/notfound/NotFoundView";
 import { MediaView } from "@/views/media/MediaView";
@@ -17,46 +18,48 @@ import { TestView } from "@/views/developer/TestView";
 
 function App() {
   return (
-    <WatchedContextProvider>
-      <BookmarkContextProvider>
-        <BannerContextProvider>
-          <Layout>
-            <Switch>
-              {/* functional routes */}
-              <Route exact path="/v2-migration" component={V2MigrationView} />
-              <Route exact path="/">
-                <Redirect to={`/search/${MWMediaType.MOVIE}`} />
-              </Route>
+    <SettingsProvider>
+      <WatchedContextProvider>
+        <BookmarkContextProvider>
+          <BannerContextProvider>
+            <Layout>
+              <Switch>
+                {/* functional routes */}
+                <Route exact path="/v2-migration" component={V2MigrationView} />
+                <Route exact path="/">
+                  <Redirect to={`/search/${MWMediaType.MOVIE}`} />
+                </Route>
 
-              {/* pages */}
-              <Route exact path="/media/:media" component={MediaView} />
-              <Route
-                exact
-                path="/media/:media/:season/:episode"
-                component={MediaView}
-              />
-              <Route
-                exact
-                path="/search/:type/:query?"
-                component={SearchView}
-              />
+                {/* pages */}
+                <Route exact path="/media/:media" component={MediaView} />
+                <Route
+                  exact
+                  path="/media/:media/:season/:episode"
+                  component={MediaView}
+                />
+                <Route
+                  exact
+                  path="/search/:type/:query?"
+                  component={SearchView}
+                />
 
-              {/* other */}
-              <Route exact path="/dev" component={DeveloperView} />
-              <Route exact path="/dev/test" component={TestView} />
-              <Route exact path="/dev/video" component={VideoTesterView} />
-              <Route
-                exact
-                path="/dev/providers"
-                component={ProviderTesterView}
-              />
-              <Route exact path="/dev/embeds" component={EmbedTesterView} />
-              <Route path="*" component={NotFoundPage} />
-            </Switch>
-          </Layout>
-        </BannerContextProvider>
-      </BookmarkContextProvider>
-    </WatchedContextProvider>
+                {/* other */}
+                <Route exact path="/dev" component={DeveloperView} />
+                <Route exact path="/dev/test" component={TestView} />
+                <Route exact path="/dev/video" component={VideoTesterView} />
+                <Route
+                  exact
+                  path="/dev/providers"
+                  component={ProviderTesterView}
+                />
+                <Route exact path="/dev/embeds" component={EmbedTesterView} />
+                <Route path="*" component={NotFoundPage} />
+              </Switch>
+            </Layout>
+          </BannerContextProvider>
+        </BookmarkContextProvider>
+      </WatchedContextProvider>
+    </SettingsProvider>
   );
 }
 

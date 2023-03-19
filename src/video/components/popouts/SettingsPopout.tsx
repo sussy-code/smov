@@ -7,6 +7,7 @@ import { CaptionsSelectionAction } from "@/video/components/actions/list-entries
 import { SourceSelectionAction } from "@/video/components/actions/list-entries/SourceSelectionAction";
 import { CaptionSelectionPopout } from "./CaptionSelectionPopout";
 import { SourceSelectionPopout } from "./SourceSelectionPopout";
+import { CaptionSettingsPopout } from "./CaptionSettingsPopout";
 
 export function SettingsPopout() {
   const floatingRouter = useFloatingRouter();
@@ -24,6 +25,10 @@ export function SettingsPopout() {
       </FloatingView>
       <SourceSelectionPopout router={floatingRouter} prefix="source" />
       <CaptionSelectionPopout router={floatingRouter} prefix="captions" />
+      <CaptionSettingsPopout
+        router={floatingRouter}
+        prefix="caption-settings"
+      />
     </>
   );
 }

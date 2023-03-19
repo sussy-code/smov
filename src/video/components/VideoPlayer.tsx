@@ -27,9 +27,10 @@ import { ReactNode, useCallback, useState } from "react";
 import { PopoutProviderAction } from "@/video/components/popouts/PopoutProviderAction";
 import { ChromecastAction } from "@/video/components/actions/ChromecastAction";
 import { CastingTextAction } from "@/video/components/actions/CastingTextAction";
+import { PictureInPictureAction } from "@/video/components/actions/PictureInPictureAction";
+import { CaptionRendererAction } from "./actions/CaptionRendererAction";
 import { SettingsAction } from "./actions/SettingsAction";
 import { DividerAction } from "./actions/DividerAction";
-import { PictureInPictureAction } from "./actions/PictureInPictureAction";
 
 type Props = VideoPlayerBaseProps;
 
@@ -165,6 +166,7 @@ export function VideoPlayer(props: Props) {
               </Transition>
               {show ? <PopoutProviderAction /> : null}
             </BackdropAction>
+            <CaptionRendererAction isControlsShown={show} />
             {props.children}
           </VideoPlayerError>
         </>

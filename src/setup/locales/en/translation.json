@@ -69,6 +69,13 @@
       "sources": "Sources",
       "seasons": "Seasons",
       "captions": "Captions",
+      "captionPreferences": {
+        "title": "Customize",
+        "delay": "Delay",
+        "fontSize": "Size",
+        "opacity": "Opacity",
+        "color": "Color"
+      },
       "episode": "E{{index}} - {{title}}",
       "noCaptions": "No captions",
       "linkedCaptions": "Linked captions",
@@ -84,7 +91,8 @@
         "embeds": "Choose which video to view",
         "seasons": "Choose which season you want to watch",
         "episode": "Pick an episode",
-        "captions": "Choose a subtitle language"
+        "captions": "Choose a subtitle language",
+        "captionPreferences": "Make subtitles look how you want it"
       }
     },
     "errors": {
