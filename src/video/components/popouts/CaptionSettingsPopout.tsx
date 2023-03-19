@@ -135,7 +135,7 @@ export function CaptionSettingsPopout(props: {
                 />
                 <Icon
                   className={[
-                    "absolute text-[#1C161B]",
+                    "absolute text-xs text-[#1C161B]",
                     color === captionSettings.style.color ? "" : "hidden",
                   ].join(" ")}
                   icon={Icons.CHECKMARK}
