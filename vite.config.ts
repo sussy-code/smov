@@ -11,15 +11,13 @@ export default defineConfig({
       babel: {
         presets: [
           "@babel/preset-typescript",
-          "@babel/preset-react",
           [
             "@babel/preset-env",
             {
-              modules: "umd",
+              modules: false,
               useBuiltIns: "entry",
               corejs: {
                 version: "3.29",
-                proposals: true,
               },
             },
           ],
