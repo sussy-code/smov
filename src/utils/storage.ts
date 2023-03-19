@@ -99,7 +99,7 @@ function buildStorageObject<T>(store: InternalStoreData): StoreRet<T> {
     localStorage.setItem(key, JSON.stringify(withVersion));
 
     if (!storeCallbacks[key]) storeCallbacks[key] = [];
-    storeCallbacks[key].forEach((v) => v(structuredClone(data)));
+    storeCallbacks[key].forEach((v) => v(window.structuredClone(data)));
   }
 
   return {

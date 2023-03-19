@@ -1,3 +1,4 @@
+import "core-js/stable";
 import React, { ReactNode, Suspense } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, HashRouter } from "react-router-dom";
@@ -21,9 +22,7 @@ if (key) {
 }
 initializeChromecast();
 registerSW({
-  onNeedRefresh() {
-    window.location.reload();
-  },
+  immediate: true,
 });
 
 const LazyLoadedApp = React.lazy(async () => {

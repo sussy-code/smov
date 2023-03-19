@@ -8,6 +8,7 @@
     "@headlessui/react": "^1.5.0",
     "@react-spring/web": "^9.7.1",
     "@use-gesture/react": "^10.2.24",
+    "core-js": "^3.29.1",
     "crypto-js": "^4.1.1",
     "fscreen": "^1.2.0",
     "fuse.js": "^6.4.6",
@@ -42,9 +43,8 @@
   },
   "browserslist": {
     "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+      "defaults",
+      "chrome > 90"
     ],
     "development": [
       "last 1 chrome version",
@@ -53,6 +53,9 @@
     ]
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-react": "^7.18.6",
+    "@babel/preset-typescript": "^7.21.0",
     "@tailwindcss/line-clamp": "^0.4.2",
     "@types/chromecast-caf-sender": "^1.0.5",
     "@types/crypto-js": "^4.1.1",
@@ -62,13 +65,14 @@
     "@types/pako": "^2.0.0",
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
+    "@types/react-helmet": "^6.1.6",
     "@types/react-router": "^5.1.18",
     "@types/react-router-dom": "^5.3.3",
     "@types/react-stickynode": "^4.0.0",
     "@types/react-transition-group": "^4.4.5",
     "@typescript-eslint/eslint-plugin": "^5.13.0",
     "@typescript-eslint/parser": "^5.13.0",
-    "@vitejs/plugin-react-swc": "^3.0.0",
+    "@vitejs/plugin-react": "^3.1.0",
     "autoprefixer": "^10.4.13",
     "eslint": "^8.10.0",
     "eslint-config-airbnb": "19.0.4",
@@ -91,7 +95,6 @@
     "vite-plugin-package-version": "^1.0.2",
     "vite-plugin-pwa": "^0.14.4",
     "vitest": "^0.28.5",
-    "workbox-window": "^6.5.4",
-    "@types/react-helmet": "^6.1.6"
+    "workbox-window": "^6.5.4"
   }
 }
