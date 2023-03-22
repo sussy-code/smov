@@ -50,7 +50,7 @@ export function VideoTesterView() {
 
   if (video) {
     return (
-      <div className="fixed top-0 left-0 h-[100dvh] w-screen">
+      <div className="fixed top-0 left-0 h-full w-screen">
         <Helmet>
           <html data-full="true" />
         </Helmet>
@@ -64,8 +64,8 @@ export function VideoTesterView() {
           />
           <SourceController
             source={video.streamUrl}
-            type={MWStreamType.MP4}
-            quality={MWStreamQuality.Q720P}
+            type={videoType}
+            quality={MWStreamQuality.QUNKNOWN}
           />
         </VideoPlayer>
       </div>

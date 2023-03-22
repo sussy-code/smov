@@ -132,7 +132,7 @@ export function MediaViewPlayer(props: MediaViewPlayerProps) {
   }
 
   return (
-    <div className="fixed top-0 left-0 h-[100dvh] w-screen">
+    <div className="fixed top-0 left-0 h-full w-screen">
       <Helmet>
         <html data-full="true" />
       </Helmet>
