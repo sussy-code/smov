@@ -94,7 +94,6 @@ input[type=range].styled-slider::-webkit-slider-runnable-track {
   border: none;
   box-shadow: none;
   border-radius: var(--slider-border-radius);
-  margin-bottom: 1.1em;
 }
 
 input[type=range].styled-slider::-webkit-slider-thumb:hover {
