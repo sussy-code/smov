@@ -25,15 +25,8 @@ jobs:
       - name: Install Yarn packages
         run: yarn install
       
-      - name: Run ESLint Report
-        run: yarn lint:report
-        # continue on error, so it still reports it in the next step
-        continue-on-error: true
-
-      - uses: actions/upload-artifact@v3
-        with:
-          name: eslint_report.json
-          path: eslint_report.json
+      - name: Run ESLint
+        run: yarn lint
 
   building:
     name: Build project
