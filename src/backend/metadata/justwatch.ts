@@ -21,7 +21,7 @@ export type JWMediaResult = {
   title: string;
   poster?: string;
   id: number;
-  original_release_year: number;
+  original_release_year?: number;
   jw_entity_id: string;
   object_type: JWContentTypes;
   seasons?: JWSeasonShort[];
@@ -67,7 +67,7 @@ export function formatJWMeta(
   return {
     title: media.title,
     id: media.id.toString(),
-    year: media.original_release_year.toString(),
+    year: media.original_release_year?.toString(),
     poster: media.poster
       ? `${JW_IMAGE_BASE}${media.poster.replace("{profile}", "s166")}`
       : undefined,

@@ -1,5 +1,5 @@
 import { defineConfig } from "vitest/config";
-import react from "@vitejs/plugin-react-swc";
+import react from "@vitejs/plugin-react";
 import loadVersion from "vite-plugin-package-version";
 import { VitePWA } from "vite-plugin-pwa";
 import checker from "vite-plugin-checker";
@@ -7,10 +7,25 @@ import path from "path";
 
 export default defineConfig({
   plugins: [
-    react(),
+    react({
+      babel: {
+        presets: [
+          "@babel/preset-typescript",
+          [
+            "@babel/preset-env",
+            {
+              modules: false,
+              useBuiltIns: "entry",
+              corejs: {
+                version: "3.29",
+              },
+            },
+          ],
+        ],
+      },
+    }),
     VitePWA({
       registerType: "autoUpdate",
-      injectRegister: "inline",
       workbox: {
         globIgnores: ["**ping.txt**"],
       },

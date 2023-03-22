@@ -41,7 +41,7 @@ function VideoElement(props: Props) {
       autoPlay={props.autoPlay}
       muted={mediaPlaying.volume === 0}
       playsInline
-      className="absolute inset-0 z-0 h-full w-full"
+      className="z-0 h-full w-full"
     />
   );
 }

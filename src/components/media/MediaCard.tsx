@@ -33,6 +33,9 @@ function MediaCardContent({
 
   const canLink = linkable && !closable;
 
+  const dotListContent = [t(`media.${media.type}`)];
+  if (media.year) dotListContent.push(media.year);
+
   return (
     <div
       className={`group -m-3 mb-2 rounded-xl bg-denim-300 bg-opacity-0 transition-colors duration-100 ${
@@ -115,10 +118,7 @@ function MediaCardContent({
         <h1 className="mb-1 max-h-[4.5rem] text-ellipsis break-words font-bold text-white line-clamp-3">
           <span>{media.title}</span>
         </h1>
-        <DotList
-          className="text-xs"
-          content={[t(`media.${media.type}`), media.year]}
-        />
+        <DotList className="text-xs" content={dotListContent} />
       </article>
     </div>
   );

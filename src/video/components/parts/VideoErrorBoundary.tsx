@@ -2,7 +2,8 @@ import { MWMediaMeta } from "@/backend/metadata/types";
 import { ErrorMessage } from "@/components/layout/ErrorBoundary";
 import { Link } from "@/components/text/Link";
 import { conf } from "@/setup/config";
-import { Component, ReactNode } from "react";
+import { Component } from "react";
+import type { ReactNode } from "react-router-dom/node_modules/@types/react/index";
 import { Trans } from "react-i18next";
 import { VideoPlayerHeader } from "./VideoPlayerHeader";
 
