@@ -18,15 +18,14 @@ interface FLIXMediaBase {
   title: string;
   url: string;
   image: string;
+  type: "Movie" | "TV Series";
 }
 
 interface FLIXTVSerie extends FLIXMediaBase {
-  type: "TV Series";
   seasons: number | null;
 }
 
 interface FLIXMovie extends FLIXMediaBase {
-  type: "Movie";
   releaseDate: string;
 }
 
@@ -55,7 +54,7 @@ registerProvider({
   rank: 100,
   type: [MWMediaType.MOVIE, MWMediaType.SERIES],
 
-  async scrape({ media, progress }) {
+  async scrape({ media, episode, progress }) {
     if (!this.type.includes(media.meta.type)) {
       throw new Error("Unsupported type");
     }
@@ -66,22 +65,28 @@ registerProvider({
         baseURL: flixHqBase,
       }
     );
+
     const foundItem = searchResults.results.find((v: FLIXMediaBase) => {
       if (media.meta.type === MWMediaType.MOVIE) {
+        if (v.type !== "Movie") return false;
         const movie = v as FLIXMovie;
         return (
           compareTitle(movie.title, media.meta.title) &&
           movie.releaseDate === media.meta.year
         );
       }
-      const serie = v as FLIXTVSerie;
-      if (serie.seasons && media.meta.seasons) {
-        return (
-          compareTitle(serie.title, media.meta.title) &&
-          serie.seasons === media.meta.seasons.length
-        );
+      if (media.meta.type === MWMediaType.SERIES) {
+        if (v.type !== "TV Series") return false;
+        const serie = v as FLIXTVSerie;
+        if (serie.seasons && media.meta.seasons) {
+          return (
+            compareTitle(serie.title, media.meta.title) &&
+            serie.seasons === media.meta.seasons.length
+          );
+        }
+        return false;
       }
-      return compareTitle(serie.title, media.meta.title);
+      return false;
     });
     if (!foundItem) throw new Error("No watchable item found");
     const flixId = foundItem.id;
@@ -97,10 +102,24 @@ registerProvider({
     if (!mediaInfo.episodes) throw new Error("No watchable item found");
     // get stream info from media
     progress(75);
+
+    // By default we assume it is a movie
+    let episodeId: string | undefined = mediaInfo.episodes[0].id;
+    if (media.meta.type === MWMediaType.SERIES) {
+      const seasonNo = media.meta.seasonData.number;
+      const episodeNo = media.meta.seasonData.episodes.find(
+        (e) => e.id === episode
+      )?.number;
+      episodeId = mediaInfo.episodes.find(
+        (e: any) => e.season === seasonNo && e.number === episodeNo
+      )?.id;
+    }
+    if (!episodeId) throw new Error("No watchable item found");
+
     const watchInfo = await proxiedFetch<any>("/watch", {
       baseURL: flixHqBase,
       params: {
-        episodeId: mediaInfo.episodes[0].id,
+        episodeId,
         mediaId: flixId,
       },
     });

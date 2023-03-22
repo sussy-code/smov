@@ -1,4 +1,4 @@
-import { Icon, Icons } from "@/components/Icon";
+import { Icons } from "@/components/Icon";
 import { useTranslation } from "react-i18next";
 import { PopoutListAction } from "../../popouts/PopoutUtils";
 import { QualityDisplayAction } from "./QualityDisplayAction";

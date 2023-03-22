@@ -1,6 +1,8 @@
-import React, { ReactNode, Suspense } from "react";
+import "core-js/stable";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, HashRouter } from "react-router-dom";
+import type { ReactNode } from "react-router-dom/node_modules/@types/react/index";
 import { ErrorBoundary } from "@/components/layout/ErrorBoundary";
 import { conf } from "@/setup/config";
 import { registerSW } from "virtual:pwa-register";
@@ -21,9 +23,7 @@ if (key) {
 }
 initializeChromecast();
 registerSW({
-  onNeedRefresh() {
-    window.location.reload();
-  },
+  immediate: true,
 });
 
 const LazyLoadedApp = React.lazy(async () => {

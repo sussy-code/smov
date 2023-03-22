@@ -43,6 +43,8 @@ export function ScrollToActive(props: ScrollToActiveProps) {
   const ref = createRef<HTMLDivElement>();
   const inited = useRef<boolean>(false);
 
+  const SAFE_OFFSET = 30;
+
   // Scroll to "active" child on first load (AKA mount except React dumb)
   useEffect(() => {
     if (inited.current) return;
@@ -61,27 +63,31 @@ export function ScrollToActive(props: ScrollToActiveProps) {
       wrapper?.querySelector(".active");
 
     if (wrapper && active) {
-      let activeYPositionCentered = 0;
-      const setActiveYPositionCentered = () => {
-        activeYPositionCentered =
-          active.getBoundingClientRect().top -
-          wrapper.getBoundingClientRect().top +
-          active.offsetHeight / 2;
+      let wrapperHeight = 0;
+      let activePos = 0;
+      let activeHeight = 0;
+      let wrapperScroll = 0;
+
+      const getCoords = () => {
+        const activeRect = active.getBoundingClientRect();
+        const wrapperRect = wrapper.getBoundingClientRect();
+        wrapperHeight = wrapperRect.height;
+        activeHeight = activeRect.height;
+        activePos = activeRect.top - wrapperRect.top + wrapper.scrollTop;
+        wrapperScroll = wrapper.scrollTop;
       };
-      setActiveYPositionCentered();
+      getCoords();
 
-      if (activeYPositionCentered >= wrapper.offsetHeight / 2) {
-        // Check if the active element is below the vertical center line, then scroll it into center
+      const isVisible =
+        activePos + activeHeight <
+          wrapperScroll + wrapperHeight - SAFE_OFFSET ||
+        activePos > wrapperScroll + SAFE_OFFSET;
+      if (isVisible) {
+        const activeMiddlePos = activePos + activeHeight / 2; // pos of middle of active element
+        const viewMiddle = wrapperHeight / 2; // half of the available height
+        const pos = activeMiddlePos - viewMiddle;
         wrapper.scrollTo({
-          top: activeYPositionCentered - wrapper.offsetHeight / 2,
-        });
-      }
-
-      setActiveYPositionCentered();
-      if (activeYPositionCentered > wrapper.offsetHeight / 2) {
-        // If the element is over the vertical center line, scroll to the end
-        wrapper.scrollTo({
-          top: wrapper.scrollHeight,
+          top: pos,
         });
       }
     }
