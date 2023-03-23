@@ -87,6 +87,9 @@ export function createCastingStateProvider(
     togglePictureInPicture() {
       // no picture in picture while casting
     },
+    setPlaybackSpeed(num) {
+      this.setPlaybackSpeed(num);
+    },
     async setVolume(v) {
       // clamp time between 0 and 1
       let volume = Math.min(v, 1);

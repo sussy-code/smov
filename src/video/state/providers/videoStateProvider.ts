@@ -228,6 +228,10 @@ export function createVideoStateProvider(
         }
       }
     },
+    setPlaybackSpeed(num) {
+      player.playbackRate = num;
+      state.mediaPlaying.playbackSpeed = num;
+    },
     providerStart() {
       this.setVolume(getStoredVolume());
 

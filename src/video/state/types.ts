@@ -42,6 +42,7 @@ export type VideoPlayerState = {
     isFirstLoading: boolean; // first buffering of the video, when set to false the video can start playing
     hasPlayedOnce: boolean; // has the video played at all?
     volume: number;
+    playbackSpeed: number;
   };
 
   // state related to video progress
