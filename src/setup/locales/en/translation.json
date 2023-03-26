@@ -80,7 +80,7 @@
       "noCaptions": "No captions",
       "linkedCaptions": "Linked captions",
       "customCaption": "Custom caption",
-      "uploadCustomCaption": "Upload caption (SRT, VTT)",
+      "uploadCustomCaption": "Upload caption",
       "noEmbeds": "No embeds were found for this source",
       "errors": {
         "loadingWentWong": "Something went wrong loading the episodes for {{seasonTitle}}",

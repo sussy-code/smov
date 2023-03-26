@@ -62,7 +62,7 @@
       "noCaptions": "Pas de sous-titres",
       "linkedCaptions": "Sous-titres liés",
       "customCaption": "Sous-titres personnalisés",
-      "uploadCustomCaption": "Télécharger des sous-titres (SRT, VTT)",
+      "uploadCustomCaption": "Télécharger des sous-titres",
       "noEmbeds": "Aucun contenu intégré n'a été trouvé pour cette source",
       "errors": {
         "loadingWentWong": "Un problème est survenu lors du chargement des épisodes pour {{seasonTitle}}",

@@ -1,7 +1,7 @@
 import { Transition } from "@/components/Transition";
 import { useSettings } from "@/state/settings";
-import { sanitize } from "@/backend/helpers/captions";
-import { parse, Cue } from "node-webvtt";
+import { sanitize, parseSubtitles } from "@/backend/helpers/captions";
+import { ContentCaption } from "subsrt-ts/dist/types/handler";
 import { useRef } from "react";
 import { useAsync } from "react-use";
 import { useVideoPlayerDescriptor } from "../../state/hooks";
@@ -48,16 +48,18 @@ export function CaptionRendererAction({
   const source = useSource(descriptor).source;
   const videoTime = useProgress(descriptor).time;
   const { captionSettings } = useSettings();
-  const captions = useRef<Cue[]>([]);
+  const captions = useRef<ContentCaption[]>([]);
 
   useAsync(async () => {
-    const url = source?.caption?.url;
-    if (url) {
-      // Is there a better way?
-      const result = await fetch(url);
-      // Uses UTF-8 by default
+    const blobUrl = source?.caption?.url;
+    if (blobUrl) {
+      const result = await fetch(blobUrl);
       const text = await result.text();
-      captions.current = parse(text, { strict: false }).cues;
+      try {
+        captions.current = parseSubtitles(text);
+      } catch (error) {
+        captions.current = [];
+      }
     } else {
       captions.current = [];
     }
@@ -65,8 +67,8 @@ export function CaptionRendererAction({
 
   if (!captions.current.length) return null;
   const isVisible = (start: number, end: number): boolean => {
-    const delayedStart = start + captionSettings.delay;
-    const delayedEnd = end + captionSettings.delay;
+    const delayedStart = start / 1000 + captionSettings.delay;
+    const delayedEnd = end / 1000 + captionSettings.delay;
     return (
       Math.max(0, delayedStart) <= videoTime &&
       Math.max(0, delayedEnd) >= videoTime
@@ -82,9 +84,9 @@ export function CaptionRendererAction({
       show
     >
       {captions.current.map(
-        ({ identifier, end, start, text }) =>
+        ({ start, end, content }) =>
           isVisible(start, end) && (
-            <CaptionCue key={identifier || `${start}-${end}`} text={text} />
+            <CaptionCue key={`${start}-${end}`} text={content} />
           )
       )}
     </Transition>

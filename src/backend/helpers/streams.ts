@@ -20,7 +20,7 @@ export enum MWStreamQuality {
 export type MWCaption = {
   needsProxy?: boolean;
   url: string;
-  type: MWCaptionType;
+  type?: MWCaptionType;
   langIso: string;
 };
 
