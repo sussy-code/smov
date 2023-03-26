@@ -10,12 +10,13 @@ import { MWMediaType } from "../metadata/types";
 
 const flixHqBase = "https://api.consumet.org/meta/tmdb";
 
+type FlixHQMediaType = "Movie" | "TV Series";
 interface FLIXMediaBase {
   id: number;
   title: string;
   url: string;
   image: string;
-  type: "Movie" | "TV Series";
+  type: FlixHQMediaType;
   releaseDate: string;
 }
 
@@ -38,9 +39,9 @@ const qualityMap: Record<string, MWStreamQuality> = {
   "1080": MWStreamQuality.Q1080P,
 };
 
-enum FlixHQMediaType {
-  MOVIE = "movie",
-  SERIES = "series",
+function flixTypeToMWType(type: FlixHQMediaType) {
+  if (type === "Movie") return MWMediaType.MOVIE;
+  return MWMediaType.SERIES;
 }
 
 registerProvider({
@@ -48,7 +49,6 @@ registerProvider({
   displayName: "FlixHQ",
   rank: 100,
   type: [MWMediaType.MOVIE, MWMediaType.SERIES],
-
   async scrape({ media, episode, progress }) {
     if (!this.type.includes(media.meta.type)) {
       throw new Error("Unsupported type");
@@ -65,9 +65,11 @@ registerProvider({
       if (v.type !== "Movie" && v.type !== "TV Series") return false;
       return (
         compareTitle(v.title, media.meta.title) &&
+        flixTypeToMWType(v.type) === media.meta.type &&
         v.releaseDate === media.meta.year
       );
     });
+
     if (!foundItem) throw new Error("No watchable item found");
 
     // get media info
@@ -75,15 +77,12 @@ registerProvider({
     const mediaInfo = await proxiedFetch<any>(`/info/${foundItem.id}`, {
       baseURL: flixHqBase,
       params: {
-        type:
-          media.meta.type === MWMediaType.MOVIE
-            ? FlixHQMediaType.MOVIE
-            : FlixHQMediaType.SERIES,
+        type: flixTypeToMWType(foundItem.type),
       },
     });
     if (!mediaInfo.id) throw new Error("No watchable item found");
     // get stream info from media
-    progress(75);
+    progress(50);
 
     let episodeId: string | undefined;
     if (media.meta.type === MWMediaType.MOVIE) {
@@ -98,7 +97,7 @@ registerProvider({
       episodeId = season.episodes.find((o: any) => o.episode === episodeNo).id;
     }
     if (!episodeId) throw new Error("No watchable item found");
-
+    progress(75);
     const watchInfo = await proxiedFetch<any>(`/watch/${episodeId}`, {
       baseURL: flixHqBase,
       params: {
