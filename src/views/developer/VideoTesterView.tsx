@@ -64,8 +64,8 @@ export function VideoTesterView() {
           />
           <SourceController
             source={video.streamUrl}
-            type={MWStreamType.MP4}
-            quality={MWStreamQuality.Q720P}
+            type={videoType}
+            quality={MWStreamQuality.QUNKNOWN}
           />
         </VideoPlayer>
       </div>
