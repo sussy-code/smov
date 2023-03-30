@@ -63,6 +63,14 @@ export function KeyboardShortcutsAction() {
           toggleVolume();
           break;
 
+        case "arrowdown":
+          controls.setVolume(Math.max(mediaPlaying.volume - 0.1, 0));
+          break;
+
+        case "arrowup":
+          controls.setVolume(Math.min(mediaPlaying.volume + 0.1, 1));
+          break;
+
         // Do a barrel Roll!
         case "r":
           if (isRolling || evt.ctrlKey || evt.metaKey) return;
