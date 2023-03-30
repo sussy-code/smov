@@ -88,7 +88,21 @@ export function createCastingStateProvider(
       // no picture in picture while casting
     },
     setPlaybackSpeed(num) {
-      this.setPlaybackSpeed(num);
+      const mediaInfo = new chrome.cast.media.MediaInfo(
+        state.meta?.meta.meta.id ?? "video",
+        "video/mp4"
+      );
+      (mediaInfo as any).contentUrl = state.source?.url;
+      mediaInfo.streamType = chrome.cast.media.StreamType.BUFFERED;
+      mediaInfo.metadata = new chrome.cast.media.MovieMediaMetadata();
+      mediaInfo.metadata.title = state.meta?.meta.meta.title ?? "";
+      mediaInfo.customData = {
+        playbackRate: num,
+      };
+      const request = new chrome.cast.media.LoadRequest(mediaInfo);
+      request.autoplay = true;
+      const session = ins?.getCurrentSession();
+      session?.loadMedia(request);
     },
     async setVolume(v) {
       // clamp time between 0 and 1
@@ -117,7 +131,7 @@ export function createCastingStateProvider(
       movieMeta.title = state.meta?.meta.meta.title ?? "";
 
       const mediaInfo = new chrome.cast.media.MediaInfo(
-        state.meta?.meta.meta.id ?? "hello",
+        state.meta?.meta.meta.id ?? "video",
         "video/mp4"
       );
       (mediaInfo as any).contentUrl = source?.source;

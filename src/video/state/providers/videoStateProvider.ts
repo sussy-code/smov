@@ -280,6 +280,10 @@ export function createVideoStateProvider(
         state.mediaPlaying.isLoading = false;
         updateMediaPlaying(descriptor, state);
       };
+      const ratechange = () => {
+        state.mediaPlaying.playbackSpeed = player.playbackRate;
+        updateMediaPlaying(descriptor, state);
+      };
       const fullscreenchange = () => {
         state.interface.isFullscreen = !!document.fullscreenElement;
         updateInterface(descriptor, state);
@@ -328,6 +332,7 @@ export function createVideoStateProvider(
       player.addEventListener("timeupdate", timeupdate);
       player.addEventListener("loadedmetadata", loadedmetadata);
       player.addEventListener("canplay", canplay);
+      player.addEventListener("ratechange", ratechange);
       fscreen.addEventListener("fullscreenchange", fullscreenchange);
       player.addEventListener("error", error);
       player.addEventListener(
