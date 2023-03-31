@@ -6,7 +6,7 @@ function getInitialValue(params: { type: string; query: string }) {
   const type =
     Object.values(MWMediaType).find((v) => params.type === v) ||
     MWMediaType.MOVIE;
-  const searchQuery = params.query || "";
+  const searchQuery = decodeURIComponent(params.query || "");
   return { type, searchQuery };
 }
 
