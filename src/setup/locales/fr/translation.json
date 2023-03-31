@@ -1,0 +1,97 @@
+{
+  "global": {
+    "name": "movie-web"
+  },
+  "search": {
+    "loading_series": "Recherche de votre série préférée...",
+    "loading_movie": "Recherche de vos films préférés...",
+    "loading": "Chargement...",
+    "allResults": "C'est tout ce que nous avons!",
+    "noResults": "Nous n'avons rien trouvé!",
+    "allFailed": "Le média n'a pas été trouvé, veuillez réessayez!",
+    "headingTitle": "Résultats de la recherche",
+    "bookmarks": "Favoris",
+    "continueWatching": "Continuer le visionnage",
+    "title": "Que voulez-vous voir?",
+    "placeholder": "Que voulez-vous voir?"
+  },
+  "media": {
+    "title": "Impossible de trouver ce média",
+    "description": "Nous n'avons pas pu trouver le média que vous avez demandé. Soit il a été supprimé, soit vous avez altéré l'URL."
+  },
+  "provider": {
+    "title": "Ce fournisseur a été désactivé",
+    "description": "Nous avons eu des problèmes avec le fournisseur ou bien il était trop instable pour être utilisé, donc nous avons dû le désactiver."
+  },
+  "page": {
+    "title": "Impossible de trouver cette page",
+    "description": "Nous avons cherché partout : sous les poubelles, dans le placard, derrière le proxy, mais nous n'avons finalement pas pu trouver la page que vous recherchez."
+  },
+  "searchBar": {
+    "movie": "Film",
+    "series": "Série",
+    "Search": "Rechercher"
+  },
+  "videoPlayer": {
+    "findingBestVideo": "Recherche de la meilleure vidéo pour vous",
+    "noVideos": "Désolé, nous n'avons pas pu trouver de vidéos pour vous",
+    "loading": "Chargement...",
+    "backToHome": "Retour à la page d'accueil",
+    "backToHomeShort": "Retour",
+    "seasonAndEpisode": "S{{season}} E{{episode}}",
+    "buttons": {
+      "episodes": "Épisodes",
+      "source": "Source",
+      "captions": "Sous-titres",
+      "download": "Télécharger",
+      "settings": "Paramètres",
+      "pictureInPicture": "Image dans l'image"
+    },
+    "popouts": {
+      "sources": "Sources",
+      "seasons": "Saisons",
+      "captions": "Sous-titres",
+      "captionPreferences": {
+        "title": "Personnaliser",
+        "delay": "Délai",
+        "fontSize": "Taille",
+        "opacity": "Opacité",
+        "color": "Couleur"
+      },
+      "episode": "E{{index}} - {{title}}",
+      "noCaptions": "Pas de sous-titres",
+      "linkedCaptions": "Sous-titres liés",
+      "customCaption": "Sous-titres personnalisés",
+      "uploadCustomCaption": "Télécharger des sous-titres (SRT, VTT)",
+      "noEmbeds": "Aucun contenu intégré n'a été trouvé pour cette source",
+      "errors": {
+        "loadingWentWong": "Un problème est survenu lors du chargement des épisodes pour {{seasonTitle}}",
+        "embedsError": "Un problème est survenu lors du chargement des contenus intégrés pour cet élément que vous aimez"
+      },
+      "descriptions": {
+        "sources": "Quel fournisseur voulez-vous utiliser ?",
+        "embeds": "Choisissez quelle vidéo regarder",
+        "seasons": "Choisissez la saison que vous voulez regarder",
+        "episode": "Sélectionnez un épisode",
+        "captions": "Choisissez une langue de sous-titres",
+        "captionPreferences": "Personnalisez l'apparence des sous-titres"
+      }
+    },
+    "errors": {
+      "fatalError": "Le lecteur vidéo a rencontré une erreur fatale, veuillez la signaler au serveur <0>Discord</0> ou sur <1>GitHub</1>."
+    }
+  },
+  "v3": {
+    "newSiteTitle": "Nouvelle version disponible!",
+    "newDomain": "https://movie-web.app",
+    "newDomainText": "movie-web déménagera bientôt vers un nouveau domaine : <0>https://movie-web.app</0>. Veillez à mettre à jour tous vos favoris car <1>l'ancien site web cessera de fonctionner le {{date}}.</1>",
+    "tireless": "Nous avons travaillé sans relâche sur cette nouvelle mise à jour et nous espérons que vous apprécierez ce que nous avons préparé ces derniers mois.",
+    "leaveAnnouncement": "Emmenez-moi là!"
+  },
+  "casting": {
+    "casting": "Transmission à l'appareil..."
+  },
+  "errors": {
+    "offline": "Vérifiez votre connexion internet"
+  }
+}

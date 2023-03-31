@@ -285,7 +285,9 @@ export function createVideoStateProvider(
         updateMediaPlaying(descriptor, state);
       };
       const fullscreenchange = () => {
-        state.interface.isFullscreen = !!document.fullscreenElement;
+        state.interface.isFullscreen =
+          !!document.fullscreenElement || // other browsers
+          !!(document as any).webkitFullscreenElement; // safari
         updateInterface(descriptor, state);
       };
       const volumechange = async () => {
