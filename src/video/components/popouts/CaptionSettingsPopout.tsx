@@ -30,7 +30,7 @@ export function CaptionSettingsPopout(props: {
       />
       <FloatingCardView.Content>
         <Slider
-          label={t("videoPlayer.popouts.captionPreferences.delay")}
+          label={t("videoPlayer.popouts.captionPreferences.delay") as string}
           max={10}
           min={-10}
           step={0.1}
@@ -47,7 +47,7 @@ export function CaptionSettingsPopout(props: {
           onChange={(e) => setCaptionFontSize(e.target.valueAsNumber)}
         />
         <Slider
-          label={t("videoPlayer.popouts.captionPreferences.opacity")}
+          label={t("videoPlayer.popouts.captionPreferences.opacity") as string}
           step={1}
           min={0}
           max={255}

@@ -1,7 +1,7 @@
 import { ChangeEventHandler, useEffect, useRef } from "react";
 
 export type SliderProps = {
-  label: string;
+  label?: string;
   min: number;
   max: number;
   step: number;
@@ -23,11 +23,13 @@ export function Slider(props: SliderProps) {
   return (
     <div className="mb-6 flex flex-row gap-4">
       <div className="flex w-full flex-col gap-2">
-        <label className="font-bold">{props.label}</label>
+        {props.label ? (
+          <label className="font-bold">{props.label}</label>
+        ) : null}
         <input
           type="range"
           ref={ref}
-          className="styled-slider slider-progress"
+          className="styled-slider slider-progress mt-[20px]"
           onChange={props.onChange}
           value={props.value}
           max={props.max}

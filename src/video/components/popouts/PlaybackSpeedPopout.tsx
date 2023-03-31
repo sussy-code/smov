@@ -56,7 +56,6 @@ export function PlaybackSpeedPopout(props: {
         <PopoutSection className="pt-0">
           <div>
             <Slider
-              label={t("videoPlayer.popouts.speed")}
               min={0.1}
               max={10}
               step={0.1}
