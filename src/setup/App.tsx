@@ -40,7 +40,7 @@ function App() {
                 />
 
                 {/* other */}
-                {process.env.NODE_ENV === "development" && (
+                {process.env.NODE_ENV === "development" ? (
                   <>
                     <Route
                       exact
@@ -78,7 +78,7 @@ function App() {
                       )}
                     />
                   </>
-                )}
+                ) : null}
                 <Route path="*" component={NotFoundPage} />
               </Switch>
             </Layout>
