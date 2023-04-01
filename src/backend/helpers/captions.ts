@@ -1,12 +1,10 @@
 import { mwFetch, proxiedFetch } from "@/backend/helpers/fetch";
 import { MWCaption } from "@/backend/helpers/streams";
 import DOMPurify from "dompurify";
-import { list, parse, detect } from "subsrt-ts";
+import { parse, detect, list } from "subsrt-ts";
 import { ContentCaption } from "subsrt-ts/dist/types/handler";
 
-export const subtitleTypeList = list()
-  .map((v) => `.${v}`)
-  .join(",");
+export const subtitleTypeList = list().map((type) => `.${type}`);
 export const sanitize = DOMPurify.sanitize;
 export async function getCaptionUrl(caption: MWCaption): Promise<string> {
   if (caption.url.startsWith("blob:")) return caption.url;
@@ -33,7 +31,7 @@ export function parseSubtitles(text: string): ContentCaption[] {
   if (detect(text) === "") {
     throw new Error("Invalid subtitle format");
   }
-  return parse(text)
-    .filter((cue) => cue.type === "caption")
-    .map((cue) => cue as ContentCaption);
+  return parse(text).filter(
+    (cue) => cue.type === "caption"
+  ) as ContentCaption[];
 }

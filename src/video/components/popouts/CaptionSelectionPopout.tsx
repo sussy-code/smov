@@ -100,7 +100,7 @@ export function CaptionSelectionPopout(props: {
             <input
               className="hidden"
               ref={customCaptionUploadElement}
-              accept={subtitleTypeList}
+              accept={subtitleTypeList.join(",")}
               type="file"
               onChange={(e) => {
                 if (!e.target.files) return;
