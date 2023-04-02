@@ -6,6 +6,7 @@ export enum MWStreamType {
 export enum MWCaptionType {
   VTT = "vtt",
   SRT = "srt",
+  UNKNOWN = "unknown",
 }
 
 export enum MWStreamQuality {
@@ -20,7 +21,7 @@ export enum MWStreamQuality {
 export type MWCaption = {
   needsProxy?: boolean;
   url: string;
-  type?: MWCaptionType;
+  type: MWCaptionType;
   langIso: string;
 };
 

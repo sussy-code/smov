@@ -3,7 +3,7 @@ import {
   parseSubtitles,
   subtitleTypeList,
 } from "@/backend/helpers/captions";
-import { MWCaption } from "@/backend/helpers/streams";
+import { MWCaption, MWCaptionType } from "@/backend/helpers/streams";
 import { Icon, Icons } from "@/components/Icon";
 import { FloatingCardView } from "@/components/popout/FloatingCard";
 import { FloatingView } from "@/components/popout/FloatingView";
@@ -47,7 +47,10 @@ export function CaptionSelectionPopout(props: {
       const text = await result.text();
       parseSubtitles(text); // This will throw if the file is invalid
       controls.setCaption(id, blobUrl);
-      controls.closePopout();
+      // sometimes this doesn't work, so we add a small delay
+      setTimeout(() => {
+        controls.closePopout();
+      }, 100);
     }
   );
 
@@ -107,6 +110,7 @@ export function CaptionSelectionPopout(props: {
                 const customSubtitle = {
                   langIso: "custom",
                   url: URL.createObjectURL(e.target.files[0]),
+                  type: MWCaptionType.UNKNOWN,
                 };
                 setCaption(customSubtitle, false);
               }}
