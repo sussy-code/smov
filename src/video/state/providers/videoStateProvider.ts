@@ -231,6 +231,7 @@ export function createVideoStateProvider(
     setPlaybackSpeed(num) {
       player.playbackRate = num;
       state.mediaPlaying.playbackSpeed = num;
+      updateMediaPlaying(descriptor, state);
     },
     providerStart() {
       this.setVolume(getStoredVolume());
