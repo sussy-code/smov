@@ -6,6 +6,7 @@ export enum MWStreamType {
 export enum MWCaptionType {
   VTT = "vtt",
   SRT = "srt",
+  UNKNOWN = "unknown",
 }
 
 export enum MWStreamQuality {

@@ -1,9 +1,9 @@
 import {
   getCaptionUrl,
-  convertCustomCaptionFileToWebVTT,
-  CUSTOM_CAPTION_ID,
+  parseSubtitles,
+  subtitleTypeList,
 } from "@/backend/helpers/captions";
-import { MWCaption } from "@/backend/helpers/streams";
+import { MWCaption, MWCaptionType } from "@/backend/helpers/streams";
 import { Icon, Icons } from "@/components/Icon";
 import { FloatingCardView } from "@/components/popout/FloatingCard";
 import { FloatingView } from "@/components/popout/FloatingView";
@@ -13,10 +13,11 @@ import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useControls } from "@/video/state/logic/controls";
 import { useMeta } from "@/video/state/logic/meta";
 import { useSource } from "@/video/state/logic/source";
-import { ChangeEvent, useMemo, useRef } from "react";
+import { useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { PopoutListEntry, PopoutSection } from "./PopoutUtils";
 
+const customCaption = "external-custom";
 function makeCaptionId(caption: MWCaption, isLinked: boolean): string {
   return isLinked ? `linked-${caption.langIso}` : `external-${caption.langIso}`;
 }
@@ -41,35 +42,20 @@ export function CaptionSelectionPopout(props: {
     async (caption: MWCaption, isLinked: boolean) => {
       const id = makeCaptionId(caption, isLinked);
       loadingId.current = id;
-      controls.setCaption(id, await getCaptionUrl(caption));
-      controls.closePopout();
+      const blobUrl = await getCaptionUrl(caption);
+      const result = await fetch(blobUrl);
+      const text = await result.text();
+      parseSubtitles(text); // This will throw if the file is invalid
+      controls.setCaption(id, blobUrl);
+      // sometimes this doesn't work, so we add a small delay
+      setTimeout(() => {
+        controls.closePopout();
+      }, 100);
     }
   );
 
   const currentCaption = source.source?.caption?.id;
   const customCaptionUploadElement = useRef<HTMLInputElement>(null);
-  const [setCustomCaption, loadingCustomCaption, errorCustomCaption] =
-    useLoading(async (captionFile: File) => {
-      if (
-        !captionFile.name.endsWith(".srt") &&
-        !captionFile.name.endsWith(".vtt")
-      ) {
-        throw new Error("Only SRT or VTT files are allowed");
-      }
-      controls.setCaption(
-        CUSTOM_CAPTION_ID,
-        await convertCustomCaptionFileToWebVTT(captionFile)
-      );
-      controls.closePopout();
-    });
-
-  async function handleUploadCaption(e: ChangeEvent<HTMLInputElement>) {
-    if (!e.target.files) {
-      return;
-    }
-    const captionFile = e.target.files[0];
-    setCustomCaption(captionFile);
-  }
   return (
     <FloatingView
       {...props.router.pageProps(props.prefix)}
@@ -105,23 +91,29 @@ export function CaptionSelectionPopout(props: {
             {t("videoPlayer.popouts.noCaptions")}
           </PopoutListEntry>
           <PopoutListEntry
-            key={CUSTOM_CAPTION_ID}
-            active={currentCaption === CUSTOM_CAPTION_ID}
-            loading={loadingCustomCaption}
-            errored={!!errorCustomCaption}
-            onClick={() => {
-              customCaptionUploadElement.current?.click();
-            }}
+            key={customCaption}
+            active={currentCaption === customCaption}
+            loading={loading && loadingId.current === customCaption}
+            errored={error && loadingId.current === customCaption}
+            onClick={() => customCaptionUploadElement.current?.click()}
           >
-            {currentCaption === CUSTOM_CAPTION_ID
+            {currentCaption === customCaption
               ? t("videoPlayer.popouts.customCaption")
               : t("videoPlayer.popouts.uploadCustomCaption")}
             <input
-              ref={customCaptionUploadElement}
-              type="file"
-              onChange={handleUploadCaption}
               className="hidden"
-              accept=".vtt, .srt"
+              ref={customCaptionUploadElement}
+              accept={subtitleTypeList.join(",")}
+              type="file"
+              onChange={(e) => {
+                if (!e.target.files) return;
+                const customSubtitle = {
+                  langIso: "custom",
+                  url: URL.createObjectURL(e.target.files[0]),
+                  type: MWCaptionType.UNKNOWN,
+                };
+                setCaption(customSubtitle, false);
+              }}
             />
           </PopoutListEntry>
         </PopoutSection>
