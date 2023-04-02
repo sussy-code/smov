@@ -105,7 +105,7 @@ function EmbedScraperSelector(props: EmbedScraperSelectorProps) {
   );
 }
 
-export function EmbedTesterView() {
+export default function EmbedTesterView() {
   const [embed, setEmbed] = useState<MWEmbed | null>(null);
   const [embedScraperId, setEmbedScraperId] = useState<string | null>(null);
   const embedScraper = useMemo(
