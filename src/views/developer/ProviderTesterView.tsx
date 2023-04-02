@@ -96,7 +96,7 @@ function ProviderSelector(props: ProviderSelectorProps) {
   );
 }
 
-export function ProviderTesterView() {
+export default function ProviderTesterView() {
   const [media, setMedia] = useState<DetailedMeta | null>(null);
   const [providerId, setProviderId] = useState<string | null>(null);
 

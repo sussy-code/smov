@@ -1,4 +1,4 @@
 // simple empty view, perfect for putting in tests
-export function TestView() {
+export default function TestView() {
   return <div />;
 }
