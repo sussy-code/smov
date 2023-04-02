@@ -4,7 +4,7 @@ import { Link } from "@/components/text/Link";
 import { conf } from "@/setup/config";
 import { Component } from "react";
 import { Trans } from "react-i18next";
-import type { ReactNode } from "react/index";
+import type { ReactNode } from "react-router-dom/node_modules/@types/react/index";
 import { VideoPlayerHeader } from "./VideoPlayerHeader";
 
 interface ErrorBoundaryState {
