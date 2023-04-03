@@ -1,12 +1,12 @@
 import { compareTitle } from "@/utils/titleMatch";
 import { proxiedFetch } from "../helpers/fetch";
 import { registerProvider } from "../helpers/register";
-import {
-  MWCaptionType,
-  MWStreamQuality,
-  MWStreamType,
-} from "../helpers/streams";
+import { MWCaption, MWStreamQuality, MWStreamType } from "../helpers/streams";
 import { MWMediaType } from "../metadata/types";
+import {
+  getMWCaptionTypeFromUrl,
+  isSupportedSubtitle,
+} from "../helpers/captions";
 
 const flixHqBase = "https://api.consumet.org/meta/tmdb";
 
@@ -19,15 +19,19 @@ interface FLIXMediaBase {
   type: FlixHQMediaType;
   releaseDate: string;
 }
-
-function castSubtitles({ url, lang }: { url: string; lang: string }) {
+interface FLIXSubType {
+  url: string;
+  lang: string;
+}
+function convertSubtitles({ url, lang }: FLIXSubType): MWCaption | null {
+  if (lang.includes("(maybe)")) return null;
+  const supported = isSupportedSubtitle(url);
+  if (!supported) return null;
+  const type = getMWCaptionTypeFromUrl(url);
   return {
     url,
     langIso: lang,
-    type:
-      url.substring(url.length - 3) === "vtt"
-        ? MWCaptionType.VTT
-        : MWCaptionType.SRT,
+    type,
   };
 }
 
@@ -116,11 +120,7 @@ registerProvider({
         streamUrl: source.url,
         quality: qualityMap[source.quality],
         type: source.isM3U8 ? MWStreamType.HLS : MWStreamType.MP4,
-        captions: watchInfo.subtitles
-          .filter(
-            (x: { url: string; lang: string }) => !x.lang.includes("(maybe)")
-          )
-          .map(castSubtitles),
+        captions: watchInfo.subtitles.map(convertSubtitles).filter(Boolean),
       },
     };
   },

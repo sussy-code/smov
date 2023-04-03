@@ -11,6 +11,10 @@ import {
   MWStreamType,
 } from "@/backend/helpers/streams";
 import { compareTitle } from "@/utils/titleMatch";
+import {
+  getMWCaptionTypeFromUrl,
+  isSupportedSubtitle,
+} from "@/backend/helpers/captions";
 
 const nanoid = customAlphabet("0123456789abcdef", 32);
 
@@ -111,6 +115,30 @@ const getBestQuality = (list: any[]) => {
   );
 };
 
+const convertSubtitles = (subtitleGroup: any): MWCaption | null => {
+  let subtitles = subtitleGroup.subtitles;
+  subtitles = subtitles
+    .map((subFile: any) => {
+      const supported = isSupportedSubtitle(subFile.file_path);
+      if (!supported) return null;
+      const type = getMWCaptionTypeFromUrl(subFile.file_path);
+      return {
+        ...subFile,
+        type: type as MWCaptionType,
+      };
+    })
+    .filter(Boolean);
+
+  if (!subtitles.length) return null;
+  const subFile = subtitles[0];
+  return {
+    needsProxy: true,
+    langIso: subtitleGroup.language,
+    url: subFile.file_path,
+    type: subFile.type,
+  };
+};
+
 registerProvider({
   id: "superstream",
   displayName: "Superstream",
@@ -164,16 +192,9 @@ registerProvider({
 
       const subtitleRes = (await get(subtitleApiQuery)).data;
 
-      const mappedCaptions = subtitleRes.list.map(
-        (subtitle: any): MWCaption => {
-          return {
-            needsProxy: true,
-            langIso: subtitle.language,
-            url: subtitle.subtitles[0].file_path,
-            type: MWCaptionType.SRT,
-          };
-        }
-      );
+      const mappedCaptions = subtitleRes.list
+        .map(convertSubtitles)
+        .filter(Boolean);
 
       return {
         embeds: [],
@@ -224,24 +245,9 @@ registerProvider({
     };
 
     const subtitleRes = (await get(subtitleApiQuery)).data;
-
-    const mappedCaptions = subtitleRes.list.map(
-      (subtitle: any): MWCaption | null => {
-        const sub = subtitle;
-        sub.subtitles = subtitle.subtitles.filter((subFile: any) => {
-          const extension = subFile.file_path.substring(
-            sub.file_path.length - 3
-          );
-          return [MWCaptionType.SRT, MWCaptionType.VTT].includes(extension);
-        });
-        return {
-          needsProxy: true,
-          langIso: subtitle.language,
-          url: sub.subtitles[0].file_path,
-          type: MWCaptionType.SRT,
-        };
-      }
-    );
+    const mappedCaptions = subtitleRes.list
+      .map(convertSubtitles)
+      .filter(Boolean);
     return {
       embeds: [],
       stream: {
