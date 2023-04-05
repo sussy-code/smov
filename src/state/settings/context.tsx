@@ -1,14 +1,15 @@
 import { useStore } from "@/utils/storage";
 import { createContext, ReactNode, useContext, useMemo } from "react";
+import { LangCode } from "@/setup/iso6391";
 import { SettingsStore } from "./store";
 import { MWSettingsData } from "./types";
 
 interface MWSettingsDataSetters {
-  setLanguage(language: string): void;
+  setCaptionLanguage(language: LangCode): void;
   setCaptionDelay(delay: number): void;
   setCaptionColor(color: string): void;
   setCaptionFontSize(size: number): void;
-  setCaptionBackgroundColor(backgroundColor: string): void;
+  setCaptionBackgroundColor(backgroundColor: number): void;
 }
 type MWSettingsDataWrapper = MWSettingsData & MWSettingsDataSetters;
 const SettingsContext = createContext<MWSettingsDataWrapper>(null as any);
@@ -17,16 +18,15 @@ export function SettingsProvider(props: { children: ReactNode }) {
     return Math.max(min, Math.min(value, max));
   }
   const [settings, setSettings] = useStore(SettingsStore);
-
   const context: MWSettingsDataWrapper = useMemo(() => {
     const settingsContext: MWSettingsDataWrapper = {
       ...settings,
-      setLanguage(language) {
+      setCaptionLanguage(language) {
         setSettings((oldSettings) => {
-          return {
-            ...oldSettings,
-            language,
-          };
+          const captionSettings = oldSettings.captionSettings;
+          captionSettings.language = language;
+          const newSettings = oldSettings;
+          return newSettings;
         });
       },
       setCaptionDelay(delay: number) {
@@ -56,7 +56,10 @@ export function SettingsProvider(props: { children: ReactNode }) {
       setCaptionBackgroundColor(backgroundColor) {
         setSettings((oldSettings) => {
           const style = oldSettings.captionSettings.style;
-          style.backgroundColor = backgroundColor;
+          style.backgroundColor = `${style.backgroundColor.substring(
+            0,
+            7
+          )}${backgroundColor.toString(16).padStart(2, "0")}`;
           const newSettings = oldSettings;
           return newSettings;
         });

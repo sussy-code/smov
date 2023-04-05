@@ -1,15 +1,39 @@
 import { createVersionedStore } from "@/utils/storage";
-import { MWSettingsData } from "./types";
+import { MWSettingsData, MWSettingsDataV1 } from "./types";
 
 export const SettingsStore = createVersionedStore<MWSettingsData>()
   .setKey("mw-settings")
   .addVersion({
     version: 0,
-    create(): MWSettingsData {
+    create(): MWSettingsDataV1 {
       return {
         language: "en",
         captionSettings: {
           delay: 0,
+          style: {
+            color: "#ffffff",
+            fontSize: 25,
+            backgroundColor: "#00000096",
+          },
+        },
+      };
+    },
+    migrate(data: MWSettingsDataV1): MWSettingsData {
+      return {
+        captionSettings: {
+          language: "none",
+          ...data.captionSettings,
+        },
+      };
+    },
+  })
+  .addVersion({
+    version: 1,
+    create(): MWSettingsData {
+      return {
+        captionSettings: {
+          delay: 0,
+          language: "none",
           style: {
             color: "#ffffff",
             fontSize: 25,
