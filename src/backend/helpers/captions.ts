@@ -4,6 +4,10 @@ import DOMPurify from "dompurify";
 import { parse, detect, list } from "subsrt-ts";
 import { ContentCaption } from "subsrt-ts/dist/types/handler";
 
+export const customCaption = "external-custom";
+export function makeCaptionId(caption: MWCaption, isLinked: boolean): string {
+  return isLinked ? `linked-${caption.langIso}` : `external-${caption.langIso}`;
+}
 export const subtitleTypeList = list().map((type) => `.${type}`);
 export const sanitize = DOMPurify.sanitize;
 export async function getCaptionUrl(caption: MWCaption): Promise<string> {

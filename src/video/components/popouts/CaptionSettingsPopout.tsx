@@ -106,14 +106,7 @@ export function CaptionSettingsPopout(props: {
             captionSettings.style.backgroundColor.substring(7, 9),
             16
           )}
-          onChange={(e) =>
-            setCaptionBackgroundColor(
-              `${captionSettings.style.backgroundColor.substring(
-                0,
-                7
-              )}${e.target.valueAsNumber.toString(16)}`
-            )
-          }
+          onChange={(e) => setCaptionBackgroundColor(e.target.valueAsNumber)}
         />
         <div className="flex flex-row justify-between">
           <label className="font-bold" htmlFor="color">
