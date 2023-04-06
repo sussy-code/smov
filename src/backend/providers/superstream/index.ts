@@ -230,7 +230,7 @@ registerProvider({
         const sub = subtitle;
         sub.subtitles = subtitle.subtitles.filter((subFile: any) => {
           const extension = subFile.file_path.substring(
-            sub.file_path.length - 3
+            subFile.file_path.length - 3
           );
           return [MWCaptionType.SRT, MWCaptionType.VTT].includes(extension);
         });

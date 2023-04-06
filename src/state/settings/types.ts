@@ -31,5 +31,6 @@ export interface MWSettingsDataV1 {
 }
 
 export interface MWSettingsData {
+  language: LangCode;
   captionSettings: CaptionSettings;
 }

@@ -20,6 +20,7 @@ export const SettingsStore = createVersionedStore<MWSettingsData>()
     },
     migrate(data: MWSettingsDataV1): MWSettingsData {
       return {
+        language: data.language,
         captionSettings: {
           language: "none",
           ...data.captionSettings,
@@ -31,6 +32,7 @@ export const SettingsStore = createVersionedStore<MWSettingsData>()
     version: 1,
     create(): MWSettingsData {
       return {
+        language: "en",
         captionSettings: {
           delay: 0,
           language: "none",

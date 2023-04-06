@@ -5,6 +5,7 @@ import { SettingsStore } from "./store";
 import { MWSettingsData } from "./types";
 
 interface MWSettingsDataSetters {
+  setLanguage(language: LangCode): void;
   setCaptionLanguage(language: LangCode): void;
   setCaptionDelay(delay: number): void;
   setCaptionColor(color: string): void;
@@ -21,6 +22,14 @@ export function SettingsProvider(props: { children: ReactNode }) {
   const context: MWSettingsDataWrapper = useMemo(() => {
     const settingsContext: MWSettingsDataWrapper = {
       ...settings,
+      setLanguage(language) {
+        setSettings((oldSettings) => {
+          return {
+            ...oldSettings,
+            language,
+          };
+        });
+      },
       setCaptionLanguage(language) {
         setSettings((oldSettings) => {
           const captionSettings = oldSettings.captionSettings;
