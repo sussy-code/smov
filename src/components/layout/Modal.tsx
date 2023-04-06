@@ -39,7 +39,7 @@ export function ModalCard(props: { className?: string; children?: ReactNode }) {
   return (
     <div
       className={[
-        "relative mx-2 max-w-[600px] overflow-hidden rounded-lg bg-denim-200 px-10 py-10",
+        "relative mx-2 w-[500px] overflow-hidden rounded-lg bg-denim-200 px-10 py-10 sm:w-[500px] md:w-[500px] lg:w-[1000px]",
         props.className,
       ].join(" ")}
     >
