@@ -16,7 +16,6 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "baseUrl": "./src",
-    "typeRoots": ["./src/@types"],
     "paths": {
       "@/*": ["./*"]
     },
