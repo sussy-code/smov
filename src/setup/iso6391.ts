@@ -184,7 +184,7 @@ export type LangCode =
   | "za"
   | "zh"
   | "zu";
-type CaptionLanguageOptions = {
+export type CaptionLanguageOption = {
   id: LangCode;
   name: string;
   englishName: string;
@@ -212,7 +212,7 @@ type CaptionLanguageOptions = {
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
-export const captionLanguages: CaptionLanguageOptions[] = [
+export const captionLanguages: CaptionLanguageOption[] = [
   {
     id: "none",
     englishName: "None",

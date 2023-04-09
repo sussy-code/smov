@@ -4,10 +4,18 @@ import { Modal, ModalCard } from "@/components/layout/Modal";
 import { useSettings } from "@/state/settings";
 import { useTranslation } from "react-i18next";
 import { CaptionCue } from "@/video/components/actions/CaptionRendererAction";
-import { Slider } from "@/video/components/popouts/CaptionSettingsPopout";
-import { LangCode, captionLanguages } from "@/setup/iso6391";
+import {
+  CaptionLanguageOption,
+  LangCode,
+  captionLanguages,
+} from "@/setup/iso6391";
 import { useMemo } from "react";
 import { appLanguageOptions } from "@/setup/i18n";
+import CaptionColorSelector, {
+  colors,
+} from "@/components/CaptionColorSelector";
+import { Slider } from "@/components/Slider";
+import { conf } from "@/setup/config";
 
 export default function SettingsModal(props: {
   onClose: () => void;
@@ -19,16 +27,18 @@ export default function SettingsModal(props: {
     setLanguage,
     setCaptionLanguage,
     setCaptionBackgroundColor,
-    setCaptionColor,
     setCaptionFontSize,
   } = useSettings();
   const { t, i18n } = useTranslation();
 
-  const colors = ["#ffffff", "#00ffff", "#ffff00"];
   const selectedCaptionLanguage = useMemo(
-    () => captionLanguages.find((l) => l.id === captionSettings.language)!,
+    () => captionLanguages.find((l) => l.id === captionSettings.language),
     [captionSettings.language]
-  );
+  ) as CaptionLanguageOption;
+  const appLanguage = useMemo(
+    () => appLanguageOptions.find((l) => l.id === language),
+    [language]
+  ) as CaptionLanguageOption;
   const captionBackgroundOpacity = (
     (parseInt(captionSettings.style.backgroundColor.substring(7, 9), 16) /
       255) *
@@ -54,9 +64,7 @@ export default function SettingsModal(props: {
                   {t("settings.language")}
                 </label>
                 <Dropdown
-                  selectedItem={
-                    appLanguageOptions.find((l) => l.id === language)!
-                  }
+                  selectedItem={appLanguage}
                   setSelectedItem={(val) => {
                     i18n.changeLanguage(val.id);
                     setLanguage(val.id as LangCode);
@@ -78,7 +86,11 @@ export default function SettingsModal(props: {
               </div>
               <div className="flex flex-col justify-between">
                 <Slider
-                  label="Size"
+                  label={
+                    t(
+                      "videoPlayer.popouts.captionPreferences.fontSize"
+                    ) as string
+                  }
                   min={14}
                   step={1}
                   max={60}
@@ -86,7 +98,11 @@ export default function SettingsModal(props: {
                   onChange={(e) => setCaptionFontSize(e.target.valueAsNumber)}
                 />
                 <Slider
-                  label={t("videoPlayer.popouts.captionPreferences.opacity")}
+                  label={
+                    t(
+                      "videoPlayer.popouts.captionPreferences.opacity"
+                    ) as string
+                  }
                   step={1}
                   min={0}
                   max={255}
@@ -105,30 +121,7 @@ export default function SettingsModal(props: {
                   </label>
                   <div className="flex flex-row gap-2">
                     {colors.map((color) => (
-                      <div
-                        className={`flex h-8 w-8 items-center justify-center rounded transition-[background-color,transform] duration-100 hover:bg-[#1c161b79] active:scale-110 ${
-                          color === captionSettings.style.color
-                            ? "bg-[#1C161B]"
-                            : ""
-                        }`}
-                        onClick={() => setCaptionColor(color)}
-                      >
-                        <div
-                          className="h-4 w-4 cursor-pointer appearance-none rounded-full"
-                          style={{
-                            backgroundColor: color,
-                          }}
-                        />
-                        <Icon
-                          className={[
-                            "absolute text-xs text-[#1C161B]",
-                            color === captionSettings.style.color
-                              ? ""
-                              : "hidden",
-                          ].join(" ")}
-                          icon={Icons.CHECKMARK}
-                        />
-                      </div>
+                      <CaptionColorSelector color={color} />
                     ))}
                   </div>
                 </div>
@@ -149,6 +142,7 @@ export default function SettingsModal(props: {
             </div>
           </div>
         </div>
+        <div className="float-right mt-1 text-sm">v{conf().APP_VERSION}</div>
       </ModalCard>
     </Modal>
   );

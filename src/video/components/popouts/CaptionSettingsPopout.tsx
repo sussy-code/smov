@@ -4,8 +4,10 @@ import { useFloatingRouter } from "@/hooks/useFloatingRouter";
 import { useSettings } from "@/state/settings";
 import { useTranslation } from "react-i18next";
 
-import { Icon, Icons } from "@/components/Icon";
 import { Slider } from "@/components/Slider";
+import CaptionColorSelector, {
+  colors,
+} from "@/components/CaptionColorSelector";
 
 export function CaptionSettingsPopout(props: {
   router: ReturnType<typeof useFloatingRouter>;
@@ -16,11 +18,9 @@ export function CaptionSettingsPopout(props: {
   const {
     captionSettings,
     setCaptionBackgroundColor,
-    setCaptionColor,
     setCaptionDelay,
     setCaptionFontSize,
   } = useSettings();
-  const colors = ["#ffffff", "#00ffff", "#ffff00"];
   return (
     <FloatingView {...props.router.pageProps(props.prefix)} width={375}>
       <FloatingCardView.Header
@@ -39,7 +39,7 @@ export function CaptionSettingsPopout(props: {
           onChange={(e) => setCaptionDelay(e.target.valueAsNumber)}
         />
         <Slider
-          label="Size"
+          label={t("videoPlayer.popouts.captionPreferences.fontSize") as string}
           min={14}
           step={1}
           max={60}
@@ -71,26 +71,7 @@ export function CaptionSettingsPopout(props: {
           </label>
           <div className="flex flex-row gap-2">
             {colors.map((color) => (
-              <div
-                className={`flex h-8 w-8 items-center justify-center rounded transition-[background-color,transform] duration-100 hover:bg-[#1c161b79] active:scale-110 ${
-                  color === captionSettings.style.color ? "bg-[#1C161B]" : ""
-                }`}
-                onClick={() => setCaptionColor(color)}
-              >
-                <div
-                  className="h-4 w-4 cursor-pointer appearance-none rounded-full"
-                  style={{
-                    backgroundColor: color,
-                  }}
-                />
-                <Icon
-                  className={[
-                    "absolute text-xs text-[#1C161B]",
-                    color === captionSettings.style.color ? "" : "hidden",
-                  ].join(" ")}
-                  icon={Icons.CHECKMARK}
-                />
-              </div>
+              <CaptionColorSelector color={color} />
             ))}
           </div>
         </div>
