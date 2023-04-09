@@ -14,6 +14,7 @@ export type ControlMethods = {
   setCurrentEpisode(sId: string, eId: string): void;
   setDraggingTime(num: number): void;
   togglePictureInPicture(): void;
+  setPlaybackSpeed(num: number): void;
 };
 
 export function useControls(
@@ -103,6 +104,10 @@ export function useControls(
     },
     togglePictureInPicture() {
       state.stateProvider?.togglePictureInPicture();
+      updateInterface(descriptor, state);
+    },
+    setPlaybackSpeed(num) {
+      state.stateProvider?.setPlaybackSpeed(num);
       updateInterface(descriptor, state);
     },
   };
