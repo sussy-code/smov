@@ -130,14 +130,12 @@ export default function SettingsModal(props: {
             </div>
             <div className="flex w-full flex-col justify-center">
               <div className="flex aspect-video flex-col justify-end rounded bg-zinc-800">
-                {selectedCaptionLanguage.id !== "none" ? (
-                  <div className="pointer-events-none flex w-full flex-col items-center transition-[bottom]">
-                    <CaptionCue
-                      scale={0.5}
-                      text={selectedCaptionLanguage.nativeName}
-                    />
-                  </div>
-                ) : null}
+                <div className="pointer-events-none flex w-full flex-col items-center transition-[bottom]">
+                  <CaptionCue
+                    scale={0.5}
+                    text={selectedCaptionLanguage.nativeName}
+                  />
+                </div>
               </div>
             </div>
           </div>

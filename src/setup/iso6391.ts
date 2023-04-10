@@ -217,7 +217,7 @@ export const captionLanguages: CaptionLanguageOption[] = [
     id: "none",
     englishName: "None",
     name: "None",
-    nativeName: "None",
+    nativeName: "No caption language selected",
   },
   {
     id: "aa",
