@@ -1,4 +1,5 @@
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
+import { useTranslation } from "react-i18next";
 import { useMediaPlaying } from "@/video/state/logic/mediaplaying";
 import { useProgress } from "@/video/state/logic/progress";
 import { useInterface } from "@/video/state/logic/interface";
@@ -39,6 +40,7 @@ export function TimeAction(props: Props) {
   const videoTime = useProgress(descriptor);
   const mediaPlaying = useMediaPlaying(descriptor);
   const { timeFormat, setTimeFormat } = useInterface(descriptor);
+  const { t } = useTranslation();
 
   const hasHours = durationExceedsHour(videoTime.duration);
   const time = formatSeconds(
@@ -80,10 +82,14 @@ export function TimeAction(props: Props) {
             {/* {time} {props.noDuration ? "" : `/ ${duration}`} */}
             {timeFormat === 0
               ? `${time} ${props.noDuration ? "" : `/ ${duration}`}`
-              : `${timeLeft} left${
+              : `${t("videoPlayer.timeLeft", {
+                  timeLeft,
+                })}${
                   videoTime.time === videoTime.duration
                     ? ""
-                    : ` - finish at ${timeFinished}`
+                    : ` - ${t("videoPlayer.finishAt", {
+                        timeFinished,
+                      })}`
                 } `}
           </p>
         </div>
