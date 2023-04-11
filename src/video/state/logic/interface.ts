@@ -9,6 +9,8 @@ export type VideoInterfaceEvent = {
   isFocused: boolean;
   isFullscreen: boolean;
   popoutBounds: null | DOMRect;
+  timeFormat: 0 | 1 | 2;
+  setTimeFormat(timeFormat: 0 | 1 | 2): void;
 };
 
 function getInterfaceFromState(state: VideoPlayerState): VideoInterfaceEvent {
@@ -18,6 +20,10 @@ function getInterfaceFromState(state: VideoPlayerState): VideoInterfaceEvent {
     isFocused: state.interface.isFocused,
     isFullscreen: state.interface.isFullscreen,
     popoutBounds: state.interface.popoutBounds,
+    timeFormat: state.interface.timeFormat,
+    setTimeFormat(timeFormat: 0 | 1 | 2) {
+      state.stateProvider?.setTimeFormat(timeFormat);
+    },
   };
 }
 

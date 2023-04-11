@@ -15,6 +15,7 @@ export type ControlMethods = {
   setDraggingTime(num: number): void;
   togglePictureInPicture(): void;
   setPlaybackSpeed(num: number): void;
+  setTimeFormat(num: 0 | 1): void;
 };
 
 export function useControls(
@@ -108,6 +109,10 @@ export function useControls(
     },
     setPlaybackSpeed(num) {
       state.stateProvider?.setPlaybackSpeed(num);
+      updateInterface(descriptor, state);
+    },
+    setTimeFormat(format) {
+      state.interface.timeFormat = format;
       updateInterface(descriptor, state);
     },
   };

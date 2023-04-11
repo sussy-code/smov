@@ -23,6 +23,7 @@ export type VideoPlayerStateController = {
   getId(): string;
   togglePictureInPicture(): void;
   setPlaybackSpeed(num: number): void;
+  setTimeFormat(format: 0 | 1 | 2): void;
 };
 
 export type VideoPlayerStateProvider = VideoPlayerStateController & {
