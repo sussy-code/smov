@@ -38,6 +38,7 @@ body[data-no-select] {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -55,6 +56,10 @@ body[data-no-select] {
   @apply brightness-[500];
 }
 
+.is-mobile-view .overflow-y-auto {
+  height: 60vh;
+}
+
 /*generated with Input range slider CSS style generator (version 20211225)
 https://toughengineer.github.io/demo/slider-styler*/
 :root {
@@ -62,6 +67,7 @@ https://toughengineer.github.io/demo/slider-styler*/
   --slider-border-radius: 1em;
   --slider-progress-background: #8652bb;
 }
+
 input[type=range].styled-slider {
   height: var(--slider-height);
   -webkit-appearance: none;
@@ -101,7 +107,7 @@ input[type=range].styled-slider::-webkit-slider-thumb:hover {
 }
 
 input[type=range].styled-slider.slider-progress::-webkit-slider-runnable-track {
-  background: linear-gradient(var(--slider-progress-background),var(--slider-progress-background)) 0/var(--sx) 100% no-repeat, #1C161B;
+  background: linear-gradient(var(--slider-progress-background), var(--slider-progress-background)) 0/var(--sx) 100% no-repeat, #1C161B;
 }
 
 /*mozilla*/
@@ -127,7 +133,7 @@ input[type=range].styled-slider::-moz-range-thumb:hover {
 }
 
 input[type=range].styled-slider.slider-progress::-moz-range-track {
-  background: linear-gradient(var(--slider-progress-background),var(--slider-progress-background)) 0/var(--sx) 100% no-repeat, #1C161B;
+  background: linear-gradient(var(--slider-progress-background), var(--slider-progress-background)) 0/var(--sx) 100% no-repeat, #1C161B;
 }
 
 /*ms*/

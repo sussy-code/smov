@@ -5,9 +5,11 @@ import { useFloatingRouter } from "@/hooks/useFloatingRouter";
 import { DownloadAction } from "@/video/components/actions/list-entries/DownloadAction";
 import { CaptionsSelectionAction } from "@/video/components/actions/list-entries/CaptionsSelectionAction";
 import { SourceSelectionAction } from "@/video/components/actions/list-entries/SourceSelectionAction";
+import { PlaybackSpeedSelectionAction } from "@/video/components/actions/list-entries/PlaybackSpeedSelectionAction";
 import { CaptionSelectionPopout } from "./CaptionSelectionPopout";
 import { SourceSelectionPopout } from "./SourceSelectionPopout";
 import { CaptionSettingsPopout } from "./CaptionSettingsPopout";
+import { PlaybackSpeedPopout } from "./PlaybackSpeedPopout";
 
 export function SettingsPopout() {
   const floatingRouter = useFloatingRouter();
@@ -21,6 +23,9 @@ export function SettingsPopout() {
           <DownloadAction />
           <SourceSelectionAction onClick={() => navigate("/source")} />
           <CaptionsSelectionAction onClick={() => navigate("/captions")} />
+          <PlaybackSpeedSelectionAction
+            onClick={() => navigate("/playback-speed")}
+          />
         </FloatingCardView.Content>
       </FloatingView>
       <SourceSelectionPopout router={floatingRouter} prefix="source" />
@@ -29,6 +34,7 @@ export function SettingsPopout() {
         router={floatingRouter}
         prefix="caption-settings"
       />
+      <PlaybackSpeedPopout router={floatingRouter} prefix="playback-speed" />
     </>
   );
 }

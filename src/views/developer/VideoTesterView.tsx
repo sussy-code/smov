@@ -33,7 +33,7 @@ const testMeta: DetailedMeta = {
   },
 };
 
-export function VideoTesterView() {
+export default function VideoTesterView() {
   const [video, setVideo] = useState<VideoData | null>(null);
   const [videoType, setVideoType] = useState<MWStreamType>(MWStreamType.MP4);
   const [url, setUrl] = useState("");
@@ -64,8 +64,8 @@ export function VideoTesterView() {
           />
           <SourceController
             source={video.streamUrl}
-            type={MWStreamType.MP4}
-            quality={MWStreamQuality.Q720P}
+            type={videoType}
+            quality={MWStreamQuality.QUNKNOWN}
           />
         </VideoPlayer>
       </div>

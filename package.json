@@ -1,6 +1,6 @@
 {
   "name": "movie-web",
-  "version": "3.0.9",
+  "version": "3.0.10",
   "private": true,
   "homepage": "https://movie.squeezebox.dev",
   "dependencies": {
@@ -19,7 +19,6 @@
     "json5": "^2.2.0",
     "lodash.throttle": "^4.1.1",
     "nanoid": "^4.0.0",
-    "node-webvtt": "^1.9.4",
     "ofetch": "^1.0.0",
     "pako": "^2.1.0",
     "react": "^17.0.2",
@@ -31,7 +30,7 @@
     "react-stickynode": "^4.1.0",
     "react-transition-group": "^4.4.5",
     "react-use": "^17.4.0",
-    "srt-webvtt": "^2.0.0",
+    "subsrt-ts": "^2.1.0",
     "unpacker": "^1.0.1"
   },
   "scripts": {

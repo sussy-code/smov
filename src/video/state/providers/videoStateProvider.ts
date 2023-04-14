@@ -228,6 +228,11 @@ export function createVideoStateProvider(
         }
       }
     },
+    setPlaybackSpeed(num) {
+      player.playbackRate = num;
+      state.mediaPlaying.playbackSpeed = num;
+      updateMediaPlaying(descriptor, state);
+    },
     providerStart() {
       this.setVolume(getStoredVolume());
 
@@ -276,8 +281,14 @@ export function createVideoStateProvider(
         state.mediaPlaying.isLoading = false;
         updateMediaPlaying(descriptor, state);
       };
+      const ratechange = () => {
+        state.mediaPlaying.playbackSpeed = player.playbackRate;
+        updateMediaPlaying(descriptor, state);
+      };
       const fullscreenchange = () => {
-        state.interface.isFullscreen = !!document.fullscreenElement;
+        state.interface.isFullscreen =
+          !!document.fullscreenElement || // other browsers
+          !!(document as any).webkitFullscreenElement; // safari
         updateInterface(descriptor, state);
       };
       const volumechange = async () => {
@@ -324,6 +335,7 @@ export function createVideoStateProvider(
       player.addEventListener("timeupdate", timeupdate);
       player.addEventListener("loadedmetadata", loadedmetadata);
       player.addEventListener("canplay", canplay);
+      player.addEventListener("ratechange", ratechange);
       fscreen.addEventListener("fullscreenchange", fullscreenchange);
       player.addEventListener("error", error);
       player.addEventListener(

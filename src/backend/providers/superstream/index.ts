@@ -225,15 +225,21 @@ registerProvider({
 
     const subtitleRes = (await get(subtitleApiQuery)).data;
 
-    const mappedCaptions = subtitleRes.list.map((subtitle: any): MWCaption => {
-      return {
-        needsProxy: true,
-        langIso: subtitle.language,
-        url: subtitle.subtitles[0].file_path,
-        type: MWCaptionType.SRT,
-      };
-    });
-
+    const mappedCaptions = subtitleRes.list.map(
+      (subtitle: any): MWCaption | null => {
+        const sub = subtitle;
+        sub.subtitles = subtitle.subtitles.filter((subFile: any) => {
+          const extension = subFile.file_path.slice(-3);
+          return [MWCaptionType.SRT, MWCaptionType.VTT].includes(extension);
+        });
+        return {
+          needsProxy: true,
+          langIso: subtitle.language,
+          url: sub.subtitles[0].file_path,
+          type: MWCaptionType.SRT,
+        };
+      }
+    );
     return {
       embeds: [],
       stream: {

@@ -63,12 +63,15 @@
       "captions": "Captions",
       "download": "Download",
       "settings": "Settings",
-      "pictureInPicture": "Picture in Picture"
+      "pictureInPicture": "Picture in Picture",
+      "playbackSpeed": "Playback speed"
     },
     "popouts": {
       "sources": "Sources",
       "seasons": "Seasons",
       "captions": "Captions",
+      "playbackSpeed": "Playback speed",
+      "customPlaybackSpeed": "Custom playback speed",
       "captionPreferences": {
         "title": "Customize",
         "delay": "Delay",
@@ -80,8 +83,9 @@
       "noCaptions": "No captions",
       "linkedCaptions": "Linked captions",
       "customCaption": "Custom caption",
-      "uploadCustomCaption": "Upload caption (SRT, VTT)",
+      "uploadCustomCaption": "Upload caption",
       "noEmbeds": "No embeds were found for this source",
+
       "errors": {
         "loadingWentWong": "Something went wrong loading the episodes for {{seasonTitle}}",
         "embedsError": "Something went wrong loading the embeds for this thing that you like"
@@ -92,7 +96,8 @@
         "seasons": "Choose which season you want to watch",
         "episode": "Pick an episode",
         "captions": "Choose a subtitle language",
-        "captionPreferences": "Make subtitles look how you want it"
+        "captionPreferences": "Make subtitles look how you want it",
+        "playbackSpeed": "Change the playback speed"
       }
     },
     "errors": {

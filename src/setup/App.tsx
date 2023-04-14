@@ -1,3 +1,4 @@
+import { lazy } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import { BookmarkContextProvider } from "@/state/bookmark";
 import { WatchedContextProvider } from "@/state/watched";
@@ -8,13 +9,8 @@ import { MediaView } from "@/views/media/MediaView";
 import { SearchView } from "@/views/search/SearchView";
 import { MWMediaType } from "@/backend/metadata/types";
 import { V2MigrationView } from "@/views/other/v2Migration";
-import { DeveloperView } from "@/views/developer/DeveloperView";
-import { VideoTesterView } from "@/views/developer/VideoTesterView";
-import { ProviderTesterView } from "@/views/developer/ProviderTesterView";
-import { EmbedTesterView } from "@/views/developer/EmbedTesterView";
 import { BannerContextProvider } from "@/hooks/useBanner";
 import { Layout } from "@/setup/Layout";
-import { TestView } from "@/views/developer/TestView";
 
 function App() {
   return (
@@ -44,15 +40,45 @@ function App() {
                 />
 
                 {/* other */}
-                <Route exact path="/dev" component={DeveloperView} />
-                <Route exact path="/dev/test" component={TestView} />
-                <Route exact path="/dev/video" component={VideoTesterView} />
-                <Route
-                  exact
-                  path="/dev/providers"
-                  component={ProviderTesterView}
-                />
-                <Route exact path="/dev/embeds" component={EmbedTesterView} />
+                {process.env.NODE_ENV === "development" ? (
+                  <>
+                    <Route
+                      exact
+                      path="/dev"
+                      component={lazy(
+                        () => import("@/views/developer/DeveloperView")
+                      )}
+                    />
+                    <Route
+                      exact
+                      path="/dev/test"
+                      component={lazy(
+                        () => import("@/views/developer/TestView")
+                      )}
+                    />
+                    <Route
+                      exact
+                      path="/dev/video"
+                      component={lazy(
+                        () => import("@/views/developer/VideoTesterView")
+                      )}
+                    />
+                    <Route
+                      exact
+                      path="/dev/providers"
+                      component={lazy(
+                        () => import("@/views/developer/ProviderTesterView")
+                      )}
+                    />
+                    <Route
+                      exact
+                      path="/dev/embeds"
+                      component={lazy(
+                        () => import("@/views/developer/EmbedTesterView")
+                      )}
+                    />
+                  </>
+                ) : null}
                 <Route path="*" component={NotFoundPage} />
               </Switch>
             </Layout>
