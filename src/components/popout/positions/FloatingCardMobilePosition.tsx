@@ -21,8 +21,21 @@ export function FloatingCardMobilePosition(props: MobilePositionProps) {
   }));
 
   const bind = useDrag(
-    ({ last, velocity: [, vy], direction: [, dy], movement: [, my] }) => {
+    ({
+      last,
+      velocity: [, vy],
+      direction: [, dy],
+      movement: [, my],
+      ...event
+    }) => {
       if (closing.current) return;
+
+      const isInScrollable = (event.target as HTMLDivElement).closest(
+        ".overflow-y-auto"
+      );
+      // console.log(my);
+      if (isInScrollable) return; // Don't attempt to swipe the thing away if it's a scroll area unless the scroll area is at the top and the user is swiping down
+
       const height = cardRect?.height ?? 0;
       if (last) {
         // if past half height downwards
@@ -69,7 +82,7 @@ export function FloatingCardMobilePosition(props: MobilePositionProps) {
 
   return (
     <div
-      className="absolute inset-x-0 mx-auto max-w-[400px] origin-bottom-left touch-none"
+      className="is-mobile-view absolute inset-x-0 mx-auto max-w-[400px] origin-bottom-left touch-none"
       style={{
         transform: `translateY(${
           window.innerHeight - (cardRect?.height ?? 0) + 200
