@@ -29,6 +29,7 @@ export function FloatingView(props: Props) {
         data-floating-page={props.show ? "true" : undefined}
         style={{
           height: props.height ? `${props.height}px` : undefined,
+          maxHeight: "70vh",
           width: props.width ? width : undefined,
         }}
       >
