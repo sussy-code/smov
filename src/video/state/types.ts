@@ -22,6 +22,11 @@ export type VideoPlayerMeta = {
   }[];
 };
 
+export enum VideoPlayerTimeFormat {
+  REGULAR = 0,
+  REMAINING = 1,
+}
+
 export type VideoPlayerState = {
   // state related to the user interface
   interface: {
@@ -30,7 +35,7 @@ export type VideoPlayerState = {
     isFocused: boolean; // is the video player the users focus? (shortcuts only works when its focused)
     leftControlHovering: boolean; // is the cursor hovered over the left side of player controls
     popoutBounds: null | DOMRect; // bounding box of current popout
-    timeFormat: 0 | 1 | 2; // Time format of the video player
+    timeFormat: VideoPlayerTimeFormat; // Time format of the video player
   };
 
   // state related to the playing state of the media

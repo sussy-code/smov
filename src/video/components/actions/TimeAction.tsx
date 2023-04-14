@@ -3,6 +3,9 @@ import { useTranslation } from "react-i18next";
 import { useMediaPlaying } from "@/video/state/logic/mediaplaying";
 import { useProgress } from "@/video/state/logic/progress";
 import { useInterface } from "@/video/state/logic/interface";
+import { VideoPlayerTimeFormat } from "@/video/state/types";
+import { useIsMobile } from "@/hooks/useIsMobile";
+import { useControls } from "@/video/state/logic/controls";
 
 function durationExceedsHour(secs: number): boolean {
   return secs > 60 * 60;
@@ -40,19 +43,20 @@ export function TimeAction(props: Props) {
   const videoTime = useProgress(descriptor);
   const mediaPlaying = useMediaPlaying(descriptor);
   const { timeFormat, setTimeFormat } = useInterface(descriptor);
+  const { isMobile } = useIsMobile();
   const { t } = useTranslation();
 
   const hasHours = durationExceedsHour(videoTime.duration);
-  const time = formatSeconds(
+
+  const currentTime = formatSeconds(
     mediaPlaying.isDragSeeking ? videoTime.draggingTime : videoTime.time,
     hasHours
   );
   const duration = formatSeconds(videoTime.duration, hasHours);
-
   const timeLeft = formatSeconds(
-    (videoTime.duration - videoTime.time) / mediaPlaying.playbackSpeed
+    (videoTime.duration - videoTime.time) / mediaPlaying.playbackSpeed,
+    hasHours
   );
-
   const timeFinished = new Date(
     new Date().getTime() +
       (videoTime.duration * 1000) / mediaPlaying.playbackSpeed
@@ -61,15 +65,38 @@ export function TimeAction(props: Props) {
     minute: "numeric",
     hour12: true,
   });
+  const formattedTimeFinished = ` - ${t("videoPlayer.finishAt", {
+    timeFinished,
+  })}`;
+
+  let formattedTime: string;
+
+  if (timeFormat === VideoPlayerTimeFormat.REGULAR) {
+    formattedTime = `${currentTime} ${props.noDuration ? "" : `/ ${duration}`}`;
+  } else if (timeFormat === VideoPlayerTimeFormat.REMAINING) {
+    formattedTime = `${t("videoPlayer.timeLeft", {
+      timeLeft,
+    })}${
+      videoTime.time === videoTime.duration || isMobile
+        ? ""
+        : formattedTimeFinished
+    } `;
+  } else {
+    formattedTime = "";
+  }
 
   return (
     <button
       type="button"
       className={[
-        "group pointer-events-auto translate-x-[-16px] text-white transition-transform duration-100 active:scale-110",
+        "group pointer-events-auto text-white transition-transform duration-100 active:scale-110",
       ].join(" ")}
       onClick={() => {
-        setTimeFormat(timeFormat === 0 ? 1 : 0);
+        setTimeFormat(
+          timeFormat === VideoPlayerTimeFormat.REGULAR
+            ? VideoPlayerTimeFormat.REMAINING
+            : VideoPlayerTimeFormat.REGULAR
+        );
       }}
     >
       <div
@@ -78,20 +105,7 @@ export function TimeAction(props: Props) {
         ].join(" ")}
       >
         <div className={props.className}>
-          <p className="select-none text-white">
-            {/* {time} {props.noDuration ? "" : `/ ${duration}`} */}
-            {timeFormat === 0
-              ? `${time} ${props.noDuration ? "" : `/ ${duration}`}`
-              : `${t("videoPlayer.timeLeft", {
-                  timeLeft,
-                })}${
-                  videoTime.time === videoTime.duration
-                    ? ""
-                    : ` - ${t("videoPlayer.finishAt", {
-                        timeFinished,
-                      })}`
-                } `}
-          </p>
+          <p className="select-none text-white">{formattedTime}</p>
         </div>
       </div>
     </button>

@@ -1,4 +1,5 @@
 import { MWStreamQuality, MWStreamType } from "@/backend/helpers/streams";
+import { VideoPlayerTimeFormat } from "@/video/state/types";
 
 type VideoPlayerSource = {
   source: string;
@@ -23,7 +24,7 @@ export type VideoPlayerStateController = {
   getId(): string;
   togglePictureInPicture(): void;
   setPlaybackSpeed(num: number): void;
-  setTimeFormat(format: 0 | 1 | 2): void;
+  setTimeFormat(timeFormat: VideoPlayerTimeFormat): void;
 };
 
 export type VideoPlayerStateProvider = VideoPlayerStateController & {
