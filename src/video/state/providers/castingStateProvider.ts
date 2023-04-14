@@ -173,10 +173,6 @@ export function createCastingStateProvider(
         updateSource(descriptor, state);
       }
     },
-    setTimeFormat(format) {
-      state.interface.timeFormat = format;
-      updateInterface(descriptor, state);
-    },
     providerStart() {
       this.setVolume(getStoredVolume());
 

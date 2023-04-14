@@ -42,7 +42,8 @@ export function TimeAction(props: Props) {
   const descriptor = useVideoPlayerDescriptor();
   const videoTime = useProgress(descriptor);
   const mediaPlaying = useMediaPlaying(descriptor);
-  const { timeFormat, setTimeFormat } = useInterface(descriptor);
+  const { setTimeFormat } = useControls(descriptor);
+  const { timeFormat } = useInterface(descriptor);
   const { isMobile } = useIsMobile();
   const { t } = useTranslation();
 

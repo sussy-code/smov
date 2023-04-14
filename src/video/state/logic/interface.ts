@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useControls } from "@/video/state/logic/controls";
 import { getPlayerState } from "../cache";
 import { listenEvent, sendEvent, unlistenEvent } from "../events";
 import { VideoPlayerState, VideoPlayerTimeFormat } from "../types";
@@ -10,7 +11,6 @@ export type VideoInterfaceEvent = {
   isFullscreen: boolean;
   popoutBounds: null | DOMRect;
   timeFormat: VideoPlayerTimeFormat;
-  setTimeFormat(timeFormat: VideoPlayerTimeFormat): void;
 };
 
 function getInterfaceFromState(state: VideoPlayerState): VideoInterfaceEvent {
@@ -21,9 +21,6 @@ function getInterfaceFromState(state: VideoPlayerState): VideoInterfaceEvent {
     isFullscreen: state.interface.isFullscreen,
     popoutBounds: state.interface.popoutBounds,
     timeFormat: state.interface.timeFormat,
-    setTimeFormat(timeFormat: VideoPlayerTimeFormat) {
-      state.stateProvider?.setTimeFormat(timeFormat);
-    },
   };
 }
 

@@ -133,10 +133,6 @@ export function createVideoStateProvider(
       // update localstorage
       setStoredVolume(volume);
     },
-    setTimeFormat(num) {
-      state.interface.timeFormat = num;
-      updateInterface(descriptor, state);
-    },
     setSource(source) {
       if (!source) {
         resetStateForSource(descriptor, state);
