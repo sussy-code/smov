@@ -56,7 +56,6 @@ body[data-no-select] {
   @apply brightness-[500];
 }
 
-/* Disable scrolling on mobile view */
 .is-mobile-view .overflow-y-auto {
   height: 60vh;
 }
