@@ -229,9 +229,7 @@ registerProvider({
       (subtitle: any): MWCaption | null => {
         const sub = subtitle;
         sub.subtitles = subtitle.subtitles.filter((subFile: any) => {
-          const extension = subFile.file_path.substring(
-            sub.file_path.length - 3
-          );
+          const extension = subFile.file_path.slice(-3);
           return [MWCaptionType.SRT, MWCaptionType.VTT].includes(extension);
         });
         return {
