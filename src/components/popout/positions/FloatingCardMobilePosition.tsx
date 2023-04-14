@@ -33,7 +33,6 @@ export function FloatingCardMobilePosition(props: MobilePositionProps) {
       const isInScrollable = (event.target as HTMLDivElement).closest(
         ".overflow-y-auto"
       );
-      // console.log(my);
       if (isInScrollable) return; // Don't attempt to swipe the thing away if it's a scroll area unless the scroll area is at the top and the user is swiping down
 
       const height = cardRect?.height ?? 0;
