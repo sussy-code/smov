@@ -22,6 +22,7 @@ registerProvider({
   displayName: "NetFilm",
   rank: 15,
   type: [MWMediaType.MOVIE, MWMediaType.SERIES],
+  disabled: true, // The creator has asked us (very nicely) to leave him alone. Until (if) we self-host, netfilm should remain disabled
 
   async scrape({ media, episode, progress }) {
     if (!this.type.includes(media.meta.type)) {
