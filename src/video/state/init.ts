@@ -13,6 +13,7 @@ export function resetForSource(s: VideoPlayerState) {
     isFirstLoading: true,
     hasPlayedOnce: false,
     volume: state.mediaPlaying.volume, // volume settings needs to persist through resets
+    playbackSpeed: 1,
   };
   state.progress = {
     time: 0,
@@ -42,6 +43,7 @@ function initPlayer(): VideoPlayerState {
       isFirstLoading: true,
       hasPlayedOnce: false,
       volume: 0,
+      playbackSpeed: 1,
     },
 
     progress: {

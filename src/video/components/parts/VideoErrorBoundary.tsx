@@ -3,8 +3,8 @@ import { ErrorMessage } from "@/components/layout/ErrorBoundary";
 import { Link } from "@/components/text/Link";
 import { conf } from "@/setup/config";
 import { Component } from "react";
-import type { ReactNode } from "react-router-dom/node_modules/@types/react/index";
 import { Trans } from "react-i18next";
+import type { ReactNode } from "react-router-dom/node_modules/@types/react/index";
 import { VideoPlayerHeader } from "./VideoPlayerHeader";
 
 interface ErrorBoundaryState {
