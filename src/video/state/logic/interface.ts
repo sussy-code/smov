@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getPlayerState } from "../cache";
 import { listenEvent, sendEvent, unlistenEvent } from "../events";
-import { VideoPlayerState } from "../types";
+import { VideoPlayerState, VideoPlayerTimeFormat } from "../types";
 
 export type VideoInterfaceEvent = {
   popout: string | null;
@@ -9,6 +9,7 @@ export type VideoInterfaceEvent = {
   isFocused: boolean;
   isFullscreen: boolean;
   popoutBounds: null | DOMRect;
+  timeFormat: VideoPlayerTimeFormat;
 };
 
 function getInterfaceFromState(state: VideoPlayerState): VideoInterfaceEvent {
@@ -18,6 +19,7 @@ function getInterfaceFromState(state: VideoPlayerState): VideoInterfaceEvent {
     isFocused: state.interface.isFocused,
     isFullscreen: state.interface.isFullscreen,
     popoutBounds: state.interface.popoutBounds,
+    timeFormat: state.interface.timeFormat,
   };
 }
 
