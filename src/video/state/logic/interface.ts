@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useControls } from "@/video/state/logic/controls";
 import { getPlayerState } from "../cache";
 import { listenEvent, sendEvent, unlistenEvent } from "../events";
 import { VideoPlayerState, VideoPlayerTimeFormat } from "../types";
