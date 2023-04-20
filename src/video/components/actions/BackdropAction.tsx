@@ -24,18 +24,16 @@ export function BackdropAction(props: BackdropActionProps) {
   const handleMouseMove = useCallback(() => {
     if (!moved) {
       setTimeout(() => {
+        // If NOT a touch, set moved to true
         const isTouch = Date.now() - lastTouchEnd.current < 200;
-        if (!isTouch) {
-          setMoved(true);
-        }
+        if (!isTouch) setMoved(true);
       }, 20);
-      return;
     }
 
     // remove after all
     if (timeout.current) clearTimeout(timeout.current);
     timeout.current = setTimeout(() => {
-      if (moved) setMoved(false);
+      setMoved(false);
       timeout.current = null;
     }, 3000);
   }, [setMoved, moved]);

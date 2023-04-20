@@ -4,7 +4,13 @@ import LanguageDetector from "i18next-browser-languagedetector";
 
 // Languages
 import en from "./locales/en/translation.json";
+import { captionLanguages } from "./iso6391";
 
+const locales = {
+  en: {
+    translation: en,
+  },
+};
 i18n
   // detect user language
   // learn more: https://github.com/i18next/i18next-browser-languageDetector
@@ -15,16 +21,14 @@ i18n
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
     fallbackLng: "en",
-
-    resources: {
-      en: {
-        translation: en,
-      },
-    },
-
+    resources: locales,
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
     },
   });
+
+export const appLanguageOptions = captionLanguages.filter((x) => {
+  return Object.keys(locales).includes(x.id);
+});
 
 export default i18n;

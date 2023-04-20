@@ -1,7 +1,7 @@
 import { updateInterface } from "@/video/state/logic/interface";
 import { updateMeta } from "@/video/state/logic/meta";
 import { updateProgress } from "@/video/state/logic/progress";
-import { VideoPlayerMeta } from "@/video/state/types";
+import { VideoPlayerMeta, VideoPlayerTimeFormat } from "@/video/state/types";
 import { getPlayerState } from "../cache";
 import { VideoPlayerStateController } from "../providers/providerTypes";
 
@@ -15,6 +15,7 @@ export type ControlMethods = {
   setDraggingTime(num: number): void;
   togglePictureInPicture(): void;
   setPlaybackSpeed(num: number): void;
+  setTimeFormat(num: VideoPlayerTimeFormat): void;
 };
 
 export function useControls(
@@ -48,8 +49,20 @@ export function useControls(
     enterFullscreen() {
       state.stateProvider?.enterFullscreen();
     },
-    setVolume(volume) {
-      state.stateProvider?.setVolume(volume);
+    setVolume(volume, isKeyboardEvent = false) {
+      if (isKeyboardEvent) {
+        if (state.interface.volumeChangedWithKeybindDebounce)
+          clearTimeout(state.interface.volumeChangedWithKeybindDebounce);
+
+        state.interface.volumeChangedWithKeybind = true;
+        updateInterface(descriptor, state);
+
+        state.interface.volumeChangedWithKeybindDebounce = setTimeout(() => {
+          state.interface.volumeChangedWithKeybind = false;
+          updateInterface(descriptor, state);
+        }, 3e3);
+      }
+      state.stateProvider?.setVolume(volume, isKeyboardEvent);
     },
     startAirplay() {
       state.stateProvider?.startAirplay();
@@ -108,6 +121,10 @@ export function useControls(
     },
     setPlaybackSpeed(num) {
       state.stateProvider?.setPlaybackSpeed(num);
+      updateInterface(descriptor, state);
+    },
+    setTimeFormat(format) {
+      state.interface.timeFormat = format;
       updateInterface(descriptor, state);
     },
   };
