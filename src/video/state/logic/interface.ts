@@ -9,6 +9,7 @@ export type VideoInterfaceEvent = {
   isFocused: boolean;
   isFullscreen: boolean;
   popoutBounds: null | DOMRect;
+  volumeChangedWithKeybind: boolean;
 };
 
 function getInterfaceFromState(state: VideoPlayerState): VideoInterfaceEvent {
@@ -18,6 +19,7 @@ function getInterfaceFromState(state: VideoPlayerState): VideoInterfaceEvent {
     isFocused: state.interface.isFocused,
     isFullscreen: state.interface.isFullscreen,
     popoutBounds: state.interface.popoutBounds,
+    volumeChangedWithKeybind: state.interface.volumeChangedWithKeybind,
   };
 }
 

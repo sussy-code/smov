@@ -5,6 +5,8 @@ import { VideoPlayerMeta } from "@/video/state/types";
 import { getPlayerState } from "../cache";
 import { VideoPlayerStateController } from "../providers/providerTypes";
 
+let volumeChangedWithKeybindDebounce: NodeJS.Timeout | null = null;
+
 export type ControlMethods = {
   openPopout(id: string): void;
   closePopout(): void;
@@ -48,8 +50,20 @@ export function useControls(
     enterFullscreen() {
       state.stateProvider?.enterFullscreen();
     },
-    setVolume(volume) {
-      state.stateProvider?.setVolume(volume);
+    setVolume(volume, isKeyboardEvent = false) {
+      if (isKeyboardEvent) {
+        if (volumeChangedWithKeybindDebounce)
+          clearTimeout(volumeChangedWithKeybindDebounce);
+
+        state.interface.volumeChangedWithKeybind = true;
+        updateInterface(descriptor, state);
+
+        volumeChangedWithKeybindDebounce = setTimeout(() => {
+          state.interface.volumeChangedWithKeybind = false;
+          updateInterface(descriptor, state);
+        }, 3e3);
+      }
+      state.stateProvider?.setVolume(volume, isKeyboardEvent);
     },
     startAirplay() {
       state.stateProvider?.startAirplay();
