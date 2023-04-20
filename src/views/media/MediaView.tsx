@@ -148,6 +148,7 @@ export function MediaViewPlayer(props: MediaViewPlayerProps) {
           quality={props.stream.quality}
           embedId={props.stream.embedId}
           providerId={props.stream.providerId}
+          captions={props.stream.captions}
         />
         <ProgressListenerController
           startAt={firstStartTime.current}
