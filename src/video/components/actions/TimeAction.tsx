@@ -74,14 +74,12 @@ export function TimeAction(props: Props) {
 
   if (timeFormat === VideoPlayerTimeFormat.REGULAR) {
     formattedTime = `${currentTime} ${props.noDuration ? "" : `/ ${duration}`}`;
-  } else if (timeFormat === VideoPlayerTimeFormat.REMAINING) {
+  } else if (timeFormat === VideoPlayerTimeFormat.REMAINING && !isMobile) {
     formattedTime = `${t("videoPlayer.timeLeft", {
       timeLeft,
-    })}${
-      videoTime.time === videoTime.duration || isMobile
-        ? ""
-        : formattedTimeFinished
-    } `;
+    })}${videoTime.time === videoTime.duration ? "" : formattedTimeFinished} `;
+  } else if (timeFormat === VideoPlayerTimeFormat.REMAINING && isMobile) {
+    formattedTime = `-${timeLeft}`;
   } else {
     formattedTime = "";
   }
