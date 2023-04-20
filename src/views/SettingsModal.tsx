@@ -46,7 +46,7 @@ export default function SettingsModal(props: {
   ).toFixed(0);
   return (
     <Modal show={props.show}>
-      <ModalCard className="bg-ash-300 text-white">
+      <ModalCard className="text-white">
         <div className="flex flex-col gap-4">
           <div className="flex flex-row justify-between">
             <span className="text-xl font-bold">{t("settings.title")}</span>
