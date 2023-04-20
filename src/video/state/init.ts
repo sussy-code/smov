@@ -32,6 +32,9 @@ function initPlayer(): VideoPlayerState {
       isFocused: false,
       leftControlHovering: false,
       popoutBounds: null,
+      volumeChangedWithKeybind: false,
+      volumeChangedWithKeybindDebounce: null,
+      timeFormat: 0,
     },
 
     mediaPlaying: {

@@ -39,13 +39,16 @@
     "backToHome": "Retour à la page d'accueil",
     "backToHomeShort": "Retour",
     "seasonAndEpisode": "S{{season}} E{{episode}}",
+    "timeLeft": "{{timeLeft}} restant",
+    "finishAt": "Terminer à {{timeFinished}}",
     "buttons": {
       "episodes": "Épisodes",
       "source": "Source",
       "captions": "Sous-titres",
       "download": "Télécharger",
       "settings": "Paramètres",
-      "pictureInPicture": "Image dans l'image"
+      "pictureInPicture": "Image dans l'image",
+      "playbackSpeed": "Vitesse"
     },
     "popouts": {
       "sources": "Sources",

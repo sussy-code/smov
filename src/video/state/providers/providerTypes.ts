@@ -16,7 +16,7 @@ export type VideoPlayerStateController = {
   setSeeking(active: boolean): void;
   exitFullscreen(): void;
   enterFullscreen(): void;
-  setVolume(volume: number): void;
+  setVolume(volume: number, isKeyboardEvent?: boolean): void;
   startAirplay(): void;
   setCaption(id: string, url: string): void;
   clearCaption(): void;
