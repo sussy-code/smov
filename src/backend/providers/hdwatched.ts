@@ -119,7 +119,7 @@ async function fetchSeries(
 registerProvider({
   id: "hdwatched",
   displayName: "HDwatched",
-  rank: 50,
+  rank: 150,
   type: [MWMediaType.MOVIE, MWMediaType.SERIES],
   async scrape(options) {
     const { media, progress } = options;
