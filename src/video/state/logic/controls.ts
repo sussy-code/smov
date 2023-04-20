@@ -5,8 +5,6 @@ import { VideoPlayerMeta } from "@/video/state/types";
 import { getPlayerState } from "../cache";
 import { VideoPlayerStateController } from "../providers/providerTypes";
 
-let volumeChangedWithKeybindDebounce: NodeJS.Timeout | null = null;
-
 export type ControlMethods = {
   openPopout(id: string): void;
   closePopout(): void;
@@ -52,13 +50,13 @@ export function useControls(
     },
     setVolume(volume, isKeyboardEvent = false) {
       if (isKeyboardEvent) {
-        if (volumeChangedWithKeybindDebounce)
-          clearTimeout(volumeChangedWithKeybindDebounce);
+        if (state.interface.volumeChangedWithKeybindDebounce)
+          clearTimeout(state.interface.volumeChangedWithKeybindDebounce);
 
         state.interface.volumeChangedWithKeybind = true;
         updateInterface(descriptor, state);
 
-        volumeChangedWithKeybindDebounce = setTimeout(() => {
+        state.interface.volumeChangedWithKeybindDebounce = setTimeout(() => {
           state.interface.volumeChangedWithKeybind = false;
           updateInterface(descriptor, state);
         }, 3e3);

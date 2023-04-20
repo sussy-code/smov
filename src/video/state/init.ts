@@ -33,6 +33,7 @@ function initPlayer(): VideoPlayerState {
       leftControlHovering: false,
       popoutBounds: null,
       volumeChangedWithKeybind: false,
+      volumeChangedWithKeybindDebounce: null,
     },
 
     mediaPlaying: {

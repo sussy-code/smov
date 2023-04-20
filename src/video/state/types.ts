@@ -29,6 +29,7 @@ export type VideoPlayerState = {
     popout: string | null; // id of current popout (eg source select, episode select)
     isFocused: boolean; // is the video player the users focus? (shortcuts only works when its focused)
     volumeChangedWithKeybind: boolean; // has the volume recently been adjusted with the up/down arrows recently?
+    volumeChangedWithKeybindDebounce: NodeJS.Timeout | null; // debounce for the duration of the "volume changed thingamajig"
     leftControlHovering: boolean; // is the cursor hovered over the left side of player controls
     popoutBounds: null | DOMRect; // bounding box of current popout
   };
