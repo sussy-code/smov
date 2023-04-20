@@ -1,4 +1,5 @@
 import { proxiedFetch } from "../helpers/fetch";
+import { MWProviderContext } from "../helpers/provider";
 import { registerProvider } from "../helpers/register";
 import { MWStreamQuality, MWStreamType } from "../helpers/streams";
 import { MWMediaType } from "../metadata/types";
@@ -13,39 +14,134 @@ const qualityMap: Record<number, MWStreamQuality> = {
   1080: MWStreamQuality.Q1080P,
 };
 
-interface MovieSearchList {
+interface SearchRes {
   title: string;
+  year?: number;
+  href: string;
   id: string;
-  year: number;
+}
+
+function getStreamFromEmbed(stream: string) {
+  const embedPage = new DOMParser().parseFromString(stream, "text/html");
+  const source = embedPage.querySelector("#vjsplayer > source");
+  if (!source) {
+    throw new Error("Unable to fetch stream");
+  }
+
+  const streamSrc = source.getAttribute("src");
+  const streamRes = source.getAttribute("res");
+
+  if (!streamSrc || !streamRes) throw new Error("Unable to find stream");
+
+  return {
+    streamUrl: streamSrc,
+    quality:
+      streamRes && typeof +streamRes === "number"
+        ? qualityMap[+streamRes]
+        : MWStreamQuality.QUNKNOWN,
+  };
+}
+
+async function fetchMovie(targetSource: SearchRes) {
+  const stream = await proxiedFetch<any>(`/embed/${targetSource.id}`, {
+    baseURL: hdwatchedBase,
+  });
+
+  const embedPage = new DOMParser().parseFromString(stream, "text/html");
+  const source = embedPage.querySelector("#vjsplayer > source");
+  if (!source) {
+    throw new Error("Unable to fetch movie stream");
+  }
+
+  return getStreamFromEmbed(stream);
+}
+
+async function fetchSeries(
+  targetSource: SearchRes,
+  { media, episode, progress }: MWProviderContext
+) {
+  if (media.meta.type !== MWMediaType.SERIES)
+    throw new Error("Media type mismatch");
+
+  const seasonNumber = media.meta.seasonData.number;
+  const episodeNumber = media.meta.seasonData.episodes.find(
+    (e) => e.id === episode
+  )?.number;
+
+  if (!seasonNumber || !episodeNumber)
+    throw new Error("Unable to get season or episode number");
+
+  const seriesPage = await proxiedFetch<any>(
+    `${targetSource.href}?season=${media.meta.seasonData.number}`,
+    {
+      baseURL: hdwatchedBase,
+    }
+  );
+
+  const seasonPage = new DOMParser().parseFromString(seriesPage, "text/html");
+  const pageElements = seasonPage.querySelectorAll("div.i-container");
+
+  const seriesList: SearchRes[] = [];
+  pageElements.forEach((pageElement) => {
+    const href = pageElement.querySelector("a")?.getAttribute("href") || "";
+    const title =
+      pageElement?.querySelector("span.content-title")?.textContent || "";
+
+    seriesList.push({
+      title,
+      href,
+      id: href.split("/")[2], // Format: /free/{id}/{series-slug}-season-{season-number}-episode-{episode-number}
+    });
+  });
+
+  const targetEpisode = seriesList.find(
+    (episodeEl) =>
+      episodeEl.title.trim().toLowerCase() === `episode ${episodeNumber}`
+  );
+
+  if (!targetEpisode) throw new Error("Unable to find episode");
+
+  progress(70);
+
+  const stream = await proxiedFetch<any>(`/embed/${targetEpisode.id}`, {
+    baseURL: hdwatchedBase,
+  });
+
+  const embedPage = new DOMParser().parseFromString(stream, "text/html");
+  const source = embedPage.querySelector("#vjsplayer > source");
+  if (!source) {
+    throw new Error("Unable to fetch movie stream");
+  }
+
+  return getStreamFromEmbed(stream);
 }
 
 registerProvider({
   id: "hdwatched",
   displayName: "HDwatched",
   rank: 50,
-  type: [MWMediaType.MOVIE],
-  async scrape({ media, progress }) {
+  type: [MWMediaType.MOVIE, MWMediaType.SERIES],
+  async scrape(options) {
+    const { media, progress } = options;
     if (!this.type.includes(media.meta.type)) {
       throw new Error("Unsupported type");
     }
-
-    progress(20);
 
     const search = await proxiedFetch<any>(`/search/${media.imdbId}`, {
       baseURL: hdwatchedBase,
     });
 
     const searchPage = new DOMParser().parseFromString(search, "text/html");
-    const movieElements = searchPage.querySelectorAll("div.i-container");
+    const pageElements = searchPage.querySelectorAll("div.i-container");
 
-    const movieSearchList: MovieSearchList[] = [];
-    movieElements.forEach((movieElement) => {
-      const href = movieElement.querySelector("a")?.getAttribute("href") || "";
+    const searchList: SearchRes[] = [];
+    pageElements.forEach((pageElement) => {
+      const href = pageElement.querySelector("a")?.getAttribute("href") || "";
       const title =
-        movieElement?.querySelector("span.content-title")?.textContent || "";
+        pageElement?.querySelector("span.content-title")?.textContent || "";
       const year =
         parseInt(
-          movieElement
+          pageElement
             ?.querySelector("div.duration")
             ?.textContent?.trim()
             ?.split(" ")
@@ -53,50 +149,45 @@ registerProvider({
           10
         ) || 0;
 
-      movieSearchList.push({
+      searchList.push({
         title,
         year,
-        id: href.split("/")[2], // Format: /free/{id}}/{movie-slug} | Example: /free/18804/iron-man-231
+        href,
+        id: href.split("/")[2], // Format: /free/{id}/{movie-slug} or /series/{id}/{series-slug}
       });
     });
 
-    progress(50);
+    progress(20);
 
-    const targetMovie = movieSearchList.find(
-      (movie) => movie.year === (media.meta.year ? +media.meta.year : 0) // Compare year to make the search more robust
+    const targetSource = searchList.find(
+      (source) => source.year === (media.meta.year ? +media.meta.year : 0) // Compare year to make the search more robust
     );
 
-    if (!targetMovie) {
+    if (!targetSource) {
       throw new Error("Could not find stream");
     }
 
-    const stream = await proxiedFetch<any>(`/embed/${targetMovie.id}`, {
-      baseURL: hdwatchedBase,
-    });
+    progress(40);
 
-    progress(80);
-
-    const embedPage = new DOMParser().parseFromString(stream, "text/html");
-    const source = embedPage.querySelector("#vjsplayer > source");
-    if (!source) {
-      throw new Error("Could not find stream");
+    if (media.meta.type === MWMediaType.SERIES) {
+      const series = await fetchSeries(targetSource, options);
+      return {
+        embeds: [],
+        stream: {
+          streamUrl: series.streamUrl,
+          quality: series.quality,
+          type: MWStreamType.MP4,
+          captions: [],
+        },
+      };
     }
 
-    const streamSrc = source.getAttribute("src");
-    const streamRes = source.getAttribute("res");
-
-    if (!streamSrc) {
-      throw new Error("Could not find stream");
-    }
-
+    const movie = await fetchMovie(targetSource);
     return {
       embeds: [],
       stream: {
-        streamUrl: streamSrc,
-        quality:
-          streamRes && typeof +streamRes === "number"
-            ? qualityMap[+streamRes]
-            : MWStreamQuality.QUNKNOWN,
+        streamUrl: movie.streamUrl,
+        quality: movie.quality,
         type: MWStreamType.MP4,
         captions: [],
       },
