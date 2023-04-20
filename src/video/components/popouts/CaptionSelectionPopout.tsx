@@ -1,5 +1,7 @@
 import {
+  customCaption,
   getCaptionUrl,
+  makeCaptionId,
   parseSubtitles,
   subtitleTypeList,
 } from "@/backend/helpers/captions";
@@ -16,11 +18,6 @@ import { useSource } from "@/video/state/logic/source";
 import { useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { PopoutListEntry, PopoutSection } from "./PopoutUtils";
-
-const customCaption = "external-custom";
-function makeCaptionId(caption: MWCaption, isLinked: boolean): string {
-  return isLinked ? `linked-${caption.langIso}` : `external-${caption.langIso}`;
-}
 
 export function CaptionSelectionPopout(props: {
   router: ReturnType<typeof useFloatingRouter>;

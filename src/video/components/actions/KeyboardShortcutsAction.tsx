@@ -65,12 +65,12 @@ export function KeyboardShortcutsAction() {
 
         // Decrease volume
         case "arrowdown":
-          controls.setVolume(Math.max(mediaPlaying.volume - 0.1, 0));
+          controls.setVolume(Math.max(mediaPlaying.volume - 0.1, 0), true);
           break;
 
         // Increase volume
         case "arrowup":
-          controls.setVolume(Math.min(mediaPlaying.volume + 0.1, 1));
+          controls.setVolume(Math.min(mediaPlaying.volume + 0.1, 1), true);
           break;
 
         // Do a barrel Roll!
