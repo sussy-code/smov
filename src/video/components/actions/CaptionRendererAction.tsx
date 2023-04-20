@@ -8,7 +8,7 @@ import { useVideoPlayerDescriptor } from "../../state/hooks";
 import { useProgress } from "../../state/logic/progress";
 import { useSource } from "../../state/logic/source";
 
-function CaptionCue({ text }: { text?: string }) {
+export function CaptionCue({ text, scale }: { text?: string; scale?: number }) {
   const { captionSettings } = useSettings();
   const textWithNewlines = (text || "").replaceAll(/\r?\n/g, "<br />");
 
@@ -25,6 +25,7 @@ function CaptionCue({ text }: { text?: string }) {
       className="pointer-events-none mb-1 select-none rounded px-4 py-1 text-center [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]"
       style={{
         ...captionSettings.style,
+        fontSize: captionSettings.style.fontSize * (scale ?? 1),
       }}
     >
       <span
