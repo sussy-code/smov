@@ -49,8 +49,20 @@ export function useControls(
     enterFullscreen() {
       state.stateProvider?.enterFullscreen();
     },
-    setVolume(volume) {
-      state.stateProvider?.setVolume(volume);
+    setVolume(volume, isKeyboardEvent = false) {
+      if (isKeyboardEvent) {
+        if (state.interface.volumeChangedWithKeybindDebounce)
+          clearTimeout(state.interface.volumeChangedWithKeybindDebounce);
+
+        state.interface.volumeChangedWithKeybind = true;
+        updateInterface(descriptor, state);
+
+        state.interface.volumeChangedWithKeybindDebounce = setTimeout(() => {
+          state.interface.volumeChangedWithKeybind = false;
+          updateInterface(descriptor, state);
+        }, 3e3);
+      }
+      state.stateProvider?.setVolume(volume, isKeyboardEvent);
     },
     startAirplay() {
       state.stateProvider?.startAirplay();
