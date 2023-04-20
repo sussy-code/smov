@@ -34,6 +34,7 @@ function initPlayer(): VideoPlayerState {
       popoutBounds: null,
       volumeChangedWithKeybind: false,
       volumeChangedWithKeybindDebounce: null,
+      timeFormat: 0,
     },
 
     mediaPlaying: {

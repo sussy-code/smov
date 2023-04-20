@@ -57,6 +57,8 @@
     "backToHome": "Back to home",
     "backToHomeShort": "Back",
     "seasonAndEpisode": "S{{season}} E{{episode}}",
+    "timeLeft": "{{timeLeft}} left",
+    "finishAt": "Finish at {{timeFinished}}",
     "buttons": {
       "episodes": "Episodes",
       "source": "Source",
@@ -103,6 +105,11 @@
     "errors": {
       "fatalError": "The video player encounted a fatal error, please report it to the <0>Discord server</0> or on <1>GitHub</1>."
     }
+  },
+  "settings": {
+    "title": "Settings",
+    "language":"Language",
+    "captionLanguage": "Caption Language"
   },
   "v3": {
     "newSiteTitle": "New version now released!",

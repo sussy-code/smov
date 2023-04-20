@@ -66,6 +66,7 @@ export default function VideoTesterView() {
             source={video.streamUrl}
             type={videoType}
             quality={MWStreamQuality.QUNKNOWN}
+            captions={[]}
           />
         </VideoPlayer>
       </div>
