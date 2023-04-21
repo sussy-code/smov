@@ -1,8 +1,8 @@
 {
   "name": "movie-web",
-  "version": "3.0.11",
+  "version": "3.0.12",
   "private": true,
-  "homepage": "https://movie.squeezebox.dev",
+  "homepage": "https://movie-web.app",
   "dependencies": {
     "@formkit/auto-animate": "^1.0.0-beta.5",
     "@headlessui/react": "^1.5.0",
