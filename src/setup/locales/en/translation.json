@@ -69,6 +69,7 @@
       "playbackSpeed": "Playback speed"
     },
     "popouts": {
+      "back": "Go back",
       "sources": "Sources",
       "seasons": "Seasons",
       "captions": "Captions",
@@ -108,7 +109,7 @@
   },
   "settings": {
     "title": "Settings",
-    "language":"Language",
+    "language": "Language",
     "captionLanguage": "Caption Language"
   },
   "v3": {

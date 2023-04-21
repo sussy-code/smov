@@ -9,6 +9,7 @@ import { registerSW } from "virtual:pwa-register";
 
 import App from "@/setup/App";
 import "@/setup/ga";
+import "@/setup/sentry";
 import "@/setup/i18n";
 import "@/setup/index.css";
 import "@/backend";
