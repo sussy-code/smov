@@ -53,4 +53,16 @@ Test 2
 Test 3
 `;
 
-export { vtt, srt, ass, visibleSubtitlesTestVtt };
+const multilineSubtitlesTestVtt = `WEBVTT
+
+00:00:00.000 --> 00:00:10.000
+- Test 1\n- Test 2\n- Test 3
+
+00:00:10.000 --> 00:00:20.000
+- Test 4
+
+00:00:20.000 --> 00:00:31.000
+- Test 6
+`;
+
+export { vtt, srt, ass, visibleSubtitlesTestVtt, multilineSubtitlesTestVtt };

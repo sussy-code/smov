@@ -5,7 +5,13 @@ import {
   parseSubtitles,
 } from "@/backend/helpers/captions";
 import { MWCaptionType } from "@/backend/helpers/streams";
-import { ass, srt, visibleSubtitlesTestVtt, vtt } from "./testdata";
+import {
+  ass,
+  multilineSubtitlesTestVtt,
+  srt,
+  visibleSubtitlesTestVtt,
+  vtt,
+} from "./testdata";
 
 describe("subtitles", () => {
   it("should return true if given url ends with a known subtitle type", ({
@@ -132,5 +138,14 @@ describe("subtitles", () => {
       isVisible(c.start, c.end, delayedSeconds)
     );
     expect(delayedVisibleSubtitles3).toHaveLength(1);
+  });
+
+  it("should parse multiline captions", ({ expect }) => {
+    const parsed = parseSubtitles(multilineSubtitlesTestVtt);
+    console.log(parsed[0].content, parsed[0].text);
+
+    expect(parsed[0].text).toBe(`- Test 1\n- Test 2\n- Test 3`);
+    expect(parsed[1].text).toBe(`- Test 4`);
+    expect(parsed[2].text).toBe(`- Test 6`);
   });
 });
