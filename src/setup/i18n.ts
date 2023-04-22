@@ -4,11 +4,15 @@ import LanguageDetector from "i18next-browser-languagedetector";
 
 // Languages
 import en from "./locales/en/translation.json";
+import nl from "./locales/nl/translation.json";
 import { captionLanguages } from "./iso6391";
 
 const locales = {
   en: {
     translation: en,
+  },
+  nl: {
+    translation: nl,
   },
 };
 i18n
