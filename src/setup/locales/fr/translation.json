@@ -30,7 +30,7 @@
     "seasonAndEpisode": "S{{saison}} E{{épisode}}"
   },
   "notFound": {
-    "genericTitle": "Not found",
+    "genericTitle": "Introuvable",
     "backArrow": "Retour à l'accueil",
     "media": {
       "title": "Impossible de trouver ce média",
