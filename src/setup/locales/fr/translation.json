@@ -16,16 +16,34 @@
     "placeholder": "Que voulez-vous voir?"
   },
   "media": {
-    "title": "Impossible de trouver ce média",
-    "description": "Nous n'avons pas pu trouver le média que vous avez demandé. Soit il a été supprimé, soit vous avez altéré l'URL."
+    "movie": "Films",
+    "series": "Séries",
+    "stopEditing": "Arrêter l'édition",
+    "errors": {
+      "genericTitle": "Oups, c'est coupé !",
+      "failedMeta": "Impossible de charger les métadonnées",
+      "mediaFailed": "Nous n'avons pas réussi à récupérer le média que vous avez demandé. Veuillez vérifier votre connexion Internet et réessayer.",
+      "videoFailed": "Nous avons rencontré une erreur lors de la lecture de la vidéo que vous avez demandée. Si cela se reproduit, veuillez signaler le problème au serveur <0>Discord</0> ou sur <1>GitHub</1>."
+    }
   },
-  "provider": {
-    "title": "Ce fournisseur a été désactivé",
-    "description": "Nous avons eu des problèmes avec le fournisseur ou bien il était trop instable pour être utilisé, donc nous avons dû le désactiver."
+  "seasons": {
+    "seasonAndEpisode": "S{{saison}} E{{épisode}}"
   },
-  "page": {
-    "title": "Impossible de trouver cette page",
-    "description": "Nous avons cherché partout : sous les poubelles, dans le placard, derrière le proxy, mais nous n'avons finalement pas pu trouver la page que vous recherchez."
+  "notFound": {
+    "genericTitle": "Not found",
+    "backArrow": "Retour à l'accueil",
+    "media": {
+      "title": "Impossible de trouver ce média",
+      "description": "Nous n'avons pas trouvé le média que vous avez demandé. Soit il a été supprimé, soit vous avez modifié l'URL."
+    },
+    "provider": {
+      "title": "Ce fournisseur a été désactivé",
+      "description": "Nous avons eu des problèmes avec le fournisseur ou il était trop instable pour être utilisé, nous avons donc dû le désactiver."
+    },
+    "page": {
+      "title": "Impossible de trouver cette page",
+      "description": "Nous avons cherché partout : sous les poubelles, dans le placard, derrière le proxy, mais nous n'avons finalement pas trouvé la page que vous cherchez."
+    }
   },
   "searchBar": {
     "movie": "Film",
@@ -51,9 +69,12 @@
       "playbackSpeed": "Vitesse"
     },
     "popouts": {
+      "back": "Eevenir en arrière",
       "sources": "Sources",
       "seasons": "Saisons",
       "captions": "Sous-titres",
+      "playbackSpeed": "Vitesse de lecture",
+      "customPlaybackSpeed": "Custom playback speed",
       "captionPreferences": {
         "title": "Personnaliser",
         "delay": "Délai",
@@ -77,12 +98,18 @@
         "seasons": "Choisissez la saison que vous voulez regarder",
         "episode": "Sélectionnez un épisode",
         "captions": "Choisissez une langue de sous-titres",
-        "captionPreferences": "Personnalisez l'apparence des sous-titres"
+        "captionPreferences": "Personnalisez l'apparence des sous-titres",
+        "playbackSpeed": "Changer la vitesse de lecture"
       }
     },
     "errors": {
       "fatalError": "Le lecteur vidéo a rencontré une erreur fatale, veuillez la signaler au serveur <0>Discord</0> ou sur <1>GitHub</1>."
     }
+  },
+  "settings": {
+    "title": "Paramètres",
+    "language": "Language",
+    "captionLanguage": "Langue des sous-titres"
   },
   "v3": {
     "newSiteTitle": "Nouvelle version disponible!",
