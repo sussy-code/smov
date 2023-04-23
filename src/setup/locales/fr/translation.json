@@ -40,7 +40,7 @@
     "backToHomeShort": "Retour",
     "seasonAndEpisode": "S{{season}} E{{episode}}",
     "timeLeft": "{{timeLeft}} restant",
-    "finishAt": "Terminer à {{timeFinished}}",
+    "finishAt": "Terminer à {{timeFinished, datetime}}",
     "buttons": {
       "episodes": "Épisodes",
       "source": "Source",

@@ -61,13 +61,12 @@ export function TimeAction(props: Props) {
   const timeFinished = new Date(
     new Date().getTime() +
       (videoTime.duration * 1000) / mediaPlaying.playbackSpeed
-  ).toLocaleTimeString("en-US", {
-    hour: "numeric",
-    minute: "numeric",
-    hour12: true,
-  });
+  );
   const formattedTimeFinished = ` - ${t("videoPlayer.finishAt", {
     timeFinished,
+    formatParams: {
+      timeFinished: { hour: "numeric", minute: "numeric" },
+    },
   })}`;
 
   let formattedTime: string;
