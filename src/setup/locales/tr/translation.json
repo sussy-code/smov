@@ -57,7 +57,7 @@
     "backToHome": "Ana sayfaya dön",
     "backToHomeShort": "Geri",
     "seasonAndEpisode": "S{{season}} B{{episode}}",
-    "timeLeft": "{{timeLeft, relativetime}} kaldı",
+    "timeLeft": "{{timeLeft}} kaldı",
     "finishAt": "{{timeFinished, datetime}}'de/da bitiyor",
     "buttons": {
       "episodes": "Bölümler",
