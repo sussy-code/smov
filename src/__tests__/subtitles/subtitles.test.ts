@@ -142,7 +142,6 @@ describe("subtitles", () => {
 
   it("should parse multiline captions", ({ expect }) => {
     const parsed = parseSubtitles(multilineSubtitlesTestVtt);
-    console.log(parsed[0].content, parsed[0].text);
 
     expect(parsed[0].text).toBe(`- Test 1\n- Test 2\n- Test 3`);
     expect(parsed[1].text).toBe(`- Test 4`);
