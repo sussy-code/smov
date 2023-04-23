@@ -5,6 +5,7 @@ import LanguageDetector from "i18next-browser-languagedetector";
 // Languages
 import en from "./locales/en/translation.json";
 import nl from "./locales/nl/translation.json";
+import tr from "./locales/tr/translation.json";
 import { captionLanguages } from "./iso6391";
 
 const locales = {
@@ -13,6 +14,9 @@ const locales = {
   },
   nl: {
     translation: nl,
+  },
+  tr: {
+    translation: tr,
   },
 };
 i18n
