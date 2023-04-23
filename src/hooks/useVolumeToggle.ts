@@ -7,12 +7,12 @@ export function useVolumeControl(descriptor: string) {
   const controls = useControls(descriptor);
   const mediaPlaying = useMediaPlaying(descriptor);
 
-  const toggleVolume = () => {
+  const toggleVolume = (isKeyboardEvent = false) => {
     if (mediaPlaying.volume > 0) {
       setStoredVolume(mediaPlaying.volume);
-      controls.setVolume(0);
+      controls.setVolume(0, isKeyboardEvent);
     } else {
-      controls.setVolume(storedVolume > 0 ? storedVolume : 1);
+      controls.setVolume(storedVolume > 0 ? storedVolume : 1, isKeyboardEvent);
     }
   };
 
