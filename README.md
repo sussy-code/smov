@@ -8,7 +8,7 @@
 <a href="https://discord.gg/vXsRvye8BS"><img src="https://discordapp.com/api/guilds/871713465100816424/widget.png?style=banner2" alt="Discord Server"></a>
 </p>
 
-movie-web is a web app for watching movies easily. Check it out at **[movie.squeezebox.dev](https://movie.squeezebox.dev)**.
+movie-web is a web app for watching movies easily. Check it out at **[movie-web.app](https://movie-web.app)**.
 
 This service works by displaying video files from third-party providers inside an intuitive and aesthetic user interface.
 

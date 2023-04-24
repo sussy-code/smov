@@ -60,7 +60,7 @@ export function KeyboardShortcutsAction() {
 
         // Mute
         case "m":
-          toggleVolume();
+          toggleVolume(true);
           break;
 
         // Decrease volume
