@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
 import pako from "pako";
+import { useEffect, useState } from "react";
+
 import { MWMediaType } from "@/backend/metadata/types";
 import { conf } from "@/setup/config";
 

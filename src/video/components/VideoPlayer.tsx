@@ -1,36 +1,38 @@
+import { ReactNode, useCallback, useState } from "react";
+
 import { Transition } from "@/components/Transition";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { AirplayAction } from "@/video/components/actions/AirplayAction";
 import { BackdropAction } from "@/video/components/actions/BackdropAction";
+import { CastingTextAction } from "@/video/components/actions/CastingTextAction";
+import { ChromecastAction } from "@/video/components/actions/ChromecastAction";
 import { FullscreenAction } from "@/video/components/actions/FullscreenAction";
 import { HeaderAction } from "@/video/components/actions/HeaderAction";
+import { KeyboardShortcutsAction } from "@/video/components/actions/KeyboardShortcutsAction";
 import { LoadingAction } from "@/video/components/actions/LoadingAction";
 import { MiddlePauseAction } from "@/video/components/actions/MiddlePauseAction";
 import { MobileCenterAction } from "@/video/components/actions/MobileCenterAction";
 import { PageTitleAction } from "@/video/components/actions/PageTitleAction";
 import { PauseAction } from "@/video/components/actions/PauseAction";
+import { PictureInPictureAction } from "@/video/components/actions/PictureInPictureAction";
 import { ProgressAction } from "@/video/components/actions/ProgressAction";
 import { SeriesSelectionAction } from "@/video/components/actions/SeriesSelectionAction";
 import { ShowTitleAction } from "@/video/components/actions/ShowTitleAction";
-import { KeyboardShortcutsAction } from "@/video/components/actions/KeyboardShortcutsAction";
 import { SkipTimeAction } from "@/video/components/actions/SkipTimeAction";
 import { TimeAction } from "@/video/components/actions/TimeAction";
 import { VolumeAction } from "@/video/components/actions/VolumeAction";
 import { VideoPlayerError } from "@/video/components/parts/VideoPlayerError";
+import { PopoutProviderAction } from "@/video/components/popouts/PopoutProviderAction";
 import {
   VideoPlayerBase,
   VideoPlayerBaseProps,
 } from "@/video/components/VideoPlayerBase";
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useControls } from "@/video/state/logic/controls";
-import { ReactNode, useCallback, useState } from "react";
-import { PopoutProviderAction } from "@/video/components/popouts/PopoutProviderAction";
-import { ChromecastAction } from "@/video/components/actions/ChromecastAction";
-import { CastingTextAction } from "@/video/components/actions/CastingTextAction";
-import { PictureInPictureAction } from "@/video/components/actions/PictureInPictureAction";
+
 import { CaptionRendererAction } from "./actions/CaptionRendererAction";
-import { SettingsAction } from "./actions/SettingsAction";
 import { DividerAction } from "./actions/DividerAction";
+import { SettingsAction } from "./actions/SettingsAction";
 import { VolumeAdjustedAction } from "./actions/VolumeAdjustedAction";
 
 type Props = VideoPlayerBaseProps;

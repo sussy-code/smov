@@ -1,3 +1,6 @@
+import { ReactNode, useEffect, useState } from "react";
+
+import { testData } from "@/__tests__/providers/testdata";
 import { MWProviderScrapeResult } from "@/backend/helpers/provider";
 import { getProviders } from "@/backend/helpers/register";
 import { runProvider } from "@/backend/helpers/run";
@@ -6,8 +9,6 @@ import { Navigation } from "@/components/layout/Navigation";
 import { ArrowLink } from "@/components/text/ArrowLink";
 import { Title } from "@/components/text/Title";
 import { useLoading } from "@/hooks/useLoading";
-import { testData } from "@/__tests__/providers/testdata";
-import { ReactNode, useEffect, useState } from "react";
 
 interface MediaSelectorProps {
   onSelect: (meta: DetailedMeta) => void;

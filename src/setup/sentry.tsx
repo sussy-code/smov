@@ -1,7 +1,8 @@
-import * as Sentry from "@sentry/react";
 import { CaptureConsole, HttpClient } from "@sentry/integrations";
-import { SENTRY_DSN } from "@/setup/constants";
+import * as Sentry from "@sentry/react";
+
 import { conf } from "@/setup/config";
+import { SENTRY_DSN } from "@/setup/constants";
 
 Sentry.init({
   dsn: SENTRY_DSN,

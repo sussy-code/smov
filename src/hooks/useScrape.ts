@@ -1,8 +1,9 @@
+import { useEffect, useState } from "react";
+
 import { findBestStream } from "@/backend/helpers/scrape";
 import { MWStream } from "@/backend/helpers/streams";
 import { DetailedMeta } from "@/backend/metadata/getmeta";
 import { MWMediaType } from "@/backend/metadata/types";
-import { useEffect, useState } from "react";
 
 export interface ScrapeEventLog {
   type: "provider" | "embed";

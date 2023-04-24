@@ -1,12 +1,13 @@
-import { Icons } from "@/components/Icon";
+import { useTranslation } from "react-i18next";
+
 import { MWMediaType } from "@/backend/metadata/types";
-import { useVideoPlayerDescriptor } from "@/video/state/hooks";
-import { useMeta } from "@/video/state/logic/meta";
+import { Icons } from "@/components/Icon";
+import { FloatingAnchor } from "@/components/popout/FloatingAnchor";
 import { VideoPlayerIconButton } from "@/video/components/parts/VideoPlayerIconButton";
+import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useControls } from "@/video/state/logic/controls";
 import { useInterface } from "@/video/state/logic/interface";
-import { useTranslation } from "react-i18next";
-import { FloatingAnchor } from "@/components/popout/FloatingAnchor";
+import { useMeta } from "@/video/state/logic/meta";
 
 interface Props {
   className?: string;

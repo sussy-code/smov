@@ -1,6 +1,8 @@
+import { useMemo } from "react";
+
 import { MWMediaMeta } from "@/backend/metadata/types";
 import { useWatchedContext } from "@/state/watched";
-import { useMemo } from "react";
+
 import { MediaCard } from "./MediaCard";
 
 export interface WatchedMediaCardProps {

@@ -1,5 +1,6 @@
-import { conf } from "@/setup/config";
 import { ofetch } from "ofetch";
+
+import { conf } from "@/setup/config";
 
 let proxyUrlIndex = Math.floor(Math.random() * conf().PROXY_URLS.length);
 

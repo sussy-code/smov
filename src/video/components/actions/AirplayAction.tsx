@@ -1,8 +1,10 @@
+import { useCallback } from "react";
+
 import { Icons } from "@/components/Icon";
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useControls } from "@/video/state/logic/controls";
 import { useMisc } from "@/video/state/logic/misc";
-import { useCallback } from "react";
+
 import { VideoPlayerIconButton } from "../parts/VideoPlayerIconButton";
 
 interface Props {

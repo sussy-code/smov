@@ -1,11 +1,12 @@
+import { useTranslation } from "react-i18next";
+
 import { Icons } from "@/components/Icon";
-import { useVideoPlayerDescriptor } from "@/video/state/hooks";
+import { FloatingAnchor } from "@/components/popout/FloatingAnchor";
+import { useIsMobile } from "@/hooks/useIsMobile";
 import { VideoPlayerIconButton } from "@/video/components/parts/VideoPlayerIconButton";
+import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useControls } from "@/video/state/logic/controls";
 import { useInterface } from "@/video/state/logic/interface";
-import { useIsMobile } from "@/hooks/useIsMobile";
-import { useTranslation } from "react-i18next";
-import { FloatingAnchor } from "@/components/popout/FloatingAnchor";
 
 interface Props {
   className?: string;

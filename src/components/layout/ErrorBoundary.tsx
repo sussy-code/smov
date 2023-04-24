@@ -1,10 +1,11 @@
 import { Component } from "react";
+import { Trans, useTranslation } from "react-i18next";
+
 import { IconPatch } from "@/components/buttons/IconPatch";
 import { Icons } from "@/components/Icon";
 import { Link } from "@/components/text/Link";
 import { Title } from "@/components/text/Title";
 import { conf } from "@/setup/config";
-import { Trans, useTranslation } from "react-i18next";
 
 interface ErrorShowcaseProps {
   error: {

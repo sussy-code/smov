@@ -1,10 +1,12 @@
-import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { DotList } from "@/components/text/DotList";
-import { MWMediaMeta } from "@/backend/metadata/types";
+import { Link } from "react-router-dom";
+
 import { JWMediaToId } from "@/backend/metadata/justwatch";
-import { Icons } from "../Icon";
+import { MWMediaMeta } from "@/backend/metadata/types";
+import { DotList } from "@/components/text/DotList";
+
 import { IconPatch } from "../buttons/IconPatch";
+import { Icons } from "../Icon";
 
 export interface MediaCardProps {
   media: MWMediaMeta;

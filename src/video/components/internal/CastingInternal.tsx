@@ -1,10 +1,11 @@
+import { useEffect, useMemo, useRef } from "react";
+
 import { useChromecastAvailable } from "@/hooks/useChromecastAvailable";
 import { getPlayerState } from "@/video/state/cache";
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { updateMisc, useMisc } from "@/video/state/logic/misc";
 import { createCastingStateProvider } from "@/video/state/providers/castingStateProvider";
 import { setProvider, unsetStateProvider } from "@/video/state/providers/utils";
-import { useEffect, useMemo, useRef } from "react";
 
 export function CastingInternal() {
   const descriptor = useVideoPlayerDescriptor();

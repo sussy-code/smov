@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+
 import { Loading } from "@/components/layout/Loading";
 import { useSearchQuery } from "@/hooks/useSearchQuery";
 
