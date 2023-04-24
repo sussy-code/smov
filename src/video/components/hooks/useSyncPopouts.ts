@@ -1,7 +1,8 @@
-import { ControlMethods, useControls } from "@/video/state/logic/controls";
-import { useInterface } from "@/video/state/logic/interface";
 import { useEffect, useRef } from "react";
 import { useHistory, useLocation } from "react-router-dom";
+
+import { ControlMethods, useControls } from "@/video/state/logic/controls";
+import { useInterface } from "@/video/state/logic/interface";
 
 function syncRouteToPopout(
   location: ReturnType<typeof useLocation>,

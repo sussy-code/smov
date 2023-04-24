@@ -1,15 +1,15 @@
-import { registerProvider } from "@/backend/helpers/register";
-import { MWMediaType } from "@/backend/metadata/types";
-
-import { customAlphabet } from "nanoid";
 import CryptoJS from "crypto-js";
+import { customAlphabet } from "nanoid";
+
 import { proxiedFetch } from "@/backend/helpers/fetch";
+import { registerProvider } from "@/backend/helpers/register";
 import {
   MWCaption,
   MWCaptionType,
   MWStreamQuality,
   MWStreamType,
 } from "@/backend/helpers/streams";
+import { MWMediaType } from "@/backend/metadata/types";
 import { compareTitle } from "@/utils/titleMatch";
 
 const nanoid = customAlphabet("0123456789abcdef", 32);

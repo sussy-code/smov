@@ -1,9 +1,10 @@
-import { unpack } from "unpacker";
 import CryptoJS from "crypto-js";
+import { unpack } from "unpacker";
 
 import { registerProvider } from "@/backend/helpers/register";
-import { MWMediaType } from "@/backend/metadata/types";
 import { MWStreamQuality } from "@/backend/helpers/streams";
+import { MWMediaType } from "@/backend/metadata/types";
+
 import { proxiedFetch } from "../helpers/fetch";
 
 const format = {

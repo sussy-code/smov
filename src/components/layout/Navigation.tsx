@@ -1,10 +1,12 @@
 import { ReactNode, useState } from "react";
 import { Link } from "react-router-dom";
+
 import { IconPatch } from "@/components/buttons/IconPatch";
 import { Icons } from "@/components/Icon";
-import { conf } from "@/setup/config";
 import { useBannerSize } from "@/hooks/useBanner";
+import { conf } from "@/setup/config";
 import SettingsModal from "@/views/SettingsModal";
+
 import { BrandPill } from "./BrandPill";
 
 export interface NavigationProps {

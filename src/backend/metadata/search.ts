@@ -1,13 +1,14 @@
 import { SimpleCache } from "@/utils/cache";
-import { proxiedFetch } from "../helpers/fetch";
+
 import {
-  formatJWMeta,
   JWContentTypes,
   JWMediaResult,
   JW_API_BASE,
+  formatJWMeta,
   mediaTypeToJW,
 } from "./justwatch";
 import { MWMediaMeta, MWQuery } from "./types";
+import { proxiedFetch } from "../helpers/fetch";
 
 const cache = new SimpleCache<MWQuery, MWMediaMeta[]>();
 cache.setCompare((a, b) => {

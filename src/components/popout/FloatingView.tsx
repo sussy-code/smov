@@ -1,6 +1,7 @@
+import { ReactNode } from "react";
+
 import { Transition } from "@/components/Transition";
 import { useIsMobile } from "@/hooks/useIsMobile";
-import { ReactNode } from "react";
 
 interface Props {
   children?: ReactNode;

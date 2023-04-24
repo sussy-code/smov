@@ -1,12 +1,14 @@
+import { useTranslation } from "react-i18next";
+
 import { Icon, Icons } from "@/components/Icon";
 import { FloatingCardView } from "@/components/popout/FloatingCard";
 import { FloatingView } from "@/components/popout/FloatingView";
+import { Slider } from "@/components/Slider";
 import { useFloatingRouter } from "@/hooks/useFloatingRouter";
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useControls } from "@/video/state/logic/controls";
-import { useTranslation } from "react-i18next";
 import { useMediaPlaying } from "@/video/state/logic/mediaplaying";
-import { Slider } from "@/components/Slider";
+
 import { PopoutListEntry, PopoutSection } from "./PopoutUtils";
 
 const speedSelectionOptions = [0.25, 0.5, 0.75, 1, 1.25, 1.5, 2];

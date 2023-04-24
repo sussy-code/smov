@@ -1,16 +1,18 @@
-import { DetailedMeta } from "@/backend/metadata/getmeta";
-import { MWMediaType } from "@/backend/metadata/types";
-import { useStore } from "@/utils/storage";
 import {
-  createContext,
   ReactNode,
+  createContext,
   useCallback,
   useContext,
   useMemo,
   useRef,
 } from "react";
+
+import { DetailedMeta } from "@/backend/metadata/getmeta";
+import { MWMediaType } from "@/backend/metadata/types";
+import { useStore } from "@/utils/storage";
+
 import { VideoProgressStore } from "./store";
-import { StoreMediaItem, WatchedStoreItem, WatchedStoreData } from "./types";
+import { StoreMediaItem, WatchedStoreData, WatchedStoreItem } from "./types";
 
 const FIVETEEN_MINUTES = 15 * 60;
 const FIVE_MINUTES = 5 * 60;

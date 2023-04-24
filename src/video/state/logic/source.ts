@@ -1,5 +1,7 @@
-import { MWStreamQuality, MWStreamType } from "@/backend/helpers/streams";
 import { useEffect, useState } from "react";
+
+import { MWStreamQuality, MWStreamType } from "@/backend/helpers/streams";
+
 import { getPlayerState } from "../cache";
 import { listenEvent, sendEvent, unlistenEvent } from "../events";
 import { VideoPlayerState } from "../types";

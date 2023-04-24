@@ -1,7 +1,8 @@
+import { useTranslation } from "react-i18next";
+
 import { Icon, Icons } from "@/components/Icon";
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useMisc } from "@/video/state/logic/misc";
-import { useTranslation } from "react-i18next";
 
 export function CastingTextAction() {
   const { t } = useTranslation();

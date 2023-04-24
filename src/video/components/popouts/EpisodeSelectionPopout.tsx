@@ -1,20 +1,22 @@
 import { useCallback, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
-import { Icon, Icons } from "@/components/Icon";
-import { useLoading } from "@/hooks/useLoading";
-import { MWMediaType, MWSeasonWithEpisodeMeta } from "@/backend/metadata/types";
+
 import { getMetaFromId } from "@/backend/metadata/getmeta";
 import { decodeJWId } from "@/backend/metadata/justwatch";
-import { Loading } from "@/components/layout/Loading";
+import { MWMediaType, MWSeasonWithEpisodeMeta } from "@/backend/metadata/types";
 import { IconPatch } from "@/components/buttons/IconPatch";
-import { useVideoPlayerDescriptor } from "@/video/state/hooks";
-import { useMeta } from "@/video/state/logic/meta";
-import { useControls } from "@/video/state/logic/controls";
-import { useWatchedContext } from "@/state/watched";
-import { useTranslation } from "react-i18next";
+import { Icon, Icons } from "@/components/Icon";
+import { Loading } from "@/components/layout/Loading";
+import { FloatingCardView } from "@/components/popout/FloatingCard";
 import { FloatingView } from "@/components/popout/FloatingView";
 import { useFloatingRouter } from "@/hooks/useFloatingRouter";
-import { FloatingCardView } from "@/components/popout/FloatingCard";
+import { useLoading } from "@/hooks/useLoading";
+import { useWatchedContext } from "@/state/watched";
+import { useVideoPlayerDescriptor } from "@/video/state/hooks";
+import { useControls } from "@/video/state/logic/controls";
+import { useMeta } from "@/video/state/logic/meta";
+
 import { PopoutListEntry } from "./PopoutUtils";
 
 export function EpisodeSelectionPopout() {
