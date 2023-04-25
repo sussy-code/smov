@@ -8,6 +8,7 @@ import en from "./locales/en/translation.json";
 import fr from "./locales/fr/translation.json";
 import nl from "./locales/nl/translation.json";
 import tr from "./locales/tr/translation.json";
+import cs from "./locales/cs/translation.json";
 
 const locales = {
   en: {
@@ -22,6 +23,9 @@ const locales = {
   fr: {
     translation: fr,
   },
+  cs: {
+    translation: cs,
+  }
 };
 i18n
   // detect user language
