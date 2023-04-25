@@ -1,3 +1,5 @@
+import { ReactNode, useCallback, useEffect, useMemo, useState } from "react";
+
 import { MWEmbed, MWEmbedScraper, MWEmbedType } from "@/backend/helpers/embed";
 import { getEmbeds } from "@/backend/helpers/register";
 import { runEmbedScraper } from "@/backend/helpers/run";
@@ -7,7 +9,6 @@ import { Navigation } from "@/components/layout/Navigation";
 import { ArrowLink } from "@/components/text/ArrowLink";
 import { Title } from "@/components/text/Title";
 import { useLoading } from "@/hooks/useLoading";
-import { ReactNode, useCallback, useEffect, useMemo, useState } from "react";
 
 interface MediaSelectorProps {
   embedType: MWEmbedType;

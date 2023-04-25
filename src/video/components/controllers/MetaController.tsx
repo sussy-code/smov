@@ -1,9 +1,10 @@
+import { useEffect } from "react";
+
 import { MWCaption } from "@/backend/helpers/streams";
 import { MWSeasonWithEpisodeMeta } from "@/backend/metadata/types";
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useControls } from "@/video/state/logic/controls";
 import { VideoPlayerMeta } from "@/video/state/types";
-import { useEffect } from "react";
 
 interface MetaControllerProps {
   data?: VideoPlayerMeta;

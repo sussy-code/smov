@@ -1,9 +1,10 @@
 import { describe, it } from "vitest";
+
 import "@/backend";
-import { getProviders } from "@/backend/helpers/register";
-import { MWMediaType } from "@/backend/metadata/types";
-import { runProvider } from "@/backend/helpers/run";
 import { testData } from "@/__tests__/providers/testdata";
+import { getProviders } from "@/backend/helpers/register";
+import { runProvider } from "@/backend/helpers/run";
+import { MWMediaType } from "@/backend/metadata/types";
 
 describe("providers", () => {
   const providers = getProviders();

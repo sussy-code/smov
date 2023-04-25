@@ -1,21 +1,22 @@
+import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
+
+import CaptionColorSelector, {
+  colors,
+} from "@/components/CaptionColorSelector";
 import { Dropdown } from "@/components/Dropdown";
 import { Icon, Icons } from "@/components/Icon";
 import { Modal, ModalCard } from "@/components/layout/Modal";
-import { useSettings } from "@/state/settings";
-import { useTranslation } from "react-i18next";
-import { CaptionCue } from "@/video/components/actions/CaptionRendererAction";
+import { Slider } from "@/components/Slider";
+import { conf } from "@/setup/config";
+import { appLanguageOptions } from "@/setup/i18n";
 import {
   CaptionLanguageOption,
   LangCode,
   captionLanguages,
 } from "@/setup/iso6391";
-import { useMemo } from "react";
-import { appLanguageOptions } from "@/setup/i18n";
-import CaptionColorSelector, {
-  colors,
-} from "@/components/CaptionColorSelector";
-import { Slider } from "@/components/Slider";
-import { conf } from "@/setup/config";
+import { useSettings } from "@/state/settings";
+import { CaptionCue } from "@/video/components/actions/CaptionRendererAction";
 
 export default function SettingsModal(props: {
   onClose: () => void;

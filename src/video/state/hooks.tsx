@@ -1,10 +1,11 @@
 import {
-  createContext,
   ReactNode,
+  createContext,
   useContext,
   useEffect,
   useState,
 } from "react";
+
 import { registerVideoPlayer, unregisterVideoPlayer } from "./init";
 
 const VideoPlayerContext = createContext<string>("");

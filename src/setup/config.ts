@@ -1,4 +1,4 @@
-import { APP_VERSION, GITHUB_LINK, DISCORD_LINK } from "./constants";
+import { APP_VERSION, DISCORD_LINK, GITHUB_LINK } from "./constants";
 
 interface Config {
   APP_VERSION: string;

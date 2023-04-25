@@ -1,4 +1,5 @@
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
+
 import { useCurrentSeriesEpisodeInfo } from "../hooks/useCurrentSeriesEpisodeInfo";
 
 export function ShowTitleAction() {

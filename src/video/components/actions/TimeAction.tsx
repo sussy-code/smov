@@ -1,11 +1,12 @@
-import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useTranslation } from "react-i18next";
+
+import { useIsMobile } from "@/hooks/useIsMobile";
+import { useVideoPlayerDescriptor } from "@/video/state/hooks";
+import { useControls } from "@/video/state/logic/controls";
+import { useInterface } from "@/video/state/logic/interface";
 import { useMediaPlaying } from "@/video/state/logic/mediaplaying";
 import { useProgress } from "@/video/state/logic/progress";
-import { useInterface } from "@/video/state/logic/interface";
 import { VideoPlayerTimeFormat } from "@/video/state/types";
-import { useIsMobile } from "@/hooks/useIsMobile";
-import { useControls } from "@/video/state/logic/controls";
 
 function durationExceedsHour(secs: number): boolean {
   return secs > 60 * 60;

@@ -1,5 +1,7 @@
-import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { Helmet } from "react-helmet";
+
+import { useVideoPlayerDescriptor } from "@/video/state/hooks";
+
 import { useCurrentSeriesEpisodeInfo } from "../hooks/useCurrentSeriesEpisodeInfo";
 
 export function PageTitleAction() {

@@ -1,6 +1,7 @@
+import { useState } from "react";
+
 import { useControls } from "@/video/state/logic/controls";
 import { useMediaPlaying } from "@/video/state/logic/mediaplaying";
-import { useState } from "react";
 
 export function useVolumeControl(descriptor: string) {
   const [storedVolume, setStoredVolume] = useState(1);

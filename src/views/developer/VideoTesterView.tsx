@@ -1,3 +1,6 @@
+import { useCallback, useState } from "react";
+import { Helmet } from "react-helmet";
+
 import { MWStreamQuality, MWStreamType } from "@/backend/helpers/streams";
 import { DetailedMeta } from "@/backend/metadata/getmeta";
 import { MWMediaType } from "@/backend/metadata/types";
@@ -8,8 +11,6 @@ import { ThinContainer } from "@/components/layout/ThinContainer";
 import { MetaController } from "@/video/components/controllers/MetaController";
 import { SourceController } from "@/video/components/controllers/SourceController";
 import { VideoPlayer } from "@/video/components/VideoPlayer";
-import { useCallback, useState } from "react";
-import { Helmet } from "react-helmet";
 
 interface VideoData {
   streamUrl: string;

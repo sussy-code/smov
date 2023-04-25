@@ -1,10 +1,12 @@
-import { Icons } from "@/components/Icon";
-import { useVideoPlayerDescriptor } from "@/video/state/hooks";
-import { useSource } from "@/video/state/logic/source";
-import { MWStreamType } from "@/backend/helpers/streams";
-import { normalizeTitle } from "@/utils/normalizeTitle";
 import { useTranslation } from "react-i18next";
+
+import { MWStreamType } from "@/backend/helpers/streams";
+import { Icons } from "@/components/Icon";
+import { normalizeTitle } from "@/utils/normalizeTitle";
+import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useMeta } from "@/video/state/logic/meta";
+import { useSource } from "@/video/state/logic/source";
+
 import { PopoutListAction } from "../../popouts/PopoutUtils";
 
 export function DownloadAction() {

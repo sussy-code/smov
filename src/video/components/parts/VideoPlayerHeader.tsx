@@ -1,16 +1,17 @@
+import { useTranslation } from "react-i18next";
+
 import { MWMediaMeta } from "@/backend/metadata/types";
 import { IconPatch } from "@/components/buttons/IconPatch";
 import { Icon, Icons } from "@/components/Icon";
 import { BrandPill } from "@/components/layout/BrandPill";
+import { useBannerSize } from "@/hooks/useBanner";
+import { useIsMobile } from "@/hooks/useIsMobile";
 import {
   getIfBookmarkedFromPortable,
   useBookmarkContext,
 } from "@/state/bookmark";
 import { AirplayAction } from "@/video/components/actions/AirplayAction";
 import { ChromecastAction } from "@/video/components/actions/ChromecastAction";
-import { useTranslation } from "react-i18next";
-import { useIsMobile } from "@/hooks/useIsMobile";
-import { useBannerSize } from "@/hooks/useBanner";
 
 interface VideoPlayerHeaderProps {
   media?: MWMediaMeta;

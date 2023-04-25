@@ -2,14 +2,15 @@ import { FloatingCardView } from "@/components/popout/FloatingCard";
 import { FloatingDragHandle } from "@/components/popout/FloatingDragHandle";
 import { FloatingView } from "@/components/popout/FloatingView";
 import { useFloatingRouter } from "@/hooks/useFloatingRouter";
-import { DownloadAction } from "@/video/components/actions/list-entries/DownloadAction";
 import { CaptionsSelectionAction } from "@/video/components/actions/list-entries/CaptionsSelectionAction";
-import { SourceSelectionAction } from "@/video/components/actions/list-entries/SourceSelectionAction";
+import { DownloadAction } from "@/video/components/actions/list-entries/DownloadAction";
 import { PlaybackSpeedSelectionAction } from "@/video/components/actions/list-entries/PlaybackSpeedSelectionAction";
+import { SourceSelectionAction } from "@/video/components/actions/list-entries/SourceSelectionAction";
+
 import { CaptionSelectionPopout } from "./CaptionSelectionPopout";
-import { SourceSelectionPopout } from "./SourceSelectionPopout";
 import { CaptionSettingsPopout } from "./CaptionSettingsPopout";
 import { PlaybackSpeedPopout } from "./PlaybackSpeedPopout";
+import { SourceSelectionPopout } from "./SourceSelectionPopout";
 
 export function SettingsPopout() {
   const floatingRouter = useFloatingRouter();

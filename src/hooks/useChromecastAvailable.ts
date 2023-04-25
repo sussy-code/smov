@@ -1,7 +1,8 @@
 /// <reference types="chromecast-caf-sender"/>
 
-import { isChromecastAvailable } from "@/setup/chromecast";
 import { useEffect, useRef, useState } from "react";
+
+import { isChromecastAvailable } from "@/setup/chromecast";
 
 export function useChromecastAvailable() {
   const [available, setAvailable] = useState<boolean | null>(null);

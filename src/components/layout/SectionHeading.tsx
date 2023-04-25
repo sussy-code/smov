@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+
 import { Icon, Icons } from "@/components/Icon";
 
 interface SectionHeadingProps {

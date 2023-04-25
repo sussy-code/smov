@@ -1,10 +1,12 @@
+import { ReactNode } from "react";
+
 import { IconPatch } from "@/components/buttons/IconPatch";
 import { Icons } from "@/components/Icon";
 import { Title } from "@/components/text/Title";
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useError } from "@/video/state/logic/error";
 import { useMeta } from "@/video/state/logic/meta";
-import { ReactNode } from "react";
+
 import { VideoPlayerHeader } from "./VideoPlayerHeader";
 
 interface VideoPlayerErrorProps {

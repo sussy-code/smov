@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+
+import { searchForMedia } from "@/backend/metadata/search";
+import { MWMediaMeta, MWQuery } from "@/backend/metadata/types";
 import { IconPatch } from "@/components/buttons/IconPatch";
 import { Icons } from "@/components/Icon";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 import { MediaGrid } from "@/components/media/MediaGrid";
 import { WatchedMediaCard } from "@/components/media/WatchedMediaCard";
 import { useLoading } from "@/hooks/useLoading";
-import { searchForMedia } from "@/backend/metadata/search";
-import { MWMediaMeta, MWQuery } from "@/backend/metadata/types";
+
 import { SearchLoadingView } from "./SearchLoadingView";
 
 function SearchSuffix(props: { failed?: boolean; results?: number }) {

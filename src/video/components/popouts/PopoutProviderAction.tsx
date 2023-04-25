@@ -1,12 +1,13 @@
+import { useCallback } from "react";
+
+import { PopoutFloatingCard } from "@/components/popout/FloatingCard";
+import { FloatingContainer } from "@/components/popout/FloatingContainer";
 import { useSyncPopouts } from "@/video/components/hooks/useSyncPopouts";
 import { EpisodeSelectionPopout } from "@/video/components/popouts/EpisodeSelectionPopout";
 import { SettingsPopout } from "@/video/components/popouts/SettingsPopout";
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useControls } from "@/video/state/logic/controls";
 import { useInterface } from "@/video/state/logic/interface";
-import { useCallback } from "react";
-import { PopoutFloatingCard } from "@/components/popout/FloatingCard";
-import { FloatingContainer } from "@/components/popout/FloatingContainer";
 
 import "./Popouts.css";
 
