@@ -1,8 +1,9 @@
+import { useCallback, useEffect, useRef, useState } from "react";
+
 import { Icons } from "@/components/Icon";
 import { VideoPlayerIconButton } from "@/video/components/parts/VideoPlayerIconButton";
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useMisc } from "@/video/state/logic/misc";
-import { useCallback, useEffect, useRef, useState } from "react";
 
 interface Props {
   className?: string;

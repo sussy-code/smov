@@ -1,19 +1,21 @@
+import { useAutoAnimate } from "@formkit/auto-animate/react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { Trans, useTranslation } from "react-i18next";
+import { useHistory } from "react-router-dom";
+
+import { Button } from "@/components/Button";
+import { EditButton } from "@/components/buttons/EditButton";
 import { Icons } from "@/components/Icon";
+import { Modal, ModalCard } from "@/components/layout/Modal";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 import { MediaGrid } from "@/components/media/MediaGrid";
+import { WatchedMediaCard } from "@/components/media/WatchedMediaCard";
 import {
   getIfBookmarkedFromPortable,
   useBookmarkContext,
 } from "@/state/bookmark";
 import { useWatchedContext } from "@/state/watched";
-import { WatchedMediaCard } from "@/components/media/WatchedMediaCard";
-import { EditButton } from "@/components/buttons/EditButton";
-import { useCallback, useEffect, useMemo, useState } from "react";
-import { useAutoAnimate } from "@formkit/auto-animate/react";
-import { useHistory } from "react-router-dom";
-import { Modal, ModalCard } from "@/components/layout/Modal";
-import { Button } from "@/components/Button";
+
 import { EmbedMigration } from "../other/v2Migration";
 
 function Bookmarks() {

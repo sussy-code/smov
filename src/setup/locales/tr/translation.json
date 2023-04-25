@@ -1,0 +1,128 @@
+{
+  "global": {
+    "name": "movie-web"
+  },
+  "search": {
+    "loading_series": "Favori dizileriniz aranıyor...",
+    "loading_movie": "Favori filmleriniz aranıyor...",
+    "loading": "Yükleniyor...",
+    "allResults": "Bu kadarını bulabildik!",
+    "noResults": "Hiçbir şey bulamadık!",
+    "allFailed": "Medya bulunamadı, tekrar deneyin!",
+    "headingTitle": "Arama sonuçları",
+    "bookmarks": "Yerimleri",
+    "continueWatching": "İzlemeye devam edin",
+    "title": "Ne izlemek istersiniz?",
+    "placeholder": "Ne izlemek istersiniz?"
+  },
+  "media": {
+    "movie": "Film",
+    "series": "Dizi",
+    "stopEditing": "Düzenlemeyi durdur",
+    "errors": {
+      "genericTitle": "Hay aksi, bozuldu!",
+      "failedMeta": "Önbilgi yüklenemedi",
+      "mediaFailed": "İstediğiniz medyaya istek atarken hata oluştu, internet bağlantınızı kontrol edin ve tekrar deneyin.",
+      "videoFailed": "İstediğiniz videoyu oynatırken bir sorunla karşılaştık. Bu durum devam ederse lütfen bunu <0>Discord sunucumuza</0> veya <1>GitHub</1> üzerinden bildiriniz."
+    }
+  },
+  "seasons": {
+    "seasonAndEpisode": "S{{season}} B{{episode}}"
+  },
+  "notFound": {
+    "genericTitle": "Bulunamadı",
+    "backArrow": "Geri",
+    "media": {
+      "title": "Medya bulunamadı",
+      "description": "İstediğiniz medyayı bulamadık. URL'i yanlış girdiniz ya da medya kaldırıldı."
+    },
+    "provider": {
+      "title": "Bu sağlayıcı devre dışı bırakıldı",
+      "description": "Sağlayıcı ile ilgili bir sorun oluştu ya da kullanılacak kadar stabil değildi bu yüzden devre dışı bırakmak zorunda kaldık."
+    },
+    "page": {
+      "title": "Sayfa bulunamadı",
+      "description": "Her yere baktık: bazanın altına, dolabın içine hatta ara sunucuya ama maalesef aradığınız sayfayı bulamadık."
+    }
+  },
+  "searchBar": {
+    "movie": "Film",
+    "series": "Dizi",
+    "Search": "Ara"
+  },
+  "videoPlayer": {
+    "findingBestVideo": "Sizin için en iyi videoyu buluyoruz...",
+    "noVideos": "Hay aksi, hiçbir video bulamadık",
+    "loading": "Yükleniyor...",
+    "backToHome": "Ana sayfaya dön",
+    "backToHomeShort": "Geri",
+    "seasonAndEpisode": "S{{season}} B{{episode}}",
+    "timeLeft": "{{timeLeft}} kaldı",
+    "finishAt": "{{timeFinished, datetime}}'de/da bitiyor",
+    "buttons": {
+      "episodes": "Bölümler",
+      "source": "Kaynak",
+      "captions": "Altyazılar",
+      "download": "İndir",
+      "settings": "Ayarlar",
+      "pictureInPicture": "Resim içinde Resim",
+      "playbackSpeed": "Oynatma Hızı"
+    },
+    "popouts": {
+      "back": "Geri git",
+      "sources": "Kaynaklar",
+      "seasons": "Sezonlar",
+      "captions": "Altyazılar",
+      "playbackSpeed": "Oynatma hızı",
+      "customPlaybackSpeed": "Özel oynatma hızı",
+      "captionPreferences": {
+        "title": "Kişiselleştirme",
+        "delay": "Gecikme",
+        "fontSize": "Boyut",
+        "opacity": "Opaklık",
+        "color": "Renk"
+      },
+      "episode": "B{{index}} - {{title}}",
+      "noCaptions": "Altyazı yok",
+      "linkedCaptions": "Kaynak Altyazıları",
+      "customCaption": "Özel altyazı",
+      "uploadCustomCaption": "Altyazı yükle",
+      "noEmbeds": "Bu kaynak için gömülü video bulunamadı",
+
+      "errors": {
+        "loadingWentWong": "{{seasonTitle}} için bölümler yüklenirken bir hata oluştu",
+        "embedsError": "İstediğiniz şey için gömülü video bulunurken bir hata oluştu"
+      },
+      "descriptions": {
+        "sources": "Hangi sağlayıcıyı kullanmak istersiniz?",
+        "embeds": "Görüntülemek istediğiniz videoyu seçiniz",
+        "seasons": "İzlemek istediğiniz sezonu seçiniz",
+        "episode": "Bir bölüm seçiniz",
+        "captions": "Altyazı dili seçiniz",
+        "captionPreferences": "Altyazıları istediğiniz gibi ayarlayın",
+        "playbackSpeed": "Oynatma hızınızı değiştirin"
+      }
+    },
+    "errors": {
+      "fatalError": "Video oynatıcıda bir hata oluştu, lütfen bunu <0>Discord sunucumuzda</0> ya da <1>GitHub</1> üzeriden bildiriniz."
+    }
+  },
+  "settings": {
+    "title": "Ayarlar",
+    "language": "Dil",
+    "captionLanguage": "Altyazı Dili"
+  },
+  "v3": {
+    "newSiteTitle": "Yeni sürüm yayınlandı!",
+    "newDomain": "https://movie-web.app",
+    "newDomainText": "movie-web yakında yeni bir alan adına taşınacak: <0>https://movie-web.app</0>. <1>{{date}} tarihinde eski site çalışmayacağı için</1> yerimlerinizi güncellemeyi unutmayın.",
+    "tireless": "Bu yeni güncelleme için gece gündüz çalıştık, umarız aylardan beri hazırladığımız bu güncellemeyi beğenirsiniz.",
+    "leaveAnnouncement": "Götür beni!"
+  },
+  "casting": {
+    "casting": "Cihaza aktarılıyor..."
+  },
+  "errors": {
+    "offline": "İnternet bağlantınızı kontrol ediniz"
+  }
+}

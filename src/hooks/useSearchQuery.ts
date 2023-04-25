@@ -1,6 +1,7 @@
-import { MWMediaType, MWQuery } from "@/backend/metadata/types";
 import { useState } from "react";
 import { generatePath, useHistory, useRouteMatch } from "react-router-dom";
+
+import { MWMediaType, MWQuery } from "@/backend/metadata/types";
 
 function getInitialValue(params: { type: string; query: string }) {
   const type =

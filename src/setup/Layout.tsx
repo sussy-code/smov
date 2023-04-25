@@ -1,8 +1,9 @@
+import { ReactNode } from "react";
+import { useTranslation } from "react-i18next";
+
 import { Banner } from "@/components/Banner";
 import { useBannerSize } from "@/hooks/useBanner";
 import { useIsOnline } from "@/hooks/usePing";
-import { ReactNode } from "react";
-import { useTranslation } from "react-i18next";
 
 export function Layout(props: { children: ReactNode }) {
   const { t } = useTranslation();

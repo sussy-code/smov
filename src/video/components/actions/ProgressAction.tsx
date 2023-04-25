@@ -1,3 +1,5 @@
+import { useCallback, useEffect, useRef } from "react";
+
 import {
   makePercentage,
   makePercentageString,
@@ -7,7 +9,6 @@ import { getPlayerState } from "@/video/state/cache";
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useControls } from "@/video/state/logic/controls";
 import { useProgress } from "@/video/state/logic/progress";
-import { useCallback, useEffect, useRef } from "react";
 
 export function ProgressAction() {
   const descriptor = useVideoPlayerDescriptor();

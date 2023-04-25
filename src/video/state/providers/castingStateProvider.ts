@@ -1,21 +1,23 @@
 import fscreen from "fscreen";
+
+import { revokeCaptionBlob } from "@/backend/helpers/captions";
 import {
   canChangeVolume,
   canFullscreen,
   canFullscreenAnyElement,
   canWebkitFullscreen,
 } from "@/utils/detectFeatures";
-import { updateSource } from "@/video/state/logic/source";
 import {
   getStoredVolume,
   setStoredVolume,
 } from "@/video/components/hooks/volumeStore";
-import { resetStateForSource } from "@/video/state/providers/helpers";
 import { updateInterface } from "@/video/state/logic/interface";
-import { revokeCaptionBlob } from "@/backend/helpers/captions";
+import { updateSource } from "@/video/state/logic/source";
+import { resetStateForSource } from "@/video/state/providers/helpers";
+
+import { VideoPlayerStateProvider } from "./providerTypes";
 import { getPlayerState } from "../cache";
 import { updateMediaPlaying } from "../logic/mediaplaying";
-import { VideoPlayerStateProvider } from "./providerTypes";
 import { updateProgress } from "../logic/progress";
 
 // TODO HLS for casting?

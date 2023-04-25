@@ -2,6 +2,7 @@ import { updateInterface } from "@/video/state/logic/interface";
 import { updateMeta } from "@/video/state/logic/meta";
 import { updateProgress } from "@/video/state/logic/progress";
 import { VideoPlayerMeta, VideoPlayerTimeFormat } from "@/video/state/types";
+
 import { getPlayerState } from "../cache";
 import { VideoPlayerStateController } from "../providers/providerTypes";
 

@@ -1,11 +1,14 @@
+import { animated, easings, useSpringValue } from "@react-spring/web";
+import { ReactNode, useCallback, useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
+
 import { FloatingCardAnchorPosition } from "@/components/popout/positions/FloatingCardAnchorPosition";
 import { FloatingCardMobilePosition } from "@/components/popout/positions/FloatingCardMobilePosition";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { PopoutSection } from "@/video/components/popouts/PopoutUtils";
-import { useSpringValue, animated, easings } from "@react-spring/web";
-import { ReactNode, useCallback, useEffect, useRef, useState } from "react";
-import { Icon, Icons } from "../Icon";
+
 import { FloatingDragHandle, MobilePopoutSpacer } from "./FloatingDragHandle";
+import { Icon, Icons } from "../Icon";
 
 interface FloatingCardProps {
   children?: ReactNode;
@@ -133,13 +136,15 @@ export const FloatingCardView = {
     action?: React.ReactNode;
     backText?: string;
   }) {
+    const { t } = useTranslation();
+
     let left = (
       <div
         onClick={props.goBack}
         className="flex cursor-pointer items-center space-x-2 transition-colors duration-200 hover:text-white"
       >
         <Icon icon={Icons.ARROW_LEFT} />
-        <span>{props.backText || "Go back"}</span>
+        <span>{props.backText || t("videoPlayer.popouts.back")}</span>
       </div>
     );
     if (props.close)

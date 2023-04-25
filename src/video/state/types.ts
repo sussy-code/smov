@@ -1,10 +1,12 @@
+import Hls from "hls.js";
+
 import {
   MWCaption,
   MWStreamQuality,
   MWStreamType,
 } from "@/backend/helpers/streams";
 import { DetailedMeta } from "@/backend/metadata/getmeta";
-import Hls from "hls.js";
+
 import { VideoPlayerStateProvider } from "./providers/providerTypes";
 
 export type VideoPlayerMeta = {

@@ -1,9 +1,10 @@
+import { useEffect } from "react";
+
 import { MWCaption } from "@/backend/helpers/streams";
 import { DetailedMeta } from "@/backend/metadata/getmeta";
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useMeta } from "@/video/state/logic/meta";
 import { useProgress } from "@/video/state/logic/progress";
-import { useEffect } from "react";
 
 export type WindowMeta = {
   meta: DetailedMeta;

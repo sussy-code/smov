@@ -1,0 +1,128 @@
+{
+  "global": {
+    "name": "movie-web"
+  },
+  "search": {
+    "loading_series": "We zoeken je favoriete series...",
+    "loading_movie": "We zoeken je favoriete films...",
+    "loading": "Aan het zoeken...",
+    "allResults": "Dat is het!",
+    "noResults": "We konden helaas niets vinden.",
+    "allFailed": "Het is niet gelukt de media te laden, probeer het nog eens.",
+    "headingTitle": "Zoekresultaten",
+    "bookmarks": "Opgeslagen",
+    "continueWatching": "Kijk verder",
+    "title": "Wat wil je graag kijken?",
+    "placeholder": "Wat wil je graag kijken?"
+  },
+  "media": {
+    "movie": "Film",
+    "series": "Serie",
+    "stopEditing": "Stop met bewerken",
+    "errors": {
+      "genericTitle": "Oeps, hier ging iets mis!",
+      "failedMeta": "Het is niet gelukt de meta-informatie op te halen/",
+      "mediaFailed": "Het is niet gelukt deze media op te halen. Controleer of je een internetverbinding hebt en probeer het nog een keer.",
+      "videoFailed": "Er ging iets mis tijdens het spelen van deze video. Als dit blijft gebeuren, deel het dan in de <0>Discord server</0> of maak een <1>GitHub issue</1>."
+    }
+  },
+  "seasons": {
+    "seasonAndEpisode": "S{{season}} A{{episode}}"
+  },
+  "notFound": {
+    "genericTitle": "Pagina niet gevonden",
+    "backArrow": "Naar de home-pagina",
+    "media": {
+      "title": "We konden deze media niet vinden.",
+      "description": "We konden dit stukje media niet vinden. Het is mogelijk verwijderd, of jij hebt zelf de URL aangepast."
+    },
+    "provider": {
+      "title": "Deze bron is niet langer beschikbaar",
+      "description": "Deze bron was helaas te instabiel, we hebben hem jammer genoeg uit moeten zetten."
+    },
+    "page": {
+      "title": "Pagina niet gevonden",
+      "description": "We hebben echt alles geprobeerd, zelfs tijdrijzen; echter hebben we deze pagina helaas niet kunnen vinden."
+    }
+  },
+  "searchBar": {
+    "movie": "Films",
+    "series": "Series",
+    "Search": "Zoeken"
+  },
+  "videoPlayer": {
+    "findingBestVideo": "De beste video voor jou aan het zoeken...",
+    "noVideos": "Helaas konden we dat filmpje niet vinden",
+    "loading": "Aan het laden...",
+    "backToHome": "Naar de home-pagina",
+    "backToHomeShort": "Terug",
+    "seasonAndEpisode": "S{{season}} A{{episode}}",
+    "timeLeft": "Nog {{timeLeft}}",
+    "finishAt": "Afgelopen om {{timeFinished}}",
+    "buttons": {
+      "episodes": "Afleveringen",
+      "source": "Bron",
+      "captions": "Ondertiteling",
+      "download": "Download",
+      "settings": "Instellingen",
+      "pictureInPicture": "Beeld-in-beeld",
+      "playbackSpeed": "Afspeelsnelheid"
+    },
+    "popouts": {
+      "back": "Terug",
+      "sources": "Bronnen",
+      "seasons": "Seizoenen",
+      "captions": "Ondertiteling",
+      "playbackSpeed": "Afspeelsnelheid",
+      "customPlaybackSpeed": "Andere snelheden",
+      "captionPreferences": {
+        "title": "Instellingen",
+        "delay": "Vertraging",
+        "fontSize": "Lettergrootte",
+        "opacity": "Doorzichtbaarheid",
+        "color": "Kleur"
+      },
+      "episode": "A{{index}} - {{title}}",
+      "noCaptions": "Geen ondertiteling",
+      "linkedCaptions": "Gelinkte ondertiteling",
+      "customCaption": "Eigen ondertiteling",
+      "uploadCustomCaption": "Ondertiteling uploaden",
+      "noEmbeds": "We hebben geen filmpjes kunnen vinden voor deze bron.",
+
+      "errors": {
+        "loadingWentWong": "Er ging iets mis tijdens het laden van de afleveringen voor {{seasonTitle}}",
+        "embedsError": "Er ging iets mis tijdens het laden van de embeds voor dit dingetje dat je waarschijnlijk leuk vindt"
+      },
+      "descriptions": {
+        "sources": "Welke bron wil je graag gebruiken",
+        "embeds": "Welk filmpje wil je gebruiken?",
+        "seasons": "Welk seizoen wil je kijken?",
+        "episode": "Kies een aflevering",
+        "captions": "Kies een taal voor de ondertiteling",
+        "captionPreferences": "Pas de ondertiteling aan aan je voorkeuren",
+        "playbackSpeed": "Pas de afspeelsnelhijd aan"
+      }
+    },
+    "errors": {
+      "fatalError": "De videospeler is helaas ontploft, rapporteer deze fout op de <0>Discord server</0> of op <1>GitHub</1>."
+    }
+  },
+  "settings": {
+    "title": "Instellingen",
+    "language": "Taal",
+    "captionLanguage": "Taal voor de Ondertiteling"
+  },
+  "v3": {
+    "newSiteTitle": "De nieuwe versie is uit!",
+    "newDomain": "https://movie-web.app",
+    "newDomainText": "We gaan binnenkort verhuizen naar een nieuw domein: <0>https://movie-web.app</0>. Pas je bladwijzers aan naar het nieuwe domein, want </b>het oude domein gaat stoppen met werken op {{date}}.</b>",
+    "tireless": "We hebben mega hard gewerkt aan deze nieuwe versie, dus we hopen dat je er van gaat genieten.",
+    "leaveAnnouncement": "Let's go!"
+  },
+  "casting": {
+    "casting": "Aan het casten..."
+  },
+  "errors": {
+    "offline": "Controleer je internetverbinding"
+  }
+}

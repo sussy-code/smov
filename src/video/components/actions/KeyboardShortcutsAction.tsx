@@ -1,11 +1,12 @@
 import { useEffect, useRef } from "react";
+
+import { useVolumeControl } from "@/hooks/useVolumeToggle";
+import { getPlayerState } from "@/video/state/cache";
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useControls } from "@/video/state/logic/controls";
 import { useInterface } from "@/video/state/logic/interface";
-import { getPlayerState } from "@/video/state/cache";
 import { useMediaPlaying } from "@/video/state/logic/mediaplaying";
 import { useProgress } from "@/video/state/logic/progress";
-import { useVolumeControl } from "@/hooks/useVolumeToggle";
 
 export function KeyboardShortcutsAction() {
   const descriptor = useVideoPlayerDescriptor();
@@ -60,7 +61,7 @@ export function KeyboardShortcutsAction() {
 
         // Mute
         case "m":
-          toggleVolume();
+          toggleVolume(true);
           break;
 
         // Decrease volume

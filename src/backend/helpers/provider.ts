@@ -1,7 +1,7 @@
-import { DetailedMeta } from "../metadata/getmeta";
-import { MWMediaType } from "../metadata/types";
 import { MWEmbed } from "./embed";
 import { MWStream } from "./streams";
+import { DetailedMeta } from "../metadata/getmeta";
+import { MWMediaType } from "../metadata/types";
 
 export type MWProviderScrapeResult = {
   stream?: MWStream;

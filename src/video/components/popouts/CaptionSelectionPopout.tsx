@@ -1,3 +1,6 @@
+import { useMemo, useRef } from "react";
+import { useTranslation } from "react-i18next";
+
 import {
   customCaption,
   getCaptionUrl,
@@ -15,8 +18,7 @@ import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useControls } from "@/video/state/logic/controls";
 import { useMeta } from "@/video/state/logic/meta";
 import { useSource } from "@/video/state/logic/source";
-import { useMemo, useRef } from "react";
-import { useTranslation } from "react-i18next";
+
 import { PopoutListEntry, PopoutSection } from "./PopoutUtils";
 
 export function CaptionSelectionPopout(props: {
