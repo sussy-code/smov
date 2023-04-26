@@ -27,7 +27,7 @@
     }
   },
   "seasons": {
-    "seasonAndEpisode": "S{{saison}} E{{épisode}}"
+    "seasonAndEpisode": "S{{season}} E{{episode}}"
   },
   "notFound": {
     "genericTitle": "Introuvable",
