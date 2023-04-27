@@ -4954,9 +4954,10 @@ subscribe-ui-event@^2.0.6:
     lodash "^4.17.15"
     raf "^3.0.0"
 
-"subsrt-ts@https://github.com/frost768/subsrt-ts/releases/download/v2.1.1/build.tar.gz":
+subsrt-ts@^2.1.1:
   version "2.1.1"
-  resolved "https://github.com/frost768/subsrt-ts/releases/download/v2.1.1/build.tar.gz#b2e3d3af00e15761a4ef62939cd58f932dbec437"
+  resolved "https://registry.yarnpkg.com/subsrt-ts/-/subsrt-ts-2.1.1.tgz#49c2c9becac6a558bd161c63b85fac55d0e2105a"
+  integrity sha512-E+GiLNG4L82yRDswd4ys34OUfJLNN6ZBdtefE7ftn/WJchjvyJ9dNXuXYviNglrqiCqNyayGGUZE3v9aL7zIYg==
 
 sucrase@^3.29.0:
   version "3.32.0"
