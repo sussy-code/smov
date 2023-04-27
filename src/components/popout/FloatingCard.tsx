@@ -167,7 +167,7 @@ export const FloatingCardView = {
             <div>{props.action ?? null}</div>
           </div>
 
-          <h2 className="mt-8 mb-2 text-3xl font-bold text-white">
+          <h2 className="mb-2 mt-8 text-3xl font-bold text-white">
             {props.title}
           </h2>
           <p>{props.description}</p>

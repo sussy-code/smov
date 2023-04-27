@@ -100,7 +100,7 @@ export function BackdropContainer(
   return (
     <div ref={root}>
       {createPortal(
-        <div className="pointer-events-none fixed top-0 left-0 z-[999]">
+        <div className="pointer-events-none fixed left-0 top-0 z-[999]">
           <Backdrop active={props.active} {...props} />
           <div ref={copy} className="pointer-events-auto absolute">
             {props.children}

@@ -1,13 +1,13 @@
 import { compareTitle } from "@/utils/titleMatch";
 
-import { proxiedFetch } from "../helpers/fetch";
-import { registerProvider } from "../helpers/register";
-import { MWCaption, MWStreamQuality, MWStreamType } from "../helpers/streams";
-import { MWMediaType } from "../metadata/types";
 import {
   getMWCaptionTypeFromUrl,
   isSupportedSubtitle,
 } from "../helpers/captions";
+import { proxiedFetch } from "../helpers/fetch";
+import { registerProvider } from "../helpers/register";
+import { MWCaption, MWStreamQuality, MWStreamType } from "../helpers/streams";
+import { MWMediaType } from "../metadata/types";
 
 const flixHqBase = "https://api.consumet.org/meta/tmdb";
 

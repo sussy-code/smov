@@ -1,10 +1,12 @@
 import { describe, it } from "vitest";
+
 import {
-  isSupportedSubtitle,
   getMWCaptionTypeFromUrl,
+  isSupportedSubtitle,
   parseSubtitles,
 } from "@/backend/helpers/captions";
 import { MWCaptionType } from "@/backend/helpers/streams";
+
 import {
   ass,
   multilineSubtitlesTestVtt,

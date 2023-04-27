@@ -1,6 +1,10 @@
 import CryptoJS from "crypto-js";
 import { customAlphabet } from "nanoid";
 
+import {
+  getMWCaptionTypeFromUrl,
+  isSupportedSubtitle,
+} from "@/backend/helpers/captions";
 import { proxiedFetch } from "@/backend/helpers/fetch";
 import { registerProvider } from "@/backend/helpers/register";
 import {
@@ -11,10 +15,6 @@ import {
 } from "@/backend/helpers/streams";
 import { MWMediaType } from "@/backend/metadata/types";
 import { compareTitle } from "@/utils/titleMatch";
-import {
-  getMWCaptionTypeFromUrl,
-  isSupportedSubtitle,
-} from "@/backend/helpers/captions";
 
 const nanoid = customAlphabet("0123456789abcdef", 32);
 

@@ -61,7 +61,7 @@ function MediaCardContent({
           {series ? (
             <div
               className={[
-                "absolute right-2 top-2 rounded-md bg-denim-200 py-1 px-2 transition-colors",
+                "absolute right-2 top-2 rounded-md bg-denim-200 px-2 py-1 transition-colors",
                 closable ? "" : "group-hover:bg-denim-500",
               ].join(" ")}
             >
