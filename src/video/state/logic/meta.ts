@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 import { getPlayerState } from "../cache";
 import { listenEvent, sendEvent, unlistenEvent } from "../events";
 import { VideoPlayerMeta, VideoPlayerState } from "../types";

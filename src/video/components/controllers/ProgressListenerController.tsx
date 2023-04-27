@@ -1,10 +1,11 @@
-import { useEffect, useMemo, useRef } from "react";
 import throttle from "lodash.throttle";
+import { useEffect, useMemo, useRef } from "react";
+
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
-import { useMediaPlaying } from "@/video/state/logic/mediaplaying";
-import { useProgress } from "@/video/state/logic/progress";
 import { useControls } from "@/video/state/logic/controls";
+import { useMediaPlaying } from "@/video/state/logic/mediaplaying";
 import { useMisc } from "@/video/state/logic/misc";
+import { useProgress } from "@/video/state/logic/progress";
 
 interface Props {
   startAt?: number;

@@ -2,6 +2,7 @@ import { DetailedMeta, getMetaFromId } from "@/backend/metadata/getmeta";
 import { searchForMedia } from "@/backend/metadata/search";
 import { MWMediaMeta, MWMediaType } from "@/backend/metadata/types";
 import { compareTitle } from "@/utils/titleMatch";
+
 import { WatchedStoreData, WatchedStoreItem } from "../types";
 
 interface OldMediaBase {

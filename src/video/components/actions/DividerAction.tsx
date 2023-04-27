@@ -1,6 +1,6 @@
+import { MWMediaType } from "@/backend/metadata/types";
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useMeta } from "@/video/state/logic/meta";
-import { MWMediaType } from "@/backend/metadata/types";
 
 export function DividerAction() {
   const descriptor = useVideoPlayerDescriptor();

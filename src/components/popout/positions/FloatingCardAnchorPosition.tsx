@@ -1,5 +1,6 @@
-import { createFloatingAnchorEvent } from "@/components/popout/FloatingAnchor";
 import { ReactNode, useCallback, useEffect, useRef, useState } from "react";
+
+import { createFloatingAnchorEvent } from "@/components/popout/FloatingAnchor";
 
 interface AnchorPositionProps {
   children?: ReactNode;

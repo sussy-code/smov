@@ -1,5 +1,6 @@
 import { createVersionedStore } from "@/utils/storage";
-import { migrateV2Videos, OldData } from "./migrations/v2";
+
+import { OldData, migrateV2Videos } from "./migrations/v2";
 import { WatchedStoreData } from "./types";
 
 export const VideoProgressStore = createVersionedStore<WatchedStoreData>()

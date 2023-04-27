@@ -1,15 +1,17 @@
+import { useRef } from "react";
+
 import { CastingInternal } from "@/video/components/internal/CastingInternal";
 import { WrapperRegisterInternal } from "@/video/components/internal/WrapperRegisterInternal";
 import { VideoErrorBoundary } from "@/video/components/parts/VideoErrorBoundary";
 import { useInterface } from "@/video/state/logic/interface";
 import { useMeta } from "@/video/state/logic/meta";
-import { useRef } from "react";
-import {
-  useVideoPlayerDescriptor,
-  VideoPlayerContextProvider,
-} from "../state/hooks";
+
 import { MetaAction } from "./actions/MetaAction";
 import { VideoElementInternal } from "./internal/VideoElementInternal";
+import {
+  VideoPlayerContextProvider,
+  useVideoPlayerDescriptor,
+} from "../state/hooks";
 
 export interface VideoPlayerBaseProps {
   children?:

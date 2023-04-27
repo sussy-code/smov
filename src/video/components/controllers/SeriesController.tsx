@@ -1,7 +1,8 @@
-import { useVideoPlayerDescriptor } from "@/video/state/hooks";
-import { useMeta } from "@/video/state/logic/meta";
 import { useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
+
+import { useVideoPlayerDescriptor } from "@/video/state/hooks";
+import { useMeta } from "@/video/state/logic/meta";
 
 interface SeriesControllerProps {
   onSelect?: (state: { episodeId?: string; seasonId?: string }) => void;

@@ -1,4 +1,5 @@
 import { useSettings } from "@/state/settings";
+
 import { Icon, Icons } from "./Icon";
 
 export const colors = ["#ffffff", "#00ffff", "#ffff00"];

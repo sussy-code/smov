@@ -1,13 +1,13 @@
-import { FloatingCardView } from "@/components/popout/FloatingCard";
-import { FloatingView } from "@/components/popout/FloatingView";
-import { useFloatingRouter } from "@/hooks/useFloatingRouter";
-import { useSettings } from "@/state/settings";
 import { useTranslation } from "react-i18next";
 
-import { Slider } from "@/components/Slider";
 import CaptionColorSelector, {
   colors,
 } from "@/components/CaptionColorSelector";
+import { FloatingCardView } from "@/components/popout/FloatingCard";
+import { FloatingView } from "@/components/popout/FloatingView";
+import { Slider } from "@/components/Slider";
+import { useFloatingRouter } from "@/hooks/useFloatingRouter";
+import { useSettings } from "@/state/settings";
 
 export function CaptionSettingsPopout(props: {
   router: ReturnType<typeof useFloatingRouter>;

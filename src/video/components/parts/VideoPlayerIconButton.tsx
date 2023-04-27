@@ -1,5 +1,6 @@
-import { Icon, Icons } from "@/components/Icon";
 import React, { forwardRef } from "react";
+
+import { Icon, Icons } from "@/components/Icon";
 
 export interface VideoPlayerIconButtonProps {
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;

@@ -1,9 +1,11 @@
+import { useCallback } from "react";
+
 import { Icons } from "@/components/Icon";
 import { canFullscreen } from "@/utils/detectFeatures";
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useControls } from "@/video/state/logic/controls";
 import { useInterface } from "@/video/state/logic/interface";
-import { useCallback } from "react";
+
 import { VideoPlayerIconButton } from "../parts/VideoPlayerIconButton";
 
 interface Props {

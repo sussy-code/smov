@@ -2,6 +2,7 @@ import { Icons } from "@/components/Icon";
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useControls } from "@/video/state/logic/controls";
 import { useProgress } from "@/video/state/logic/progress";
+
 import { VideoPlayerIconButton } from "../parts/VideoPlayerIconButton";
 
 interface Props {

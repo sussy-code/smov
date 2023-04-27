@@ -1,7 +1,8 @@
-import { MWMediaType } from "@/backend/metadata/types";
-import { useMeta } from "@/video/state/logic/meta";
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
+
+import { MWMediaType } from "@/backend/metadata/types";
+import { useMeta } from "@/video/state/logic/meta";
 
 export function useCurrentSeriesEpisodeInfo(descriptor: string) {
   const meta = useMeta(descriptor);

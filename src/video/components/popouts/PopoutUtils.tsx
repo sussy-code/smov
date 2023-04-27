@@ -1,7 +1,8 @@
-import { Icon, Icons } from "@/components/Icon";
-import { Spinner } from "@/components/layout/Spinner";
-import { ProgressRing } from "@/components/layout/ProgressRing";
 import { createRef, useEffect, useRef } from "react";
+
+import { Icon, Icons } from "@/components/Icon";
+import { ProgressRing } from "@/components/layout/ProgressRing";
+import { Spinner } from "@/components/layout/Spinner";
 
 interface PopoutListEntryBaseTypes {
   active?: boolean;

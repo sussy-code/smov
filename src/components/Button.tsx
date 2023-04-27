@@ -1,5 +1,6 @@
-import { Icon, Icons } from "@/components/Icon";
 import { ReactNode } from "react";
+
+import { Icon, Icons } from "@/components/Icon";
 
 interface Props {
   icon?: Icons;

@@ -1,8 +1,9 @@
+import React, { useCallback, useEffect, useRef, useState } from "react";
+
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useControls } from "@/video/state/logic/controls";
 import { useInterface } from "@/video/state/logic/interface";
 import { useMediaPlaying } from "@/video/state/logic/mediaplaying";
-import React, { useCallback, useEffect, useRef, useState } from "react";
 
 interface BackdropActionProps {
   children?: React.ReactNode;

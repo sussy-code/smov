@@ -1,16 +1,16 @@
 import { lazy } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
-import { BookmarkContextProvider } from "@/state/bookmark";
-import { WatchedContextProvider } from "@/state/watched";
-import { SettingsProvider } from "@/state/settings";
 
-import { NotFoundPage } from "@/views/notfound/NotFoundView";
-import { MediaView } from "@/views/media/MediaView";
-import { SearchView } from "@/views/search/SearchView";
 import { MWMediaType } from "@/backend/metadata/types";
-import { V2MigrationView } from "@/views/other/v2Migration";
 import { BannerContextProvider } from "@/hooks/useBanner";
 import { Layout } from "@/setup/Layout";
+import { BookmarkContextProvider } from "@/state/bookmark";
+import { SettingsProvider } from "@/state/settings";
+import { WatchedContextProvider } from "@/state/watched";
+import { MediaView } from "@/views/media/MediaView";
+import { NotFoundPage } from "@/views/notfound/NotFoundView";
+import { V2MigrationView } from "@/views/other/v2Migration";
+import { SearchView } from "@/views/search/SearchView";
 
 function App() {
   return (
@@ -40,15 +40,23 @@ function App() {
                 />
 
                 {/* other */}
+                <Route
+                  exact
+                  path="/dev"
+                  component={lazy(
+                    () => import("@/views/developer/DeveloperView")
+                  )}
+                />
+                <Route
+                  exact
+                  path="/dev/video"
+                  component={lazy(
+                    () => import("@/views/developer/VideoTesterView")
+                  )}
+                />
+                {/* developer routes that can abuse workers are disabled in production */}
                 {process.env.NODE_ENV === "development" ? (
                   <>
-                    <Route
-                      exact
-                      path="/dev"
-                      component={lazy(
-                        () => import("@/views/developer/DeveloperView")
-                      )}
-                    />
                     <Route
                       exact
                       path="/dev/test"
@@ -56,13 +64,7 @@ function App() {
                         () => import("@/views/developer/TestView")
                       )}
                     />
-                    <Route
-                      exact
-                      path="/dev/video"
-                      component={lazy(
-                        () => import("@/views/developer/VideoTesterView")
-                      )}
-                    />
+
                     <Route
                       exact
                       path="/dev/providers"
