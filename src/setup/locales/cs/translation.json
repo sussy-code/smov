@@ -27,7 +27,7 @@
     }
   },
   "seasons": {
-    "seasonAndEpisode": "S{{sezóna}} E{{epizoda}}"
+    "seasonAndEpisode": "S{{season}} E{{episode}}"
   },
   "notFound": {
     "genericTitle": "Nenalezeno",
