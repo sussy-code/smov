@@ -64,7 +64,7 @@ export class VideoErrorBoundary extends Component<
 
     return (
       <div className="absolute inset-0 bg-denim-100">
-        <div className="pointer-events-auto absolute inset-x-0 top-0 flex flex-col py-6 px-8 pb-2">
+        <div className="pointer-events-auto absolute inset-x-0 top-0 flex flex-col px-8 py-6 pb-2">
           <VideoPlayerHeader
             media={this.props.media}
             onClick={this.props.onGoBack}
