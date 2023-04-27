@@ -1,8 +1,9 @@
+import { useCallback } from "react";
+
 import { Icon, Icons } from "@/components/Icon";
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useControls } from "@/video/state/logic/controls";
 import { useMediaPlaying } from "@/video/state/logic/mediaplaying";
-import { useCallback } from "react";
 
 export function MiddlePauseAction() {
   const descriptor = useVideoPlayerDescriptor();

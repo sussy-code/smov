@@ -1,7 +1,8 @@
-import { Overlay } from "@/components/Overlay";
-import { Transition } from "@/components/Transition";
 import { ReactNode } from "react";
 import { createPortal } from "react-dom";
+
+import { Overlay } from "@/components/Overlay";
+import { Transition } from "@/components/Transition";
 
 interface Props {
   show: boolean;

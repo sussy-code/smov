@@ -4,10 +4,11 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import { Icon, Icons } from "@/components/Icon";
 
+import { Icon, Icons } from "@/components/Icon";
 import { BackdropContainer, useBackdrop } from "@/components/layout/Backdrop";
-import { ButtonControlProps, ButtonControl } from "./ButtonControl";
+
+import { ButtonControl, ButtonControlProps } from "./ButtonControl";
 
 export interface OptionItem {
   id: string;

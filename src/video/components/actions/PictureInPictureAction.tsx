@@ -1,13 +1,15 @@
+import { useCallback } from "react";
+import { useTranslation } from "react-i18next";
+
 import { Icons } from "@/components/Icon";
 import { useIsMobile } from "@/hooks/useIsMobile";
-import { useTranslation } from "react-i18next";
-import { useControls } from "@/video/state/logic/controls";
-import { useVideoPlayerDescriptor } from "@/video/state/hooks";
-import { useCallback } from "react";
 import {
   canPictureInPicture,
   canWebkitPictureInPicture,
 } from "@/utils/detectFeatures";
+import { useVideoPlayerDescriptor } from "@/video/state/hooks";
+import { useControls } from "@/video/state/logic/controls";
+
 import { VideoPlayerIconButton } from "../parts/VideoPlayerIconButton";
 
 interface Props {

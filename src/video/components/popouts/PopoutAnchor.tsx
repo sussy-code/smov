@@ -1,7 +1,8 @@
+import { ReactNode, useEffect, useRef } from "react";
+
 import { getPlayerState } from "@/video/state/cache";
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { updateInterface } from "@/video/state/logic/interface";
-import { ReactNode, useEffect, useRef } from "react";
 
 interface Props {
   for: string;

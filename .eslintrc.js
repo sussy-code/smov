@@ -8,27 +8,28 @@ const a11yOff = Object.keys(require("eslint-plugin-jsx-a11y").rules).reduce(
 
 module.exports = {
   env: {
-    browser: true
+    browser: true,
   },
   extends: [
     "airbnb",
     "airbnb/hooks",
     "plugin:@typescript-eslint/recommended",
-    "prettier",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
   ],
   ignorePatterns: ["public/*", "dist/*", "/*.js", "/*.ts"],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     project: "./tsconfig.json",
-    tsconfigRootDir: "./"
+    tsconfigRootDir: "./",
   },
   settings: {
     "import/resolver": {
-      typescript: {}
-    }
+      typescript: {
+        project: "./tsconfig.json",
+      },
+    },
   },
-  plugins: ["@typescript-eslint", "import"],
+  plugins: ["@typescript-eslint", "import", "prettier"],
   rules: {
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
@@ -54,16 +55,44 @@ module.exports = {
     "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
     "react/jsx-filename-extension": [
       "error",
-      { extensions: [".js", ".tsx", ".jsx"] }
+      { extensions: [".js", ".tsx", ".jsx"] },
     ],
     "import/extensions": [
       "error",
       "ignorePackages",
       {
         ts: "never",
-        tsx: "never"
-      }
+        tsx: "never",
+      },
     ],
-    ...a11yOff
-  }
+    "import/order": [
+      "error",
+      {
+        groups: [
+          "builtin",
+          "external",
+          "internal",
+          ["sibling", "parent"],
+          "index",
+          "unknown",
+        ],
+        "newlines-between": "always",
+        alphabetize: {
+          order: "asc",
+          caseInsensitive: true,
+        },
+      },
+    ],
+    "sort-imports": [
+      "error",
+      {
+        ignoreCase: false,
+        ignoreDeclarationSort: true,
+        ignoreMemberSort: false,
+        memberSyntaxSortOrder: ["none", "all", "multiple", "single"],
+        allowSeparatedGroups: true,
+      },
+    ],
+    ...a11yOff,
+  },
 };

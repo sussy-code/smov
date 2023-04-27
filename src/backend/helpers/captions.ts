@@ -1,8 +1,9 @@
+import DOMPurify from "dompurify";
+import { convert, detect, list, parse } from "subsrt-ts";
+import { ContentCaption } from "subsrt-ts/dist/types/handler";
+
 import { mwFetch, proxiedFetch } from "@/backend/helpers/fetch";
 import { MWCaption, MWCaptionType } from "@/backend/helpers/streams";
-import DOMPurify from "dompurify";
-import { parse, detect, list, convert } from "subsrt-ts";
-import { ContentCaption } from "subsrt-ts/dist/types/handler";
 
 export const customCaption = "external-custom";
 export function makeCaptionId(caption: MWCaption, isLinked: boolean): string {

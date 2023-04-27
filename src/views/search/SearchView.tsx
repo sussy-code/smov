@@ -1,14 +1,16 @@
 import { useCallback, useState } from "react";
-import Sticky from "react-stickynode";
+import { Helmet } from "react-helmet";
 import { useTranslation } from "react-i18next";
+import Sticky from "react-stickynode";
+
 import { Navigation } from "@/components/layout/Navigation";
 import { ThinContainer } from "@/components/layout/ThinContainer";
+import { WideContainer } from "@/components/layout/WideContainer";
 import { SearchBarInput } from "@/components/SearchBar";
 import { Title } from "@/components/text/Title";
-import { useSearchQuery } from "@/hooks/useSearchQuery";
-import { WideContainer } from "@/components/layout/WideContainer";
 import { useBannerSize } from "@/hooks/useBanner";
-import { Helmet } from "react-helmet";
+import { useSearchQuery } from "@/hooks/useSearchQuery";
+
 import { SearchResultsPartial } from "./SearchResultsPartial";
 
 export function SearchView() {

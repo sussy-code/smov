@@ -1,7 +1,8 @@
+import { useEffect } from "react";
+
 import { getPlayerState } from "@/video/state/cache";
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { updateMisc } from "@/video/state/logic/misc";
-import { useEffect } from "react";
 
 export function WrapperRegisterInternal(props: {
   wrapper: HTMLDivElement | null;

@@ -1,7 +1,8 @@
+import { useEffect, useRef } from "react";
+
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useControls } from "@/video/state/logic/controls";
 import { useInterface } from "@/video/state/logic/interface";
-import { useEffect, useRef } from "react";
 
 interface Props {
   children?: React.ReactNode;

@@ -1,4 +1,5 @@
 import { createVersionedStore } from "@/utils/storage";
+
 import { MWSettingsData, MWSettingsDataV1 } from "./types";
 
 export const SettingsStore = createVersionedStore<MWSettingsData>()

@@ -1,3 +1,5 @@
+import { useCallback, useEffect, useRef, useState } from "react";
+
 import { Icon, Icons } from "@/components/Icon";
 import {
   makePercentage,
@@ -10,7 +12,6 @@ import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useControls } from "@/video/state/logic/controls";
 import { useInterface } from "@/video/state/logic/interface";
 import { useMediaPlaying } from "@/video/state/logic/mediaplaying";
-import { useCallback, useEffect, useRef, useState } from "react";
 
 interface Props {
   className?: string;

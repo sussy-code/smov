@@ -1,11 +1,11 @@
 import { MWEmbedType } from "@/backend/helpers/embed";
+import { proxiedFetch } from "@/backend/helpers/fetch";
 import { registerEmbedScraper } from "@/backend/helpers/register";
 import {
+  MWEmbedStream,
   MWStreamQuality,
   MWStreamType,
-  MWEmbedStream,
 } from "@/backend/helpers/streams";
-import { proxiedFetch } from "@/backend/helpers/fetch";
 
 const HOST = "streamm4u.club";
 const URL_BASE = `https://${HOST}`;

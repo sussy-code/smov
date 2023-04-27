@@ -1,29 +1,31 @@
-import Hls from "hls.js";
 import fscreen from "fscreen";
+import Hls from "hls.js";
+
+import { revokeCaptionBlob } from "@/backend/helpers/captions";
+import { MWStreamType } from "@/backend/helpers/streams";
 import {
   canChangeVolume,
   canFullscreen,
   canFullscreenAnyElement,
-  canWebkitFullscreen,
   canPictureInPicture,
+  canWebkitFullscreen,
   canWebkitPictureInPicture,
 } from "@/utils/detectFeatures";
-import { MWStreamType } from "@/backend/helpers/streams";
-import { updateInterface } from "@/video/state/logic/interface";
-import { updateSource } from "@/video/state/logic/source";
 import {
   getStoredVolume,
   setStoredVolume,
 } from "@/video/components/hooks/volumeStore";
 import { updateError } from "@/video/state/logic/error";
+import { updateInterface } from "@/video/state/logic/interface";
 import { updateMisc } from "@/video/state/logic/misc";
+import { updateSource } from "@/video/state/logic/source";
 import { resetStateForSource } from "@/video/state/providers/helpers";
-import { revokeCaptionBlob } from "@/backend/helpers/captions";
+
+import { VideoPlayerStateProvider } from "./providerTypes";
+import { handleBuffered } from "./utils";
 import { getPlayerState } from "../cache";
 import { updateMediaPlaying } from "../logic/mediaplaying";
-import { VideoPlayerStateProvider } from "./providerTypes";
 import { updateProgress } from "../logic/progress";
-import { handleBuffered } from "./utils";
 
 function errorMessage(err: MediaError) {
   switch (err.code) {

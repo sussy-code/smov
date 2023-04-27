@@ -1,3 +1,5 @@
+import { useEffect, useRef } from "react";
+
 import { getCaptionUrl, makeCaptionId } from "@/backend/helpers/captions";
 import {
   MWCaption,
@@ -9,7 +11,6 @@ import { useSettings } from "@/state/settings";
 import { useInitialized } from "@/video/components/hooks/useInitialized";
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useControls } from "@/video/state/logic/controls";
-import { useEffect, useRef } from "react";
 
 interface SourceControllerProps {
   source: string;

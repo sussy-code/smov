@@ -1,9 +1,11 @@
+import { useCallback, useEffect, useRef } from "react";
+import { useAsync } from "react-use";
+import { ContentCaption } from "subsrt-ts/dist/types/handler";
+
+import { parseSubtitles, sanitize } from "@/backend/helpers/captions";
 import { Transition } from "@/components/Transition";
 import { useSettings } from "@/state/settings";
-import { sanitize, parseSubtitles } from "@/backend/helpers/captions";
-import { ContentCaption } from "subsrt-ts/dist/types/handler";
-import { useRef, useEffect, useCallback } from "react";
-import { useAsync } from "react-use";
+
 import { useVideoPlayerDescriptor } from "../../state/hooks";
 import { useProgress } from "../../state/logic/progress";
 import { useSource } from "../../state/logic/source";

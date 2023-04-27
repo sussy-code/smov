@@ -1,6 +1,6 @@
 {
   "name": "movie-web",
-  "version": "3.0.13",
+  "version": "3.0.14",
   "private": true,
   "homepage": "https://movie-web.app",
   "dependencies": {
@@ -82,7 +82,7 @@
     "eslint-config-airbnb": "19.0.4",
     "eslint-config-prettier": "^8.6.0",
     "eslint-import-resolver-typescript": "^2.5.0",
-    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "7.29.4",
