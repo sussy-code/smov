@@ -40,15 +40,23 @@ function App() {
                 />
 
                 {/* other */}
+                <Route
+                  exact
+                  path="/dev"
+                  component={lazy(
+                    () => import("@/views/developer/DeveloperView")
+                  )}
+                />
+                <Route
+                  exact
+                  path="/dev/video"
+                  component={lazy(
+                    () => import("@/views/developer/VideoTesterView")
+                  )}
+                />
+                {/* developer routes that can abuse workers are disabled in production */}
                 {process.env.NODE_ENV === "development" ? (
                   <>
-                    <Route
-                      exact
-                      path="/dev"
-                      component={lazy(
-                        () => import("@/views/developer/DeveloperView")
-                      )}
-                    />
                     <Route
                       exact
                       path="/dev/test"
@@ -56,13 +64,7 @@ function App() {
                         () => import("@/views/developer/TestView")
                       )}
                     />
-                    <Route
-                      exact
-                      path="/dev/video"
-                      component={lazy(
-                        () => import("@/views/developer/VideoTesterView")
-                      )}
-                    />
+
                     <Route
                       exact
                       path="/dev/providers"
