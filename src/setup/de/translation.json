@@ -1,0 +1,128 @@
+{
+  "global": {
+    "name": "movie-web"
+  },
+  "search": {
+    "loading_series": "Fetching your favourite series...",
+    "loading_movie": "Fetching your favourite movies...",
+    "loading": "Loading...",
+    "allResults": "That's all we have!",
+    "noResults": "We couldn't find anything!",
+    "allFailed": "Failed to find media, try again!",
+    "headingTitle": "Search results",
+    "bookmarks": "Bookmarks",
+    "continueWatching": "Continue Watching",
+    "title": "What do you want to watch?",
+    "placeholder": "What do you want to watch?"
+  },
+  "media": {
+    "movie": "Movie",
+    "series": "Series",
+    "stopEditing": "Stop editing",
+    "errors": {
+      "genericTitle": "Whoops, it broke!",
+      "failedMeta": "Failed to load meta",
+      "mediaFailed": "We failed to request the media you asked for, check your internet connection and try again.",
+      "videoFailed": "We encountered an error while playing the video you requested. If this keeps happening please report the issue to the <0>Discord server</0> or on <1>GitHub</1>."
+    }
+  },
+  "seasons": {
+    "seasonAndEpisode": "S{{season}} E{{episode}}"
+  },
+  "notFound": {
+    "genericTitle": "Not found",
+    "backArrow": "Back to home",
+    "media": {
+      "title": "Couldn't find that media",
+      "description": "We couldn't find the media you requested. Either it's been removed or you tampered with the URL"
+    },
+    "provider": {
+      "title": "This provider has been disabled",
+      "description": "We had issues with the provider or it was too unstable to use, so we had to disable it."
+    },
+    "page": {
+      "title": "Couldn't find that page",
+      "description": "We looked everywhere: under the bins, in the closet, behind the proxy but ultimately couldn't find the page you are looking for."
+    }
+  },
+  "searchBar": {
+    "movie": "Movie",
+    "series": "Series",
+    "Search": "Search"
+  },
+  "videoPlayer": {
+    "findingBestVideo": "Finding the best video for you",
+    "noVideos": "Whoops, couldn't find any videos for you",
+    "loading": "Loading...",
+    "backToHome": "Back to home",
+    "backToHomeShort": "Back",
+    "seasonAndEpisode": "S{{season}} E{{episode}}",
+    "timeLeft": "{{timeLeft}} left",
+    "finishAt": "Finish at {{timeFinished}}",
+    "buttons": {
+      "episodes": "Episodes",
+      "source": "Source",
+      "captions": "Captions",
+      "download": "Download",
+      "settings": "Settings",
+      "pictureInPicture": "Picture in Picture",
+      "playbackSpeed": "Playback speed"
+    },
+    "popouts": {
+      "back": "Go back",
+      "sources": "Sources",
+      "seasons": "Seasons",
+      "captions": "Captions",
+      "playbackSpeed": "Playback speed",
+      "customPlaybackSpeed": "Custom playback speed",
+      "captionPreferences": {
+        "title": "Customize",
+        "delay": "Delay",
+        "fontSize": "Size",
+        "opacity": "Opacity",
+        "color": "Color"
+      },
+      "episode": "E{{index}} - {{title}}",
+      "noCaptions": "No captions",
+      "linkedCaptions": "Linked captions",
+      "customCaption": "Custom caption",
+      "uploadCustomCaption": "Upload caption",
+      "noEmbeds": "No embeds were found for this source",
+
+      "errors": {
+        "loadingWentWong": "Something went wrong loading the episodes for {{seasonTitle}}",
+        "embedsError": "Something went wrong loading the embeds for this thing that you like"
+      },
+      "descriptions": {
+        "sources": "What provider do you want to use?",
+        "embeds": "Choose which video to view",
+        "seasons": "Choose which season you want to watch",
+        "episode": "Pick an episode",
+        "captions": "Choose a subtitle language",
+        "captionPreferences": "Make subtitles look how you want it",
+        "playbackSpeed": "Change the playback speed"
+      }
+    },
+    "errors": {
+      "fatalError": "The video player encounted a fatal error, please report it to the <0>Discord server</0> or on <1>GitHub</1>."
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "captionLanguage": "Caption Language"
+  },
+  "v3": {
+    "newSiteTitle": "New version now released!",
+    "newDomain": "https://movie-web.app",
+    "newDomainText": "movie-web will soon be moving to a new domain: <0>https://movie-web.app</0>. Make sure to update all your bookmarks as <1>the old website will stop working on {{date}}.</1>",
+    "tireless": "We've worked tirelessly on this new update, we hope you will enjoy what we've been cooking up for the past months.",
+    "leaveAnnouncement": "Take me there!"
+  },
+  "casting": {
+    "casting": "Casting to device..."
+  },
+  "errors": {
+    "offline": "Check your internet connection"
+  }
+}
