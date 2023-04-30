@@ -129,7 +129,7 @@ const convertSubtitles = (subtitleGroup: any): MWCaption | null => {
     })
     .filter(Boolean);
 
-  if (!subtitles.length) return null;
+  if (subtitles.length === 0) return null;
   const subFile = subtitles[0];
   return {
     needsProxy: true,
