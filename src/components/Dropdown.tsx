@@ -37,7 +37,7 @@ export function Dropdown(props: DropdownProps) {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Listbox.Options className="absolute top-10 left-0 right-0 z-10 mt-1 max-h-60 overflow-auto rounded-md bg-denim-500 py-1 text-white shadow-lg ring-1 ring-black ring-opacity-5 scrollbar-thin scrollbar-track-denim-400 scrollbar-thumb-denim-200 focus:outline-none sm:top-10 sm:text-sm">
+              <Listbox.Options className="absolute left-0 right-0 top-10 z-10 mt-1 max-h-60 overflow-auto rounded-md bg-denim-500 py-1 text-white shadow-lg ring-1 ring-black ring-opacity-5 scrollbar-thin scrollbar-track-denim-400 scrollbar-thumb-denim-200 focus:outline-none sm:top-10 sm:text-sm">
                 {props.options.map((opt) => (
                   <Listbox.Option
                     className={({ active }) =>

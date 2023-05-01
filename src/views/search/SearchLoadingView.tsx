@@ -8,7 +8,7 @@ export function SearchLoadingView() {
   const [query] = useSearchQuery();
   return (
     <Loading
-      className="mt-40 mb-24 "
+      className="mb-24 mt-40 "
       text={
         t(`search.loading_${query.type}`) ||
         t("search.loading") ||

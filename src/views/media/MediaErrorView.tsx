@@ -14,7 +14,7 @@ export function MediaFetchErrorView() {
       <Helmet>
         <title>{t("media.errors.failedMeta")}</title>
       </Helmet>
-      <div className="fixed inset-x-0 top-0 py-6 px-8">
+      <div className="fixed inset-x-0 top-0 px-8 py-6">
         <VideoPlayerHeader onClick={goBack} />
       </div>
       <ErrorMessage>
