@@ -9,6 +9,7 @@ import en from "./locales/en/translation.json";
 import fr from "./locales/fr/translation.json";
 import nl from "./locales/nl/translation.json";
 import tr from "./locales/tr/translation.json";
+import zh from "./locales/zh/translation.json";
 
 const locales = {
   en: {
@@ -22,6 +23,9 @@ const locales = {
   },
   fr: {
     translation: fr,
+  },
+  zh: {
+    translation: zh,
   },
   cs: {
     translation: cs,
