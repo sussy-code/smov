@@ -1,0 +1,127 @@
+{
+  "global": {
+    "name": "movie-web"
+  },
+  "search": {
+    "loading_series": "Auf der Suche nach Ihrer Lieblingsserie...",
+    "loading_movie": "Auf der Suche nach Ihren Lieblingsfilmen...",
+    "loading": "Wird geladen...",
+    "allResults": "Das ist alles, was wir haben!",
+    "noResults": "Wir haben nichts gefunden!",
+    "allFailed": "Das Medium wurde nicht gefunden, bitte versuchen Sie es erneut!",
+    "headingTitle": "Suchergebnisse",
+    "bookmarks": "Favoriten",
+    "continueWatching": "Weiter ansehen",
+    "title": "Was willst du sehen?",
+    "placeholder": "Was willst du sehen?"
+  },
+  "media": {
+    "movie": "Filme",
+    "series": "Serie",
+    "stopEditing": "Beenden Sie die Bearbeitung",
+    "errors": {
+      "genericTitle": "Hoppla, etwas ist falsch gegangen!",
+      "failedMeta": "Metadaten konnten nicht geladen werden",
+      "mediaFailed": "Wir konnten die angeforderten Medien nicht abrufen.",
+      "videoFailed": "Beim Abspielen des angeforderten Videos ist ein Fehler aufgetreten. <0>Discord</0> Oder weiter <1>GitHub</1>."
+    }
+  },
+  "seasons": {
+    "seasonAndEpisode": "S{{season}} E{{episode}}"
+  },
+  "notFound": {
+    "genericTitle": "Nicht gefunden",
+    "backArrow": "Zurück zur Startseite",
+    "media": {
+      "title": "Das Medium konnte nicht gefunden werden",
+      "description": "Wir konnten die angeforderten Medien nicht finden."
+    },
+    "provider": {
+      "title": "Dieser Anbieter wurde deaktiviert",
+      "description": "Wir hatten Probleme mit dem Anbieter oder er war zu instabil, sodass wir ihn deaktivieren mussten."
+    },
+    "page": {
+      "title": "Diese Seite kann nicht gefunden werden",
+      "description": "Wir haben überall gesucht, aber am Ende konnten wir die gesuchte Seite nicht finden."
+    }
+  },
+  "searchBar": {
+    "movie": "Film",
+    "series": "Serie",
+    "Search": "Forschen"
+  },
+  "videoPlayer": {
+    "findingBestVideo": "Auf der Suche nach dem besten Video für Sie",
+    "noVideos": "Entschuldigung, wir konnten keine Videos für Sie finden",
+    "loading": "Wird geladen...",
+    "backToHome": "Zurück zur Startseite",
+    "backToHomeShort": "Rückmeldung",
+    "seasonAndEpisode": "S{{season}} E{{episode}}",
+    "timeLeft": "{{timeLeft}} bleibt",
+    "finishAt": "Ende um {{timeFinished}}",
+    "buttons": {
+      "episodes": "Folgen",
+      "source": "Quelle",
+      "captions": "Untertitel",
+      "download": "Herunterladen",
+      "settings": "Einstellungen",
+      "pictureInPicture": "Bild-im-Bild",
+      "playbackSpeed": "Wiedergabegeschwindigkeit"
+    },
+    "popouts": {
+      "back": "Zurück",
+      "sources": "Quellen",
+      "seasons": "Saison",
+      "captions": "Untertitel",
+      "playbackSpeed": "Lesegeschwindigkeit",
+      "customPlaybackSpeed": "Benutzerdefinierte Wiedergabegeschwindigkeit",
+      "captionPreferences": {
+        "title": "Personifizieren",
+        "delay": "Zeitlimit",
+        "fontSize": "Größe",
+        "opacity": "Opazität",
+        "color": "Farbe"
+      },
+      "episode": "E{{index}} - {{title}}",
+      "noCaptions": "Keine Untertitel",
+      "linkedCaptions": "Verbundene Untertitel",
+      "customCaption": "Benutzerdefinierte Untertitel",
+      "uploadCustomCaption": "Untertitel hochladen",
+      "noEmbeds": "Für diese Quelle wurde kein eingebetteter Inhalt gefunden",
+      "errors": {
+        "loadingWentWong": "Beim Laden der Folgen für {{seasonTitle}} ist ein Problem aufgetreten ",
+        "embedsError": "Beim Laden der eingebetteter Medien ist ein Problem aufgetreten"
+      },
+      "descriptions": {
+        "sources": "Welchen Anbieter möchten Sie nutzen?",
+        "embeds": "Wählen Sie das Video aus, das Sie ansehen möchten",
+        "seasons": "Wählen Sie die Staffel aus, die Sie sehen möchten",
+        "episode": "Wählen Sie eine Folge aus",
+        "captions": "Wählen Sie eine Untertitelsprache",
+        "captionPreferences": "Passen Sie das Erscheinungsbild von Untertiteln an",
+        "playbackSpeed": "Wiedergabegeschwindigkeit ändern"
+      }
+    },
+    "errors": {
+      "fatalError": "Der Videoplayer hat einen Fehler festgestellt, bitte melden Sie ihn dem Server <0>Discord</0> Oder weiter <1>GitHub</1>."
+    }
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "language": "Sprache",
+    "captionLanguage": "Untertitelsprache"
+  },
+  "v3": {
+    "newSiteTitle": "Neue Version verfügbar!",
+    "newDomain": "https://movie-web.app",
+    "newDomainText": "movie-web zieht in Kürze auf eine neue Domain um: <0>https://movie-web.app</0>. <1>Die alte Website funktioniert nicht mehr {{date}}.</1>",
+    "tireless": "Wir haben unermüdlich an diesem neuen Update gearbeitet und hoffen, dass Ihnen das gefällt, was wir in den letzten Monaten vorbereitet haben.",
+    "leaveAnnouncement": "Bring mich dahin!"
+  },
+  "casting": {
+    "casting": "An Gerät übertragen..."
+  },
+  "errors": {
+    "offline": "Ihre Internetverbindung ist instabil"
+  }
+}
