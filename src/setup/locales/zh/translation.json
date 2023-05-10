@@ -58,7 +58,7 @@
     "backToHomeShort": "返回",
     "seasonAndEpisode": "第{{season}}季 第{{episode}}集",
     "timeLeft": "还剩余 {{timeLeft}}",
-    "finishAt": "在 {{timeFinished}} 结束",
+    "finishAt": "在 {{timeFinished, datetime}} 结束",
     "buttons": {
       "episodes": "分集",
       "source": "视频源",

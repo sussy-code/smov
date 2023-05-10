@@ -58,7 +58,7 @@
     "backToHomeShort": "Rückmeldung",
     "seasonAndEpisode": "S{{season}} E{{episode}}",
     "timeLeft": "{{timeLeft}} bleibt",
-    "finishAt": "Ende um {{timeFinished}}",
+    "finishAt": "Ende um {{timeFinished, datetime}}",
     "buttons": {
       "episodes": "Folgen",
       "source": "Quelle",
