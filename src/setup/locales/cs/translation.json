@@ -58,7 +58,7 @@
     "backToHomeShort": "Zpět",
     "seasonAndEpisode": "S{{season}} E{{episode}}",
     "timeLeft": "Zbývá {{timeLeft}}",
-    "finishAt": "Končí ve {{timeFinished}}",
+    "finishAt": "Končí ve {{timeFinished, datetime}}",
     "buttons": {
       "episodes": "Epizody",
       "source": "Zdroj",

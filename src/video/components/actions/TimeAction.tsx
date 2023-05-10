@@ -55,20 +55,20 @@ export function TimeAction(props: Props) {
     hasHours
   );
   const duration = formatSeconds(videoTime.duration, hasHours);
-  const timeLeft = formatSeconds(
+  const remaining = formatSeconds(
     (videoTime.duration - videoTime.time) / mediaPlaying.playbackSpeed,
     hasHours
   );
   const timeFinished = new Date(
     new Date().getTime() +
-      (videoTime.duration * 1000) / mediaPlaying.playbackSpeed
-  ).toLocaleTimeString("en-US", {
-    hour: "numeric",
-    minute: "numeric",
-    hour12: true,
-  });
+      ((videoTime.duration - videoTime.time) * 1000) /
+        mediaPlaying.playbackSpeed
+  );
   const formattedTimeFinished = ` - ${t("videoPlayer.finishAt", {
     timeFinished,
+    formatParams: {
+      timeFinished: { hour: "numeric", minute: "numeric" },
+    },
   })}`;
 
   let formattedTime: string;
@@ -77,10 +77,10 @@ export function TimeAction(props: Props) {
     formattedTime = `${currentTime} ${props.noDuration ? "" : `/ ${duration}`}`;
   } else if (timeFormat === VideoPlayerTimeFormat.REMAINING && !isMobile) {
     formattedTime = `${t("videoPlayer.timeLeft", {
-      timeLeft,
+      timeLeft: remaining,
     })}${videoTime.time === videoTime.duration ? "" : formattedTimeFinished} `;
   } else if (timeFormat === VideoPlayerTimeFormat.REMAINING && isMobile) {
-    formattedTime = `-${timeLeft}`;
+    formattedTime = `-${remaining}`;
   } else {
     formattedTime = "";
   }
