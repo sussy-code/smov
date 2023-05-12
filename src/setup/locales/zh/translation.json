@@ -1,0 +1,127 @@
+{
+  "global": {
+    "name": "movie-web"
+  },
+  "search": {
+    "loading_series": "正在获取您最喜欢的连续剧……",
+    "loading_movie": "正在获取您最喜欢的影片……",
+    "loading": "载入中……",
+    "allResults": "以上是我们能找到的所有结果！",
+    "noResults": "我们找不到任何结果！",
+    "allFailed": "查找媒体失败，请重试！",
+    "headingTitle": "搜索结果",
+    "bookmarks": "书签",
+    "continueWatching": "继续观看",
+    "title": "您想看些什么？",
+    "placeholder": "您想看些什么？"
+  },
+  "media": {
+    "movie": "电影",
+    "series": "连续剧",
+    "stopEditing": "退出编辑",
+    "errors": {
+      "genericTitle": "哎呀，出问题了！",
+      "failedMeta": "加载元数据失败",
+      "mediaFailed": "我们未能请求到您要求的媒体，检查互联网连接并重试。",
+      "videoFailed": "我们在播放您要求的视频时遇到了错误。如果错误持续发生，请向 <0>Discord 服务器</0>或 <1>GitHub</1> 提交问题报告。"
+    }
+  },
+  "seasons": {
+    "seasonAndEpisode": "第{{season}}季 第{{episode}}集"
+  },
+  "notFound": {
+    "genericTitle": "未找到",
+    "backArrow": "返回首页",
+    "media": {
+      "title": "无法找到媒体",
+      "description": "我们无法找到您请求的媒体。它可能已被删除，或您篡改了 URL"
+    },
+    "provider": {
+      "title": "该内容提供者已被停用",
+      "description": "我们的提供者出现问题，或是太不稳定，导致无法使用，所以我们不得不将其停用。"
+    },
+    "page": {
+      "title": "无法找到页面",
+      "description": "我们已经到处找过了：不管是垃圾桶下、橱柜里或是代理之后。但最终并没有发现您查找的页面。"
+    }
+  },
+  "searchBar": {
+    "movie": "电影",
+    "series": "连续剧",
+    "Search": "搜索"
+  },
+  "videoPlayer": {
+    "findingBestVideo": "正在为您探测最佳视频",
+    "noVideos": "哎呀，无法为您找到任何视频",
+    "loading": "载入中……",
+    "backToHome": "返回首页",
+    "backToHomeShort": "返回",
+    "seasonAndEpisode": "第{{season}}季 第{{episode}}集",
+    "timeLeft": "还剩余 {{timeLeft}}",
+    "finishAt": "在 {{timeFinished, datetime}} 结束",
+    "buttons": {
+      "episodes": "分集",
+      "source": "视频源",
+      "captions": "字幕",
+      "download": "下载",
+      "settings": "设置",
+      "pictureInPicture": "画中画",
+      "playbackSpeed": "播放速度"
+    },
+    "popouts": {
+      "back": "返回",
+      "sources": "视频源",
+      "seasons": "分季",
+      "captions": "字幕",
+      "playbackSpeed": "播放速度",
+      "customPlaybackSpeed": "自定义播放速度",
+      "captionPreferences": {
+        "title": "自定义",
+        "delay": "延迟",
+        "fontSize": "尺寸",
+        "opacity": "透明度",
+        "color": "颜色"
+      },
+      "episode": "第{{index}}集 - {{title}}",
+      "noCaptions": "没有字幕",
+      "linkedCaptions": "已链接字幕",
+      "customCaption": "自定义字幕",
+      "uploadCustomCaption": "上传字幕",
+      "noEmbeds": "未发现该视频源的嵌入内容",
+      "errors": {
+        "loadingWentWong": "加载 {{seasonTitle}} 的分集时出现了一些问题",
+        "embedsError": "为您喜欢的这一东西加载嵌入内容时出现了一些问题"
+      },
+      "descriptions": {
+        "sources": "您想使用哪个内容提供者？",
+        "embeds": "选择要观看的视频",
+        "seasons": "选择您要观看的季",
+        "episode": "选择一个分集",
+        "captions": "选择字幕语言",
+        "captionPreferences": "让字幕看起来如您所想",
+        "playbackSpeed": "改变播放速度"
+      }
+    },
+    "errors": {
+      "fatalError": "视频播放器遇到致命错误，请向 <0>Discord 服务器</0>或 <1>GitHub</1> 报告。"
+    }
+  },
+  "settings": {
+    "title": "设置",
+    "language": "语言",
+    "captionLanguage": "字幕语言"
+  },
+  "v3": {
+    "newSiteTitle": "新的版本现已发布！",
+    "newDomain": "https://movie-web.app",
+    "newDomainText": "movie-web 将很快转移到新的域名：<0>https://movie-web.app</0>。请确保已经更新全部书签链接，<1>旧网站将于 {{date}} 停止工作。</1>",
+    "tireless": "为了这一新版本，我们不懈努力，希望您会喜欢我们在过去几个月中所做的一切。",
+    "leaveAnnouncement": "请带我去！"
+  },
+  "casting": {
+    "casting": "正在投射到设备……"
+  },
+  "errors": {
+    "offline": "检查您的互联网连接"
+  }
+}

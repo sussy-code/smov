@@ -58,7 +58,7 @@
     "backToHomeShort": "Terug",
     "seasonAndEpisode": "S{{season}} A{{episode}}",
     "timeLeft": "Nog {{timeLeft}}",
-    "finishAt": "Afgelopen om {{timeFinished}}",
+    "finishAt": "Afgelopen om {{timeFinished, datetime}}",
     "buttons": {
       "episodes": "Afleveringen",
       "source": "Bron",
