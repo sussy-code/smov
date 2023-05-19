@@ -169,7 +169,7 @@ function NewDomainModal() {
             }}
           />
           <div className="relative flex items-center justify-center">
-            <div className="rounded-full bg-bink-200 py-4 px-12 text-center text-sm font-bold text-white md:text-xl">
+            <div className="rounded-full bg-bink-200 px-12 py-4 text-center text-sm font-bold text-white md:text-xl">
               {t("v3.newDomain")}
             </div>
           </div>
@@ -186,7 +186,7 @@ function NewDomainModal() {
           </p>
           <p>{t("v3.tireless")}</p>
         </div>
-        <div className="mt-16 mb-6 flex items-center justify-center">
+        <div className="mb-6 mt-16 flex items-center justify-center">
           <Button icon={Icons.PLAY} onClick={() => closeModal()}>
             {t("v3.leaveAnnouncement")}
           </Button>
