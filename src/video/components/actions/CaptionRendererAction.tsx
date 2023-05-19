@@ -53,6 +53,11 @@ export function CaptionRendererAction({
   const { captionSettings, setCaptionDelay } = useSettings();
   const captions = useRef<ContentCaption[]>([]);
 
+  const captionSetRef = useRef<(delay: number) => void>(setCaptionDelay);
+  useEffect(() => {
+    captionSetRef.current = setCaptionDelay;
+  }, [setCaptionDelay]);
+
   useAsync(async () => {
     const blobUrl = source?.caption?.url;
     if (blobUrl) {
@@ -69,11 +74,12 @@ export function CaptionRendererAction({
       captions.current = [];
     }
   }, [source?.caption?.url]);
+
+  // reset delay when loading new source url
   useEffect(() => {
-    // reset delay after video ends
-    return () => setCaptionDelay(0);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    captionSetRef.current(0);
+  }, [source?.caption?.url]);
+
   const isVisible = useCallback(
     (
       start: number,
