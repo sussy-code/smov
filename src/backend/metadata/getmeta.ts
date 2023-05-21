@@ -30,6 +30,7 @@ interface JWDetailedMeta extends JWMediaResult {
 export interface DetailedMeta {
   meta: MWMediaMeta;
   imdbId?: string;
+  tmdbId?: string;
 }
 
 export async function getMetaFromId(
@@ -60,6 +61,12 @@ export async function getMetaFromId(
   if (!imdbId)
     imdbId = data.external_ids.find((v) => v.provider === "imdb")?.external_id;
 
+  let tmdbId = data.external_ids.find(
+    (v) => v.provider === "tmdb_latest"
+  )?.external_id;
+  if (!tmdbId)
+    tmdbId = data.external_ids.find((v) => v.provider === "tmdb")?.external_id;
+
   let seasonData: JWSeasonMetaResult | undefined;
   if (data.object_type === "show") {
     const seasonToScrape = seasonId ?? data.seasons?.[0].id.toString() ?? "";
@@ -72,5 +79,6 @@ export async function getMetaFromId(
   return {
     meta: formatJWMeta(data, seasonData),
     imdbId,
+    tmdbId,
   };
 }

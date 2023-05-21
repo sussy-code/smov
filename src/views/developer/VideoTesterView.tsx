@@ -24,6 +24,7 @@ const testData: VideoData = {
 };
 const testMeta: DetailedMeta = {
   imdbId: "",
+  tmdbId: "",
   meta: {
     id: "hello-world",
     title: "Big Buck Bunny",
