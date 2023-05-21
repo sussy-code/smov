@@ -4,7 +4,6 @@ import { MWMediaType } from "@/backend/metadata/types";
 export const testData: DetailedMeta[] = [
   {
     imdbId: "tt10954562",
-    tmdbId: "572716",
     meta: {
       id: "439596",
       title: "Hamilton",
@@ -15,7 +14,6 @@ export const testData: DetailedMeta[] = [
   },
   {
     imdbId: "tt11126994",
-    tmdbId: "94605",
     meta: {
       id: "222333",
       title: "Arcane",
