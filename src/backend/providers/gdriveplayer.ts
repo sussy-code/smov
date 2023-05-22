@@ -41,6 +41,7 @@ registerProvider({
   type: [MWMediaType.MOVIE],
 
   async scrape({ progress, media: { imdbId } }) {
+    if (!imdbId) throw new Error("not enough info");
     progress(10);
     const streamRes = await proxiedFetch<string>(
       "https://database.gdriveplayer.us/player.php",

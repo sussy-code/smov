@@ -123,6 +123,7 @@ registerProvider({
   type: [MWMediaType.MOVIE, MWMediaType.SERIES],
   async scrape(options) {
     const { media, progress } = options;
+    if (!media.imdbId) throw new Error("not enough info");
     if (!this.type.includes(media.meta.type)) {
       throw new Error("Unsupported type");
     }
