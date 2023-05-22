@@ -120,7 +120,7 @@ export function VideoPlayer(props: Props) {
               <Transition
                 animation="slide-down"
                 show={show}
-                className="pointer-events-auto absolute inset-x-0 top-0 flex flex-col py-6 px-8 pb-2"
+                className="pointer-events-auto absolute inset-x-0 top-0 flex flex-col px-8 py-6 pb-2"
               >
                 <HeaderAction
                   showControls={isMobile}

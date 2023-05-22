@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { useAsync } from "react-use";
 import { ContentCaption } from "subsrt-ts/dist/types/handler";
 
@@ -50,8 +50,13 @@ export function CaptionRendererAction({
   const descriptor = useVideoPlayerDescriptor();
   const source = useSource(descriptor).source;
   const videoTime = useProgress(descriptor).time;
-  const { captionSettings } = useSettings();
+  const { captionSettings, setCaptionDelay } = useSettings();
   const captions = useRef<ContentCaption[]>([]);
+
+  const captionSetRef = useRef<(delay: number) => void>(setCaptionDelay);
+  useEffect(() => {
+    captionSetRef.current = setCaptionDelay;
+  }, [setCaptionDelay]);
 
   useAsync(async () => {
     const blobUrl = source?.caption?.url;
@@ -63,20 +68,38 @@ export function CaptionRendererAction({
       } catch (error) {
         captions.current = [];
       }
+      // reset delay on every subtitle change
+      setCaptionDelay(0);
     } else {
       captions.current = [];
     }
   }, [source?.caption?.url]);
 
+  // reset delay when loading new source url
+  useEffect(() => {
+    captionSetRef.current(0);
+  }, [source?.caption?.url]);
+
+  const isVisible = useCallback(
+    (
+      start: number,
+      end: number,
+      delay: number,
+      currentTime: number
+    ): boolean => {
+      const delayedStart = start / 1000 + delay;
+      const delayedEnd = end / 1000 + delay;
+      return (
+        Math.max(0, delayedStart) <= currentTime &&
+        Math.max(0, delayedEnd) >= currentTime
+      );
+    },
+    []
+  );
   if (!captions.current.length) return null;
-  const isVisible = (start: number, end: number): boolean => {
-    const delayedStart = start / 1000 + captionSettings.delay;
-    const delayedEnd = end / 1000 + captionSettings.delay;
-    return (
-      Math.max(0, delayedStart) <= videoTime &&
-      Math.max(0, delayedEnd) >= videoTime
-    );
-  };
+  const visibileCaptions = captions.current.filter(({ start, end }) =>
+    isVisible(start, end, captionSettings.delay, videoTime)
+  );
   return (
     <Transition
       className={[
@@ -86,12 +109,9 @@ export function CaptionRendererAction({
       animation="slide-up"
       show
     >
-      {captions.current.map(
-        ({ start, end, content }) =>
-          isVisible(start, end) && (
-            <CaptionCue key={`${start}-${end}`} text={content} />
-          )
-      )}
+      {visibileCaptions.map(({ start, end, content }) => (
+        <CaptionCue key={`${start}-${end}`} text={content} />
+      ))}
     </Transition>
   );
 }

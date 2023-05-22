@@ -14,7 +14,7 @@ export function VolumeAdjustedAction() {
         videoInterface.volumeChangedWithKeybind
           ? "mt-10 scale-100 opacity-100"
           : "mt-5 scale-75 opacity-0",
-        "absolute left-1/2 z-[100] flex -translate-x-1/2 items-center space-x-4 rounded-full bg-bink-300 bg-opacity-50 py-2 px-5 transition-all duration-100",
+        "absolute left-1/2 z-[100] flex -translate-x-1/2 items-center space-x-4 rounded-full bg-bink-300 bg-opacity-50 px-5 py-2 transition-all duration-100",
       ].join(" ")}
     >
       <Icon

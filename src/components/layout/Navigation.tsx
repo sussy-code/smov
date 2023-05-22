@@ -24,7 +24,7 @@ export function Navigation(props: NavigationProps) {
         top: `${bannerHeight}px`,
       }}
     >
-      <div className="fixed left-0 right-0 flex items-center justify-between py-5 px-7">
+      <div className="fixed left-0 right-0 flex items-center justify-between px-7 py-5">
         <div
           className={`${
             props.bg ? "opacity-100" : "opacity-0"

@@ -51,7 +51,7 @@ export default function VideoTesterView() {
 
   if (video) {
     return (
-      <div className="fixed top-0 left-0 h-[100dvh] w-screen">
+      <div className="fixed left-0 top-0 h-[100dvh] w-screen">
         <Helmet>
           <html data-full="true" />
         </Helmet>
