@@ -1,15 +1,15 @@
 import { compareTitle } from "@/utils/titleMatch";
 
-import { proxiedFetch } from "../helpers/fetch";
-import { registerProvider } from "../helpers/register";
 import {
-  MWCaptionType,
-  MWStreamQuality,
-  MWStreamType,
-} from "../helpers/streams";
+  getMWCaptionTypeFromUrl,
+  isSupportedSubtitle,
+} from "../helpers/captions";
+import { mwFetch } from "../helpers/fetch";
+import { registerProvider } from "../helpers/register";
+import { MWCaption, MWStreamQuality, MWStreamType } from "../helpers/streams";
 import { MWMediaType } from "../metadata/types";
 
-const flixHqBase = "https://api.consumet.org/meta/tmdb";
+const flixHqBase = "https://consumet-api-clone.vercel.app/meta/tmdb"; // instance stolen from streaminal :)
 
 type FlixHQMediaType = "Movie" | "TV Series";
 interface FLIXMediaBase {
@@ -20,15 +20,19 @@ interface FLIXMediaBase {
   type: FlixHQMediaType;
   releaseDate: string;
 }
-
-function castSubtitles({ url, lang }: { url: string; lang: string }) {
+interface FLIXSubType {
+  url: string;
+  lang: string;
+}
+function convertSubtitles({ url, lang }: FLIXSubType): MWCaption | null {
+  if (lang.includes("(maybe)")) return null;
+  const supported = isSupportedSubtitle(url);
+  if (!supported) return null;
+  const type = getMWCaptionTypeFromUrl(url);
   return {
     url,
     langIso: lang,
-    type:
-      url.substring(url.length - 3) === "vtt"
-        ? MWCaptionType.VTT
-        : MWCaptionType.SRT,
+    type,
   };
 }
 
@@ -55,7 +59,7 @@ registerProvider({
       throw new Error("Unsupported type");
     }
     // search for relevant item
-    const searchResults = await proxiedFetch<any>(
+    const searchResults = await mwFetch<any>(
       `/${encodeURIComponent(media.meta.title)}`,
       {
         baseURL: flixHqBase,
@@ -75,7 +79,7 @@ registerProvider({
 
     // get media info
     progress(25);
-    const mediaInfo = await proxiedFetch<any>(`/info/${foundItem.id}`, {
+    const mediaInfo = await mwFetch<any>(`/info/${foundItem.id}`, {
       baseURL: flixHqBase,
       params: {
         type: flixTypeToMWType(foundItem.type),
@@ -99,7 +103,7 @@ registerProvider({
     }
     if (!episodeId) throw new Error("No watchable item found");
     progress(75);
-    const watchInfo = await proxiedFetch<any>(`/watch/${episodeId}`, {
+    const watchInfo = await mwFetch<any>(`/watch/${episodeId}`, {
       baseURL: flixHqBase,
       params: {
         id: mediaInfo.id,
@@ -117,11 +121,7 @@ registerProvider({
         streamUrl: source.url,
         quality: qualityMap[source.quality],
         type: source.isM3U8 ? MWStreamType.HLS : MWStreamType.MP4,
-        captions: watchInfo.subtitles
-          .filter(
-            (x: { url: string; lang: string }) => !x.lang.includes("(maybe)")
-          )
-          .map(castSubtitles),
+        captions: watchInfo.subtitles.map(convertSubtitles).filter(Boolean),
       },
     };
   },

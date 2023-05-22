@@ -7,6 +7,7 @@ import "./providers/superstream";
 import "./providers/netfilm";
 import "./providers/m4ufree";
 import "./providers/hdwatched";
+import "./providers/2embed";
 
 // embeds
 import "./embeds/streamm4u";

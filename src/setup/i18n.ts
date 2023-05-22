@@ -1,13 +1,15 @@
 import i18n from "i18next";
-import LanguageDetector from "i18next-browser-languagedetector";
 import { initReactI18next } from "react-i18next";
 
 // Languages
 import { captionLanguages } from "./iso6391";
+import cs from "./locales/cs/translation.json";
+import de from "./locales/de/translation.json";
 import en from "./locales/en/translation.json";
 import fr from "./locales/fr/translation.json";
 import nl from "./locales/nl/translation.json";
 import tr from "./locales/tr/translation.json";
+import zh from "./locales/zh/translation.json";
 
 const locales = {
   en: {
@@ -22,11 +24,17 @@ const locales = {
   fr: {
     translation: fr,
   },
+  de: {
+    translation: de,
+  },
+  zh: {
+    translation: zh,
+  },
+  cs: {
+    translation: cs,
+  },
 };
 i18n
-  // detect user language
-  // learn more: https://github.com/i18next/i18next-browser-languageDetector
-  .use(LanguageDetector)
   // pass the i18n instance to react-i18next.
   .use(initReactI18next)
   // init i18next

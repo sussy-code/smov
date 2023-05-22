@@ -40,7 +40,7 @@ export function SearchBarInput(props: SearchBarProps) {
 
   return (
     <div className="relative flex flex-col rounded-[28px] bg-denim-400 transition-colors focus-within:bg-denim-400 hover:bg-denim-500 sm:flex-row sm:items-center">
-      <div className="pointer-events-none absolute left-5 top-0 bottom-0 flex max-h-14 items-center">
+      <div className="pointer-events-none absolute bottom-0 left-5 top-0 flex max-h-14 items-center">
         <Icon icon={Icons.SEARCH} />
       </div>
 
@@ -52,7 +52,7 @@ export function SearchBarInput(props: SearchBarProps) {
         placeholder={props.placeholder}
       />
 
-      <div className="px-4 py-4 pt-0 sm:py-2 sm:px-2">
+      <div className="px-4 py-4 pt-0 sm:px-2 sm:py-2">
         <DropdownButton
           icon={Icons.SEARCH}
           open={dropdownOpen}

@@ -29,8 +29,8 @@ interface JWDetailedMeta extends JWMediaResult {
 
 export interface DetailedMeta {
   meta: MWMediaMeta;
-  tmdbId: string;
-  imdbId: string;
+  imdbId?: string;
+  tmdbId?: string;
 }
 
 export async function getMetaFromId(
@@ -66,8 +66,6 @@ export async function getMetaFromId(
   )?.external_id;
   if (!tmdbId)
     tmdbId = data.external_ids.find((v) => v.provider === "tmdb")?.external_id;
-
-  if (!imdbId || !tmdbId) throw new Error("not enough info");
 
   let seasonData: JWSeasonMetaResult | undefined;
   if (data.object_type === "show") {

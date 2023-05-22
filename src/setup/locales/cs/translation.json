@@ -1,0 +1,128 @@
+{
+  "global": {
+    "name": "movie-web"
+  },
+  "search": {
+    "loading_series": "Načítání Vašich oblíbených seriálů...",
+    "loading_movie": "Načítání Vašich oblíbených filmů...",
+    "loading": "Načítání...",
+    "allResults": "To je vše co máme!",
+    "noResults": "Nemohli jsme nic najít!",
+    "allFailed": "Nepodařilo se najít média, zkuste to znovu!",
+    "headingTitle": "Výsledky vyhledávání",
+    "bookmarks": "Záložky",
+    "continueWatching": "Pokračujte ve sledování",
+    "title": "Co si přejete sledovat?",
+    "placeholder": "Co si přejete sledovat?"
+  },
+  "media": {
+    "movie": "Filmy",
+    "series": "Seriály",
+    "stopEditing": "Zastavit upravování",
+    "errors": {
+      "genericTitle": "Jejda, rozbilo se to!",
+      "failedMeta": "Nepovedlo se načíst meta",
+      "mediaFailed": "Nepodařilo se nám požádat o Vaše média, zkontrolujte své internetové připojení a zkuste to znovu.",
+      "videoFailed": "Při přehrávání požadovaného videa došlo k chybě. Pokud se tohle opakuje prosím nahlašte nám to na <0>Discord serveru</0> nebo na <1>GitHubu</1>."
+    }
+  },
+  "seasons": {
+    "seasonAndEpisode": "S{{season}} E{{episode}}"
+  },
+  "notFound": {
+    "genericTitle": "Nenalezeno",
+    "backArrow": "Zpátky domů",
+    "media": {
+      "title": "Nemohli jsme najít Vaše média.",
+      "description": "Nemohli jsme najít média o které jste požádali. Buďto jsme ho nemohli najít, nebo jste manipulovali s URL."
+    },
+    "provider": {
+      "title": "Tento poskytovatel byl zakázán",
+      "description": "Měli jsme s tímto poskytovatelem problémy, nebo byl moc nestabilní na používání, a tak jsme ho museli zakázat."
+    },
+    "page": {
+      "title": "Tuto stránku se nepodařilo najít",
+      "description": "Dívali jsme se všude: pod koši, ve skříni, za proxy, ale nakonec jsme nemohli najít stránku, kterou hledáte."
+    }
+  },
+  "searchBar": {
+    "movie": "Film",
+    "series": "Seriál",
+    "Search": "Hledání"
+  },
+  "videoPlayer": {
+    "findingBestVideo": "Hledáme pro Vás nejlepší video",
+    "noVideos": "Jejda, nemohli jsme žádné video najít",
+    "loading": "Načítání...",
+    "backToHome": "Zpátky domů",
+    "backToHomeShort": "Zpět",
+    "seasonAndEpisode": "S{{season}} E{{episode}}",
+    "timeLeft": "Zbývá {{timeLeft}}",
+    "finishAt": "Končí ve {{timeFinished, datetime}}",
+    "buttons": {
+      "episodes": "Epizody",
+      "source": "Zdroj",
+      "captions": "Titulky",
+      "download": "Stáhnout",
+      "settings": "Nastavení",
+      "pictureInPicture": "Obraz v obraze",
+      "playbackSpeed": "Rychlost přehrávání"
+    },
+    "popouts": {
+      "back": "Zpět",
+      "sources": "Zdroje",
+      "seasons": "Sezóny",
+      "captions": "Titulky",
+      "playbackSpeed": "Rychlost přehrávání",
+      "customPlaybackSpeed": "Vlastní rychlost přehrávání",
+      "captionPreferences": {
+        "title": "Upravit",
+        "delay": "Zpoždení",
+        "fontSize": "Velikost",
+        "opacity": "Průhlednost",
+        "color": "Barva"
+      },
+      "episode": "E{{index}} - {{title}}",
+      "noCaptions": "Žádné titulky",
+      "linkedCaptions": "Propojené titulky",
+      "customCaption": "Vlastní titulky",
+      "uploadCustomCaption": "Nahrát titulky",
+      "noEmbeds": "Nebyla nalezena žádná vložení pro tento zdroj",
+
+      "errors": {
+        "loadingWentWong": "Něco se nepovedlo při načítání epizod pro {{seasonTitle}}",
+        "embedsError": "Něco se povedlo při načítání vložení pro tuhle věc, kterou máte tak rádi"
+      },
+      "descriptions": {
+        "sources": "Jakého poskytovatele chcete použít?",
+        "embeds": "Vyberte video, které chcete sledovat",
+        "seasons": "Vyberte sérii, kterou chcete sledovat",
+        "episode": "Vyberte epizodu",
+        "captions": "Vyberte jazyk titulků",
+        "captionPreferences": "Upravte titulky tak, jak se Vám budou líbit",
+        "playbackSpeed": "Změňtě rychlost přehrávání"
+      }
+    },
+    "errors": {
+      "fatalError": "Došlo k závažné chybě v přehrávači videa, prosím nahlašte ji na <0>Discord serveru</0> nebo na <1>GitHubu</1>."
+    }
+  },
+  "settings": {
+    "title": "Nastavení",
+    "language": "Jazyk",
+    "captionLanguage": "Jazyk titulků"
+  },
+  "v3": {
+    "newSiteTitle": "Je dostupná nová verze!",
+    "newDomain": "https://movie-web.app",
+    "newDomainText": "movie-web se brzy přesune na novou doménu: <0>https://movie-web.app</0>. Nezapomeňte si aktualizovat záložky, protože <1>stará stránka přestane fungovat {{date}}.</1>",
+    "tireless": "Pracovali jsme neúnavně na této nové aktualizaci, a tak doufáme, že se Vám bude líbit co jsme v posledních měsících kuchtili.",
+    "leaveAnnouncement": "Vezměte mě tam!"
+  },
+  "casting": {
+    "casting": "Přehrávání do zařízení..."
+  },
+  "errors": {
+    "offline": "Zkontrolujte své internetové připojení"
+  }
+}

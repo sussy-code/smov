@@ -23,7 +23,7 @@ export function NotFoundWrapper(props: {
         <title>{t("notFound.genericTitle")}</title>
       </Helmet>
       {props.video ? (
-        <div className="absolute inset-x-0 top-0 py-6 px-8">
+        <div className="absolute inset-x-0 top-0 px-8 py-6">
           <VideoPlayerHeader onClick={goBack} />
         </div>
       ) : (
@@ -46,7 +46,7 @@ export function NotFoundMedia() {
         className="mb-6 text-xl text-bink-600"
       />
       <Title>{t("notFound.media.title")}</Title>
-      <p className="mt-5 mb-12 max-w-sm">{t("notFound.media.description")}</p>
+      <p className="mb-12 mt-5 max-w-sm">{t("notFound.media.description")}</p>
       <ArrowLink to="/" linkText={t("notFound.backArrow")} />
     </div>
   );
@@ -62,7 +62,7 @@ export function NotFoundProvider() {
         className="mb-6 text-xl text-bink-600"
       />
       <Title>{t("notFound.provider.title")}</Title>
-      <p className="mt-5 mb-12 max-w-sm">
+      <p className="mb-12 mt-5 max-w-sm">
         {t("notFound.provider.description")}
       </p>
       <ArrowLink to="/" linkText={t("notFound.backArrow")} />
@@ -80,7 +80,7 @@ export function NotFoundPage() {
         className="mb-6 text-xl text-bink-600"
       />
       <Title>{t("notFound.page.title")}</Title>
-      <p className="mt-5 mb-12 max-w-sm">{t("notFound.page.description")}</p>
+      <p className="mb-12 mt-5 max-w-sm">{t("notFound.page.description")}</p>
       <ArrowLink to="/" linkText={t("notFound.backArrow")} />
     </NotFoundWrapper>
   );

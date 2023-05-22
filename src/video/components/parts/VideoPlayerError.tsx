@@ -32,7 +32,7 @@ export function VideoPlayerError(props: VideoPlayerErrorProps) {
           {err?.name}: {err?.description}
         </p>
       </div>
-      <div className="pointer-events-auto absolute inset-x-0 top-0 flex flex-col py-6 px-8 pb-2">
+      <div className="pointer-events-auto absolute inset-x-0 top-0 flex flex-col px-8 py-6 pb-2">
         <VideoPlayerHeader media={meta?.meta.meta} onClick={props.onGoBack} />
       </div>
     </div>

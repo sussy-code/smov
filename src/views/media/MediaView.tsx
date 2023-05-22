@@ -34,7 +34,7 @@ function MediaViewLoading(props: { onGoBack(): void }) {
       <Helmet>
         <title>{t("videoPlayer.loading")}</title>
       </Helmet>
-      <div className="absolute inset-x-0 top-0 py-6 px-8">
+      <div className="absolute inset-x-0 top-0 px-8 py-6">
         <VideoPlayerHeader onClick={props.onGoBack} />
       </div>
       <div className="flex flex-col items-center">
@@ -68,7 +68,7 @@ function MediaViewScraping(props: MediaViewScrapingProps) {
       <Helmet>
         <title>{props.meta.meta.title}</title>
       </Helmet>
-      <div className="absolute inset-x-0 top-0 py-6 px-8">
+      <div className="absolute inset-x-0 top-0 px-8 py-6">
         <VideoPlayerHeader onClick={props.onGoBack} media={props.meta.meta} />
       </div>
       <div className="flex flex-col items-center transition-opacity duration-200">
@@ -134,7 +134,7 @@ export function MediaViewPlayer(props: MediaViewPlayerProps) {
   }
 
   return (
-    <div className="fixed top-0 left-0 h-[100dvh] w-screen">
+    <div className="fixed left-0 top-0 h-[100dvh] w-screen">
       <Helmet>
         <html data-full="true" />
       </Helmet>

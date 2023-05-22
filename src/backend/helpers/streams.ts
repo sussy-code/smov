@@ -3,9 +3,16 @@ export enum MWStreamType {
   HLS = "hls",
 }
 
+// subsrt-ts supported types
 export enum MWCaptionType {
   VTT = "vtt",
   SRT = "srt",
+  LRC = "lrc",
+  SBV = "sbv",
+  SUB = "sub",
+  SSA = "ssa",
+  ASS = "ass",
+  JSON = "json",
   UNKNOWN = "unknown",
 }
 
