@@ -4,7 +4,7 @@ import {
   getMWCaptionTypeFromUrl,
   isSupportedSubtitle,
 } from "../helpers/captions";
-import { proxiedFetch } from "../helpers/fetch";
+import { mwFetch } from "../helpers/fetch";
 import { registerProvider } from "../helpers/register";
 import { MWCaption, MWStreamQuality, MWStreamType } from "../helpers/streams";
 import { MWMediaType } from "../metadata/types";
@@ -59,7 +59,7 @@ registerProvider({
       throw new Error("Unsupported type");
     }
     // search for relevant item
-    const searchResults = await proxiedFetch<any>(
+    const searchResults = await mwFetch<any>(
       `/${encodeURIComponent(media.meta.title)}`,
       {
         baseURL: flixHqBase,
@@ -79,7 +79,7 @@ registerProvider({
 
     // get media info
     progress(25);
-    const mediaInfo = await proxiedFetch<any>(`/info/${foundItem.id}`, {
+    const mediaInfo = await mwFetch<any>(`/info/${foundItem.id}`, {
       baseURL: flixHqBase,
       params: {
         type: flixTypeToMWType(foundItem.type),
@@ -103,7 +103,7 @@ registerProvider({
     }
     if (!episodeId) throw new Error("No watchable item found");
     progress(75);
-    const watchInfo = await proxiedFetch<any>(`/watch/${episodeId}`, {
+    const watchInfo = await mwFetch<any>(`/watch/${episodeId}`, {
       baseURL: flixHqBase,
       params: {
         id: mediaInfo.id,
