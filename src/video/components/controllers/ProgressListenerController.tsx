@@ -71,7 +71,7 @@ export function ProgressListenerController(props: Props) {
         timeArr[timeArr.length - 1] ?? 0,
         minutes > 0 ? 59 : Infinity
       );
-      console.log(hours, minutes, seconds, 123);
+
       const timeInSeconds = hours * 60 * 60 + minutes * 60 + seconds;
 
       controls.setTime(timeInSeconds);
