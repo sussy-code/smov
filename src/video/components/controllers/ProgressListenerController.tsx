@@ -62,15 +62,13 @@ export function ProgressListenerController(props: Props) {
     lastStateProviderId.current = stateProviderId;
 
     if ((queryParams.t ?? null) !== null) {
-      // Convert `t` param to time. Supports only seconds, but also `3:30` or `1:30:02`
-      const timeArr = queryParams.t.toString().split(":").map(Number);
+      // Convert `t` param to time. Supports having only seconds (like `?t=192`), but also `3:30` or `1:30:02`
 
-      const hours = timeArr[timeArr.length - 3] ?? 0;
-      const minutes = Math.min(timeArr[timeArr.length - 2] ?? 0, 59);
-      const seconds = Math.min(
-        timeArr[timeArr.length - 1] ?? 0,
-        minutes > 0 ? 59 : Infinity
-      );
+      const timeArr = queryParams.t.toString().split(":").map(Number).reverse(); // This is an array of [seconds, ?minutes, ?hours] as ints.
+
+      const hours = timeArr[2] ?? 0;
+      const minutes = Math.min(timeArr[1] ?? 0, 59);
+      const seconds = Math.min(timeArr[0] ?? 0, minutes > 0 ? 59 : Infinity);
 
       const timeInSeconds = hours * 60 * 60 + minutes * 60 + seconds;
 
