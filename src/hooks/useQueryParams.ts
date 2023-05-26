@@ -6,14 +6,9 @@ export function useQueryParams() {
 
   const queryParams = useMemo(() => {
     // Basic absolutely-not-fool-proof URL query param parser
-    const obj: Record<string, string | number> = {};
-    for (const [key, value] of loc.search
-      .slice(1)
-      .split("&")
-      .map((e) => e.split("="))) {
-      const valueAsNum = Number(value);
-      obj[key] = Number.isNaN(valueAsNum) ? value : valueAsNum;
-    }
+    const obj: Record<string, string> = Object.fromEntries(
+      new URLSearchParams(loc.search).entries()
+    );
 
     return obj;
   }, [loc]);
