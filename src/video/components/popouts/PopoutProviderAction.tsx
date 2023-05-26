@@ -9,8 +9,6 @@ import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useControls } from "@/video/state/logic/controls";
 import { useInterface } from "@/video/state/logic/interface";
 
-import "./Popouts.css";
-
 function ShowPopout(props: { popoutId: string | null; onClose: () => void }) {
   const popoutMap = {
     settings: <SettingsPopout />,
