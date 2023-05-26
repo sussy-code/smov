@@ -8,7 +8,7 @@ const sflixBase = "https://sflix.video";
 registerProvider({
   id: "sflix",
   displayName: "Sflix",
-  rank: 135,
+  rank: 50,
   type: [MWMediaType.MOVIE, MWMediaType.SERIES],
   async scrape({ media, episode, progress }) {
     let searchQuery = `${media.meta.title} `;
