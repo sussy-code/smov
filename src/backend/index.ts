@@ -8,6 +8,7 @@ import "./providers/netfilm";
 import "./providers/m4ufree";
 import "./providers/hdwatched";
 import "./providers/2embed";
+import "./providers/sflix";
 
 // embeds
 import "./embeds/streamm4u";
