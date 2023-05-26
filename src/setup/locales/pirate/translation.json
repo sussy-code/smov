@@ -1,0 +1,124 @@
+{
+  "global": {
+    "name": "movie-web"
+  },
+  "search": {
+    "loading_series": "Fetchin' yer favorite series...",
+    "loading_movie": "Fetchin' yer favorite movies...",
+    "loadin'": "Loadin'...",
+    "allResults": "That be all we 'ave, me hearty!",
+    "noResults": "We couldn't find anythin' that matches yer search!",
+    "allFailed": "Failed t' find media, walk the plank and try again!",
+    "headingTitle": "Search results",
+    "bookmarks": "Treasure Maps",
+    "continueWatchin'": "Continue Watchin'",
+    "title": "Wha' be ye wantin' to watch, me matey?",
+    "placeholder": "Wha' be ye searchin' for?"
+  },
+  "media": {
+    "movie": "Movie",
+    "series": "Series",
+    "stopEditin'": "Stop editin'",
+    "errors": {
+      "genericTitle": "Shiver me timbers! It broke!",
+      "failedMeta": "Ye can't trust the compass, failed to load meta",
+      "mediaFailed": "We failed t' request the media ye asked fer, check yer internet connection, or Davy Jones's locker awaits ye!",
+      "videoFailed": "Blimey! We encountered an error while playin' the video ye requested. If this keeps happening please report the issue to the <0>Discord server</0> or on <1>GitHub</1>."
+    }
+  },
+  "seasons": {
+    "seasonAndEpisode": "S{{season}} E{{episode}}"
+  },
+  "notFound": {
+    "genericTitle": "Ahoy! I see nothin' on the horizon.",
+    "backArrow": "Back to the port",
+    "media": {
+      "title": "Avast ye! Couldn't find that media",
+      "description": "We couldn't find the media ye requested. Either it's been scuttled or ye tampered with the URL, ye scallywag!"
+    },
+    "provider": {
+      "title": "Walk the plank! This provider has been disabled",
+      "description": "We had issues wit' the provider or 'twas too unstable t' use, so we had t' disable it. Try another one, arrr!"
+    },
+    "page": {
+      "title": "Avast ye! Couldn't find that page.",
+      "description": "Arrr! We searched every inch o' the vessel: from the bilge to the crow's nest, from the keel to the topmast, but avast! We couldn't find the page ye be lookin' fer, me heartie."
+    }
+  },
+  "searchBar": {
+    "movie": "Movie",
+    "series": "Series",
+    "Search": "Search"
+  },
+  "videoPlayer": {
+    "findingBestVideo": "Finding the best video fer ye, hoist the colors!",
+    "noVideos": "Blistering barnacles, couldn't find any videos fer ye. Ye need a better map!",
+    "loading": "Loading...",
+    "backToHome": "Back to the port, mates!",
+    "backToHomeShort": "Back",
+    "seasonAndEpisode": "S{{season}} E{{episode}}",
+    "timeLeft": "{{timeLeft}} left",
+    "finishAt": "Finish at {{timeFinished}}",
+    "buttons": {
+      "episodes": "Episodes",
+      "source": "Source",
+      "captions": "Captions",
+      "download": "Download",
+      "settings": "Settings",
+      "pictureInPicture": "Spyglass view",
+      "playbackSpeed": "Set sail!"
+    },
+    "popouts": {
+      "back": "Avast ye, go back!",
+      "sources": "Wha' provider do ye want to use?",
+      "seasons": "Choose which season you wants to watch!",
+      "captions": "Select a subtitle language, me hearty!",
+      "playbackSpeed": "Change the speed of Blackbeard's ship!",
+      "customPlaybackSpeed": "Set a custom playback speed",
+      "captionPreferences": {
+        "title": "Customize yer captions",
+        "delay": "Delay",
+        "fontSize": "Size",
+        "opacity": "Opacity",
+        "color": "Color"
+      },
+      "episode": "E{{index}} - {{title}}",
+      "noCaptions": "No captions, hoist the Jolly Roger!",
+      "linkedCaptions": "Linked captions, drop anchor!",
+      "customCaption": "Custom caption, arrr!",
+      "uploadCustomCaption": "Upload yer own caption!",
+      "noEmbeds": "No embeds we be found fer this source",
+
+      "errors": {
+        "loadingWentWong": "Shiver me timbers! Somethin' went wrong loadin' the episodes fer {{seasonTitle}}",
+        "embedsError": "Blimey! Somethin' went wrong loadin' the embeds fer this thin' that ye like"
+      },
+      "descriptions": {
+        "sources": "Wha' provider do ye wants to use?",
+        "embeds": "Choose which video to view",
+        "seasons": "Choose which season ye wants to watch",
+        "episode": "Pick an episode",
+        "captions": "Choose a subtitle language",
+        "captionPreferences": "Make subtitles look how ye wants it",
+        "playbackSpeed": "Change the playback speed"
+      }
+    },
+    "errors": {
+      "fatalError": "Blow me down! The video player encounted a fatal error, please report it to the <0>Discord server</0> or on <1>GitHub</1>."
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "captionLanguage": "Caption Language"
+  },
+  "v3": {
+    "newSiteTitle": "New version now released!",
+    "newDomain": "https://movie-web.app",
+    "newDomainText": "movie-web will soon be movin' to a new domain: <0>https://movie-web.app</0>. Make sure to update all yer bookmarks as <1>the ole website will stop workin' on {{date}}.</1>",
+    "tireless": "We've worked tirelessly on this new update, we hope ye will enjoy wha' we've been cookin' up fer the past months.",
+    "leaveAnnouncement": "Take me thar!"
+  },
+  "casting": { "casting": "Casting to device..." },
+  "errors": { "offline": "Avast! Check yer internet connection" }
+}

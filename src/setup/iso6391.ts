@@ -1,5 +1,6 @@
 export type LangCode =
   | "none"
+  | "pirate"
   | "aa"
   | "ab"
   | "ae"
@@ -218,6 +219,12 @@ export const captionLanguages: CaptionLanguageOption[] = [
     englishName: "None",
     name: "None",
     nativeName: "Lorem ipsum",
+  },
+  {
+    id: "pirate",
+    englishName: "Pirate",
+    name: "Pirate English",
+    nativeName: "Pirate English",
   },
   {
     id: "aa",
