@@ -11,10 +11,14 @@ import nl from "./locales/nl/translation.json";
 import pirate from "./locales/pirate/translation.json";
 import tr from "./locales/tr/translation.json";
 import zh from "./locales/zh/translation.json";
+import it from "./locales/it/translation.json";
 
 const locales = {
   en: {
     translation: en,
+  },
+  it: {
+    translation: it,
   },
   nl: {
     translation: nl,
