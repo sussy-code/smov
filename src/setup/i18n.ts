@@ -7,11 +7,11 @@ import cs from "./locales/cs/translation.json";
 import de from "./locales/de/translation.json";
 import en from "./locales/en/translation.json";
 import fr from "./locales/fr/translation.json";
+import it from "./locales/it/translation.json";
 import nl from "./locales/nl/translation.json";
 import pirate from "./locales/pirate/translation.json";
 import tr from "./locales/tr/translation.json";
 import zh from "./locales/zh/translation.json";
-import it from "./locales/it/translation.json";
 
 const locales = {
   en: {
