@@ -179,3 +179,19 @@ input[type=range].styled-slider.slider-progress::-ms-fill-lower {
   border: none;
   border-right-width: 0;
 }
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: theme("colors.denim-500");
+  border: 5px solid transparent;
+  border-left: 0;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar {
+  /* For some reason the styles don't get applied without the width */
+  width: 13px;
+}
