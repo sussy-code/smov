@@ -11,6 +11,7 @@ import {
   canWebkitFullscreen,
   canWebkitPictureInPicture,
 } from "@/utils/detectFeatures";
+import extractThumbnails from "@/utils/thumbnailCreator";
 import {
   getStoredVolume,
   setStoredVolume,
@@ -193,7 +194,17 @@ export function createVideoStateProvider(
         caption: null,
         embedId: source.embedId,
         providerId: source.providerId,
+        thumbnails: [],
       };
+
+      (async () => {
+        for await (const thumbnail of extractThumbnails(source.source, 20)) {
+          if (!state.source) return;
+          state.source.thumbnails = [...state.source.thumbnails, thumbnail];
+          updateSource(descriptor, state);
+        }
+      })();
+
       updateSource(descriptor, state);
     },
     setCaption(id, url) {

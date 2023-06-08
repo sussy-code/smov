@@ -154,6 +154,7 @@ export function createCastingStateProvider(
         caption: null,
         embedId: source.embedId,
         providerId: source.providerId,
+        thumbnails: [],
       };
       resetStateForSource(descriptor, state);
       updateSource(descriptor, state);

@@ -22,22 +22,27 @@ export function BackdropAction(props: BackdropActionProps) {
 
   const lastTouchEnd = useRef<number>(0);
 
-  const handleMouseMove = useCallback(() => {
-    if (!moved) {
-      setTimeout(() => {
-        // If NOT a touch, set moved to true
-        const isTouch = Date.now() - lastTouchEnd.current < 200;
-        if (!isTouch) setMoved(true);
-      }, 20);
-    }
+  const handleMouseMove = useCallback(
+    (e) => {
+      // to enable thumbnail on mouse hover
+      e.stopPropagation();
+      if (!moved) {
+        setTimeout(() => {
+          // If NOT a touch, set moved to true
+          const isTouch = Date.now() - lastTouchEnd.current < 200;
+          if (!isTouch) setMoved(true);
+        }, 20);
+      }
 
-    // remove after all
-    if (timeout.current) clearTimeout(timeout.current);
-    timeout.current = setTimeout(() => {
-      setMoved(false);
-      timeout.current = null;
-    }, 3000);
-  }, [setMoved, moved]);
+      // remove after all
+      if (timeout.current) clearTimeout(timeout.current);
+      timeout.current = setTimeout(() => {
+        setMoved(false);
+        timeout.current = null;
+      }, 3000);
+    },
+    [setMoved, moved]
+  );
 
   const handleMouseLeave = useCallback(() => {
     setMoved(false);

@@ -6,6 +6,7 @@ import {
   MWStreamType,
 } from "@/backend/helpers/streams";
 import { DetailedMeta } from "@/backend/metadata/getmeta";
+import { Thumbnail } from "@/utils/thumbnailCreator";
 
 import { VideoPlayerStateProvider } from "./providers/providerTypes";
 
@@ -75,6 +76,7 @@ export type VideoPlayerState = {
       url: string;
       id: string;
     };
+    thumbnails: Thumbnail[];
   };
 
   // casting state

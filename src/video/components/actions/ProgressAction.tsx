@@ -1,6 +1,7 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import {
+  MouseActivity,
   makePercentage,
   makePercentageString,
   useProgressBar,
@@ -10,6 +11,8 @@ import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { useControls } from "@/video/state/logic/controls";
 import { useProgress } from "@/video/state/logic/progress";
 
+import ThumbnailAction from "./ThumbnailAction";
+
 export function ProgressAction() {
   const descriptor = useVideoPlayerDescriptor();
   const controls = useControls(descriptor);
@@ -17,7 +20,15 @@ export function ProgressAction() {
   const ref = useRef<HTMLDivElement>(null);
   const dragRef = useRef<boolean>(false);
   const controlRef = useRef<typeof controls>(controls);
-
+  const [hoverPosition, setHoverPosition] = useState<number>(0);
+  const [isThumbnailVisible, setIsThumbnailVisible] = useState<boolean>(false);
+  const onMouseOver = useCallback((e: MouseActivity) => {
+    setHoverPosition(e.clientX);
+    setIsThumbnailVisible(true);
+  }, []);
+  const onMouseLeave = useCallback(() => {
+    setIsThumbnailVisible(false);
+  }, []);
   useEffect(() => {
     controlRef.current = controls;
   }, [controls]);
@@ -65,6 +76,8 @@ export function ProgressAction() {
         className="-my-3 flex h-8 items-center"
         onMouseDown={dragMouseDown}
         onTouchStart={dragMouseDown}
+        onMouseMove={onMouseOver}
+        onMouseLeave={onMouseLeave}
       >
         <div
           className={`relative h-1 flex-1 rounded-full bg-gray-500 bg-opacity-50 transition-[height] duration-100 group-hover:h-2 ${
@@ -88,6 +101,13 @@ export function ProgressAction() {
                 dragging ? "!scale-[400%] !opacity-100" : ""
               }`}
             />
+            {isThumbnailVisible ? (
+              <ThumbnailAction
+                parentRef={ref}
+                videoTime={videoTime}
+                hoverPosition={hoverPosition}
+              />
+            ) : null}
           </div>
         </div>
       </div>
