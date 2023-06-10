@@ -1,11 +1,13 @@
 import { RefObject } from "react";
 
+import { Icon, Icons } from "@/components/Icon";
 import { formatSeconds } from "@/utils/formatSeconds";
 import { SCALE_FACTOR } from "@/utils/thumbnailCreator";
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { VideoProgressEvent } from "@/video/state/logic/progress";
 import { useSource } from "@/video/state/logic/source";
 
+const THUMBNAIL_HEIGHT = 100;
 export default function ThumbnailAction({
   parentRef,
   hoverPosition,
@@ -18,44 +20,61 @@ export default function ThumbnailAction({
   const descriptor = useVideoPlayerDescriptor();
   const source = useSource(descriptor);
   if (!parentRef.current) return null;
-  const offset =
-    (document.getElementsByTagName("video")[0].videoWidth * SCALE_FACTOR) / 2;
+  const videoEl = document.getElementsByTagName("video")[0];
+  const aspectRatio = videoEl.videoWidth / videoEl.videoHeight;
   const rect = parentRef.current.getBoundingClientRect();
-
+  if (!rect.width) return null;
   const hoverPercent = (hoverPosition - rect.left) / rect.width;
   const hoverTime = videoTime.duration * hoverPercent;
 
+  const thumbnailWidth = THUMBNAIL_HEIGHT * aspectRatio;
   const pos = () => {
     const relativePosition = hoverPosition - rect.left;
-    if (relativePosition <= offset) {
-      return 0;
+    if (relativePosition <= thumbnailWidth / 2) {
+      return rect.left;
     }
-    if (relativePosition >= rect.width - offset) {
-      return rect.width - offset * 2;
+    if (relativePosition >= rect.width - thumbnailWidth / 2) {
+      return rect.width + rect.left - thumbnailWidth;
     }
-    return relativePosition - offset;
+    return relativePosition + rect.left - thumbnailWidth / 2;
   };
-
+  const src = source.source?.thumbnails.find(
+    (x) => x.from < hoverTime && x.to > hoverTime
+  )?.imgUrl;
   return (
-    <div>
-      <img
-        style={{
-          left: `${pos()}px`,
-        }}
-        className="absolute bottom-10 rounded"
-        src={
-          source.source?.thumbnails.find(
-            (x) => x.from < hoverTime && x.to > hoverTime
-          )?.imgUrl
-        }
-      />
+    <div className="text-center">
+      {!src ? (
+        <div
+          style={{
+            left: `${pos()}px`,
+            width: `${thumbnailWidth}px`,
+            height: `${THUMBNAIL_HEIGHT}px`,
+          }}
+          className="absolute bottom-32 flex items-center justify-center rounded bg-black"
+        >
+          <Icon
+            className="roll-infinite text-6xl text-bink-600"
+            icon={Icons.MOVIE_WEB}
+          />
+        </div>
+      ) : (
+        <img
+          height={THUMBNAIL_HEIGHT}
+          width={thumbnailWidth}
+          style={{
+            left: `${pos()}px`,
+          }}
+          className="absolute bottom-32 rounded"
+          src={src}
+        />
+      )}
       <div
         style={{
-          left: `${pos() + offset - 18}px`,
+          left: `${pos() + thumbnailWidth / 2 - 18}px`,
         }}
-        className="absolute bottom-3 text-white"
+        className="absolute bottom-24 text-white"
       >
-        {formatSeconds(hoverTime)}
+        {formatSeconds(hoverTime, videoEl.duration > 60 * 60)}
       </div>
     </div>
   );

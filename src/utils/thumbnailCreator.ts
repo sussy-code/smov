@@ -3,11 +3,14 @@ export interface Thumbnail {
   to: number;
   imgUrl: string;
 }
-export const SCALE_FACTOR = 0.1;
+export const SCALE_FACTOR = 1;
 export default async function* extractThumbnails(
   videoUrl: string,
   numThumbnails: number
 ): AsyncGenerator<Thumbnail, Thumbnail> {
+  const canvas = document.createElement("canvas");
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return { from: -1, to: -1, imgUrl: "" };
   const video = document.createElement("video");
   video.src = videoUrl;
   video.crossOrigin = "anonymous";
@@ -18,12 +21,8 @@ export default async function* extractThumbnails(
     video.addEventListener("error", reject);
   });
 
-  const canvas = document.createElement("canvas");
-
   canvas.height = video.videoHeight * SCALE_FACTOR;
   canvas.width = video.videoWidth * SCALE_FACTOR;
-  const ctx = canvas.getContext("2d");
-  if (!ctx) return { from: 0, to: 0, imgUrl: "" };
 
   for (let i = 0; i <= numThumbnails; i += 1) {
     const from = (i / (numThumbnails + 1)) * video.duration;
@@ -48,5 +47,5 @@ export default async function* extractThumbnails(
     };
   }
 
-  return { from: 0, to: 0, imgUrl: "" };
+  return { from: -1, to: -1, imgUrl: "" };
 }

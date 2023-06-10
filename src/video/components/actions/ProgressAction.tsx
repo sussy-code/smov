@@ -70,9 +70,11 @@ export function ProgressAction() {
   );
 
   return (
-    <div className="group pointer-events-auto w-full cursor-pointer rounded-full px-2">
+    <div
+      ref={ref}
+      className="group pointer-events-auto w-full cursor-pointer rounded-full px-2"
+    >
       <div
-        ref={ref}
         className="-my-3 flex h-8 items-center"
         onMouseDown={dragMouseDown}
         onTouchStart={dragMouseDown}
@@ -101,16 +103,16 @@ export function ProgressAction() {
                 dragging ? "!scale-[400%] !opacity-100" : ""
               }`}
             />
-            {isThumbnailVisible ? (
-              <ThumbnailAction
-                parentRef={ref}
-                videoTime={videoTime}
-                hoverPosition={hoverPosition}
-              />
-            ) : null}
           </div>
         </div>
       </div>
+      {isThumbnailVisible ? (
+        <ThumbnailAction
+          parentRef={ref}
+          videoTime={videoTime}
+          hoverPosition={hoverPosition}
+        />
+      ) : null}
     </div>
   );
 }
