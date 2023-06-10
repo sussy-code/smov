@@ -2,7 +2,6 @@ import { RefObject } from "react";
 
 import { Icon, Icons } from "@/components/Icon";
 import { formatSeconds } from "@/utils/formatSeconds";
-import { SCALE_FACTOR } from "@/utils/thumbnailCreator";
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
 import { VideoProgressEvent } from "@/video/state/logic/progress";
 import { useSource } from "@/video/state/logic/source";
