@@ -9,7 +9,7 @@ registerProvider({
   id: "remotestream",
   displayName: "Remote Stream",
   disabled: false,
-  rank: 50,
+  rank: 55,
   type: [MWMediaType.MOVIE, MWMediaType.SERIES],
 
   async scrape({ media, episode, progress }) {
