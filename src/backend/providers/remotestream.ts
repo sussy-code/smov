@@ -27,7 +27,7 @@ registerProvider({
         (e) => e.id === episode
       )?.number;
 
-      playlistLink += `/${seasonNumber}/${episodeNumber}.m3u8`;
+      playlistLink += `/${seasonNumber}/${episodeNumber}/${episodeNumber}.m3u8`;
     } else {
       playlistLink += `/${media.tmdbId}.m3u8`;
     }
