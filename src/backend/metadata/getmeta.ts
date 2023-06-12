@@ -1,13 +1,13 @@
 import { FetchError } from "ofetch";
 
+import { formatJWMeta, mediaTypeToJW } from "./justwatch";
 import {
   JWMediaResult,
   JWSeasonMetaResult,
   JW_API_BASE,
-  formatJWMeta,
-  mediaTypeToJW,
-} from "./justwatch";
-import { MWMediaMeta, MWMediaType } from "./types";
+  MWMediaMeta,
+  MWMediaType,
+} from "./types";
 import { makeUrl, proxiedFetch } from "../helpers/fetch";
 
 type JWExternalIdType =
