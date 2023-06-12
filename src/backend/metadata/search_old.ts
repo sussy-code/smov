@@ -1,12 +1,7 @@
 import { SimpleCache } from "@/utils/cache";
 
-import {
-  JWContentTypes,
-  JWMediaResult,
-  JW_API_BASE,
-  formatJWMeta,
-  mediaTypeToJW,
-} from "./justwatch";
+import { formatJWMeta, mediaTypeToJW } from "./justwatch";
+import { JWContentTypes, JWMediaResult, JW_API_BASE } from "./types";
 import { MWMediaMeta, MWQuery } from "./types_old";
 import { proxiedFetch } from "../helpers/fetch";
 
