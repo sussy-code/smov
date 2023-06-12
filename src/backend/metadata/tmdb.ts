@@ -1,7 +1,6 @@
 import { conf } from "@/setup/config";
 
 import {
-  DetailedMeta,
   MWMediaType,
   TMDBMediaStatic,
   TMDBMovieData,

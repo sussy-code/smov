@@ -8,6 +8,7 @@ interface Config {
   TMDB_API_KEY: string;
   CORS_PROXY_URL: string;
   NORMAL_ROUTER: boolean;
+  TRAKT_CLIENT_ID: string;
 }
 
 export interface RuntimeConfig {
@@ -18,6 +19,7 @@ export interface RuntimeConfig {
   TMDB_API_KEY: string;
   NORMAL_ROUTER: boolean;
   PROXY_URLS: string[];
+  TRAKT_CLIENT_ID: string;
 }
 
 const env: Record<keyof Config, undefined | string> = {
@@ -28,6 +30,7 @@ const env: Record<keyof Config, undefined | string> = {
   DISCORD_LINK: undefined,
   CORS_PROXY_URL: import.meta.env.VITE_CORS_PROXY_URL,
   NORMAL_ROUTER: import.meta.env.VITE_NORMAL_ROUTER,
+  TRAKT_CLIENT_ID: import.meta.env.VITE_TRAKT_CLIENT_ID,
 };
 
 const alerts = [] as string[];
@@ -62,5 +65,6 @@ export function conf(): RuntimeConfig {
       .split(",")
       .map((v) => v.trim()),
     NORMAL_ROUTER: getKey("NORMAL_ROUTER", "false") === "true",
+    TRAKT_CLIENT_ID: getKey("TRAKT_CLIENT_ID"),
   };
 }
