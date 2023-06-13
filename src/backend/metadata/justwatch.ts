@@ -3,8 +3,10 @@ import {
   JWMediaResult,
   JWSeasonMetaResult,
   JW_IMAGE_BASE,
+  MWMediaMeta,
+  MWMediaType,
+  MWSeasonMeta,
 } from "./types";
-import { MWMediaMeta, MWMediaType, MWSeasonMeta } from "./types_old";
 
 export function mediaTypeToJW(type: MWMediaType): JWContentTypes {
   if (type === MWMediaType.MOVIE) return "movie";
