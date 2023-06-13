@@ -46,62 +46,35 @@ export interface MWQuery {
   type: MWMediaType;
 }
 
-export type TTVContentTypes = "movie" | "show";
+export type TMDBContentTypes = "movie" | "show";
 
-export type TTVSeasonShort = {
+export type TMDBSeasonShort = {
   title: string;
   id: number;
   season_number: number;
 };
 
-export type TTVEpisodeShort = {
+export type TMDBEpisodeShort = {
   title: string;
   id: number;
   episode_number: number;
 };
 
-export type TTVMediaResult = {
+export type TMDBMediaResult = {
   title: string;
   poster?: string;
   id: number;
   original_release_year?: number;
-  ttv_entity_id: string;
-  object_type: TTVContentTypes;
-  seasons?: TTVSeasonShort[];
+  object_type: TMDBContentTypes;
+  seasons?: TMDBSeasonShort[];
 };
 
-export type TTVSeasonMetaResult = {
+export type TMDBSeasonMetaResult = {
   title: string;
   id: string;
   season_number: number;
-  episodes: TTVEpisodeShort[];
+  episodes: TMDBEpisodeShort[];
 };
-
-export interface TTVSearchResult {
-  type: "movie" | "show";
-  score: number;
-  movie?: {
-    title: string;
-    year: number;
-    ids: {
-      trakt: number;
-      slug: string;
-      imdb: string;
-      tmdb: number;
-    };
-  };
-  show?: {
-    title: string;
-    year: number;
-    ids: {
-      trakt: number;
-      slug: string;
-      tvdb: number;
-      imdb: string;
-      tmdb: number;
-    };
-  };
-}
 
 export interface DetailedMeta {
   meta: MWMediaMeta;
@@ -255,12 +228,9 @@ export interface TMDBMovieData {
 export type TMDBMediaDetailsPromise = Promise<TMDBShowData | TMDBMovieData>;
 
 export interface TMDBMediaStatic {
-  getMediaDetails(
-    id: string,
-    type: MWMediaType.SERIES
-  ): TMDBMediaDetailsPromise;
-  getMediaDetails(id: string, type: MWMediaType.MOVIE): TMDBMediaDetailsPromise;
-  getMediaDetails(id: string, type: MWMediaType): TMDBMediaDetailsPromise;
+  getMediaDetails(id: string, type: "show"): TMDBMediaDetailsPromise;
+  getMediaDetails(id: string, type: "movie"): TMDBMediaDetailsPromise;
+  getMediaDetails(id: string, type: TMDBContentTypes): TMDBMediaDetailsPromise;
 }
 
 export type JWContentTypes = "movie" | "show";
@@ -312,7 +282,7 @@ export type JWSeasonMetaResult = {
   episodes: JWEpisodeShort[];
 };
 
-export interface TTVEpisodeResult {
+export interface TMDBEpisodeResult {
   season: number;
   number: number;
   title: string;
@@ -322,4 +292,90 @@ export interface TTVEpisodeResult {
     imdb: string;
     tmdb: number;
   };
+}
+
+export interface TMDBShowResult {
+  adult: boolean;
+  backdrop_path: string | null;
+  genre_ids: number[];
+  id: number;
+  origin_country: string[];
+  original_language: string;
+  original_name: string;
+  overview: string;
+  popularity: number;
+  poster_path: string | null;
+  first_air_date: string;
+  name: string;
+  vote_average: number;
+  vote_count: number;
+}
+
+export interface TMDBShowResponse {
+  page: number;
+  results: TMDBShowResult[];
+  total_pages: number;
+  total_results: number;
+}
+
+export interface TMDBMovieResult {
+  adult: boolean;
+  backdrop_path: string | null;
+  genre_ids: number[];
+  id: number;
+  original_language: string;
+  original_title: string;
+  overview: string;
+  popularity: number;
+  poster_path: string | null;
+  release_date: string;
+  title: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
+}
+
+export interface TMDBMovieResponse {
+  page: number;
+  results: TMDBMovieResult[];
+  total_pages: number;
+  total_results: number;
+}
+
+export type TMDBSearchResultsPromise = Promise<
+  TMDBShowResponse | TMDBMovieResponse
+>;
+
+export interface TMDBSearchResultStatic {
+  searchMedia(query: string, type: TMDBContentTypes): TMDBSearchResultsPromise;
+  searchMedia(query: string, type: "movie"): TMDBSearchResultsPromise;
+  searchMedia(query: string, type: "show"): TMDBSearchResultsPromise;
+}
+
+export interface TMDBEpisode {
+  air_date: string;
+  episode_number: number;
+  id: number;
+  name: string;
+  overview: string;
+  production_code: string;
+  runtime: number;
+  season_number: number;
+  show_id: number;
+  still_path: string | null;
+  vote_average: number;
+  vote_count: number;
+  crew: any[];
+  guest_stars: any[];
+}
+
+export interface TMDBSeason {
+  _id: string;
+  air_date: string;
+  episodes: TMDBEpisode[];
+  name: string;
+  overview: string;
+  id: number;
+  poster_path: string | null;
+  season_number: number;
 }
