@@ -47,31 +47,4 @@ export abstract class Tmdb {
   public static getMediaPoster(posterPath: string | null): string | undefined {
     if (posterPath) return `https://image.tmdb.org/t/p/w185/${posterPath}`;
   }
-
-  /* public static async getMetaFromId(
-    type: MWMediaType,
-    id: string,
-    seasonId?: string
-  ): Promise<DetailedMeta | null> {
-    console.log("getMetaFromId", type, id, seasonId);
-
-    const details = await Tmdb.getMediaDetails(id, type);
-
-    if (!details) return null;
-
-    let imdbId;
-    if (type === MWMediaType.MOVIE) {
-      imdbId = (details as TMDBMovieData).imdb_id ?? undefined;
-    }
-
-    if (!meta.length) return null;
-
-    console.log(meta);
-
-    return {
-      meta,
-      imdbId,
-      tmdbId: id,
-    };
-  } */
 }

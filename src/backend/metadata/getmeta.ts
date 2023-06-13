@@ -1,12 +1,17 @@
 import { FetchError } from "ofetch";
 
 import { formatJWMeta, mediaTypeToJW } from "./justwatch";
+import { Tmdb } from "./tmdb";
+import { Trakt, formatTTVMeta } from "./trakttv";
 import {
   JWMediaResult,
   JWSeasonMetaResult,
   JW_API_BASE,
   MWMediaMeta,
   MWMediaType,
+  TMDBMovieData,
+  TMDBShowData,
+  TTVSeasonMetaResult,
 } from "./types";
 import { makeUrl, proxiedFetch } from "../helpers/fetch";
 
@@ -34,6 +39,56 @@ export interface DetailedMeta {
 }
 
 export async function getMetaFromId(
+  type: MWMediaType,
+  id: string,
+  seasonId?: string
+): Promise<DetailedMeta | null> {
+  const result = await Trakt.searchById(id, mediaTypeToJW(type));
+  if (!result) return null;
+  const details = await Tmdb.getMediaDetails(id, type);
+
+  if (!details) return null;
+
+  let imdbId;
+  if (type === MWMediaType.MOVIE) {
+    imdbId = (details as TMDBMovieData).imdb_id ?? undefined;
+  }
+
+  let seasonData: TTVSeasonMetaResult | undefined;
+
+  if (type === MWMediaType.SERIES) {
+    const seasons = (details as TMDBShowData).seasons;
+    const season =
+      seasons?.find((v) => v.id.toString() === seasonId) ?? seasons?.[0];
+
+    const episodes = await Trakt.getEpisodes(
+      result.ttv_entity_id,
+      season?.season_number ?? 1
+    );
+
+    if (season && episodes) {
+      seasonData = {
+        id: season.id.toString(),
+        season_number: season.season_number,
+        title: season.name,
+        episodes,
+      };
+    }
+  }
+
+  const meta = formatTTVMeta(result, seasonData);
+  if (!meta) return null;
+
+  console.log(meta);
+
+  return {
+    meta,
+    imdbId,
+    tmdbId: id,
+  };
+}
+
+export async function getLegacyMetaFromId(
   type: MWMediaType,
   id: string,
   seasonId?: string
