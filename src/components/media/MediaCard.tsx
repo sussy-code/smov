@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
-import { MWMediaToId } from "@/backend/metadata/getmeta";
+import { TTVMediaToId } from "@/backend/metadata/getmeta";
 import { MWMediaMeta } from "@/backend/metadata/types";
 import { DotList } from "@/components/text/DotList";
 
@@ -132,7 +132,7 @@ export function MediaCard(props: MediaCardProps) {
   const canLink = props.linkable && !props.closable;
 
   let link = canLink
-    ? `/media/${encodeURIComponent(MWMediaToId(props.media))}`
+    ? `/media/${encodeURIComponent(TTVMediaToId(props.media))}`
     : "#";
   if (canLink && props.series)
     link += `/${encodeURIComponent(props.series.seasonId)}/${encodeURIComponent(
