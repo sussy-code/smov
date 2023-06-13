@@ -2,8 +2,7 @@ import { useCallback, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 
-import { getMetaFromId } from "@/backend/metadata/getmeta";
-import { decodeJWId } from "@/backend/metadata/justwatch";
+import { decodeMWId, getMetaFromId } from "@/backend/metadata/getmeta";
 import { MWMediaType, MWSeasonWithEpisodeMeta } from "@/backend/metadata/types";
 import { IconPatch } from "@/components/buttons/IconPatch";
 import { Icon, Icons } from "@/components/Icon";
@@ -45,7 +44,7 @@ export function EpisodeSelectionPopout() {
         seasonId: sId,
         season: undefined,
       });
-      reqSeasonMeta(decodeJWId(params.media)?.id as string, sId).then((v) => {
+      reqSeasonMeta(decodeMWId(params.media)?.id as string, sId).then((v) => {
         if (v?.meta.type !== MWMediaType.SERIES) return;
         setCurrentVisibleSeason({
           seasonId: sId,

@@ -2,7 +2,12 @@ import { FetchError } from "ofetch";
 
 import { formatJWMeta, mediaTypeToJW } from "./justwatch";
 import { Tmdb } from "./tmdb";
-import { Trakt, formatTTVMeta } from "./trakttv";
+import {
+  TTVMediaToMediaType,
+  Trakt,
+  formatTTVMeta,
+  mediaTypeToTTV,
+} from "./trakttv";
 import {
   JWMediaResult,
   JWSeasonMetaResult,
@@ -135,5 +140,26 @@ export async function getLegacyMetaFromId(
     meta: formatJWMeta(data, seasonData),
     imdbId,
     tmdbId,
+  };
+}
+
+export function MWMediaToId(media: MWMediaMeta): string {
+  return ["MW", mediaTypeToTTV(media.type), media.id].join("-");
+}
+
+export function decodeMWId(
+  paramId: string
+): { id: string; type: MWMediaType } | null {
+  const [prefix, type, id] = paramId.split("-", 3);
+  if (prefix !== "MW") return null;
+  let mediaType;
+  try {
+    mediaType = TTVMediaToMediaType(type);
+  } catch {
+    return null;
+  }
+  return {
+    type: mediaType,
+    id,
   };
 }
