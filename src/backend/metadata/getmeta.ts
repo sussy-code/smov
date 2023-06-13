@@ -143,15 +143,15 @@ export async function getLegacyMetaFromId(
   };
 }
 
-export function MWMediaToId(media: MWMediaMeta): string {
-  return ["MW", mediaTypeToTTV(media.type), media.id].join("-");
+export function TTVMediaToId(media: MWMediaMeta): string {
+  return ["TTV", mediaTypeToTTV(media.type), media.id].join("-");
 }
 
-export function decodeMWId(
+export function decodeTTVId(
   paramId: string
 ): { id: string; type: MWMediaType } | null {
   const [prefix, type, id] = paramId.split("-", 3);
-  if (prefix !== "MW") return null;
+  if (prefix !== "TTV") return null;
   let mediaType;
   try {
     mediaType = TTVMediaToMediaType(type);
@@ -174,7 +174,7 @@ export async function convertLegacyUrl(
     if (!meta) return undefined;
     const tmdbId = meta.tmdbId;
     if (!tmdbId) return undefined;
-    return `/media/MW-${type}-${tmdbId}`;
+    return `/media/TTV-${type}-${tmdbId}`;
   }
   return undefined;
 }
