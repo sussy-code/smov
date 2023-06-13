@@ -16,6 +16,7 @@ export async function searchForMedia(query: MWQuery): Promise<MWMediaMeta[]> {
   const contentType = mediaTypeToTTV(type);
 
   const results = await Trakt.search(searchQuery, contentType);
+  console.log(results[0]);
   cache.set(query, results, 3600);
   return results;
 }

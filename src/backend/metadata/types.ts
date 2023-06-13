@@ -311,3 +311,15 @@ export type JWSeasonMetaResult = {
   season_number: number;
   episodes: JWEpisodeShort[];
 };
+
+export interface TTVEpisodeResult {
+  season: number;
+  number: number;
+  title: string;
+  ids: {
+    trakt: number;
+    tvdb: number;
+    imdb: string;
+    tmdb: number;
+  };
+}

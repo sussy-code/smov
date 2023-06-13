@@ -2,12 +2,13 @@ import { conf } from "@/setup/config";
 
 import { Tmdb } from "./tmdb";
 import {
-  DetailedMeta,
   MWMediaMeta,
   MWMediaType,
   MWSeasonMeta,
   TMDBShowData,
   TTVContentTypes,
+  TTVEpisodeResult,
+  TTVEpisodeShort,
   TTVMediaResult,
   TTVSearchResult,
   TTVSeasonMetaResult,
@@ -69,14 +70,14 @@ export function formatTTVMeta(
 }
 
 export function TTVMediaToId(media: MWMediaMeta): string {
-  return ["TTV", mediaTypeToTTV(media.type), media.id].join("-");
+  return ["MW", mediaTypeToTTV(media.type), media.id].join("-");
 }
 
 export function decodeTTVId(
   paramId: string
 ): { id: string; type: MWMediaType } | null {
   const [prefix, type, id] = paramId.split("-", 3);
-  if (prefix !== "TTV") return null;
+  if (prefix !== "MW") return null;
   let mediaType;
   try {
     mediaType = TTVMediaToMediaType(type);
@@ -101,7 +102,6 @@ export async function formatTTVSearchResult(
     media.ids.tmdb.toString(),
     TTVMediaToMediaType(result.type)
   );
-  console.log(details);
 
   const seasons =
     type === MWMediaType.SERIES
@@ -115,7 +115,7 @@ export async function formatTTVSearchResult(
   return {
     title: media.title,
     poster: Tmdb.getMediaPoster(details.poster_path),
-    id: media.ids.trakt,
+    id: media.ids.tmdb,
     original_release_year: media.year,
     ttv_entity_id: media.ids.slug,
     object_type: mediaTypeToTTV(type),
@@ -155,12 +155,33 @@ export abstract class Trakt {
     return formatted.map((v) => formatTTVMeta(v));
   }
 
-  public static async getMetaFromId(
-    type: MWMediaType,
-    id: string,
-    seasonId?: string
-  ): Promise<DetailedMeta | null> {
-    console.log("getMetaFromId", type, id, seasonId);
-    return null;
+  public static async searchById(
+    tmdbId: string,
+    type: "movie" | "show"
+  ): Promise<TTVMediaResult> {
+    const data = await Trakt.get<TTVSearchResult[]>(
+      `/search/tmdb/${tmdbId}?type=${type}`
+    );
+
+    const formatted = await Promise.all(
+      // eslint-disable-next-line no-return-await
+      data.map(async (v) => await formatTTVSearchResult(v))
+    );
+    return formatted[0];
+  }
+
+  public static async getEpisodes(
+    slug: string,
+    season: number
+  ): Promise<TTVEpisodeShort[]> {
+    const data = await Trakt.get<TTVEpisodeResult[]>(
+      `/shows/${slug}/seasons/${season}`
+    );
+
+    return data.map((e) => ({
+      id: e.ids.tmdb,
+      episode_number: e.number,
+      title: e.title,
+    }));
   }
 }
