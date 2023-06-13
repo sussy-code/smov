@@ -163,3 +163,18 @@ export function decodeMWId(
     id,
   };
 }
+
+export async function convertLegacyUrl(
+  url: string
+): Promise<string | undefined> {
+  if (url.startsWith("/media/JW")) {
+    const urlParts = url.split("/").slice(2);
+    const [, type, id] = urlParts[0].split("-", 3);
+    const meta = await getLegacyMetaFromId(TTVMediaToMediaType(type), id);
+    if (!meta) return undefined;
+    const tmdbId = meta.tmdbId;
+    if (!tmdbId) return undefined;
+    return `/media/MW-${type}-${tmdbId}`;
+  }
+  return undefined;
+}
