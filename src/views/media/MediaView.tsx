@@ -4,8 +4,11 @@ import { useTranslation } from "react-i18next";
 import { useHistory, useParams } from "react-router-dom";
 
 import { MWStream } from "@/backend/helpers/streams";
-import { DetailedMeta, getMetaFromId } from "@/backend/metadata/getmeta";
-import { decodeJWId } from "@/backend/metadata/justwatch";
+import {
+  DetailedMeta,
+  decodeMWId,
+  getMetaFromId,
+} from "@/backend/metadata/getmeta";
 import { MWMediaType, MWSeasonWithEpisodeMeta } from "@/backend/metadata/types";
 import { IconPatch } from "@/components/buttons/IconPatch";
 import { Icons } from "@/components/Icon";
@@ -181,7 +184,7 @@ export function MediaView() {
   const [selected, setSelected] = useState<SelectedMediaData | null>(null);
   const [exec, loading, error] = useLoading(
     async (mediaParams: string, seasonId?: string) => {
-      const data = decodeJWId(mediaParams);
+      const data = decodeMWId(mediaParams);
       if (!data) return null;
       return getMetaFromId(data.type, data.id, seasonId);
     }
