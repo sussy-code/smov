@@ -1,6 +1,13 @@
 import { lazy } from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
+import {
+  Redirect,
+  Route,
+  Switch,
+  useHistory,
+  useLocation,
+} from "react-router-dom";
 
+import { convertLegacyUrl } from "@/backend/metadata/getmeta";
 import { MWMediaType } from "@/backend/metadata/types";
 import { BannerContextProvider } from "@/hooks/useBanner";
 import { Layout } from "@/setup/Layout";
@@ -13,6 +20,15 @@ import { V2MigrationView } from "@/views/other/v2Migration";
 import { SearchView } from "@/views/search/SearchView";
 
 function App() {
+  const location = useLocation();
+  const history = useHistory();
+
+  // Call the conversion function and redirect if necessary
+  convertLegacyUrl(location.pathname).then((convertedUrl) => {
+    if (convertedUrl) {
+      history.replace(convertedUrl);
+    }
+  });
   return (
     <SettingsProvider>
       <WatchedContextProvider>
