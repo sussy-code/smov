@@ -43,6 +43,41 @@ export interface DetailedMeta {
   tmdbId?: string;
 }
 
+export function fromatTMDBMetaResult(
+  details: TMDBShowData | TMDBMovieData,
+  type: MWMediaType
+): TMDBMediaResult | undefined {
+  let tmdbmeta;
+  if (type === MWMediaType.MOVIE) {
+    tmdbmeta = {
+      id: details.id,
+      title: (details as TMDBMovieData).title,
+      object_type: mediaTypeToTMDB(type),
+      poster: (details as TMDBMovieData).poster_path ?? undefined,
+      original_release_year: Number(
+        (details as TMDBMovieData).release_date?.split("-")[0]
+      ),
+    };
+  }
+  if (type === MWMediaType.SERIES) {
+    tmdbmeta = {
+      id: details.id,
+      title: (details as TMDBShowData).name,
+      object_type: mediaTypeToTMDB(type),
+      seasons: (details as TMDBShowData).seasons.map((v) => ({
+        id: v.id,
+        season_number: v.season_number,
+        title: v.name,
+      })),
+      poster: (details as TMDBMovieData).poster_path ?? undefined,
+      original_release_year: Number(
+        (details as TMDBShowData).first_air_date?.split("-")[0]
+      ),
+    };
+  }
+  return tmdbmeta;
+}
+
 export async function getMetaFromId(
   type: MWMediaType,
   id: string,
@@ -79,25 +114,8 @@ export async function getMetaFromId(
     }
   }
 
-  const tmdbmeta: TMDBMediaResult = {
-    id: details.id,
-    title:
-      type === MWMediaType.MOVIE
-        ? (details as TMDBMovieData).title
-        : (details as TMDBShowData).name,
-    object_type: mediaTypeToTMDB(type),
-    seasons: (details as TMDBShowData).seasons.map((v) => ({
-      id: v.id,
-      season_number: v.season_number,
-      title: v.name,
-    })),
-    poster: (details as TMDBMovieData).poster_path ?? undefined,
-    original_release_year:
-      type === MWMediaType.MOVIE
-        ? Number((details as TMDBMovieData).release_date?.split("-")[0])
-        : Number((details as TMDBShowData).first_air_date?.split("-")[0]),
-  };
-
+  const tmdbmeta = fromatTMDBMetaResult(details, type);
+  if (!tmdbmeta) return null;
   const meta = formatTMDBMeta(tmdbmeta, seasonData);
   if (!meta) return null;
 
