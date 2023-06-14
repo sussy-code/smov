@@ -16,7 +16,7 @@ export default async function* extractThumbnails(
   video.crossOrigin = "anonymous";
 
   // Wait for the video metadata to load
-  const metadata = await new Promise((resolve, reject) => {
+  await new Promise((resolve, reject) => {
     video.addEventListener("loadedmetadata", resolve);
     video.addEventListener("error", reject);
   });
