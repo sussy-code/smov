@@ -20,7 +20,7 @@
     "series": "Chương trình truyền hình",
     "stopEditing": "Hãy dừng chỉnh sửa",
     "errors": {
-      "genericTitle": "Rất tiếc, nó đã hỏng!",
+      "genericTitle": "Rất tiếc, đã hỏng!",
       "failedMeta": "Không thể tải meta",
       "mediaFailed": "Chúng tôi không thể tìm thấy nội dung mà bạn yêu cầu, hãy kiểm tra kết nối internet của bạn và thử lại.",
       "videoFailed": "Chúng tôi đã gặp lỗi khi phát nội dung mà bạn yêu cầu. Nếu điều này tiếp tục xảy ra, vui lòng báo cáo sự cố trên <0>máy chủ Discord</0> hoặc trên <1>GitHub</1>."
