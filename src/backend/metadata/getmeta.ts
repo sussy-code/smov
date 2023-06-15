@@ -53,9 +53,7 @@ export function fromatTMDBMetaResult(
       id: details.id,
       title: (details as TMDBMovieData).title,
       object_type: mediaTypeToTMDB(type),
-      poster:
-        Tmdb.getMediaPoster((details as TMDBMovieData).poster_path) ??
-        undefined,
+      poster: (details as TMDBMovieData).poster_path ?? undefined,
       original_release_year: Number(
         (details as TMDBMovieData).release_date?.split("-")[0]
       ),
@@ -71,9 +69,7 @@ export function fromatTMDBMetaResult(
         season_number: v.season_number,
         title: v.name,
       })),
-      poster:
-        Tmdb.getMediaPoster((details as TMDBMovieData).poster_path) ??
-        undefined,
+      poster: (details as TMDBMovieData).poster_path ?? undefined,
       original_release_year: Number(
         (details as TMDBShowData).first_air_date?.split("-")[0]
       ),
