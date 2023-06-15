@@ -10,8 +10,8 @@ import fr from "./locales/fr/translation.json";
 import nl from "./locales/nl/translation.json";
 import pirate from "./locales/pirate/translation.json";
 import tr from "./locales/tr/translation.json";
-import zh from "./locales/zh/translation.json";
 import vi from "./locales/vi/translation.json";
+import zh from "./locales/zh/translation.json";
 
 const locales = {
   en: {
