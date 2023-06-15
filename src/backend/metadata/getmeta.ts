@@ -43,7 +43,7 @@ export interface DetailedMeta {
   tmdbId?: string;
 }
 
-export function fromatTMDBMetaResult(
+export function formatTMDBMetaResult(
   details: TMDBShowData | TMDBMovieData,
   type: MWMediaType
 ): TMDBMediaResult | undefined {
@@ -114,7 +114,7 @@ export async function getMetaFromId(
     }
   }
 
-  const tmdbmeta = fromatTMDBMetaResult(details, type);
+  const tmdbmeta = formatTMDBMetaResult(details, type);
   if (!tmdbmeta) return null;
   const meta = formatTMDBMeta(tmdbmeta, seasonData);
   if (!meta) return null;
