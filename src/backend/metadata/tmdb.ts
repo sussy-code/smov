@@ -120,12 +120,12 @@ export abstract class Tmdb {
     switch (type) {
       case "movie":
         data = await Tmdb.get<TMDBMovieResponse>(
-          `search/movie?query=${query}&include_adult=true&language=en-US&page=1`
+          `search/movie?query=${query}&include_adult=false&language=en-US&page=1`
         );
         break;
       case "show":
         data = await Tmdb.get<TMDBShowResponse>(
-          `search/tv?query=${query}&include_adult=true&language=en-US&page=1`
+          `search/tv?query=${query}&include_adult=false&language=en-US&page=1`
         );
         break;
       default:
