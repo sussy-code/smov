@@ -100,7 +100,7 @@ registerEmbedScraper({
       "[onclick^=download_video]"
     );
 
-    const dlDetails = [];
+    let dlDetails = [];
     for (const func of downloadVideoFunctions) {
       const funcContents = func.getAttribute("onclick");
       const regExpFunc = /download_video\('(.+?)','(.+?)','(.+?)'\)/;
@@ -120,6 +120,12 @@ registerEmbedScraper({
         }
       }
     }
+
+    dlDetails = dlDetails.sort((a, b) => {
+      const aQuality = qualityOrder.indexOf(a.quality.label as MWStreamQuality);
+      const bQuality = qualityOrder.indexOf(b.quality.label as MWStreamQuality);
+      return aQuality - bQuality;
+    });
 
     progress(40);
 
@@ -187,11 +193,6 @@ registerEmbedScraper({
       })
     );
     dls = dls.filter((d) => !!d.url);
-    dls = dls.sort((a, b) => {
-      const aQuality = qualityOrder.indexOf(a.quality);
-      const bQuality = qualityOrder.indexOf(b.quality);
-      return aQuality - bQuality;
-    });
 
     progress(60);
 
