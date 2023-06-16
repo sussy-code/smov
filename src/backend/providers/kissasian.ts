@@ -5,6 +5,17 @@ import { MWMediaType } from "../metadata/types";
 
 const kissasianBase = "https://kissasian.li";
 
+const embedProviders = [
+  {
+    type: MWEmbedType.MP4UPLOAD,
+    id: "mp",
+  },
+  {
+    type: MWEmbedType.STREAMSB,
+    id: "sb",
+  },
+];
+
 registerProvider({
   id: "kissasian",
   displayName: "KissAsian",
@@ -65,37 +76,44 @@ registerProvider({
           ?.querySelector("td.episodeSub a")
           ?.textContent?.split("Episode")[1]
           ?.trim();
-        const href = ep?.querySelector("td.episodeSub a")?.getAttribute("href");
-        return { number, href };
+        const url = ep?.querySelector("td.episodeSub a")?.getAttribute("href");
+        return { number, url };
       })
-      .filter((e) => !!e.href);
+      .filter((e) => !!e.url);
 
     const targetEpisode =
       media.meta.type === MWMediaType.MOVIE
         ? episodes[0]
         : episodes.find((e) => e.number === `${episodeNumber}`);
-    if (!targetEpisode?.href) throw new Error("Episode not found");
+    if (!targetEpisode?.url) throw new Error("Episode not found");
 
     progress(70);
 
-    const watch = await proxiedFetch<any>(`${targetEpisode.href}&s=sb`, {
-      baseURL: kissasianBase,
-    });
+    let embeds = await Promise.all(
+      embedProviders.map(async (provider) => {
+        const watch = await proxiedFetch<any>(
+          `${targetEpisode.url}&s=${provider.id}`,
+          {
+            baseURL: kissasianBase,
+          }
+        );
 
-    const watchPage = new DOMParser().parseFromString(watch, "text/html");
+        const watchPage = new DOMParser().parseFromString(watch, "text/html");
 
-    const streamsbUrl = watchPage
-      .querySelector("iframe[id=my_video_1]")
-      ?.getAttribute("src");
-    if (!streamsbUrl) throw new Error("Streamsb embed not found");
+        const embedUrl = watchPage
+          .querySelector("iframe[id=my_video_1]")
+          ?.getAttribute("src");
+
+        return {
+          type: provider.type,
+          url: embedUrl ?? "",
+        };
+      })
+    );
+    embeds = embeds.filter((e) => e.url !== "");
 
     return {
-      embeds: [
-        {
-          type: MWEmbedType.STREAMSB,
-          url: streamsbUrl,
-        },
-      ],
+      embeds,
     };
   },
 });
