@@ -4,6 +4,8 @@ export enum MWEmbedType {
   M4UFREE = "m4ufree",
   STREAMM4U = "streamm4u",
   PLAYM4U = "playm4u",
+  UPCLOUD = "upcloud",
+  STREAMSB = "streamsb",
 }
 
 export type MWEmbed = {
