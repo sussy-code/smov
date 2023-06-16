@@ -169,8 +169,6 @@ registerEmbedScraper({
           .querySelector(".btn.btn-light.btn-lg")
           ?.getAttribute("href");
 
-        console.log(dlLink);
-
         return {
           quality: dl.quality.label as MWStreamQuality,
           url: dlLink,
