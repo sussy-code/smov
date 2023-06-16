@@ -87,10 +87,8 @@ export async function getMetaFromId(
 
   if (!details) return null;
 
-  let imdbId;
-  if (type === MWMediaType.MOVIE) {
-    imdbId = (details as TMDBMovieData).imdb_id ?? undefined;
-  }
+  const externalIds = await Tmdb.getExternalIds(id, mediaTypeToTMDB(type));
+  const imdbId = externalIds.imdb_id ?? undefined;
 
   let seasonData: TMDBSeasonMetaResult | undefined;
 

@@ -379,3 +379,27 @@ export interface TMDBSeason {
   poster_path: string | null;
   season_number: number;
 }
+
+export interface TMDBShowExternalIds {
+  id: number;
+  imdb_id: null | string;
+  freebase_mid: null | string;
+  freebase_id: null | string;
+  tvdb_id: number;
+  tvrage_id: null | string;
+  wikidata_id: null | string;
+  facebook_id: null | string;
+  instagram_id: null | string;
+  twitter_id: null | string;
+}
+
+export interface TMDBMovieExternalIds {
+  id: number;
+  imdb_id: null | string;
+  wikidata_id: null | string;
+  facebook_id: null | string;
+  instagram_id: null | string;
+  twitter_id: null | string;
+}
+
+export type TMDBExternalIds = TMDBShowExternalIds | TMDBMovieExternalIds;
