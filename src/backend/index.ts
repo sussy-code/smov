@@ -17,5 +17,6 @@ import "./embeds/streamm4u";
 import "./embeds/playm4u";
 import "./embeds/upcloud";
 import "./embeds/streamsb";
+import "./embeds/mp4upload";
 
 initializeScraperStore();
