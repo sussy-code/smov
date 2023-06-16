@@ -6,15 +6,18 @@ import {
   MWSeasonMeta,
   TMDBContentTypes,
   TMDBEpisodeShort,
+  TMDBExternalIds,
   TMDBMediaResult,
   TMDBMediaStatic,
   TMDBMovieData,
+  TMDBMovieExternalIds,
   TMDBMovieResponse,
   TMDBMovieResult,
   TMDBSearchResultStatic,
   TMDBSeason,
   TMDBSeasonMetaResult,
   TMDBShowData,
+  TMDBShowExternalIds,
   TMDBShowResponse,
   TMDBShowResult,
 } from "./types";
@@ -169,6 +172,28 @@ export abstract class Tmdb {
       episode_number: e.episode_number,
       title: e.name,
     }));
+  }
+
+  public static async getExternalIds(
+    id: string,
+    type: TMDBContentTypes
+  ): Promise<TMDBExternalIds> {
+    let data;
+
+    switch (type) {
+      case "movie":
+        data = await Tmdb.get<TMDBMovieExternalIds>(
+          `/movie/${id}/external_ids`
+        );
+        break;
+      case "show":
+        data = await Tmdb.get<TMDBShowExternalIds>(`/tv/${id}/external_ids`);
+        break;
+      default:
+        throw new Error("Invalid media type");
+    }
+
+    return data;
   }
 }
 
