@@ -8,7 +8,7 @@ const kissasianBase = "https://kissasian.li";
 registerProvider({
   id: "kissasian",
   displayName: "KissAsian",
-  rank: 10000,
+  rank: 130,
   type: [MWMediaType.MOVIE, MWMediaType.SERIES],
 
   async scrape({ media, episode, progress }) {
@@ -88,8 +88,6 @@ registerProvider({
       .querySelector("iframe[id=my_video_1]")
       ?.getAttribute("src");
     if (!streamsbUrl) throw new Error("Streamsb embed not found");
-
-    console.log(streamsbUrl);
 
     return {
       embeds: [
