@@ -71,7 +71,16 @@
     "popouts": {
       "back": "Go back",
       "sources": "Sources",
-      "seasons": "Seasons",
+      "close": "Close",
+      "seasons": {
+        "title":"Seasons",
+        "other": "Other seasons",
+        "noSeason": "No season"
+      },
+      "episodes": {
+        "unknown": "Unknown episode",
+        "noEpisode": "No episode"
+      },
       "captions": "Captions",
       "playbackSpeed": "Playback speed",
       "customPlaybackSpeed": "Custom playback speed",
