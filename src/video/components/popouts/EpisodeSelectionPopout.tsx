@@ -99,10 +99,10 @@ export function EpisodeSelectionPopout() {
     <>
       <FloatingView {...pageProps("seasons")} height={600} width={375}>
         <FloatingCardView.Header
-          title={t("videoPlayer.popouts.seasons")}
+          title={t("videoPlayer.popouts.seasons.title")}
           description={t("videoPlayer.popouts.descriptions.seasons")}
           goBack={() => navigate("/episodes")}
-          backText={`To ${currentSeasonInfo?.title.toLowerCase()}`}
+          backText={currentSeasonInfo?.title}
         />
         <FloatingCardView.Content>
           {currentSeasonInfo
@@ -115,12 +115,15 @@ export function EpisodeSelectionPopout() {
                   {season.title}
                 </PopoutListEntry>
               ))
-            : "No season"}
+            : t("videoPlayer.popouts.seasons.noSeason")}
         </FloatingCardView.Content>
       </FloatingView>
       <FloatingView {...pageProps("episodes")} height={600} width={375}>
         <FloatingCardView.Header
-          title={currentSeasonInfo?.title ?? "Unknown season"}
+          title={
+            currentSeasonInfo?.title ??
+            t("videoPlayer.popouts.episodes.unknown")
+          }
           description={t("videoPlayer.popouts.descriptions.episode")}
           goBack={closePopout}
           close
@@ -130,7 +133,7 @@ export function EpisodeSelectionPopout() {
               onClick={() => navigate("/episodes/seasons")}
               className="flex cursor-pointer items-center space-x-2 transition-colors duration-200 hover:text-white"
             >
-              <span>Other seasons</span>
+              <span>{t("videoPlayer.popouts.seasons.other")}</span>
               <Icon icon={Icons.CHEVRON_RIGHT} />
             </button>
           }
@@ -181,7 +184,7 @@ export function EpisodeSelectionPopout() {
                       })}
                     </PopoutListEntry>
                   ))
-                : "No episodes"}
+                : t("videoPlayer.popouts.episodes.noEpisode")}
             </div>
           )}
         </FloatingCardView.Content>
