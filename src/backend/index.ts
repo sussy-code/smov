@@ -11,6 +11,8 @@ import "./providers/2embed";
 import "./providers/sflix";
 import "./providers/gomovies";
 import "./providers/kissasian";
+import "./providers/streamflix";
+import "./providers/remotestream";
 
 // embeds
 import "./embeds/streamm4u";

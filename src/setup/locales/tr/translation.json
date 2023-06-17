@@ -71,7 +71,16 @@
     "popouts": {
       "back": "Geri git",
       "sources": "Kaynaklar",
-      "seasons": "Sezonlar",
+      "close":"Kapat",
+      "seasons": {
+        "title":"Sezonlar",
+        "other": "Diğer sezonlar",
+        "noSeason": "Sezon yok"
+      },
+      "episodes": {
+        "unknown": "Bilinmeyen bölüm",
+        "noEpisode": "Bölüm yok"
+      },
       "captions": "Altyazılar",
       "playbackSpeed": "Oynatma hızı",
       "customPlaybackSpeed": "Özel oynatma hızı",
