@@ -9,6 +9,7 @@ import en from "./locales/en/translation.json";
 import fr from "./locales/fr/translation.json";
 import nl from "./locales/nl/translation.json";
 import pirate from "./locales/pirate/translation.json";
+import pl from "./locales/pl/translation.json";
 import tr from "./locales/tr/translation.json";
 import zh from "./locales/zh/translation.json";
 
@@ -36,6 +37,9 @@ const locales = {
   },
   pirate: {
     translation: pirate,
+  },
+  pl: {
+    translation: pl,
   },
 };
 i18n
