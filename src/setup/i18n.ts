@@ -45,7 +45,7 @@ const locales = {
   },
   vi: {
     translation: vi,
-  }
+  },
   pl: {
     translation: pl,
   },
