@@ -9,6 +9,8 @@ import "./providers/m4ufree";
 import "./providers/hdwatched";
 import "./providers/2embed";
 import "./providers/sflix";
+import "./providers/streamflix";
+import "./providers/remotestream";
 
 // embeds
 import "./embeds/streamm4u";
