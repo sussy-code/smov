@@ -1,0 +1,128 @@
+{
+  "global": {
+    "name": "movie-web"
+  },
+  "search": {
+    "loading_series": "Đang tìm chương trình yêu thích của bạn...",
+    "loading_movie": "Đang tìm bộ phim yêu thích của bạn...",
+    "loading": "Đang tải...",
+    "allResults": "Đó là tất cả chúng tôi có!",
+    "noResults": "Chúng tôi không thể tìm thấy gì!",
+    "allFailed": "Không thể tìm thấy nội dung, hãy thử lại!",
+    "headingTitle": "Kết quả tìm kiếm",
+    "bookmarks": "Đánh dấu",
+    "continueWatching": "Tiếp tục xem",
+    "title": "Bạn muốn xem gì?",
+    "placeholder": "Bạn muốn xem gì?"
+  },
+  "media": {
+    "movie": "Phim",
+    "series": "Chương trình truyền hình",
+    "stopEditing": "Hãy dừng chỉnh sửa",
+    "errors": {
+      "genericTitle": "Rất tiếc, đã hỏng!",
+      "failedMeta": "Không thể tải meta",
+      "mediaFailed": "Chúng tôi không thể tìm thấy nội dung mà bạn yêu cầu, hãy kiểm tra kết nối internet của bạn và thử lại.",
+      "videoFailed": "Chúng tôi đã gặp lỗi khi phát nội dung mà bạn yêu cầu. Nếu điều này tiếp tục xảy ra, vui lòng báo cáo sự cố trên <0>máy chủ Discord</0> hoặc trên <1>GitHub</1>."
+    }
+  },
+  "seasons": {
+    "seasonAndEpisode": "M{{season}} T{{episode}}"
+  },
+  "notFound": {
+    "genericTitle": "Không tìm thấy",
+    "backArrow": "Quay lại trang chính",
+    "media": {
+      "title": "Không thể tìm thấy nội dung",
+      "description": "Chúng tôi không thể tìm thấy nội dung mà bạn yêu cầu. Hoặc là nó đã bị xóa, hoặc bạn đã xáo trộn URL"
+    },
+    "provider": {
+      "title": "Nhà cung cấp này đã bị vô hiệu hóa",
+      "description": "Chúng tôi đã gặp vấn đề với nhà cung cấp hoặc nó quá bất ổn để sử dụng, cho nên chúng tôi đã phải vô hiệu hóa nó."
+    },
+    "page": {
+      "title": "Không thể tìm thấy trang",
+      "description": "Chúng tôi đã tìm kiếm khắp nơi: dưới thùng rác, trong tủ quần áo, đằng sau máy chủ proxy nhưng vẫn không thể tìm thấy trang bạn đang tìm kiếm."
+    }
+  },
+  "searchBar": {
+    "movie": "Phim",
+    "series": "Chương trình truyền hình",
+    "Search": "Tìm kiếm"
+  },
+  "videoPlayer": {
+    "findingBestVideo": "Đang tìm nội dung tốt nhất cho bạn",
+    "noVideos": "Rất tiếc, không tìm thấy nội dung nào cho bạn",
+    "loading": "Đang tải...",
+    "backToHome": "Quay lại trang chính",
+    "backToHomeShort": "Quay lại",
+    "seasonAndEpisode": "M{{season}} T{{episode}}",
+    "timeLeft": "Còn {{timeLeft}}",
+    "finishAt": "Kết thúc vào {{timeFinished, datetime}}",
+    "buttons": {
+      "episodes": "Tập",
+      "source": "Source",
+      "captions": "Phụ đề",
+      "download": "Tải xuống",
+      "settings": "Cài đặt",
+      "pictureInPicture": "Hình trong hình",
+      "playbackSpeed": "Tốc độ phát"
+    },
+    "popouts": {
+      "back": "Quay lại",
+      "sources": "Nguồn",
+      "seasons": "Mùa",
+      "captions": "Phụ đề",
+      "playbackSpeed": "Tốc độ phát",
+      "customPlaybackSpeed": "Tủy chỉnh tốc độ phát",
+      "captionPreferences": {
+        "title": "Tùy chỉnh",
+        "delay": "Trì hoãn",
+        "fontSize": "Kích cỡ",
+        "opacity": "Độ mờ",
+        "color": "Màu sắc"
+      },
+      "episode": "T{{index}} - {{title}}",
+      "noCaptions": "Không phụ đề",
+      "linkedCaptions": "Phụ đề được liên kết",
+      "customCaption": "Phụ đề tùy chỉnh",
+      "uploadCustomCaption": "Tải phụ đề lên",
+      "noEmbeds": "Không tìm thấy nội dung nhúng nào cho nguồn này",
+
+      "errors": {
+        "loadingWentWong": "Đã xảy ra lỗi khi tải các tập phim cho {{seasonTitle}}",
+        "embedsError": "Đã xảy ra lỗi khi tải nội dung nhúng cho nội dung bạn thích này"
+      },
+      "descriptions": {
+        "sources": "Bạn muốn sử dụng nhà cung cấp nào?",
+        "embeds": "Chọn video để xem",
+        "seasons": "Chọn mùa bạn muốn xem",
+        "episode": "Chọn một tập",
+        "captions": "Chọn ngôn ngữ của phụ đề",
+        "captionPreferences": "Làm cho phụ đề trông như thế nào bạn muốn",
+        "playbackSpeed": "Thay đổi tốc độ phát"
+      }
+    },
+    "errors": {
+      "fatalError": "Trình phát video đã gặp phải lỗi nghiêm trọng, vui lòng báo cáo sự cố trên <0>máy chủ Discord</0> hoặc trên <1>GitHub</1>."
+    }
+  },
+  "settings": {
+    "title": "Cài đặt",
+    "language": "Ngôn ngữ",
+    "captionLanguage": "Ngôn ngữ phụ đề"
+  },
+  "v3": {
+    "newSiteTitle": "Phiên bản mới đã được phát hành!",
+    "newDomain": "https://movie-web.app",
+    "newDomainText": "movie-web sẽ sớm chuyển sang trang mới: <0>https://movie-web.app</0>. Hãy đảm bảo rằng các đánh dấu đã được cập nhật vì <1>trang web cũ sẽ dừng hoạt động vào {{date}}.</1>",
+    "tireless": "Chúng tôi đã làm việc vất vả để tạo phiên bản mới này, chúng tôi hy vọng bạn sẽ thích những gì chúng tôi đã nung nấu trong những tháng qua.",
+    "leaveAnnouncement": "Hãy đưa tôi đến đó!"
+  },
+  "casting": {
+    "casting": "Đang truyền tới thiết bị..."
+  },
+  "errors": {
+    "offline": "Hãy kiểm tra kết nối Internet của bạn"
+  }
+}

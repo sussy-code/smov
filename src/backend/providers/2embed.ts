@@ -191,6 +191,7 @@ registerProvider({
   displayName: "2Embed",
   rank: 125,
   type: [MWMediaType.MOVIE, MWMediaType.SERIES],
+  disabled: true, // Disabled, not working
   async scrape({ media, episode, progress }) {
     let embedUrl = `${twoEmbedBase}/embed/tmdb/movie?id=${media.tmdbId}`;
 
