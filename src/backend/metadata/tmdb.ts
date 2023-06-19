@@ -202,29 +202,18 @@ export async function formatTMDBSearchResult(
   mediatype: TMDBContentTypes
 ): Promise<TMDBMediaResult> {
   const type = TMDBMediaToMediaType(mediatype);
-  const details = await Tmdb.getMediaDetails(result.id.toString(), mediatype);
-
-  const seasons =
-    type === MWMediaType.SERIES
-      ? (details as TMDBShowData).seasons?.map((v) => ({
-          id: v.id,
-          title: v.name,
-          season_number: v.season_number,
-        }))
-      : undefined;
 
   return {
     title:
       type === MWMediaType.SERIES
         ? (result as TMDBShowResult).name
         : (result as TMDBMovieResult).title,
-    poster: Tmdb.getMediaPoster(details.poster_path),
+    poster: Tmdb.getMediaPoster(result.poster_path),
     id: result.id,
     original_release_year:
       type === MWMediaType.SERIES
         ? Number((result as TMDBShowResult).first_air_date?.split("-")[0])
         : Number((result as TMDBMovieResult).release_date?.split("-")[0]),
     object_type: mediaTypeToTMDB(type),
-    seasons,
   };
 }
