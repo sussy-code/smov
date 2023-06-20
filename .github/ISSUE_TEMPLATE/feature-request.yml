@@ -1,7 +1,7 @@
-name: Feature request
+name: Feature Request
 description: Suggest a new feature
 title: "[Feature]: "
-labels: ["enhancement"]
+labels: ["feature", "awaiting-approval"]
 assignees: []
 body:
   - type: textarea
