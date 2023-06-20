@@ -99,13 +99,18 @@ export async function getMetaFromId(
 
     const episodes = await Tmdb.getEpisodes(
       details.id.toString(),
-      season?.season_number ?? 1
+      season.season_number === null || season.season_number === 0
+        ? 1
+        : season.season_number
     );
 
     if (season && episodes) {
       seasonData = {
         id: season.id.toString(),
-        season_number: season.season_number,
+        season_number:
+          season.season_number === null || season.season_number === 0
+            ? 1
+            : season.season_number,
         title: season.name,
         episodes,
       };
