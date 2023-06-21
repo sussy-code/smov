@@ -201,29 +201,33 @@ export function decodeTMDBId(
   };
 }
 
+export function isLegacyUrl(url: string): boolean {
+  if (url.startsWith("/media/JW")) return true;
+  return false;
+}
+
 export async function convertLegacyUrl(
   url: string
 ): Promise<string | undefined> {
-  if (url.startsWith("/media/JW")) {
-    const urlParts = url.split("/").slice(2);
-    const [, type, id] = urlParts[0].split("-", 3);
+  if (!isLegacyUrl(url)) return undefined;
 
-    const mediaType = TMDBMediaToMediaType(type);
-    const meta = await getLegacyMetaFromId(mediaType, id);
+  const urlParts = url.split("/").slice(2);
+  const [, type, id] = urlParts[0].split("-", 3);
 
-    if (!meta) return undefined;
-    const { tmdbId, imdbId } = meta;
-    if (!tmdbId && !imdbId) return undefined;
+  const mediaType = TMDBMediaToMediaType(type);
+  const meta = await getLegacyMetaFromId(mediaType, id);
 
-    // movies always have an imdb id on tmdb
-    if (imdbId && mediaType === MWMediaType.MOVIE) {
-      const movieId = await getMovieFromExternalId(imdbId);
-      if (movieId) return `/media/tmdb-movie-${movieId}`;
-    }
+  if (!meta) return undefined;
+  const { tmdbId, imdbId } = meta;
+  if (!tmdbId && !imdbId) return undefined;
 
-    if (tmdbId) {
-      return `/media/tmdb-${type}-${tmdbId}`;
-    }
+  // movies always have an imdb id on tmdb
+  if (imdbId && mediaType === MWMediaType.MOVIE) {
+    const movieId = await getMovieFromExternalId(imdbId);
+    if (movieId) return `/media/tmdb-movie-${movieId}`;
   }
-  return undefined;
+
+  if (tmdbId) {
+    return `/media/tmdb-${type}-${tmdbId}`;
+  }
 }
