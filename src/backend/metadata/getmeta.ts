@@ -47,10 +47,9 @@ export function formatTMDBMetaResult(
   details: TMDBShowData | TMDBMovieData,
   type: MWMediaType
 ): TMDBMediaResult {
-  let tmdbmeta;
   if (type === MWMediaType.MOVIE) {
     const movie = details as TMDBMovieData;
-    tmdbmeta = {
+    return {
       id: details.id,
       title: movie.title,
       object_type: mediaTypeToTMDB(type),
@@ -60,7 +59,7 @@ export function formatTMDBMetaResult(
   }
   if (type === MWMediaType.SERIES) {
     const show = details as TMDBShowData;
-    tmdbmeta = {
+    return {
       id: details.id,
       title: show.name,
       object_type: mediaTypeToTMDB(type),
@@ -74,8 +73,7 @@ export function formatTMDBMetaResult(
     };
   }
 
-  if (!tmdbmeta) throw new Error("unsupported type");
-  return tmdbmeta;
+  throw new Error("unsupported type");
 }
 
 export async function getMetaFromId(
