@@ -96,24 +96,22 @@ export async function getMetaFromId(
 
   if (type === MWMediaType.SERIES) {
     const seasons = (details as TMDBShowData).seasons;
-    const season =
-      seasons?.find((v) => v.id.toString() === seasonId) ?? seasons?.[0];
 
-    const episodes = await getEpisodes(
-      details.id.toString(),
-      season.season_number === null || season.season_number === 0
-        ? 1
-        : season.season_number
-    );
+    let selectedSeason = seasons.find((v) => v.id.toString() === seasonId);
+    if (!selectedSeason) {
+      selectedSeason = seasons.find((v) => v.season_number === 1);
+    }
 
-    if (season && episodes) {
+    if (selectedSeason) {
+      const episodes = await getEpisodes(
+        details.id.toString(),
+        selectedSeason.season_number
+      );
+
       seasonData = {
-        id: season.id.toString(),
-        season_number:
-          season.season_number === null || season.season_number === 0
-            ? 1
-            : season.season_number,
-        title: season.name,
+        id: selectedSeason.id.toString(),
+        season_number: selectedSeason.season_number,
+        title: selectedSeason.name,
         episodes,
       };
     }

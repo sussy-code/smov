@@ -13,7 +13,7 @@ export interface MediaCardProps {
   linkable?: boolean;
   series?: {
     episode: number;
-    season: number;
+    season?: number;
     episodeId: string;
     seasonId: string;
   };
@@ -72,7 +72,7 @@ function MediaCardContent({
                 ].join(" ")}
               >
                 {t("seasons.seasonAndEpisode", {
-                  season: series.season,
+                  season: series.season || 1,
                   episode: series.episode,
                 })}
               </p>
@@ -134,10 +134,15 @@ export function MediaCard(props: MediaCardProps) {
   let link = canLink
     ? `/media/${encodeURIComponent(TMDBMediaToId(props.media))}`
     : "#";
-  if (canLink && props.series)
-    link += `/${encodeURIComponent(props.series.seasonId)}/${encodeURIComponent(
-      props.series.episodeId
-    )}`;
+  if (canLink && props.series) {
+    if (props.series.season === 0 && !props.series.episodeId) {
+      link += `/${encodeURIComponent(props.series.seasonId)}`;
+    } else {
+      link += `/${encodeURIComponent(
+        props.series.seasonId
+      )}/${encodeURIComponent(props.series.episodeId)}`;
+    }
+  }
 
   if (!props.linkable) return <span>{content}</span>;
   return (
