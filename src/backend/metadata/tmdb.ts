@@ -8,12 +8,10 @@ import {
   TMDBEpisodeShort,
   TMDBExternalIds,
   TMDBMediaResult,
-  TMDBMediaStatic,
   TMDBMovieData,
   TMDBMovieExternalIds,
   TMDBMovieResponse,
   TMDBMovieResult,
-  TMDBSearchResultStatic,
   TMDBSeason,
   TMDBSeasonMetaResult,
   TMDBShowData,
@@ -98,103 +96,93 @@ export function decodeTMDBId(
   };
 }
 
-export abstract class Tmdb {
-  private static baseURL = "https://api.themoviedb.org/3";
+const baseURL = "https://api.themoviedb.org/3";
 
-  private static headers = {
-    accept: "application/json",
-    Authorization: `Bearer ${conf().TMDB_API_KEY}`,
-  };
+const headers = {
+  accept: "application/json",
+  Authorization: `Bearer ${conf().TMDB_API_KEY}`,
+};
 
-  private static async get<T>(url: string): Promise<T> {
-    const res = await mwFetch<any>(url, {
-      headers: Tmdb.headers,
-      baseURL: Tmdb.baseURL,
-    });
-    return res;
+async function get<T>(url: string): Promise<T> {
+  const res = await mwFetch<any>(url, {
+    headers,
+    baseURL,
+  });
+  return res;
+}
+
+export async function searchMedia(query: string, type: TMDBContentTypes) {
+  let data;
+
+  switch (type) {
+    case "movie":
+      data = await get<TMDBMovieResponse>(
+        `search/movie?query=${query}&include_adult=false&language=en-US&page=1`
+      );
+      break;
+    case "show":
+      data = await get<TMDBShowResponse>(
+        `search/tv?query=${query}&include_adult=false&language=en-US&page=1`
+      );
+      break;
+    default:
+      throw new Error("Invalid media type");
   }
 
-  public static searchMedia: TMDBSearchResultStatic["searchMedia"] = async (
-    query: string,
-    type: TMDBContentTypes
-  ) => {
-    let data;
+  return data;
+}
 
-    switch (type) {
-      case "movie":
-        data = await Tmdb.get<TMDBMovieResponse>(
-          `search/movie?query=${query}&include_adult=false&language=en-US&page=1`
-        );
-        break;
-      case "show":
-        data = await Tmdb.get<TMDBShowResponse>(
-          `search/tv?query=${query}&include_adult=false&language=en-US&page=1`
-        );
-        break;
-      default:
-        throw new Error("Invalid media type");
-    }
+export async function getMediaDetails(id: string, type: TMDBContentTypes) {
+  let data;
 
-    return data;
-  };
-
-  public static getMediaDetails: TMDBMediaStatic["getMediaDetails"] = async (
-    id: string,
-    type: TMDBContentTypes
-  ) => {
-    let data;
-
-    switch (type) {
-      case "movie":
-        data = await Tmdb.get<TMDBMovieData>(`/movie/${id}`);
-        break;
-      case "show":
-        data = await Tmdb.get<TMDBShowData>(`/tv/${id}`);
-        break;
-      default:
-        throw new Error("Invalid media type");
-    }
-
-    return data;
-  };
-
-  public static getMediaPoster(posterPath: string | null): string | undefined {
-    if (posterPath) return `https://image.tmdb.org/t/p/w185/${posterPath}`;
+  switch (type) {
+    case "movie":
+      data = await get<TMDBMovieData>(`/movie/${id}`);
+      break;
+    case "show":
+      data = await get<TMDBShowData>(`/tv/${id}`);
+      break;
+    default:
+      throw new Error("Invalid media type");
   }
 
-  public static async getEpisodes(
-    id: string,
-    season: number
-  ): Promise<TMDBEpisodeShort[]> {
-    const data = await Tmdb.get<TMDBSeason>(`/tv/${id}/season/${season}`);
-    return data.episodes.map((e) => ({
-      id: e.id,
-      episode_number: e.episode_number,
-      title: e.name,
-    }));
+  return data;
+}
+
+export function getMediaPoster(posterPath: string | null): string | undefined {
+  if (posterPath) return `https://image.tmdb.org/t/p/w185/${posterPath}`;
+}
+
+export async function getEpisodes(
+  id: string,
+  season: number
+): Promise<TMDBEpisodeShort[]> {
+  const data = await get<TMDBSeason>(`/tv/${id}/season/${season}`);
+  return data.episodes.map((e) => ({
+    id: e.id,
+    episode_number: e.episode_number,
+    title: e.name,
+  }));
+}
+
+export async function getExternalIds(
+  id: string,
+  type: TMDBContentTypes
+): Promise<TMDBExternalIds> {
+  let data;
+
+  switch (type) {
+    case "movie":
+      data = await get<TMDBMovieExternalIds>(`/movie/${id}/external_ids`);
+      break;
+    case "show":
+      data = await get<TMDBShowExternalIds>(`/tv/${id}/external_ids`);
+      break;
+    default:
+      throw new Error("Invalid media type");
   }
 
-  public static async getExternalIds(
-    id: string,
-    type: TMDBContentTypes
-  ): Promise<TMDBExternalIds> {
-    let data;
-
-    switch (type) {
-      case "movie":
-        data = await Tmdb.get<TMDBMovieExternalIds>(
-          `/movie/${id}/external_ids`
-        );
-        break;
-      case "show":
-        data = await Tmdb.get<TMDBShowExternalIds>(`/tv/${id}/external_ids`);
-        break;
-      default:
-        throw new Error("Invalid media type");
-    }
-
-    return data;
-  }
+  return data;
 }
 
 export async function formatTMDBSearchResult(
@@ -208,7 +196,7 @@ export async function formatTMDBSearchResult(
       type === MWMediaType.SERIES
         ? (result as TMDBShowResult).name
         : (result as TMDBMovieResult).title,
-    poster: Tmdb.getMediaPoster(result.poster_path),
+    poster: getMediaPoster(result.poster_path),
     id: result.id,
     original_release_year:
       type === MWMediaType.SERIES

@@ -3,8 +3,10 @@ import { FetchError } from "ofetch";
 import { formatJWMeta, mediaTypeToJW } from "./justwatch";
 import {
   TMDBMediaToMediaType,
-  Tmdb,
   formatTMDBMeta,
+  getEpisodes,
+  getExternalIds,
+  getMediaDetails,
   mediaTypeToTMDB,
 } from "./tmdb";
 import {
@@ -81,11 +83,11 @@ export async function getMetaFromId(
   id: string,
   seasonId?: string
 ): Promise<DetailedMeta | null> {
-  const details = await Tmdb.getMediaDetails(id, mediaTypeToTMDB(type));
+  const details = await getMediaDetails(id, mediaTypeToTMDB(type));
 
   if (!details) return null;
 
-  const externalIds = await Tmdb.getExternalIds(id, mediaTypeToTMDB(type));
+  const externalIds = await getExternalIds(id, mediaTypeToTMDB(type));
   const imdbId = externalIds.imdb_id ?? undefined;
 
   let seasonData: TMDBSeasonMetaResult | undefined;
@@ -95,7 +97,7 @@ export async function getMetaFromId(
     const season =
       seasons?.find((v) => v.id.toString() === seasonId) ?? seasons?.[0];
 
-    const episodes = await Tmdb.getEpisodes(
+    const episodes = await getEpisodes(
       details.id.toString(),
       season.season_number === null || season.season_number === 0
         ? 1

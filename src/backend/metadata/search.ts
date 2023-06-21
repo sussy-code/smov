@@ -1,10 +1,10 @@
 import { SimpleCache } from "@/utils/cache";
 
 import {
-  Tmdb,
   formatTMDBMeta,
   formatTMDBSearchResult,
   mediaTypeToTMDB,
+  searchMedia,
 } from "./tmdb";
 import { MWMediaMeta, MWQuery } from "./types";
 
@@ -18,7 +18,7 @@ export async function searchForMedia(query: MWQuery): Promise<MWMediaMeta[]> {
   if (cache.has(query)) return cache.get(query) as MWMediaMeta[];
   const { searchQuery, type } = query;
 
-  const data = await Tmdb.searchMedia(searchQuery, mediaTypeToTMDB(type));
+  const data = await searchMedia(searchQuery, mediaTypeToTMDB(type));
   const results = await Promise.all(
     data.results.map(async (v) => {
       const formattedResult = await formatTMDBSearchResult(
