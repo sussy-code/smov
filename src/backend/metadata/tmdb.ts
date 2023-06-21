@@ -2,6 +2,7 @@ import { conf } from "@/setup/config";
 
 import { MWMediaMeta, MWMediaType, MWSeasonMeta } from "./types/mw";
 import {
+  ExternalIdMovieSearchResult,
   TMDBContentTypes,
   TMDBEpisodeShort,
   TMDBExternalIds,
@@ -193,6 +194,19 @@ export async function getExternalIds(
   }
 
   return data;
+}
+
+export async function getMovieFromExternalId(
+  imdbId: string
+): Promise<string | undefined> {
+  const data = await get<ExternalIdMovieSearchResult>(`/find/${imdbId}`, {
+    external_source: "imdb_id",
+  });
+
+  const movie = data.movie_results[0];
+  if (!movie) return undefined;
+
+  return movie.id.toString();
 }
 
 export function formatTMDBSearchResult(

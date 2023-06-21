@@ -8,6 +8,7 @@ import {
   getExternalIds,
   getMediaDetails,
   getMediaPoster,
+  getMovieFromExternalId,
   mediaTypeToTMDB,
 } from "./tmdb";
 import {
@@ -206,11 +207,23 @@ export async function convertLegacyUrl(
   if (url.startsWith("/media/JW")) {
     const urlParts = url.split("/").slice(2);
     const [, type, id] = urlParts[0].split("-", 3);
-    const meta = await getLegacyMetaFromId(TMDBMediaToMediaType(type), id);
+
+    const mediaType = TMDBMediaToMediaType(type);
+    const meta = await getLegacyMetaFromId(mediaType, id);
+
     if (!meta) return undefined;
-    const tmdbId = meta.tmdbId;
-    if (!tmdbId) return undefined;
-    return `/media/tmdb-${type}-${tmdbId}`;
+    const { tmdbId, imdbId } = meta;
+    if (!tmdbId && !imdbId) return undefined;
+
+    // movies always have an imdb id on tmdb
+    if (imdbId && mediaType === MWMediaType.MOVIE) {
+      const movieId = await getMovieFromExternalId(imdbId);
+      if (movieId) return `/media/tmdb-movie-${movieId}`;
+    }
+
+    if (tmdbId) {
+      return `/media/tmdb-${type}-${tmdbId}`;
+    }
   }
   return undefined;
 }
