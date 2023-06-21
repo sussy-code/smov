@@ -13,13 +13,14 @@ import {
   JWMediaResult,
   JWSeasonMetaResult,
   JW_API_BASE,
-  MWMediaMeta,
-  MWMediaType,
+} from "./types/justwatch";
+import { MWMediaMeta, MWMediaType } from "./types/mw";
+import {
   TMDBMediaResult,
   TMDBMovieData,
   TMDBSeasonMetaResult,
   TMDBShowData,
-} from "./types";
+} from "./types/tmdb";
 import { makeUrl, proxiedFetch } from "../helpers/fetch";
 
 type JWExternalIdType =

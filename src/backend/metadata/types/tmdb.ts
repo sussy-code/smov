@@ -1,51 +1,3 @@
-export enum MWMediaType {
-  MOVIE = "movie",
-  SERIES = "series",
-  ANIME = "anime",
-}
-
-export type MWSeasonMeta = {
-  id: string;
-  number: number;
-  title: string;
-};
-
-export type MWSeasonWithEpisodeMeta = {
-  id: string;
-  number: number;
-  title: string;
-  episodes: {
-    id: string;
-    number: number;
-    title: string;
-  }[];
-};
-
-type MWMediaMetaBase = {
-  title: string;
-  id: string;
-  year?: string;
-  poster?: string;
-};
-
-type MWMediaMetaSpecific =
-  | {
-      type: MWMediaType.MOVIE | MWMediaType.ANIME;
-      seasons: undefined;
-    }
-  | {
-      type: MWMediaType.SERIES;
-      seasons: MWSeasonMeta[];
-      seasonData: MWSeasonWithEpisodeMeta;
-    };
-
-export type MWMediaMeta = MWMediaMetaBase & MWMediaMetaSpecific;
-
-export interface MWQuery {
-  searchQuery: string;
-  type: MWMediaType;
-}
-
 export type TMDBContentTypes = "movie" | "show";
 
 export type TMDBSeasonShort = {
@@ -75,12 +27,6 @@ export type TMDBSeasonMetaResult = {
   season_number: number;
   episodes: TMDBEpisodeShort[];
 };
-
-export interface DetailedMeta {
-  meta: MWMediaMeta;
-  imdbId?: string;
-  tmdbId?: string;
-}
 
 export interface TMDBShowData {
   adult: boolean;
@@ -225,63 +171,6 @@ export interface TMDBMovieData {
   vote_count: number;
 }
 
-export type TMDBMediaDetailsPromise = Promise<TMDBShowData | TMDBMovieData>;
-
-export interface TMDBMediaStatic {
-  getMediaDetails(id: string, type: "show"): TMDBMediaDetailsPromise;
-  getMediaDetails(id: string, type: "movie"): TMDBMediaDetailsPromise;
-  getMediaDetails(id: string, type: TMDBContentTypes): TMDBMediaDetailsPromise;
-}
-
-export type JWContentTypes = "movie" | "show";
-
-export type JWSearchQuery = {
-  content_types: JWContentTypes[];
-  page: number;
-  page_size: number;
-  query: string;
-};
-
-export type JWPage<T> = {
-  items: T[];
-  page: number;
-  page_size: number;
-  total_pages: number;
-  total_results: number;
-};
-
-export const JW_API_BASE = "https://apis.justwatch.com";
-export const JW_IMAGE_BASE = "https://images.justwatch.com";
-
-export type JWSeasonShort = {
-  title: string;
-  id: number;
-  season_number: number;
-};
-
-export type JWEpisodeShort = {
-  title: string;
-  id: number;
-  episode_number: number;
-};
-
-export type JWMediaResult = {
-  title: string;
-  poster?: string;
-  id: number;
-  original_release_year?: number;
-  jw_entity_id: string;
-  object_type: JWContentTypes;
-  seasons?: JWSeasonShort[];
-};
-
-export type JWSeasonMetaResult = {
-  title: string;
-  id: string;
-  season_number: number;
-  episodes: JWEpisodeShort[];
-};
-
 export interface TMDBEpisodeResult {
   season: number;
   number: number;
@@ -340,16 +229,6 @@ export interface TMDBMovieResponse {
   results: TMDBMovieResult[];
   total_pages: number;
   total_results: number;
-}
-
-export type TMDBSearchResultsPromise = Promise<
-  TMDBShowResponse | TMDBMovieResponse
->;
-
-export interface TMDBSearchResultStatic {
-  searchMedia(query: string, type: TMDBContentTypes): TMDBSearchResultsPromise;
-  searchMedia(query: string, type: "movie"): TMDBSearchResultsPromise;
-  searchMedia(query: string, type: "show"): TMDBSearchResultsPromise;
 }
 
 export interface TMDBEpisode {

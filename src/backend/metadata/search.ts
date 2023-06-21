@@ -6,7 +6,8 @@ import {
   mediaTypeToTMDB,
   searchMedia,
 } from "./tmdb";
-import { MWMediaMeta, MWQuery } from "./types";
+import { MWMediaMeta, MWQuery } from "./types/mw";
+import { TMDBMovieResponse, TMDBShowResponse } from "./types/tmdb";
 
 const cache = new SimpleCache<MWQuery, MWMediaMeta[]>();
 cache.setCompare((a, b) => {
@@ -18,7 +19,9 @@ export async function searchForMedia(query: MWQuery): Promise<MWMediaMeta[]> {
   if (cache.has(query)) return cache.get(query) as MWMediaMeta[];
   const { searchQuery, type } = query;
 
-  const data = await searchMedia(searchQuery, mediaTypeToTMDB(type));
+  const data = (await searchMedia(searchQuery, mediaTypeToTMDB(type))) as
+    | TMDBMovieResponse
+    | TMDBShowResponse;
   const results = await Promise.all(
     data.results.map(async (v) => {
       const formattedResult = await formatTMDBSearchResult(

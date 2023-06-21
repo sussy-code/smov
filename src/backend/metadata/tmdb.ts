@@ -1,9 +1,7 @@
 import { conf } from "@/setup/config";
 
+import { MWMediaMeta, MWMediaType, MWSeasonMeta } from "./types/mw";
 import {
-  MWMediaMeta,
-  MWMediaType,
-  MWSeasonMeta,
   TMDBContentTypes,
   TMDBEpisodeShort,
   TMDBExternalIds,
@@ -18,7 +16,7 @@ import {
   TMDBShowExternalIds,
   TMDBShowResponse,
   TMDBShowResult,
-} from "./types";
+} from "./types/tmdb";
 import { mwFetch } from "../helpers/fetch";
 
 export function mediaTypeToTMDB(type: MWMediaType): TMDBContentTypes {
@@ -111,7 +109,10 @@ async function get<T>(url: string): Promise<T> {
   return res;
 }
 
-export async function searchMedia(query: string, type: TMDBContentTypes) {
+export async function searchMedia(
+  query: string,
+  type: TMDBContentTypes
+): Promise<TMDBMovieResponse | TMDBShowResponse> {
   let data;
 
   switch (type) {
