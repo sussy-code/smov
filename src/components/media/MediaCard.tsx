@@ -2,8 +2,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 import { TMDBMediaToId } from "@/backend/metadata/getmeta";
-import { getMediaPoster } from "@/backend/metadata/tmdb";
-import { MWMediaMeta } from "@/backend/metadata/types";
+import { MWMediaMeta } from "@/backend/metadata/types/mw";
 import { DotList } from "@/components/text/DotList";
 
 import { IconPatch } from "../buttons/IconPatch";
@@ -56,9 +55,7 @@ function MediaCardContent({
             closable ? "" : "group-hover:rounded-lg",
           ].join(" ")}
           style={{
-            backgroundImage: media.poster
-              ? `url(${getMediaPoster(media.poster)})`
-              : undefined,
+            backgroundImage: media.poster ? `url(${media.poster})` : undefined,
           }}
         >
           {series ? (

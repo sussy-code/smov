@@ -7,6 +7,7 @@ import {
   getEpisodes,
   getExternalIds,
   getMediaDetails,
+  getMediaPoster,
   mediaTypeToTMDB,
 } from "./tmdb";
 import {
@@ -56,7 +57,7 @@ export function formatTMDBMetaResult(
       id: details.id,
       title: movie.title,
       object_type: mediaTypeToTMDB(type),
-      poster: movie.poster_path ?? undefined,
+      poster: getMediaPoster(movie.poster_path) ?? undefined,
       original_release_year: new Date(movie.release_date).getFullYear(),
     };
   }
