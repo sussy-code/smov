@@ -186,23 +186,28 @@ export async function getExternalIds(
   return data;
 }
 
-export async function formatTMDBSearchResult(
+export function formatTMDBSearchResult(
   result: TMDBShowResult | TMDBMovieResult,
   mediatype: TMDBContentTypes
-): Promise<TMDBMediaResult> {
+): TMDBMediaResult {
   const type = TMDBMediaToMediaType(mediatype);
+  if (type === MWMediaType.SERIES) {
+    const show = result as TMDBShowResult;
+    return {
+      title: show.name,
+      poster: getMediaPoster(show.poster_path),
+      id: show.id,
+      original_release_year: new Date(show.first_air_date).getFullYear(),
+      object_type: mediatype,
+    };
+  }
+  const movie = result as TMDBMovieResult;
 
   return {
-    title:
-      type === MWMediaType.SERIES
-        ? (result as TMDBShowResult).name
-        : (result as TMDBMovieResult).title,
-    poster: getMediaPoster(result.poster_path),
-    id: result.id,
-    original_release_year:
-      type === MWMediaType.SERIES
-        ? Number((result as TMDBShowResult).first_air_date?.split("-")[0])
-        : Number((result as TMDBMovieResult).release_date?.split("-")[0]),
-    object_type: mediaTypeToTMDB(type),
+    title: movie.title,
+    poster: getMediaPoster(movie.poster_path),
+    id: movie.id,
+    original_release_year: new Date(movie.release_date).getFullYear(),
+    object_type: mediatype,
   };
 }
