@@ -7,7 +7,7 @@ import {
 import { mwFetch } from "../helpers/fetch";
 import { registerProvider } from "../helpers/register";
 import { MWCaption, MWStreamQuality, MWStreamType } from "../helpers/streams";
-import { MWMediaType } from "../metadata/types";
+import { MWMediaType } from "../metadata/types/mw";
 
 const flixHqBase = "https://consumet-api-clone.vercel.app/meta/tmdb"; // instance stolen from streaminal :)
 

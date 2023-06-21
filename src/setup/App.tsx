@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 
 import { convertLegacyUrl } from "@/backend/metadata/getmeta";
-import { MWMediaType } from "@/backend/metadata/types";
+import { MWMediaType } from "@/backend/metadata/types/mw";
 import { BannerContextProvider } from "@/hooks/useBanner";
 import { Layout } from "@/setup/Layout";
 import { BookmarkContextProvider } from "@/state/bookmark";

@@ -9,7 +9,10 @@ import {
   decodeTMDBId,
   getMetaFromId,
 } from "@/backend/metadata/getmeta";
-import { MWMediaType, MWSeasonWithEpisodeMeta } from "@/backend/metadata/types";
+import {
+  MWMediaType,
+  MWSeasonWithEpisodeMeta,
+} from "@/backend/metadata/types/mw";
 import { IconPatch } from "@/components/buttons/IconPatch";
 import { Icons } from "@/components/Icon";
 import { Loading } from "@/components/layout/Loading";

@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
-import { MWMediaType } from "@/backend/metadata/types";
+import { MWMediaType } from "@/backend/metadata/types/mw";
 import { useMeta } from "@/video/state/logic/meta";
 
 export function useCurrentSeriesEpisodeInfo(descriptor: string) {

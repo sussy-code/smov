@@ -2,7 +2,7 @@ import { MWEmbed, MWEmbedType } from "@/backend/helpers/embed";
 
 import { proxiedFetch } from "../helpers/fetch";
 import { registerProvider } from "../helpers/register";
-import { MWMediaType } from "../metadata/types";
+import { MWMediaType } from "../metadata/types/mw";
 
 const HOST = "m4ufree.com";
 const URL_BASE = `https://${HOST}`;

@@ -1,7 +1,7 @@
 import { proxiedFetch } from "../helpers/fetch";
 import { registerProvider } from "../helpers/register";
 import { MWStreamQuality, MWStreamType } from "../helpers/streams";
-import { MWMediaType } from "../metadata/types";
+import { MWMediaType } from "../metadata/types/mw";
 
 const sflixBase = "https://sflix.video";
 
