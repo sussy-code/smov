@@ -49,30 +49,28 @@ export function formatTMDBMetaResult(
 ): TMDBMediaResult {
   let tmdbmeta;
   if (type === MWMediaType.MOVIE) {
+    const movie = details as TMDBMovieData;
     tmdbmeta = {
       id: details.id,
-      title: (details as TMDBMovieData).title,
+      title: movie.title,
       object_type: mediaTypeToTMDB(type),
-      poster: (details as TMDBMovieData).poster_path ?? undefined,
-      original_release_year: Number(
-        (details as TMDBMovieData).release_date?.split("-")[0]
-      ),
+      poster: movie.poster_path ?? undefined,
+      original_release_year: Number(movie.release_date?.split("-")[0]),
     };
   }
   if (type === MWMediaType.SERIES) {
+    const show = details as TMDBShowData;
     tmdbmeta = {
       id: details.id,
-      title: (details as TMDBShowData).name,
+      title: show.name,
       object_type: mediaTypeToTMDB(type),
-      seasons: (details as TMDBShowData).seasons.map((v) => ({
+      seasons: show.seasons.map((v) => ({
         id: v.id,
         season_number: v.season_number,
         title: v.name,
       })),
       poster: (details as TMDBMovieData).poster_path ?? undefined,
-      original_release_year: Number(
-        (details as TMDBShowData).first_air_date?.split("-")[0]
-      ),
+      original_release_year: Number(show.first_air_date?.split("-")[0]),
     };
   }
 
