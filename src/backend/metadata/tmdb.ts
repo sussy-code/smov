@@ -101,10 +101,13 @@ const headers = {
   Authorization: `Bearer ${conf().TMDB_API_KEY}`,
 };
 
-async function get<T>(url: string): Promise<T> {
-  const res = await mwFetch<any>(url, {
+async function get<T>(url: string, params?: object): Promise<T> {
+  const res = await mwFetch<any>(encodeURI(url), {
     headers,
     baseURL,
+    params: {
+      ...params,
+    },
   });
   return res;
 }
@@ -117,14 +120,20 @@ export async function searchMedia(
 
   switch (type) {
     case "movie":
-      data = await get<TMDBMovieResponse>(
-        `search/movie?query=${query}&include_adult=false&language=en-US&page=1`
-      );
+      data = await get<TMDBMovieResponse>("search/movie", {
+        query,
+        include_adult: false,
+        language: "en-US",
+        page: 1,
+      });
       break;
     case "show":
-      data = await get<TMDBShowResponse>(
-        `search/tv?query=${query}&include_adult=false&language=en-US&page=1`
-      );
+      data = await get<TMDBShowResponse>("search/tv", {
+        query,
+        include_adult: false,
+        language: "en-US",
+        page: 1,
+      });
       break;
     default:
       throw new Error("Invalid media type");
