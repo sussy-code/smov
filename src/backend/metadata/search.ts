@@ -29,6 +29,6 @@ export async function searchForMedia(query: MWQuery): Promise<MWMediaMeta[]> {
     })
   );
 
-  cache.set(query, results, 3600);
+  cache.set(query, results, 3600); // cache results for 1 hour
   return results;
 }
