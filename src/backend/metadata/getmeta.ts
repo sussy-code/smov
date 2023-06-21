@@ -46,7 +46,7 @@ export interface DetailedMeta {
 export function formatTMDBMetaResult(
   details: TMDBShowData | TMDBMovieData,
   type: MWMediaType
-): TMDBMediaResult | undefined {
+): TMDBMediaResult {
   let tmdbmeta;
   if (type === MWMediaType.MOVIE) {
     tmdbmeta = {
@@ -75,6 +75,8 @@ export function formatTMDBMetaResult(
       ),
     };
   }
+
+  if (!tmdbmeta) throw new Error("unsupported type");
   return tmdbmeta;
 }
 
