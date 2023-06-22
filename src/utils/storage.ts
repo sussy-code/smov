@@ -46,8 +46,13 @@ export async function initializeStores() {
     let mostRecentData = data;
     try {
       for (const version of relevantVersions) {
-        if (version.migrate)
+        if (version.migrate) {
+          localStorage.setItem(
+            `BACKUP-v${version.version}-${internal.key}`,
+            JSON.stringify(mostRecentData)
+          );
           mostRecentData = await version.migrate(mostRecentData);
+        }
       }
     } catch (err) {
       console.error(`FAILED TO MIGRATE STORE ${internal.key}`, err);

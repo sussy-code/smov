@@ -1,14 +1,20 @@
 import { getLegacyMetaFromId } from "@/backend/metadata/getmeta";
-import { getMovieFromExternalId } from "@/backend/metadata/tmdb";
+import {
+  getEpisodes,
+  getMediaDetails,
+  getMovieFromExternalId,
+} from "@/backend/metadata/tmdb";
 import { MWMediaType } from "@/backend/metadata/types/mw";
+import { BookmarkStoreData } from "@/state/bookmark/types";
+import { isNotNull } from "@/utils/typeguard";
 
 import { WatchedStoreData } from "../types";
 
 async function migrateId(
-  id: number,
+  id: string,
   type: MWMediaType
 ): Promise<string | undefined> {
-  const meta = await getLegacyMetaFromId(type, id.toString());
+  const meta = await getLegacyMetaFromId(type, id);
 
   if (!meta) return undefined;
   const { tmdbId, imdbId } = meta;
@@ -25,57 +31,59 @@ async function migrateId(
   }
 }
 
-export async function migrateV2Bookmarks(old: any) {
-  const oldData = old;
-  if (!oldData) return;
-
-  const updatedBookmarks = oldData.bookmarks.map(
-    async (item: { id: number; type: MWMediaType }) => ({
-      ...item,
-      id: await migrateId(item.id, item.type),
-    })
-  );
+export async function migrateV2Bookmarks(old: BookmarkStoreData) {
+  const updatedBookmarks = old.bookmarks.map(async (item) => ({
+    ...item,
+    id: await migrateId(item.id, item.type).catch(() => undefined),
+  }));
 
   return {
     bookmarks: (await Promise.all(updatedBookmarks)).filter((item) => item.id),
   };
 }
 
-export async function migrateV3Videos(old: any) {
-  const oldData = old;
-  if (!oldData) return;
-
+export async function migrateV3Videos(
+  old: WatchedStoreData
+): Promise<WatchedStoreData> {
   const updatedItems = await Promise.all(
-    oldData.items.map(async (item: any) => {
-      const migratedId = await migrateId(
-        item.item.meta.id,
-        item.item.meta.type
-      );
+    old.items.map(async (progress) => {
+      try {
+        const migratedId = await migrateId(
+          progress.item.meta.id,
+          progress.item.meta.type
+        );
 
-      const migratedItem = {
-        ...item,
-        item: {
-          ...item.item,
-          meta: {
-            ...item.item.meta,
-            id: migratedId,
-          },
-        },
-      };
+        if (!migratedId) return null;
 
-      return {
-        ...item,
-        item: migratedId ? migratedItem : item.item,
-      };
+        const clone = structuredClone(progress);
+        clone.item.meta.id = migratedId;
+        if (clone.item.series) {
+          const series = clone.item.series;
+          const details = await getMediaDetails(migratedId, "show");
+
+          const season = details.seasons.find(
+            (v) => v.season_number === series.season
+          );
+          if (!season) return null;
+
+          const episodes = await getEpisodes(migratedId, season.season_number);
+          const episode = episodes.find(
+            (v) => v.episode_number === series.episode
+          );
+          if (!episode) return null;
+
+          clone.item.series.episodeId = episode.id.toString();
+          clone.item.series.seasonId = season.id.toString();
+        }
+
+        return clone;
+      } catch (err) {
+        return null;
+      }
     })
   );
 
-  const newData: WatchedStoreData = {
-    items: updatedItems.map((item) => item.item),
-  };
-
   return {
-    ...oldData,
-    items: newData.items,
+    items: updatedItems.filter(isNotNull),
   };
 }

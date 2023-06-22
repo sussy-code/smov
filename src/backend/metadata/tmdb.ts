@@ -143,21 +143,24 @@ export async function searchMedia(
   return data;
 }
 
-export async function getMediaDetails(id: string, type: TMDBContentTypes) {
-  let data;
+// Conditional type which for inferring the return type based on the content type
+type MediaDetailReturn<T extends TMDBContentTypes> = T extends "movie"
+  ? TMDBMovieData
+  : T extends "show"
+  ? TMDBShowData
+  : never;
 
-  switch (type) {
-    case "movie":
-      data = await get<TMDBMovieData>(`/movie/${id}`);
-      break;
-    case "show":
-      data = await get<TMDBShowData>(`/tv/${id}`);
-      break;
-    default:
-      throw new Error("Invalid media type");
+export function getMediaDetails<
+  T extends TMDBContentTypes,
+  TReturn = MediaDetailReturn<T>
+>(id: string, type: T): Promise<TReturn> {
+  if (type === "movie") {
+    return get<TReturn>(`/movie/${id}`);
   }
-
-  return data;
+  if (type === "show") {
+    return get<TReturn>(`/tv/${id}`);
+  }
+  throw new Error("Invalid media type");
 }
 
 export function getMediaPoster(posterPath: string | null): string | undefined {
