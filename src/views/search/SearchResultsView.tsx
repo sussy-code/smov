@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { searchForMedia } from "@/backend/metadata/search";
-import { MWMediaMeta, MWQuery } from "@/backend/metadata/types";
+import { MWMediaMeta, MWQuery } from "@/backend/metadata/types/mw";
 import { IconPatch } from "@/components/buttons/IconPatch";
 import { Icons } from "@/components/Icon";
 import { SectionHeading } from "@/components/layout/SectionHeading";

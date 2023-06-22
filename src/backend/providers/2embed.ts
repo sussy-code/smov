@@ -8,7 +8,7 @@ import {
   MWStreamQuality,
   MWStreamType,
 } from "../helpers/streams";
-import { MWMediaType } from "../metadata/types";
+import { MWMediaType } from "../metadata/types/mw";
 
 const twoEmbedBase = "https://www.2embed.to";
 
@@ -191,6 +191,7 @@ registerProvider({
   displayName: "2Embed",
   rank: 125,
   type: [MWMediaType.MOVIE, MWMediaType.SERIES],
+  disabled: true, // Disabled, not working
   async scrape({ media, episode, progress }) {
     let embedUrl = `${twoEmbedBase}/embed/tmdb/movie?id=${media.tmdbId}`;
 

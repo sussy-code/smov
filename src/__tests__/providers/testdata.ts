@@ -1,5 +1,5 @@
 import { DetailedMeta } from "@/backend/metadata/getmeta";
-import { MWMediaType } from "@/backend/metadata/types";
+import { MWMediaType } from "@/backend/metadata/types/mw";
 
 export const testData: DetailedMeta[] = [
   {

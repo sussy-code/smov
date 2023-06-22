@@ -154,7 +154,7 @@ export const FloatingCardView = {
           className="flex cursor-pointer items-center space-x-2 transition-colors duration-200 hover:text-white"
         >
           <Icon icon={Icons.X} />
-          <span>Close</span>
+          <span>{t("videoPlayer.popouts.close")}</span>
         </div>
       );
 

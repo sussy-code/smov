@@ -3,8 +3,8 @@
     "name": "movie-web"
   },
   "search": {
-    "loading_series": "Auf der Suche nach Ihrer Lieblingsserie...",
-    "loading_movie": "Auf der Suche nach Ihren Lieblingsfilmen...",
+    "loading_series": "Auf der Suche nach deiner Lieblingsserie...",
+    "loading_movie": "Auf der Suche nach deinen Lieblingsfilmen...",
     "loading": "Wird geladen...",
     "allResults": "Das ist alles, was wir haben!",
     "noResults": "Wir haben nichts gefunden!",
@@ -12,15 +12,15 @@
     "headingTitle": "Suchergebnisse",
     "bookmarks": "Favoriten",
     "continueWatching": "Weiter ansehen",
-    "title": "Was willst du sehen?",
-    "placeholder": "Was willst du sehen?"
+    "title": "Was willst du gucken?",
+    "placeholder": "Was willst du gucken?"
   },
   "media": {
     "movie": "Filme",
     "series": "Serie",
-    "stopEditing": "Beenden Sie die Bearbeitung",
+    "stopEditing": "Beenden die Bearbeitung",
     "errors": {
-      "genericTitle": "Hoppla, etwas ist falsch gegangen!",
+      "genericTitle": "Hoppla, etwas ist schiefgegangen!",
       "failedMeta": "Metadaten konnten nicht geladen werden",
       "mediaFailed": "Wir konnten die angeforderten Medien nicht abrufen.",
       "videoFailed": "Beim Abspielen des angeforderten Videos ist ein Fehler aufgetreten. <0>Discord</0> Oder weiter <1>GitHub</1>."
@@ -48,17 +48,17 @@
   "searchBar": {
     "movie": "Film",
     "series": "Serie",
-    "Search": "Forschen"
+    "Search": "Suchen"
   },
   "videoPlayer": {
     "findingBestVideo": "Auf der Suche nach dem besten Video für Sie",
-    "noVideos": "Entschuldigung, wir konnten keine Videos für Sie finden",
+    "noVideos": "Entschuldigung, wir konnten keine Videos finden",
     "loading": "Wird geladen...",
     "backToHome": "Zurück zur Startseite",
     "backToHomeShort": "Rückmeldung",
     "seasonAndEpisode": "S{{season}} E{{episode}}",
-    "timeLeft": "{{timeLeft}} bleibt",
-    "finishAt": "Ende um {{timeFinished, datetime}}",
+    "timeLeft": "{{timeLeft}} verbleibend",
+    "finishAt": "Endet um {{timeFinished, datetime}}",
     "buttons": {
       "episodes": "Folgen",
       "source": "Quelle",
@@ -71,13 +71,13 @@
     "popouts": {
       "back": "Zurück",
       "sources": "Quellen",
-      "seasons": "Saison",
+      "seasons": "Staffel",
       "captions": "Untertitel",
       "playbackSpeed": "Lesegeschwindigkeit",
       "customPlaybackSpeed": "Benutzerdefinierte Wiedergabegeschwindigkeit",
       "captionPreferences": {
-        "title": "Personifizieren",
-        "delay": "Zeitlimit",
+        "title": "Bearbeiten",
+        "delay": "Verzögerung",
         "fontSize": "Größe",
         "opacity": "Opazität",
         "color": "Farbe"
@@ -93,17 +93,17 @@
         "embedsError": "Beim Laden der eingebetteter Medien ist ein Problem aufgetreten"
       },
       "descriptions": {
-        "sources": "Welchen Anbieter möchten Sie nutzen?",
-        "embeds": "Wählen Sie das Video aus, das Sie ansehen möchten",
-        "seasons": "Wählen Sie die Staffel aus, die Sie sehen möchten",
-        "episode": "Wählen Sie eine Folge aus",
-        "captions": "Wählen Sie eine Untertitelsprache",
-        "captionPreferences": "Passen Sie das Erscheinungsbild von Untertiteln an",
+        "sources": "Welchen Anbieter möchtest du nutzen?",
+        "embeds": "Wähle das Video aus, das du ansehen möchten",
+        "seasons": "Wähle die Staffel aus, die du sehen möchten",
+        "episode": "Wähle eine Folge aus",
+        "captions": "Wähle eine Untertitelsprache",
+        "captionPreferences": "Passe das Erscheinungsbild von Untertiteln an",
         "playbackSpeed": "Wiedergabegeschwindigkeit ändern"
       }
     },
     "errors": {
-      "fatalError": "Der Videoplayer hat einen Fehler festgestellt, bitte melden Sie ihn dem Server <0>Discord</0> Oder weiter <1>GitHub</1>."
+      "fatalError": "Der Videoplayer hat einen Fehler festgestellt, bitte melde ihn dem Server <0>Discord</0> Oder weiter <1>GitHub</1>."
     }
   },
   "settings": {
@@ -115,13 +115,13 @@
     "newSiteTitle": "Neue Version verfügbar!",
     "newDomain": "https://movie-web.app",
     "newDomainText": "movie-web zieht in Kürze auf eine neue Domain um: <0>https://movie-web.app</0>. <1>Die alte Website funktioniert nicht mehr {{date}}.</1>",
-    "tireless": "Wir haben unermüdlich an diesem neuen Update gearbeitet und hoffen, dass Ihnen das gefällt, was wir in den letzten Monaten vorbereitet haben.",
+    "tireless": "Wir haben unermüdlich an diesem neuen Update gearbeitet und hoffen, dass dir gefällt, was wir in den letzten Monaten vorbereitet haben.",
     "leaveAnnouncement": "Bring mich dahin!"
   },
   "casting": {
     "casting": "An Gerät übertragen..."
   },
   "errors": {
-    "offline": "Ihre Internetverbindung ist instabil"
+    "offline": "Internetverbindung ist instabil"
   }
 }

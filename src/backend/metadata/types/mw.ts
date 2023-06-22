@@ -45,3 +45,9 @@ export interface MWQuery {
   searchQuery: string;
   type: MWMediaType;
 }
+
+export interface DetailedMeta {
+  meta: MWMediaMeta;
+  imdbId?: string;
+  tmdbId?: string;
+}

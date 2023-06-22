@@ -7,13 +7,20 @@ import cs from "./locales/cs/translation.json";
 import de from "./locales/de/translation.json";
 import en from "./locales/en/translation.json";
 import fr from "./locales/fr/translation.json";
+import it from "./locales/it/translation.json";
 import nl from "./locales/nl/translation.json";
+import pirate from "./locales/pirate/translation.json";
+import pl from "./locales/pl/translation.json";
 import tr from "./locales/tr/translation.json";
+import vi from "./locales/vi/translation.json";
 import zh from "./locales/zh/translation.json";
 
 const locales = {
   en: {
     translation: en,
+  },
+  it: {
+    translation: it,
   },
   nl: {
     translation: nl,
@@ -32,6 +39,15 @@ const locales = {
   },
   cs: {
     translation: cs,
+  },
+  pirate: {
+    translation: pirate,
+  },
+  vi: {
+    translation: vi,
+  },
+  pl: {
+    translation: pl,
   },
 };
 i18n

@@ -4,7 +4,7 @@ import "@/backend";
 import { testData } from "@/__tests__/providers/testdata";
 import { getProviders } from "@/backend/helpers/register";
 import { runProvider } from "@/backend/helpers/run";
-import { MWMediaType } from "@/backend/metadata/types";
+import { MWMediaType } from "@/backend/metadata/types/mw";
 
 describe("providers", () => {
   const providers = getProviders();

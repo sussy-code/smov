@@ -1,7 +1,7 @@
 import pako from "pako";
 import { useEffect, useState } from "react";
 
-import { MWMediaType } from "@/backend/metadata/types";
+import { MWMediaType } from "@/backend/metadata/types/mw";
 import { conf } from "@/setup/config";
 
 function fromBinary(str: string): Uint8Array {
