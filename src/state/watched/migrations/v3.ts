@@ -32,14 +32,12 @@ export async function migrateV2Bookmarks(old: any) {
   const updatedBookmarks = oldData.bookmarks.map(
     async (item: { id: number; type: MWMediaType }) => ({
       ...item,
-      mediaId: await migrateId(item.id, item.type),
+      id: await migrateId(item.id, item.type),
     })
   );
 
   return {
-    bookmarks: (await Promise.all(updatedBookmarks)).filter(
-      (item) => item.mediaId
-    ),
+    bookmarks: (await Promise.all(updatedBookmarks)).filter((item) => item.id),
   };
 }
 
