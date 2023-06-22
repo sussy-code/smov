@@ -11,7 +11,6 @@ import {
   canWebkitFullscreen,
   canWebkitPictureInPicture,
 } from "@/utils/detectFeatures";
-import extractThumbnails from "@/utils/thumbnailCreator";
 import {
   getStoredVolume,
   setStoredVolume,
@@ -64,7 +63,6 @@ export function createVideoStateProvider(
 ): VideoPlayerStateProvider {
   const player = playerEl;
   const state = getPlayerState(descriptor);
-
   return {
     getId() {
       return "video";
@@ -148,6 +146,16 @@ export function createVideoStateProvider(
 
       // reset before assign new one so the old HLS instance gets destroyed
       resetStateForSource(descriptor, state);
+      // update state
+      state.source = {
+        quality: source.quality,
+        type: source.type,
+        url: source.source,
+        caption: null,
+        embedId: source.embedId,
+        providerId: source.providerId,
+        thumbnails: [],
+      };
 
       if (source?.type === MWStreamType.HLS) {
         if (player.canPlayType("application/vnd.apple.mpegurl")) {
@@ -185,25 +193,6 @@ export function createVideoStateProvider(
         // standard MP4 stream
         player.src = source.source;
       }
-
-      // update state
-      state.source = {
-        quality: source.quality,
-        type: source.type,
-        url: source.source,
-        caption: null,
-        embedId: source.embedId,
-        providerId: source.providerId,
-        thumbnails: [],
-      };
-
-      (async () => {
-        for await (const thumbnail of extractThumbnails(source.source, 20)) {
-          if (!state.source) return;
-          state.source.thumbnails = [...state.source.thumbnails, thumbnail];
-          updateSource(descriptor, state);
-        }
-      })();
 
       updateSource(descriptor, state);
     },

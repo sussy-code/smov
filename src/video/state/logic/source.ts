@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 
 import { MWStreamQuality, MWStreamType } from "@/backend/helpers/streams";
-import { Thumbnail } from "@/utils/thumbnailCreator";
 
 import { getPlayerState } from "../cache";
 import { listenEvent, sendEvent, unlistenEvent } from "../events";
-import { VideoPlayerState } from "../types";
+import { Thumbnail, VideoPlayerState } from "../types";
 
 export type VideoSourceEvent = {
   source: null | {

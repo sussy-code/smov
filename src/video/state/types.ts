@@ -6,10 +6,14 @@ import {
   MWStreamType,
 } from "@/backend/helpers/streams";
 import { DetailedMeta } from "@/backend/metadata/getmeta";
-import { Thumbnail } from "@/utils/thumbnailCreator";
 
 import { VideoPlayerStateProvider } from "./providers/providerTypes";
 
+export interface Thumbnail {
+  from: number;
+  to: number;
+  imgUrl: string;
+}
 export type VideoPlayerMeta = {
   meta: DetailedMeta;
   captions: MWCaption[];

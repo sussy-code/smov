@@ -71,7 +71,7 @@ export function CaptionSettingsPopout(props: {
           </label>
           <div className="flex flex-row gap-2">
             {colors.map((color) => (
-              <CaptionColorSelector color={color} />
+              <CaptionColorSelector key={color} color={color} />
             ))}
           </div>
         </div>
