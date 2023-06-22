@@ -8,7 +8,7 @@ import {
 } from "react";
 
 import { DetailedMeta } from "@/backend/metadata/getmeta";
-import { MWMediaType } from "@/backend/metadata/types";
+import { MWMediaType } from "@/backend/metadata/types/mw";
 import { useStore } from "@/utils/storage";
 
 import { VideoProgressStore } from "./store";

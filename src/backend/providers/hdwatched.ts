@@ -2,7 +2,7 @@ import { proxiedFetch } from "../helpers/fetch";
 import { MWProviderContext } from "../helpers/provider";
 import { registerProvider } from "../helpers/register";
 import { MWStreamQuality, MWStreamType } from "../helpers/streams";
-import { MWMediaType } from "../metadata/types";
+import { MWMediaType } from "../metadata/types/mw";
 
 const hdwatchedBase = "https://www.hdwatched.xyz";
 

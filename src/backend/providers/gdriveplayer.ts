@@ -3,7 +3,7 @@ import { unpack } from "unpacker";
 
 import { registerProvider } from "@/backend/helpers/register";
 import { MWStreamQuality } from "@/backend/helpers/streams";
-import { MWMediaType } from "@/backend/metadata/types";
+import { MWMediaType } from "@/backend/metadata/types/mw";
 
 import { proxiedFetch } from "../helpers/fetch";
 

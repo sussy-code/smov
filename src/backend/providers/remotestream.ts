@@ -1,7 +1,7 @@
 import { mwFetch } from "@/backend/helpers/fetch";
 import { registerProvider } from "@/backend/helpers/register";
 import { MWStreamQuality, MWStreamType } from "@/backend/helpers/streams";
-import { MWMediaType } from "@/backend/metadata/types";
+import { MWMediaType } from "@/backend/metadata/types/mw";
 
 const remotestreamBase = `https://fsa.remotestre.am`;
 

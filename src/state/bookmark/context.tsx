@@ -1,6 +1,6 @@
 import { ReactNode, createContext, useContext, useMemo } from "react";
 
-import { MWMediaMeta } from "@/backend/metadata/types";
+import { MWMediaMeta } from "@/backend/metadata/types/mw";
 import { useStore } from "@/utils/storage";
 
 import { BookmarkStore } from "./store";

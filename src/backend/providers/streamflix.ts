@@ -5,7 +5,7 @@ import {
   MWStreamQuality,
   MWStreamType,
 } from "@/backend/helpers/streams";
-import { MWMediaType } from "@/backend/metadata/types";
+import { MWMediaType } from "@/backend/metadata/types/mw";
 
 const streamflixBase = "https://us-west2-compute-proxied.streamflix.one";
 

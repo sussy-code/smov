@@ -1,7 +1,14 @@
-import { lazy } from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
+import { ReactElement, lazy, useEffect } from "react";
+import {
+  Redirect,
+  Route,
+  Switch,
+  useHistory,
+  useLocation,
+} from "react-router-dom";
 
-import { MWMediaType } from "@/backend/metadata/types";
+import { convertLegacyUrl, isLegacyUrl } from "@/backend/metadata/getmeta";
+import { MWMediaType } from "@/backend/metadata/types/mw";
 import { BannerContextProvider } from "@/hooks/useBanner";
 import { Layout } from "@/setup/Layout";
 import { BookmarkContextProvider } from "@/state/bookmark";
@@ -11,6 +18,22 @@ import { MediaView } from "@/views/media/MediaView";
 import { NotFoundPage } from "@/views/notfound/NotFoundView";
 import { V2MigrationView } from "@/views/other/v2Migration";
 import { SearchView } from "@/views/search/SearchView";
+
+function LegacyUrlView({ children }: { children: ReactElement }) {
+  const location = useLocation();
+  const { replace } = useHistory();
+
+  useEffect(() => {
+    const url = location.pathname;
+    if (!isLegacyUrl(url)) return;
+    convertLegacyUrl(location.pathname).then((convertedUrl) => {
+      replace(convertedUrl ?? "/");
+    });
+  }, [location.pathname, replace]);
+
+  if (isLegacyUrl(location.pathname)) return null;
+  return children;
+}
 
 function App() {
   return (
@@ -27,12 +50,16 @@ function App() {
                 </Route>
 
                 {/* pages */}
-                <Route exact path="/media/:media" component={MediaView} />
-                <Route
-                  exact
-                  path="/media/:media/:season/:episode"
-                  component={MediaView}
-                />
+                <Route exact path="/media/:media">
+                  <LegacyUrlView>
+                    <MediaView />
+                  </LegacyUrlView>
+                </Route>
+                <Route exact path="/media/:media/:season/:episode">
+                  <LegacyUrlView>
+                    <MediaView />
+                  </LegacyUrlView>
+                </Route>
                 <Route
                   exact
                   path="/search/:type/:query?"
