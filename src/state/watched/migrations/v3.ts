@@ -8,9 +8,7 @@ async function migrateId(
   id: number,
   type: MWMediaType
 ): Promise<string | undefined> {
-  console.log("migrating id", id, type);
   const meta = await getLegacyMetaFromId(type, id.toString());
-  console.log("migrating id", meta);
 
   if (!meta) return undefined;
   const { tmdbId, imdbId } = meta;
@@ -46,10 +44,8 @@ export async function migrateV2Bookmarks(old: any) {
 }
 
 export async function migrateV3Videos(old: any) {
-  console.log("migrating watched");
   const oldData = old;
   if (!oldData) return;
-  console.log(oldData);
 
   const updatedItems = await Promise.all(
     oldData.items.map(async (item: any) => {
@@ -77,7 +73,7 @@ export async function migrateV3Videos(old: any) {
   );
 
   const newData: WatchedStoreData = {
-    items: updatedItems.map((item) => item.item), // Extract the "item" object
+    items: updatedItems.map((item) => item.item),
   };
 
   return {
