@@ -73,7 +73,7 @@ export function formatTMDBMetaResult(
         season_number: v.season_number,
         title: v.name,
       })),
-      poster: (details as TMDBMovieData).poster_path ?? undefined,
+      poster: getMediaPoster(show.poster_path) ?? undefined,
       original_release_year: new Date(show.first_air_date).getFullYear(),
     };
   }
