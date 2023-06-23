@@ -13,12 +13,15 @@ import {
   TMDBMovieExternalIds,
   TMDBMovieResponse,
   TMDBMovieResult,
+  TMDBMovieSearchResult,
+  TMDBSearchResult,
   TMDBSeason,
   TMDBSeasonMetaResult,
   TMDBShowData,
   TMDBShowExternalIds,
   TMDBShowResponse,
   TMDBShowResult,
+  TMDBShowSearchResult,
 } from "./types/tmdb";
 import { mwFetch } from "../helpers/fetch";
 
@@ -148,6 +151,37 @@ export async function searchMedia(
   }
 
   return data;
+}
+
+export async function multiSearch(
+  query: string
+): Promise<(TMDBMovieSearchResult | TMDBShowSearchResult)[]> {
+  const data = await get<TMDBSearchResult>(`search/multi`, {
+    query,
+    include_adult: false,
+    language: "en-US",
+    page: 1,
+  });
+  // filter out results that aren't movies or shows
+  const results = data.results.filter(
+    (r) => r.media_type === "movie" || r.media_type === "tv"
+  );
+  return results;
+}
+
+export async function generateQuickSearchMediaUrl(
+  query: string
+): Promise<string | undefined> {
+  const data = await multiSearch(query);
+  if (data.length === 0) return undefined;
+  const result = data[0];
+  const type = result.media_type === "movie" ? "movie" : "show";
+  const title = result.media_type === "movie" ? result.title : result.name;
+
+  return `/media/tmdb-${type}-${result.id}-${slugify(title, {
+    lower: true,
+    strict: true,
+  })}`;
 }
 
 // Conditional type which for inferring the return type based on the content type

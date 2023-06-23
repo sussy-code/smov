@@ -5,9 +5,11 @@ import {
   Switch,
   useHistory,
   useLocation,
+  useParams,
 } from "react-router-dom";
 
 import { convertLegacyUrl, isLegacyUrl } from "@/backend/metadata/getmeta";
+import { generateQuickSearchMediaUrl } from "@/backend/metadata/tmdb";
 import { MWMediaType } from "@/backend/metadata/types/mw";
 import { BannerContextProvider } from "@/hooks/useBanner";
 import { Layout } from "@/setup/Layout";
@@ -35,6 +37,23 @@ function LegacyUrlView({ children }: { children: ReactElement }) {
   return children;
 }
 
+function QuickSearch() {
+  const { query } = useParams<{ query: string }>();
+  const { replace } = useHistory();
+
+  useEffect(() => {
+    if (query) {
+      generateQuickSearchMediaUrl(query).then((url) => {
+        replace(url ?? "/");
+      });
+    } else {
+      replace("/");
+    }
+  }, [query, replace]);
+
+  return null;
+}
+
 function App() {
   return (
     <SettingsProvider>
@@ -47,6 +66,9 @@ function App() {
                 <Route exact path="/v2-migration" component={V2MigrationView} />
                 <Route exact path="/">
                   <Redirect to={`/search/${MWMediaType.MOVIE}`} />
+                </Route>
+                <Route exact path="/s/:query">
+                  <QuickSearch />
                 </Route>
 
                 {/* pages */}
