@@ -99,6 +99,7 @@ export default function ThumbnailAction({
   const src = source.source?.thumbnails.find(
     (x) => x.from < hoverTime && x.to > hoverTime
   )?.imgUrl;
+  if (!source.source?.thumbnails.length) return null;
   return (
     <div className="pointer-events-none">
       {!src ? (
