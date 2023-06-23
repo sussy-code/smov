@@ -32,7 +32,8 @@ Your proxy is now hosted on cloudflare. Note the url of your worker. you will ne
 4. Put your cloudflare proxy URL inbetween the double qoutes of `VITE_CORS_PROXY_URL: "",`. Make sure to not have a slash at the end of your URL.
 
    Example (THIS IS MINE, IT WONT WORK FOR YOU): `VITE_CORS_PROXY_URL: "https://test-proxy.test.workers.dev",`
-5. Save the file
+5. Put your TMDB read access token inside the quotes of `VITE_TMDB_API_KEY: "",`. You can generate it for free at [https://www.themoviedb.org/settings/api](https://www.themoviedb.org/settings/api).
+6. Save the file
 
 Your client has been prepared, you can now host it on any webhost.
 It doesn't require php, its just a standard static page.
