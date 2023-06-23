@@ -1,3 +1,5 @@
+import slugify from "slugify";
+
 import { conf } from "@/setup/config";
 
 import { MWMediaMeta, MWMediaType, MWSeasonMeta } from "./types/mw";
@@ -75,7 +77,12 @@ export function formatTMDBMeta(
 }
 
 export function TMDBMediaToId(media: MWMediaMeta): string {
-  return ["tmdb", mediaTypeToTMDB(media.type), media.id].join("-");
+  return [
+    "tmdb",
+    mediaTypeToTMDB(media.type),
+    media.id,
+    slugify(media.title, { lower: true, strict: true }),
+  ].join("-");
 }
 
 export function decodeTMDBId(
