@@ -180,27 +180,6 @@ export async function getLegacyMetaFromId(
   };
 }
 
-export function TMDBMediaToId(media: MWMediaMeta): string {
-  return ["tmdb", mediaTypeToTMDB(media.type), media.id].join("-");
-}
-
-export function decodeTMDBId(
-  paramId: string
-): { id: string; type: MWMediaType } | null {
-  const [prefix, type, id] = paramId.split("-", 3);
-  if (prefix !== "tmdb") return null;
-  let mediaType;
-  try {
-    mediaType = TMDBMediaToMediaType(type);
-  } catch {
-    return null;
-  }
-  return {
-    type: mediaType,
-    id,
-  };
-}
-
 export function isLegacyUrl(url: string): boolean {
   if (url.startsWith("/media/JW")) return true;
   return false;

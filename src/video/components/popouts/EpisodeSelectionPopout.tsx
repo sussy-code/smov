@@ -2,7 +2,8 @@ import { useCallback, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 
-import { decodeTMDBId, getMetaFromId } from "@/backend/metadata/getmeta";
+import { getMetaFromId } from "@/backend/metadata/getmeta";
+import { decodeTMDBId } from "@/backend/metadata/tmdb";
 import {
   MWMediaType,
   MWSeasonWithEpisodeMeta,
