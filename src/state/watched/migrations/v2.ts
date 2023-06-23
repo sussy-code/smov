@@ -1,6 +1,6 @@
 import { DetailedMeta, getMetaFromId } from "@/backend/metadata/getmeta";
 import { searchForMedia } from "@/backend/metadata/search";
-import { MWMediaMeta, MWMediaType } from "@/backend/metadata/types";
+import { MWMediaMeta, MWMediaType } from "@/backend/metadata/types/mw";
 import { compareTitle } from "@/utils/titleMatch";
 
 import { WatchedStoreData, WatchedStoreItem } from "../types";

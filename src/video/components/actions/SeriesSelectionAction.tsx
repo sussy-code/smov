@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 
-import { MWMediaType } from "@/backend/metadata/types";
+import { MWMediaType } from "@/backend/metadata/types/mw";
 import { Icons } from "@/components/Icon";
 import { FloatingAnchor } from "@/components/popout/FloatingAnchor";
 import { VideoPlayerIconButton } from "@/video/components/parts/VideoPlayerIconButton";

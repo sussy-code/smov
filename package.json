@@ -1,6 +1,6 @@
 {
   "name": "movie-web",
-  "version": "3.0.15",
+  "version": "4.0.0",
   "private": true,
   "homepage": "https://movie-web.app",
   "dependencies": {

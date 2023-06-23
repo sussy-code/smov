@@ -3,7 +3,7 @@ import { getEmbedScraperByType, getProviders } from "./register";
 import { runEmbedScraper, runProvider } from "./run";
 import { MWStream } from "./streams";
 import { DetailedMeta } from "../metadata/getmeta";
-import { MWMediaType } from "../metadata/types";
+import { MWMediaType } from "../metadata/types/mw";
 
 interface MWProgressData {
   type: "embed" | "provider";

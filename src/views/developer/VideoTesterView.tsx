@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 
 import { MWStreamQuality, MWStreamType } from "@/backend/helpers/streams";
 import { DetailedMeta } from "@/backend/metadata/getmeta";
-import { MWMediaType } from "@/backend/metadata/types";
+import { MWMediaType } from "@/backend/metadata/types/mw";
 import { Button } from "@/components/Button";
 import { Dropdown } from "@/components/Dropdown";
 import { Navigation } from "@/components/layout/Navigation";
