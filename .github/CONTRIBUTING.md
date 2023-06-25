@@ -1,6 +1,6 @@
 # Contributing Guidelines for movie-web
 
-Thank you for investing your time in contributing to our project! Any contribution you make will be reflected on [movie-web.app](https://movie-web.app)!
+Thank you for investing your time in contributing to our project! Any contribution you make will be reflected on [movie-web.app](https://movie-web.app).
 
 Please make sure you read our [Code of Conduct](./CODE_OF_CONDUCT.md) to keep our community approachable and respectable.
 
@@ -20,7 +20,7 @@ There are two places where to request features or report bugs:
  - The movie-web Discord server
 
 ### Discord Server
-If you do not have a GitHub account, or would like to discuss a feature or bug with us before making an issue, you can join our Discord server!
+If you do not have a GitHub account, or would like to discuss a feature or bug with us before making an issue, you can join our Discord server.
 
 <a href="https://discord.movie-web.app"><img src="https://discordapp.com/api/guilds/871713465100816424/widget.png?style=banner2" alt="Discord Server"></a>
 
@@ -60,7 +60,7 @@ Our recommended development environment to work on movie-web is:
 Our project is setup to enforce formatting and code style standards using ESLint. 
 
 ### Tips
-Here are some tips to make sure that your pull requests are :pinched_fingers: first time!
+Here are some tips to make sure that your pull requests are :pinched_fingers: first time:
 
 - KISS - Keep It Simple Soldier! - Simple code makes readable and efficient code!
 - Follow standard best practices for TypeScript and React.
