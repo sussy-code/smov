@@ -14,7 +14,7 @@ export const BookmarkStore = createVersionedStore<BookmarkStoreData>()
   })
   .addVersion({
     version: 1,
-    migrate(old: OldBookmarks) {
+    migrate(old: BookmarkStoreData) {
       return migrateV2Bookmarks(old);
     },
   })

@@ -8,7 +8,7 @@ const gomoviesBase = "https://gomovies.sx";
 registerProvider({
   id: "gomovies",
   displayName: "GOmovies",
-  rank: 300,
+  rank: 200,
   type: [MWMediaType.MOVIE, MWMediaType.SERIES],
 
   async scrape({ media, episode }) {
