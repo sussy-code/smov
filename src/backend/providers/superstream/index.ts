@@ -142,7 +142,7 @@ const convertSubtitles = (subtitleGroup: any): MWCaption | null => {
 registerProvider({
   id: "superstream",
   displayName: "Superstream",
-  rank: 200,
+  rank: 300,
   type: [MWMediaType.MOVIE, MWMediaType.SERIES],
 
   async scrape({ media, episode, progress }) {
