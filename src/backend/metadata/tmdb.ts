@@ -109,7 +109,7 @@ const baseURL = "https://api.themoviedb.org/3";
 
 const headers = {
   accept: "application/json",
-  Authorization: `Bearer ${conf().TMDB_API_KEY}`,
+  Authorization: `Bearer ${conf().TMDB_READ_API_KEY}`,
 };
 
 async function get<T>(url: string, params?: object): Promise<T> {
