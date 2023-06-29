@@ -22,7 +22,7 @@ export const VideoProgressStore = createVersionedStore<WatchedStoreData>()
   })
   .addVersion({
     version: 2,
-    migrate(old: OldData) {
+    migrate(old: WatchedStoreData) {
       return migrateV3Videos(old);
     },
   })
