@@ -13,7 +13,7 @@ import {
   mediaTypeToTMDB,
 } from "./tmdb";
 import {
-  JWMediaResult,
+  JWDetailedMeta,
   JWSeasonMetaResult,
   JW_API_BASE,
 } from "./types/justwatch";
@@ -25,23 +25,6 @@ import {
   TMDBShowData,
 } from "./types/tmdb";
 import { makeUrl, proxiedFetch } from "../helpers/fetch";
-
-type JWExternalIdType =
-  | "eidr"
-  | "imdb_latest"
-  | "imdb"
-  | "tmdb_latest"
-  | "tmdb"
-  | "tms";
-
-interface JWExternalId {
-  provider: JWExternalIdType;
-  external_id: string;
-}
-
-interface JWDetailedMeta extends JWMediaResult {
-  external_ids: JWExternalId[];
-}
 
 export interface DetailedMeta {
   meta: MWMediaMeta;
