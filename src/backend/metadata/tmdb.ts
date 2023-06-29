@@ -79,13 +79,21 @@ export function formatTMDBMeta(
   };
 }
 
-export function TMDBMediaToId(media: MWMediaMeta): string {
+export function TMDBIdToUrlId(
+  type: MWMediaType,
+  tmdbId: string,
+  title: string
+) {
   return [
     "tmdb",
-    mediaTypeToTMDB(media.type),
-    media.id,
-    slugify(media.title, { lower: true, strict: true }),
+    mediaTypeToTMDB(type),
+    tmdbId,
+    slugify(title, { lower: true, strict: true }),
   ].join("-");
+}
+
+export function TMDBMediaToId(media: MWMediaMeta): string {
+  return TMDBIdToUrlId(media.type, media.id, media.title);
 }
 
 export function decodeTMDBId(
@@ -178,10 +186,11 @@ export async function generateQuickSearchMediaUrl(
   const type = result.media_type === "movie" ? "movie" : "show";
   const title = result.media_type === "movie" ? result.title : result.name;
 
-  return `/media/tmdb-${type}-${result.id}-${slugify(title, {
-    lower: true,
-    strict: true,
-  })}`;
+  return `/media/${TMDBIdToUrlId(
+    TMDBMediaToMediaType(type),
+    result.id.toString(),
+    title
+  )}`;
 }
 
 // Conditional type which for inferring the return type based on the content type

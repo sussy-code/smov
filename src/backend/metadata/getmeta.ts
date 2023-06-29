@@ -1,8 +1,8 @@
 import { FetchError } from "ofetch";
-import slugify from "slugify";
 
 import { formatJWMeta, mediaTypeToJW } from "./justwatch";
 import {
+  TMDBIdToUrlId,
   TMDBMediaToMediaType,
   formatTMDBMeta,
   getEpisodes,
@@ -187,17 +187,12 @@ export async function convertLegacyUrl(
   // movies always have an imdb id on tmdb
   if (imdbId && mediaType === MWMediaType.MOVIE) {
     const movieId = await getMovieFromExternalId(imdbId);
-    if (movieId)
-      return `/media/tmdb-movie-${movieId}-${slugify(meta.meta.title, {
-        lower: true,
-        strict: true,
-      })}`;
-  }
+    if (movieId) {
+      return `/media/${TMDBIdToUrlId(mediaType, movieId, meta.meta.title)}`;
+    }
 
-  if (tmdbId) {
-    return `/media/tmdb-${type}-${tmdbId}-${slugify(meta.meta.title, {
-      lower: true,
-      strict: true,
-    })}`;
+    if (tmdbId) {
+      return `/media/${TMDBIdToUrlId(mediaType, tmdbId, meta.meta.title)}`;
+    }
   }
 }
