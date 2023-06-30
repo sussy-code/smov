@@ -5,6 +5,7 @@ import {
   getMovieFromExternalId,
 } from "@/backend/metadata/tmdb";
 import { MWMediaType } from "@/backend/metadata/types/mw";
+import { TMDBContentTypes } from "@/backend/metadata/types/tmdb";
 import { BookmarkStoreData } from "@/state/bookmark/types";
 import { isNotNull } from "@/utils/typeguard";
 
@@ -59,7 +60,10 @@ export async function migrateV3Videos(
         clone.item.meta.id = migratedId;
         if (clone.item.series) {
           const series = clone.item.series;
-          const details = await getMediaDetails(migratedId, "show");
+          const details = await getMediaDetails(
+            migratedId,
+            TMDBContentTypes.TV
+          );
 
           const season = details.seasons.find(
             (v) => v.season_number === series.season

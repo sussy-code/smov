@@ -19,6 +19,7 @@ import {
 } from "./types/justwatch";
 import { MWMediaMeta, MWMediaType } from "./types/mw";
 import {
+  TMDBContentTypes,
   TMDBMediaResult,
   TMDBMovieData,
   TMDBSeasonMetaResult,
@@ -177,7 +178,7 @@ export async function convertLegacyUrl(
   const urlParts = url.split("/").slice(2);
   const [, type, id] = urlParts[0].split("-", 3);
 
-  const mediaType = TMDBMediaToMediaType(type);
+  const mediaType = TMDBMediaToMediaType(type as TMDBContentTypes);
   const meta = await getLegacyMetaFromId(mediaType, id);
 
   if (!meta) return undefined;

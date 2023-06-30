@@ -1,4 +1,7 @@
-export type TMDBContentTypes = "movie" | "show";
+export enum TMDBContentTypes {
+  MOVIE = "movie",
+  TV = "tv",
+}
 
 export type TMDBSeasonShort = {
   title: string;
@@ -183,54 +186,6 @@ export interface TMDBEpisodeResult {
   };
 }
 
-export interface TMDBShowResult {
-  adult: boolean;
-  backdrop_path: string | null;
-  genre_ids: number[];
-  id: number;
-  origin_country: string[];
-  original_language: string;
-  original_name: string;
-  overview: string;
-  popularity: number;
-  poster_path: string | null;
-  first_air_date: string;
-  name: string;
-  vote_average: number;
-  vote_count: number;
-}
-
-export interface TMDBShowResponse {
-  page: number;
-  results: TMDBShowResult[];
-  total_pages: number;
-  total_results: number;
-}
-
-export interface TMDBMovieResult {
-  adult: boolean;
-  backdrop_path: string | null;
-  genre_ids: number[];
-  id: number;
-  original_language: string;
-  original_title: string;
-  overview: string;
-  popularity: number;
-  poster_path: string | null;
-  release_date: string;
-  title: string;
-  video: boolean;
-  vote_average: number;
-  vote_count: number;
-}
-
-export interface TMDBMovieResponse {
-  page: number;
-  results: TMDBMovieResult[];
-  total_pages: number;
-  total_results: number;
-}
-
 export interface TMDBEpisode {
   air_date: string;
   episode_number: number;
@@ -316,7 +271,7 @@ export interface TMDBMovieSearchResult {
   original_title: string;
   overview: string;
   poster_path: string;
-  media_type: "movie";
+  media_type: TMDBContentTypes.MOVIE;
   genre_ids: number[];
   popularity: number;
   release_date: string;
@@ -334,7 +289,7 @@ export interface TMDBShowSearchResult {
   original_name: string;
   overview: string;
   poster_path: string;
-  media_type: "tv";
+  media_type: TMDBContentTypes.TV;
   genre_ids: number[];
   popularity: number;
   first_air_date: string;
