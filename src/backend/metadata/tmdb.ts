@@ -7,16 +7,13 @@ import {
   ExternalIdMovieSearchResult,
   TMDBContentTypes,
   TMDBEpisodeShort,
-  TMDBExternalIds,
   TMDBMediaResult,
   TMDBMovieData,
-  TMDBMovieExternalIds,
   TMDBMovieSearchResult,
   TMDBSearchResult,
   TMDBSeason,
   TMDBSeasonMetaResult,
   TMDBShowData,
-  TMDBShowExternalIds,
   TMDBShowSearchResult,
 } from "./types/tmdb";
 import { mwFetch } from "../helpers/fetch";
@@ -130,7 +127,7 @@ async function get<T>(url: string, params?: object): Promise<T> {
 export async function multiSearch(
   query: string
 ): Promise<(TMDBMovieSearchResult | TMDBShowSearchResult)[]> {
-  const data = await get<TMDBSearchResult>(`search/multi`, {
+  const data = await get<TMDBSearchResult>("search/multi", {
     query,
     include_adult: false,
     language: "en-US",
@@ -174,10 +171,10 @@ export function getMediaDetails<
   TReturn = MediaDetailReturn<T>
 >(id: string, type: T): Promise<TReturn> {
   if (type === TMDBContentTypes.MOVIE) {
-    return get<TReturn>(`/movie/${id}`);
+    return get<TReturn>(`/movie/${id}`, { append_to_response: "external_ids" });
   }
   if (type === TMDBContentTypes.TV) {
-    return get<TReturn>(`/tv/${id}`);
+    return get<TReturn>(`/tv/${id}`, { append_to_response: "external_ids" });
   }
   throw new Error("Invalid media type");
 }
@@ -196,26 +193,6 @@ export async function getEpisodes(
     episode_number: e.episode_number,
     title: e.name,
   }));
-}
-
-export async function getExternalIds(
-  id: string,
-  type: TMDBContentTypes
-): Promise<TMDBExternalIds> {
-  let data;
-
-  switch (type) {
-    case TMDBContentTypes.MOVIE:
-      data = await get<TMDBMovieExternalIds>(`/movie/${id}/external_ids`);
-      break;
-    case TMDBContentTypes.TV:
-      data = await get<TMDBShowExternalIds>(`/tv/${id}/external_ids`);
-      break;
-    default:
-      throw new Error("Invalid media type");
-  }
-
-  return data;
 }
 
 export async function getMovieFromExternalId(
