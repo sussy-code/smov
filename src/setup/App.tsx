@@ -10,7 +10,6 @@ import {
 
 import { convertLegacyUrl, isLegacyUrl } from "@/backend/metadata/getmeta";
 import { generateQuickSearchMediaUrl } from "@/backend/metadata/tmdb";
-import { MWMediaType } from "@/backend/metadata/types/mw";
 import { BannerContextProvider } from "@/hooks/useBanner";
 import { Layout } from "@/setup/Layout";
 import { BookmarkContextProvider } from "@/state/bookmark";
@@ -64,9 +63,6 @@ function App() {
               <Switch>
                 {/* functional routes */}
                 <Route exact path="/v2-migration" component={V2MigrationView} />
-                <Route exact path="/">
-                  <Redirect to={`/search/${MWMediaType.MOVIE}`} />
-                </Route>
                 <Route exact path="/s/:query">
                   <QuickSearch />
                 </Route>
@@ -82,11 +78,16 @@ function App() {
                     <MediaView />
                   </LegacyUrlView>
                 </Route>
-                <Route
-                  exact
-                  path="/search/:type/:query?"
-                  component={SearchView}
-                />
+                <Route exact path="/search/:type/:query?">
+                  <Redirect to="/browse/:query" />
+                </Route>
+                <Route exact path="/search/:type">
+                  <Redirect to="/browse" />
+                </Route>
+                <Route exact path="/browse/:query?" component={SearchView} />
+                <Route exact path="/">
+                  <Redirect to="/browse" />
+                </Route>
 
                 {/* other */}
                 <Route
