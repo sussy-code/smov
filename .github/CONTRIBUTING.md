@@ -4,6 +4,17 @@ Thank you for investing your time in contributing to our project! Any contributi
 
 Please make sure you read our [Code of Conduct](./CODE_OF_CONDUCT.md) to keep our community approachable and respectable.
 
+## Contents
+ - [New Contributor Guide](#new-contributor-guide)
+ - [Requesting a feature or reporting a bug](#requesting-a-feature-or-reporting-an-bug)
+   - [Discord Server](#discord-server)
+   - [GitHub Issues](#github-issues)
+ - [Before you start](#before-you-start)
+ - [Contributing](#before-you-start)
+   - [Recommended Development Environment](#recommended-development-environment)
+   - [Tips](#tips)
+   - [Language Contributions](#language-contributions)
+
 ## New contributor guide
 
 To get an overview of the project, read the [README](README.md). Here are some resources to help you get started with open source contributions:
