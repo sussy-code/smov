@@ -1,7 +1,7 @@
 # Self-hosting tutorial
 
 > **Note**
-> We do not provide support on how to self-host, if you cant figure it out then tough luck. Please do not make GitHub issues or ask in our Discord server for support on how to self-host.
+> We **do not** provide support on how to self-host. If you can't figure it out then tough luck. Please do not make GitHub issues or ask in our Discord server for support on how to self-host.
 
 So you would like to self-host. This app is made of two parts:
  - The proxy
