@@ -78,3 +78,10 @@ Here are some tips to make sure that your pull requests are :pinched_fingers: fi
 - Keep as much as possible to the style of movie-web. Have a look round our codebase to familiarise yourself with how we do things!
 - Make sure to take note of the ESLint errors and warnings! **Do not ignore them!** They are there for a reason.
 - Test, test, test! Make sure you fully test the features you are contributing.
+
+### Language Contributions
+Language contritions help movie-web massively allowing people from all across the world to use our app!
+
+Like most apps, our translations are stored in `.json` files. Each language string has a unique key (For example, `notFound.genericTitle`) which references a language string in the appropriate language file.
+
+Each language file is called `translation.json` and are stored in the `src/setup/languages/<language code>/` folder. For example, the English language file is located at `src/setup/languages/en/translation.json`.
