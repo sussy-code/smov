@@ -1,8 +1,8 @@
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
-import { JWMediaToId } from "@/backend/metadata/justwatch";
-import { MWMediaMeta } from "@/backend/metadata/types";
+import { TMDBMediaToId } from "@/backend/metadata/getmeta";
+import { MWMediaMeta } from "@/backend/metadata/types/mw";
 import { DotList } from "@/components/text/DotList";
 
 import { IconPatch } from "../buttons/IconPatch";
@@ -13,7 +13,7 @@ export interface MediaCardProps {
   linkable?: boolean;
   series?: {
     episode: number;
-    season: number;
+    season?: number;
     episodeId: string;
     seasonId: string;
   };
@@ -72,7 +72,7 @@ function MediaCardContent({
                 ].join(" ")}
               >
                 {t("seasons.seasonAndEpisode", {
-                  season: series.season,
+                  season: series.season || 1,
                   episode: series.episode,
                 })}
               </p>
@@ -132,12 +132,17 @@ export function MediaCard(props: MediaCardProps) {
   const canLink = props.linkable && !props.closable;
 
   let link = canLink
-    ? `/media/${encodeURIComponent(JWMediaToId(props.media))}`
+    ? `/media/${encodeURIComponent(TMDBMediaToId(props.media))}`
     : "#";
-  if (canLink && props.series)
-    link += `/${encodeURIComponent(props.series.seasonId)}/${encodeURIComponent(
-      props.series.episodeId
-    )}`;
+  if (canLink && props.series) {
+    if (props.series.season === 0 && !props.series.episodeId) {
+      link += `/${encodeURIComponent(props.series.seasonId)}`;
+    } else {
+      link += `/${encodeURIComponent(
+        props.series.seasonId
+      )}/${encodeURIComponent(props.series.episodeId)}`;
+    }
+  }
 
   if (!props.linkable) return <span>{content}</span>;
   return (

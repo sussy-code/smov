@@ -13,7 +13,7 @@ import {
   MWStreamQuality,
   MWStreamType,
 } from "@/backend/helpers/streams";
-import { MWMediaType } from "@/backend/metadata/types";
+import { MWMediaType } from "@/backend/metadata/types/mw";
 import { compareTitle } from "@/utils/titleMatch";
 
 const nanoid = customAlphabet("0123456789abcdef", 32);
@@ -142,7 +142,7 @@ const convertSubtitles = (subtitleGroup: any): MWCaption | null => {
 registerProvider({
   id: "superstream",
   displayName: "Superstream",
-  rank: 200,
+  rank: 300,
   type: [MWMediaType.MOVIE, MWMediaType.SERIES],
 
   async scrape({ media, episode, progress }) {

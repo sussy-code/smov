@@ -8,7 +8,7 @@ import {
   MWStreamQuality,
   MWStreamType,
 } from "../helpers/streams";
-import { MWMediaType } from "../metadata/types";
+import { MWMediaType } from "../metadata/types/mw";
 
 const twoEmbedBase = "https://www.2embed.to";
 

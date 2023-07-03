@@ -7,14 +7,15 @@ import { registerSW } from "virtual:pwa-register";
 
 import { ErrorBoundary } from "@/components/layout/ErrorBoundary";
 import App from "@/setup/App";
-import { conf } from "@/setup/config";
+import { assertConfig, conf } from "@/setup/config";
+import i18n from "@/setup/i18n";
 
 import "@/setup/ga";
 import "@/setup/sentry";
-import "@/setup/i18n";
 import "@/setup/index.css";
 import "@/backend";
 import { initializeChromecast } from "./setup/chromecast";
+import { SettingsStore } from "./state/settings/store";
 import { initializeStores } from "./utils/storage";
 
 // initialize
@@ -29,7 +30,9 @@ registerSW({
 });
 
 const LazyLoadedApp = React.lazy(async () => {
+  await assertConfig();
   await initializeStores();
+  i18n.changeLanguage(SettingsStore.get().language ?? "en");
   return {
     default: App,
   };

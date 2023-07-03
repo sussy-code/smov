@@ -5,7 +5,7 @@ import {
   MWStreamQuality,
   MWStreamType,
 } from "../helpers/streams";
-import { MWMediaType } from "../metadata/types";
+import { MWMediaType } from "../metadata/types/mw";
 
 const netfilmBase = "https://net-film.vercel.app";
 

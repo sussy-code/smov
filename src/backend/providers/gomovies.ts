@@ -1,14 +1,14 @@
 import { MWEmbedType } from "../helpers/embed";
 import { proxiedFetch } from "../helpers/fetch";
 import { registerProvider } from "../helpers/register";
-import { MWMediaType } from "../metadata/types";
+import { MWMediaType } from "../metadata/types/mw";
 
 const gomoviesBase = "https://gomovies.sx";
 
 registerProvider({
   id: "gomovies",
   displayName: "GOmovies",
-  rank: 300,
+  rank: 200,
   type: [MWMediaType.MOVIE, MWMediaType.SERIES],
 
   async scrape({ media, episode }) {

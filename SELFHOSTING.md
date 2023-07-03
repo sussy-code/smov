@@ -31,10 +31,11 @@ Your proxy is now hosted on Cloudflare. Note the url of your worker as you will 
 1. Download the file `movie-web.zip` from the latest release: [https://github.com/movie-web/movie-web/releases/latest](https://github.com/movie-web/movie-web/releases/latest).
 2. Extract the zip file so you can edit the files.
 3. Open `config.js` in Notepad, Visual Studio Code or similar.
-4. Put your Cloudflare proxy URL in-between the double quotes of `VITE_CORS_PROXY_URL: "",`. Make sure to not have a slash at the end of your URL.
+4. Put your Cloudflare proxy URL in-between the double quotes of `VITE_CORS_PROXY_URL: ""`. Make sure to not have a slash at the end of your URL.
 
    Example (THIS IS MINE, IT WONT WORK FOR YOU): `VITE_CORS_PROXY_URL: "https://test-proxy.test.workers.dev",`
-5. Save the file.
+5. Put your TMDB read access token inside the quotes of `VITE_TMDB_READ_API_KEY: ""`. You can generate it for free at [https://www.themoviedb.org/settings/api](https://www.themoviedb.org/settings/api).
+6. Save the file
 
 Your client has now been prepared, you can now host it with any static website hosting (Common ones include [GitHub Pages](https://pages.github.com/), [Netlify](https://www.netlify.com/) and [Vercel](https://vercel.com/) but any will work!).
 It doesn't require PHP, it's just a standard static page.

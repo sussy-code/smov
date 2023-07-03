@@ -1,7 +1,7 @@
 import { MWEmbedType } from "../helpers/embed";
 import { proxiedFetch } from "../helpers/fetch";
 import { registerProvider } from "../helpers/register";
-import { MWMediaType } from "../metadata/types";
+import { MWMediaType } from "../metadata/types/mw";
 
 const kissasianBase = "https://kissasian.li";
 

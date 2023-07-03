@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 
-import { MWMediaMeta } from "@/backend/metadata/types";
+import { MWMediaMeta } from "@/backend/metadata/types/mw";
 import { IconPatch } from "@/components/buttons/IconPatch";
 import { Icon, Icons } from "@/components/Icon";
 import { BrandPill } from "@/components/layout/BrandPill";
