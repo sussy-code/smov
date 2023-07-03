@@ -67,6 +67,9 @@ If you are assigned to an issue but can't complete it for whatever reason, no pr
 Our recommended development environment to work on movie-web is:
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [ESLint Extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+- [EditorConfig Extension](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
+
+When opening Visual Studio Code, you will be prompted to install our recommended extensions if they are not installed for you.
 
 Our project is set up to enforce formatting and code style standards using ESLint. 
 
