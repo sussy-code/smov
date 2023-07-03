@@ -33,7 +33,7 @@ There are two places where to request features or report bugs:
 ### Discord Server
 If you do not have a GitHub account or want to discuss a feature or bug with us before making an issue, you can join our Discord server.
 
-<a href="https://discord.movie-web.app"><img src="https://discordapp.com/api/guilds/871713465100816424/widget.png?style=banner2" alt="Discord Server"></a>
+<a href="https://discord.movie-web.app"><img src="https://discord.com/api/guilds/871713465100816424/widget.png?style=banner2" alt="Discord Server"></a>
 
 ### GitHub Issues
 To make a GitHub issue for movie-web, please visit the [new issue page](https://github.com/movie-web/movie-web/issues/new/choose) where you can pick either the "Bug Report" or "Feature Request" template.
