@@ -87,9 +87,10 @@ Like most apps, our translations are stored in `.json` files. Each language stri
 Each language file is called `translation.json` and are stored in the `src/setup/languages/<language code>/` folder. For example, the English language file is located at `src/setup/languages/en/translation.json`.
 
 > **Warning**
+>
 > Before you start a translation, please check:
-> - That there isn't an existing GitHub issue or pull request open for that language.
-> - That we aren't in the middle of a new feature update! When releasing major versions, we don't accept language until the new version is complete otherwise the language files would be outdated.
+> - That there isn't an existing GitHub [issue](https://github.com/movie-web/movie-web/issues) or [pull request](https://github.com/movie-web/movie-web/pulls) open for the language.
+> - That we aren't in the middle of a new feature update. When releasing major versions, we don't accept language until the new version is complete otherwise the language files would be outdated.
 >
 > Please speak to us before starting a language PR. We don't want to waste your time.
 
