@@ -92,7 +92,7 @@ Each language file is called `translation.json` and is stored in the `src/setup/
 > **Warning**
 > Before you start a translation, please:
 > - Check there isn't an existing GitHub [issue](https://github.com/movie-web/movie-web/issues) or [pull request](https://github.com/movie-web/movie-web/pulls) open for the language.
-> - Make sure we aren't in the middle of a new feature update. When releasing major versions, we only accept language once the new version is complete. Otherwise, the language files would need to be updated.
+> - Make sure we aren't in the middle of a new feature update. When releasing major versions, we only accept changes to translations once the new version is complete. Otherwise, the language files would need to be updated.
 >
 > Please speak to us before starting a language PR. We want to use your time effectively.
 
