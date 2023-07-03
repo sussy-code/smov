@@ -52,7 +52,7 @@ If a pull request is opened before an issue is created and accepted, you may ris
 > **Note**
 > The exception to this are language contributions, which are discussed in [this section](#language-contributions)
 
-Also, make sure that the issue you would like to work on has not been got the "awaiting-approval" label by a maintainer. Otherwise, if we reject the issue, it means your work will have gone to waste!
+Also, make sure that the issue you would like to work on has been given the https://github.com/movie-web/movie-web/labels/planned label by a maintainer. Otherwise, if we reject the issue, it means your work will have gone to waste!
 
 ## Contributing
 If you're here because you'd like to work on an issue, amazing! Thank you for even considering contributing to movie-web; it means a lot :heart:
