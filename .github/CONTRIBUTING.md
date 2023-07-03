@@ -85,3 +85,24 @@ Language contritions help movie-web massively allowing people from all across th
 Like most apps, our translations are stored in `.json` files. Each language string has a unique key (For example, `notFound.genericTitle`) which references a language string in the appropriate language file.
 
 Each language file is called `translation.json` and are stored in the `src/setup/languages/<language code>/` folder. For example, the English language file is located at `src/setup/languages/en/translation.json`.
+
+> **Warning**
+> Before you start a translation, please check:
+> - That there isn't an existing GitHub issue or pull request open for that language.
+> - That we aren't in the middle of a new feature update! When releasing major versions, we don't accept language until the new version is complete otherwise the language files would be outdated.
+>
+> Please speak to us before starting a language PR. We don't want to waste your time.
+
+To make a translation:
+ - Copy the `en` folder inside the `src/setup/languages` folder
+ - Rename the copied folder to the 2 letter code for the country/language you are translating to.
+   - [Click this link to see a list of codes](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes). Make sure to use the codes in the `639-1` column!
+   - For example, Arabic is `ar` 
+ - Edit the language strings inside the `translation.json` file
+   - **Do not** edit the keys, only edit the values.
+   - e.g. in `"stopEditing": "Stop editing",` - only change the `Stop editing` part, not the `stopEditing` part.
+ - In the `src/setup/i18n.ts` file:
+   - Import your new translation file, e.g. `import ar from "./locales/ar/translation.json";`
+   - Add your translation to the `locales` object (Look at other languages for an example)
+
+Once you have made your translation, please open a pull request. We do not accept partial translations so please make sure every language string is translated to the intended language.
