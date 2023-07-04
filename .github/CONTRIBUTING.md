@@ -43,7 +43,7 @@ When filling out an issue template, please include as much detail as possible an
 After an issue is created, it will be assigned either the https://github.com/movie-web/movie-web/labels/bug or https://github.com/movie-web/movie-web/labels/feature label, along with https://github.com/movie-web/movie-web/labels/awaiting-approval. One of our maintainers will review your issue and, if it's accepted, will set the https://github.com/movie-web/movie-web/labels/approved label.
 
 ## Before you start!
-Before starting a contribution, please check your contribution is part of an open issue on [our issues page](https://github.com/movie-web/movie-web/issues). 
+Before starting a contribution, please check your contribution is part of an open issue on [our issues page](https://github.com/movie-web/movie-web/issues?q=is%3Aopen+is%3Aissue+label%3Aapproved). 
 
 GitHub issues are how we track our bugs and feature requests that will be implemented into movie-web - all contributions **must** have an issue and be approved by a maintainer before a pull request can be worked on.
 
