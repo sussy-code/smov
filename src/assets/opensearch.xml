@@ -3,5 +3,4 @@
   <Description>The place for your favorite movies &amp; shows</Description>
   <InputEncoding>UTF-8</InputEncoding>
   <Url type="text/html" template="https://movie-web.app/browse/{searchTerms}" />
-  <Url type="application/opensearchdescription+xml" rel="self" template="https://movie-web.app/opensearch.xml" />
 </OpenSearchDescription>
