@@ -84,11 +84,7 @@ function App() {
                 <Route exact path="/search/:type">
                   <Redirect to="/browse" />
                 </Route>
-                <Route exact path="/browse/:query?" component={SearchView} />
-                <Route exact path="/">
-                  <Redirect to="/browse" />
-                </Route>
-
+                <Route path={["/", "/browse/:query"]} component={SearchView} />
                 {/* other */}
                 <Route
                   exact
