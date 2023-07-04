@@ -6,7 +6,7 @@ Please read our [Code of Conduct](./CODE_OF_CONDUCT.md) to keep our community ap
 
 ## Contents
  - [New Contributor Guide](#new-contributor-guide)
- - [Requesting a feature or reporting a bug](#requesting-a-feature-or-reporting-an-bug)
+ - [Requesting a feature or reporting a bug](#requesting-a-feature-or-reporting-a-bug)
    - [Discord Server](#discord-server)
    - [GitHub Issues](#github-issues)
  - [Before you start](#before-you-start)
