@@ -103,7 +103,7 @@ registerProvider({
       )?.number;
 
       const targetEpisode = episodesData.find((ep) =>
-        ep.number ? +ep.number : ep.number === episodeNumber
+        ep.number ? +ep.number === episodeNumber : false
       );
 
       if (!targetEpisode?.dataId) throw new Error("Episode not found");
