@@ -4,9 +4,15 @@ import loadVersion from "vite-plugin-package-version";
 import { VitePWA } from "vite-plugin-pwa";
 import checker from "vite-plugin-checker";
 import path from "path";
+import { handlebars } from "./plugins/handlebars";
 
 export default defineConfig({
   plugins: [
+    handlebars({
+      vars: {
+        message: "HELLOWORLD"
+      },
+    }),
     react({
       babel: {
         presets: [
