@@ -1408,11 +1408,6 @@
     magic-string "^0.25.0"
     string.prototype.matchall "^4.0.6"
 
-"@tailwindcss/line-clamp@^0.4.2":
-  version "0.4.4"
-  resolved "https://registry.yarnpkg.com/@tailwindcss/line-clamp/-/line-clamp-0.4.4.tgz#767cf8e5d528a5d90c9740ca66eb079f5e87d423"
-  integrity sha512-5U6SY5z8N42VtrCrKlsTAA35gy2VSyYtHWCsg1H87NU1SXnEfekTVlrga9fzUDrrHcGi2Lb5KenUWb4lRQT5/g==
-
 "@tootallnate/once@2":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@tootallnate/once/-/once-2.0.0.tgz#f544a148d3ab35801c1f633a7441fd87c2e484bf"
@@ -4964,6 +4959,7 @@ stop-iteration-iterator@^1.0.0:
     internal-slot "^1.0.4"
 
 "string-width-cjs@npm:string-width@^4.2.0", string-width@^4.1.0:
+  name string-width-cjs
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
   integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==

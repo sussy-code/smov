@@ -60,7 +60,6 @@
     "@babel/core": "^7.21.3",
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-typescript": "^7.21.0",
-    "@tailwindcss/line-clamp": "^0.4.2",
     "@types/chromecast-caf-sender": "^1.0.5",
     "@types/crypto-js": "^4.1.1",
     "@types/dompurify": "^2.4.0",
