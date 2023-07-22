@@ -5,12 +5,14 @@ import { VitePWA } from "vite-plugin-pwa";
 import checker from "vite-plugin-checker";
 import path from "path";
 import { handlebars } from "./plugins/handlebars";
+import dotenv from 'dotenv';
+dotenv.config();
 
 export default defineConfig({
-  plugins: [
+  plugins:[
     handlebars({
       vars: {
-        message: "HELLOWORLD"
+        appdomain: process.env.APP_DOMAIN,
       },
     }),
     react({
