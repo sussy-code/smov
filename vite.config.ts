@@ -8,12 +8,14 @@ import { handlebars } from "./plugins/handlebars";
 import { loadEnv } from "vite"
 
 export default defineConfig(({ mode }) => {
+	const env = loadEnv(mode, process.cwd())
 	return {
 	  plugins:[
 		handlebars({
-		vars: {
-			appdomain: loadEnv(mode, process.cwd()).VITE_APP_DOMAIN,
-		},
+			vars: {
+				opensearch: env.VITE_OPENSEARCH_ENABLED ? '<link rel="search" type="application/opensearchdescription+xml" title="movie-web" href="src/assets/opensearch.xml">' : "",
+				appdomain: env.VITE_APP_DOMAIN,
+			},
 		}),
 		react({
 		babel: {
