@@ -4,7 +4,7 @@ import { MWStreamQuality, MWStreamType } from "@/backend/helpers/streams";
 
 import { getPlayerState } from "../cache";
 import { listenEvent, sendEvent, unlistenEvent } from "../events";
-import { VideoPlayerState } from "../types";
+import { Thumbnail, VideoPlayerState } from "../types";
 
 export type VideoSourceEvent = {
   source: null | {
@@ -17,6 +17,7 @@ export type VideoSourceEvent = {
       id: string;
       url: string;
     };
+    thumbnails: Thumbnail[];
   };
 };
 

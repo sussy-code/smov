@@ -9,6 +9,11 @@ import { DetailedMeta } from "@/backend/metadata/getmeta";
 
 import { VideoPlayerStateProvider } from "./providers/providerTypes";
 
+export interface Thumbnail {
+  from: number;
+  to: number;
+  imgUrl: string;
+}
 export type VideoPlayerMeta = {
   meta: DetailedMeta;
   captions: MWCaption[];
@@ -75,6 +80,7 @@ export type VideoPlayerState = {
       url: string;
       id: string;
     };
+    thumbnails: Thumbnail[];
   };
 
   // casting state

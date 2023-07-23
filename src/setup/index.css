@@ -34,6 +34,10 @@ body[data-no-select] {
   animation: roll 1s;
 }
 
+.roll-infinite {
+  animation: roll 2s infinite;
+}
+
 @keyframes roll {
   from {
     transform: rotate(0deg);
