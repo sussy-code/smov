@@ -1,29 +1,21 @@
 import { useEffect } from "react";
 
-import { MWCaption } from "@/backend/helpers/streams";
-import { DetailedMeta } from "@/backend/metadata/getmeta";
 import { useVideoPlayerDescriptor } from "@/video/state/hooks";
+import {
+  VideoMediaPlayingEvent,
+  useMediaPlaying,
+} from "@/video/state/logic/mediaplaying";
 import { useMeta } from "@/video/state/logic/meta";
-import { useProgress } from "@/video/state/logic/progress";
+import { VideoProgressEvent, useProgress } from "@/video/state/logic/progress";
+import { VideoPlayerMeta } from "@/video/state/types";
 
 export type WindowMeta = {
-  meta: DetailedMeta;
-  captions: MWCaption[];
-  episode?: {
-    episodeId: string;
-    seasonId: string;
+  media: VideoPlayerMeta;
+  state: {
+    mediaPlaying: VideoMediaPlayingEvent;
+    progress: VideoProgressEvent;
   };
-  seasons?: {
-    id: string;
-    number: number;
-    title: string;
-    episodes?: { id: string; number: number; title: string }[];
-  }[];
-  progress: {
-    time: number;
-    duration: number;
-  };
-} | null;
+};
 
 declare global {
   interface Window {
@@ -35,18 +27,16 @@ export function MetaAction() {
   const descriptor = useVideoPlayerDescriptor();
   const meta = useMeta(descriptor);
   const progress = useProgress(descriptor);
+  const mediaPlaying = useMediaPlaying(descriptor);
 
   useEffect(() => {
     if (!window.meta) window.meta = {};
     if (meta) {
       window.meta[descriptor] = {
-        meta: meta.meta,
-        captions: meta.captions,
-        seasons: meta.seasons,
-        episode: meta.episode,
-        progress: {
-          time: progress.time,
-          duration: progress.duration,
+        media: meta,
+        state: {
+          mediaPlaying,
+          progress,
         },
       };
     }
@@ -54,7 +44,7 @@ export function MetaAction() {
     return () => {
       if (window.meta) delete window.meta[descriptor];
     };
-  }, [meta, descriptor, progress]);
+  }, [meta, descriptor, mediaPlaying, progress]);
 
   return null;
 }

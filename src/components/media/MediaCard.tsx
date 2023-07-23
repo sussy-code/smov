@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
-import { TMDBMediaToId } from "@/backend/metadata/getmeta";
+import { TMDBMediaToId } from "@/backend/metadata/tmdb";
 import { MWMediaMeta } from "@/backend/metadata/types/mw";
 import { DotList } from "@/components/text/DotList";
 

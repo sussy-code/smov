@@ -2,6 +2,7 @@ import { FetchError } from "ofetch";
 
 import { formatJWMeta, mediaTypeToJW } from "./justwatch";
 import {
+  TMDBIdToUrlId,
   TMDBMediaToMediaType,
   formatTMDBMeta,
   getEpisodes,
@@ -12,7 +13,7 @@ import {
   mediaTypeToTMDB,
 } from "./tmdb";
 import {
-  JWMediaResult,
+  JWDetailedMeta,
   JWSeasonMetaResult,
   JW_API_BASE,
 } from "./types/justwatch";
@@ -24,23 +25,6 @@ import {
   TMDBShowData,
 } from "./types/tmdb";
 import { makeUrl, proxiedFetch } from "../helpers/fetch";
-
-type JWExternalIdType =
-  | "eidr"
-  | "imdb_latest"
-  | "imdb"
-  | "tmdb_latest"
-  | "tmdb"
-  | "tms";
-
-interface JWExternalId {
-  provider: JWExternalIdType;
-  external_id: string;
-}
-
-interface JWDetailedMeta extends JWMediaResult {
-  external_ids: JWExternalId[];
-}
 
 export interface DetailedMeta {
   meta: MWMediaMeta;
@@ -180,27 +164,6 @@ export async function getLegacyMetaFromId(
   };
 }
 
-export function TMDBMediaToId(media: MWMediaMeta): string {
-  return ["tmdb", mediaTypeToTMDB(media.type), media.id].join("-");
-}
-
-export function decodeTMDBId(
-  paramId: string
-): { id: string; type: MWMediaType } | null {
-  const [prefix, type, id] = paramId.split("-", 3);
-  if (prefix !== "tmdb") return null;
-  let mediaType;
-  try {
-    mediaType = TMDBMediaToMediaType(type);
-  } catch {
-    return null;
-  }
-  return {
-    type: mediaType,
-    id,
-  };
-}
-
 export function isLegacyUrl(url: string): boolean {
   if (url.startsWith("/media/JW")) return true;
   return false;
@@ -224,10 +187,12 @@ export async function convertLegacyUrl(
   // movies always have an imdb id on tmdb
   if (imdbId && mediaType === MWMediaType.MOVIE) {
     const movieId = await getMovieFromExternalId(imdbId);
-    if (movieId) return `/media/tmdb-movie-${movieId}`;
-  }
+    if (movieId) {
+      return `/media/${TMDBIdToUrlId(mediaType, movieId, meta.meta.title)}`;
+    }
 
-  if (tmdbId) {
-    return `/media/tmdb-${type}-${tmdbId}`;
+    if (tmdbId) {
+      return `/media/${TMDBIdToUrlId(mediaType, tmdbId, meta.meta.title)}`;
+    }
   }
 }

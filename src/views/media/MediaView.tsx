@@ -4,11 +4,8 @@ import { useTranslation } from "react-i18next";
 import { useHistory, useParams } from "react-router-dom";
 
 import { MWStream } from "@/backend/helpers/streams";
-import {
-  DetailedMeta,
-  decodeTMDBId,
-  getMetaFromId,
-} from "@/backend/metadata/getmeta";
+import { DetailedMeta, getMetaFromId } from "@/backend/metadata/getmeta";
+import { decodeTMDBId } from "@/backend/metadata/tmdb";
 import {
   MWMediaType,
   MWSeasonWithEpisodeMeta,
