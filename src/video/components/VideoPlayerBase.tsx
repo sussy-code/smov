@@ -7,6 +7,7 @@ import { useInterface } from "@/video/state/logic/interface";
 import { useMeta } from "@/video/state/logic/meta";
 
 import { MetaAction } from "./actions/MetaAction";
+import ThumbnailGeneratorInternal from "./internal/ThumbnailGeneratorInternal";
 import { VideoElementInternal } from "./internal/VideoElementInternal";
 import {
   VideoPlayerContextProvider,
@@ -48,6 +49,7 @@ function VideoPlayerBaseWithState(props: VideoPlayerBaseProps) {
         ].join(" ")}
       >
         <MetaAction />
+        <ThumbnailGeneratorInternal />
         <VideoElementInternal autoPlay={props.autoPlay} />
         <CastingInternal />
         <WrapperRegisterInternal wrapper={ref.current} />

@@ -63,7 +63,6 @@ export function createVideoStateProvider(
 ): VideoPlayerStateProvider {
   const player = playerEl;
   const state = getPlayerState(descriptor);
-
   return {
     getId() {
       return "video";
@@ -147,6 +146,16 @@ export function createVideoStateProvider(
 
       // reset before assign new one so the old HLS instance gets destroyed
       resetStateForSource(descriptor, state);
+      // update state
+      state.source = {
+        quality: source.quality,
+        type: source.type,
+        url: source.source,
+        caption: null,
+        embedId: source.embedId,
+        providerId: source.providerId,
+        thumbnails: [],
+      };
 
       if (source?.type === MWStreamType.HLS) {
         if (player.canPlayType("application/vnd.apple.mpegurl")) {
@@ -185,15 +194,6 @@ export function createVideoStateProvider(
         player.src = source.source;
       }
 
-      // update state
-      state.source = {
-        quality: source.quality,
-        type: source.type,
-        url: source.source,
-        caption: null,
-        embedId: source.embedId,
-        providerId: source.providerId,
-      };
       updateSource(descriptor, state);
     },
     setCaption(id, url) {
