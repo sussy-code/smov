@@ -117,7 +117,7 @@ function MediaCardContent({
             />
           </div>
         </div>
-        <h1 className="mb-1 max-h-[4.5rem] text-ellipsis break-words font-bold text-white line-clamp-3">
+        <h1 className="mb-1 line-clamp-3 max-h-[4.5rem] text-ellipsis break-words font-bold text-white">
           <span>{media.title}</span>
         </h1>
         <DotList className="text-xs" content={dotListContent} />

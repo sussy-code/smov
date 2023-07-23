@@ -3,8 +3,6 @@
     "name": "movie-web"
   },
   "search": {
-    "loading_series": "Szukamy twoich ulubionych seriali...",
-    "loading_movie": "Szukamy twoich ulubionych filmów...",
     "loading": "Wczytywanie...",
     "allResults": "To wszystko co mamy!",
     "noResults": "Nie mogliśmy niczego znaleźć!",
@@ -71,7 +69,7 @@
     "popouts": {
       "close": "Zamknąć",
       "seasons": {
-        "title":"Sezony",
+        "title": "Sezony",
         "other": "Inne sezony",
         "noSeason": "Brak sezonu"
       },

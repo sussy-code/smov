@@ -48,7 +48,6 @@ async function getMetas(
       const year = Number(item.year.toString().split("-")[0]);
       const data = await searchForMedia({
         searchQuery: `${item.title} ${year}`,
-        type: item.mediaType,
       });
       const relevantItem = data.find(
         (res) =>

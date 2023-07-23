@@ -33,6 +33,28 @@
     <meta name="referrer" content="no-referrer" />
 
     <title>movie-web</title>
+
+    {{#if opensearchEnabled }}
+      <!-- OpenSearch -->
+      <link rel="search" type="application/opensearchdescription+xml" title="movie-web" href="/opensearch.xml">
+
+      <!-- Google Sitelinks -->
+      <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "url": "{{ routeDomain }}",
+          "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "{{ routeDomain }}/browse/?q={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+          }
+        }
+      </script>
+    {{/if}}
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

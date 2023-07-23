@@ -42,5 +42,5 @@ module.exports = {
       animation: { "loading-pin": "loading-pin 1.8s ease-in-out infinite" }
     }
   },
-  plugins: [require("tailwind-scrollbar"), require("@tailwindcss/line-clamp")]
+  plugins: [require("tailwind-scrollbar")]
 };

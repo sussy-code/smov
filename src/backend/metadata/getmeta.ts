@@ -6,7 +6,6 @@ import {
   TMDBMediaToMediaType,
   formatTMDBMeta,
   getEpisodes,
-  getExternalIds,
   getMediaDetails,
   getMediaPoster,
   getMovieFromExternalId,
@@ -19,6 +18,7 @@ import {
 } from "./types/justwatch";
 import { MWMediaMeta, MWMediaType } from "./types/mw";
 import {
+  TMDBContentTypes,
   TMDBMediaResult,
   TMDBMovieData,
   TMDBSeasonMetaResult,
@@ -74,8 +74,7 @@ export async function getMetaFromId(
 
   if (!details) return null;
 
-  const externalIds = await getExternalIds(id, mediaTypeToTMDB(type));
-  const imdbId = externalIds.imdb_id ?? undefined;
+  const imdbId = details.external_ids.imdb_id ?? undefined;
 
   let seasonData: TMDBSeasonMetaResult | undefined;
 
@@ -165,7 +164,13 @@ export async function getLegacyMetaFromId(
 }
 
 export function isLegacyUrl(url: string): boolean {
-  if (url.startsWith("/media/JW")) return true;
+  if (url.startsWith("/media/JW") || url.startsWith("/media/tmdb-show"))
+    return true;
+  return false;
+}
+
+export function isLegacyMediaType(url: string): boolean {
+  if (url.startsWith("/media/tmdb-show")) return true;
   return false;
 }
 
@@ -177,7 +182,16 @@ export async function convertLegacyUrl(
   const urlParts = url.split("/").slice(2);
   const [, type, id] = urlParts[0].split("-", 3);
 
-  const mediaType = TMDBMediaToMediaType(type);
+  if (isLegacyMediaType(url)) {
+    const details = await getMediaDetails(id, TMDBContentTypes.TV);
+    return `/media/${TMDBIdToUrlId(
+      MWMediaType.SERIES,
+      details.id.toString(),
+      details.name
+    )}`;
+  }
+
+  const mediaType = TMDBMediaToMediaType(type as TMDBContentTypes);
   const meta = await getLegacyMetaFromId(mediaType, id);
 
   if (!meta) return undefined;

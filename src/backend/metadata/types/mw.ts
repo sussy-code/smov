@@ -43,7 +43,6 @@ export type MWMediaMeta = MWMediaMetaBase & MWMediaMetaSpecific;
 
 export interface MWQuery {
   searchQuery: string;
-  type: MWMediaType;
 }
 
 export interface DetailedMeta {

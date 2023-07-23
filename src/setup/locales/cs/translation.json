@@ -3,8 +3,6 @@
     "name": "movie-web"
   },
   "search": {
-    "loading_series": "Načítání Vašich oblíbených seriálů...",
-    "loading_movie": "Načítání Vašich oblíbených filmů...",
     "loading": "Načítání...",
     "allResults": "To je vše co máme!",
     "noResults": "Nemohli jsme nic najít!",

@@ -3,8 +3,6 @@
     "name": "movie-web"
   },
   "search": {
-    "loading_series": "Favori dizileriniz aranıyor...",
-    "loading_movie": "Favori filmleriniz aranıyor...",
     "loading": "Yükleniyor...",
     "allResults": "Bu kadarını bulabildik!",
     "noResults": "Hiçbir şey bulamadık!",
@@ -71,9 +69,9 @@
     "popouts": {
       "back": "Geri git",
       "sources": "Kaynaklar",
-      "close":"Kapat",
+      "close": "Kapat",
       "seasons": {
-        "title":"Sezonlar",
+        "title": "Sezonlar",
         "other": "Diğer sezonlar",
         "noSeason": "Sezon yok"
       },

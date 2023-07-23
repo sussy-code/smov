@@ -3,8 +3,6 @@
     "name": "movie-web"
   },
   "search": {
-    "loading_series": "Fetchin' yer favorite series...",
-    "loading_movie": "Fetchin' yer favorite movies...",
     "loadin'": "Loadin'...",
     "allResults": "That be all we 'ave, me hearty!",
     "noResults": "We couldn't find anythin' that matches yer search!",

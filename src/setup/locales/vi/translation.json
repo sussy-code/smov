@@ -3,8 +3,6 @@
     "name": "movie-web"
   },
   "search": {
-    "loading_series": "Đang tìm chương trình yêu thích của bạn...",
-    "loading_movie": "Đang tìm bộ phim yêu thích của bạn...",
     "loading": "Đang tải...",
     "allResults": "Đó là tất cả chúng tôi có!",
     "noResults": "Chúng tôi không thể tìm thấy gì!",
