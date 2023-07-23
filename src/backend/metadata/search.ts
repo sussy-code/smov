@@ -5,7 +5,7 @@ import { MWMediaMeta, MWQuery } from "./types/mw";
 
 const cache = new SimpleCache<MWQuery, MWMediaMeta[]>();
 cache.setCompare((a, b) => {
-  return a.type === b.type && a.searchQuery.trim() === b.searchQuery.trim();
+  return a.searchQuery.trim() === b.searchQuery.trim();
 });
 cache.initialize();
 

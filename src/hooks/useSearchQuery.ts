@@ -1,14 +1,16 @@
 import { useState } from "react";
-import { generatePath, useHistory, useRouteMatch } from "react-router-dom";
+import { generatePath, useHistory, useParams } from "react-router-dom";
 
-import { MWMediaType, MWQuery } from "@/backend/metadata/types/mw";
+import { MWQuery } from "@/backend/metadata/types/mw";
+import { useQueryParams } from "@/hooks/useQueryParams";
 
-function getInitialValue(params: { type: string; query: string }) {
-  const type =
-    Object.values(MWMediaType).find((v) => params.type === v) ||
-    MWMediaType.MOVIE;
-  const searchQuery = decodeURIComponent(params.query || "");
-  return { type, searchQuery };
+function getInitialValue(
+  query: Record<string, string>,
+  params: Record<string, string>
+) {
+  let searchQuery = decodeURIComponent(params.query || "");
+  if (query.q) searchQuery = query.q;
+  return { searchQuery };
 }
 
 export function useSearchQuery(): [
@@ -17,28 +19,34 @@ export function useSearchQuery(): [
   () => void
 ] {
   const history = useHistory();
-  const { path, params } = useRouteMatch<{ type: string; query: string }>();
-  const [search, setSearch] = useState<MWQuery>(getInitialValue(params));
+  const query = useQueryParams();
+  const params = useParams<{ query: string }>();
+  const [search, setSearch] = useState<MWQuery>(getInitialValue(query, params));
 
   const updateParams = (inp: Partial<MWQuery>, force: boolean) => {
-    const copySearch: MWQuery = { ...search };
+    const copySearch = { ...search };
     Object.assign(copySearch, inp);
     setSearch(copySearch);
     if (!force) return;
+    if (copySearch.searchQuery.length === 0) {
+      history.replace("/");
+      return;
+    }
     history.replace(
-      generatePath(path, {
-        query:
-          copySearch.searchQuery.length === 0 ? undefined : inp.searchQuery,
-        type: copySearch.type,
+      generatePath("/browse/:query", {
+        query: copySearch.searchQuery,
       })
     );
   };
 
   const onUnFocus = () => {
+    if (search.searchQuery.length === 0) {
+      history.replace("/");
+      return;
+    }
     history.replace(
-      generatePath(path, {
-        query: search.searchQuery.length === 0 ? undefined : search.searchQuery,
-        type: search.type,
+      generatePath("/browse/:query", {
+        query: search.searchQuery,
       })
     );
   };
