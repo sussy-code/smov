@@ -3,8 +3,6 @@
     "name": "movie-web"
   },
   "search": {
-    "loading_series": "Recupero delle tue serie preferite...",
-    "loading_movie": "Recupero dei tuoi film preferiti...",
     "loading": "Caricamento...",
     "allResults": "Ecco tutto ciò che abbiamo!",
     "noResults": "Non abbiamo trovato nulla!",
@@ -88,7 +86,7 @@
       "customCaption": "Sottotitolo personalizzato",
       "uploadCustomCaption": "Carica sottotitolo",
       "noEmbeds": "Nessun embed è stato trovato per questa fonte",
-      
+
       "errors": {
         "loadingWentWong": "Si è verificato un problema durante il caricamento degli episodi per {{seasonTitle}}",
         "embedsError": "Si è verificato un problema durante il caricamento degli embed per questa cosa che ti piace"

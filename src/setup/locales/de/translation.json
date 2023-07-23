@@ -3,8 +3,6 @@
     "name": "movie-web"
   },
   "search": {
-    "loading_series": "Auf der Suche nach deiner Lieblingsserie...",
-    "loading_movie": "Auf der Suche nach deinen Lieblingsfilmen...",
     "loading": "Wird geladen...",
     "allResults": "Das ist alles, was wir haben!",
     "noResults": "Wir haben nichts gefunden!",

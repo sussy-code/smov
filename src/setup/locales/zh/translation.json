@@ -3,8 +3,6 @@
     "name": "movie-web"
   },
   "search": {
-    "loading_series": "正在获取您最喜欢的连续剧……",
-    "loading_movie": "正在获取您最喜欢的影片……",
     "loading": "载入中……",
     "allResults": "以上是我们能找到的所有结果！",
     "noResults": "我们找不到任何结果！",

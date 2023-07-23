@@ -3,8 +3,6 @@
     "name": "movie-web"
   },
   "search": {
-    "loading_series": "Recherche de votre série préférée...",
-    "loading_movie": "Recherche de vos films préférés...",
     "loading": "Chargement...",
     "allResults": "C'est tout ce que nous avons!",
     "noResults": "Nous n'avons rien trouvé!",

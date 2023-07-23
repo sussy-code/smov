@@ -3,8 +3,6 @@
     "name": "movie-web"
   },
   "search": {
-    "loading_series": "Fetching your favourite series...",
-    "loading_movie": "Fetching your favourite movies...",
     "loading": "Loading...",
     "allResults": "That's all we have!",
     "noResults": "We couldn't find anything!",
@@ -73,7 +71,7 @@
       "sources": "Sources",
       "close": "Close",
       "seasons": {
-        "title":"Seasons",
+        "title": "Seasons",
         "other": "Other seasons",
         "noSeason": "No season"
       },

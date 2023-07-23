@@ -3,8 +3,6 @@
     "name": "movie-web"
   },
   "search": {
-    "loading_series": "We zoeken je favoriete series...",
-    "loading_movie": "We zoeken je favoriete films...",
     "loading": "Aan het zoeken...",
     "allResults": "Dat is het!",
     "noResults": "We konden helaas niets vinden.",
