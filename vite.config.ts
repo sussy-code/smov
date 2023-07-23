@@ -13,8 +13,10 @@ export default defineConfig(({ mode }) => {
     plugins: [
       handlebars({
         vars: {
-          opensearch: env.VITE_OPENSEARCH_ENABLED ? '<link rel="search" type="application/opensearchdescription+xml" title="movie-web" href="src/assets/opensearch.xml">' : "",
-          appdomain: env.VITE_APP_DOMAIN,
+          opensearchEnabled: env.VITE_OPENSEARCH_ENABLED === "true",
+          routeDomain: env.VITE_APP_DOMAIN + (env.VITE_NORMAL_ROUTER !== 'true' ? "/#" : ""),
+          domain: env.VITE_APP_DOMAIN,
+          env,
         },
       }),
       react({
