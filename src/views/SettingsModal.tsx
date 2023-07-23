@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
+import { CaptionCue } from "@/_oldvideo/components/actions/CaptionRendererAction";
 import CaptionColorSelector, {
   colors,
 } from "@/components/CaptionColorSelector";
@@ -16,7 +17,6 @@ import {
   captionLanguages,
 } from "@/setup/iso6391";
 import { useSettings } from "@/state/settings";
-import { CaptionCue } from "@/video/components/actions/CaptionRendererAction";
 
 export default function SettingsModal(props: {
   onClose: () => void;

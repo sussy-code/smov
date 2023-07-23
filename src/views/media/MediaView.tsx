@@ -3,6 +3,13 @@ import { Helmet } from "react-helmet";
 import { useTranslation } from "react-i18next";
 import { useHistory, useParams } from "react-router-dom";
 
+import { MetaController } from "@/_oldvideo/components/controllers/MetaController";
+import { ProgressListenerController } from "@/_oldvideo/components/controllers/ProgressListenerController";
+import { SeriesController } from "@/_oldvideo/components/controllers/SeriesController";
+import { SourceController } from "@/_oldvideo/components/controllers/SourceController";
+import { VideoPlayerHeader } from "@/_oldvideo/components/parts/VideoPlayerHeader";
+import { VideoPlayer } from "@/_oldvideo/components/VideoPlayer";
+import { VideoPlayerMeta } from "@/_oldvideo/state/types";
 import { MWStream } from "@/backend/helpers/streams";
 import { DetailedMeta, getMetaFromId } from "@/backend/metadata/getmeta";
 import { decodeTMDBId } from "@/backend/metadata/tmdb";
@@ -17,13 +24,6 @@ import { useGoBack } from "@/hooks/useGoBack";
 import { useLoading } from "@/hooks/useLoading";
 import { SelectedMediaData, useScrape } from "@/hooks/useScrape";
 import { useWatchedItem } from "@/state/watched";
-import { MetaController } from "@/video/components/controllers/MetaController";
-import { ProgressListenerController } from "@/video/components/controllers/ProgressListenerController";
-import { SeriesController } from "@/video/components/controllers/SeriesController";
-import { SourceController } from "@/video/components/controllers/SourceController";
-import { VideoPlayerHeader } from "@/video/components/parts/VideoPlayerHeader";
-import { VideoPlayer } from "@/video/components/VideoPlayer";
-import { VideoPlayerMeta } from "@/video/state/types";
 
 import { MediaFetchErrorView } from "./MediaErrorView";
 import { MediaScrapeLog } from "./MediaScrapeLog";

@@ -1,9 +1,9 @@
 import { Helmet } from "react-helmet";
 import { useTranslation } from "react-i18next";
 
+import { VideoPlayerHeader } from "@/_oldvideo/components/parts/VideoPlayerHeader";
 import { ErrorMessage } from "@/components/layout/ErrorBoundary";
 import { useGoBack } from "@/hooks/useGoBack";
-import { VideoPlayerHeader } from "@/video/components/parts/VideoPlayerHeader";
 
 export function MediaFetchErrorView() {
   const { t } = useTranslation();
