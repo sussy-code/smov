@@ -248,13 +248,17 @@ registerProvider({
     const mappedCaptions = subtitleRes.list
       .map(convertSubtitles)
       .filter(Boolean);
+
+    const fasterUrl = new URL(hdQuality.path);
+    fasterUrl.host = "mp4.shegu.net"; // this domain is faster
+
     return {
       embeds: [],
       stream: {
         quality: qualityMap[
           hdQuality.quality as QualityInMap
         ] as MWStreamQuality,
-        streamUrl: hdQuality.path,
+        streamUrl: fasterUrl.toString(),
         type: MWStreamType.MP4,
         captions: mappedCaptions,
       },
