@@ -10,12 +10,14 @@ export const playerStatus = {
 
 export type PlayerStatus = ValuesOf<typeof playerStatus>;
 
+export interface SourceSliceSource {
+  url: string;
+  type: MWStreamType;
+}
+
 export interface SourceSlice {
   status: PlayerStatus;
-  source: {
-    url: string;
-    type: MWStreamType;
-  } | null;
+  source: SourceSliceSource | null;
   setStatus(status: PlayerStatus): void;
   setSource(url: string, type: MWStreamType): void;
 }

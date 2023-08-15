@@ -54,6 +54,7 @@ export default function ThumbnailGeneratorInternal() {
   const descriptor = useVideoPlayerDescriptor();
   const source = useSource(descriptor);
 
+  // TODO fix memory leak
   const videoRef = useRef<HTMLVideoElement>(document.createElement("video"));
   const canvasRef = useRef<HTMLCanvasElement>(document.createElement("canvas"));
   const hlsRef = useRef<Hls>(new Hls());
