@@ -34,6 +34,7 @@ registerEmbedScraper({
   displayName: "UpCloud",
   for: MWEmbedType.UPCLOUD,
   rank: 200,
+  disabled: true, // encryption broke
   async getStream({ url }) {
     // Example url: https://dokicloud.one/embed-4/{id}?z=
     const parsedUrl = new URL(url.replace("embed-5", "embed-4"));
