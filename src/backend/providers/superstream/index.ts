@@ -18,6 +18,12 @@ import { compareTitle } from "@/utils/titleMatch";
 
 const nanoid = customAlphabet("0123456789abcdef", 32);
 
+function makeFasterUrl(url: string) {
+  const fasterUrl = new URL(url);
+  fasterUrl.host = "mp4.shegu.net"; // this domain is faster
+  return fasterUrl.toString();
+}
+
 const qualityMap = {
   "360p": MWStreamQuality.Q360P,
   "480p": MWStreamQuality.Q480P,
@@ -199,7 +205,7 @@ registerProvider({
       return {
         embeds: [],
         stream: {
-          streamUrl: hdQuality.path,
+          streamUrl: makeFasterUrl(hdQuality.path),
           quality: qualityMap[hdQuality.quality as QualityInMap],
           type: MWStreamType.MP4,
           captions: mappedCaptions,
@@ -248,13 +254,14 @@ registerProvider({
     const mappedCaptions = subtitleRes.list
       .map(convertSubtitles)
       .filter(Boolean);
+
     return {
       embeds: [],
       stream: {
         quality: qualityMap[
           hdQuality.quality as QualityInMap
         ] as MWStreamQuality,
-        streamUrl: hdQuality.path,
+        streamUrl: makeFasterUrl(hdQuality.path),
         type: MWStreamType.MP4,
         captions: mappedCaptions,
       },
