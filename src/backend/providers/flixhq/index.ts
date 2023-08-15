@@ -16,6 +16,8 @@ registerProvider({
     const id = await getFlixhqId(media.meta);
     if (!id) throw new Error("flixhq no matching item found");
 
+    // TODO tv shows not supported. just need to scrape the specific episode sources
+
     const sources = await getFlixhqSources(id);
     const upcloudStream = sources.find(
       (v) => v.embed.toLowerCase() === "upcloud"
