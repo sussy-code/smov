@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react";
+import { ReactNode } from "react";
 import { Link } from "react-router-dom";
 
 import { IconPatch } from "@/components/buttons/IconPatch";
@@ -6,7 +6,6 @@ import { Icons } from "@/components/Icon";
 import { Lightbar } from "@/components/utils/Lightbar";
 import { useBannerSize } from "@/hooks/useBanner";
 import { conf } from "@/setup/config";
-import SettingsModal from "@/views/SettingsModal";
 
 import { BrandPill } from "./BrandPill";
 
@@ -17,7 +16,6 @@ export interface NavigationProps {
 
 export function Navigation(props: NavigationProps) {
   const bannerHeight = useBannerSize();
-  const [showModal, setShowModal] = useState(false);
   return (
     <>
       <div className="absolute inset-x-0 top-0 flex h-[88px] items-center justify-center">
@@ -52,14 +50,6 @@ export function Navigation(props: NavigationProps) {
               props.children ? "hidden sm:flex" : "flex"
             } relative flex-row	gap-4`}
           >
-            <IconPatch
-              className="text-2xl text-white"
-              icon={Icons.GEAR}
-              clickable
-              onClick={() => {
-                setShowModal(true);
-              }}
-            />
             <a
               href={conf().DISCORD_LINK}
               target="_blank"
@@ -78,7 +68,6 @@ export function Navigation(props: NavigationProps) {
             </a>
           </div>
         </div>
-        <SettingsModal show={showModal} onClose={() => setShowModal(false)} />
       </div>
     </>
   );

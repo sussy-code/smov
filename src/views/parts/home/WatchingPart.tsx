@@ -2,13 +2,18 @@ import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import { EditButton } from "@/components/buttons/EditButton";
+import { Icons } from "@/components/Icon";
+import { SectionHeading } from "@/components/layout/SectionHeading";
+import { MediaGrid } from "@/components/media/MediaGrid";
+import { WatchedMediaCard } from "@/components/media/WatchedMediaCard";
 import {
   getIfBookmarkedFromPortable,
   useBookmarkContext,
 } from "@/state/bookmark";
 import { useWatchedContext } from "@/state/watched";
 
-function Watched() {
+export function WatchingPart() {
   const { t } = useTranslation();
   const { getFilteredBookmarks } = useBookmarkContext();
   const { getFilteredWatched, removeProgress } = useWatchedContext();

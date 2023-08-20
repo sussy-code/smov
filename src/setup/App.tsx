@@ -15,9 +15,9 @@ import { Layout } from "@/setup/Layout";
 import { BookmarkContextProvider } from "@/state/bookmark";
 import { SettingsProvider } from "@/state/settings";
 import { WatchedContextProvider } from "@/state/watched";
+import { NotFoundPage } from "@/views/errors/NotFoundPage";
+import { HomePage } from "@/views/HomePage";
 import { MediaView } from "@/views/media/MediaView";
-import { NotFoundPage } from "@/views/notfound/NotFoundView";
-import { SearchView } from "@/views/search/SearchView";
 
 function LegacyUrlView({ children }: { children: ReactElement }) {
   const location = useLocation();
@@ -85,16 +85,14 @@ function App() {
                 <Route
                   exact
                   path={["/browse/:query?", "/"]}
-                  component={SearchView}
+                  component={HomePage}
                 />
 
                 {/* other */}
                 <Route
                   exact
                   path="/dev"
-                  component={lazy(
-                    () => import("@/views/developer/DeveloperView")
-                  )}
+                  component={lazy(() => import("@/views/DeveloperPage"))}
                 />
                 <Route
                   exact

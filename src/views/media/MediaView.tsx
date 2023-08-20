@@ -24,10 +24,11 @@ import { SourceController } from "@/video/components/controllers/SourceControlle
 import { VideoPlayerHeader } from "@/video/components/parts/VideoPlayerHeader";
 import { VideoPlayer } from "@/video/components/VideoPlayer";
 import { VideoPlayerMeta } from "@/video/state/types";
+import { ErrorWrapperPart } from "@/views/parts/errors/ErrorWrapperPart";
+import { MediaNotFoundPart } from "@/views/parts/errors/MediaNotFoundPart";
 
 import { MediaFetchErrorView } from "./MediaErrorView";
 import { MediaScrapeLog } from "./MediaScrapeLog";
-import { NotFoundMedia, NotFoundWrapper } from "../notfound/NotFoundView";
 
 function MediaViewLoading(props: { onGoBack(): void }) {
   const { t } = useTranslation();
@@ -241,9 +242,9 @@ export function MediaView() {
   if (error) return <MediaFetchErrorView />;
   if (!meta || !selected)
     return (
-      <NotFoundWrapper video>
-        <NotFoundMedia />
-      </NotFoundWrapper>
+      <ErrorWrapperPart video>
+        <MediaNotFoundPart />
+      </ErrorWrapperPart>
     );
 
   // scraping view will start scraping and return with onStream
