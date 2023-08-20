@@ -24,7 +24,7 @@ export function Navigation(props: NavigationProps) {
         </div>
       </div>
       <div
-        className="fixed left-0 right-0 top-0 min-h-[150px] bg-gradient-to-b from-background-main via-background-main to-transparent sm:from-transparent"
+        className="fixed left-0 right-0 top-0 z-10 min-h-[150px] bg-gradient-to-b from-background-main via-background-main to-transparent sm:from-transparent"
         style={{
           top: `${bannerHeight}px`,
         }}

@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Icon, Icons } from "@/components/Icon";
 import { BrandPill } from "@/components/layout/BrandPill";
 import { WideContainer } from "@/components/layout/WideContainer";
+import { conf } from "@/setup/config";
 
 function FooterLink(props: {
   href: string;
@@ -50,10 +51,10 @@ export function Footer() {
           <p className="mt-3">{t("footer.legal.disclaimerText")}</p>
         </div>
         <div className="space-x-[2rem]">
-          <FooterLink icon={Icons.GITHUB} href="https://github.com/movie-web">
+          <FooterLink icon={Icons.GITHUB} href={conf().GITHUB_LINK}>
             {t("footer.links.github")}
           </FooterLink>
-          <FooterLink icon={Icons.DISCORD} href="https://discord.movie-web.app">
+          <FooterLink icon={Icons.DISCORD} href={conf().DISCORD_LINK}>
             {t("footer.links.discord")}
           </FooterLink>
           <div className="inline md:hidden">
