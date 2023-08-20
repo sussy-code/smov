@@ -1,6 +1,7 @@
 export interface TextInputControlPropsNoLabel {
   onChange?: (data: string) => void;
   onUnFocus?: () => void;
+  onFocus?: () => void;
   value?: string;
   placeholder?: string;
   className?: string;
@@ -17,6 +18,7 @@ export function TextInputControl({
   label,
   className,
   placeholder,
+  onFocus,
 }: TextInputControlProps) {
   const input = (
     <input
@@ -26,6 +28,7 @@ export function TextInputControl({
       onChange={(e) => onChange && onChange(e.target.value)}
       value={value}
       onBlur={() => onUnFocus && onUnFocus()}
+      onFocus={() => onFocus?.()}
     />
   );
 

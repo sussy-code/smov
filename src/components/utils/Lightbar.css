@@ -1,0 +1,22 @@
+.lightbar {
+	position: absolute;
+	left: -25vw;
+	top: 0;
+	width: 150vw;
+    height: 800px;
+    pointer-events: none;
+    user-select: none;
+    --top: theme('colors.background.main');
+    --bottom: theme('colors.lightBar.light');
+    --first: conic-gradient(from 90deg at 80% 50%,var(--top),var(--bottom));
+    --second: conic-gradient(from 270deg at 20% 50%,var(--bottom),var(--top));
+    mask-image: radial-gradient(100% 50% at center center, black, transparent);
+	  background-image: var(--first), var(--second);
+    background-position-x: 1%, 99%;
+    background-position-y: 0%, 0%;
+    background-size: 50% 100%, 50% 100%;
+    opacity: 1;
+    transform: rotate(180deg) translateZ(0px) translateY(400px);
+    transform-origin: center center;
+    background-repeat: no-repeat;
+}

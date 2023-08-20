@@ -22,6 +22,15 @@ function FooterLink(props: {
   );
 }
 
+function Dmca() {
+  const { t } = useTranslation();
+  return (
+    <FooterLink icon={Icons.DRAGON} href="https://youtu.be/-WOonkg_ZCo">
+      {t("footer.links.dmca")}
+    </FooterLink>
+  );
+}
+
 export function Footer() {
   const { t } = useTranslation();
 
@@ -33,28 +42,26 @@ export function Footer() {
             <BrandPill />
           </div>
           <p className="mt-4 lg:max-w-[400px]">{t("footer.tagline")}</p>
-          <div className="mt-8 space-x-[2rem]">
-            <FooterLink icon={Icons.GITHUB} href="https://github.com/movie-web">
-              {t("footer.links.github")}
-            </FooterLink>
-            <FooterLink
-              icon={Icons.DISCORD}
-              href="https://github.com/movie-web"
-            >
-              {t("footer.links.github")}
-            </FooterLink>
-          </div>
         </div>
         <div className="md:text-right">
           <h3 className="font-semibold text-type-emphasis">
             {t("footer.legal.disclaimer")}
           </h3>
           <p className="mt-3">{t("footer.legal.disclaimerText")}</p>
-          <div className="mt-8">
-            <FooterLink icon={Icons.DRAGON} href="https://youtu.be/-WOonkg_ZCo">
-              {t("footer.links.dmca")}
-            </FooterLink>
+        </div>
+        <div className="space-x-[2rem]">
+          <FooterLink icon={Icons.GITHUB} href="https://github.com/movie-web">
+            {t("footer.links.github")}
+          </FooterLink>
+          <FooterLink icon={Icons.DISCORD} href="https://discord.movie-web.app">
+            {t("footer.links.discord")}
+          </FooterLink>
+          <div className="inline md:hidden">
+            <Dmca />
           </div>
+        </div>
+        <div className="hidden items-center justify-end md:flex">
+          <Dmca />
         </div>
       </WideContainer>
     </footer>

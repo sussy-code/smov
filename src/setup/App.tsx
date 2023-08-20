@@ -17,7 +17,6 @@ import { SettingsProvider } from "@/state/settings";
 import { WatchedContextProvider } from "@/state/watched";
 import { MediaView } from "@/views/media/MediaView";
 import { NotFoundPage } from "@/views/notfound/NotFoundView";
-import { V2MigrationView } from "@/views/other/v2Migration";
 import { SearchView } from "@/views/search/SearchView";
 
 function LegacyUrlView({ children }: { children: ReactElement }) {
@@ -62,7 +61,6 @@ function App() {
             <Layout>
               <Switch>
                 {/* functional routes */}
-                <Route exact path="/v2-migration" component={V2MigrationView} />
                 <Route exact path="/s/:query">
                   <QuickSearch />
                 </Route>

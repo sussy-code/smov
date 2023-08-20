@@ -7,13 +7,10 @@ import { Icons } from "@/components/Icon";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 import { MediaGrid } from "@/components/media/MediaGrid";
 import { WatchedMediaCard } from "@/components/media/WatchedMediaCard";
-import {
-  getIfBookmarkedFromPortable,
-  useBookmarkContext,
-} from "@/state/bookmark";
+import { useBookmarkContext } from "@/state/bookmark";
 import { useWatchedContext } from "@/state/watched";
 
-function Bookmarks() {
+export function BookmarksPart() {
   const { t } = useTranslation();
   const { getFilteredBookmarks, setItemBookmark } = useBookmarkContext();
   const bookmarks = getFilteredBookmarks();
@@ -56,51 +53,6 @@ function Bookmarks() {
           />
         ))}
       </MediaGrid>
-    </div>
-  );
-}
-
-function Watched() {
-  const { t } = useTranslation();
-  const { getFilteredBookmarks } = useBookmarkContext();
-  const { getFilteredWatched, removeProgress } = useWatchedContext();
-  const [editing, setEditing] = useState(false);
-  const [gridRef] = useAutoAnimate<HTMLDivElement>();
-
-  const bookmarks = getFilteredBookmarks();
-  const watchedItems = getFilteredWatched().filter(
-    (v) => !getIfBookmarkedFromPortable(bookmarks, v.item.meta)
-  );
-
-  if (watchedItems.length === 0) return null;
-
-  return (
-    <div>
-      <SectionHeading
-        title={t("search.continueWatching") || "Continue Watching"}
-        icon={Icons.CLOCK}
-      >
-        <EditButton editing={editing} onEdit={setEditing} />
-      </SectionHeading>
-      <MediaGrid ref={gridRef}>
-        {watchedItems.map((v) => (
-          <WatchedMediaCard
-            key={v.item.meta.id}
-            media={v.item.meta}
-            closable={editing}
-            onClose={() => removeProgress(v.item.meta.id)}
-          />
-        ))}
-      </MediaGrid>
-    </div>
-  );
-}
-
-export function HomeView() {
-  return (
-    <div>
-      <Bookmarks />
-      <Watched />
     </div>
   );
 }

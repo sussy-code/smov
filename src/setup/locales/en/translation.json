@@ -10,7 +10,7 @@
     "headingTitle": "Search results",
     "bookmarks": "Bookmarks",
     "continueWatching": "Continue Watching",
-    "title": "What do you want to watch?",
+    "title": "What to watch tonight?",
     "placeholder": "What do you want to watch?"
   },
   "media": {
@@ -136,7 +136,8 @@
     "tagline": "Watch your favorite shows and movies with this open source streaming app.",
     "links": {
       "github": "GitHub",
-      "dmca": "DMCA"
+      "dmca": "DMCA",
+      "discord": "Discord"
     },
     "legal": {
       "disclaimer": "Disclaimer",
