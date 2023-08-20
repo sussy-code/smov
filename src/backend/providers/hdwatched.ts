@@ -120,6 +120,7 @@ registerProvider({
   id: "hdwatched",
   displayName: "HDwatched",
   rank: 150,
+  disabled: true, // very slow, haven't seen it work for a while
   type: [MWMediaType.MOVIE, MWMediaType.SERIES],
   async scrape(options) {
     const { media, progress } = options;
