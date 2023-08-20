@@ -1,3 +1,5 @@
+const themer = require("tailwindcss-themer");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
@@ -42,5 +44,30 @@ module.exports = {
       animation: { "loading-pin": "loading-pin 1.8s ease-in-out infinite" }
     }
   },
-  plugins: [require("tailwind-scrollbar")]
+  plugins: [
+    require("tailwind-scrollbar"),
+    themer({
+      defaultTheme: {
+        extend: {
+          colors: {
+            background: {
+              main: "#0A0A10",
+              accentA: "#6E3B80",
+              accentB: "#1F1F50"
+            },
+            global: {
+              accentA: "#505DBD",
+              accentB: "#3440A1"
+            },
+            type: {
+              emphasis: "#FFFFFF",
+              text: "#73739D",
+              dimmed: "#926CAD",
+              divider: "#353549"
+            }
+          }
+        }
+      }
+    })
+  ]
 };

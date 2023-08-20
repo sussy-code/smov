@@ -198,7 +198,7 @@ function NewDomainModal() {
 
 export function HomeView() {
   return (
-    <div className="mb-16">
+    <div>
       <EmbedMigration />
       <NewDomainModal />
       <Bookmarks />

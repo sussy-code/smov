@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import { useTranslation } from "react-i18next";
 import Sticky from "react-stickynode";
 
+import { FooterView } from "@/components/layout/Footer";
 import { Navigation } from "@/components/layout/Navigation";
 import { ThinContainer } from "@/components/layout/ThinContainer";
 import { WideContainer } from "@/components/layout/WideContainer";
@@ -25,7 +26,7 @@ export function SearchView() {
   );
 
   return (
-    <>
+    <FooterView>
       <div className="relative z-10 mb-16 sm:mb-24">
         <Helmet>
           <title>{t("global.name")}</title>
@@ -61,6 +62,6 @@ export function SearchView() {
       <WideContainer>
         <SearchResultsPartial search={search} />
       </WideContainer>
-    </>
+    </FooterView>
   );
 }
