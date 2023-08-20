@@ -9,7 +9,7 @@ import { SectionHeading } from "@/components/layout/SectionHeading";
 import { MediaGrid } from "@/components/media/MediaGrid";
 import { WatchedMediaCard } from "@/components/media/WatchedMediaCard";
 import { useLoading } from "@/hooks/useLoading";
-import { SearchLoadingPart } from "@/views/parts/search/SearchLoadingPart";
+import { SearchLoadingPart } from "@/pages/parts/search/SearchLoadingPart";
 
 function SearchSuffix(props: { failed?: boolean; results?: number }) {
   const { t } = useTranslation();

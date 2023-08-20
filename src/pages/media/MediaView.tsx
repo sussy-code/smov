@@ -16,6 +16,8 @@ import { Loading } from "@/components/layout/Loading";
 import { useGoBack } from "@/hooks/useGoBack";
 import { useLoading } from "@/hooks/useLoading";
 import { SelectedMediaData, useScrape } from "@/hooks/useScrape";
+import { ErrorWrapperPart } from "@/pages/parts/errors/ErrorWrapperPart";
+import { MediaNotFoundPart } from "@/pages/parts/errors/MediaNotFoundPart";
 import { useWatchedItem } from "@/state/watched";
 import { MetaController } from "@/video/components/controllers/MetaController";
 import { ProgressListenerController } from "@/video/components/controllers/ProgressListenerController";
@@ -24,8 +26,6 @@ import { SourceController } from "@/video/components/controllers/SourceControlle
 import { VideoPlayerHeader } from "@/video/components/parts/VideoPlayerHeader";
 import { VideoPlayer } from "@/video/components/VideoPlayer";
 import { VideoPlayerMeta } from "@/video/state/types";
-import { ErrorWrapperPart } from "@/views/parts/errors/ErrorWrapperPart";
-import { MediaNotFoundPart } from "@/views/parts/errors/MediaNotFoundPart";
 
 import { MediaFetchErrorView } from "./MediaErrorView";
 import { MediaScrapeLog } from "./MediaScrapeLog";

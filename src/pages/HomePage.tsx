@@ -6,12 +6,12 @@ import { MWQuery } from "@/backend/metadata/types/mw";
 import { WideContainer } from "@/components/layout/WideContainer";
 import { useDebounce } from "@/hooks/useDebounce";
 import { useSearchQuery } from "@/hooks/useSearchQuery";
-import { HomeLayout } from "@/views/layouts/HomeLayout";
-import { BookmarksPart } from "@/views/parts/home/BookmarksPart";
-import { HeroPart } from "@/views/parts/home/HeroPart";
-import { WatchingPart } from "@/views/parts/home/WatchingPart";
-import { SearchListPart } from "@/views/parts/search/SearchListPart";
-import { SearchLoadingPart } from "@/views/parts/search/SearchLoadingPart";
+import { HomeLayout } from "@/pages/layouts/HomeLayout";
+import { BookmarksPart } from "@/pages/parts/home/BookmarksPart";
+import { HeroPart } from "@/pages/parts/home/HeroPart";
+import { WatchingPart } from "@/pages/parts/home/WatchingPart";
+import { SearchListPart } from "@/pages/parts/search/SearchListPart";
+import { SearchLoadingPart } from "@/pages/parts/search/SearchLoadingPart";
 
 function useSearch(search: MWQuery) {
   const [searching, setSearching] = useState<boolean>(false);

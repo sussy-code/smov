@@ -4,7 +4,7 @@ import { IconPatch } from "@/components/buttons/IconPatch";
 import { Icons } from "@/components/Icon";
 import { ArrowLink } from "@/components/text/ArrowLink";
 import { Title } from "@/components/text/Title";
-import { ErrorWrapperPart } from "@/views/parts/errors/ErrorWrapperPart";
+import { ErrorWrapperPart } from "@/pages/parts/errors/ErrorWrapperPart";
 
 export function NotFoundPage() {
   const { t } = useTranslation();
