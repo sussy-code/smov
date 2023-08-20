@@ -19,4 +19,13 @@
     transform: rotate(180deg) translateZ(0px) translateY(400px);
     transform-origin: center center;
     background-repeat: no-repeat;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.lightbar canvas {
+	width: 40%;
+	height: 300px;
+	transform: translateY(-50%) rotate(180deg);
 }

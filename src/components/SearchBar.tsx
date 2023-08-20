@@ -60,7 +60,7 @@ export function SearchBarInput(props: SearchBarProps) {
           onFocus={() => setFocused(true)}
           onChange={(val) => setSearch(val)}
           value={props.value.searchQuery}
-          className="text-search-text w-full flex-1 bg-transparent px-4 py-4 pl-12 placeholder-search-placeholder focus:outline-none sm:py-4 sm:pr-2"
+          className="w-full flex-1 bg-transparent px-4 py-4 pl-12 text-search-text placeholder-search-placeholder focus:outline-none sm:py-4 sm:pr-2"
           placeholder={props.placeholder}
         />
       </Flare.Child>
