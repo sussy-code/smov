@@ -83,6 +83,18 @@ module.exports = {
               placeholder: "#4A4A71",
               icon: "#545476",
               text: "#FFFFFF"
+            },
+
+            // media cards
+            mediaCard: {
+              hoverBackground: "#161622",
+              hoverAccent: "#4D79A8",
+              hoverShadow: "#0A0A10",
+              shadow: "#161622",
+              barColor: "#4B4B63",
+              barFillColor: "#BA7FD6",
+              badge: "#151522",
+              badgeText: "#5F5F7A"
             }
           }
         }

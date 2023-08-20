@@ -30,13 +30,14 @@ function Light(props: FlareProps) {
     function mouseMove(e: MouseEvent) {
       if (!outerRef.current) return;
       const rect = outerRef.current.getBoundingClientRect();
+      const halfSize = size / 2;
       outerRef.current.style.setProperty(
         "--bg-x",
-        `${(e.clientX - rect.left - size / 2).toFixed(0)}px`
+        `${(e.clientX - rect.left - halfSize).toFixed(0)}px`
       );
       outerRef.current.style.setProperty(
         "--bg-y",
-        `${(e.clientY - rect.top - size / 2).toFixed(0)}px`
+        `${(e.clientY - rect.top - halfSize).toFixed(0)}px`
       );
     }
     document.addEventListener("mousemove", mouseMove);
@@ -58,13 +59,12 @@ function Light(props: FlareProps) {
         backgroundImage: `radial-gradient(circle at center, rgba(var(${cssVar}), 1), rgba(var(${cssVar}), 0) 70%)`,
         backgroundPosition: `var(--bg-x) var(--bg-y)`,
         backgroundRepeat: "no-repeat",
-        backgroundAttachment: "fixed",
         backgroundSize: `${size.toFixed(0)}px ${size.toFixed(0)}px`,
       }}
     >
       <div
         className={c(
-          "absolute inset-[2px] overflow-hidden",
+          "absolute inset-[1px] overflow-hidden",
           props.className,
           props.backgroundClass
         )}
@@ -75,7 +75,6 @@ function Light(props: FlareProps) {
             background: `radial-gradient(circle at center, rgba(var(${cssVar}), 1), rgba(var(${cssVar}), 0) 70%)`,
             backgroundPosition: `var(--bg-x) var(--bg-y)`,
             backgroundRepeat: "no-repeat",
-            backgroundAttachment: "fixed",
             backgroundSize: `${size.toFixed(0)}px ${size.toFixed(0)}px`,
           }}
         />

@@ -139,6 +139,7 @@ export function Lightbar(props: { className?: string }) {
     <div className={props.className}>
       <div className="lightbar">
         <ParticlesCanvas />
+        <div className="lightbar-visual" />
       </div>
     </div>
   );

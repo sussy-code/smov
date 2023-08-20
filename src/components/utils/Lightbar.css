@@ -1,11 +1,24 @@
-.lightbar {
-	position: absolute;
-	left: -25vw;
-	top: 0;
-	width: 150vw;
+.lightbar, .lightbar-visual {
+    position: absolute;
+    top: 0;
+    width: 150vw;
     height: 800px;
     pointer-events: none;
     user-select: none;
+}
+
+.lightbar {
+    left: -25vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    --d: 3s;
+    --animation: cubic-bezier(.75,-0.00,.25,1);
+    animation: boot var(--d) var(--animation) forwards;
+}
+
+.lightbar-visual {
+    left: 0;
     --top: theme('colors.background.main');
     --bottom: theme('colors.lightBar.light');
     --first: conic-gradient(from 90deg at 80% 50%,var(--top),var(--bottom));
@@ -19,13 +32,30 @@
     transform: rotate(180deg) translateZ(0px) translateY(400px);
     transform-origin: center center;
     background-repeat: no-repeat;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+    animation: lightbarBoot var(--d) var(--animation) forwards;
 }
 
 .lightbar canvas {
 	width: 40%;
 	height: 300px;
-	transform: translateY(-50%) rotate(180deg);
+	transform: translateY(-250px);
+}
+
+@keyframes boot {
+    from {
+
+        opacity: 0.25;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes lightbarBoot {
+    0% {
+        transform: rotate(180deg) translateZ(0px) translateY(400px) scaleX(0.8);
+    }
+    100% {
+        transform: rotate(180deg) translateZ(0px) translateY(400px) scaleX(1);
+    }
 }
