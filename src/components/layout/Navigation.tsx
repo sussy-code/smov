@@ -19,7 +19,7 @@ export function Navigation(props: NavigationProps) {
   return (
     <>
       <div className="absolute inset-x-0 top-0 flex h-[88px] items-center justify-center">
-        <div className="absolute inset-x-0 mt-20 flex items-center sm:mt-0">
+        <div className="absolute inset-x-0 -mt-[22%] flex items-center sm:mt-0">
           <Lightbar />
         </div>
       </div>
