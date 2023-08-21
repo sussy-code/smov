@@ -19,12 +19,12 @@ export function Navigation(props: NavigationProps) {
   return (
     <>
       <div className="absolute inset-x-0 top-0 flex h-[88px] items-center justify-center">
-        <div className="absolute inset-x-0 flex items-center">
+        <div className="absolute inset-x-0 mt-20 flex items-center sm:mt-0">
           <Lightbar />
         </div>
       </div>
       <div
-        className="fixed left-0 right-0 top-0 z-10 min-h-[150px] bg-gradient-to-b from-background-main via-background-main to-transparent sm:from-transparent"
+        className="fixed left-0 right-0 top-0 z-10 min-h-[150px]"
         style={{
           top: `${bannerHeight}px`,
         }}
