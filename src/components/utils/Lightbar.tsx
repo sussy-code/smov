@@ -16,7 +16,14 @@ class Particle {
 
   ran = 0;
 
-  constructor(canvas: HTMLCanvasElement) {
+  image: null | HTMLImageElement = null;
+
+  constructor(canvas: HTMLCanvasElement, { doFish } = { doFish: false }) {
+    if (doFish) {
+      this.image = new Image();
+      if (this.image) this.image.src = "/fishie.png";
+    }
+
     this.reset(canvas);
     this.initialize(canvas);
   }
@@ -26,11 +33,16 @@ class Particle {
     this.y = Math.random() * 100 + 5;
 
     this.radius = 1 + Math.floor(Math.random() * 0.5);
-    this.direction = -((Math.random() * Math.PI) / 2) + Math.PI / 4;
+    this.direction = (Math.random() * Math.PI) / 2 + Math.PI / 4;
     this.speed = 0.02 + Math.random() * 0.08;
 
     const second = 60;
     this.lifetime = second * 3 + Math.random() * (second * 30);
+
+    if (this.image) {
+      this.direction = Math.random() <= 0.5 ? 0 : Math.PI;
+      this.lifetime = 30 * second;
+    }
 
     this.ran = 0;
   }
@@ -46,8 +58,8 @@ class Particle {
   update(canvas: HTMLCanvasElement) {
     this.ran += 1;
 
-    const addX = this.speed * Math.sin(this.direction);
-    const addY = this.speed * Math.cos(this.direction);
+    const addX = this.speed * Math.cos(this.direction);
+    const addY = this.speed * Math.sin(this.direction);
     this.x += addX;
     this.y += addY;
 
@@ -67,17 +79,25 @@ class Particle {
     const o = (x - x * x) * 4;
     ctx.globalAlpha = Math.max(0, o * 0.8);
 
-    ctx.ellipse(
-      this.x,
-      this.y,
-      this.radius,
-      this.radius * 1.5,
-      this.direction,
-      0,
-      Math.PI * 2
-    );
-    ctx.fillStyle = "white";
-    ctx.fill();
+    if (this.image) {
+      ctx.translate(this.x, this.y);
+      const w = 10;
+      const h = (this.image.naturalWidth / this.image.naturalHeight) * w;
+      ctx.rotate(this.direction - Math.PI);
+      ctx.drawImage(this.image, -w / 2, h, h, w);
+    } else {
+      ctx.ellipse(
+        this.x,
+        this.y,
+        this.radius,
+        this.radius * 1.5,
+        this.direction,
+        0,
+        Math.PI * 2
+      );
+      ctx.fillStyle = "white";
+      ctx.fill();
+    }
     ctx.restore();
   }
 }
@@ -93,8 +113,13 @@ function ParticlesCanvas() {
     canvas.width = canvas.scrollWidth;
     canvas.height = canvas.scrollHeight;
 
-    for (let i = 0; i < 20; i += 1) {
-      const particle = new Particle(canvas);
+    const shouldShowFishie = Math.floor(Math.random() * 600) === 1;
+    const particleCount = 20;
+
+    for (let i = 0; i < particleCount; i += 1) {
+      const particle = new Particle(canvas, {
+        doFish: shouldShowFishie && i <= particleCount / 2,
+      });
       particles.push(particle);
     }
 
