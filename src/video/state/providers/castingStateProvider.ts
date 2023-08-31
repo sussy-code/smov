@@ -153,8 +153,7 @@ export function createCastingStateProvider(
           1,
           chrome.cast.media.TrackType.TEXT
         );
-        subtitles.trackContentId =
-          "https://cc.2cdns.com/a8/d8/a8d8c98288d4db1d6404e54c644091f5/eng-9.vtt";
+        subtitles.trackContentId = state.source?.caption?.url;
         subtitles.trackContentType = "text/vtt";
         subtitles.subtype = chrome.cast.media.TextTrackType.SUBTITLES;
         subtitles.name = "Subtitles";
