@@ -148,12 +148,26 @@ export function createCastingStateProvider(
 
       let captions = null;
 
-      if (state.source?.caption?.url) {
+      if (state.source?.caption?.id) {
+        let captionIndex: number | undefined;
+        const linkedCaptions = state.meta?.captions;
+        const captionId = state.source?.caption?.id;
+        let trackContentId = "";
+
+        if (linkedCaptions) {
+          linkedCaptions.forEach((caption, index) => {
+            if (!captionIndex && captionId.includes(caption.langIso))
+              captionIndex = index;
+          });
+          if (captionIndex) {
+            trackContentId = linkedCaptions[captionIndex].url;
+          }
+        }
         const subtitles = new chrome.cast.media.Track(
           1,
           chrome.cast.media.TrackType.TEXT
         );
-        subtitles.trackContentId = state.source?.caption?.url;
+        subtitles.trackContentId = trackContentId;
         subtitles.trackContentType = "text/vtt";
         subtitles.subtype = chrome.cast.media.TextTrackType.SUBTITLES;
         subtitles.name = "Subtitles";
