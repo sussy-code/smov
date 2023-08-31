@@ -22,6 +22,7 @@ export function ProgressAction() {
   const controlRef = useRef<typeof controls>(controls);
   const [hoverPosition, setHoverPosition] = useState<number>(0);
   const [isThumbnailVisible, setIsThumbnailVisible] = useState<boolean>(false);
+  const casting = getPlayerState(descriptor).casting;
   const onMouseOver = useCallback((e: MouseActivity) => {
     setHoverPosition(e.clientX);
     setIsThumbnailVisible(true);
@@ -106,7 +107,7 @@ export function ProgressAction() {
           </div>
         </div>
       </div>
-      {isThumbnailVisible ? (
+      {isThumbnailVisible && !casting ? (
         <ThumbnailAction
           parentRef={ref}
           videoTime={videoTime}
