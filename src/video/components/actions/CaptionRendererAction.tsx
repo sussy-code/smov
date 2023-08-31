@@ -53,7 +53,7 @@ export function CaptionRendererAction({
   const videoTime = useProgress(descriptor).time;
   const { captionSettings, setCaptionDelay } = useSettings();
   const captions = useRef<ContentCaption[]>([]);
-  const casting = getPlayerState(descriptor).casting.isCasting;
+  const isCasting = getPlayerState(descriptor).casting.isCasting;
 
   const captionSetRef = useRef<(delay: number) => void>(setCaptionDelay);
   useEffect(() => {
@@ -98,7 +98,7 @@ export function CaptionRendererAction({
     },
     []
   );
-  if (casting) return null;
+  if (isCasting) return null;
   if (!captions.current.length) return null;
   const visibileCaptions = captions.current.filter(({ start, end }) =>
     isVisible(start, end, captionSettings.delay, videoTime)
