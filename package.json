@@ -47,7 +47,7 @@
     "lint": "eslint --ext .tsx,.ts src",
     "lint:fix": "eslint --fix --ext .tsx,.ts src",
     "lint:report": "eslint --ext .tsx,.ts --output-file eslint_report.json --format json src",
-    "preinstall": "npx only-allow pnpm"
+    "preinstall": "npx -y only-allow pnpm"
   },
   "browserslist": {
     "production": [
