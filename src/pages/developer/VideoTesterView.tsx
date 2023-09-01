@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 import { MWStreamType } from "@/backend/helpers/streams";
 import { usePlayer } from "@/components/player/hooks/usePlayer";
-import { PlayerView } from "@/views/PlayerView";
+import { PlayerView } from "@/pages/PlayerView";
 
 export default function VideoTesterView() {
   const player = usePlayer();

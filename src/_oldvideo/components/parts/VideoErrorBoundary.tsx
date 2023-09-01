@@ -1,6 +1,6 @@
 import { Component } from "react";
+import type { ReactNode } from "react";
 import { Trans } from "react-i18next";
-import type { ReactNode } from "react-router-dom/node_modules/@types/react/index";
 
 import { MWMediaMeta } from "@/backend/metadata/types/mw";
 import { ErrorMessage } from "@/components/layout/ErrorBoundary";
