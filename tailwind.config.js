@@ -1,3 +1,5 @@
+const themer = require("tailwindcss-themer");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
@@ -42,5 +44,61 @@ module.exports = {
       animation: { "loading-pin": "loading-pin 1.8s ease-in-out infinite" }
     }
   },
-  plugins: [require("tailwind-scrollbar")]
+  plugins: [
+    require("tailwind-scrollbar"),
+    themer({
+      defaultTheme: {
+        extend: {
+          colors: {
+            // meta data for the theme itself
+            global: {
+              accentA: "#505DBD",
+              accentB: "#3440A1"
+            },
+
+            // light bar
+            lightBar: {
+              light: "#2A2A71"
+            },
+
+            // only used for body colors/textures
+            background: {
+              main: "#0A0A10",
+              accentA: "#6E3B80",
+              accentB: "#1F1F50"
+            },
+
+            // typography
+            type: {
+              emphasis: "#FFFFFF",
+              text: "#73739D",
+              dimmed: "#926CAD",
+              divider: "#262632"
+            },
+
+            // search bar
+            search: {
+              background: "#1E1E33",
+              focused: "#24243C",
+              placeholder: "#4A4A71",
+              icon: "#545476",
+              text: "#FFFFFF"
+            },
+
+            // media cards
+            mediaCard: {
+              hoverBackground: "#161622",
+              hoverAccent: "#4D79A8",
+              hoverShadow: "#0A0A10",
+              shadow: "#161622",
+              barColor: "#4B4B63",
+              barFillColor: "#BA7FD6",
+              badge: "#151522",
+              badgeText: "#5F5F7A"
+            }
+          }
+        }
+      }
+    })
+  ]
 };

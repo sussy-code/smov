@@ -10,7 +10,7 @@
     "headingTitle": "Search results",
     "bookmarks": "Bookmarks",
     "continueWatching": "Continue Watching",
-    "title": "What do you want to watch?",
+    "title": "What to watch tonight?",
     "placeholder": "What do you want to watch?"
   },
   "media": {
@@ -131,5 +131,17 @@
   },
   "errors": {
     "offline": "Check your internet connection"
+  },
+  "footer": {
+    "tagline": "Watch your favorite shows and movies with this open source streaming app.",
+    "links": {
+      "github": "GitHub",
+      "dmca": "DMCA",
+      "discord": "Discord"
+    },
+    "legal": {
+      "disclaimer": "Disclaimer",
+      "disclaimerText": "movie-web does not host any files, it merely links to 3rd party services. Legal issues should be taken up with the file hosts and providers. movie-web is not responsible for any media files shown by the video providers."
+    }
   }
 }

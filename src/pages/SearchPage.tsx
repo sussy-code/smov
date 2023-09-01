@@ -9,8 +9,7 @@ import { SectionHeading } from "@/components/layout/SectionHeading";
 import { MediaGrid } from "@/components/media/MediaGrid";
 import { WatchedMediaCard } from "@/components/media/WatchedMediaCard";
 import { useLoading } from "@/hooks/useLoading";
-
-import { SearchLoadingView } from "./SearchLoadingView";
+import { SearchLoadingPart } from "@/pages/parts/search/SearchLoadingPart";
 
 function SearchSuffix(props: { failed?: boolean; results?: number }) {
   const { t } = useTranslation();
@@ -63,7 +62,7 @@ export function SearchResultsView({ searchQuery }: { searchQuery: MWQuery }) {
     if (searchQuery.searchQuery !== "") runSearch(searchQuery);
   }, [searchQuery, runSearchQuery]);
 
-  if (loading) return <SearchLoadingView />;
+  if (loading) return <SearchLoadingPart />;
   if (error) return <SearchSuffix failed />;
   if (!results) return null;
 

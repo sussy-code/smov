@@ -51,26 +51,34 @@ registerEmbedScraper({
       }
     );
 
-    let sources:
-      | {
-          file: string;
-          type: string;
+    let sources: { file: string; type: string } | null = null;
+
+    if (!isJSON(streamRes.sources)) {
+      const decryptionKey = JSON.parse(
+        await proxiedFetch<string>(
+          `https://raw.githubusercontent.com/enimax-anime/key/e4/key.txt`
+        )
+      ) as [number, number][];
+
+      let extractedKey = "";
+      const sourcesArray = streamRes.sources.split("");
+      for (const index of decryptionKey) {
+        for (let i: number = index[0]; i < index[1]; i += 1) {
+          extractedKey += streamRes.sources[i];
+          sourcesArray[i] = "";
         }
-      | string = streamRes.sources;
+      }
 
-    if (!isJSON(sources) || typeof sources === "string") {
-      const decryptionKey = await proxiedFetch<string>(
-        `https://raw.githubusercontent.com/enimax-anime/key/e4/key.txt`
-      );
-
-      const decryptedStream = AES.decrypt(sources, decryptionKey).toString(
-        enc.Utf8
-      );
-
+      const decryptedStream = AES.decrypt(
+        sourcesArray.join(""),
+        extractedKey
+      ).toString(enc.Utf8);
       const parsedStream = JSON.parse(decryptedStream)[0];
       if (!parsedStream) throw new Error("No stream found");
-      sources = parsedStream as { file: string; type: string };
+      sources = parsedStream;
     }
+
+    if (!sources) throw new Error("upcloud source not found");
 
     return {
       embedId: MWEmbedType.UPCLOUD,

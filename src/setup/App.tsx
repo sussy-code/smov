@@ -11,14 +11,13 @@ import {
 import { convertLegacyUrl, isLegacyUrl } from "@/backend/metadata/getmeta";
 import { generateQuickSearchMediaUrl } from "@/backend/metadata/tmdb";
 import { BannerContextProvider } from "@/hooks/useBanner";
+import { NotFoundPage } from "@/pages/errors/NotFoundPage";
+import { HomePage } from "@/pages/HomePage";
+import { MediaView } from "@/pages/media/MediaView";
 import { Layout } from "@/setup/Layout";
 import { BookmarkContextProvider } from "@/state/bookmark";
 import { SettingsProvider } from "@/state/settings";
 import { WatchedContextProvider } from "@/state/watched";
-import { MediaView } from "@/views/media/MediaView";
-import { NotFoundPage } from "@/views/notfound/NotFoundView";
-import { V2MigrationView } from "@/views/other/v2Migration";
-import { SearchView } from "@/views/search/SearchView";
 
 function LegacyUrlView({ children }: { children: ReactElement }) {
   const location = useLocation();
@@ -62,7 +61,6 @@ function App() {
             <Layout>
               <Switch>
                 {/* functional routes */}
-                <Route exact path="/v2-migration" component={V2MigrationView} />
                 <Route exact path="/s/:query">
                   <QuickSearch />
                 </Route>
@@ -87,22 +85,20 @@ function App() {
                 <Route
                   exact
                   path={["/browse/:query?", "/"]}
-                  component={SearchView}
+                  component={HomePage}
                 />
 
                 {/* other */}
                 <Route
                   exact
                   path="/dev"
-                  component={lazy(
-                    () => import("@/views/developer/DeveloperView")
-                  )}
+                  component={lazy(() => import("@/pages/DeveloperPage"))}
                 />
                 <Route
                   exact
                   path="/dev/video"
                   component={lazy(
-                    () => import("@/views/developer/VideoTesterView")
+                    () => import("@/pages/developer/VideoTesterView")
                   )}
                 />
                 {/* developer routes that can abuse workers are disabled in production */}
@@ -112,7 +108,7 @@ function App() {
                       exact
                       path="/dev/test"
                       component={lazy(
-                        () => import("@/views/developer/TestView")
+                        () => import("@/pages/developer/TestView")
                       )}
                     />
 
@@ -120,14 +116,14 @@ function App() {
                       exact
                       path="/dev/providers"
                       component={lazy(
-                        () => import("@/views/developer/ProviderTesterView")
+                        () => import("@/pages/developer/ProviderTesterView")
                       )}
                     />
                     <Route
                       exact
                       path="/dev/embeds"
                       component={lazy(
-                        () => import("@/views/developer/EmbedTesterView")
+                        () => import("@/pages/developer/EmbedTesterView")
                       )}
                     />
                   </>

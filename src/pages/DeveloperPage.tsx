@@ -3,7 +3,7 @@ import { ThinContainer } from "@/components/layout/ThinContainer";
 import { ArrowLink } from "@/components/text/ArrowLink";
 import { Title } from "@/components/text/Title";
 
-export default function DeveloperView() {
+export default function DeveloperPage() {
   return (
     <div className="py-48">
       <Navigation />

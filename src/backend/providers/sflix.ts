@@ -9,6 +9,7 @@ registerProvider({
   id: "sflix",
   displayName: "Sflix",
   rank: 50,
+  disabled: true, // domain dead
   type: [MWMediaType.MOVIE, MWMediaType.SERIES],
   async scrape({ media, episode, progress }) {
     let searchQuery = `${media.meta.title} `;

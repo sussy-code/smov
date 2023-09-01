@@ -4,9 +4,10 @@
 
 html,
 body {
-  @apply bg-denim-100 font-open-sans text-denim-700 overflow-x-hidden;
+  @apply bg-background-main font-open-sans text-denim-700 overflow-x-hidden;
   min-height: 100vh;
   min-height: 100dvh;
+  position: relative;
 }
 
 html[data-full],

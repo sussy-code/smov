@@ -23,11 +23,12 @@ import { Loading } from "@/components/layout/Loading";
 import { useGoBack } from "@/hooks/useGoBack";
 import { useLoading } from "@/hooks/useLoading";
 import { SelectedMediaData, useScrape } from "@/hooks/useScrape";
+import { ErrorWrapperPart } from "@/pages/parts/errors/ErrorWrapperPart";
+import { MediaNotFoundPart } from "@/pages/parts/errors/MediaNotFoundPart";
 import { useWatchedItem } from "@/state/watched";
 
 import { MediaFetchErrorView } from "./MediaErrorView";
 import { MediaScrapeLog } from "./MediaScrapeLog";
-import { NotFoundMedia, NotFoundWrapper } from "../notfound/NotFoundView";
 
 function MediaViewLoading(props: { onGoBack(): void }) {
   const { t } = useTranslation();
@@ -241,9 +242,9 @@ export function MediaView() {
   if (error) return <MediaFetchErrorView />;
   if (!meta || !selected)
     return (
-      <NotFoundWrapper video>
-        <NotFoundMedia />
-      </NotFoundWrapper>
+      <ErrorWrapperPart video>
+        <MediaNotFoundPart />
+      </ErrorWrapperPart>
     );
 
   // scraping view will start scraping and return with onStream
