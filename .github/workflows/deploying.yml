@@ -18,13 +18,13 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: 18
-        cache: 'yarn'
+        cache: 'pnpm'
     
-    - name: Install Yarn packages
-      run: yarn install
+    - name: Install pnpm packages
+      run: pnpm install
     
     - name: Build project
-      run: yarn build
+      run: pnpm run build
 
     - name: Upload production-ready build files
       uses: actions/upload-artifact@v3
