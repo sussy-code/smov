@@ -151,14 +151,16 @@ export function createCastingStateProvider(
       if (state.source?.caption?.id) {
         let captionIndex: number | undefined;
         const linkedCaptions = state.meta?.captions;
-        const captionId = state.source?.caption?.id;
+        const captionLangIso = state.source?.caption?.id.slice(7);
         let trackContentId = "";
 
         if (linkedCaptions) {
-          linkedCaptions.forEach((caption, index) => {
-            if (!captionIndex && captionId.includes(caption.langIso))
+          for (let index = 0; index < linkedCaptions.length; index += 1) {
+            if (captionLangIso === linkedCaptions[index].langIso) {
               captionIndex = index;
-          });
+              break;
+            }
+          }
           if (captionIndex) {
             trackContentId = linkedCaptions[captionIndex].url;
           }
