@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://movie-web.app",
   "dependencies": {
-    "@formkit/auto-animate": "^1.0.0-beta.5",
+    "@formkit/auto-animate": "^0.7.0",
     "@headlessui/react": "^1.5.0",
     "@react-spring/web": "^9.7.1",
     "@sentry/integrations": "^7.49.0",
@@ -19,6 +19,7 @@
     "hls.js": "^1.0.7",
     "i18next": "^22.4.5",
     "i18next-browser-languagedetector": "^7.0.1",
+    "immer": "^10.0.2",
     "json5": "^2.2.0",
     "lodash.throttle": "^4.1.1",
     "nanoid": "^4.0.0",
@@ -35,7 +36,8 @@
     "react-use": "^17.4.0",
     "slugify": "^1.6.6",
     "subsrt-ts": "^2.1.1",
-    "unpacker": "^1.0.1"
+    "unpacker": "^1.0.1",
+    "zustand": "^4.3.9"
   },
   "scripts": {
     "dev": "vite",
@@ -44,7 +46,8 @@
     "preview": "vite preview",
     "lint": "eslint --ext .tsx,.ts src",
     "lint:fix": "eslint --fix --ext .tsx,.ts src",
-    "lint:report": "eslint --ext .tsx,.ts --output-file eslint_report.json --format json src"
+    "lint:report": "eslint --ext .tsx,.ts --output-file eslint_report.json --format json src",
+    "preinstall": "npx -y only-allow pnpm"
   },
   "browserslist": {
     "production": [

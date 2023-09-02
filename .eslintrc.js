@@ -52,6 +52,7 @@ module.exports = {
     "no-await-in-loop": "off",
     "no-nested-ternary": "off",
     "prefer-destructuring": "off",
+    "no-param-reassign": "off",
     "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
     "react/jsx-filename-extension": [
       "error",

@@ -2,9 +2,9 @@ import { ReactNode } from "react";
 import { Helmet } from "react-helmet";
 import { useTranslation } from "react-i18next";
 
+import { VideoPlayerHeader } from "@/_oldvideo/components/parts/VideoPlayerHeader";
 import { Navigation } from "@/components/layout/Navigation";
 import { useGoBack } from "@/hooks/useGoBack";
-import { VideoPlayerHeader } from "@/video/components/parts/VideoPlayerHeader";
 
 export function ErrorWrapperPart(props: {
   children?: ReactNode;

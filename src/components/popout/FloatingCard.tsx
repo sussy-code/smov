@@ -2,10 +2,10 @@ import { animated, easings, useSpringValue } from "@react-spring/web";
 import { ReactNode, useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import { PopoutSection } from "@/_oldvideo/components/popouts/PopoutUtils";
 import { FloatingCardAnchorPosition } from "@/components/popout/positions/FloatingCardAnchorPosition";
 import { FloatingCardMobilePosition } from "@/components/popout/positions/FloatingCardMobilePosition";
 import { useIsMobile } from "@/hooks/useIsMobile";
-import { PopoutSection } from "@/video/components/popouts/PopoutUtils";
 
 import { FloatingDragHandle, MobilePopoutSpacer } from "./FloatingDragHandle";
 import { Icon, Icons } from "../Icon";
