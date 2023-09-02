@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef } from "react";
 import { useAsync } from "react-use";
 import { ContentCaption } from "subsrt-ts/dist/types/handler";
 
+import { getPlayerState } from "@/_oldvideo/state/cache";
 import { parseSubtitles, sanitize } from "@/backend/helpers/captions";
 import { Transition } from "@/components/Transition";
 import { useSettings } from "@/state/settings";
@@ -52,6 +53,7 @@ export function CaptionRendererAction({
   const videoTime = useProgress(descriptor).time;
   const { captionSettings, setCaptionDelay } = useSettings();
   const captions = useRef<ContentCaption[]>([]);
+  const isCasting = getPlayerState(descriptor).casting.isCasting;
 
   const captionSetRef = useRef<(delay: number) => void>(setCaptionDelay);
   useEffect(() => {
@@ -96,6 +98,7 @@ export function CaptionRendererAction({
     },
     []
   );
+  if (isCasting) return null;
   if (!captions.current.length) return null;
   const visibileCaptions = captions.current.filter(({ start, end }) =>
     isVisible(start, end, captionSettings.delay, videoTime)

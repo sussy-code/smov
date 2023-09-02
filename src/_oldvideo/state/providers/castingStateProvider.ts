@@ -16,6 +16,7 @@ import {
 } from "@/utils/detectFeatures";
 
 import { VideoPlayerStateProvider } from "./providerTypes";
+import { SettingsStore } from "../../../state/settings/store";
 import { getPlayerState } from "../cache";
 import { updateMediaPlaying } from "../logic/mediaplaying";
 import { updateProgress } from "../logic/progress";
@@ -140,18 +141,68 @@ export function createCastingStateProvider(
       mediaInfo.streamType = chrome.cast.media.StreamType.BUFFERED;
       mediaInfo.metadata = movieMeta;
 
-      const request = new chrome.cast.media.LoadRequest(mediaInfo);
-      request.autoplay = true;
+      const loadRequest = new chrome.cast.media.LoadRequest(mediaInfo);
+      loadRequest.autoplay = true;
+      // start where video left off before cast
+      loadRequest.currentTime = state.progress.time;
+
+      let captions = null;
+
+      if (state.source?.caption?.id) {
+        let captionIndex: number | undefined;
+        const linkedCaptions = state.meta?.captions;
+        const captionLangIso = state.source?.caption?.id.slice(7);
+        let trackContentId = "";
+
+        if (linkedCaptions) {
+          for (let index = 0; index < linkedCaptions.length; index += 1) {
+            if (captionLangIso === linkedCaptions[index].langIso) {
+              captionIndex = index;
+              break;
+            }
+          }
+          if (captionIndex) {
+            trackContentId = linkedCaptions[captionIndex].url;
+          }
+        }
+        const subtitles = new chrome.cast.media.Track(
+          1,
+          chrome.cast.media.TrackType.TEXT
+        );
+        subtitles.trackContentId = trackContentId;
+        subtitles.trackContentType = "text/vtt";
+        subtitles.subtype = chrome.cast.media.TextTrackType.SUBTITLES;
+        subtitles.name = "Subtitles";
+        subtitles.language = "en";
+
+        const tracks = [subtitles];
+
+        mediaInfo.tracks = tracks;
+        mediaInfo.textTrackStyle = new chrome.cast.media.TextTrackStyle();
+        mediaInfo.textTrackStyle.backgroundColor =
+          SettingsStore.get().captionSettings.style.backgroundColor;
+        mediaInfo.textTrackStyle.foregroundColor =
+          SettingsStore.get().captionSettings.style.color.concat("ff"); // needs to be in RGBA format
+        mediaInfo.textTrackStyle.fontScale =
+          SettingsStore.get().captionSettings.style.fontSize / 40; // scale factor way smaller than fortSize
+
+        loadRequest.activeTrackIds = [1];
+
+        captions = {
+          url: state.source.caption.url,
+          id: state.source.caption.id,
+        };
+      }
 
       const session = ins?.getCurrentSession();
-      session?.loadMedia(request);
+      session?.loadMedia(loadRequest);
 
       // update state
       state.source = {
         quality: source.quality,
         type: source.type,
         url: source.source,
-        caption: null,
+        caption: captions,
         embedId: source.embedId,
         providerId: source.providerId,
         thumbnails: [],
@@ -166,6 +217,16 @@ export function createCastingStateProvider(
           id,
           url,
         };
+
+        // media has to be loaded again to use the new captions
+        this.setSource({
+          quality: state.source.quality,
+          source: state.source.url,
+          type: state.source.type,
+          embedId: state.source.embedId,
+          providerId: state.source.providerId,
+        });
+
         updateSource(descriptor, state);
       }
     },
@@ -173,6 +234,17 @@ export function createCastingStateProvider(
       if (state.source) {
         revokeCaptionBlob(state.source.caption?.url);
         state.source.caption = null;
+
+        const tracksInfoRequest = new chrome.cast.media.EditTracksInfoRequest(
+          []
+        );
+        const session = ins?.getCurrentSession();
+        session?.getMediaSession()?.editTracksInfo(
+          tracksInfoRequest,
+          () => console.log("Captions cleared"),
+          (error) => console.log(error)
+        );
+
         updateSource(descriptor, state);
       }
     },
