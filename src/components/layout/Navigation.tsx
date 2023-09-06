@@ -12,17 +12,20 @@ import { BrandPill } from "./BrandPill";
 export interface NavigationProps {
   children?: ReactNode;
   bg?: boolean;
+  noLightbar?: boolean;
 }
 
 export function Navigation(props: NavigationProps) {
   const bannerHeight = useBannerSize();
   return (
     <>
-      <div className="absolute inset-x-0 top-0 flex h-[88px] items-center justify-center">
-        <div className="absolute inset-x-0 -mt-[22%] flex items-center sm:mt-0">
-          <Lightbar />
+      {!props.noLightbar ? (
+        <div className="absolute inset-x-0 top-0 flex h-[88px] items-center justify-center">
+          <div className="absolute inset-x-0 -mt-[22%] flex items-center sm:mt-0">
+            <Lightbar />
+          </div>
         </div>
-      </div>
+      ) : null}
       <div
         className="fixed left-0 right-0 top-0 z-10 min-h-[150px]"
         style={{

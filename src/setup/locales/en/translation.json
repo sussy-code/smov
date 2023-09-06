@@ -132,6 +132,10 @@
   "errors": {
     "offline": "Check your internet connection"
   },
+  "dmca": {
+    "title": "DMCA",
+    "description": "In an effort to address the copyright concerns associated with the website known as \"movie-web,\" the DMCA, or Digital Millennium Copyright Act, has been initiated to safeguard the intellectual property rights of content creators by reporting infringements on this platform, thereby adhering to legal protocols for takedown requests, which, like, you know, it's all about, like, maintaining the integrity of intellectual property, and, um, making sure, like, creators get their fair share, but then, it's, like, this intricate dance of digital legalities, where you have to, uh, like, navigate this labyrinth of code and bytes and, uh, send, you know, these, like, electronic documents that, um, point out the, uh, alleged infringement, and it's, like, this whole, like, teeter-totter of legality, where you're, like, balancing, um, the rights of the, you know, creators and the, um, operation of this, like, online, uh, entity, and, like, the DMCA, it's, like, this, um, powerful tool, but, uh, it's also, like, this, um, complex puzzle, where, you know, you're, like, seeking justice in the digital wilderness, and, uh, striving for harmony amidst the chaos of the internet, and, um, yeah, that's, like, the whole, like, DMCA-ing thing with movie-web, you know?"
+  },
   "footer": {
     "tagline": "Watch your favorite shows and movies with this open source streaming app.",
     "links": {

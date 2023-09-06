@@ -11,6 +11,8 @@ import {
 import { convertLegacyUrl, isLegacyUrl } from "@/backend/metadata/getmeta";
 import { generateQuickSearchMediaUrl } from "@/backend/metadata/tmdb";
 import { BannerContextProvider } from "@/hooks/useBanner";
+import { AboutPage } from "@/pages/About";
+import { DmcaPage } from "@/pages/Dmca";
 import { NotFoundPage } from "@/pages/errors/NotFoundPage";
 import { HomePage } from "@/pages/HomePage";
 import { MediaView } from "@/pages/media/MediaView";
@@ -87,6 +89,8 @@ function App() {
                   path={["/browse/:query?", "/"]}
                   component={HomePage}
                 />
+                <Route exact path="/faq" component={AboutPage} />
+                <Route exact path="/dmca" component={DmcaPage} />
 
                 {/* other */}
                 <Route
