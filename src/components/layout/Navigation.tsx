@@ -40,35 +40,27 @@ export function Navigation(props: NavigationProps) {
           >
             <div className="pointer-events-none absolute -bottom-24 h-24 w-full bg-gradient-to-b from-background-main to-transparent" />
           </div>
-          <div className="relative flex w-full items-center justify-center sm:w-fit">
-            <div className="mr-auto sm:mr-6">
-              <Link to="/">
-                <BrandPill clickable />
-              </Link>
-            </div>
-            {props.children}
-          </div>
-          <div
-            className={`${
-              props.children ? "hidden sm:flex" : "flex"
-            } relative flex-row	gap-4`}
-          >
+          <div className="relative flex w-full items-center sm:w-fit space-x-3">
+            <Link className="block" to="/">
+              <BrandPill clickable />
+            </Link>
             <a
               href={conf().DISCORD_LINK}
               target="_blank"
               rel="noreferrer"
-              className="text-2xl text-white"
+              className="text-xl text-white"
             >
-              <IconPatch icon={Icons.DISCORD} clickable />
+              <IconPatch icon={Icons.DISCORD} clickable downsized />
             </a>
             <a
               href={conf().GITHUB_LINK}
               target="_blank"
               rel="noreferrer"
-              className="text-2xl text-white"
+              className="text-xl text-white"
             >
-              <IconPatch icon={Icons.GITHUB} clickable />
+              <IconPatch icon={Icons.GITHUB} clickable downsized />
             </a>
+            {props.children}
           </div>
         </div>
       </div>
