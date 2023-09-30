@@ -10,4 +10,6 @@ export interface DisplayInterface extends Listener<DisplayInterfaceEvents> {
   play(): void;
   pause(): void;
   load(source: Source): void;
+  processVideoElement(video: HTMLVideoElement): void;
+  destroy(): void;
 }

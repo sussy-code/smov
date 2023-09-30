@@ -1,36 +1,46 @@
-import { RefObject, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
-import { MWStreamType } from "@/backend/helpers/streams";
-import { SourceSliceSource } from "@/stores/player/slices/source";
-import { AllSlices } from "@/stores/player/slices/types";
+import { makeVideoElementDisplayInterface } from "@/components/player/display/base";
+import { playerStatus } from "@/stores/player/slices/source";
 import { usePlayerStore } from "@/stores/player/store";
 
-// should this video container show right now?
-function useShouldShow(source: SourceSliceSource | null): boolean {
-  if (!source) return false;
-  if (source.type !== MWStreamType.MP4) return false;
+// initialize display interface
+function useDisplayInterface() {
+  const display = usePlayerStore((s) => s.display);
+  const setDisplay = usePlayerStore((s) => s.setDisplay);
+
+  useEffect(() => {
+    if (!display) {
+      setDisplay(makeVideoElementDisplayInterface());
+    }
+  }, [display, setDisplay]);
+}
+
+function useShouldShowVideoElement() {
+  const status = usePlayerStore((s) => s.status);
+
+  if (status !== playerStatus.PLAYING) return false;
   return true;
 }
 
-// make video element up to par with the state
-function useRestoreVideo(
-  videoRef: RefObject<HTMLVideoElement>,
-  player: AllSlices
-) {
+function VideoElement() {
+  const videoEl = useRef<HTMLVideoElement>(null);
+  const display = usePlayerStore((s) => s.display);
+
+  // report video element to display interface
   useEffect(() => {
-    const el = videoRef.current;
-    const src = player.source?.url ?? "";
-    if (!el) return;
-    if (el.src !== src) el.src = src;
-  }, [player.source?.url, videoRef]);
+    if (display && videoEl.current) {
+      display.processVideoElement(videoEl.current);
+    }
+  }, [display, videoEl]);
+
+  return <video autoPlay ref={videoEl} />;
 }
 
 export function VideoContainer() {
-  const videoEl = useRef<HTMLVideoElement>(null);
-  const player = usePlayerStore();
-  useRestoreVideo(videoEl, player);
-  const show = useShouldShow(player.source);
+  const show = useShouldShowVideoElement();
+  useDisplayInterface();
 
   if (!show) return null;
-  return <video autoPlay ref={videoEl} />;
+  return <VideoElement />;
 }

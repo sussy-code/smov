@@ -9,11 +9,13 @@ export interface Source {
 
 export function usePlayer() {
   const setStatus = usePlayerStore((s) => s.setStatus);
-  const setSource = usePlayerStore((s) => s.setSource);
+  const status = usePlayerStore((s) => s.status);
+  const display = usePlayerStore((s) => s.display);
 
   return {
+    status,
     playMedia(source: Source) {
-      setSource(source.url, source.type);
+      display?.load(source);
       setStatus(playerStatus.PLAYING);
     },
   };
