@@ -18,5 +18,8 @@ export function usePlayer() {
       display?.load(source);
       setStatus(playerStatus.PLAYING);
     },
+    setScrapeStatus() {
+      setStatus(playerStatus.SCRAPING);
+    },
   };
 }

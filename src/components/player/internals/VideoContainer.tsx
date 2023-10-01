@@ -34,7 +34,7 @@ function VideoElement() {
     }
   }, [display, videoEl]);
 
-  return <video autoPlay ref={videoEl} />;
+  return <video className="w-full h-screen" autoPlay ref={videoEl} />;
 }
 
 export function VideoContainer() {

@@ -1,1 +1,2 @@
-export * from "./pause";
+export * from "./Pause";
+export * from "./Fullscreen";

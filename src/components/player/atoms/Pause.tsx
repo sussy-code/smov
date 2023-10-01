@@ -1,3 +1,5 @@
+import { Icons } from "@/components/Icon";
+import { VideoPlayerButton } from "@/components/player/internals/Button";
 import { usePlayerStore } from "@/stores/player/store";
 
 export function Pause() {
@@ -10,8 +12,9 @@ export function Pause() {
   };
 
   return (
-    <button type="button" onClick={toggle}>
-      play/pause
-    </button>
+    <VideoPlayerButton
+      onClick={toggle}
+      icon={isPaused ? Icons.PLAY : Icons.PAUSE}
+    />
   );
 }
