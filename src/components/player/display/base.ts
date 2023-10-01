@@ -5,7 +5,9 @@ import {
   DisplayInterfaceEvents,
 } from "@/components/player/display/displayInterface";
 import { Source } from "@/components/player/hooks/usePlayer";
+import { handleBuffered } from "@/components/player/utils/handleBuffered";
 import {
+  canChangeVolume,
   canFullscreen,
   canFullscreenAnyElement,
   canWebkitFullscreen,
@@ -18,12 +20,29 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
   let videoElement: HTMLVideoElement | null = null;
   let containerElement: HTMLElement | null = null;
   let isFullscreen = false;
+  let isPausedBeforeSeeking = false;
 
   function setSource() {
     if (!videoElement || !source) return;
     videoElement.src = source.url;
     videoElement.addEventListener("play", () => emit("play", undefined));
     videoElement.addEventListener("pause", () => emit("pause", undefined));
+    videoElement.addEventListener("volumechange", () =>
+      emit("volumechange", videoElement?.volume ?? 0)
+    );
+    videoElement.addEventListener("timeupdate", () =>
+      emit("time", videoElement?.currentTime ?? 0)
+    );
+    videoElement.addEventListener("loadedmetadata", () => {
+      emit("duration", videoElement?.duration ?? 0);
+    });
+    videoElement.addEventListener("progress", () => {
+      if (videoElement)
+        emit(
+          "buffered",
+          handleBuffered(videoElement.currentTime, videoElement.buffered)
+        );
+    });
   }
 
   function fullscreenChange() {
@@ -57,6 +76,36 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
     },
     play() {
       videoElement?.play();
+    },
+    setSeeking(active) {
+      // if it was playing when starting to seek, play again
+      if (!active) {
+        if (!isPausedBeforeSeeking) this.play();
+        return;
+      }
+
+      isPausedBeforeSeeking = videoElement?.paused ?? true;
+      this.pause();
+    },
+    setTime(t) {
+      if (!videoElement) return;
+      // clamp time between 0 and max duration
+      let time = Math.min(t, videoElement.duration);
+      time = Math.max(0, time);
+
+      if (Number.isNaN(time)) return;
+      emit("time", time);
+      videoElement.currentTime = time;
+    },
+    async setVolume(v) {
+      if (!videoElement) return;
+
+      // clamp time between 0 and 1
+      let volume = Math.min(v, 1);
+      volume = Math.max(0, volume);
+
+      // update state
+      if (await canChangeVolume()) videoElement.volume = volume;
     },
     toggleFullscreen() {
       if (isFullscreen) {

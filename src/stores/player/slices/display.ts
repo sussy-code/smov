@@ -30,6 +30,26 @@ export const createDisplaySlice: MakeSlice<DisplaySlice> = (set, get) => ({
         s.interface.isFullscreen = isFullscreen;
       })
     );
+    newDisplay.on("time", (time) =>
+      set((s) => {
+        s.progress.time = time;
+      })
+    );
+    newDisplay.on("volumechange", (vol) =>
+      set((s) => {
+        s.mediaPlaying.volume = vol;
+      })
+    );
+    newDisplay.on("duration", (duration) =>
+      set((s) => {
+        s.progress.duration = duration;
+      })
+    );
+    newDisplay.on("buffered", (buffered) =>
+      set((s) => {
+        s.progress.buffered = buffered;
+      })
+    );
 
     set((s) => {
       s.display = newDisplay;

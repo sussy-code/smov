@@ -1,2 +1,5 @@
 export * from "./Pause";
 export * from "./Fullscreen";
+export * from "./ProgressBar";
+export * from "./Skips";
+export * from "./Time";

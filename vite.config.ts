@@ -84,6 +84,9 @@ export default defineConfig(({ mode }) => {
       }),
       loadVersion(),
       checker({
+        overlay: {
+          position: "tr",
+        },
         typescript: true, // check typescript build errors in dev server
         eslint: {
           // check lint errors in dev server
@@ -94,6 +97,7 @@ export default defineConfig(({ mode }) => {
         },
       }),
     ],
+
     resolve: {
       alias: {
         "@": path.resolve(__dirname, "./src"),

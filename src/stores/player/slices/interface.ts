@@ -14,6 +14,7 @@ export enum PlayerHoverState {
 export interface InterfaceSlice {
   interface: {
     isFullscreen: boolean;
+    isSeeking: boolean;
     hovering: PlayerHoverState;
 
     volumeChangedWithKeybind: boolean; // has the volume recently been adjusted with the up/down arrows recently?
@@ -23,11 +24,13 @@ export interface InterfaceSlice {
     timeFormat: VideoPlayerTimeFormat; // Time format of the video player
   };
   updateInterfaceHovering(newState: PlayerHoverState): void;
+  setSeeking(seeking: boolean): void;
 }
 
-export const createInterfaceSlice: MakeSlice<InterfaceSlice> = (set) => ({
+export const createInterfaceSlice: MakeSlice<InterfaceSlice> = (set, get) => ({
   interface: {
     isFullscreen: false,
+    isSeeking: false,
     leftControlHovering: false,
     hovering: PlayerHoverState.NOT_HOVERING,
     volumeChangedWithKeybind: false,
@@ -37,8 +40,14 @@ export const createInterfaceSlice: MakeSlice<InterfaceSlice> = (set) => ({
 
   updateInterfaceHovering(newState: PlayerHoverState) {
     set((s) => {
-      console.log("setting", newState);
       s.interface.hovering = newState;
+    });
+  },
+  setSeeking(seeking) {
+    const display = get().display;
+    display?.setSeeking(seeking);
+    set((s) => {
+      s.interface.isSeeking = seeking;
     });
   },
 });

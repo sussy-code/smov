@@ -104,7 +104,13 @@ module.exports = {
 
             // video player
             video: {
-              buttonBackground: "#444B5C"
+              buttonBackground: "#444B5C",
+
+              progress: {
+                background: "#8787A8",
+                preloaded: "#8787A8",
+                watched: "#A75FC9"
+              }
             }
           }
         }

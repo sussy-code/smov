@@ -5,6 +5,10 @@ export type DisplayInterfaceEvents = {
   play: void;
   pause: void;
   fullscreen: boolean;
+  volumechange: number;
+  time: number;
+  duration: number;
+  buffered: number;
 };
 
 export interface DisplayInterface extends Listener<DisplayInterfaceEvents> {
@@ -14,5 +18,8 @@ export interface DisplayInterface extends Listener<DisplayInterfaceEvents> {
   processVideoElement(video: HTMLVideoElement): void;
   processContainerElement(container: HTMLElement): void;
   toggleFullscreen(): void;
+  setSeeking(active: boolean): void;
+  setVolume(vol: number): void;
+  setTime(t: number): void;
   destroy(): void;
 }
