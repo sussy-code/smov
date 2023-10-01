@@ -4,8 +4,5 @@
   "eslint.format.enable": true,
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "ms-vsliveshare.vsliveshare"
   }
 }
