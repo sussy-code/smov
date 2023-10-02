@@ -1,7 +1,7 @@
 player itself:
-- [ ] BUG Pause should keep controls visible
-- [ ] BUG Touch on bottoms shouldn't toggle UI
-- [ ] BUG unpause when controls hover
+- [x] BUG Pause should keep controls visible
+- [x] BUG Touch on bottoms shouldn't toggle UI
+- [x] BUG unpause when controls hover
 - [ ] keyboard controls
   - [ ] fullscreen
   - [ ] barrel roll
@@ -9,15 +9,16 @@ player itself:
   - [ ] skip forward/backward
   - [ ] pause
 - [ ] volume ui
-- [ ] header (back, title, logo)
+- [x] header (back, title, logo)
 - [ ] touch middle controls (forward, backward, pause)
-- [ ] volume
 - [ ] bookmark in header
 - [ ] airplay
 - [ ] responsiveness
 - [ ] chromecast
 - [ ] thumbnails
-- [ ] hover darken overlay (10% black)
+- [x] hover darken overlay (20% black)
+- [ ] autoplay not working
+- [ ] play button in middle if cant autoplay
 
 player views:
 - [ ] scraping view

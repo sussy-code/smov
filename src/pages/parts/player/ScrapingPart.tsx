@@ -1,11 +1,13 @@
 import { ScrapeMedia } from "@movie-web/providers";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
+import { MWStreamType } from "@/backend/helpers/streams";
+import { usePlayer } from "@/components/player/hooks/usePlayer";
 import { providers } from "@/utils/providers";
 
 export interface ScrapingProps {
   media: ScrapeMedia;
-  onGetStream?: () => void;
+  // onGetStream?: () => void;
 }
 
 export interface ScrapingSegment {
@@ -32,7 +34,6 @@ function useScrape() {
         media,
         events: {
           init(evt) {
-            console.log("init", evt);
             setSources(
               evt.sourceIds
                 .map((v) => {
@@ -54,14 +55,12 @@ function useScrape() {
             setSourceOrder(evt.sourceIds.map((v) => ({ id: v, children: [] })));
           },
           start(id) {
-            console.log("start", id);
             setSources((s) => {
               if (s[id]) s[id].status = "pending";
               return { ...s };
             });
           },
           update(evt) {
-            console.log("update", evt);
             setSources((s) => {
               if (s[evt.id]) {
                 s[evt.id].status = evt.status;
@@ -72,7 +71,6 @@ function useScrape() {
             });
           },
           discoverEmbeds(evt) {
-            console.log("discoverEmbeds", evt);
             setSources((s) => {
               evt.embeds.forEach((v) => {
                 const source = providers.getMetadata(v.embedScraperId);
@@ -97,7 +95,6 @@ function useScrape() {
         },
       });
 
-      console.log(output);
       return output;
     },
     [setSourceOrder, setSources]
@@ -111,10 +108,26 @@ function useScrape() {
 }
 
 export function ScrapingPart(props: ScrapingProps) {
+  const { playMedia } = usePlayer();
   const { startScraping, sourceOrder, sources } = useScrape();
 
+  const started = useRef(false);
+  useEffect(() => {
+    if (started.current) return;
+    started.current = true;
+    (async () => {
+      const output = await startScraping(props.media);
+      if (output?.stream.type !== "file") return;
+      const firstFile = Object.values(output.stream.qualities)[0];
+      playMedia({
+        type: MWStreamType.MP4,
+        url: firstFile.url,
+      });
+    })();
+  }, [startScraping, props, playMedia]);
+
   return (
-    <div>
+    <div className="h-full w-full flex items-center justify-center flex-col">
       {sourceOrder.map((order) => {
         const source = sources[order.id];
         if (!source) return null;
@@ -141,20 +154,6 @@ export function ScrapingPart(props: ScrapingProps) {
           </div>
         );
       })}
-      <button
-        type="button"
-        onClick={() => startScraping(props.media)}
-        className="block"
-      >
-        Start scraping
-      </button>
-      <button
-        type="button"
-        onClick={() => props.onGetStream?.()}
-        className="block"
-      >
-        Finish scraping
-      </button>
     </div>
   );
 }

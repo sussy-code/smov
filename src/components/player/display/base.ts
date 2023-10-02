@@ -21,6 +21,7 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
   let containerElement: HTMLElement | null = null;
   let isFullscreen = false;
   let isPausedBeforeSeeking = false;
+  let isSeeking = false;
 
   function setSource() {
     if (!videoElement || !source) return;
@@ -78,6 +79,9 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
       videoElement?.play();
     },
     setSeeking(active) {
+      if (active === isSeeking) return;
+      isSeeking = active;
+
       // if it was playing when starting to seek, play again
       if (!active) {
         if (!isPausedBeforeSeeking) this.play();

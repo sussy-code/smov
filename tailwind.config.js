@@ -78,7 +78,8 @@ module.exports = {
               emphasis: "#FFFFFF",
               text: "#73739D",
               dimmed: "#926CAD",
-              divider: "#262632"
+              divider: "#262632",
+              secondary: "#64647B"
             },
 
             // search bar

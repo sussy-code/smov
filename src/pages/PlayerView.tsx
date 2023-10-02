@@ -1,26 +1,46 @@
-import { useCallback } from "react";
-
-import { MWStreamType } from "@/backend/helpers/streams";
+import { BrandPill } from "@/components/layout/BrandPill";
 import { Player } from "@/components/player";
 import { usePlayer } from "@/components/player/hooks/usePlayer";
+import { useShouldShowControls } from "@/components/player/hooks/useShouldShowControls";
 import { ScrapingPart } from "@/pages/parts/player/ScrapingPart";
 import { playerStatus } from "@/stores/player/slices/source";
 
 export function PlayerView() {
-  const { status, playMedia, setScrapeStatus } = usePlayer();
-
-  const startStream = useCallback(() => {
-    playMedia({
-      type: MWStreamType.MP4,
-      // url: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-      // url: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WhatCarCanYouGetForAGrand.mp4",
-      url: "http://95.111.247.180/frog.mp4",
-    });
-  }, [playMedia]);
+  const { status, setScrapeStatus } = usePlayer();
+  const desktopControlsVisible = useShouldShowControls();
 
   return (
     <Player.Container onLoad={setScrapeStatus}>
-      <Player.BottomControls>
+      {status === playerStatus.SCRAPING ? (
+        <ScrapingPart
+          media={{
+            type: "movie",
+            title: "Everything Everywhere All At Once",
+            tmdbId: "545611",
+            releaseYear: 2022,
+          }}
+        />
+      ) : null}
+
+      <Player.BlackOverlay show={desktopControlsVisible} />
+      <Player.TopControls show={desktopControlsVisible}>
+        <div className="grid grid-cols-[1fr,auto] xl:grid-cols-3 items-center">
+          <div className="flex space-x-3 items-center">
+            <Player.BackLink />
+            <Player.BookmarkButton />
+          </div>
+          <div className="text-center hidden xl:flex justify-center items-center">
+            <span className="text-white font-medium mr-3">S1 E5</span>
+            <span className="text-type-secondary font-medium">
+              Mr. Jeebaloo discovers Atlantis
+            </span>
+          </div>
+          <div className="flex items-center justify-end">
+            <BrandPill />
+          </div>
+        </div>
+      </Player.TopControls>
+      <Player.BottomControls show={desktopControlsVisible}>
         <Player.ProgressBar />
         <div className="flex justify-between">
           <div className="flex space-x-3 items-center">
@@ -34,18 +54,6 @@ export function PlayerView() {
           </div>
         </div>
       </Player.BottomControls>
-
-      {status === playerStatus.SCRAPING ? (
-        <ScrapingPart
-          onGetStream={startStream}
-          media={{
-            type: "movie",
-            title: "Hamilton",
-            tmdbId: "556574",
-            releaseYear: 2020,
-          }}
-        />
-      ) : null}
     </Player.Container>
   );
 }

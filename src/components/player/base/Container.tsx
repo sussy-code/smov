@@ -1,5 +1,6 @@
 import { ReactNode, RefObject, useEffect, useRef } from "react";
 
+import { VideoClickTarget } from "@/components/player/internals/VideoClickTarget";
 import { VideoContainer } from "@/components/player/internals/VideoContainer";
 import { PlayerHoverState } from "@/stores/player/slices/interface";
 import { usePlayerStore } from "@/stores/player/store";
@@ -36,22 +37,12 @@ function useHovering(containerEl: RefObject<HTMLDivElement>) {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     }
 
-    function pointerUp(e: PointerEvent) {
-      if (e.pointerType === "mouse") return;
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
-      if (hovering !== PlayerHoverState.MOBILE_TAPPED)
-        updateInterfaceHovering(PlayerHoverState.MOBILE_TAPPED);
-      else updateInterfaceHovering(PlayerHoverState.NOT_HOVERING);
-    }
-
     el.addEventListener("pointermove", pointerMove);
     el.addEventListener("pointerleave", pointerLeave);
-    el.addEventListener("pointerup", pointerUp);
 
     return () => {
       el.removeEventListener("pointermove", pointerMove);
       el.removeEventListener("pointerleave", pointerLeave);
-      el.removeEventListener("pointerup", pointerUp);
     };
   }, [containerEl, hovering, updateInterfaceHovering]);
 }
@@ -69,7 +60,10 @@ function BaseContainer(props: { children?: ReactNode }) {
   }, [display, containerEl]);
 
   return (
-    <div className="relative overflow-hidden h-screen" ref={containerEl}>
+    <div
+      className="relative overflow-hidden h-screen select-none"
+      ref={containerEl}
+    >
       {props.children}
     </div>
   );
@@ -84,6 +78,7 @@ export function Container(props: PlayerProps) {
   return (
     <BaseContainer>
       <VideoContainer />
+      <VideoClickTarget />
       {props.children}
     </BaseContainer>
   );

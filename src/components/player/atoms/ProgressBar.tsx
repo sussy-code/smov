@@ -34,7 +34,7 @@ export function ProgressBar() {
   return (
     <div ref={ref}>
       <div
-        className="group w-full h-8 flex items-center"
+        className="group w-full h-8 flex items-center cursor-pointer"
         onMouseDown={dragMouseDown}
         onTouchStart={dragMouseDown}
       >

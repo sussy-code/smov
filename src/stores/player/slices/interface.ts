@@ -25,6 +25,7 @@ export interface InterfaceSlice {
   };
   updateInterfaceHovering(newState: PlayerHoverState): void;
   setSeeking(seeking: boolean): void;
+  setTimeFormat(format: VideoPlayerTimeFormat): void;
 }
 
 export const createInterfaceSlice: MakeSlice<InterfaceSlice> = (set, get) => ({
@@ -38,6 +39,11 @@ export const createInterfaceSlice: MakeSlice<InterfaceSlice> = (set, get) => ({
     timeFormat: VideoPlayerTimeFormat.REGULAR,
   },
 
+  setTimeFormat(format) {
+    set((s) => {
+      s.interface.timeFormat = format;
+    });
+  },
   updateInterfaceHovering(newState: PlayerHoverState) {
     set((s) => {
       s.interface.hovering = newState;

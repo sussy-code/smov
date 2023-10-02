@@ -1,19 +1,29 @@
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { VideoPlayerButton } from "@/components/player/internals/Button";
+import { VideoPlayerTimeFormat } from "@/stores/player/slices/interface";
 import { usePlayerStore } from "@/stores/player/store";
 import { formatSeconds } from "@/utils/formatSeconds";
 
+function durationExceedsHour(secs: number): boolean {
+  return secs > 60 * 60;
+}
+
 export function Time() {
-  const [timeMode, setTimeMode] = useState(true);
+  const timeFormat = usePlayerStore((s) => s.interface.timeFormat);
+  const setTimeFormat = usePlayerStore((s) => s.setTimeFormat);
 
   const { duration, time, draggingTime } = usePlayerStore((s) => s.progress);
   const { isSeeking } = usePlayerStore((s) => s.interface);
   const { t } = useTranslation();
+  const hasHours = durationExceedsHour(duration);
 
   function toggleMode() {
-    setTimeMode(!timeMode);
+    setTimeFormat(
+      timeFormat === VideoPlayerTimeFormat.REGULAR
+        ? VideoPlayerTimeFormat.REMAINING
+        : VideoPlayerTimeFormat.REGULAR
+    );
   }
 
   const currentTime = Math.min(
@@ -30,16 +40,23 @@ export function Time() {
     },
   });
 
-  const child = timeMode ? (
-    <>
-      {formatSeconds(currentTime)} <span>/ {formatSeconds(duration)}</span>
-    </>
-  ) : (
-    <>
-      {t("videoPlayer.timeLeft", { timeLeft: formatSeconds(secondsRemaining) })}{" "}
-      • {formattedTimeFinished}
-    </>
-  );
+  const child =
+    timeFormat === VideoPlayerTimeFormat.REGULAR ? (
+      <>
+        {formatSeconds(currentTime, hasHours)}{" "}
+        <span>/ {formatSeconds(duration, hasHours)}</span>
+      </>
+    ) : (
+      <>
+        {t("videoPlayer.timeLeft", {
+          timeLeft: formatSeconds(
+            secondsRemaining,
+            durationExceedsHour(secondsRemaining)
+          ),
+        })}{" "}
+        • {formattedTimeFinished}
+      </>
+    );
 
   return (
     <VideoPlayerButton onClick={() => toggleMode()}>{child}</VideoPlayerButton>
