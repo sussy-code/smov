@@ -3,6 +3,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 import { MWStreamType } from "@/backend/helpers/streams";
 import { usePlayer } from "@/components/player/hooks/usePlayer";
+import { StatusCircle } from "@/components/player/internals/StatusCircle";
 import { providers } from "@/utils/providers";
 
 export interface ScrapingProps {
@@ -131,13 +132,32 @@ export function ScrapingPart(props: ScrapingProps) {
       {sourceOrder.map((order) => {
         const source = sources[order.id];
         if (!source) return null;
+
+        // Progress circle
+        let Circle = <StatusCircle type="pending" />;
+        if (source.status === "pending")
+          Circle = (
+            <StatusCircle type="loading" percentage={source.percentage} />
+          );
+        if (source.status === "notfound")
+          Circle = <StatusCircle type="error" />;
+
+        // Main thing
         return (
-          <div key={order.id}>
-            <p className="font-bold text-white">{source.name}</p>
-            <p>
-              status: {source.status} ({source.percentage}%)
-            </p>
-            <p>reason: {source.reason}</p>
+          <div
+            key={order.id}
+            className="bg-video-scraping-card w-72 rounded-md p-6"
+          >
+            <div className="grid gap-6 grid-cols-[auto,1fr]">
+              {Circle}
+              <div>
+                <p className="font-bold text-white">{source.name}</p>
+                <p>
+                  status: {source.status} ({source.percentage}%)
+                </p>
+                <p>reason: {source.reason}</p>
+              </div>
+            </div>
             {order.children.map((embedId) => {
               const embed = sources[embedId];
               if (!embed) return null;

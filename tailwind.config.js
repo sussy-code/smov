@@ -107,6 +107,14 @@ module.exports = {
             video: {
               buttonBackground: "#444B5C",
 
+              scraping: {
+                card: "#161620",
+                error: "#E44F4F",
+                success: "#40B44B",
+                loading: "#B759D8",
+                noresult: "#64647B"
+              },
+
               progress: {
                 background: "#8787A8",
                 preloaded: "#8787A8",

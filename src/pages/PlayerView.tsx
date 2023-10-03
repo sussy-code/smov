@@ -15,7 +15,8 @@ export function PlayerView() {
         <ScrapingPart
           media={{
             type: "movie",
-            title: "Everything Everywhere All At Once",
+            title:
+              "Everything Everywhere All At Once bsbasjkdsakjdashjdasjhkds",
             tmdbId: "545611",
             releaseYear: 2022,
           }}
