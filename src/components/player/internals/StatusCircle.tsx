@@ -1,10 +1,15 @@
-import { Icon, Icons } from "@/components/Icon";
+import { a, to, useSpring } from "@react-spring/web";
+import classNames from "classnames";
 
-interface StatusCircle {
-  type: "loading" | "done" | "error" | "pending" | "noresult";
+import { Icon, Icons } from "@/components/Icon";
+import { Transition } from "@/components/Transition";
+
+export interface StatusCircle {
+  type: "loading" | "success" | "error" | "noresult" | "waiting";
+  percentage?: number;
 }
 
-interface StatusCircleLoading extends StatusCircle {
+export interface StatusCircleLoading extends StatusCircle {
   type: "loading";
   percentage: number;
 }
@@ -16,19 +21,27 @@ function statusIsLoading(
 }
 
 export function StatusCircle(props: StatusCircle | StatusCircleLoading) {
-  let classes = "";
-  if (props.type === "loading") classes = "text-video-scraping-loading";
-  if (props.type === "noresult")
-    classes = "text-video-scraping-noresult text-opacity-50";
-  if (props.type === "error")
-    classes = "text-video-scraping-error bg-video-scraping-error";
+  const [spring] = useSpring(
+    () => ({
+      percentage: statusIsLoading(props) ? props.percentage : 0,
+    }),
+    [props]
+  );
 
   return (
     <div
-      className={[
-        "p-0.5 border-current border-2 rounded-full h-6 w-6 relative",
-        classes || "",
-      ].join(" ")}
+      className={classNames({
+        "p-0.5 border-current border-2 rounded-full h-6 w-6 relative transition-colors":
+          true,
+        "text-video-scraping-loading": props.type === "loading",
+        "text-video-scraping-noresult text-opacity-50":
+          props.type === "waiting",
+        "text-video-scraping-error bg-video-scraping-error":
+          props.type === "error",
+        "text-green-500 bg-green-500": props.type === "success",
+        "text-video-scraping-noresult bg-video-scraping-noresult":
+          props.type === "noresult",
+      })}
     >
       <svg
         width="100%"
@@ -37,21 +50,36 @@ export function StatusCircle(props: StatusCircle | StatusCircleLoading) {
         xmlns="http://www.w3.org/2000/svg"
         className="rounded-full -rotate-90"
       >
-        {statusIsLoading(props) ? (
-          <circle
+        <Transition animation="fade" show={statusIsLoading(props)}>
+          <a.circle
             strokeWidth="32"
-            strokeDasharray={`${props.percentage} 100`}
+            strokeDasharray={to(spring.percentage, (val) => `${val} 100`)}
             r="25%"
             cx="50%"
             cy="50%"
             fill="transparent"
             stroke="currentColor"
+            className="transition-[strokeDasharray]"
           />
-        ) : null}
+        </Transition>
       </svg>
-      {props.type === "error" ? (
-        <Icon className="absolute inset-0 text-white" icon={Icons.X} />
-      ) : null}
+      <Transition animation="fade" show={props.type === "error"}>
+        <Icon
+          className="absolute inset-0 flex items-center justify-center text-white"
+          icon={Icons.X}
+        />
+      </Transition>
+      <Transition animation="fade" show={props.type === "success"}>
+        <Icon
+          className="absolute inset-0 flex items-center text-xs justify-center text-white"
+          icon={Icons.CHECKMARK}
+        />
+      </Transition>
+      <Transition animation="fade" show={props.type === "noresult"}>
+        <div className="absolute inset-0 flex items-center">
+          <div className="h-[3px] flex-1 mx-1 rounded-full bg-background-main" />
+        </div>
+      </Transition>
     </div>
   );
 }

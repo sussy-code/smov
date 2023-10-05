@@ -1,8 +1,12 @@
 import { ProviderControls, ScrapeMedia } from "@movie-web/providers";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { AsyncReturnType } from "type-fest";
 
 import { usePlayer } from "@/components/player/hooks/usePlayer";
+import {
+  ScrapeCard,
+  ScrapeItem,
+} from "@/components/player/internals/ScrapeCard";
 import { StatusCircle } from "@/components/player/internals/StatusCircle";
 import { providers } from "@/utils/providers";
 
@@ -27,6 +31,7 @@ export interface ScrapingItems {
 function useScrape() {
   const [sources, setSources] = useState<Record<string, ScrapingSegment>>({});
   const [sourceOrder, setSourceOrder] = useState<ScrapingItems[]>([]);
+  const [currentSource, setCurrentSource] = useState<string>();
 
   const startScraping = useCallback(
     async (media: ScrapeMedia) => {
@@ -60,6 +65,7 @@ function useScrape() {
               if (s[id]) s[id].status = "pending";
               return { ...s };
             });
+            setCurrentSource(id);
           },
           update(evt) {
             setSources((s) => {
@@ -105,12 +111,52 @@ function useScrape() {
     startScraping,
     sourceOrder,
     sources,
+    currentSource,
   };
 }
 
 export function ScrapingPart(props: ScrapingProps) {
   const { playMedia } = usePlayer();
-  const { startScraping, sourceOrder, sources } = useScrape();
+  const { startScraping, sourceOrder, sources, currentSource } = useScrape();
+
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const listRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+    if (!listRef.current) return;
+
+    const elements = [
+      ...listRef.current.querySelectorAll("div[data-source-id]"),
+    ] as HTMLDivElement[];
+
+    const currentIndex = elements.findIndex(
+      (e) => e.getAttribute("data-source-id") === currentSource
+    );
+
+    const currentElement = elements[currentIndex];
+
+    if (!currentElement) return;
+
+    const containerWidth = containerRef.current.getBoundingClientRect().width;
+    const listWidth = listRef.current.getBoundingClientRect().width;
+
+    const containerHeight = containerRef.current.getBoundingClientRect().height;
+    const listHeight = listRef.current.getBoundingClientRect().height;
+
+    const listTop = listRef.current.getBoundingClientRect().top;
+
+    const currentTop = currentElement.getBoundingClientRect().top;
+    const currentHeight = currentElement.getBoundingClientRect().height;
+
+    const topDifference = currentTop - listTop;
+
+    const listNewLeft = containerWidth / 2 - listWidth / 2;
+    const listNewTop = containerHeight / 2 - topDifference + currentHeight / 2;
+
+    listRef.current.style.left = `${listNewLeft}px`;
+    listRef.current.style.top = `${listNewTop}px`;
+  }, [sourceOrder, currentSource]);
 
   const started = useRef(false);
   useEffect(() => {
@@ -123,52 +169,35 @@ export function ScrapingPart(props: ScrapingProps) {
   }, [startScraping, props, playMedia]);
 
   return (
-    <div className="h-full w-full flex items-center justify-center flex-col">
-      {sourceOrder.map((order) => {
-        const source = sources[order.id];
-        if (!source) return null;
-
-        // Progress circle
-        let Circle = <StatusCircle type="pending" />;
-        if (source.status === "pending")
-          Circle = (
-            <StatusCircle type="loading" percentage={source.percentage} />
+    <div className="h-full w-full relative" ref={containerRef}>
+      <div className="absolute" ref={listRef}>
+        {sourceOrder.map((order) => {
+          const source = sources[order.id];
+          return (
+            <ScrapeCard
+              id={order.id}
+              name={source.name}
+              status={source.status}
+              hasChildren={order.children.length > 0}
+              percentage={source.percentage}
+              key={order.id}
+            >
+              {order.children.map((embedId) => {
+                const embed = sources[embedId];
+                return (
+                  <ScrapeItem
+                    id={embedId}
+                    name={embed.name}
+                    status={source.status}
+                    percentage={embed.percentage}
+                    key={embedId}
+                  />
+                );
+              })}
+            </ScrapeCard>
           );
-        if (source.status === "notfound")
-          Circle = <StatusCircle type="error" />;
-
-        // Main thing
-        return (
-          <div
-            key={order.id}
-            className="bg-video-scraping-card w-72 rounded-md p-6"
-          >
-            <div className="grid gap-6 grid-cols-[auto,1fr]">
-              {Circle}
-              <div>
-                <p className="font-bold text-white">{source.name}</p>
-                <p>
-                  status: {source.status} ({source.percentage}%)
-                </p>
-                <p>reason: {source.reason}</p>
-              </div>
-            </div>
-            {order.children.map((embedId) => {
-              const embed = sources[embedId];
-              if (!embed) return null;
-              return (
-                <div key={embedId} className="border border-blue-300 rounded">
-                  <p className="font-bold text-white">{embed.name}</p>
-                  <p>
-                    status: {embed.status} ({embed.percentage}%)
-                  </p>
-                  <p>reason: {embed.reason}</p>
-                </div>
-              );
-            })}
-          </div>
-        );
-      })}
+        })}
+      </div>
     </div>
   );
 }

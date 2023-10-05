@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { memo, useEffect, useRef } from "react";
 
 export enum Icons {
@@ -113,7 +114,7 @@ export const Icon = memo((props: IconProps) => {
   return (
     <span
       dangerouslySetInnerHTML={{ __html: iconList[props.icon] }} // eslint-disable-line react/no-danger
-      className={props.className}
+      className={classNames(props.className, "inline-block")}
     />
   );
 });
