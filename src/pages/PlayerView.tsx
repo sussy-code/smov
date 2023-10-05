@@ -1,12 +1,9 @@
-import { useEffect, useState } from "react";
-
 import { MWStreamType } from "@/backend/helpers/streams";
 import { BrandPill } from "@/components/layout/BrandPill";
 import { Player } from "@/components/player";
 import { AutoPlayStart } from "@/components/player/atoms";
 import { usePlayer } from "@/components/player/hooks/usePlayer";
 import { useShouldShowControls } from "@/components/player/hooks/useShouldShowControls";
-import { StatusCircle } from "@/components/player/internals/StatusCircle";
 import { ScrapingPart } from "@/pages/parts/player/ScrapingPart";
 import { playerStatus } from "@/stores/player/slices/source";
 
@@ -14,19 +11,13 @@ export function PlayerView() {
   const { status, setScrapeStatus, playMedia } = usePlayer();
   const desktopControlsVisible = useShouldShowControls();
 
-  const [a, setA] = useState(0);
-  useEffect(() => {
-    const dsf = setInterval(() => setA(Math.floor(Math.random() * 100)), 1000);
-    return () => clearInterval(dsf);
-  }, [setA]);
-
   return (
     <Player.Container onLoad={setScrapeStatus}>
       {status === playerStatus.SCRAPING ? (
         <ScrapingPart
           media={{
             type: "movie",
-            title: "Everything Everywhere All At OnceASFAFS",
+            title: "Everything Everywhere All At Oncess",
             tmdbId: "545611",
             releaseYear: 2022,
           }}
