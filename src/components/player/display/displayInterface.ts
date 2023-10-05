@@ -9,6 +9,7 @@ export type DisplayInterfaceEvents = {
   time: number;
   duration: number;
   buffered: number;
+  loading: boolean;
 };
 
 export interface DisplayInterface extends Listener<DisplayInterfaceEvents> {

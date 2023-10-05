@@ -229,6 +229,9 @@ devDependencies:
   tailwindcss-themer:
     specifier: ^3.1.0
     version: 3.1.0(tailwindcss@3.3.3)
+  type-fest:
+    specifier: ^4.3.3
+    version: 4.3.3
   typescript:
     specifier: ^4.6.4
     version: 4.9.5
@@ -6098,6 +6101,11 @@ packages:
   /type-fest@0.21.3:
     resolution: {integrity: sha512-t0rzBq87m3fVcduHDUFhKmyyX+9eo6WQjZvf51Ea/M0Q7+T374Jp1aUiyUl0GKxp8M/OETVHSDvmkyPgvX+X2w==}
     engines: {node: '>=10'}
+    dev: true
+
+  /type-fest@4.3.3:
+    resolution: {integrity: sha512-bxhiFii6BBv6UiSDq7uKTMyADT9unXEl3ydGefndVLxFeB44LRbT4K7OJGDYSyDrKnklCC1Pre68qT2wbUl2Aw==}
+    engines: {node: '>=16'}
     dev: true
 
   /typed-array-buffer@1.0.0:

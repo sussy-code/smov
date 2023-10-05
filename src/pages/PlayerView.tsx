@@ -1,12 +1,14 @@
+import { MWStreamType } from "@/backend/helpers/streams";
 import { BrandPill } from "@/components/layout/BrandPill";
 import { Player } from "@/components/player";
+import { AutoPlayStart } from "@/components/player/atoms";
 import { usePlayer } from "@/components/player/hooks/usePlayer";
 import { useShouldShowControls } from "@/components/player/hooks/useShouldShowControls";
 import { ScrapingPart } from "@/pages/parts/player/ScrapingPart";
 import { playerStatus } from "@/stores/player/slices/source";
 
 export function PlayerView() {
-  const { status, setScrapeStatus } = usePlayer();
+  const { status, setScrapeStatus, playMedia } = usePlayer();
   const desktopControlsVisible = useShouldShowControls();
 
   return (
@@ -15,15 +17,32 @@ export function PlayerView() {
         <ScrapingPart
           media={{
             type: "movie",
-            title:
-              "Everything Everywhere All At Once bsbasjkdsakjdashjdasjhkds",
+            title: "Everything Everywhere All At Once",
             tmdbId: "545611",
             releaseYear: 2022,
+          }}
+          onGetStream={(out) => {
+            if (out?.stream.type !== "file") return;
+            const qualities = Object.keys(
+              out.stream.qualities
+            ) as (keyof typeof out.stream.qualities)[];
+            const file = out.stream.qualities[qualities[0]];
+            if (!file) return;
+            playMedia({
+              type: MWStreamType.MP4,
+              url: file.url,
+            });
           }}
         />
       ) : null}
 
       <Player.BlackOverlay show={desktopControlsVisible} />
+
+      <Player.CenterControls>
+        <Player.LoadingSpinner />
+        <AutoPlayStart />
+      </Player.CenterControls>
+
       <Player.TopControls show={desktopControlsVisible}>
         <div className="grid grid-cols-[1fr,auto] xl:grid-cols-3 items-center">
           <div className="flex space-x-3 items-center">
@@ -41,6 +60,7 @@ export function PlayerView() {
           </div>
         </div>
       </Player.TopControls>
+
       <Player.BottomControls show={desktopControlsVisible}>
         <Player.ProgressBar />
         <div className="flex justify-between">

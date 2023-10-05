@@ -3,14 +3,21 @@ import { MakeSlice } from "@/stores/player/slices/types";
 
 export interface DisplaySlice {
   display: DisplayInterface | null;
-  setDisplay(display: DisplayInterface): void;
+  setDisplay(display: DisplayInterface | null): void;
 }
 
 export const createDisplaySlice: MakeSlice<DisplaySlice> = (set, get) => ({
   display: null,
-  setDisplay(newDisplay: DisplayInterface) {
+  setDisplay(newDisplay: DisplayInterface | null) {
     const display = get().display;
     if (display) display.destroy();
+
+    if (!newDisplay) {
+      set((s) => {
+        s.display = null;
+      });
+      return;
+    }
 
     // make display events update the state
     newDisplay.on("pause", () =>
@@ -21,6 +28,7 @@ export const createDisplaySlice: MakeSlice<DisplaySlice> = (set, get) => ({
     );
     newDisplay.on("play", () =>
       set((s) => {
+        s.mediaPlaying.hasPlayedOnce = true;
         s.mediaPlaying.isPaused = false;
         s.mediaPlaying.isPlaying = true;
       })
@@ -48,6 +56,11 @@ export const createDisplaySlice: MakeSlice<DisplaySlice> = (set, get) => ({
     newDisplay.on("buffered", (buffered) =>
       set((s) => {
         s.progress.buffered = buffered;
+      })
+    );
+    newDisplay.on("loading", (isLoading) =>
+      set((s) => {
+        s.mediaPlaying.isLoading = isLoading;
       })
     );
 

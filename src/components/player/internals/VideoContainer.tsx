@@ -13,6 +13,9 @@ function useDisplayInterface() {
     if (!display) {
       setDisplay(makeVideoElementDisplayInterface());
     }
+    return () => {
+      if (display) setDisplay(null);
+    };
   }, [display, setDisplay]);
 }
 

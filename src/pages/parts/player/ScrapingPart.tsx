@@ -1,14 +1,14 @@
-import { ScrapeMedia } from "@movie-web/providers";
+import { ProviderControls, ScrapeMedia } from "@movie-web/providers";
 import { useCallback, useEffect, useRef, useState } from "react";
+import type { AsyncReturnType } from "type-fest";
 
-import { MWStreamType } from "@/backend/helpers/streams";
 import { usePlayer } from "@/components/player/hooks/usePlayer";
 import { StatusCircle } from "@/components/player/internals/StatusCircle";
 import { providers } from "@/utils/providers";
 
 export interface ScrapingProps {
   media: ScrapeMedia;
-  // onGetStream?: () => void;
+  onGetStream?: (stream: AsyncReturnType<ProviderControls["runAll"]>) => void;
 }
 
 export interface ScrapingSegment {
@@ -30,7 +30,7 @@ function useScrape() {
 
   const startScraping = useCallback(
     async (media: ScrapeMedia) => {
-      if (!providers) return;
+      if (!providers) return null;
       const output = await providers.runAll({
         media,
         events: {
@@ -118,12 +118,7 @@ export function ScrapingPart(props: ScrapingProps) {
     started.current = true;
     (async () => {
       const output = await startScraping(props.media);
-      if (output?.stream.type !== "file") return;
-      const firstFile = Object.values(output.stream.qualities)[0];
-      playMedia({
-        type: MWStreamType.MP4,
-        url: firstFile.url,
-      });
+      props.onGetStream?.(output);
     })();
   }, [startScraping, props, playMedia]);
 

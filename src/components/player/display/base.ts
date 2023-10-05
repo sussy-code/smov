@@ -26,8 +26,14 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
   function setSource() {
     if (!videoElement || !source) return;
     videoElement.src = source.url;
-    videoElement.addEventListener("play", () => emit("play", undefined));
+    videoElement.addEventListener("play", () => {
+      emit("play", undefined);
+      emit("loading", false);
+    });
+    videoElement.addEventListener("playing", () => emit("play", undefined));
     videoElement.addEventListener("pause", () => emit("pause", undefined));
+    videoElement.addEventListener("canplay", () => emit("loading", false));
+    videoElement.addEventListener("waiting", () => emit("loading", true));
     videoElement.addEventListener("volumechange", () =>
       emit("volumechange", videoElement?.volume ?? 0)
     );
@@ -57,10 +63,15 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
     on,
     off,
     destroy: () => {
+      if (videoElement) {
+        videoElement.src = "";
+        videoElement.remove();
+      }
       fscreen.removeEventListener("fullscreenchange", fullscreenChange);
     },
     load(newSource) {
       source = newSource;
+      emit("loading", true);
       setSource();
     },
 
