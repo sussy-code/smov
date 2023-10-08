@@ -1,5 +1,6 @@
 import { ReactNode, RefObject, useEffect, useRef } from "react";
 
+import { HeadUpdater } from "@/components/player/internals/HeadUpdater";
 import { VideoClickTarget } from "@/components/player/internals/VideoClickTarget";
 import { VideoContainer } from "@/components/player/internals/VideoContainer";
 import { PlayerHoverState } from "@/stores/player/slices/interface";
@@ -79,6 +80,7 @@ export function Container(props: PlayerProps) {
     <BaseContainer>
       <VideoContainer />
       <VideoClickTarget />
+      <HeadUpdater />
       {props.children}
     </BaseContainer>
   );
