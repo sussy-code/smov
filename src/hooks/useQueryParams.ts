@@ -1,5 +1,5 @@
 import { useCallback, useMemo } from "react";
-import { useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
 export function useQueryParams() {
   const loc = useLocation();
@@ -19,6 +19,7 @@ export function useQueryParams() {
 export function useQueryParam(param: string) {
   const params = useQueryParams();
   const location = useLocation();
+  const router = useHistory();
   const currentValue = params[param];
 
   const set = useCallback(
@@ -26,9 +27,11 @@ export function useQueryParam(param: string) {
       const parsed = new URLSearchParams(location.search);
       if (value) parsed.set(param, value);
       else parsed.delete(param);
-      location.search = parsed.toString();
+      router.push({
+        search: parsed.toString(),
+      });
     },
-    [param, location]
+    [param, location, router]
   );
 
   return [currentValue, set] as const;

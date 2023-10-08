@@ -4,7 +4,6 @@ export function useOverlayRouter(id: string) {
   const [route, setRoute] = useQueryParam("r");
   const routeParts = (route ?? "").split("/").filter((v) => v.length > 0);
   const routerActive = routeParts.length > 0 && routeParts[0] === id;
-  const currentPage = routeParts[routeParts.length - 1] ?? "/";
 
   function navigate(path: string) {
     const newRoute = [id, ...path.split("/").filter((v) => v.length > 0)];
@@ -20,7 +19,7 @@ export function useOverlayRouter(id: string) {
   }
 
   function isCurrentPage(page: string) {
-    return routerActive && page === currentPage;
+    return routerActive && route === `/${id}${page}`;
   }
 
   function isLoaded(page: string) {
@@ -40,7 +39,11 @@ export function useOverlayRouter(id: string) {
   }
 
   function close() {
-    navigate("/");
+    setRoute(null);
+  }
+
+  function open() {
+    setRoute(`/${id}`);
   }
 
   return {
@@ -51,5 +54,6 @@ export function useOverlayRouter(id: string) {
     isCurrentPage,
     pageProps,
     isActive,
+    open,
   };
 }

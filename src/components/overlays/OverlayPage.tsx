@@ -13,7 +13,7 @@ interface Props {
   active?: boolean; // true if a child view is loaded
 }
 
-export function FloatingView(props: Props) {
+export function OverlayPage(props: Props) {
   const { isMobile } = useIsMobile();
   const width = !isMobile ? `${props.width}px` : "100%";
   return (

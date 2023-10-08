@@ -3,11 +3,11 @@ import { ReactNode, useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
 import { Transition } from "@/components/Transition";
+import { useOverlayRouter } from "@/hooks/useOverlayRouter";
 
 export interface OverlayProps {
+  id: string;
   children?: ReactNode;
-  onClose?: () => void;
-  show?: boolean;
   darken?: boolean;
 }
 
@@ -16,6 +16,7 @@ export function OverlayDisplay(props: { children: ReactNode }) {
 }
 
 export function Overlay(props: OverlayProps) {
+  const router = useOverlayRouter(props.id);
   const [portalElement, setPortalElement] = useState<Element | null>(null);
   const ref = useRef<HTMLDivElement>(null);
   const target = useRef<Element | null>(null);
@@ -37,9 +38,9 @@ export function Overlay(props: OverlayProps) {
       if (e.currentTarget !== e.target) return;
       if (!startedTarget) return;
       if (!startedTarget.isEqualNode(e.currentTarget as Element)) return;
-      if (props.onClose) props.onClose();
+      router.close();
     },
-    [props]
+    [router]
   );
 
   useEffect(() => {
@@ -47,25 +48,21 @@ export function Overlay(props: OverlayProps) {
     setPortalElement(element ?? document.body);
   }, []);
 
-  const backdrop = (
-    <Transition animation="fade" isChild>
-      <div
-        onClick={click}
-        className={classNames({
-          "absolute inset-0": true,
-          "bg-black opacity-90": props.darken,
-        })}
-      />
-    </Transition>
-  );
-
   return (
     <div ref={ref}>
       {portalElement
         ? createPortal(
-            <Transition show={props.show} animation="none">
+            <Transition show={router.isOverlayActive()} animation="none">
               <div className="popout-wrapper pointer-events-auto fixed inset-0 z-[999] select-none">
-                {backdrop}
+                <Transition animation="fade" isChild>
+                  <div
+                    onClick={click}
+                    className={classNames({
+                      "absolute inset-0": true,
+                      "bg-black opacity-90": props.darken,
+                    })}
+                  />
+                </Transition>
                 <Transition animation="slide-up" className="h-0" isChild>
                   {props.children}
                 </Transition>
