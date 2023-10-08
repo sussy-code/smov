@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import { useLocation } from "react-router-dom";
 
 export function useQueryParams() {
@@ -14,4 +14,22 @@ export function useQueryParams() {
   }, [loc]);
 
   return queryParams;
+}
+
+export function useQueryParam(param: string) {
+  const params = useQueryParams();
+  const location = useLocation();
+  const currentValue = params[param];
+
+  const set = useCallback(
+    (value: string | null) => {
+      const parsed = new URLSearchParams(location.search);
+      if (value) parsed.set(param, value);
+      else parsed.delete(param);
+      location.search = parsed.toString();
+    },
+    [param, location]
+  );
+
+  return [currentValue, set] as const;
 }

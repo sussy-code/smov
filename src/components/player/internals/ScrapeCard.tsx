@@ -35,15 +35,19 @@ export function ScrapeItem(props: ScrapeItemProps) {
   const status = statusMap[props.status];
 
   return (
-    <div className="grid gap-6 grid-cols-[auto,1fr]" data-source-id={props.id}>
+    <div className="grid gap-4 grid-cols-[auto,1fr]" data-source-id={props.id}>
       <StatusCircle type={status} percentage={props.percentage ?? 0} />
       <div>
-        <p className="font-bold text-white">{props.name}</p>
-        <div className="h-4">
-          <Transition animation="fade" show={!!text}>
-            <p>{text}</p>
-          </Transition>
-        </div>
+        <p
+          className={
+            status === "loading" ? "text-white" : "text-type-secondary"
+          }
+        >
+          {props.name}
+        </p>
+        <Transition animation="fade" show={!!text}>
+          <p className="text-[15px] mt-1">{text}</p>
+        </Transition>
         {props.children}
       </div>
     </div>
@@ -52,14 +56,15 @@ export function ScrapeItem(props: ScrapeItemProps) {
 
 export function ScrapeCard(props: ScrapeCardProps) {
   return (
-    <div
-      data-source-id={props.id}
-      className={classNames({
-        "!bg-opacity-100": props.hasChildren,
-        "w-72 rounded-md p-6 bg-video-scraping-card bg-opacity-0": true,
-      })}
-    >
-      <ScrapeItem {...props} />
+    <div data-source-id={props.id} className="w-80 mb-6">
+      <div
+        className={classNames({
+          "!bg-opacity-100 py-6": props.hasChildren,
+          "w-80 rounded-md px-6 bg-video-scraping-card bg-opacity-0": true,
+        })}
+      >
+        <ScrapeItem {...props} />
+      </div>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import { ReactNode, RefObject, useEffect, useRef } from "react";
 
+import { OverlayDisplay } from "@/components/overlays/OverlayDisplay";
 import { HeadUpdater } from "@/components/player/internals/HeadUpdater";
 import { VideoClickTarget } from "@/components/player/internals/VideoClickTarget";
 import { VideoContainer } from "@/components/player/internals/VideoContainer";
@@ -61,11 +62,12 @@ function BaseContainer(props: { children?: ReactNode }) {
   }, [display, containerEl]);
 
   return (
-    <div
-      className="relative overflow-hidden h-screen select-none"
-      ref={containerEl}
-    >
-      {props.children}
+    <div ref={containerEl}>
+      <OverlayDisplay>
+        <div className="relative overflow-hidden h-screen select-none">
+          {props.children}
+        </div>
+      </OverlayDisplay>
     </div>
   );
 }

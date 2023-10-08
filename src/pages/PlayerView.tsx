@@ -53,6 +53,7 @@ export function PlayerView() {
             ) as (keyof typeof out.stream.qualities)[];
             const file = out.stream.qualities[qualities[0]];
             if (!file) return;
+
             playMedia({
               type: MWStreamType.MP4,
               url: file.url,

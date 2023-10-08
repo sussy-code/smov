@@ -38,6 +38,13 @@ export function ScrapingPart(props: ScrapingProps) {
     })();
   }, [startScraping, props, playMedia]);
 
+  const currentProvider = sourceOrder.find(
+    (s) => sources[s.id].status === "pending"
+  );
+  const currentProviderIndex = sourceOrder.findIndex(
+    (provider) => currentProvider?.id === provider.id
+  );
+
   return (
     <div className="h-full w-full relative" ref={containerRef}>
       <div
@@ -49,28 +56,43 @@ export function ScrapingPart(props: ScrapingProps) {
       >
         {sourceOrder.map((order) => {
           const source = sources[order.id];
+          const distance = Math.abs(
+            sourceOrder.findIndex((t) => t.id === order.id) -
+              currentProviderIndex
+          );
           return (
-            <ScrapeCard
-              id={order.id}
-              name={source.name}
-              status={source.status}
-              hasChildren={order.children.length > 0}
-              percentage={source.percentage}
+            <div
+              className="transition-opacity duration-100"
+              style={{ opacity: Math.max(0, 1 - distance * 0.3) }}
               key={order.id}
             >
-              {order.children.map((embedId) => {
-                const embed = sources[embedId];
-                return (
-                  <ScrapeItem
-                    id={embedId}
-                    name={embed.name}
-                    status={source.status}
-                    percentage={embed.percentage}
-                    key={embedId}
-                  />
-                );
-              })}
-            </ScrapeCard>
+              <ScrapeCard
+                id={order.id}
+                name={source.name}
+                status={source.status}
+                hasChildren={order.children.length > 0}
+                percentage={source.percentage}
+              >
+                <div
+                  className={classNames({
+                    "space-y-6 mt-8": order.children.length > 0,
+                  })}
+                >
+                  {order.children.map((embedId) => {
+                    const embed = sources[embedId];
+                    return (
+                      <ScrapeItem
+                        id={embedId}
+                        name={embed.name}
+                        status={embed.status}
+                        percentage={embed.percentage}
+                        key={embedId}
+                      />
+                    );
+                  })}
+                </div>
+              </ScrapeCard>
+            </div>
           );
         })}
       </div>

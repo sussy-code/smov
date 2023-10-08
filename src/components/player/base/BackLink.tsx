@@ -14,7 +14,8 @@ export function BackLink() {
         className="flex items-center cursor-pointer text-type-secondary hover:text-white transition-colors duration-200 font-medium"
       >
         <Icon className="mr-2" icon={Icons.ARROW_LEFT} />
-        <span>{t("videoPlayer.backToHomeShort")}</span>
+        <span className="md:hidden">{t("videoPlayer.backToHomeShort")}</span>
+        <span className="hidden md:block">{t("videoPlayer.backToHome")}</span>
       </span>
     </div>
   );
