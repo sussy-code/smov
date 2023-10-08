@@ -26,6 +26,7 @@ export interface InterfaceSlice {
   updateInterfaceHovering(newState: PlayerHoverState): void;
   setSeeking(seeking: boolean): void;
   setTimeFormat(format: VideoPlayerTimeFormat): void;
+  setHoveringLeftControls(state: boolean): void;
 }
 
 export const createInterfaceSlice: MakeSlice<InterfaceSlice> = (set, get) => ({
@@ -54,6 +55,11 @@ export const createInterfaceSlice: MakeSlice<InterfaceSlice> = (set, get) => ({
     display?.setSeeking(seeking);
     set((s) => {
       s.interface.isSeeking = seeking;
+    });
+  },
+  setHoveringLeftControls(state) {
+    set((s) => {
+      s.interface.leftControlHovering = state;
     });
   },
 });

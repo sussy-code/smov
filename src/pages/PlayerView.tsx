@@ -64,12 +64,13 @@ export function PlayerView() {
       <Player.BottomControls show={desktopControlsVisible}>
         <Player.ProgressBar />
         <div className="flex justify-between">
-          <div className="flex space-x-3 items-center">
+          <Player.LeftSideControls>
             <Player.Pause />
             <Player.SkipBackward />
             <Player.SkipForward />
+            <Player.Volume />
             <Player.Time />
-          </div>
+          </Player.LeftSideControls>
           <div>
             <Player.Fullscreen />
           </div>

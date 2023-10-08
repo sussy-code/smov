@@ -119,6 +119,10 @@ module.exports = {
                 background: "#8787A8",
                 preloaded: "#8787A8",
                 watched: "#A75FC9"
+              },
+
+              audio: {
+                set: "#A75FC9"
               }
             }
           }
