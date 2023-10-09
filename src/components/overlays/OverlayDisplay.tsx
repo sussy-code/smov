@@ -12,15 +12,8 @@ export interface OverlayProps {
 }
 
 export function OverlayDisplay(props: { children: ReactNode }) {
-  return <div className="popout-location">{props.children}</div>;
-}
-
-export function Overlay(props: OverlayProps) {
-  const router = useInternalOverlayRouter(props.id);
+  const router = useInternalOverlayRouter("hello world :)");
   const refRouter = useRef(router);
-  const [portalElement, setPortalElement] = useState<Element | null>(null);
-  const ref = useRef<HTMLDivElement>(null);
-  const target = useRef<Element | null>(null);
 
   // close router on first mount, we dont want persist routes for overlays
   useEffect(() => {
@@ -30,6 +23,14 @@ export function Overlay(props: OverlayProps) {
       r.close();
     };
   }, []);
+  return <div className="popout-location">{props.children}</div>;
+}
+
+export function Overlay(props: OverlayProps) {
+  const router = useInternalOverlayRouter(props.id);
+  const [portalElement, setPortalElement] = useState<Element | null>(null);
+  const ref = useRef<HTMLDivElement>(null);
+  const target = useRef<Element | null>(null);
 
   useEffect(() => {
     function listen(e: MouseEvent) {
