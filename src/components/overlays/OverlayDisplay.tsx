@@ -3,7 +3,7 @@ import { ReactNode, useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
 import { Transition } from "@/components/Transition";
-import { useOverlayRouter } from "@/hooks/useOverlayRouter";
+import { useInternalOverlayRouter } from "@/hooks/useOverlayRouter";
 
 export interface OverlayProps {
   id: string;
@@ -16,10 +16,20 @@ export function OverlayDisplay(props: { children: ReactNode }) {
 }
 
 export function Overlay(props: OverlayProps) {
-  const router = useOverlayRouter(props.id);
+  const router = useInternalOverlayRouter(props.id);
+  const refRouter = useRef(router);
   const [portalElement, setPortalElement] = useState<Element | null>(null);
   const ref = useRef<HTMLDivElement>(null);
   const target = useRef<Element | null>(null);
+
+  // close router on first mount, we dont want persist routes for overlays
+  useEffect(() => {
+    const r = refRouter.current;
+    r.close();
+    return () => {
+      r.close();
+    };
+  }, []);
 
   useEffect(() => {
     function listen(e: MouseEvent) {

@@ -1,59 +1,80 @@
-import { useQueryParam } from "@/hooks/useQueryParams";
+import { useCallback } from "react";
 
-export function useOverlayRouter(id: string) {
+import { useQueryParam } from "@/hooks/useQueryParams";
+import { useOverlayStore } from "@/stores/overlay/store";
+
+function splitPath(path: string, prefix?: string): string[] {
+  const parts = [prefix ?? "", ...path.split("/")];
+  return parts.filter((v) => v.length > 0);
+}
+
+function joinPath(path: string[]): string {
+  return `/${path.join("/")}`;
+}
+
+export function useInternalOverlayRouter(id: string) {
   const [route, setRoute] = useQueryParam("r");
-  const routeParts = (route ?? "").split("/").filter((v) => v.length > 0);
-  const routerActive = routeParts.length > 0 && routeParts[0] === id;
+  const transition = useOverlayStore((s) => s.transition);
+  const setTransition = useOverlayStore((s) => s.setTransition);
+  const routerActive = !!route && route.startsWith(`/${id}`);
 
   function navigate(path: string) {
-    const newRoute = [id, ...path.split("/").filter((v) => v.length > 0)];
-    setRoute(newRoute.join("/"));
+    const oldRoute = route;
+    const newRoute = joinPath(splitPath(path, id));
+    setTransition({
+      from: oldRoute ?? "/",
+      to: newRoute,
+    });
+    setRoute(newRoute);
   }
 
-  function isActive(page: string) {
-    if (page === "/") return true;
-    const index = routeParts.indexOf(page);
-    if (index === -1) return false; // not active
-    if (index === routeParts.length - 1) return false; // active but latest route so shouldnt be counted as active
-    return true;
+  function showBackwardsTransition(path: string) {
+    if (!transition) return false;
+    const current = joinPath(splitPath(path, id));
+
+    if (current === transition.to && transition.from.startsWith(transition.to))
+      return true;
+    if (
+      current === transition.from &&
+      transition.to.startsWith(transition.from)
+    )
+      return true;
+    return false;
   }
 
-  function isCurrentPage(page: string) {
-    return routerActive && route === `/${id}${page}`;
-  }
-
-  function isLoaded(page: string) {
-    if (page === "/") return true;
-    return route.includes(page);
+  function isCurrentPage(path: string) {
+    return routerActive && route === joinPath(splitPath(path, id));
   }
 
   function isOverlayActive() {
     return routerActive;
   }
 
-  function pageProps(page: string) {
-    return {
-      show: isCurrentPage(page),
-      active: isActive(page),
-    };
-  }
-
-  function close() {
+  const close = useCallback(() => {
+    setTransition(null);
     setRoute(null);
-  }
+  }, [setRoute, setTransition]);
 
-  function open() {
+  const open = useCallback(() => {
+    setTransition(null);
     setRoute(`/${id}`);
-  }
+  }, [id, setRoute, setTransition]);
 
   return {
+    showBackwardsTransition,
+    isCurrentPage,
     isOverlayActive,
     navigate,
     close,
-    isLoaded,
-    isCurrentPage,
-    pageProps,
-    isActive,
     open,
+  };
+}
+
+export function useOverlayRouter(id: string) {
+  const router = useInternalOverlayRouter(id);
+  return {
+    open: router.open,
+    close: router.close,
+    navigate: router.navigate,
   };
 }

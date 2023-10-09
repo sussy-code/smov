@@ -3,32 +3,37 @@ import { ReactNode } from "react";
 
 import { Transition } from "@/components/Transition";
 import { useIsMobile } from "@/hooks/useIsMobile";
+import { useInternalOverlayRouter } from "@/hooks/useOverlayRouter";
 
 interface Props {
+  id: string;
+  path: string;
   children?: ReactNode;
-  show?: boolean;
   className?: string;
   height?: number;
   width?: number;
-  active?: boolean; // true if a child view is loaded
 }
 
 export function OverlayPage(props: Props) {
+  const router = useInternalOverlayRouter(props.id);
+  const backwards = router.showBackwardsTransition(props.path);
+  const show = router.isCurrentPage(props.path);
+
   const { isMobile } = useIsMobile();
   const width = !isMobile ? `${props.width}px` : "100%";
   return (
     <Transition
-      animation={props.active ? "slide-full-left" : "slide-full-right"}
+      animation={backwards ? "slide-full-left" : "slide-full-right"}
       className="absolute inset-0"
       durationClass="duration-[400ms]"
-      show={props.show}
+      show={show}
     >
       <div
         className={classNames([
           props.className,
           "grid grid-rows-[auto,minmax(0,1fr)]",
         ])}
-        data-floating-page={props.show ? "true" : undefined}
+        data-floating-page={show ? "true" : undefined}
         style={{
           height: props.height ? `${props.height}px` : undefined,
           maxHeight: "70vh",

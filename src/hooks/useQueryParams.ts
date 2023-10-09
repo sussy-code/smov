@@ -16,11 +16,13 @@ export function useQueryParams() {
   return queryParams;
 }
 
-export function useQueryParam(param: string) {
+export function useQueryParam(
+  param: string
+): [string | null, (a: string | null) => void] {
   const params = useQueryParams();
   const location = useLocation();
   const router = useHistory();
-  const currentValue = params[param];
+  const currentValue = params[param] ?? null;
 
   const set = useCallback(
     (value: string | null) => {
@@ -34,5 +36,5 @@ export function useQueryParam(param: string) {
     [param, location, router]
   );
 
-  return [currentValue, set] as const;
+  return [currentValue, set];
 }
