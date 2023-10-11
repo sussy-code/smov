@@ -94,6 +94,7 @@ export function useOverlayRouter(id: string) {
   const router = useInternalOverlayRouter(id);
   return {
     id,
+    isRouterActive: router.isOverlayActive(),
     open: router.open,
     close: router.close,
     navigate: router.navigate,

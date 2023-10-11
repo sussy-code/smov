@@ -1,5 +1,3 @@
-import { useEffect, useRef } from "react";
-
 import { OverlayAnchor } from "@/components/overlays/OverlayAnchor";
 import { Overlay, OverlayDisplay } from "@/components/overlays/OverlayDisplay";
 import { OverlayPage } from "@/components/overlays/OverlayPage";
@@ -21,9 +19,10 @@ export default function TestView() {
         >
           Open
         </button>
-        <OverlayAnchor id={router.id}>
-          <div className="h-20 w-20 hover:w-24 mt-[50rem] bg-white" />
-        </OverlayAnchor>
+        <OverlayAnchor
+          id={router.id}
+          className="h-20 w-20 hover:w-24 mt-[50rem] bg-white"
+        />
         <Overlay id={router.id}>
           <OverlayRouter id={router.id}>
             <OverlayPage id={router.id} path="/" width={400} height={400}>

@@ -24,7 +24,6 @@ export function Volume(props: Props) {
 
   const commitVolume = useCallback(
     (percentage) => {
-      console.log("setting", percentage);
       setVolume(percentage);
     },
     [setVolume]

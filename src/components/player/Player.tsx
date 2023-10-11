@@ -6,4 +6,5 @@ export * from "./base/BottomControls";
 export * from "./base/BlackOverlay";
 export * from "./base/BackLink";
 export * from "./base/LeftSideControls";
+export * from "./base/CenterMobileControls";
 export * from "./internals/BookmarkButton";

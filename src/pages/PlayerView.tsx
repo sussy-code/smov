@@ -7,15 +7,21 @@ import { AutoPlayStart } from "@/components/player/atoms";
 import { usePlayer } from "@/components/player/hooks/usePlayer";
 import { useShouldShowControls } from "@/components/player/hooks/useShouldShowControls";
 import { ScrapingPart } from "@/pages/parts/player/ScrapingPart";
+import { PlayerHoverState } from "@/stores/player/slices/interface";
 import {
   PlayerMeta,
   metaToScrapeMedia,
   playerStatus,
 } from "@/stores/player/slices/source";
+import { usePlayerStore } from "@/stores/player/store";
 
 export function PlayerView() {
   const { status, setScrapeStatus, playMedia, setMeta } = usePlayer();
+  const { lastHoveringState } = usePlayerStore((s) => s.interface);
+
   const desktopControlsVisible = useShouldShowControls();
+  const touchControlsVisible = useShouldShowControls({ touchOnly: true });
+
   const meta = useMemo<PlayerMeta>(
     () => ({
       type: "show",
@@ -71,6 +77,15 @@ export function PlayerView() {
         <AutoPlayStart />
       </Player.CenterControls>
 
+      <Player.CenterMobileControls
+        className="text-white"
+        show={touchControlsVisible}
+      >
+        <Player.SkipBackward iconSizeClass="text-3xl" />
+        <Player.Pause iconSizeClass="text-5xl" />
+        <Player.SkipForward iconSizeClass="text-3xl" />
+      </Player.CenterMobileControls>
+
       <Player.TopControls show={desktopControlsVisible}>
         <div className="grid grid-cols-[1fr,auto] xl:grid-cols-3 items-center">
           <div className="flex space-x-3 items-center">
@@ -91,14 +106,19 @@ export function PlayerView() {
       <Player.BottomControls show={desktopControlsVisible}>
         <Player.ProgressBar />
         <div className="flex justify-between">
-          <Player.LeftSideControls>
+          <Player.LeftSideControls className="hidden lg:flex">
             <Player.Pause />
             <Player.SkipBackward />
             <Player.SkipForward />
             <Player.Volume />
             <Player.Time />
           </Player.LeftSideControls>
-          <div>
+          <Player.LeftSideControls className="flex lg:hidden">
+            {/* Do mobile controls here :) */}
+            <Player.Time />
+          </Player.LeftSideControls>
+          <div className="flex items-center">
+            <Player.Settings />
             <Player.Fullscreen />
           </div>
         </div>

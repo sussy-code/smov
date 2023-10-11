@@ -8,3 +8,4 @@ export * from "./AutoPlayStart";
 export * from "./Volume";
 export * from "./Title";
 export * from "./EpisodeTitle";
+export * from "./Settings";
