@@ -64,9 +64,7 @@ function BaseContainer(props: { children?: ReactNode }) {
   return (
     <div ref={containerEl}>
       <OverlayDisplay>
-        <div className="relative overflow-hidden h-screen select-none">
-          {props.children}
-        </div>
+        <div className="h-screen select-none">{props.children}</div>
       </OverlayDisplay>
     </div>
   );
@@ -80,11 +78,13 @@ export function Container(props: PlayerProps) {
 
   return (
     <div className="relative">
-      <VideoContainer />
       <BaseContainer>
-        <VideoClickTarget />
-        <HeadUpdater />
-        {props.children}
+        <VideoContainer />
+        <div className="relative h-screen overflow-hidden">
+          <VideoClickTarget />
+          <HeadUpdater />
+          {props.children}
+        </div>
       </BaseContainer>
     </div>
   );

@@ -19,18 +19,20 @@ export function VideoClickTarget() {
 
   const togglePause = useCallback(
     (e: PointerEvent<HTMLDivElement>) => {
-      // pause on mouse click
-      if (e.pointerType === "mouse") {
-        if (e.button !== 0) return;
-        if (isPaused) display?.play();
-        else display?.pause();
-        return;
-      }
+      setTimeout(() => {
+        // pause on mouse click
+        if (e.pointerType === "mouse") {
+          if (e.button !== 0) return;
+          if (isPaused) display?.play();
+          else display?.pause();
+          return;
+        }
 
-      // toggle on other types of clicks
-      if (hovering !== PlayerHoverState.MOBILE_TAPPED)
-        updateInterfaceHovering(PlayerHoverState.MOBILE_TAPPED);
-      else updateInterfaceHovering(PlayerHoverState.NOT_HOVERING);
+        // toggle on other types of clicks
+        if (hovering !== PlayerHoverState.MOBILE_TAPPED)
+          updateInterfaceHovering(PlayerHoverState.MOBILE_TAPPED);
+        else updateInterfaceHovering(PlayerHoverState.NOT_HOVERING);
+      }, 10); // TODO this is dirty workaround, without this, tapping on something where a button will be will trigger it immediately
     },
     [display, isPaused, hovering, updateInterfaceHovering]
   );

@@ -7,20 +7,15 @@ import { AutoPlayStart } from "@/components/player/atoms";
 import { usePlayer } from "@/components/player/hooks/usePlayer";
 import { useShouldShowControls } from "@/components/player/hooks/useShouldShowControls";
 import { ScrapingPart } from "@/pages/parts/player/ScrapingPart";
-import { PlayerHoverState } from "@/stores/player/slices/interface";
 import {
   PlayerMeta,
   metaToScrapeMedia,
   playerStatus,
 } from "@/stores/player/slices/source";
-import { usePlayerStore } from "@/stores/player/store";
 
 export function PlayerView() {
   const { status, setScrapeStatus, playMedia, setMeta } = usePlayer();
-  const { lastHoveringState } = usePlayerStore((s) => s.interface);
-
-  const desktopControlsVisible = useShouldShowControls();
-  const touchControlsVisible = useShouldShowControls({ touchOnly: true });
+  const { showTargets, showTouchTargets } = useShouldShowControls();
 
   const meta = useMemo<PlayerMeta>(
     () => ({
@@ -70,7 +65,7 @@ export function PlayerView() {
         />
       ) : null}
 
-      <Player.BlackOverlay show={desktopControlsVisible} />
+      <Player.BlackOverlay show={showTargets} />
 
       <Player.CenterControls>
         <Player.LoadingSpinner />
@@ -79,14 +74,14 @@ export function PlayerView() {
 
       <Player.CenterMobileControls
         className="text-white"
-        show={touchControlsVisible}
+        show={showTouchTargets}
       >
         <Player.SkipBackward iconSizeClass="text-3xl" />
         <Player.Pause iconSizeClass="text-5xl" />
         <Player.SkipForward iconSizeClass="text-3xl" />
       </Player.CenterMobileControls>
 
-      <Player.TopControls show={desktopControlsVisible}>
+      <Player.TopControls show={showTargets}>
         <div className="grid grid-cols-[1fr,auto] xl:grid-cols-3 items-center">
           <div className="flex space-x-3 items-center">
             <Player.BackLink />
@@ -103,7 +98,7 @@ export function PlayerView() {
         </div>
       </Player.TopControls>
 
-      <Player.BottomControls show={desktopControlsVisible}>
+      <Player.BottomControls show={showTargets}>
         <Player.ProgressBar />
         <div className="flex justify-between">
           <Player.LeftSideControls className="hidden lg:flex">

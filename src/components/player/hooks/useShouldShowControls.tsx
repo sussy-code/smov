@@ -1,7 +1,7 @@
 import { PlayerHoverState } from "@/stores/player/slices/interface";
 import { usePlayerStore } from "@/stores/player/store";
 
-export function useShouldShowControls(opts?: { touchOnly: boolean }) {
+export function useShouldShowControls() {
   const hovering = usePlayerStore((s) => s.interface.hovering);
   const lastHoveringState = usePlayerStore(
     (s) => s.interface.lastHoveringState
@@ -9,12 +9,18 @@ export function useShouldShowControls(opts?: { touchOnly: boolean }) {
   const isPaused = usePlayerStore((s) => s.mediaPlaying.isPaused);
   const hasOpenOverlay = usePlayerStore((s) => s.interface.hasOpenOverlay);
 
-  const showTouchControls =
-    lastHoveringState === PlayerHoverState.MOBILE_TAPPED;
-  const notNotHovering = hovering !== PlayerHoverState.NOT_HOVERING;
+  const isUsingTouch = lastHoveringState === PlayerHoverState.MOBILE_TAPPED;
+  const isHovering = hovering !== PlayerHoverState.NOT_HOVERING;
 
-  if (opts?.touchOnly)
-    return (showTouchControls && notNotHovering) || isPaused || hasOpenOverlay;
+  // when using touch, pause screens can be dismissed by tapping
+  const showTargetsWithoutPause = isHovering || hasOpenOverlay;
+  const showTargetsIncludingPause = showTargetsWithoutPause || isPaused;
+  const showTargets = isUsingTouch
+    ? showTargetsWithoutPause
+    : showTargetsIncludingPause;
 
-  return notNotHovering || isPaused || hasOpenOverlay;
+  return {
+    showTouchTargets: isUsingTouch && showTargets,
+    showTargets,
+  };
 }
