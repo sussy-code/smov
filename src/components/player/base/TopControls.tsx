@@ -14,7 +14,7 @@ export function TopControls(props: {
       <Transition
         animation="slide-down"
         show={props.show}
-        className="pointer-events-auto px-4 pt-6 absolute top-0 w-full text-white"
+        className="pointer-events-auto pl-[calc(2rem+env(safe-area-inset-left))] pr-[calc(2rem+env(safe-area-inset-right))] pt-6 absolute top-0 w-full text-white"
       >
         {props.children}
       </Transition>

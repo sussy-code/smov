@@ -37,7 +37,14 @@ function VideoElement() {
     }
   }, [display, videoEl]);
 
-  return <video className="w-full h-screen bg-black" autoPlay ref={videoEl} />;
+  return (
+    <video
+      className="absolute inset-0 w-full h-screen bg-black"
+      autoPlay
+      playsInline
+      ref={videoEl}
+    />
+  );
 }
 
 export function VideoContainer() {

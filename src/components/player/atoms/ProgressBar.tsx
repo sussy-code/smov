@@ -46,7 +46,7 @@ export function ProgressBar() {
         >
           {/* Pre-loaded content bar */}
           <div
-            className="absolute top-0 left-0 h-full rounded-full bg-video-progress-preloaded bg-opacity-25 flex justify-end items-center"
+            className="absolute top-0 left-0 h-full rounded-full bg-video-progress-preloaded bg-opacity-50 flex justify-end items-center"
             style={{
               width: `${(buffered / duration) * 100}%`,
             }}

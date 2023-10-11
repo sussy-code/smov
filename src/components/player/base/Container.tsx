@@ -79,11 +79,13 @@ export function Container(props: PlayerProps) {
   }, []);
 
   return (
-    <BaseContainer>
+    <div className="relative">
       <VideoContainer />
-      <VideoClickTarget />
-      <HeadUpdater />
-      {props.children}
-    </BaseContainer>
+      <BaseContainer>
+        <VideoClickTarget />
+        <HeadUpdater />
+        {props.children}
+      </BaseContainer>
+    </div>
   );
 }

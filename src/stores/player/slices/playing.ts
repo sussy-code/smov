@@ -24,7 +24,7 @@ export const createPlayingSlice: MakeSlice<PlayingSlice> = (set) => ({
     isDragSeeking: false,
     isFirstLoading: true,
     hasPlayedOnce: false,
-    volume: 0,
+    volume: 1,
     playbackSpeed: 1,
   },
   play() {

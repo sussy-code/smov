@@ -19,19 +19,11 @@ export function PlayerView() {
   const meta = useMemo<PlayerMeta>(
     () => ({
       type: "show",
-      title: "House",
-      tmdbId: "1408",
-      releaseYear: 2004,
-      episode: {
-        number: 1,
-        title: "Pilot",
-        tmdbId: "63738",
-      },
-      season: {
-        number: 1,
-        tmdbId: "3674",
-        title: "Season 1",
-      },
+      title: "Normal People",
+      releaseYear: 2020,
+      tmdbId: "89905",
+      episode: { number: 12, tmdbId: "2207576", title: "Episode 12" },
+      season: { number: 1, tmdbId: "125160", title: "Season 1" },
     }),
     []
   );
@@ -48,10 +40,20 @@ export function PlayerView() {
           media={scrapeMedia}
           onGetStream={(out) => {
             if (out?.stream.type !== "file") return;
-            const qualities = Object.keys(
-              out.stream.qualities
+            console.log(out.stream.qualities);
+            const qualities = Object.keys(out.stream.qualities).sort(
+              (a, b) => Number(b) - Number(a)
             ) as (keyof typeof out.stream.qualities)[];
-            const file = out.stream.qualities[qualities[0]];
+
+            let file;
+            for (const quality of qualities) {
+              if (out.stream.qualities[quality]?.url) {
+                console.log(quality);
+                file = out.stream.qualities[quality];
+                break;
+              }
+            }
+
             if (!file) return;
 
             playMedia({

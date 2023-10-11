@@ -16,7 +16,12 @@ export function useInternalOverlayRouter(id: string) {
   const [route, setRoute] = useQueryParam("r");
   const transition = useOverlayStore((s) => s.transition);
   const setTransition = useOverlayStore((s) => s.setTransition);
+  const setAnchorPoint = useOverlayStore((s) => s.setAnchorPoint);
   const routerActive = !!route && route.startsWith(`/${id}`);
+
+  function makePath(path: string) {
+    return joinPath(splitPath(path, id));
+  }
 
   function navigate(path: string) {
     const oldRoute = route;
@@ -29,17 +34,17 @@ export function useInternalOverlayRouter(id: string) {
   }
 
   function showBackwardsTransition(path: string) {
-    if (!transition) return false;
+    if (!transition) return "none";
     const current = joinPath(splitPath(path, id));
 
     if (current === transition.to && transition.from.startsWith(transition.to))
-      return true;
+      return "yes";
     if (
       current === transition.from &&
       transition.to.startsWith(transition.from)
     )
-      return true;
-    return false;
+      return "yes";
+    return "no";
   }
 
   function isCurrentPage(path: string) {
@@ -56,9 +61,22 @@ export function useInternalOverlayRouter(id: string) {
   }, [setRoute, setTransition]);
 
   const open = useCallback(() => {
+    const anchor = document.getElementById(`__overlayRouter::${id}`);
+    if (anchor) {
+      const rect = anchor.getBoundingClientRect();
+      setAnchorPoint({
+        h: rect.height,
+        w: rect.width,
+        x: rect.x,
+        y: rect.y,
+      });
+    } else {
+      setAnchorPoint(null);
+    }
+
     setTransition(null);
     setRoute(`/${id}`);
-  }, [id, setRoute, setTransition]);
+  }, [id, setRoute, setTransition, setAnchorPoint]);
 
   return {
     showBackwardsTransition,
@@ -67,6 +85,8 @@ export function useInternalOverlayRouter(id: string) {
     navigate,
     close,
     open,
+    makePath,
+    currentRoute: route,
   };
 }
 

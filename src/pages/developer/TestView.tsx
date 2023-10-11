@@ -1,3 +1,5 @@
+import { useEffect, useRef } from "react";
+
 import { OverlayAnchor } from "@/components/overlays/OverlayAnchor";
 import { Overlay, OverlayDisplay } from "@/components/overlays/OverlayDisplay";
 import { OverlayPage } from "@/components/overlays/OverlayPage";
@@ -20,7 +22,7 @@ export default function TestView() {
           Open
         </button>
         <OverlayAnchor id={router.id}>
-          <div className="h-20 w-20 mt-64 bg-white" />
+          <div className="h-20 w-20 hover:w-24 mt-[50rem] bg-white" />
         </OverlayAnchor>
         <Overlay id={router.id}>
           <OverlayRouter id={router.id}>
@@ -45,7 +47,7 @@ export default function TestView() {
                 </button>
               </div>
             </OverlayPage>
-            <OverlayPage id={router.id} path="/one">
+            <OverlayPage id={router.id} path="/one" width={300} height={300}>
               <div className="bg-blue-900 p-4">
                 <p>ONE</p>
                 <button
@@ -58,7 +60,7 @@ export default function TestView() {
                 </button>
               </div>
             </OverlayPage>
-            <OverlayPage id={router.id} path="/two">
+            <OverlayPage id={router.id} path="/two" width={200} height={200}>
               <div className="bg-blue-900 p-4">
                 <p>TWO</p>
                 <button

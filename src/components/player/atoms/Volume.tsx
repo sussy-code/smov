@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useRef } from "react";
 
 import { Icon, Icons } from "@/components/Icon";
 import {
@@ -24,6 +24,7 @@ export function Volume(props: Props) {
 
   const commitVolume = useCallback(
     (percentage) => {
+      console.log("setting", percentage);
       setVolume(percentage);
     },
     [setVolume]

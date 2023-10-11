@@ -65,6 +65,16 @@ body[data-no-select] {
   height: 60vh;
 }
 
+.h-screen {
+  height: 100vh;
+  height: 100dvh;
+}
+
+.min-h-screen {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
 /*generated with Input range slider CSS style generator (version 20211225)
 https://toughengineer.github.io/demo/slider-styler*/
 :root {

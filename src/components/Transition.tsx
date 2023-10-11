@@ -4,7 +4,7 @@ import {
 } from "@headlessui/react";
 import { Fragment, ReactNode } from "react";
 
-type TransitionAnimations =
+export type TransitionAnimations =
   | "slide-down"
   | "slide-full-left"
   | "slide-full-right"

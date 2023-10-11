@@ -26,6 +26,7 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
   function setSource() {
     if (!videoElement || !source) return;
     videoElement.src = source.url;
+
     videoElement.addEventListener("play", () => {
       emit("play", undefined);
       emit("loading", false);
@@ -35,7 +36,7 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
     videoElement.addEventListener("canplay", () => emit("loading", false));
     videoElement.addEventListener("waiting", () => emit("loading", true));
     videoElement.addEventListener("volumechange", () =>
-      emit("volumechange", videoElement?.volume ?? 0)
+      emit("volumechange", videoElement?.muted ? 0 : videoElement?.volume ?? 0)
     );
     videoElement.addEventListener("timeupdate", () =>
       emit("time", videoElement?.currentTime ?? 0)
@@ -118,9 +119,16 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
       // clamp time between 0 and 1
       let volume = Math.min(v, 1);
       volume = Math.max(0, volume);
+      videoElement.muted = volume === 0; // Muted attribute is always supported
 
       // update state
-      if (await canChangeVolume()) videoElement.volume = volume;
+      const isChangeable = await canChangeVolume();
+      if (isChangeable) {
+        videoElement.volume = volume;
+      } else {
+        // For browsers where it can't be changed
+        emit("volumechange", volume === 0 ? 0 : 1);
+      }
     },
     toggleFullscreen() {
       if (isFullscreen) {
