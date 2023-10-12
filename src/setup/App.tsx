@@ -15,7 +15,7 @@ import { AboutPage } from "@/pages/About";
 import { DmcaPage } from "@/pages/Dmca";
 import { NotFoundPage } from "@/pages/errors/NotFoundPage";
 import { HomePage } from "@/pages/HomePage";
-import { MediaView } from "@/pages/media/MediaView";
+import { PlayerView } from "@/pages/PlayerView";
 import { Layout } from "@/setup/Layout";
 import { BookmarkContextProvider } from "@/state/bookmark";
 import { SettingsProvider } from "@/state/settings";
@@ -66,23 +66,25 @@ function App() {
                 <Route exact path="/s/:query">
                   <QuickSearch />
                 </Route>
-
-                {/* pages */}
-                <Route exact path="/media/:media">
-                  <LegacyUrlView>
-                    <MediaView />
-                  </LegacyUrlView>
-                </Route>
-                <Route exact path="/media/:media/:season/:episode">
-                  <LegacyUrlView>
-                    <MediaView />
-                  </LegacyUrlView>
-                </Route>
-                <Route exact path="/search/:type/:query?">
-                  <Redirect to="/browse/:query" />
-                </Route>
                 <Route exact path="/search/:type">
                   <Redirect to="/browse" />
+                </Route>
+                <Route exact path="/search/:type/:query?">
+                  {({ match }) => {
+                    if (match?.params.query)
+                      return <Redirect to={`/browse/${match?.params.query}`} />;
+                    return <Redirect to="/browse" />;
+                  }}
+                </Route>
+
+                {/* pages */}
+                <Route
+                  exact
+                  path={["/media/:media", "/media/:media/:season/:episode"]}
+                >
+                  <LegacyUrlView>
+                    <PlayerView />
+                  </LegacyUrlView>
                 </Route>
                 <Route
                   exact
