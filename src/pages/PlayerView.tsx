@@ -18,7 +18,7 @@ export function PlayerView() {
   }>();
   const { status, playMedia, reset } = usePlayer();
   const { setPlayerMeta, scrapeMedia } = usePlayerMeta();
-  const [backUrl] = useState("/");
+  const [backUrl] = useState("/"); // TODO redirect to search when needed
 
   useEffect(() => {
     reset();
