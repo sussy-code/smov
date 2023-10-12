@@ -44,10 +44,7 @@ export function OverlayPage(props: Props) {
       show={show}
     >
       <div
-        className={classNames([
-          props.className,
-          "grid grid-rows-[auto,minmax(0,1fr)]",
-        ])}
+        className={classNames([props.className, ""])}
         style={{
           height: props.height ? `${props.height}px` : undefined,
           maxHeight: "70vh",

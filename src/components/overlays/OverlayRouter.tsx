@@ -3,6 +3,7 @@ import { ReactNode, useEffect, useMemo, useRef } from "react";
 
 import { OverlayAnchorPosition } from "@/components/overlays/positions/OverlayAnchorPosition";
 import { OverlayMobilePosition } from "@/components/overlays/positions/OverlayMobilePosition";
+import { Flare } from "@/components/utils/Flare";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { useInternalOverlayRouter } from "@/hooks/useOverlayRouter";
 import { useOverlayStore } from "@/stores/overlay/store";
@@ -71,12 +72,18 @@ function RouterBase(props: { id: string; children: ReactNode }) {
   }, [routeMeta?.height, routeMeta?.width, isMobile, api]);
 
   return (
-    <a.div
-      ref={ref}
-      style={dimensions}
-      className="relative flex items-center justify-center overflow-hidden bg-red-500"
-    >
-      {props.children}
+    <a.div ref={ref} style={dimensions} className="overflow-hidden">
+      <Flare.Base className="group w-full h-full rounded-xl transition-colors duration-100 text-video-context-type-main">
+        <Flare.Light
+          flareSize={400}
+          cssColorVar="--colors-video-context-light"
+          backgroundClass="bg-video-context-background duration-100"
+          className="rounded-xl opacity-100"
+        />
+        <Flare.Child className="pointer-events-auto relative transition-transform duration-100">
+          {props.children}
+        </Flare.Child>
+      </Flare.Base>
     </a.div>
   );
 }

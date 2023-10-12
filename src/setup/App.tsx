@@ -67,13 +67,18 @@ function App() {
                   <QuickSearch />
                 </Route>
                 <Route exact path="/search/:type">
-                  <Redirect to="/browse" />
+                  <Redirect to="/browse" push={false} />
                 </Route>
                 <Route exact path="/search/:type/:query?">
                   {({ match }) => {
                     if (match?.params.query)
-                      return <Redirect to={`/browse/${match?.params.query}`} />;
-                    return <Redirect to="/browse" />;
+                      return (
+                        <Redirect
+                          to={`/browse/${match?.params.query}`}
+                          push={false}
+                        />
+                      );
+                    return <Redirect to="/browse" push={false} />;
                   }}
                 </Route>
 

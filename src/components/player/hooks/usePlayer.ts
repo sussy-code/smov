@@ -13,9 +13,11 @@ export function usePlayer() {
   const setMeta = usePlayerStore((s) => s.setMeta);
   const status = usePlayerStore((s) => s.status);
   const display = usePlayerStore((s) => s.display);
+  const reset = usePlayerStore((s) => s.reset);
   const { init } = useInitializePlayer();
 
   return {
+    reset,
     status,
     setMeta(meta: PlayerMeta) {
       setMeta(meta);

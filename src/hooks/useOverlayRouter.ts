@@ -56,9 +56,9 @@ export function useInternalOverlayRouter(id: string) {
   }
 
   const close = useCallback(() => {
+    if (route) setRoute(null);
     setTransition(null);
-    setRoute(null);
-  }, [setRoute, setTransition]);
+  }, [setRoute, route, setTransition]);
 
   const open = useCallback(() => {
     const anchor = document.getElementById(`__overlayRouter::${id}`);

@@ -1,9 +1,11 @@
 import { DisplayInterface } from "@/components/player/display/displayInterface";
+import { playerStatus } from "@/stores/player/slices/source";
 import { MakeSlice } from "@/stores/player/slices/types";
 
 export interface DisplaySlice {
   display: DisplayInterface | null;
   setDisplay(display: DisplayInterface | null): void;
+  reset(): void;
 }
 
 export const createDisplaySlice: MakeSlice<DisplaySlice> = (set, get) => ({
@@ -66,6 +68,13 @@ export const createDisplaySlice: MakeSlice<DisplaySlice> = (set, get) => ({
 
     set((s) => {
       s.display = newDisplay;
+    });
+  },
+  reset() {
+    get().display?.destroy();
+    set((s) => {
+      s.status = playerStatus.IDLE;
+      s.meta = null;
     });
   },
 });

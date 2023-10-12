@@ -1,13 +1,11 @@
 import { RunOutput } from "@movie-web/providers";
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useAsync } from "react-use";
 
 import { MWStreamType } from "@/backend/helpers/streams";
-import { getMetaFromId } from "@/backend/metadata/getmeta";
-import { decodeTMDBId } from "@/backend/metadata/tmdb";
 import { usePlayer } from "@/components/player/hooks/usePlayer";
 import { usePlayerMeta } from "@/components/player/hooks/usePlayerMeta";
+import { MetaPart } from "@/pages/parts/player/MetaPart";
 import { PlayerPart } from "@/pages/parts/player/PlayerPart";
 import { ScrapingPart } from "@/pages/parts/player/ScrapingPart";
 import { playerStatus } from "@/stores/player/slices/source";
@@ -18,18 +16,13 @@ export function PlayerView() {
     episode?: string;
     season?: string;
   }>();
-  const { status, playMedia } = usePlayer();
+  const { status, playMedia, reset } = usePlayer();
   const { setPlayerMeta, scrapeMedia } = usePlayerMeta();
+  const [backUrl] = useState("/");
 
-  const { loading, error } = useAsync(async () => {
-    const data = decodeTMDBId(params.media);
-    if (!data) return;
-
-    const meta = await getMetaFromId(data.type, data.id, params.season);
-    if (!meta) return;
-
-    setPlayerMeta(meta);
-  }, []);
+  useEffect(() => {
+    reset();
+  }, [params.media, reset]);
 
   const playAfterScrape = useCallback(
     (out: RunOutput | null) => {
@@ -57,12 +50,9 @@ export function PlayerView() {
   );
 
   return (
-    <PlayerPart>
+    <PlayerPart backUrl={backUrl}>
       {status === playerStatus.IDLE ? (
-        <div className="flex items-center justify-center">
-          {loading ? <p>loading meta...</p> : null}
-          {error ? <p>failed to load meta!</p> : null}
-        </div>
+        <MetaPart onGetMeta={setPlayerMeta} />
       ) : null}
       {status === playerStatus.SCRAPING && scrapeMedia ? (
         <ScrapingPart media={scrapeMedia} onGetStream={playAfterScrape} />

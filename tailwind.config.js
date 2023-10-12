@@ -123,6 +123,17 @@ module.exports = {
 
               audio: {
                 set: "#A75FC9"
+              },
+
+              context: {
+                background: "#0C1216",
+                light: "#4D79A8",
+                border: "#4F5C66",
+
+                type: {
+                  main: "#617A8A",
+                  secondary: "#374A56"
+                }
               }
             }
           }
