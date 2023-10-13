@@ -44,7 +44,7 @@ function SearchSuffix(props: { failed?: boolean; results?: number }) {
   );
 }
 
-export function SearchListPart({ searchQuery }: { searchQuery: MWQuery }) {
+export function SearchListPart({ searchQuery }: { searchQuery: string }) {
   const { t } = useTranslation();
 
   const [results, setResults] = useState<MWMediaMeta[]>([]);
@@ -59,7 +59,7 @@ export function SearchListPart({ searchQuery }: { searchQuery: MWQuery }) {
       setResults(searchResults);
     }
 
-    if (searchQuery.searchQuery !== "") runSearch(searchQuery);
+    if (searchQuery !== "") runSearch({ searchQuery });
   }, [searchQuery, runSearchQuery]);
 
   if (loading) return <SearchLoadingPart />;

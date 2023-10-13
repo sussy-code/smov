@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { useTranslation } from "react-i18next";
 
-import { MWQuery } from "@/backend/metadata/types/mw";
 import { WideContainer } from "@/components/layout/WideContainer";
 import { useDebounce } from "@/hooks/useDebounce";
 import { useSearchQuery } from "@/hooks/useSearchQuery";
@@ -13,14 +12,14 @@ import { WatchingPart } from "@/pages/parts/home/WatchingPart";
 import { SearchListPart } from "@/pages/parts/search/SearchListPart";
 import { SearchLoadingPart } from "@/pages/parts/search/SearchLoadingPart";
 
-function useSearch(search: MWQuery) {
+function useSearch(search: string) {
   const [searching, setSearching] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
 
-  const debouncedSearch = useDebounce<MWQuery>(search, 500);
+  const debouncedSearch = useDebounce<string>(search, 500);
   useEffect(() => {
-    setSearching(search.searchQuery !== "");
-    setLoading(search.searchQuery !== "");
+    setSearching(search !== "");
+    setLoading(search !== "");
   }, [search]);
   useEffect(() => {
     setLoading(false);

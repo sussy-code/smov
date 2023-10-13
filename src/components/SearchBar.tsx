@@ -1,7 +1,6 @@
 import c from "classnames";
 import { useState } from "react";
 
-import { MWQuery } from "@/backend/metadata/types/mw";
 import { Flare } from "@/components/utils/Flare";
 
 import { Icon, Icons } from "./Icon";
@@ -9,22 +8,16 @@ import { TextInputControl } from "./text-inputs/TextInputControl";
 
 export interface SearchBarProps {
   placeholder?: string;
-  onChange: (value: MWQuery, force: boolean) => void;
+  onChange: (value: string, force: boolean) => void;
   onUnFocus: () => void;
-  value: MWQuery;
+  value: string;
 }
 
 export function SearchBarInput(props: SearchBarProps) {
   const [focused, setFocused] = useState(false);
 
   function setSearch(value: string) {
-    props.onChange(
-      {
-        ...props.value,
-        searchQuery: value,
-      },
-      false
-    );
+    props.onChange(value, false);
   }
 
   return (
@@ -59,7 +52,7 @@ export function SearchBarInput(props: SearchBarProps) {
           }}
           onFocus={() => setFocused(true)}
           onChange={(val) => setSearch(val)}
-          value={props.value.searchQuery}
+          value={props.value}
           className="w-full flex-1 bg-transparent px-4 py-4 pl-12 text-search-text placeholder-search-placeholder focus:outline-none sm:py-4 sm:pr-2"
           placeholder={props.placeholder}
         />
