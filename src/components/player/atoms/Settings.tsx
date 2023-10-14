@@ -11,6 +11,7 @@ import { useOverlayRouter } from "@/hooks/useOverlayRouter";
 import { usePlayerStore } from "@/stores/player/store";
 import {
   SourceQuality,
+  allQualities,
   qualityToString,
 } from "@/stores/player/utils/qualities";
 
@@ -26,7 +27,7 @@ function QualityOption(props: {
     textClasses = "text-video-context-type-main text-opacity-40";
 
   return (
-    <Context.Link noHover={props.disabled} onClick={props.onClick}>
+    <Context.Link onClick={props.disabled ? undefined : props.onClick}>
       <Context.LinkTitle textClass={textClasses}>
         {props.children}
       </Context.LinkTitle>
@@ -54,23 +55,28 @@ function QualityView({ id }: { id: string }) {
     [router, switchQuality]
   );
 
+  const allVisibleQualities = allQualities.filter((t) => t !== "unknown");
+
   return (
     <>
       <Context.BackLink onClick={() => router.navigate("/")}>
         Quality
       </Context.BackLink>
       <Context.Section>
-        {availableQualities.map((v) => (
+        {allVisibleQualities.map((v) => (
           <QualityOption
             key={v}
             selected={v === currentQuality}
-            onClick={() => change(v)}
+            onClick={
+              availableQualities.includes(v) ? () => change(v) : undefined
+            }
+            disabled={!availableQualities.includes(v)}
           >
             {qualityToString(v)}
           </QualityOption>
         ))}
         <Context.Divider />
-        <Context.Link noHover onClick={() => router.navigate("/")}>
+        <Context.Link>
           <Context.LinkTitle>Automatic quality</Context.LinkTitle>
           <span>Toggle</span>
         </Context.Link>

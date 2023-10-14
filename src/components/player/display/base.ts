@@ -1,4 +1,5 @@
 import fscreen from "fscreen";
+import Hls from "hls.js";
 
 import {
   DisplayInterface,
@@ -17,15 +18,38 @@ import { makeEmitter } from "@/utils/events";
 export function makeVideoElementDisplayInterface(): DisplayInterface {
   const { emit, on, off } = makeEmitter<DisplayInterfaceEvents>();
   let source: LoadableSource | null = null;
+  let hls: Hls | null = null;
   let videoElement: HTMLVideoElement | null = null;
   let containerElement: HTMLElement | null = null;
   let isFullscreen = false;
   let isPausedBeforeSeeking = false;
   let isSeeking = false;
 
+  function setupSource(vid: HTMLVideoElement, src: LoadableSource) {
+    if (src.type === "hls") {
+      if (!Hls.isSupported()) throw new Error("HLS not supported");
+
+      hls = new Hls({ enableWorker: false });
+      hls.on(Hls.Events.ERROR, (event, data) => {
+        console.error("HLS error", data);
+        if (data.fatal) {
+          throw new Error(
+            `HLS ERROR:${data.error?.message ?? "Something went wrong"}`
+          );
+        }
+      });
+
+      hls.attachMedia(vid);
+      hls.loadSource(src.url);
+      return;
+    }
+
+    vid.src = src.url;
+  }
+
   function setSource() {
     if (!videoElement || !source) return;
-    videoElement.src = source.url;
+    setupSource(videoElement, source);
 
     videoElement.addEventListener("play", () => {
       emit("play", undefined);
@@ -64,6 +88,7 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
     on,
     off,
     destroy: () => {
+      if (hls) hls.destroy();
       if (videoElement) {
         videoElement.src = "";
         videoElement.remove();

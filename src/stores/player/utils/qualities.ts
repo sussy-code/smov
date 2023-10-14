@@ -51,7 +51,7 @@ const qualityMap: Record<SourceQuality, string> = {
   unknown: "unknown",
 };
 
-export const allQualities = Object.keys(qualityMap);
+export const allQualities = Object.keys(qualityMap) as SourceQuality[];
 
 export function qualityToString(quality: SourceQuality): string {
   return qualityMap[quality];

@@ -31,21 +31,29 @@ function Section(props: { children: React.ReactNode }) {
   return <div className="my-5">{props.children}</div>;
 }
 
-function Link(props: {
-  onClick?: () => void;
-  children: React.ReactNode;
-  noHover?: boolean;
-}) {
+function Link(props: { onClick?: () => void; children: React.ReactNode }) {
+  const classes = classNames(
+    "flex justify-between items-center py-2 pl-3 pr-3 -ml-3 rounded w-full",
+    {
+      "cursor-default": !props.onClick,
+      "hover:bg-video-context-border hover:bg-opacity-10": !!props.onClick,
+    }
+  );
+  const styles = { width: "calc(100% + 1.5rem)" };
+
+  if (!props.onClick) {
+    return (
+      <div className={classes} style={styles}>
+        {props.children}
+      </div>
+    );
+  }
+
   return (
     <button
       type="button"
-      className={classNames([
-        "flex justify-between items-center py-2 pl-3 pr-3 -ml-3 rounded w-full",
-        props.noHover
-          ? "cursor-default"
-          : "hover:bg-video-context-border hover:bg-opacity-10",
-      ])}
-      style={{ width: "calc(100% + 1.5rem)" }}
+      className={classes}
+      style={styles}
       onClick={props.onClick}
     >
       {props.children}
@@ -59,11 +67,11 @@ function BackLink(props: {
   rightSide?: React.ReactNode;
 }) {
   return (
-    <h3 className="font-bold text-video-context-type-main pb-4 pt-5 border-b border-opacity-25 border-video-context-border mb-6 flex justify-between items-center">
+    <h3 className="font-bold text-video-context-type-main pb-3 pt-5 border-b border-opacity-25 border-video-context-border mb-6 flex justify-between items-center">
       <div className="flex items-center space-x-3">
         <button
           type="button"
-          className="-ml-1 p-1 rounded hover:bg-video-context-light hover:bg-opacity-10"
+          className="-ml-2 p-2 rounded hover:bg-video-context-light hover:bg-opacity-10"
           onClick={props.onClick}
         >
           <Icon className="text-xl" icon={Icons.ARROW_LEFT} />
