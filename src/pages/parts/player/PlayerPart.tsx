@@ -45,7 +45,7 @@ export function PlayerPart(props: PlayerPartProps) {
           <div className="text-center hidden xl:flex justify-center items-center">
             <Player.EpisodeTitle />
           </div>
-          <div className="flex items-center justify-end">
+          <div className="hidden sm:flex items-center justify-end">
             <BrandPill />
           </div>
         </div>
