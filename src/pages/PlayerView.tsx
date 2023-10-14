@@ -1,6 +1,6 @@
 import { RunOutput } from "@movie-web/providers";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useCallback, useEffect, useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
 
 import { usePlayer } from "@/components/player/hooks/usePlayer";
 import { usePlayerMeta } from "@/components/player/hooks/usePlayerMeta";
@@ -8,9 +8,10 @@ import { convertRunoutputToSource } from "@/components/player/utils/convertRunou
 import { MetaPart } from "@/pages/parts/player/MetaPart";
 import { PlayerPart } from "@/pages/parts/player/PlayerPart";
 import { ScrapingPart } from "@/pages/parts/player/ScrapingPart";
-import { playerStatus } from "@/stores/player/slices/source";
+import { PlayerMeta, playerStatus } from "@/stores/player/slices/source";
 
 export function PlayerView() {
+  const history = useHistory();
   const params = useParams<{
     media: string;
     episode?: string;
@@ -20,13 +21,25 @@ export function PlayerView() {
   const { setPlayerMeta, scrapeMedia } = usePlayerMeta();
   const [backUrl] = useState("/"); // TODO redirect to search when needed
 
-  const lastMedia = useRef(params.media);
+  const paramsData = JSON.stringify({
+    media: params.media,
+    season: params.season,
+    episode: params.episode,
+  });
   useEffect(() => {
-    if (params.media === lastMedia.current) return;
-    lastMedia.current = params.media;
-    console.log("resetting");
     reset();
-  }, [params, reset]);
+  }, [paramsData, reset]);
+
+  const metaChange = useCallback(
+    (meta: PlayerMeta) => {
+      if (meta?.type === "show")
+        history.push(
+          `/media/${params.media}/${meta.season?.tmdbId}/${meta.episode?.tmdbId}`
+        );
+      else history.push(`/media/${params.media}`);
+    },
+    [history, params]
+  );
 
   const playAfterScrape = useCallback(
     (out: RunOutput | null) => {
@@ -37,7 +50,7 @@ export function PlayerView() {
   );
 
   return (
-    <PlayerPart backUrl={backUrl}>
+    <PlayerPart backUrl={backUrl} onMetaChange={metaChange}>
       {status === playerStatus.IDLE ? (
         <MetaPart onGetMeta={setPlayerMeta} />
       ) : null}

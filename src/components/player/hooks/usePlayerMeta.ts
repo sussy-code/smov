@@ -18,7 +18,7 @@ export function usePlayerMeta() {
       let playerMeta: PlayerMeta;
       if (m.meta.type === MWMediaType.SERIES) {
         const ep = m.meta.seasonData.episodes.find((v) => v.id === episodeId);
-        if (!ep) return false;
+        if (!ep) return null;
         playerMeta = {
           type: "show",
           releaseYear: +(m.meta.year ?? 0),
@@ -48,7 +48,7 @@ export function usePlayerMeta() {
       _setPlayerMeta(playerMeta);
       setMeta(playerMeta);
       setScrapeStatus();
-      return true;
+      return playerMeta;
     },
     [_setPlayerMeta, setMeta, setScrapeStatus]
   );

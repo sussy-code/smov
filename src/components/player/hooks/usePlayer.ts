@@ -14,14 +14,15 @@ export function usePlayer() {
   const setMeta = usePlayerStore((s) => s.setMeta);
   const setSource = usePlayerStore((s) => s.setSource);
   const status = usePlayerStore((s) => s.status);
+  const meta = usePlayerStore((s) => s.meta);
   const reset = usePlayerStore((s) => s.reset);
   const { init } = useInitializePlayer();
 
   return {
     reset,
     status,
-    setMeta(meta: PlayerMeta) {
-      setMeta(meta);
+    setMeta(m: PlayerMeta) {
+      setMeta(m);
     },
     playMedia(source: SourceSliceSource) {
       setSource(source);

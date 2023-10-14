@@ -3,11 +3,13 @@ import { ReactNode } from "react";
 import { BrandPill } from "@/components/layout/BrandPill";
 import { Player } from "@/components/player";
 import { useShouldShowControls } from "@/components/player/hooks/useShouldShowControls";
+import { PlayerMeta } from "@/stores/player/slices/source";
 
 export interface PlayerPartProps {
   children?: ReactNode;
   backUrl: string;
   onLoad?: () => void;
+  onMetaChange?: (meta: PlayerMeta) => void;
 }
 
 export function PlayerPart(props: PlayerPartProps) {
@@ -64,7 +66,7 @@ export function PlayerPart(props: PlayerPartProps) {
             <Player.Time />
           </Player.LeftSideControls>
           <div className="flex items-center space-x-3">
-            <Player.Episodes />
+            <Player.Episodes onChange={props.onMetaChange} />
             <Player.Settings />
             <Player.Fullscreen />
           </div>

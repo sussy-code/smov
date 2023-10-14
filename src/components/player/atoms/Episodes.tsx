@@ -1,4 +1,4 @@
-import { ReactNode, useCallback, useEffect, useState } from "react";
+import { ReactNode, useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useAsync } from "react-use";
 
@@ -13,6 +13,7 @@ import { usePlayerMeta } from "@/components/player/hooks/usePlayerMeta";
 import { VideoPlayerButton } from "@/components/player/internals/Button";
 import { Context } from "@/components/player/internals/ContextUtils";
 import { useOverlayRouter } from "@/hooks/useOverlayRouter";
+import { PlayerMeta } from "@/stores/player/slices/source";
 import { usePlayerStore } from "@/stores/player/store";
 
 function CenteredText(props: { children: React.ReactNode }) {
@@ -83,10 +84,12 @@ function EpisodesView({
   id,
   selectedSeason,
   goBack,
+  onChange,
 }: {
   id: string;
   selectedSeason: string;
   goBack?: () => void;
+  onChange?: (meta: PlayerMeta) => void;
 }) {
   const { t } = useTranslation();
   const router = useOverlayRouter(id);
@@ -96,11 +99,13 @@ function EpisodesView({
 
   const playEpisode = useCallback(
     (episodeId: string) => {
-      if (loadingState.value)
-        setPlayerMeta(loadingState.value.fullData, episodeId);
+      if (loadingState.value) {
+        const newData = setPlayerMeta(loadingState.value.fullData, episodeId);
+        if (newData) onChange?.(newData);
+      }
       router.close();
     },
-    [setPlayerMeta, loadingState, router]
+    [setPlayerMeta, loadingState, router, onChange]
   );
 
   let content: ReactNode = null;
@@ -144,7 +149,13 @@ function EpisodesView({
   );
 }
 
-function EpisodesOverlay({ id }: { id: string }) {
+function EpisodesOverlay({
+  id,
+  onChange,
+}: {
+  id: string;
+  onChange?: (meta: PlayerMeta) => void;
+}) {
   const router = useOverlayRouter(id);
   const meta = usePlayerStore((s) => s.meta);
   const [selectedSeason, setSelectedSeason] = useState(
@@ -170,6 +181,7 @@ function EpisodesOverlay({ id }: { id: string }) {
             selectedSeason={selectedSeason}
             id={id}
             goBack={() => router.navigate("/")}
+            onChange={onChange}
           />
         </OverlayPage>
       </OverlayRouter>
@@ -177,7 +189,11 @@ function EpisodesOverlay({ id }: { id: string }) {
   );
 }
 
-export function Episodes() {
+interface EpisodesProps {
+  onChange?: (meta: PlayerMeta) => void;
+}
+
+export function Episodes(props: EpisodesProps) {
   const { t } = useTranslation();
   const router = useOverlayRouter("episodes");
   const setHasOpenOverlay = usePlayerStore((s) => s.setHasOpenOverlay);
@@ -186,7 +202,6 @@ export function Episodes() {
   useEffect(() => {
     setHasOpenOverlay(router.isRouterActive);
   }, [setHasOpenOverlay, router.isRouterActive]);
-
   if (type !== "show") return null;
 
   return (
@@ -197,7 +212,7 @@ export function Episodes() {
       >
         {t("videoPlayer.buttons.episodes")}
       </VideoPlayerButton>
-      <EpisodesOverlay id={router.id} />
+      <EpisodesOverlay onChange={props.onChange} id={router.id} />
     </OverlayAnchor>
   );
 }
