@@ -200,7 +200,7 @@ input[type=range].styled-slider.slider-progress::-ms-fill-lower {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: theme("colors.denim-500");
+  background-color: theme("colors.video.context.border");
   border: 5px solid transparent;
   border-left: 0;
   background-clip: content-box;

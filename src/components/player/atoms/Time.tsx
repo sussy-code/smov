@@ -40,22 +40,22 @@ export function Time() {
     },
   });
 
+  const timeString = `${formatSeconds(currentTime, hasHours)} / ${formatSeconds(
+    duration,
+    hasHours
+  )}`;
+  const timeFinishedString = `${t("videoPlayer.timeLeft", {
+    timeLeft: formatSeconds(
+      secondsRemaining,
+      durationExceedsHour(secondsRemaining)
+    ),
+  })} • ${formattedTimeFinished}`;
+
   const child =
     timeFormat === VideoPlayerTimeFormat.REGULAR ? (
-      <>
-        {formatSeconds(currentTime, hasHours)}{" "}
-        <span>/ {formatSeconds(duration, hasHours)}</span>
-      </>
+      <span>{timeString}</span>
     ) : (
-      <>
-        {t("videoPlayer.timeLeft", {
-          timeLeft: formatSeconds(
-            secondsRemaining,
-            durationExceedsHour(secondsRemaining)
-          ),
-        })}{" "}
-        • {formattedTimeFinished}
-      </>
+      <span>{timeFinishedString}</span>
     );
 
   return (

@@ -60,23 +60,26 @@ export function useInternalOverlayRouter(id: string) {
     setTransition(null);
   }, [setRoute, route, setTransition]);
 
-  const open = useCallback(() => {
-    const anchor = document.getElementById(`__overlayRouter::${id}`);
-    if (anchor) {
-      const rect = anchor.getBoundingClientRect();
-      setAnchorPoint({
-        h: rect.height,
-        w: rect.width,
-        x: rect.x,
-        y: rect.y,
-      });
-    } else {
-      setAnchorPoint(null);
-    }
+  const open = useCallback(
+    (defaultRoute = "/") => {
+      const anchor = document.getElementById(`__overlayRouter::${id}`);
+      if (anchor) {
+        const rect = anchor.getBoundingClientRect();
+        setAnchorPoint({
+          h: rect.height,
+          w: rect.width,
+          x: rect.x,
+          y: rect.y,
+        });
+      } else {
+        setAnchorPoint(null);
+      }
 
-    setTransition(null);
-    setRoute(`/${id}`);
-  }, [id, setRoute, setTransition, setAnchorPoint]);
+      setTransition(null);
+      setRoute(joinPath(splitPath(defaultRoute, id)));
+    },
+    [id, setRoute, setTransition, setAnchorPoint]
+  );
 
   return {
     showBackwardsTransition,

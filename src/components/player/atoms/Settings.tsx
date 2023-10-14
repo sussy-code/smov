@@ -101,7 +101,7 @@ function SettingsOverlay({ id }: { id: string }) {
       <OverlayRouter id={id}>
         <OverlayPage id={id} path="/" width={343} height={431}>
           <Context.Card>
-            <Context.Title>Video settings</Context.Title>
+            <Context.SectionTitle>Video settings</Context.SectionTitle>
             <Context.Section>
               <Context.Link onClick={() => router.navigate("/quality")}>
                 <Context.LinkTitle>Quality</Context.LinkTitle>
@@ -119,11 +119,11 @@ function SettingsOverlay({ id }: { id: string }) {
               </Context.Link>
             </Context.Section>
 
-            <Context.Title>Viewing Experience</Context.Title>
+            <Context.SectionTitle>Viewing Experience</Context.SectionTitle>
             <Context.Section>
               <Context.Link onClick={() => router.navigate("/quality")}>
                 <Context.LinkTitle>Enable Captions</Context.LinkTitle>
-                <Context.IconButton icon={Icons.CHEVRON_DOWN} />
+                <Context.LinkChevron />
               </Context.Link>
               <Context.Link>
                 <Context.LinkTitle>Caption settings</Context.LinkTitle>

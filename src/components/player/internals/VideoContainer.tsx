@@ -9,14 +9,24 @@ function useDisplayInterface() {
   const display = usePlayerStore((s) => s.display);
   const setDisplay = usePlayerStore((s) => s.setDisplay);
 
+  const displayRef = useRef(display);
   useEffect(() => {
-    if (!display) {
-      setDisplay(makeVideoElementDisplayInterface());
+    displayRef.current = display;
+  }, [display]);
+
+  useEffect(() => {
+    if (!displayRef.current) {
+      const newDisplay = makeVideoElementDisplayInterface();
+      displayRef.current = newDisplay;
+      setDisplay(newDisplay);
     }
     return () => {
-      if (display) setDisplay(null);
+      if (displayRef.current) {
+        displayRef.current = null;
+        setDisplay(null);
+      }
     };
-  }, [display, setDisplay]);
+  }, [setDisplay]);
 }
 
 export function useShouldShowVideoElement() {

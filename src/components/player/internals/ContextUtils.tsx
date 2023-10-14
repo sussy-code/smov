@@ -3,12 +3,26 @@ import classNames from "classnames";
 import { Icon, Icons } from "@/components/Icon";
 
 function Card(props: { children: React.ReactNode }) {
-  return <div className="px-6 py-0">{props.children}</div>;
+  return (
+    <div className="h-full grid grid-rows-[1fr]">
+      <div className="px-6 h-full overflow-y-auto overflow-x-hidden">
+        {props.children}
+      </div>
+    </div>
+  );
 }
 
-function Title(props: { children: React.ReactNode }) {
+function CardWithScrollable(props: { children: React.ReactNode }) {
   return (
-    <h3 className="uppercase mt-8 font-bold text-video-context-type-secondary text-sm pl-1 pb-2.5 border-b border-opacity-25 border-video-context-border mb-6">
+    <div className="[&>*]:px-6 h-full grid grid-rows-[auto,1fr] [&>*:nth-child(2)]:overflow-y-auto [&>*:nth-child(2)]:overflow-x-hidden">
+      {props.children}
+    </div>
+  );
+}
+
+function SectionTitle(props: { children: React.ReactNode }) {
+  return (
+    <h3 className="uppercase font-bold text-video-context-type-secondary text-sm pt-8 pl-1 pb-2.5 border-b border-opacity-25 border-video-context-border">
       {props.children}
     </h3>
   );
@@ -18,7 +32,7 @@ function LinkTitle(props: { children: React.ReactNode; textClass?: string }) {
   return (
     <span
       className={classNames([
-        "font-medium",
+        "font-medium text-left",
         props.textClass || "text-video-context-type-main",
       ])}
     >
@@ -27,16 +41,23 @@ function LinkTitle(props: { children: React.ReactNode; textClass?: string }) {
   );
 }
 
-function Section(props: { children: React.ReactNode }) {
-  return <div className="my-5">{props.children}</div>;
+function Section(props: { children: React.ReactNode; className?: string }) {
+  return (
+    <div className={classNames("pt-5", props.className)}>{props.children}</div>
+  );
 }
 
-function Link(props: { onClick?: () => void; children: React.ReactNode }) {
+function Link(props: {
+  onClick?: () => void;
+  children: React.ReactNode;
+  active?: boolean;
+}) {
   const classes = classNames(
     "flex justify-between items-center py-2 pl-3 pr-3 -ml-3 rounded w-full",
     {
       "cursor-default": !props.onClick,
       "hover:bg-video-context-border hover:bg-opacity-10": !!props.onClick,
+      "bg-video-context-border bg-opacity-10": props.active,
     }
   );
   const styles = { width: "calc(100% + 1.5rem)" };
@@ -61,25 +82,36 @@ function Link(props: { onClick?: () => void; children: React.ReactNode }) {
   );
 }
 
+function Title(props: {
+  children: React.ReactNode;
+  rightSide?: React.ReactNode;
+}) {
+  return (
+    <div>
+      <h3 className="font-bold text-video-context-type-main pb-3 pt-5 border-b border-opacity-25 border-video-context-border flex justify-between items-center">
+        <div className="flex items-center space-x-3">{props.children}</div>
+        <div>{props.rightSide}</div>
+      </h3>
+    </div>
+  );
+}
+
 function BackLink(props: {
   onClick?: () => void;
   children: React.ReactNode;
   rightSide?: React.ReactNode;
 }) {
   return (
-    <h3 className="font-bold text-video-context-type-main pb-3 pt-5 border-b border-opacity-25 border-video-context-border mb-6 flex justify-between items-center">
-      <div className="flex items-center space-x-3">
-        <button
-          type="button"
-          className="-ml-2 p-2 rounded hover:bg-video-context-light hover:bg-opacity-10"
-          onClick={props.onClick}
-        >
-          <Icon className="text-xl" icon={Icons.ARROW_LEFT} />
-        </button>
-        <span>{props.children}</span>
-      </div>
-      <div>{props.rightSide}</div>
-    </h3>
+    <Title rightSide={props.rightSide}>
+      <button
+        type="button"
+        className="-ml-2 p-2 rounded hover:bg-video-context-light hover:bg-opacity-10"
+        onClick={props.onClick}
+      >
+        <Icon className="text-xl" icon={Icons.ARROW_LEFT} />
+      </button>
+      <span className="line-clamp-1 break-all">{props.children}</span>
+    </Title>
   );
 }
 
@@ -124,7 +156,9 @@ function Anchor(props: { children: React.ReactNode; onClick: () => void }) {
 
 export const Context = {
   Card,
+  CardWithScrollable,
   Title,
+  SectionTitle,
   BackLink,
   Section,
   Link,

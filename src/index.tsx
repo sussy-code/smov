@@ -2,6 +2,7 @@ import "core-js/stable";
 import React, { Suspense } from "react";
 import type { ReactNode } from "react";
 import ReactDOM from "react-dom";
+import { HelmetProvider } from "react-helmet-async";
 import { BrowserRouter, HashRouter } from "react-router-dom";
 import { registerSW } from "virtual:pwa-register";
 
@@ -48,11 +49,13 @@ function TheRouter(props: { children: ReactNode }) {
 ReactDOM.render(
   <React.StrictMode>
     <ErrorBoundary>
-      <TheRouter>
-        <Suspense fallback="">
-          <LazyLoadedApp />
-        </Suspense>
-      </TheRouter>
+      <HelmetProvider>
+        <TheRouter>
+          <Suspense fallback="">
+            <LazyLoadedApp />
+          </Suspense>
+        </TheRouter>
+      </HelmetProvider>
     </ErrorBoundary>
   </React.StrictMode>,
   document.getElementById("root")

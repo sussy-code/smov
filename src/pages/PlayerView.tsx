@@ -1,8 +1,7 @@
 import { RunOutput } from "@movie-web/providers";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import { MWStreamType } from "@/backend/helpers/streams";
 import { usePlayer } from "@/components/player/hooks/usePlayer";
 import { usePlayerMeta } from "@/components/player/hooks/usePlayerMeta";
 import { convertRunoutputToSource } from "@/components/player/utils/convertRunoutputToSource";
@@ -21,9 +20,13 @@ export function PlayerView() {
   const { setPlayerMeta, scrapeMedia } = usePlayerMeta();
   const [backUrl] = useState("/"); // TODO redirect to search when needed
 
+  const lastMedia = useRef(params.media);
   useEffect(() => {
+    if (params.media === lastMedia.current) return;
+    lastMedia.current = params.media;
+    console.log("resetting");
     reset();
-  }, [params.media, reset]);
+  }, [params, reset]);
 
   const playAfterScrape = useCallback(
     (out: RunOutput | null) => {

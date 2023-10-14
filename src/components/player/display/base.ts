@@ -29,15 +29,17 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
     if (src.type === "hls") {
       if (!Hls.isSupported()) throw new Error("HLS not supported");
 
-      hls = new Hls({ enableWorker: false });
-      hls.on(Hls.Events.ERROR, (event, data) => {
-        console.error("HLS error", data);
-        if (data.fatal) {
-          throw new Error(
-            `HLS ERROR:${data.error?.message ?? "Something went wrong"}`
-          );
-        }
-      });
+      if (!hls) {
+        hls = new Hls({ enableWorker: false });
+        hls.on(Hls.Events.ERROR, (event, data) => {
+          console.error("HLS error", data);
+          if (data.fatal) {
+            throw new Error(
+              `HLS ERROR:${data.error?.message ?? "Something went wrong"}`
+            );
+          }
+        });
+      }
 
       hls.attachMedia(vid);
       hls.loadSource(src.url);
@@ -77,6 +79,21 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
     });
   }
 
+  function unloadSource() {
+    if (videoElement) videoElement.removeAttribute("src");
+    if (hls) {
+      hls.destroy();
+      hls = null;
+    }
+  }
+
+  function destroyVideoElement() {
+    unloadSource();
+    if (videoElement) {
+      videoElement = null;
+    }
+  }
+
   function fullscreenChange() {
     isFullscreen =
       !!document.fullscreenElement || // other browsers
@@ -88,20 +105,18 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
     on,
     off,
     destroy: () => {
-      if (hls) hls.destroy();
-      if (videoElement) {
-        videoElement.src = "";
-        videoElement.remove();
-      }
+      destroyVideoElement();
       fscreen.removeEventListener("fullscreenchange", fullscreenChange);
     },
     load(newSource) {
+      if (!newSource) unloadSource();
       source = newSource;
       emit("loading", true);
       setSource();
     },
 
     processVideoElement(video) {
+      destroyVideoElement();
       videoElement = video;
       setSource();
     },

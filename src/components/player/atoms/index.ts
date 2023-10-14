@@ -9,3 +9,4 @@ export * from "./Volume";
 export * from "./Title";
 export * from "./EpisodeTitle";
 export * from "./Settings";
+export * from "./Episodes";

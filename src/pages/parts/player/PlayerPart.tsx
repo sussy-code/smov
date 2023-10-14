@@ -63,7 +63,8 @@ export function PlayerPart(props: PlayerPartProps) {
             {/* Do mobile controls here :) */}
             <Player.Time />
           </Player.LeftSideControls>
-          <div className="flex items-center">
+          <div className="flex items-center space-x-3">
+            <Player.Episodes />
             <Player.Settings />
             <Player.Fullscreen />
           </div>
