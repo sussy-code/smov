@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { MWStreamType } from "@/backend/helpers/streams";
 import { usePlayer } from "@/components/player/hooks/usePlayer";
 import { usePlayerMeta } from "@/components/player/hooks/usePlayerMeta";
+import { convertRunoutputToSource } from "@/components/player/utils/convertRunoutputToSource";
 import { MetaPart } from "@/pages/parts/player/MetaPart";
 import { PlayerPart } from "@/pages/parts/player/PlayerPart";
 import { ScrapingPart } from "@/pages/parts/player/ScrapingPart";
@@ -26,25 +27,8 @@ export function PlayerView() {
 
   const playAfterScrape = useCallback(
     (out: RunOutput | null) => {
-      if (out?.stream.type !== "file") return;
-      const qualities = Object.keys(out.stream.qualities).sort(
-        (a, b) => Number(b) - Number(a)
-      ) as (keyof typeof out.stream.qualities)[];
-
-      let file;
-      for (const quality of qualities) {
-        if (out.stream.qualities[quality]?.url) {
-          file = out.stream.qualities[quality];
-          break;
-        }
-      }
-
-      if (!file) return;
-
-      playMedia({
-        type: MWStreamType.MP4,
-        url: file.url,
-      });
+      if (!out) return;
+      playMedia(convertRunoutputToSource(out));
     },
     [playMedia]
   );

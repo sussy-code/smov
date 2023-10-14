@@ -1,4 +1,4 @@
-import { Source } from "@/components/player/hooks/usePlayer";
+import { LoadableSource, SourceQuality } from "@/stores/player/utils/qualities";
 import { Listener } from "@/utils/events";
 
 export type DisplayInterfaceEvents = {
@@ -10,12 +10,14 @@ export type DisplayInterfaceEvents = {
   duration: number;
   buffered: number;
   loading: boolean;
+  qualities: SourceQuality[];
+  changedquality: SourceQuality | null;
 };
 
 export interface DisplayInterface extends Listener<DisplayInterfaceEvents> {
   play(): void;
   pause(): void;
-  load(source: Source): void;
+  load(source: LoadableSource): void;
   processVideoElement(video: HTMLVideoElement): void;
   processContainerElement(container: HTMLElement): void;
   toggleFullscreen(): void;

@@ -1,7 +1,12 @@
 import { ScrapeMedia } from "@movie-web/providers";
 
-import { MWStreamType } from "@/backend/helpers/streams";
 import { MakeSlice } from "@/stores/player/slices/types";
+import {
+  LoadableSource,
+  SourceQuality,
+  SourceSliceSource,
+  selectQuality,
+} from "@/stores/player/utils/qualities";
 import { ValuesOf } from "@/utils/typeguard";
 
 export const playerStatus = {
@@ -11,11 +16,6 @@ export const playerStatus = {
 } as const;
 
 export type PlayerStatus = ValuesOf<typeof playerStatus>;
-
-export interface SourceSliceSource {
-  url: string;
-  type: MWStreamType;
-}
 
 export interface PlayerMeta {
   type: "movie" | "show";
@@ -38,9 +38,12 @@ export interface PlayerMeta {
 export interface SourceSlice {
   status: PlayerStatus;
   source: SourceSliceSource | null;
+  qualities: SourceQuality[];
+  currentQuality: SourceQuality | null;
   meta: PlayerMeta | null;
   setStatus(status: PlayerStatus): void;
-  setSource(url: string, type: MWStreamType): void;
+  setSource(stream: SourceSliceSource): void;
+  switchQuality(quality: SourceQuality): void;
   setMeta(meta: PlayerMeta): void;
 }
 
@@ -67,8 +70,10 @@ export function metaToScrapeMedia(meta: PlayerMeta): ScrapeMedia {
   };
 }
 
-export const createSourceSlice: MakeSlice<SourceSlice> = (set) => ({
+export const createSourceSlice: MakeSlice<SourceSlice> = (set, get) => ({
   source: null,
+  qualities: [],
+  currentQuality: null,
   status: playerStatus.IDLE,
   meta: null,
   setStatus(status: PlayerStatus) {
@@ -81,12 +86,30 @@ export const createSourceSlice: MakeSlice<SourceSlice> = (set) => ({
       s.meta = meta;
     });
   },
-  setSource(url: string, type: MWStreamType) {
+  setSource(stream: SourceSliceSource) {
+    let qualities: string[] = [];
+    if (stream.type === "file") qualities = Object.keys(stream.qualities);
+    const store = get();
+    const loadableStream = selectQuality(stream);
+
     set((s) => {
-      s.source = {
-        type,
-        url,
-      };
+      s.source = stream;
+      s.qualities = qualities as SourceQuality[];
+      s.currentQuality = loadableStream.quality;
     });
+
+    store.display?.load(loadableStream.stream);
+  },
+  switchQuality(quality) {
+    const store = get();
+    if (!store.source) return;
+    if (store.source.type === "file") {
+      const selectedQuality = store.source.qualities[quality];
+      if (!selectedQuality) return;
+      set((s) => {
+        s.currentQuality = quality;
+      });
+      store.display?.load(selectedQuality);
+    }
   },
 });

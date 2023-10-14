@@ -132,7 +132,8 @@ module.exports = {
 
                 type: {
                   main: "#617A8A",
-                  secondary: "#374A56"
+                  secondary: "#374A56",
+                  accent: "#A570FA"
                 }
               }
             }

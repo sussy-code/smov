@@ -1,6 +1,6 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 
-import { Icons } from "@/components/Icon";
+import { Icon, Icons } from "@/components/Icon";
 import { OverlayAnchor } from "@/components/overlays/OverlayAnchor";
 import { Overlay } from "@/components/overlays/OverlayDisplay";
 import { OverlayPage } from "@/components/overlays/OverlayPage";
@@ -9,37 +9,138 @@ import { VideoPlayerButton } from "@/components/player/internals/Button";
 import { Context } from "@/components/player/internals/ContextUtils";
 import { useOverlayRouter } from "@/hooks/useOverlayRouter";
 import { usePlayerStore } from "@/stores/player/store";
+import {
+  SourceQuality,
+  qualityToString,
+} from "@/stores/player/utils/qualities";
+
+function QualityOption(props: {
+  children: React.ReactNode;
+  selected?: boolean;
+  disabled?: boolean;
+  onClick?: () => void;
+}) {
+  let textClasses;
+  if (props.selected) textClasses = "text-white";
+  if (props.disabled)
+    textClasses = "text-video-context-type-main text-opacity-40";
+
+  return (
+    <Context.Link noHover={props.disabled} onClick={props.onClick}>
+      <Context.LinkTitle textClass={textClasses}>
+        {props.children}
+      </Context.LinkTitle>
+      {props.selected ? (
+        <Icon
+          icon={Icons.CIRCLE_CHECK}
+          className="text-xl text-video-context-type-accent"
+        />
+      ) : null}
+    </Context.Link>
+  );
+}
+
+function QualityView({ id }: { id: string }) {
+  const router = useOverlayRouter(id);
+  const availableQualities = usePlayerStore((s) => s.qualities);
+  const currentQuality = usePlayerStore((s) => s.currentQuality);
+  const switchQuality = usePlayerStore((s) => s.switchQuality);
+
+  const change = useCallback(
+    (q: SourceQuality) => {
+      switchQuality(q);
+      router.close();
+    },
+    [router, switchQuality]
+  );
+
+  return (
+    <>
+      <Context.BackLink onClick={() => router.navigate("/")}>
+        Quality
+      </Context.BackLink>
+      <Context.Section>
+        {availableQualities.map((v) => (
+          <QualityOption
+            key={v}
+            selected={v === currentQuality}
+            onClick={() => change(v)}
+          >
+            {qualityToString(v)}
+          </QualityOption>
+        ))}
+        <Context.Divider />
+        <Context.Link noHover onClick={() => router.navigate("/")}>
+          <Context.LinkTitle>Automatic quality</Context.LinkTitle>
+          <span>Toggle</span>
+        </Context.Link>
+        <Context.SmallText>
+          You can try{" "}
+          <Context.Anchor onClick={() => router.navigate("/source")}>
+            switching source
+          </Context.Anchor>{" "}
+          to get different quality options.
+        </Context.SmallText>
+      </Context.Section>
+    </>
+  );
+}
 
 function SettingsOverlay({ id }: { id: string }) {
-  const router = useOverlayRouter("settings");
+  const router = useOverlayRouter(id);
+  const currentQuality = usePlayerStore((s) => s.currentQuality);
 
   return (
     <Overlay id={id}>
       <OverlayRouter id={id}>
         <OverlayPage id={id} path="/" width={343} height={431}>
           <Context.Card>
-            <Context.Title>Ba ba ba ba my title</Context.Title>
+            <Context.Title>Video settings</Context.Title>
             <Context.Section>
-              Hi
-              <Context.Link onClick={() => router.navigate("/other")}>
-                <Context.LinkTitle>Go to page 2</Context.LinkTitle>
-                <Context.LinkChevron />
+              <Context.Link onClick={() => router.navigate("/quality")}>
+                <Context.LinkTitle>Quality</Context.LinkTitle>
+                <Context.LinkChevron>
+                  {currentQuality ? qualityToString(currentQuality) : ""}
+                </Context.LinkChevron>
               </Context.Link>
-              <Context.Link>
+              <Context.Link onClick={() => router.navigate("/source")}>
                 <Context.LinkTitle>Video source</Context.LinkTitle>
                 <Context.LinkChevron>SuperStream</Context.LinkChevron>
+              </Context.Link>
+              <Context.Link>
+                <Context.LinkTitle>Download</Context.LinkTitle>
+                <Context.IconButton icon={Icons.DOWNLOAD} />
+              </Context.Link>
+            </Context.Section>
+
+            <Context.Title>Viewing Experience</Context.Title>
+            <Context.Section>
+              <Context.Link onClick={() => router.navigate("/quality")}>
+                <Context.LinkTitle>Enable Captions</Context.LinkTitle>
+                <Context.IconButton icon={Icons.CHEVRON_DOWN} />
+              </Context.Link>
+              <Context.Link>
+                <Context.LinkTitle>Caption settings</Context.LinkTitle>
+                <Context.LinkChevron>English</Context.LinkChevron>
+              </Context.Link>
+              <Context.Link>
+                <Context.LinkTitle>Playback settings</Context.LinkTitle>
+                <Context.LinkChevron />
               </Context.Link>
             </Context.Section>
           </Context.Card>
         </OverlayPage>
-        <OverlayPage id={id} path="/other" width={343} height={431}>
+        <OverlayPage id={id} path="/quality" width={343} height={431}>
           <Context.Card>
-            <Context.Title>Some other bit</Context.Title>
-            <Context.Section>
-              <button type="button" onClick={() => router.navigate("/")}>
-                Go BACK PLS
-              </button>
-            </Context.Section>
+            <QualityView id={id} />
+          </Context.Card>
+        </OverlayPage>
+        <OverlayPage id={id} path="/source" width={343} height={431}>
+          <Context.Card>
+            <Context.BackLink onClick={() => router.navigate("/")}>
+              It&apos;s a minion!
+            </Context.BackLink>
+            <img src="https://media2.giphy.com/media/oa4Au5xDZ6HJYF6KGH/giphy.gif" />
           </Context.Card>
         </OverlayPage>
       </OverlayRouter>

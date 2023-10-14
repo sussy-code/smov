@@ -4,8 +4,8 @@ import {
   DisplayInterface,
   DisplayInterfaceEvents,
 } from "@/components/player/display/displayInterface";
-import { Source } from "@/components/player/hooks/usePlayer";
 import { handleBuffered } from "@/components/player/utils/handleBuffered";
+import { LoadableSource } from "@/stores/player/utils/qualities";
 import {
   canChangeVolume,
   canFullscreen,
@@ -16,7 +16,7 @@ import { makeEmitter } from "@/utils/events";
 
 export function makeVideoElementDisplayInterface(): DisplayInterface {
   const { emit, on, off } = makeEmitter<DisplayInterfaceEvents>();
-  let source: Source | null = null;
+  let source: LoadableSource | null = null;
   let videoElement: HTMLVideoElement | null = null;
   let containerElement: HTMLElement | null = null;
   let isFullscreen = false;

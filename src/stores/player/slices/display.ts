@@ -65,6 +65,16 @@ export const createDisplaySlice: MakeSlice<DisplaySlice> = (set, get) => ({
         s.mediaPlaying.isLoading = isLoading;
       })
     );
+    newDisplay.on("qualities", (qualities) => {
+      set((s) => {
+        s.qualities = qualities;
+      });
+    });
+    newDisplay.on("changedquality", (quality) => {
+      set((s) => {
+        s.currentQuality = quality;
+      });
+    });
 
     set((s) => {
       s.display = newDisplay;
