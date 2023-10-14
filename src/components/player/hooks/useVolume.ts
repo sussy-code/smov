@@ -1,13 +1,12 @@
-import { setStoredVolume } from "@/_oldvideo/components/hooks/volumeStore";
 import { usePlayerStore } from "@/stores/player/store";
-
-// TODO use new stored volume
+import { useVolumeStore } from "@/stores/volume";
 
 export function useVolume() {
   const volume = usePlayerStore((s) => s.mediaPlaying.volume);
   const lastVolume = usePlayerStore((s) => s.interface.lastVolume);
   const setLastVolume = usePlayerStore((s) => s.setLastVolume);
   const display = usePlayerStore((s) => s.display);
+  const setStoredVolume = useVolumeStore((s) => s.setVolume);
 
   const toggleVolume = (_isKeyboardEvent = false) => {
     // TODO use keyboard event

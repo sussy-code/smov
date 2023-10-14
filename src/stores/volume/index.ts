@@ -1,4 +1,4 @@
-import { StateCreator, create } from "zustand";
+import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";
 
@@ -7,14 +7,8 @@ export interface VolumeStore {
   setVolume(v: number): void;
 }
 
-export type VolumeState = StateCreator<
-  VolumeStore,
-  [["zustand/persist", never]],
-  []
->;
-
 // TODO add migration from previous stored volume
-export const useVolumeStore: VolumeState = create(
+export const useVolumeStore = create(
   persist(
     immer<VolumeStore>((set) => ({
       volume: 1,
