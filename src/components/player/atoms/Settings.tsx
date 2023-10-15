@@ -1,5 +1,6 @@
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 
+import { Toggle } from "@/components/buttons/Toggle";
 import { Icon, Icons } from "@/components/Icon";
 import { OverlayAnchor } from "@/components/overlays/OverlayAnchor";
 import { Overlay } from "@/components/overlays/OverlayDisplay";
@@ -92,9 +93,30 @@ function QualityView({ id }: { id: string }) {
   );
 }
 
+function CaptionSettingsView({ id }: { id: string }) {
+  const router = useOverlayRouter(id);
+
+  return (
+    <>
+      <Context.BackLink onClick={() => router.navigate("/captions")}>
+        Custom captions
+      </Context.BackLink>
+      <Context.Section>
+        <Context.SmallText>Hello!</Context.SmallText>
+      </Context.Section>
+    </>
+  );
+}
+
 function SettingsOverlay({ id }: { id: string }) {
   const router = useOverlayRouter(id);
   const currentQuality = usePlayerStore((s) => s.currentQuality);
+
+  const [tmpBool, setTmpBool] = useState(false);
+
+  function toggleBool() {
+    setTmpBool(!tmpBool);
+  }
 
   return (
     <Overlay id={id}>
@@ -121,11 +143,11 @@ function SettingsOverlay({ id }: { id: string }) {
 
             <Context.SectionTitle>Viewing Experience</Context.SectionTitle>
             <Context.Section>
-              <Context.Link onClick={() => router.navigate("/quality")}>
-                <Context.LinkTitle>Enable Captions</Context.LinkTitle>
-                <Context.LinkChevron />
-              </Context.Link>
               <Context.Link>
+                <Context.LinkTitle>Enable Captions</Context.LinkTitle>
+                <Toggle enabled={tmpBool} onClick={() => toggleBool()} />
+              </Context.Link>
+              <Context.Link onClick={() => router.navigate("/captions")}>
                 <Context.LinkTitle>Caption settings</Context.LinkTitle>
                 <Context.LinkChevron>English</Context.LinkChevron>
               </Context.Link>
@@ -139,6 +161,24 @@ function SettingsOverlay({ id }: { id: string }) {
         <OverlayPage id={id} path="/quality" width={343} height={431}>
           <Context.Card>
             <QualityView id={id} />
+          </Context.Card>
+        </OverlayPage>
+        <OverlayPage id={id} path="/captions" width={343} height={431}>
+          <Context.Card>
+            <Context.BackLink onClick={() => router.navigate("/")}>
+              Captions
+            </Context.BackLink>
+            <button
+              type="button"
+              onClick={() => router.navigate("/captions/settings")}
+            >
+              Go to caption settings
+            </button>
+          </Context.Card>
+        </OverlayPage>
+        <OverlayPage id={id} path="/captions/settings" width={343} height={431}>
+          <Context.Card>
+            <CaptionSettingsView id={id} />
           </Context.Card>
         </OverlayPage>
         <OverlayPage id={id} path="/source" width={343} height={431}>

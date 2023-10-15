@@ -41,7 +41,7 @@ export interface SourceSlice {
   currentQuality: SourceQuality | null;
   meta: PlayerMeta | null;
   setStatus(status: PlayerStatus): void;
-  setSource(stream: SourceSliceSource): void;
+  setSource(stream: SourceSliceSource, startAt: number): void;
   switchQuality(quality: SourceQuality): void;
   setMeta(meta: PlayerMeta): void;
 }
@@ -85,7 +85,7 @@ export const createSourceSlice: MakeSlice<SourceSlice> = (set, get) => ({
       s.meta = meta;
     });
   },
-  setSource(stream: SourceSliceSource) {
+  setSource(stream: SourceSliceSource, startAt: number) {
     let qualities: string[] = [];
     if (stream.type === "file") qualities = Object.keys(stream.qualities);
     const store = get();
@@ -97,7 +97,7 @@ export const createSourceSlice: MakeSlice<SourceSlice> = (set, get) => ({
       s.currentQuality = loadableStream.quality;
     });
 
-    store.display?.load(loadableStream.stream);
+    store.display?.load(loadableStream.stream, startAt);
   },
   switchQuality(quality) {
     const store = get();
@@ -108,7 +108,7 @@ export const createSourceSlice: MakeSlice<SourceSlice> = (set, get) => ({
       set((s) => {
         s.currentQuality = quality;
       });
-      store.display?.load(selectedQuality);
+      store.display?.load(selectedQuality, store.progress.time);
     }
   },
 });

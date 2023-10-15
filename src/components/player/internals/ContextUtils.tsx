@@ -119,7 +119,7 @@ function LinkChevron(props: { children?: React.ReactNode }) {
   return (
     <span className="text-white flex items-center font-medium">
       {props.children}
-      <Icon className="text-xl ml-1" icon={Icons.CHEVRON_RIGHT} />
+      <Icon className="text-xl ml-1 -mr-1.5" icon={Icons.CHEVRON_RIGHT} />
     </span>
   );
 }

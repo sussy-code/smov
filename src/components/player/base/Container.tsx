@@ -2,6 +2,7 @@ import { ReactNode, RefObject, useEffect, useRef } from "react";
 
 import { OverlayDisplay } from "@/components/overlays/OverlayDisplay";
 import { HeadUpdater } from "@/components/player/internals/HeadUpdater";
+import { ProgressSaver } from "@/components/player/internals/ProgressSaver";
 import { VideoClickTarget } from "@/components/player/internals/VideoClickTarget";
 import { VideoContainer } from "@/components/player/internals/VideoContainer";
 import { PlayerHoverState } from "@/stores/player/slices/interface";
@@ -80,6 +81,7 @@ export function Container(props: PlayerProps) {
     <div className="relative">
       <BaseContainer>
         <VideoContainer />
+        <ProgressSaver />
         <div className="relative h-screen overflow-hidden">
           <VideoClickTarget />
           <HeadUpdater />

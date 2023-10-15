@@ -17,7 +17,7 @@ export type DisplayInterfaceEvents = {
 export interface DisplayInterface extends Listener<DisplayInterfaceEvents> {
   play(): void;
   pause(): void;
-  load(source: LoadableSource | null): void;
+  load(source: LoadableSource | null, startAt: number): void;
   processVideoElement(video: HTMLVideoElement): void;
   processContainerElement(container: HTMLElement): void;
   toggleFullscreen(): void;

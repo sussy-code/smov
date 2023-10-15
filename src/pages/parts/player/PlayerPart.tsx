@@ -4,6 +4,7 @@ import { BrandPill } from "@/components/layout/BrandPill";
 import { Player } from "@/components/player";
 import { useShouldShowControls } from "@/components/player/hooks/useShouldShowControls";
 import { PlayerMeta } from "@/stores/player/slices/source";
+import { usePlayerStore } from "@/stores/player/store";
 
 export interface PlayerPartProps {
   children?: ReactNode;
@@ -14,16 +15,19 @@ export interface PlayerPartProps {
 
 export function PlayerPart(props: PlayerPartProps) {
   const { showTargets, showTouchTargets } = useShouldShowControls();
+  const status = usePlayerStore((s) => s.status);
 
   return (
     <Player.Container onLoad={props.onLoad}>
       {props.children}
       <Player.BlackOverlay show={showTargets} />
 
-      <Player.CenterControls>
-        <Player.LoadingSpinner />
-        <Player.AutoPlayStart />
-      </Player.CenterControls>
+      {status === "playing" ? (
+        <Player.CenterControls>
+          <Player.LoadingSpinner />
+          <Player.AutoPlayStart />
+        </Player.CenterControls>
+      ) : null}
 
       <Player.CenterMobileControls
         className="text-white"

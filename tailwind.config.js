@@ -66,6 +66,12 @@ module.exports = {
               light: "#2A2A71"
             },
 
+            // Buttons
+            buttons: {
+              toggle: "#8D44D6",
+              toggleDisabled: "#202836"
+            },
+
             // only used for body colors/textures
             background: {
               main: "#0A0A10",

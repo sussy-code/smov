@@ -24,6 +24,7 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
   let isFullscreen = false;
   let isPausedBeforeSeeking = false;
   let isSeeking = false;
+  let startAt = 0;
 
   function setupSource(vid: HTMLVideoElement, src: LoadableSource) {
     if (src.type === "hls") {
@@ -43,10 +44,12 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
 
       hls.attachMedia(vid);
       hls.loadSource(src.url);
+      vid.currentTime = startAt;
       return;
     }
 
     vid.src = src.url;
+    vid.currentTime = startAt;
   }
 
   function setSource() {
@@ -108,10 +111,11 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
       destroyVideoElement();
       fscreen.removeEventListener("fullscreenchange", fullscreenChange);
     },
-    load(newSource) {
+    load(newSource, startAtInput) {
       if (!newSource) unloadSource();
       source = newSource;
       emit("loading", true);
+      startAt = startAtInput;
       setSource();
     },
 

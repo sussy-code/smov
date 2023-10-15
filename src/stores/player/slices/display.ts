@@ -81,7 +81,7 @@ export const createDisplaySlice: MakeSlice<DisplaySlice> = (set, get) => ({
     });
   },
   reset() {
-    get().display?.load(null);
+    get().display?.load(null, 0);
     set((s) => {
       s.status = playerStatus.IDLE;
       s.meta = null;
