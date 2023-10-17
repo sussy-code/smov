@@ -137,6 +137,7 @@ module.exports = {
                 border: "#4F5C66",
                 buttonFocus: "#202836",
                 flagBg: "#202836",
+                cardBorder: "#1B262E",
 
                 type: {
                   main: "#617A8A",
