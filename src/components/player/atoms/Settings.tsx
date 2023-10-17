@@ -1,3 +1,5 @@
+import "flag-icons/css/flag-icons.min.css";
+
 import classNames from "classnames";
 import { useCallback, useEffect, useState } from "react";
 
@@ -141,15 +143,61 @@ function CaptionSettingsView({ id }: { id: string }) {
   );
 }
 
+function CaptionOption(props: {
+  countryCode?: string;
+  children: React.ReactNode;
+  selected?: boolean;
+}) {
+  return (
+    <div className="grid grid-cols-[auto,1fr,auto] items-center gap-3 rounded -ml-3 -mr-3 px-3 py-2 cursor-pointer hover:bg-video-context-border hover:bg-opacity-10">
+      <div>
+        <span
+          className={classNames(
+            "!w-8 h-6 rounded overflow-hidden bg-video-context-flagBg bg-cover bg-center block fi",
+            props.countryCode ? `fi-${props.countryCode}` : undefined
+          )}
+        />
+      </div>
+      <span
+        className={classNames(props.selected && "text-white", "font-medium")}
+      >
+        {props.children}
+      </span>
+      {props.selected ? (
+        <Icon
+          icon={Icons.CIRCLE_CHECK}
+          className="text-xl text-video-context-type-accent"
+        />
+      ) : null}
+    </div>
+  );
+}
+
 function CaptionsView({ id }: { id: string }) {
   const router = useOverlayRouter(id);
 
   return (
     <>
-      <Context.BackLink onClick={() => router.navigate("/captions")}>
+      <Context.BackLink
+        onClick={() => router.navigate("/")}
+        rightSide={
+          <button
+            type="button"
+            onClick={() => router.navigate("/captions/settings")}
+          >
+            Customize
+          </button>
+        }
+      >
         Captions
       </Context.BackLink>
-      <Context.Section>Yee!</Context.Section>
+      <Context.Section>
+        <CaptionOption>Off</CaptionOption>
+        <CaptionOption countryCode="nl" selected>
+          Nederlands
+        </CaptionOption>
+        <CaptionOption countryCode="gr">Idk Gibraltar of zo?</CaptionOption>
+      </Context.Section>
     </>
   );
 }

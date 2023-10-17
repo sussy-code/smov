@@ -38,6 +38,9 @@ dependencies:
   dompurify:
     specifier: ^3.0.1
     version: 3.0.5
+  flag-icons:
+    specifier: ^6.11.1
+    version: 6.11.1
   fscreen:
     specifier: ^1.2.0
     version: 1.2.0
@@ -3769,6 +3772,10 @@ packages:
       locate-path: 6.0.0
       path-exists: 4.0.0
     dev: true
+
+  /flag-icons@6.11.1:
+    resolution: {integrity: sha512-c2UMJTFZoVQ47/sE1mb+9b5S1pi8SjXsx0MR063O31GV+O2EN4FMwMdEYSQItpien2bl9w1viLUoo2R3r6OK3g==}
+    dev: false
 
   /flat-cache@3.1.0:
     resolution: {integrity: sha512-OHx4Qwrrt0E4jEIcI5/Xb+f+QmJYNj2rrK8wiIdQOIrB9WrrJL8cjZvXdXuBTkkEwEqLycb5BeZDV1o2i9bTew==}

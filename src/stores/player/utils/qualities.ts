@@ -22,6 +22,17 @@ export type SourceSliceSource =
       url: string;
     };
 
+const qualitySorting: Record<SourceQuality, number> = {
+  "1080": 40,
+  "360": 10,
+  "480": 20,
+  "720": 30,
+  unknown: 0,
+};
+const sortedQualities: SourceQuality[] = Object.entries(qualitySorting)
+  .sort((a, b) => b[1] - a[1])
+  .map<SourceQuality>((v) => v[0] as SourceQuality);
+
 export function selectQuality(source: SourceSliceSource): {
   stream: LoadableSource;
   quality: null | SourceQuality;
@@ -32,12 +43,14 @@ export function selectQuality(source: SourceSliceSource): {
       quality: null,
     };
   if (source.type === "file") {
-    const firstQuality = Object.keys(
-      source.qualities
-    )[0] as keyof typeof source.qualities;
-    const stream = source.qualities[firstQuality];
-    if (stream) {
-      return { stream, quality: firstQuality };
+    const bestQuality = sortedQualities.find(
+      (v) => source.qualities[v] && (source.qualities[v]?.url.length ?? 0) > 0
+    );
+    if (bestQuality) {
+      const stream = source.qualities[bestQuality];
+      if (stream) {
+        return { stream, quality: bestQuality };
+      }
     }
   }
   throw new Error("couldn't select quality");
