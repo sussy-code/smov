@@ -15,7 +15,7 @@
   },
   "media": {
     "movie": "Movie",
-    "series": "Series",
+    "show": "Show",
     "stopEditing": "Stop editing",
     "errors": {
       "genericTitle": "Whoops, it broke!",

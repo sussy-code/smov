@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { searchForMedia } from "@/backend/metadata/search";
-import { MWMediaMeta, MWQuery } from "@/backend/metadata/types/mw";
+import { MWQuery } from "@/backend/metadata/types/mw";
 import { IconPatch } from "@/components/buttons/IconPatch";
 import { Icons } from "@/components/Icon";
 import { SectionHeading } from "@/components/layout/SectionHeading";
@@ -10,6 +10,7 @@ import { MediaGrid } from "@/components/media/MediaGrid";
 import { WatchedMediaCard } from "@/components/media/WatchedMediaCard";
 import { useLoading } from "@/hooks/useLoading";
 import { SearchLoadingPart } from "@/pages/parts/search/SearchLoadingPart";
+import { MediaItem } from "@/utils/mediaTypes";
 
 function SearchSuffix(props: { failed?: boolean; results?: number }) {
   const { t } = useTranslation();
@@ -47,7 +48,7 @@ function SearchSuffix(props: { failed?: boolean; results?: number }) {
 export function SearchListPart({ searchQuery }: { searchQuery: string }) {
   const { t } = useTranslation();
 
-  const [results, setResults] = useState<MWMediaMeta[]>([]);
+  const [results, setResults] = useState<MediaItem[]>([]);
   const [runSearchQuery, loading, error] = useLoading((query: MWQuery) =>
     searchForMedia(query)
   );

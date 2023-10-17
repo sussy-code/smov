@@ -45,12 +45,13 @@ export function BookmarksPart() {
       </SectionHeading>
       <MediaGrid ref={gridRef}>
         {bookmarksSorted.map((v) => (
-          <WatchedMediaCard
-            key={v.id}
-            media={v}
-            closable={editing}
-            onClose={() => setItemBookmark(v, false)}
-          />
+          <div key={v.id}>Bookmark</div>
+          // <WatchedMediaCard
+          //   key={v.id}
+          //   media={v}
+          //   closable={editing}
+          //   onClose={() => setItemBookmark(v, false)}
+          // />
         ))}
       </MediaGrid>
     </div>

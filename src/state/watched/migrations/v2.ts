@@ -1,5 +1,6 @@
 import { DetailedMeta, getMetaFromId } from "@/backend/metadata/getmeta";
 import { searchForMedia } from "@/backend/metadata/search";
+import { mediaItemTypeToMediaType } from "@/backend/metadata/tmdb";
 import { MWMediaMeta, MWMediaType } from "@/backend/metadata/types/mw";
 import { compareTitle } from "@/utils/titleMatch";
 
@@ -69,8 +70,8 @@ async function getMetas(
     if (!item) continue;
 
     let keys: (string | null)[][] = [["0", "0"]];
-    if (item.data.type === "series") {
-      const meta = await getMetaFromId(item.data.type, item.data.id);
+    if (item.data.type === "show") {
+      const meta = await getMetaFromId(MWMediaType.SERIES, item.data.id);
       if (!meta || !meta?.meta.seasons) return;
       const seasonNumbers = [
         ...new Set(
@@ -95,7 +96,7 @@ async function getMetas(
       keys.map(async ([key, id]) => {
         if (!key) return;
         mediaMetas[item.id][key] = await getMetaFromId(
-          item.data.type,
+          mediaItemTypeToMediaType(item.data.type),
           item.data.id,
           id === "0" || id === null ? undefined : id
         );

@@ -22,6 +22,7 @@ export interface PlayerMeta {
   tmdbId: string;
   imdbId?: string;
   releaseYear: number;
+  poster?: string;
   episode?: {
     number: number;
     tmdbId: string;

@@ -23,6 +23,7 @@ export function usePlayerMeta() {
           type: "show",
           releaseYear: +(m.meta.year ?? 0),
           title: m.meta.title,
+          poster: m.meta.poster,
           tmdbId: m.tmdbId ?? "",
           imdbId: m.imdbId,
           episode: {
@@ -41,6 +42,7 @@ export function usePlayerMeta() {
           type: "movie",
           releaseYear: +(m.meta.year ?? 0),
           title: m.meta.title,
+          poster: m.meta.poster,
           tmdbId: m.tmdbId ?? "",
           imdbId: m.imdbId,
         };

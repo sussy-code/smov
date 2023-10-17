@@ -1,5 +1,5 @@
 import { useAutoAnimate } from "@formkit/auto-animate/react";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { EditButton } from "@/components/buttons/EditButton";
@@ -7,25 +7,29 @@ import { Icons } from "@/components/Icon";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 import { MediaGrid } from "@/components/media/MediaGrid";
 import { WatchedMediaCard } from "@/components/media/WatchedMediaCard";
-import {
-  getIfBookmarkedFromPortable,
-  useBookmarkContext,
-} from "@/state/bookmark";
-import { useWatchedContext } from "@/state/watched";
+import { useProgressStore } from "@/stores/progress";
+import { MediaItem } from "@/utils/mediaTypes";
 
 export function WatchingPart() {
   const { t } = useTranslation();
-  const { getFilteredBookmarks } = useBookmarkContext();
-  const { getFilteredWatched, removeProgress } = useWatchedContext();
+  const progressItems = useProgressStore((s) => s.items);
+  const removeItem = useProgressStore((s) => s.removeItem);
   const [editing, setEditing] = useState(false);
   const [gridRef] = useAutoAnimate<HTMLDivElement>();
 
-  const bookmarks = getFilteredBookmarks();
-  const watchedItems = getFilteredWatched().filter(
-    (v) => !getIfBookmarkedFromPortable(bookmarks, v.item.meta)
-  );
+  const sortedProgressItems = useMemo(() => {
+    const output: MediaItem[] = [];
+    Object.entries(progressItems).forEach((entry) => {
+      output.push({
+        id: entry[0],
+        ...entry[1],
+      });
+    });
+    // TODO sort on last modified date
+    return output;
+  }, [progressItems]);
 
-  if (watchedItems.length === 0) return null;
+  if (sortedProgressItems.length === 0) return null;
 
   return (
     <div>
@@ -36,12 +40,12 @@ export function WatchingPart() {
         <EditButton editing={editing} onEdit={setEditing} />
       </SectionHeading>
       <MediaGrid ref={gridRef}>
-        {watchedItems.map((v) => (
+        {sortedProgressItems.map((v) => (
           <WatchedMediaCard
-            key={v.item.meta.id}
-            media={v.item.meta}
+            key={v.id}
+            media={v}
             closable={editing}
-            onClose={() => removeProgress(v.item.meta.id)}
+            onClose={() => removeItem(v.id)}
           />
         ))}
       </MediaGrid>

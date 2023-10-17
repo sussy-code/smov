@@ -2,16 +2,16 @@ import c from "classnames";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
-import { TMDBMediaToId } from "@/backend/metadata/tmdb";
-import { MWMediaMeta } from "@/backend/metadata/types/mw";
+import { mediaItemToId } from "@/backend/metadata/tmdb";
 import { DotList } from "@/components/text/DotList";
 import { Flare } from "@/components/utils/Flare";
+import { MediaItem } from "@/utils/mediaTypes";
 
 import { IconPatch } from "../buttons/IconPatch";
 import { Icons } from "../Icon";
 
 export interface MediaCardProps {
-  media: MWMediaMeta;
+  media: MediaItem;
   linkable?: boolean;
   series?: {
     episode: number;
@@ -38,7 +38,7 @@ function MediaCardContent({
   const canLink = linkable && !closable;
 
   const dotListContent = [t(`media.${media.type}`)];
-  if (media.year) dotListContent.push(media.year);
+  if (media.year) dotListContent.push(media.year.toFixed());
 
   return (
     <Flare.Base
@@ -141,7 +141,7 @@ export function MediaCard(props: MediaCardProps) {
   const canLink = props.linkable && !props.closable;
 
   let link = canLink
-    ? `/media/${encodeURIComponent(TMDBMediaToId(props.media))}`
+    ? `/media/${encodeURIComponent(mediaItemToId(props.media))}`
     : "#";
   if (canLink && props.series) {
     if (props.series.season === 0 && !props.series.episodeId) {

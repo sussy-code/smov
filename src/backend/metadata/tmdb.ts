@@ -1,6 +1,7 @@
 import slugify from "slugify";
 
 import { conf } from "@/setup/config";
+import { MediaItem } from "@/utils/mediaTypes";
 
 import { MWMediaMeta, MWMediaType, MWSeasonMeta } from "./types/mw";
 import {
@@ -24,9 +25,23 @@ export function mediaTypeToTMDB(type: MWMediaType): TMDBContentTypes {
   throw new Error("unsupported type");
 }
 
+export function mediaItemTypeToMediaType(type: MediaItem["type"]): MWMediaType {
+  if (type === "movie") return MWMediaType.MOVIE;
+  if (type === "show") return MWMediaType.SERIES;
+  throw new Error("unsupported type");
+}
+
 export function TMDBMediaToMediaType(type: TMDBContentTypes): MWMediaType {
   if (type === TMDBContentTypes.MOVIE) return MWMediaType.MOVIE;
   if (type === TMDBContentTypes.TV) return MWMediaType.SERIES;
+  throw new Error("unsupported type");
+}
+
+export function TMDBMediaToMediaItemType(
+  type: TMDBContentTypes
+): MediaItem["type"] {
+  if (type === TMDBContentTypes.MOVIE) return "movie";
+  if (type === TMDBContentTypes.TV) return "show";
   throw new Error("unsupported type");
 }
 
@@ -72,6 +87,18 @@ export function formatTMDBMeta(
   };
 }
 
+export function formatTMDBMetaToMediaItem(media: TMDBMediaResult): MediaItem {
+  const type = TMDBMediaToMediaItemType(media.object_type);
+
+  return {
+    title: media.title,
+    id: media.id.toString(),
+    year: media.original_release_year ?? 0,
+    poster: media.poster,
+    type,
+  };
+}
+
 export function TMDBIdToUrlId(
   type: MWMediaType,
   tmdbId: string,
@@ -87,6 +114,14 @@ export function TMDBIdToUrlId(
 
 export function TMDBMediaToId(media: MWMediaMeta): string {
   return TMDBIdToUrlId(media.type, media.id, media.title);
+}
+
+export function mediaItemToId(media: MediaItem): string {
+  return TMDBIdToUrlId(
+    mediaItemTypeToMediaType(media.type),
+    media.id,
+    media.title
+  );
 }
 
 export function decodeTMDBId(
