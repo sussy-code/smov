@@ -20,7 +20,9 @@ function isAllowedQuality(inp: string): inp is SourceQuality {
   return allowedQualities.includes(inp);
 }
 
-export function convertRunoutputToSource(out: RunOutput): SourceSliceSource {
+export function convertRunoutputToSource(out: {
+  stream: RunOutput["stream"];
+}): SourceSliceSource {
   if (out.stream.type === "hls") {
     return {
       type: "hls",

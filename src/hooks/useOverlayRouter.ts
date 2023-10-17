@@ -81,7 +81,12 @@ export function useInternalOverlayRouter(id: string) {
     [id, setRoute, setTransition, setAnchorPoint]
   );
 
+  const activeRoute = routerActive
+    ? joinPath(splitPath(route.slice(`/${id}`.length)))
+    : "/";
+
   return {
+    activeRoute,
     showBackwardsTransition,
     isCurrentPage,
     isOverlayActive,
@@ -97,6 +102,7 @@ export function useOverlayRouter(id: string) {
   const router = useInternalOverlayRouter(id);
   return {
     id,
+    route: router.activeRoute,
     isRouterActive: router.isOverlayActive(),
     open: router.open,
     close: router.close,
