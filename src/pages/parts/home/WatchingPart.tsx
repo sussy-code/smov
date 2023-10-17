@@ -21,18 +21,19 @@ export function WatchingPart() {
 
   const sortedProgressItems = useMemo(() => {
     let output: MediaItem[] = [];
-    Object.entries(progressItems).forEach((entry) => {
-      output.push({
-        id: entry[0],
-        ...entry[1],
+    Object.entries(progressItems)
+      .sort((a, b) => b[1].updatedAt - a[1].updatedAt)
+      .forEach((entry) => {
+        output.push({
+          id: entry[0],
+          ...entry[1],
+        });
       });
-    });
 
     output = output.filter((v) => {
       const isBookMarked = !!bookmarks[v.id];
       return !isBookMarked;
     });
-    // TODO sort on last modified date
     return output;
   }, [progressItems, bookmarks]);
 

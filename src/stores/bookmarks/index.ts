@@ -9,6 +9,7 @@ export interface BookmarkMediaItem {
   year: number;
   poster?: string;
   type: "show" | "movie";
+  updatedAt: number;
 }
 
 export interface ProgressStore {
@@ -34,6 +35,7 @@ export const useBookmarkStore = create(
             title: meta.title,
             year: meta.releaseYear,
             poster: meta.poster,
+            updatedAt: Date.now(),
           };
         });
       },

@@ -29,6 +29,7 @@ export interface ProgressMediaItem {
   poster?: string;
   type: "show" | "movie";
   progress?: ProgressItem;
+  updatedAt: number;
   seasons: Record<string, ProgressSeasonItem>;
   episodes: Record<string, ProgressEpisodeItem>;
 }
@@ -61,11 +62,14 @@ export const useProgressStore = create(
               type: meta.type,
               episodes: {},
               seasons: {},
+              updatedAt: 0,
               title: meta.title,
               year: meta.releaseYear,
               poster: meta.poster,
             };
           const item = s.items[meta.tmdbId];
+          item.updatedAt = Date.now();
+
           if (meta.type === "movie") {
             if (!item.progress)
               item.progress = {

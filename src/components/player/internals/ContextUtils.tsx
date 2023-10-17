@@ -154,18 +154,23 @@ function Anchor(props: { children: React.ReactNode; onClick: () => void }) {
   );
 }
 
+function FieldTitle(props: { children: React.ReactNode }) {
+  return <p className="font-medium">{props.children}</p>;
+}
+
 export const Context = {
-  Card,
   CardWithScrollable,
-  Title,
   SectionTitle,
-  BackLink,
-  Section,
-  Link,
-  LinkTitle,
   LinkChevron,
   IconButton,
-  Divider,
+  FieldTitle,
   SmallText,
+  BackLink,
+  LinkTitle,
+  Section,
+  Divider,
   Anchor,
+  Title,
+  Link,
+  Card,
 };
