@@ -114,30 +114,11 @@ function App() {
                 />
                 {/* developer routes that can abuse workers are disabled in production */}
                 {process.env.NODE_ENV === "development" ? (
-                  <>
-                    <Route
-                      exact
-                      path="/dev/test"
-                      component={lazy(
-                        () => import("@/pages/developer/TestView")
-                      )}
-                    />
-
-                    <Route
-                      exact
-                      path="/dev/providers"
-                      component={lazy(
-                        () => import("@/pages/developer/ProviderTesterView")
-                      )}
-                    />
-                    <Route
-                      exact
-                      path="/dev/embeds"
-                      component={lazy(
-                        () => import("@/pages/developer/EmbedTesterView")
-                      )}
-                    />
-                  </>
+                  <Route
+                    exact
+                    path="/dev/test"
+                    component={lazy(() => import("@/pages/developer/TestView"))}
+                  />
                 ) : null}
                 <Route path="*" component={NotFoundPage} />
               </Switch>

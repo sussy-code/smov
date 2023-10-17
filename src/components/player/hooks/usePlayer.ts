@@ -1,4 +1,3 @@
-import { MWStreamType } from "@/backend/helpers/streams";
 import { useInitializePlayer } from "@/components/player/hooks/useInitializePlayer";
 import { PlayerMeta, playerStatus } from "@/stores/player/slices/source";
 import { usePlayerStore } from "@/stores/player/store";
@@ -7,7 +6,7 @@ import { ProgressMediaItem, useProgressStore } from "@/stores/progress";
 
 export interface Source {
   url: string;
-  type: MWStreamType;
+  type: "hls" | "mp4";
 }
 
 function getProgress(

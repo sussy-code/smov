@@ -14,7 +14,6 @@ import i18n from "@/setup/i18n";
 import "@/setup/ga";
 import "@/setup/sentry";
 import "@/setup/index.css";
-import "@/backend";
 import { initializeChromecast } from "./setup/chromecast";
 import { SettingsStore } from "./state/settings/store";
 import { initializeStores } from "./utils/storage";

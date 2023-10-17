@@ -1,4 +1,3 @@
-import { MWCaption } from "@/backend/helpers/streams";
 import { DetailedMeta } from "@/backend/metadata/getmeta";
 
 export interface Thumbnail {
@@ -8,7 +7,6 @@ export interface Thumbnail {
 }
 export type VideoPlayerMeta = {
   meta: DetailedMeta;
-  captions: MWCaption[];
   episode?: {
     episodeId: string;
     seasonId: string;
