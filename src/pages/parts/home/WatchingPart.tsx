@@ -7,27 +7,34 @@ import { Icons } from "@/components/Icon";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 import { MediaGrid } from "@/components/media/MediaGrid";
 import { WatchedMediaCard } from "@/components/media/WatchedMediaCard";
+import { useBookmarkStore } from "@/stores/bookmarks";
 import { useProgressStore } from "@/stores/progress";
 import { MediaItem } from "@/utils/mediaTypes";
 
 export function WatchingPart() {
   const { t } = useTranslation();
+  const bookmarks = useBookmarkStore((s) => s.bookmarks);
   const progressItems = useProgressStore((s) => s.items);
   const removeItem = useProgressStore((s) => s.removeItem);
   const [editing, setEditing] = useState(false);
   const [gridRef] = useAutoAnimate<HTMLDivElement>();
 
   const sortedProgressItems = useMemo(() => {
-    const output: MediaItem[] = [];
+    let output: MediaItem[] = [];
     Object.entries(progressItems).forEach((entry) => {
       output.push({
         id: entry[0],
         ...entry[1],
       });
     });
+
+    output = output.filter((v) => {
+      const isBookMarked = !!bookmarks[v.id];
+      return !isBookMarked;
+    });
     // TODO sort on last modified date
     return output;
-  }, [progressItems]);
+  }, [progressItems, bookmarks]);
 
   if (sortedProgressItems.length === 0) return null;
 

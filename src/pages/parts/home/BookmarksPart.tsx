@@ -7,33 +7,29 @@ import { Icons } from "@/components/Icon";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 import { MediaGrid } from "@/components/media/MediaGrid";
 import { WatchedMediaCard } from "@/components/media/WatchedMediaCard";
-import { useBookmarkContext } from "@/state/bookmark";
-import { useWatchedContext } from "@/state/watched";
+import { useBookmarkStore } from "@/stores/bookmarks";
+import { MediaItem } from "@/utils/mediaTypes";
 
 export function BookmarksPart() {
   const { t } = useTranslation();
-  const { getFilteredBookmarks, setItemBookmark } = useBookmarkContext();
-  const bookmarks = getFilteredBookmarks();
+  const bookmarks = useBookmarkStore((s) => s.bookmarks);
+  const removeBookmark = useBookmarkStore((s) => s.removeBookmark);
   const [editing, setEditing] = useState(false);
   const [gridRef] = useAutoAnimate<HTMLDivElement>();
-  const { watched } = useWatchedContext();
 
-  const bookmarksSorted = useMemo(() => {
-    return bookmarks
-      .map((v) => {
-        return {
-          ...v,
-          watched: watched.items
-            .sort((a, b) => b.watchedAt - a.watchedAt)
-            .find((watchedItem) => watchedItem.item.meta.id === v.id),
-        };
-      })
-      .sort(
-        (a, b) => (b.watched?.watchedAt || 0) - (a.watched?.watchedAt || 0)
-      );
-  }, [watched.items, bookmarks]);
+  // TODO sort on last watched
+  const items = useMemo(() => {
+    const output: MediaItem[] = [];
+    Object.entries(bookmarks).forEach((entry) => {
+      output.push({
+        id: entry[0],
+        ...entry[1],
+      });
+    });
+    return output;
+  }, [bookmarks]);
 
-  if (bookmarks.length === 0) return null;
+  if (items.length === 0) return null;
 
   return (
     <div>
@@ -44,14 +40,13 @@ export function BookmarksPart() {
         <EditButton editing={editing} onEdit={setEditing} />
       </SectionHeading>
       <MediaGrid ref={gridRef}>
-        {bookmarksSorted.map((v) => (
-          <div key={v.id}>Bookmark</div>
-          // <WatchedMediaCard
-          //   key={v.id}
-          //   media={v}
-          //   closable={editing}
-          //   onClose={() => setItemBookmark(v, false)}
-          // />
+        {items.map((v) => (
+          <WatchedMediaCard
+            key={v.id}
+            media={v}
+            closable={editing}
+            onClose={() => removeBookmark(v.id)}
+          />
         ))}
       </MediaGrid>
     </div>
