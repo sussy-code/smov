@@ -1,9 +1,8 @@
 import classNames from "classnames";
-import { ReactNode, useCallback, useEffect, useMemo, useRef } from "react";
+import { ReactNode, useEffect, useMemo, useRef } from "react";
 import { useAsyncFn } from "react-use";
 
 import { Icon, Icons } from "@/components/Icon";
-import { usePlayerMeta } from "@/components/player/hooks/usePlayerMeta";
 import { Context } from "@/components/player/internals/ContextUtils";
 import { convertRunoutputToSource } from "@/components/player/utils/convertRunoutputToSource";
 import { useOverlayRouter } from "@/hooks/useOverlayRouter";
@@ -29,7 +28,7 @@ export function SourceOption(props: {
   return (
     <div
       onClick={props.onClick}
-      className="grid grid-cols-[auto,1fr,auto] items-center gap-3 rounded -ml-3 -mr-3 px-3 py-2 cursor-pointer hover:bg-video-context-border hover:bg-opacity-10"
+      className="grid grid-cols-[1fr,auto] items-center gap-3 rounded -ml-3 -mr-3 px-3 py-2 cursor-pointer hover:bg-video-context-border hover:bg-opacity-10"
     >
       <span
         className={classNames(props.selected && "text-white", "font-medium")}
@@ -49,11 +48,13 @@ export function SourceOption(props: {
 export function EmbedOption(props: {
   embedId: string;
   url: string;
+  sourceId: string | null;
   routerId: string;
 }) {
   const router = useOverlayRouter(props.routerId);
   const meta = usePlayerStore((s) => s.meta);
   const setSource = usePlayerStore((s) => s.setSource);
+  const setSourceId = usePlayerStore((s) => s.setSourceId);
   const progress = usePlayerStore((s) => s.progress.time);
   const embedName = useMemo(() => {
     if (!props.embedId) return "...";
@@ -65,9 +66,10 @@ export function EmbedOption(props: {
       id: props.embedId,
       url: props.url,
     });
+    setSourceId(props.sourceId);
     setSource(convertRunoutputToSource({ stream: result.stream }), progress);
     router.close();
-  }, [props.embedId, meta, router]);
+  }, [props.embedId, props.sourceId, meta, router]);
 
   let content: ReactNode = null;
   if (request.loading) content = <span>loading...</span>;
@@ -87,6 +89,7 @@ export function EmbedSelectionView({ sourceId, id }: EmbedSelectionViewProps) {
   const router = useOverlayRouter(id);
   const meta = usePlayerStore((s) => s.meta);
   const setSource = usePlayerStore((s) => s.setSource);
+  const setSourceId = usePlayerStore((s) => s.setSourceId);
   const progress = usePlayerStore((s) => s.progress.time);
   const sourceName = useMemo(() => {
     if (!sourceId) return "...";
@@ -102,6 +105,7 @@ export function EmbedSelectionView({ sourceId, id }: EmbedSelectionViewProps) {
     });
     if (result.stream) {
       setSource(convertRunoutputToSource({ stream: result.stream }), progress);
+      setSourceId(sourceId);
       router.close();
       return null;
     }
@@ -128,6 +132,7 @@ export function EmbedSelectionView({ sourceId, id }: EmbedSelectionViewProps) {
         embedId={v.embedId}
         url={v.url}
         routerId={id}
+        sourceId={sourceId}
       />
     ));
 
@@ -147,6 +152,7 @@ export function SourceSelectionView({
 }: SourceSelectionViewProps) {
   const router = useOverlayRouter(id);
   const metaType = usePlayerStore((s) => s.meta?.type);
+  const currentSourceId = usePlayerStore((s) => s.sourceId);
   const sources = useMemo(() => {
     if (!metaType) return [];
     return providers
@@ -167,6 +173,7 @@ export function SourceSelectionView({
               onChoose?.(v.id);
               router.navigate("/source/embeds");
             }}
+            selected={v.id === currentSourceId}
           >
             {v.name}
           </SourceOption>

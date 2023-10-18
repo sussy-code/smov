@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 import { Toggle } from "@/components/buttons/Toggle";
 import { Icons } from "@/components/Icon";
@@ -6,10 +6,16 @@ import { Context } from "@/components/player/internals/ContextUtils";
 import { useOverlayRouter } from "@/hooks/useOverlayRouter";
 import { usePlayerStore } from "@/stores/player/store";
 import { qualityToString } from "@/stores/player/utils/qualities";
+import { providers } from "@/utils/providers";
 
 export function SettingsMenu({ id }: { id: string }) {
   const router = useOverlayRouter(id);
   const currentQuality = usePlayerStore((s) => s.currentQuality);
+  const currentSourceId = usePlayerStore((s) => s.sourceId);
+  const sourceName = useMemo(() => {
+    if (!currentSourceId) return "...";
+    return providers.getMetadata(currentSourceId)?.name ?? "...";
+  }, [currentSourceId]);
 
   const [tmpBool, setTmpBool] = useState(false);
 
@@ -29,7 +35,7 @@ export function SettingsMenu({ id }: { id: string }) {
         </Context.Link>
         <Context.Link onClick={() => router.navigate("/source")}>
           <Context.LinkTitle>Video source</Context.LinkTitle>
-          <Context.LinkChevron>SuperStream</Context.LinkChevron>
+          <Context.LinkChevron>{sourceName}</Context.LinkChevron>
         </Context.Link>
         <Context.Link>
           <Context.LinkTitle>Download</Context.LinkTitle>

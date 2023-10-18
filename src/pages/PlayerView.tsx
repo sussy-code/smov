@@ -44,7 +44,7 @@ export function PlayerView() {
   const playAfterScrape = useCallback(
     (out: RunOutput | null) => {
       if (!out) return;
-      playMedia(convertRunoutputToSource(out));
+      playMedia(convertRunoutputToSource(out), out.sourceId);
     },
     [playMedia]
   );

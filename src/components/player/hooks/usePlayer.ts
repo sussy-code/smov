@@ -29,6 +29,7 @@ export function usePlayer() {
   const setStatus = usePlayerStore((s) => s.setStatus);
   const setMeta = usePlayerStore((s) => s.setMeta);
   const setSource = usePlayerStore((s) => s.setSource);
+  const setSourceId = usePlayerStore((s) => s.setSourceId);
   const status = usePlayerStore((s) => s.status);
   const reset = usePlayerStore((s) => s.reset);
   const meta = usePlayerStore((s) => s.meta);
@@ -41,8 +42,9 @@ export function usePlayer() {
     setMeta(m: PlayerMeta) {
       setMeta(m);
     },
-    playMedia(source: SourceSliceSource) {
+    playMedia(source: SourceSliceSource, sourceId: string | null) {
       setSource(source, getProgress(progressStore.items, meta));
+      setSourceId(sourceId);
       setStatus(playerStatus.PLAYING);
       init();
     },

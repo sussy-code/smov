@@ -44,6 +44,7 @@ export interface Caption {
 export interface SourceSlice {
   status: PlayerStatus;
   source: SourceSliceSource | null;
+  sourceId: string | null;
   qualities: SourceQuality[];
   currentQuality: SourceQuality | null;
   caption: {
@@ -56,6 +57,7 @@ export interface SourceSlice {
   switchQuality(quality: SourceQuality): void;
   setMeta(meta: PlayerMeta): void;
   setCaption(caption: Caption | null): void;
+  setSourceId(id: string | null): void;
 }
 
 export function metaToScrapeMedia(meta: PlayerMeta): ScrapeMedia {
@@ -83,6 +85,7 @@ export function metaToScrapeMedia(meta: PlayerMeta): ScrapeMedia {
 
 export const createSourceSlice: MakeSlice<SourceSlice> = (set, get) => ({
   source: null,
+  sourceId: null,
   qualities: [],
   currentQuality: null,
   status: playerStatus.IDLE,
@@ -90,6 +93,11 @@ export const createSourceSlice: MakeSlice<SourceSlice> = (set, get) => ({
   caption: {
     selected: null,
     asTrack: false,
+  },
+  setSourceId(id) {
+    set((s) => {
+      s.sourceId = id;
+    });
   },
   setStatus(status: PlayerStatus) {
     set((s) => {
