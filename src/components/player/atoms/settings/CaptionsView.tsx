@@ -26,7 +26,7 @@ export function CaptionOption(props: {
 }) {
   return (
     <div
-      className="grid grid-cols-[auto,1fr,auto] items-center gap-3 rounded -ml-3 -mr-3 px-3 py-2 cursor-pointer hover:bg-video-context-border hover:bg-opacity-10"
+      className="grid grid-cols-[auto,1fr,auto] items-center gap-3 rounded -ml-3 -mr-3 px-3 py-2 cursor-pointer hover:bg-video-context-border"
       onClick={props.onClick}
     >
       <div>

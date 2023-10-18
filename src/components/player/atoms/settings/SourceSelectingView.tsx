@@ -28,7 +28,7 @@ export function SourceOption(props: {
   return (
     <div
       onClick={props.onClick}
-      className="grid grid-cols-[1fr,auto] items-center gap-3 rounded -ml-3 -mr-3 px-3 py-2 cursor-pointer hover:bg-video-context-border hover:bg-opacity-10"
+      className="grid grid-cols-[1fr,auto] items-center gap-3 rounded -ml-3 -mr-3 px-3 py-2 cursor-pointer hover:bg-video-context-border"
     >
       <span
         className={classNames(props.selected && "text-white", "font-medium")}

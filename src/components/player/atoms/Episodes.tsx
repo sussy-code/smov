@@ -125,7 +125,7 @@ function EpisodesView({
             >
               <Context.LinkTitle>
                 <div className="text-left flex items-center space-x-3">
-                  <span className="p-0.5 px-2 rounded inline bg-video-context-border bg-opacity-10">
+                  <span className="p-0.5 px-2 rounded inline bg-video-context-border">
                     E{ep.number}
                   </span>
                   <span className="line-clamp-1 break-all">{ep.title}</span>

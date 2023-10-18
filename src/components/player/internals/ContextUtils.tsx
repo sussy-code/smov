@@ -22,7 +22,7 @@ function CardWithScrollable(props: { children: React.ReactNode }) {
 
 function SectionTitle(props: { children: React.ReactNode }) {
   return (
-    <h3 className="uppercase font-bold text-video-context-type-secondary text-xs pt-8 pl-1 pb-2.5 border-b border-opacity-25 border-video-context-border">
+    <h3 className="uppercase font-bold text-video-context-type-secondary text-xs pt-8 pl-1 pb-2.5 border-b border-video-context-border">
       {props.children}
     </h3>
   );
@@ -58,8 +58,8 @@ function Link(props: {
     "flex justify-between items-center py-2 pl-3 pr-3 -ml-3 rounded w-full",
     {
       "cursor-default": !props.onClick,
-      "hover:bg-video-context-border hover:bg-opacity-10": !!props.onClick,
-      "bg-video-context-border bg-opacity-10": props.active,
+      "hover:bg-video-context-border": !!props.onClick,
+      "bg-video-context-border": props.active,
     }
   );
   const styles = { width: "calc(100% + 1.5rem)" };
@@ -90,7 +90,7 @@ function Title(props: {
 }) {
   return (
     <div>
-      <h3 className="font-bold text-video-context-type-main pb-3 pt-5 border-b border-opacity-25 border-video-context-border flex justify-between items-center">
+      <h3 className="font-bold text-video-context-type-main pb-3 pt-5 border-b border-video-context-border flex justify-between items-center">
         <div className="flex items-center space-x-3">{props.children}</div>
         <div>{props.rightSide}</div>
       </h3>
@@ -135,9 +135,7 @@ function IconButton(props: { icon: Icons; onClick?: () => void }) {
 }
 
 function Divider() {
-  return (
-    <hr className="my-4 border-0 w-full h-px bg-video-context-border bg-opacity-25" />
-  );
+  return <hr className="my-4 border-0 w-full h-px bg-video-context-border" />;
 }
 
 function SmallText(props: { children: React.ReactNode }) {
