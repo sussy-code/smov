@@ -21,6 +21,7 @@ export function PlayerPart(props: PlayerPartProps) {
     <Player.Container onLoad={props.onLoad}>
       {props.children}
       <Player.BlackOverlay show={showTargets} />
+      <Player.SubtitleView controlsShown={showTargets} />
 
       {status === "playing" ? (
         <Player.CenterControls>

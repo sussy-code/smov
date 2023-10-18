@@ -35,16 +35,27 @@ export interface PlayerMeta {
   };
 }
 
+export interface Caption {
+  language: string;
+  url?: string;
+  srtData: string;
+}
+
 export interface SourceSlice {
   status: PlayerStatus;
   source: SourceSliceSource | null;
   qualities: SourceQuality[];
   currentQuality: SourceQuality | null;
+  caption: {
+    selected: Caption | null;
+    asTrack: boolean;
+  };
   meta: PlayerMeta | null;
   setStatus(status: PlayerStatus): void;
   setSource(stream: SourceSliceSource, startAt: number): void;
   switchQuality(quality: SourceQuality): void;
   setMeta(meta: PlayerMeta): void;
+  setCaption(caption: Caption | null): void;
 }
 
 export function metaToScrapeMedia(meta: PlayerMeta): ScrapeMedia {
@@ -76,6 +87,10 @@ export const createSourceSlice: MakeSlice<SourceSlice> = (set, get) => ({
   currentQuality: null,
   status: playerStatus.IDLE,
   meta: null,
+  caption: {
+    selected: null,
+    asTrack: false,
+  },
   setStatus(status: PlayerStatus) {
     set((s) => {
       s.status = status;
@@ -84,6 +99,11 @@ export const createSourceSlice: MakeSlice<SourceSlice> = (set, get) => ({
   setMeta(meta) {
     set((s) => {
       s.meta = meta;
+    });
+  },
+  setCaption(caption) {
+    set((s) => {
+      s.caption.selected = caption;
     });
   },
   setSource(stream: SourceSliceSource, startAt: number) {
