@@ -23,7 +23,7 @@ export function makeQueId(index: number, start: number, end: number): string {
   return `${index}-${start}-${end}`;
 }
 
-export function parseSubtitles(text: string): CaptionCueType[] {
+export function convertSubtitlesToVtt(text: string): string {
   const textTrimmed = text.trim();
   if (textTrimmed === "") {
     throw new Error("Given text is empty");
@@ -32,5 +32,16 @@ export function parseSubtitles(text: string): CaptionCueType[] {
   if (detect(vtt) === "") {
     throw new Error("Invalid subtitle format");
   }
+  return vtt;
+}
+
+export function parseSubtitles(text: string): CaptionCueType[] {
+  const vtt = convertSubtitlesToVtt(text);
   return parse(vtt).filter((cue) => cue.type === "caption") as CaptionCueType[];
+}
+
+export function vttToDataurl(vtt: string): string {
+  const bytes = new TextEncoder().encode(vtt);
+  const encoded = btoa(String.fromCodePoint(...bytes));
+  return `data:text/vtt;base64,${encoded}`;
 }

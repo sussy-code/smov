@@ -1,6 +1,10 @@
-import { useEffect, useRef } from "react";
+import { ReactNode, useEffect, useMemo, useRef } from "react";
 
 import { makeVideoElementDisplayInterface } from "@/components/player/display/base";
+import {
+  convertSubtitlesToVtt,
+  vttToDataurl,
+} from "@/components/player/utils/captions";
 import { playerStatus } from "@/stores/player/slices/source";
 import { usePlayerStore } from "@/stores/player/store";
 
@@ -39,6 +43,14 @@ export function useShouldShowVideoElement() {
 function VideoElement() {
   const videoEl = useRef<HTMLVideoElement>(null);
   const display = usePlayerStore((s) => s.display);
+  const srtData = usePlayerStore((s) => s.caption.selected?.srtData);
+  const captionAsTrack = usePlayerStore((s) => s.caption.asTrack);
+  const language = usePlayerStore((s) => s.caption.selected?.language);
+
+  const trackData = useMemo(
+    () => (srtData ? vttToDataurl(convertSubtitlesToVtt(srtData)) : null),
+    [srtData]
+  );
 
   // report video element to display interface
   useEffect(() => {
@@ -47,13 +59,27 @@ function VideoElement() {
     }
   }, [display, videoEl]);
 
+  let subtitleTrack: ReactNode = null;
+  if (captionAsTrack && trackData && language)
+    subtitleTrack = (
+      <track
+        label="Subtitles"
+        kind="subtitles"
+        srcLang={language}
+        src={trackData}
+        default
+      />
+    );
+
   return (
     <video
       className="absolute inset-0 w-full h-screen bg-black"
       autoPlay
       playsInline
       ref={videoEl}
-    />
+    >
+      {subtitleTrack}
+    </video>
   );
 }
 
