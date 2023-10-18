@@ -81,6 +81,7 @@ export function CaptionsView({ id }: { id: string }) {
         <CaptionOption onClick={() => disableCaption()}>Off</CaptionOption>
         {langs.map((v) => (
           <CaptionOption
+            key={v.lang}
             countryCode={v.lang}
             selected={lang === v.lang}
             onClick={() => updateCaption()}

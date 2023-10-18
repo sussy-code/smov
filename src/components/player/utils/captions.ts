@@ -40,8 +40,6 @@ export function parseSubtitles(text: string): CaptionCueType[] {
   return parse(vtt).filter((cue) => cue.type === "caption") as CaptionCueType[];
 }
 
-export function vttToDataurl(vtt: string): string {
-  const bytes = new TextEncoder().encode(vtt);
-  const encoded = btoa(String.fromCodePoint(...bytes));
-  return `data:text/vtt;base64,${encoded}`;
+export function convertSubtitlesToDataurl(text: string): string {
+  return `data:text/vtt;${convertSubtitlesToVtt(text)}`;
 }

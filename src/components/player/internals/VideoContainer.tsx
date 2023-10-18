@@ -1,10 +1,7 @@
 import { ReactNode, useEffect, useMemo, useRef } from "react";
 
 import { makeVideoElementDisplayInterface } from "@/components/player/display/base";
-import {
-  convertSubtitlesToVtt,
-  vttToDataurl,
-} from "@/components/player/utils/captions";
+import { convertSubtitlesToDataurl } from "@/components/player/utils/captions";
 import { playerStatus } from "@/stores/player/slices/source";
 import { usePlayerStore } from "@/stores/player/store";
 
@@ -47,10 +44,9 @@ function VideoElement() {
   const captionAsTrack = usePlayerStore((s) => s.caption.asTrack);
   const language = usePlayerStore((s) => s.caption.selected?.language);
 
-  const trackData = useMemo(
-    () => (srtData ? vttToDataurl(convertSubtitlesToVtt(srtData)) : null),
-    [srtData]
-  );
+  const trackData = useMemo(() => {
+    return srtData ? convertSubtitlesToDataurl(srtData) : null;
+  }, [srtData]);
 
   // report video element to display interface
   useEffect(() => {
