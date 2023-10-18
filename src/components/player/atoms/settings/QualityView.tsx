@@ -1,5 +1,6 @@
 import { useCallback } from "react";
 
+import { Toggle } from "@/components/buttons/Toggle";
 import { Icon, Icons } from "@/components/Icon";
 import { Context } from "@/components/player/internals/ContextUtils";
 import { useOverlayRouter } from "@/hooks/useOverlayRouter";
@@ -9,6 +10,7 @@ import {
   allQualities,
   qualityToString,
 } from "@/stores/player/utils/qualities";
+import { useQualityStore } from "@/stores/quality";
 
 export function QualityOption(props: {
   children: React.ReactNode;
@@ -41,13 +43,18 @@ export function QualityView({ id }: { id: string }) {
   const availableQualities = usePlayerStore((s) => s.qualities);
   const currentQuality = usePlayerStore((s) => s.currentQuality);
   const switchQuality = usePlayerStore((s) => s.switchQuality);
+  const setAutomaticQuality = useQualityStore((s) => s.setAutomaticQuality);
+  const setLastChosenQuality = useQualityStore((s) => s.setLastChosenQuality);
+  const autoQuality = useQualityStore((s) => s.quality.automaticQuality);
 
   const change = useCallback(
     (q: SourceQuality) => {
       switchQuality(q);
+      setLastChosenQuality(q);
+      setAutomaticQuality(false);
       router.close();
     },
-    [router, switchQuality]
+    [router, switchQuality, setLastChosenQuality, setAutomaticQuality]
   );
 
   const allVisibleQualities = allQualities.filter((t) => t !== "unknown");
@@ -73,7 +80,10 @@ export function QualityView({ id }: { id: string }) {
         <Context.Divider />
         <Context.Link>
           <Context.LinkTitle>Automatic quality</Context.LinkTitle>
-          <span>Toggle</span>
+          <Toggle
+            onClick={() => setAutomaticQuality(!autoQuality)}
+            enabled={autoQuality}
+          />
         </Context.Link>
         <Context.SmallText>
           You can try{" "}

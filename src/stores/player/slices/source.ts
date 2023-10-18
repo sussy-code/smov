@@ -6,6 +6,7 @@ import {
   SourceSliceSource,
   selectQuality,
 } from "@/stores/player/utils/qualities";
+import { useQualityStore } from "@/stores/quality";
 import { ValuesOf } from "@/utils/typeguard";
 
 export const playerStatus = {
@@ -118,7 +119,8 @@ export const createSourceSlice: MakeSlice<SourceSlice> = (set, get) => ({
     let qualities: string[] = [];
     if (stream.type === "file") qualities = Object.keys(stream.qualities);
     const store = get();
-    const loadableStream = selectQuality(stream);
+    const qualityPreferences = useQualityStore.getState();
+    const loadableStream = selectQuality(stream, qualityPreferences.quality);
 
     set((s) => {
       s.source = stream;

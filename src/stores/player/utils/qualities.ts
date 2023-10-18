@@ -1,3 +1,5 @@
+import { QualityStore } from "@/stores/quality";
+
 export type SourceQuality = "unknown" | "360" | "480" | "720" | "1080";
 
 export type StreamType = "hls" | "mp4";
@@ -23,17 +25,56 @@ export type SourceSliceSource =
     };
 
 const qualitySorting: Record<SourceQuality, number> = {
-  "1080": 40,
+  unknown: 0,
   "360": 10,
   "480": 20,
   "720": 30,
-  unknown: 0,
+  "1080": 40,
 };
 const sortedQualities: SourceQuality[] = Object.entries(qualitySorting)
   .sort((a, b) => b[1] - a[1])
   .map<SourceQuality>((v) => v[0] as SourceQuality);
 
-export function selectQuality(source: SourceSliceSource): {
+function getPreferredQuality(
+  availableQualites: SourceQuality[],
+  qualityPreferences: QualityStore["quality"]
+) {
+  if (
+    qualityPreferences.automaticQuality ||
+    qualityPreferences.lastChosenQuality === null ||
+    qualityPreferences.lastChosenQuality === "unknown"
+  )
+    return sortedQualities.find((v) => availableQualites.includes(v));
+
+  // get preferred quality - not automatic or unknown
+  const chosenQualityIndex = sortedQualities.indexOf(
+    qualityPreferences.lastChosenQuality
+  );
+  let nearestChoseQuality: undefined | SourceQuality;
+
+  // check chosen quality or lower
+  for (let i = chosenQualityIndex; i < sortedQualities.length; i += 1) {
+    if (availableQualites.includes(sortedQualities[i])) {
+      nearestChoseQuality = sortedQualities[i];
+      break;
+    }
+  }
+  if (nearestChoseQuality) return nearestChoseQuality;
+
+  // chosen quality or lower doesn't exist, try higher
+  for (let i = chosenQualityIndex; i >= 0; i -= 1) {
+    if (availableQualites.includes(sortedQualities[i])) {
+      nearestChoseQuality = sortedQualities[i];
+      break;
+    }
+  }
+  return nearestChoseQuality;
+}
+
+export function selectQuality(
+  source: SourceSliceSource,
+  qualityPreferences: QualityStore["quality"]
+): {
   stream: LoadableSource;
   quality: null | SourceQuality;
 } {
@@ -43,13 +84,14 @@ export function selectQuality(source: SourceSliceSource): {
       quality: null,
     };
   if (source.type === "file") {
-    const bestQuality = sortedQualities.find(
-      (v) => source.qualities[v] && (source.qualities[v]?.url.length ?? 0) > 0
-    );
-    if (bestQuality) {
-      const stream = source.qualities[bestQuality];
+    const availableQualities = Object.entries(source.qualities)
+      .filter((entry) => (entry[1].url.length ?? 0) > 0)
+      .map((entry) => entry[0]) as SourceQuality[];
+    const quality = getPreferredQuality(availableQualities, qualityPreferences);
+    if (quality) {
+      const stream = source.qualities[quality];
       if (stream) {
-        return { stream, quality: bestQuality };
+        return { stream, quality };
       }
     }
   }
