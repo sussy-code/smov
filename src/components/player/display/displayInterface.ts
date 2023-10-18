@@ -12,6 +12,7 @@ export type DisplayInterfaceEvents = {
   loading: boolean;
   qualities: SourceQuality[];
   changedquality: SourceQuality | null;
+  needstrack: boolean;
 };
 
 export interface DisplayInterface extends Listener<DisplayInterfaceEvents> {

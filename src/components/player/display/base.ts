@@ -178,6 +178,7 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
       if (isFullscreen) {
         isFullscreen = false;
         emit("fullscreen", isFullscreen);
+        emit("needstrack", false);
         if (!fscreen.fullscreenElement) return;
         fscreen.exitFullscreen();
         return;
@@ -192,7 +193,10 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
         return;
       }
       if (canWebkitFullscreen()) {
-        if (videoElement) (videoElement as any).webkitEnterFullscreen();
+        if (videoElement) {
+          emit("needstrack", true);
+          (videoElement as any).webkitEnterFullscreen();
+        }
       }
     },
   };
