@@ -13,7 +13,7 @@ export function Button(props: Props) {
     <button
       type="button"
       onClick={props.onClick}
-      className="inline-flex items-center justify-center rounded-lg bg-white px-8 py-3 font-bold text-black transition-[transform,background-color] duration-100 hover:bg-gray-200 active:scale-105 md:px-16"
+      className="inline-flex items-center justify-center rounded-lg bg-white px-4 py-3 font-bold text-black transition-[transform,background-color] duration-100 hover:bg-gray-200 active:scale-105 md:px-8"
     >
       {props.icon ? (
         <span className="mr-3 hidden md:inline-block">
