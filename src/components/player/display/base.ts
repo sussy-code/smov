@@ -80,6 +80,11 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
           handleBuffered(videoElement.currentTime, videoElement.buffered)
         );
     });
+    videoElement.addEventListener("webkitendfullscreen", () => {
+      isFullscreen = false;
+      emit("fullscreen", isFullscreen);
+      if (!isFullscreen) emit("needstrack", false);
+    });
   }
 
   function unloadSource() {
@@ -101,6 +106,8 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
     isFullscreen =
       !!document.fullscreenElement || // other browsers
       !!(document as any).webkitFullscreenElement; // safari
+    emit("fullscreen", isFullscreen);
+    if (!isFullscreen) emit("needstrack", false);
   }
   fscreen.addEventListener("fullscreenchange", fullscreenChange);
 
