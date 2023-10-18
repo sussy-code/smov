@@ -41,5 +41,13 @@ export function parseSubtitles(text: string): CaptionCueType[] {
 }
 
 export function convertSubtitlesToDataurl(text: string): string {
-  return `data:text/vtt;${convertSubtitlesToVtt(text)}`;
+  return `data:text/vtt,${convertSubtitlesToVtt(text)}`;
+}
+
+export function convertSubtitlesToObjectUrl(text: string): string {
+  return URL.createObjectURL(
+    new Blob([convertSubtitlesToVtt(text)], {
+      type: "text/vtt",
+    })
+  );
 }
