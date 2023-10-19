@@ -109,6 +109,18 @@ export function EmbedSelectionView({ sourceId, id }: EmbedSelectionViewProps) {
       router.close();
       return null;
     }
+    if (result.embeds.length === 1) {
+      const embedResult = await providers.runEmbedScraper({
+        id: result.embeds[0].embedId,
+        url: result.embeds[0].url,
+      });
+      setSourceId(sourceId);
+      setSource(
+        convertRunoutputToSource({ stream: embedResult.stream }),
+        progress
+      );
+      router.close();
+    }
     return result.embeds;
   }, [sourceId, meta, router]);
 
