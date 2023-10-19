@@ -140,7 +140,7 @@ export function EmbedSelectionView({ sourceId, id }: EmbedSelectionViewProps) {
   else if (request.value)
     content = request.value.map((v) => (
       <EmbedOption
-        key={v.embedId}
+        key={`${v.embedId}-${v.url}`}
         embedId={v.embedId}
         url={v.url}
         routerId={id}
