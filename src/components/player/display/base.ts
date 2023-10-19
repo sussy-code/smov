@@ -85,6 +85,14 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
       emit("fullscreen", isFullscreen);
       if (!isFullscreen) emit("needstrack", false);
     });
+    videoElement.addEventListener(
+      "webkitplaybacktargetavailabilitychanged",
+      (e: any) => {
+        if (e.availability === "available") {
+          emit("canairplay", true);
+        }
+      }
+    );
   }
 
   function unloadSource() {
@@ -204,6 +212,12 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
           emit("needstrack", true);
           (videoElement as any).webkitEnterFullscreen();
         }
+      }
+    },
+    startAirplay() {
+      const videoPlayer = videoElement as any;
+      if (videoPlayer && videoPlayer.webkitShowPlaybackTargetPicker) {
+        videoPlayer.webkitShowPlaybackTargetPicker();
       }
     },
   };

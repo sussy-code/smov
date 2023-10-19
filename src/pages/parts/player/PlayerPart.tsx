@@ -72,6 +72,7 @@ export function PlayerPart(props: PlayerPartProps) {
           </Player.LeftSideControls>
           <div className="flex items-center space-x-3">
             <Player.Episodes onChange={props.onMetaChange} />
+            <Player.Airplay />
             <Player.Settings />
             <Player.Fullscreen />
           </div>

@@ -19,6 +19,7 @@ export interface InterfaceSlice {
     hasOpenOverlay: boolean;
     hovering: PlayerHoverState;
     lastHoveringState: PlayerHoverState;
+    canAirplay: boolean;
 
     volumeChangedWithKeybind: boolean; // has the volume recently been adjusted with the up/down arrows recently?
     volumeChangedWithKeybindDebounce: NodeJS.Timeout | null; // debounce for the duration of the "volume changed thingamajig"
@@ -46,6 +47,7 @@ export const createInterfaceSlice: MakeSlice<InterfaceSlice> = (set, get) => ({
     volumeChangedWithKeybind: false,
     volumeChangedWithKeybindDebounce: null,
     timeFormat: VideoPlayerTimeFormat.REGULAR,
+    canAirplay: false,
   },
 
   setLastVolume(state) {

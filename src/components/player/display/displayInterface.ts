@@ -13,6 +13,7 @@ export type DisplayInterfaceEvents = {
   qualities: SourceQuality[];
   changedquality: SourceQuality | null;
   needstrack: boolean;
+  canairplay: boolean;
 };
 
 export interface DisplayInterface extends Listener<DisplayInterfaceEvents> {
@@ -26,4 +27,5 @@ export interface DisplayInterface extends Listener<DisplayInterfaceEvents> {
   setVolume(vol: number): void;
   setTime(t: number): void;
   destroy(): void;
+  startAirplay(): void;
 }

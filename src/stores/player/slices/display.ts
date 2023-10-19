@@ -80,6 +80,11 @@ export const createDisplaySlice: MakeSlice<DisplaySlice> = (set, get) => ({
         s.caption.asTrack = needsTrack;
       });
     });
+    newDisplay.on("canairplay", (canAirplay) => {
+      set((s) => {
+        s.interface.canAirplay = canAirplay;
+      });
+    });
 
     set((s) => {
       s.display = newDisplay;
