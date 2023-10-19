@@ -137,7 +137,10 @@ module.exports = {
                 border: "#141D23",
                 buttonFocus: "#202836",
                 flagBg: "#202836",
+                inputBg: "#202836",
                 cardBorder: "#1B262E",
+                slider: "#8787A8",
+                sliderFilled: "#A75FC9",
 
                 type: {
                   main: "#617A8A",

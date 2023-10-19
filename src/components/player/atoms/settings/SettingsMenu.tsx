@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 
 import { Toggle } from "@/components/buttons/Toggle";
 import { Icons } from "@/components/Icon";
@@ -6,21 +6,32 @@ import { Context } from "@/components/player/internals/ContextUtils";
 import { useOverlayRouter } from "@/hooks/useOverlayRouter";
 import { usePlayerStore } from "@/stores/player/store";
 import { qualityToString } from "@/stores/player/utils/qualities";
+import { useSubtitleStore } from "@/stores/subtitles";
 import { providers } from "@/utils/providers";
 
 export function SettingsMenu({ id }: { id: string }) {
   const router = useOverlayRouter(id);
   const currentQuality = usePlayerStore((s) => s.currentQuality);
+  const lastSelectedLanguage = useSubtitleStore((s) => s.lastSelectedLanguage);
+  const selectedCaptionLanguage = usePlayerStore(
+    (s) => s.caption.selected?.language
+  );
+  const subtitlesEnabled = useSubtitleStore((s) => s.enabled);
+  const setSubtitleLanguage = useSubtitleStore((s) => s.setLanguage);
   const currentSourceId = usePlayerStore((s) => s.sourceId);
+  const setCaption = usePlayerStore((s) => s.setCaption);
   const sourceName = useMemo(() => {
     if (!currentSourceId) return "...";
     return providers.getMetadata(currentSourceId)?.name ?? "...";
   }, [currentSourceId]);
 
-  const [tmpBool, setTmpBool] = useState(false);
-
-  function toggleBool() {
-    setTmpBool(!tmpBool);
+  // TODO actually scrape subtitles to load
+  function toggleSubtitles() {
+    if (!subtitlesEnabled) setSubtitleLanguage(lastSelectedLanguage ?? "en");
+    else {
+      setSubtitleLanguage(null);
+      setCaption(null);
+    }
   }
 
   return (
@@ -47,11 +58,16 @@ export function SettingsMenu({ id }: { id: string }) {
       <Context.Section>
         <Context.Link>
           <Context.LinkTitle>Enable Captions</Context.LinkTitle>
-          <Toggle enabled={tmpBool} onClick={() => toggleBool()} />
+          <Toggle
+            enabled={subtitlesEnabled}
+            onClick={() => toggleSubtitles()}
+          />
         </Context.Link>
         <Context.Link onClick={() => router.navigate("/captions")}>
           <Context.LinkTitle>Caption settings</Context.LinkTitle>
-          <Context.LinkChevron>English</Context.LinkChevron>
+          <Context.LinkChevron>
+            {selectedCaptionLanguage ?? ""}
+          </Context.LinkChevron>
         </Context.Link>
         <Context.Link>
           <Context.LinkTitle>Playback settings</Context.LinkTitle>

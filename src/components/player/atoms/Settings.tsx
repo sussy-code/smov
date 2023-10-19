@@ -49,7 +49,7 @@ function SettingsOverlay({ id }: { id: string }) {
             <CaptionsView id={id} />
           </Context.Card>
         </OverlayPage>
-        <OverlayPage id={id} path="/captions/settings" width={343} height={431}>
+        <OverlayPage id={id} path="/captions/settings" width={343} height={310}>
           <Context.Card>
             <CaptionSettingsView id={id} />
           </Context.Card>

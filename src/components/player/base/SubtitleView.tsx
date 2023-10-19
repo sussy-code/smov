@@ -9,8 +9,15 @@ import {
 } from "@/components/player/utils/captions";
 import { Transition } from "@/components/Transition";
 import { usePlayerStore } from "@/stores/player/store";
+import { SubtitleStyling, useSubtitleStore } from "@/stores/subtitles";
 
-export function CaptionCue({ text }: { text?: string }) {
+export function CaptionCue({
+  text,
+  styling,
+}: {
+  text?: string;
+  styling: SubtitleStyling;
+}) {
   const textWithNewlines = (text || "").replaceAll(/\r?\n/g, "<br />");
 
   // https://www.w3.org/TR/webvtt1/#dom-construction-rules
@@ -22,7 +29,14 @@ export function CaptionCue({ text }: { text?: string }) {
   });
 
   return (
-    <p className="pointer-events-none mb-1 select-none rounded px-4 py-1 text-center [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]">
+    <p
+      className="pointer-events-none mb-1 select-none rounded px-4 py-1 text-center [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]"
+      style={{
+        color: styling.color,
+        fontSize: `${(1.5 * styling.size).toFixed(2)}rem`,
+        backgroundColor: `rgba(0,0,0,${styling.backgroundOpacity.toFixed(2)})`,
+      }}
+    >
       <span
         // its sanitised a few lines up
         // eslint-disable-next-line react/no-danger
@@ -38,6 +52,7 @@ export function CaptionCue({ text }: { text?: string }) {
 export function SubtitleRenderer() {
   const videoTime = usePlayerStore((s) => s.progress.time);
   const srtData = usePlayerStore((s) => s.caption.selected?.srtData);
+  const styling = useSubtitleStore((s) => s.styling);
 
   const parsedCaptions = useMemo(
     () => (srtData ? parseSubtitles(srtData) : []),
@@ -55,7 +70,11 @@ export function SubtitleRenderer() {
   return (
     <div>
       {visibileCaptions.map(({ start, end, content }, i) => (
-        <CaptionCue key={makeQueId(i, start, end)} text={content} />
+        <CaptionCue
+          key={makeQueId(i, start, end)}
+          text={content}
+          styling={styling}
+        />
       ))}
     </div>
   );

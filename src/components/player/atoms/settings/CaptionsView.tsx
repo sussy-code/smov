@@ -6,6 +6,7 @@ import { Context } from "@/components/player/internals/ContextUtils";
 import { useOverlayRouter } from "@/hooks/useOverlayRouter";
 import { Caption } from "@/stores/player/slices/source";
 import { usePlayerStore } from "@/stores/player/store";
+import { useSubtitleStore } from "@/stores/subtitles";
 
 const source: Caption = {
   language: "nl",
@@ -51,13 +52,20 @@ export function CaptionsView({ id }: { id: string }) {
   const router = useOverlayRouter(id);
   const setCaption = usePlayerStore((s) => s.setCaption);
   const lang = usePlayerStore((s) => s.caption.selected?.language);
+  const setLanguage = useSubtitleStore((s) => s.setLanguage);
 
-  function updateCaption() {
-    setCaption(source);
+  function updateCaption(language: string) {
+    setCaption({
+      language,
+      srtData: source.srtData,
+      url: source.url,
+    });
+    setLanguage(language);
   }
 
   function disableCaption() {
     setCaption(null);
+    setLanguage(null);
   }
 
   const langs = [
@@ -81,13 +89,15 @@ export function CaptionsView({ id }: { id: string }) {
         Captions
       </Context.BackLink>
       <Context.Section>
-        <CaptionOption onClick={() => disableCaption()}>Off</CaptionOption>
+        <CaptionOption onClick={() => disableCaption()} selected={!lang}>
+          Off
+        </CaptionOption>
         {langs.map((v) => (
           <CaptionOption
             key={v.lang}
             countryCode={v.lang}
             selected={lang === v.lang}
-            onClick={() => updateCaption()}
+            onClick={() => updateCaption(v.lang)}
           >
             {v.title}
           </CaptionOption>
