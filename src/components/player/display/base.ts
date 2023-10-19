@@ -69,7 +69,7 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
         hls.on(Hls.Events.LEVEL_SWITCHED, () => {
           if (!hls) return;
           const quality = hlsLevelToQuality(hls.levels[hls.currentLevel]);
-          emit("changedquality", quality); // hi (hello)
+          emit("changedquality", quality);
         });
       }
 
