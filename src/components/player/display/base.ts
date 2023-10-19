@@ -1,12 +1,12 @@
 import fscreen from "fscreen";
-import Hls from "hls.js";
+import Hls, { Level } from "hls.js";
 
 import {
   DisplayInterface,
   DisplayInterfaceEvents,
 } from "@/components/player/display/displayInterface";
 import { handleBuffered } from "@/components/player/utils/handleBuffered";
-import { LoadableSource } from "@/stores/player/utils/qualities";
+import { LoadableSource, SourceQuality } from "@/stores/player/utils/qualities";
 import {
   canChangeVolume,
   canFullscreen,
@@ -14,6 +14,17 @@ import {
   canWebkitFullscreen,
 } from "@/utils/detectFeatures";
 import { makeEmitter } from "@/utils/events";
+
+const levelConversionMap: Record<number, SourceQuality> = {
+  360: "360",
+  1080: "1080",
+  720: "720",
+  480: "480",
+};
+
+function hlsLevelToQuality(level: Level): SourceQuality | null {
+  return levelConversionMap[level.height] ?? null;
+}
 
 export function makeVideoElementDisplayInterface(): DisplayInterface {
   const { emit, on, off } = makeEmitter<DisplayInterfaceEvents>();
@@ -25,6 +36,15 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
   let isPausedBeforeSeeking = false;
   let isSeeking = false;
   let startAt = 0;
+
+  function reportLevels() {
+    if (!hls) return;
+    const levels = hls.levels;
+    const convertedLevels = levels
+      .map((v) => hlsLevelToQuality(v))
+      .filter((v): v is SourceQuality => !!v);
+    emit("qualities", convertedLevels);
+  }
 
   function setupSource(vid: HTMLVideoElement, src: LoadableSource) {
     if (src.type === "hls") {
@@ -39,6 +59,17 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
               `HLS ERROR:${data.error?.message ?? "Something went wrong"}`
             );
           }
+        });
+        hls.on(Hls.Events.MANIFEST_LOADED, () => {
+          if (!hls) return;
+          reportLevels();
+          const quality = hlsLevelToQuality(hls.levels[hls.currentLevel]);
+          emit("changedquality", quality);
+        });
+        hls.on(Hls.Events.LEVEL_SWITCHED, () => {
+          if (!hls) return;
+          const quality = hlsLevelToQuality(hls.levels[hls.currentLevel]);
+          emit("changedquality", quality); // hi (hello)
         });
       }
 
