@@ -9,7 +9,7 @@ export interface SubtitleStyling {
   color: string;
 
   /**
-   * size percentage, ranges between 0 and 2
+   * size percentage, ranges between 0.01 and 2
    */
   size: number;
 
@@ -45,7 +45,7 @@ export const useSubtitleStore = create(
           if (newStyling.color !== undefined)
             s.styling.color = newStyling.color.toLowerCase();
           if (newStyling.size !== undefined)
-            s.styling.size = Math.min(2, Math.max(0.1, newStyling.size));
+            s.styling.size = Math.min(2, Math.max(0.01, newStyling.size));
         });
       },
       setLanguage(lang) {

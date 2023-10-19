@@ -6,7 +6,11 @@ import {
   DisplayInterfaceEvents,
 } from "@/components/player/display/displayInterface";
 import { handleBuffered } from "@/components/player/utils/handleBuffered";
-import { LoadableSource, SourceQuality } from "@/stores/player/utils/qualities";
+import {
+  LoadableSource,
+  SourceQuality,
+  getPreferredQuality,
+} from "@/stores/player/utils/qualities";
 import {
   canChangeVolume,
   canFullscreen,
@@ -26,6 +30,18 @@ function hlsLevelToQuality(level: Level): SourceQuality | null {
   return levelConversionMap[level.height] ?? null;
 }
 
+function qualityToHlsLevel(quality: SourceQuality): number | null {
+  const found = Object.entries(levelConversionMap).find(
+    (entry) => entry[1] === quality
+  );
+  return found ? +found[0] : null;
+}
+function hlsLevelsToQualities(levels: Level[]): SourceQuality[] {
+  return levels
+    .map((v) => hlsLevelToQuality(v))
+    .filter((v): v is SourceQuality => !!v);
+}
+
 export function makeVideoElementDisplayInterface(): DisplayInterface {
   const { emit, on, off } = makeEmitter<DisplayInterfaceEvents>();
   let source: LoadableSource | null = null;
@@ -36,6 +52,8 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
   let isPausedBeforeSeeking = false;
   let isSeeking = false;
   let startAt = 0;
+  let automaticQuality = false;
+  let preferenceQuality: SourceQuality | null = null;
 
   function reportLevels() {
     if (!hls) return;
@@ -44,6 +62,34 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
       .map((v) => hlsLevelToQuality(v))
       .filter((v): v is SourceQuality => !!v);
     emit("qualities", convertedLevels);
+  }
+
+  function setupQualityForHls() {
+    if (!hls) return;
+    if (!automaticQuality) {
+      const qualities = hlsLevelsToQualities(hls.levels);
+      const availableQuality = getPreferredQuality(qualities, {
+        lastChosenQuality: preferenceQuality,
+        automaticQuality,
+      });
+      if (availableQuality) {
+        const levelIndex = hls.levels.findIndex(
+          (v) => v.height === qualityToHlsLevel(availableQuality)
+        );
+        if (levelIndex !== -1) {
+          console.log("setting level", levelIndex, availableQuality);
+          hls.currentLevel = levelIndex;
+          hls.loadLevel = levelIndex;
+        }
+      }
+    } else {
+      console.log("setting to automatic");
+      hls.currentLevel = -1;
+      hls.loadLevel = -1;
+    }
+    const quality = hlsLevelToQuality(hls.levels[hls.currentLevel]);
+    console.log("updating quality menu", quality);
+    emit("changedquality", quality);
   }
 
   function setupSource(vid: HTMLVideoElement, src: LoadableSource) {
@@ -63,12 +109,12 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
         hls.on(Hls.Events.MANIFEST_LOADED, () => {
           if (!hls) return;
           reportLevels();
-          const quality = hlsLevelToQuality(hls.levels[hls.currentLevel]);
-          emit("changedquality", quality);
+          setupQualityForHls();
         });
         hls.on(Hls.Events.LEVEL_SWITCHED, () => {
           if (!hls) return;
           const quality = hlsLevelToQuality(hls.levels[hls.currentLevel]);
+          console.log("EVENT updating quality menu", quality);
           emit("changedquality", quality);
         });
       }
@@ -124,6 +170,9 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
         }
       }
     );
+    videoElement.addEventListener("ratechange", () => {
+      if (videoElement) emit("playbackrate", videoElement.playbackRate);
+    });
   }
 
   function unloadSource() {
@@ -157,12 +206,20 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
       destroyVideoElement();
       fscreen.removeEventListener("fullscreenchange", fullscreenChange);
     },
-    load(newSource, startAtInput) {
-      if (!newSource) unloadSource();
-      source = newSource;
+    load(ops) {
+      if (!ops.source) unloadSource();
+      automaticQuality = ops.automaticQuality;
+      preferenceQuality = ops.preferredQuality;
+      source = ops.source;
       emit("loading", true);
-      startAt = startAtInput;
+      startAt = ops.startAt;
       setSource();
+    },
+    changeQuality(newAutomaticQuality, newPreferredQuality) {
+      if (source?.type !== "hls") return;
+      automaticQuality = newAutomaticQuality;
+      preferenceQuality = newPreferredQuality;
+      setupQualityForHls();
     },
 
     processVideoElement(video) {
@@ -250,6 +307,9 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
       if (videoPlayer && videoPlayer.webkitShowPlaybackTargetPicker) {
         videoPlayer.webkitShowPlaybackTargetPicker();
       }
+    },
+    setPlaybackRate(rate) {
+      if (videoElement) videoElement.playbackRate = rate;
     },
   };
 }

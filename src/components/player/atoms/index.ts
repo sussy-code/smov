@@ -11,3 +11,4 @@ export * from "./EpisodeTitle";
 export * from "./Settings";
 export * from "./Episodes";
 export * from "./Airplay";
+export * from "./VolumeChangedPopout";

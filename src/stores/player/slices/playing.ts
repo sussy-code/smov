@@ -9,7 +9,7 @@ export interface PlayingSlice {
     isLoading: boolean; // buffering or not
     hasPlayedOnce: boolean; // has the video played at all?
     volume: number;
-    playbackSpeed: number;
+    playbackRate: number;
   };
   play(): void;
   pause(): void;
@@ -22,10 +22,9 @@ export const createPlayingSlice: MakeSlice<PlayingSlice> = (set) => ({
     isLoading: false,
     isSeeking: false,
     isDragSeeking: false,
-    isFirstLoading: true,
     hasPlayedOnce: false,
     volume: 1,
-    playbackSpeed: 1,
+    playbackRate: 1,
   },
   play() {
     set((state) => {

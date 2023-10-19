@@ -142,6 +142,11 @@ module.exports = {
                 slider: "#8787A8",
                 sliderFilled: "#A75FC9",
 
+                buttons: {
+                  list: "#161C26",
+                  active: "#0D1317"
+                },
+
                 type: {
                   main: "#617A8A",
                   secondary: "#374A56",

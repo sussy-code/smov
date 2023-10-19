@@ -59,6 +59,7 @@ export interface SourceSlice {
   setMeta(meta: PlayerMeta): void;
   setCaption(caption: Caption | null): void;
   setSourceId(id: string | null): void;
+  enableAutomaticQuality(): void;
 }
 
 export function metaToScrapeMedia(meta: PlayerMeta): ScrapeMedia {
@@ -128,7 +129,12 @@ export const createSourceSlice: MakeSlice<SourceSlice> = (set, get) => ({
       s.currentQuality = loadableStream.quality;
     });
 
-    store.display?.load(loadableStream.stream, startAt);
+    store.display?.load({
+      source: loadableStream.stream,
+      startAt,
+      automaticQuality: qualityPreferences.quality.automaticQuality,
+      preferredQuality: qualityPreferences.quality.lastChosenQuality,
+    });
   },
   switchQuality(quality) {
     const store = get();
@@ -139,7 +145,18 @@ export const createSourceSlice: MakeSlice<SourceSlice> = (set, get) => ({
       set((s) => {
         s.currentQuality = quality;
       });
-      store.display?.load(selectedQuality, store.progress.time);
+      store.display?.load({
+        source: selectedQuality,
+        startAt: store.progress.time,
+        automaticQuality: false,
+        preferredQuality: quality,
+      });
+    } else if (store.source.type === "hls") {
+      store.display?.changeQuality(false, quality);
     }
+  },
+  enableAutomaticQuality() {
+    const store = get();
+    store.display?.changeQuality(true, null);
   },
 });

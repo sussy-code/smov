@@ -17,6 +17,7 @@ import { usePlayerStore } from "@/stores/player/store";
 
 import { CaptionSettingsView } from "./settings/CaptionSettingsView";
 import { CaptionsView } from "./settings/CaptionsView";
+import { PlaybackSettingsView } from "./settings/PlaybackSettingsView";
 import { QualityView } from "./settings/QualityView";
 
 function SettingsOverlay({ id }: { id: string }) {
@@ -39,7 +40,7 @@ function SettingsOverlay({ id }: { id: string }) {
         <OverlayPage id={id} path="/" width={343} height={431}>
           <SettingsMenu id={id} />
         </OverlayPage>
-        <OverlayPage id={id} path="/quality" width={343} height={431}>
+        <OverlayPage id={id} path="/quality" width={343} height={400}>
           <Context.Card>
             <QualityView id={id} />
           </Context.Card>
@@ -62,6 +63,11 @@ function SettingsOverlay({ id }: { id: string }) {
         <OverlayPage id={id} path="/source/embeds" width={343} height={431}>
           <Context.Card>
             <EmbedSelectionView id={id} sourceId={chosenSourceId} />
+          </Context.Card>
+        </OverlayPage>
+        <OverlayPage id={id} path="/playback" width={343} height={215}>
+          <Context.Card>
+            <PlaybackSettingsView id={id} />
           </Context.Card>
         </OverlayPage>
       </OverlayRouter>

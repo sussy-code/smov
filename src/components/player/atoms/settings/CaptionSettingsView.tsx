@@ -43,7 +43,6 @@ function CaptionSetting(props: {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const ref = useRef<HTMLDivElement>(null);
 
-  //                            200    -   100           150       -    100
   const currentPercentage = (props.value - props.min) / (props.max - props.min);
   const commit = useCallback(
     (percentage) => {
@@ -173,7 +172,7 @@ export function CaptionSettingsView({ id }: { id: string }) {
         <CaptionSetting
           label="Text size"
           max={200}
-          min={10}
+          min={1}
           textTransformer={(s) => `${s}%`}
           onChange={(v) => updateStyling({ size: v / 100 })}
           value={styling.size * 100}

@@ -135,7 +135,7 @@ function IconButton(props: { icon: Icons; onClick?: () => void }) {
 }
 
 function Divider() {
-  return <hr className="my-4 border-0 w-full h-px bg-video-context-border" />;
+  return <hr className="!my-4 border-0 w-full h-px bg-video-context-border" />;
 }
 
 function SmallText(props: { children: React.ReactNode }) {

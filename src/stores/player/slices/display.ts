@@ -85,13 +85,23 @@ export const createDisplaySlice: MakeSlice<DisplaySlice> = (set, get) => ({
         s.interface.canAirplay = canAirplay;
       });
     });
+    newDisplay.on("playbackrate", (rate) => {
+      set((s) => {
+        s.mediaPlaying.playbackRate = rate;
+      });
+    });
 
     set((s) => {
       s.display = newDisplay;
     });
   },
   reset() {
-    get().display?.load(null, 0);
+    get().display?.load({
+      source: null,
+      startAt: 0,
+      automaticQuality: false,
+      preferredQuality: null,
+    });
     set((s) => {
       s.status = playerStatus.IDLE;
       s.meta = null;

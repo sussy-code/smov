@@ -7,6 +7,11 @@ export interface VolumeStore {
   setVolume(v: number): void;
 }
 
+export interface EmpheralVolumeStore {
+  showVolume: boolean;
+  setShowVolume(v: boolean): void;
+}
+
 // TODO add migration from previous stored volume
 export const useVolumeStore = create(
   persist(
@@ -22,4 +27,15 @@ export const useVolumeStore = create(
       name: "__MW::volume",
     }
   )
+);
+
+export const useEmpheralVolumeStore = create(
+  immer<EmpheralVolumeStore>((set) => ({
+    showVolume: false,
+    setShowVolume(bool: boolean) {
+      set((s) => {
+        s.showVolume = bool;
+      });
+    },
+  }))
 );

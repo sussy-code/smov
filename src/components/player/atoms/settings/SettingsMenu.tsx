@@ -69,7 +69,7 @@ export function SettingsMenu({ id }: { id: string }) {
             {selectedCaptionLanguage ?? ""}
           </Context.LinkChevron>
         </Context.Link>
-        <Context.Link>
+        <Context.Link onClick={() => router.navigate("/playback")}>
           <Context.LinkTitle>Playback settings</Context.LinkTitle>
           <Context.LinkChevron />
         </Context.Link>

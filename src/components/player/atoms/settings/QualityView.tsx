@@ -43,19 +43,28 @@ export function QualityView({ id }: { id: string }) {
   const availableQualities = usePlayerStore((s) => s.qualities);
   const currentQuality = usePlayerStore((s) => s.currentQuality);
   const switchQuality = usePlayerStore((s) => s.switchQuality);
+  const enableAutomaticQuality = usePlayerStore(
+    (s) => s.enableAutomaticQuality
+  );
   const setAutomaticQuality = useQualityStore((s) => s.setAutomaticQuality);
   const setLastChosenQuality = useQualityStore((s) => s.setLastChosenQuality);
   const autoQuality = useQualityStore((s) => s.quality.automaticQuality);
 
   const change = useCallback(
     (q: SourceQuality) => {
-      switchQuality(q);
       setLastChosenQuality(q);
       setAutomaticQuality(false);
+      switchQuality(q);
       router.close();
     },
     [router, switchQuality, setLastChosenQuality, setAutomaticQuality]
   );
+
+  const changeAutomatic = useCallback(() => {
+    const newValue = !autoQuality;
+    setAutomaticQuality(newValue);
+    if (newValue) enableAutomaticQuality();
+  }, [setAutomaticQuality, autoQuality, enableAutomaticQuality]);
 
   const allVisibleQualities = allQualities.filter((t) => t !== "unknown");
 
@@ -80,10 +89,7 @@ export function QualityView({ id }: { id: string }) {
         <Context.Divider />
         <Context.Link>
           <Context.LinkTitle>Automatic quality</Context.LinkTitle>
-          <Toggle
-            onClick={() => setAutomaticQuality(!autoQuality)}
-            enabled={autoQuality}
-          />
+          <Toggle onClick={changeAutomatic} enabled={autoQuality} />
         </Context.Link>
         <Context.SmallText>
           You can try{" "}

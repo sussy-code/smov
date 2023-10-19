@@ -35,7 +35,7 @@ const sortedQualities: SourceQuality[] = Object.entries(qualitySorting)
   .sort((a, b) => b[1] - a[1])
   .map<SourceQuality>((v) => v[0] as SourceQuality);
 
-function getPreferredQuality(
+export function getPreferredQuality(
   availableQualites: SourceQuality[],
   qualityPreferences: QualityStore["quality"]
 ) {
