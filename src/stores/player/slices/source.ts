@@ -63,6 +63,7 @@ export interface SourceSlice {
   setCaption(caption: Caption | null): void;
   setSourceId(id: string | null): void;
   enableAutomaticQuality(): void;
+  redisplaySource(startAt: number): void;
 }
 
 export function metaToScrapeMedia(meta: PlayerMeta): ScrapeMedia {
@@ -123,7 +124,6 @@ export const createSourceSlice: MakeSlice<SourceSlice> = (set, get) => ({
   setSource(stream: SourceSliceSource, startAt: number) {
     let qualities: string[] = [];
     if (stream.type === "file") qualities = Object.keys(stream.qualities);
-    const store = get();
     const qualityPreferences = useQualityStore.getState();
     const loadableStream = selectQuality(stream, qualityPreferences.quality);
 
@@ -131,6 +131,18 @@ export const createSourceSlice: MakeSlice<SourceSlice> = (set, get) => ({
       s.source = stream;
       s.qualities = qualities as SourceQuality[];
       s.currentQuality = loadableStream.quality;
+    });
+    const store = get();
+    store.redisplaySource(startAt);
+  },
+  redisplaySource(startAt: number) {
+    const store = get();
+    const quality = store.currentQuality;
+    if (!store.source) return;
+    const qualityPreferences = useQualityStore.getState();
+    const loadableStream = selectQuality(store.source, {
+      automaticQuality: qualityPreferences.quality.automaticQuality,
+      lastChosenQuality: quality,
     });
 
     store.display?.load({
