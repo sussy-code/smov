@@ -72,7 +72,11 @@ function RouterBase(props: { id: string; children: ReactNode }) {
   }, [routeMeta?.height, routeMeta?.width, isMobile, api]);
 
   return (
-    <a.div ref={ref} style={dimensions} className="overflow-hidden">
+    <a.div
+      ref={ref}
+      style={dimensions}
+      className="overflow-hidden relative z-10"
+    >
       <Flare.Base className="group w-full bg-video-context-border h-full rounded-2xl transition-colors duration-100 text-video-context-type-main">
         <Flare.Light
           flareSize={400}
