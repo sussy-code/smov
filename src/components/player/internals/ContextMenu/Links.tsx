@@ -56,14 +56,12 @@ export function Link(props: {
   children?: ReactNode;
   className?: string;
 }) {
-  const classes = classNames(
-    "flex py-2 px-3 rounded w-full -ml-3 w-[calc(100%+1.5rem)]",
-    {
-      "cursor-default": !props.clickable,
-      "hover:bg-video-context-border cursor-pointer": props.clickable,
-      "bg-video-context-border": props.active,
-    }
-  );
+  const classes = classNames("flex py-2 px-3 rounded w-full -ml-3", {
+    "cursor-default": !props.clickable,
+    "hover:bg-video-context-border cursor-pointer": props.clickable,
+    "bg-video-context-border": props.active,
+  });
+  const styles = { width: "calc(100% + 1.5rem)" };
 
   const content = (
     <div className={classNames("flex items-center flex-1", props.className)}>
@@ -73,11 +71,20 @@ export function Link(props: {
   );
 
   if (!props.onClick) {
-    return <div className={classes}>{content}</div>;
+    return (
+      <div className={classes} style={styles}>
+        {content}
+      </div>
+    );
   }
 
   return (
-    <button type="button" className={classes} onClick={props.onClick}>
+    <button
+      type="button"
+      className={classes}
+      style={styles}
+      onClick={props.onClick}
+    >
       {content}
     </button>
   );
