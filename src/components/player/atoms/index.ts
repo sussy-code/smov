@@ -13,3 +13,4 @@ export * from "./Episodes";
 export * from "./Airplay";
 export * from "./VolumeChangedPopout";
 export * from "./NextEpisodeButton";
+export * from "./Chromecast";

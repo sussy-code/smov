@@ -20,6 +20,7 @@ export interface InterfaceSlice {
     hovering: PlayerHoverState;
     lastHoveringState: PlayerHoverState;
     canAirplay: boolean;
+    isCasting: boolean;
     hideNextEpisodeBtn: boolean;
 
     volumeChangedWithKeybind: boolean; // has the volume recently been adjusted with the up/down arrows recently?
@@ -39,6 +40,7 @@ export interface InterfaceSlice {
 
 export const createInterfaceSlice: MakeSlice<InterfaceSlice> = (set, get) => ({
   interface: {
+    isCasting: false,
     hasOpenOverlay: false,
     isFullscreen: false,
     isSeeking: false,

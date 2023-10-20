@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 import { BrandPill } from "@/components/layout/BrandPill";
 import { Player } from "@/components/player";
 import { useShouldShowControls } from "@/components/player/hooks/useShouldShowControls";
+import { useChromecastAvailable } from "@/hooks/useChromecastAvailable";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { PlayerMeta, playerStatus } from "@/stores/player/slices/source";
 import { usePlayerStore } from "@/stores/player/store";
@@ -59,6 +60,7 @@ export function PlayerPart(props: PlayerPartProps) {
           </div>
           <div className="flex sm:hidden items-center justify-end">
             <Player.Airplay />
+            <Player.Chromecast />
           </div>
         </div>
       </Player.TopControls>
@@ -79,6 +81,7 @@ export function PlayerPart(props: PlayerPartProps) {
           <div className="flex items-center space-x-3">
             <Player.Episodes />
             <Player.Airplay />
+            <Player.Chromecast />
             <Player.Settings />
             <Player.Fullscreen />
           </div>

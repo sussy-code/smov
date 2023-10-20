@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 
+import { createCastingSlice } from "@/stores/player/slices/casting";
 import { createDisplaySlice } from "@/stores/player/slices/display";
 import { createInterfaceSlice } from "@/stores/player/slices/interface";
 import { createPlayingSlice } from "@/stores/player/slices/playing";
@@ -15,5 +16,6 @@ export const usePlayerStore = create(
     ...createPlayingSlice(...a),
     ...createSourceSlice(...a),
     ...createDisplaySlice(...a),
+    ...createCastingSlice(...a),
   }))
 );

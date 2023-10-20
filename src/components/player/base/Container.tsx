@@ -1,6 +1,7 @@
 import { ReactNode, RefObject, useEffect, useRef } from "react";
 
 import { OverlayDisplay } from "@/components/overlays/OverlayDisplay";
+import { CastingInternal } from "@/components/player/internals/CastingInternal";
 import { HeadUpdater } from "@/components/player/internals/HeadUpdater";
 import { KeyboardEvents } from "@/components/player/internals/KeyboardEvents";
 import { ProgressSaver } from "@/components/player/internals/ProgressSaver";
@@ -81,6 +82,7 @@ export function Container(props: PlayerProps) {
   return (
     <div className="relative">
       <BaseContainer>
+        <CastingInternal />
         <VideoContainer />
         <ProgressSaver />
         <KeyboardEvents />
