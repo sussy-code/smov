@@ -17,6 +17,12 @@ export const playerStatus = {
 
 export type PlayerStatus = ValuesOf<typeof playerStatus>;
 
+export interface PlayerMetaEpisode {
+  number: number;
+  tmdbId: string;
+  title: string;
+}
+
 export interface PlayerMeta {
   type: "movie" | "show";
   title: string;
@@ -24,11 +30,8 @@ export interface PlayerMeta {
   imdbId?: string;
   releaseYear: number;
   poster?: string;
-  episode?: {
-    number: number;
-    tmdbId: string;
-    title: string;
-  };
+  episodes?: PlayerMetaEpisode[];
+  episode?: PlayerMetaEpisode;
   season?: {
     number: number;
     tmdbId: string;

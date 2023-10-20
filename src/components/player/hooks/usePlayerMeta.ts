@@ -13,6 +13,15 @@ export function usePlayerMeta() {
     [meta]
   );
 
+  const setDirectMeta = useCallback(
+    (m: PlayerMeta) => {
+      _setPlayerMeta(m);
+      setMeta(m);
+      setScrapeStatus();
+    },
+    [_setPlayerMeta, setMeta, setScrapeStatus]
+  );
+
   const setPlayerMeta = useCallback(
     (m: DetailedMeta, episodeId?: string) => {
       let playerMeta: PlayerMeta;
@@ -26,6 +35,11 @@ export function usePlayerMeta() {
           poster: m.meta.poster,
           tmdbId: m.tmdbId ?? "",
           imdbId: m.imdbId,
+          episodes: m.meta.seasonData.episodes.map((v) => ({
+            number: v.number,
+            title: v.title,
+            tmdbId: v.id,
+          })),
           episode: {
             number: ep.number,
             title: ep.title,
@@ -47,17 +61,16 @@ export function usePlayerMeta() {
           imdbId: m.imdbId,
         };
       }
-      _setPlayerMeta(playerMeta);
-      setMeta(playerMeta);
-      setScrapeStatus();
+      setDirectMeta(playerMeta);
       return playerMeta;
     },
-    [_setPlayerMeta, setMeta, setScrapeStatus]
+    [setDirectMeta]
   );
 
   return {
     playerMeta: meta,
     setPlayerMeta,
+    setDirectMeta,
     scrapeMedia,
   };
 }
