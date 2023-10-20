@@ -1,4 +1,4 @@
-import { ReactNode, useCallback, useEffect, useRef, useState } from "react";
+import { ReactNode, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useAsync } from "react-use";
 
@@ -11,7 +11,7 @@ import { OverlayPage } from "@/components/overlays/OverlayPage";
 import { OverlayRouter } from "@/components/overlays/OverlayRouter";
 import { usePlayerMeta } from "@/components/player/hooks/usePlayerMeta";
 import { VideoPlayerButton } from "@/components/player/internals/Button";
-import { Context } from "@/components/player/internals/ContextUtils";
+import { Menu } from "@/components/player/internals/ContextMenu";
 import { useOverlayRouter } from "@/hooks/useOverlayRouter";
 import { PlayerMeta } from "@/stores/player/slices/source";
 import { usePlayerStore } from "@/stores/player/store";
@@ -56,16 +56,18 @@ function SeasonsView({
   let content: ReactNode = null;
   if (seasons) {
     content = (
-      <Context.Section className="pb-6">
+      <Menu.Section className="pb-6">
         {seasons?.map((season) => {
           return (
-            <Context.Link key={season.id} onClick={() => setSeason(season.id)}>
-              <Context.LinkTitle>{season.title}</Context.LinkTitle>
-              <Context.LinkChevron />
-            </Context.Link>
+            <Menu.ChevronLink
+              key={season.id}
+              onClick={() => setSeason(season.id)}
+            >
+              {season.title}
+            </Menu.ChevronLink>
           );
         })}
-      </Context.Section>
+      </Menu.Section>
     );
   } else if (loadingState.error)
     content = <CenteredText>Error loading season</CenteredText>;
@@ -73,10 +75,10 @@ function SeasonsView({
     content = <CenteredText>Loading...</CenteredText>;
 
   return (
-    <Context.CardWithScrollable>
-      <Context.Title>{meta?.title}</Context.Title>
+    <Menu.CardWithScrollable>
+      <Menu.Title>{meta?.title}</Menu.Title>
       {content}
-    </Context.CardWithScrollable>
+    </Menu.CardWithScrollable>
   );
 }
 
@@ -115,37 +117,36 @@ function EpisodesView({
     content = <CenteredText>Loading...</CenteredText>;
   else if (loadingState.value) {
     content = (
-      <Context.Section className="pb-6">
+      <Menu.Section className="pb-6">
         {loadingState.value.season.episodes.map((ep) => {
           return (
-            <Context.Link
+            <Menu.ChevronLink
               key={ep.id}
               onClick={() => playEpisode(ep.id)}
               active={ep.id === meta?.episode?.tmdbId}
             >
-              <Context.LinkTitle>
+              <Menu.LinkTitle>
                 <div className="text-left flex items-center space-x-3">
                   <span className="p-0.5 px-2 rounded inline bg-video-context-border">
                     E{ep.number}
                   </span>
                   <span className="line-clamp-1 break-all">{ep.title}</span>
                 </div>
-              </Context.LinkTitle>
-              <Context.LinkChevron />
-            </Context.Link>
+              </Menu.LinkTitle>
+            </Menu.ChevronLink>
           );
         })}
-      </Context.Section>
+      </Menu.Section>
     );
   }
 
   return (
-    <Context.CardWithScrollable>
-      <Context.BackLink onClick={goBack}>
+    <Menu.CardWithScrollable>
+      <Menu.BackLink onClick={goBack}>
         {loadingState?.value?.season.title || t("videoPlayer.loading")}
-      </Context.BackLink>
+      </Menu.BackLink>
       {content}
-    </Context.CardWithScrollable>
+    </Menu.CardWithScrollable>
   );
 }
 

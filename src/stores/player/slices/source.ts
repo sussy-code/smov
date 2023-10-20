@@ -109,6 +109,7 @@ export const createSourceSlice: MakeSlice<SourceSlice> = (set, get) => ({
   setMeta(meta) {
     set((s) => {
       s.meta = meta;
+      s.interface.hideNextEpisodeBtn = false;
     });
   },
   setCaption(caption) {

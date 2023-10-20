@@ -1,8 +1,6 @@
-import classNames from "classnames";
-
 import { FlagIcon } from "@/components/FlagIcon";
-import { Icon, Icons } from "@/components/Icon";
-import { Context } from "@/components/player/internals/ContextUtils";
+import { Menu } from "@/components/player/internals/ContextMenu";
+import { SelectableLink } from "@/components/player/internals/ContextMenu/Links";
 import { useOverlayRouter } from "@/hooks/useOverlayRouter";
 import { Caption } from "@/stores/player/slices/source";
 import { usePlayerStore } from "@/stores/player/store";
@@ -26,25 +24,14 @@ export function CaptionOption(props: {
   onClick?: () => void;
 }) {
   return (
-    <div
-      className="grid grid-cols-[auto,1fr,auto] items-center gap-3 rounded -ml-3 -mr-3 px-3 py-2 cursor-pointer hover:bg-video-context-border"
-      onClick={props.onClick}
-    >
-      <div>
-        <FlagIcon countryCode={props.countryCode} />
-      </div>
-      <span
-        className={classNames(props.selected && "text-white", "font-medium")}
-      >
-        {props.children}
+    <SelectableLink selected={props.selected} onClick={props.onClick}>
+      <span className="flex items-center">
+        <span className="mr-3">
+          <FlagIcon countryCode={props.countryCode} />
+        </span>
+        <span>{props.children}</span>
       </span>
-      {props.selected ? (
-        <Icon
-          icon={Icons.CIRCLE_CHECK}
-          className="text-xl text-video-context-type-accent"
-        />
-      ) : null}
-    </div>
+    </SelectableLink>
   );
 }
 
@@ -75,7 +62,7 @@ export function CaptionsView({ id }: { id: string }) {
 
   return (
     <>
-      <Context.BackLink
+      <Menu.BackLink
         onClick={() => router.navigate("/")}
         rightSide={
           <button
@@ -87,8 +74,8 @@ export function CaptionsView({ id }: { id: string }) {
         }
       >
         Captions
-      </Context.BackLink>
-      <Context.Section>
+      </Menu.BackLink>
+      <Menu.Section>
         <CaptionOption onClick={() => disableCaption()} selected={!lang}>
           Off
         </CaptionOption>
@@ -102,7 +89,7 @@ export function CaptionsView({ id }: { id: string }) {
             {v.title}
           </CaptionOption>
         ))}
-      </Context.Section>
+      </Menu.Section>
     </>
   );
 }

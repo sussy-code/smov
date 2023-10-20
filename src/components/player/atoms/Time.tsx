@@ -9,7 +9,7 @@ function durationExceedsHour(secs: number): boolean {
   return secs > 60 * 60;
 }
 
-export function Time() {
+export function Time(props: { short?: boolean }) {
   const timeFormat = usePlayerStore((s) => s.interface.timeFormat);
   const setTimeFormat = usePlayerStore((s) => s.setTimeFormat);
 
@@ -40,16 +40,26 @@ export function Time() {
     },
   });
 
-  const timeString = `${formatSeconds(currentTime, hasHours)} / ${formatSeconds(
-    duration,
-    hasHours
-  )}`;
-  const timeFinishedString = `${t("videoPlayer.timeLeft", {
-    timeLeft: formatSeconds(
+  let timeString;
+  let timeFinishedString;
+  if (props.short) {
+    timeString = formatSeconds(currentTime, hasHours);
+    timeFinishedString = `-${formatSeconds(
       secondsRemaining,
       durationExceedsHour(secondsRemaining)
-    ),
-  })} • ${formattedTimeFinished}`;
+    )}`;
+  } else {
+    timeString = `${formatSeconds(currentTime, hasHours)} / ${formatSeconds(
+      duration,
+      hasHours
+    )}`;
+    timeFinishedString = `${t("videoPlayer.timeLeft", {
+      timeLeft: formatSeconds(
+        secondsRemaining,
+        durationExceedsHour(secondsRemaining)
+      ),
+    })} • ${formattedTimeFinished}`;
+  }
 
   const child =
     timeFormat === VideoPlayerTimeFormat.REGULAR ? (

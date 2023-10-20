@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { useCallback } from "react";
 
-import { Context } from "@/components/player/internals/ContextUtils";
+import { Menu } from "@/components/player/internals/ContextMenu";
 import { useOverlayRouter } from "@/hooks/useOverlayRouter";
 import { usePlayerStore } from "@/stores/player/store";
 
@@ -49,19 +49,19 @@ export function PlaybackSettingsView({ id }: { id: string }) {
 
   return (
     <>
-      <Context.BackLink onClick={() => router.navigate("/")}>
+      <Menu.BackLink onClick={() => router.navigate("/")}>
         Playback settings
-      </Context.BackLink>
-      <Context.Section>
+      </Menu.BackLink>
+      <Menu.Section>
         <div className="space-y-4 mt-3">
-          <Context.FieldTitle>Playback speed</Context.FieldTitle>
+          <Menu.FieldTitle>Playback speed</Menu.FieldTitle>
           <ButtonList
             options={options}
             selected={playbackRate}
             onClick={setPlaybackRate}
           />
         </div>
-      </Context.Section>
+      </Menu.Section>
     </>
   );
 }

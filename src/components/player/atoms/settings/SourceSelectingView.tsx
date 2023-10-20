@@ -1,9 +1,8 @@
-import classNames from "classnames";
 import { ReactNode, useEffect, useMemo, useRef } from "react";
 import { useAsyncFn } from "react-use";
 
-import { Icon, Icons } from "@/components/Icon";
-import { Context } from "@/components/player/internals/ContextUtils";
+import { Menu } from "@/components/player/internals/ContextMenu";
+import { SelectableLink } from "@/components/player/internals/ContextMenu/Links";
 import { convertRunoutputToSource } from "@/components/player/utils/convertRunoutputToSource";
 import { useOverlayRouter } from "@/hooks/useOverlayRouter";
 import { metaToScrapeMedia } from "@/stores/player/slices/source";
@@ -18,31 +17,6 @@ export interface SourceSelectionViewProps {
 export interface EmbedSelectionViewProps {
   id: string;
   sourceId: string | null;
-}
-
-export function SourceOption(props: {
-  children: React.ReactNode;
-  selected?: boolean;
-  onClick?: () => void;
-}) {
-  return (
-    <div
-      onClick={props.onClick}
-      className="grid grid-cols-[1fr,auto] items-center gap-3 rounded -ml-3 -mr-3 px-3 py-2 cursor-pointer hover:bg-video-context-border"
-    >
-      <span
-        className={classNames(props.selected && "text-white", "font-medium")}
-      >
-        {props.children}
-      </span>
-      {props.selected ? (
-        <Icon
-          icon={Icons.CIRCLE_CHECK}
-          className="text-xl text-video-context-type-accent"
-        />
-      ) : null}
-    </div>
-  );
 }
 
 export function EmbedOption(props: {
@@ -76,12 +50,12 @@ export function EmbedOption(props: {
   else if (request.error) content = <span>Failed to scrape</span>;
 
   return (
-    <SourceOption onClick={run}>
+    <SelectableLink onClick={run}>
       <span className="flex flex-col">
         <span>{embedName}</span>
         {content}
       </span>
-    </SourceOption>
+    </SelectableLink>
   );
 }
 
@@ -150,10 +124,10 @@ export function EmbedSelectionView({ sourceId, id }: EmbedSelectionViewProps) {
 
   return (
     <>
-      <Context.BackLink onClick={() => router.navigate("/source")}>
+      <Menu.BackLink onClick={() => router.navigate("/source")}>
         {sourceName}
-      </Context.BackLink>
-      <Context.Section>{content}</Context.Section>
+      </Menu.BackLink>
+      <Menu.Section>{content}</Menu.Section>
     </>
   );
 }
@@ -174,12 +148,12 @@ export function SourceSelectionView({
 
   return (
     <>
-      <Context.BackLink onClick={() => router.navigate("/")}>
+      <Menu.BackLink onClick={() => router.navigate("/")}>
         Sources
-      </Context.BackLink>
-      <Context.Section>
+      </Menu.BackLink>
+      <Menu.Section>
         {sources.map((v) => (
-          <SourceOption
+          <SelectableLink
             key={v.id}
             onClick={() => {
               onChoose?.(v.id);
@@ -188,9 +162,9 @@ export function SourceSelectionView({
             selected={v.id === currentSourceId}
           >
             {v.name}
-          </SourceOption>
+          </SelectableLink>
         ))}
-      </Context.Section>
+      </Menu.Section>
     </>
   );
 }

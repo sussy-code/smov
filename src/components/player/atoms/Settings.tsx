@@ -11,7 +11,7 @@ import {
   SourceSelectionView,
 } from "@/components/player/atoms/settings/SourceSelectingView";
 import { VideoPlayerButton } from "@/components/player/internals/Button";
-import { Context } from "@/components/player/internals/ContextUtils";
+import { Menu } from "@/components/player/internals/ContextMenu";
 import { useOverlayRouter } from "@/hooks/useOverlayRouter";
 import { usePlayerStore } from "@/stores/player/store";
 
@@ -41,34 +41,34 @@ function SettingsOverlay({ id }: { id: string }) {
           <SettingsMenu id={id} />
         </OverlayPage>
         <OverlayPage id={id} path="/quality" width={343} height={400}>
-          <Context.Card>
+          <Menu.Card>
             <QualityView id={id} />
-          </Context.Card>
+          </Menu.Card>
         </OverlayPage>
         <OverlayPage id={id} path="/captions" width={343} height={431}>
-          <Context.Card>
+          <Menu.Card>
             <CaptionsView id={id} />
-          </Context.Card>
+          </Menu.Card>
         </OverlayPage>
         <OverlayPage id={id} path="/captions/settings" width={343} height={310}>
-          <Context.Card>
+          <Menu.Card>
             <CaptionSettingsView id={id} />
-          </Context.Card>
+          </Menu.Card>
         </OverlayPage>
         <OverlayPage id={id} path="/source" width={343} height={431}>
-          <Context.Card>
+          <Menu.Card>
             <SourceSelectionView id={id} onChoose={setChosenSourceId} />
-          </Context.Card>
+          </Menu.Card>
         </OverlayPage>
         <OverlayPage id={id} path="/source/embeds" width={343} height={431}>
-          <Context.Card>
+          <Menu.Card>
             <EmbedSelectionView id={id} sourceId={chosenSourceId} />
-          </Context.Card>
+          </Menu.Card>
         </OverlayPage>
         <OverlayPage id={id} path="/playback" width={343} height={215}>
-          <Context.Card>
+          <Menu.Card>
             <PlaybackSettingsView id={id} />
-          </Context.Card>
+          </Menu.Card>
         </OverlayPage>
       </OverlayRouter>
     </Overlay>

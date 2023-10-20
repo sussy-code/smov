@@ -20,6 +20,7 @@ export interface InterfaceSlice {
     hovering: PlayerHoverState;
     lastHoveringState: PlayerHoverState;
     canAirplay: boolean;
+    hideNextEpisodeBtn: boolean;
 
     volumeChangedWithKeybind: boolean; // has the volume recently been adjusted with the up/down arrows recently?
     volumeChangedWithKeybindDebounce: NodeJS.Timeout | null; // debounce for the duration of the "volume changed thingamajig"
@@ -33,6 +34,7 @@ export interface InterfaceSlice {
   setHoveringLeftControls(state: boolean): void;
   setHasOpenOverlay(state: boolean): void;
   setLastVolume(state: number): void;
+  hideNextEpisodeButton(): void;
 }
 
 export const createInterfaceSlice: MakeSlice<InterfaceSlice> = (set, get) => ({
@@ -48,6 +50,7 @@ export const createInterfaceSlice: MakeSlice<InterfaceSlice> = (set, get) => ({
     volumeChangedWithKeybindDebounce: null,
     timeFormat: VideoPlayerTimeFormat.REGULAR,
     canAirplay: false,
+    hideNextEpisodeBtn: false,
   },
 
   setLastVolume(state) {
@@ -82,6 +85,11 @@ export const createInterfaceSlice: MakeSlice<InterfaceSlice> = (set, get) => ({
   setHoveringLeftControls(state) {
     set((s) => {
       s.interface.leftControlHovering = state;
+    });
+  },
+  hideNextEpisodeButton() {
+    set((s) => {
+      s.interface.hideNextEpisodeBtn = true;
     });
   },
 });

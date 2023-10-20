@@ -1,8 +1,8 @@
 import { useCallback } from "react";
 
 import { Toggle } from "@/components/buttons/Toggle";
-import { Icon, Icons } from "@/components/Icon";
-import { Context } from "@/components/player/internals/ContextUtils";
+import { Menu } from "@/components/player/internals/ContextMenu";
+import { SelectableLink } from "@/components/player/internals/ContextMenu/Links";
 import { useOverlayRouter } from "@/hooks/useOverlayRouter";
 import { usePlayerStore } from "@/stores/player/store";
 import {
@@ -11,32 +11,6 @@ import {
   qualityToString,
 } from "@/stores/player/utils/qualities";
 import { useQualityStore } from "@/stores/quality";
-
-export function QualityOption(props: {
-  children: React.ReactNode;
-  selected?: boolean;
-  disabled?: boolean;
-  onClick?: () => void;
-}) {
-  let textClasses;
-  if (props.selected) textClasses = "text-white";
-  if (props.disabled)
-    textClasses = "text-video-context-type-main text-opacity-40";
-
-  return (
-    <Context.Link onClick={props.disabled ? undefined : props.onClick}>
-      <Context.LinkTitle textClass={textClasses}>
-        {props.children}
-      </Context.LinkTitle>
-      {props.selected ? (
-        <Icon
-          icon={Icons.CIRCLE_CHECK}
-          className="text-xl text-video-context-type-accent"
-        />
-      ) : null}
-    </Context.Link>
-  );
-}
 
 export function QualityView({ id }: { id: string }) {
   const router = useOverlayRouter(id);
@@ -70,12 +44,12 @@ export function QualityView({ id }: { id: string }) {
 
   return (
     <>
-      <Context.BackLink onClick={() => router.navigate("/")}>
+      <Menu.BackLink onClick={() => router.navigate("/")}>
         Quality
-      </Context.BackLink>
-      <Context.Section>
+      </Menu.BackLink>
+      <Menu.Section>
         {allVisibleQualities.map((v) => (
-          <QualityOption
+          <SelectableLink
             key={v}
             selected={v === currentQuality}
             onClick={
@@ -84,21 +58,22 @@ export function QualityView({ id }: { id: string }) {
             disabled={!availableQualities.includes(v)}
           >
             {qualityToString(v)}
-          </QualityOption>
+          </SelectableLink>
         ))}
-        <Context.Divider />
-        <Context.Link>
-          <Context.LinkTitle>Automatic quality</Context.LinkTitle>
-          <Toggle onClick={changeAutomatic} enabled={autoQuality} />
-        </Context.Link>
-        <Context.SmallText>
+        <Menu.Divider />
+        <Menu.Link
+          rightSide={<Toggle onClick={changeAutomatic} enabled={autoQuality} />}
+        >
+          Automatic quality
+        </Menu.Link>
+        <Menu.SmallText>
           You can try{" "}
-          <Context.Anchor onClick={() => router.navigate("/source")}>
+          <Menu.Anchor onClick={() => router.navigate("/source")}>
             switching source
-          </Context.Anchor>{" "}
+          </Menu.Anchor>{" "}
           to get different quality options.
-        </Context.SmallText>
-      </Context.Section>
+        </Menu.SmallText>
+      </Menu.Section>
     </>
   );
 }

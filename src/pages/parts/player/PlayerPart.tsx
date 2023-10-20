@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 import { BrandPill } from "@/components/layout/BrandPill";
 import { Player } from "@/components/player";
 import { useShouldShowControls } from "@/components/player/hooks/useShouldShowControls";
+import { useIsMobile } from "@/hooks/useIsMobile";
 import { PlayerMeta, playerStatus } from "@/stores/player/slices/source";
 import { usePlayerStore } from "@/stores/player/store";
 
@@ -16,6 +17,7 @@ export interface PlayerPartProps {
 export function PlayerPart(props: PlayerPartProps) {
   const { showTargets, showTouchTargets } = useShouldShowControls();
   const status = usePlayerStore((s) => s.status);
+  const { isMobile } = useIsMobile();
 
   return (
     <Player.Container onLoad={props.onLoad}>
@@ -53,21 +55,23 @@ export function PlayerPart(props: PlayerPartProps) {
           <div className="hidden sm:flex items-center justify-end">
             <BrandPill />
           </div>
+          <div className="flex sm:hidden items-center justify-end">
+            <Player.Airplay />
+          </div>
         </div>
       </Player.TopControls>
 
       <Player.BottomControls show={showTargets}>
-        <Player.ProgressBar />
-        <div className="flex justify-between">
-          <Player.LeftSideControls className="hidden lg:flex">
+        <div className="flex items-center space-x-3">
+          {isMobile ? <Player.Time short /> : null}
+          <Player.ProgressBar />
+        </div>
+        <div className="hidden lg:flex justify-between">
+          <Player.LeftSideControls>
             <Player.Pause />
             <Player.SkipBackward />
             <Player.SkipForward />
             <Player.Volume />
-            <Player.Time />
-          </Player.LeftSideControls>
-          <Player.LeftSideControls className="flex lg:hidden">
-            {/* Do mobile controls here :) */}
             <Player.Time />
           </Player.LeftSideControls>
           <div className="flex items-center space-x-3">
@@ -77,9 +81,20 @@ export function PlayerPart(props: PlayerPartProps) {
             <Player.Fullscreen />
           </div>
         </div>
+        <div className="grid grid-cols-[2.5rem,1fr,2.5rem] gap-3 lg:hidden">
+          <div />
+          <div className="flex justify-center space-x-3">
+            <Player.Episodes />
+            <Player.Settings />
+          </div>
+          <div>
+            <Player.Fullscreen />
+          </div>
+        </div>
       </Player.BottomControls>
 
       <Player.VolumeChangedPopout />
+      <Player.NextEpisodeButton controlsShowing={showTargets} />
     </Player.Container>
   );
 }

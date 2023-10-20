@@ -32,7 +32,7 @@ export function ProgressBar() {
   }, [setDraggingTime, duration, dragPercentage]);
 
   return (
-    <div ref={ref}>
+    <div className="w-full" ref={ref}>
       <div
         className="group w-full h-8 flex items-center cursor-pointer"
         onMouseDown={dragMouseDown}

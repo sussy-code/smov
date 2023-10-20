@@ -131,6 +131,15 @@ module.exports = {
                 set: "#A75FC9"
               },
 
+              buttons: {
+                secondary: "#161F25",
+                secondaryText: "#8EA3B0",
+                secondaryHover: "#1B262E",
+                primary: "#fff",
+                primaryText: "#000",
+                primaryHover: "#dedede"
+              },
+
               context: {
                 background: "#0C1216",
                 light: "#4D79A8",

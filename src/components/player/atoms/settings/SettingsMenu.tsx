@@ -1,8 +1,8 @@
 import { useMemo } from "react";
 
 import { Toggle } from "@/components/buttons/Toggle";
-import { Icons } from "@/components/Icon";
-import { Context } from "@/components/player/internals/ContextUtils";
+import { Icon, Icons } from "@/components/Icon";
+import { Menu } from "@/components/player/internals/ContextMenu";
 import { useOverlayRouter } from "@/hooks/useOverlayRouter";
 import { usePlayerStore } from "@/stores/player/store";
 import { qualityToString } from "@/stores/player/utils/qualities";
@@ -35,45 +35,51 @@ export function SettingsMenu({ id }: { id: string }) {
   }
 
   return (
-    <Context.Card>
-      <Context.SectionTitle>Video settings</Context.SectionTitle>
-      <Context.Section>
-        <Context.Link onClick={() => router.navigate("/quality")}>
-          <Context.LinkTitle>Quality</Context.LinkTitle>
-          <Context.LinkChevron>
-            {currentQuality ? qualityToString(currentQuality) : ""}
-          </Context.LinkChevron>
-        </Context.Link>
-        <Context.Link onClick={() => router.navigate("/source")}>
-          <Context.LinkTitle>Video source</Context.LinkTitle>
-          <Context.LinkChevron>{sourceName}</Context.LinkChevron>
-        </Context.Link>
-        <Context.Link>
-          <Context.LinkTitle>Download</Context.LinkTitle>
-          <Context.IconButton icon={Icons.DOWNLOAD} />
-        </Context.Link>
-      </Context.Section>
+    <Menu.Card>
+      <Menu.SectionTitle>Video settings</Menu.SectionTitle>
+      <Menu.Section>
+        <Menu.ChevronLink
+          onClick={() => router.navigate("/quality")}
+          rightText={currentQuality ? qualityToString(currentQuality) : ""}
+        >
+          Quality
+        </Menu.ChevronLink>
+        <Menu.ChevronLink
+          onClick={() => router.navigate("/source")}
+          rightText={sourceName}
+        >
+          Video source
+        </Menu.ChevronLink>
+        <Menu.Link
+          clickable
+          rightSide={<Icon className="text-xl" icon={Icons.DOWNLOAD} />}
+        >
+          Download
+        </Menu.Link>
+      </Menu.Section>
 
-      <Context.SectionTitle>Viewing Experience</Context.SectionTitle>
-      <Context.Section>
-        <Context.Link>
-          <Context.LinkTitle>Enable Captions</Context.LinkTitle>
-          <Toggle
-            enabled={subtitlesEnabled}
-            onClick={() => toggleSubtitles()}
-          />
-        </Context.Link>
-        <Context.Link onClick={() => router.navigate("/captions")}>
-          <Context.LinkTitle>Caption settings</Context.LinkTitle>
-          <Context.LinkChevron>
-            {selectedCaptionLanguage ?? ""}
-          </Context.LinkChevron>
-        </Context.Link>
-        <Context.Link onClick={() => router.navigate("/playback")}>
-          <Context.LinkTitle>Playback settings</Context.LinkTitle>
-          <Context.LinkChevron />
-        </Context.Link>
-      </Context.Section>
-    </Context.Card>
+      <Menu.SectionTitle>Viewing Experience</Menu.SectionTitle>
+      <Menu.Section>
+        <Menu.Link
+          rightSide={
+            <Toggle
+              enabled={subtitlesEnabled}
+              onClick={() => toggleSubtitles()}
+            />
+          }
+        >
+          Enable Captions
+        </Menu.Link>
+        <Menu.ChevronLink
+          onClick={() => router.navigate("/captions")}
+          rightText={selectedCaptionLanguage}
+        >
+          Caption settings
+        </Menu.ChevronLink>
+        <Menu.ChevronLink onClick={() => router.navigate("/playback")}>
+          Playback settings
+        </Menu.ChevronLink>
+      </Menu.Section>
+    </Menu.Card>
   );
 }

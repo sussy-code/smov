@@ -2,7 +2,7 @@ import classNames from "classnames";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { Icon, Icons } from "@/components/Icon";
-import { Context } from "@/components/player/internals/ContextUtils";
+import { Menu } from "@/components/player/internals/ContextMenu";
 import { useOverlayRouter } from "@/hooks/useOverlayRouter";
 import { useProgressBar } from "@/hooks/useProgressBar";
 import { useSubtitleStore } from "@/stores/subtitles";
@@ -80,7 +80,7 @@ function CaptionSetting(props: {
 
   return (
     <div>
-      <Context.FieldTitle>{props.label}</Context.FieldTitle>
+      <Menu.FieldTitle>{props.label}</Menu.FieldTitle>
       <div className="grid items-center grid-cols-[1fr,auto] gap-4">
         <div ref={ref}>
           <div
@@ -165,10 +165,10 @@ export function CaptionSettingsView({ id }: { id: string }) {
 
   return (
     <>
-      <Context.BackLink onClick={() => router.navigate("/captions")}>
+      <Menu.BackLink onClick={() => router.navigate("/captions")}>
         Custom captions
-      </Context.BackLink>
-      <Context.Section className="space-y-6">
+      </Menu.BackLink>
+      <Menu.Section className="space-y-6">
         <CaptionSetting
           label="Text size"
           max={200}
@@ -186,7 +186,7 @@ export function CaptionSettingsView({ id }: { id: string }) {
           textTransformer={(s) => `${s}%`}
         />
         <div className="flex justify-between items-center">
-          <Context.FieldTitle>Color</Context.FieldTitle>
+          <Menu.FieldTitle>Color</Menu.FieldTitle>
           <div className="flex justify-center items-center">
             {colors.map((v) => (
               <ColorOption
@@ -197,7 +197,7 @@ export function CaptionSettingsView({ id }: { id: string }) {
             ))}
           </div>
         </div>
-      </Context.Section>
+      </Menu.Section>
     </>
   );
 }
