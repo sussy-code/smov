@@ -1,6 +1,7 @@
 import { ReactNode, useEffect, useMemo, useRef } from "react";
 import { useAsyncFn } from "react-use";
 
+import { Loading } from "@/components/layout/Loading";
 import { Menu } from "@/components/player/internals/ContextMenu";
 import { SelectableLink } from "@/components/player/internals/ContextMenu/Links";
 import { convertRunoutputToSource } from "@/components/player/utils/convertRunoutputToSource";
@@ -46,8 +47,19 @@ export function EmbedOption(props: {
   }, [props.embedId, props.sourceId, meta, router]);
 
   let content: ReactNode = null;
-  if (request.loading) content = <span>loading...</span>;
-  else if (request.error) content = <span>Failed to scrape</span>;
+  if (request.loading)
+    content = (
+      <Menu.TextDisplay noIcon>
+        <Loading />
+      </Menu.TextDisplay>
+    );
+  else if (request.error)
+    content = (
+      <Menu.TextDisplay title="Failed to scrape">
+        We were unable to find any videos for this source. Don&apos;t come
+        bitchin&apos; to us about it, just try another source.
+      </Menu.TextDisplay>
+    );
 
   return (
     <SelectableLink onClick={run}>
@@ -107,10 +119,25 @@ export function EmbedSelectionView({ sourceId, id }: EmbedSelectionViewProps) {
   }, [run, sourceId]);
 
   let content: ReactNode = null;
-  if (request.loading) content = <p>loading...</p>;
-  else if (request.error) content = <p>Failed to scrape</p>;
+  if (request.loading)
+    content = (
+      <Menu.TextDisplay noIcon>
+        <Loading />
+      </Menu.TextDisplay>
+    );
+  else if (request.error)
+    content = (
+      <Menu.TextDisplay title="Failed to scrape">
+        We were unable to find any videos for this source. Don&apos;t come
+        bitchin&apos; to us about it, just try another source.
+      </Menu.TextDisplay>
+    );
   else if (request.value && request.value.length === 0)
-    content = <p>No embeds found</p>;
+    content = (
+      <Menu.TextDisplay title="No embeds found">
+        We were unable to find any embeds for this source, please try another.
+      </Menu.TextDisplay>
+    );
   else if (request.value)
     content = request.value.map((v) => (
       <EmbedOption

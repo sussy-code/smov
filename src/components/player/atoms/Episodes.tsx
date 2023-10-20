@@ -118,6 +118,11 @@ function EpisodesView({
   else if (loadingState.value) {
     content = (
       <Menu.Section className="pb-6">
+        {loadingState.value.season.episodes.length === 0 ? (
+          <Menu.TextDisplay title="No episodes found">
+            There are no episodes in this season, check back later!
+          </Menu.TextDisplay>
+        ) : null}
         {loadingState.value.season.episodes.map((ep) => {
           return (
             <Menu.ChevronLink

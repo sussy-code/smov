@@ -48,3 +48,25 @@ export function Anchor(props: {
 export function FieldTitle(props: { children: React.ReactNode }) {
   return <p className="font-medium">{props.children}</p>;
 }
+
+export function TextDisplay(props: {
+  children: React.ReactNode;
+  title?: string;
+  noIcon?: boolean;
+}) {
+  return (
+    <div className="w-full h-full flex justify-center items-center text-center">
+      <div className="flex items-center gap-4 flex-col">
+        {props.noIcon ? null : (
+          <div className="w-16 h-10 border border-video-context-border rounded-lg flex justify-center items-center">
+            <Icon className="text-xl" icon={Icons.EYE_SLASH} />
+          </div>
+        )}
+        {props.title ? (
+          <h2 className="text-white text-lg font-bold">{props.title}</h2>
+        ) : null}
+        <div>{props.children}</div>
+      </div>
+    </div>
+  );
+}
