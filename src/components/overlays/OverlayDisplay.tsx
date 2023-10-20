@@ -64,7 +64,7 @@ export function Overlay(props: OverlayProps) {
       {portalElement
         ? createPortal(
             <Transition show={router.isOverlayActive()} animation="none">
-              <div className="popout-wrapper pointer-events-auto fixed inset-0 z-[999] select-none">
+              <div className="popout-wrapper absolute overflow-hidden pointer-events-auto inset-0 z-[999] select-none">
                 <Transition animation="fade" isChild>
                   <div
                     onClick={click}
@@ -74,7 +74,11 @@ export function Overlay(props: OverlayProps) {
                     })}
                   />
                 </Transition>
-                <Transition animation="slide-up" className="h-0" isChild>
+                <Transition
+                  animation="slide-up"
+                  className="absolute inset-0 pointer-events-none"
+                  isChild
+                >
                   {props.children}
                 </Transition>
               </div>

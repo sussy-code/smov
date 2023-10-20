@@ -194,7 +194,11 @@ interface EpisodesProps {
   onChange?: (meta: PlayerMeta) => void;
 }
 
-export function Episodes(props: EpisodesProps) {
+export function EpisodesRouter(props: EpisodesProps) {
+  return <EpisodesOverlay onChange={props.onChange} id="episodes" />;
+}
+
+export function Episodes() {
   const { t } = useTranslation();
   const router = useOverlayRouter("episodes");
   const setHasOpenOverlay = usePlayerStore((s) => s.setHasOpenOverlay);
@@ -213,7 +217,6 @@ export function Episodes(props: EpisodesProps) {
       >
         {t("videoPlayer.buttons.episodes")}
       </VideoPlayerButton>
-      <EpisodesOverlay onChange={props.onChange} id={router.id} />
     </OverlayAnchor>
   );
 }

@@ -23,6 +23,8 @@ export function PlayerPart(props: PlayerPartProps) {
     <Player.Container onLoad={props.onLoad}>
       {props.children}
       <Player.BlackOverlay show={showTargets} />
+      <Player.EpisodesRouter onChange={props.onMetaChange} />
+      <Player.SettingsRouter />
       <Player.SubtitleView controlsShown={showTargets} />
 
       {status === playerStatus.PLAYING ? (
@@ -75,7 +77,7 @@ export function PlayerPart(props: PlayerPartProps) {
             <Player.Time />
           </Player.LeftSideControls>
           <div className="flex items-center space-x-3">
-            <Player.Episodes onChange={props.onMetaChange} />
+            <Player.Episodes />
             <Player.Airplay />
             <Player.Settings />
             <Player.Fullscreen />

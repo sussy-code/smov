@@ -75,6 +75,10 @@ function SettingsOverlay({ id }: { id: string }) {
   );
 }
 
+export function SettingsRouter() {
+  return <SettingsOverlay id="settings" />;
+}
+
 export function Settings() {
   const router = useOverlayRouter("settings");
   const setHasOpenOverlay = usePlayerStore((s) => s.setHasOpenOverlay);
@@ -86,7 +90,6 @@ export function Settings() {
   return (
     <OverlayAnchor id={router.id}>
       <VideoPlayerButton onClick={() => router.open()} icon={Icons.GEAR} />
-      <SettingsOverlay id={router.id} />
     </OverlayAnchor>
   );
 }
