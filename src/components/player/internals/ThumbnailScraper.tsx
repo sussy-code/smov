@@ -88,7 +88,10 @@ class ThumnbnailWorker {
 
     // TODO make a queue based on refinement algorithm
 
-    const queue = [0.5, 0, 1, 0.25, 0.75];
+    const sections = 50;
+    const queue = Array(sections + 1)
+      .fill(0)
+      .map((_, i) => i / sections);
     for (let i = 0; i < queue.length; i += 1) {
       if (this.interrupted) return;
       await this.takeSnapshot(vid.duration * queue[i]);
