@@ -11,6 +11,7 @@ import {
 import { useProgressBar } from "@/hooks/useProgressBar";
 import { nearestImageAt } from "@/stores/player/slices/thumbnails";
 import { usePlayerStore } from "@/stores/player/store";
+import { durationExceedsHour, formatSeconds } from "@/utils/formatSeconds";
 
 function ThumbnailDisplay(props: { at: number }) {
   const thumbnailImages = usePlayerStore((s) => s.thumbnails.images);
@@ -19,7 +20,17 @@ function ThumbnailDisplay(props: { at: number }) {
   }, [thumbnailImages, props.at]);
 
   if (!currentThumbnail) return null;
-  return <img src={currentThumbnail.data} className="h-12 -translate-x-1/2" />;
+  return (
+    <div className="flex flex-col items-center -translate-x-1/2">
+      <img
+        src={currentThumbnail.data}
+        className="h-24 border rounded-xl border-gray-800"
+      />
+      <p className="text-center">
+        {formatSeconds(props.at, durationExceedsHour(props.at))}
+      </p>
+    </div>
+  );
 }
 
 function useMouseHoverPosition(barRef: RefObject<HTMLDivElement>) {

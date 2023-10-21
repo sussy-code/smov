@@ -19,3 +19,7 @@ export function formatSeconds(secs: number, showHours = false): string {
   if (!showHours) return [paddedMins, paddedSecs].join(":");
   return [hours, paddedMins, paddedSecs].join(":");
 }
+
+export function durationExceedsHour(secs: number): boolean {
+  return secs > 60 * 60;
+}
