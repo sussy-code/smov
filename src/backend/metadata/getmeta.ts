@@ -181,6 +181,10 @@ export async function convertLegacyUrl(
 
   const urlParts = url.split("/").slice(2);
   const [, type, id] = urlParts[0].split("-", 3);
+  const suffix = urlParts
+    .slice(1)
+    .map((v) => `/${v}`)
+    .join("");
 
   if (isLegacyMediaType(url)) {
     const details = await getMediaDetails(id, TMDBContentTypes.TV);
@@ -188,7 +192,7 @@ export async function convertLegacyUrl(
       MWMediaType.SERIES,
       details.id.toString(),
       details.name
-    )}`;
+    )}${suffix}`;
   }
 
   const mediaType = TMDBMediaToMediaType(type as TMDBContentTypes);
