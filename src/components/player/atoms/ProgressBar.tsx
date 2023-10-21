@@ -19,7 +19,7 @@ function ThumbnailDisplay(props: { at: number }) {
   }, [thumbnailImages, props.at]);
 
   if (!currentThumbnail) return null;
-  return <img src={currentThumbnail.data} className="h-12" />;
+  return <img src={currentThumbnail.data} className="h-12 -translate-x-1/2" />;
 }
 
 function useMouseHoverPosition(barRef: RefObject<HTMLDivElement>) {
@@ -72,8 +72,6 @@ export function ProgressBar() {
     setDraggingTime((dragPercentage / 100) * duration);
   }, [setDraggingTime, duration, dragPercentage]);
 
-  const mousePosition = Math.floor(dragPercentage * duration);
-
   return (
     <div className="w-full relative">
       <div className="top-0 absolute inset-x-0">
@@ -84,7 +82,7 @@ export function ProgressBar() {
               left: `${mousePos}%`,
             }}
           >
-            <ThumbnailDisplay at={mousePosition} />
+            <ThumbnailDisplay at={Math.floor((mousePos / 100) * duration)} />
           </div>
         ) : null}
       </div>

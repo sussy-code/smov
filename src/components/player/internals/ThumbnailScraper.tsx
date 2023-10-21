@@ -74,6 +74,7 @@ class ThumnbnailWorker {
       this.canvasEl.height
     );
     const imgUrl = this.canvasEl.toDataURL();
+    if (this.interrupted) return;
     this.cb({
       at,
       data: imgUrl,
@@ -84,13 +85,20 @@ class ThumnbnailWorker {
     const vid = this.videoEl;
     if (!vid) return;
     await this.initVideo();
-    if (this.interrupted) return;
-    await this.takeSnapshot(vid.duration / 2);
+
+    // TODO make a queue based on refinement algorithm
+
+    const queue = [0.5, 0.25, 0.75];
+    for (let i = 0; i < queue.length; i += 1) {
+      if (this.interrupted) return;
+      await this.takeSnapshot(vid.duration * queue[i]);
+    }
   }
 }
 
 export function ThumbnailScraper() {
   const addImage = usePlayerStore((s) => s.thumbnails.addImage);
+  const meta = usePlayerStore((s) => s.meta);
   const source = usePlayerStore((s) => s.source);
   const workerRef = useRef<ThumnbnailWorker | null>(null);
 
@@ -101,8 +109,6 @@ export function ThumbnailScraper() {
       lastChosenQuality: "360",
     });
   }, [source]);
-
-  // TODO stop worker on meta change
 
   // start worker with the stream
   useEffect(() => {
@@ -119,9 +125,25 @@ export function ThumbnailScraper() {
   // destroy worker on unmount
   useEffect(() => {
     return () => {
-      if (workerRef.current) workerRef.current.destroy();
+      if (workerRef.current) {
+        workerRef.current.destroy();
+        workerRef.current = null;
+      }
     };
   }, []);
+
+  // if targeted meta changes, abort the scraper
+  const serializedMeta = JSON.stringify({
+    id: meta?.tmdbId,
+    ep: meta?.episode?.tmdbId,
+    se: meta?.season?.tmdbId,
+  });
+  useEffect(() => {
+    if (workerRef.current) {
+      workerRef.current.destroy();
+      workerRef.current = null;
+    }
+  }, [serializedMeta]);
 
   return null;
 }

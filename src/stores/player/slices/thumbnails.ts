@@ -28,7 +28,7 @@ export function nearestImageAt(
   // no images, early return
   if (images.length === 0) return null;
 
-  const indexPastTimestamp = images.findIndex((v) => v.at < at);
+  const indexPastTimestamp = images.findIndex((v) => v.at > at);
 
   // no image found past timestamp, so last image must be closest
   if (indexPastTimestamp === -1)
@@ -76,13 +76,14 @@ export const createThumbnailSlice: MakeSlice<ThumbnailSlice> = (set, get) => ({
     addImage(img) {
       const store = get();
       const exactOrPastImageIndex = store.thumbnails.images.findIndex(
-        (v) => v.at <= img.at
+        (v) => v.at >= img.at
       );
 
       // not found past or exact, so just append to the end
       if (exactOrPastImageIndex === -1) {
         set((s) => {
           s.thumbnails.images.push(img);
+          s.thumbnails.images = [...s.thumbnails.images];
         });
         return;
       }
@@ -93,6 +94,7 @@ export const createThumbnailSlice: MakeSlice<ThumbnailSlice> = (set, get) => ({
       if (exactOrPastImage.at === img.at) {
         set((s) => {
           s.thumbnails.images[exactOrPastImageIndex] = img;
+          s.thumbnails.images = [...s.thumbnails.images];
         });
         return;
       }
@@ -100,6 +102,7 @@ export const createThumbnailSlice: MakeSlice<ThumbnailSlice> = (set, get) => ({
       // found one past, insert right before it
       set((s) => {
         s.thumbnails.images.splice(exactOrPastImageIndex, 0, img);
+        s.thumbnails.images = [...s.thumbnails.images];
       });
     },
   },
