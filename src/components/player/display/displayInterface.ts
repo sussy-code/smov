@@ -35,6 +35,7 @@ export interface DisplayInterface extends Listener<DisplayInterfaceEvents> {
   processVideoElement(video: HTMLVideoElement): void;
   processContainerElement(container: HTMLElement): void;
   toggleFullscreen(): void;
+  togglePictureInPicture(): void;
   setSeeking(active: boolean): void;
   setVolume(vol: number): void;
   setTime(t: number): void;

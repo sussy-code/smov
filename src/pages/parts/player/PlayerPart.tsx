@@ -79,6 +79,7 @@ export function PlayerPart(props: PlayerPartProps) {
           </Player.LeftSideControls>
           <div className="flex items-center space-x-3">
             <Player.Episodes />
+            <Player.Pip />
             <Player.Airplay />
             <Player.Chromecast />
             <Player.Settings />

@@ -42,6 +42,14 @@ function hlsLevelsToQualities(levels: Level[]): SourceQuality[] {
     .filter((v): v is SourceQuality => !!v);
 }
 
+export function canWebkitPictureInPicture(): boolean {
+  return "webkitSupportsPresentationMode" in document.createElement("video");
+}
+
+export function canPictureInPicture(): boolean {
+  return "pictureInPictureEnabled" in document;
+}
+
 export function makeVideoElementDisplayInterface(): DisplayInterface {
   const { emit, on, off } = makeEmitter<DisplayInterfaceEvents>();
   let source: LoadableSource | null = null;
@@ -303,6 +311,24 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
         if (videoElement) {
           emit("needstrack", true);
           (videoElement as any).webkitEnterFullscreen();
+        }
+      }
+    },
+    togglePictureInPicture() {
+      if (!videoElement) return;
+      if (canWebkitPictureInPicture()) {
+        const webkitPlayer = videoElement as any;
+        webkitPlayer.webkitSetPresentationMode(
+          webkitPlayer.webkitPresentationMode === "picture-in-picture"
+            ? "inline"
+            : "picture-in-picture"
+        );
+      }
+      if (canPictureInPicture()) {
+        if (videoElement !== document.pictureInPictureElement) {
+          videoElement.requestPictureInPicture();
+        } else {
+          document.exitPictureInPicture();
         }
       }
     },
