@@ -13,22 +13,57 @@ import { nearestImageAt } from "@/stores/player/slices/thumbnails";
 import { usePlayerStore } from "@/stores/player/store";
 import { durationExceedsHour, formatSeconds } from "@/utils/formatSeconds";
 
-function ThumbnailDisplay(props: { at: number }) {
+function ThumbnailDisplay(props: { at: number; show: boolean }) {
   const thumbnailImages = usePlayerStore((s) => s.thumbnails.images);
   const currentThumbnail = useMemo(() => {
     return nearestImageAt(thumbnailImages, props.at)?.image;
   }, [thumbnailImages, props.at]);
+  const [offsets, setOffsets] = useState({
+    offscreenLeft: 0,
+    offscreenRight: 0,
+  });
+  const ref = useRef<HTMLImageElement>(null);
 
-  if (!currentThumbnail) return null;
+  useEffect(() => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const padding = 32;
+    const left = Math.max(0, (rect.left - padding) * -1);
+    const right = Math.max(0, rect.right + padding - window.innerWidth);
+
+    setOffsets({
+      offscreenLeft: left,
+      offscreenRight: right,
+    });
+  }, [props.at]);
+
+  if (!props.show || !currentThumbnail) return null;
   return (
     <div className="flex flex-col items-center -translate-x-1/2">
-      <img
-        src={currentThumbnail.data}
-        className="h-24 border rounded-xl border-gray-800"
-      />
-      <p className="text-center">
-        {formatSeconds(props.at, durationExceedsHour(props.at))}
-      </p>
+      <div className="w-screen flex justify-center">
+        <div ref={ref}>
+          <div
+            style={{
+              transform: `translateX(${
+                offsets.offscreenLeft > 0
+                  ? offsets.offscreenLeft
+                  : -offsets.offscreenRight
+              }px)`,
+            }}
+          >
+            <img
+              src={currentThumbnail.data}
+              className="h-24 border rounded-xl border-gray-800"
+            />
+            <p className="text-center mt-1">
+              {formatSeconds(
+                Math.max(props.at, 0),
+                durationExceedsHour(props.at)
+              )}
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
@@ -86,16 +121,17 @@ export function ProgressBar() {
   return (
     <div className="w-full relative">
       <div className="top-0 absolute inset-x-0">
-        {mousePos > -1 ? (
-          <div
-            className="absolute bottom-0"
-            style={{
-              left: `${mousePos}%`,
-            }}
-          >
-            <ThumbnailDisplay at={Math.floor((mousePos / 100) * duration)} />
-          </div>
-        ) : null}
+        <div
+          className="absolute bottom-0"
+          style={{
+            left: `${mousePos}%`,
+          }}
+        >
+          <ThumbnailDisplay
+            at={Math.floor((mousePos / 100) * duration)}
+            show={mousePos > -1}
+          />
+        </div>
       </div>
 
       <div className="w-full" ref={ref}>
