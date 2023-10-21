@@ -39,18 +39,6 @@ function getKey(key: keyof Config, defaultString?: string): string {
   return getKeyValue(key) ?? defaultString ?? "";
 }
 
-export function assertConfig() {
-  const keys: Array<keyof Config> = ["TMDB_READ_API_KEY", "CORS_PROXY_URL"];
-  const values = keys.map((key) => {
-    const val = getKeyValue(key);
-    if (val) return val;
-    // eslint-disable-next-line no-alert
-    window.alert(`Misconfigured instance, missing key: ${key}`);
-    return val;
-  });
-  if (values.includes(undefined)) throw new Error("Misconfigured instance");
-}
-
 export function conf(): RuntimeConfig {
   return {
     APP_VERSION,
