@@ -5,6 +5,22 @@ import { ThumbnailImage } from "@/stores/player/slices/thumbnails";
 import { usePlayerStore } from "@/stores/player/store";
 import { LoadableSource, selectQuality } from "@/stores/player/utils/qualities";
 
+function makeQueue(layers: number): number[] {
+  const output = [0, 1];
+  let segmentSize = 0.5;
+  let lastSegmentAmount = 0;
+  for (let layer = 0; layer < layers; layer += 1) {
+    const segmentAmount = 1 / segmentSize - 1;
+    for (let i = 0; i < segmentAmount - lastSegmentAmount; i += 1) {
+      const offset = i * segmentSize * 2;
+      output.push(offset + segmentSize);
+    }
+    lastSegmentAmount = segmentAmount;
+    segmentSize /= 2;
+  }
+  return output;
+}
+
 class ThumnbnailWorker {
   interrupted: boolean;
 
@@ -86,12 +102,7 @@ class ThumnbnailWorker {
     if (!vid) return;
     await this.initVideo();
 
-    // TODO make a queue based on refinement algorithm
-
-    const sections = 50;
-    const queue = Array(sections + 1)
-      .fill(0)
-      .map((_, i) => i / sections);
+    const queue = makeQueue(6); // 7 layers is 63 thumbnails evenly distributed
     for (let i = 0; i < queue.length; i += 1) {
       if (this.interrupted) return;
       await this.takeSnapshot(vid.duration * queue[i]);
