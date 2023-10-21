@@ -40,7 +40,7 @@ export function HomePage() {
 
   return (
     <HomeLayout showBg={showBg}>
-      <div className="relative z-10 mb-16 sm:mb-24">
+      <div className="mb-16 sm:mb-24">
         <Helmet>
           <title>{t("global.name")}</title>
         </Helmet>

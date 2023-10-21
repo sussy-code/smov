@@ -2,7 +2,7 @@ import {
   Transition as HeadlessTransition,
   TransitionClasses,
 } from "@headlessui/react";
-import { Fragment, ReactNode } from "react";
+import { CSSProperties, Fragment, ReactNode } from "react";
 
 export type TransitionAnimations =
   | "slide-down"
@@ -19,6 +19,7 @@ interface Props {
   className?: string;
   children?: ReactNode;
   isChild?: boolean;
+  style?: CSSProperties;
 }
 
 function getClasses(
@@ -90,14 +91,18 @@ export function Transition(props: Props) {
   if (props.isChild) {
     return (
       <HeadlessTransition.Child as={Fragment} {...classes}>
-        <div className={props.className}>{props.children}</div>
+        <div className={props.className} style={props.style}>
+          {props.children}
+        </div>
       </HeadlessTransition.Child>
     );
   }
 
   return (
     <HeadlessTransition show={props.show} as={Fragment} {...classes}>
-      <div className={props.className}>{props.children}</div>
+      <div className={props.className} style={props.style}>
+        {props.children}
+      </div>
     </HeadlessTransition>
   );
 }

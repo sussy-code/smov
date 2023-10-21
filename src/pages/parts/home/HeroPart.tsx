@@ -5,8 +5,8 @@ import Sticky from "react-stickynode";
 import { ThinContainer } from "@/components/layout/ThinContainer";
 import { SearchBarInput } from "@/components/SearchBar";
 import { Title } from "@/components/text/Title";
-import { useBannerSize } from "@/hooks/useBanner";
 import { useSearchQuery } from "@/hooks/useSearchQuery";
+import { useBannerSize } from "@/stores/banner";
 
 export interface HeroPartProps {
   setIsSticky: (val: boolean) => void;

@@ -1,7 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
-export function useIsOnline() {
-  const [online, setOnline] = useState<boolean | null>(true);
+import { useBannerStore } from "@/stores/banner";
+
+export function useOnlineListener() {
+  const updateOnline = useBannerStore((s) => s.updateOnline);
   const ref = useRef<boolean>(true);
 
   useEffect(() => {
@@ -21,12 +23,12 @@ export function useIsOnline() {
       const signal = abort.signal;
       fetch("/ping.txt", { signal })
         .then(() => {
-          setOnline(true);
+          updateOnline(true);
           ref.current = true;
         })
         .catch((err) => {
           if (err.name === "AbortError") return;
-          setOnline(false);
+          updateOnline(false);
           ref.current = false;
         });
     }, 5000);
@@ -35,7 +37,5 @@ export function useIsOnline() {
       clearInterval(interval);
       if (abort) abort.abort();
     };
-  }, []);
-
-  return online;
+  }, [updateOnline]);
 }
