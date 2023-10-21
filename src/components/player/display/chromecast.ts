@@ -179,6 +179,9 @@ export function makeChromecastDisplayInterface(
         if (containerElement) fscreen.requestFullscreen(containerElement);
       }
     },
+    togglePictureInPicture() {
+      // Can't PIP while Chromecasting
+    },
     startAirplay() {
       // cant airplay while chromecasting
     },

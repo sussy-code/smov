@@ -15,7 +15,9 @@ import {
   canChangeVolume,
   canFullscreen,
   canFullscreenAnyElement,
+  canPictureInPicture,
   canWebkitFullscreen,
+  canWebkitPictureInPicture,
 } from "@/utils/detectFeatures";
 import { makeEmitter } from "@/utils/events";
 
@@ -40,14 +42,6 @@ function hlsLevelsToQualities(levels: Level[]): SourceQuality[] {
   return levels
     .map((v) => hlsLevelToQuality(v))
     .filter((v): v is SourceQuality => !!v);
-}
-
-export function canWebkitPictureInPicture(): boolean {
-  return "webkitSupportsPresentationMode" in document.createElement("video");
-}
-
-export function canPictureInPicture(): boolean {
-  return "pictureInPictureEnabled" in document;
 }
 
 export function makeVideoElementDisplayInterface(): DisplayInterface {
