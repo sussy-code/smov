@@ -20,6 +20,7 @@ import { Layout } from "@/setup/Layout";
 import { BookmarkContextProvider } from "@/state/bookmark";
 import { SettingsProvider } from "@/state/settings";
 import { WatchedContextProvider } from "@/state/watched";
+import { useHistoryListener } from "@/stores/history";
 
 function LegacyUrlView({ children }: { children: ReactElement }) {
   const location = useLocation();
@@ -55,6 +56,8 @@ function QuickSearch() {
 }
 
 function App() {
+  useHistoryListener();
+
   return (
     <SettingsProvider>
       <WatchedContextProvider>

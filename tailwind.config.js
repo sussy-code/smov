@@ -143,7 +143,8 @@ module.exports = {
               context: {
                 background: "#0C1216",
                 light: "#4D79A8",
-                border: "#141D23",
+                border: "#1d252b",
+                hoverColor: "#1E2A32",
                 buttonFocus: "#202836",
                 flagBg: "#202836",
                 inputBg: "#202836",

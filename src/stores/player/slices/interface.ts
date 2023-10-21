@@ -27,12 +27,14 @@ export interface InterfaceSlice {
     volumeChangedWithKeybindDebounce: NodeJS.Timeout | null; // debounce for the duration of the "volume changed thingamajig"
 
     leftControlHovering: boolean; // is the cursor hovered over the left side of player controls
+    isHoveringControls: boolean; // is the cursor hovered over any controls?
     timeFormat: VideoPlayerTimeFormat; // Time format of the video player
   };
   updateInterfaceHovering(newState: PlayerHoverState): void;
   setSeeking(seeking: boolean): void;
   setTimeFormat(format: VideoPlayerTimeFormat): void;
   setHoveringLeftControls(state: boolean): void;
+  setHoveringAnyControls(state: boolean): void;
   setHasOpenOverlay(state: boolean): void;
   setLastVolume(state: number): void;
   hideNextEpisodeButton(): void;
@@ -46,6 +48,7 @@ export const createInterfaceSlice: MakeSlice<InterfaceSlice> = (set, get) => ({
     isSeeking: false,
     lastVolume: 0,
     leftControlHovering: false,
+    isHoveringControls: false,
     hovering: PlayerHoverState.NOT_HOVERING,
     lastHoveringState: PlayerHoverState.NOT_HOVERING,
     volumeChangedWithKeybind: false,
@@ -87,6 +90,11 @@ export const createInterfaceSlice: MakeSlice<InterfaceSlice> = (set, get) => ({
   setHoveringLeftControls(state) {
     set((s) => {
       s.interface.leftControlHovering = state;
+    });
+  },
+  setHoveringAnyControls(state) {
+    set((s) => {
+      s.interface.isHoveringControls = state;
     });
   },
   hideNextEpisodeButton() {

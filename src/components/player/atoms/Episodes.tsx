@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { ReactNode, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useAsync } from "react-use";
@@ -5,6 +6,7 @@ import { useAsync } from "react-use";
 import { getMetaFromId } from "@/backend/metadata/getmeta";
 import { MWMediaType, MWSeasonMeta } from "@/backend/metadata/types/mw";
 import { Icons } from "@/components/Icon";
+import { ProgressRing } from "@/components/layout/ProgressRing";
 import { OverlayAnchor } from "@/components/overlays/OverlayAnchor";
 import { Overlay } from "@/components/overlays/OverlayDisplay";
 import { OverlayPage } from "@/components/overlays/OverlayPage";
@@ -15,6 +17,7 @@ import { Menu } from "@/components/player/internals/ContextMenu";
 import { useOverlayRouter } from "@/hooks/useOverlayRouter";
 import { PlayerMeta } from "@/stores/player/slices/source";
 import { usePlayerStore } from "@/stores/player/store";
+import { useProgressStore } from "@/stores/progress";
 
 function CenteredText(props: { children: React.ReactNode }) {
   return (
@@ -98,6 +101,7 @@ function EpisodesView({
   const { setPlayerMeta } = usePlayerMeta();
   const meta = usePlayerStore((s) => s.meta);
   const [loadingState] = useSeasonData(meta?.tmdbId ?? "", selectedSeason);
+  const progress = useProgressStore();
 
   const playEpisode = useCallback(
     (episodeId: string) => {
@@ -109,6 +113,8 @@ function EpisodesView({
     },
     [setPlayerMeta, loadingState, router, onChange]
   );
+
+  if (!meta?.tmdbId) return null;
 
   let content: ReactNode = null;
   if (loadingState.error)
@@ -124,21 +130,47 @@ function EpisodesView({
           </Menu.TextDisplay>
         ) : null}
         {loadingState.value.season.episodes.map((ep) => {
+          const episodeProgress =
+            progress.items[meta?.tmdbId]?.episodes?.[ep.id];
+
+          let rightSide;
+          if (episodeProgress) {
+            const percentage =
+              (episodeProgress.progress.watched /
+                episodeProgress.progress.duration) *
+              100;
+            rightSide = (
+              <ProgressRing
+                className="h-[18px] w-[18px] text-white"
+                percentage={percentage > 90 ? 100 : percentage}
+              />
+            );
+          }
+
           return (
-            <Menu.ChevronLink
+            <Menu.Link
               key={ep.id}
               onClick={() => playEpisode(ep.id)}
               active={ep.id === meta?.episode?.tmdbId}
+              clickable
+              rightSide={rightSide}
             >
               <Menu.LinkTitle>
                 <div className="text-left flex items-center space-x-3">
-                  <span className="p-0.5 px-2 rounded inline bg-video-context-border">
+                  <span
+                    className={classNames(
+                      "p-0.5 px-2 rounded inline bg-video-context-hoverColor",
+                      ep.id === meta?.episode?.tmdbId
+                        ? "text-white bg-opacity-100"
+                        : "bg-opacity-50"
+                    )}
+                  >
                     E{ep.number}
                   </span>
                   <span className="line-clamp-1 break-all">{ep.title}</span>
                 </div>
               </Menu.LinkTitle>
-            </Menu.ChevronLink>
+            </Menu.Link>
           );
         })}
       </Menu.Section>

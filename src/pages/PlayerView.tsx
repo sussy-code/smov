@@ -1,5 +1,5 @@
 import { RunOutput } from "@movie-web/providers";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 
 import { usePlayer } from "@/components/player/hooks/usePlayer";
@@ -8,6 +8,7 @@ import { convertRunoutputToSource } from "@/components/player/utils/convertRunou
 import { MetaPart } from "@/pages/parts/player/MetaPart";
 import { PlayerPart } from "@/pages/parts/player/PlayerPart";
 import { ScrapingPart } from "@/pages/parts/player/ScrapingPart";
+import { useLastNonPlayerLink } from "@/stores/history";
 import { PlayerMeta, playerStatus } from "@/stores/player/slices/source";
 
 export function PlayerView() {
@@ -19,7 +20,7 @@ export function PlayerView() {
   }>();
   const { status, playMedia, reset } = usePlayer();
   const { setPlayerMeta, scrapeMedia } = usePlayerMeta();
-  const [backUrl] = useState("/"); // TODO redirect to search when needed
+  const backUrl = useLastNonPlayerLink();
 
   const paramsData = JSON.stringify({
     media: params.media,

@@ -1,6 +1,7 @@
 import Hls from "hls.js";
-import { useEffect, useMemo, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 
+import { playerStatus } from "@/stores/player/slices/source";
 import { ThumbnailImage } from "@/stores/player/slices/thumbnails";
 import { usePlayerStore } from "@/stores/player/store";
 import { LoadableSource, selectQuality } from "@/stores/player/utils/qualities";
@@ -54,12 +55,12 @@ class ThumnbnailWorker {
   }
 
   destroy() {
-    this.hls?.detachMedia();
-    this.hls?.destroy();
-    this.hls = null;
     this.interrupted = true;
     this.videoEl = null;
     this.canvasEl = null;
+    this.hls?.detachMedia();
+    this.hls?.destroy();
+    this.hls = null;
   }
 
   private async initVideo() {
@@ -91,6 +92,7 @@ class ThumnbnailWorker {
     );
     const imgUrl = this.canvasEl.toDataURL();
     if (this.interrupted) return;
+
     this.cb({
       at,
       data: imgUrl,
@@ -112,29 +114,42 @@ class ThumnbnailWorker {
 
 export function ThumbnailScraper() {
   const addImage = usePlayerStore((s) => s.thumbnails.addImage);
+  const status = usePlayerStore((s) => s.status);
+  const resetImages = usePlayerStore((s) => s.thumbnails.resetImages);
   const meta = usePlayerStore((s) => s.meta);
   const source = usePlayerStore((s) => s.source);
   const workerRef = useRef<ThumnbnailWorker | null>(null);
 
-  const inputStream = useMemo(() => {
-    if (!source) return null;
-    return selectQuality(source, {
-      automaticQuality: false,
-      lastChosenQuality: "360",
-    });
-  }, [source]);
+  // object references dont always trigger changes, so we serialize it to detect *any* change
+  const sourceSeralized = JSON.stringify(source);
 
-  // start worker with the stream
-  useEffect(() => {
+  const start = useCallback(() => {
+    let inputStream = null;
+    if (source)
+      inputStream = selectQuality(source, {
+        automaticQuality: false,
+        lastChosenQuality: "360",
+      });
     // dont interrupt existing working
     if (workerRef.current) return;
+    if (status !== playerStatus.PLAYING) return;
     if (!inputStream) return;
+    resetImages();
     const ins = new ThumnbnailWorker({
       addImage,
     });
     workerRef.current = ins;
     ins.start(inputStream.stream);
-  }, [inputStream, addImage]);
+  }, [source, addImage, resetImages, status]);
+  const startRef = useRef(start);
+  useEffect(() => {
+    startRef.current = start;
+  }, [start, status]);
+
+  // start worker with the stream
+  useEffect(() => {
+    startRef.current();
+  }, [sourceSeralized]);
 
   // destroy worker on unmount
   useEffect(() => {
@@ -157,7 +172,8 @@ export function ThumbnailScraper() {
       workerRef.current.destroy();
       workerRef.current = null;
     }
-  }, [serializedMeta]);
+    startRef.current();
+  }, [serializedMeta, sourceSeralized, status]);
 
   return null;
 }

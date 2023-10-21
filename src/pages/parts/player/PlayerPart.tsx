@@ -20,7 +20,7 @@ export function PlayerPart(props: PlayerPartProps) {
   const { isMobile } = useIsMobile();
 
   return (
-    <Player.Container onLoad={props.onLoad}>
+    <Player.Container onLoad={props.onLoad} showingControls={showTargets}>
       {props.children}
       <Player.BlackOverlay show={showTargets} />
       <Player.EpisodesRouter onChange={props.onMetaChange} />
@@ -98,7 +98,10 @@ export function PlayerPart(props: PlayerPartProps) {
       </Player.BottomControls>
 
       <Player.VolumeChangedPopout />
-      <Player.NextEpisodeButton controlsShowing={showTargets} />
+      <Player.NextEpisodeButton
+        controlsShowing={showTargets}
+        onChange={props.onMetaChange}
+      />
     </Player.Container>
   );
 }

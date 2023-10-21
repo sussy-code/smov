@@ -8,12 +8,16 @@ export function useShouldShowControls() {
   );
   const isPaused = usePlayerStore((s) => s.mediaPlaying.isPaused);
   const hasOpenOverlay = usePlayerStore((s) => s.interface.hasOpenOverlay);
+  const isHoveringControls = usePlayerStore(
+    (s) => s.interface.isHoveringControls
+  );
 
   const isUsingTouch = lastHoveringState === PlayerHoverState.MOBILE_TAPPED;
   const isHovering = hovering !== PlayerHoverState.NOT_HOVERING;
 
   // when using touch, pause screens can be dismissed by tapping
-  const showTargetsWithoutPause = isHovering || hasOpenOverlay;
+  const showTargetsWithoutPause =
+    isHovering || isHoveringControls || hasOpenOverlay;
   const showTargetsIncludingPause = showTargetsWithoutPause || isPaused;
   const showTargets = isUsingTouch
     ? showTargetsWithoutPause

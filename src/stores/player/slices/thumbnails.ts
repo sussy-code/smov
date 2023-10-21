@@ -9,6 +9,7 @@ export interface ThumbnailSlice {
   thumbnails: {
     images: ThumbnailImage[];
     addImage(img: ThumbnailImage): void;
+    resetImages(): void;
   };
 }
 
@@ -73,6 +74,11 @@ export function nearestImageAt(
 export const createThumbnailSlice: MakeSlice<ThumbnailSlice> = (set, get) => ({
   thumbnails: {
     images: [],
+    resetImages() {
+      set((s) => {
+        s.thumbnails.images = [];
+      });
+    },
     addImage(img) {
       const store = get();
       const exactOrPastImageIndex = store.thumbnails.images.findIndex(

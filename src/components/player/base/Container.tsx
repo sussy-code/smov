@@ -13,6 +13,7 @@ import { usePlayerStore } from "@/stores/player/store";
 
 export interface PlayerProps {
   children?: ReactNode;
+  showingControls: boolean;
   onLoad?: () => void;
 }
 
@@ -89,7 +90,7 @@ export function Container(props: PlayerProps) {
         <ProgressSaver />
         <KeyboardEvents />
         <div className="relative h-screen overflow-hidden">
-          <VideoClickTarget />
+          <VideoClickTarget showingControls={props.showingControls} />
           <HeadUpdater />
           {props.children}
         </div>

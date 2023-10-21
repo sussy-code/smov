@@ -41,9 +41,9 @@ export function ScrapingPart(props: ScrapingProps) {
   const currentProvider = sourceOrder.find(
     (s) => sources[s.id].status === "pending"
   );
-  const currentProviderIndex = sourceOrder.findIndex(
-    (provider) => currentProvider?.id === provider.id
-  );
+  const currentProviderIndex =
+    sourceOrder.findIndex((provider) => currentProvider?.id === provider.id) ??
+    sourceOrder.length - 1;
 
   return (
     <div className="h-full w-full relative" ref={containerRef}>

@@ -4,7 +4,7 @@ import { useCallback } from "react";
 import { Icon, Icons } from "@/components/Icon";
 import { usePlayerMeta } from "@/components/player/hooks/usePlayerMeta";
 import { Transition } from "@/components/Transition";
-import { PlayerMetaEpisode } from "@/stores/player/slices/source";
+import { PlayerMeta } from "@/stores/player/slices/source";
 import { usePlayerStore } from "@/stores/player/store";
 
 function shouldShowNextEpisodeButton(
@@ -37,7 +37,10 @@ function Button(props: {
   );
 }
 
-export function NextEpisodeButton(props: { controlsShowing: boolean }) {
+export function NextEpisodeButton(props: {
+  controlsShowing: boolean;
+  onChange?: (meta: PlayerMeta) => void;
+}) {
   const duration = usePlayerStore((s) => s.progress.duration);
   const isHidden = usePlayerStore((s) => s.interface.hideNextEpisodeBtn);
   const meta = usePlayerStore((s) => s.meta);
@@ -67,7 +70,8 @@ export function NextEpisodeButton(props: { controlsShowing: boolean }) {
     const metaCopy = { ...meta };
     metaCopy.episode = nextEp;
     setDirectMeta(metaCopy);
-  }, [setDirectMeta, nextEp, meta]);
+    props.onChange?.(metaCopy);
+  }, [setDirectMeta, nextEp, meta, props]);
 
   if (!meta?.episode || !nextEp) return null;
   if (metaType !== "show") return null;

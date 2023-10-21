@@ -16,8 +16,8 @@ export function usePlayerMeta() {
   const setDirectMeta = useCallback(
     (m: PlayerMeta) => {
       _setPlayerMeta(m);
-      setMeta(m);
       setScrapeStatus();
+      setMeta(m);
     },
     [_setPlayerMeta, setMeta, setScrapeStatus]
   );

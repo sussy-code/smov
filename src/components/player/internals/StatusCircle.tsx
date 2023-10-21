@@ -43,14 +43,14 @@ export function StatusCircle(props: StatusCircle | StatusCircleLoading) {
           props.type === "noresult",
       })}
     >
-      <svg
-        width="100%"
-        height="100%"
-        viewBox="0 0 64 64"
-        xmlns="http://www.w3.org/2000/svg"
-        className="rounded-full -rotate-90"
-      >
-        <Transition animation="fade" show={statusIsLoading(props)}>
+      <Transition animation="fade" show={statusIsLoading(props)}>
+        <svg
+          width="100%"
+          height="100%"
+          viewBox="0 0 64 64"
+          xmlns="http://www.w3.org/2000/svg"
+          className="rounded-full -rotate-90"
+        >
           <a.circle
             strokeWidth="32"
             strokeDasharray={to(spring.percentage, (val) => `${val} 100`)}
@@ -61,8 +61,8 @@ export function StatusCircle(props: StatusCircle | StatusCircleLoading) {
             stroke="currentColor"
             className="transition-[strokeDasharray]"
           />
-        </Transition>
-      </svg>
+        </svg>
+      </Transition>
       <Transition animation="fade" show={props.type === "error"}>
         <Icon
           className="absolute inset-0 flex items-center justify-center text-white"

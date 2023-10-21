@@ -58,8 +58,9 @@ export function Link(props: {
 }) {
   const classes = classNames("flex py-2 px-3 rounded w-full -ml-3", {
     "cursor-default": !props.clickable,
-    "hover:bg-video-context-border cursor-pointer": props.clickable,
-    "bg-video-context-border": props.active,
+    "hover:bg-video-context-hoverColor hover:bg-opacity-50 cursor-pointer":
+      props.clickable,
+    "bg-video-context-hoverColor bg-opacity-50": props.active,
   });
   const styles = { width: "calc(100% + 1.5rem)" };
 

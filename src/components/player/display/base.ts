@@ -54,6 +54,7 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
   let startAt = 0;
   let automaticQuality = false;
   let preferenceQuality: SourceQuality | null = null;
+  let lastVolume = 1;
 
   function reportLevels() {
     if (!hls) return;
@@ -226,6 +227,7 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
       destroyVideoElement();
       videoElement = video;
       setSource();
+      this.setVolume(lastVolume);
     },
     processContainerElement(container) {
       containerElement = container;
@@ -261,11 +263,13 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
       videoElement.currentTime = time;
     },
     async setVolume(v) {
-      if (!videoElement) return;
-
       // clamp time between 0 and 1
       let volume = Math.min(v, 1);
       volume = Math.max(0, volume);
+
+      // actually set
+      lastVolume = v;
+      if (!videoElement) return;
       videoElement.muted = volume === 0; // Muted attribute is always supported
 
       // update state
