@@ -1,3 +1,4 @@
+import { Icon, Icons } from "@/components/Icon";
 import { Menu } from "@/components/player/internals/ContextMenu";
 import { useOverlayRouter } from "@/hooks/useOverlayRouter";
 
@@ -16,9 +17,22 @@ export function DownloadView({ id }: { id: string }) {
             have control over how the downloads are provided.
           </Menu.Paragraph>
           <Menu.Paragraph>
-            To download on iOS, click <Menu.Highlight>Share</Menu.Highlight>,
-            then <Menu.Highlight>Save to File</Menu.Highlight> and then as after
-            you click the button.
+            To download on iOS, click{" "}
+            <Menu.Highlight>
+              <Icon
+                className="inline-block text-xl -mb-1"
+                icon={Icons.IOS_SHARE}
+              />
+            </Menu.Highlight>
+            , then{" "}
+            <Menu.Highlight>
+              Save to Files
+              <Icon
+                className="inline-block text-xl -mb-1 mx-1"
+                icon={Icons.IOS_FILES}
+              />
+            </Menu.Highlight>{" "}
+            , then pick a nice and cozy folder for your video!
           </Menu.Paragraph>
           <Menu.Paragraph>
             To download on Android or PC, click or tap and hold on the video,
