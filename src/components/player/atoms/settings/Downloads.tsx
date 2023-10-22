@@ -15,46 +15,26 @@ export function DownloadView({ id }: { id: string }) {
         Download
       </Menu.BackLink>
       <Menu.Section>
-        <div className="space-y-4 mt-3">
+        <div className="mt-3">
+          <Menu.ChevronLink onClick={() => router.navigate("/download/ios")}>
+            Downloading on iOS
+          </Menu.ChevronLink>
+          <Menu.ChevronLink
+            onClick={() => router.navigate("/download/android")}
+          >
+            Downloading on Android
+          </Menu.ChevronLink>
+          <Menu.ChevronLink onClick={() => router.navigate("/download/pc")}>
+            Downloading on PC
+          </Menu.ChevronLink>
+
+          <Menu.Divider />
+
           <Menu.Paragraph>
             Downloads are taken directly from the provider. movie-web does not
             have control over how the downloads are provided.
           </Menu.Paragraph>
-          <Menu.Paragraph>
-            To download on iOS, click{" "}
-            <Menu.Highlight>
-              <Icon
-                className="inline-block text-xl -mb-1"
-                icon={Icons.IOS_SHARE}
-              />
-            </Menu.Highlight>
-            , then{" "}
-            <Menu.Highlight>
-              Save to Files
-              <Icon
-                className="inline-block text-xl -mb-1 mx-1"
-                icon={Icons.IOS_FILES}
-              />
-            </Menu.Highlight>{" "}
-            . All that&apos;s left to do now is to pick a nice and cozy folder
-            for your video!
-          </Menu.Paragraph>
-          <Menu.Paragraph>
-            To download on Android,{" "}
-            <Menu.Highlight>tap and hold</Menu.Highlight> on the video, then
-            select <Menu.Highlight>save</Menu.Highlight>.
-          </Menu.Paragraph>
-          <Menu.Paragraph>
-            On PC, click the{" "}
-            <Menu.Highlight>
-              three dots
-              <Icon
-                className="inline-block text-xl -mb-1"
-                icon={Icons.MORE_VERTICAL}
-              />
-            </Menu.Highlight>{" "}
-            and click <Menu.Highlight>download</Menu.Highlight>.
-          </Menu.Paragraph>
+
           <a
             href="https://pastebin.com/x9URMct0"
             rel="noreferrer"
@@ -87,17 +67,108 @@ export function CantDownloadView({ id }: { id: string }) {
   );
 }
 
+function AndroidExplanationView({ id }: { id: string }) {
+  const router = useOverlayRouter(id);
+
+  return (
+    <>
+      <Menu.BackLink onClick={() => router.navigate("/download")}>
+        Download / Android
+      </Menu.BackLink>
+      <Menu.Section>
+        <Menu.Paragraph>
+          To download on Android, <Menu.Highlight>tap and hold</Menu.Highlight>{" "}
+          on the video, then select <Menu.Highlight>save</Menu.Highlight>.
+        </Menu.Paragraph>
+      </Menu.Section>
+    </>
+  );
+}
+
+function PCExplanationView({ id }: { id: string }) {
+  const router = useOverlayRouter(id);
+
+  return (
+    <>
+      <Menu.BackLink onClick={() => router.navigate("/download")}>
+        Download / PC
+      </Menu.BackLink>
+      <Menu.Section>
+        <Menu.Paragraph>
+          On PC, click the{" "}
+          <Menu.Highlight>
+            three dots
+            <Icon
+              className="inline-block text-xl -mb-1"
+              icon={Icons.MORE_VERTICAL}
+            />
+          </Menu.Highlight>{" "}
+          and click <Menu.Highlight>download</Menu.Highlight>.
+        </Menu.Paragraph>
+      </Menu.Section>
+    </>
+  );
+}
+
+function IOSExplanationView({ id }: { id: string }) {
+  const router = useOverlayRouter(id);
+
+  return (
+    <>
+      <Menu.BackLink onClick={() => router.navigate("/download")}>
+        Download / iOS
+      </Menu.BackLink>
+      <Menu.Section>
+        <Menu.Paragraph>
+          To download on iOS, click{" "}
+          <Menu.Highlight>
+            <Icon
+              className="inline-block text-xl -mb-1"
+              icon={Icons.IOS_SHARE}
+            />
+          </Menu.Highlight>
+          , then{" "}
+          <Menu.Highlight>
+            Save to Files
+            <Icon
+              className="inline-block text-xl -mb-1 mx-1"
+              icon={Icons.IOS_FILES}
+            />
+          </Menu.Highlight>{" "}
+          . All that&apos;s left to do now is to pick a nice and cozy folder for
+          your video!
+        </Menu.Paragraph>
+      </Menu.Section>
+    </>
+  );
+}
+
 export function DownloadRoutes({ id }: { id: string }) {
   return (
     <>
-      <OverlayPage id={id} path="/download" width={343} height={530}>
+      <OverlayPage id={id} path="/download" width={343} height={440}>
         <Menu.CardWithScrollable>
           <DownloadView id={id} />
         </Menu.CardWithScrollable>
       </OverlayPage>
-      <OverlayPage id={id} path="/download/unable" width={343} height={341}>
+      <OverlayPage id={id} path="/download/unable" width={343} height={440}>
         <Menu.CardWithScrollable>
           <CantDownloadView id={id} />
+        </Menu.CardWithScrollable>
+      </OverlayPage>
+      <OverlayPage id={id} path="/download/ios" width={343} height={440}>
+        <Menu.CardWithScrollable>
+          <IOSExplanationView id={id} />
+        </Menu.CardWithScrollable>
+      </OverlayPage>
+      <OverlayPage id={id} path="/download/android" width={343} height={440}>
+        <Menu.CardWithScrollable>
+          <AndroidExplanationView id={id} />
+        </Menu.CardWithScrollable>
+      </OverlayPage>
+      <OverlayPage id={id} path="/download/pc" width={343} height={440}>
+        <Menu.CardWithScrollable>
+          <PCExplanationView id={id} />
         </Menu.CardWithScrollable>
       </OverlayPage>
     </>
