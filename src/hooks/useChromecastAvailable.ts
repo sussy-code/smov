@@ -34,17 +34,11 @@ export function useChromecast() {
     request.autoplay = true;
 
     const session = instance.current?.getCurrentSession();
-    console.log("testing", session);
     if (!session) return;
 
-    session
-      .loadMedia(request)
-      .then(() => {
-        console.log("Media is loaded");
-      })
-      .catch((e: any) => {
-        console.error(e);
-      });
+    session.loadMedia(request).catch((e: any) => {
+      console.error(e);
+    });
   }
 
   function stopCast() {

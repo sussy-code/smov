@@ -2,7 +2,7 @@ import Fuse from "fuse.js";
 import { ReactNode, useState } from "react";
 import { useAsync, useAsyncFn } from "react-use";
 
-import { languageIdToName } from "@/backend/helpers/subs";
+import { SubtitleSearchItem, languageIdToName } from "@/backend/helpers/subs";
 import { FlagIcon } from "@/components/FlagIcon";
 import { useCaptions } from "@/components/player/hooks/useCaptions";
 import { Menu } from "@/components/player/internals/ContextMenu";
@@ -15,7 +15,9 @@ export function CaptionOption(props: {
   countryCode?: string;
   children: React.ReactNode;
   selected?: boolean;
+  loading?: boolean;
   onClick?: () => void;
+  error?: React.ReactNode;
 }) {
   // Country code overrides
   const countryOverrides: Record<string, string> = {
@@ -34,7 +36,12 @@ export function CaptionOption(props: {
     countryCode = countryOverrides[countryCode];
 
   return (
-    <SelectableLink selected={props.selected} onClick={props.onClick}>
+    <SelectableLink
+      selected={props.selected}
+      loading={props.loading}
+      error={props.error}
+      onClick={props.onClick}
+    >
       <span className="flex items-center">
         <span data-code={props.countryCode} className="mr-3">
           <FlagIcon countryCode={countryCode} />
@@ -45,12 +52,46 @@ export function CaptionOption(props: {
   );
 }
 
-// TODO cache like everything in this view
+function searchSubs(
+  subs: (SubtitleSearchItem & { languageName: string })[],
+  searchQuery: string
+) {
+  const languagesOrder = ["en", "hi", "fr", "de", "nl", "pt"].reverse(); // Reverse is neccesary, not sure why
+
+  let results = subs.sort((a, b) => {
+    if (
+      languagesOrder.indexOf(b.attributes.language) !== -1 ||
+      languagesOrder.indexOf(a.attributes.language) !== -1
+    )
+      return (
+        languagesOrder.indexOf(b.attributes.language) -
+        languagesOrder.indexOf(a.attributes.language)
+      );
+
+    return a.languageName.localeCompare(b.languageName);
+  });
+
+  if (searchQuery.trim().length > 0) {
+    const fuse = new Fuse(subs, {
+      includeScore: true,
+      keys: ["languageName"],
+    });
+
+    results = fuse.search(searchQuery).map((res) => res.item);
+  }
+
+  return results;
+}
+
+// TODO on initialize, download captions
 // TODO fix language names, some are unknown
-// TODO sort languages by common usage
+// TODO delay setting for captions
 export function CaptionsView({ id }: { id: string }) {
   const router = useOverlayRouter(id);
   const lang = usePlayerStore((s) => s.caption.selected?.language);
+  const [currentlyDownloading, setCurrentlyDownloading] = useState<
+    string | null
+  >(null);
   const { search, download, disable } = useCaptions();
 
   const [searchQuery, setSearchQuery] = useState("");
@@ -58,8 +99,11 @@ export function CaptionsView({ id }: { id: string }) {
   const req = useAsync(async () => search(), [search]);
 
   const [downloadReq, startDownload] = useAsyncFn(
-    (subtitleId: string, language: string) => download(subtitleId, language),
-    [download]
+    async (subtitleId: string, language: string) => {
+      setCurrentlyDownloading(subtitleId);
+      return download(subtitleId, language);
+    },
+    [download, setCurrentlyDownloading]
   );
 
   let downloadProgress: ReactNode = null;
@@ -78,22 +122,22 @@ export function CaptionsView({ id }: { id: string }) {
       };
     });
 
-    let results = subs;
-    if (searchQuery.trim().length > 0) {
-      const fuse = new Fuse(subs, {
-        includeScore: true,
-        keys: ["languageName"],
-      });
-
-      results = fuse.search(searchQuery).map((res) => res.item);
-    }
-
-    content = results.map((v) => {
+    content = searchSubs(subs, searchQuery).map((v) => {
       return (
         <CaptionOption
           key={v.id}
           countryCode={v.attributes.language}
           selected={lang === v.attributes.language}
+          loading={
+            v.attributes.legacy_subtitle_id === currentlyDownloading &&
+            downloadReq.loading
+          }
+          error={
+            v.attributes.legacy_subtitle_id === currentlyDownloading &&
+            downloadReq.error
+              ? downloadReq.error
+              : undefined
+          }
           onClick={() =>
             startDownload(
               v.attributes.legacy_subtitle_id,

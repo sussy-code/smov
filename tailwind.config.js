@@ -152,6 +152,7 @@ module.exports = {
                 cardBorder: "#1B262E",
                 slider: "#8787A8",
                 sliderFilled: "#A75FC9",
+                error: "#E44F4F",
 
                 download: {
                   button: "#6b298a",

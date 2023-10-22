@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useAsyncFn } from "react-use";
 
 import { searchForMedia } from "@/backend/metadata/search";
 import { MWQuery } from "@/backend/metadata/types/mw";
@@ -8,7 +9,6 @@ import { Icons } from "@/components/Icon";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 import { MediaGrid } from "@/components/media/MediaGrid";
 import { WatchedMediaCard } from "@/components/media/WatchedMediaCard";
-import { useLoading } from "@/hooks/useLoading";
 import { SearchLoadingPart } from "@/pages/parts/search/SearchLoadingPart";
 import { MediaItem } from "@/utils/mediaTypes";
 
@@ -49,22 +49,20 @@ export function SearchListPart({ searchQuery }: { searchQuery: string }) {
   const { t } = useTranslation();
 
   const [results, setResults] = useState<MediaItem[]>([]);
-  const [runSearchQuery, loading, error] = useLoading((query: MWQuery) =>
-    searchForMedia(query)
-  );
+  const [state, exec] = useAsyncFn((query: MWQuery) => searchForMedia(query));
 
   useEffect(() => {
     async function runSearch(query: MWQuery) {
-      const searchResults = await runSearchQuery(query);
+      const searchResults = await exec(query);
       if (!searchResults) return;
       setResults(searchResults);
     }
 
     if (searchQuery !== "") runSearch({ searchQuery });
-  }, [searchQuery, runSearchQuery]);
+  }, [searchQuery, exec]);
 
-  if (loading) return <SearchLoadingPart />;
-  if (error) return <SearchSuffix failed />;
+  if (state.loading) return <SearchLoadingPart />;
+  if (state.error) return <SearchSuffix failed />;
   if (!results) return null;
 
   return (

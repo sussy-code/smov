@@ -89,6 +89,7 @@ export function PlayerPart(props: PlayerPartProps) {
         <div className="grid grid-cols-[2.5rem,1fr,2.5rem] gap-3 lg:hidden">
           <div />
           <div className="flex justify-center space-x-3">
+            <Player.Pip />
             <Player.Episodes />
             <Player.Settings />
           </div>

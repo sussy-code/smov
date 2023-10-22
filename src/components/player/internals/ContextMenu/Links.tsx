@@ -2,6 +2,7 @@ import classNames from "classnames";
 import { ReactNode } from "react";
 
 import { Icon, Icons } from "@/components/Icon";
+import { Spinner } from "@/components/layout/Spinner";
 import { Title } from "@/components/player/internals/ContextMenu/Misc";
 
 export function Chevron(props: { children?: React.ReactNode }) {
@@ -112,21 +113,34 @@ export function ChevronLink(props: {
 
 export function SelectableLink(props: {
   selected?: boolean;
+  loading?: boolean;
   onClick?: () => void;
   children?: ReactNode;
   disabled?: boolean;
+  error?: ReactNode;
 }) {
-  const rightContent = (
-    <Icon
-      icon={Icons.CIRCLE_CHECK}
-      className="text-xl text-video-context-type-accent"
-    />
-  );
+  let rightContent;
+  if (props.selected) {
+    rightContent = (
+      <Icon
+        icon={Icons.CIRCLE_CHECK}
+        className="text-xl text-video-context-type-accent"
+      />
+    );
+  }
+  if (props.error)
+    rightContent = (
+      <span className="flex items-center text-video-context-error">
+        <Icon className="ml-2" icon={Icons.WARNING} />
+      </span>
+    );
+  if (props.loading) rightContent = <Spinner className="text-xl" />; // should override selected and error
+
   return (
     <Link
       onClick={props.onClick}
       clickable={!props.disabled}
-      rightSide={props.selected ? rightContent : null}
+      rightSide={rightContent}
     >
       <LinkTitle
         textClass={classNames({

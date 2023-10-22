@@ -80,18 +80,15 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
           (v) => v.height === qualityToHlsLevel(availableQuality)
         );
         if (levelIndex !== -1) {
-          console.log("setting level", levelIndex, availableQuality);
           hls.currentLevel = levelIndex;
           hls.loadLevel = levelIndex;
         }
       }
     } else {
-      console.log("setting to automatic");
       hls.currentLevel = -1;
       hls.loadLevel = -1;
     }
     const quality = hlsLevelToQuality(hls.levels[hls.currentLevel]);
-    console.log("updating quality menu", quality);
     emit("changedquality", quality);
   }
 
@@ -117,7 +114,6 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
         hls.on(Hls.Events.LEVEL_SWITCHED, () => {
           if (!hls) return;
           const quality = hlsLevelToQuality(hls.levels[hls.currentLevel]);
-          console.log("EVENT updating quality menu", quality);
           emit("changedquality", quality);
         });
       }
