@@ -106,10 +106,6 @@ export function CaptionsView({ id }: { id: string }) {
     [download, setCurrentlyDownloading]
   );
 
-  let downloadProgress: ReactNode = null;
-  if (downloadReq.loading) downloadProgress = <p>downloading...</p>;
-  else if (downloadReq.error) downloadProgress = <p>failed to download...</p>;
-
   let content: ReactNode = null;
   if (req.loading) content = <p>loading...</p>;
   else if (req.error) content = <p>errored!</p>;
@@ -153,22 +149,25 @@ export function CaptionsView({ id }: { id: string }) {
 
   return (
     <>
-      <Menu.BackLink
-        onClick={() => router.navigate("/")}
-        rightSide={
-          <button
-            type="button"
-            onClick={() => router.navigate("/captions/settings")}
-          >
-            Customize
-          </button>
-        }
-      >
-        Captions
-      </Menu.BackLink>
-      <Menu.Section className="pb-6">
-        <Input value={searchQuery} onInput={setSearchQuery} />
-        {downloadProgress}
+      <div>
+        <Menu.BackLink
+          onClick={() => router.navigate("/")}
+          rightSide={
+            <button
+              type="button"
+              onClick={() => router.navigate("/captions/settings")}
+            >
+              Customize
+            </button>
+          }
+        >
+          Captions
+        </Menu.BackLink>
+        <div className="mt-3">
+          <Input value={searchQuery} onInput={setSearchQuery} />
+        </div>
+      </div>
+      <Menu.Section className="!pt-1 mt-2 pb-3">
         <CaptionOption onClick={() => disable()} selected={!lang}>
           Off
         </CaptionOption>

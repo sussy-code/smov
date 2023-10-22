@@ -5,7 +5,7 @@ export function Input(props: {
   onInput: (str: string) => void;
 }) {
   return (
-    <div className="w-full relative mb-6">
+    <div className="w-full relative">
       <Icon
         className="pointer-events-none absolute top-1/2 left-3 transform -translate-y-1/2 text-video-context-inputPlaceholder"
         icon={Icons.SEARCH}

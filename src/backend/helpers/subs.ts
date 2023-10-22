@@ -82,9 +82,14 @@ export async function searchSubtitles(
   });
 
   return Object.values(sortedByLanguage).map((langs) => {
-    const sortedByRating = langs
-      .filter((v): v is SubtitleSearchItem => !!v.attributes.legacy_subtitle_id) // must have legacy id
-      .sort((a, b) => b.attributes.ratings - a.attributes.ratings);
+    const onlyLegacySubs = langs.filter(
+      (v): v is SubtitleSearchItem => !!v.attributes.legacy_subtitle_id
+    );
+    const sortedByRating = onlyLegacySubs.sort(
+      (a, b) =>
+        b.attributes.ratings * (b.attributes.votes ?? 0) -
+        a.attributes.ratings * (a.attributes.votes ?? 0)
+    );
     return sortedByRating[0];
   });
 }
@@ -95,6 +100,7 @@ export function languageIdToName(langId: string): string | null {
 
 export async function downloadSrt(legacySubId: string): Promise<string> {
   // TODO there is cloudflare protection so this may not always work. what to do about that?
+  // TODO also there is ratelimit on the page itself
   // language code is hardcoded here, it does nothing
   const zipFile = await proxiedFetch<ArrayBuffer>(
     `https://dl.opensubtitles.org/en/subtitleserve/sub/${legacySubId}`,

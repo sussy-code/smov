@@ -68,7 +68,7 @@ export function Link(props: {
   const content = (
     <div className={classNames("flex items-center flex-1", props.className)}>
       <div className="flex-1 text-left">{props.children}</div>
-      <div>{props.rightSide}</div>
+      <div className="flex">{props.rightSide}</div>
     </div>
   );
 
@@ -134,7 +134,7 @@ export function SelectableLink(props: {
         <Icon className="ml-2" icon={Icons.WARNING} />
       </span>
     );
-  if (props.loading) rightContent = <Spinner className="text-xl" />; // should override selected and error
+  if (props.loading) rightContent = <Spinner className="text-lg" />; // should override selected and error
 
   return (
     <Link
