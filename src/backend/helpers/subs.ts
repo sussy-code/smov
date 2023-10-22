@@ -93,34 +93,6 @@ export function languageIdToName(langId: string): string | null {
   return languageMap[langId]?.nativeName ?? null;
 }
 
-// export async function downloadSrt(subId: string): Promise<string> {
-//   const downloadScript = await proxiedFetch<string>(
-//     `https://www.opensubtitles.com/nocache/download/${subId}/subreq.js`,
-//     {
-//       query: {
-//         file_name: "sub",
-//         locale: "en", // locale is ignored
-//         np: "true",
-//         sub_frmt: "srt",
-//         ext_installed: "false",
-//       },
-//     }
-//   );
-
-//   // extract url from script
-//   // example: https://www.opensubtitles.com/download/<LONG_HASH_OF_UPPERCASE_HEX>/subfile/sub.srt
-//   const downloadUrlRegex =
-//     /https:\/\/www.opensubtitles.com\/download\/[A-Fa-f0-9]+\/subfile\/sub\.srt/g;
-//   const matchedUrl = downloadScript.match(downloadUrlRegex);
-//   if (!matchedUrl) throw new Error("No download found");
-//   const downloadUrl = matchedUrl[0];
-
-//   // download
-//   const srtRequest = await fetch(downloadUrl);
-//   const srtData = await srtRequest.text();
-//   return srtData;
-// }
-
 export async function downloadSrt(legacySubId: string): Promise<string> {
   // TODO there is cloudflare protection so this may not always work. what to do about that?
   // language code is hardcoded here, it does nothing
