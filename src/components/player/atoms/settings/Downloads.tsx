@@ -16,6 +16,9 @@ export function DownloadView({ id }: { id: string }) {
       </Menu.BackLink>
       <Menu.Section>
         <div className="mt-3">
+          <Menu.ChevronLink onClick={() => router.navigate("/download/pc")}>
+            Downloading on PC
+          </Menu.ChevronLink>
           <Menu.ChevronLink onClick={() => router.navigate("/download/ios")}>
             Downloading on iOS
           </Menu.ChevronLink>
@@ -23,9 +26,6 @@ export function DownloadView({ id }: { id: string }) {
             onClick={() => router.navigate("/download/android")}
           >
             Downloading on Android
-          </Menu.ChevronLink>
-          <Menu.ChevronLink onClick={() => router.navigate("/download/pc")}>
-            Downloading on PC
           </Menu.ChevronLink>
 
           <Menu.Divider />
@@ -56,7 +56,7 @@ export function CantDownloadView({ id }: { id: string }) {
   return (
     <>
       <Menu.BackLink onClick={() => router.navigate("/")}>
-        Playback settings
+        Download
       </Menu.BackLink>
       <Menu.Section>
         <Menu.Paragraph>
