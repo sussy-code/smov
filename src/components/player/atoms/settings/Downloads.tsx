@@ -1,13 +1,27 @@
+import { useMemo } from "react";
+
 import { Icon, Icons } from "@/components/Icon";
 import { OverlayPage } from "@/components/overlays/OverlayPage";
 import { Menu } from "@/components/player/internals/ContextMenu";
 import { useOverlayRouter } from "@/hooks/useOverlayRouter";
 import { usePlayerStore } from "@/stores/player/store";
 
+function useDownloadLink() {
+  const source = usePlayerStore((s) => s.source);
+  const currentQuality = usePlayerStore((s) => s.currentQuality);
+  const url = useMemo(() => {
+    if (source?.type === "file" && currentQuality)
+      return source.qualities[currentQuality]?.url ?? null;
+    return null;
+  }, [source, currentQuality]);
+  return url;
+}
+
 export function DownloadView({ id }: { id: string }) {
   const router = useOverlayRouter(id);
-  const source = usePlayerStore((s) => s.source);
-  if (source?.type === "hls") return null;
+  const downloadUrl = useDownloadLink();
+
+  if (!downloadUrl) return null;
 
   return (
     <>
@@ -36,7 +50,7 @@ export function DownloadView({ id }: { id: string }) {
           </Menu.Paragraph>
 
           <a
-            href="https://pastebin.com/x9URMct0"
+            href={downloadUrl}
             rel="noreferrer"
             target="_blank"
             download
@@ -95,15 +109,8 @@ function PCExplanationView({ id }: { id: string }) {
       </Menu.BackLink>
       <Menu.Section>
         <Menu.Paragraph>
-          On PC, click the{" "}
-          <Menu.Highlight>
-            three dots
-            <Icon
-              className="inline-block text-xl -mb-1"
-              icon={Icons.MORE_VERTICAL}
-            />
-          </Menu.Highlight>{" "}
-          and click <Menu.Highlight>download</Menu.Highlight>.
+          On PC, right click the video and select{" "}
+          <Menu.Highlight>Save video as</Menu.Highlight>
         </Menu.Paragraph>
       </Menu.Section>
     </>
