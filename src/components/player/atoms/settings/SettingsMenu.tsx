@@ -39,6 +39,8 @@ export function SettingsMenu({ id }: { id: string }) {
     ? languageIdToName(selectedCaptionLanguage) ?? "unknown"
     : undefined;
 
+  const source = usePlayerStore((s) => s.source);
+
   return (
     <Menu.Card>
       <Menu.SectionTitle>Video settings</Menu.SectionTitle>
@@ -59,6 +61,7 @@ export function SettingsMenu({ id }: { id: string }) {
           clickable
           onClick={() => router.navigate("/download")}
           rightSide={<Icon className="text-xl" icon={Icons.DOWNLOAD} />}
+          className={source?.type === "file" ? "opacity-100" : "opacity-50"}
         >
           Download
         </Menu.Link>

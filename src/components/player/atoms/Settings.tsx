@@ -71,7 +71,7 @@ function SettingsOverlay({ id }: { id: string }) {
             <PlaybackSettingsView id={id} />
           </Menu.Card>
         </OverlayPage>
-        <OverlayPage id={id} path="/download" width={343} height={431}>
+        <OverlayPage id={id} path="/download" width={343} height={530}>
           <Menu.Card>
             <DownloadView id={id} />
           </Menu.Card>

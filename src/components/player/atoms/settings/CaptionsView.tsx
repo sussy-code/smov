@@ -28,6 +28,7 @@ export function CaptionOption(props: {
     ko: "kr",
     he: "il",
     ze: "cn",
+    ar: "sa",
   };
   let countryCode =
     (props.countryCode || "")?.split("-").pop()?.toLowerCase() || "";

@@ -1,8 +1,16 @@
 import classNames from "classnames";
 
-export function SectionTitle(props: { children: React.ReactNode }) {
+export function SectionTitle(props: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   return (
-    <h3 className="uppercase font-bold text-video-context-type-secondary text-xs pt-8 pl-1 pb-2.5 border-b border-video-context-border">
+    <h3
+      className={classNames(
+        "uppercase font-bold text-video-context-type-secondary text-xs pt-8 pl-1 pb-2.5 border-b border-video-context-border",
+        props.className
+      )}
+    >
       {props.children}
     </h3>
   );
