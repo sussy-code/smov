@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 
+import { languageIdToName } from "@/backend/helpers/subs";
 import { Toggle } from "@/components/buttons/Toggle";
 import { Icon, Icons } from "@/components/Icon";
 import { Menu } from "@/components/player/internals/ContextMenu";
@@ -34,6 +35,10 @@ export function SettingsMenu({ id }: { id: string }) {
     }
   }
 
+  const selectedLanguagePretty = selectedCaptionLanguage
+    ? languageIdToName(selectedCaptionLanguage) ?? "unknown"
+    : undefined;
+
   return (
     <Menu.Card>
       <Menu.SectionTitle>Video settings</Menu.SectionTitle>
@@ -52,6 +57,7 @@ export function SettingsMenu({ id }: { id: string }) {
         </Menu.ChevronLink>
         <Menu.Link
           clickable
+          onClick={() => router.navigate("/download")}
           rightSide={<Icon className="text-xl" icon={Icons.DOWNLOAD} />}
         >
           Download
@@ -72,7 +78,7 @@ export function SettingsMenu({ id }: { id: string }) {
         </Menu.Link>
         <Menu.ChevronLink
           onClick={() => router.navigate("/captions")}
-          rightText={selectedCaptionLanguage}
+          rightText={selectedLanguagePretty}
         >
           Caption settings
         </Menu.ChevronLink>

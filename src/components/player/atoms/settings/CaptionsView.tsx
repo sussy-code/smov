@@ -3,8 +3,8 @@ import { useAsync, useAsyncFn } from "react-use";
 
 import {
   downloadSrt,
-  getHighestRatedSubs,
-  getOpenSubsId,
+  languageIdToName,
+  searchSubtitles,
 } from "@/backend/helpers/subs";
 import { FlagIcon } from "@/components/FlagIcon";
 import { Menu } from "@/components/player/internals/ContextMenu";
@@ -19,11 +19,26 @@ export function CaptionOption(props: {
   selected?: boolean;
   onClick?: () => void;
 }) {
+  // Country code overrides
+  const countryOverrides: Record<string, string> = {
+    en: "gb",
+    cs: "cz",
+    el: "gr",
+    fa: "ir",
+    ko: "kr",
+    he: "il",
+    ze: "cn",
+  };
+  let countryCode =
+    (props.countryCode || "")?.split("-").pop()?.toLowerCase() || "";
+  if (countryOverrides[countryCode])
+    countryCode = countryOverrides[countryCode];
+
   return (
     <SelectableLink selected={props.selected} onClick={props.onClick}>
       <span className="flex items-center">
-        <span className="mr-3">
-          <FlagIcon countryCode={props.countryCode} />
+        <span data-code={props.countryCode} className="mr-3">
+          <FlagIcon countryCode={countryCode} />
         </span>
         <span>{props.children}</span>
       </span>
@@ -31,6 +46,11 @@ export function CaptionOption(props: {
   );
 }
 
+// TODO cache like everything in this view
+// TODO make quick settings for caption language
+// TODO fix language names, some are unknown
+// TODO add search bar for languages
+// TODO sort languages by common usage
 export function CaptionsView({ id }: { id: string }) {
   const router = useOverlayRouter(id);
   const setCaption = usePlayerStore((s) => s.setCaption);
@@ -40,13 +60,7 @@ export function CaptionsView({ id }: { id: string }) {
 
   const req = useAsync(async () => {
     if (!meta) throw new Error("No meta");
-    const subId = await getOpenSubsId(meta);
-    if (!subId) throw new Error("No sub id found");
-    const subs = await getHighestRatedSubs(subId);
-    return {
-      subId,
-      subs,
-    };
+    return searchSubtitles(meta);
   }, [meta]);
 
   const [downloadReq, startDownload] = useAsyncFn(
@@ -75,14 +89,16 @@ export function CaptionsView({ id }: { id: string }) {
   if (req.loading) content = <p>loading...</p>;
   else if (req.error) content = <p>errored!</p>;
   else if (req.value)
-    content = req.value.subs.map((v) => (
+    content = req.value.map((v) => (
       <CaptionOption
         key={v.id}
-        countryCode={v.language}
-        selected={lang === v.language}
-        onClick={() => startDownload(v.id, v.language)}
+        countryCode={v.attributes.language}
+        selected={lang === v.attributes.language}
+        onClick={() =>
+          startDownload(v.attributes.legacy_subtitle_id, v.attributes.language)
+        }
       >
-        {v.language}
+        {languageIdToName(v.attributes.language) ?? "unknown"}
       </CaptionOption>
     ));
 

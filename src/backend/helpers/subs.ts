@@ -1,92 +1,139 @@
+import { gql, request } from "graphql-request";
+import { unzip } from "unzipit";
+
 import { proxiedFetch } from "@/backend/helpers/fetch";
-import { testSubData } from "@/backend/helpers/testsub";
+import { languageMap } from "@/setup/iso6391";
 import { PlayerMeta } from "@/stores/player/slices/source";
-import { normalizeTitle } from "@/utils/normalizeTitle";
 
-interface SuggestResult {
-  name: string;
-  year: string;
-  id: number;
-  kind: "tv" | "movie";
-}
+const GQL_API = "https://gqlos.plus-sub.com";
 
-export interface Subtitle {
+const subtitleSearchQuery = gql`
+  query SubtitleSearch($tmdb_id: String!, $ep: Int, $season: Int) {
+    subtitleSearch(
+      tmdb_id: $tmdb_id
+      language: ""
+      episode_number: $ep
+      season_number: $season
+    ) {
+      data {
+        attributes {
+          language
+          subtitle_id
+          ai_translated
+          auto_translation
+          ratings
+          votes
+          legacy_subtitle_id
+        }
+        id
+      }
+    }
+  }
+`;
+
+interface RawSubtitleSearchItem {
   id: string;
-  language: string;
+  attributes: {
+    language: string;
+    ai_translated: boolean | null;
+    auto_translation: null | boolean;
+    ratings: number;
+    votes: number | null;
+    legacy_subtitle_id: string | null;
+  };
 }
 
-const metaTypeToOpenSubs = {
-  tv: "show",
-  movie: "movie",
-} as const;
+export interface SubtitleSearchItem {
+  id: string;
+  attributes: {
+    language: string;
+    ai_translated: boolean | null;
+    auto_translation: null | boolean;
+    ratings: number;
+    votes: number | null;
+    legacy_subtitle_id: string;
+  };
+}
 
-export async function getOpenSubsId(meta: PlayerMeta): Promise<string | null> {
-  const req = await proxiedFetch<SuggestResult[]>(
-    `https://www.opensubtitles.org/libs/suggest.php`,
+interface SubtitleSearchData {
+  subtitleSearch: {
+    data: RawSubtitleSearchItem[];
+  };
+}
+
+export async function searchSubtitles(
+  meta: PlayerMeta
+): Promise<SubtitleSearchItem[]> {
+  const data = await request<SubtitleSearchData>({
+    document: subtitleSearchQuery,
+    url: GQL_API,
+    variables: {
+      tmdb_id: meta.tmdbId,
+      ep: meta.episode?.number,
+      season: meta.season?.number,
+    },
+  });
+
+  const sortedByLanguage: Record<string, RawSubtitleSearchItem[]> = {};
+  data.subtitleSearch.data.forEach((v) => {
+    if (!sortedByLanguage[v.attributes.language])
+      sortedByLanguage[v.attributes.language] = [];
+    sortedByLanguage[v.attributes.language].push(v);
+  });
+
+  return Object.values(sortedByLanguage).map((langs) => {
+    const sortedByRating = langs
+      .filter((v): v is SubtitleSearchItem => !!v.attributes.legacy_subtitle_id) // must have legacy id
+      .sort((a, b) => b.attributes.ratings - a.attributes.ratings);
+    return sortedByRating[0];
+  });
+}
+
+export function languageIdToName(langId: string): string | null {
+  return languageMap[langId]?.nativeName ?? null;
+}
+
+// export async function downloadSrt(subId: string): Promise<string> {
+//   const downloadScript = await proxiedFetch<string>(
+//     `https://www.opensubtitles.com/nocache/download/${subId}/subreq.js`,
+//     {
+//       query: {
+//         file_name: "sub",
+//         locale: "en", // locale is ignored
+//         np: "true",
+//         sub_frmt: "srt",
+//         ext_installed: "false",
+//       },
+//     }
+//   );
+
+//   // extract url from script
+//   // example: https://www.opensubtitles.com/download/<LONG_HASH_OF_UPPERCASE_HEX>/subfile/sub.srt
+//   const downloadUrlRegex =
+//     /https:\/\/www.opensubtitles.com\/download\/[A-Fa-f0-9]+\/subfile\/sub\.srt/g;
+//   const matchedUrl = downloadScript.match(downloadUrlRegex);
+//   if (!matchedUrl) throw new Error("No download found");
+//   const downloadUrl = matchedUrl[0];
+
+//   // download
+//   const srtRequest = await fetch(downloadUrl);
+//   const srtData = await srtRequest.text();
+//   return srtData;
+// }
+
+export async function downloadSrt(legacySubId: string): Promise<string> {
+  // TODO there is cloudflare protection so this may not always work. what to do about that?
+  // language code is hardcoded here, it does nothing
+  const zipFile = await proxiedFetch<ArrayBuffer>(
+    `https://dl.opensubtitles.org/en/subtitleserve/sub/${legacySubId}`,
     {
-      method: "GET",
-      headers: {
-        "Alt-Used": "www.opensubtitles.org",
-        "X-Referer": "https://www.opensubtitles.org/en/search/subs",
-      },
-      query: {
-        format: "json",
-        MovieName: meta.title,
-      },
+      responseType: "arrayBuffer",
     }
   );
-  const foundMatch = req.find((v) => {
-    const type = metaTypeToOpenSubs[v.kind];
-    if (type !== meta.type) return false;
-    if (+v.year !== meta.releaseYear) return false;
-    return normalizeTitle(v.name) === normalizeTitle(meta.title);
-  });
-  if (!foundMatch) return null;
-  return foundMatch.id.toString();
+
+  const { entries } = await unzip(zipFile);
+  const srtEntry = Object.values(entries).find((v) => v.name);
+  if (!srtEntry) throw new Error("No srt file found in zip");
+  const srtData = srtEntry.text();
+  return srtData;
 }
-
-export async function getHighestRatedSubs(id: string): Promise<Subtitle[]> {
-  // TODO support episodes
-  const document = await proxiedFetch<string>(
-    `https://www.opensubtitles.org/en/search/sublanguageid-all/idmovie-${encodeURIComponent(
-      id
-    )}/sort-6/asc-0`
-  );
-  const dom = new DOMParser().parseFromString(document, "text/html");
-  const table = dom.querySelector("#search_results > tbody");
-  if (!table) throw new Error("No result table found");
-  const results = [...table.querySelectorAll("tr[id^='name']")].map((v) => {
-    const subId = v.id.substring(4); // remove "name" from "name<ID>"
-    const languageFlag = v.children[1].querySelector("div[class*='flag']");
-    if (!languageFlag) return null;
-    const languageFlagClasses = languageFlag.classList.toString().split(" ");
-    const languageCode = languageFlagClasses.filter(
-      (cssClass) => cssClass === "flag"
-    )[0];
-
-    return {
-      id: subId,
-      language: languageCode,
-    };
-  });
-
-  const languages: string[] = [];
-  const output: Subtitle[] = [];
-  results.forEach((v) => {
-    if (!v) return;
-    if (languages.includes(v.language)) return; // no duplicate languages
-    output.push(v);
-    languages.push(v.language);
-  });
-
-  return output;
-}
-
-export async function downloadSrt(_subId: string): Promise<string> {
-  // TODO download, unzip and return srt data
-  return testSubData.srtData;
-}
-
-/**
- * None of this works, CF protected endpoints :(
- */

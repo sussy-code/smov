@@ -14,11 +14,27 @@ import { SubtitleStyling, useSubtitleStore } from "@/stores/subtitles";
 export function CaptionCue({
   text,
   styling,
+  overrideCasing,
 }: {
   text?: string;
   styling: SubtitleStyling;
+  overrideCasing: boolean;
 }) {
-  const textWithNewlines = (text || "").replaceAll(/\r?\n/g, "<br />");
+  const wordOverrides: Record<string, string> = {
+    i: "I",
+  };
+
+  let textToUse = text;
+  if (overrideCasing && text) {
+    textToUse = text.slice(0, 1) + text.slice(1).toLowerCase();
+  }
+
+  const textWithNewlines = (textToUse || "")
+    .split(" ")
+    .map((word) => wordOverrides[word] ?? word)
+    .join(" ")
+    .replaceAll(/ i'/g, " I'")
+    .replaceAll(/\r?\n/g, "<br />");
 
   // https://www.w3.org/TR/webvtt1/#dom-construction-rules
   // added a <br /> for newlines
@@ -53,6 +69,7 @@ export function SubtitleRenderer() {
   const videoTime = usePlayerStore((s) => s.progress.time);
   const srtData = usePlayerStore((s) => s.caption.selected?.srtData);
   const styling = useSubtitleStore((s) => s.styling);
+  const overrideCasing = useSubtitleStore((s) => s.overrideCasing);
 
   const parsedCaptions = useMemo(
     () => (srtData ? parseSubtitles(srtData) : []),
@@ -74,6 +91,7 @@ export function SubtitleRenderer() {
           key={makeQueId(i, start, end)}
           text={content}
           styling={styling}
+          overrideCasing={overrideCasing}
         />
       ))}
     </div>

@@ -5,6 +5,7 @@ import { OverlayAnchor } from "@/components/overlays/OverlayAnchor";
 import { Overlay } from "@/components/overlays/OverlayDisplay";
 import { OverlayPage } from "@/components/overlays/OverlayPage";
 import { OverlayRouter } from "@/components/overlays/OverlayRouter";
+import { DownloadView } from "@/components/player/atoms/settings/DownloadView";
 import { SettingsMenu } from "@/components/player/atoms/settings/SettingsMenu";
 import {
   EmbedSelectionView,
@@ -46,11 +47,11 @@ function SettingsOverlay({ id }: { id: string }) {
           </Menu.Card>
         </OverlayPage>
         <OverlayPage id={id} path="/captions" width={343} height={431}>
-          <Menu.Card>
+          <Menu.CardWithScrollable>
             <CaptionsView id={id} />
-          </Menu.Card>
+          </Menu.CardWithScrollable>
         </OverlayPage>
-        <OverlayPage id={id} path="/captions/settings" width={343} height={310}>
+        <OverlayPage id={id} path="/captions/settings" width={343} height={360}>
           <Menu.Card>
             <CaptionSettingsView id={id} />
           </Menu.Card>
@@ -68,6 +69,11 @@ function SettingsOverlay({ id }: { id: string }) {
         <OverlayPage id={id} path="/playback" width={343} height={215}>
           <Menu.Card>
             <PlaybackSettingsView id={id} />
+          </Menu.Card>
+        </OverlayPage>
+        <OverlayPage id={id} path="/download" width={343} height={431}>
+          <Menu.Card>
+            <DownloadView id={id} />
           </Menu.Card>
         </OverlayPage>
       </OverlayRouter>

@@ -23,8 +23,10 @@ export interface SubtitleStore {
   enabled: boolean;
   lastSelectedLanguage: string | null;
   styling: SubtitleStyling;
+  overrideCasing: boolean;
   updateStyling(newStyling: Partial<SubtitleStyling>): void;
   setLanguage(language: string | null): void;
+  setOverrideCasing(enabled: boolean): void;
 }
 
 // TODO add migration from previous stored settings
@@ -33,6 +35,7 @@ export const useSubtitleStore = create(
     immer<SubtitleStore>((set) => ({
       enabled: false,
       lastSelectedLanguage: null,
+      overrideCasing: false,
       styling: {
         color: "#ffffff",
         backgroundOpacity: 0.5,
@@ -52,6 +55,11 @@ export const useSubtitleStore = create(
         set((s) => {
           s.enabled = !!lang;
           if (lang) s.lastSelectedLanguage = lang;
+        });
+      },
+      setOverrideCasing(enabled) {
+        set((s) => {
+          s.overrideCasing = enabled;
         });
       },
     })),

@@ -11,8 +11,8 @@ function getProxyUrl(): string {
   return url;
 }
 
-type P<T> = Parameters<typeof ofetch<T>>;
-type R<T> = ReturnType<typeof ofetch<T>>;
+type P<T> = Parameters<typeof ofetch<T, any>>;
+type R<T> = ReturnType<typeof ofetch<T, any>>;
 
 const baseFetch = ofetch.create({
   retry: 0,
@@ -50,6 +50,9 @@ export function proxiedFetch<T>(url: string, ops: P<T>[1] = {}): R<T> {
   Object.entries(ops?.params ?? {}).forEach(([k, v]) => {
     parsedUrl.searchParams.set(k, v);
   });
+  Object.entries(ops?.query ?? {}).forEach(([k, v]) => {
+    parsedUrl.searchParams.set(k, v);
+  });
 
   return baseFetch<T>(getProxyUrl(), {
     ...ops,
@@ -57,6 +60,7 @@ export function proxiedFetch<T>(url: string, ops: P<T>[1] = {}): R<T> {
     params: {
       destination: parsedUrl.toString(),
     },
+    query: {},
   });
 }
 

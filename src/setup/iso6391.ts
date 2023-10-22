@@ -1331,3 +1331,8 @@ export const captionLanguages: CaptionLanguageOption[] = [
     nativeName: "IsiZulu",
   },
 ];
+
+export const languageMap: Record<string, CaptionLanguageOption> = {};
+captionLanguages.forEach((v) => {
+  languageMap[v.id] = v;
+});

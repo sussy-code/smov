@@ -49,6 +49,14 @@ export function FieldTitle(props: { children: React.ReactNode }) {
   return <p className="font-medium">{props.children}</p>;
 }
 
+export function Paragraph(props: { children: React.ReactNode }) {
+  return <p className="my-3">{props.children}</p>;
+}
+
+export function Highlight(props: { children: React.ReactNode }) {
+  return <span className="text-white">{props.children}</span>;
+}
+
 export function TextDisplay(props: {
   children: React.ReactNode;
   title?: string;

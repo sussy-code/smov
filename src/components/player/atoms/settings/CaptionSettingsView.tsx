@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import { useCallback, useEffect, useRef, useState } from "react";
 
+import { Toggle } from "@/components/buttons/Toggle";
 import { Icon, Icons } from "@/components/Icon";
 import { Menu } from "@/components/player/internals/ContextMenu";
 import { useOverlayRouter } from "@/hooks/useOverlayRouter";
@@ -161,6 +162,8 @@ const colors = ["#ffffff", "#80b1fa", "#e2e535"];
 export function CaptionSettingsView({ id }: { id: string }) {
   const router = useOverlayRouter(id);
   const styling = useSubtitleStore((s) => s.styling);
+  const overrideCasing = useSubtitleStore((s) => s.overrideCasing);
+  const setOverrideCasing = useSubtitleStore((s) => s.setOverrideCasing);
   const updateStyling = useSubtitleStore((s) => s.updateStyling);
 
   return (
@@ -195,6 +198,15 @@ export function CaptionSettingsView({ id }: { id: string }) {
                 active={styling.color === v}
               />
             ))}
+          </div>
+        </div>
+        <div className="flex justify-between items-center">
+          <Menu.FieldTitle>Fix capitalization</Menu.FieldTitle>
+          <div className="flex justify-center items-center">
+            <Toggle
+              enabled={overrideCasing}
+              onClick={() => setOverrideCasing(!overrideCasing)}
+            />
           </div>
         </div>
       </Menu.Section>
