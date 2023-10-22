@@ -3,6 +3,7 @@ import { useMemo } from "react";
 import { languageIdToName } from "@/backend/helpers/subs";
 import { Toggle } from "@/components/buttons/Toggle";
 import { Icon, Icons } from "@/components/Icon";
+import { useCaptions } from "@/components/player/hooks/useCaptions";
 import { Menu } from "@/components/player/internals/ContextMenu";
 import { useOverlayRouter } from "@/hooks/useOverlayRouter";
 import { usePlayerStore } from "@/stores/player/store";
@@ -13,27 +14,16 @@ import { providers } from "@/utils/providers";
 export function SettingsMenu({ id }: { id: string }) {
   const router = useOverlayRouter(id);
   const currentQuality = usePlayerStore((s) => s.currentQuality);
-  const lastSelectedLanguage = useSubtitleStore((s) => s.lastSelectedLanguage);
   const selectedCaptionLanguage = usePlayerStore(
     (s) => s.caption.selected?.language
   );
   const subtitlesEnabled = useSubtitleStore((s) => s.enabled);
-  const setSubtitleLanguage = useSubtitleStore((s) => s.setLanguage);
   const currentSourceId = usePlayerStore((s) => s.sourceId);
-  const setCaption = usePlayerStore((s) => s.setCaption);
   const sourceName = useMemo(() => {
     if (!currentSourceId) return "...";
     return providers.getMetadata(currentSourceId)?.name ?? "...";
   }, [currentSourceId]);
-
-  // TODO actually scrape subtitles to load
-  function toggleSubtitles() {
-    if (!subtitlesEnabled) setSubtitleLanguage(lastSelectedLanguage ?? "en");
-    else {
-      setSubtitleLanguage(null);
-      setCaption(null);
-    }
-  }
+  const { toggleLastUsed } = useCaptions();
 
   const selectedLanguagePretty = selectedCaptionLanguage
     ? languageIdToName(selectedCaptionLanguage) ?? "unknown"
@@ -77,7 +67,7 @@ export function SettingsMenu({ id }: { id: string }) {
           rightSide={
             <Toggle
               enabled={subtitlesEnabled}
-              onClick={() => toggleSubtitles()}
+              onClick={() => toggleLastUsed().catch(() => {})}
             />
           }
         >

@@ -1,17 +1,15 @@
-import { ReactNode } from "react";
+import Fuse from "fuse.js";
+import { ReactNode, useState } from "react";
 import { useAsync, useAsyncFn } from "react-use";
 
-import {
-  downloadSrt,
-  languageIdToName,
-  searchSubtitles,
-} from "@/backend/helpers/subs";
+import { languageIdToName } from "@/backend/helpers/subs";
 import { FlagIcon } from "@/components/FlagIcon";
+import { useCaptions } from "@/components/player/hooks/useCaptions";
 import { Menu } from "@/components/player/internals/ContextMenu";
+import { Input } from "@/components/player/internals/ContextMenu/Input";
 import { SelectableLink } from "@/components/player/internals/ContextMenu/Links";
 import { useOverlayRouter } from "@/hooks/useOverlayRouter";
 import { usePlayerStore } from "@/stores/player/store";
-import { useSubtitleStore } from "@/stores/subtitles";
 
 export function CaptionOption(props: {
   countryCode?: string;
@@ -48,39 +46,21 @@ export function CaptionOption(props: {
 }
 
 // TODO cache like everything in this view
-// TODO make quick settings for caption language
 // TODO fix language names, some are unknown
-// TODO add search bar for languages
 // TODO sort languages by common usage
 export function CaptionsView({ id }: { id: string }) {
   const router = useOverlayRouter(id);
-  const setCaption = usePlayerStore((s) => s.setCaption);
   const lang = usePlayerStore((s) => s.caption.selected?.language);
-  const setLanguage = useSubtitleStore((s) => s.setLanguage);
-  const meta = usePlayerStore((s) => s.meta);
+  const { search, download, disable } = useCaptions();
 
-  const req = useAsync(async () => {
-    if (!meta) throw new Error("No meta");
-    return searchSubtitles(meta);
-  }, [meta]);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const req = useAsync(async () => search(), [search]);
 
   const [downloadReq, startDownload] = useAsyncFn(
-    async (subtitleId: string, language: string) => {
-      const srtData = await downloadSrt(subtitleId);
-      setCaption({
-        language,
-        srtData,
-        url: "", // TODO remove url
-      });
-      setLanguage(language);
-    },
-    [setCaption, setLanguage]
+    (subtitleId: string, language: string) => download(subtitleId, language),
+    [download]
   );
-
-  function disableCaption() {
-    setCaption(null);
-    setLanguage(null);
-  }
 
   let downloadProgress: ReactNode = null;
   if (downloadReq.loading) downloadProgress = <p>downloading...</p>;
@@ -89,19 +69,43 @@ export function CaptionsView({ id }: { id: string }) {
   let content: ReactNode = null;
   if (req.loading) content = <p>loading...</p>;
   else if (req.error) content = <p>errored!</p>;
-  else if (req.value)
-    content = req.value.map((v) => (
-      <CaptionOption
-        key={v.id}
-        countryCode={v.attributes.language}
-        selected={lang === v.attributes.language}
-        onClick={() =>
-          startDownload(v.attributes.legacy_subtitle_id, v.attributes.language)
-        }
-      >
-        {languageIdToName(v.attributes.language) ?? "unknown"}
-      </CaptionOption>
-    ));
+  else if (req.value) {
+    const subs = req.value.map((v) => {
+      const languageName = languageIdToName(v.attributes.language) ?? "unknown";
+      return {
+        ...v,
+        languageName,
+      };
+    });
+
+    let results = subs;
+    if (searchQuery.trim().length > 0) {
+      const fuse = new Fuse(subs, {
+        includeScore: true,
+        keys: ["languageName"],
+      });
+
+      results = fuse.search(searchQuery).map((res) => res.item);
+    }
+
+    content = results.map((v) => {
+      return (
+        <CaptionOption
+          key={v.id}
+          countryCode={v.attributes.language}
+          selected={lang === v.attributes.language}
+          onClick={() =>
+            startDownload(
+              v.attributes.legacy_subtitle_id,
+              v.attributes.language
+            )
+          }
+        >
+          {v.languageName}
+        </CaptionOption>
+      );
+    });
+  }
 
   return (
     <>
@@ -118,9 +122,10 @@ export function CaptionsView({ id }: { id: string }) {
       >
         Captions
       </Menu.BackLink>
-      <Menu.Section>
+      <Menu.Section className="pb-6">
+        <Input value={searchQuery} onInput={setSearchQuery} />
         {downloadProgress}
-        <CaptionOption onClick={() => disableCaption()} selected={!lang}>
+        <CaptionOption onClick={() => disable()} selected={!lang}>
           Off
         </CaptionOption>
         {content}

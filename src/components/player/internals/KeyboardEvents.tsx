@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
+import { useCaptions } from "@/components/player/hooks/useCaptions";
 import { useVolume } from "@/components/player/hooks/useVolume";
 import { usePlayerStore } from "@/stores/player/store";
 import { useEmpheralVolumeStore } from "@/stores/volume";
@@ -10,6 +11,7 @@ export function KeyboardEvents() {
   const time = usePlayerStore((s) => s.progress.time);
   const { setVolume, toggleMute } = useVolume();
 
+  const { toggleLastUsed } = useCaptions();
   const setShowVolume = useEmpheralVolumeStore((s) => s.setShowVolume);
 
   const [isRolling, setIsRolling] = useState(false);
@@ -20,6 +22,7 @@ export function KeyboardEvents() {
     setVolume,
     toggleMute,
     setIsRolling,
+    toggleLastUsed,
     display,
     mediaPlaying,
     isRolling,
@@ -31,6 +34,7 @@ export function KeyboardEvents() {
       setVolume,
       toggleMute,
       setIsRolling,
+      toggleLastUsed,
       display,
       mediaPlaying,
       isRolling,
@@ -41,6 +45,7 @@ export function KeyboardEvents() {
     setVolume,
     toggleMute,
     setIsRolling,
+    toggleLastUsed,
     display,
     mediaPlaying,
     isRolling,
@@ -49,6 +54,9 @@ export function KeyboardEvents() {
 
   useEffect(() => {
     const keyEventHandler = (evt: KeyboardEvent) => {
+      if (evt.target && (evt.target as HTMLInputElement).nodeName === "INPUT")
+        return;
+
       const k = evt.key;
 
       // Volume
@@ -82,6 +90,9 @@ export function KeyboardEvents() {
         dataRef.current.display?.[
           dataRef.current.mediaPlaying.isPaused ? "play" : "pause"
         ]();
+
+      // captions
+      if (k === "c") dataRef.current.toggleLastUsed().catch(() => {}); // ignore errors
 
       // Do a barrell roll!
       if (k === "r") {
