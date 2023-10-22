@@ -1,4 +1,5 @@
 import { Icon, Icons } from "@/components/Icon";
+import { OverlayPage } from "@/components/overlays/OverlayPage";
 import { Menu } from "@/components/player/internals/ContextMenu";
 import { useOverlayRouter } from "@/hooks/useOverlayRouter";
 import { usePlayerStore } from "@/stores/player/store";
@@ -65,6 +66,40 @@ export function DownloadView({ id }: { id: string }) {
           </a>
         </div>
       </Menu.Section>
+    </>
+  );
+}
+
+export function CantDownloadView({ id }: { id: string }) {
+  const router = useOverlayRouter(id);
+
+  return (
+    <>
+      <Menu.BackLink onClick={() => router.navigate("/")}>
+        Playback settings
+      </Menu.BackLink>
+      <Menu.Section>
+        <Menu.Paragraph>
+          Insert explanation for why you can&apos;t download HLS here
+        </Menu.Paragraph>
+      </Menu.Section>
+    </>
+  );
+}
+
+export function DownloadRoutes({ id }: { id: string }) {
+  return (
+    <>
+      <OverlayPage id={id} path="/download" width={343} height={530}>
+        <Menu.CardWithScrollable>
+          <DownloadView id={id} />
+        </Menu.CardWithScrollable>
+      </OverlayPage>
+      <OverlayPage id={id} path="/download/unable" width={343} height={341}>
+        <Menu.CardWithScrollable>
+          <CantDownloadView id={id} />
+        </Menu.CardWithScrollable>
+      </OverlayPage>
     </>
   );
 }

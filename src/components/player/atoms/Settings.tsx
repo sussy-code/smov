@@ -5,8 +5,6 @@ import { OverlayAnchor } from "@/components/overlays/OverlayAnchor";
 import { Overlay } from "@/components/overlays/OverlayDisplay";
 import { OverlayPage } from "@/components/overlays/OverlayPage";
 import { OverlayRouter } from "@/components/overlays/OverlayRouter";
-import { DownloadView } from "@/components/player/atoms/settings/DownloadView";
-import { SettingsMenu } from "@/components/player/atoms/settings/SettingsMenu";
 import {
   EmbedSelectionView,
   SourceSelectionView,
@@ -18,8 +16,10 @@ import { usePlayerStore } from "@/stores/player/store";
 
 import { CaptionSettingsView } from "./settings/CaptionSettingsView";
 import { CaptionsView } from "./settings/CaptionsView";
+import { DownloadRoutes } from "./settings/Downloads";
 import { PlaybackSettingsView } from "./settings/PlaybackSettingsView";
 import { QualityView } from "./settings/QualityView";
+import { SettingsMenu } from "./settings/SettingsMenu";
 
 function SettingsOverlay({ id }: { id: string }) {
   const [chosenSourceId, setChosenSourceId] = useState<string | null>(null);
@@ -71,11 +71,7 @@ function SettingsOverlay({ id }: { id: string }) {
             <PlaybackSettingsView id={id} />
           </Menu.Card>
         </OverlayPage>
-        <OverlayPage id={id} path="/download" width={343} height={530}>
-          <Menu.Card>
-            <DownloadView id={id} />
-          </Menu.Card>
-        </OverlayPage>
+        <DownloadRoutes id={id} />
       </OverlayRouter>
     </Overlay>
   );

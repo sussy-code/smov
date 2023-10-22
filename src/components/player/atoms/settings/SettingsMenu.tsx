@@ -59,7 +59,11 @@ export function SettingsMenu({ id }: { id: string }) {
         </Menu.ChevronLink>
         <Menu.Link
           clickable
-          onClick={() => router.navigate("/download")}
+          onClick={() =>
+            router.navigate(
+              source?.type === "file" ? "/download" : "/download/unable"
+            )
+          }
           rightSide={<Icon className="text-xl" icon={Icons.DOWNLOAD} />}
           className={source?.type === "file" ? "opacity-100" : "opacity-50"}
         >
