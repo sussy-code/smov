@@ -236,14 +236,16 @@ export function CaptionSettingsView({ id }: { id: string }) {
           decimalsAllowed={1}
           controlButtons
         />
-        <CaptionSetting
-          label="Text size"
-          max={200}
-          min={1}
-          textTransformer={(s) => `${s}%`}
-          onChange={(v) => updateStyling({ size: v / 100 })}
-          value={styling.size * 100}
-        />
+        <div className="flex justify-between items-center">
+          <Menu.FieldTitle>Fix capitalization</Menu.FieldTitle>
+          <div className="flex justify-center items-center">
+            <Toggle
+              enabled={overrideCasing}
+              onClick={() => setOverrideCasing(!overrideCasing)}
+            />
+          </div>
+        </div>
+        <Menu.Divider />
         <CaptionSetting
           label="Background opacity"
           max={100}
@@ -251,6 +253,14 @@ export function CaptionSettingsView({ id }: { id: string }) {
           onChange={(v) => updateStyling({ backgroundOpacity: v / 100 })}
           value={styling.backgroundOpacity * 100}
           textTransformer={(s) => `${s}%`}
+        />
+        <CaptionSetting
+          label="Text size"
+          max={200}
+          min={1}
+          textTransformer={(s) => `${s}%`}
+          onChange={(v) => updateStyling({ size: v / 100 })}
+          value={styling.size * 100}
         />
         <div className="flex justify-between items-center">
           <Menu.FieldTitle>Color</Menu.FieldTitle>
@@ -262,15 +272,6 @@ export function CaptionSettingsView({ id }: { id: string }) {
                 active={styling.color === v}
               />
             ))}
-          </div>
-        </div>
-        <div className="flex justify-between items-center">
-          <Menu.FieldTitle>Fix capitalization</Menu.FieldTitle>
-          <div className="flex justify-center items-center">
-            <Toggle
-              enabled={overrideCasing}
-              onClick={() => setOverrideCasing(!overrideCasing)}
-            />
           </div>
         </div>
       </Menu.Section>

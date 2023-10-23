@@ -51,7 +51,7 @@ function SettingsOverlay({ id }: { id: string }) {
             <CaptionsView id={id} />
           </Menu.CardWithScrollable>
         </OverlayPage>
-        <OverlayPage id={id} path="/captions/settings" width={343} height={430}>
+        <OverlayPage id={id} path="/captions/settings" width={343} height={450}>
           <Menu.Card>
             <CaptionSettingsView id={id} />
           </Menu.Card>
