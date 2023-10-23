@@ -123,7 +123,7 @@ function EpisodesView({
     content = <CenteredText>Loading...</CenteredText>;
   else if (loadingState.value) {
     content = (
-      <Menu.Section className="pb-6">
+      <Menu.ScrollToActiveSection className="pb-6">
         {loadingState.value.season.episodes.length === 0 ? (
           <Menu.TextDisplay title="No episodes found">
             There are no episodes in this season, check back later!
@@ -173,7 +173,7 @@ function EpisodesView({
             </Menu.Link>
           );
         })}
-      </Menu.Section>
+      </Menu.ScrollToActiveSection>
     );
   }
 

@@ -74,7 +74,11 @@ export function Link(props: {
 
   if (!props.onClick) {
     return (
-      <div className={classes} style={styles}>
+      <div
+        className={classes}
+        style={styles}
+        data-active-link={props.active ? true : undefined}
+      >
         {content}
       </div>
     );
@@ -86,6 +90,7 @@ export function Link(props: {
       className={classes}
       style={styles}
       onClick={props.onClick}
+      data-active-link={props.active ? true : undefined}
     >
       {content}
     </button>

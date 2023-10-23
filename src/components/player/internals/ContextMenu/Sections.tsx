@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { useEffect, useRef } from "react";
 
 export function SectionTitle(props: {
   children: React.ReactNode;
@@ -22,6 +23,39 @@ export function Section(props: {
 }) {
   return (
     <div className={classNames("pt-4 space-y-1", props.className)}>
+      {props.children}
+    </div>
+  );
+}
+
+export function ScrollToActiveSection(props: {
+  children: React.ReactNode;
+  className?: string;
+  loaded?: boolean;
+}) {
+  const scrollingContainer = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const active =
+      scrollingContainer.current?.querySelector("[data-active-link]");
+
+    const boxRect = scrollingContainer.current?.getBoundingClientRect();
+    const activeLinkRect = active?.getBoundingClientRect();
+    if (!activeLinkRect || !boxRect) return;
+
+    const activeYPos = activeLinkRect.top - boxRect.top;
+
+    scrollingContainer.current?.scrollTo(
+      0,
+      activeYPos - boxRect.height / 2 + activeLinkRect.height / 2
+    );
+  }, [props.loaded]);
+
+  return (
+    <div
+      ref={scrollingContainer}
+      className={classNames("pt-4 space-y-1", props.className)}
+    >
       {props.children}
     </div>
   );

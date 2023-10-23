@@ -77,12 +77,11 @@ function CaptionSetting(props: {
     };
   }, [isFocused]);
 
-  function setNewValue(value: number) {
-    props.onChange?.(Math.min(Math.max(value, props.min), props.max));
-  }
-
-  const inputClasses =
-    "px-3 py-1 bg-video-context-inputBg rounded w-20 text-left text-white cursor-text";
+  const inputClasses = `py-1 bg-video-context-inputBg rounded text-white cursor-text ${
+    props.controlButtons ? "text-center px-4 w-24" : "px-3 text-left w-20"
+  }`;
+  const arrowButtonClasses =
+    "hover:text-white transition-colors duration-100 w-full h-full flex justify-center items-center hover:bg-video-context-buttonOverInputHover rounded";
   const textTransformer = props.textTransformer ?? ((s) => s);
 
   return (
@@ -161,7 +160,7 @@ function CaptionSetting(props: {
               <button
                 className={classNames(
                   inputClasses,
-                  props.controlButtons ? "pr-8 relative" : undefined
+                  props.controlButtons ? "relative" : undefined
                 )}
                 type="button"
                 tabIndex={0}
@@ -171,32 +170,36 @@ function CaptionSetting(props: {
                 )}
               </button>
               {props.controlButtons ? (
-                <div className="actions w-6 h-full absolute right-0 top-0 flex items-center flex-col">
-                  <button
-                    type="button"
-                    onClick={
-                      () =>
-                        setNewValue(
-                          props.value + 1 / 10 ** (props.decimalsAllowed ?? 0)
-                        ) // Add depending on the decimalsAllowed. If there's 1 decimal allowed, add 0.1. For 2, add 0.01, etc.
-                    }
-                    className="hover:text-white transition-colors duration-100"
-                  >
-                    <Icon icon={Icons.CHEVRON_UP} />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={
-                      () =>
-                        setNewValue(
-                          props.value - 1 / 10 ** (props.decimalsAllowed ?? 0)
-                        ) // Remove depending on the decimalsAllowed. If there's 1 decimal allowed, add 0.1. For 2, add 0.01, etc.
-                    }
-                    className="hover:text-white transition-colors duration-100"
-                  >
-                    <Icon icon={Icons.CHEVRON_DOWN} />
-                  </button>
-                </div>
+                <>
+                  <div className="actions w-6 h-full absolute left-0 top-0 grid grid-cols-1 items-center justify-center">
+                    <button
+                      type="button"
+                      onClick={
+                        () =>
+                          props.onChange?.(
+                            props.value - 1 / 10 ** (props.decimalsAllowed ?? 0)
+                          ) // Remove depending on the decimalsAllowed. If there's 1 decimal allowed, add 0.1. For 2, add 0.01, etc.
+                      }
+                      className={arrowButtonClasses}
+                    >
+                      <Icon icon={Icons.CHEVRON_LEFT} />
+                    </button>
+                  </div>
+                  <div className="actions w-6 h-full absolute right-0 top-0 grid grid-cols-1 items-center justify-center">
+                    <button
+                      type="button"
+                      onClick={
+                        () =>
+                          props.onChange?.(
+                            props.value + 1 / 10 ** (props.decimalsAllowed ?? 0)
+                          ) // Add depending on the decimalsAllowed. If there's 1 decimal allowed, add 0.1. For 2, add 0.01, etc.
+                      }
+                      className={arrowButtonClasses}
+                    >
+                      <Icon icon={Icons.CHEVRON_RIGHT} />
+                    </button>
+                  </div>
+                </>
               ) : null}
             </div>
           )}

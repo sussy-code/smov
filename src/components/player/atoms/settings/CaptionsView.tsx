@@ -42,7 +42,10 @@ export function CaptionOption(props: {
       error={props.error}
       onClick={props.onClick}
     >
-      <span className="flex items-center">
+      <span
+        data-active-link={props.selected ? true : undefined}
+        className="flex items-center"
+      >
         <span data-code={props.countryCode} className="mr-3">
           <FlagIcon countryCode={countryCode} />
         </span>
@@ -167,12 +170,15 @@ export function CaptionsView({ id }: { id: string }) {
           <Input value={searchQuery} onInput={setSearchQuery} />
         </div>
       </div>
-      <Menu.Section className="!pt-1 mt-2 pb-3">
+      <Menu.ScrollToActiveSection
+        loaded={req.loading}
+        className="!pt-1 mt-2 pb-3"
+      >
         <CaptionOption onClick={() => disable()} selected={!lang}>
           Off
         </CaptionOption>
         {content}
-      </Menu.Section>
+      </Menu.ScrollToActiveSection>
     </>
   );
 }

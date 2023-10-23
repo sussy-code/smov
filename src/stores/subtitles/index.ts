@@ -67,7 +67,7 @@ export const useSubtitleStore = create(
       },
       setDelay(delay) {
         set((s) => {
-          s.delay = delay;
+          s.delay = Math.max(Math.min(500, delay), -500);
         });
       },
     })),

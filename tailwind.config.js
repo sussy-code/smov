@@ -148,6 +148,7 @@ module.exports = {
                 buttonFocus: "#202836",
                 flagBg: "#202836",
                 inputBg: "#202836",
+                buttonOverInputHover: "#283040",
                 inputPlaceholder: "#374A56",
                 cardBorder: "#1B262E",
                 slider: "#8787A8",
