@@ -70,6 +70,7 @@ export function SubtitleRenderer() {
   const srtData = usePlayerStore((s) => s.caption.selected?.srtData);
   const styling = useSubtitleStore((s) => s.styling);
   const overrideCasing = useSubtitleStore((s) => s.overrideCasing);
+  const delay = useSubtitleStore((s) => s.delay);
 
   const parsedCaptions = useMemo(
     () => (srtData ? parseSubtitles(srtData) : []),
@@ -79,9 +80,9 @@ export function SubtitleRenderer() {
   const visibileCaptions = useMemo(
     () =>
       parsedCaptions.filter(({ start, end }) =>
-        captionIsVisible(start, end, 0, videoTime)
+        captionIsVisible(start, end, delay, videoTime)
       ),
-    [parsedCaptions, videoTime]
+    [parsedCaptions, videoTime, delay]
   );
 
   return (

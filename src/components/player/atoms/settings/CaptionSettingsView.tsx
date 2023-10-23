@@ -40,6 +40,7 @@ function CaptionSetting(props: {
   max: number;
   label: string;
   min: number;
+  decimalsAllowed?: number;
 }) {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const ref = useRef<HTMLDivElement>(null);
@@ -131,7 +132,10 @@ function CaptionSetting(props: {
               onBlur={(e) => {
                 setIsFocused(false);
                 const num = Number((e.target as HTMLInputElement).value);
-                if (!Number.isNaN(num)) props.onChange?.(Math.round(num));
+                if (!Number.isNaN(num))
+                  props.onChange?.(
+                    (props.decimalsAllowed ?? 0) === 0 ? Math.round(num) : num
+                  );
               }}
               ref={inputRef}
               onChange={(e) =>
@@ -142,13 +146,13 @@ function CaptionSetting(props: {
             <button
               className={inputClasses}
               onClick={() => {
-                setInputValue(Math.floor(props.value).toString());
+                setInputValue(props.value.toFixed(props.decimalsAllowed ?? 0));
                 setIsFocused(true);
               }}
               type="button"
               tabIndex={0}
             >
-              {textTransformer(Math.floor(props.value).toString())}
+              {textTransformer(props.value.toFixed(props.decimalsAllowed ?? 0))}
             </button>
           )}
         </div>
@@ -163,7 +167,9 @@ export function CaptionSettingsView({ id }: { id: string }) {
   const router = useOverlayRouter(id);
   const styling = useSubtitleStore((s) => s.styling);
   const overrideCasing = useSubtitleStore((s) => s.overrideCasing);
+  const delay = useSubtitleStore((s) => s.delay);
   const setOverrideCasing = useSubtitleStore((s) => s.setOverrideCasing);
+  const setDelay = useSubtitleStore((s) => s.setDelay);
   const updateStyling = useSubtitleStore((s) => s.updateStyling);
 
   return (
@@ -172,6 +178,15 @@ export function CaptionSettingsView({ id }: { id: string }) {
         Custom captions
       </Menu.BackLink>
       <Menu.Section className="space-y-6">
+        <CaptionSetting
+          label="Caption delay"
+          max={10}
+          min={-10}
+          onChange={(v) => setDelay(v)}
+          value={delay}
+          textTransformer={(s) => `${s}s`}
+          decimalsAllowed={1}
+        />
         <CaptionSetting
           label="Text size"
           max={200}
