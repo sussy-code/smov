@@ -8,7 +8,7 @@ export default function DeveloperPage() {
     <div className="py-48">
       <Navigation />
       <ThinContainer classNames="flex flex-col space-y-4">
-        <Title className="mb-8">Developer tools</Title>
+        <Title>Developer tools</Title>
         <ArrowLink to="/dev/video" direction="right" linkText="Video tester" />
         <ArrowLink to="/dev/test" direction="right" linkText="Test page" />
       </ThinContainer>

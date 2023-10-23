@@ -13,6 +13,7 @@ export interface ScrapingSegment {
   id: string;
   status: "failure" | "pending" | "notfound" | "success" | "waiting";
   reason?: string;
+  error?: unknown;
   percentage: number;
 }
 
@@ -60,6 +61,7 @@ export function useScrape() {
               if (s[evt.id]) {
                 s[evt.id].status = evt.status;
                 s[evt.id].reason = evt.reason;
+                s[evt.id].error = evt.error;
                 s[evt.id].percentage = evt.percentage;
               }
               return { ...s };

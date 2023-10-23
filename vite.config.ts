@@ -37,6 +37,7 @@ export default defineConfig(({ mode }) => {
         },
       }),
       VitePWA({
+        disable: process.env.VITE_PWA_ENABLED !== "yes",
         registerType: "autoUpdate",
         workbox: {
           globIgnores: ["**ping.txt**"],

@@ -4,7 +4,7 @@ import Sticky from "react-stickynode";
 
 import { ThinContainer } from "@/components/layout/ThinContainer";
 import { SearchBarInput } from "@/components/SearchBar";
-import { Title } from "@/components/text/Title";
+import { HeroTitle } from "@/components/text/HeroTitle";
 import { useSearchQuery } from "@/hooks/useSearchQuery";
 import { useBannerSize } from "@/stores/banner";
 
@@ -31,7 +31,9 @@ export function HeroPart({ setIsSticky, searchParams }: HeroPartProps) {
     <ThinContainer>
       <div className="mt-44 space-y-16 text-center">
         <div className="relative z-10 mb-16">
-          <Title className="mx-auto max-w-xs">{t("search.title")}</Title>
+          <HeroTitle className="mx-auto max-w-xs">
+            {t("search.title")}
+          </HeroTitle>
         </div>
         <div className="relative z-30">
           <Sticky

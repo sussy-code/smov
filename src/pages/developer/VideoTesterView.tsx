@@ -63,7 +63,7 @@ export default function VideoTesterView() {
           <div className="w-full max-w-4xl rounded-xl bg-video-scraping-card p-10 m-4">
             <div className="flex gap-16 flex-col lg:flex-row">
               <div className="flex-1">
-                <Title className="!text-2xl">Custom stream</Title>
+                <Title>Custom stream</Title>
                 <div className="grid grid-cols-[1fr,auto] gap-2 items-center">
                   <TextInputControl
                     className="bg-video-context-flagBg rounded-md p-2 text-white w-full"
@@ -91,7 +91,7 @@ export default function VideoTesterView() {
               </div>
 
               <div className="flex-1">
-                <Title className="!text-2xl mb-8">Preset tests</Title>
+                <Title>Preset tests</Title>
                 <div className="grid grid-cols-[1fr,1fr] gap-2">
                   <Button onClick={() => start(testStreams.hls, "hls")}>
                     HLS test

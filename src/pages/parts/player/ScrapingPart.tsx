@@ -8,11 +8,20 @@ import {
   ScrapeCard,
   ScrapeItem,
 } from "@/components/player/internals/ScrapeCard";
-import { useListCenter, useScrape } from "@/hooks/useProviderScrape";
+import {
+  ScrapingItems,
+  ScrapingSegment,
+  useListCenter,
+  useScrape,
+} from "@/hooks/useProviderScrape";
 
 export interface ScrapingProps {
   media: ScrapeMedia;
   onGetStream?: (stream: AsyncReturnType<ProviderControls["runAll"]>) => void;
+  onResult?: (
+    sources: Record<string, ScrapingSegment>,
+    sourceOrder: ScrapingItems[]
+  ) => void;
 }
 
 export function ScrapingPart(props: ScrapingProps) {
@@ -28,12 +37,27 @@ export function ScrapingPart(props: ScrapingProps) {
     currentSource
   );
 
+  const resultRef = useRef({
+    sourceOrder,
+    sources,
+  });
+  useEffect(() => {
+    resultRef.current = {
+      sourceOrder,
+      sources,
+    };
+  }, [sourceOrder, sources]);
+
   const started = useRef(false);
   useEffect(() => {
     if (started.current) return;
     started.current = true;
     (async () => {
       const output = await startScraping(props.media);
+      props.onResult?.(
+        resultRef.current.sources,
+        resultRef.current.sourceOrder
+      );
       props.onGetStream?.(output);
     })();
   }, [startScraping, props, playMedia]);

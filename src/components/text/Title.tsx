@@ -1,16 +1,17 @@
-export interface TitleProps {
-  children?: React.ReactNode;
-  className?: string;
-}
+import classNames from "classnames";
 
-export function Title(props: TitleProps) {
+export function Title(props: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   return (
-    <h1
-      className={`text-2xl font-bold text-white sm:text-3xl md:text-4xl ${
-        props.className ?? ""
-      }`}
+    <h2
+      className={classNames(
+        "text-white text-3xl font-bold text-opacity-100 mt-6",
+        props.className
+      )}
     >
       {props.children}
-    </h1>
+    </h2>
   );
 }

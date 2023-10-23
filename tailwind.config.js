@@ -109,6 +109,16 @@ module.exports = {
               badgeText: "#5F5F7A"
             },
 
+            // Error page
+            errors: {
+              card: "#12121B",
+              border: "#252534",
+
+              type: {
+                secondary: "#62627D"
+              }
+            },
+
             // video player
             video: {
               buttonBackground: "#444B5C",
@@ -137,7 +147,11 @@ module.exports = {
                 secondaryHover: "#1B262E",
                 primary: "#fff",
                 primaryText: "#000",
-                primaryHover: "#dedede"
+                primaryHover: "#dedede",
+                purple: "#6b298a",
+                purpleHover: "#7f35a1",
+                cancel: "#252533",
+                cancelHover: "#3C3C4A"
               },
 
               context: {
@@ -154,11 +168,6 @@ module.exports = {
                 slider: "#8787A8",
                 sliderFilled: "#A75FC9",
                 error: "#E44F4F",
-
-                download: {
-                  button: "#6b298a",
-                  hover: "#7f35a1"
-                },
 
                 buttons: {
                   list: "#161C26",

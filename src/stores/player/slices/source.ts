@@ -13,6 +13,7 @@ export const playerStatus = {
   IDLE: "idle",
   SCRAPING: "scraping",
   PLAYING: "playing",
+  SCRAPE_NOT_FOUND: "scrapeNotFound",
 } as const;
 
 export type PlayerStatus = ValuesOf<typeof playerStatus>;
