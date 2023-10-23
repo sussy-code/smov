@@ -41,6 +41,7 @@ function CaptionSetting(props: {
   label: string;
   min: number;
   decimalsAllowed?: number;
+  controlButtons?: boolean;
 }) {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const ref = useRef<HTMLDivElement>(null);
@@ -75,6 +76,10 @@ function CaptionSetting(props: {
       window.removeEventListener("keydown", listener);
     };
   }, [isFocused]);
+
+  function setNewValue(value: number) {
+    props.onChange?.(Math.min(Math.max(value, props.min), props.max));
+  }
 
   const inputClasses =
     "px-3 py-1 bg-video-context-inputBg rounded w-20 text-left text-white cursor-text";
@@ -143,17 +148,57 @@ function CaptionSetting(props: {
               }
             />
           ) : (
-            <button
-              className={inputClasses}
-              onClick={() => {
+            <div
+              className="relative"
+              onClick={(evt) => {
+                if ((evt.target as HTMLButtonElement).closest(".actions"))
+                  return;
+
                 setInputValue(props.value.toFixed(props.decimalsAllowed ?? 0));
                 setIsFocused(true);
               }}
-              type="button"
-              tabIndex={0}
             >
-              {textTransformer(props.value.toFixed(props.decimalsAllowed ?? 0))}
-            </button>
+              <button
+                className={classNames(
+                  inputClasses,
+                  props.controlButtons ? "pr-8 relative" : undefined
+                )}
+                type="button"
+                tabIndex={0}
+              >
+                {textTransformer(
+                  props.value.toFixed(props.decimalsAllowed ?? 0)
+                )}
+              </button>
+              {props.controlButtons ? (
+                <div className="actions w-6 h-full absolute right-0 top-0 flex items-center flex-col">
+                  <button
+                    type="button"
+                    onClick={
+                      () =>
+                        setNewValue(
+                          props.value + 1 / 10 ** (props.decimalsAllowed ?? 0)
+                        ) // Add depending on the decimalsAllowed. If there's 1 decimal allowed, add 0.1. For 2, add 0.01, etc.
+                    }
+                    className="hover:text-white transition-colors duration-100"
+                  >
+                    <Icon icon={Icons.CHEVRON_UP} />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={
+                      () =>
+                        setNewValue(
+                          props.value - 1 / 10 ** (props.decimalsAllowed ?? 0)
+                        ) // Remove depending on the decimalsAllowed. If there's 1 decimal allowed, add 0.1. For 2, add 0.01, etc.
+                    }
+                    className="hover:text-white transition-colors duration-100"
+                  >
+                    <Icon icon={Icons.CHEVRON_DOWN} />
+                  </button>
+                </div>
+              ) : null}
+            </div>
           )}
         </div>
       </div>
@@ -186,6 +231,7 @@ export function CaptionSettingsView({ id }: { id: string }) {
           value={delay}
           textTransformer={(s) => `${s}s`}
           decimalsAllowed={1}
+          controlButtons
         />
         <CaptionSetting
           label="Text size"
