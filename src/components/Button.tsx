@@ -47,6 +47,13 @@ export function Button(props: Props) {
     history.push(href);
   }
 
+  if (props.href && props.href.startsWith("https://"))
+    return (
+      <a className={classes} href={props.href} target="_blank" rel="noreferrer">
+        {content}
+      </a>
+    );
+
   if (props.href)
     return (
       <a className={classes} onClick={() => goTo(props.href || "")}>
