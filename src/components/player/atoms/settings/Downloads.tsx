@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 
+import { Button } from "@/components/Button";
 import { Icon, Icons } from "@/components/Icon";
 import { OverlayPage } from "@/components/overlays/OverlayPage";
 import { Menu } from "@/components/player/internals/ContextMenu";
@@ -49,15 +50,9 @@ export function DownloadView({ id }: { id: string }) {
             have control over how the downloads are provided.
           </Menu.Paragraph>
 
-          <a
-            href={downloadUrl}
-            rel="noreferrer"
-            target="_blank"
-            download
-            className="cursor-pointer flex justify-center items-center w-full p-2.5 !mt-6 rounded-lg bg-video-context-download-button hover:bg-video-context-download-hover transition-colors duration-150 text-white font-medium"
-          >
+          <Button className="w-full" href={downloadUrl} theme="purple">
             Download
-          </a>
+          </Button>
         </div>
       </Menu.Section>
     </>
