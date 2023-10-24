@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { ReactNode, useCallback, useEffect, useState } from "react";
+import { ReactNode, useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useAsync } from "react-use";
 
@@ -196,9 +196,14 @@ function EpisodesOverlay({
 }) {
   const router = useOverlayRouter(id);
   const meta = usePlayerStore((s) => s.meta);
-  const [selectedSeason, setSelectedSeason] = useState(
-    meta?.season?.tmdbId ?? ""
-  );
+  const [selectedSeason, setSelectedSeason] = useState("");
+
+  const lastActiveState = useRef(false);
+  useEffect(() => {
+    if (lastActiveState.current === router.isRouterActive) return;
+    lastActiveState.current = router.isRouterActive;
+    setSelectedSeason(meta?.season?.tmdbId ?? "");
+  }, [meta, selectedSeason, setSelectedSeason, router.isRouterActive]);
 
   const setSeason = useCallback(
     (seasonId: string) => {
@@ -215,12 +220,14 @@ function EpisodesOverlay({
           <SeasonsView setSeason={setSeason} selectedSeason={selectedSeason} />
         </OverlayPage>
         <OverlayPage id={id} path="/episodes" width={343} height={431}>
-          <EpisodesView
-            selectedSeason={selectedSeason}
-            id={id}
-            goBack={() => router.navigate("/")}
-            onChange={onChange}
-          />
+          {selectedSeason.length > 0 ? (
+            <EpisodesView
+              selectedSeason={selectedSeason}
+              id={id}
+              goBack={() => router.navigate("/")}
+              onChange={onChange}
+            />
+          ) : null}
         </OverlayPage>
       </OverlayRouter>
     </Overlay>
