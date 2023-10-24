@@ -60,7 +60,7 @@ export interface SourceSlice {
   setStatus(status: PlayerStatus): void;
   setSource(stream: SourceSliceSource, startAt: number): void;
   switchQuality(quality: SourceQuality): void;
-  setMeta(meta: PlayerMeta): void;
+  setMeta(meta: PlayerMeta, status?: PlayerStatus): void;
   setCaption(caption: Caption | null): void;
   setSourceId(id: string | null): void;
   enableAutomaticQuality(): void;
@@ -111,10 +111,11 @@ export const createSourceSlice: MakeSlice<SourceSlice> = (set, get) => ({
       s.status = status;
     });
   },
-  setMeta(meta) {
+  setMeta(meta, newStatus) {
     set((s) => {
       s.meta = meta;
       s.interface.hideNextEpisodeBtn = false;
+      if (newStatus) s.status = newStatus;
     });
   },
   setCaption(caption) {

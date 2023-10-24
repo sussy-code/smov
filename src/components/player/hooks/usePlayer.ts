@@ -1,5 +1,9 @@
 import { useInitializePlayer } from "@/components/player/hooks/useInitializePlayer";
-import { PlayerMeta, playerStatus } from "@/stores/player/slices/source";
+import {
+  PlayerMeta,
+  PlayerStatus,
+  playerStatus,
+} from "@/stores/player/slices/source";
 import { usePlayerStore } from "@/stores/player/store";
 import { SourceSliceSource } from "@/stores/player/utils/qualities";
 import { ProgressMediaItem, useProgressStore } from "@/stores/progress";
@@ -37,10 +41,11 @@ export function usePlayer() {
   const progressStore = useProgressStore();
 
   return {
+    meta,
     reset,
     status,
-    setMeta(m: PlayerMeta) {
-      setMeta(m);
+    setMeta(m: PlayerMeta, newStatus?: PlayerStatus) {
+      setMeta(m, newStatus);
     },
     playMedia(source: SourceSliceSource, sourceId: string | null) {
       setSource(source, getProgress(progressStore.items, meta));

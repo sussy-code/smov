@@ -1,13 +1,16 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useMemo } from "react";
 
 import { DetailedMeta } from "@/backend/metadata/getmeta";
 import { MWMediaType } from "@/backend/metadata/types/mw";
 import { usePlayer } from "@/components/player/hooks/usePlayer";
-import { PlayerMeta, metaToScrapeMedia } from "@/stores/player/slices/source";
+import {
+  PlayerMeta,
+  metaToScrapeMedia,
+  playerStatus,
+} from "@/stores/player/slices/source";
 
 export function usePlayerMeta() {
-  const { setMeta, setScrapeStatus } = usePlayer();
-  const [meta, _setPlayerMeta] = useState<PlayerMeta | null>(null);
+  const { meta, setMeta } = usePlayer();
   const scrapeMedia = useMemo(
     () => (meta ? metaToScrapeMedia(meta) : null),
     [meta]
@@ -15,11 +18,9 @@ export function usePlayerMeta() {
 
   const setDirectMeta = useCallback(
     (m: PlayerMeta) => {
-      _setPlayerMeta(m);
-      setScrapeStatus();
-      setMeta(m);
+      setMeta(m, playerStatus.SCRAPING);
     },
-    [_setPlayerMeta, setMeta, setScrapeStatus]
+    [setMeta]
   );
 
   const setPlayerMeta = useCallback(
