@@ -1,14 +1,52 @@
 /* eslint-disable react/no-unescaped-entities */
+
 import { ThinContainer } from "@/components/layout/ThinContainer";
+import { Ol } from "@/components/utils/Ol";
 import { Heading1, Heading2, Paragraph } from "@/components/utils/Text";
 
 import { SubPageLayout } from "./layouts/SubPageLayout";
+
+function Question(props: { title: string; children: React.ReactNode }) {
+  return (
+    <>
+      <p className="text-white mb-2 font-medium">{props.title}</p>
+      <div className="text-type-text">{props.children}</div>
+    </>
+  );
+}
 
 export function AboutPage() {
   return (
     <SubPageLayout>
       <ThinContainer>
         <Heading1>About us</Heading1>
+        <Ol
+          items={[
+            <Question title="What is Blue?">
+              Blue, oh so blue, like the tranquil sky on a summer's day. It's
+              the color of calm and serenity, a gentle embrace for your senses.
+              When you think of blue, you think of the vast ocean stretching
+              endlessly, inviting you to dive deep into its azure depths.
+            </Question>,
+            <Question title="Huh?">
+              Blue is the color of dreams, where the world slows down, and you
+              can hear the whispers of the wind in the tall grass. It's a
+              symphony of peacefulness that resonates with your soul, like a
+              melody that lingers in your heart.
+            </Question>,
+            <Question title="What the hell are you talking about?">
+              Blue, like, it's totally, um, the essence of like, everything, you
+              know? It's like, you look at it, and it's like, it's there, but
+              it's also not there, and it's like, you're trying to grasp the
+              concept of blue, but it's like trying to catch a dream in a net
+              made of spaghetti, you know? It's like, it's the ultimate paradox,
+              and it's like, it's just blowing your mind, man, like, it's like
+              trying to find the meaning of life in a jar of peanut butter, but
+              the peanut butter is made of pure energy, man, and it's like,
+              whoa.
+            </Question>,
+          ]}
+        />
         <Paragraph>
           Blue, oh so blue, like the tranquil sky on a summer's day. It's the
           color of calm and serenity, a gentle embrace for your senses. When you
