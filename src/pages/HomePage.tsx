@@ -9,6 +9,7 @@ import { HomeLayout } from "@/pages/layouts/HomeLayout";
 import { BookmarksPart } from "@/pages/parts/home/BookmarksPart";
 import { HeroPart } from "@/pages/parts/home/HeroPart";
 import { WatchingPart } from "@/pages/parts/home/WatchingPart";
+import { MigrationPart } from "@/pages/parts/migrations/MigrationPart";
 import { SearchListPart } from "@/pages/parts/search/SearchListPart";
 import { SearchLoadingPart } from "@/pages/parts/search/SearchLoadingPart";
 
@@ -37,6 +38,8 @@ export function HomePage() {
   const searchParams = useSearchQuery();
   const [search] = searchParams;
   const s = useSearch(search);
+
+  return <MigrationPart />;
 
   return (
     <HomeLayout showBg={showBg}>

@@ -31,11 +31,15 @@ export function EmbedOption(props: {
   const setSource = usePlayerStore((s) => s.setSource);
   const setSourceId = usePlayerStore((s) => s.setSourceId);
   const progress = usePlayerStore((s) => s.progress.time);
+
+  const unknownEmbedName = "Unknown";
+
   const embedName = useMemo(() => {
-    if (!props.embedId) return "...";
+    if (!props.embedId) return unknownEmbedName;
     const sourceMeta = providers.getMetadata(props.embedId);
-    return sourceMeta?.name ?? "...";
+    return sourceMeta?.name ?? unknownEmbedName;
   }, [props.embedId]);
+
   const [request, run] = useAsyncFn(async () => {
     const result = await providers.runEmbedScraper({
       id: props.embedId,
@@ -46,26 +50,14 @@ export function EmbedOption(props: {
     router.close();
   }, [props.embedId, props.sourceId, meta, router]);
 
-  let content: ReactNode = null;
-  if (request.loading)
-    content = (
-      <Menu.TextDisplay noIcon>
-        <Loading />
-      </Menu.TextDisplay>
-    );
-  else if (request.error)
-    content = (
-      <Menu.TextDisplay title="Failed to scrape">
-        We were unable to find any videos for this source. Don&apos;t come
-        bitchin&apos; to us about it, just try another source.
-      </Menu.TextDisplay>
-    );
-
   return (
-    <SelectableLink onClick={run}>
+    <SelectableLink
+      loading={request.loading}
+      error={request.error}
+      onClick={run}
+    >
       <span className="flex flex-col">
         <span>{embedName}</span>
-        {content}
       </span>
     </SelectableLink>
   );

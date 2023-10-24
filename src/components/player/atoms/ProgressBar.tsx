@@ -144,13 +144,13 @@ export function ProgressBar() {
         >
           <div
             className={[
-              "relative w-full h-1 bg-video-progress-background bg-opacity-25 rounded-full transition-[height] duration-100 group-hover:h-1.5",
+              "relative w-full h-1 bg-progress-background bg-opacity-25 rounded-full transition-[height] duration-100 group-hover:h-1.5",
               dragging ? "!h-1.5" : "",
             ].join(" ")}
           >
             {/* Pre-loaded content bar */}
             <div
-              className="absolute top-0 left-0 h-full rounded-full bg-video-progress-preloaded bg-opacity-50 flex justify-end items-center"
+              className="absolute top-0 left-0 h-full rounded-full bg-progress-preloaded bg-opacity-50 flex justify-end items-center"
               style={{
                 width: `${(buffered / duration) * 100}%`,
               }}
@@ -158,7 +158,7 @@ export function ProgressBar() {
 
             {/* Actual progress bar */}
             <div
-              className="absolute top-0 left-0 h-full rounded-full bg-video-progress-watched flex justify-end items-center"
+              className="absolute top-0 left-0 h-full rounded-full bg-progress-filled flex justify-end items-center"
               style={{
                 width: `${
                   Math.max(

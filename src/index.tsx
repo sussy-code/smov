@@ -6,7 +6,7 @@ import { HelmetProvider } from "react-helmet-async";
 import { BrowserRouter, HashRouter } from "react-router-dom";
 import { registerSW } from "virtual:pwa-register";
 
-import { ErrorBoundary } from "@/components/layout/ErrorBoundary";
+import { ErrorBoundary } from "@/pages/errors/ErrorBoundary";
 import App from "@/setup/App";
 import { conf } from "@/setup/config";
 import i18n from "@/setup/i18n";

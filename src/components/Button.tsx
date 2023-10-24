@@ -67,3 +67,33 @@ export function Button(props: Props) {
     </button>
   );
 }
+
+interface ButtonPlainProps {
+  onClick?: () => void;
+  children?: ReactNode;
+  theme?: "white" | "purple" | "secondary";
+  className?: string;
+}
+
+export function ButtonPlain(props: ButtonPlainProps) {
+  let colorClasses = "bg-white hover:bg-gray-200 text-black";
+  if (props.theme === "purple")
+    colorClasses =
+      "bg-video-buttons-purple hover:bg-video-buttons-purpleHover text-white";
+  if (props.theme === "secondary")
+    colorClasses =
+      "bg-video-buttons-cancel hover:bg-video-buttons-cancelHover transition-colors duration-100 text-white";
+
+  const classes = classNames(
+    "cursor-pointer inline-flex items-center justify-center rounded-lg font-medium transition-[transform,background-color] duration-100 active:scale-105 md:px-8",
+    "px-4 py-3",
+    props.className,
+    colorClasses
+  );
+
+  return (
+    <button type="button" onClick={props.onClick} className={classes}>
+      {props.children}
+    </button>
+  );
+}
