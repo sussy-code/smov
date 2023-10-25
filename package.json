@@ -35,6 +35,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:pwa": "cross-env VITE_PWA_ENABLED=yes vite build",
     "test": "vitest run",
     "preview": "vite preview",
     "lint": "eslint --ext .tsx,.ts src",
@@ -75,6 +76,7 @@
     "@typescript-eslint/parser": "^5.13.0",
     "@vitejs/plugin-react": "^3.1.0",
     "autoprefixer": "^10.4.13",
+    "cross-env": "^7.0.3",
     "eslint": "^8.10.0",
     "eslint-config-airbnb": "19.0.4",
     "eslint-config-prettier": "^8.6.0",

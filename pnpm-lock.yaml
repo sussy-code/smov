@@ -151,6 +151,9 @@ devDependencies:
   autoprefixer:
     specifier: ^10.4.13
     version: 10.4.15(postcss@8.4.29)
+  cross-env:
+    specifier: ^7.0.3
+    version: 7.0.3
   eslint:
     specifier: ^8.10.0
     version: 8.48.0
@@ -2839,6 +2842,14 @@ packages:
     resolution: {integrity: sha512-lqufgNn9NLnESg5mQeYsxQP5w7wrViSj0jr/kv6ECQiByzQkrn1MKvV0L3acttpDqfQrHLwr2KCMgX5b8X+lyQ==}
     requiresBuild: true
     dev: false
+
+  /cross-env@7.0.3:
+    resolution: {integrity: sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==}
+    engines: {node: '>=10.14', npm: '>=6', yarn: '>=1'}
+    hasBin: true
+    dependencies:
+      cross-spawn: 7.0.3
+    dev: true
 
   /cross-fetch@3.1.8:
     resolution: {integrity: sha512-cvA+JwZoU0Xq+h6WkMvAUqPEYy92Obet6UdKLfW60qn99ftItKjB5T+BkyWOFWe2pUyfQ+IJHmpOTznqk1M6Kg==}
