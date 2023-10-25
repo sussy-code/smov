@@ -17,6 +17,7 @@ import { DmcaPage } from "@/pages/Dmca";
 import { NotFoundPage } from "@/pages/errors/NotFoundPage";
 import { HomePage } from "@/pages/HomePage";
 import { PlayerView } from "@/pages/PlayerView";
+import { SettingsPage } from "@/pages/Settings";
 import { Layout } from "@/setup/Layout";
 import { BookmarkContextProvider } from "@/state/bookmark";
 import { SettingsProvider } from "@/state/settings";
@@ -102,6 +103,9 @@ function App() {
               />
               <Route exact path="/faq" component={AboutPage} />
               <Route exact path="/dmca" component={DmcaPage} />
+
+              {/* Settings page */}
+              <Route exact path="/settings" component={SettingsPage} />
 
               {/* admin routes */}
               <Route exact path="/admin" component={AdminPage} />

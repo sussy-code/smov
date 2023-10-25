@@ -1,13 +1,13 @@
 import classNames from "classnames";
-import { f } from "ofetch/dist/shared/ofetch.441891d5";
-import { useCallback, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { useAsyncFn } from "react-use";
 
 import { mwFetch } from "@/backend/helpers/fetch";
 import { Button } from "@/components/Button";
 import { Icon, Icons } from "@/components/Icon";
 import { Box } from "@/components/layout/Box";
-import { Divider } from "@/components/player/internals/ContextMenu/Misc";
+import { Spinner } from "@/components/layout/Spinner";
+import { Divider } from "@/components/utils/Divider";
 import { Heading2 } from "@/components/utils/Text";
 import { conf } from "@/setup/config";
 
@@ -53,7 +53,7 @@ export function WorkerTestPart() {
     { id: string; status: "error" | "success"; error?: Error }[]
   >([]);
 
-  const runTests = useAsyncFn(async () => {
+  const [testState, runTests] = useAsyncFn(async () => {
     function updateWorker(id: string, data: (typeof workerState)[number]) {
       setWorkerState((s) => {
         return [...s.filter((v) => v.id !== id), data];
@@ -62,6 +62,14 @@ export function WorkerTestPart() {
     setWorkerState([]);
     for (const worker of workerList) {
       try {
+        if (worker.url.endsWith("/")) {
+          updateWorker(worker.id, {
+            id: worker.id,
+            status: "error",
+            error: new Error("URL ends with slash"),
+          });
+          continue;
+        }
         await mwFetch(worker.url, {
           query: {
             destination: "https://postman-echo.com/get",
@@ -83,8 +91,8 @@ export function WorkerTestPart() {
 
   return (
     <>
-      <Heading2 className="mb-0 mt-12">Worker tests</Heading2>
-      <p className="mb-8 mt-2">15 workers registered</p>
+      <Heading2 className="!mb-0 mt-12">Worker tests</Heading2>
+      <p className="mb-8 mt-2">{workerList.length} worker(s) registered</p>
       <Box>
         {workerList.map((v, i) => {
           const s = workerState.find((segment) => segment.id);
@@ -105,7 +113,10 @@ export function WorkerTestPart() {
         })}
         <Divider />
         <div className="flex justify-end">
-          <Button theme="purple">Run tests</Button>
+          <Button theme="purple" onClick={runTests}>
+            {testState.loading ? <Spinner className="text-base mr-2" /> : null}
+            Test workers
+          </Button>
         </div>
       </Box>
     </>

@@ -109,6 +109,21 @@ module.exports = {
               badgeText: "#5F5F7A"
             },
 
+            settings: {
+              sidebar: {
+                type: {
+                  secondary: "#4B395F",
+                  inactive: "#8D68A9",
+                  icon: "#926CAD",
+                  activated: "#CBA1E8"
+                }
+              }
+            },
+
+            utils: {
+              divider: "#353549"
+            },
+
             // Error page
             errors: {
               card: "#12121B",
