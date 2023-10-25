@@ -13,7 +13,7 @@ interface Props {
   className?: string;
   href?: string;
   disabled?: boolean;
-  download?: boolean;
+  download?: string;
 }
 
 export function Button(props: Props) {

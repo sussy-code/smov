@@ -15,6 +15,7 @@ import { Input } from "@/components/player/internals/ContextMenu/Input";
 import { SelectableLink } from "@/components/player/internals/ContextMenu/Links";
 import { useOverlayRouter } from "@/hooks/useOverlayRouter";
 import { usePlayerStore } from "@/stores/player/store";
+import { useSubtitleStore } from "@/stores/subtitles";
 
 export function CaptionOption(props: {
   countryCode?: string;
@@ -94,6 +95,7 @@ function searchSubs(
 function CustomCaptionOption() {
   const lang = usePlayerStore((s) => s.caption.selected?.language);
   const setCaption = usePlayerStore((s) => s.setCaption);
+  const setCustomSubs = useSubtitleStore((s) => s.setCustomSubs);
   const fileInput = useRef<HTMLInputElement>(null);
 
   return (
@@ -118,6 +120,7 @@ function CustomCaptionOption() {
               language: "custom",
               srtData: converted,
             });
+            setCustomSubs();
           });
           reader.readAsText(e.target.files[0], "utf-8");
         }}
@@ -126,9 +129,7 @@ function CustomCaptionOption() {
   );
 }
 
-// TODO on initialize, download captions
 // TODO fix language names, some are unknown
-// TODO delay setting for captions
 export function CaptionsView({ id }: { id: string }) {
   const router = useOverlayRouter(id);
   const lang = usePlayerStore((s) => s.caption.selected?.language);

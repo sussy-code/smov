@@ -35,13 +35,31 @@ export function convertSubtitlesToVtt(text: string): string {
   return vtt;
 }
 
+export function convertSubtitlesToSrt(text: string): string {
+  const textTrimmed = text.trim();
+  if (textTrimmed === "") {
+    throw new Error("Given text is empty");
+  }
+  const srt = convert(textTrimmed, "srt");
+  if (detect(srt) === "") {
+    throw new Error("Invalid subtitle format");
+  }
+  return srt;
+}
+
 export function parseSubtitles(text: string): CaptionCueType[] {
   const vtt = convertSubtitlesToVtt(text);
   return parse(vtt).filter((cue) => cue.type === "caption") as CaptionCueType[];
 }
 
-export function convertSubtitlesToDataurl(text: string): string {
-  return `data:text/vtt,${convertSubtitlesToVtt(text)}`;
+function stringToBase64(input: string): string {
+  return btoa(String.fromCodePoint(...new TextEncoder().encode(input)));
+}
+
+export function convertSubtitlesToSrtDataurl(text: string): string {
+  return `data:application/x-subrip;base64,${stringToBase64(
+    convertSubtitlesToSrt(text)
+  )}`;
 }
 
 export function convertSubtitlesToObjectUrl(text: string): string {

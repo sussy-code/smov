@@ -27,6 +27,7 @@ export interface SubtitleStore {
   delay: number;
   updateStyling(newStyling: Partial<SubtitleStyling>): void;
   setLanguage(language: string | null): void;
+  setCustomSubs(): void;
   setOverrideCasing(enabled: boolean): void;
   setDelay(delay: number): void;
 }
@@ -58,6 +59,12 @@ export const useSubtitleStore = create(
         set((s) => {
           s.enabled = !!lang;
           if (lang) s.lastSelectedLanguage = lang;
+        });
+      },
+      setCustomSubs() {
+        set((s) => {
+          s.enabled = true;
+          s.lastSelectedLanguage = null;
         });
       },
       setOverrideCasing(enabled) {

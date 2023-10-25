@@ -4,7 +4,7 @@ import { Button } from "@/components/Button";
 import { Icon, Icons } from "@/components/Icon";
 import { OverlayPage } from "@/components/overlays/OverlayPage";
 import { Menu } from "@/components/player/internals/ContextMenu";
-import { convertSubtitlesToDataurl } from "@/components/player/utils/captions";
+import { convertSubtitlesToSrtDataurl } from "@/components/player/utils/captions";
 import { useOverlayRouter } from "@/hooks/useOverlayRouter";
 import { usePlayerStore } from "@/stores/player/store";
 
@@ -24,11 +24,13 @@ export function DownloadView({ id }: { id: string }) {
   const downloadUrl = useDownloadLink();
 
   const selectedCaption = usePlayerStore((s) => s.caption?.selected);
-  const subtitleUrl = selectedCaption
-    ? convertSubtitlesToDataurl(selectedCaption?.srtData)
-    : null;
-
-  console.log(subtitleUrl);
+  const subtitleUrl = useMemo(
+    () =>
+      selectedCaption
+        ? convertSubtitlesToSrtDataurl(selectedCaption?.srtData)
+        : null,
+    [selectedCaption]
+  );
 
   if (!downloadUrl) return null;
 
@@ -66,7 +68,7 @@ export function DownloadView({ id }: { id: string }) {
             href={subtitleUrl ?? undefined}
             disabled={!subtitleUrl}
             theme="secondary"
-            download
+            download="subtitles.srt"
           >
             Download current caption
           </Button>
