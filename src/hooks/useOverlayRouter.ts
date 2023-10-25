@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 
 import { useQueryParam } from "@/hooks/useQueryParams";
 import { useOverlayStore } from "@/stores/overlay/store";
@@ -12,11 +12,47 @@ function joinPath(path: string[]): string {
   return `/${path.join("/")}`;
 }
 
+export function useRouterAnchorUpdate(id: string) {
+  const setAnchorPoint = useOverlayStore((s) => s.setAnchorPoint);
+  const [route] = useQueryParam("r");
+  const routerActive = useMemo(
+    () => !!route && route.startsWith(`/${id}`),
+    [route, id]
+  );
+
+  const update = useCallback(() => {
+    if (!routerActive) return;
+    const anchor = document.getElementById(`__overlayRouter::${id}`);
+    if (anchor) {
+      const rect = anchor.getBoundingClientRect();
+      setAnchorPoint({
+        h: rect.height,
+        w: rect.width,
+        x: rect.x,
+        y: rect.y,
+      });
+    }
+  }, [routerActive, setAnchorPoint, id]);
+
+  useEffect(() => {
+    update();
+  }, [routerActive, update]);
+
+  useEffect(() => {
+    function resizeEvent() {
+      update();
+    }
+    window.addEventListener("resize", resizeEvent);
+    return () => {
+      window.removeEventListener("resize", resizeEvent);
+    };
+  }, [update]);
+}
+
 export function useInternalOverlayRouter(id: string) {
   const [route, setRoute] = useQueryParam("r");
   const transition = useOverlayStore((s) => s.transition);
   const setTransition = useOverlayStore((s) => s.setTransition);
-  const setAnchorPoint = useOverlayStore((s) => s.setAnchorPoint);
   const routerActive = !!route && route.startsWith(`/${id}`);
 
   function makePath(path: string) {
@@ -62,23 +98,10 @@ export function useInternalOverlayRouter(id: string) {
 
   const open = useCallback(
     (defaultRoute = "/") => {
-      const anchor = document.getElementById(`__overlayRouter::${id}`);
-      if (anchor) {
-        const rect = anchor.getBoundingClientRect();
-        setAnchorPoint({
-          h: rect.height,
-          w: rect.width,
-          x: rect.x,
-          y: rect.y,
-        });
-      } else {
-        setAnchorPoint(null);
-      }
-
       setTransition(null);
       setRoute(joinPath(splitPath(defaultRoute, id)));
     },
-    [id, setRoute, setTransition, setAnchorPoint]
+    [id, setRoute, setTransition]
   );
 
   const activeRoute = routerActive

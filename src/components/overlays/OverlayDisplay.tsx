@@ -3,7 +3,10 @@ import { ReactNode, useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
 import { Transition } from "@/components/Transition";
-import { useInternalOverlayRouter } from "@/hooks/useOverlayRouter";
+import {
+  useInternalOverlayRouter,
+  useRouterAnchorUpdate,
+} from "@/hooks/useOverlayRouter";
 
 export interface OverlayProps {
   id: string;
@@ -31,6 +34,9 @@ export function Overlay(props: OverlayProps) {
   const [portalElement, setPortalElement] = useState<Element | null>(null);
   const ref = useRef<HTMLDivElement>(null);
   const target = useRef<Element | null>(null);
+
+  // listen for anchor updates
+  useRouterAnchorUpdate(props.id);
 
   useEffect(() => {
     function listen(e: MouseEvent) {
