@@ -4,6 +4,7 @@ import { Button } from "@/components/Button";
 import { Icon, Icons } from "@/components/Icon";
 import { OverlayPage } from "@/components/overlays/OverlayPage";
 import { Menu } from "@/components/player/internals/ContextMenu";
+import { convertSubtitlesToDataurl } from "@/components/player/utils/captions";
 import { useOverlayRouter } from "@/hooks/useOverlayRouter";
 import { usePlayerStore } from "@/stores/player/store";
 
@@ -22,6 +23,13 @@ export function DownloadView({ id }: { id: string }) {
   const router = useOverlayRouter(id);
   const downloadUrl = useDownloadLink();
 
+  const selectedCaption = usePlayerStore((s) => s.caption?.selected);
+  const subtitleUrl = selectedCaption
+    ? convertSubtitlesToDataurl(selectedCaption?.srtData)
+    : null;
+
+  console.log(subtitleUrl);
+
   if (!downloadUrl) return null;
 
   return (
@@ -30,7 +38,7 @@ export function DownloadView({ id }: { id: string }) {
         Download
       </Menu.BackLink>
       <Menu.Section>
-        <div className="mt-3">
+        <div>
           <Menu.ChevronLink onClick={() => router.navigate("/download/pc")}>
             Downloading on PC
           </Menu.ChevronLink>
@@ -45,13 +53,22 @@ export function DownloadView({ id }: { id: string }) {
 
           <Menu.Divider />
 
-          <Menu.Paragraph>
+          <Menu.Paragraph marginClass="my-6">
             Downloads are taken directly from the provider. movie-web does not
             have control over how the downloads are provided.
           </Menu.Paragraph>
 
           <Button className="w-full" href={downloadUrl} theme="purple">
-            Download
+            Download video
+          </Button>
+          <Button
+            className="w-full mt-2"
+            href={subtitleUrl ?? undefined}
+            disabled={!subtitleUrl}
+            theme="secondary"
+            download
+          >
+            Download current caption
           </Button>
         </div>
       </Menu.Section>
@@ -148,7 +165,7 @@ function IOSExplanationView({ id }: { id: string }) {
 export function DownloadRoutes({ id }: { id: string }) {
   return (
     <>
-      <OverlayPage id={id} path="/download" width={343} height={440}>
+      <OverlayPage id={id} path="/download" width={343} height={490}>
         <Menu.CardWithScrollable>
           <DownloadView id={id} />
         </Menu.CardWithScrollable>

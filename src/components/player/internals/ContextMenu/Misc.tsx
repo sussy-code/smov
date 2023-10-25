@@ -49,8 +49,11 @@ export function FieldTitle(props: { children: React.ReactNode }) {
   return <p className="font-medium">{props.children}</p>;
 }
 
-export function Paragraph(props: { children: React.ReactNode }) {
-  return <p className="my-3">{props.children}</p>;
+export function Paragraph(props: {
+  children: React.ReactNode;
+  marginClass?: string;
+}) {
+  return <p className={props.marginClass ?? "my-3"}>{props.children}</p>;
 }
 
 export function Highlight(props: { children: React.ReactNode }) {

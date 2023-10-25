@@ -270,6 +270,7 @@ export function CaptionSettingsView({ id }: { id: string }) {
                 onClick={() => updateStyling({ color: v })}
                 color={v}
                 active={styling.color === v}
+                key={v}
               />
             ))}
           </div>

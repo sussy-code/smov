@@ -1,4 +1,5 @@
 import { gql, request } from "graphql-request";
+import { list } from "subsrt-ts";
 import { unzip } from "unzipit";
 
 import { proxiedFetch } from "@/backend/helpers/fetch";
@@ -115,3 +116,5 @@ export async function downloadSrt(legacySubId: string): Promise<string> {
   const srtData = srtEntry.text();
   return srtData;
 }
+
+export const subtitleTypeList = list().map((type) => `.${type}`);

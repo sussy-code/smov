@@ -1,8 +1,13 @@
 import Fuse from "fuse.js";
-import { ReactNode, useState } from "react";
+import { ReactNode, useRef, useState } from "react";
 import { useAsync, useAsyncFn } from "react-use";
+import { convert } from "subsrt-ts";
 
-import { SubtitleSearchItem, languageIdToName } from "@/backend/helpers/subs";
+import {
+  SubtitleSearchItem,
+  languageIdToName,
+  subtitleTypeList,
+} from "@/backend/helpers/subs";
 import { FlagIcon } from "@/components/FlagIcon";
 import { useCaptions } from "@/components/player/hooks/useCaptions";
 import { Menu } from "@/components/player/internals/ContextMenu";
@@ -84,6 +89,41 @@ function searchSubs(
   }
 
   return results;
+}
+
+function CustomCaptionOption() {
+  const lang = usePlayerStore((s) => s.caption.selected?.language);
+  const setCaption = usePlayerStore((s) => s.setCaption);
+  const fileInput = useRef<HTMLInputElement>(null);
+
+  return (
+    <CaptionOption
+      selected={lang === "custom"}
+      onClick={() => fileInput.current?.click()}
+    >
+      Upload captions
+      <input
+        className="hidden"
+        ref={fileInput}
+        accept={subtitleTypeList.join(",")}
+        type="file"
+        onChange={(e) => {
+          if (!e.target.files) return;
+          const reader = new FileReader();
+          reader.addEventListener("load", (event) => {
+            if (!event.target || typeof event.target.result !== "string")
+              return;
+            const converted = convert(event.target.result, "srt");
+            setCaption({
+              language: "custom",
+              srtData: converted,
+            });
+          });
+          reader.readAsText(e.target.files[0], "utf-8");
+        }}
+      />
+    </CaptionOption>
+  );
 }
 
 // TODO on initialize, download captions
@@ -177,6 +217,7 @@ export function CaptionsView({ id }: { id: string }) {
         <CaptionOption onClick={() => disable()} selected={!lang}>
           Off
         </CaptionOption>
+        <CustomCaptionOption />
         {content}
       </Menu.ScrollToActiveSection>
     </>

@@ -12,6 +12,7 @@ import { convertLegacyUrl, isLegacyUrl } from "@/backend/metadata/getmeta";
 import { generateQuickSearchMediaUrl } from "@/backend/metadata/tmdb";
 import { useOnlineListener } from "@/hooks/usePing";
 import { AboutPage } from "@/pages/About";
+import { AdminPage } from "@/pages/admin/AdminPage";
 import { DmcaPage } from "@/pages/Dmca";
 import { NotFoundPage } from "@/pages/errors/NotFoundPage";
 import { HomePage } from "@/pages/HomePage";
@@ -101,6 +102,9 @@ function App() {
               />
               <Route exact path="/faq" component={AboutPage} />
               <Route exact path="/dmca" component={DmcaPage} />
+
+              {/* admin routes */}
+              <Route exact path="/admin" component={AdminPage} />
 
               {/* other */}
               <Route

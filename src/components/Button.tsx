@@ -12,6 +12,8 @@ interface Props {
   padding?: string;
   className?: string;
   href?: string;
+  disabled?: boolean;
+  download?: boolean;
 }
 
 export function Button(props: Props) {
@@ -25,12 +27,22 @@ export function Button(props: Props) {
     colorClasses =
       "bg-video-buttons-cancel hover:bg-video-buttons-cancelHover transition-colors duration-100 text-white";
 
-  const classes = classNames(
+  let classes = classNames(
     "cursor-pointer inline-flex items-center justify-center rounded-lg font-medium transition-[transform,background-color] duration-100 active:scale-105 md:px-8",
     props.padding ?? "px-4 py-3",
     props.className,
-    colorClasses
+    colorClasses,
+    props.disabled ? "cursor-not-allowed bg-opacity-60 text-opacity-60" : null
   );
+
+  if (props.disabled)
+    classes = classes
+      .split(" ")
+      .filter(
+        (className) =>
+          !className.startsWith("hover:") && !className.startsWith("active:")
+      )
+      .join(" ");
 
   const content = (
     <>
@@ -47,9 +59,18 @@ export function Button(props: Props) {
     history.push(href);
   }
 
-  if (props.href && props.href.startsWith("https://"))
+  if (
+    props.href &&
+    (props.href.startsWith("https://") || props.href?.startsWith("data:"))
+  )
     return (
-      <a className={classes} href={props.href} target="_blank" rel="noreferrer">
+      <a
+        className={classes}
+        href={props.href}
+        target="_blank"
+        rel="noreferrer"
+        download={props.download}
+      >
         {content}
       </a>
     );
