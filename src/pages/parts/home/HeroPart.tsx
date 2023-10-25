@@ -30,7 +30,8 @@ export function HeroPart({ setIsSticky, searchParams }: HeroPartProps) {
   let time = "night";
   const hour = new Date().getHours();
   if (hour < 12) time = "morning";
-  if (hour < 19) time = "day";
+  else if (hour < 19) time = "day";
+
   const title = t(`search.title.${time}`);
 
   return (
