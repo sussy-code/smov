@@ -10,7 +10,22 @@
     "headingTitle": "Search results",
     "bookmarks": "Bookmarks",
     "continueWatching": "Continue Watching",
-    "title": "What to watch tonight?",
+    "title": {
+      "morning": [
+        "What would you like to watch today?",
+        "I hear Before Sunrise is good"
+      ],
+      "day": [
+        "Shouldn't u be at school right now?",
+        "What to watch today?",
+        "Partially built in Holland"
+      ],
+      "night": [
+        "What to watch tonight?",
+        "Tired? I hear The Excorcist is good.",
+        "https://youtu.be/68ugkg9RePc"
+      ]
+    },
     "placeholder": "What do you want to watch?"
   },
   "media": {

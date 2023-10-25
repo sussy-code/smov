@@ -1,10 +1,10 @@
 import { useCallback, useState } from "react";
-import { useTranslation } from "react-i18next";
 import Sticky from "react-stickynode";
 
 import { ThinContainer } from "@/components/layout/ThinContainer";
 import { SearchBarInput } from "@/components/SearchBar";
 import { HeroTitle } from "@/components/text/HeroTitle";
+import { useRandomTranslation } from "@/hooks/useRandomTranslation";
 import { useSearchQuery } from "@/hooks/useSearchQuery";
 import { useBannerSize } from "@/stores/banner";
 
@@ -14,7 +14,7 @@ export interface HeroPartProps {
 }
 
 export function HeroPart({ setIsSticky, searchParams }: HeroPartProps) {
-  const { t } = useTranslation();
+  const { t } = useRandomTranslation();
   const [search, setSearch, setSearchUnFocus] = searchParams;
   const [, setShowBg] = useState(false);
   const bannerSize = useBannerSize();
@@ -27,13 +27,17 @@ export function HeroPart({ setIsSticky, searchParams }: HeroPartProps) {
     [setShowBg, setIsSticky]
   );
 
+  let time = "night";
+  const hour = new Date().getHours();
+  if (hour < 12) time = "morning";
+  if (hour < 19) time = "day";
+  const title = t(`search.title.${time}`);
+
   return (
     <ThinContainer>
       <div className="mt-44 space-y-16 text-center">
         <div className="relative z-10 mb-16">
-          <HeroTitle className="mx-auto max-w-xs">
-            {t("search.title")}
-          </HeroTitle>
+          <HeroTitle className="mx-auto max-w-xs">{title}</HeroTitle>
         </div>
         <div className="relative z-30">
           <Sticky
