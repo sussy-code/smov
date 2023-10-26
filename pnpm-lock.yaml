@@ -12,8 +12,8 @@ dependencies:
     specifier: ^1.5.0
     version: 1.7.17(react-dom@17.0.2)(react@17.0.2)
   '@movie-web/providers':
-    specifier: ^1.0.1
-    version: 1.0.1
+    specifier: ^1.0.2
+    version: 1.0.2
   '@react-spring/web':
     specifier: ^9.7.1
     version: 9.7.3(react-dom@17.0.2)(react@17.0.2)
@@ -1813,8 +1813,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
 
-  /@movie-web/providers@1.0.1:
-    resolution: {integrity: sha512-7f3uQKhym+4F5rC5r+6qHjL8Rx3b8P9r1UJcENlkgULUEjX7I/w4B6FzdRlHnTig+DVwuUabNWHE+hzS/tQQPw==}
+  /@movie-web/providers@1.0.2:
+    resolution: {integrity: sha512-MC2N/qEx0tjlm8qx3Yr91/KMewsP0fdo2F0ZEmlzqfiGA0bJB6mJebTerHoO1TlG7ezvkpkOSaQdvnoQdTbn2g==}
     dependencies:
       cheerio: 1.0.0-rc.12
       crypto-js: 4.1.1
