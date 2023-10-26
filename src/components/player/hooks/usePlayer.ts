@@ -47,8 +47,13 @@ export function usePlayer() {
     setMeta(m: PlayerMeta, newStatus?: PlayerStatus) {
       setMeta(m, newStatus);
     },
-    playMedia(source: SourceSliceSource, sourceId: string | null) {
-      setSource(source, getProgress(progressStore.items, meta));
+    playMedia(
+      source: SourceSliceSource,
+      sourceId: string | null,
+      startAtOverride?: number
+    ) {
+      const start = startAtOverride ?? getProgress(progressStore.items, meta);
+      setSource(source, start);
       setSourceId(sourceId);
       setStatus(playerStatus.PLAYING);
       init();

@@ -6,12 +6,14 @@ import { usePlayer } from "@/components/player/hooks/usePlayer";
 import { usePlayerMeta } from "@/components/player/hooks/usePlayerMeta";
 import { convertRunoutputToSource } from "@/components/player/utils/convertRunoutputToSource";
 import { ScrapingItems, ScrapingSegment } from "@/hooks/useProviderScrape";
+import { useQueryParam } from "@/hooks/useQueryParams";
 import { MetaPart } from "@/pages/parts/player/MetaPart";
 import { PlayerPart } from "@/pages/parts/player/PlayerPart";
 import { ScrapeErrorPart } from "@/pages/parts/player/ScrapeErrorPart";
 import { ScrapingPart } from "@/pages/parts/player/ScrapingPart";
 import { useLastNonPlayerLink } from "@/stores/history";
 import { PlayerMeta, playerStatus } from "@/stores/player/slices/source";
+import { parseTimestamp } from "@/utils/timestamp";
 
 export function PlayerView() {
   const history = useHistory();
@@ -24,6 +26,7 @@ export function PlayerView() {
     sources: Record<string, ScrapingSegment>;
     sourceOrder: ScrapingItems[];
   } | null>(null);
+  const [startAtParam, setStartAtParam] = useQueryParam("t");
   const { status, playMedia, reset, setScrapeNotFound } = usePlayer();
   const { setPlayerMeta, scrapeMedia } = usePlayerMeta();
   const backUrl = useLastNonPlayerLink();
@@ -51,9 +54,14 @@ export function PlayerView() {
   const playAfterScrape = useCallback(
     (out: RunOutput | null) => {
       if (!out) return;
-      playMedia(convertRunoutputToSource(out), out.sourceId);
+      let startAt: number | undefined;
+      if (startAtParam) {
+        setStartAtParam(null);
+        startAt = parseTimestamp(startAtParam) ?? undefined;
+      }
+      playMedia(convertRunoutputToSource(out), out.sourceId, startAt);
     },
-    [playMedia]
+    [playMedia, setStartAtParam, startAtParam]
   );
 
   return (
