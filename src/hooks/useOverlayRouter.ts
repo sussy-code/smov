@@ -91,10 +91,13 @@ export function useInternalOverlayRouter(id: string) {
     return routerActive;
   }
 
-  const close = useCallback(() => {
-    if (route) setRoute(null);
-    setTransition(null);
-  }, [setRoute, route, setTransition]);
+  const close = useCallback(
+    (preventRouteClear?: boolean) => {
+      if (route && !preventRouteClear) setRoute(null);
+      setTransition(null);
+    },
+    [setRoute, route, setTransition]
+  );
 
   const open = useCallback(
     (defaultRoute = "/") => {

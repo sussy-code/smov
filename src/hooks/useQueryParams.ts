@@ -32,7 +32,7 @@ export function useQueryParam(
         search: parsed.toString(),
       });
     },
-    [param, location, router]
+    [param, location.search, router]
   );
 
   return [currentValue, set];

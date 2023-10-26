@@ -26,7 +26,7 @@ export function PlayerView() {
     sources: Record<string, ScrapingSegment>;
     sourceOrder: ScrapingItems[];
   } | null>(null);
-  const [startAtParam, setStartAtParam] = useQueryParam("t");
+  const [startAtParam] = useQueryParam("t");
   const { status, playMedia, reset, setScrapeNotFound } = usePlayer();
   const { setPlayerMeta, scrapeMedia } = usePlayerMeta();
   const backUrl = useLastNonPlayerLink();
@@ -54,14 +54,13 @@ export function PlayerView() {
   const playAfterScrape = useCallback(
     (out: RunOutput | null) => {
       if (!out) return;
+
       let startAt: number | undefined;
-      if (startAtParam) {
-        setStartAtParam(null);
-        startAt = parseTimestamp(startAtParam) ?? undefined;
-      }
+      if (startAtParam) startAt = parseTimestamp(startAtParam) ?? undefined;
+
       playMedia(convertRunoutputToSource(out), out.sourceId, startAt);
     },
-    [playMedia, setStartAtParam, startAtParam]
+    [playMedia, startAtParam]
   );
 
   return (

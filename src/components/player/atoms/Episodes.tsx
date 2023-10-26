@@ -109,7 +109,9 @@ function EpisodesView({
         const newData = setPlayerMeta(loadingState.value.fullData, episodeId);
         if (newData) onChange?.(newData);
       }
-      router.close();
+      // prevent router clear here, otherwise its done double
+      // player already switches route after meta change
+      router.close(true);
     },
     [setPlayerMeta, loadingState, router, onChange]
   );
