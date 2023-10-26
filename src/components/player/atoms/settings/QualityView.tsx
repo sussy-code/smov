@@ -12,6 +12,14 @@ import {
 } from "@/stores/player/utils/qualities";
 import { useQualityStore } from "@/stores/quality";
 
+const alwaysVisibleQualities: Record<SourceQuality, boolean> = {
+  unknown: false,
+  "360": true,
+  "480": true,
+  "720": true,
+  "1080": true,
+};
+
 export function QualityView({ id }: { id: string }) {
   const router = useOverlayRouter(id);
   const availableQualities = usePlayerStore((s) => s.qualities);
@@ -40,7 +48,11 @@ export function QualityView({ id }: { id: string }) {
     if (newValue) enableAutomaticQuality();
   }, [setAutomaticQuality, autoQuality, enableAutomaticQuality]);
 
-  const allVisibleQualities = allQualities.filter((t) => t !== "unknown");
+  const visibleQualities = allQualities.filter((quality) => {
+    if (alwaysVisibleQualities[quality]) return true;
+    if (availableQualities.includes(quality)) return true;
+    return false;
+  });
 
   return (
     <>
@@ -48,7 +60,7 @@ export function QualityView({ id }: { id: string }) {
         Quality
       </Menu.BackLink>
       <Menu.Section>
-        {allVisibleQualities.map((v) => (
+        {visibleQualities.map((v) => (
           <SelectableLink
             key={v}
             selected={v === currentQuality}
