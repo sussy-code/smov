@@ -47,7 +47,10 @@ export function convertSubtitlesToSrt(text: string): string {
   return srt;
 }
 
-export function parseSubtitles(text: string): CaptionCueType[] {
+export function parseSubtitles(
+  text: string,
+  _language?: string
+): CaptionCueType[] {
   const vtt = convertSubtitlesToVtt(text);
   return parse(vtt).filter((cue) => cue.type === "caption") as CaptionCueType[];
 }

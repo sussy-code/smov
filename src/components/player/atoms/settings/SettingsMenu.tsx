@@ -1,10 +1,10 @@
 import { useMemo } from "react";
 
-import { languageIdToName } from "@/backend/helpers/subs";
 import { Toggle } from "@/components/buttons/Toggle";
 import { Icon, Icons } from "@/components/Icon";
 import { useCaptions } from "@/components/player/hooks/useCaptions";
 import { Menu } from "@/components/player/internals/ContextMenu";
+import { getLanguageFromIETF } from "@/components/player/utils/language";
 import { useOverlayRouter } from "@/hooks/useOverlayRouter";
 import { usePlayerStore } from "@/stores/player/store";
 import { qualityToString } from "@/stores/player/utils/qualities";
@@ -26,7 +26,7 @@ export function SettingsMenu({ id }: { id: string }) {
   const { toggleLastUsed } = useCaptions();
 
   const selectedLanguagePretty = selectedCaptionLanguage
-    ? languageIdToName(selectedCaptionLanguage) ?? "unknown"
+    ? getLanguageFromIETF(selectedCaptionLanguage) ?? "unknown"
     : undefined;
 
   const source = usePlayerStore((s) => s.source);

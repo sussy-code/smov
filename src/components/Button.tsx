@@ -8,7 +8,7 @@ interface Props {
   icon?: Icons;
   onClick?: () => void;
   children?: ReactNode;
-  theme?: "white" | "purple" | "secondary";
+  theme?: "white" | "purple" | "secondary" | "danger";
   padding?: string;
   className?: string;
   href?: string;
@@ -26,6 +26,8 @@ export function Button(props: Props) {
   if (props.theme === "secondary")
     colorClasses =
       "bg-video-buttons-cancel hover:bg-video-buttons-cancelHover transition-colors duration-100 text-white";
+  if (props.theme === "danger")
+    colorClasses = "bg-buttons-danger hover:bg-buttons-dangerHover text-white";
 
   let classes = classNames(
     "cursor-pointer inline-flex items-center justify-center rounded-lg font-medium transition-[transform,background-color] duration-100 active:scale-105 md:px-8",

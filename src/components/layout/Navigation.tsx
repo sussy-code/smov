@@ -1,9 +1,11 @@
+import classNames from "classnames";
 import { ReactNode } from "react";
 import { Link } from "react-router-dom";
 
 import { IconPatch } from "@/components/buttons/IconPatch";
 import { Icons } from "@/components/Icon";
 import { Lightbar } from "@/components/utils/Lightbar";
+import { BlurEllipsis } from "@/pages/layouts/SubPageLayout";
 import { conf } from "@/setup/config";
 import { useBannerSize } from "@/stores/banner";
 
@@ -13,10 +15,12 @@ export interface NavigationProps {
   children?: ReactNode;
   bg?: boolean;
   noLightbar?: boolean;
+  doBackground?: boolean;
 }
 
 export function Navigation(props: NavigationProps) {
   const bannerHeight = useBannerSize();
+
   return (
     <>
       {!props.noLightbar ? (
@@ -37,7 +41,17 @@ export function Navigation(props: NavigationProps) {
           top: `${bannerHeight}px`,
         }}
       >
-        <div className="fixed left-0 right-0 flex items-center">
+        <div
+          className={classNames(
+            "fixed left-0 right-0 flex items-center",
+            props.doBackground
+              ? "bg-background-main border-b border-utils-divider border-opacity-50 overflow-hidden"
+              : null
+          )}
+        >
+          {props.doBackground ? (
+            <BlurEllipsis positionClass="absolute" />
+          ) : null}
           <div
             className={`${
               props.bg ? "opacity-100" : "opacity-0"

@@ -3,16 +3,13 @@ import { ReactNode, useRef, useState } from "react";
 import { useAsync, useAsyncFn } from "react-use";
 import { convert } from "subsrt-ts";
 
-import {
-  SubtitleSearchItem,
-  languageIdToName,
-  subtitleTypeList,
-} from "@/backend/helpers/subs";
+import { SubtitleSearchItem, subtitleTypeList } from "@/backend/helpers/subs";
 import { FlagIcon } from "@/components/FlagIcon";
 import { useCaptions } from "@/components/player/hooks/useCaptions";
 import { Menu } from "@/components/player/internals/ContextMenu";
 import { Input } from "@/components/player/internals/ContextMenu/Input";
 import { SelectableLink } from "@/components/player/internals/ContextMenu/Links";
+import { getLanguageFromIETF } from "@/components/player/utils/language";
 import { useOverlayRouter } from "@/hooks/useOverlayRouter";
 import { usePlayerStore } from "@/stores/player/store";
 import { useSubtitleStore } from "@/stores/subtitles";
@@ -35,6 +32,7 @@ export function CaptionOption(props: {
     he: "il",
     ze: "cn",
     ar: "sa",
+    ja: "jp",
   };
   let countryCode =
     (props.countryCode || "")?.split("-").pop()?.toLowerCase() || "";
@@ -155,7 +153,8 @@ export function CaptionsView({ id }: { id: string }) {
   else if (req.error) content = <p>errored!</p>;
   else if (req.value) {
     const subs = req.value.map((v) => {
-      const languageName = languageIdToName(v.attributes.language) ?? "unknown";
+      const languageName =
+        getLanguageFromIETF(v.attributes.language) ?? "unknown";
       return {
         ...v,
         languageName,

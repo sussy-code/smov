@@ -69,7 +69,9 @@ module.exports = {
             // Buttons
             buttons: {
               toggle: "#8D44D6",
-              toggleDisabled: "#202836"
+              toggleDisabled: "#202836",
+              danger: "#792131",
+              dangerHover: "#8a293b"
             },
 
             // only used for body colors/textures
@@ -111,12 +113,21 @@ module.exports = {
 
             settings: {
               sidebar: {
+                activeLink: "#171728",
+
                 type: {
                   secondary: "#4B395F",
                   inactive: "#8D68A9",
                   icon: "#926CAD",
+                  iconActivated: "#6942A8",
                   activated: "#CBA1E8"
                 }
+              },
+
+              card: {
+                border: "#2A243E",
+                background: "#29243D",
+                altBackground: "#29243D"
               }
             },
 

@@ -95,10 +95,6 @@ export async function searchSubtitles(
   });
 }
 
-export function languageIdToName(langId: string): string | null {
-  return languageMap[langId]?.nativeName ?? null;
-}
-
 export async function downloadSrt(legacySubId: string): Promise<string> {
   // TODO there is cloudflare protection so this may not always work. what to do about that?
   // TODO also there is ratelimit on the page itself

@@ -68,13 +68,14 @@ export function CaptionCue({
 export function SubtitleRenderer() {
   const videoTime = usePlayerStore((s) => s.progress.time);
   const srtData = usePlayerStore((s) => s.caption.selected?.srtData);
+  const language = usePlayerStore((s) => s.caption.selected?.language);
   const styling = useSubtitleStore((s) => s.styling);
   const overrideCasing = useSubtitleStore((s) => s.overrideCasing);
   const delay = useSubtitleStore((s) => s.delay);
 
   const parsedCaptions = useMemo(
-    () => (srtData ? parseSubtitles(srtData) : []),
-    [srtData]
+    () => (srtData ? parseSubtitles(srtData, language) : []),
+    [srtData, language]
   );
 
   const visibileCaptions = useMemo(
