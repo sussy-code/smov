@@ -1,7 +1,9 @@
 import { RunOutput } from "@movie-web/providers";
 import { useCallback, useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
+import { useEffectOnce } from "react-use";
 
+import { useCaptions } from "@/components/player/hooks/useCaptions";
 import { usePlayer } from "@/components/player/hooks/usePlayer";
 import { usePlayerMeta } from "@/components/player/hooks/usePlayerMeta";
 import { convertRunoutputToSource } from "@/components/player/utils/convertRunoutputToSource";
@@ -30,6 +32,7 @@ export function PlayerView() {
   const { status, playMedia, reset, setScrapeNotFound } = usePlayer();
   const { setPlayerMeta, scrapeMedia } = usePlayerMeta();
   const backUrl = useLastNonPlayerLink();
+  const { disable } = useCaptions();
 
   const paramsData = JSON.stringify({
     media: params.media,
@@ -62,6 +65,10 @@ export function PlayerView() {
     },
     [playMedia, startAtParam]
   );
+
+  useEffectOnce(() => {
+    disable();
+  });
 
   return (
     <PlayerPart backUrl={backUrl} onMetaChange={metaChange}>

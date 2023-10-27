@@ -81,8 +81,8 @@ export function useCaptions() {
   }, [lastSelectedLanguage, search, download]);
 
   const toggleLastUsed = useCallback(async () => {
-    if (!enabled) await downloadLastUsed();
-    else disable();
+    if (enabled) disable();
+    else await downloadLastUsed();
   }, [downloadLastUsed, disable, enabled]);
 
   return {

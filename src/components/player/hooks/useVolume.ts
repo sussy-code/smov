@@ -8,8 +8,7 @@ export function useVolume() {
   const display = usePlayerStore((s) => s.display);
   const setStoredVolume = useVolumeStore((s) => s.setVolume);
 
-  const toggleVolume = (_isKeyboardEvent = false) => {
-    // TODO use keyboard event
+  const toggleVolume = () => {
     let newVolume = 0;
 
     if (volume > 0) {

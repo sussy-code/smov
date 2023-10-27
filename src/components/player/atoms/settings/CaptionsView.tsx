@@ -127,7 +127,6 @@ function CustomCaptionOption() {
   );
 }
 
-// TODO fix language names, some are unknown
 export function CaptionsView({ id }: { id: string }) {
   const router = useOverlayRouter(id);
   const lang = usePlayerStore((s) => s.caption.selected?.language);
