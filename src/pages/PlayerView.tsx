@@ -29,7 +29,14 @@ export function PlayerView() {
     sourceOrder: ScrapingItems[];
   } | null>(null);
   const [startAtParam] = useQueryParam("t");
-  const { status, playMedia, reset, setScrapeNotFound } = usePlayer();
+  const {
+    status,
+    playMedia,
+    reset,
+    setScrapeNotFound,
+    shouldStartFromBeginning,
+    setShouldStartFromBeginning,
+  } = usePlayer();
   const { setPlayerMeta, scrapeMedia } = usePlayerMeta();
   const backUrl = useLastNonPlayerLink();
   const { disable } = useCaptions();
@@ -61,9 +68,19 @@ export function PlayerView() {
       let startAt: number | undefined;
       if (startAtParam) startAt = parseTimestamp(startAtParam) ?? undefined;
 
-      playMedia(convertRunoutputToSource(out), out.sourceId, startAt);
+      playMedia(
+        convertRunoutputToSource(out),
+        out.sourceId,
+        shouldStartFromBeginning ? 0 : startAt
+      );
+      setShouldStartFromBeginning(false);
     },
-    [playMedia, startAtParam]
+    [
+      playMedia,
+      startAtParam,
+      shouldStartFromBeginning,
+      setShouldStartFromBeginning,
+    ]
   );
 
   useEffectOnce(() => {

@@ -50,6 +50,9 @@ export function NextEpisodeButton(props: {
   const time = usePlayerStore((s) => s.progress.time);
   const showingState = shouldShowNextEpisodeButton(time, duration);
   const status = usePlayerStore((s) => s.status);
+  const setShouldStartFromBeginning = usePlayerStore(
+    (s) => s.setShouldStartFromBeginning
+  );
 
   let show = false;
   if (showingState === "always") show = true;
@@ -69,9 +72,10 @@ export function NextEpisodeButton(props: {
     if (!meta || !nextEp) return;
     const metaCopy = { ...meta };
     metaCopy.episode = nextEp;
+    setShouldStartFromBeginning(true);
     setDirectMeta(metaCopy);
     props.onChange?.(metaCopy);
-  }, [setDirectMeta, nextEp, meta, props]);
+  }, [setDirectMeta, nextEp, meta, props, setShouldStartFromBeginning]);
 
   if (!meta?.episode || !nextEp) return null;
   if (metaType !== "show") return null;

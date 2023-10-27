@@ -35,6 +35,12 @@ export function usePlayer() {
   const setSource = usePlayerStore((s) => s.setSource);
   const setSourceId = usePlayerStore((s) => s.setSourceId);
   const status = usePlayerStore((s) => s.status);
+  const shouldStartFromBeginning = usePlayerStore(
+    (s) => s.interface.shouldStartFromBeginning
+  );
+  const setShouldStartFromBeginning = usePlayerStore(
+    (s) => s.setShouldStartFromBeginning
+  );
   const reset = usePlayerStore((s) => s.reset);
   const meta = usePlayerStore((s) => s.meta);
   const { init } = useInitializePlayer();
@@ -44,6 +50,8 @@ export function usePlayer() {
     meta,
     reset,
     status,
+    shouldStartFromBeginning,
+    setShouldStartFromBeginning,
     setMeta(m: PlayerMeta, newStatus?: PlayerStatus) {
       setMeta(m, newStatus);
     },

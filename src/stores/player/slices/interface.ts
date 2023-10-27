@@ -22,6 +22,7 @@ export interface InterfaceSlice {
     canAirplay: boolean;
     isCasting: boolean;
     hideNextEpisodeBtn: boolean;
+    shouldStartFromBeginning: boolean;
 
     volumeChangedWithKeybind: boolean; // has the volume recently been adjusted with the up/down arrows recently?
     volumeChangedWithKeybindDebounce: NodeJS.Timeout | null; // debounce for the duration of the "volume changed thingamajig"
@@ -38,6 +39,7 @@ export interface InterfaceSlice {
   setHasOpenOverlay(state: boolean): void;
   setLastVolume(state: number): void;
   hideNextEpisodeButton(): void;
+  setShouldStartFromBeginning(val: boolean): void;
 }
 
 export const createInterfaceSlice: MakeSlice<InterfaceSlice> = (set, get) => ({
@@ -56,8 +58,14 @@ export const createInterfaceSlice: MakeSlice<InterfaceSlice> = (set, get) => ({
     timeFormat: VideoPlayerTimeFormat.REGULAR,
     canAirplay: false,
     hideNextEpisodeBtn: false,
+    shouldStartFromBeginning: false,
   },
 
+  setShouldStartFromBeginning(val) {
+    set((s) => {
+      s.interface.shouldStartFromBeginning = val;
+    });
+  },
   setLastVolume(state) {
     set((s) => {
       s.interface.lastVolume = state;
