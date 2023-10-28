@@ -33,6 +33,7 @@ export function CaptionOption(props: {
     ze: "cn",
     ar: "sa",
     ja: "jp",
+    bs: "ba",
   };
   let countryCode =
     (props.countryCode || "")?.split("-").pop()?.toLowerCase() || "";
