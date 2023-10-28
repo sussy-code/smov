@@ -88,12 +88,12 @@ export function NextEpisodeButton(props: {
     >
       <div
         className={classNames([
-          "absolute bottom-0 right-0 transition-[bottom] duration-200 flex space-x-3",
+          "absolute bottom-0 right-0 transition-[bottom] duration-200 flex items-center space-x-3",
           bottom,
         ])}
       >
         <Button
-          className="bg-video-buttons-secondary hover:bg-video-buttons-secondaryHover bg-opacity-90 text-video-buttons-secondaryText"
+          className="py-px box-content bg-video-buttons-secondary hover:bg-video-buttons-secondaryHover bg-opacity-90 text-video-buttons-secondaryText"
           onClick={hideNextEpisodeButton}
         >
           Cancel
