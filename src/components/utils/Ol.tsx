@@ -11,7 +11,7 @@ export function Ol(props: { items: React.ReactNode[] }) {
               i !== props.items.length - 1 ? "pb-6" : undefined
             )}
           >
-            <div className="relative">
+            <div className="relative z-0">
               <div className="w-7 h-7 rounded-full bg-about-circle text-about-circleText font-medium flex justify-center items-center relative z-10">
                 {i + 1}
               </div>
