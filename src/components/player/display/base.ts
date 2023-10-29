@@ -97,7 +97,25 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
       if (!Hls.isSupported()) throw new Error("HLS not supported");
 
       if (!hls) {
-        hls = new Hls({ enableWorker: false });
+        hls = new Hls({
+          maxBufferSize: 500 * 1000 * 1000, // 500 mb of buffering, should load more fragments at once
+          fragLoadPolicy: {
+            default: {
+              maxLoadTimeMs: 30 * 1000, // allow it load extra long, fragments are slow if requested for the first time on an origin
+              maxTimeToFirstByteMs: 30 * 1000,
+              errorRetry: {
+                maxNumRetry: 2,
+                retryDelayMs: 1000,
+                maxRetryDelayMs: 8000,
+              },
+              timeoutRetry: {
+                maxNumRetry: 3,
+                maxRetryDelayMs: 0,
+                retryDelayMs: 0,
+              },
+            },
+          },
+        });
         hls.on(Hls.Events.ERROR, (event, data) => {
           console.error("HLS error", data);
           if (data.fatal) {
