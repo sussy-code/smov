@@ -54,7 +54,7 @@ function RouterBase(props: { id: string; children: ReactNode }) {
         api.set({
           width: "100%",
         });
-        api({
+        api.start({
           height: `${routeMeta?.height ?? 0}px`,
         });
       } else if (oldData?.height === undefined && data.height !== undefined) {
@@ -63,7 +63,7 @@ function RouterBase(props: { id: string; children: ReactNode }) {
           width: `${routeMeta?.width ?? 0}px`,
         });
       } else {
-        api({
+        api.start({
           height: `${routeMeta?.height ?? 0}px`,
           width: `${routeMeta?.width ?? 0}px`,
         });
