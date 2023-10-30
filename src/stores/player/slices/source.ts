@@ -14,6 +14,7 @@ export const playerStatus = {
   SCRAPING: "scraping",
   PLAYING: "playing",
   SCRAPE_NOT_FOUND: "scrapeNotFound",
+  PLAYBACK_ERROR: "playbackError",
 } as const;
 
 export type PlayerStatus = ValuesOf<typeof playerStatus>;

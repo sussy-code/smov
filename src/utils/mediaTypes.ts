@@ -1,7 +1,7 @@
 export interface MediaItem {
   id: string;
   title: string;
-  year: number;
+  year?: number;
   poster?: string;
   type: "show" | "movie";
 }

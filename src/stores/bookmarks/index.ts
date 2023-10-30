@@ -6,7 +6,7 @@ import { PlayerMeta } from "@/stores/player/slices/source";
 
 export interface BookmarkMediaItem {
   title: string;
-  year: number;
+  year?: number;
   poster?: string;
   type: "show" | "movie";
   updatedAt: number;
@@ -16,9 +16,9 @@ export interface ProgressStore {
   bookmarks: Record<string, BookmarkMediaItem>;
   addBookmark(meta: PlayerMeta): void;
   removeBookmark(id: string): void;
+  replaceBookmarks(items: Record<string, BookmarkMediaItem>): void;
 }
 
-// TODO add migration from previous bookmark store
 export const useBookmarkStore = create(
   persist(
     immer<ProgressStore>((set) => ({
@@ -37,6 +37,11 @@ export const useBookmarkStore = create(
             poster: meta.poster,
             updatedAt: Date.now(),
           };
+        });
+      },
+      replaceBookmarks(items: Record<string, BookmarkMediaItem>) {
+        set((s) => {
+          s.bookmarks = items;
         });
       },
     })),

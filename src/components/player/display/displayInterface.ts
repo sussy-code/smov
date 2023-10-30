@@ -1,6 +1,14 @@
 import { LoadableSource, SourceQuality } from "@/stores/player/utils/qualities";
 import { Listener } from "@/utils/events";
 
+export type DisplayErrorType = "hls" | "htmlvideo";
+export type DisplayError = {
+  stackTrace?: string;
+  message: string;
+  errorName: string;
+  type: DisplayErrorType;
+};
+
 export type DisplayInterfaceEvents = {
   play: void;
   pause: void;
@@ -15,6 +23,7 @@ export type DisplayInterfaceEvents = {
   needstrack: boolean;
   canairplay: boolean;
   playbackrate: number;
+  error: DisplayError;
 };
 
 export interface qualityChangeOptions {

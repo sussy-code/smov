@@ -14,8 +14,9 @@ export interface WatchedMediaCardProps {
 function formatSeries(obj: ProgressMediaItem | undefined) {
   if (!obj) return undefined;
   if (obj.type !== "show") return;
-  // TODO only show latest episode watched
-  const ep = Object.values(obj.episodes)[0];
+  const ep = Object.values(obj.episodes).sort(
+    (a, b) => b.updatedAt - a.updatedAt
+  )[0];
   const season = obj.seasons[ep?.seasonId];
   if (!ep || !season) return;
   return {

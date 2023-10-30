@@ -20,12 +20,13 @@ export interface ProgressEpisodeItem {
   number: number;
   id: string;
   seasonId: string;
+  updatedAt: number;
   progress: ProgressItem;
 }
 
 export interface ProgressMediaItem {
   title: string;
-  year: number;
+  year?: number;
   poster?: string;
   type: "show" | "movie";
   progress?: ProgressItem;
@@ -43,9 +44,9 @@ export interface ProgressStore {
   items: Record<string, ProgressMediaItem>;
   updateItem(ops: UpdateItemOptions): void;
   removeItem(id: string): void;
+  replaceItems(items: Record<string, ProgressMediaItem>): void;
 }
 
-// TODO add migration from previous progress store
 export const useProgressStore = create(
   persist(
     immer<ProgressStore>((set) => ({
@@ -53,6 +54,11 @@ export const useProgressStore = create(
       removeItem(id) {
         set((s) => {
           delete s.items[id];
+        });
+      },
+      replaceItems(items: Record<string, ProgressMediaItem>) {
+        set((s) => {
+          s.items = items;
         });
       },
       updateItem({ meta, progress }) {
@@ -95,6 +101,7 @@ export const useProgressStore = create(
               number: meta.episode.number,
               title: meta.episode.title,
               seasonId: meta.season.tmdbId,
+              updatedAt: Date.now(),
               progress: {
                 duration: 0,
                 watched: 0,

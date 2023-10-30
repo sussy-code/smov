@@ -5,6 +5,7 @@ import { Dropdown } from "@/components/Dropdown";
 import { usePlayer } from "@/components/player/hooks/usePlayer";
 import { Title } from "@/components/text/Title";
 import { TextInputControl } from "@/components/text-inputs/TextInputControl";
+import { PlaybackErrorPart } from "@/pages/parts/player/PlaybackErrorPart";
 import { PlayerPart } from "@/pages/parts/player/PlayerPart";
 import { PlayerMeta, playerStatus } from "@/stores/player/slices/source";
 import { SourceSliceSource, StreamType } from "@/stores/player/utils/qualities";
@@ -105,6 +106,7 @@ export default function VideoTesterView() {
           </div>
         </div>
       ) : null}
+      {status === playerStatus.PLAYBACK_ERROR ? <PlaybackErrorPart /> : null}
     </PlayerPart>
   );
 }

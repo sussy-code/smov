@@ -6,6 +6,7 @@ import {
   DisplayInterfaceEvents,
 } from "@/components/player/display/displayInterface";
 import { handleBuffered } from "@/components/player/utils/handleBuffered";
+import { getMediaErrorDetails } from "@/components/player/utils/mediaErrorDetails";
 import {
   LoadableSource,
   SourceQuality,
@@ -119,9 +120,12 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
         hls.on(Hls.Events.ERROR, (event, data) => {
           console.error("HLS error", data);
           if (data.fatal) {
-            throw new Error(
-              `HLS ERROR:${data.error?.message ?? "Something went wrong"}`
-            );
+            emit("error", {
+              message: data.error.message,
+              stackTrace: data.error.stack,
+              errorName: data.error.name,
+              type: "hls",
+            });
           }
         });
         hls.on(Hls.Events.MANIFEST_LOADED, () => {
@@ -153,6 +157,15 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
     videoElement.addEventListener("play", () => {
       emit("play", undefined);
       emit("loading", false);
+    });
+    videoElement.addEventListener("error", () => {
+      const err = videoElement?.error ?? null;
+      const errorDetails = getMediaErrorDetails(err);
+      emit("error", {
+        errorName: errorDetails.name,
+        message: errorDetails.message,
+        type: "htmlvideo",
+      });
     });
     videoElement.addEventListener("playing", () => emit("play", undefined));
     videoElement.addEventListener("pause", () => emit("pause", undefined));

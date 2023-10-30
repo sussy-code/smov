@@ -90,6 +90,12 @@ export const createDisplaySlice: MakeSlice<DisplaySlice> = (set, get) => ({
         s.mediaPlaying.playbackRate = rate;
       });
     });
+    newDisplay.on("error", (err) => {
+      set((s) => {
+        s.status = playerStatus.PLAYBACK_ERROR;
+        s.interface.error = err;
+      });
+    });
 
     set((s) => {
       s.display = newDisplay;

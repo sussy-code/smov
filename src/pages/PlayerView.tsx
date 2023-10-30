@@ -10,6 +10,7 @@ import { convertRunoutputToSource } from "@/components/player/utils/convertRunou
 import { ScrapingItems, ScrapingSegment } from "@/hooks/useProviderScrape";
 import { useQueryParam } from "@/hooks/useQueryParams";
 import { MetaPart } from "@/pages/parts/player/MetaPart";
+import { PlaybackErrorPart } from "@/pages/parts/player/PlaybackErrorPart";
 import { PlayerPart } from "@/pages/parts/player/PlayerPart";
 import { ScrapeErrorPart } from "@/pages/parts/player/ScrapeErrorPart";
 import { ScrapingPart } from "@/pages/parts/player/ScrapingPart";
@@ -108,6 +109,7 @@ export function PlayerView() {
       {status === playerStatus.SCRAPE_NOT_FOUND && errorData ? (
         <ScrapeErrorPart data={errorData} />
       ) : null}
+      {status === playerStatus.PLAYBACK_ERROR ? <PlaybackErrorPart /> : null}
     </PlayerPart>
   );
 }

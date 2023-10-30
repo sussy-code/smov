@@ -1,3 +1,4 @@
+import { DisplayError } from "@/components/player/display/displayInterface";
 import { MakeSlice } from "@/stores/player/slices/types";
 
 export enum VideoPlayerTimeFormat {
@@ -23,6 +24,7 @@ export interface InterfaceSlice {
     isCasting: boolean;
     hideNextEpisodeBtn: boolean;
     shouldStartFromBeginning: boolean;
+    error?: DisplayError;
 
     volumeChangedWithKeybind: boolean; // has the volume recently been adjusted with the up/down arrows recently?
     volumeChangedWithKeybindDebounce: NodeJS.Timeout | null; // debounce for the duration of the "volume changed thingamajig"
