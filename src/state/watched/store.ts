@@ -60,7 +60,7 @@ export const VideoProgressStore = createVersionedStore<WatchedStoreData>()
           ) {
             // Find episode ID (barely ever works)
             const episodeTitle = oldItem.item.meta.seasonData.episodes.find(
-              (ep) => ep.id === oldItem.item.series?.episodeId
+              (ep) => ep.number === oldItem.item.series?.episode
             )?.title;
 
             // Add season to season data
