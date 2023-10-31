@@ -30,9 +30,9 @@ export interface SubtitleStore {
   setCustomSubs(): void;
   setOverrideCasing(enabled: boolean): void;
   setDelay(delay: number): void;
+  importSubtitleLanguage(lang: string | null): void;
 }
 
-// TODO add migration from previous stored settings
 export const useSubtitleStore = create(
   persist(
     immer<SubtitleStore>((set) => ({
@@ -75,6 +75,11 @@ export const useSubtitleStore = create(
       setDelay(delay) {
         set((s) => {
           s.delay = Math.max(Math.min(500, delay), -500);
+        });
+      },
+      importSubtitleLanguage(lang) {
+        set((s) => {
+          s.lastSelectedLanguage = lang;
         });
       },
     })),

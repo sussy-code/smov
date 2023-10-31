@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-
 interface StoreVersion<A> {
   version: number;
   migrate?(data: A): any;
@@ -28,7 +26,7 @@ interface InternalStoreData {
 const storeCallbacks: Record<string, ((data: any) => void)[]> = {};
 const stores: Record<string, [StoreRet<any>, InternalStoreData]> = {};
 
-export async function initializeStores() {
+export async function initializeOldStores() {
   // migrate all stores
   for (const [store, internal] of Object.values(stores)) {
     const versions = internal.versions.sort((a, b) => a.version - b.version);
@@ -176,25 +174,4 @@ export function createVersionedStore<T>(): StoreBuilder<T> {
       return storageObject;
     },
   };
-}
-
-export function useStore<T>(
-  store: StoreRet<T>
-): [T, (cb: (old: T) => T) => void] {
-  const [data, setData] = useState<T>(store.get());
-  useEffect(() => {
-    const { destroy } = store.onChange((newData) => {
-      setData(newData);
-    });
-    return () => {
-      destroy();
-    };
-  }, [store]);
-
-  function setNewData(cb: (old: T) => T) {
-    const newData = cb(data);
-    store.save(newData);
-  }
-
-  return [data, setNewData];
 }

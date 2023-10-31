@@ -10,12 +10,12 @@ import { ErrorBoundary } from "@/pages/errors/ErrorBoundary";
 import App from "@/setup/App";
 import { conf } from "@/setup/config";
 import i18n from "@/setup/i18n";
-
 import "@/setup/ga";
 import "@/setup/index.css";
+import { useLanguageStore } from "@/stores/language";
+
 import { initializeChromecast } from "./setup/chromecast";
-import { SettingsStore } from "./state/settings/store";
-import { initializeStores } from "./utils/storage";
+import { initializeOldStores } from "./stores/__old/migrations";
 
 // initialize
 const key =
@@ -29,8 +29,8 @@ registerSW({
 });
 
 const LazyLoadedApp = React.lazy(async () => {
-  await initializeStores();
-  i18n.changeLanguage(SettingsStore.get().language ?? "en");
+  await initializeOldStores();
+  i18n.changeLanguage(useLanguageStore.getState().language);
   return {
     default: App,
   };

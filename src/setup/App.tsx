@@ -19,10 +19,8 @@ import { HomePage } from "@/pages/HomePage";
 import { PlayerView } from "@/pages/PlayerView";
 import { SettingsPage } from "@/pages/Settings";
 import { Layout } from "@/setup/Layout";
-import { BookmarkContextProvider } from "@/state/bookmark";
-import { SettingsProvider } from "@/state/settings";
-import { WatchedContextProvider } from "@/state/watched";
 import { useHistoryListener } from "@/stores/history";
+import { useLanguageListener } from "@/stores/language";
 
 function LegacyUrlView({ children }: { children: ReactElement }) {
   const location = useLocation();
@@ -60,83 +58,66 @@ function QuickSearch() {
 function App() {
   useHistoryListener();
   useOnlineListener();
+  useLanguageListener();
 
   return (
-    <SettingsProvider>
-      <WatchedContextProvider>
-        <BookmarkContextProvider>
-          <Layout>
-            <Switch>
-              {/* functional routes */}
-              <Route exact path="/s/:query">
-                <QuickSearch />
-              </Route>
-              <Route exact path="/search/:type">
-                <Redirect to="/browse" push={false} />
-              </Route>
-              <Route exact path="/search/:type/:query?">
-                {({ match }) => {
-                  if (match?.params.query)
-                    return (
-                      <Redirect
-                        to={`/browse/${match?.params.query}`}
-                        push={false}
-                      />
-                    );
-                  return <Redirect to="/browse" push={false} />;
-                }}
-              </Route>
+    <Layout>
+      <Switch>
+        {/* functional routes */}
+        <Route exact path="/s/:query">
+          <QuickSearch />
+        </Route>
+        <Route exact path="/search/:type">
+          <Redirect to="/browse" push={false} />
+        </Route>
+        <Route exact path="/search/:type/:query?">
+          {({ match }) => {
+            if (match?.params.query)
+              return (
+                <Redirect to={`/browse/${match?.params.query}`} push={false} />
+              );
+            return <Redirect to="/browse" push={false} />;
+          }}
+        </Route>
 
-              {/* pages */}
-              <Route
-                exact
-                path={["/media/:media", "/media/:media/:season/:episode"]}
-              >
-                <LegacyUrlView>
-                  <PlayerView />
-                </LegacyUrlView>
-              </Route>
-              <Route
-                exact
-                path={["/browse/:query?", "/"]}
-                component={HomePage}
-              />
-              <Route exact path="/faq" component={AboutPage} />
-              <Route exact path="/dmca" component={DmcaPage} />
+        {/* pages */}
+        <Route exact path={["/media/:media", "/media/:media/:season/:episode"]}>
+          <LegacyUrlView>
+            <PlayerView />
+          </LegacyUrlView>
+        </Route>
+        <Route exact path={["/browse/:query?", "/"]} component={HomePage} />
+        <Route exact path="/faq" component={AboutPage} />
+        <Route exact path="/dmca" component={DmcaPage} />
 
-              {/* Settings page */}
-              <Route exact path="/settings" component={SettingsPage} />
+        {/* Settings page */}
+        <Route exact path="/settings" component={SettingsPage} />
 
-              {/* admin routes */}
-              <Route exact path="/admin" component={AdminPage} />
+        {/* admin routes */}
+        <Route exact path="/admin" component={AdminPage} />
 
-              {/* other */}
-              <Route
-                exact
-                path="/dev"
-                component={lazy(() => import("@/pages/DeveloperPage"))}
-              />
-              <Route
-                exact
-                path="/dev/video"
-                component={lazy(
-                  () => import("@/pages/developer/VideoTesterView")
-                )}
-              />
-              {/* developer routes that can abuse workers are disabled in production */}
-              {process.env.NODE_ENV === "development" ? (
-                <Route
-                  exact
-                  path="/dev/test"
-                  component={lazy(() => import("@/pages/developer/TestView"))}
-                />
-              ) : null}
-              <Route path="*" component={NotFoundPage} />
-            </Switch>
-          </Layout>
-        </BookmarkContextProvider>
-      </WatchedContextProvider>
-    </SettingsProvider>
+        {/* other */}
+        <Route
+          exact
+          path="/dev"
+          component={lazy(() => import("@/pages/DeveloperPage"))}
+        />
+        <Route
+          exact
+          path="/dev/video"
+          component={lazy(() => import("@/pages/developer/VideoTesterView"))}
+        />
+        {/* developer routes that can abuse workers are disabled in production */}
+        {process.env.NODE_ENV === "development" ? (
+          <Route
+            exact
+            path="/dev/test"
+            component={lazy(() => import("@/pages/developer/TestView"))}
+          />
+        ) : null}
+        <Route path="*" component={NotFoundPage} />
+      </Switch>
+    </Layout>
   );
 }
 

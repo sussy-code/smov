@@ -1,8 +1,8 @@
 import { MWMediaType } from "@/backend/metadata/types/mw";
 import { BookmarkMediaItem, useBookmarkStore } from "@/stores/bookmarks";
-import { createVersionedStore } from "@/utils/storage";
 
 import { BookmarkStoreData } from "./types";
+import { createVersionedStore } from "../migrations";
 import { OldBookmarks, migrateV1Bookmarks } from "../watched/migrations/v2";
 import { migrateV2Bookmarks } from "../watched/migrations/v3";
 
