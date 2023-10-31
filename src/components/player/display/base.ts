@@ -206,7 +206,10 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
   }
 
   function unloadSource() {
-    if (videoElement) videoElement.src = "";
+    if (videoElement) {
+      videoElement.removeAttribute("src");
+      videoElement.load();
+    }
     if (hls) {
       hls.destroy();
       hls = null;
