@@ -1,10 +1,10 @@
 import classNames from "classnames";
-import { ReactNode } from "react";
 import { Link } from "react-router-dom";
 
 import { IconPatch } from "@/components/buttons/IconPatch";
 import { Icons } from "@/components/Icon";
 import { Lightbar } from "@/components/utils/Lightbar";
+import { useAuth } from "@/hooks/useAuth";
 import { BlurEllipsis } from "@/pages/layouts/SubPageLayout";
 import { conf } from "@/setup/config";
 import { useBannerSize } from "@/stores/banner";
@@ -12,7 +12,6 @@ import { useBannerSize } from "@/stores/banner";
 import { BrandPill } from "./BrandPill";
 
 export interface NavigationProps {
-  children?: ReactNode;
   bg?: boolean;
   noLightbar?: boolean;
   doBackground?: boolean;
@@ -20,6 +19,7 @@ export interface NavigationProps {
 
 export function Navigation(props: NavigationProps) {
   const bannerHeight = useBannerSize();
+  const { loggedIn } = useAuth();
 
   return (
     <>
@@ -60,26 +60,30 @@ export function Navigation(props: NavigationProps) {
             <div className="absolute -bottom-24 h-24 w-full bg-gradient-to-b from-background-main to-transparent" />
           </div>
           <div className="pointer-events-auto px-7 py-5 relative flex flex-1 items-center space-x-3">
-            <Link className="block" to="/">
-              <BrandPill clickable />
-            </Link>
-            <a
-              href={conf().DISCORD_LINK}
-              target="_blank"
-              rel="noreferrer"
-              className="text-xl text-white"
-            >
-              <IconPatch icon={Icons.DISCORD} clickable downsized />
-            </a>
-            <a
-              href={conf().GITHUB_LINK}
-              target="_blank"
-              rel="noreferrer"
-              className="text-xl text-white"
-            >
-              <IconPatch icon={Icons.GITHUB} clickable downsized />
-            </a>
-            {props.children}
+            <div className="flex items-center flex-1">
+              <Link className="block" to="/">
+                <BrandPill clickable />
+              </Link>
+              <a
+                href={conf().DISCORD_LINK}
+                target="_blank"
+                rel="noreferrer"
+                className="text-xl text-white"
+              >
+                <IconPatch icon={Icons.DISCORD} clickable downsized />
+              </a>
+              <a
+                href={conf().GITHUB_LINK}
+                target="_blank"
+                rel="noreferrer"
+                className="text-xl text-white"
+              >
+                <IconPatch icon={Icons.GITHUB} clickable downsized />
+              </a>
+            </div>
+            <div>
+              <p>User: {JSON.stringify(loggedIn)}</p>
+            </div>
           </div>
         </div>
       </div>

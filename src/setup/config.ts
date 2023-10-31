@@ -7,6 +7,7 @@ interface Config {
   TMDB_READ_API_KEY: string;
   CORS_PROXY_URL: string;
   NORMAL_ROUTER: boolean;
+  BACKEND_URL: string;
 }
 
 export interface RuntimeConfig {
@@ -16,6 +17,7 @@ export interface RuntimeConfig {
   TMDB_READ_API_KEY: string;
   NORMAL_ROUTER: boolean;
   PROXY_URLS: string[];
+  BACKEND_URL: string;
 }
 
 const env: Record<keyof Config, undefined | string> = {
@@ -25,6 +27,7 @@ const env: Record<keyof Config, undefined | string> = {
   DISCORD_LINK: undefined,
   CORS_PROXY_URL: import.meta.env.VITE_CORS_PROXY_URL,
   NORMAL_ROUTER: import.meta.env.VITE_NORMAL_ROUTER,
+  BACKEND_URL: import.meta.env.VITE_BACKEND_URL,
 };
 
 // loads from different locations, in order: environment (VITE_{KEY}), window (public/config.js)
@@ -44,6 +47,7 @@ export function conf(): RuntimeConfig {
     APP_VERSION,
     GITHUB_LINK,
     DISCORD_LINK,
+    BACKEND_URL: getKey("BACKEND_URL"),
     TMDB_READ_API_KEY: getKey("TMDB_READ_API_KEY"),
     PROXY_URLS: getKey("CORS_PROXY_URL")
       .split(",")
