@@ -15,6 +15,7 @@ import "@/setup/index.css";
 import { useLanguageStore } from "@/stores/language";
 
 import { initializeChromecast } from "./setup/chromecast";
+import "./stores/__old/imports";
 import { initializeOldStores } from "./stores/__old/migrations";
 
 // initialize
