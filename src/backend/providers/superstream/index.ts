@@ -148,13 +148,13 @@ registerProvider({
   async scrape({ media, episode, progress }) {
     // Find Superstream ID for show
     const searchQuery = {
-      module: "Search3",
+      module: "Search4",
       page: "1",
       type: "all",
       keyword: media.meta.title,
       pagelimit: "20",
     };
-    const searchRes = (await get(searchQuery, true)).data;
+    const searchRes = (await get(searchQuery, true)).data.list;
     progress(33);
 
     const superstreamEntry = searchRes.find(
