@@ -17,6 +17,7 @@ import { DmcaPage } from "@/pages/Dmca";
 import { NotFoundPage } from "@/pages/errors/NotFoundPage";
 import { HomePage } from "@/pages/HomePage";
 import { PlayerView } from "@/pages/PlayerView";
+import { RegisterPage } from "@/pages/Register";
 import { SettingsPage } from "@/pages/Settings";
 import { Layout } from "@/setup/Layout";
 import { useHistoryListener } from "@/stores/history";
@@ -87,6 +88,7 @@ function App() {
           </LegacyUrlView>
         </Route>
         <Route exact path={["/browse/:query?", "/"]} component={HomePage} />
+        <Route exact path="/register" component={RegisterPage} />
         <Route exact path="/faq" component={AboutPage} />
         <Route exact path="/dmca" component={DmcaPage} />
 
