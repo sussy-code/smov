@@ -1,7 +1,11 @@
 import { ofetch } from "ofetch";
 
 import { SessionResponse, UserResponse } from "@/backend/accounts/auth";
-import { keysFromMenmonic, signCode } from "@/backend/accounts/crypto";
+import {
+  bytesToBase64Url,
+  keysFromMenmonic as keysFromMnemonic,
+  signCode,
+} from "@/backend/accounts/crypto";
 
 export interface ChallengeTokenResponse {
   challenge: string;
@@ -55,10 +59,10 @@ export async function registerAccount(
 }
 
 export async function signChallenge(mnemonic: string, challengeCode: string) {
-  const keys = await keysFromMenmonic(mnemonic);
+  const keys = await keysFromMnemonic(mnemonic);
   const signature = await signCode(challengeCode, keys.privateKey);
   return {
-    publicKey: keys.publicKey,
-    signature,
+    publicKey: bytesToBase64Url(keys.publicKey),
+    signature: bytesToBase64Url(signature),
   };
 }

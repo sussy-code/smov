@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useAsyncFn } from "react-use";
 
-import { bytesToBase64Url } from "@/backend/accounts/crypto";
 import {
   getRegisterChallengeToken,
   registerAccount,
@@ -37,9 +36,9 @@ export function VerifyPassphrase(props: VerifyPassphraseProps) {
       const registerResult = await registerAccount(url, {
         challenge: {
           code: challenge,
-          signature: bytesToBase64Url(keys.signature),
+          signature: keys.signature,
         },
-        publicKey: bytesToBase64Url(keys.publicKey),
+        publicKey: keys.publicKey,
         device: props.profile.device,
         profile: props.profile.profile,
       });

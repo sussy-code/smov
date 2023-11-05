@@ -1,13 +1,14 @@
+import { pbkdf2Async } from "@noble/hashes/pbkdf2";
+import { sha256 } from "@noble/hashes/sha256";
 import { generateMnemonic } from "@scure/bip39";
 import { wordlist } from "@scure/bip39/wordlists/english";
 import forge from "node-forge";
-import { encode } from "universal-base64url";
 
 async function seedFromMnemonic(mnemonic: string) {
-  const md = forge.md.sha256.create();
-  md.update(mnemonic);
-  // TODO this is probably not correct
-  return md.digest().toHex();
+  return pbkdf2Async(sha256, mnemonic, "mnemonic", {
+    c: 2048,
+    dkLen: 32,
+  });
 }
 
 export async function keysFromMenmonic(mnemonic: string) {
@@ -28,13 +29,19 @@ export function genMnemonic(): string {
 }
 
 export async function signCode(
-  _code: string,
-  _privateKey: forge.pki.ed25519.NativeBuffer
-): Promise<Uint8Array> {
-  // TODO add real signature
-  return new Uint8Array();
+  code: string,
+  privateKey: forge.pki.ed25519.NativeBuffer
+): Promise<forge.pki.ed25519.NativeBuffer> {
+  return forge.pki.ed25519.sign({
+    encoding: "utf8",
+    message: code,
+    privateKey,
+  });
 }
 
 export function bytesToBase64Url(bytes: Uint8Array): string {
-  return encode(String.fromCodePoint(...bytes));
+  return btoa(String.fromCodePoint(...bytes))
+    .replace(/\//g, "_")
+    .replace(/\+/g, "-")
+    .replace(/=+$/, "");
 }
