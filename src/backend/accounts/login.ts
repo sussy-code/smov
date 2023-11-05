@@ -1,50 +1,43 @@
 import { ofetch } from "ofetch";
 
 import { SessionResponse } from "@/backend/accounts/auth";
-import { UserResponse } from "@/backend/accounts/user";
 
 export interface ChallengeTokenResponse {
   challenge: string;
 }
 
-export async function getRegisterChallengeToken(
+export async function getLoginChallengeToken(
   url: string,
-  captchaToken?: string
+  publicKey: string
 ): Promise<ChallengeTokenResponse> {
-  return ofetch<ChallengeTokenResponse>("/auth/register/start", {
+  return ofetch<ChallengeTokenResponse>("/auth/login/start", {
     method: "POST",
     body: {
-      captchaToken,
+      publicKey,
     },
     baseURL: url,
   });
 }
 
-export interface RegisterResponse {
-  user: UserResponse;
+export interface LoginResponse {
   session: SessionResponse;
   token: string;
 }
 
-export interface RegisterInput {
+export interface LoginInput {
   publicKey: string;
   challenge: {
     code: string;
     signature: string;
   };
   device: string;
-  profile: {
-    colorA: string;
-    colorB: string;
-    icon: string;
-  };
 }
 
-export async function registerAccount(
+export async function loginAccount(
   url: string,
-  data: RegisterInput
-): Promise<RegisterResponse> {
-  return ofetch<RegisterResponse>("/auth/register/complete", {
+  data: LoginInput
+): Promise<LoginResponse> {
+  return ofetch<LoginResponse>("/auth/login/complete", {
     method: "POST",
     body: {
       namespace: "movie-web",

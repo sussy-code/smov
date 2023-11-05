@@ -1,5 +1,7 @@
 import { ofetch } from "ofetch";
 
+import { UserResponse } from "@/backend/accounts/user";
+
 export interface SessionResponse {
   id: string;
   userId: string;
@@ -8,26 +10,12 @@ export interface SessionResponse {
   device: string;
   userAgent: string;
 }
-
-export interface UserResponse {
-  id: string;
-  namespace: string;
-  name: string;
-  roles: string[];
-  createdAt: string;
-  profile: {
-    colorA: string;
-    colorB: string;
-    icon: string;
-  };
-}
-
 export interface LoginResponse {
   session: SessionResponse;
   token: string;
 }
 
-function getAuthHeaders(token: string): Record<string, string> {
+export function getAuthHeaders(token: string): Record<string, string> {
   return {
     authorization: `Bearer ${token}`,
   };
@@ -44,16 +32,6 @@ export async function accountLogin(
       id,
       device: deviceName,
     },
-    baseURL: url,
-  });
-}
-
-export async function getUser(
-  url: string,
-  token: string
-): Promise<UserResponse> {
-  return ofetch<UserResponse>("/user/@me", {
-    headers: getAuthHeaders(token),
     baseURL: url,
   });
 }

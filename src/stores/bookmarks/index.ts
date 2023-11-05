@@ -12,16 +12,17 @@ export interface BookmarkMediaItem {
   updatedAt: number;
 }
 
-export interface ProgressStore {
+export interface BookmarkStore {
   bookmarks: Record<string, BookmarkMediaItem>;
   addBookmark(meta: PlayerMeta): void;
   removeBookmark(id: string): void;
   replaceBookmarks(items: Record<string, BookmarkMediaItem>): void;
+  clear(): void;
 }
 
 export const useBookmarkStore = create(
   persist(
-    immer<ProgressStore>((set) => ({
+    immer<BookmarkStore>((set) => ({
       bookmarks: {},
       removeBookmark(id) {
         set((s) => {
@@ -43,6 +44,9 @@ export const useBookmarkStore = create(
         set((s) => {
           s.bookmarks = items;
         });
+      },
+      clear() {
+        this.replaceBookmarks({});
       },
     })),
     {

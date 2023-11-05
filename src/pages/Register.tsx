@@ -42,7 +42,7 @@ export function RegisterPage() {
       {step === 3 ? (
         <VerifyPassphrase
           mnemonic={mnemonic}
-          profile={account}
+          userData={account}
           onNext={() => {
             setStep(4);
           }}

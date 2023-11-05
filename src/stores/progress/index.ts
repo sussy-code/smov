@@ -45,6 +45,7 @@ export interface ProgressStore {
   updateItem(ops: UpdateItemOptions): void;
   removeItem(id: string): void;
   replaceItems(items: Record<string, ProgressMediaItem>): void;
+  clear(): void;
 }
 
 export const useProgressStore = create(
@@ -110,6 +111,9 @@ export const useProgressStore = create(
 
           item.episodes[meta.episode.tmdbId].progress = { ...progress };
         });
+      },
+      clear() {
+        this.replaceItems({});
       },
     })),
     {

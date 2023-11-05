@@ -1,58 +1,42 @@
 import { useState } from "react";
 import { useAsyncFn } from "react-use";
 
-import {
-  getRegisterChallengeToken,
-  registerAccount,
-  signChallenge,
-} from "@/backend/accounts/register";
 import { Button } from "@/components/Button";
 import { Input } from "@/components/player/internals/ContextMenu/Input";
+import { useAuth } from "@/hooks/auth/useAuth";
 import { AccountProfile } from "@/pages/parts/auth/AccountCreatePart";
-import { conf } from "@/setup/config";
-import { useAuthStore } from "@/stores/auth";
 
 interface VerifyPassphraseProps {
   mnemonic: string | null;
-  profile: AccountProfile | null;
+  userData: AccountProfile | null;
   onNext?: () => void;
 }
 
 export function VerifyPassphrase(props: VerifyPassphraseProps) {
   const [mnemonic, setMnemonic] = useState("");
-  const setAccount = useAuthStore((s) => s.setAccount);
+  const { register, restore } = useAuth();
 
   const [result, execute] = useAsyncFn(
     async (inputMnemonic: string) => {
-      if (!props.mnemonic || !props.profile)
+      if (!props.mnemonic || !props.userData)
         throw new Error("invalid input data");
       if (inputMnemonic !== props.mnemonic)
         throw new Error("Passphrase doesn't match");
-      const url = conf().BACKEND_URL;
 
       // TODO captcha?
-      const { challenge } = await getRegisterChallengeToken(url);
-      const keys = await signChallenge(inputMnemonic, challenge);
-      const registerResult = await registerAccount(url, {
-        challenge: {
-          code: challenge,
-          signature: keys.signature,
-        },
-        publicKey: keys.publicKey,
-        device: props.profile.device,
-        profile: props.profile.profile,
+
+      await register({
+        mnemonic: inputMnemonic,
+        userData: props.userData,
       });
 
-      setAccount({
-        profile: registerResult.user.profile,
-        sessionId: registerResult.session.id,
-        token: registerResult.token,
-        userId: registerResult.user.id,
-      });
+      // TODO import (and sort out conflicts)
+
+      await restore();
 
       props.onNext?.();
     },
-    [props, setAccount]
+    [props, register, restore]
   );
 
   return (

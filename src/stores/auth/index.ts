@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";
 
-interface Account {
+export interface Account {
   profile: {
     colorA: string;
     colorB: string;
@@ -10,7 +10,7 @@ interface Account {
   };
 }
 
-type AccountWithToken = Account & {
+export type AccountWithToken = Account & {
   sessionId: string;
   userId: string;
   token: string;

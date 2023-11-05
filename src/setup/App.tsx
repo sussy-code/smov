@@ -16,6 +16,7 @@ import { AdminPage } from "@/pages/admin/AdminPage";
 import { DmcaPage } from "@/pages/Dmca";
 import { NotFoundPage } from "@/pages/errors/NotFoundPage";
 import { HomePage } from "@/pages/HomePage";
+import { LoginPage } from "@/pages/Login";
 import { PlayerView } from "@/pages/PlayerView";
 import { RegisterPage } from "@/pages/Register";
 import { SettingsPage } from "@/pages/Settings";
@@ -89,6 +90,7 @@ function App() {
         </Route>
         <Route exact path={["/browse/:query?", "/"]} component={HomePage} />
         <Route exact path="/register" component={RegisterPage} />
+        <Route exact path="/login" component={LoginPage} />
         <Route exact path="/faq" component={AboutPage} />
         <Route exact path="/dmca" component={DmcaPage} />
 

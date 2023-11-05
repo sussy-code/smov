@@ -1,6 +1,6 @@
 import { pbkdf2Async } from "@noble/hashes/pbkdf2";
 import { sha256 } from "@noble/hashes/sha256";
-import { generateMnemonic } from "@scure/bip39";
+import { generateMnemonic, validateMnemonic } from "@scure/bip39";
 import { wordlist } from "@scure/bip39/wordlists/english";
 import forge from "node-forge";
 
@@ -11,7 +11,11 @@ async function seedFromMnemonic(mnemonic: string) {
   });
 }
 
-export async function keysFromMenmonic(mnemonic: string) {
+export function verifyValidMnemonic(mnemonic: string) {
+  return validateMnemonic(mnemonic, wordlist);
+}
+
+export async function keysFromMnemonic(mnemonic: string) {
   const seed = await seedFromMnemonic(mnemonic);
 
   const { privateKey, publicKey } = forge.pki.ed25519.generateKeyPair({
@@ -44,4 +48,13 @@ export function bytesToBase64Url(bytes: Uint8Array): string {
     .replace(/\//g, "_")
     .replace(/\+/g, "-")
     .replace(/=+$/, "");
+}
+
+export async function signChallenge(mnemonic: string, challengeCode: string) {
+  const keys = await keysFromMnemonic(mnemonic);
+  const signature = await signCode(challengeCode, keys.privateKey);
+  return {
+    publicKey: bytesToBase64Url(keys.publicKey),
+    signature: bytesToBase64Url(signature),
+  };
 }

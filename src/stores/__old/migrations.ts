@@ -27,7 +27,6 @@ const storeCallbacks: Record<string, ((data: any) => void)[]> = {};
 const stores: Record<string, [StoreRet<any>, InternalStoreData]> = {};
 
 export async function initializeOldStores() {
-  console.log(stores);
   // migrate all stores
   for (const [store, internal] of Object.values(stores)) {
     const versions = internal.versions.sort((a, b) => a.version - b.version);
@@ -169,7 +168,6 @@ export function createVersionedStore<T>(): StoreBuilder<T> {
       return this;
     },
     build() {
-      console.log(_data.key);
       assertStore(_data);
       const storageObject = buildStorageObject<T>(_data);
       stores[_data.key ?? ""] = [storageObject, _data];

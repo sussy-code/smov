@@ -1,10 +1,11 @@
 import classNames from "classnames";
 import { Link } from "react-router-dom";
 
+import { UserAvatar } from "@/components/Avatar";
 import { IconPatch } from "@/components/buttons/IconPatch";
 import { Icons } from "@/components/Icon";
 import { Lightbar } from "@/components/utils/Lightbar";
-import { useAuth } from "@/hooks/useAuth";
+import { useAuth } from "@/hooks/auth/useAuth";
 import { BlurEllipsis } from "@/pages/layouts/SubPageLayout";
 import { conf } from "@/setup/config";
 import { useBannerSize } from "@/stores/banner";
@@ -59,8 +60,8 @@ export function Navigation(props: NavigationProps) {
           >
             <div className="absolute -bottom-24 h-24 w-full bg-gradient-to-b from-background-main to-transparent" />
           </div>
-          <div className="pointer-events-auto px-7 py-5 relative flex flex-1 items-center space-x-3">
-            <div className="flex items-center flex-1">
+          <div className="pointer-events-auto px-7 py-5 relative flex flex-1 items-center">
+            <div className="flex items-center flex-1 space-x-3">
               <Link className="block" to="/">
                 <BrandPill clickable />
               </Link>
@@ -81,9 +82,7 @@ export function Navigation(props: NavigationProps) {
                 <IconPatch icon={Icons.GITHUB} clickable downsized />
               </a>
             </div>
-            <div>
-              <p>User: {JSON.stringify(loggedIn)}</p>
-            </div>
+            <div>{loggedIn ? <UserAvatar /> : <p>Not logged in</p>}</div>
           </div>
         </div>
       </div>
