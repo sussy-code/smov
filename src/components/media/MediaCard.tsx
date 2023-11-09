@@ -51,7 +51,7 @@ function MediaCardContent({
       >
         <div
           className={[
-            "relative mb-4 aspect-[2/3] w-full overflow-hidden rounded-xl bg-denim-500 bg-cover bg-center transition-[border-radius] duration-100",
+            "relative mb-4 w-full overflow-hidden rounded-xl bg-denim-500 bg-cover bg-center pb-[150%] transition-[border-radius] duration-100",
             closable ? "" : "group-hover:rounded-lg",
           ].join(" ")}
           style={{
