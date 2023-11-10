@@ -3,6 +3,10 @@ import classNames from "classnames";
 import { useEffect, useRef } from "react";
 import type { AsyncReturnType } from "type-fest";
 
+import {
+  scrapSegmentToProviderMetric,
+  useReportProviders,
+} from "@/backend/helpers/report";
 import { usePlayer } from "@/components/player/hooks/usePlayer";
 import {
   ScrapeCard,
@@ -26,6 +30,7 @@ export interface ScrapingProps {
 
 export function ScrapingPart(props: ScrapingProps) {
   const { playMedia } = usePlayer();
+  const { report } = useReportProviders();
   const { startScraping, sourceOrder, sources, currentSource } = useScrape();
 
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -58,9 +63,14 @@ export function ScrapingPart(props: ScrapingProps) {
         resultRef.current.sources,
         resultRef.current.sourceOrder
       );
+      report(
+        Object.values(resultRef.current.sources).map((v) =>
+          scrapSegmentToProviderMetric(v)
+        )
+      );
       props.onGetStream?.(output);
     })();
-  }, [startScraping, props, playMedia]);
+  }, [startScraping, props, playMedia, report]);
 
   const currentProvider = sourceOrder.find(
     (s) => sources[s.id].status === "pending"
