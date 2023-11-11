@@ -17,17 +17,20 @@ export type ProviderMetric = {
   embedId?: string;
   errorMessage?: string;
   fullError?: string;
-  hostname?: string;
 };
+
+function getStackTrace(error: Error, lines: number) {
+  const topMessage = error.toString();
+  const stackTraceLines = (error.stack ?? "").split("\n", lines + 1);
+  stackTraceLines.pop();
+  return `${topMessage}\n\n${stackTraceLines.join("\n")}`;
+}
 
 export async function reportProviders(items: ProviderMetric[]): Promise<void> {
   return ofetch(metricsEndpoint, {
     method: "POST",
     body: {
-      items: items.map((v) => ({
-        ...v,
-        hostname: window.location.hostname,
-      })),
+      items,
     },
   });
 }
@@ -69,9 +72,7 @@ export function scrapeSegmentToProviderMetric(
     episodeId,
     seasonId,
     errorMessage: segment.reason ?? error?.message,
-    fullError: error
-      ? `${error.toString()}\n\n${error.stack ?? ""}`
-      : undefined,
+    fullError: error ? getStackTrace(error, 5) : undefined,
   };
 }
 
