@@ -26,6 +26,8 @@ export function useScrape() {
   const startScraping = useCallback(
     async (media: ScrapeMedia) => {
       if (!providers) return null;
+
+      let lastId: string | null = null;
       const output = await providers.runAll({
         media,
         events: {
@@ -56,6 +58,7 @@ export function useScrape() {
               return { ...s };
             });
             setCurrentSource(id);
+            lastId = id;
           },
           update(evt) {
             setSources((s) => {
@@ -93,6 +96,14 @@ export function useScrape() {
           },
         },
       });
+
+      if (output && lastId) {
+        setSources((s) => {
+          if (!lastId) return s;
+          if (s[lastId]) s[lastId].status = "success";
+          return { ...s };
+        });
+      }
 
       return output;
     },
