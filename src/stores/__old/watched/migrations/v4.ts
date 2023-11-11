@@ -73,6 +73,5 @@ export function migrateV4Videos(old: WatchedStoreData) {
     }
   }
 
-  console.log(newItems);
   return newItems;
 }

@@ -11,6 +11,7 @@ export interface ScrapingItems {
 export interface ScrapingSegment {
   name: string;
   id: string;
+  embedId?: string;
   status: "failure" | "pending" | "notfound" | "success" | "waiting";
   reason?: string;
   error?: unknown;
@@ -73,6 +74,7 @@ export function useScrape() {
                 const source = providers.getMetadata(v.embedScraperId);
                 if (!source) throw new Error("invalid source id");
                 const out: ScrapingSegment = {
+                  embedId: v.embedScraperId,
                   name: source.name,
                   id: v.id,
                   status: "waiting",

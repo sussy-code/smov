@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import type { AsyncReturnType } from "type-fest";
 
 import {
-  scrapSegmentToProviderMetric,
+  scrapePartsToProviderMetric,
   useReportProviders,
 } from "@/backend/helpers/report";
 import { usePlayer } from "@/components/player/hooks/usePlayer";
@@ -64,8 +64,10 @@ export function ScrapingPart(props: ScrapingProps) {
         resultRef.current.sourceOrder
       );
       report(
-        Object.values(resultRef.current.sources).map((v) =>
-          scrapSegmentToProviderMetric(v)
+        scrapePartsToProviderMetric(
+          props.media,
+          resultRef.current.sourceOrder,
+          resultRef.current.sources
         )
       );
       props.onGetStream?.(output);
