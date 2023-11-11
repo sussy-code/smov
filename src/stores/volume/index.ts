@@ -12,7 +12,6 @@ export interface EmpheralVolumeStore {
   setShowVolume(v: boolean): void;
 }
 
-// TODO add migration from previous stored volume
 export const useVolumeStore = create(
   persist(
     immer<VolumeStore>((set) => ({

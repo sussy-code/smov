@@ -63,12 +63,15 @@ export function EmbedOption(props: {
   );
 }
 
+// TODO refactor this file: cleanup + reporting
+
 export function EmbedSelectionView({ sourceId, id }: EmbedSelectionViewProps) {
   const router = useOverlayRouter(id);
   const meta = usePlayerStore((s) => s.meta);
   const setSource = usePlayerStore((s) => s.setSource);
   const setSourceId = usePlayerStore((s) => s.setSourceId);
   const progress = usePlayerStore((s) => s.progress.time);
+
   const sourceName = useMemo(() => {
     if (!sourceId) return "...";
     const sourceMeta = providers.getMetadata(sourceId);
@@ -81,6 +84,7 @@ export function EmbedSelectionView({ sourceId, id }: EmbedSelectionViewProps) {
       id: sourceId,
       media: scrapeMedia,
     });
+
     if (result.stream) {
       setSource(convertRunoutputToSource({ stream: result.stream }), progress);
       setSourceId(sourceId);
