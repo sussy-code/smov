@@ -3,6 +3,7 @@ import { ofetch } from "ofetch";
 import { useCallback } from "react";
 
 import { ScrapingItems, ScrapingSegment } from "@/hooks/useProviderScrape";
+import { PlayerMeta } from "@/stores/player/slices/source";
 
 const metricsEndpoint = "https://backend.movie-web.app/metrics/providers";
 
@@ -45,6 +46,32 @@ const segmentStatusMap: Record<
   pending: null,
   waiting: null,
 };
+
+export function scrapeSourceOutputToProviderMetric(
+  media: PlayerMeta,
+  providerId: string,
+  embedId: string | null,
+  status: ProviderMetric["status"],
+  err: unknown | null
+): ProviderMetric {
+  const episodeId = media.episode?.tmdbId;
+  const seasonId = media.season?.tmdbId;
+  let error: undefined | Error;
+  if (err instanceof Error) error = err;
+
+  return {
+    status,
+    providerId,
+    title: media.title,
+    tmdbId: media.tmdbId,
+    type: media.type,
+    embedId: embedId ?? undefined,
+    episodeId,
+    seasonId,
+    errorMessage: error?.message,
+    fullError: error ? getStackTrace(error, 5) : undefined,
+  };
+}
 
 export function scrapeSegmentToProviderMetric(
   media: ScrapeMedia,

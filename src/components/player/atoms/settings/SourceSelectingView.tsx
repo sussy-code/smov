@@ -1,12 +1,13 @@
 import { ReactNode, useEffect, useMemo, useRef } from "react";
-import { useAsyncFn } from "react-use";
 
 import { Loading } from "@/components/layout/Loading";
+import {
+  useEmbedScraping,
+  useSourceScraping,
+} from "@/components/player/hooks/useSourceSelection";
 import { Menu } from "@/components/player/internals/ContextMenu";
 import { SelectableLink } from "@/components/player/internals/ContextMenu/Links";
-import { convertRunoutputToSource } from "@/components/player/utils/convertRunoutputToSource";
 import { useOverlayRouter } from "@/hooks/useOverlayRouter";
-import { metaToScrapeMedia } from "@/stores/player/slices/source";
 import { usePlayerStore } from "@/stores/player/store";
 import { providers } from "@/utils/providers";
 
@@ -23,15 +24,9 @@ export interface EmbedSelectionViewProps {
 export function EmbedOption(props: {
   embedId: string;
   url: string;
-  sourceId: string | null;
+  sourceId: string;
   routerId: string;
 }) {
-  const router = useOverlayRouter(props.routerId);
-  const meta = usePlayerStore((s) => s.meta);
-  const setSource = usePlayerStore((s) => s.setSource);
-  const setSourceId = usePlayerStore((s) => s.setSourceId);
-  const progress = usePlayerStore((s) => s.progress.time);
-
   const unknownEmbedName = "Unknown";
 
   const embedName = useMemo(() => {
@@ -40,22 +35,15 @@ export function EmbedOption(props: {
     return sourceMeta?.name ?? unknownEmbedName;
   }, [props.embedId]);
 
-  const [request, run] = useAsyncFn(async () => {
-    const result = await providers.runEmbedScraper({
-      id: props.embedId,
-      url: props.url,
-    });
-    setSourceId(props.sourceId);
-    setSource(convertRunoutputToSource({ stream: result.stream }), progress);
-    router.close();
-  }, [props.embedId, props.sourceId, meta, router]);
+  const { run, errored, loading } = useEmbedScraping(
+    props.routerId,
+    props.sourceId,
+    props.url,
+    props.embedId
+  );
 
   return (
-    <SelectableLink
-      loading={request.loading}
-      error={request.error}
-      onClick={run}
-    >
+    <SelectableLink loading={loading} error={errored} onClick={run}>
       <span className="flex flex-col">
         <span>{embedName}</span>
       </span>
@@ -63,48 +51,16 @@ export function EmbedOption(props: {
   );
 }
 
-// TODO refactor this file: cleanup + reporting
-
 export function EmbedSelectionView({ sourceId, id }: EmbedSelectionViewProps) {
   const router = useOverlayRouter(id);
-  const meta = usePlayerStore((s) => s.meta);
-  const setSource = usePlayerStore((s) => s.setSource);
-  const setSourceId = usePlayerStore((s) => s.setSourceId);
-  const progress = usePlayerStore((s) => s.progress.time);
+  const { run, watching, notfound, loading, items, errored } =
+    useSourceScraping(sourceId, id);
 
   const sourceName = useMemo(() => {
     if (!sourceId) return "...";
     const sourceMeta = providers.getMetadata(sourceId);
     return sourceMeta?.name ?? "...";
   }, [sourceId]);
-  const [request, run] = useAsyncFn(async () => {
-    if (!sourceId || !meta) return null;
-    const scrapeMedia = metaToScrapeMedia(meta);
-    const result = await providers.runSourceScraper({
-      id: sourceId,
-      media: scrapeMedia,
-    });
-
-    if (result.stream) {
-      setSource(convertRunoutputToSource({ stream: result.stream }), progress);
-      setSourceId(sourceId);
-      router.close();
-      return null;
-    }
-    if (result.embeds.length === 1) {
-      const embedResult = await providers.runEmbedScraper({
-        id: result.embeds[0].embedId,
-        url: result.embeds[0].url,
-      });
-      setSourceId(sourceId);
-      setSource(
-        convertRunoutputToSource({ stream: embedResult.stream }),
-        progress
-      );
-      router.close();
-    }
-    return result.embeds;
-  }, [sourceId, meta, router]);
 
   const lastSourceId = useRef<string | null>(null);
   useEffect(() => {
@@ -115,27 +71,35 @@ export function EmbedSelectionView({ sourceId, id }: EmbedSelectionViewProps) {
   }, [run, sourceId]);
 
   let content: ReactNode = null;
-  if (request.loading)
+  if (loading)
     content = (
       <Menu.TextDisplay noIcon>
         <Loading />
       </Menu.TextDisplay>
     );
-  else if (request.error)
+  else if (notfound)
+    content = (
+      <Menu.TextDisplay title="No stream">
+        This source has no streams for this movie or show.
+      </Menu.TextDisplay>
+    );
+  else if (items?.length === 0)
+    content = (
+      <Menu.TextDisplay title="No embeds found">
+        We were unable to find any embeds for this source, please try another.
+      </Menu.TextDisplay>
+    );
+  else if (errored)
     content = (
       <Menu.TextDisplay title="Failed to scrape">
         We were unable to find any videos for this source. Don&apos;t come
         bitchin&apos; to us about it, just try another source.
       </Menu.TextDisplay>
     );
-  else if (request.value && request.value.length === 0)
-    content = (
-      <Menu.TextDisplay title="No embeds found">
-        We were unable to find any embeds for this source, please try another.
-      </Menu.TextDisplay>
-    );
-  else if (request.value)
-    content = request.value.map((v) => (
+  else if (watching)
+    content = null; // when it starts watching, empty the display
+  else if (items && sourceId)
+    content = items.map((v) => (
       <EmbedOption
         key={`${v.embedId}-${v.url}`}
         embedId={v.embedId}
