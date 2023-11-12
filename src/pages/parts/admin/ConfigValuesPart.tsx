@@ -19,6 +19,7 @@ function ConfigValue(props: { name: string; children?: ReactNode }) {
 export function ConfigValuesPart() {
   const normalRouter = conf().NORMAL_ROUTER;
   const appVersion = conf().APP_VERSION;
+  const backendUrl = conf().BACKEND_URL;
 
   return (
     <>
@@ -27,6 +28,7 @@ export function ConfigValuesPart() {
         {normalRouter ? "Normal routing" : "Hash based routing"}
       </ConfigValue>
       <ConfigValue name="Application version">v{appVersion}</ConfigValue>
+      <ConfigValue name="Backend URL">{backendUrl}</ConfigValue>
     </>
   );
 }
