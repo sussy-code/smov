@@ -77,7 +77,13 @@ export function TMDBTestPart() {
               </p>
             ) : (
               <>
-                <p className="text-white font-bold">TMDB is not working</p>
+                <p className="text-white font-bold w-full mb-3 flex items-center gap-1">
+                  <Icon
+                    icon={Icons.CIRCLE_EXCLAMATION}
+                    className="text-video-scraping-error mr-2"
+                  />
+                  TMDB is not working
+                </p>
                 <p>{status.errorText}</p>
               </>
             )}

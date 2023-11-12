@@ -5,6 +5,8 @@ import { ConfigValuesPart } from "@/pages/parts/admin/ConfigValuesPart";
 import { TMDBTestPart } from "@/pages/parts/admin/TMDBTestPart";
 import { WorkerTestPart } from "@/pages/parts/admin/WorkerTestPart";
 
+import { BackendTestPart } from "../parts/admin/BackendTestPart";
+
 export function AdminPage() {
   return (
     <SubPageLayout>
@@ -13,6 +15,7 @@ export function AdminPage() {
         <Paragraph>Useful tools to test out your current deployment</Paragraph>
 
         <ConfigValuesPart />
+        <BackendTestPart />
         <WorkerTestPart />
         <TMDBTestPart />
       </ThinContainer>

@@ -1,6 +1,7 @@
 import { ofetch } from "ofetch";
 
 export interface MetaResponse {
+  version: string;
   name: string;
   description?: string;
   hasCaptcha: boolean;
