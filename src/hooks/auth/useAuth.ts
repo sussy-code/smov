@@ -19,6 +19,7 @@ import { useBackendUrl } from "@/hooks/auth/useBackendUrl";
 import { useAuthStore } from "@/stores/auth";
 
 export interface RegistrationData {
+  recaptchaToken: string;
   mnemonic: string;
   userData: {
     device: string;
@@ -89,7 +90,10 @@ export function useAuth() {
 
   const register = useCallback(
     async (registerData: RegistrationData) => {
-      const { challenge } = await getRegisterChallengeToken(backendUrl);
+      const { challenge } = await getRegisterChallengeToken(
+        backendUrl,
+        registerData.recaptchaToken
+      );
       const keys = await keysFromMnemonic(registerData.mnemonic);
       const signature = await signChallenge(keys, challenge);
       const registerResult = await registerAccount(backendUrl, {

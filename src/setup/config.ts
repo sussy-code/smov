@@ -8,6 +8,7 @@ interface Config {
   CORS_PROXY_URL: string;
   NORMAL_ROUTER: boolean;
   BACKEND_URL: string;
+  RECAPTCHA_SITE_KEY: string;
 }
 
 export interface RuntimeConfig {
@@ -18,6 +19,7 @@ export interface RuntimeConfig {
   NORMAL_ROUTER: boolean;
   PROXY_URLS: string[];
   BACKEND_URL: string;
+  RECAPTCHA_SITE_KEY: string;
 }
 
 const env: Record<keyof Config, undefined | string> = {
@@ -28,6 +30,7 @@ const env: Record<keyof Config, undefined | string> = {
   CORS_PROXY_URL: import.meta.env.VITE_CORS_PROXY_URL,
   NORMAL_ROUTER: import.meta.env.VITE_NORMAL_ROUTER,
   BACKEND_URL: import.meta.env.VITE_BACKEND_URL,
+  RECAPTCHA_SITE_KEY: import.meta.env.VITE_RECAPTCHA_SITE_KEY,
 };
 
 // loads from different locations, in order: environment (VITE_{KEY}), window (public/config.js)
@@ -53,5 +56,6 @@ export function conf(): RuntimeConfig {
       .split(",")
       .map((v) => v.trim()),
     NORMAL_ROUTER: getKey("NORMAL_ROUTER", "false") === "true",
+    RECAPTCHA_SITE_KEY: getKey("RECAPTCHA_SITE_KEY"),
   };
 }

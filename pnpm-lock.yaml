@@ -80,6 +80,9 @@ dependencies:
   react-ga4:
     specifier: ^2.0.0
     version: 2.1.0
+  react-google-recaptcha-v3:
+    specifier: ^1.10.1
+    version: 1.10.1(react-dom@17.0.2)(react@17.0.2)
   react-helmet-async:
     specifier: ^1.3.0
     version: 1.3.0(react-dom@17.0.2)(react@17.0.2)
@@ -5185,6 +5188,17 @@ packages:
 
   /react-ga4@2.1.0:
     resolution: {integrity: sha512-ZKS7PGNFqqMd3PJ6+C2Jtz/o1iU9ggiy8Y8nUeksgVuvNISbmrQtJiZNvC/TjDsqD0QlU5Wkgs7i+w9+OjHhhQ==}
+    dev: false
+
+  /react-google-recaptcha-v3@1.10.1(react-dom@17.0.2)(react@17.0.2):
+    resolution: {integrity: sha512-K3AYzSE0SasTn+XvV2tq+6YaxM+zQypk9rbCgG4OVUt7Rh4ze9basIKefoBz9sC0CNslJj9N1uwTTgRMJQbQJQ==}
+    peerDependencies:
+      react: ^16.3 || ^17.0 || ^18.0
+      react-dom: ^17.0 || ^18.0
+    dependencies:
+      hoist-non-react-statics: 3.3.2
+      react: 17.0.2
+      react-dom: 17.0.2(react@17.0.2)
     dev: false
 
   /react-helmet-async@1.3.0(react-dom@17.0.2)(react@17.0.2):

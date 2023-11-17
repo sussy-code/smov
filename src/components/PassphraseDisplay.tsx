@@ -6,7 +6,7 @@ import { Icon, Icons } from "./Icon";
 export function PassphaseDisplay(props: { mnemonic: string }) {
   const individualWords = props.mnemonic.split(" ");
 
-  const [_, copy] = useCopyToClipboard();
+  const [, copy] = useCopyToClipboard();
 
   const [hasCopied, setHasCopied] = useState(false);
 

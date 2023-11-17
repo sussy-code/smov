@@ -210,3 +210,7 @@ input[type=range].styled-slider.slider-progress::-ms-fill-lower {
   /* For some reason the styles don't get applied without the width */
   width: 13px;
 }
+
+.grecaptcha-badge {
+  display: none !important;
+}

@@ -120,9 +120,11 @@ module.exports = {
             // Passphrase
             authentication: {
               border: "#393954",
+              inputBg: "#171728",
               wordBackground: "#171728",
               copyText: "#58587A",
               copyTextHover: "#8888AA",
+              errorText: "#DB3D62",
             },
 
             // Settings page

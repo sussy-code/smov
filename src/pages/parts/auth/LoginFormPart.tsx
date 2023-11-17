@@ -3,7 +3,13 @@ import { useAsyncFn } from "react-use";
 
 import { verifyValidMnemonic } from "@/backend/accounts/crypto";
 import { Button } from "@/components/Button";
-import { Input } from "@/components/player/internals/ContextMenu/Input";
+import { BrandPill } from "@/components/layout/BrandPill";
+import {
+  LargeCard,
+  LargeCardButtons,
+  LargeCardText,
+} from "@/components/layout/LargeCard";
+import { AuthInputBox } from "@/components/text-inputs/AuthInputBox";
 import { useAuth } from "@/hooks/auth/useAuth";
 
 interface LoginFormPartProps {
@@ -39,14 +45,38 @@ export function LoginFormPart(props: LoginFormPartProps) {
   );
 
   return (
-    <div>
-      <p>passphrase</p>
-      <Input value={mnemonic} onInput={setMnemonic} />
-      <p>Device name</p>
-      <Input value={device} onInput={setDevice} />
-      {result.loading ? <p>Loading...</p> : null}
-      {result.error ? <p>error: {result.error.toString()}</p> : null}
-      <Button onClick={() => execute(mnemonic, device)}>Login</Button>
-    </div>
+    <LargeCard top={<BrandPill />}>
+      <LargeCardText title="Login to your account">
+        Oh, you&apos;re asking for the key to my top-secret lair, also known as
+        The Fortress of Wordsmithery, accessed only by reciting the sacred
+        incantation of the 12-word passphrase!
+      </LargeCardText>
+      <div className="space-y-4">
+        <AuthInputBox
+          label="12-Word Passphrase"
+          value={mnemonic}
+          onChange={setMnemonic}
+          placeholder="Passphrase"
+        />
+        <AuthInputBox
+          label="Device name"
+          value={device}
+          onChange={setDevice}
+          placeholder="Device"
+        />
+        {result.loading ? <p>Loading...</p> : null}
+        {result.error && !result.loading ? (
+          <p className="text-authentication-errorText">
+            {result.error.message}
+          </p>
+        ) : null}
+      </div>
+
+      <LargeCardButtons>
+        <Button theme="purple" onClick={() => execute(mnemonic, device)}>
+          LET ME IN!
+        </Button>
+      </LargeCardButtons>
+    </LargeCard>
   );
 }

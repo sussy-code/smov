@@ -1,7 +1,17 @@
-export function LargeCard(props: { children: React.ReactNode }) {
+export function LargeCard(props: {
+  children: React.ReactNode;
+  top?: React.ReactNode;
+}) {
   return (
-    <div className="rounded-xl bg-largeCard-background bg-opacity-50 max-w-[600px] mx-auto p-[3rem]">
-      {props.children}
+    <div className="flex flex-col items-center">
+      {props.top ? (
+        <div className="inline-block transform translate-y-1/2">
+          {props.top}
+        </div>
+      ) : null}
+      <div className="w-full rounded-xl bg-largeCard-background bg-opacity-50 max-w-[600px] mx-auto p-[3rem]">
+        {props.children}
+      </div>
     </div>
   );
 }
