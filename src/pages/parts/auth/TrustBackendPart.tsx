@@ -1,3 +1,5 @@
+import { useMemo } from "react";
+import { useHistory } from "react-router-dom";
 import { useAsync } from "react-use";
 
 import { MetaResponse, getBackendMeta } from "@/backend/accounts/meta";
@@ -8,6 +10,8 @@ import {
   LargeCardButtons,
   LargeCardText,
 } from "@/components/layout/LargeCard";
+import { Loading } from "@/components/layout/Loading";
+import { useBackendUrl } from "@/hooks/auth/useBackendUrl";
 import { conf } from "@/setup/config";
 
 interface TrustBackendPartProps {
@@ -15,18 +19,30 @@ interface TrustBackendPartProps {
 }
 
 export function TrustBackendPart(props: TrustBackendPartProps) {
-  const result = useAsync(async () => {
-    const url = conf().BACKEND_URL;
-    return {
-      domain: new URL(url).hostname,
-      data: await getBackendMeta(conf().BACKEND_URL),
-    };
-  }, []);
+  const history = useHistory();
+  const backendUrl = useBackendUrl();
+  const backendHostname = useMemo(
+    () => new URL(backendUrl).hostname,
+    [backendUrl]
+  );
+  const result = useAsync(() => {
+    return getBackendMeta(conf().BACKEND_URL);
+  }, [backendUrl]);
 
-  if (result.loading) return <p>loading...</p>;
-
-  if (result.error || !result.value)
-    return <p>Failed to talk to backend, did you configure it correctly?</p>;
+  let cardContent = (
+    <>
+      <h3 className="text-white font-bold text-lg">Failed to reach backend</h3>
+      <p>Did you configure it correctly?</p>
+    </>
+  );
+  if (result.loading) cardContent = <Loading />;
+  if (result.value)
+    cardContent = (
+      <>
+        <h3 className="text-white font-bold text-lg">{result.value.name}</h3>
+        {result.value.description ? <p>{result.value.description}</p> : null}
+      </>
+    );
 
   return (
     <LargeCard>
@@ -34,29 +50,20 @@ export function TrustBackendPart(props: TrustBackendPartProps) {
         title="Do you trust this host?"
         icon={<Icon icon={Icons.CIRCLE_EXCLAMATION} />}
       >
-        Do you trust <span className="text-white">{result.value.domain}</span>?
+        Do you trust <span className="text-white">{backendHostname}</span>?
       </LargeCardText>
 
       <div className="border border-authentication-border rounded-xl px-4 py-8 flex flex-col items-center space-y-2 my-8">
-        <h3 className="text-white font-bold text-lg">
-          {result.value.data.name}
-        </h3>
-        {result.value.data.description ? (
-          <p>{result.value.data.description}</p>
-        ) : null}
+        {cardContent}
       </div>
       <LargeCardButtons>
         <Button
           theme="purple"
-          onClick={() => props.onNext?.(result.value.data)}
+          onClick={() => result.value && props.onNext?.(result.value)}
         >
           I pledge my life to the United States
         </Button>
-        <Button
-          theme="secondary"
-          // eslint-disable-next-line no-return-assign, no-restricted-globals
-          onClick={() => (location.href = "https://youtu.be/of0O-lS-OqQ")}
-        >
+        <Button theme="secondary" onClick={() => history.push("/")}>
           I WILL NEVER SUCCUMB!
         </Button>
       </LargeCardButtons>
