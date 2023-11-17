@@ -2,7 +2,9 @@ import { useCallback } from "react";
 
 import { removeSession } from "@/backend/accounts/auth";
 import {
+  bytesToBase64,
   bytesToBase64Url,
+  encryptData,
   keysFromMnemonic,
   signChallenge,
 } from "@/backend/accounts/crypto";
@@ -49,22 +51,24 @@ export function useAuth() {
   const login = useCallback(
     async (loginData: LoginData) => {
       const keys = await keysFromMnemonic(loginData.mnemonic);
+      const publicKeyBase64Url = bytesToBase64Url(keys.publicKey);
       const { challenge } = await getLoginChallengeToken(
         backendUrl,
-        bytesToBase64Url(keys.publicKey)
+        publicKeyBase64Url
       );
-      const signResult = await signChallenge(loginData.mnemonic, challenge);
+      const signature = await signChallenge(keys, challenge);
       const loginResult = await loginAccount(backendUrl, {
         challenge: {
           code: challenge,
-          signature: signResult.signature,
+          signature,
         },
-        publicKey: signResult.publicKey,
-        device: loginData.userData.device,
+        publicKey: publicKeyBase64Url,
+        device: await encryptData(loginData.userData.device, keys.seed),
       });
 
       const user = await getUser(backendUrl, loginResult.token);
-      await userDataLogin(loginResult, user);
+      const seedBase64 = bytesToBase64(keys.seed);
+      await userDataLogin(loginResult, user, seedBase64);
     },
     [userDataLogin, backendUrl]
   );
@@ -86,18 +90,23 @@ export function useAuth() {
   const register = useCallback(
     async (registerData: RegistrationData) => {
       const { challenge } = await getRegisterChallengeToken(backendUrl);
-      const signResult = await signChallenge(registerData.mnemonic, challenge);
+      const keys = await keysFromMnemonic(registerData.mnemonic);
+      const signature = await signChallenge(keys, challenge);
       const registerResult = await registerAccount(backendUrl, {
         challenge: {
           code: challenge,
-          signature: signResult.signature,
+          signature,
         },
-        publicKey: signResult.publicKey,
-        device: registerData.userData.device,
+        publicKey: bytesToBase64Url(keys.publicKey),
+        device: await encryptData(registerData.userData.device, keys.seed),
         profile: registerData.userData.profile,
       });
 
-      await userDataLogin(registerResult, registerResult.user);
+      await userDataLogin(
+        registerResult,
+        registerResult.user,
+        bytesToBase64(keys.seed)
+      );
     },
     [backendUrl, userDataLogin]
   );

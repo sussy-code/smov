@@ -14,6 +14,7 @@ export type AccountWithToken = Account & {
   sessionId: string;
   userId: string;
   token: string;
+  seed: string;
 };
 
 interface AuthStore {

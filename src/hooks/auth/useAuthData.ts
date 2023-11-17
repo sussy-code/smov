@@ -23,12 +23,13 @@ export function useAuthData() {
   const replaceItems = useProgressStore((s) => s.replaceItems);
 
   const login = useCallback(
-    async (account: LoginResponse, user: UserResponse) => {
+    async (account: LoginResponse, user: UserResponse, seed: string) => {
       setAccount({
         token: account.token,
         userId: user.id,
         sessionId: account.session.id,
         profile: user.profile,
+        seed,
       });
     },
     [setAccount]
