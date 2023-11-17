@@ -15,6 +15,7 @@ import { AccountProfile } from "@/pages/parts/auth/AccountCreatePart";
 
 interface VerifyPassphraseProps {
   mnemonic: string | null;
+  hasCaptcha?: boolean;
   userData: AccountProfile | null;
   onNext?: () => void;
 }
@@ -27,17 +28,19 @@ export function VerifyPassphrase(props: VerifyPassphraseProps) {
 
   const [result, execute] = useAsyncFn(
     async (inputMnemonic: string) => {
-      const recaptchaToken = executeRecaptcha
-        ? await executeRecaptcha()
-        : undefined;
-
       if (!props.mnemonic || !props.userData)
         throw new Error("Data is not valid");
-      if (!recaptchaToken) throw new Error("ReCaptcha validation failed");
+
+      let recaptchaToken: string | undefined;
+      if (props.hasCaptcha) {
+        recaptchaToken = executeRecaptcha
+          ? await executeRecaptcha()
+          : undefined;
+        if (!recaptchaToken) throw new Error("ReCaptcha validation failed");
+      }
+
       if (inputMnemonic !== props.mnemonic)
         throw new Error("Passphrase doesn't match");
-
-      // TODO captcha?
 
       await register({
         mnemonic: inputMnemonic,

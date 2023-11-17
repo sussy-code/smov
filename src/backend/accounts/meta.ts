@@ -5,6 +5,7 @@ export interface MetaResponse {
   name: string;
   description?: string;
   hasCaptcha: boolean;
+  captchaClientKey?: string;
 }
 
 export async function getBackendMeta(url: string): Promise<MetaResponse> {

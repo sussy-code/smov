@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 
+import { MetaResponse } from "@/backend/accounts/meta";
 import { SubPageLayout } from "@/pages/layouts/SubPageLayout";
 import {
   AccountCreatePart,
@@ -9,20 +10,38 @@ import {
 import { PassphraseGeneratePart } from "@/pages/parts/auth/PassphraseGeneratePart";
 import { TrustBackendPart } from "@/pages/parts/auth/TrustBackendPart";
 import { VerifyPassphrase } from "@/pages/parts/auth/VerifyPassphrasePart";
-import { conf } from "@/setup/config";
+
+function CaptchaProvider(props: {
+  siteKey: string | null;
+  children: JSX.Element;
+}) {
+  if (!props.siteKey) return props.children;
+  return (
+    <GoogleReCaptchaProvider reCaptchaKey={props.siteKey}>
+      {props.children}
+    </GoogleReCaptchaProvider>
+  );
+}
 
 export function RegisterPage() {
   const [step, setStep] = useState(0);
   const [mnemonic, setMnemonic] = useState<null | string>(null);
   const [account, setAccount] = useState<null | AccountProfile>(null);
-  const reCaptchaKey = conf().RECAPTCHA_SITE_KEY;
+  const [siteKey, setSiteKey] = useState<string | null>(null);
+
+  // TODO because of user data loading (in useAuthRestore()), the register page gets unmounted before finishing the register flow
 
   return (
-    <GoogleReCaptchaProvider reCaptchaKey={reCaptchaKey}>
+    <CaptchaProvider siteKey={siteKey}>
       <SubPageLayout>
         {step === 0 ? (
           <TrustBackendPart
-            onNext={() => {
+            onNext={(meta: MetaResponse) => {
+              setSiteKey(
+                meta.hasCaptcha && meta.captchaClientKey
+                  ? meta.captchaClientKey
+                  : null
+              );
               setStep(1);
             }}
           />
@@ -45,6 +64,7 @@ export function RegisterPage() {
         ) : null}
         {step === 3 ? (
           <VerifyPassphrase
+            hasCaptcha={!!siteKey}
             mnemonic={mnemonic}
             userData={account}
             onNext={() => {
@@ -54,6 +74,6 @@ export function RegisterPage() {
         ) : null}
         {step === 4 ? <p>Success, account now exists</p> : null}
       </SubPageLayout>
-    </GoogleReCaptchaProvider>
+    </CaptchaProvider>
   );
 }

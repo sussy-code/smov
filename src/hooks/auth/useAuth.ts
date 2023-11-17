@@ -19,7 +19,7 @@ import { useBackendUrl } from "@/hooks/auth/useBackendUrl";
 import { useAuthStore } from "@/stores/auth";
 
 export interface RegistrationData {
-  recaptchaToken: string;
+  recaptchaToken?: string;
   mnemonic: string;
   userData: {
     device: string;

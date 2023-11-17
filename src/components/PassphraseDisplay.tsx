@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { useCopyToClipboard } from "react-use";
+import { useCopyToClipboard, useMountedState } from "react-use";
 
 import { Icon, Icons } from "./Icon";
 
@@ -9,6 +9,7 @@ export function PassphaseDisplay(props: { mnemonic: string }) {
   const [, copy] = useCopyToClipboard();
 
   const [hasCopied, setHasCopied] = useState(false);
+  const isMounted = useMountedState();
 
   const timeout = useRef<ReturnType<typeof setTimeout>>();
 
@@ -16,7 +17,7 @@ export function PassphaseDisplay(props: { mnemonic: string }) {
     copy(props.mnemonic);
     setHasCopied(true);
     if (timeout.current) clearTimeout(timeout.current);
-    timeout.current = setTimeout(() => setHasCopied(false), 500);
+    timeout.current = setTimeout(() => isMounted() && setHasCopied(false), 500);
   }
 
   return (
