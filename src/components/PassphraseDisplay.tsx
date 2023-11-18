@@ -36,10 +36,10 @@ export function PassphaseDisplay(props: { mnemonic: string }) {
           <span className="text-sm">Copy</span>
         </button>
       </div>
-      <div className="px-4 py-4 flex flex-wrap gap-x-2 gap-y-4">
+      <div className="px-4 py-4 grid grid-cols-4 gap-2">
         {individualWords.map((word) => (
           <div
-            className="px-4 rounded-md py-2 bg-authentication-wordBackground text-white font-medium"
+            className="px-4 rounded-md py-2 bg-authentication-wordBackground text-white font-medium text-center"
             key={word}
           >
             {word}
