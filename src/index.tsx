@@ -16,6 +16,7 @@ import i18n from "@/setup/i18n";
 import "@/setup/ga";
 import "@/setup/index.css";
 import { useLanguageStore } from "@/stores/language";
+import { useThemeStore } from "@/stores/theme";
 
 import { initializeChromecast } from "./setup/chromecast";
 import "./stores/__old/imports";
@@ -63,14 +64,23 @@ function TheRouter(props: { children: ReactNode }) {
   return <HashRouter>{props.children}</HashRouter>;
 }
 
+function ThemeProvider(props: { children: ReactNode }) {
+  const theme = useThemeStore((s) => s.theme);
+  const themeSelector = theme ? `theme-${theme}` : undefined;
+
+  return <div className={themeSelector}>{props.children}</div>;
+}
+
 ReactDOM.render(
   <React.StrictMode>
     <ErrorBoundary>
       <HelmetProvider>
         <Suspense fallback={<LoadingScreen type="lazy" />}>
-          <TheRouter>
-            <MigrationRunner />
-          </TheRouter>
+          <ThemeProvider>
+            <TheRouter>
+              <MigrationRunner />
+            </TheRouter>
+          </ThemeProvider>
         </Suspense>
       </HelmetProvider>
     </ErrorBoundary>

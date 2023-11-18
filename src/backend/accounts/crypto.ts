@@ -108,10 +108,7 @@ export async function encryptData(data: string, secret: Uint8Array) {
   )}.${stringBufferToBase64(tag)}` as const;
 }
 
-export async function decryptData(
-  data: `${string}.${string}.${string}`,
-  secret: Uint8Array
-) {
+export function decryptData(data: string, secret: Uint8Array) {
   if (secret.byteLength !== 32) throw new Error("Secret must be 256-bit");
 
   const [iv, encryptedData, tag] = data.split(".");

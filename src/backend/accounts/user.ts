@@ -113,6 +113,16 @@ export async function getUser(
   });
 }
 
+export async function deleteUser(
+  url: string,
+  account: AccountWithToken
+): Promise<UserResponse> {
+  return ofetch<UserResponse>(`/users/${account.userId}`, {
+    headers: getAuthHeaders(account.token),
+    baseURL: url,
+  });
+}
+
 export async function getBookmarks(url: string, account: AccountWithToken) {
   return ofetch<BookmarkResponse[]>(`/users/${account.userId}/bookmarks`, {
     headers: getAuthHeaders(account.token),

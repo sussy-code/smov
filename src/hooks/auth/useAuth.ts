@@ -1,6 +1,5 @@
 import { useCallback } from "react";
 
-import { removeSession } from "@/backend/accounts/auth";
 import {
   bytesToBase64,
   bytesToBase64Url,
@@ -13,6 +12,7 @@ import {
   getRegisterChallengeToken,
   registerAccount,
 } from "@/backend/accounts/register";
+import { removeSession } from "@/backend/accounts/sessions";
 import { getBookmarks, getProgress, getUser } from "@/backend/accounts/user";
 import { useAuthData } from "@/hooks/auth/useAuthData";
 import { useBackendUrl } from "@/hooks/auth/useBackendUrl";
