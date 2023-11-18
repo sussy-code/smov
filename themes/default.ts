@@ -88,6 +88,7 @@ export const defaultTheme = {
       // Dropdown
       dropdown: {
         background: "#171728",
+        secondary: "#73739D",
       },
 
       // Passphrase

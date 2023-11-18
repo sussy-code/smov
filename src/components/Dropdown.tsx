@@ -19,7 +19,7 @@ export function Dropdown(props: DropdownProps) {
   return (
     <div className="relative my-4 max-w-[18rem]">
       <Listbox value={props.selectedItem} onChange={props.setSelectedItem}>
-        {({ open }) => (
+        {() => (
           <>
             <Listbox.Button className="relative w-full cursor-default rounded-lg bg-dropdown-background py-3 pl-3 pr-10 text-left text-white shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-bink-500  focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-bink-300">
               <span className="flex gap-4 items-center truncate">
@@ -30,10 +30,8 @@ export function Dropdown(props: DropdownProps) {
               </span>
               <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                 <Icon
-                  icon={Icons.CHEVRON_DOWN}
-                  className={`transform transition-transform text-xl ${
-                    open ? "rotate-180" : ""
-                  }`}
+                  icon={Icons.UP_DOWN_ARROW}
+                  className="transform transition-transform text-xl text-dropdown-secondary"
                 />
               </span>
             </Listbox.Button>
