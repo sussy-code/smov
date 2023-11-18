@@ -1,8 +1,9 @@
 import classNames from "classnames";
-import { ReactNode } from "react";
+import { ReactNode, useCallback } from "react";
 import { useHistory } from "react-router-dom";
 
 import { Icon, Icons } from "@/components/Icon";
+import { Spinner } from "@/components/layout/Spinner";
 
 interface Props {
   icon?: Icons;
@@ -14,18 +15,24 @@ interface Props {
   href?: string;
   disabled?: boolean;
   download?: string;
+  loading?: boolean;
 }
 
 export function Button(props: Props) {
   const history = useHistory();
+  const { onClick, href, loading } = props;
+  const cb = useCallback(() => {
+    if (loading) return;
+    if (href) history.push(href);
+    else onClick?.();
+  }, [onClick, href, history, loading]);
 
   let colorClasses = "bg-white hover:bg-gray-200 text-black";
   if (props.theme === "purple")
-    colorClasses =
-      "bg-video-buttons-purple hover:bg-video-buttons-purpleHover text-white";
+    colorClasses = "bg-buttons-purple hover:bg-buttons-purpleHover text-white";
   if (props.theme === "secondary")
     colorClasses =
-      "bg-video-buttons-cancel hover:bg-video-buttons-cancelHover transition-colors duration-100 text-white";
+      "bg-buttons-cancel hover:bg-buttons-cancelHover transition-colors duration-100 text-white";
   if (props.theme === "danger")
     colorClasses = "bg-buttons-danger hover:bg-buttons-dangerHover text-white";
 
@@ -48,18 +55,19 @@ export function Button(props: Props) {
 
   const content = (
     <>
-      {props.icon ? (
+      {props.icon && !props.loading ? (
         <span className="mr-3 hidden md:inline-block">
           <Icon icon={props.icon} />
+        </span>
+      ) : null}
+      {props.loading ? (
+        <span className="mr-3 inline-flex justify-center">
+          <Spinner className="text-lg" />
         </span>
       ) : null}
       {props.children}
     </>
   );
-
-  function goTo(href: string) {
-    history.push(href);
-  }
 
   if (
     props.href &&
@@ -79,13 +87,13 @@ export function Button(props: Props) {
 
   if (props.href)
     return (
-      <a className={classes} onClick={() => goTo(props.href || "")}>
+      <a className={classes} onClick={cb}>
         {content}
       </a>
     );
 
   return (
-    <button type="button" onClick={props.onClick} className={classes}>
+    <button type="button" onClick={cb} className={classes}>
       {content}
     </button>
   );
@@ -101,11 +109,10 @@ interface ButtonPlainProps {
 export function ButtonPlain(props: ButtonPlainProps) {
   let colorClasses = "bg-white hover:bg-gray-200 text-black";
   if (props.theme === "purple")
-    colorClasses =
-      "bg-video-buttons-purple hover:bg-video-buttons-purpleHover text-white";
+    colorClasses = "bg-buttons-purple hover:bg-buttons-purpleHover text-white";
   if (props.theme === "secondary")
     colorClasses =
-      "bg-video-buttons-cancel hover:bg-video-buttons-cancelHover transition-colors duration-100 text-white";
+      "bg-buttons-cancel hover:bg-buttons-cancelHover transition-colors duration-100 text-white";
 
   const classes = classNames(
     "cursor-pointer inline-flex items-center justify-center rounded-lg font-medium transition-[transform,background-color] duration-100 active:scale-105 md:px-8",

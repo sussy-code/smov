@@ -1,5 +1,5 @@
 import "core-js/stable";
-import React from "react";
+import React, { Suspense } from "react";
 import type { ReactNode } from "react";
 import ReactDOM from "react-dom";
 import { HelmetProvider } from "react-helmet-async";
@@ -32,10 +32,15 @@ registerSW({
   immediate: true,
 });
 
+function LoadingScreen(props: { type: "user" | "lazy" }) {
+  return <p>Loading: {props.type}</p>;
+}
+
 function AuthWrapper() {
   const status = useAuthRestore();
 
-  if (status.loading) return <p>Fetching user data</p>;
+  // TODO what to do when failing to load user data?
+  if (status.loading) return <LoadingScreen type="user" />;
   if (status.error) return <p>Failed to fetch user data</p>;
   return <App />;
 }
@@ -62,9 +67,11 @@ ReactDOM.render(
   <React.StrictMode>
     <ErrorBoundary>
       <HelmetProvider>
-        <TheRouter>
-          <MigrationRunner />
-        </TheRouter>
+        <Suspense fallback={<LoadingScreen type="lazy" />}>
+          <TheRouter>
+            <MigrationRunner />
+          </TheRouter>
+        </Suspense>
       </HelmetProvider>
     </ErrorBoundary>
   </React.StrictMode>,

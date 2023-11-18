@@ -93,14 +93,14 @@ export function NextEpisodeButton(props: {
         ])}
       >
         <Button
-          className="py-px box-content bg-video-buttons-secondary hover:bg-video-buttons-secondaryHover bg-opacity-90 text-video-buttons-secondaryText"
+          className="py-px box-content bg-buttons-secondary hover:bg-buttons-secondaryHover bg-opacity-90 text-buttons-secondaryText"
           onClick={hideNextEpisodeButton}
         >
           Cancel
         </Button>
         <Button
           onClick={() => loadNextEpisode()}
-          className="bg-video-buttons-primary hover:bg-video-buttons-primaryHover text-video-buttons-primaryText flex justify-center items-center"
+          className="bg-buttons-primary hover:bg-buttons-primaryHover text-buttons-primaryText flex justify-center items-center"
         >
           <Icon className="text-xl mr-1" icon={Icons.SKIP_EPISODE} />
           Next episode

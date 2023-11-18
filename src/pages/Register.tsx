@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
+import { useHistory } from "react-router-dom";
 
 import { MetaResponse } from "@/backend/accounts/meta";
 import { SubPageLayout } from "@/pages/layouts/SubPageLayout";
@@ -24,12 +25,11 @@ function CaptchaProvider(props: {
 }
 
 export function RegisterPage() {
+  const history = useHistory();
   const [step, setStep] = useState(0);
   const [mnemonic, setMnemonic] = useState<null | string>(null);
   const [account, setAccount] = useState<null | AccountProfile>(null);
   const [siteKey, setSiteKey] = useState<string | null>(null);
-
-  // TODO because of user data loading (in useAuthRestore()), the register page gets unmounted before finishing the register flow
 
   return (
     <CaptchaProvider siteKey={siteKey}>
@@ -68,11 +68,10 @@ export function RegisterPage() {
             mnemonic={mnemonic}
             userData={account}
             onNext={() => {
-              setStep(4);
+              history.push("/");
             }}
           />
         ) : null}
-        {step === 4 ? <p>Success, account now exists</p> : null}
       </SubPageLayout>
     </CaptchaProvider>
   );

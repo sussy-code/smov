@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useState } from "react";
-import { GoogleReCaptcha, useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import { useState } from "react";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { useAsyncFn } from "react-use";
 
 import { Button } from "@/components/Button";
@@ -77,7 +77,11 @@ export function VerifyPassphrase(props: VerifyPassphraseProps) {
         </p>
       ) : null}
       <LargeCardButtons>
-        <Button theme="purple" onClick={() => execute(mnemonic)}>
+        <Button
+          theme="purple"
+          loading={result.loading}
+          onClick={() => execute(mnemonic)}
+        >
           Register
         </Button>
       </LargeCardButtons>

@@ -38,7 +38,7 @@ export function LargeCardText(props: {
 
 export function LargeCardButtons(props: { children: React.ReactNode }) {
   return (
-    <div className="flex justify-center mt-8">
+    <div className="flex justify-center mt-12">
       <div className="mx-auto inline-grid grid-cols-1 gap-3 justify-center items-center">
         {props.children}
       </div>

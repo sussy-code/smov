@@ -27,7 +27,6 @@ export function LoginFormPart(props: LoginFormPartProps) {
       if (!verifyValidMnemonic(inputMnemonic))
         throw new Error("Invalid or incomplete passphrase");
 
-      // TODO captcha?
       await login({
         mnemonic: inputMnemonic,
         userData: {
@@ -64,7 +63,6 @@ export function LoginFormPart(props: LoginFormPartProps) {
           onChange={setDevice}
           placeholder="Device"
         />
-        {result.loading ? <p>Loading...</p> : null}
         {result.error && !result.loading ? (
           <p className="text-authentication-errorText">
             {result.error.message}
@@ -73,7 +71,11 @@ export function LoginFormPart(props: LoginFormPartProps) {
       </div>
 
       <LargeCardButtons>
-        <Button theme="purple" onClick={() => execute(mnemonic, device)}>
+        <Button
+          theme="purple"
+          loading={result.loading}
+          onClick={() => execute(mnemonic, device)}
+        >
           LET ME IN!
         </Button>
       </LargeCardButtons>
