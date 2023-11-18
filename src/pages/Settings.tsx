@@ -18,6 +18,7 @@ import { AccountWithToken, useAuthStore } from "@/stores/auth";
 import { useThemeStore } from "@/stores/theme";
 
 import { SubPageLayout } from "./layouts/SubPageLayout";
+import { LocalePart } from "./settings/LocalePart";
 
 function SettingsLayout(props: { children: React.ReactNode }) {
   const { isMobile } = useIsMobile();
@@ -78,6 +79,9 @@ export function SettingsPage() {
           ) : (
             <RegisterCalloutPart />
           )}
+        </div>
+        <div id="settings-locale">
+          <LocalePart />
         </div>
         <div id="settings-appearance">
           <ThemePart active={activeTheme} setTheme={setTheme} />

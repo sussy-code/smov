@@ -18,6 +18,7 @@ export function SidebarPart() {
 
   const settingLinks = [
     { text: "Account", id: "settings-account", icon: Icons.USER },
+    { text: "Locale", id: "settings-locale", icon: Icons.LINK },
     { text: "Appearance", id: "settings-appearance", icon: Icons.GITHUB },
     { text: "Captions", id: "settings-captions", icon: Icons.CAPTIONS },
   ];
@@ -35,10 +36,10 @@ export function SidebarPart() {
 
           const visible = !(
             Math.floor(
-              100 - ((rect.top >= 0 ? 0 : rect.top) / +-rect.height) * 100
+              50 - ((rect.top >= 0 ? 0 : rect.top) / +-rect.height) * 100
             ) < percentageVisible ||
             Math.floor(
-              100 - ((rect.bottom - windowHeight) / rect.height) * 100
+              50 - ((rect.bottom - windowHeight) / rect.height) * 100
             ) < percentageVisible
           );
 
@@ -80,6 +81,7 @@ export function SidebarPart() {
                 icon={v.icon}
                 active={v.id === activeLink}
                 onClick={() => scrollTo(v.id)}
+                key={v.id}
               >
                 {v.text}
               </SidebarLink>

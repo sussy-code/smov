@@ -13,6 +13,7 @@ import { getLanguageFromIETF } from "@/components/player/utils/language";
 import { useOverlayRouter } from "@/hooks/useOverlayRouter";
 import { usePlayerStore } from "@/stores/player/store";
 import { useSubtitleStore } from "@/stores/subtitles";
+import { sortLangCodes } from "@/utils/sortLangCodes";
 
 export function CaptionOption(props: {
   countryCode?: string;
@@ -22,24 +23,6 @@ export function CaptionOption(props: {
   onClick?: () => void;
   error?: React.ReactNode;
 }) {
-  // Country code overrides
-  const countryOverrides: Record<string, string> = {
-    en: "gb",
-    cs: "cz",
-    el: "gr",
-    fa: "ir",
-    ko: "kr",
-    he: "il",
-    ze: "cn",
-    ar: "sa",
-    ja: "jp",
-    bs: "ba",
-  };
-  let countryCode =
-    (props.countryCode || "")?.split("-").pop()?.toLowerCase() || "";
-  if (countryOverrides[countryCode])
-    countryCode = countryOverrides[countryCode];
-
   return (
     <SelectableLink
       selected={props.selected}
@@ -52,7 +35,7 @@ export function CaptionOption(props: {
         className="flex items-center"
       >
         <span data-code={props.countryCode} className="mr-3">
-          <FlagIcon countryCode={countryCode} />
+          <FlagIcon countryCode={props.countryCode} />
         </span>
         <span>{props.children}</span>
       </span>
@@ -64,19 +47,12 @@ function searchSubs(
   subs: (SubtitleSearchItem & { languageName: string })[],
   searchQuery: string
 ) {
-  const languagesOrder = ["en", "hi", "fr", "de", "nl", "pt"].reverse(); // Reverse is neccesary, not sure why
-
+  const sorted = sortLangCodes(subs.map((t) => t.attributes.language));
   let results = subs.sort((a, b) => {
-    if (
-      languagesOrder.indexOf(b.attributes.language) !== -1 ||
-      languagesOrder.indexOf(a.attributes.language) !== -1
-    )
-      return (
-        languagesOrder.indexOf(b.attributes.language) -
-        languagesOrder.indexOf(a.attributes.language)
-      );
-
-    return a.languageName.localeCompare(b.languageName);
+    return (
+      sorted.indexOf(a.attributes.language) -
+      sorted.indexOf(b.attributes.language)
+    );
   });
 
   if (searchQuery.trim().length > 0) {
@@ -152,7 +128,7 @@ export function CaptionsView({ id }: { id: string }) {
   if (req.loading) content = <p>loading...</p>;
   else if (req.error) content = <p>errored!</p>;
   else if (req.value) {
-    const subs = req.value.map((v) => {
+    const subs = req.value.filter(Boolean).map((v) => {
       const languageName =
         getLanguageFromIETF(v.attributes.language) ?? "unknown";
       return {

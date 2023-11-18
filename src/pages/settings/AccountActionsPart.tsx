@@ -14,6 +14,8 @@ export function AccountActionsPart() {
   const { logout } = useAuthData();
   const [deleteResult, deleteExec] = useAsyncFn(async () => {
     if (!account) return;
+    // eslint-disable-next-line no-restricted-globals
+    if (!confirm("You sure bro?")) return;
     await deleteUser(url, account);
     logout();
   }, [logout, account, url]);
