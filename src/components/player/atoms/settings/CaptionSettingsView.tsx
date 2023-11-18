@@ -33,7 +33,7 @@ export function ColorOption(props: {
   );
 }
 
-function CaptionSetting(props: {
+export function CaptionSetting(props: {
   textTransformer?: (s: string) => string;
   value: number;
   onChange?: (val: number) => void;
@@ -209,7 +209,7 @@ function CaptionSetting(props: {
   );
 }
 
-const colors = ["#ffffff", "#80b1fa", "#e2e535"];
+export const colors = ["#ffffff", "#80b1fa", "#e2e535"];
 
 export function CaptionSettingsView({ id }: { id: string }) {
   const router = useOverlayRouter(id);

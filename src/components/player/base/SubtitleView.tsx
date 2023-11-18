@@ -46,10 +46,10 @@ export function CaptionCue({
 
   return (
     <p
-      className="pointer-events-none mb-1 select-none rounded px-4 py-1 text-center [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]"
+      className="pointer-events-none mb-1 select-none rounded px-4 py-1 text-center leading-normal [text-shadow:0_2px_4px_rgba(0,0,0,0.5)]"
       style={{
         color: styling.color,
-        fontSize: `${(1.5 * styling.size).toFixed(2)}rem`,
+        fontSize: `${(1.5 * styling.size).toFixed(2)}em`,
         backgroundColor: `rgba(0,0,0,${styling.backgroundOpacity.toFixed(2)})`,
       }}
     >

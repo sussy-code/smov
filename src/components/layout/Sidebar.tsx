@@ -5,9 +5,10 @@ import { Icon, Icons } from "@/components/Icon";
 export function SidebarSection(props: {
   title: string;
   children: React.ReactNode;
+  className?: string;
 }) {
   return (
-    <section>
+    <section className={props.className ?? ""}>
       <p className="text-sm font-bold uppercase text-settings-sidebar-type-secondary mb-2">
         {props.title}
       </p>

@@ -25,7 +25,7 @@ export function AccountActionsPart() {
       <Heading2 border>Actions</Heading2>
       <SolidSettingsCard
         paddingClass="px-6 py-12"
-        className="grid grid-cols-2 gap-12"
+        className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12"
       >
         <div>
           <Heading3>Delete account</Heading3>
@@ -34,7 +34,7 @@ export function AccountActionsPart() {
             can be recovered.
           </p>
         </div>
-        <div className="flex justify-end items-center">
+        <div className="flex justify-start lg:justify-end items-center">
           <Button
             theme="danger"
             onClick={deleteExec}

@@ -1,7 +1,7 @@
 import classNames from "classnames";
 
 import { Icon, Icons } from "@/components/Icon";
-import { Heading2 } from "@/components/utils/Text";
+import { Heading1 } from "@/components/utils/Text";
 
 const availableThemes = [
   {
@@ -117,7 +117,7 @@ export function ThemePart(props: {
 }) {
   return (
     <div>
-      <Heading2 border>Themes</Heading2>
+      <Heading1 border>Appearence</Heading1>
       <div className="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-6 max-w-[700px]">
         {/* default theme */}
         <ThemePreview
