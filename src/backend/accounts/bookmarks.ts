@@ -25,6 +25,7 @@ export async function addBookmark(
       baseURL: url,
       body: {
         meta: input,
+        tmdbId: input.tmdbId,
       },
     }
   );
