@@ -130,6 +130,7 @@ export function scrapePartsToProviderMetric(
 
 export function useReportProviders() {
   const report = useCallback((items: ProviderMetric[]) => {
+    if (items.length === 0) return;
     reportProviders(items);
   }, []);
 

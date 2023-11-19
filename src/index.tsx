@@ -1,4 +1,8 @@
 import "core-js/stable";
+import "./stores/__old/imports";
+import "@/setup/ga";
+import "@/setup/index.css";
+
 import React, { Suspense } from "react";
 import type { ReactNode } from "react";
 import ReactDOM from "react-dom";
@@ -13,13 +17,11 @@ import { MigrationPart } from "@/pages/parts/migrations/MigrationPart";
 import App from "@/setup/App";
 import { conf } from "@/setup/config";
 import i18n from "@/setup/i18n";
-import "@/setup/ga";
-import "@/setup/index.css";
+import { BookmarkSyncer } from "@/stores/bookmarks/BookmarkSyncer";
 import { useLanguageStore } from "@/stores/language";
 import { useThemeStore } from "@/stores/theme";
 
 import { initializeChromecast } from "./setup/chromecast";
-import "./stores/__old/imports";
 import { initializeOldStores } from "./stores/__old/migrations";
 
 // initialize
@@ -77,6 +79,7 @@ ReactDOM.render(
       <HelmetProvider>
         <Suspense fallback={<LoadingScreen type="lazy" />}>
           <ThemeProvider>
+            <BookmarkSyncer />
             <TheRouter>
               <MigrationRunner />
             </TheRouter>

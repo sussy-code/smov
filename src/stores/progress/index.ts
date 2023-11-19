@@ -35,6 +35,19 @@ export interface ProgressMediaItem {
   episodes: Record<string, ProgressEpisodeItem>;
 }
 
+export interface ProgressUpdateItem {
+  title?: string;
+  year?: number;
+  poster?: string;
+  type?: "show" | "movie";
+  progress?: ProgressItem;
+  tmdbId: string;
+  id: string;
+  episodeId?: string;
+  seasonId?: string;
+  action: "upsert" | "delete";
+}
+
 export interface UpdateItemOptions {
   meta: PlayerMeta;
   progress: ProgressItem;
@@ -42,18 +55,29 @@ export interface UpdateItemOptions {
 
 export interface ProgressStore {
   items: Record<string, ProgressMediaItem>;
+  updateQueue: ProgressUpdateItem[];
   updateItem(ops: UpdateItemOptions): void;
   removeItem(id: string): void;
   replaceItems(items: Record<string, ProgressMediaItem>): void;
   clear(): void;
 }
 
+let updateId = 0;
+
 export const useProgressStore = create(
   persist(
     immer<ProgressStore>((set) => ({
       items: {},
+      updateQueue: [],
       removeItem(id) {
         set((s) => {
+          updateId += 1;
+          s.updateQueue.push({
+            id: updateId.toString(),
+            action: "delete",
+            tmdbId: id,
+          });
+
           delete s.items[id];
         });
       },
@@ -64,6 +88,22 @@ export const useProgressStore = create(
       },
       updateItem({ meta, progress }) {
         set((s) => {
+          // add to updateQueue
+          updateId += 1;
+          s.updateQueue.push({
+            tmdbId: meta.tmdbId,
+            title: meta.title,
+            year: meta.releaseYear,
+            poster: meta.poster,
+            type: meta.type,
+            progress: { ...progress },
+            id: updateId.toString(),
+            episodeId: meta.episode?.tmdbId,
+            seasonId: meta.season?.tmdbId,
+            action: "upsert",
+          });
+
+          // add to progress store
           if (!s.items[meta.tmdbId])
             s.items[meta.tmdbId] = {
               type: meta.type,
