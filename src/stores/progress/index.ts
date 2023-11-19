@@ -45,6 +45,8 @@ export interface ProgressUpdateItem {
   id: string;
   episodeId?: string;
   seasonId?: string;
+  episodeNumber?: number;
+  seasonNumber?: number;
   action: "upsert" | "delete";
 }
 
@@ -60,6 +62,8 @@ export interface ProgressStore {
   removeItem(id: string): void;
   replaceItems(items: Record<string, ProgressMediaItem>): void;
   clear(): void;
+  clearUpdateQueue(): void;
+  removeUpdateItem(id: string): void;
 }
 
 let updateId = 0;
@@ -100,6 +104,8 @@ export const useProgressStore = create(
             id: updateId.toString(),
             episodeId: meta.episode?.tmdbId,
             seasonId: meta.season?.tmdbId,
+            seasonNumber: meta.season?.number,
+            episodeNumber: meta.episode?.number,
             action: "upsert",
           });
 
@@ -154,6 +160,16 @@ export const useProgressStore = create(
       },
       clear() {
         this.replaceItems({});
+      },
+      clearUpdateQueue() {
+        set((s) => {
+          s.updateQueue = [];
+        });
+      },
+      removeUpdateItem(id: string) {
+        set((s) => {
+          s.updateQueue = [...s.updateQueue.filter((v) => v.id !== id)];
+        });
       },
     })),
     {

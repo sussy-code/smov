@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 
-import { LoginResponse } from "@/backend/accounts/auth";
+import { LoginResponse, SessionResponse } from "@/backend/accounts/auth";
 import {
   BookmarkResponse,
   ProgressResponse,
@@ -23,11 +23,17 @@ export function useAuthData() {
   const replaceItems = useProgressStore((s) => s.replaceItems);
 
   const login = useCallback(
-    async (account: LoginResponse, user: UserResponse, seed: string) => {
+    async (
+      account: LoginResponse,
+      user: UserResponse,
+      session: SessionResponse,
+      seed: string
+    ) => {
       setAccount({
         token: account.token,
         userId: user.id,
         sessionId: account.session.id,
+        deviceName: session.device,
         profile: user.profile,
         seed,
       });
@@ -45,6 +51,7 @@ export function useAuthData() {
   const syncData = useCallback(
     async (
       _user: UserResponse,
+      _session: SessionResponse,
       progress: ProgressResponse[],
       bookmarks: BookmarkResponse[]
     ) => {

@@ -1,7 +1,8 @@
 import classNames from "classnames";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useHistory } from "react-router-dom";
 
+import { base64ToBuffer, decryptData } from "@/backend/accounts/crypto";
 import { UserAvatar } from "@/components/Avatar";
 import { Icon, Icons } from "@/components/Icon";
 import { Transition } from "@/components/Transition";
@@ -80,7 +81,12 @@ function CircleDropdownLink(props: { icon: Icons; href: string }) {
 
 export function LinksDropdown(props: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false);
-  const userId = useAuthStore((s) => s.account?.userId);
+  const deviceName = useAuthStore((s) => s.account?.deviceName);
+  const seed = useAuthStore((s) => s.account?.seed);
+  const bufferSeed = useMemo(
+    () => (seed ? base64ToBuffer(seed) : null),
+    [seed]
+  );
   const { logout } = useAuth();
 
   useEffect(() => {
@@ -104,10 +110,10 @@ export function LinksDropdown(props: { children: React.ReactNode }) {
       </div>
       <Transition animation="slide-down" show={open}>
         <div className="rounded-lg absolute w-64 bg-dropdown-altBackground top-full mt-3 right-0">
-          {userId ? (
+          {deviceName && bufferSeed ? (
             <DropdownLink className="text-white" href="/settings">
               <UserAvatar />
-              {userId}
+              {decryptData(deviceName, bufferSeed)}
             </DropdownLink>
           ) : (
             <DropdownLink href="/login" icon={Icons.RISING_STAR} highlight>
@@ -124,7 +130,7 @@ export function LinksDropdown(props: { children: React.ReactNode }) {
           <DropdownLink href="/faq" icon={Icons.FILM}>
             HELP MEEE
           </DropdownLink>
-          {userId ? (
+          {deviceName ? (
             <DropdownLink
               className="!text-type-danger opacity-75 hover:opacity-100"
               icon={Icons.LOGOUT}

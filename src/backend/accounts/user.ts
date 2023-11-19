@@ -1,6 +1,6 @@
 import { ofetch } from "ofetch";
 
-import { getAuthHeaders } from "@/backend/accounts/auth";
+import { SessionResponse, getAuthHeaders } from "@/backend/accounts/auth";
 import { AccountWithToken } from "@/stores/auth";
 import { BookmarkMediaItem } from "@/stores/bookmarks";
 import { ProgressMediaItem } from "@/stores/progress";
@@ -32,6 +32,8 @@ export interface BookmarkResponse {
 export interface ProgressResponse {
   tmdbId: string;
   seasonId?: string;
+  seasonNumber?: number;
+  episodeNumber?: number;
   episodeId?: string;
   meta: {
     title: string;
@@ -83,13 +85,13 @@ export function progressResponsesToEntries(responses: ProgressResponse[]) {
     if (item.type === "show" && v.seasonId && v.episodeId) {
       item.seasons[v.seasonId] = {
         id: v.seasonId,
-        number: 0, // TODO missing
-        title: "", // TODO missing
+        number: v.seasonNumber ?? 0,
+        title: "",
       };
       item.episodes[v.episodeId] = {
         id: v.seasonId,
-        number: 0, // TODO missing
-        title: "", // TODO missing
+        number: v.episodeNumber ?? 0,
+        title: "",
         progress: {
           duration: v.duration,
           watched: v.watched,
@@ -106,11 +108,14 @@ export function progressResponsesToEntries(responses: ProgressResponse[]) {
 export async function getUser(
   url: string,
   token: string
-): Promise<UserResponse> {
-  return ofetch<UserResponse>("/users/@me", {
-    headers: getAuthHeaders(token),
-    baseURL: url,
-  });
+): Promise<{ user: UserResponse; session: SessionResponse }> {
+  return ofetch<{ user: UserResponse; session: SessionResponse }>(
+    "/users/@me",
+    {
+      headers: getAuthHeaders(token),
+      baseURL: url,
+    }
+  );
 }
 
 export async function deleteUser(

@@ -15,6 +15,7 @@ export type AccountWithToken = Account & {
   userId: string;
   token: string;
   seed: string;
+  deviceName: string;
 };
 
 interface AuthStore {
@@ -23,6 +24,7 @@ interface AuthStore {
   proxySet: null | string[]; // TODO actually use these settings
   removeAccount(): void;
   setAccount(acc: AccountWithToken): void;
+  updateDeviceName(deviceName: string): void;
   updateAccount(acc: Account): void;
 }
 
@@ -49,6 +51,12 @@ export const useAuthStore = create(
             ...s.account,
             ...acc,
           };
+        });
+      },
+      updateDeviceName(deviceName) {
+        set((s) => {
+          if (!s.account) return;
+          s.account.deviceName = deviceName;
         });
       },
     })),

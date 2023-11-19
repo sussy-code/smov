@@ -69,7 +69,7 @@ export function useAuth() {
 
       const user = await getUser(backendUrl, loginResult.token);
       const seedBase64 = bytesToBase64(keys.seed);
-      await userDataLogin(loginResult, user, seedBase64);
+      await userDataLogin(loginResult, user.user, user.session, seedBase64);
     },
     [userDataLogin, backendUrl]
   );
@@ -109,6 +109,7 @@ export function useAuth() {
       await userDataLogin(
         registerResult,
         registerResult.user,
+        registerResult.session,
         bytesToBase64(keys.seed)
       );
     },
@@ -125,7 +126,7 @@ export function useAuth() {
     const bookmarks = await getBookmarks(backendUrl, currentAccount);
     const progress = await getProgress(backendUrl, currentAccount);
 
-    syncData(user, progress, bookmarks);
+    syncData(user.user, user.session, progress, bookmarks);
   }, [backendUrl, currentAccount, syncData]);
 
   return {

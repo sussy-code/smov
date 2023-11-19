@@ -19,6 +19,7 @@ import { conf } from "@/setup/config";
 import i18n from "@/setup/i18n";
 import { BookmarkSyncer } from "@/stores/bookmarks/BookmarkSyncer";
 import { useLanguageStore } from "@/stores/language";
+import { ProgressSyncer } from "@/stores/progress/ProgressSyncer";
 import { useThemeStore } from "@/stores/theme";
 
 import { initializeChromecast } from "./setup/chromecast";
@@ -79,6 +80,7 @@ ReactDOM.render(
       <HelmetProvider>
         <Suspense fallback={<LoadingScreen type="lazy" />}>
           <ThemeProvider>
+            <ProgressSyncer />
             <BookmarkSyncer />
             <TheRouter>
               <MigrationRunner />
