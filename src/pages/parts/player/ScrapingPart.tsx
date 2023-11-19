@@ -29,7 +29,6 @@ export interface ScrapingProps {
 }
 
 export function ScrapingPart(props: ScrapingProps) {
-  const { playMedia } = usePlayer();
   const { report } = useReportProviders();
   const { startScraping, sourceOrder, sources, currentSource } = useScrape();
 
@@ -72,7 +71,7 @@ export function ScrapingPart(props: ScrapingProps) {
       );
       props.onGetStream?.(output);
     })();
-  }, [startScraping, props, playMedia, report]);
+  }, [startScraping, props, report]);
 
   const currentProvider = sourceOrder.find(
     (s) => sources[s.id].status === "pending"

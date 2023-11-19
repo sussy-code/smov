@@ -9,6 +9,7 @@ import {
   scrapeSourceOutputToProviderMetric,
   useReportProviders,
 } from "@/backend/helpers/report";
+import { convertProviderCaption } from "@/components/player/utils/captions";
 import { convertRunoutputToSource } from "@/components/player/utils/convertRunoutputToSource";
 import { useOverlayRouter } from "@/hooks/useOverlayRouter";
 import { metaToScrapeMedia } from "@/stores/player/slices/source";
@@ -22,6 +23,7 @@ export function useEmbedScraping(
   embedId: string
 ) {
   const setSource = usePlayerStore((s) => s.setSource);
+  const setCaption = usePlayerStore((s) => s.setCaption);
   const setSourceId = usePlayerStore((s) => s.setSourceId);
   const progress = usePlayerStore((s) => s.progress.time);
   const meta = usePlayerStore((s) => s.meta);
@@ -55,9 +57,14 @@ export function useEmbedScraping(
       scrapeSourceOutputToProviderMetric(meta, sourceId, null, "success", null),
     ]);
     setSourceId(sourceId);
-    setSource(convertRunoutputToSource({ stream: result.stream }), progress);
+    setCaption(null);
+    setSource(
+      convertRunoutputToSource({ stream: result.stream }),
+      convertProviderCaption(result.stream.captions),
+      progress
+    );
     router.close();
-  }, [embedId, sourceId, meta, router, report]);
+  }, [embedId, sourceId, meta, router, report, setCaption]);
 
   return {
     run,
@@ -69,6 +76,7 @@ export function useEmbedScraping(
 export function useSourceScraping(sourceId: string | null, routerId: string) {
   const meta = usePlayerStore((s) => s.meta);
   const setSource = usePlayerStore((s) => s.setSource);
+  const setCaption = usePlayerStore((s) => s.setCaption);
   const setSourceId = usePlayerStore((s) => s.setSourceId);
   const progress = usePlayerStore((s) => s.progress.time);
   const router = useOverlayRouter(routerId);
@@ -98,7 +106,12 @@ export function useSourceScraping(sourceId: string | null, routerId: string) {
     ]);
 
     if (result.stream) {
-      setSource(convertRunoutputToSource({ stream: result.stream }), progress);
+      setCaption(null);
+      setSource(
+        convertRunoutputToSource({ stream: result.stream }),
+        convertProviderCaption(result.stream.captions),
+        progress
+      );
       setSourceId(sourceId);
       router.close();
       return null;
@@ -136,14 +149,16 @@ export function useSourceScraping(sourceId: string | null, routerId: string) {
         ),
       ]);
       setSourceId(sourceId);
+      setCaption(null);
       setSource(
         convertRunoutputToSource({ stream: embedResult.stream }),
+        convertProviderCaption(embedResult.stream.captions),
         progress
       );
       router.close();
     }
     return result.embeds;
-  }, [sourceId, meta, router]);
+  }, [sourceId, meta, router, setCaption]);
 
   return {
     run,

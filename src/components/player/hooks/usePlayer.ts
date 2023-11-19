@@ -1,5 +1,6 @@
 import { useInitializePlayer } from "@/components/player/hooks/useInitializePlayer";
 import {
+  CaptionListItem,
   PlayerMeta,
   PlayerStatus,
   playerStatus,
@@ -33,6 +34,7 @@ export function usePlayer() {
   const setStatus = usePlayerStore((s) => s.setStatus);
   const setMeta = usePlayerStore((s) => s.setMeta);
   const setSource = usePlayerStore((s) => s.setSource);
+  const setCaption = usePlayerStore((s) => s.setCaption);
   const setSourceId = usePlayerStore((s) => s.setSourceId);
   const status = usePlayerStore((s) => s.status);
   const shouldStartFromBeginning = usePlayerStore(
@@ -57,11 +59,13 @@ export function usePlayer() {
     },
     playMedia(
       source: SourceSliceSource,
+      captions: CaptionListItem[],
       sourceId: string | null,
       startAtOverride?: number
     ) {
       const start = startAtOverride ?? getProgress(progressStore.items, meta);
-      setSource(source, start);
+      setCaption(null);
+      setSource(source, captions, start);
       setSourceId(sourceId);
       setStatus(playerStatus.PLAYING);
       init();

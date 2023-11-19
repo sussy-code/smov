@@ -56,6 +56,7 @@ export const defaultTheme = {
         dimmed: "#926CAD",
         divider: "#262632",
         secondary: "#64647B",
+        danger: "#F46E6E"
       },
 
       // search bar
@@ -88,7 +89,13 @@ export const defaultTheme = {
       // Dropdown
       dropdown: {
         background: "#171728",
+        altBackground: "#151525",
+        highlight: "#FCEC61",
+        highlightHover: "#FCEC61",
+        text: "#846D95",
         secondary: "#73739D",
+        border: "#272742",
+        contentBackground: "#232337"
       },
 
       // Passphrase

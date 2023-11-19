@@ -117,7 +117,7 @@ export function ThemePart(props: {
 }) {
   return (
     <div>
-      <Heading1 border>Appearence</Heading1>
+      <Heading1 border>Appearance</Heading1>
       <div className="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-6 max-w-[700px]">
         {/* default theme */}
         <ThemePreview

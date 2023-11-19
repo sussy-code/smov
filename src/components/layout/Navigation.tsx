@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { UserAvatar } from "@/components/Avatar";
 import { IconPatch } from "@/components/buttons/IconPatch";
 import { Icons } from "@/components/Icon";
+import { LinksDropdown } from "@/components/LinksDropdown";
 import { Lightbar } from "@/components/utils/Lightbar";
 import { useAuth } from "@/hooks/auth/useAuth";
 import { BlurEllipsis } from "@/pages/layouts/SubPageLayout";
@@ -37,7 +38,7 @@ export function Navigation(props: NavigationProps) {
         </div>
       ) : null}
       <div
-        className="fixed pointer-events-none left-0 right-0 top-0 z-10 min-h-[150px]"
+        className="fixed z-[40] pointer-events-none left-0 right-0 top-0 min-h-[150px]"
         style={{
           top: `${bannerHeight}px`,
         }}
@@ -46,12 +47,14 @@ export function Navigation(props: NavigationProps) {
           className={classNames(
             "fixed left-0 right-0 flex items-center",
             props.doBackground
-              ? "bg-background-main border-b border-utils-divider border-opacity-50 overflow-hidden"
+              ? "bg-background-main border-b border-utils-divider border-opacity-50"
               : null
           )}
         >
           {props.doBackground ? (
-            <BlurEllipsis positionClass="absolute" />
+            <div className="absolute w-full h-full inset-0 overflow-hidden">
+              <BlurEllipsis positionClass="absolute" />
+            </div>
           ) : null}
           <div
             className={`${
@@ -82,7 +85,11 @@ export function Navigation(props: NavigationProps) {
                 <IconPatch icon={Icons.GITHUB} clickable downsized />
               </a>
             </div>
-            <div>{loggedIn ? <UserAvatar /> : <p>Not logged in</p>}</div>
+            <div className="relative">
+              <LinksDropdown>
+                {loggedIn ? <UserAvatar /> : <p>Not logged in</p>}
+              </LinksDropdown>
+            </div>
           </div>
         </div>
       </div>

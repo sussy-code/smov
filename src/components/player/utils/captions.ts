@@ -1,6 +1,9 @@
+import { RunOutput } from "@movie-web/providers";
 import DOMPurify from "dompurify";
 import { convert, detect, parse } from "subsrt-ts";
 import { ContentCaption } from "subsrt-ts/dist/types/handler";
+
+import { CaptionListItem } from "@/stores/player/slices/source";
 
 export type CaptionCueType = ContentCaption;
 export const sanitize = DOMPurify.sanitize;
@@ -71,4 +74,14 @@ export function convertSubtitlesToObjectUrl(text: string): string {
       type: "text/vtt",
     })
   );
+}
+
+export function convertProviderCaption(
+  captions: RunOutput["stream"]["captions"]
+): CaptionListItem[] {
+  return captions.map((v) => ({
+    language: v.language,
+    url: v.url,
+    needsProxy: v.hasCorsRestrictions,
+  }));
 }

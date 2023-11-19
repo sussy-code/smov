@@ -6,6 +6,7 @@ import { useEffectOnce } from "react-use";
 import { useCaptions } from "@/components/player/hooks/useCaptions";
 import { usePlayer } from "@/components/player/hooks/usePlayer";
 import { usePlayerMeta } from "@/components/player/hooks/usePlayerMeta";
+import { convertProviderCaption } from "@/components/player/utils/captions";
 import { convertRunoutputToSource } from "@/components/player/utils/convertRunoutputToSource";
 import { ScrapingItems, ScrapingSegment } from "@/hooks/useProviderScrape";
 import { useQueryParam } from "@/hooks/useQueryParams";
@@ -71,6 +72,7 @@ export function PlayerView() {
 
       playMedia(
         convertRunoutputToSource(out),
+        convertProviderCaption(out.stream.captions),
         out.sourceId,
         shouldStartFromBeginning ? 0 : startAt
       );

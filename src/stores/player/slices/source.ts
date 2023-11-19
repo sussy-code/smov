@@ -47,19 +47,30 @@ export interface Caption {
   srtData: string;
 }
 
+export interface CaptionListItem {
+  language: string;
+  url: string;
+  needsProxy: boolean;
+}
+
 export interface SourceSlice {
   status: PlayerStatus;
   source: SourceSliceSource | null;
   sourceId: string | null;
   qualities: SourceQuality[];
   currentQuality: SourceQuality | null;
+  captionList: CaptionListItem[];
   caption: {
     selected: Caption | null;
     asTrack: boolean;
   };
   meta: PlayerMeta | null;
   setStatus(status: PlayerStatus): void;
-  setSource(stream: SourceSliceSource, startAt: number): void;
+  setSource(
+    stream: SourceSliceSource,
+    captions: CaptionListItem[],
+    startAt: number
+  ): void;
   switchQuality(quality: SourceQuality): void;
   setMeta(meta: PlayerMeta, status?: PlayerStatus): void;
   setCaption(caption: Caption | null): void;
@@ -95,6 +106,7 @@ export const createSourceSlice: MakeSlice<SourceSlice> = (set, get) => ({
   source: null,
   sourceId: null,
   qualities: [],
+  captionList: [],
   currentQuality: null,
   status: playerStatus.IDLE,
   meta: null,
@@ -124,7 +136,11 @@ export const createSourceSlice: MakeSlice<SourceSlice> = (set, get) => ({
       s.caption.selected = caption;
     });
   },
-  setSource(stream: SourceSliceSource, startAt: number) {
+  setSource(
+    stream: SourceSliceSource,
+    captions: CaptionListItem[],
+    startAt: number
+  ) {
     let qualities: string[] = [];
     if (stream.type === "file") qualities = Object.keys(stream.qualities);
     const qualityPreferences = useQualityStore.getState();
@@ -134,6 +150,7 @@ export const createSourceSlice: MakeSlice<SourceSlice> = (set, get) => ({
       s.source = stream;
       s.qualities = qualities as SourceQuality[];
       s.currentQuality = loadableStream.quality;
+      s.captionList = captions;
     });
     const store = get();
     store.redisplaySource(startAt);

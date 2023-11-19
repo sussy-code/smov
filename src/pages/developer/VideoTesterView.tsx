@@ -52,7 +52,7 @@ export default function VideoTesterView() {
         };
       } else throw new Error("Invalid type");
       setMeta(testMeta);
-      playMedia(source, null);
+      playMedia(source, [], null);
     },
     [playMedia, setMeta]
   );
