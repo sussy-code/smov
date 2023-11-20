@@ -32,7 +32,7 @@ function SettingsLayout(props: { children: React.ReactNode }) {
         )}
       >
         <SidebarPart />
-        <div className="space-y-16">{props.children}</div>
+        <div>{props.children}</div>
       </div>
     </WideContainer>
   );
@@ -80,13 +80,13 @@ export function SettingsPage() {
             <RegisterCalloutPart />
           )}
         </div>
-        <div id="settings-locale">
+        <div id="settings-locale" className="mt-48">
           <LocalePart />
         </div>
-        <div id="settings-appearance">
+        <div id="settings-appearance" className="mt-48">
           <ThemePart active={activeTheme} setTheme={setTheme} />
         </div>
-        <div id="settings-captions">
+        <div id="settings-captions" className="mt-48">
           <CaptionsPart />
         </div>
       </SettingsLayout>

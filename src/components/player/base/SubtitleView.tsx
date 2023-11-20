@@ -11,6 +11,10 @@ import { Transition } from "@/components/Transition";
 import { usePlayerStore } from "@/stores/player/store";
 import { SubtitleStyling, useSubtitleStore } from "@/stores/subtitles";
 
+const wordOverrides: Record<string, string> = {
+  i: "I",
+};
+
 export function CaptionCue({
   text,
   styling,
@@ -20,29 +24,29 @@ export function CaptionCue({
   styling: SubtitleStyling;
   overrideCasing: boolean;
 }) {
-  const wordOverrides: Record<string, string> = {
-    i: "I",
-  };
+  const parsedHtml = useMemo(() => {
+    let textToUse = text;
+    if (overrideCasing && text) {
+      textToUse = text.slice(0, 1) + text.slice(1).toLowerCase();
+    }
 
-  let textToUse = text;
-  if (overrideCasing && text) {
-    textToUse = text.slice(0, 1) + text.slice(1).toLowerCase();
-  }
+    const textWithNewlines = (textToUse || "")
+      .split(" ")
+      .map((word) => wordOverrides[word] ?? word)
+      .join(" ")
+      .replaceAll(/ i'/g, " I'")
+      .replaceAll(/\r?\n/g, "<br />");
 
-  const textWithNewlines = (textToUse || "")
-    .split(" ")
-    .map((word) => wordOverrides[word] ?? word)
-    .join(" ")
-    .replaceAll(/ i'/g, " I'")
-    .replaceAll(/\r?\n/g, "<br />");
+    // https://www.w3.org/TR/webvtt1/#dom-construction-rules
+    // added a <br /> for newlines
+    const html = sanitize(textWithNewlines, {
+      ALLOWED_TAGS: ["c", "b", "i", "u", "span", "ruby", "rt", "br"],
+      ADD_TAGS: ["v", "lang"],
+      ALLOWED_ATTR: ["title", "lang"],
+    });
 
-  // https://www.w3.org/TR/webvtt1/#dom-construction-rules
-  // added a <br /> for newlines
-  const html = sanitize(textWithNewlines, {
-    ALLOWED_TAGS: ["c", "b", "i", "u", "span", "ruby", "rt", "br"],
-    ADD_TAGS: ["v", "lang"],
-    ALLOWED_ATTR: ["title", "lang"],
-  });
+    return html;
+  }, [text, overrideCasing]);
 
   return (
     <p
@@ -57,7 +61,7 @@ export function CaptionCue({
         // its sanitised a few lines up
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{
-          __html: html,
+          __html: parsedHtml,
         }}
         dir="auto"
       />
