@@ -113,8 +113,7 @@ export function WorkerTestPart() {
         })}
         <Divider />
         <div className="flex justify-end">
-          <Button theme="purple" onClick={runTests}>
-            {testState.loading ? <Spinner className="text-base mr-2" /> : null}
+          <Button theme="purple" loading={testState.loading} onClick={runTests}>
             Test workers
           </Button>
         </div>

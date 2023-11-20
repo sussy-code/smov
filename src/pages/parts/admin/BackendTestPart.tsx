@@ -115,10 +115,10 @@ export function BackendTestPart() {
           )}
           <Button
             theme="purple"
+            loading={testState.loading}
             className="whitespace-nowrap"
             onClick={runTests}
           >
-            {testState.loading ? <Spinner className="text-base mr-2" /> : null}
             Test backend
           </Button>
         </div>

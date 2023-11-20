@@ -6,5 +6,5 @@ export function LoadingSpinner() {
 
   if (!isLoading) return null;
 
-  return <Spinner />;
+  return <Spinner className="text-4xl" />;
 }
