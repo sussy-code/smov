@@ -4,6 +4,7 @@ import { OverlayDisplay } from "@/components/overlays/OverlayDisplay";
 import { CastingInternal } from "@/components/player/internals/CastingInternal";
 import { HeadUpdater } from "@/components/player/internals/HeadUpdater";
 import { KeyboardEvents } from "@/components/player/internals/KeyboardEvents";
+import { MetaReporter } from "@/components/player/internals/MetaReporter";
 import { ProgressSaver } from "@/components/player/internals/ProgressSaver";
 import { ThumbnailScraper } from "@/components/player/internals/ThumbnailScraper";
 import { VideoClickTarget } from "@/components/player/internals/VideoClickTarget";
@@ -84,6 +85,7 @@ export function Container(props: PlayerProps) {
   return (
     <div className="relative">
       <BaseContainer>
+        <MetaReporter />
         <ThumbnailScraper />
         <CastingInternal />
         <VideoContainer />
