@@ -31,10 +31,14 @@ export interface BookmarkResponse {
 
 export interface ProgressResponse {
   tmdbId: string;
-  seasonId?: string;
-  seasonNumber?: number;
-  episodeNumber?: number;
-  episodeId?: string;
+  season: {
+    id?: string;
+    number?: number;
+  };
+  episode: {
+    id?: string;
+    number?: number;
+  };
   meta: {
     title: string;
     year: number;
@@ -82,21 +86,21 @@ export function progressResponsesToEntries(responses: ProgressResponse[]) {
       };
     }
 
-    if (item.type === "show" && v.seasonId && v.episodeId) {
-      item.seasons[v.seasonId] = {
-        id: v.seasonId,
-        number: v.seasonNumber ?? 0,
+    if (item.type === "show" && v.season.id && v.episode.id) {
+      item.seasons[v.season.id] = {
+        id: v.season.id,
+        number: v.season.number ?? 0,
         title: "",
       };
-      item.episodes[v.episodeId] = {
-        id: v.seasonId,
-        number: v.episodeNumber ?? 0,
+      item.episodes[v.episode.id] = {
+        id: v.episode.id,
+        number: v.episode.number ?? 0,
         title: "",
         progress: {
           duration: v.duration,
           watched: v.watched,
         },
-        seasonId: v.seasonId,
+        seasonId: v.season.id,
         updatedAt: new Date(v.updatedAt).getTime(),
       };
     }
