@@ -45,8 +45,8 @@ export interface ProgressResponse {
     poster?: string;
     type: "show" | "movie";
   };
-  duration: number;
-  watched: number;
+  duration: string;
+  watched: string;
   updatedAt: string;
 }
 
@@ -81,8 +81,8 @@ export function progressResponsesToEntries(responses: ProgressResponse[]) {
     const item = items[v.tmdbId];
     if (item.type === "movie") {
       item.progress = {
-        duration: v.duration,
-        watched: v.watched,
+        duration: Number(v.duration),
+        watched: Number(v.watched),
       };
     }
 
@@ -97,8 +97,8 @@ export function progressResponsesToEntries(responses: ProgressResponse[]) {
         number: v.episode.number ?? 0,
         title: "",
         progress: {
-          duration: v.duration,
-          watched: v.watched,
+          duration: Number(v.duration),
+          watched: Number(v.watched),
         },
         seasonId: v.season.id,
         updatedAt: new Date(v.updatedAt).getTime(),

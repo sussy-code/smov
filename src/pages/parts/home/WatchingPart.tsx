@@ -9,6 +9,7 @@ import { MediaGrid } from "@/components/media/MediaGrid";
 import { WatchedMediaCard } from "@/components/media/WatchedMediaCard";
 import { useBookmarkStore } from "@/stores/bookmarks";
 import { useProgressStore } from "@/stores/progress";
+import { shouldShowProgress } from "@/stores/progress/utils";
 import { MediaItem } from "@/utils/mediaTypes";
 
 export function WatchingPart() {
@@ -22,6 +23,7 @@ export function WatchingPart() {
   const sortedProgressItems = useMemo(() => {
     let output: MediaItem[] = [];
     Object.entries(progressItems)
+      .filter((entry) => shouldShowProgress(entry[1]).show)
       .sort((a, b) => b[1].updatedAt - a[1].updatedAt)
       .forEach((entry) => {
         output.push({
