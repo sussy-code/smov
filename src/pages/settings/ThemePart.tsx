@@ -36,6 +36,7 @@ function ThemePreview(props: {
       {/* Little card thing */}
       <div
         tabIndex={0}
+        onKeyUp={(e) => e.key === "Enter" && e.currentTarget.click()}
         className={classNames(
           "tabbable scroll-mt-32 w-full h-32 relative rounded-lg border bg-gradient-to-br from-themePreview-primary/20 to-themePreview-secondary/10 bg-clip-content transition-colors duration-150",
           props.active
