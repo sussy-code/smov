@@ -214,3 +214,8 @@ input[type=range].styled-slider.slider-progress::-ms-fill-lower {
 .grecaptcha-badge {
   display: none !important;
 }
+
+.tabbable:focus {
+  outline: 1px solid theme('colors.themePreview.primary');
+  box-shadow: 0 0 10px theme('colors.themePreview.secondary');
+}

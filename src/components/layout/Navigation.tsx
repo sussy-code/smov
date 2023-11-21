@@ -65,14 +65,14 @@ export function Navigation(props: NavigationProps) {
           </div>
           <div className="pointer-events-auto px-7 py-5 relative flex flex-1 items-center">
             <div className="flex items-center flex-1 space-x-3">
-              <Link className="block" to="/">
+              <Link className="block tabbable rounded-full" to="/">
                 <BrandPill clickable />
               </Link>
               <a
                 href={conf().DISCORD_LINK}
                 target="_blank"
                 rel="noreferrer"
-                className="text-xl text-white"
+                className="text-xl text-white tabbable rounded-full"
               >
                 <IconPatch icon={Icons.DISCORD} clickable downsized />
               </a>
@@ -80,7 +80,7 @@ export function Navigation(props: NavigationProps) {
                 href={conf().GITHUB_LINK}
                 target="_blank"
                 rel="noreferrer"
-                className="text-xl text-white"
+                className="text-xl text-white tabbable rounded-full"
               >
                 <IconPatch icon={Icons.GITHUB} clickable downsized />
               </a>

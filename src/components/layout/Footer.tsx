@@ -14,7 +14,7 @@ function FooterLink(props: {
     <a
       href={props.href}
       target="_blank"
-      className="inline-flex items-center space-x-3 transition-colors duration-200 hover:text-type-emphasis"
+      className="tabbable rounded py-2 px-3 inline-flex items-center space-x-3 transition-colors duration-200 hover:text-type-emphasis"
       rel="noreferrer"
     >
       <Icon icon={props.icon} className="text-2xl" />
@@ -50,7 +50,7 @@ export function Footer() {
           </h3>
           <p className="mt-3">{t("footer.legal.disclaimerText")}</p>
         </div>
-        <div className="space-x-[2rem]">
+        <div className="space-x-[0.5rem] -ml-3">
           <FooterLink icon={Icons.GITHUB} href={conf().GITHUB_LINK}>
             {t("footer.links.github")}
           </FooterLink>
@@ -61,7 +61,7 @@ export function Footer() {
             <Dmca />
           </div>
         </div>
-        <div className="hidden items-center justify-end md:flex">
+        <div className="hidden items-center justify-end md:flex -mr-3">
           <Dmca />
         </div>
       </WideContainer>

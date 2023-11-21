@@ -55,7 +55,7 @@ function DropdownLink(props: {
       onClick={props.onClick}
       href={props.href}
       className={classNames(
-        "cursor-pointer flex gap-3 items-center m-4 font-medium transition-colors duration-100",
+        "tabbable cursor-pointer flex gap-3 items-center m-3 p-1 rounded font-medium transition-colors duration-100",
         props.highlight
           ? "text-dropdown-highlight hover:text-dropdown-highlightHover"
           : "text-dropdown-text hover:text-white",
@@ -72,7 +72,7 @@ function CircleDropdownLink(props: { icon: Icons; href: string }) {
   return (
     <GoToLink
       href={props.href}
-      className="w-11 h-11 rounded-full bg-dropdown-contentBackground text-dropdown-text hover:text-white transition-colors duration-100 flex justify-center items-center"
+      className="tabbable w-11 h-11 rounded-full bg-dropdown-contentBackground text-dropdown-text hover:text-white transition-colors duration-100 flex justify-center items-center"
     >
       <Icon className="text-2xl" icon={props.icon} />
     </GoToLink>
@@ -100,12 +100,18 @@ export function LinksDropdown(props: { children: React.ReactNode }) {
   }, []);
 
   const toggleOpen = useCallback(() => {
+    console.log("yay");
     setOpen((s) => !s);
   }, []);
 
   return (
     <div className="relative is-dropdown">
-      <div className="cursor-pointer" onClick={toggleOpen}>
+      <div
+        className="cursor-pointer tabbable rounded-full"
+        tabIndex={0}
+        onClick={toggleOpen}
+        onKeyUp={(evt) => evt.key === "Enter" && toggleOpen()}
+      >
         {props.children}
       </div>
       <Transition animation="slide-down" show={open}>
