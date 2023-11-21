@@ -14,9 +14,10 @@ export function ColorOption(props: {
   onClick: () => void;
 }) {
   return (
-    <div
+    <button
+      type="button"
       className={classNames(
-        "p-1.5 bg-video-context-buttonFocus rounded transition-colors duration-100",
+        "tabbable p-1.5 bg-video-context-buttonFocus rounded transition-colors duration-100",
         props.active ? "bg-opacity-100" : "bg-opacity-0 cursor-pointer"
       )}
       onClick={props.onClick}
@@ -29,7 +30,7 @@ export function ColorOption(props: {
           <Icon className="text-sm text-black" icon={Icons.CHECKMARK} />
         ) : null}
       </div>
-    </div>
+    </button>
   );
 }
 
@@ -77,11 +78,11 @@ export function CaptionSetting(props: {
     };
   }, [isFocused]);
 
-  const inputClasses = `py-1 bg-video-context-inputBg rounded text-white cursor-text ${
+  const inputClasses = `tabbable py-1 bg-video-context-inputBg rounded text-white cursor-text ${
     props.controlButtons ? "text-center px-4 w-24" : "px-3 text-left w-20"
   }`;
   const arrowButtonClasses =
-    "hover:text-white transition-colors duration-100 w-full h-full flex justify-center items-center hover:bg-video-context-buttonOverInputHover rounded";
+    "tabbable hover:text-white transition-colors duration-100 w-full h-full flex justify-center items-center hover:bg-video-context-buttonOverInputHover rounded";
   const textTransformer = props.textTransformer ?? ((s) => s);
 
   return (

@@ -153,6 +153,7 @@ export function CaptionsView({ id }: { id: string }) {
             <button
               type="button"
               onClick={() => router.navigate("/captions/settings")}
+              className="py-1 -my-1 px-3 -mx-3 rounded tabbable"
             >
               Customize
             </button>

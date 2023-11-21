@@ -39,7 +39,7 @@ export function BackLink(props: {
     <Title rightSide={props.rightSide}>
       <button
         type="button"
-        className="-ml-2 p-2 rounded hover:bg-video-context-light hover:bg-opacity-10"
+        className="-ml-2 p-2 rounded tabbable hover:bg-video-context-light hover:bg-opacity-10"
         onClick={props.onClick}
       >
         <Icon className="text-xl" icon={Icons.ARROW_LEFT} />
@@ -57,9 +57,9 @@ export function Link(props: {
   children?: ReactNode;
   className?: string;
 }) {
-  const classes = classNames("flex py-2 px-3 rounded w-full -ml-3", {
+  const classes = classNames("flex py-2 px-3 rounded-lg w-full -ml-3", {
     "cursor-default": !props.clickable,
-    "hover:bg-video-context-hoverColor hover:bg-opacity-50 cursor-pointer":
+    "hover:bg-video-context-hoverColor hover:bg-opacity-50 cursor-pointer tabbable":
       props.clickable,
     "bg-video-context-hoverColor bg-opacity-50": props.active,
   });

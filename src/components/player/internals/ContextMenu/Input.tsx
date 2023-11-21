@@ -12,7 +12,7 @@ export function Input(props: {
       />
       <input
         placeholder="Search"
-        className="w-full py-2 px-3 pl-[calc(0.75rem+24px)] focus:outline-none bg-video-context-inputBg rounded placeholder:text-video-context-inputPlaceholder"
+        className="w-full py-2 px-3 pl-[calc(0.75rem+24px)] tabbable bg-video-context-inputBg rounded placeholder:text-video-context-inputPlaceholder"
         value={props.value}
         onInput={(e) => props.onInput(e.currentTarget.value)}
       />

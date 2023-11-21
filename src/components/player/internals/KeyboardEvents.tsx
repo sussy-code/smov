@@ -2,10 +2,12 @@ import { useEffect, useRef, useState } from "react";
 
 import { useCaptions } from "@/components/player/hooks/useCaptions";
 import { useVolume } from "@/components/player/hooks/useVolume";
+import { useOverlayRouter } from "@/hooks/useOverlayRouter";
 import { usePlayerStore } from "@/stores/player/store";
 import { useEmpheralVolumeStore } from "@/stores/volume";
 
 export function KeyboardEvents() {
+  const router = useOverlayRouter("");
   const display = usePlayerStore((s) => s.display);
   const mediaPlaying = usePlayerStore((s) => s.mediaPlaying);
   const time = usePlayerStore((s) => s.progress.time);
@@ -90,6 +92,7 @@ export function KeyboardEvents() {
         dataRef.current.display?.[
           dataRef.current.mediaPlaying.isPaused ? "play" : "pause"
         ]();
+      if (k === "Escape") router.close();
 
       // captions
       if (k === "c") dataRef.current.toggleLastUsed().catch(() => {}); // ignore errors
@@ -114,7 +117,7 @@ export function KeyboardEvents() {
     return () => {
       window.removeEventListener("keydown", keyEventHandler);
     };
-  }, []);
+  }, [router]);
 
   return null;
 }

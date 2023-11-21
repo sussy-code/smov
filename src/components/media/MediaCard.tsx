@@ -1,4 +1,4 @@
-import c from "classnames";
+import classNames from "classnames";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
@@ -50,7 +50,7 @@ function MediaCardContent({
         flareSize={300}
         cssColorVar="--colors-mediaCard-hoverAccent"
         backgroundClass="bg-mediaCard-hoverBackground duration-100"
-        className={c({
+        className={classNames({
           "rounded-xl bg-background-main group-hover:opacity-100": canLink,
         })}
       />
@@ -155,7 +155,13 @@ export function MediaCard(props: MediaCardProps) {
 
   if (!props.linkable) return <span>{content}</span>;
   return (
-    <Link to={link} className={props.closable ? "hover:cursor-default" : ""}>
+    <Link
+      to={link}
+      className={classNames(
+        "tabbable",
+        props.closable ? "hover:cursor-default" : ""
+      )}
+    >
       {content}
     </Link>
   );
