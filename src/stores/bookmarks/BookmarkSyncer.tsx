@@ -27,11 +27,13 @@ async function syncBookmarks(
 
       if (item.action === "add") {
         await addBookmark(url, account, {
-          poster: item.poster,
-          title: item.title ?? "",
+          meta: {
+            poster: item.poster,
+            title: item.title ?? "",
+            type: item.type ?? "",
+            year: item.year ?? NaN,
+          },
           tmdbId: item.tmdbId,
-          type: item.type ?? "",
-          year: item.year ?? NaN,
         });
         continue;
       }

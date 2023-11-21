@@ -11,6 +11,8 @@ import {
 } from "@/components/layout/LargeCard";
 import { AuthInputBox } from "@/components/text-inputs/AuthInputBox";
 import { useAuth } from "@/hooks/auth/useAuth";
+import { useBookmarkStore } from "@/stores/bookmarks";
+import { useProgressStore } from "@/stores/progress";
 
 interface LoginFormPartProps {
   onLogin?: () => void;
@@ -19,7 +21,9 @@ interface LoginFormPartProps {
 export function LoginFormPart(props: LoginFormPartProps) {
   const [mnemonic, setMnemonic] = useState("");
   const [device, setDevice] = useState("");
-  const { login, restore } = useAuth();
+  const { login, restore, importData } = useAuth();
+  const progressItems = useProgressStore((store) => store.items);
+  const bookmarkItems = useBookmarkStore((store) => store.bookmarks);
 
   const [result, execute] = useAsyncFn(
     async (inputMnemonic: string, inputdevice: string) => {
@@ -27,14 +31,14 @@ export function LoginFormPart(props: LoginFormPartProps) {
       if (!verifyValidMnemonic(inputMnemonic))
         throw new Error("Invalid or incomplete passphrase");
 
-      await login({
+      const account = await login({
         mnemonic: inputMnemonic,
         userData: {
           device: inputdevice,
         },
       });
 
-      // TODO import (and sort out conflicts)
+      await importData(account, progressItems, bookmarkItems);
 
       await restore();
 

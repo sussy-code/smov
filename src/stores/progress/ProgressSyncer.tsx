@@ -1,6 +1,10 @@
 import { useEffect } from "react";
 
-import { removeProgress, setProgress } from "@/backend/accounts/progress";
+import {
+  progressUpdateItemToInput,
+  removeProgress,
+  setProgress,
+} from "@/backend/accounts/progress";
 import { useBackendUrl } from "@/hooks/auth/useBackendUrl";
 import { AccountWithToken, useAuthStore } from "@/stores/auth";
 import { ProgressUpdateItem, useProgressStore } from "@/stores/progress";
@@ -32,21 +36,7 @@ async function syncProgress(
       }
 
       if (item.action === "upsert") {
-        await setProgress(url, account, {
-          duration: item.progress?.duration ?? 0,
-          watched: item.progress?.watched ?? 0,
-          tmdbId: item.tmdbId,
-          meta: {
-            title: item.title ?? "",
-            type: item.type ?? "",
-            year: item.year ?? NaN,
-            poster: item.poster,
-          },
-          episodeId: item.episodeId,
-          seasonId: item.seasonId,
-          episodeNumber: item.episodeNumber,
-          seasonNumber: item.seasonNumber,
-        });
+        await setProgress(url, account, progressUpdateItemToInput(item));
         continue;
       }
     } catch (err) {

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { useAsyncFn } from "react-use";
 
+import { updateSettings } from "@/backend/accounts/settings";
 import { Button } from "@/components/Button";
 import { Icon, Icons } from "@/components/Icon";
 import {
@@ -11,7 +12,13 @@ import {
 } from "@/components/layout/LargeCard";
 import { AuthInputBox } from "@/components/text-inputs/AuthInputBox";
 import { useAuth } from "@/hooks/auth/useAuth";
+import { useBackendUrl } from "@/hooks/auth/useBackendUrl";
 import { AccountProfile } from "@/pages/parts/auth/AccountCreatePart";
+import { useBookmarkStore } from "@/stores/bookmarks";
+import { useLanguageStore } from "@/stores/language";
+import { useProgressStore } from "@/stores/progress";
+import { useSubtitleStore } from "@/stores/subtitles";
+import { useThemeStore } from "@/stores/theme";
 
 interface VerifyPassphraseProps {
   mnemonic: string | null;
@@ -22,7 +29,17 @@ interface VerifyPassphraseProps {
 
 export function VerifyPassphrase(props: VerifyPassphraseProps) {
   const [mnemonic, setMnemonic] = useState("");
-  const { register, restore } = useAuth();
+  const { register, restore, importData } = useAuth();
+  const progressItems = useProgressStore((store) => store.items);
+  const bookmarkItems = useBookmarkStore((store) => store.bookmarks);
+
+  const applicationLanguage = useLanguageStore((store) => store.language);
+  const defaultSubtitleLanguage = useSubtitleStore(
+    (store) => store.lastSelectedLanguage
+  );
+  const applicationTheme = useThemeStore((store) => store.theme);
+
+  const backendUrl = useBackendUrl();
 
   const { executeRecaptcha } = useGoogleReCaptcha();
 
@@ -42,13 +59,19 @@ export function VerifyPassphrase(props: VerifyPassphraseProps) {
       if (inputMnemonic !== props.mnemonic)
         throw new Error("Passphrase doesn't match");
 
-      await register({
+      const account = await register({
         mnemonic: inputMnemonic,
         userData: props.userData,
         recaptchaToken,
       });
 
-      // TODO import (and sort out conflicts)
+      await importData(account, progressItems, bookmarkItems);
+
+      await updateSettings(backendUrl, account, {
+        applicationLanguage,
+        defaultSubtitleLanguage: defaultSubtitleLanguage ?? undefined,
+        applicationTheme: applicationTheme ?? undefined,
+      });
 
       await restore();
 

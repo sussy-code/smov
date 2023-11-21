@@ -1,5 +1,6 @@
 import { useCallback } from "react";
 
+import { bookmarkMediaToInput } from "@/backend/accounts/bookmarks";
 import {
   bytesToBase64,
   bytesToBase64Url,
@@ -7,7 +8,9 @@ import {
   keysFromMnemonic,
   signChallenge,
 } from "@/backend/accounts/crypto";
+import { importBookmarks, importProgress } from "@/backend/accounts/import";
 import { getLoginChallengeToken, loginAccount } from "@/backend/accounts/login";
+import { progressMediaItemToInputs } from "@/backend/accounts/progress";
 import {
   getRegisterChallengeToken,
   registerAccount,
@@ -16,7 +19,9 @@ import { removeSession } from "@/backend/accounts/sessions";
 import { getBookmarks, getProgress, getUser } from "@/backend/accounts/user";
 import { useAuthData } from "@/hooks/auth/useAuthData";
 import { useBackendUrl } from "@/hooks/auth/useBackendUrl";
-import { useAuthStore } from "@/stores/auth";
+import { AccountWithToken, useAuthStore } from "@/stores/auth";
+import { BookmarkMediaItem } from "@/stores/bookmarks";
+import { ProgressMediaItem } from "@/stores/progress";
 
 export interface RegistrationData {
   recaptchaToken?: string;
@@ -69,7 +74,7 @@ export function useAuth() {
 
       const user = await getUser(backendUrl, loginResult.token);
       const seedBase64 = bytesToBase64(keys.seed);
-      await userDataLogin(loginResult, user.user, user.session, seedBase64);
+      return userDataLogin(loginResult, user.user, user.session, seedBase64);
     },
     [userDataLogin, backendUrl]
   );
@@ -106,7 +111,7 @@ export function useAuth() {
         profile: registerData.userData.profile,
       });
 
-      await userDataLogin(
+      return userDataLogin(
         registerResult,
         registerResult.user,
         registerResult.session,
@@ -114,6 +119,33 @@ export function useAuth() {
       );
     },
     [backendUrl, userDataLogin]
+  );
+
+  const importData = useCallback(
+    async (
+      account: AccountWithToken,
+      progressItems: Record<string, ProgressMediaItem>,
+      bookmarks: Record<string, BookmarkMediaItem>
+    ) => {
+      if (
+        Object.keys(progressItems).length === 0 &&
+        Object.keys(bookmarks).length === 0
+      ) {
+        return;
+      }
+
+      const progressInputs = Object.entries(progressItems).flatMap(
+        ([tmdbId, item]) => progressMediaItemToInputs(tmdbId, item)
+      );
+
+      const bookmarkInputs = Object.entries(bookmarks).map(([tmdbId, item]) =>
+        bookmarkMediaToInput(tmdbId, item)
+      );
+
+      await importProgress(backendUrl, account, progressInputs);
+      await importBookmarks(backendUrl, account, bookmarkInputs);
+    },
+    [backendUrl]
   );
 
   const restore = useCallback(async () => {
@@ -136,5 +168,6 @@ export function useAuth() {
     logout,
     register,
     restore,
+    importData,
   };
 }

@@ -24,19 +24,21 @@ export function useAuthData() {
 
   const login = useCallback(
     async (
-      account: LoginResponse,
+      loginResponse: LoginResponse,
       user: UserResponse,
       session: SessionResponse,
       seed: string
     ) => {
-      setAccount({
-        token: account.token,
+      const account = {
+        token: loginResponse.token,
         userId: user.id,
-        sessionId: account.session.id,
+        sessionId: loginResponse.session.id,
         deviceName: session.device,
         profile: user.profile,
         seed,
-      });
+      };
+      setAccount(account);
+      return account;
     },
     [setAccount]
   );
