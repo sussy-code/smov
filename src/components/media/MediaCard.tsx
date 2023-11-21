@@ -42,9 +42,11 @@ function MediaCardContent({
 
   return (
     <Flare.Base
-      className={`group -m-3 mb-2 rounded-xl bg-background-main transition-colors duration-100 ${
-        canLink ? "hover:bg-mediaCard-hoverBackground" : ""
+      className={`group -m-3 mb-2 rounded-xl bg-background-main transition-colors duration-100 focus:relative focus:z-10 ${
+        canLink ? "hover:bg-mediaCard-hoverBackground tabbable" : ""
       }`}
+      tabIndex={canLink ? 0 : -1}
+      onKeyUp={(e) => e.key === "Enter" && e.currentTarget.click()}
     >
       <Flare.Light
         flareSize={300}
@@ -157,6 +159,7 @@ export function MediaCard(props: MediaCardProps) {
   return (
     <Link
       to={link}
+      tabIndex={-1}
       className={classNames(
         "tabbable",
         props.closable ? "hover:cursor-default" : ""

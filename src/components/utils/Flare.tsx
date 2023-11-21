@@ -13,8 +13,21 @@ export interface FlareProps {
 const SIZE_DEFAULT = 200;
 const CSS_VAR_DEFAULT = "--colors-global-accentA";
 
-function Base(props: { className?: string; children?: ReactNode }) {
-  return <div className={c(props.className, "relative")}>{props.children}</div>;
+function Base(props: {
+  className?: string;
+  children?: ReactNode;
+  tabIndex?: number;
+  onKeyUp?: (e: React.KeyboardEvent<HTMLDivElement>) => void;
+}) {
+  return (
+    <div
+      tabIndex={props.tabIndex}
+      className={c(props.className, "relative")}
+      onKeyUp={props.onKeyUp}
+    >
+      {props.children}
+    </div>
+  );
 }
 
 function Child(props: { className?: string; children?: ReactNode }) {
