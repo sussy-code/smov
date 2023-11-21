@@ -24,10 +24,11 @@ export function SidebarLink(props: {
   onClick?: () => void;
 }) {
   return (
-    <div
+    <button
+      type="button"
       onClick={props.onClick}
       className={classNames(
-        "w-full px-3 py-2 flex items-center space-x-3 cursor-pointer rounded my-2",
+        "tabbable w-full px-3 py-2 flex items-center space-x-3 cursor-pointer rounded my-2",
         props.active
           ? "bg-settings-sidebar-activeLink text-settings-sidebar-type-activated"
           : null
@@ -41,6 +42,6 @@ export function SidebarLink(props: {
         icon={props.icon}
       />
       <span>{props.children}</span>
-    </div>
+    </button>
   );
 }

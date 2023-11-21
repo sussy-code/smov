@@ -30,13 +30,14 @@ function ThemePreview(props: {
 }) {
   return (
     <div
-      className={classNames(props.selector, "cursor-pointer group")}
+      className={classNames(props.selector, "cursor-pointer group tabbable")}
       onClick={props.onClick}
     >
       {/* Little card thing */}
       <div
+        tabIndex={0}
         className={classNames(
-          "w-full h-32 relative rounded-lg border bg-gradient-to-br from-themePreview-primary/20 to-themePreview-secondary/10 bg-clip-content transition-colors duration-150",
+          "tabbable scroll-mt-32 w-full h-32 relative rounded-lg border bg-gradient-to-br from-themePreview-primary/20 to-themePreview-secondary/10 bg-clip-content transition-colors duration-150",
           props.active
             ? "border-themePreview-primary"
             : "border-transparent group-hover:border-white/20"
