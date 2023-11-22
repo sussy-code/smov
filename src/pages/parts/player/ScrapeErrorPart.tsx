@@ -1,12 +1,14 @@
 import { useMemo } from "react";
 
 import { Button } from "@/components/Button";
-import { Icon, Icons } from "@/components/Icon";
+import { Icons } from "@/components/Icon";
 import { IconPill } from "@/components/layout/IconPill";
 import { Paragraph } from "@/components/text/Paragraph";
 import { Title } from "@/components/text/Title";
 import { ScrapingItems, ScrapingSegment } from "@/hooks/useProviderScrape";
 import { ErrorContainer, ErrorLayout } from "@/pages/layouts/ErrorLayout";
+
+import { ErrorCard } from "../errors/ErrorCard";
 
 export interface ScrapeErrorPartProps {
   data: {
@@ -53,25 +55,7 @@ export function ScrapeErrorPart(props: ScrapeErrorPartProps) {
       </ErrorContainer>
       <ErrorContainer maxWidth="max-w-[45rem]">
         {/* Error */}
-        {error ? (
-          <div className="w-full bg-errors-card p-6 rounded-lg">
-            <div className="flex justify-between items-center pb-2 border-b border-errors-border">
-              <span className="text-white font-medium">Error details</span>
-              <div className="flex justify-center items-center gap-3">
-                <Button theme="secondary" padding="p-2 md:px-4">
-                  <Icon icon={Icons.COPY} className="text-2xl mr-3" />
-                  Copy
-                </Button>
-                <Button theme="secondary" padding="p-2 md:px-2">
-                  <Icon icon={Icons.X} className="text-2xl" />
-                </Button>
-              </div>
-            </div>
-            <div className="mt-4 h-60 overflow-y-auto text-left whitespace-pre pointer-events-auto">
-              {error}
-            </div>
-          </div>
-        ) : null}
+        {error ? <ErrorCard error={error} /> : null}
       </ErrorContainer>
     </ErrorLayout>
   );
