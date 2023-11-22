@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import { Button } from "@/components/Button";
 import { Icon, Icons } from "@/components/Icon";
 import { IconPill } from "@/components/layout/IconPill";
@@ -8,6 +10,12 @@ import { usePlayerStore } from "@/stores/player/store";
 
 export function PlaybackErrorPart() {
   const playbackError = usePlayerStore((s) => s.interface.error);
+  const [showErrorCard, setShowErrorCard] = useState(true);
+
+  function copyError() {
+    if (!playbackError || !navigator.clipboard) return;
+    navigator.clipboard.writeText(playbackError.message);
+  }
 
   return (
     <ErrorLayout>
@@ -31,16 +39,25 @@ export function PlaybackErrorPart() {
       </ErrorContainer>
       <ErrorContainer maxWidth="max-w-[45rem]">
         {/* Error */}
-        {playbackError ? (
+        {playbackError && showErrorCard ? (
+          // I didn't put a <Transition> here because it'd fade out, then jump height weirdly
           <div className="w-full bg-errors-card p-6 rounded-lg">
             <div className="flex justify-between items-center pb-2 border-b border-errors-border">
               <span className="text-white font-medium">Error details</span>
               <div className="flex justify-center items-center gap-3">
-                <Button theme="secondary" padding="p-2 md:px-4">
+                <Button
+                  theme="secondary"
+                  padding="p-2 md:px-4"
+                  onClick={() => copyError()}
+                >
                   <Icon icon={Icons.COPY} className="text-2xl mr-3" />
                   Copy
                 </Button>
-                <Button theme="secondary" padding="p-2 md:px-2">
+                <Button
+                  theme="secondary"
+                  padding="p-2 md:px-2"
+                  onClick={() => setShowErrorCard(false)}
+                >
                   <Icon icon={Icons.X} className="text-2xl" />
                 </Button>
               </div>
