@@ -48,7 +48,7 @@ export function LoginFormPart(props: LoginFormPartProps) {
   );
 
   return (
-    <LargeCard top={<BrandPill />}>
+    <LargeCard top={<BrandPill backgroundClass="bg-[#161527]" />}>
       <LargeCardText title="Login to your account">
         Oh, you&apos;re asking for the key to my top-secret lair, also known as
         The Fortress of Wordsmithery, accessed only by reciting the sacred

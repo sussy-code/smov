@@ -56,7 +56,7 @@ export const defaultTheme = {
         dimmed: "#926CAD",
         divider: "#262632",
         secondary: "#64647B",
-        danger: "#F46E6E"
+        danger: "#F46E6E",
       },
 
       // search bar
@@ -95,7 +95,7 @@ export const defaultTheme = {
         text: "#846D95",
         secondary: "#73739D",
         border: "#272742",
-        contentBackground: "#232337"
+        contentBackground: "#232337",
       },
 
       // Passphrase
@@ -147,6 +147,13 @@ export const defaultTheme = {
       about: {
         circle: "#262632",
         circleText: "#9A9AC3",
+      },
+
+      // About page
+      editBadge: {
+        bg: "#262632",
+        bgHover: "#343443",
+        text: "#9A9AC3",
       },
 
       progress: {
