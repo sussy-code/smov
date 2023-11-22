@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import { Button } from "@/components/Button";
 import { Icon, Icons } from "@/components/Icon";
@@ -11,10 +11,22 @@ import { usePlayerStore } from "@/stores/player/store";
 export function PlaybackErrorPart() {
   const playbackError = usePlayerStore((s) => s.interface.error);
   const [showErrorCard, setShowErrorCard] = useState(true);
+  const [hasCopied, setHasCopied] = useState(false);
+  const hasCopiedUnsetDebounce = useRef<ReturnType<typeof setTimeout> | null>(
+    null
+  );
 
   function copyError() {
     if (!playbackError || !navigator.clipboard) return;
     navigator.clipboard.writeText(playbackError.message);
+
+    setHasCopied(true);
+
+    // Debounce unsetting the "has copied" label
+    if (hasCopiedUnsetDebounce.current)
+      clearTimeout(hasCopiedUnsetDebounce.current);
+    hasCopiedUnsetDebounce.current = setTimeout(() => setHasCopied(false), 2e3);
+    console.log(hasCopiedUnsetDebounce);
   }
 
   return (
@@ -50,8 +62,17 @@ export function PlaybackErrorPart() {
                   padding="p-2 md:px-4"
                   onClick={() => copyError()}
                 >
-                  <Icon icon={Icons.COPY} className="text-2xl mr-3" />
-                  Copy
+                  {hasCopied ? (
+                    <>
+                      <Icon icon={Icons.CHECKMARK} className="text-xs mr-3" />
+                      Copied
+                    </>
+                  ) : (
+                    <>
+                      <Icon icon={Icons.COPY} className="text-2xl mr-3" />
+                      Copy
+                    </>
+                  )}
                 </Button>
                 <Button
                   theme="secondary"
