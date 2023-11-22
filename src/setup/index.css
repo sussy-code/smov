@@ -31,6 +31,10 @@ body[data-no-select] {
   user-select: none;
 }
 
+html[data-no-scroll], html[data-no-scroll] body {
+  overflow: hidden;
+}
+
 .roll {
   animation: roll 1s;
 }

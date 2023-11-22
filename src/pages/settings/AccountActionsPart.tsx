@@ -3,7 +3,8 @@ import { useAsyncFn } from "react-use";
 import { deleteUser } from "@/backend/accounts/user";
 import { Button } from "@/components/Button";
 import { SolidSettingsCard } from "@/components/layout/SettingsCard";
-import { Heading2, Heading3 } from "@/components/utils/Text";
+import { Modal, ModalCard, useModal } from "@/components/overlays/Modal";
+import { Heading2, Heading3, Paragraph } from "@/components/utils/Text";
 import { useAuthData } from "@/hooks/auth/useAuthData";
 import { useBackendUrl } from "@/hooks/auth/useBackendUrl";
 import { useAuthStore } from "@/stores/auth";
@@ -12,13 +13,14 @@ export function AccountActionsPart() {
   const url = useBackendUrl();
   const account = useAuthStore((s) => s.account);
   const { logout } = useAuthData();
+  const deleteModal = useModal("account-delete");
+
   const [deleteResult, deleteExec] = useAsyncFn(async () => {
     if (!account) return;
-    // eslint-disable-next-line no-restricted-globals
-    if (!confirm("You sure bro?")) return;
     await deleteUser(url, account);
-    logout();
-  }, [logout, account, url]);
+    await logout();
+    deleteModal.hide();
+  }, [logout, account, url, deleteModal.hide]);
 
   if (!account) return null;
 
@@ -39,13 +41,29 @@ export function AccountActionsPart() {
         <div className="flex justify-start lg:justify-end items-center">
           <Button
             theme="danger"
-            onClick={deleteExec}
             loading={deleteResult.loading}
+            onClick={deleteModal.show}
           >
             Delete account
           </Button>
         </div>
       </SolidSettingsCard>
+      <Modal id={deleteModal.id}>
+        <ModalCard>
+          <Heading2 className="!mt-0">Are you sure?</Heading2>
+          <Paragraph>
+            Are you sure you want to delete your account? All your data will be
+            lost!
+          </Paragraph>
+          <Button
+            theme="danger"
+            loading={deleteResult.loading}
+            onClick={deleteExec}
+          >
+            Delete account
+          </Button>
+        </ModalCard>
+      </Modal>
     </div>
   );
 }

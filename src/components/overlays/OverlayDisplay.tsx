@@ -29,14 +29,16 @@ export function OverlayDisplay(props: { children: ReactNode }) {
   return <div className="popout-location">{props.children}</div>;
 }
 
-export function Overlay(props: OverlayProps) {
-  const router = useInternalOverlayRouter(props.id);
+export function OverlayPortal(props: {
+  children?: ReactNode;
+  darken?: boolean;
+  show?: boolean;
+  close?: () => void;
+}) {
   const [portalElement, setPortalElement] = useState<Element | null>(null);
   const ref = useRef<HTMLDivElement>(null);
   const target = useRef<Element | null>(null);
-
-  // listen for anchor updates
-  useRouterAnchorUpdate(props.id);
+  const close = props.close;
 
   useEffect(() => {
     function listen(e: MouseEvent) {
@@ -55,9 +57,9 @@ export function Overlay(props: OverlayProps) {
       if (e.currentTarget !== e.target) return;
       if (!startedTarget) return;
       if (!startedTarget.isEqualNode(e.currentTarget as Element)) return;
-      router.close();
+      close?.();
     },
-    [router]
+    [close]
   );
 
   useEffect(() => {
@@ -69,8 +71,8 @@ export function Overlay(props: OverlayProps) {
     <div ref={ref}>
       {portalElement
         ? createPortal(
-            <Transition show={router.isOverlayActive()} animation="none">
-              <div className="popout-wrapper absolute overflow-hidden pointer-events-auto inset-0 z-[999] select-none">
+            <Transition show={props.show} animation="none">
+              <div className="popout-wrapper fixed overflow-hidden pointer-events-auto inset-0 z-[999] select-none">
                 <Transition animation="fade" isChild>
                   <div
                     onClick={click}
@@ -93,5 +95,22 @@ export function Overlay(props: OverlayProps) {
           )
         : null}
     </div>
+  );
+}
+
+export function Overlay(props: OverlayProps) {
+  const router = useInternalOverlayRouter(props.id);
+
+  // listen for anchor updates
+  useRouterAnchorUpdate(props.id);
+
+  return (
+    <OverlayPortal
+      close={router.close}
+      show={router.isOverlayActive()}
+      darken={props.darken}
+    >
+      {props.children}
+    </OverlayPortal>
   );
 }

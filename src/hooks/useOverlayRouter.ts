@@ -13,8 +13,8 @@ function joinPath(path: string[]): string {
 }
 
 export function useRouterAnchorUpdate(id: string) {
-  const setAnchorPoint = useOverlayStore((s) => s.setAnchorPoint);
   const [route] = useQueryParam("r");
+  const setAnchorPoint = useOverlayStore((s) => s.setAnchorPoint);
   const routerActive = useMemo(
     () => !!route && route.startsWith(`/${id}`),
     [route, id]
