@@ -16,7 +16,7 @@ export function ErrorCard(props: { error: DisplayError | string }) {
 
   function copyError() {
     if (!props.error || !navigator.clipboard) return;
-    navigator.clipboard.writeText(errorMessage);
+    navigator.clipboard.writeText(`\`\`\`${errorMessage}\`\`\``);
 
     setHasCopied(true);
 
