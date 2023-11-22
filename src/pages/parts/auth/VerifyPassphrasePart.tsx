@@ -82,32 +82,36 @@ export function VerifyPassphrase(props: VerifyPassphraseProps) {
 
   return (
     <LargeCard>
-      <LargeCardText
-        icon={<Icon icon={Icons.CIRCLE_CHECK} />}
-        title="Enter your passphrase"
-      >
-        If you&apos;ve already lost it, how will you ever be able to take care
-        of a child?
-      </LargeCardText>
-      <AuthInputBox
-        label="Your passphrase"
-        value={mnemonic}
-        onChange={setMnemonic}
-      />
-      {result.error ? (
-        <p className="mt-3 text-authentication-errorText">
-          {result.error.message}
-        </p>
-      ) : null}
-      <LargeCardButtons>
-        <Button
-          theme="purple"
-          loading={result.loading}
-          onClick={() => execute(mnemonic)}
+      <form>
+        <LargeCardText
+          icon={<Icon icon={Icons.CIRCLE_CHECK} />}
+          title="Enter your passphrase"
         >
-          Register
-        </Button>
-      </LargeCardButtons>
+          If you&apos;ve already lost it, how will you ever be able to take care
+          of a child?
+        </LargeCardText>
+        <AuthInputBox
+          label="Your passphrase"
+          autoComplete="username"
+          name="username"
+          value={mnemonic}
+          onChange={setMnemonic}
+        />
+        {result.error ? (
+          <p className="mt-3 text-authentication-errorText">
+            {result.error.message}
+          </p>
+        ) : null}
+        <LargeCardButtons>
+          <Button
+            theme="purple"
+            loading={result.loading}
+            onClick={() => execute(mnemonic)}
+          >
+            Register
+          </Button>
+        </LargeCardButtons>
+      </form>
     </LargeCard>
   );
 }

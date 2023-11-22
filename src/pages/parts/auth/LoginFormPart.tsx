@@ -58,6 +58,8 @@ export function LoginFormPart(props: LoginFormPartProps) {
         <AuthInputBox
           label="12-Word Passphrase"
           value={mnemonic}
+          autoComplete="username"
+          name="username"
           onChange={setMnemonic}
           placeholder="Passphrase"
         />
