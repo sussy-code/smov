@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import FocusTrap from "focus-trap-react";
 import { ReactNode, useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
@@ -37,30 +38,7 @@ export function OverlayPortal(props: {
 }) {
   const [portalElement, setPortalElement] = useState<Element | null>(null);
   const ref = useRef<HTMLDivElement>(null);
-  const target = useRef<Element | null>(null);
   const close = props.close;
-
-  useEffect(() => {
-    function listen(e: MouseEvent) {
-      target.current = e.target as Element;
-    }
-    document.addEventListener("mousedown", listen);
-    return () => {
-      document.removeEventListener("mousedown", listen);
-    };
-  });
-
-  const click = useCallback(
-    (e: React.MouseEvent) => {
-      const startedTarget = target.current;
-      target.current = null;
-      if (e.currentTarget !== e.target) return;
-      if (!startedTarget) return;
-      if (!startedTarget.isEqualNode(e.currentTarget as Element)) return;
-      close?.();
-    },
-    [close]
-  );
 
   useEffect(() => {
     const element = ref.current?.closest(".popout-location");
@@ -72,24 +50,30 @@ export function OverlayPortal(props: {
       {portalElement
         ? createPortal(
             <Transition show={props.show} animation="none">
-              <div className="popout-wrapper fixed overflow-hidden pointer-events-auto inset-0 z-[999] select-none">
-                <Transition animation="fade" isChild>
-                  <div
-                    onClick={click}
-                    className={classNames({
-                      "absolute inset-0": true,
-                      "bg-black opacity-90": props.darken,
-                    })}
-                  />
-                </Transition>
-                <Transition
-                  animation="slide-up"
-                  className="absolute inset-0 pointer-events-none"
-                  isChild
-                >
-                  {props.children}
-                </Transition>
-              </div>
+              <FocusTrap
+                focusTrapOptions={{
+                  onDeactivate: close,
+                }}
+              >
+                <div className="popout-wrapper absolute overflow-hidden pointer-events-auto inset-0 z-[999] select-none">
+                  <Transition animation="fade" isChild>
+                    <div
+                      onClick={close}
+                      className={classNames({
+                        "absolute inset-0": true,
+                        "bg-black opacity-90": props.darken,
+                      })}
+                    />
+                  </Transition>
+                  <Transition
+                    animation="slide-up"
+                    className="absolute inset-0 pointer-events-none"
+                    isChild
+                  >
+                    {props.children}
+                  </Transition>
+                </div>
+              </FocusTrap>
             </Transition>,
             portalElement
           )
@@ -100,13 +84,18 @@ export function OverlayPortal(props: {
 
 export function Overlay(props: OverlayProps) {
   const router = useInternalOverlayRouter(props.id);
+  const realClose = router.close;
 
   // listen for anchor updates
   useRouterAnchorUpdate(props.id);
 
+  const close = useCallback(() => {
+    realClose();
+  }, [realClose]);
+
   return (
     <OverlayPortal
-      close={router.close}
+      close={close}
       show={router.isOverlayActive()}
       darken={props.darken}
     >

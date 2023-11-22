@@ -16,6 +16,7 @@
     "core-js": "^3.29.1",
     "dompurify": "^3.0.1",
     "flag-icons": "^6.11.1",
+    "focus-trap-react": "^10.2.3",
     "fscreen": "^1.2.0",
     "fuse.js": "^6.4.6",
     "hls.js": "^1.0.7",
