@@ -21,7 +21,7 @@ export type AccountWithToken = Account & {
 interface AuthStore {
   account: null | AccountWithToken;
   backendUrl: null | string;
-  proxySet: null | string[]; // TODO actually use these settings
+  proxySet: null | string[];
   removeAccount(): void;
   setAccount(acc: AccountWithToken): void;
   updateDeviceName(deviceName: string): void;
