@@ -25,6 +25,7 @@ export function Navigation(props: NavigationProps) {
 
   return (
     <>
+      {/* lightbar */}
       {!props.noLightbar ? (
         <div
           className="absolute inset-x-0 top-0 flex h-[88px] items-center justify-center"
@@ -37,15 +38,17 @@ export function Navigation(props: NavigationProps) {
           </div>
         </div>
       ) : null}
+
+      {/* backgrounds - these are seperate because of z-index issues */}
       <div
-        className="fixed z-[40] pointer-events-none left-0 right-0 top-0 min-h-[150px]"
+        className="fixed z-[20] pointer-events-none left-0 right-0 top-0 min-h-[150px]"
         style={{
           top: `${bannerHeight}px`,
         }}
       >
         <div
           className={classNames(
-            "fixed left-0 right-0 flex items-center",
+            "fixed left-0 right-0 h-20 flex items-center",
             props.doBackground
               ? "bg-background-main border-b border-utils-divider border-opacity-50"
               : null
@@ -59,11 +62,22 @@ export function Navigation(props: NavigationProps) {
           <div
             className={`${
               props.bg ? "opacity-100" : "opacity-0"
-            } absolute inset-0 block bg-background-main transition-opacity duration-300`}
+            } absolute inset-0 block h-24 bg-background-main transition-opacity duration-300`}
           >
             <div className="absolute -bottom-24 h-24 w-full bg-gradient-to-b from-background-main to-transparent" />
           </div>
-          <div className="pointer-events-auto px-7 py-5 relative flex flex-1 items-center">
+        </div>
+      </div>
+
+      {/* content */}
+      <div
+        className="fixed pointer-events-none left-0 right-0 z-[60] top-0 min-h-[150px]"
+        style={{
+          top: `${bannerHeight}px`,
+        }}
+      >
+        <div className={classNames("fixed left-0 right-0 flex items-center")}>
+          <div className="pointer-events-auto px-7 py-5 relative z-[60] flex flex-1 items-center">
             <div className="flex items-center flex-1 space-x-3">
               <Link className="block tabbable rounded-full" to="/">
                 <BrandPill clickable />
