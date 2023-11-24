@@ -22,7 +22,7 @@ export function Link(props: LinkProps) {
   const isExternal = !!(props as ILinkPropsExternal).url;
   const isInternal = !!(props as ILinkPropsInternal).to;
   const content = (
-    <span className="cursor-pointer font-bold text-bink-600 hover:text-bink-700">
+    <span className="cursor-pointer font-bold text-type-link hover:text-type-linkHover">
       {props.children}
     </span>
   );

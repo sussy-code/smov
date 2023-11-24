@@ -21,7 +21,7 @@ async function syncProgress(
     // complete it beforehand so it doesn't get handled while in progress
     finish(item.id);
 
-    if (!account) return; // not logged in, dont sync to server
+    if (!account) continue; // not logged in, dont sync to server
 
     try {
       if (item.action === "delete") {

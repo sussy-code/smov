@@ -159,7 +159,9 @@ export const useProgressStore = create(
         });
       },
       clear() {
-        this.replaceItems({});
+        set((s) => {
+          s.items = {};
+        });
       },
       clearUpdateQueue() {
         set((s) => {

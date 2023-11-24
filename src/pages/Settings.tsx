@@ -3,28 +3,32 @@ import { useEffect } from "react";
 import { useAsyncFn } from "react-use";
 
 import { getSessions } from "@/backend/accounts/sessions";
+import { Button } from "@/components/Button";
 import { WideContainer } from "@/components/layout/WideContainer";
 import { Heading1 } from "@/components/utils/Text";
 import { useBackendUrl } from "@/hooks/auth/useBackendUrl";
 import { useIsMobile } from "@/hooks/useIsMobile";
-import { AccountActionsPart } from "@/pages/settings/AccountActionsPart";
-import { AccountEditPart } from "@/pages/settings/AccountEditPart";
-import { CaptionsPart } from "@/pages/settings/CaptionsPart";
-import { DeviceListPart } from "@/pages/settings/DeviceListPart";
-import { RegisterCalloutPart } from "@/pages/settings/RegisterCalloutPart";
-import { SidebarPart } from "@/pages/settings/SidebarPart";
-import { ThemePart } from "@/pages/settings/ThemePart";
+import { useSettingsState } from "@/hooks/useSettingsState";
+import { AccountActionsPart } from "@/pages/parts/settings/AccountActionsPart";
+import { AccountEditPart } from "@/pages/parts/settings/AccountEditPart";
+import { CaptionsPart } from "@/pages/parts/settings/CaptionsPart";
+import { DeviceListPart } from "@/pages/parts/settings/DeviceListPart";
+import { RegisterCalloutPart } from "@/pages/parts/settings/RegisterCalloutPart";
+import { SidebarPart } from "@/pages/parts/settings/SidebarPart";
+import { ThemePart } from "@/pages/parts/settings/ThemePart";
 import { AccountWithToken, useAuthStore } from "@/stores/auth";
+import { useLanguageStore } from "@/stores/language";
+import { useSubtitleStore } from "@/stores/subtitles";
 import { useThemeStore } from "@/stores/theme";
 
 import { SubPageLayout } from "./layouts/SubPageLayout";
-import { LocalePart } from "./settings/LocalePart";
+import { LocalePart } from "./parts/settings/LocalePart";
 
 function SettingsLayout(props: { children: React.ReactNode }) {
   const { isMobile } = useIsMobile();
 
   return (
-    <WideContainer ultraWide>
+    <WideContainer ultraWide classNames="overflow-visible">
       <div
         className={classNames(
           "grid gap-12",
@@ -65,7 +69,21 @@ export function AccountSettings(props: { account: AccountWithToken }) {
 export function SettingsPage() {
   const activeTheme = useThemeStore((s) => s.theme);
   const setTheme = useThemeStore((s) => s.setTheme);
+
+  const appLanguage = useLanguageStore((s) => s.language);
+
+  const subStyling = useSubtitleStore((s) => s.styling);
+
+  const deviceName = useAuthStore((s) => s.account?.deviceName);
+
   const user = useAuthStore();
+
+  const state = useSettingsState(
+    activeTheme,
+    appLanguage,
+    subStyling,
+    deviceName
+  );
 
   return (
     <SubPageLayout>
@@ -81,15 +99,31 @@ export function SettingsPage() {
           )}
         </div>
         <div id="settings-locale" className="mt-48">
-          <LocalePart />
+          <LocalePart
+            language={state.appLanguage.state}
+            setLanguage={state.appLanguage.set}
+          />
         </div>
         <div id="settings-appearance" className="mt-48">
-          <ThemePart active={activeTheme} setTheme={setTheme} />
+          <ThemePart active={state.theme.state} setTheme={state.theme.set} />
         </div>
         <div id="settings-captions" className="mt-48">
-          <CaptionsPart />
+          <CaptionsPart
+            styling={state.subtitleStyling.state}
+            setStyling={(s) => s}
+          />
         </div>
       </SettingsLayout>
+
+      {state.changed ? (
+        <div className="bg-settings-saveBar-background border-t border-settings-card-border/50 py-4 w-full fixed bottom-0 flex justify-between px-8 items-center">
+          <p className="text-type-danger">You have unsaved changes</p>
+          <div className="space-x-6">
+            <Button theme="secondary">Reset</Button>
+            <Button theme="purple">Save</Button>
+          </div>
+        </div>
+      ) : null}
     </SubPageLayout>
   );
 }

@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { Link } from "react-router-dom";
 
-import { UserAvatar } from "@/components/Avatar";
+import { NoUserAvatar, UserAvatar } from "@/components/Avatar";
 import { IconPatch } from "@/components/buttons/IconPatch";
 import { Icons } from "@/components/Icon";
 import { LinksDropdown } from "@/components/LinksDropdown";
@@ -101,7 +101,7 @@ export function Navigation(props: NavigationProps) {
             </div>
             <div className="relative">
               <LinksDropdown>
-                {loggedIn ? <UserAvatar /> : <p>Not logged in</p>}
+                {loggedIn ? <UserAvatar /> : <NoUserAvatar />}
               </LinksDropdown>
             </div>
           </div>

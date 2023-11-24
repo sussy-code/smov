@@ -2,12 +2,13 @@ import { Dropdown } from "@/components/Dropdown";
 import { FlagIcon } from "@/components/FlagIcon";
 import { Heading1 } from "@/components/utils/Text";
 import { appLanguageOptions } from "@/setup/i18n";
-import { useLanguageStore } from "@/stores/language";
 import { sortLangCodes } from "@/utils/sortLangCodes";
 
-export function LocalePart() {
+export function LocalePart(props: {
+  language: string;
+  setLanguage: (l: string) => void;
+}) {
   const sorted = sortLangCodes(appLanguageOptions.map((t) => t.id));
-  const { language, setLanguage } = useLanguageStore();
 
   const options = appLanguageOptions
     .sort((a, b) => sorted.indexOf(a.id) - sorted.indexOf(b.id))
@@ -17,7 +18,7 @@ export function LocalePart() {
       leftIcon: <FlagIcon countryCode={opt.id} />,
     }));
 
-  const selected = options.find((t) => t.id === language);
+  const selected = options.find((t) => t.id === props.language);
 
   return (
     <div>
@@ -29,7 +30,7 @@ export function LocalePart() {
       <Dropdown
         options={options}
         selectedItem={selected || options[0]}
-        setSelectedItem={(opt) => setLanguage(opt.id)}
+        setSelectedItem={(opt) => props.setLanguage(opt.id)}
       />
     </div>
   );

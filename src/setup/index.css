@@ -4,7 +4,7 @@
 
 html,
 body {
-  @apply bg-background-main font-open-sans text-denim-700 overflow-x-hidden;
+  @apply bg-background-main font-open-sans text-type-text overflow-x-hidden;
   min-height: 100vh;
   min-height: 100dvh;
   position: relative;

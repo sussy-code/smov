@@ -29,6 +29,7 @@ function GoToLink(props: {
 
   return (
     <a
+      tabIndex={0}
       href={props.href}
       onClick={(evt) => {
         evt.preventDefault();
@@ -100,7 +101,6 @@ export function LinksDropdown(props: { children: React.ReactNode }) {
   }, []);
 
   const toggleOpen = useCallback(() => {
-    console.log("yay");
     setOpen((s) => !s);
   }, []);
 

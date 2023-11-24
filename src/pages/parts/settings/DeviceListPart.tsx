@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { useAsyncFn } from "react-use";
 
 import { SessionResponse } from "@/backend/accounts/auth";
@@ -50,7 +51,25 @@ export function DeviceListPart(props: {
   onChange?: () => void;
 }) {
   const seed = useAuthStore((s) => s.account?.seed);
+  const sessions = props.sessions;
   const currentSessionId = useAuthStore((s) => s.account?.sessionId);
+  const deviceListSorted = useMemo(() => {
+    if (!seed) return [];
+    let list = sessions.map((session) => {
+      const decryptedName = decryptData(session.device, base64ToBuffer(seed));
+      return {
+        current: session.id === currentSessionId,
+        id: session.id,
+        name: decryptedName,
+      };
+    });
+    list = list.sort((a, b) => {
+      if (a.current) return -1;
+      if (b.current) return 1;
+      return a.name.localeCompare(b.name);
+    });
+    return list;
+  }, [seed, sessions, currentSessionId]);
   if (!seed) return null;
 
   return (
@@ -64,21 +83,15 @@ export function DeviceListPart(props: {
         <Loading />
       ) : (
         <div className="space-y-5">
-          {props.sessions.map((session) => {
-            const decryptedName = decryptData(
-              session.device,
-              base64ToBuffer(seed)
-            );
-            return (
-              <Device
-                name={decryptedName}
-                id={session.id}
-                key={session.id}
-                isCurrent={session.id === currentSessionId}
-                onRemove={props.onChange}
-              />
-            );
-          })}
+          {deviceListSorted.map((session) => (
+            <Device
+              name={session.name}
+              id={session.id}
+              key={session.id}
+              isCurrent={session.current}
+              onRemove={props.onChange}
+            />
+          ))}
         </div>
       )}
     </div>

@@ -62,10 +62,11 @@ export function CaptionPreview(props: {
   );
 }
 
-export function CaptionsPart() {
-  const styling = useSubtitleStore((s) => s.styling);
+export function CaptionsPart(props: {
+  styling: SubtitleStyling;
+  setStyling: (s: SubtitleStyling) => void;
+}) {
   const [fullscreenPreview, setFullscreenPreview] = useState(false);
-  const updateStyling = useSubtitleStore((s) => s.updateStyling);
 
   return (
     <div>
@@ -76,8 +77,10 @@ export function CaptionsPart() {
             label="Background opacity"
             max={100}
             min={0}
-            onChange={(v) => updateStyling({ backgroundOpacity: v / 100 })}
-            value={styling.backgroundOpacity * 100}
+            onChange={(v) =>
+              props.setStyling({ ...props.styling, backgroundOpacity: v / 100 })
+            }
+            value={props.styling.backgroundOpacity * 100}
             textTransformer={(s) => `${s}%`}
           />
           <CaptionSetting
@@ -85,17 +88,21 @@ export function CaptionsPart() {
             max={200}
             min={1}
             textTransformer={(s) => `${s}%`}
-            onChange={(v) => updateStyling({ size: v / 100 })}
-            value={styling.size * 100}
+            onChange={(v) =>
+              props.setStyling({ ...props.styling, size: v / 100 })
+            }
+            value={props.styling.size * 100}
           />
           <div className="flex justify-between items-center">
             <Menu.FieldTitle>Color</Menu.FieldTitle>
             <div className="flex justify-center items-center">
               {colors.map((v) => (
                 <ColorOption
-                  onClick={() => updateStyling({ color: v })}
+                  onClick={() =>
+                    props.setStyling({ ...props.styling, color: v })
+                  }
                   color={v}
-                  active={styling.color === v}
+                  active={props.styling.color === v}
                   key={v}
                 />
               ))}
@@ -104,13 +111,13 @@ export function CaptionsPart() {
         </div>
         <CaptionPreview
           show
-          styling={styling}
+          styling={props.styling}
           onToggle={() => setFullscreenPreview((s) => !s)}
         />
         <CaptionPreview
           show={fullscreenPreview}
           fullscreen
-          styling={styling}
+          styling={props.styling}
           onToggle={() => setFullscreenPreview((s) => !s)}
         />
       </div>

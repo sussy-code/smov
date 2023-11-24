@@ -73,7 +73,7 @@ export function VerifyPassphrase(props: VerifyPassphraseProps) {
         applicationTheme: applicationTheme ?? undefined,
       });
 
-      await restore();
+      await restore(account);
 
       props.onNext?.();
     },

@@ -40,7 +40,7 @@ export function LoginFormPart(props: LoginFormPartProps) {
 
       await importData(account, progressItems, bookmarkItems);
 
-      await restore();
+      await restore(account);
 
       props.onLogin?.();
     },

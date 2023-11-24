@@ -21,7 +21,9 @@ function SearchSuffix(props: { failed?: boolean; results?: number }) {
     <div className="mb-24 mt-40  flex flex-col items-center justify-center space-y-3 text-center">
       <IconPatch
         icon={icon}
-        className={`text-xl ${props.failed ? "text-red-400" : "text-bink-600"}`}
+        className={`text-xl ${
+          props.failed ? "text-red-400" : "text-type-logo"
+        }`}
       />
 
       {/* standard suffix */}

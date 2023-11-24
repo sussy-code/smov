@@ -1,5 +1,6 @@
 import { useCallback } from "react";
 
+import { SessionResponse } from "@/backend/accounts/auth";
 import { bookmarkMediaToInput } from "@/backend/accounts/bookmarks";
 import {
   bytesToBase64,
@@ -16,7 +17,13 @@ import {
   registerAccount,
 } from "@/backend/accounts/register";
 import { removeSession } from "@/backend/accounts/sessions";
-import { getBookmarks, getProgress, getUser } from "@/backend/accounts/user";
+import { getSettings } from "@/backend/accounts/settings";
+import {
+  UserResponse,
+  getBookmarks,
+  getProgress,
+  getUser,
+} from "@/backend/accounts/user";
 import { useAuthData } from "@/hooks/auth/useAuthData";
 import { useBackendUrl } from "@/hooks/auth/useBackendUrl";
 import { AccountWithToken, useAuthStore } from "@/stores/auth";
@@ -90,7 +97,7 @@ export function useAuth() {
     } catch {
       // we dont care about failing to delete session
     }
-    userDataLogout();
+    await userDataLogout();
   }, [userDataLogout, backendUrl, currentAccount]);
 
   const register = useCallback(
@@ -148,18 +155,32 @@ export function useAuth() {
     [backendUrl]
   );
 
-  const restore = useCallback(async () => {
-    if (!currentAccount) {
-      return;
-    }
+  const restore = useCallback(
+    async (account: AccountWithToken) => {
+      let user: { user: UserResponse; session: SessionResponse };
+      try {
+        user = await getUser(backendUrl, account.token);
+      } catch (err) {
+        const anyError: any = err;
+        if (
+          anyError?.response?.status === 401 ||
+          anyError?.response?.status === 403
+        ) {
+          await logout();
+          return;
+        }
+        console.error(err);
+        throw err;
+      }
 
-    // TODO if fail to get user, log them out
-    const user = await getUser(backendUrl, currentAccount.token);
-    const bookmarks = await getBookmarks(backendUrl, currentAccount);
-    const progress = await getProgress(backendUrl, currentAccount);
+      const bookmarks = await getBookmarks(backendUrl, account);
+      const progress = await getProgress(backendUrl, account);
+      const settings = await getSettings(backendUrl, account);
 
-    syncData(user.user, user.session, progress, bookmarks);
-  }, [backendUrl, currentAccount, syncData]);
+      syncData(user.user, user.session, progress, bookmarks, settings);
+    },
+    [backendUrl, syncData, logout]
+  );
 
   return {
     loggedIn,

@@ -21,7 +21,7 @@ export function Dropdown(props: DropdownProps) {
       <Listbox value={props.selectedItem} onChange={props.setSelectedItem}>
         {() => (
           <>
-            <Listbox.Button className="relative w-full cursor-default rounded-lg bg-dropdown-background py-3 pl-3 pr-10 text-left text-white shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-bink-500  focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-bink-300">
+            <Listbox.Button className="relative w-full cursor-default rounded-lg bg-dropdown-background py-3 pl-3 pr-10 text-left text-white shadow-md focus:outline-none tabbable">
               <span className="flex gap-4 items-center truncate">
                 {props.selectedItem.leftIcon
                   ? props.selectedItem.leftIcon
@@ -41,12 +41,14 @@ export function Dropdown(props: DropdownProps) {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Listbox.Options className="absolute left-0 right-0 top-10 z-[1] mt-4 max-h-60 overflow-auto rounded-md bg-dropdown-background py-1 text-white shadow-lg ring-1 ring-black ring-opacity-5 scrollbar-thin scrollbar-track-denim-400 scrollbar-thumb-denim-200 focus:outline-none sm:top-10">
+              <Listbox.Options className="absolute left-0 right-0 top-10 z-[1] mt-4 max-h-60 overflow-auto rounded-md bg-dropdown-background py-1 text-white shadow-lg ring-1 ring-black ring-opacity-5 scrollbar-thin scrollbar-track-background-secondary scrollbar-thumb-type-secondary focus:outline-none sm:top-10">
                 {props.options.map((opt) => (
                   <Listbox.Option
                     className={({ active }) =>
                       `flex gap-4 items-center relative cursor-default select-none py-3 pl-4 pr-4 ${
-                        active ? "bg-denim-400 text-bink-700" : "text-white"
+                        active
+                          ? "bg-background-secondaryHover text-type-link"
+                          : "text-white"
                       }`
                     }
                     key={opt.id}

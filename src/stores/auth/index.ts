@@ -26,6 +26,7 @@ interface AuthStore {
   setAccount(acc: AccountWithToken): void;
   updateDeviceName(deviceName: string): void;
   updateAccount(acc: Account): void;
+  setBackendUrl(url: null | string): void;
 }
 
 export const useAuthStore = create(
@@ -42,6 +43,11 @@ export const useAuthStore = create(
       removeAccount() {
         set((s) => {
           s.account = null;
+        });
+      },
+      setBackendUrl(v) {
+        set((s) => {
+          s.backendUrl = v;
         });
       },
       updateAccount(acc) {

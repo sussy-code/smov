@@ -11,7 +11,7 @@ export function RegisterCalloutPart() {
     <div>
       <SolidSettingsCard
         paddingClass="px-6 py-12"
-        className="grid grid-cols-2 gap-12"
+        className="grid grid-cols-2 gap-12 mt-5"
       >
         <div>
           <Heading3>Sync to the cloud</Heading3>

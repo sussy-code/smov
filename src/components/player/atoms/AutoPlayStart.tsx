@@ -23,7 +23,7 @@ export function AutoPlayStart() {
   return (
     <div
       onClick={handleClick}
-      className="group pointer-events-auto flex h-16 w-16 cursor-pointer items-center justify-center rounded-full bg-denim-400 text-white transition-[background-color,transform] hover:scale-125 hover:bg-denim-500 active:scale-100"
+      className="group pointer-events-auto flex h-16 w-16 cursor-pointer items-center justify-center rounded-full text-white transition-[background-color,transform] hover:scale-125 active:scale-100"
     >
       <Icon
         icon={Icons.PLAY}

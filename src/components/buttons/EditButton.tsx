@@ -22,7 +22,7 @@ export function EditButton(props: EditButtonProps) {
   return (
     <ButtonControl
       onClick={onClick}
-      className="flex h-12 items-center overflow-hidden rounded-full bg-denim-400 px-4 py-2 text-white transition-[background-color,transform] hover:bg-denim-500 active:scale-105"
+      className="flex h-12 items-center overflow-hidden rounded-full bg-background-secondary px-4 py-2 text-white transition-[background-color,transform] hover:bg-background-secondaryHover active:scale-105"
     >
       <span ref={parent}>
         {props.editing ? (

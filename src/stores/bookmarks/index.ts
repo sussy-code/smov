@@ -80,7 +80,9 @@ export const useBookmarkStore = create(
         });
       },
       clear() {
-        this.replaceBookmarks({});
+        set((s) => {
+          s.bookmarks = {};
+        });
       },
       clearUpdateQueue() {
         set((s) => {

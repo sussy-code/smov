@@ -20,6 +20,9 @@ export interface SubtitleStyling {
 }
 
 export interface SubtitleStore {
+  lastSync: {
+    lastSelectedLanguage: string | null;
+  };
   enabled: boolean;
   lastSelectedLanguage: string | null;
   styling: SubtitleStyling;
@@ -37,6 +40,9 @@ export const useSubtitleStore = create(
   persist(
     immer<SubtitleStore>((set) => ({
       enabled: false,
+      lastSync: {
+        lastSelectedLanguage: null,
+      },
       lastSelectedLanguage: null,
       overrideCasing: false,
       delay: 0,
@@ -80,6 +86,7 @@ export const useSubtitleStore = create(
       importSubtitleLanguage(lang) {
         set((s) => {
           s.lastSelectedLanguage = lang;
+          s.lastSync.lastSelectedLanguage = lang;
         });
       },
     })),

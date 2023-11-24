@@ -10,26 +10,28 @@ export const defaultTheme = {
       // Branding
       pill: {
         background: "#1C1C36",
+        backgroundHover: "#1C1C36",
+        highlight: "#714C97",
       },
-
+      
       // meta data for the theme itself
       global: {
         accentA: "#505DBD",
         accentB: "#3440A1",
       },
-
+      
       // light bar
       lightBar: {
         light: "#2A2A71",
       },
-
+      
       // Buttons
       buttons: {
         toggle: "#8D44D6",
         toggleDisabled: "#202836",
         danger: "#792131",
         dangerHover: "#8a293b",
-
+        
         secondary: "#161F25",
         secondaryText: "#8EA3B0",
         secondaryHover: "#1B262E",
@@ -41,22 +43,27 @@ export const defaultTheme = {
         cancel: "#252533",
         cancelHover: "#3C3C4A",
       },
-
+      
       // only used for body colors/textures
       background: {
         main: "#0A0A10",
+        secondary: "#151529",
+        secondaryHover: "#252542",
         accentA: "#6E3B80",
         accentB: "#1F1F50",
       },
-
+      
       // typography
       type: {
+        logo: "#A87FD1",
         emphasis: "#FFFFFF",
         text: "#73739D",
         dimmed: "#926CAD",
         divider: "#262632",
         secondary: "#64647B",
         danger: "#F46E6E",
+        link: "#A87FD1",
+        linkHover: "#A87FD1",
       },
 
       // search bar
@@ -127,6 +134,10 @@ export const defaultTheme = {
           background: "#29243D",
           altBackground: "#29243D",
         },
+
+        saveBar: {
+          background: "#0F0E17"
+        }
       },
 
       utils: {

@@ -28,6 +28,7 @@ export function SidebarPart() {
       const windowHeight =
         window.innerHeight || document.documentElement.clientHeight;
 
+      // TODO this detection does not work
       const viewList = settingLinks
         .map((link) => {
           const el = document.getElementById(link.id);

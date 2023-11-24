@@ -1,6 +1,7 @@
 import { useCallback } from "react";
 
 import { LoginResponse, SessionResponse } from "@/backend/accounts/auth";
+import { SettingsResponse } from "@/backend/accounts/settings";
 import {
   BookmarkResponse,
   ProgressResponse,
@@ -10,7 +11,10 @@ import {
 } from "@/backend/accounts/user";
 import { useAuthStore } from "@/stores/auth";
 import { useBookmarkStore } from "@/stores/bookmarks";
+import { useLanguageStore } from "@/stores/language";
 import { useProgressStore } from "@/stores/progress";
+import { useSubtitleStore } from "@/stores/subtitles";
+import { useThemeStore } from "@/stores/theme";
 
 export function useAuthData() {
   const loggedIn = !!useAuthStore((s) => s.account);
@@ -18,6 +22,9 @@ export function useAuthData() {
   const removeAccount = useAuthStore((s) => s.removeAccount);
   const clearBookmarks = useBookmarkStore((s) => s.clear);
   const clearProgress = useProgressStore((s) => s.clear);
+  const setTheme = useThemeStore((s) => s.setTheme);
+  const setAppLanguage = useLanguageStore((s) => s.setLanguage);
+  const setCaptionLanguage = useSubtitleStore((s) => s.setLanguage);
 
   const replaceBookmarks = useBookmarkStore((s) => s.replaceBookmarks);
   const replaceItems = useProgressStore((s) => s.replaceItems);
@@ -47,7 +54,6 @@ export function useAuthData() {
     removeAccount();
     clearBookmarks();
     clearProgress();
-    // TODO clear settings
   }, [removeAccount, clearBookmarks, clearProgress]);
 
   const syncData = useCallback(
@@ -55,13 +61,31 @@ export function useAuthData() {
       _user: UserResponse,
       _session: SessionResponse,
       progress: ProgressResponse[],
-      bookmarks: BookmarkResponse[]
+      bookmarks: BookmarkResponse[],
+      settings: SettingsResponse
     ) => {
-      // TODO sync user settings
       replaceBookmarks(bookmarkResponsesToEntries(bookmarks));
       replaceItems(progressResponsesToEntries(progress));
+
+      if (settings.applicationLanguage) {
+        setAppLanguage(settings.applicationLanguage);
+      }
+
+      if (settings.defaultSubtitleLanguage) {
+        setCaptionLanguage(settings.defaultSubtitleLanguage);
+      }
+
+      if (settings.applicationTheme) {
+        setTheme(settings.applicationTheme);
+      }
     },
-    [replaceBookmarks, replaceItems]
+    [
+      replaceBookmarks,
+      replaceItems,
+      setAppLanguage,
+      setCaptionLanguage,
+      setTheme,
+    ]
   );
 
   return {
