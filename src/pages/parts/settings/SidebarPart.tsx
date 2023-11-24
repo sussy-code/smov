@@ -7,8 +7,6 @@ import { Divider } from "@/components/utils/Divider";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { conf } from "@/setup/config";
 
-const percentageVisible = 10;
-
 export function SidebarPart() {
   const { isMobile } = useIsMobile();
   // eslint-disable-next-line no-restricted-globals
@@ -28,27 +26,23 @@ export function SidebarPart() {
     function recheck() {
       const windowHeight =
         window.innerHeight || document.documentElement.clientHeight;
+      const middle = windowHeight / 2;
 
-      // TODO this detection does not work
       const viewList = settingLinks
         .map((link) => {
           const el = document.getElementById(link.id);
-          if (!el) return { visible: false, link: link.id };
+          if (!el) return { distance: Infinity, link: link.id };
           const rect = el.getBoundingClientRect();
 
-          const visible = !(
-            Math.floor(
-              50 - ((rect.top >= 0 ? 0 : rect.top) / +-rect.height) * 100
-            ) < percentageVisible ||
-            Math.floor(
-              50 - ((rect.bottom - windowHeight) / rect.height) * 100
-            ) < percentageVisible
-          );
+          const distanceTop = Math.abs(middle - rect.top);
+          const distanceBottom = Math.abs(middle - rect.bottom);
 
-          return { visible, link: link.id };
+          const distance = Math.min(distanceBottom, distanceTop);
+          return { distance, link: link.id };
         })
-        .filter((v) => v.visible);
+        .sort((a, b) => a.distance - b.distance);
 
+      // shortest distance to middle of screen is the active link
       setActiveLink(viewList[0]?.link ?? "");
     }
     document.addEventListener("scroll", recheck);
