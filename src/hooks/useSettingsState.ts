@@ -1,3 +1,4 @@
+import isEqual from "lodash.isequal";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { SubtitleStyling } from "@/stores/subtitles";
@@ -9,8 +10,10 @@ export function useDerived<T>(
   useEffect(() => {
     setOverwrite(undefined);
   }, [initial]);
-
-  const changed = overwrite !== initial && overwrite !== undefined;
+  const changed = useMemo(
+    () => !isEqual(overwrite, initial) && overwrite !== undefined,
+    [overwrite, initial]
+  );
   const data = overwrite === undefined ? initial : overwrite;
 
   const reset = useCallback(() => setOverwrite(undefined), [setOverwrite]);

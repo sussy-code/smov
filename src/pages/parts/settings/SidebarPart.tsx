@@ -18,9 +18,10 @@ export function SidebarPart() {
 
   const settingLinks = [
     { text: "Account", id: "settings-account", icon: Icons.USER },
-    { text: "Locale", id: "settings-locale", icon: Icons.LINK },
+    { text: "Locale", id: "settings-locale", icon: Icons.BOOKMARK },
     { text: "Appearance", id: "settings-appearance", icon: Icons.GITHUB },
     { text: "Captions", id: "settings-captions", icon: Icons.CAPTIONS },
+    { text: "Connections", id: "settings-connection", icon: Icons.LINK },
   ];
 
   useEffect(() => {

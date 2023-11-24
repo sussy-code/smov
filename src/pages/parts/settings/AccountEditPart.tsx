@@ -13,7 +13,10 @@ export function AccountEditPart() {
 
   return (
     <SettingsCard paddingClass="px-8 py-10" className="!mt-8">
-      <ProfileEditModal id={profileEditModal.id} />
+      <ProfileEditModal
+        id={profileEditModal.id}
+        close={profileEditModal.hide}
+      />
       <div className="grid lg:grid-cols-[auto,1fr] gap-8">
         <div>
           <UserAvatar

@@ -72,10 +72,10 @@ export function useChromecast() {
 
     // setup event listener
     function listenToEvents(e: cast.framework.RemotePlayerChangedEvent) {
-      console.log("chromecast event", e);
+      console.debug("chromecast event", e);
     }
     function connectionChanged(e: cast.framework.RemotePlayerChangedEvent) {
-      console.log("chromecast event connection changed", e);
+      console.info("chromecast event connection changed", e);
     }
     remotePlayerController.current.addEventListener(
       cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,

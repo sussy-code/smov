@@ -44,7 +44,7 @@ module.exports = {
     "react/destructuring-assignment": "off",
     "no-underscore-dangle": "off",
     "@typescript-eslint/no-explicit-any": "off",
-    "no-console": ["error", { allow: ["warn", "error"] }],
+    "no-console": ["warn", { allow: ["warn", "error", "debug", "info"] }],
     "@typescript-eslint/no-this-alias": "off",
     "import/prefer-default-export": "off",
     "@typescript-eslint/no-empty-function": "off",

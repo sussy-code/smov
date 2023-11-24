@@ -55,7 +55,7 @@ export function OverlayPortal(props: {
                   onDeactivate: close,
                 }}
               >
-                <div className="popout-wrapper absolute overflow-hidden pointer-events-auto inset-0 z-[999] select-none">
+                <div className="popout-wrapper fixed overflow-hidden pointer-events-auto inset-0 z-[999] select-none">
                   <Transition animation="fade" isChild>
                     <div
                       onClick={close}

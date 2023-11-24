@@ -1,8 +1,10 @@
 import classNames from "classnames";
-import { useEffect } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import { useAsyncFn } from "react-use";
 
+import { base64ToBuffer, decryptData } from "@/backend/accounts/crypto";
 import { getSessions } from "@/backend/accounts/sessions";
+import { updateSettings } from "@/backend/accounts/settings";
 import { Button } from "@/components/Button";
 import { WideContainer } from "@/components/layout/WideContainer";
 import { Heading1 } from "@/components/utils/Text";
@@ -12,6 +14,7 @@ import { useSettingsState } from "@/hooks/useSettingsState";
 import { AccountActionsPart } from "@/pages/parts/settings/AccountActionsPart";
 import { AccountEditPart } from "@/pages/parts/settings/AccountEditPart";
 import { CaptionsPart } from "@/pages/parts/settings/CaptionsPart";
+import { ConnectionsPart } from "@/pages/parts/settings/ConnectionsPart";
 import { DeviceListPart } from "@/pages/parts/settings/DeviceListPart";
 import { RegisterCalloutPart } from "@/pages/parts/settings/RegisterCalloutPart";
 import { SidebarPart } from "@/pages/parts/settings/SidebarPart";
@@ -71,10 +74,18 @@ export function SettingsPage() {
   const setTheme = useThemeStore((s) => s.setTheme);
 
   const appLanguage = useLanguageStore((s) => s.language);
+  const setAppLanguage = useLanguageStore((s) => s.setLanguage);
 
   const subStyling = useSubtitleStore((s) => s.styling);
+  const setSubStyling = useSubtitleStore((s) => s.updateStyling);
 
-  const deviceName = useAuthStore((s) => s.account?.deviceName);
+  const account = useAuthStore((s) => s.account);
+  const decryptedName = useMemo(() => {
+    if (!account) return "";
+    return decryptData(account.deviceName, base64ToBuffer(account.seed));
+  }, [account]);
+
+  const backendUrl = useBackendUrl();
 
   const user = useAuthStore();
 
@@ -82,9 +93,23 @@ export function SettingsPage() {
     activeTheme,
     appLanguage,
     subStyling,
-    deviceName
+    decryptedName
   );
 
+  const saveChanges = useCallback(async () => {
+    console.log(state);
+
+    if (account) {
+      await updateSettings(backendUrl, account, {
+        applicationLanguage: state.appLanguage.state,
+        applicationTheme: state.theme.state ?? undefined,
+      });
+    }
+
+    setAppLanguage(state.appLanguage.state);
+    setTheme(state.theme.state);
+    setSubStyling(state.subtitleStyling.state);
+  }, [state, account, backendUrl, setAppLanguage, setTheme, setSubStyling]);
   return (
     <SubPageLayout>
       <SettingsLayout>
@@ -110,20 +135,28 @@ export function SettingsPage() {
         <div id="settings-captions" className="mt-48">
           <CaptionsPart
             styling={state.subtitleStyling.state}
-            setStyling={(s) => s}
+            setStyling={state.subtitleStyling.set}
           />
         </div>
-      </SettingsLayout>
-
-      {state.changed ? (
-        <div className="bg-settings-saveBar-background border-t border-settings-card-border/50 py-4 w-full fixed bottom-0 flex justify-between px-8 items-center">
-          <p className="text-type-danger">You have unsaved changes</p>
-          <div className="space-x-6">
-            <Button theme="secondary">Reset</Button>
-            <Button theme="purple">Save</Button>
-          </div>
+        <div id="settings-connection" className="mt-48">
+          <ConnectionsPart />
         </div>
-      ) : null}
+      </SettingsLayout>
+      <div
+        className={`bg-settings-saveBar-background border-t border-settings-card-border/50 py-4 transition-opacity w-full fixed bottom-0 flex justify-between px-8 items-center ${
+          state.changed ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        <p className="text-type-danger">You have unsaved changes</p>
+        <div className="space-x-6">
+          <Button theme="secondary" onClick={state.reset}>
+            Reset
+          </Button>
+          <Button theme="purple" onClick={saveChanges}>
+            Save
+          </Button>
+        </div>
+      </div>
     </SubPageLayout>
   );
 }

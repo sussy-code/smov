@@ -109,6 +109,7 @@ export const defaultTheme = {
       authentication: {
         border: "#393954",
         inputBg: "#171728",
+        inputBgHover: "#171726",
         wordBackground: "#171728",
         copyText: "#58587A",
         copyTextHover: "#8888AA",
