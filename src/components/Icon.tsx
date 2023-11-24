@@ -57,6 +57,8 @@ export enum Icons {
   COINS = "coins",
   LOGOUT = "logout",
   MENU = "menu",
+  LOCK = "lock",
+  UNLOCK = "unlock",
 }
 
 export interface IconProps {
@@ -121,6 +123,8 @@ const iconList: Record<Icons, string> = {
   coins: `<svg width="1em" height="1em" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.8125 7.69742V7.21875C15.8125 5.06344 12.5615 3.4375 8.25 3.4375C3.93852 3.4375 0.6875 5.06344 0.6875 7.21875V10.6562C0.6875 12.4515 2.94336 13.878 6.1875 14.3052V14.7812C6.1875 16.9366 9.43852 18.5625 13.75 18.5625C18.0615 18.5625 21.3125 16.9366 21.3125 14.7812V11.3438C21.3125 9.56484 19.128 8.13656 15.8125 7.69742ZM4.8125 12.6216C3.12898 12.1516 2.0625 11.3773 2.0625 10.6562V9.44711C2.76375 9.94383 3.70305 10.3443 4.8125 10.6133V12.6216ZM11.6875 10.6133C12.797 10.3443 13.7362 9.94383 14.4375 9.44711V10.6562C14.4375 11.3773 13.371 12.1516 11.6875 12.6216V10.6133ZM10.3125 16.7466C8.62898 16.2766 7.5625 15.5023 7.5625 14.7812V14.4229C7.78852 14.4315 8.01711 14.4375 8.25 14.4375C8.58344 14.4375 8.90914 14.4263 9.22883 14.4074C9.58397 14.5346 9.94572 14.6424 10.3125 14.7305V16.7466ZM10.3125 12.9121C9.62964 13.013 8.94027 13.0633 8.25 13.0625C7.55973 13.0633 6.87036 13.013 6.1875 12.9121V10.8677C6.87137 10.9568 7.56035 11.001 8.25 11C8.93965 11.001 9.62863 10.9568 10.3125 10.8677V12.9121ZM15.8125 17.0371C14.4448 17.2376 13.0552 17.2376 11.6875 17.0371V14.9875C12.3712 15.0794 13.0602 15.1253 13.75 15.125C14.4397 15.126 15.1286 15.0818 15.8125 14.9927V17.0371ZM19.9375 14.7812C19.9375 15.5023 18.871 16.2766 17.1875 16.7466V14.7383C18.297 14.4693 19.2362 14.0688 19.9375 13.5721V14.7812Z" fill="currentColor"/></svg>`,
   logout: `<svg style="transform: scaleX(-1);" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>`,
   menu: `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`,
+  lock: `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>`,
+  unlock: `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-unlock"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 9.9-1"></path></svg>`,
 };
 
 function ChromeCastButton() {

@@ -42,7 +42,7 @@ function SettingsLayout(props: { children: React.ReactNode }) {
       <div
         className={classNames(
           "grid gap-12",
-          isMobile ? "grid-cols-1" : "lg:grid-cols-[260px,1fr]"
+          isMobile ? "grid-cols-1" : "lg:grid-cols-[310px,1fr]"
         )}
       >
         <SidebarPart />

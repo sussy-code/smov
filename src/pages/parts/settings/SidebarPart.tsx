@@ -1,14 +1,37 @@
+import classNames from "classnames";
 import { useCallback, useEffect, useState } from "react";
 import Sticky from "react-stickynode";
 import { useAsync } from "react-use";
 
 import { getBackendMeta } from "@/backend/accounts/meta";
-import { Icons } from "@/components/Icon";
+import { Icon, Icons } from "@/components/Icon";
 import { SidebarLink, SidebarSection } from "@/components/layout/Sidebar";
 import { Divider } from "@/components/utils/Divider";
 import { useBackendUrl } from "@/hooks/auth/useBackendUrl";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { conf } from "@/setup/config";
+
+function BackendUrl(props: { url: string }) {
+  const url = props.url.replace(/https?:\/\//, "");
+  const secure = props.url.startsWith("https://");
+  return (
+    <div className="flex items-center gap-2">
+      <div
+        title={secure ? "Secure" : "Insecure"}
+        className={classNames(
+          "w-5 min-w-[1.25rem] h-5 rounded flex justify-center items-center",
+          secure ? "bg-emerald-200/30 text-white" : "bg-red-600/20 text-white"
+        )}
+      >
+        <Icon
+          className="opacity-50"
+          icon={secure ? Icons.LOCK : Icons.UNLOCK}
+        />
+      </div>
+      {url}
+    </div>
+  );
+}
 
 export function SidebarPart() {
   const { isMobile } = useIsMobile();
@@ -95,7 +118,7 @@ export function SidebarPart() {
           </SidebarSection>
           <Divider />
         </div>
-        <SidebarSection title="App information">
+        <SidebarSection className="text-sm" title="App information">
           <div className="flex justify-between items-center space-x-3">
             <span>Version</span>
             <span>{conf().APP_VERSION}</span>
@@ -111,8 +134,10 @@ export function SidebarPart() {
                 <span>{backendMeta.value.version}</span>
               </div>
               <div className="flex justify-between items-center space-x-3">
-                <span>Backend URL</span>
-                <span className="text-right">{backendUrl}</span>
+                <span className="whitespace-nowrap">Backend URL</span>
+                <span className="text-right">
+                  <BackendUrl url={backendUrl} />
+                </span>
               </div>
             </>
           ) : null}
