@@ -1,9 +1,12 @@
 import { useCallback, useEffect, useState } from "react";
 import Sticky from "react-stickynode";
+import { useAsync } from "react-use";
 
+import { getBackendMeta } from "@/backend/accounts/meta";
 import { Icons } from "@/components/Icon";
 import { SidebarLink, SidebarSection } from "@/components/layout/Sidebar";
 import { Divider } from "@/components/utils/Divider";
+import { useBackendUrl } from "@/hooks/auth/useBackendUrl";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { conf } from "@/setup/config";
 
@@ -22,6 +25,13 @@ export function SidebarPart() {
     { text: "Connections", id: "settings-connection", icon: Icons.LINK },
   ];
 
+  const backendUrl = useBackendUrl();
+
+  const backendMeta = useAsync(async () => {
+    return getBackendMeta(backendUrl);
+  }, [backendUrl]);
+
+  // TODO loading/error state for backend
   useEffect(() => {
     function recheck() {
       const windowHeight =
@@ -94,6 +104,18 @@ export function SidebarPart() {
             <span>Domain</span>
             <span className="text-right">{hostname}</span>
           </div>
+          {backendMeta.value ? (
+            <>
+              <div className="flex justify-between items-center space-x-3">
+                <span>Backend Version</span>
+                <span>{backendMeta.value.version}</span>
+              </div>
+              <div className="flex justify-between items-center space-x-3">
+                <span>Backend URL</span>
+                <span className="text-right">{backendUrl}</span>
+              </div>
+            </>
+          ) : null}
         </SidebarSection>
       </Sticky>
     </div>
