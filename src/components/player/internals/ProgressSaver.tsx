@@ -3,7 +3,7 @@ import { useInterval } from "react-use";
 
 import { playerStatus } from "@/stores/player/slices/source";
 import { usePlayerStore } from "@/stores/player/store";
-import { useProgressStore } from "@/stores/progress";
+import { ProgressItem, useProgressStore } from "@/stores/progress";
 
 export function ProgressSaver() {
   const meta = usePlayerStore((s) => s.meta);
@@ -11,6 +11,8 @@ export function ProgressSaver() {
   const updateItem = useProgressStore((s) => s.updateItem);
   const status = usePlayerStore((s) => s.status);
   const hasPlayedOnce = usePlayerStore((s) => s.mediaPlaying.hasPlayedOnce);
+
+  const lastSavedRef = useRef<ProgressItem | null>(null);
 
   const dataRef = useRef({
     updateItem,
@@ -32,13 +34,24 @@ export function ProgressSaver() {
     if (!d.progress || !d.meta || !d.updateItem) return;
     if (d.status !== playerStatus.PLAYING) return;
     if (!hasPlayedOnce) return;
-    d.updateItem({
-      meta: d.meta,
-      progress: {
-        duration: progress.duration,
-        watched: progress.time,
-      },
-    });
+
+    let isDifferent = false;
+    if (!lastSavedRef.current) isDifferent = true;
+    else if (
+      lastSavedRef.current?.duration !== progress.duration ||
+      lastSavedRef.current?.watched !== progress.time
+    )
+      isDifferent = true;
+
+    lastSavedRef.current = {
+      duration: progress.duration,
+      watched: progress.time,
+    };
+    if (isDifferent)
+      d.updateItem({
+        meta: d.meta,
+        progress: lastSavedRef.current,
+      });
   }, 3000);
 
   return null;
