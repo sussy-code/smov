@@ -2,12 +2,19 @@ import classNames from "classnames";
 import { useCallback, useEffect, useMemo } from "react";
 import { useAsyncFn } from "react-use";
 
-import { base64ToBuffer, decryptData } from "@/backend/accounts/crypto";
-import { getSessions } from "@/backend/accounts/sessions";
+import {
+  base64ToBuffer,
+  decryptData,
+  encryptData,
+} from "@/backend/accounts/crypto";
+import { getSessions, updateSession } from "@/backend/accounts/sessions";
 import { updateSettings } from "@/backend/accounts/settings";
+import { editUser } from "@/backend/accounts/user";
 import { Button } from "@/components/Button";
 import { WideContainer } from "@/components/layout/WideContainer";
+import { UserIcons } from "@/components/UserIcon";
 import { Heading1 } from "@/components/utils/Text";
+import { useAuth } from "@/hooks/auth/useAuth";
 import { useBackendUrl } from "@/hooks/auth/useBackendUrl";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { useSettingsState } from "@/hooks/useSettingsState";
@@ -45,7 +52,17 @@ function SettingsLayout(props: { children: React.ReactNode }) {
   );
 }
 
-export function AccountSettings(props: { account: AccountWithToken }) {
+export function AccountSettings(props: {
+  account: AccountWithToken;
+  deviceName: string;
+  setDeviceName: (s: string) => void;
+  colorA: string;
+  setColorA: (s: string) => void;
+  colorB: string;
+  setColorB: (s: string) => void;
+  userIcon: UserIcons;
+  setUserIcon: (s: UserIcons) => void;
+}) {
   const url = useBackendUrl();
   const { account } = props;
   const [sessionsResult, execSessions] = useAsyncFn(() => {
@@ -57,7 +74,16 @@ export function AccountSettings(props: { account: AccountWithToken }) {
 
   return (
     <>
-      <AccountEditPart />
+      <AccountEditPart
+        deviceName={props.deviceName}
+        setDeviceName={props.setDeviceName}
+        colorA={props.colorA}
+        setColorA={props.setColorA}
+        colorB={props.colorB}
+        setColorB={props.setColorB}
+        userIcon={props.userIcon}
+        setUserIcon={props.setUserIcon}
+      />
       <DeviceListPart
         error={!!sessionsResult.error}
         loading={sessionsResult.loading}
@@ -79,7 +105,15 @@ export function SettingsPage() {
   const subStyling = useSubtitleStore((s) => s.styling);
   const setSubStyling = useSubtitleStore((s) => s.updateStyling);
 
+  const proxySet = useAuthStore((s) => s.proxySet);
+  const setProxySet = useAuthStore((s) => s.setProxySet);
+
+  const backendUrlSetting = useAuthStore((s) => s.backendUrl);
+  const setBackendUrl = useAuthStore((s) => s.setBackendUrl);
+
   const account = useAuthStore((s) => s.account);
+  const updateProfile = useAuthStore((s) => s.setAccountProfile);
+  const updateDeviceName = useAuthStore((s) => s.updateDeviceName);
   const decryptedName = useMemo(() => {
     if (!account) return "";
     return decryptData(account.deviceName, base64ToBuffer(account.seed));
@@ -87,29 +121,71 @@ export function SettingsPage() {
 
   const backendUrl = useBackendUrl();
 
+  const { logout } = useAuth();
   const user = useAuthStore();
 
   const state = useSettingsState(
     activeTheme,
     appLanguage,
     subStyling,
-    decryptedName
+    decryptedName,
+    proxySet,
+    backendUrlSetting,
+    account?.profile
   );
 
   const saveChanges = useCallback(async () => {
-    console.log(state);
-
     if (account) {
-      await updateSettings(backendUrl, account, {
-        applicationLanguage: state.appLanguage.state,
-        applicationTheme: state.theme.state ?? undefined,
-      });
+      if (state.appLanguage.changed || state.theme.changed) {
+        await updateSettings(backendUrl, account, {
+          applicationLanguage: state.appLanguage.state,
+          applicationTheme: state.theme.state,
+        });
+      }
+      if (state.deviceName.changed) {
+        const newDeviceName = await encryptData(
+          state.deviceName.state,
+          base64ToBuffer(account.seed)
+        );
+        await updateSession(backendUrl, account, {
+          deviceName: newDeviceName,
+        });
+        updateDeviceName(newDeviceName);
+      }
+      if (state.profile.changed) {
+        await editUser(backendUrl, account, {
+          profile: state.profile.state,
+        });
+      }
     }
 
     setAppLanguage(state.appLanguage.state);
     setTheme(state.theme.state);
     setSubStyling(state.subtitleStyling.state);
-  }, [state, account, backendUrl, setAppLanguage, setTheme, setSubStyling]);
+    setProxySet(state.proxyUrls.state);
+
+    if (state.profile.state) {
+      updateProfile(state.profile.state);
+    }
+
+    // when backend url gets changed, log the user out first
+    if (state.backendUrl.changed) {
+      await logout();
+      setBackendUrl(state.backendUrl.state);
+    }
+  }, [
+    state,
+    account,
+    backendUrl,
+    setAppLanguage,
+    setTheme,
+    setSubStyling,
+    updateDeviceName,
+    updateProfile,
+    setProxySet,
+    setBackendUrl,
+    logout,
+  ]);
   return (
     <SubPageLayout>
       <SettingsLayout>
@@ -117,8 +193,24 @@ export function SettingsPage() {
           <Heading1 border className="!mb-0">
             Account
           </Heading1>
-          {user.account ? (
-            <AccountSettings account={user.account} />
+          {user.account && state.profile.state ? (
+            <AccountSettings
+              account={user.account}
+              deviceName={state.deviceName.state}
+              setDeviceName={state.deviceName.set}
+              colorA={state.profile.state.colorA}
+              setColorA={(v) => {
+                state.profile.set((s) => (s ? { ...s, colorA: v } : undefined));
+              }}
+              colorB={state.profile.state.colorB}
+              setColorB={(v) =>
+                state.profile.set((s) => (s ? { ...s, colorB: v } : undefined))
+              }
+              userIcon={state.profile.state.icon as any}
+              setUserIcon={(v) =>
+                state.profile.set((s) => (s ? { ...s, icon: v } : undefined))
+              }
+            />
           ) : (
             <RegisterCalloutPart />
           )}
@@ -139,7 +231,12 @@ export function SettingsPage() {
           />
         </div>
         <div id="settings-connection" className="mt-48">
-          <ConnectionsPart />
+          <ConnectionsPart
+            backendUrl={state.backendUrl.state}
+            setBackendUrl={state.backendUrl.set}
+            proxyUrls={state.proxyUrls.state}
+            setProxyUrls={state.proxyUrls.set}
+          />
         </div>
       </SettingsLayout>
       <div

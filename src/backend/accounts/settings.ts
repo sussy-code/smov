@@ -5,7 +5,7 @@ import { AccountWithToken } from "@/stores/auth";
 
 export interface SettingsInput {
   applicationLanguage?: string;
-  applicationTheme?: string;
+  applicationTheme?: string | null;
   defaultSubtitleLanguage?: string;
 }
 

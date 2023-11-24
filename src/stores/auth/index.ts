@@ -26,7 +26,9 @@ interface AuthStore {
   setAccount(acc: AccountWithToken): void;
   updateDeviceName(deviceName: string): void;
   updateAccount(acc: Account): void;
+  setAccountProfile(acc: Account["profile"]): void;
   setBackendUrl(url: null | string): void;
+  setProxySet(urls: null | string[]): void;
 }
 
 export const useAuthStore = create(
@@ -48,6 +50,18 @@ export const useAuthStore = create(
       setBackendUrl(v) {
         set((s) => {
           s.backendUrl = v;
+        });
+      },
+      setProxySet(urls) {
+        set((s) => {
+          s.proxySet = urls;
+        });
+      },
+      setAccountProfile(profile) {
+        set((s) => {
+          if (s.account) {
+            s.account.profile = profile;
+          }
         });
       },
       updateAccount(acc) {

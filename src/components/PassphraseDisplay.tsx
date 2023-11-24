@@ -3,7 +3,7 @@ import { useCopyToClipboard, useMountedState } from "react-use";
 
 import { Icon, Icons } from "./Icon";
 
-export function PassphaseDisplay(props: { mnemonic: string }) {
+export function PassphraseDisplay(props: { mnemonic: string }) {
   const individualWords = props.mnemonic.split(" ");
 
   const [, copy] = useCopyToClipboard();
@@ -23,7 +23,7 @@ export function PassphaseDisplay(props: { mnemonic: string }) {
   return (
     <div className="rounded-lg border border-authentication-border/50 ">
       <div className="px-4 py-2 flex justify-between border-b border-authentication-border/50">
-        <p className="font-bold text-sm text-white">Passphase</p>
+        <p className="font-bold text-sm text-white">Passphrase</p>
         <button
           type="button"
           className="text-authentication-copyText hover:text-authentication-copyTextHover transition-colors flex gap-2 items-center cursor-pointer"
@@ -37,10 +37,12 @@ export function PassphaseDisplay(props: { mnemonic: string }) {
         </button>
       </div>
       <div className="px-4 py-4 grid grid-cols-4 gap-2">
-        {individualWords.map((word) => (
+        {individualWords.map((word, i) => (
           <div
             className="px-4 rounded-md py-2 bg-authentication-wordBackground text-white font-medium text-center"
-            key={word}
+            // this doesn't get rerendered nor does it have state so its fine
+            // eslint-disable-next-line react/no-array-index-key
+            key={i}
           >
             {word}
           </div>

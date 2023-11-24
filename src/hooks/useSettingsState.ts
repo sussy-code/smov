@@ -1,11 +1,18 @@
 import isEqual from "lodash.isequal";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import {
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 
 import { SubtitleStyling } from "@/stores/subtitles";
 
 export function useDerived<T>(
   initial: T
-): [T, (v: T) => void, () => void, boolean] {
+): [T, Dispatch<SetStateAction<T>>, () => void, boolean] {
   const [overwrite, setOverwrite] = useState<T | undefined>(undefined);
   useEffect(() => {
     setOverwrite(undefined);
@@ -14,19 +21,39 @@ export function useDerived<T>(
     () => !isEqual(overwrite, initial) && overwrite !== undefined,
     [overwrite, initial]
   );
+  const setter = useCallback<Dispatch<SetStateAction<T>>>(
+    (inp) => {
+      if (!(inp instanceof Function)) setOverwrite(inp);
+      else setOverwrite((s) => inp(s ?? initial));
+    },
+    [initial, setOverwrite]
+  );
   const data = overwrite === undefined ? initial : overwrite;
 
   const reset = useCallback(() => setOverwrite(undefined), [setOverwrite]);
 
-  return [data, setOverwrite, reset, changed];
+  return [data, setter, reset, changed];
 }
 
 export function useSettingsState(
   theme: string | null,
   appLanguage: string,
   subtitleStyling: SubtitleStyling,
-  deviceName?: string
+  deviceName: string,
+  proxyUrls: string[] | null,
+  backendUrl: string | null,
+  profile:
+    | {
+        colorA: string;
+        colorB: string;
+        icon: string;
+      }
+    | undefined
 ) {
+  const [proxyUrlsState, setProxyUrls, resetProxyUrls, proxyUrlsChanged] =
+    useDerived(proxyUrls);
+  const [backendUrlState, setBackendUrl, resetBackendUrl, backendUrlChanged] =
+    useDerived(backendUrl);
   const [themeState, setTheme, resetTheme, themeChanged] = useDerived(theme);
   const [
     appLanguageState,
@@ -42,22 +69,27 @@ export function useSettingsState(
     resetDeviceName,
     deviceNameChanged,
   ] = useDerived(deviceName);
+  const [profileState, setProfileState, resetProfile, profileChanged] =
+    useDerived(profile);
 
   function reset() {
     resetTheme();
     resetAppLanguage();
     resetSubStyling();
+    resetProxyUrls();
+    resetBackendUrl();
     resetDeviceName();
+    resetProfile();
   }
 
-  const changed = useMemo(
-    () =>
-      themeChanged ||
-      appLanguageChanged ||
-      subStylingChanged ||
-      deviceNameChanged,
-    [themeChanged, appLanguageChanged, subStylingChanged, deviceNameChanged]
-  );
+  const changed =
+    themeChanged ||
+    appLanguageChanged ||
+    subStylingChanged ||
+    deviceNameChanged ||
+    backendUrlChanged ||
+    proxyUrlsChanged ||
+    profileChanged;
 
   return {
     reset,
@@ -65,18 +97,37 @@ export function useSettingsState(
     theme: {
       state: themeState,
       set: setTheme,
+      changed: themeChanged,
     },
     appLanguage: {
       state: appLanguageState,
       set: setAppLanguage,
+      changed: appLanguageChanged,
     },
     subtitleStyling: {
       state: subStylingState,
       set: setSubStyling,
+      changed: subStylingChanged,
     },
     deviceName: {
       state: deviceNameState,
       set: setDeviceNameState,
+      changed: deviceNameChanged,
+    },
+    proxyUrls: {
+      state: proxyUrlsState,
+      set: setProxyUrls,
+      changed: proxyUrlsChanged,
+    },
+    backendUrl: {
+      state: backendUrlState,
+      set: setBackendUrl,
+      changed: backendUrlChanged,
+    },
+    profile: {
+      state: profileState,
+      set: setProfileState,
+      changed: profileChanged,
     },
   };
 }

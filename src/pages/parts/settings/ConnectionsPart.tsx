@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { Dispatch, SetStateAction, useCallback } from "react";
 
 import { Button } from "@/components/Button";
 import { Toggle } from "@/components/buttons/Toggle";
@@ -8,45 +8,38 @@ import { AuthInputBox } from "@/components/text-inputs/AuthInputBox";
 import { Divider } from "@/components/utils/Divider";
 import { Heading1 } from "@/components/utils/Text";
 
-let idNum = 0;
-
-interface ProxyItem {
-  url: string;
-  id: number;
+interface ProxyEditProps {
+  proxyUrls: string[] | null;
+  setProxyUrls: Dispatch<SetStateAction<string[] | null>>;
 }
 
-function ProxyEdit() {
-  const [customWorkers, setCustomWorkers] = useState<ProxyItem[] | null>(null);
+interface BackendEditProps {
+  backendUrl: string | null;
+  setBackendUrl: Dispatch<SetStateAction<string | null>>;
+}
 
+function ProxyEdit({ proxyUrls, setProxyUrls }: ProxyEditProps) {
   const add = useCallback(() => {
-    idNum += 1;
-    setCustomWorkers((s) => [
-      ...(s ?? []),
-      {
-        id: idNum,
-        url: "",
-      },
-    ]);
-  }, [setCustomWorkers]);
+    setProxyUrls((s) => [...(s ?? []), ""]);
+  }, [setProxyUrls]);
 
   const changeItem = useCallback(
-    (id: number, val: string) => {
-      setCustomWorkers((s) => [
-        ...(s ?? []).map((v) => {
-          if (v.id !== id) return v;
-          v.url = val;
-          return v;
+    (index: number, val: string) => {
+      setProxyUrls((s) => [
+        ...(s ?? []).map((v, i) => {
+          if (i !== index) return v;
+          return val;
         }),
       ]);
     },
-    [setCustomWorkers]
+    [setProxyUrls]
   );
 
   const removeItem = useCallback(
-    (id: number) => {
-      setCustomWorkers((s) => [...(s ?? []).filter((v) => v.id !== id)]);
+    (index: number) => {
+      setProxyUrls((s) => [...(s ?? []).filter((v, i) => i !== index)]);
     },
-    [setCustomWorkers]
+    [setProxyUrls]
   );
 
   return (
@@ -61,30 +54,35 @@ function ProxyEdit() {
         </div>
         <div>
           <Toggle
-            onClick={() => setCustomWorkers((s) => (s === null ? [] : null))}
-            enabled={customWorkers !== null}
+            onClick={() => setProxyUrls((s) => (s === null ? [] : null))}
+            enabled={proxyUrls !== null}
           />
         </div>
       </div>
-      {customWorkers !== null ? (
+      {proxyUrls !== null ? (
         <>
           <Divider marginClass="my-6 px-8 box-content -mx-8" />
           <p className="text-white font-bold mb-3">Worker URLs</p>
 
           <div className="my-6 space-y-2 max-w-md">
-            {(customWorkers?.length ?? 0) === 0 ? (
+            {(proxyUrls?.length ?? 0) === 0 ? (
               <p>No workers yet, add one below</p>
             ) : null}
-            {(customWorkers ?? []).map((v) => (
-              <div className="grid grid-cols-[1fr,auto] items-center gap-2">
+            {(proxyUrls ?? []).map((v, i) => (
+              <div
+                // not the best but we can live with it
+                // eslint-disable-next-line react/no-array-index-key
+                key={i}
+                className="grid grid-cols-[1fr,auto] items-center gap-2"
+              >
                 <AuthInputBox
-                  value={v.url}
-                  onChange={(val) => changeItem(v.id, val)}
+                  value={v}
+                  onChange={(val) => changeItem(i, val)}
                   placeholder="https://"
                 />
                 <button
                   type="button"
-                  onClick={() => removeItem(v.id)}
+                  onClick={() => removeItem(i)}
                   className="h-full scale-90 hover:scale-100 rounded-full aspect-square bg-authentication-inputBg hover:bg-authentication-inputBgHover flex justify-center items-center transition-transform duration-200 hover:text-white cursor-pointer"
                 >
                   <Icon className="text-xl" icon={Icons.X} />
@@ -102,9 +100,7 @@ function ProxyEdit() {
   );
 }
 
-function BackendEdit() {
-  const [customBackendUrl, setCustomBackendUrl] = useState<string | null>(null);
-
+function BackendEdit({ backendUrl, setBackendUrl }: BackendEditProps) {
   return (
     <SettingsCard>
       <div className="flex justify-between items-center">
@@ -117,32 +113,35 @@ function BackendEdit() {
         </div>
         <div>
           <Toggle
-            onClick={() => setCustomBackendUrl((s) => (s === null ? "" : null))}
-            enabled={customBackendUrl !== null}
+            onClick={() => setBackendUrl((s) => (s === null ? "" : null))}
+            enabled={backendUrl !== null}
           />
         </div>
       </div>
-      {customBackendUrl !== null ? (
+      {backendUrl !== null ? (
         <>
           <Divider marginClass="my-6 px-8 box-content -mx-8" />
           <p className="text-white font-bold mb-3">Custom server URL</p>
-          <AuthInputBox
-            onChange={setCustomBackendUrl}
-            value={customBackendUrl ?? ""}
-          />
+          <AuthInputBox onChange={setBackendUrl} value={backendUrl ?? ""} />
         </>
       ) : null}
     </SettingsCard>
   );
 }
 
-export function ConnectionsPart() {
+export function ConnectionsPart(props: BackendEditProps & ProxyEditProps) {
   return (
     <div>
       <Heading1 border>Connections</Heading1>
       <div className="space-y-6">
-        <ProxyEdit />
-        <BackendEdit />
+        <ProxyEdit
+          proxyUrls={props.proxyUrls}
+          setProxyUrls={props.setProxyUrls}
+        />
+        <BackendEdit
+          backendUrl={props.backendUrl}
+          setBackendUrl={props.setBackendUrl}
+        />
       </div>
     </div>
   );

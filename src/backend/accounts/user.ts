@@ -18,6 +18,14 @@ export interface UserResponse {
   };
 }
 
+export interface UserEdit {
+  profile?: {
+    colorA: string;
+    colorB: string;
+    icon: string;
+  };
+}
+
 export interface BookmarkResponse {
   tmdbId: string;
   meta: {
@@ -117,6 +125,22 @@ export async function getUser(
     "/users/@me",
     {
       headers: getAuthHeaders(token),
+      baseURL: url,
+    }
+  );
+}
+
+export async function editUser(
+  url: string,
+  account: AccountWithToken,
+  object: UserEdit
+): Promise<{ user: UserResponse; session: SessionResponse }> {
+  return ofetch<{ user: UserResponse; session: SessionResponse }>(
+    `/users/${account.userId}`,
+    {
+      method: "PATCH",
+      headers: getAuthHeaders(account.token),
+      body: object,
       baseURL: url,
     }
   );

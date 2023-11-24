@@ -8,7 +8,7 @@ import {
   LargeCardButtons,
   LargeCardText,
 } from "@/components/layout/LargeCard";
-import { PassphaseDisplay } from "@/components/PassphraseDisplay";
+import { PassphraseDisplay } from "@/components/PassphraseDisplay";
 
 interface PassphraseGeneratePartProps {
   onNext?: (mnemonic: string) => void;
@@ -23,7 +23,7 @@ export function PassphraseGeneratePart(props: PassphraseGeneratePartProps) {
         If you lose this, you&apos;re a silly goose and will be posted on the
         wall of shame™️
       </LargeCardText>
-      <PassphaseDisplay mnemonic={mnemonic} />
+      <PassphraseDisplay mnemonic={mnemonic} />
 
       <LargeCardButtons>
         <Button theme="purple" onClick={() => props.onNext?.(mnemonic)}>

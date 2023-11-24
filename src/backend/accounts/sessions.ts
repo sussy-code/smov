@@ -12,9 +12,26 @@ export interface SessionResponse {
   userAgent: string;
 }
 
+export interface SessionUpdate {
+  deviceName: string;
+}
+
 export async function getSessions(url: string, account: AccountWithToken) {
   return ofetch<SessionResponse[]>(`/users/${account.userId}/sessions`, {
     headers: getAuthHeaders(account.token),
+    baseURL: url,
+  });
+}
+
+export async function updateSession(
+  url: string,
+  account: AccountWithToken,
+  update: SessionUpdate
+) {
+  return ofetch<SessionResponse[]>(`/sessions/${account.sessionId}`, {
+    method: "PATCH",
+    headers: getAuthHeaders(account.token),
+    body: update,
     baseURL: url,
   });
 }
