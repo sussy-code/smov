@@ -107,12 +107,19 @@ export function LinksDropdown(props: { children: React.ReactNode }) {
   return (
     <div className="relative is-dropdown">
       <div
-        className="cursor-pointer tabbable rounded-full"
+        className="cursor-pointer tabbable rounded-full flex gap-2 text-white items-center py-2 px-3 bg-pill-background bg-opacity-50"
         tabIndex={0}
         onClick={toggleOpen}
         onKeyUp={(evt) => evt.key === "Enter" && toggleOpen()}
       >
         {props.children}
+        <Icon
+          className={classNames(
+            "text-xl transition-transform duration-100",
+            open ? "rotate-180" : ""
+          )}
+          icon={Icons.CHEVRON_DOWN}
+        />
       </div>
       <Transition animation="slide-down" show={open}>
         <div className="rounded-lg absolute w-64 bg-dropdown-altBackground top-full mt-3 right-0">

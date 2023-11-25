@@ -42,7 +42,7 @@ function SettingsLayout(props: { children: React.ReactNode }) {
       <div
         className={classNames(
           "grid gap-12",
-          isMobile ? "grid-cols-1" : "lg:grid-cols-[310px,1fr]"
+          isMobile ? "grid-cols-1" : "lg:grid-cols-[280px,1fr]"
         )}
       >
         <SidebarPart />
@@ -240,16 +240,24 @@ export function SettingsPage() {
         </div>
       </SettingsLayout>
       <div
-        className={`bg-settings-saveBar-background border-t border-settings-card-border/50 py-4 transition-opacity w-full fixed bottom-0 flex justify-between px-8 items-center ${
+        className={`bg-settings-saveBar-background border-t border-settings-card-border/50 py-4 transition-opacity w-full fixed bottom-0 flex justify-between flex-col md:flex-row px-8 items-start md:items-center gap-3 ${
           state.changed ? "opacity-100" : "opacity-0"
         }`}
       >
         <p className="text-type-danger">You have unsaved changes</p>
-        <div className="space-x-6">
-          <Button theme="secondary" onClick={state.reset}>
+        <div className="space-x-3 w-full md:w-auto flex">
+          <Button
+            className="w-full md:w-auto"
+            theme="secondary"
+            onClick={state.reset}
+          >
             Reset
           </Button>
-          <Button theme="purple" onClick={saveChanges}>
+          <Button
+            className="w-full md:w-auto"
+            theme="purple"
+            onClick={saveChanges}
+          >
             Save
           </Button>
         </div>

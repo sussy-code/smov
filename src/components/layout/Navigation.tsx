@@ -101,7 +101,7 @@ export function Navigation(props: NavigationProps) {
             </div>
             <div className="relative">
               <LinksDropdown>
-                {loggedIn ? <UserAvatar /> : <NoUserAvatar />}
+                {loggedIn ? <UserAvatar withName /> : <NoUserAvatar />}
               </LinksDropdown>
             </div>
           </div>

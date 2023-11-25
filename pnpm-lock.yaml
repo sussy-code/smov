@@ -95,9 +95,9 @@ dependencies:
   react-router-dom:
     specifier: ^5.2.0
     version: 5.3.4(react@17.0.2)
-  react-stickynode:
-    specifier: ^4.1.0
-    version: 4.1.0(react-dom@17.0.2)(react@17.0.2)
+  react-sticky-el:
+    specifier: ^2.1.0
+    version: 2.1.0(react-dom@17.0.2)(react@17.0.2)
   react-use:
     specifier: ^17.4.0
     version: 17.4.0(react-dom@17.0.2)(react@17.0.2)
@@ -3657,10 +3657,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /eventemitter3@3.1.2:
-    resolution: {integrity: sha512-tvtQIeLVHjDkJYnzf2dgVMxfuSGJeM/7UCG17TT4EumTfNtF+0nebF/4zWOIkCreAbtNqhGEboB6BWrwqNaw4Q==}
-    dev: false
-
   /fast-deep-equal@3.1.3:
     resolution: {integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==}
 
@@ -4595,6 +4591,7 @@ packages:
 
   /lodash@4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
+    dev: true
 
   /loose-envify@1.4.0:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
@@ -4994,10 +4991,6 @@ packages:
     resolution: {integrity: sha512-Dp6zGqpTdETdR63lehJYPeIOqpiNBNtc7BpWSLrOje7UaIsE5aY92r/AunQA7rsXvet3lrJ3JnZX29UPTKXyKQ==}
     dev: true
 
-  /performance-now@2.1.0:
-    resolution: {integrity: sha512-7EAHlyLHI56VEIdK57uwHdHKIaAGbnXPiw0yWbarQZOKaKpvUIgW0jWRVLiatnM+XXlSwsanIBH/hzGMJulMow==}
-    dev: false
-
   /picocolors@1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
     dev: true
@@ -5165,12 +5158,6 @@ packages:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
     dev: true
 
-  /raf@3.4.1:
-    resolution: {integrity: sha512-Sq4CW4QhwOHE8ucn6J34MqtZCeWFP2aQSmrlroYgqAV1PjStIhJXxYuTgUIfkEk7zTLjmIjLmU5q+fbD1NnOJA==}
-    dependencies:
-      performance-now: 2.1.0
-    dev: false
-
   /randombytes@2.1.0:
     resolution: {integrity: sha512-vYl3iOX+4CKUWuxGi9Ukhie6fsqXqS9FE2Zaic4tNFD2N2QQaXOMFbuKK4QmDHC0JO6B1Zp41J0LpT0oR68amQ==}
     dependencies:
@@ -5286,19 +5273,14 @@ packages:
       tiny-warning: 1.0.3
     dev: false
 
-  /react-stickynode@4.1.0(react-dom@17.0.2)(react@17.0.2):
-    resolution: {integrity: sha512-zylWgfad75jLfh/gYIayDcDWIDwO4weZrsZqDpjZ/axhF06zRjdCWFBgUr33Pvv2+htKWqPSFksWTyB6aMQ1ZQ==}
+  /react-sticky-el@2.1.0(react-dom@17.0.2)(react@17.0.2):
+    resolution: {integrity: sha512-oo+a2GedF4QMfCfm20e9gD+RuuQp/ngvwGMUXAXpST+h4WnmKhuv7x6MQ4X/e3AHiLYgE0zDyJo1Pzo8m51KpA==}
     peerDependencies:
-      react: ^0.14.2 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^0.14.2 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+      react: '>=16.3.0'
+      react-dom: '>=16.3.0'
     dependencies:
-      classnames: 2.3.2
-      core-js: 3.32.1
-      prop-types: 15.8.1
       react: 17.0.2
       react-dom: 17.0.2(react@17.0.2)
-      shallowequal: 1.1.0
-      subscribe-ui-event: 2.0.7
     dev: false
 
   /react-universal-interface@0.6.2(react@17.0.2)(tslib@2.6.2):
@@ -5794,14 +5776,6 @@ packages:
 
   /stylis@4.3.0:
     resolution: {integrity: sha512-E87pIogpwUsUwXw7dNyU4QDjdgVMy52m+XEOPEKUn161cCzWjjhPSQhByfd1CcNvrOLnXQ6OnnZDwnJrz/Z4YQ==}
-    dev: false
-
-  /subscribe-ui-event@2.0.7:
-    resolution: {integrity: sha512-Acrtf9XXl6lpyHAWYeRD1xTPUQHDERfL4GHeNuYAtZMc4Z8Us2iDBP0Fn3xiRvkQ1FO+hx+qRLmPEwiZxp7FDQ==}
-    dependencies:
-      eventemitter3: 3.1.2
-      lodash: 4.17.21
-      raf: 3.4.1
     dev: false
 
   /subsrt-ts@2.1.1:

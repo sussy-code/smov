@@ -87,7 +87,9 @@ function AuthWrapper() {
   if (status.error)
     return (
       <ErrorScreen showResetButton={backendUrl !== userBackendUrl}>
-        Failed to fetch user data. Try resetting the backend URL.
+        {backendUrl !== userBackendUrl
+          ? "Failed to fetch user data. Try resetting the backend URL"
+          : "Failed to fetch user data."}
       </ErrorScreen>
     );
   return <App />;

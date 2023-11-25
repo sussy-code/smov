@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import Sticky from "react-stickynode";
+import Sticky from "react-sticky-el";
 
 import { ThinContainer } from "@/components/layout/ThinContainer";
 import { SearchBarInput } from "@/components/SearchBar";
@@ -19,10 +19,9 @@ export function HeroPart({ setIsSticky, searchParams }: HeroPartProps) {
   const [, setShowBg] = useState(false);
   const bannerSize = useBannerSize();
   const stickStateChanged = useCallback(
-    ({ status }: Sticky.Status) => {
-      const val = status === Sticky.STATUS_FIXED;
-      setShowBg(val);
-      setIsSticky(val);
+    (isFixed) => {
+      setShowBg(isFixed);
+      setIsSticky(isFixed);
     },
     [setShowBg, setIsSticky]
   );
@@ -40,11 +39,13 @@ export function HeroPart({ setIsSticky, searchParams }: HeroPartProps) {
         <div className="relative z-10 mb-16">
           <HeroTitle className="mx-auto max-w-xs">{title}</HeroTitle>
         </div>
-        <div className="relative z-30">
+        <div className="relative h-20 z-30">
           <Sticky
-            enabled
-            top={16 + bannerSize}
-            onStateChange={stickStateChanged}
+            topOffset={-16 + bannerSize}
+            stickyStyle={{
+              paddingTop: `${16 + bannerSize}px`,
+            }}
+            onFixedToggle={stickStateChanged}
           >
             <SearchBarInput
               onChange={setSearch}

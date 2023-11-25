@@ -164,7 +164,8 @@ export function useAuth() {
         const anyError: any = err;
         if (
           anyError?.response?.status === 401 ||
-          anyError?.response?.status === 403
+          anyError?.response?.status === 403 ||
+          anyError?.response?.status === 400
         ) {
           await logout();
           return;

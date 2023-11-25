@@ -1,5 +1,7 @@
 import classNames from "classnames";
+import { useMemo } from "react";
 
+import { base64ToBuffer, decryptData } from "@/backend/accounts/crypto";
 import { Icon, Icons } from "@/components/Icon";
 import { UserIcon } from "@/components/UserIcon";
 import { AccountProfile } from "@/pages/parts/auth/AccountCreatePart";
@@ -42,16 +44,40 @@ export function UserAvatar(props: {
   sizeClass?: string;
   iconClass?: string;
   bottom?: React.ReactNode;
+  withName?: boolean;
 }) {
   const auth = useAuthStore();
-  if (!auth.account) return null;
+
+  const bufferSeed = useMemo(
+    () =>
+      auth.account && auth.account.seed
+        ? base64ToBuffer(auth.account.seed)
+        : null,
+    [auth]
+  );
+
+  if (!auth.account || auth.account === null) return null;
+
+  const deviceName = bufferSeed
+    ? decryptData(auth.account.deviceName, bufferSeed)
+    : "...";
+
   return (
-    <Avatar
-      profile={auth.account.profile}
-      sizeClass={props.sizeClass ?? "w-[2rem] h-[2rem]"}
-      iconClass={props.iconClass}
-      bottom={props.bottom}
-    />
+    <>
+      <Avatar
+        profile={auth.account.profile}
+        sizeClass={props.sizeClass ?? "w-[2rem] h-[2rem]"}
+        iconClass={props.iconClass}
+        bottom={props.bottom}
+      />
+      {props.withName && bufferSeed ? (
+        <span>
+          {deviceName.length >= 20
+            ? `${deviceName.slice(0, 20 - 1)}…`
+            : deviceName}
+        </span>
+      ) : null}
+    </>
   );
 }
 

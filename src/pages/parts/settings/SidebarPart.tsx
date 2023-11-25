@@ -1,6 +1,5 @@
-import classNames from "classnames";
 import { useCallback, useEffect, useState } from "react";
-import Sticky from "react-stickynode";
+import Sticky from "react-sticky-el";
 import { useAsync } from "react-use";
 
 import { getBackendMeta } from "@/backend/accounts/meta";
@@ -10,34 +9,25 @@ import { Divider } from "@/components/utils/Divider";
 import { useBackendUrl } from "@/hooks/auth/useBackendUrl";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { conf } from "@/setup/config";
+import { useAuthStore } from "@/stores/auth";
 
-function BackendUrl(props: { url: string }) {
-  const url = props.url.replace(/https?:\/\//, "");
+const rem = 16;
+
+function SecureBadge(props: { url: string }) {
   const secure = props.url.startsWith("https://");
   return (
-    <div className="flex items-center gap-2">
-      <div
-        title={secure ? "Secure" : "Insecure"}
-        className={classNames(
-          "w-5 min-w-[1.25rem] h-5 rounded flex justify-center items-center",
-          secure ? "bg-emerald-200/30 text-white" : "bg-red-600/20 text-white"
-        )}
-      >
-        <Icon
-          className="opacity-50"
-          icon={secure ? Icons.LOCK : Icons.UNLOCK}
-        />
-      </div>
-      {url}
+    <div className="flex items-center gap-1 -mx-1 ml-3 px-1 rounded bg-largeCard-background font-bold">
+      <Icon icon={secure ? Icons.LOCK : Icons.UNLOCK} />
+      Secure
     </div>
   );
 }
 
 export function SidebarPart() {
   const { isMobile } = useIsMobile();
+  const { account } = useAuthStore();
   // eslint-disable-next-line no-restricted-globals
   const hostname = location.hostname;
-  const rem = 16;
   const [activeLink, setActiveLink] = useState("");
 
   const settingLinks = [
@@ -54,7 +44,6 @@ export function SidebarPart() {
     return getBackendMeta(backendUrl);
   }, [backendUrl]);
 
-  // TODO loading/error state for backend
   useEffect(() => {
     function recheck() {
       const windowHeight =
@@ -97,11 +86,13 @@ export function SidebarPart() {
   }, []);
 
   return (
-    <div>
+    <div className="text-settings-sidebar-type-inactive sidebar-boundary">
       <Sticky
-        enabled={!isMobile}
-        top={10 * rem} // 10rem
-        className="text-settings-sidebar-type-inactive"
+        topOffset={-6 * rem}
+        stickyClassName="pt-[6rem]"
+        disabled={isMobile}
+        hideOnBoundaryHit={false}
+        boundaryElement=".sidebar-boundary"
       >
         <div className="hidden lg:block">
           <SidebarSection title="Settings">
@@ -119,28 +110,56 @@ export function SidebarPart() {
           <Divider />
         </div>
         <SidebarSection className="text-sm" title="App information">
-          <div className="flex justify-between items-center space-x-3">
-            <span>Version</span>
-            <span>{conf().APP_VERSION}</span>
+          <div className="px-3 py-3.5 rounded-lg bg-largeCard-background bg-opacity-50 grid grid-cols-2 gap-4">
+            {/* Hostname */}
+            <div className="col-span-2 space-y-1">
+              <p className="text-type-dimmed font-medium">Hostname</p>
+              <p className="text-white">{hostname}</p>
+            </div>
+
+            {/* Backend URL */}
+            <div className="col-span-2 space-y-1">
+              <p className="text-type-dimmed font-medium flex items-center">
+                Backend URL
+                <SecureBadge url={backendUrl} />
+              </p>
+              <p className="text-white">
+                {backendUrl.replace(/https?:\/\//, "")}
+              </p>
+            </div>
+
+            {/* User ID */}
+            <div className="col-span-2 space-y-1">
+              <p className="text-type-dimmed font-medium">User ID</p>
+              <p className="text-white">{account?.userId ?? "Not logged in"}</p>
+            </div>
+
+            {/* App version */}
+            <div className="col-span-1 space-y-1">
+              <p className="text-type-dimmed font-medium">App version</p>
+              <p className="text-type-dimmed px-2 py-1 rounded bg-settings-sidebar-badge inline-block">
+                {conf().APP_VERSION}
+              </p>
+            </div>
+
+            {/* Backend version */}
+            <div className="col-span-1 space-y-1">
+              <p className="text-type-dimmed font-medium">Backend version</p>
+              <p className="text-type-dimmed px-2 py-1 rounded bg-settings-sidebar-badge inline-flex items-center gap-1">
+                {backendMeta.error ? (
+                  <Icon
+                    icon={Icons.WARNING}
+                    className="text-type-danger text-base"
+                  />
+                ) : null}
+                {backendMeta.loading ? (
+                  <div className="h-4 w-12 bg-type-dimmed/20 rounded" />
+                ) : (
+                  backendMeta?.value?.version || "Unknown"
+                )}
+              </p>
+            </div>
           </div>
-          <div className="flex justify-between items-center space-x-3">
-            <span>Domain</span>
-            <span className="text-right">{hostname}</span>
-          </div>
-          {backendMeta.value ? (
-            <>
-              <div className="flex justify-between items-center space-x-3">
-                <span>Backend Version</span>
-                <span>{backendMeta.value.version}</span>
-              </div>
-              <div className="flex justify-between items-center space-x-3">
-                <span className="whitespace-nowrap">Backend URL</span>
-                <span className="text-right">
-                  <BackendUrl url={backendUrl} />
-                </span>
-              </div>
-            </>
-          ) : null}
         </SidebarSection>
       </Sticky>
     </div>

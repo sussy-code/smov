@@ -44,7 +44,7 @@ function ProxyEdit({ proxyUrls, setProxyUrls }: ProxyEditProps) {
 
   return (
     <SettingsCard>
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center gap-4">
         <div className="my-3">
           <p className="text-white font-bold mb-3">Use custom proxy workers</p>
           <p className="max-w-[20rem] font-medium">
@@ -103,7 +103,7 @@ function ProxyEdit({ proxyUrls, setProxyUrls }: ProxyEditProps) {
 function BackendEdit({ backendUrl, setBackendUrl }: BackendEditProps) {
   return (
     <SettingsCard>
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center gap-4">
         <div className="my-3">
           <p className="text-white font-bold mb-3">Custom server</p>
           <p className="max-w-[20rem] font-medium">

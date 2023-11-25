@@ -11,7 +11,7 @@ import { Menu } from "@/components/player/internals/ContextMenu";
 import { CaptionCue } from "@/components/player/Player";
 import { Transition } from "@/components/Transition";
 import { Heading1 } from "@/components/utils/Text";
-import { SubtitleStyling, useSubtitleStore } from "@/stores/subtitles";
+import { SubtitleStyling } from "@/stores/subtitles";
 
 export function CaptionPreview(props: {
   fullscreen?: boolean;
@@ -24,7 +24,7 @@ export function CaptionPreview(props: {
       className={classNames({
         "pointer-events-none overflow-hidden w-full rounded": true,
         "aspect-video relative": !props.fullscreen,
-        "fixed inset-0 z-50": props.fullscreen,
+        "fixed inset-0 z-[60]": props.fullscreen,
       })}
     >
       <Transition animation="fade" show={props.show}>
@@ -71,7 +71,7 @@ export function CaptionsPart(props: {
   return (
     <div>
       <Heading1 border>Captions</Heading1>
-      <div className="grid grid-cols-[1fr,356px] gap-8">
+      <div className="grid md:grid-cols-[1fr,356px] gap-8">
         <div className="space-y-6">
           <CaptionSetting
             label="Background opacity"

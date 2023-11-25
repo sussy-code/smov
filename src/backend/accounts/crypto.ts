@@ -70,7 +70,7 @@ export function base64ToBuffer(data: string) {
   return forge.util.binary.base64.decode(data);
 }
 
-export function base64ToStringBugger(data: string) {
+export function base64ToStringBuffer(data: string) {
   return forge.util.createBuffer(base64ToBuffer(data));
 }
 
@@ -97,7 +97,7 @@ export async function encryptData(data: string, secret: Uint8Array) {
     iv,
     tagLength: 128,
   });
-  cipher.update(forge.util.createBuffer(data));
+  cipher.update(forge.util.createBuffer(data, "utf8"));
   cipher.finish();
 
   const encryptedData = cipher.output;
@@ -118,11 +118,11 @@ export function decryptData(data: string, secret: Uint8Array) {
     forge.util.createBuffer(secret)
   );
   decipher.start({
-    iv: base64ToStringBugger(iv),
-    tag: base64ToStringBugger(tag),
+    iv: base64ToStringBuffer(iv),
+    tag: base64ToStringBuffer(tag),
     tagLength: 128,
   });
-  decipher.update(base64ToStringBugger(encryptedData));
+  decipher.update(base64ToStringBuffer(encryptedData));
   const pass = decipher.finish();
 
   if (!pass) throw new Error("Error decrypting data");

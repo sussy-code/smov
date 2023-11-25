@@ -120,6 +120,7 @@ export const defaultTheme = {
       settings: {
         sidebar: {
           activeLink: "#171728",
+          badge: "#0A0A12",
 
           type: {
             secondary: "#4B395F",
