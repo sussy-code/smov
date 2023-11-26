@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction, useCallback } from "react";
+import { useTranslation } from "react-i18next";
 
 import { Button } from "@/components/buttons/Button";
 import { Toggle } from "@/components/buttons/Toggle";
@@ -19,6 +20,7 @@ interface BackendEditProps {
 }
 
 function ProxyEdit({ proxyUrls, setProxyUrls }: ProxyEditProps) {
+  const { t } = useTranslation();
   const add = useCallback(() => {
     setProxyUrls((s) => [...(s ?? []), ""]);
   }, [setProxyUrls]);
@@ -46,10 +48,11 @@ function ProxyEdit({ proxyUrls, setProxyUrls }: ProxyEditProps) {
     <SettingsCard>
       <div className="flex justify-between items-center gap-4">
         <div className="my-3">
-          <p className="text-white font-bold mb-3">Use custom proxy workers</p>
+          <p className="text-white font-bold mb-3">
+            {t("settings.connections.workers.label")}
+          </p>
           <p className="max-w-[20rem] font-medium">
-            To make the application function, all traffic is routed through
-            proxies. Enable this if you want to bring your own workers.
+            {t("settings.connections.workers.description")}
           </p>
         </div>
         <div>
@@ -62,11 +65,13 @@ function ProxyEdit({ proxyUrls, setProxyUrls }: ProxyEditProps) {
       {proxyUrls !== null ? (
         <>
           <Divider marginClass="my-6 px-8 box-content -mx-8" />
-          <p className="text-white font-bold mb-3">Worker URLs</p>
+          <p className="text-white font-bold mb-3">
+            {t("settings.connections.workers.urlLabel")}
+          </p>
 
           <div className="my-6 space-y-2 max-w-md">
             {(proxyUrls?.length ?? 0) === 0 ? (
-              <p>No workers yet, add one below</p>
+              <p>{t("settings.connections.workers.emptyState")}</p>
             ) : null}
             {(proxyUrls ?? []).map((v, i) => (
               <div
@@ -78,7 +83,10 @@ function ProxyEdit({ proxyUrls, setProxyUrls }: ProxyEditProps) {
                 <AuthInputBox
                   value={v}
                   onChange={(val) => changeItem(i, val)}
-                  placeholder="https://"
+                  placeholder={
+                    t("settings.connections.workers.urlPlaceholder") ??
+                    undefined
+                  }
                 />
                 <button
                   type="button"
@@ -92,7 +100,7 @@ function ProxyEdit({ proxyUrls, setProxyUrls }: ProxyEditProps) {
           </div>
 
           <Button theme="purple" onClick={add}>
-            Add new worker
+            {t("settings.connections.workers.addButton")}
           </Button>
         </>
       ) : null}
@@ -101,14 +109,16 @@ function ProxyEdit({ proxyUrls, setProxyUrls }: ProxyEditProps) {
 }
 
 function BackendEdit({ backendUrl, setBackendUrl }: BackendEditProps) {
+  const { t } = useTranslation();
   return (
     <SettingsCard>
       <div className="flex justify-between items-center gap-4">
         <div className="my-3">
-          <p className="text-white font-bold mb-3">Custom server</p>
+          <p className="text-white font-bold mb-3">
+            {t("settings.connections.workers.label")}
+          </p>
           <p className="max-w-[20rem] font-medium">
-            To make the application function, all traffic is routed through
-            proxies. Enable this if you want to bring your own workers.
+            {t("settings.connections.workers.description")}
           </p>
         </div>
         <div>
@@ -121,7 +131,9 @@ function BackendEdit({ backendUrl, setBackendUrl }: BackendEditProps) {
       {backendUrl !== null ? (
         <>
           <Divider marginClass="my-6 px-8 box-content -mx-8" />
-          <p className="text-white font-bold mb-3">Custom server URL</p>
+          <p className="text-white font-bold mb-3">
+            {t("settings.connections.workers.urlLabel")}
+          </p>
           <AuthInputBox onChange={setBackendUrl} value={backendUrl ?? ""} />
         </>
       ) : null}
@@ -130,9 +142,10 @@ function BackendEdit({ backendUrl, setBackendUrl }: BackendEditProps) {
 }
 
 export function ConnectionsPart(props: BackendEditProps & ProxyEditProps) {
+  const { t } = useTranslation();
   return (
     <div>
-      <Heading1 border>Connections</Heading1>
+      <Heading1 border>{t("settings.connections.title")}</Heading1>
       <div className="space-y-6">
         <ProxyEdit
           proxyUrls={props.proxyUrls}

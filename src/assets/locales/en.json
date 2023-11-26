@@ -107,7 +107,20 @@
       "title": "Captions"
     },
     "connections": {
-      "title": "Connections"
+      "title": "Connections",
+      "workers": {
+        "label": "Use custom proxy workers",
+        "description": "To make the application function, all traffic is routed through proxies. Enable this if you want to bring your own workers.",
+        "urlLabel": "Worker URLs",
+        "emptyState": "No workers yet, add one below",
+        "urlPlaceholder": "https://",
+        "addButton": "Add new worker"
+      },
+      "server": {
+        "label": "Custom server",
+        "description": "To make the application function, all traffic is routed through proxies. Enable this if you want to bring your own workers.",
+        "urlLabel": "Custom server URL"
+      }
     }
   },
   "faq": {
