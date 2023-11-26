@@ -3,8 +3,8 @@ import { useState } from "react";
 
 import { Flare } from "@/components/utils/Flare";
 
-import { Icon, Icons } from "./Icon";
-import { TextInputControl } from "./text-inputs/TextInputControl";
+import { Icon, Icons } from "../Icon";
+import { TextInputControl } from "../text-inputs/TextInputControl";
 
 export interface SearchBarProps {
   placeholder?: string;

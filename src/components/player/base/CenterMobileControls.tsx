@@ -1,6 +1,6 @@
 import classNames from "classnames";
 
-import { Transition } from "@/components/Transition";
+import { Transition } from "@/components/utils/Transition";
 
 export function CenterMobileControls(props: {
   children: React.ReactNode;

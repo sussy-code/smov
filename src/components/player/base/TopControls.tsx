@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import { Transition } from "@/components/Transition";
+import { Transition } from "@/components/utils/Transition";
 import { useBannerSize } from "@/stores/banner";
 import { BannerLocation } from "@/stores/banner/BannerLocation";
 import { usePlayerStore } from "@/stores/player/store";

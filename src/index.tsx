@@ -1,17 +1,18 @@
 import "core-js/stable";
 import "./stores/__old/imports";
 import "@/setup/ga";
-import "@/setup/index.css";
+import "@/assets/css/index.css";
 
 import React, { Suspense, useCallback } from "react";
 import type { ReactNode } from "react";
 import ReactDOM from "react-dom";
 import { HelmetProvider } from "react-helmet-async";
+import { useTranslation } from "react-i18next";
 import { BrowserRouter, HashRouter } from "react-router-dom";
 import { useAsync } from "react-use";
 import { registerSW } from "virtual:pwa-register";
 
-import { Button } from "@/components/Button";
+import { Button } from "@/components/buttons/Button";
 import { Icon, Icons } from "@/components/Icon";
 import { Loading } from "@/components/layout/Loading";
 import { useAuthRestore } from "@/hooks/auth/useAuthRestore";
@@ -44,8 +45,15 @@ registerSW({
 });
 
 function LoadingScreen(props: { type: "user" | "lazy" }) {
+  const mapping = {
+    user: "screens.loadingUser",
+    lazy: "screens.loadingApp",
+  };
+  const { t } = useTranslation();
   return (
-    <LargeTextPart iconSlot={<Loading />}>Loading {props.type}</LargeTextPart>
+    <LargeTextPart iconSlot={<Loading />}>
+      {t(mapping[props.type] ?? "unknown.translation")}
+    </LargeTextPart>
   );
 }
 
@@ -53,6 +61,7 @@ function ErrorScreen(props: {
   children: ReactNode;
   showResetButton?: boolean;
 }) {
+  const { t } = useTranslation();
   const setBackendUrl = useAuthStore((s) => s.setBackendUrl);
   const resetBackend = useCallback(() => {
     setBackendUrl(null);
@@ -70,7 +79,7 @@ function ErrorScreen(props: {
       {props.showResetButton ? (
         <div className="mt-6">
           <Button theme="secondary" onClick={resetBackend}>
-            Reset back-end
+            {t("screens.loadingUserError.reset")}
           </Button>
         </div>
       ) : null}
@@ -82,14 +91,17 @@ function AuthWrapper() {
   const status = useAuthRestore();
   const backendUrl = conf().BACKEND_URL;
   const userBackendUrl = useBackendUrl();
+  const { t } = useTranslation();
 
   if (status.loading) return <LoadingScreen type="user" />;
   if (status.error)
     return (
       <ErrorScreen showResetButton={backendUrl !== userBackendUrl}>
-        {backendUrl !== userBackendUrl
-          ? "Failed to fetch user data. Try resetting the backend URL"
-          : "Failed to fetch user data."}
+        {t(
+          backendUrl !== userBackendUrl
+            ? "screens.loadingUserError.textWithReset"
+            : "screens.loadingUserError.text"
+        )}
       </ErrorScreen>
     );
   return <App />;
@@ -100,10 +112,11 @@ function MigrationRunner() {
     i18n.changeLanguage(useLanguageStore.getState().language);
     await initializeOldStores();
   }, []);
+  const { t } = useTranslation();
 
   if (status.loading) return <MigrationPart />;
   if (status.error)
-    return <ErrorScreen>Failed to migrate your data.</ErrorScreen>;
+    return <ErrorScreen>{t("screens.migration.failed")}</ErrorScreen>;
   return <AuthWrapper />;
 }
 

@@ -1,5 +1,5 @@
-import { Dropdown } from "@/components/Dropdown";
 import { FlagIcon } from "@/components/FlagIcon";
+import { Dropdown } from "@/components/form/Dropdown";
 import { Heading1 } from "@/components/utils/Text";
 import { appLanguageOptions } from "@/setup/i18n";
 import { sortLangCodes } from "@/utils/sortLangCodes";
@@ -8,14 +8,14 @@ export function LocalePart(props: {
   language: string;
   setLanguage: (l: string) => void;
 }) {
-  const sorted = sortLangCodes(appLanguageOptions.map((t) => t.id));
+  const sorted = sortLangCodes(appLanguageOptions.map((t) => t.code));
 
   const options = appLanguageOptions
-    .sort((a, b) => sorted.indexOf(a.id) - sorted.indexOf(b.id))
+    .sort((a, b) => sorted.indexOf(a.code) - sorted.indexOf(b.code))
     .map((opt) => ({
-      id: opt.id,
-      name: `${opt.englishName} — ${opt.nativeName}`,
-      leftIcon: <FlagIcon countryCode={opt.id} />,
+      id: opt.code,
+      name: `${opt.name} — ${opt.nativeName}`,
+      leftIcon: <FlagIcon countryCode={opt.code} />,
     }));
 
   const selected = options.find((t) => t.id === props.language);

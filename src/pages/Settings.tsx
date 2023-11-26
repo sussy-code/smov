@@ -10,7 +10,7 @@ import {
 import { getSessions, updateSession } from "@/backend/accounts/sessions";
 import { updateSettings } from "@/backend/accounts/settings";
 import { editUser } from "@/backend/accounts/user";
-import { Button } from "@/components/Button";
+import { Button } from "@/components/buttons/Button";
 import { WideContainer } from "@/components/layout/WideContainer";
 import { UserIcons } from "@/components/UserIcon";
 import { Heading1 } from "@/components/utils/Text";

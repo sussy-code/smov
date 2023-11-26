@@ -1,8 +1,8 @@
 import { useCallback, useState } from "react";
 import Sticky from "react-sticky-el";
 
+import { SearchBarInput } from "@/components/form/SearchBar";
 import { ThinContainer } from "@/components/layout/ThinContainer";
-import { SearchBarInput } from "@/components/SearchBar";
 import { HeroTitle } from "@/components/text/HeroTitle";
 import { useRandomTranslation } from "@/hooks/useRandomTranslation";
 import { useSearchQuery } from "@/hooks/useSearchQuery";

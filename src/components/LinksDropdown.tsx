@@ -1,11 +1,12 @@
 import classNames from "classnames";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
 
 import { base64ToBuffer, decryptData } from "@/backend/accounts/crypto";
 import { UserAvatar } from "@/components/Avatar";
 import { Icon, Icons } from "@/components/Icon";
-import { Transition } from "@/components/Transition";
+import { Transition } from "@/components/utils/Transition";
 import { useAuth } from "@/hooks/auth/useAuth";
 import { conf } from "@/setup/config";
 import { useAuthStore } from "@/stores/auth";
@@ -81,6 +82,7 @@ function CircleDropdownLink(props: { icon: Icons; href: string }) {
 }
 
 export function LinksDropdown(props: { children: React.ReactNode }) {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const deviceName = useAuthStore((s) => s.account?.deviceName);
   const seed = useAuthStore((s) => s.account?.seed);
@@ -130,18 +132,18 @@ export function LinksDropdown(props: { children: React.ReactNode }) {
             </DropdownLink>
           ) : (
             <DropdownLink href="/login" icon={Icons.RISING_STAR} highlight>
-              Sync to cloud
+              {t("navigation.menu.register")}
             </DropdownLink>
           )}
           <Divider />
           <DropdownLink href="/settings" icon={Icons.SETTINGS}>
-            Settings
+            {t("navigation.menu.settings")}
           </DropdownLink>
           <DropdownLink href="/faq" icon={Icons.EPISODES}>
-            About us
+            {t("navigation.menu.about")}
           </DropdownLink>
           <DropdownLink href="/faq" icon={Icons.FILM}>
-            HELP MEEE
+            {t("navigation.menu.support")}
           </DropdownLink>
           {deviceName ? (
             <DropdownLink
@@ -149,7 +151,7 @@ export function LinksDropdown(props: { children: React.ReactNode }) {
               icon={Icons.LOGOUT}
               onClick={logout}
             >
-              Log out
+              {t("navigation.menu.logout")}
             </DropdownLink>
           ) : null}
           <Divider />

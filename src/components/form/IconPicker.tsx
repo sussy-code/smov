@@ -2,20 +2,20 @@ import classNames from "classnames";
 
 import { UserIcon, UserIcons } from "../UserIcon";
 
+const icons = [
+  UserIcons.USER,
+  UserIcons.BOOKMARK,
+  UserIcons.CLOCK,
+  UserIcons.EYE_SLASH,
+  UserIcons.SEARCH,
+];
+export const initialIcon = icons[0];
+
 export function IconPicker(props: {
   label: string;
   value: UserIcons;
   onInput: (v: UserIcons) => void;
 }) {
-  // Migrate this to another file later
-  const icons = [
-    UserIcons.USER,
-    UserIcons.BOOKMARK,
-    UserIcons.CLOCK,
-    UserIcons.EYE_SLASH,
-    UserIcons.SEARCH,
-  ];
-
   return (
     <div className="space-y-3">
       {props.label ? (

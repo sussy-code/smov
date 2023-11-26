@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 
-import { Button } from "@/components/Button";
+import { Button } from "@/components/buttons/Button";
 import { Icon, Icons } from "@/components/Icon";
 import { DisplayError } from "@/components/player/display/displayInterface";
 

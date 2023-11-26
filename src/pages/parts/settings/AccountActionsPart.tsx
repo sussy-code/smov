@@ -1,7 +1,7 @@
 import { useAsyncFn } from "react-use";
 
 import { deleteUser } from "@/backend/accounts/user";
-import { Button } from "@/components/Button";
+import { Button } from "@/components/buttons/Button";
 import { SolidSettingsCard } from "@/components/layout/SettingsCard";
 import { Modal, ModalCard, useModal } from "@/components/overlays/Modal";
 import { Heading2, Heading3, Paragraph } from "@/components/utils/Text";

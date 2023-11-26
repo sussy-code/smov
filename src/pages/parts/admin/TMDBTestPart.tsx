@@ -3,7 +3,7 @@ import { useAsyncFn } from "react-use";
 
 import { getMediaDetails } from "@/backend/metadata/tmdb";
 import { TMDBContentTypes } from "@/backend/metadata/types/tmdb";
-import { Button } from "@/components/Button";
+import { Button } from "@/components/buttons/Button";
 import { Icon, Icons } from "@/components/Icon";
 import { Box } from "@/components/layout/Box";
 import { Spinner } from "@/components/layout/Spinner";

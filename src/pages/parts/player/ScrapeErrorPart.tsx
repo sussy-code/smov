@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import { Button } from "@/components/Button";
+import { Button } from "@/components/buttons/Button";
 import { Icons } from "@/components/Icon";
 import { IconPill } from "@/components/layout/IconPill";
 import { Paragraph } from "@/components/text/Paragraph";

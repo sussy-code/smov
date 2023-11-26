@@ -2,7 +2,7 @@ import classNames from "classnames";
 import { ReactNode } from "react";
 
 import { StatusCircle } from "@/components/player/internals/StatusCircle";
-import { Transition } from "@/components/Transition";
+import { Transition } from "@/components/utils/Transition";
 
 export interface ScrapeItemProps {
   status: "failure" | "pending" | "notfound" | "success" | "waiting";

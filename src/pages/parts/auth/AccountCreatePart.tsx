@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 
-import { Button } from "@/components/Button";
+import { Button } from "@/components/buttons/Button";
 import { ColorPicker } from "@/components/form/ColorPicker";
 import { IconPicker } from "@/components/form/IconPicker";
 import { Icon, Icons } from "@/components/Icon";

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import { Transition } from "@/components/Transition";
+import { Transition } from "@/components/utils/Transition";
 import { usePlayerStore } from "@/stores/player/store";
 
 export function BottomControls(props: {

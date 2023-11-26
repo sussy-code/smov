@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import { ReactNode } from "react";
+import { useTranslation } from "react-i18next";
 
 import { useInternalOverlayRouter } from "@/hooks/useOverlayRouter";
 
@@ -10,6 +11,7 @@ interface MobilePositionProps {
 
 export function OverlayMobilePosition(props: MobilePositionProps) {
   const router = useInternalOverlayRouter("hello world :)");
+  const { t } = useTranslation();
 
   return (
     <div
@@ -26,7 +28,7 @@ export function OverlayMobilePosition(props: MobilePositionProps) {
         type="button"
         onClick={() => router.close()}
       >
-        Close
+        {t("overlays.close")}
       </button>
       {/* Gradient to hide the progress */}
       <div className="pointer-events-none absolute z-0 bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black to-transparent" />

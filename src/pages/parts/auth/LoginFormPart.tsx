@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useAsyncFn } from "react-use";
 
 import { verifyValidMnemonic } from "@/backend/accounts/crypto";
-import { Button } from "@/components/Button";
+import { Button } from "@/components/buttons/Button";
 import { BrandPill } from "@/components/layout/BrandPill";
 import {
   LargeCard,

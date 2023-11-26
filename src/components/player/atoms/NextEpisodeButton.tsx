@@ -3,7 +3,7 @@ import { useCallback } from "react";
 
 import { Icon, Icons } from "@/components/Icon";
 import { usePlayerMeta } from "@/components/player/hooks/usePlayerMeta";
-import { Transition } from "@/components/Transition";
+import { Transition } from "@/components/utils/Transition";
 import { PlayerMeta } from "@/stores/player/slices/source";
 import { usePlayerStore } from "@/stores/player/store";
 

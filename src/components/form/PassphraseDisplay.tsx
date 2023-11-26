@@ -1,9 +1,11 @@
 import { useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useCopyToClipboard, useMountedState } from "react-use";
 
-import { Icon, Icons } from "./Icon";
+import { Icon, Icons } from "../Icon";
 
 export function PassphraseDisplay(props: { mnemonic: string }) {
+  const { t } = useTranslation();
   const individualWords = props.mnemonic.split(" ");
 
   const [, copy] = useCopyToClipboard();
@@ -33,7 +35,7 @@ export function PassphraseDisplay(props: { mnemonic: string }) {
             icon={hasCopied ? Icons.CHECKMARK : Icons.COPY}
             className={hasCopied ? "text-xs" : ""}
           />
-          <span className="text-sm">Copy</span>
+          <span className="text-sm">{t("actions.copy")}</span>
         </button>
       </div>
       <div className="px-4 py-4 grid grid-cols-4 gap-2">

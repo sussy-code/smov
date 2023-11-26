@@ -1,4 +1,4 @@
-import { Button } from "@/components/Button";
+import { Button } from "@/components/buttons/Button";
 import { ColorPicker } from "@/components/form/ColorPicker";
 import { IconPicker } from "@/components/form/IconPicker";
 import { Modal, ModalCard } from "@/components/overlays/Modal";

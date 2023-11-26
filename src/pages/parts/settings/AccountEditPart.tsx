@@ -1,5 +1,5 @@
 import { Avatar } from "@/components/Avatar";
-import { Button } from "@/components/Button";
+import { Button } from "@/components/buttons/Button";
 import { Icon, Icons } from "@/components/Icon";
 import { SettingsCard } from "@/components/layout/SettingsCard";
 import { useModal } from "@/components/overlays/Modal";

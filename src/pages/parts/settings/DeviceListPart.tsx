@@ -4,7 +4,7 @@ import { useAsyncFn } from "react-use";
 import { SessionResponse } from "@/backend/accounts/auth";
 import { base64ToBuffer, decryptData } from "@/backend/accounts/crypto";
 import { removeSession } from "@/backend/accounts/sessions";
-import { Button } from "@/components/Button";
+import { Button } from "@/components/buttons/Button";
 import { Loading } from "@/components/layout/Loading";
 import { SettingsCard } from "@/components/layout/SettingsCard";
 import { SecondaryLabel } from "@/components/text/SecondaryLabel";

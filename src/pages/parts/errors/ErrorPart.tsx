@@ -1,4 +1,4 @@
-import { ButtonPlain } from "@/components/Button";
+import { ButtonPlain } from "@/components/buttons/Button";
 import { Icons } from "@/components/Icon";
 import { IconPill } from "@/components/layout/IconPill";
 import { Title } from "@/components/text/Title";

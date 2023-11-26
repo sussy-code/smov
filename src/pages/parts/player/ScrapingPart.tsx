@@ -7,7 +7,6 @@ import {
   scrapePartsToProviderMetric,
   useReportProviders,
 } from "@/backend/helpers/report";
-import { usePlayer } from "@/components/player/hooks/usePlayer";
 import {
   ScrapeCard,
   ScrapeItem,

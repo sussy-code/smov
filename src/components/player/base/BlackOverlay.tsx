@@ -1,4 +1,4 @@
-import { Transition } from "@/components/Transition";
+import { Transition } from "@/components/utils/Transition";
 
 export function BlackOverlay(props: { show?: boolean }) {
   return (

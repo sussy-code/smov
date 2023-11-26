@@ -2,10 +2,9 @@ import { useState } from "react";
 import { useAsyncFn } from "react-use";
 
 import { MetaResponse, getBackendMeta } from "@/backend/accounts/meta";
-import { Button } from "@/components/Button";
+import { Button } from "@/components/buttons/Button";
 import { Icon, Icons } from "@/components/Icon";
 import { Box } from "@/components/layout/Box";
-import { Spinner } from "@/components/layout/Spinner";
 import { Divider } from "@/components/utils/Divider";
 import { Heading2 } from "@/components/utils/Text";
 import { conf } from "@/setup/config";

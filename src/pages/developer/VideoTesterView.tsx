@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 
-import { Button } from "@/components/Button";
-import { Dropdown } from "@/components/Dropdown";
+import { Button } from "@/components/buttons/Button";
+import { Dropdown } from "@/components/form/Dropdown";
 import { usePlayer } from "@/components/player/hooks/usePlayer";
 import { Title } from "@/components/text/Title";
 import { TextInputControl } from "@/components/text-inputs/TextInputControl";

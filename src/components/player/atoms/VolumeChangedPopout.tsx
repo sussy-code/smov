@@ -1,6 +1,6 @@
 import { Icon, Icons } from "@/components/Icon";
-import { Transition } from "@/components/Transition";
 import { Flare } from "@/components/utils/Flare";
+import { Transition } from "@/components/utils/Transition";
 import { usePlayerStore } from "@/stores/player/store";
 import { useEmpheralVolumeStore } from "@/stores/volume";
 

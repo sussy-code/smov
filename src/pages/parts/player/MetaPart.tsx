@@ -5,7 +5,7 @@ import type { AsyncReturnType } from "type-fest";
 import { DetailedMeta, getMetaFromId } from "@/backend/metadata/getmeta";
 import { decodeTMDBId } from "@/backend/metadata/tmdb";
 import { MWMediaType } from "@/backend/metadata/types/mw";
-import { Button } from "@/components/Button";
+import { Button } from "@/components/buttons/Button";
 import { Icons } from "@/components/Icon";
 import { IconPill } from "@/components/layout/IconPill";
 import { Loading } from "@/components/layout/Loading";

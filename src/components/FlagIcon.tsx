@@ -5,24 +5,24 @@ export interface FlagIconProps {
   countryCode?: string;
 }
 
-export function FlagIcon(props: FlagIconProps) {
-  // Country code overrides
-  const countryOverrides: Record<string, string> = {
-    en: "gb",
-    cs: "cz",
-    el: "gr",
-    fa: "ir",
-    ko: "kr",
-    he: "il",
-    ze: "cn",
-    ar: "sa",
-    ja: "jp",
-    bs: "ba",
-    vi: "vn",
-    zh: "cn",
-    sl: "si",
-  };
+// Country code overrides
+const countryOverrides: Record<string, string> = {
+  en: "gb",
+  cs: "cz",
+  el: "gr",
+  fa: "ir",
+  ko: "kr",
+  he: "il",
+  ze: "cn",
+  ar: "sa",
+  ja: "jp",
+  bs: "ba",
+  vi: "vn",
+  zh: "cn",
+  sl: "si",
+};
 
+export function FlagIcon(props: FlagIconProps) {
   let countryCode =
     (props.countryCode || "")?.split("-").pop()?.toLowerCase() || "";
   if (countryOverrides[countryCode])

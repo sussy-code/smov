@@ -1,5 +1,3 @@
-import { LangCode } from "@/setup/iso6391";
-
 export interface CaptionStyleSettings {
   color: string;
   /**
@@ -18,7 +16,7 @@ export interface CaptionSettingsV1 {
 }
 
 export interface CaptionSettings {
-  language: LangCode;
+  language: string;
   /**
    * Range is [-10, 10]s
    */
@@ -26,11 +24,11 @@ export interface CaptionSettings {
   style: CaptionStyleSettings;
 }
 export interface MWSettingsDataV1 {
-  language: LangCode;
+  language: string;
   captionSettings: CaptionSettingsV1;
 }
 
 export interface MWSettingsData {
-  language: LangCode;
+  language: string;
   captionSettings: CaptionSettings;
 }

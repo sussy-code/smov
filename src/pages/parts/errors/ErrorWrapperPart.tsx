@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 
-import { Button } from "@/components/Button";
+import { Button } from "@/components/buttons/Button";
 import { Icons } from "@/components/Icon";
 import { IconPill } from "@/components/layout/IconPill";
 import { Navigation } from "@/components/layout/Navigation";

@@ -2,13 +2,14 @@ import classNames from "classnames";
 
 import { Icon, Icons } from "../Icon";
 
+const colors = ["#2E65CF", "#7652DD", "#CF2E68", "#C2CF2E", "#2ECFA8"];
+export const initialColor = colors[0];
+
 export function ColorPicker(props: {
   label: string;
   value: string;
   onInput: (v: string) => void;
 }) {
-  // Migrate this to another file later
-  const colors = ["#2E65CF", "#7652DD", "#CF2E68", "#C2CF2E", "#2ECFA8"];
   return (
     <div className="space-y-3">
       {props.label ? (

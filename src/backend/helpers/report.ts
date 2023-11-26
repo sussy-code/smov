@@ -5,6 +5,8 @@ import { useCallback } from "react";
 import { ScrapingItems, ScrapingSegment } from "@/hooks/useProviderScrape";
 import { PlayerMeta } from "@/stores/player/slices/source";
 
+// for anybody who cares - these are anonymous metrics.
+// They are just used for figuring out if providers are broken or not
 const metricsEndpoint = "https://backend.movie-web.app/metrics/providers";
 
 export type ProviderMetric = {

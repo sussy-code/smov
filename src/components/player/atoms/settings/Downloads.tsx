@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import { Button } from "@/components/Button";
+import { Button } from "@/components/buttons/Button";
 import { Icon, Icons } from "@/components/Icon";
 import { OverlayPage } from "@/components/overlays/OverlayPage";
 import { Menu } from "@/components/player/internals/ContextMenu";

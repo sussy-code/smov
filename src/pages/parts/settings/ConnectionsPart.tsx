@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useCallback } from "react";
 
-import { Button } from "@/components/Button";
+import { Button } from "@/components/buttons/Button";
 import { Toggle } from "@/components/buttons/Toggle";
 import { Icon, Icons } from "@/components/Icon";
 import { SettingsCard } from "@/components/layout/SettingsCard";

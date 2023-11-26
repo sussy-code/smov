@@ -9,8 +9,8 @@ import {
 } from "@/components/player/atoms/settings/CaptionSettingsView";
 import { Menu } from "@/components/player/internals/ContextMenu";
 import { CaptionCue } from "@/components/player/Player";
-import { Transition } from "@/components/Transition";
 import { Heading1 } from "@/components/utils/Text";
+import { Transition } from "@/components/utils/Transition";
 import { SubtitleStyling } from "@/stores/subtitles";
 
 export function CaptionPreview(props: {

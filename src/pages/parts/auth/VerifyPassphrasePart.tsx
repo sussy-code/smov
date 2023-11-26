@@ -3,7 +3,7 @@ import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { useAsyncFn } from "react-use";
 
 import { updateSettings } from "@/backend/accounts/settings";
-import { Button } from "@/components/Button";
+import { Button } from "@/components/buttons/Button";
 import { Icon, Icons } from "@/components/Icon";
 import {
   LargeCard,

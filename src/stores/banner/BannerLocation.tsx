@@ -55,7 +55,7 @@ export function BannerLocation(props: { location?: string }) {
     <div>
       {!isOnline ? (
         <Banner id="offline" type="error">
-          {t("errors.offline")}
+          {t("navigation.banner.offline")}
         </Banner>
       ) : null}
     </div>

@@ -2,7 +2,7 @@ import { DetailedMeta, getMetaFromId } from "@/backend/metadata/getmeta";
 import { searchForMedia } from "@/backend/metadata/search";
 import { mediaItemTypeToMediaType } from "@/backend/metadata/tmdb";
 import { MWMediaMeta, MWMediaType } from "@/backend/metadata/types/mw";
-import { compareTitle } from "@/utils/titleMatch";
+import { compareTitle } from "@/stores/__old/utils";
 
 import { WatchedStoreData, WatchedStoreItem } from "../types";
 

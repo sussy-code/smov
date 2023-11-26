@@ -1,7 +1,10 @@
 import classNames from "classnames";
 import { ReactNode, useEffect, useMemo } from "react";
 
-import { Transition, TransitionAnimations } from "@/components/Transition";
+import {
+  Transition,
+  TransitionAnimations,
+} from "@/components/utils/Transition";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { useInternalOverlayRouter } from "@/hooks/useOverlayRouter";
 import { useOverlayStore } from "@/stores/overlay/store";

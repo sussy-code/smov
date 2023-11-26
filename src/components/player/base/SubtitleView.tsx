@@ -7,7 +7,7 @@ import {
   parseSubtitles,
   sanitize,
 } from "@/components/player/utils/captions";
-import { Transition } from "@/components/Transition";
+import { Transition } from "@/components/utils/Transition";
 import { usePlayerStore } from "@/stores/player/store";
 import { SubtitleStyling, useSubtitleStore } from "@/stores/subtitles";
 

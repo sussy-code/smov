@@ -1,0 +1,59 @@
+{
+  "global": {
+    "name": "movie-web"
+  },
+  "media": {
+    "types": {
+      "movie": "Movie",
+      "show": "Show"
+    },
+    "episodeDisplay": "S{{season}} E{{episode}}"
+  },
+  "home": {
+    "mediaList": {
+      "stopEditing": "Stop editing"
+    }
+  },
+  "overlays": {
+    "close": "Close"
+  },
+  "screens": {
+    "loadingUser": "Loading your profile",
+    "loadingApp": "Loading application",
+    "loadingUserError": {
+      "text": "",
+      "textWithReset": "",
+      "reset": "Reset custom server"
+    },
+    "migration": {
+      "failed": "Failed to migrate your data."
+    }
+  },
+  "navigation": {
+    "banner": {
+      "offline": "Check your internet connection"
+    },
+    "menu": {
+      "register": "Sync to cloud",
+      "settings": "Settings",
+      "about": "About us",
+      "support": "Support",
+      "logout": "Log out"
+    }
+  },
+  "actions": {
+    "copy": "Copy"
+  },
+  "footer": {
+    "tagline": "Watch your favorite shows and movies with this open source streaming app.",
+    "links": {
+      "github": "GitHub",
+      "dmca": "DMCA",
+      "discord": "Discord"
+    },
+    "legal": {
+      "disclaimer": "Disclaimer",
+      "disclaimerText": "movie-web does not host any files, it merely links to 3rd party services. Legal issues should be taken up with the file hosts and providers. movie-web is not responsible for any media files shown by the video providers."
+    }
+  }
+}

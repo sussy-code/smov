@@ -1,6 +1,6 @@
 import { useHistory } from "react-router-dom";
 
-import { Button } from "@/components/Button";
+import { Button } from "@/components/buttons/Button";
 import { SolidSettingsCard } from "@/components/layout/SettingsCard";
 import { Heading3 } from "@/components/utils/Text";
 

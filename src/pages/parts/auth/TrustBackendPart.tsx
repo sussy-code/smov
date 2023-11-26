@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useAsync } from "react-use";
 
 import { MetaResponse, getBackendMeta } from "@/backend/accounts/meta";
-import { Button } from "@/components/Button";
+import { Button } from "@/components/buttons/Button";
 import { Icon, Icons } from "@/components/Icon";
 import {
   LargeCard,

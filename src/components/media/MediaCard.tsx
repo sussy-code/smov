@@ -37,7 +37,7 @@ function MediaCardContent({
 
   const canLink = linkable && !closable;
 
-  const dotListContent = [t(`media.${media.type}`)];
+  const dotListContent = [t(`media.types.${media.type}`)];
   if (media.year) dotListContent.push(media.year.toFixed());
 
   return (
@@ -82,7 +82,7 @@ function MediaCardContent({
                   closable ? "" : "group-hover:text-white",
                 ].join(" ")}
               >
-                {t("seasons.seasonAndEpisode", {
+                {t("media.episodeDisplay", {
                   season: series.season || 1,
                   episode: series.episode,
                 })}

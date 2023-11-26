@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { useHistory } from "react-router-dom";
 
 import { Icon, Icons } from "@/components/Icon";
 import { BrandPill } from "@/components/layout/BrandPill";
@@ -6,16 +7,18 @@ import { WideContainer } from "@/components/layout/WideContainer";
 import { conf } from "@/setup/config";
 
 function FooterLink(props: {
-  href: string;
+  href?: string;
+  onClick?: () => void;
   children: React.ReactNode;
   icon: Icons;
 }) {
   return (
     <a
-      href={props.href}
+      href={props.href ?? "#"}
       target="_blank"
       className="tabbable rounded py-2 px-3 inline-flex items-center space-x-3 transition-colors duration-200 hover:text-type-emphasis"
       rel="noreferrer"
+      onClick={props.onClick}
     >
       <Icon icon={props.icon} className="text-2xl" />
       <span className="font-medium">{props.children}</span>
@@ -25,8 +28,10 @@ function FooterLink(props: {
 
 function Dmca() {
   const { t } = useTranslation();
+  const history = useHistory();
+
   return (
-    <FooterLink icon={Icons.DRAGON} href="https://youtu.be/-WOonkg_ZCo">
+    <FooterLink icon={Icons.DRAGON} onClick={() => history.push("/dmca")}>
       {t("footer.links.dmca")}
     </FooterLink>
   );

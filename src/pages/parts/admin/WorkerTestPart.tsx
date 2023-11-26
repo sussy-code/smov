@@ -3,10 +3,9 @@ import { useMemo, useState } from "react";
 import { useAsyncFn } from "react-use";
 
 import { mwFetch } from "@/backend/helpers/fetch";
-import { Button } from "@/components/Button";
+import { Button } from "@/components/buttons/Button";
 import { Icon, Icons } from "@/components/Icon";
 import { Box } from "@/components/layout/Box";
-import { Spinner } from "@/components/layout/Spinner";
 import { Divider } from "@/components/utils/Divider";
 import { Heading2 } from "@/components/utils/Text";
 import { conf } from "@/setup/config";

@@ -3,7 +3,7 @@ import FocusTrap from "focus-trap-react";
 import { ReactNode, useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
-import { Transition } from "@/components/Transition";
+import { Transition } from "@/components/utils/Transition";
 import {
   useInternalOverlayRouter,
   useRouterAnchorUpdate,

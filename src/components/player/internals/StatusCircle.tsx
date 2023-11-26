@@ -2,7 +2,7 @@ import { a, to, useSpring } from "@react-spring/web";
 import classNames from "classnames";
 
 import { Icon, Icons } from "@/components/Icon";
-import { Transition } from "@/components/Transition";
+import { Transition } from "@/components/utils/Transition";
 
 export interface StatusCircle {
   type: "loading" | "success" | "error" | "noresult" | "waiting";
