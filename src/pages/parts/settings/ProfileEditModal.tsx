@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import { Button } from "@/components/buttons/Button";
 import { ColorPicker } from "@/components/form/ColorPicker";
 import { IconPicker } from "@/components/form/IconPicker";
@@ -17,30 +19,34 @@ export interface ProfileEditModalProps {
 }
 
 export function ProfileEditModal(props: ProfileEditModalProps) {
+  const { t } = useTranslation();
+
   return (
     <Modal id={props.id}>
       <ModalCard>
-        <Heading2 className="!mt-0">Edit profile picture</Heading2>
+        <Heading2 className="!mt-0">
+          {t("settings.account.profile.title")}
+        </Heading2>
         <div className="space-y-6">
           <ColorPicker
-            label="First color"
+            label={t("settings.account.profile.firstColor")}
             value={props.colorA}
             onInput={props.setColorA}
           />
           <ColorPicker
-            label="Second color"
+            label={t("settings.account.profile.secondColor")}
             value={props.colorB}
             onInput={props.setColorB}
           />
           <IconPicker
-            label="User icon"
+            label={t("settings.account.profile.userIcon")}
             value={props.userIcon}
             onInput={props.setUserIcon}
           />
         </div>
         <div className="flex justify-center mt-8">
           <Button theme="purple" className="!px-20" onClick={props.close}>
-            Finish editing
+            {t("settings.account.profile.finish")}
           </Button>
         </div>
       </ModalCard>

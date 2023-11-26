@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import Sticky from "react-sticky-el";
 import { useAsync } from "react-use";
 
@@ -14,16 +15,22 @@ import { useAuthStore } from "@/stores/auth";
 const rem = 16;
 
 function SecureBadge(props: { url: string }) {
+  const { t } = useTranslation();
   const secure = props.url.startsWith("https://");
   return (
     <div className="flex items-center gap-1 -mx-1 ml-3 px-1 rounded bg-largeCard-background font-bold">
       <Icon icon={secure ? Icons.LOCK : Icons.UNLOCK} />
-      Secure
+      {t(
+        secure
+          ? "settings.sidebar.info.secure"
+          : "settings.sidebar.info.insecure"
+      )}
     </div>
   );
 }
 
 export function SidebarPart() {
+  const { t } = useTranslation();
   const { isMobile } = useIsMobile();
   const { account } = useAuthStore();
   // eslint-disable-next-line no-restricted-globals
@@ -31,11 +38,31 @@ export function SidebarPart() {
   const [activeLink, setActiveLink] = useState("");
 
   const settingLinks = [
-    { text: "Account", id: "settings-account", icon: Icons.USER },
-    { text: "Locale", id: "settings-locale", icon: Icons.BOOKMARK },
-    { text: "Appearance", id: "settings-appearance", icon: Icons.GITHUB },
-    { text: "Captions", id: "settings-captions", icon: Icons.CAPTIONS },
-    { text: "Connections", id: "settings-connection", icon: Icons.LINK },
+    {
+      textKey: "settings.account.title",
+      id: "settings-account",
+      icon: Icons.USER,
+    },
+    {
+      textKey: "settings.locale.title",
+      id: "settings-locale",
+      icon: Icons.BOOKMARK,
+    },
+    {
+      textKey: "settings.appearance.title",
+      id: "settings-appearance",
+      icon: Icons.GITHUB,
+    },
+    {
+      textKey: "settings.captions.title",
+      id: "settings-captions",
+      icon: Icons.CAPTIONS,
+    },
+    {
+      textKey: "settings.connections.title",
+      id: "settings-connection",
+      icon: Icons.LINK,
+    },
   ];
 
   const backendUrl = useBackendUrl();
@@ -103,24 +130,29 @@ export function SidebarPart() {
                 onClick={() => scrollTo(v.id)}
                 key={v.id}
               >
-                {v.text}
+                {t(v.textKey)}
               </SidebarLink>
             ))}
           </SidebarSection>
           <Divider />
         </div>
-        <SidebarSection className="text-sm" title="App information">
+        <SidebarSection
+          className="text-sm"
+          title={t("settings.sidebar.info.title")}
+        >
           <div className="px-3 py-3.5 rounded-lg bg-largeCard-background bg-opacity-50 grid grid-cols-2 gap-4">
             {/* Hostname */}
             <div className="col-span-2 space-y-1">
-              <p className="text-type-dimmed font-medium">Hostname</p>
+              <p className="text-type-dimmed font-medium">
+                {t("settings.sidebar.info.hostname")}
+              </p>
               <p className="text-white">{hostname}</p>
             </div>
 
             {/* Backend URL */}
             <div className="col-span-2 space-y-1">
               <p className="text-type-dimmed font-medium flex items-center">
-                Backend URL
+                {t("settings.sidebar.info.backendUrl")}
                 <SecureBadge url={backendUrl} />
               </p>
               <p className="text-white">
@@ -130,13 +162,19 @@ export function SidebarPart() {
 
             {/* User ID */}
             <div className="col-span-2 space-y-1">
-              <p className="text-type-dimmed font-medium">User ID</p>
-              <p className="text-white">{account?.userId ?? "Not logged in"}</p>
+              <p className="text-type-dimmed font-medium">
+                {t("settings.sidebar.info.userId")}
+              </p>
+              <p className="text-white">
+                {account?.userId ?? t("settings.sidebar.info.notLoggedIn")}
+              </p>
             </div>
 
             {/* App version */}
             <div className="col-span-1 space-y-1">
-              <p className="text-type-dimmed font-medium">App version</p>
+              <p className="text-type-dimmed font-medium">
+                {t("settings.sidebar.info.appVersion")}
+              </p>
               <p className="text-type-dimmed px-2 py-1 rounded bg-settings-sidebar-badge inline-block">
                 {conf().APP_VERSION}
               </p>
@@ -144,7 +182,9 @@ export function SidebarPart() {
 
             {/* Backend version */}
             <div className="col-span-1 space-y-1">
-              <p className="text-type-dimmed font-medium">Backend version</p>
+              <p className="text-type-dimmed font-medium">
+                {t("settings.sidebar.info.backendVersion")}
+              </p>
               <p className="text-type-dimmed px-2 py-1 rounded bg-settings-sidebar-badge inline-flex items-center gap-1">
                 {backendMeta.error ? (
                   <Icon
@@ -155,7 +195,8 @@ export function SidebarPart() {
                 {backendMeta.loading ? (
                   <div className="h-4 w-12 bg-type-dimmed/20 rounded" />
                 ) : (
-                  backendMeta?.value?.version || "Unknown"
+                  backendMeta?.value?.version ||
+                  t("settings.sidebar.info.unknownVersion")
                 )}
               </p>
             </div>

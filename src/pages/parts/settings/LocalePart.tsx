@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import { FlagIcon } from "@/components/FlagIcon";
 import { Dropdown } from "@/components/form/Dropdown";
 import { Heading1 } from "@/components/utils/Text";
@@ -8,7 +10,8 @@ export function LocalePart(props: {
   language: string;
   setLanguage: (l: string) => void;
 }) {
-  const sorted = sortLangCodes(appLanguageOptions.map((t) => t.code));
+  const { t } = useTranslation();
+  const sorted = sortLangCodes(appLanguageOptions.map((item) => item.code));
 
   const options = appLanguageOptions
     .sort((a, b) => sorted.indexOf(a.code) - sorted.indexOf(b.code))
@@ -18,14 +21,16 @@ export function LocalePart(props: {
       leftIcon: <FlagIcon countryCode={opt.code} />,
     }));
 
-  const selected = options.find((t) => t.id === props.language);
+  const selected = options.find((item) => item.id === props.language);
 
   return (
     <div>
-      <Heading1 border>Locale</Heading1>
-      <p className="text-white font-bold mb-3">Application language</p>
+      <Heading1 border>{t("settings.locale.title")}</Heading1>
+      <p className="text-white font-bold mb-3">
+        {t("settings.locale.language")}
+      </p>
       <p className="max-w-[20rem] font-medium">
-        Language applied to the entire application.
+        {t("settings.locale.languageDescription")}
       </p>
       <Dropdown
         options={options}

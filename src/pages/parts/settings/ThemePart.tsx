@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { useTranslation } from "react-i18next";
 
 import { Icon, Icons } from "@/components/Icon";
 import { Heading1 } from "@/components/utils/Text";
@@ -6,19 +7,19 @@ import { Heading1 } from "@/components/utils/Text";
 const availableThemes = [
   {
     id: "blue",
-    name: "Blue",
+    key: "settings.themes.blue",
   },
   {
     id: "teal",
-    name: "Teal",
+    key: "settings.themes.teal",
   },
   {
     id: "red",
-    name: "Red",
+    key: "settings.themes.red",
   },
   {
     id: "gray",
-    name: "Gray",
+    key: "settings.themes.gray",
   },
 ];
 
@@ -28,6 +29,8 @@ function ThemePreview(props: {
   name: string;
   onClick?: () => void;
 }) {
+  const { t } = useTranslation();
+
   return (
     <div
       className={classNames(props.selector, "cursor-pointer group tabbable")}
@@ -58,7 +61,6 @@ function ThemePreview(props: {
           )}
         />
         {/* Mini movie-web. So Kawaiiiii! */}
-        {/* ^ can we keep this comment in forever please? - Jip */}
         <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-3/5 h-4/5 rounded-t-lg -mb-px bg-background-main overflow-hidden">
           <div className="relative w-full h-full">
             {/* Background color */}
@@ -106,7 +108,7 @@ function ThemePreview(props: {
             props.active ? "opacity-100" : "opacity-0 pointer-events-none"
           )}
         >
-          Active
+          {t("settings.appearance.activeTheme")}
         </span>
       </div>
     </div>
@@ -117,13 +119,15 @@ export function ThemePart(props: {
   active: string | null;
   setTheme: (theme: string | null) => void;
 }) {
+  const { t } = useTranslation();
+
   return (
     <div>
-      <Heading1 border>Appearance</Heading1>
+      <Heading1 border>{t("settings.appearance.title")}</Heading1>
       <div className="grid grid-cols-[repeat(auto-fill,minmax(160px,1fr))] gap-6 max-w-[700px]">
         {/* default theme */}
         <ThemePreview
-          name="Default"
+          name={t("settings.appearance.themes.default")}
           selector="theme-default"
           active={props.active === null}
           onClick={() => props.setTheme(null)}
@@ -132,7 +136,7 @@ export function ThemePart(props: {
           <ThemePreview
             selector={`theme-${v.id}`}
             active={props.active === v.id}
-            name={v.name}
+            name={t(v.key)}
             key={v.id}
             onClick={() => props.setTheme(v.id)}
           />

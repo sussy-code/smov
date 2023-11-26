@@ -27,6 +27,10 @@
     },
     "migration": {
       "failed": "Failed to migrate your data."
+    },
+    "dmca": {
+      "title": "",
+      "text": ""
     }
   },
   "navigation": {
@@ -43,6 +47,79 @@
   },
   "actions": {
     "copy": "Copy"
+  },
+  "settings": {
+    "unsaved": "You have unsaved changes",
+    "reset": "Reset",
+    "save": "Save",
+    "sidebar": {
+      "info": {
+        "title": "App information",
+        "hostname": "Hostname",
+        "backendUrl": "Backend URL",
+        "userId": "User ID",
+        "notLoggedIn": "Not logged in",
+        "appVersion": "App version",
+        "backendVersion": "Backend version",
+        "unknownVersion": "Unknown",
+        "secure": "Secure",
+        "insecure": "Insecure"
+      }
+    },
+    "appearance": {
+      "title": "Appearance",
+      "activeTheme": "Active",
+      "themes": {
+        "default": "Default",
+        "blue": "Blue",
+        "teal": "Teal",
+        "red": "Red",
+        "gray": "Gray"
+      }
+    },
+    "account": {
+      "title": "Account",
+      "register": {
+        "title": "Sync to the cloud",
+        "text": "Instantly share your watch progress between devices and keep them synced.",
+        "cta": "Get started"
+      },
+      "profile": {
+        "title": "Edit profile picture",
+        "firstColor": "First color",
+        "secondColor": "Second color",
+        "userIcon": "User icon",
+        "finish": "Finish editing"
+      },
+      "devices": {
+        "title": "Devices",
+        "failed": "Failed to load sessions",
+        "deviceNameLabel": "Device name",
+        "removeDevice": "Remove"
+      }
+    },
+    "locale": {
+      "title": "Locale",
+      "language": "Application language",
+      "languageDescription": "Language applied to the entire application."
+    },
+    "captions": {
+      "title": "Captions"
+    },
+    "connections": {
+      "title": "Connections"
+    }
+  },
+  "faq": {
+    "title": "About us",
+    "q1": {
+      "title": "1",
+      "body": "Body of 1"
+    },
+    "how": {
+      "title": "1",
+      "body": "Body of 1"
+    }
   },
   "footer": {
     "tagline": "Watch your favorite shows and movies with this open source streaming app.",

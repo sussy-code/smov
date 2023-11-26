@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import { useAsyncFn } from "react-use";
 
 import { SessionResponse } from "@/backend/accounts/auth";
@@ -18,6 +19,7 @@ export function Device(props: {
   isCurrent?: boolean;
   onRemove?: () => void;
 }) {
+  const { t } = useTranslation();
   const url = useBackendUrl();
   const token = useAuthStore((s) => s.account?.token);
   const [result, exec] = useAsyncFn(async () => {
@@ -32,12 +34,14 @@ export function Device(props: {
       paddingClass="px-6 py-4"
     >
       <div className="font-medium">
-        <SecondaryLabel>Device name</SecondaryLabel>
+        <SecondaryLabel>
+          {t("settings.account.devices.deviceNameLabel")}
+        </SecondaryLabel>
         <p className="text-white">{props.name}</p>
       </div>
       {!props.isCurrent ? (
         <Button theme="danger" loading={result.loading} onClick={exec}>
-          Remove
+          {t("settings.account.devices.removeDevice")}
         </Button>
       ) : null}
     </SettingsCard>
@@ -50,6 +54,7 @@ export function DeviceListPart(props: {
   sessions: SessionResponse[];
   onChange?: () => void;
 }) {
+  const { t } = useTranslation();
   const seed = useAuthStore((s) => s.account?.seed);
   const sessions = props.sessions;
   const currentSessionId = useAuthStore((s) => s.account?.sessionId);
@@ -75,10 +80,10 @@ export function DeviceListPart(props: {
   return (
     <div>
       <Heading2 border className="mt-0 mb-9">
-        Devices
+        {t("settings.account.devices.title")}
       </Heading2>
       {props.error ? (
-        <p>Failed to load sessions</p>
+        <p>{t("settings.account.devices.failed")}</p>
       ) : props.loading ? (
         <Loading />
       ) : (

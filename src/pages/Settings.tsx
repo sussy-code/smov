@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import { useCallback, useEffect, useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import { useAsyncFn } from "react-use";
 
 import {
@@ -96,6 +97,7 @@ export function AccountSettings(props: {
 }
 
 export function SettingsPage() {
+  const { t } = useTranslation();
   const activeTheme = useThemeStore((s) => s.theme);
   const setTheme = useThemeStore((s) => s.setTheme);
 
@@ -244,21 +246,21 @@ export function SettingsPage() {
           state.changed ? "opacity-100" : "opacity-0"
         }`}
       >
-        <p className="text-type-danger">You have unsaved changes</p>
+        <p className="text-type-danger">{t("settings.unsaved")}</p>
         <div className="space-x-3 w-full md:w-auto flex">
           <Button
             className="w-full md:w-auto"
             theme="secondary"
             onClick={state.reset}
           >
-            Reset
+            {t("settings.reset")}
           </Button>
           <Button
             className="w-full md:w-auto"
             theme="purple"
             onClick={saveChanges}
           >
-            Save
+            {t("settings.save")}
           </Button>
         </div>
       </div>
