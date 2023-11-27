@@ -46,7 +46,7 @@ export function BookmarksPart() {
   return (
     <div>
       <SectionHeading
-        title={t("search.bookmarks") || "Bookmarks"}
+        title={t("home.bookmarks.sectionTitle") || "Bookmarks"}
         icon={Icons.BOOKMARK}
       >
         <EditButton editing={editing} onEdit={setEditing} />

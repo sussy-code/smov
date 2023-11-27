@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 
 import { Button } from "@/components/buttons/Button";
 import { Icons } from "@/components/Icon";
@@ -18,6 +19,7 @@ export interface ScrapeErrorPartProps {
 }
 
 export function ScrapeErrorPart(props: ScrapeErrorPartProps) {
+  const { t } = useTranslation();
   const error = useMemo(() => {
     const data = props.data;
     const amountError = Object.values(data.sources).filter(
@@ -36,21 +38,18 @@ export function ScrapeErrorPart(props: ScrapeErrorPartProps) {
   return (
     <ErrorLayout>
       <ErrorContainer>
-        <IconPill icon={Icons.WAND}>Not found</IconPill>
-        <Title>Goo goo gaa gaa</Title>
-        <Paragraph>
-          Oh, my apowogies, sweetie! The itty-bitty movie-web did its utmost
-          bestest, but alas, no wucky videos to be spotted anywhere (´⊙ω⊙`)
-          Please don&apos;t be angwy, wittle movie-web ish twying so hard. Can
-          you find it in your heart to forgive? UwU 💖
-        </Paragraph>
+        <IconPill icon={Icons.WAND}>
+          {t("player.scraping.notFound.badge")}
+        </IconPill>
+        <Title>{t("player.scraping.notFound.title")}</Title>
+        <Paragraph>{t("player.scraping.notFound.text")}</Paragraph>
         <Button
           href="/"
           theme="purple"
           padding="md:px-12 p-2.5"
           className="mt-6"
         >
-          Go home
+          {t("player.scraping.notFound.homeButton")}
         </Button>
       </ErrorContainer>
       <ErrorContainer maxWidth="max-w-[45rem]">

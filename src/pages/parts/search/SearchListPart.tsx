@@ -30,9 +30,9 @@ function SearchSuffix(props: { failed?: boolean; results?: number }) {
       {!props.failed ? (
         <div>
           {(props.results ?? 0) > 0 ? (
-            <p>{t("search.allResults")}</p>
+            <p>{t("home.search.allResults")}</p>
           ) : (
-            <p>{t("search.noResults")}</p>
+            <p>{t("home.search.noResults")}</p>
           )}
         </div>
       ) : null}
@@ -40,7 +40,7 @@ function SearchSuffix(props: { failed?: boolean; results?: number }) {
       {/* Error result */}
       {props.failed ? (
         <div>
-          <p>{t("search.allFailed")}</p>
+          <p>{t("home.search.failed")}</p>
         </div>
       ) : null}
     </div>
@@ -72,7 +72,7 @@ export function SearchListPart({ searchQuery }: { searchQuery: string }) {
       {results.length > 0 ? (
         <div>
           <SectionHeading
-            title={t("search.headingTitle") || "Search results"}
+            title={t("home.search.sectionTitle")}
             icon={Icons.SEARCH}
           />
           <MediaGrid>

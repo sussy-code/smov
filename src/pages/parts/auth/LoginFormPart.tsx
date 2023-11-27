@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useAsyncFn } from "react-use";
 
 import { verifyValidMnemonic } from "@/backend/accounts/crypto";
@@ -24,12 +25,13 @@ export function LoginFormPart(props: LoginFormPartProps) {
   const { login, restore, importData } = useAuth();
   const progressItems = useProgressStore((store) => store.items);
   const bookmarkItems = useBookmarkStore((store) => store.bookmarks);
+  const { t } = useTranslation();
 
   const [result, execute] = useAsyncFn(
     async (inputMnemonic: string, inputdevice: string) => {
       // TODO verify valid device input
       if (!verifyValidMnemonic(inputMnemonic))
-        throw new Error("Invalid or incomplete passphrase");
+        throw new Error(t("auth.login.validationError") ?? undefined);
 
       const account = await login({
         mnemonic: inputMnemonic,
@@ -49,25 +51,23 @@ export function LoginFormPart(props: LoginFormPartProps) {
 
   return (
     <LargeCard top={<BrandPill backgroundClass="bg-[#161527]" />}>
-      <LargeCardText title="Login to your account">
-        Oh, you&apos;re asking for the key to my top-secret lair, also known as
-        The Fortress of Wordsmithery, accessed only by reciting the sacred
-        incantation of the 12-word passphrase!
+      <LargeCardText title={t("auth.login.title")}>
+        {t("auth.login.description")}
       </LargeCardText>
       <div className="space-y-4">
         <AuthInputBox
-          label="12-Word Passphrase"
+          label={t("auth.login.passphraseLabel") ?? undefined}
           value={mnemonic}
           autoComplete="username"
           name="username"
           onChange={setMnemonic}
-          placeholder="Passphrase"
+          placeholder={t("auth.login.passphrasePlaceholder") ?? undefined}
         />
         <AuthInputBox
-          label="Device name"
+          label={t("auth.deviceNameLabel") ?? undefined}
           value={device}
           onChange={setDevice}
-          placeholder="Device"
+          placeholder={t("auth.deviceNamePlaceholder") ?? undefined}
         />
         {result.error && !result.loading ? (
           <p className="text-authentication-errorText">
@@ -82,7 +82,7 @@ export function LoginFormPart(props: LoginFormPartProps) {
           loading={result.loading}
           onClick={() => execute(mnemonic, device)}
         >
-          LET ME IN!
+          {t("auth.login.submit")}
         </Button>
       </LargeCardButtons>
     </LargeCard>

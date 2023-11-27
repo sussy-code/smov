@@ -44,7 +44,7 @@ export function WatchingPart() {
   return (
     <div>
       <SectionHeading
-        title={t("search.continueWatching") || "Continue Watching"}
+        title={t("home.continueWatching.sectionTitle")}
         icon={Icons.CLOCK}
       >
         <EditButton editing={editing} onEdit={setEditing} />

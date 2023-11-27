@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { Trans, useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
 import { useAsync } from "react-use";
 
@@ -21,18 +22,18 @@ interface TrustBackendPartProps {
 export function TrustBackendPart(props: TrustBackendPartProps) {
   const history = useHistory();
   const backendUrl = useBackendUrl();
-  const backendHostname = useMemo(
-    () => new URL(backendUrl).hostname,
-    [backendUrl]
-  );
+  const hostname = useMemo(() => new URL(backendUrl).hostname, [backendUrl]);
   const result = useAsync(() => {
     return getBackendMeta(conf().BACKEND_URL);
   }, [backendUrl]);
+  const { t } = useTranslation();
 
   let cardContent = (
     <>
-      <h3 className="text-white font-bold text-lg">Failed to reach backend</h3>
-      <p>Did you configure it correctly?</p>
+      <h3 className="text-white font-bold text-lg">
+        {t("auth.trust.failed.title")}
+      </h3>
+      <p>{t("auth.trust.failed.text")}</p>
     </>
   );
   if (result.loading) cardContent = <Loading />;
@@ -47,10 +48,12 @@ export function TrustBackendPart(props: TrustBackendPartProps) {
   return (
     <LargeCard>
       <LargeCardText
-        title="Do you trust this host?"
+        title={t("auth.trust.title")}
         icon={<Icon icon={Icons.CIRCLE_EXCLAMATION} />}
       >
-        Do you trust <span className="text-white">{backendHostname}</span>?
+        <Trans i18nKey="auth.trust.host">
+          <span className="text-white">{{ hostname }}</span>
+        </Trans>
       </LargeCardText>
 
       <div className="border border-authentication-border rounded-xl px-4 py-8 flex flex-col items-center space-y-2 my-8">
@@ -61,10 +64,10 @@ export function TrustBackendPart(props: TrustBackendPartProps) {
           theme="purple"
           onClick={() => result.value && props.onNext?.(result.value)}
         >
-          I pledge my life to the United States
+          {t("auth.trust.yes")}
         </Button>
         <Button theme="secondary" onClick={() => history.push("/")}>
-          I WILL NEVER SUCCUMB!
+          {t("auth.trust.no")}
         </Button>
       </LargeCardButtons>
     </LargeCard>

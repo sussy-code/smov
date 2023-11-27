@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import { useTranslation } from "react-i18next";
 import { useAsyncFn } from "react-use";
 
 import { updateSettings } from "@/backend/accounts/settings";
@@ -40,24 +41,26 @@ export function VerifyPassphrase(props: VerifyPassphraseProps) {
   const applicationTheme = useThemeStore((store) => store.theme);
 
   const backendUrl = useBackendUrl();
+  const { t } = useTranslation();
 
   const { executeRecaptcha } = useGoogleReCaptcha();
 
   const [result, execute] = useAsyncFn(
     async (inputMnemonic: string) => {
       if (!props.mnemonic || !props.userData)
-        throw new Error("Data is not valid");
+        throw new Error(t("auth.verify.invalidData") ?? undefined);
 
       let recaptchaToken: string | undefined;
       if (props.hasCaptcha) {
         recaptchaToken = executeRecaptcha
           ? await executeRecaptcha()
           : undefined;
-        if (!recaptchaToken) throw new Error("ReCaptcha validation failed");
+        if (!recaptchaToken)
+          throw new Error(t("auth.verify.recaptchaFailed") ?? undefined);
       }
 
       if (inputMnemonic !== props.mnemonic)
-        throw new Error("Passphrase doesn't match");
+        throw new Error(t("auth.verify.noMatch") ?? undefined);
 
       const account = await register({
         mnemonic: inputMnemonic,
@@ -85,13 +88,12 @@ export function VerifyPassphrase(props: VerifyPassphraseProps) {
       <form>
         <LargeCardText
           icon={<Icon icon={Icons.CIRCLE_CHECK} />}
-          title="Enter your passphrase"
+          title={t("auth.verify.title")}
         >
-          If you&apos;ve already lost it, how will you ever be able to take care
-          of a child?
+          {t("auth.verify.description")}
         </LargeCardText>
         <AuthInputBox
-          label="Your passphrase"
+          label={t("auth.verify.passphraseLabel") ?? undefined}
           autoComplete="username"
           name="username"
           value={mnemonic}
@@ -108,7 +110,7 @@ export function VerifyPassphrase(props: VerifyPassphraseProps) {
             loading={result.loading}
             onClick={() => execute(mnemonic)}
           >
-            Register
+            {t("auth.verify.register")}
           </Button>
         </LargeCardButtons>
       </form>

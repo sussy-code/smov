@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import { Button } from "@/components/buttons/Button";
 import { Icon, Icons } from "@/components/Icon";
@@ -10,6 +11,7 @@ export function ErrorCard(props: { error: DisplayError | string }) {
   const hasCopiedUnsetDebounce = useRef<ReturnType<typeof setTimeout> | null>(
     null
   );
+  const { t } = useTranslation();
 
   const errorMessage =
     typeof props.error === "string" ? props.error : props.error.message;
@@ -32,7 +34,7 @@ export function ErrorCard(props: { error: DisplayError | string }) {
     // I didn't put a <Transition> here because it'd fade out, then jump height weirdly
     <div className="w-full bg-errors-card p-6 rounded-lg">
       <div className="flex justify-between items-center pb-2 border-b border-errors-border">
-        <span className="text-white font-medium">Error details</span>
+        <span className="text-white font-medium">{t("errors.details")}</span>
         <div className="flex justify-center items-center gap-3">
           <Button
             theme="secondary"
@@ -42,12 +44,12 @@ export function ErrorCard(props: { error: DisplayError | string }) {
             {hasCopied ? (
               <>
                 <Icon icon={Icons.CHECKMARK} className="text-xs mr-3" />
-                Copied
+                {t("actions.copied")}
               </>
             ) : (
               <>
                 <Icon icon={Icons.COPY} className="text-2xl mr-3" />
-                Copy
+                {t("actions.copy")}
               </>
             )}
           </Button>

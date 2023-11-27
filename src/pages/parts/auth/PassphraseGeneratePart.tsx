@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 
 import { genMnemonic } from "@/backend/accounts/crypto";
 import { Button } from "@/components/buttons/Button";
@@ -16,18 +17,21 @@ interface PassphraseGeneratePartProps {
 
 export function PassphraseGeneratePart(props: PassphraseGeneratePartProps) {
   const mnemonic = useMemo(() => genMnemonic(), []);
+  const { t } = useTranslation();
 
   return (
     <LargeCard>
-      <LargeCardText title="Your passphrase" icon={<Icon icon={Icons.USER} />}>
-        If you lose this, you&apos;re a silly goose and will be posted on the
-        wall of shame™️
+      <LargeCardText
+        title={t("auth.generate.title")}
+        icon={<Icon icon={Icons.USER} />}
+      >
+        {t("auth.generate.description")}
       </LargeCardText>
       <PassphraseDisplay mnemonic={mnemonic} />
 
       <LargeCardButtons>
         <Button theme="purple" onClick={() => props.onNext?.(mnemonic)}>
-          NEXT!
+          {t("actions.next")}
         </Button>
       </LargeCardButtons>
     </LargeCard>

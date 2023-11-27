@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useHistory, useParams } from "react-router-dom";
 import { useAsync } from "react-use";
 import type { AsyncReturnType } from "type-fest";
@@ -18,6 +19,7 @@ export interface MetaPartProps {
 }
 
 export function MetaPart(props: MetaPartProps) {
+  const { t } = useTranslation();
   const params = useParams<{
     media: string;
     episode?: string;
@@ -70,21 +72,18 @@ export function MetaPart(props: MetaPartProps) {
     return (
       <ErrorLayout>
         <ErrorContainer>
-          <IconPill icon={Icons.WAND}>Failed to load</IconPill>
-          <Title>Failed to load meta data</Title>
-          <Paragraph>
-            Oh, my apowogies, sweetie! The itty-bitty movie-web did its utmost
-            bestest, but alas, no wucky videos to be spotted anywhere (´⊙ω⊙`)
-            Please don&apos;t be angwy, wittle movie-web ish twying so hard. Can
-            you find it in your heart to forgive? UwU 💖
-          </Paragraph>
+          <IconPill icon={Icons.WAND}>
+            {t("player.metadata.failed.badge")}
+          </IconPill>
+          <Title>{t("player.metadata.failed.title")}</Title>
+          <Paragraph>{t("player.metadata.failed.text")}</Paragraph>
           <Button
             href="/"
             theme="purple"
             padding="md:px-12 p-2.5"
             className="mt-6"
           >
-            Go home
+            {t("player.metadata.failed.homeButton")}
           </Button>
         </ErrorContainer>
       </ErrorLayout>
@@ -95,21 +94,18 @@ export function MetaPart(props: MetaPartProps) {
     return (
       <ErrorLayout>
         <ErrorContainer>
-          <IconPill icon={Icons.WAND}>Not found</IconPill>
-          <Title>This media doesnt exist</Title>
-          <Paragraph>
-            Oh, my apowogies, sweetie! The itty-bitty movie-web did its utmost
-            bestest, but alas, no wucky videos to be spotted anywhere (´⊙ω⊙`)
-            Please don&apos;t be angwy, wittle movie-web ish twying so hard. Can
-            you find it in your heart to forgive? UwU 💖
-          </Paragraph>
+          <IconPill icon={Icons.WAND}>
+            {t("player.metadata.notFound.badge")}
+          </IconPill>
+          <Title>{t("player.metadata.notFound.title")}</Title>
+          <Paragraph>{t("player.metadata.notFound.text")}</Paragraph>
           <Button
             href="/"
             theme="purple"
             padding="md:px-12 p-2.5"
             className="mt-6"
           >
-            Go home
+            {t("player.metadata.notFound.homeButton")}
           </Button>
         </ErrorContainer>
       </ErrorLayout>

@@ -31,7 +31,7 @@ export function HeroPart({ setIsSticky, searchParams }: HeroPartProps) {
   if (hour < 12) time = "morning";
   else if (hour < 19) time = "day";
 
-  const title = t(`search.title.${time}`);
+  const title = t(`home.titles.${time}`);
 
   return (
     <ThinContainer>
@@ -51,9 +51,7 @@ export function HeroPart({ setIsSticky, searchParams }: HeroPartProps) {
               onChange={setSearch}
               value={search}
               onUnFocus={setSearchUnFocus}
-              placeholder={
-                t("search.placeholder") || "What do you want to watch?"
-              }
+              placeholder={t("home.search.placeholder")}
             />
           </Sticky>
         </div>

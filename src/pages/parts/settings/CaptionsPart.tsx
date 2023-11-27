@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import { Icon, Icons } from "@/components/Icon";
 import {
@@ -19,6 +20,7 @@ export function CaptionPreview(props: {
   styling: SubtitleStyling;
   onToggle: () => void;
 }) {
+  const { t } = useTranslation();
   return (
     <div
       className={classNames({
@@ -50,7 +52,7 @@ export function CaptionPreview(props: {
               }
             >
               <CaptionCue
-                text="I must not fear. Fear is the mind-killer."
+                text={t("settings.captions.previewQuote") ?? undefined}
                 styling={props.styling}
                 overrideCasing={false}
               />
@@ -66,15 +68,16 @@ export function CaptionsPart(props: {
   styling: SubtitleStyling;
   setStyling: (s: SubtitleStyling) => void;
 }) {
+  const { t } = useTranslation();
   const [fullscreenPreview, setFullscreenPreview] = useState(false);
 
   return (
     <div>
-      <Heading1 border>Captions</Heading1>
+      <Heading1 border>{t("settings.captions.title")}</Heading1>
       <div className="grid md:grid-cols-[1fr,356px] gap-8">
         <div className="space-y-6">
           <CaptionSetting
-            label="Background opacity"
+            label={t("settings.captions.backgroundLabel")}
             max={100}
             min={0}
             onChange={(v) =>
@@ -84,7 +87,7 @@ export function CaptionsPart(props: {
             textTransformer={(s) => `${s}%`}
           />
           <CaptionSetting
-            label="Text size"
+            label={t("settings.captions.textSizeLabel")}
             max={200}
             min={1}
             textTransformer={(s) => `${s}%`}
@@ -94,7 +97,9 @@ export function CaptionsPart(props: {
             value={props.styling.size * 100}
           />
           <div className="flex justify-between items-center">
-            <Menu.FieldTitle>Color</Menu.FieldTitle>
+            <Menu.FieldTitle>
+              {t("settings.captions.colorLabel")}
+            </Menu.FieldTitle>
             <div className="flex justify-center items-center">
               {colors.map((v) => (
                 <ColorOption

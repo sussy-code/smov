@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import { Button } from "@/components/buttons/Button";
 import { Icons } from "@/components/Icon";
 import { IconPill } from "@/components/layout/IconPill";
@@ -9,26 +11,22 @@ import { usePlayerStore } from "@/stores/player/store";
 import { ErrorCard } from "../errors/ErrorCard";
 
 export function PlaybackErrorPart() {
+  const { t } = useTranslation();
   const playbackError = usePlayerStore((s) => s.interface.error);
 
   return (
     <ErrorLayout>
       <ErrorContainer>
-        <IconPill icon={Icons.WAND}>Not found</IconPill>
-        <Title>Goo goo gaa gaa</Title>
-        <Paragraph>
-          Oh, my apowogies, sweetie! The itty-bitty movie-web did its utmost
-          bestest, but alas, no wucky videos to be spotted anywhere (´⊙ω⊙`)
-          Please don&apos;t be angwy, wittle movie-web ish twying so hard. Can
-          you find it in your heart to forgive? UwU 💖
-        </Paragraph>
+        <IconPill icon={Icons.WAND}>{t("player.playbackError.badge")}</IconPill>
+        <Title>{t("player.playbackError.title")}</Title>
+        <Paragraph>{t("player.playbackError.text")}</Paragraph>
         <Button
           href="/"
           theme="purple"
           padding="md:px-12 p-2.5"
           className="mt-6"
         >
-          Go home
+          {t("player.playbackError.homeButton")}
         </Button>
       </ErrorContainer>
       <ErrorContainer maxWidth="max-w-[45rem]">

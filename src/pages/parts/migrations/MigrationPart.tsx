@@ -1,8 +1,11 @@
+import { useTranslation } from "react-i18next";
+
 import { BrandPill } from "@/components/layout/BrandPill";
 import { Loading } from "@/components/layout/Loading";
 import { BlurEllipsis } from "@/pages/layouts/SubPageLayout";
 
 export function MigrationPart() {
+  const { t } = useTranslation();
   return (
     <div className="flex flex-col justify-center items-center h-screen text-center font-medium">
       {/* Overlaid elements */}
@@ -14,8 +17,7 @@ export function MigrationPart() {
       {/* Content */}
       <Loading />
       <p className="max-w-[19rem] mt-3 mb-12 text-type-secondary">
-        Please hold, we are migrating your data. This shouldn&apos;t take long.
-        Also, fuck you.
+        {t("screens.migration.inProgress")}
       </p>
     </div>
   );

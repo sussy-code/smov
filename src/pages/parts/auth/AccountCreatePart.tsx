@@ -1,4 +1,5 @@
 import { useCallback, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import { Button } from "@/components/buttons/Button";
 import { ColorPicker } from "@/components/form/ColorPicker";
@@ -30,6 +31,7 @@ export function AccountCreatePart(props: AccountCreatePartProps) {
   const [colorA, setColorA] = useState("#2E65CF");
   const [colorB, setColorB] = useState("#2E65CF");
   const [userIcon, setUserIcon] = useState<UserIcons>(UserIcons.USER);
+  const { t } = useTranslation();
   // TODO validate device and account before next step
 
   const nextStep = useCallback(() => {
@@ -47,24 +49,36 @@ export function AccountCreatePart(props: AccountCreatePartProps) {
     <LargeCard>
       <LargeCardText
         icon={<Icon icon={Icons.USER} />}
-        title="Account information"
+        title={t("auth.register.information.title") ?? undefined}
       >
-        Set up your account.... OR ELSE!
+        {t("auth.register.information.header")}
       </LargeCardText>
       <div className="space-y-6">
         <AuthInputBox
-          label="Device name"
+          label={t("auth.deviceNameLabel") ?? undefined}
           value={device}
           onChange={setDevice}
-          placeholder="Muad'Dib's Nintendo Switch"
+          placeholder={t("auth.deviceNamePlaceholder") ?? undefined}
         />
-        <ColorPicker label="First color" value={colorA} onInput={setColorA} />
-        <ColorPicker label="Second color" value={colorB} onInput={setColorB} />
-        <IconPicker label="User icon" value={userIcon} onInput={setUserIcon} />
+        <ColorPicker
+          label={t("auth.register.information.color1")}
+          value={colorA}
+          onInput={setColorA}
+        />
+        <ColorPicker
+          label={t("auth.register.information.color2")}
+          value={colorB}
+          onInput={setColorB}
+        />
+        <IconPicker
+          label={t("auth.register.information.icon")}
+          value={userIcon}
+          onInput={setUserIcon}
+        />
       </div>
       <LargeCardButtons>
         <Button theme="purple" onClick={() => nextStep()}>
-          Next
+          {t("actions.next")}
         </Button>
       </LargeCardButtons>
     </LargeCard>

@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import { Avatar } from "@/components/Avatar";
 import { Button } from "@/components/buttons/Button";
 import { Icon, Icons } from "@/components/Icon";
@@ -18,6 +20,7 @@ export function AccountEditPart(props: {
   userIcon: UserIcons;
   setUserIcon: (s: UserIcons) => void;
 }) {
+  const { t } = useTranslation();
   const { logout } = useAuth();
   const profileEditModal = useModal("profile-edit");
 
@@ -50,7 +53,7 @@ export function AccountEditPart(props: {
                 onClick={profileEditModal.show}
               >
                 <Icon icon={Icons.EDIT} />
-                Edit
+                {t("settings.account.accountDetails.editProfile")}
               </button>
             }
           />
@@ -58,14 +61,20 @@ export function AccountEditPart(props: {
         <div>
           <div className="space-y-8 max-w-xs">
             <AuthInputBox
-              label="Device name"
-              placeholder="Fremen tablet"
+              label={
+                t("settings.account.accountDetails.deviceNameLabel") ??
+                undefined
+              }
+              placeholder={
+                t("settings.account.accountDetails.deviceNamePlaceholder") ??
+                undefined
+              }
               value={props.deviceName}
               onChange={(value) => props.setDeviceName(value)}
             />
             <div className="flex space-x-3">
               <Button theme="danger" onClick={logout}>
-                Log out
+                {t("settings.account.accountDetails.logoutButton")}
               </Button>
             </div>
           </div>

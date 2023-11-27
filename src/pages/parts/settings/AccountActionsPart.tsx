@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { useAsyncFn } from "react-use";
 
 import { deleteUser } from "@/backend/accounts/user";
@@ -10,6 +11,7 @@ import { useBackendUrl } from "@/hooks/auth/useBackendUrl";
 import { useAuthStore } from "@/stores/auth";
 
 export function AccountActionsPart() {
+  const { t } = useTranslation();
   const url = useBackendUrl();
   const account = useAuthStore((s) => s.account);
   const { logout } = useAuthData();
@@ -26,16 +28,15 @@ export function AccountActionsPart() {
 
   return (
     <div>
-      <Heading2 border>Actions</Heading2>
+      <Heading2 border>{t("settings.account.actions.title")}</Heading2>
       <SolidSettingsCard
         paddingClass="px-6 py-12"
         className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12"
       >
         <div>
-          <Heading3>Delete account</Heading3>
+          <Heading3>{t("settings.account.actions.delete.title")}</Heading3>
           <p className="text-type-text">
-            This action is irreversible. All data will be deleted and nothing
-            can be recovered.
+            {t("settings.account.actions.delete.text")}
           </p>
         </div>
         <div className="flex justify-start lg:justify-end items-center">
@@ -44,23 +45,24 @@ export function AccountActionsPart() {
             loading={deleteResult.loading}
             onClick={deleteModal.show}
           >
-            Delete account
+            {t("settings.account.actions.delete.button")}
           </Button>
         </div>
       </SolidSettingsCard>
       <Modal id={deleteModal.id}>
         <ModalCard>
-          <Heading2 className="!mt-0">Are you sure?</Heading2>
+          <Heading2 className="!mt-0">
+            {t("settings.account.actions.delete.confirmTitle")}
+          </Heading2>
           <Paragraph>
-            Are you sure you want to delete your account? All your data will be
-            lost!
+            {t("settings.account.actions.delete.confirmDescription")}
           </Paragraph>
           <Button
             theme="danger"
             loading={deleteResult.loading}
             onClick={deleteExec}
           >
-            Delete account
+            {t("settings.account.actions.delete.confirmButton")}
           </Button>
         </ModalCard>
       </Modal>

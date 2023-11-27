@@ -15,29 +15,22 @@ export function NotFoundPart() {
   return (
     <div className="relative flex flex-1 flex-col">
       <Helmet>
-        <title>{t("notFound.genericTitle")}</title>
+        <title>{t("notFound.badge")}</title>
       </Helmet>
       <Navigation />
       <div className="flex h-full flex-1 flex-col items-center justify-center p-5 text-center">
         <ErrorLayout>
           <ErrorContainer>
-            <IconPill icon={Icons.EYE_SLASH}>
-              {t("notFound.genericTitle")}
-            </IconPill>
-            <Title>Failed to load meta data</Title>
-            <Paragraph>
-              Oh, my apowogies, sweetie! The itty-bitty movie-web did its utmost
-              bestest, but alas, no wucky videos to be spotted anywhere (´⊙ω⊙`)
-              Please don&apos;t be angwy, wittle movie-web ish twying so hard.
-              Can you find it in your heart to forgive? UwU 💖
-            </Paragraph>
+            <IconPill icon={Icons.EYE_SLASH}>{t("notFound.badge")}</IconPill>
+            <Title>{t("notFound.title")}</Title>
+            <Paragraph>{t("notFound.message")}</Paragraph>
             <Button
               href="/"
               theme="purple"
               padding="md:px-12 p-2.5"
               className="mt-6"
             >
-              Go home
+              {t("notFound.goHome")}
             </Button>
           </ErrorContainer>
         </ErrorLayout>
