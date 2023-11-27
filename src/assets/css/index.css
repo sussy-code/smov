@@ -7,7 +7,6 @@ body {
   @apply bg-background-main font-open-sans text-type-text overflow-x-hidden;
   min-height: 100vh;
   min-height: 100dvh;
-  position: relative;
 }
 
 html[data-full],
