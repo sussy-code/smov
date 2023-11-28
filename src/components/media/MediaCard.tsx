@@ -62,10 +62,12 @@ function MediaCardContent({
         }`}
       >
         <div
-          className={[
+          className={classNames(
             "relative mb-4 pb-[150%] w-full overflow-hidden rounded-xl bg-mediaCard-hoverBackground bg-cover bg-center transition-[border-radius] duration-100",
-            closable ? "" : "group-hover:rounded-lg",
-          ].join(" ")}
+            {
+              "group-hover:rounded-lg": !closable,
+            }
+          )}
           style={{
             backgroundImage: media.poster ? `url(${media.poster})` : undefined,
           }}
