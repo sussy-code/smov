@@ -1,77 +1,71 @@
 {
-  "global": {
-    "name": "movie-web"
-  },
-  "menus": {
-    "episodes": {
-      "loadingTitle": "Wird geladen...",
-      "loadingList": "Wird geladen..."
-    }
-  },
-  "home": {
-    "search": {
-      "allResults": "Das ist alles, was wir haben!",
-      "sectionTitle": "Suchergebnisse",
-      "noResults": "Wir haben nichts gefunden!",
-      "failed": "Das Medium wurde nicht gefunden, bitte versuchen Sie es erneut!",
-      "loading": "Wird geladen...",
-      "placeholder": "Was willst du gucken?"
+    "global": {
+        "name": "movie-web"
     },
-    "bookmarks": {
-      "sectionTitle": "Favoriten"
+    "home": {
+        "search": {
+            "allResults": "Das ist alles, was wir haben!",
+            "sectionTitle": "Suchergebnisse",
+            "noResults": "Wir haben nichts gefunden!",
+            "failed": "Das Medium wurde nicht gefunden, bitte versuchen Sie es erneut!",
+            "loading": "Wird geladen...",
+            "placeholder": "Was willst du gucken?"
+        },
+        "bookmarks": {
+            "sectionTitle": "Favoriten"
+        },
+        "continueWatching": {
+            "sectionTitle": "Weiter ansehen"
+        }
     },
-    "continueWatching": {
-      "sectionTitle": "Weiter ansehen"
-    }
-  },
-  "media": {
-    "types": {
-      "movie": "Film",
-      "show": "Serie"
+    "media": {
+        "types": {
+            "movie": "Film",
+            "show": "Serie"
+        },
+        "episodeDisplay": "S{{season}} E{{episode}}"
     },
-    "episodeDisplay": "S{{season}} E{{episode}}"
-  },
-  "player": {
-    "playbackError": {
-      "title": "Hoppla, etwas ist schiefgegangen!"
+    "player": {
+        "playbackError": {
+            "title": "Hoppla, etwas ist schiefgegangen!"
+        },
+        "metadata": {
+            "notFound": {
+                "badge": "Nicht gefunden",
+                "homeButton": "Zurück zur Startseite",
+                "title": "Das Medium konnte nicht gefunden werden",
+                "text": "Wir konnten die angeforderten Medien nicht finden."
+            }
+        },
+        "menus": {
+            "captions": {
+                "customChoice": "Untertitel hochladen",
+                "customizeLabel": "Bearbeiten",
+                "title": "Untertitel"
+            },
+            "sources": {
+                "title": "Quellen"
+            },
+            "episodes": {
+                "button": "Folgen",
+                "loadingTitle": "Wird geladen...",
+                "loadingList": "Wird geladen..."
+            }
+        },
+        "back": {
+            "default": "Zurück zur Startseite",
+            "short": "Rückmeldung"
+        }
     },
-    "metadata": {
-      "notFound": {
+    "notFound": {
         "badge": "Nicht gefunden",
-        "homeButton": "Zurück zur Startseite",
-        "title": "Das Medium konnte nicht gefunden werden",
-        "text": "Wir konnten die angeforderten Medien nicht finden."
-      }
+        "goHome": "Zurück zur Startseite",
+        "title": "Diese Seite kann nicht gefunden werden",
+        "message": "Wir haben überall gesucht, aber am Ende konnten wir die gesuchte Seite nicht finden."
     },
-    "menus": {
-      "captions": {
-        "customChoice": "Untertitel hochladen",
-        "customizeLabel": "Bearbeiten",
-        "title": "Untertitel"
-      },
-      "sources": {
-        "title": "Quellen"
-      },
-      "episodes": {
-        "button": "Folgen",
-        "loadingTitle": "Wird geladen...",
-        "loadingList": "Wird geladen..."
-      }
-    },
-    "back": {
-      "default": "Zurück zur Startseite",
-      "short": "Rückmeldung"
+    "navigation": {
+        "banner": {
+            "offline": "Internetverbindung ist instabil"
+        }
     }
-  },
-  "notFound": {
-    "badge": "Nicht gefunden",
-    "goHome": "Zurück zur Startseite",
-    "title": "Diese Seite kann nicht gefunden werden",
-    "message": "Wir haben überall gesucht, aber am Ende konnten wir die gesuchte Seite nicht finden."
-  },
-  "navigation": {
-    "banner": {
-      "offline": "Internetverbindung ist instabil"
-    }
-  }
 }

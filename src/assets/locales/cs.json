@@ -1,77 +1,71 @@
 {
-  "global": {
-    "name": "movie-web"
-  },
-  "menus": {
-    "episodes": {
-      "loadingTitle": "Načítání...",
-      "loadingList": "Načítání..."
-    }
-  },
-  "home": {
-    "search": {
-      "allResults": "To je vše co máme!",
-      "sectionTitle": "Výsledky vyhledávání",
-      "noResults": "Nemohli jsme nic najít!",
-      "failed": "Nepodařilo se najít média, zkuste to znovu!",
-      "loading": "Načítání...",
-      "placeholder": "Co si přejete sledovat?"
+    "global": {
+        "name": "movie-web"
     },
-    "bookmarks": {
-      "sectionTitle": "Záložky"
+    "home": {
+        "search": {
+            "allResults": "To je vše co máme!",
+            "sectionTitle": "Výsledky vyhledávání",
+            "noResults": "Nemohli jsme nic najít!",
+            "failed": "Nepodařilo se najít média, zkuste to znovu!",
+            "loading": "Načítání...",
+            "placeholder": "Co si přejete sledovat?"
+        },
+        "bookmarks": {
+            "sectionTitle": "Záložky"
+        },
+        "continueWatching": {
+            "sectionTitle": "Pokračujte ve sledování"
+        }
     },
-    "continueWatching": {
-      "sectionTitle": "Pokračujte ve sledování"
-    }
-  },
-  "media": {
-    "types": {
-      "movie": "Film",
-      "show": "Seriál"
+    "media": {
+        "types": {
+            "movie": "Film",
+            "show": "Seriál"
+        },
+        "episodeDisplay": "S{{season}} E{{episode}}"
     },
-    "episodeDisplay": "S{{season}} E{{episode}}"
-  },
-  "player": {
-    "playbackError": {
-      "title": "Jejda, rozbilo se to!"
+    "player": {
+        "playbackError": {
+            "title": "Jejda, rozbilo se to!"
+        },
+        "metadata": {
+            "notFound": {
+                "badge": "Nenalezeno",
+                "homeButton": "Zpátky domů",
+                "title": "Nemohli jsme najít Vaše média.",
+                "text": "Nemohli jsme najít média o které jste požádali. Buďto jsme ho nemohli najít, nebo jste manipulovali s URL."
+            }
+        },
+        "menus": {
+            "captions": {
+                "customChoice": "Nahrát titulky",
+                "customizeLabel": "Upravit",
+                "title": "Titulky"
+            },
+            "sources": {
+                "title": "Zdroje"
+            },
+            "episodes": {
+                "button": "Epizody",
+                "loadingTitle": "Načítání...",
+                "loadingList": "Načítání..."
+            }
+        },
+        "back": {
+            "default": "Zpátky domů",
+            "short": "Zpět"
+        }
     },
-    "metadata": {
-      "notFound": {
+    "notFound": {
         "badge": "Nenalezeno",
-        "homeButton": "Zpátky domů",
-        "title": "Nemohli jsme najít Vaše média.",
-        "text": "Nemohli jsme najít média o které jste požádali. Buďto jsme ho nemohli najít, nebo jste manipulovali s URL."
-      }
+        "goHome": "Zpátky domů",
+        "title": "Tuto stránku se nepodařilo najít",
+        "message": "Dívali jsme se všude: pod koši, ve skříni, za proxy, ale nakonec jsme nemohli najít stránku, kterou hledáte."
     },
-    "menus": {
-      "captions": {
-        "customChoice": "Nahrát titulky",
-        "customizeLabel": "Upravit",
-        "title": "Titulky"
-      },
-      "sources": {
-        "title": "Zdroje"
-      },
-      "episodes": {
-        "button": "Epizody",
-        "loadingTitle": "Načítání...",
-        "loadingList": "Načítání..."
-      }
-    },
-    "back": {
-      "default": "Zpátky domů",
-      "short": "Zpět"
+    "navigation": {
+        "banner": {
+            "offline": "Zkontrolujte své internetové připojení"
+        }
     }
-  },
-  "notFound": {
-    "badge": "Nenalezeno",
-    "goHome": "Zpátky domů",
-    "title": "Tuto stránku se nepodařilo najít",
-    "message": "Dívali jsme se všude: pod koši, ve skříni, za proxy, ale nakonec jsme nemohli najít stránku, kterou hledáte."
-  },
-  "navigation": {
-    "banner": {
-      "offline": "Zkontrolujte své internetové připojení"
-    }
-  }
 }

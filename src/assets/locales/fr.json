@@ -1,77 +1,71 @@
 {
-  "global": {
-    "name": "movie-web"
-  },
-  "menus": {
-    "episodes": {
-      "loadingTitle": "Chargement...",
-      "loadingList": "Chargement..."
-    }
-  },
-  "home": {
-    "search": {
-      "allResults": "C'est tout ce que nous avons!",
-      "sectionTitle": "Résultats de la recherche",
-      "noResults": "Nous n'avons rien trouvé!",
-      "failed": "Le média n'a pas été trouvé, veuillez réessayez!",
-      "loading": "Chargement...",
-      "placeholder": "Que voulez-vous voir?"
+    "global": {
+        "name": "movie-web"
     },
-    "bookmarks": {
-      "sectionTitle": "Favoris"
+    "home": {
+        "search": {
+            "allResults": "C'est tout ce que nous avons!",
+            "sectionTitle": "Résultats de la recherche",
+            "noResults": "Nous n'avons rien trouvé!",
+            "failed": "Le média n'a pas été trouvé, veuillez réessayez!",
+            "loading": "Chargement...",
+            "placeholder": "Que voulez-vous voir?"
+        },
+        "bookmarks": {
+            "sectionTitle": "Favoris"
+        },
+        "continueWatching": {
+            "sectionTitle": "Continuer le visionnage"
+        }
     },
-    "continueWatching": {
-      "sectionTitle": "Continuer le visionnage"
-    }
-  },
-  "media": {
-    "types": {
-      "movie": "Film",
-      "show": "Série"
+    "media": {
+        "types": {
+            "movie": "Film",
+            "show": "Série"
+        },
+        "episodeDisplay": "S{{season}} E{{episode}}"
     },
-    "episodeDisplay": "S{{season}} E{{episode}}"
-  },
-  "player": {
-    "playbackError": {
-      "title": "Oups, c'est coupé !"
+    "player": {
+        "playbackError": {
+            "title": "Oups, c'est coupé !"
+        },
+        "metadata": {
+            "notFound": {
+                "badge": "Introuvable",
+                "homeButton": "Retour à l'accueil",
+                "title": "Impossible de trouver ce média",
+                "text": "Nous n'avons pas trouvé le média que vous avez demandé. Soit il a été supprimé, soit vous avez modifié l'URL."
+            }
+        },
+        "menus": {
+            "captions": {
+                "customChoice": "Télécharger des sous-titres",
+                "customizeLabel": "Personnaliser",
+                "title": "Sous-titres"
+            },
+            "sources": {
+                "title": "Sources"
+            },
+            "episodes": {
+                "button": "Épisodes",
+                "loadingTitle": "Chargement...",
+                "loadingList": "Chargement..."
+            }
+        },
+        "back": {
+            "default": "Retour à la page d'accueil",
+            "short": "Retour"
+        }
     },
-    "metadata": {
-      "notFound": {
+    "notFound": {
         "badge": "Introuvable",
-        "homeButton": "Retour à l'accueil",
-        "title": "Impossible de trouver ce média",
-        "text": "Nous n'avons pas trouvé le média que vous avez demandé. Soit il a été supprimé, soit vous avez modifié l'URL."
-      }
+        "goHome": "Retour à l'accueil",
+        "title": "Impossible de trouver cette page",
+        "message": "Nous avons cherché partout : sous les poubelles, dans le placard, derrière le proxy, mais nous n'avons finalement pas trouvé la page que vous cherchez."
     },
-    "menus": {
-      "captions": {
-        "customChoice": "Télécharger des sous-titres",
-        "customizeLabel": "Personnaliser",
-        "title": "Sous-titres"
-      },
-      "sources": {
-        "title": "Sources"
-      },
-      "episodes": {
-        "button": "Épisodes",
-        "loadingTitle": "Chargement...",
-        "loadingList": "Chargement..."
-      }
-    },
-    "back": {
-      "default": "Retour à la page d'accueil",
-      "short": "Retour"
+    "navigation": {
+        "banner": {
+            "offline": "Vérifiez votre connexion internet"
+        }
     }
-  },
-  "notFound": {
-    "badge": "Introuvable",
-    "goHome": "Retour à l'accueil",
-    "title": "Impossible de trouver cette page",
-    "message": "Nous avons cherché partout : sous les poubelles, dans le placard, derrière le proxy, mais nous n'avons finalement pas trouvé la page que vous cherchez."
-  },
-  "navigation": {
-    "banner": {
-      "offline": "Vérifiez votre connexion internet"
-    }
-  }
 }
