@@ -1,5 +1,6 @@
 import Fuse from "fuse.js";
 import { useMemo, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useAsyncFn } from "react-use";
 import { convert } from "subsrt-ts";
 
@@ -45,6 +46,7 @@ export function CaptionOption(props: {
 }
 
 function CustomCaptionOption() {
+  const { t } = useTranslation();
   const lang = usePlayerStore((s) => s.caption.selected?.language);
   const setCaption = usePlayerStore((s) => s.setCaption);
   const setCustomSubs = useSubtitleStore((s) => s.setCustomSubs);
@@ -55,7 +57,7 @@ function CustomCaptionOption() {
       selected={lang === "custom"}
       onClick={() => fileInput.current?.click()}
     >
-      Upload captions
+      {t("player.menus.captions.customChoice")}
       <input
         className="hidden"
         ref={fileInput}
@@ -82,10 +84,12 @@ function CustomCaptionOption() {
 }
 
 function useSubtitleList(subs: CaptionListItem[], searchQuery: string) {
+  const { t: translate } = useTranslation();
+  const unknownChoice = translate("player.menus.captions.unknownLanguage");
   return useMemo(() => {
     const input = subs.map((t) => ({
       ...t,
-      languageName: getLanguageFromIETF(t.language) ?? "Unknown",
+      languageName: getLanguageFromIETF(t.language) ?? unknownChoice,
     }));
     const sorted = sortLangCodes(input.map((t) => t.language));
     let results = input.sort((a, b) => {
@@ -102,10 +106,11 @@ function useSubtitleList(subs: CaptionListItem[], searchQuery: string) {
     }
 
     return results;
-  }, [subs, searchQuery]);
+  }, [subs, searchQuery, unknownChoice]);
 }
 
 export function CaptionsView({ id }: { id: string }) {
+  const { t } = useTranslation();
   const router = useOverlayRouter(id);
   const lang = usePlayerStore((s) => s.caption.selected?.language);
   const [currentlyDownloading, setCurrentlyDownloading] = useState<
@@ -155,11 +160,11 @@ export function CaptionsView({ id }: { id: string }) {
               onClick={() => router.navigate("/captions/settings")}
               className="py-1 -my-1 px-3 -mx-3 rounded tabbable"
             >
-              Customize
+              {t("player.menus.captions.customizeLabel")}
             </button>
           }
         >
-          Captions
+          {t("player.menus.captions.title")}
         </Menu.BackLink>
         <div className="mt-3">
           <Input value={searchQuery} onInput={setSearchQuery} />
@@ -167,7 +172,7 @@ export function CaptionsView({ id }: { id: string }) {
       </div>
       <Menu.ScrollToActiveSection className="!pt-1 mt-2 pb-3">
         <CaptionOption onClick={() => disable()} selected={!lang}>
-          Off
+          {t("player.menus.captions.offChoice")}
         </CaptionOption>
         <CustomCaptionOption />
         {content}

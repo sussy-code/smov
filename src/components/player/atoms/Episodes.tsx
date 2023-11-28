@@ -50,6 +50,7 @@ function SeasonsView({
   selectedSeason: string;
   setSeason: (id: string) => void;
 }) {
+  const { t } = useTranslation();
   const meta = usePlayerStore((s) => s.meta);
   const [loadingState, seasons] = useSeasonData(
     meta?.tmdbId ?? "",
@@ -73,13 +74,19 @@ function SeasonsView({
       </Menu.Section>
     );
   } else if (loadingState.error)
-    content = <CenteredText>Error loading season</CenteredText>;
+    content = (
+      <CenteredText>{t("player.menus.episodes.loadingError")}</CenteredText>
+    );
   else if (loadingState.loading)
-    content = <CenteredText>Loading...</CenteredText>;
+    content = (
+      <CenteredText>{t("player.menus.episodes.loadingList")}</CenteredText>
+    );
 
   return (
     <Menu.CardWithScrollable>
-      <Menu.Title>{meta?.title}</Menu.Title>
+      <Menu.Title>
+        {meta?.title ?? t("player.menus.episodes.loadingTitle")}
+      </Menu.Title>
       {content}
     </Menu.CardWithScrollable>
   );
@@ -120,15 +127,19 @@ function EpisodesView({
 
   let content: ReactNode = null;
   if (loadingState.error)
-    content = <CenteredText>Error loading season</CenteredText>;
+    content = (
+      <CenteredText>{t("player.menus.episodes.loadingError")}</CenteredText>
+    );
   else if (loadingState.loading)
-    content = <CenteredText>Loading...</CenteredText>;
+    content = (
+      <CenteredText>{t("player.menus.episodes.loadingList")}</CenteredText>
+    );
   else if (loadingState.value) {
     content = (
       <Menu.ScrollToActiveSection className="pb-6">
         {loadingState.value.season.episodes.length === 0 ? (
           <Menu.TextDisplay title="No episodes found">
-            There are no episodes in this season, check back later!
+            {t("player.menus.episodes.emptyState")}
           </Menu.TextDisplay>
         ) : null}
         {loadingState.value.season.episodes.map((ep) => {
@@ -167,7 +178,9 @@ function EpisodesView({
                         : "bg-opacity-50"
                     )}
                   >
-                    E{ep.number}
+                    {t("player.menus.episodes.episodeBadge", {
+                      episode: ep.number,
+                    })}
                   </span>
                   <span className="line-clamp-1 break-all">{ep.title}</span>
                 </div>
@@ -182,7 +195,8 @@ function EpisodesView({
   return (
     <Menu.CardWithScrollable>
       <Menu.BackLink onClick={goBack}>
-        {loadingState?.value?.season.title || t("videoPlayer.loading")}
+        {loadingState?.value?.season.title ||
+          t("player.menus.episodes.loadingTitle")}
       </Menu.BackLink>
       {content}
     </Menu.CardWithScrollable>
@@ -261,7 +275,7 @@ export function Episodes() {
         onClick={() => router.open("/episodes")}
         icon={Icons.EPISODES}
       >
-        {t("videoPlayer.buttons.episodes")}
+        {t("player.menus.episodes.button")}
       </VideoPlayerButton>
     </OverlayAnchor>
   );

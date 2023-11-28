@@ -1,4 +1,5 @@
 import { ReactNode, useEffect, useMemo, useRef } from "react";
+import { useTranslation } from "react-i18next";
 
 import { Loading } from "@/components/layout/Loading";
 import {
@@ -27,13 +28,14 @@ export function EmbedOption(props: {
   sourceId: string;
   routerId: string;
 }) {
-  const unknownEmbedName = "Unknown";
+  const { t } = useTranslation();
+  const unknownEmbedName = t("player.menus.sources.unknownOption");
 
   const embedName = useMemo(() => {
     if (!props.embedId) return unknownEmbedName;
     const sourceMeta = providers.getMetadata(props.embedId);
     return sourceMeta?.name ?? unknownEmbedName;
-  }, [props.embedId]);
+  }, [props.embedId, unknownEmbedName]);
 
   const { run, errored, loading } = useEmbedScraping(
     props.routerId,
@@ -52,6 +54,7 @@ export function EmbedOption(props: {
 }
 
 export function EmbedSelectionView({ sourceId, id }: EmbedSelectionViewProps) {
+  const { t } = useTranslation();
   const router = useOverlayRouter(id);
   const { run, watching, notfound, loading, items, errored } =
     useSourceScraping(sourceId, id);
@@ -79,21 +82,26 @@ export function EmbedSelectionView({ sourceId, id }: EmbedSelectionViewProps) {
     );
   else if (notfound)
     content = (
-      <Menu.TextDisplay title="No stream">
-        This source has no streams for this movie or show.
+      <Menu.TextDisplay
+        title={t("player.menus.sources.noStream.title") ?? undefined}
+      >
+        {t("player.menus.sources.noStream.text")}
       </Menu.TextDisplay>
     );
   else if (items?.length === 0)
     content = (
-      <Menu.TextDisplay title="No embeds found">
-        We were unable to find any embeds for this source, please try another.
+      <Menu.TextDisplay
+        title={t("player.menus.sources.noEmbeds.title") ?? undefined}
+      >
+        {t("player.menus.sources.noEmbeds.text")}
       </Menu.TextDisplay>
     );
   else if (errored)
     content = (
-      <Menu.TextDisplay title="Failed to scrape">
-        We were unable to find any videos for this source. Don&apos;t come
-        bitchin&apos; to us about it, just try another source.
+      <Menu.TextDisplay
+        title={t("player.menus.sources.failed.title") ?? undefined}
+      >
+        {t("player.menus.sources.failed.text")}
       </Menu.TextDisplay>
     );
   else if (watching)
@@ -123,6 +131,7 @@ export function SourceSelectionView({
   id,
   onChoose,
 }: SourceSelectionViewProps) {
+  const { t } = useTranslation();
   const router = useOverlayRouter(id);
   const metaType = usePlayerStore((s) => s.meta?.type);
   const currentSourceId = usePlayerStore((s) => s.sourceId);
@@ -136,7 +145,7 @@ export function SourceSelectionView({
   return (
     <>
       <Menu.BackLink onClick={() => router.navigate("/")}>
-        Sources
+        {t("player.menus.sources.title")}
       </Menu.BackLink>
       <Menu.Section>
         {sources.map((v) => (

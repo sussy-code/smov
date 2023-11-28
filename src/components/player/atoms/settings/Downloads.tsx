@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { Trans, useTranslation } from "react-i18next";
 
 import { Button } from "@/components/buttons/Button";
 import { Icon, Icons } from "@/components/Icon";
@@ -19,8 +20,26 @@ function useDownloadLink() {
   return url;
 }
 
+function StyleTrans(props: { k: string }) {
+  return (
+    <Trans
+      i18nKey={props.k}
+      components={{
+        bold: <Menu.Highlight />,
+        ios_share: (
+          <Icon icon={Icons.IOS_SHARE} className="inline-block text-xl -mb-1" />
+        ),
+        ios_files: (
+          <Icon icon={Icons.IOS_FILES} className="inline-block text-xl -mb-1" />
+        ),
+      }}
+    />
+  );
+}
+
 export function DownloadView({ id }: { id: string }) {
   const router = useOverlayRouter(id);
+  const { t } = useTranslation();
   const downloadUrl = useDownloadLink();
 
   const selectedCaption = usePlayerStore((s) => s.caption?.selected);
@@ -37,31 +56,30 @@ export function DownloadView({ id }: { id: string }) {
   return (
     <>
       <Menu.BackLink onClick={() => router.navigate("/")}>
-        Download
+        {t("player.menus.downloads.title")}
       </Menu.BackLink>
       <Menu.Section>
         <div>
           <Menu.ChevronLink onClick={() => router.navigate("/download/pc")}>
-            Downloading on PC
+            {t("player.menus.downloads.onPc.title")}
           </Menu.ChevronLink>
           <Menu.ChevronLink onClick={() => router.navigate("/download/ios")}>
-            Downloading on iOS
+            {t("player.menus.downloads.onIos.title")}
           </Menu.ChevronLink>
           <Menu.ChevronLink
             onClick={() => router.navigate("/download/android")}
           >
-            Downloading on Android
+            {t("player.menus.downloads.onAndroid.title")}
           </Menu.ChevronLink>
 
           <Menu.Divider />
 
           <Menu.Paragraph marginClass="my-6">
-            Downloads are taken directly from the provider. movie-web does not
-            have control over how the downloads are provided.
+            <StyleTrans k="player.menus.downloads.disclaimer" />
           </Menu.Paragraph>
 
           <Button className="w-full" href={downloadUrl} theme="purple">
-            Download video
+            {t("player.menus.downloads.downloadVideo")}
           </Button>
           <Button
             className="w-full mt-2"
@@ -70,7 +88,7 @@ export function DownloadView({ id }: { id: string }) {
             theme="secondary"
             download="subtitles.srt"
           >
-            Download current caption
+            {t("player.menus.downloads.downloadCaption")}
           </Button>
         </div>
       </Menu.Section>
@@ -80,15 +98,16 @@ export function DownloadView({ id }: { id: string }) {
 
 export function CantDownloadView({ id }: { id: string }) {
   const router = useOverlayRouter(id);
+  const { t } = useTranslation();
 
   return (
     <>
       <Menu.BackLink onClick={() => router.navigate("/")}>
-        Download
+        {t("player.menus.downloads.title")}
       </Menu.BackLink>
       <Menu.Section>
         <Menu.Paragraph>
-          Insert explanation for why you can&apos;t download HLS here
+          <StyleTrans k="player.menus.downloads.hlsExplanation" />
         </Menu.Paragraph>
       </Menu.Section>
     </>
@@ -97,16 +116,16 @@ export function CantDownloadView({ id }: { id: string }) {
 
 function AndroidExplanationView({ id }: { id: string }) {
   const router = useOverlayRouter(id);
+  const { t } = useTranslation();
 
   return (
     <>
       <Menu.BackLink onClick={() => router.navigate("/download")}>
-        Download / Android
+        {t("player.menus.downloads.onAndroid.shortTitle")}
       </Menu.BackLink>
       <Menu.Section>
         <Menu.Paragraph>
-          To download on Android, <Menu.Highlight>tap and hold</Menu.Highlight>{" "}
-          on the video, then select <Menu.Highlight>save</Menu.Highlight>.
+          <StyleTrans k="player.menus.downloads.onAndroid.1" />
         </Menu.Paragraph>
       </Menu.Section>
     </>
@@ -115,16 +134,16 @@ function AndroidExplanationView({ id }: { id: string }) {
 
 function PCExplanationView({ id }: { id: string }) {
   const router = useOverlayRouter(id);
+  const { t } = useTranslation();
 
   return (
     <>
       <Menu.BackLink onClick={() => router.navigate("/download")}>
-        Download / PC
+        {t("player.menus.downloads.onPc.shortTitle")}
       </Menu.BackLink>
       <Menu.Section>
         <Menu.Paragraph>
-          On PC, right click the video and select{" "}
-          <Menu.Highlight>Save video as</Menu.Highlight>
+          <StyleTrans k="player.menus.downloads.onPc.1" />
         </Menu.Paragraph>
       </Menu.Section>
     </>
@@ -137,27 +156,11 @@ function IOSExplanationView({ id }: { id: string }) {
   return (
     <>
       <Menu.BackLink onClick={() => router.navigate("/download")}>
-        Download / iOS
+        <StyleTrans k="player.menus.downloads.onIos.shortTitle" />
       </Menu.BackLink>
       <Menu.Section>
         <Menu.Paragraph>
-          To download on iOS, click{" "}
-          <Menu.Highlight>
-            <Icon
-              className="inline-block text-xl -mb-1"
-              icon={Icons.IOS_SHARE}
-            />
-          </Menu.Highlight>
-          , then{" "}
-          <Menu.Highlight>
-            Save to Files
-            <Icon
-              className="inline-block text-xl -mb-1 mx-1"
-              icon={Icons.IOS_FILES}
-            />
-          </Menu.Highlight>{" "}
-          . All that&apos;s left to do now is to pick a nice and cozy folder for
-          your video!
+          <StyleTrans k="player.menus.downloads.onIos.1" />
         </Menu.Paragraph>
       </Menu.Section>
     </>

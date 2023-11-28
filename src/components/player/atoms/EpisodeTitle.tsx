@@ -11,7 +11,7 @@ export function EpisodeTitle() {
   return (
     <div>
       <span className="text-white font-medium mr-3">
-        {t("seasons.seasonAndEpisode", {
+        {t("media.episodeDisplay", {
           season: meta?.season?.number,
           episode: meta?.episode?.number,
         })}

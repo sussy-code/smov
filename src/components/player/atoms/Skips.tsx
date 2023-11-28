@@ -14,7 +14,7 @@ export function SkipForward(props: { iconSizeClass?: string }) {
 
   return (
     <VideoPlayerButton
-      iconSizeClass={props.iconSizeClass || ""}
+      iconSizeClass={props.iconSizeClass}
       onClick={commit}
       icon={Icons.SKIP_FORWARD}
     />
@@ -31,7 +31,7 @@ export function SkipBackward(props: { iconSizeClass?: string }) {
 
   return (
     <VideoPlayerButton
-      iconSizeClass={props.iconSizeClass || ""}
+      iconSizeClass={props.iconSizeClass}
       onClick={commit}
       icon={Icons.SKIP_BACKWARD}
     />

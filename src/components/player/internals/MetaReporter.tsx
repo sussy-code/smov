@@ -38,6 +38,10 @@ declare global {
   }
 }
 
+/**
+ * MetaReporter occasionally reports the progress to the window object at a specific spot
+ * This is used by the PreMid presence to get currently playing data
+ */
 export function MetaReporter() {
   const meta = usePlayerStore((s) => s.meta);
   const progress = usePlayerStore((s) => s.progress);

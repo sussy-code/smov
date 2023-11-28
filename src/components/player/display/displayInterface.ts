@@ -4,7 +4,8 @@ import { Listener } from "@/utils/events";
 export type DisplayErrorType = "hls" | "htmlvideo";
 export type DisplayError = {
   stackTrace?: string;
-  message: string;
+  message?: string;
+  key?: string;
   errorName: string;
   type: DisplayErrorType;
 };

@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import { useCallback } from "react";
+import { useTranslation } from "react-i18next";
 
 import { Icon, Icons } from "@/components/Icon";
 import { usePlayerMeta } from "@/components/player/hooks/usePlayerMeta";
@@ -41,6 +42,7 @@ export function NextEpisodeButton(props: {
   controlsShowing: boolean;
   onChange?: (meta: PlayerMeta) => void;
 }) {
+  const { t } = useTranslation();
   const duration = usePlayerStore((s) => s.progress.duration);
   const isHidden = usePlayerStore((s) => s.interface.hideNextEpisodeBtn);
   const meta = usePlayerStore((s) => s.meta);
@@ -96,14 +98,14 @@ export function NextEpisodeButton(props: {
           className="py-px box-content bg-buttons-secondary hover:bg-buttons-secondaryHover bg-opacity-90 text-buttons-secondaryText"
           onClick={hideNextEpisodeButton}
         >
-          Cancel
+          {t("player.nextEpisode.cancel")}
         </Button>
         <Button
           onClick={() => loadNextEpisode()}
           className="bg-buttons-primary hover:bg-buttons-primaryHover text-buttons-primaryText flex justify-center items-center"
         >
           <Icon className="text-xl mr-1" icon={Icons.SKIP_EPISODE} />
-          Next episode
+          {t("player.nextEpisode.next")}
         </Button>
       </div>
     </Transition>

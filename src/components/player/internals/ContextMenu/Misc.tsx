@@ -56,7 +56,7 @@ export function Paragraph(props: {
   return <p className={props.marginClass ?? "my-3"}>{props.children}</p>;
 }
 
-export function Highlight(props: { children: React.ReactNode }) {
+export function Highlight(props: { children?: React.ReactNode }) {
   return <span className="text-white">{props.children}</span>;
 }
 

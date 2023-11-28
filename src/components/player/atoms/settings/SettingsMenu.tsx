@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 
 import { Toggle } from "@/components/buttons/Toggle";
 import { Icon, Icons } from "@/components/Icon";
@@ -12,6 +13,7 @@ import { useSubtitleStore } from "@/stores/subtitles";
 import { providers } from "@/utils/providers";
 
 export function SettingsMenu({ id }: { id: string }) {
+  const { t } = useTranslation();
   const router = useOverlayRouter(id);
   const currentQuality = usePlayerStore((s) => s.currentQuality);
   const selectedCaptionLanguage = usePlayerStore(
@@ -26,26 +28,29 @@ export function SettingsMenu({ id }: { id: string }) {
   const { toggleLastUsed } = useCaptions();
 
   const selectedLanguagePretty = selectedCaptionLanguage
-    ? getLanguageFromIETF(selectedCaptionLanguage) ?? "unknown"
+    ? getLanguageFromIETF(selectedCaptionLanguage) ??
+      t("player.menus.captions.unknownLanguage")
     : undefined;
 
   const source = usePlayerStore((s) => s.source);
 
   return (
     <Menu.Card>
-      <Menu.SectionTitle>Video settings</Menu.SectionTitle>
+      <Menu.SectionTitle>
+        {t("player.menus.settings.videoSection")}
+      </Menu.SectionTitle>
       <Menu.Section>
         <Menu.ChevronLink
           onClick={() => router.navigate("/quality")}
           rightText={currentQuality ? qualityToString(currentQuality) : ""}
         >
-          Quality
+          {t("player.menus.settings.qualityItem")}
         </Menu.ChevronLink>
         <Menu.ChevronLink
           onClick={() => router.navigate("/source")}
           rightText={sourceName}
         >
-          Video source
+          {t("player.menus.settings.sourceItem")}
         </Menu.ChevronLink>
         <Menu.Link
           clickable
@@ -57,11 +62,13 @@ export function SettingsMenu({ id }: { id: string }) {
           rightSide={<Icon className="text-xl" icon={Icons.DOWNLOAD} />}
           className={source?.type === "file" ? "opacity-100" : "opacity-50"}
         >
-          Download
+          {t("player.menus.settings.downloadItem")}
         </Menu.Link>
       </Menu.Section>
 
-      <Menu.SectionTitle>Viewing Experience</Menu.SectionTitle>
+      <Menu.SectionTitle>
+        {t("player.menus.settings.experienceSection")}
+      </Menu.SectionTitle>
       <Menu.Section>
         <Menu.Link
           rightSide={
@@ -71,16 +78,16 @@ export function SettingsMenu({ id }: { id: string }) {
             />
           }
         >
-          Enable Captions
+          {t("player.menus.settings.enableCaptions")}
         </Menu.Link>
         <Menu.ChevronLink
           onClick={() => router.navigate("/captions")}
-          rightText={selectedLanguagePretty}
+          rightText={selectedLanguagePretty ?? undefined}
         >
-          Caption settings
+          {t("player.menus.settings.captionItem")}
         </Menu.ChevronLink>
         <Menu.ChevronLink onClick={() => router.navigate("/playback")}>
-          Playback settings
+          {t("player.menus.settings.playbackItem")}
         </Menu.ChevronLink>
       </Menu.Section>
     </Menu.Card>

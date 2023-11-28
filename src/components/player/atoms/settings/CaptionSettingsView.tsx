@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import { Toggle } from "@/components/buttons/Toggle";
 import { Icon, Icons } from "@/components/Icon";
@@ -213,6 +214,7 @@ export function CaptionSetting(props: {
 export const colors = ["#ffffff", "#80b1fa", "#e2e535"];
 
 export function CaptionSettingsView({ id }: { id: string }) {
+  const { t } = useTranslation();
   const router = useOverlayRouter(id);
   const styling = useSubtitleStore((s) => s.styling);
   const overrideCasing = useSubtitleStore((s) => s.overrideCasing);
@@ -228,7 +230,7 @@ export function CaptionSettingsView({ id }: { id: string }) {
       </Menu.BackLink>
       <Menu.Section className="space-y-6">
         <CaptionSetting
-          label="Caption delay"
+          label={t("player.menus.captions.settings.fixCapitals")}
           max={10}
           min={-10}
           onChange={(v) => setDelay(v)}
@@ -238,7 +240,9 @@ export function CaptionSettingsView({ id }: { id: string }) {
           controlButtons
         />
         <div className="flex justify-between items-center">
-          <Menu.FieldTitle>Fix capitalization</Menu.FieldTitle>
+          <Menu.FieldTitle>
+            {t("player.menus.captions.settings.delay")}
+          </Menu.FieldTitle>
           <div className="flex justify-center items-center">
             <Toggle
               enabled={overrideCasing}
@@ -248,7 +252,7 @@ export function CaptionSettingsView({ id }: { id: string }) {
         </div>
         <Menu.Divider />
         <CaptionSetting
-          label="Background opacity"
+          label={t("settings.captions.backgroundLabel")}
           max={100}
           min={0}
           onChange={(v) => updateStyling({ backgroundOpacity: v / 100 })}
@@ -256,7 +260,7 @@ export function CaptionSettingsView({ id }: { id: string }) {
           textTransformer={(s) => `${s}%`}
         />
         <CaptionSetting
-          label="Text size"
+          label={t("settings.captions.textSizeLabel")}
           max={200}
           min={1}
           textTransformer={(s) => `${s}%`}
@@ -264,7 +268,7 @@ export function CaptionSettingsView({ id }: { id: string }) {
           value={styling.size * 100}
         />
         <div className="flex justify-between items-center">
-          <Menu.FieldTitle>Color</Menu.FieldTitle>
+          <Menu.FieldTitle>{t("settings.captions.colorLabel")}</Menu.FieldTitle>
           <div className="flex justify-center items-center">
             {colors.map((v) => (
               <ColorOption

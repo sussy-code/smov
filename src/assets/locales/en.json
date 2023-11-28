@@ -72,13 +72,25 @@
         "title": "Goo goo gaa gaa",
         "text": "Oh, my apowogies, sweetie! The itty-bitty movie-web did its utmost bestest, but alas, no wucky videos to be spotted anywhere (´⊙ω⊙`) Please don't be angwy, wittle movie-web ish twying so hard. Can you find it in your heart to forgive? UwU 💖",
         "homeButton": "Go home"
+      },
+      "items": {
+        "pending": "Checking for videos...",
+        "notFound": "Doesn't have the video",
+        "failure": "Error occured"
       }
     },
     "playbackError": {
       "badge": "Not found",
       "title": "Goo goo gaa gaa",
       "text": "Oh, my apowogies, sweetie! The itty-bitty movie-web did its utmost bestest, but alas, no wucky videos to be spotted anywhere (´⊙ω⊙`) Please don't be angwy, wittle movie-web ish twying so hard. Can you find it in your heart to forgive? UwU 💖",
-      "homeButton": "Go home"
+      "homeButton": "Go home",
+      "errors": {
+        "errorAborted": "The fetching of the associated resource was aborted by the user's request.",
+        "errorNetwork": "Some kind of network error occurred which prevented the media from being successfully fetched, despite having previously been available.",
+        "errorDecode": "Despite having previously been determined to be usable, an error occurred while trying to decode the media resource, resulting in an error.",
+        "errorNotSupported": "The associated resource or media provider object has been found to be unsuitable.",
+        "errorGenericMedia": "Unknown media error occured"
+      }
     },
     "metadata": {
       "notFound": {
@@ -92,6 +104,97 @@
         "title": "Failed to load meta data",
         "text": "Oh, my apowogies, sweetie! The itty-bitty movie-web did its utmost bestest, but alas, no wucky videos to be spotted anywhere (´⊙ω⊙`) Please don't be angwy, wittle movie-web ish twying so hard. Can you find it in your heart to forgive? UwU 💖",
         "homeButton": "Go home"
+      }
+    },
+    "back": {
+      "default": "Back to home",
+      "short": "Back"
+    },
+    "time": {
+      "short": "-{{timeLeft}}",
+      "regular": "{{timeWatched}} / {{duration}}",
+      "remaining": "{{timeLeft}} left • Finish at {{timeFinished, datetime}}"
+    },
+    "nextEpisode": {
+      "next": "Next episode",
+      "cancel": "Cancel"
+    },
+    "menus": {
+      "settings": {
+        "videoSection": "Video settings",
+        "experienceSection": "Viewing Experience",
+        "enableCaptions": "Enable Captions",
+        "captionItem": "Caption settings",
+        "sourceItem": "Video sources",
+        "playbackItem": "Playback settings",
+        "downloadItem": "Download",
+        "qualityItem": "Quality"
+      },
+      "episodes": {
+        "button": "Episodes",
+        "loadingTitle": "Loading...",
+        "loadingList": "Loading...",
+        "loadingError": "Error loading season",
+        "emptyState": "There are no episodes in this season, check back later!",
+        "episodeBadge": "E{{episode}}"
+      },
+      "sources": {
+        "title": "Sources",
+        "unknownOption": "Unknown",
+        "noStream": {
+          "title": "No stream",
+          "text": "This source has no streams for this movie or show."
+        },
+        "noEmbeds": {
+          "title": "No embeds found",
+          "text": "We were unable to find any embeds for this source, please try another."
+        },
+        "failed": {
+          "title": "Failed to scrape",
+          "text": "We were unable to find any videos for this source. Don't come bitchin' to us about it, just try another source."
+        }
+      },
+      "captions": {
+        "title": "Captions",
+        "customizeLabel": "Customize",
+        "settings": {
+          "fixCapitals": "Fix capitalization",
+          "delay": "Caption delay"
+        },
+        "customChoice": "Upload captions",
+        "offChoice": "Off",
+        "unknownLanguage": "Unknown"
+      },
+      "downloads": {
+        "title": "Download",
+        "disclaimer": "Downloads are taken directly from the provider. movie-web does not have control over how the downloads are provided.",
+        "hlsExplanation": "Insert explanation for why you can't download HLS here",
+        "downloadVideo": "Download video",
+        "downloadCaption": "Download current caption",
+        "onPc": {
+          "title": "Downloading on PC",
+          "shortTitle": "Download / PC",
+          "1": "On PC, right click the video and select <bold>Save video as</bold>"
+        },
+        "onAndroid": {
+          "title": "Downloading on Android",
+          "shortTitle": "Download / Android",
+          "1": "To download on Android, <bold>tap and hold</bold> on the video, then select <bold>save</bold>."
+        },
+        "onIos": {
+          "title": "Downloading on iOS",
+          "shortTitle": "Download / iOS",
+          "1": "To download on iOS, click <bold><ios_share /></bold>, then <bold>Save to Files <ios_files /></bold>. All that's left to do now is to pick a nice and cozy folder for your video!"
+        }
+      },
+      "playback": {
+        "title": "Playback settings",
+        "speedLabel": "Playback speed"
+      },
+      "quality": {
+        "title": "Quality",
+        "automaticLabel": "Automatic quality",
+        "hint": "You can try <0>switching source</0> to get different quality options."
       }
     }
   },

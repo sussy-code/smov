@@ -16,7 +16,7 @@ export function HeadUpdater() {
     );
   }
 
-  const humanizedEpisodeId = t("videoPlayer.seasonAndEpisode", {
+  const humanizedEpisodeId = t("media.episodeDisplay", {
     season: meta.season?.number,
     episode: meta.episode?.number,
   });

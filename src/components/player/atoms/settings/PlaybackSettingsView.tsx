@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import { useCallback } from "react";
+import { useTranslation } from "react-i18next";
 
 import { Menu } from "@/components/player/internals/ContextMenu";
 import { useOverlayRouter } from "@/hooks/useOverlayRouter";
@@ -34,6 +35,7 @@ function ButtonList(props: {
 }
 
 export function PlaybackSettingsView({ id }: { id: string }) {
+  const { t } = useTranslation();
   const router = useOverlayRouter(id);
   const playbackRate = usePlayerStore((s) => s.mediaPlaying.playbackRate);
   const display = usePlayerStore((s) => s.display);
@@ -50,11 +52,13 @@ export function PlaybackSettingsView({ id }: { id: string }) {
   return (
     <>
       <Menu.BackLink onClick={() => router.navigate("/")}>
-        Playback settings
+        {t("player.menus.playback.title")}
       </Menu.BackLink>
       <Menu.Section>
         <div className="space-y-4 mt-3">
-          <Menu.FieldTitle>Playback speed</Menu.FieldTitle>
+          <Menu.FieldTitle>
+            {t("player.menus.playback.speedLabel")}
+          </Menu.FieldTitle>
           <ButtonList
             options={options}
             selected={playbackRate}

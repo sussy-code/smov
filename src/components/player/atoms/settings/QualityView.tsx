@@ -1,4 +1,6 @@
+import { t } from "i18next";
 import { useCallback } from "react";
+import { Trans } from "react-i18next";
 
 import { Toggle } from "@/components/buttons/Toggle";
 import { Menu } from "@/components/player/internals/ContextMenu";
@@ -57,7 +59,7 @@ export function QualityView({ id }: { id: string }) {
   return (
     <>
       <Menu.BackLink onClick={() => router.navigate("/")}>
-        Quality
+        {t("player.menus.quality.title")}
       </Menu.BackLink>
       <Menu.Section>
         {visibleQualities.map((v) => (
@@ -76,14 +78,14 @@ export function QualityView({ id }: { id: string }) {
         <Menu.Link
           rightSide={<Toggle onClick={changeAutomatic} enabled={autoQuality} />}
         >
-          Automatic quality
+          {t("player.menus.quality.automaticLabel")}
         </Menu.Link>
         <Menu.SmallText>
-          You can try{" "}
-          <Menu.Anchor onClick={() => router.navigate("/source")}>
-            switching source
-          </Menu.Anchor>{" "}
-          to get different quality options.
+          <Trans i18nKey="player.menus.quality.hint">
+            <Menu.Anchor onClick={() => router.navigate("/source")}>
+              text
+            </Menu.Anchor>
+          </Trans>
         </Menu.SmallText>
       </Menu.Section>
     </>

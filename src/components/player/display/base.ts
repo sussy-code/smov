@@ -163,7 +163,7 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
       const errorDetails = getMediaErrorDetails(err);
       emit("error", {
         errorName: errorDetails.name,
-        message: errorDetails.message,
+        key: errorDetails.key,
         type: "htmlvideo",
       });
     });

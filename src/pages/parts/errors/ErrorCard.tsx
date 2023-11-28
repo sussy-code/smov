@@ -13,8 +13,12 @@ export function ErrorCard(props: { error: DisplayError | string }) {
   );
   const { t } = useTranslation();
 
-  const errorMessage =
-    typeof props.error === "string" ? props.error : props.error.message;
+  let errorMessage: string | null = null;
+  if (typeof props.error === "string") errorMessage = props.error;
+  else if (props.error.key)
+    errorMessage = `${props.error.type}: ${t(props.error.key)}`;
+  else if (props.error.message)
+    errorMessage = `${props.error.type}: ${t(props.error.message)}`;
 
   function copyError() {
     if (!props.error || !navigator.clipboard) return;

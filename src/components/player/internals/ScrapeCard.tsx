@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import { ReactNode } from "react";
+import { useTranslation } from "react-i18next";
 
 import { StatusCircle } from "@/components/player/internals/StatusCircle";
 import { Transition } from "@/components/utils/Transition";
@@ -17,9 +18,9 @@ export interface ScrapeCardProps extends ScrapeItemProps {
 }
 
 const statusTextMap: Partial<Record<ScrapeCardProps["status"], string>> = {
-  notfound: "Doesn't have the video",
-  failure: "Error occured",
-  pending: "Checking for videos...",
+  notfound: "player.scraping.items.notFound",
+  failure: "player.scraping.items.failure",
+  pending: "player.scraping.items.pending",
 };
 
 const statusMap: Record<ScrapeCardProps["status"], StatusCircle["type"]> = {
@@ -31,6 +32,7 @@ const statusMap: Record<ScrapeCardProps["status"], StatusCircle["type"]> = {
 };
 
 export function ScrapeItem(props: ScrapeItemProps) {
+  const { t } = useTranslation();
   const text = statusTextMap[props.status];
   const status = statusMap[props.status];
 
@@ -46,7 +48,7 @@ export function ScrapeItem(props: ScrapeItemProps) {
           {props.name}
         </p>
         <Transition animation="fade" show={!!text}>
-          <p className="text-[15px] mt-1">{text}</p>
+          <p className="text-[15px] mt-1">{text ? t(text) : ""}</p>
         </Transition>
         {props.children}
       </div>

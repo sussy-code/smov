@@ -29,6 +29,7 @@ export function KeyboardEvents() {
     mediaPlaying,
     isRolling,
     time,
+    router,
   });
   useEffect(() => {
     dataRef.current = {
@@ -41,6 +42,7 @@ export function KeyboardEvents() {
       mediaPlaying,
       isRolling,
       time,
+      router,
     };
   }, [
     setShowVolume,
@@ -52,6 +54,7 @@ export function KeyboardEvents() {
     mediaPlaying,
     isRolling,
     time,
+    router,
   ]);
 
   useEffect(() => {
@@ -92,7 +95,7 @@ export function KeyboardEvents() {
         dataRef.current.display?.[
           dataRef.current.mediaPlaying.isPaused ? "play" : "pause"
         ]();
-      if (k === "Escape") router.close();
+      if (k === "Escape") dataRef.current.router.close();
 
       // captions
       if (k === "c") dataRef.current.toggleLastUsed().catch(() => {}); // ignore errors
@@ -117,7 +120,7 @@ export function KeyboardEvents() {
     return () => {
       window.removeEventListener("keydown", keyEventHandler);
     };
-  }, [router]);
+  }, []);
 
   return null;
 }

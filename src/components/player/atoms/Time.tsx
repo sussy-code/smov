@@ -9,10 +9,14 @@ export function Time(props: { short?: boolean }) {
   const timeFormat = usePlayerStore((s) => s.interface.timeFormat);
   const setTimeFormat = usePlayerStore((s) => s.setTimeFormat);
 
-  const { duration, time, draggingTime } = usePlayerStore((s) => s.progress);
+  const {
+    duration: timeDuration,
+    time,
+    draggingTime,
+  } = usePlayerStore((s) => s.progress);
   const { isSeeking } = usePlayerStore((s) => s.interface);
   const { t } = useTranslation();
-  const hasHours = durationExceedsHour(duration);
+  const hasHours = durationExceedsHour(timeDuration);
 
   function toggleMode() {
     setTimeFormat(
@@ -24,47 +28,36 @@ export function Time(props: { short?: boolean }) {
 
   const currentTime = Math.min(
     Math.max(isSeeking ? draggingTime : time, 0),
-    duration
+    timeDuration
   );
-  const secondsRemaining = Math.abs(currentTime - duration);
+  const secondsRemaining = Math.abs(currentTime - timeDuration);
+
+  const timeLeft = formatSeconds(
+    secondsRemaining,
+    durationExceedsHour(secondsRemaining)
+  );
+  const timeWatched = formatSeconds(currentTime, hasHours);
   const timeFinished = new Date(Date.now() + secondsRemaining * 1e3);
+  const duration = formatSeconds(timeDuration, hasHours);
 
-  const formattedTimeFinished = t("videoPlayer.finishAt", {
-    timeFinished,
-    formatParams: {
-      timeFinished: { hour: "numeric", minute: "numeric" },
-    },
-  });
-
-  let timeString;
-  let timeFinishedString;
-  if (props.short) {
-    timeString = formatSeconds(currentTime, hasHours);
-    timeFinishedString = `-${formatSeconds(
-      secondsRemaining,
-      durationExceedsHour(secondsRemaining)
-    )}`;
-  } else {
-    timeString = `${formatSeconds(currentTime, hasHours)} / ${formatSeconds(
-      duration,
-      hasHours
-    )}`;
-    timeFinishedString = `${t("videoPlayer.timeLeft", {
-      timeLeft: formatSeconds(
-        secondsRemaining,
-        durationExceedsHour(secondsRemaining)
-      ),
-    })} • ${formattedTimeFinished}`;
-  }
-
-  const child =
-    timeFormat === VideoPlayerTimeFormat.REGULAR ? (
-      <span>{timeString}</span>
-    ) : (
-      <span>{timeFinishedString}</span>
-    );
+  let localizationKey = "regular";
+  if (props.short) localizationKey = "short";
+  else if (timeFormat === VideoPlayerTimeFormat.REMAINING)
+    localizationKey = "remaining";
 
   return (
-    <VideoPlayerButton onClick={() => toggleMode()}>{child}</VideoPlayerButton>
+    <VideoPlayerButton onClick={() => toggleMode()}>
+      <span>
+        {t(`player.time.${localizationKey}`, {
+          timeFinished,
+          timeWatched,
+          timeLeft,
+          duration,
+          formatParams: {
+            timeFinished: { hour: "numeric", minute: "numeric" },
+          },
+        })}
+      </span>
+    </VideoPlayerButton>
   );
 }
