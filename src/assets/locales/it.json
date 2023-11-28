@@ -33,7 +33,7 @@
             "notFound": {
                 "badge": "Non trovato",
                 "homeButton": "Torna alla home",
-                "title": "Impossibile trovare quel media",
+                "title": "Impossibile trovare quel media.",
                 "text": "Non siamo riusciti a trovare il media richiesto. È stato rimosso o hai manomesso l'URL."
             }
         },
