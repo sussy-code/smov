@@ -6,7 +6,7 @@
         "search": {
             "allResults": "Dat is het!",
             "sectionTitle": "Zoekresultaten",
-            "noResults": "We konden helaas niets vinden.",
+            "noResults": "We konden helaas niets vinden!",
             "failed": "Het is niet gelukt de media te laden, probeer het nog eens.",
             "loading": "Aan het zoeken...",
             "placeholder": "Wat wil je graag kijken?"
