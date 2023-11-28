@@ -7,19 +7,19 @@ import { Heading1 } from "@/components/utils/Text";
 const availableThemes = [
   {
     id: "blue",
-    key: "settings.themes.blue",
+    key: "settings.appearance.themes.blue",
   },
   {
     id: "teal",
-    key: "settings.themes.teal",
+    key: "settings.appearance.themes.teal",
   },
   {
     id: "red",
-    key: "settings.themes.red",
+    key: "settings.appearance.themes.red",
   },
   {
     id: "gray",
-    key: "settings.themes.gray",
+    key: "settings.appearance.themes.gray",
   },
 ];
 
