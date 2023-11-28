@@ -51,9 +51,9 @@
   },
   "notFound": {
     "badge": "Not found",
-    "title": "Page could not be found",
-    "message": "Oh, my apowogies, sweetie! The itty-bitty movie-web did its utmost bestest, but alas, no wucky videos to be spotted anywhere (´⊙ω⊙`) Please don't be angwy, wittle movie-web ish twying so hard. Can you find it in your heart to forgive? UwU 💖",
-    "goHome": "Go home"
+    "title": "Couldn't find that page",
+    "message": "We looked everywhere: under the bins, in the closet, behind the proxy but ultimately couldn't find the page you are looking for.",
+    "goHome": "Back to home"
   },
   "global": {
     "name": "movie-web"
@@ -81,7 +81,7 @@
     },
     "playbackError": {
       "badge": "Not found",
-      "title": "Goo goo gaa gaa",
+      "title": "Whoops, it broke!",
       "text": "Oh, my apowogies, sweetie! The itty-bitty movie-web did its utmost bestest, but alas, no wucky videos to be spotted anywhere (´⊙ω⊙`) Please don't be angwy, wittle movie-web ish twying so hard. Can you find it in your heart to forgive? UwU 💖",
       "homeButton": "Go home",
       "errors": {
@@ -95,9 +95,9 @@
     "metadata": {
       "notFound": {
         "badge": "Not found",
-        "title": "This media doesnt exist",
-        "text": "Oh, my apowogies, sweetie! The itty-bitty movie-web did its utmost bestest, but alas, no wucky videos to be spotted anywhere (´⊙ω⊙`) Please don't be angwy, wittle movie-web ish twying so hard. Can you find it in your heart to forgive? UwU 💖",
-        "homeButton": "Go home"
+        "title": "Couldn't find that media",
+        "text": "We couldn't find the media you requested. Either it's been removed or you tampered with the URL",
+        "homeButton": "Back to home"
       },
       "failed": {
         "badge": "Failed",
@@ -172,19 +172,19 @@
         "downloadVideo": "Download video",
         "downloadCaption": "Download current caption",
         "onPc": {
+          "1": "On PC, right click the video and select <bold>Save video as</bold>",
           "title": "Downloading on PC",
-          "shortTitle": "Download / PC",
-          "1": "On PC, right click the video and select <bold>Save video as</bold>"
+          "shortTitle": "Download / PC"
         },
         "onAndroid": {
+          "1": "To download on Android, <bold>tap and hold</bold> on the video, then select <bold>save</bold>.",
           "title": "Downloading on Android",
-          "shortTitle": "Download / Android",
-          "1": "To download on Android, <bold>tap and hold</bold> on the video, then select <bold>save</bold>."
+          "shortTitle": "Download / Android"
         },
         "onIos": {
+          "1": "To download on iOS, click <bold><ios_share /></bold>, then <bold>Save to Files <ios_files /></bold>. All that's left to do now is to pick a nice and cozy folder for your video!",
           "title": "Downloading on iOS",
-          "shortTitle": "Download / iOS",
-          "1": "To download on iOS, click <bold><ios_share /></bold>, then <bold>Save to Files <ios_files /></bold>. All that's left to do now is to pick a nice and cozy folder for your video!"
+          "shortTitle": "Download / iOS"
         }
       },
       "playback": {

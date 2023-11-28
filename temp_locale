@@ -1,0 +1,11 @@
+errors.offline,navigation.banner.offline
+videoPlayer.popouts.uploadCustomCaption,player.menus.captions.customChoice
+videoPlayer.popouts.captionPreferences.title,player.menus.captions.customizeLabel
+videoPlayer.popouts.captions,player.menus.captions.title
+videoPlayer.popouts.sources,player.menus.sources.title
+videoPlayer.popouts.close,overlays.close
+videoPlayer.buttons.episodes,player.menus.episodes.button
+videoPlayer.backToHome,player.back.default
+videoPlayer.backToHomeShort,player.back.short
+searchBar.movie,media.types.movie
+searchBar.series,media.types.show

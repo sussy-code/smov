@@ -1,0 +1,65 @@
+{
+  "global": {
+    "name": "movie-web"
+  },
+  "home": {
+    "search": {
+      "allResults": "That be all we 'ave, me hearty!",
+      "sectionTitle": "Search results",
+      "noResults": "We couldn't find anythin' that matches yer search!",
+      "failed": "Failed t' find media, walk the plank and try again!",
+      "placeholder": "Wha' be ye searchin' for?"
+    },
+    "bookmarks": {
+      "sectionTitle": "Treasure Maps"
+    }
+  },
+  "media": {
+    "types": {
+      "movie": "Movie",
+      "show": "Series"
+    },
+    "episodeDisplay": "S{{season}} E{{episode}}"
+  },
+  "player": {
+    "playbackError": {
+      "title": "Shiver me timbers! It broke!"
+    },
+    "metadata": {
+      "notFound": {
+        "badge": "Ahoy! I see nothin' on the horizon.",
+        "homeButton": "Back to the port",
+        "title": "Avast ye! Couldn't find that media",
+        "text": "We couldn't find the media ye requested. Either it's been scuttled or ye tampered with the URL, ye scallywag!"
+      }
+    },
+    "menus": {
+      "captions": {
+        "customChoice": "Upload yer own caption!",
+        "customizeLabel": "Customize yer captions",
+        "title": "Select a subtitle language, me hearty!"
+      },
+      "sources": {
+        "title": "Wha' provider do ye want to use?"
+      },
+      "episodes": {
+        "button": "Episodes"
+      }
+    },
+    "back": {
+      "default": "Back to the port, mates!",
+      "short": "Back"
+    }
+  },
+  "notFound": {
+    "badge": "Ahoy! I see nothin' on the horizon.",
+    "goHome": "Back to the port",
+    "title": "Avast ye! Couldn't find that page.",
+    "message": "Arrr! We searched every inch o' the vessel: from the bilge to the crow's nest, from the keel to the topmast, but avast! We couldn't find the page ye be lookin' fer, me heartie."
+  },
+  "navigation": {
+    "banner": {
+      "offline": "Avast! Check yer internet connection"
+    }
+  }
+}
