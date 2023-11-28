@@ -5,8 +5,8 @@
 <a href="https://github.com/movie-web/movie-web/blob/master/LICENSE.md"><img alt="GitHub license" src="https://img.shields.io/github/license/movie-web/movie-web?style=flat-square"></a>
 <a href="https://github.com/movie-web/movie-web/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/movie-web/movie-web?style=flat-square"></a>
 <a href="https://github.com/movie-web/movie-web/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/movie-web/movie-web?style=flat-square"></a><br/>
-<a href="https://discord.movie-web.app"><img src="https://discord.com/api/guilds/871713465100816424/widget.png?style=banner2" alt="Discord Server"></a>
 <img src="https://weblate.movie-web.app/widget/movie-web/movie-web/svg-badge.svg" />
+<a href="https://discord.movie-web.app"><img src="https://discord.com/api/guilds/871713465100816424/widget.png?style=banner2" alt="Discord Server"></a>
 </p>
 
 movie-web is a web app for watching movies easily. Check it out at **[movie-web.app](https://movie-web.app)**.
