@@ -14,7 +14,7 @@ export function ProgressRing(props: Props) {
       viewBox="0 0 100 100"
     >
       <circle
-        className={`fill-transparent stroke-denim-700 stroke-[15] opacity-25 ${
+        className={`fill-transparent stroke-type-text stroke-[15] opacity-25 ${
           props.backingRingClassname ?? ""
         }`}
         r={radius}

@@ -1,0 +1,77 @@
+{
+  "global": {
+    "name": "movie-web"
+  },
+  "menus": {
+    "episodes": {
+      "loadingTitle": "Aan het zoeken...",
+      "loadingList": "Aan het zoeken..."
+    }
+  },
+  "home": {
+    "search": {
+      "allResults": "Dat is het!",
+      "sectionTitle": "Zoekresultaten",
+      "noResults": "We konden helaas niets vinden.",
+      "failed": "Het is niet gelukt de media te laden, probeer het nog eens.",
+      "loading": "Aan het zoeken...",
+      "placeholder": "Wat wil je graag kijken?"
+    },
+    "bookmarks": {
+      "sectionTitle": "Opgeslagen"
+    },
+    "continueWatching": {
+      "sectionTitle": "Kijk verder"
+    }
+  },
+  "media": {
+    "types": {
+      "movie": "Films",
+      "show": "Series"
+    },
+    "episodeDisplay": "S{{season}} A{{episode}}"
+  },
+  "player": {
+    "playbackError": {
+      "title": "Oeps, hier ging iets mis!"
+    },
+    "metadata": {
+      "notFound": {
+        "badge": "Pagina niet gevonden",
+        "homeButton": "Naar de home-pagina",
+        "title": "We konden deze media niet vinden.",
+        "text": "We konden dit stukje media niet vinden. Het is mogelijk verwijderd, of jij hebt zelf de URL aangepast."
+      }
+    },
+    "menus": {
+      "captions": {
+        "customChoice": "Ondertiteling uploaden",
+        "customizeLabel": "Instellingen",
+        "title": "Ondertiteling"
+      },
+      "sources": {
+        "title": "Bronnen"
+      },
+      "episodes": {
+        "button": "Afleveringen",
+        "loadingTitle": "Aan het zoeken...",
+        "loadingList": "Aan het zoeken..."
+      }
+    },
+    "back": {
+      "default": "Naar de home-pagina",
+      "short": "Terug"
+    }
+  },
+  "notFound": {
+    "badge": "Pagina niet gevonden",
+    "goHome": "Naar de home-pagina",
+    "title": "Pagina niet gevonden",
+    "message": "We hebben echt alles geprobeerd, zelfs tijdrijzen; echter hebben we deze pagina helaas niet kunnen vinden."
+  },
+  "navigation": {
+    "banner": {
+      "offline": "Controleer je internetverbinding"
+    }
+  }
+}

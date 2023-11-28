@@ -6,49 +6,92 @@ on:
       - master
 
 jobs:
-  build:
-    name: Build
+  build_pwa:
+    name: Build PWA
     runs-on: ubuntu-latest
     
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
+                  
+    - uses: pnpm/action-setup@v2
+      with:
+        version: 8
+        
+    - name: Install Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+        cache: 'pnpm'
+    
+    - name: Install pnpm packages
+      run: pnpm install
+    
+    - name: Build project
+      run: pnpm run build:pwa
+
+    - name: Upload production-ready build files
+      uses: actions/upload-artifact@v3
+      with:
+        name: pwa
+        path: ./dist
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+                  
+    - uses: pnpm/action-setup@v2
+      with:
+        version: 8
     
     - name: Install Node.js
       uses: actions/setup-node@v3
       with:
         node-version: 18
-        cache: 'yarn'
-    
-    - name: Install Yarn packages
-      run: yarn install
+        cache: 'pnpm'
+
+    - name: Install pnpm packages
+      run: pnpm install
     
     - name: Build project
-      run: yarn build
+      run: pnpm run build
 
     - name: Upload production-ready build files
       uses: actions/upload-artifact@v3
       with:
-        name: production-files
+        name: normal
         path: ./dist
 
   release:
     name: Release
-    needs: build
+    needs: [build, build_pwa]
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Download artifact
+    - name: Download PWA artifact
       uses: actions/download-artifact@v3
       with:
-        name: production-files
-        path: ./dist
+        name: pwa
+        path: ./dist_pwa
 
-    - name: Zip files
-      run: cd dist && zip -r ../movie-web.zip .
+    - name: Zip PWA files
+      run: cd dist_pwa && zip -r ../movie-web.pwa.zip .
+
+    - name: Download normal artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: normal
+        path: ./dist_normal
+
+    - name: Zip normal files
+      run: cd dist_normal && zip -r ../movie-web.zip .
 
     - name: Get version
       id: package-version
@@ -65,7 +108,18 @@ jobs:
         draft: false
         prerelease: false
 
-    - name: Upload Release Asset
+    - name: Upload release (PWA)
+      id: upload-release-asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./movie-web.pwa.zip
+        asset_name: movie-web.pwa.zip
+        asset_content_type: application/zip
+
+    - name: Upload Release (Normal)
       id: upload-release-asset
       uses: actions/upload-release-asset@v1
       env:

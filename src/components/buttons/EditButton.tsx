@@ -4,8 +4,6 @@ import { useTranslation } from "react-i18next";
 
 import { Icon, Icons } from "@/components/Icon";
 
-import { ButtonControl } from "./ButtonControl";
-
 export interface EditButtonProps {
   editing: boolean;
   onEdit?: (editing: boolean) => void;
@@ -20,9 +18,10 @@ export function EditButton(props: EditButtonProps) {
   }, [props]);
 
   return (
-    <ButtonControl
+    <button
+      type="button"
       onClick={onClick}
-      className="flex h-12 items-center overflow-hidden rounded-full bg-denim-400 px-4 py-2 text-white transition-[background-color,transform] hover:bg-denim-500 active:scale-105"
+      className="flex h-12 items-center overflow-hidden rounded-full bg-background-secondary px-4 py-2 text-white transition-[background-color,transform] hover:bg-background-secondaryHover active:scale-105"
     >
       <span ref={parent}>
         {props.editing ? (
@@ -33,6 +32,6 @@ export function EditButton(props: EditButtonProps) {
           <Icon icon={Icons.EDIT} />
         )}
       </span>
-    </ButtonControl>
+    </button>
   );
 }

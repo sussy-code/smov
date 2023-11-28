@@ -2,45 +2,29 @@ import { FetchError } from "ofetch";
 
 import { formatJWMeta, mediaTypeToJW } from "./justwatch";
 import {
+  TMDBIdToUrlId,
   TMDBMediaToMediaType,
   formatTMDBMeta,
   getEpisodes,
-  getExternalIds,
   getMediaDetails,
   getMediaPoster,
   getMovieFromExternalId,
   mediaTypeToTMDB,
 } from "./tmdb";
 import {
-  JWMediaResult,
+  JWDetailedMeta,
   JWSeasonMetaResult,
   JW_API_BASE,
 } from "./types/justwatch";
 import { MWMediaMeta, MWMediaType } from "./types/mw";
 import {
+  TMDBContentTypes,
   TMDBMediaResult,
   TMDBMovieData,
   TMDBSeasonMetaResult,
   TMDBShowData,
 } from "./types/tmdb";
 import { makeUrl, proxiedFetch } from "../helpers/fetch";
-
-type JWExternalIdType =
-  | "eidr"
-  | "imdb_latest"
-  | "imdb"
-  | "tmdb_latest"
-  | "tmdb"
-  | "tms";
-
-interface JWExternalId {
-  provider: JWExternalIdType;
-  external_id: string;
-}
-
-interface JWDetailedMeta extends JWMediaResult {
-  external_ids: JWExternalId[];
-}
 
 export interface DetailedMeta {
   meta: MWMediaMeta;
@@ -90,8 +74,7 @@ export async function getMetaFromId(
 
   if (!details) return null;
 
-  const externalIds = await getExternalIds(id, mediaTypeToTMDB(type));
-  const imdbId = externalIds.imdb_id ?? undefined;
+  const imdbId = details.external_ids.imdb_id ?? undefined;
 
   let seasonData: TMDBSeasonMetaResult | undefined;
 
@@ -180,29 +163,14 @@ export async function getLegacyMetaFromId(
   };
 }
 
-export function TMDBMediaToId(media: MWMediaMeta): string {
-  return ["tmdb", mediaTypeToTMDB(media.type), media.id].join("-");
-}
-
-export function decodeTMDBId(
-  paramId: string
-): { id: string; type: MWMediaType } | null {
-  const [prefix, type, id] = paramId.split("-", 3);
-  if (prefix !== "tmdb") return null;
-  let mediaType;
-  try {
-    mediaType = TMDBMediaToMediaType(type);
-  } catch {
-    return null;
-  }
-  return {
-    type: mediaType,
-    id,
-  };
-}
-
 export function isLegacyUrl(url: string): boolean {
-  if (url.startsWith("/media/JW")) return true;
+  if (url.startsWith("/media/JW") || url.startsWith("/media/tmdb-show"))
+    return true;
+  return false;
+}
+
+export function isLegacyMediaType(url: string): boolean {
+  if (url.startsWith("/media/tmdb-show")) return true;
   return false;
 }
 
@@ -213,8 +181,21 @@ export async function convertLegacyUrl(
 
   const urlParts = url.split("/").slice(2);
   const [, type, id] = urlParts[0].split("-", 3);
+  const suffix = urlParts
+    .slice(1)
+    .map((v) => `/${v}`)
+    .join("");
 
-  const mediaType = TMDBMediaToMediaType(type);
+  if (isLegacyMediaType(url)) {
+    const details = await getMediaDetails(id, TMDBContentTypes.TV);
+    return `/media/${TMDBIdToUrlId(
+      MWMediaType.SERIES,
+      details.id.toString(),
+      details.name
+    )}${suffix}`;
+  }
+
+  const mediaType = TMDBMediaToMediaType(type as TMDBContentTypes);
   const meta = await getLegacyMetaFromId(mediaType, id);
 
   if (!meta) return undefined;
@@ -224,10 +205,12 @@ export async function convertLegacyUrl(
   // movies always have an imdb id on tmdb
   if (imdbId && mediaType === MWMediaType.MOVIE) {
     const movieId = await getMovieFromExternalId(imdbId);
-    if (movieId) return `/media/tmdb-movie-${movieId}`;
-  }
+    if (movieId) {
+      return `/media/${TMDBIdToUrlId(mediaType, movieId, meta.meta.title)}`;
+    }
 
-  if (tmdbId) {
-    return `/media/tmdb-${type}-${tmdbId}`;
+    if (tmdbId) {
+      return `/media/${TMDBIdToUrlId(mediaType, tmdbId, meta.meta.title)}`;
+    }
   }
 }

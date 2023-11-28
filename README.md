@@ -34,16 +34,16 @@ Check it out here: [https://github.com/movie-web/movie-web/blob/dev/SELFHOSTING.
 ## Running locally for development
 
 To run this project locally for contributing or testing, run the following commands:
-<h5><b>note: must use yarn to install packages and run NodeJS 16</b></h5>
+<h5><b>note: must use pnpm to install packages and run NodeJS 16 (install with `npm i -g pnpm`)</b></h5>
 
 ```bash
 git clone https://github.com/movie-web/movie-web
 cd movie-web
-yarn install
-yarn dev
+pnpm install
+pnpm run dev
 ```
 
-To build production files, simply run `yarn build`.
+To build production files, simply run `pnpm run build`.
 
 You'll need to deploy a cloudflare service worker as well. Check the [selfhosting guide](https://github.com/movie-web/movie-web/blob/dev/SELFHOSTING.md) on how to run the service worker. Afterwards you can make a `.env` file and put in the URL. (see `example.env` for an example)
 

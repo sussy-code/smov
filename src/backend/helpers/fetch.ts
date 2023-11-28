@@ -1,18 +1,9 @@
 import { FetchOptions, FetchResponse, ofetch } from "ofetch";
 
-import { conf } from "@/setup/config";
+import { getLoadbalancedProxyUrl } from "@/utils/providers";
 
-let proxyUrlIndex = Math.floor(Math.random() * conf().PROXY_URLS.length);
-
-// round robins all proxy urls
-function getProxyUrl(): string {
-  const url = conf().PROXY_URLS[proxyUrlIndex];
-  proxyUrlIndex = (proxyUrlIndex + 1) % conf().PROXY_URLS.length;
-  return url;
-}
-
-type P<T> = Parameters<typeof ofetch<T>>;
-type R<T> = ReturnType<typeof ofetch<T>>;
+type P<T> = Parameters<typeof ofetch<T, any>>;
+type R<T> = ReturnType<typeof ofetch<T, any>>;
 
 const baseFetch = ofetch.create({
   retry: 0,
@@ -50,13 +41,17 @@ export function proxiedFetch<T>(url: string, ops: P<T>[1] = {}): R<T> {
   Object.entries(ops?.params ?? {}).forEach(([k, v]) => {
     parsedUrl.searchParams.set(k, v);
   });
+  Object.entries(ops?.query ?? {}).forEach(([k, v]) => {
+    parsedUrl.searchParams.set(k, v);
+  });
 
-  return baseFetch<T>(getProxyUrl(), {
+  return baseFetch<T>(getLoadbalancedProxyUrl(), {
     ...ops,
     baseURL: undefined,
     params: {
       destination: parsedUrl.toString(),
     },
+    query: {},
   });
 }
 
@@ -84,7 +79,7 @@ export function rawProxiedFetch<T>(
     parsedUrl.searchParams.set(k, v);
   });
 
-  return baseFetch.raw(getProxyUrl(), {
+  return baseFetch.raw(getLoadbalancedProxyUrl(), {
     ...ops,
     baseURL: undefined,
     params: {

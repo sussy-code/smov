@@ -17,9 +17,12 @@
     "jsx": "react-jsx",
     "baseUrl": "./src",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@sozialhelden/ietf-language-tags": [
+        "../node_modules/@sozialhelden/ietf-language-tags/dist/cjs"
+      ]
     },
-    "types": ["vite/client", "vite-plugin-pwa/client"]
+    "types": ["vite/client", "vite-plugin-pwa/vanillajs"]
   },
   "include": ["src"]
 }

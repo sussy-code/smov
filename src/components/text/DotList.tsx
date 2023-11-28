@@ -5,7 +5,7 @@ export interface DotListProps {
 
 export function DotList(props: DotListProps) {
   return (
-    <p className={`font-semibold text-denim-700 ${props.className || ""}`}>
+    <p className={`font-semibold text-type-secondary ${props.className || ""}`}>
       {props.content.map((item, index) => (
         <span key={item}>
           {index !== 0 ? (
