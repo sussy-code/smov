@@ -33,7 +33,7 @@
             "notFound": {
                 "badge": "Nicht gefunden",
                 "homeButton": "Zurück zur Startseite",
-                "title": "Das Medium konnte nicht gefunden werden",
+                "title": "Das Medium konnte nicht gefunden werden.",
                 "text": "Wir konnten die angeforderten Medien nicht finden."
             }
         },

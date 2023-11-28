@@ -4,12 +4,12 @@
     },
     "home": {
         "search": {
-            "allResults": "C'est tout ce que nous avons!",
+            "allResults": "C'est tout ce que nous avons !",
             "sectionTitle": "Résultats de la recherche",
-            "noResults": "Nous n'avons rien trouvé!",
-            "failed": "Le média n'a pas été trouvé, veuillez réessayez!",
+            "noResults": "Nous n'avons rien trouvé !",
+            "failed": "Le média n'a pas été trouvé, veuillez réessayez !",
             "loading": "Chargement...",
-            "placeholder": "Que voulez-vous voir?"
+            "placeholder": "Que voulez-vous voir ?"
         },
         "bookmarks": {
             "sectionTitle": "Favoris"
@@ -33,7 +33,7 @@
             "notFound": {
                 "badge": "Introuvable",
                 "homeButton": "Retour à l'accueil",
-                "title": "Impossible de trouver ce média",
+                "title": "Impossible de trouver ce média.",
                 "text": "Nous n'avons pas trouvé le média que vous avez demandé. Soit il a été supprimé, soit vous avez modifié l'URL."
             }
         },

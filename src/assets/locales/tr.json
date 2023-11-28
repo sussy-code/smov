@@ -33,7 +33,7 @@
             "notFound": {
                 "badge": "Bulunamadı",
                 "homeButton": "Geri",
-                "title": "Medya bulunamadı",
+                "title": "Medya bulunamadı.",
                 "text": "İstediğiniz medyayı bulamadık. URL'i yanlış girdiniz ya da medya kaldırıldı."
             }
         },

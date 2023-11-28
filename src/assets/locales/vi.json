@@ -33,8 +33,8 @@
             "notFound": {
                 "badge": "Không tìm thấy",
                 "homeButton": "Quay lại trang chính",
-                "title": "Không thể tìm thấy nội dung",
-                "text": "Chúng tôi không thể tìm thấy nội dung mà bạn yêu cầu. Hoặc là nó đã bị xóa, hoặc bạn đã xáo trộn URL"
+                "title": "Không thể tìm thấy nội dung.",
+                "text": "Chúng tôi không thể tìm thấy nội dung mà bạn yêu cầu. Hoặc là nó đã bị xóa, hoặc bạn đã xáo trộn URL."
             }
         },
         "menus": {
