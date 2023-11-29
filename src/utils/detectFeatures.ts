@@ -46,3 +46,7 @@ export function canPictureInPicture(): boolean {
 export function canWebkitPictureInPicture(): boolean {
   return "webkitSupportsPresentationMode" in document.createElement("video");
 }
+
+export function canPlayHlsNatively(video: HTMLVideoElement): boolean {
+  return !!video.canPlayType("application/vnd.apple.mpegurl");
+}

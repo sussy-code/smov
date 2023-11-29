@@ -17,6 +17,7 @@ import {
   canFullscreen,
   canFullscreenAnyElement,
   canPictureInPicture,
+  canPlayHlsNatively,
   canWebkitFullscreen,
   canWebkitPictureInPicture,
 } from "@/utils/detectFeatures";
@@ -69,6 +70,10 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
   }
 
   function setupQualityForHls() {
+    if (videoElement && canPlayHlsNatively(videoElement)) {
+      return; // nothing to change
+    }
+
     if (!hls) return;
     if (!automaticQuality) {
       const qualities = hlsLevelsToQualities(hls.levels);
@@ -95,8 +100,13 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
 
   function setupSource(vid: HTMLVideoElement, src: LoadableSource) {
     if (src.type === "hls") {
-      if (!Hls.isSupported()) throw new Error("HLS not supported");
+      if (canPlayHlsNatively(vid)) {
+        vid.src = src.url;
+        vid.currentTime = startAt;
+        return;
+      }
 
+      if (!Hls.isSupported()) throw new Error("HLS not supported");
       if (!hls) {
         hls = new Hls({
           maxBufferSize: 500 * 1000 * 1000, // 500 mb of buffering, should load more fragments at once
@@ -178,6 +188,14 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
       emit("time", videoElement?.currentTime ?? 0)
     );
     videoElement.addEventListener("loadedmetadata", () => {
+      if (
+        source?.type === "hls" &&
+        videoElement &&
+        canPlayHlsNatively(videoElement)
+      ) {
+        emit("qualities", ["unknown"]);
+        emit("changedquality", "unknown");
+      }
       emit("duration", videoElement?.duration ?? 0);
     });
     videoElement.addEventListener("progress", () => {
