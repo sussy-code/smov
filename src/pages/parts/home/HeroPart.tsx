@@ -1,8 +1,9 @@
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import Sticky from "react-sticky-el";
 
 import { SearchBarInput } from "@/components/form/SearchBar";
 import { ThinContainer } from "@/components/layout/ThinContainer";
+import { useSlashFocus } from "@/components/player/hooks/useSlashFocus";
 import { HeroTitle } from "@/components/text/HeroTitle";
 import { useRandomTranslation } from "@/hooks/useRandomTranslation";
 import { useSearchQuery } from "@/hooks/useSearchQuery";
@@ -33,6 +34,9 @@ export function HeroPart({ setIsSticky, searchParams }: HeroPartProps) {
 
   const title = t(`home.titles.${time}`);
 
+  const inputRef = useRef<HTMLInputElement>(null);
+  useSlashFocus(inputRef);
+
   return (
     <ThinContainer>
       <div className="mt-44 space-y-16 text-center">
@@ -48,6 +52,7 @@ export function HeroPart({ setIsSticky, searchParams }: HeroPartProps) {
             onFixedToggle={stickStateChanged}
           >
             <SearchBarInput
+              ref={inputRef}
               onChange={setSearch}
               value={search}
               onUnFocus={setSearchUnFocus}
