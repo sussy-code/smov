@@ -75,7 +75,7 @@ function RouterBase(props: { id: string; children: ReactNode }) {
     <a.div
       ref={ref}
       style={dimensions}
-      className="overflow-hidden relative z-10"
+      className="overflow-hidden relative z-10 max-h-full"
     >
       <Flare.Base className="group w-full bg-video-context-border h-full rounded-2xl transition-colors duration-100 text-video-context-type-main">
         <Flare.Light
@@ -84,7 +84,7 @@ function RouterBase(props: { id: string; children: ReactNode }) {
           backgroundClass="bg-video-context-background duration-100"
           className="rounded-2xl opacity-100"
         />
-        <Flare.Child className="pointer-events-auto relative transition-transform duration-100">
+        <Flare.Child className="pointer-events-auto relative transition-transform duration-100 h-full">
           {props.children}
         </Flare.Child>
       </Flare.Base>
