@@ -1,6 +1,5 @@
 .lightbar, .lightbar-visual {
   position: absolute;
-  top: 0;
   width: 500vw;
   height: 800px;
   pointer-events: none;

@@ -203,7 +203,8 @@
       "quality": {
         "title": "Quality",
         "automaticLabel": "Automatic quality",
-        "hint": "You can try <0>switching source</0> to get different quality options."
+        "hint": "You can try <0>switching source</0> to get different quality options.",
+        "iosNoQuality": "Due to Apple-defined limitations, quality selection is not available on iOS for this source. You can try <0>switching to another source</0> to get different quality options."
       }
     }
   },
