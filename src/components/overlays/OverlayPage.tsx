@@ -50,7 +50,6 @@ export function OverlayPage(props: Props) {
         className={classNames([props.className, ""])}
         style={{
           height: props.height ? `${props.height}px` : undefined,
-          maxHeight: "70vh",
           width: props.width ? width : undefined,
         }}
       >
