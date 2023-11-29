@@ -17,7 +17,7 @@ export function useShouldShowControls() {
 
   // when using touch, pause screens can be dismissed by tapping
   const showTargetsWithoutPause =
-    isHovering || isHoveringControls || hasOpenOverlay;
+    isHovering || (isHoveringControls && !isUsingTouch) || hasOpenOverlay;
   const showTargetsIncludingPause = showTargetsWithoutPause || isPaused;
   const showTargets = isUsingTouch
     ? showTargetsWithoutPause
