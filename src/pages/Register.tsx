@@ -11,6 +11,7 @@ import {
 import { PassphraseGeneratePart } from "@/pages/parts/auth/PassphraseGeneratePart";
 import { TrustBackendPart } from "@/pages/parts/auth/TrustBackendPart";
 import { VerifyPassphrase } from "@/pages/parts/auth/VerifyPassphrasePart";
+import { PageTitle } from "@/pages/parts/util/PageTitle";
 
 function CaptchaProvider(props: {
   siteKey: string | null;
@@ -34,6 +35,7 @@ export function RegisterPage() {
   return (
     <CaptchaProvider siteKey={siteKey}>
       <SubPageLayout>
+        <PageTitle subpage k="global.pages.register" />
         {step === 0 ? (
           <TrustBackendPart
             onNext={(meta: MetaResponse) => {

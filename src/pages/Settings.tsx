@@ -28,6 +28,7 @@ import { DeviceListPart } from "@/pages/parts/settings/DeviceListPart";
 import { RegisterCalloutPart } from "@/pages/parts/settings/RegisterCalloutPart";
 import { SidebarPart } from "@/pages/parts/settings/SidebarPart";
 import { ThemePart } from "@/pages/parts/settings/ThemePart";
+import { PageTitle } from "@/pages/parts/util/PageTitle";
 import { AccountWithToken, useAuthStore } from "@/stores/auth";
 import { useLanguageStore } from "@/stores/language";
 import { useSubtitleStore } from "@/stores/subtitles";
@@ -191,6 +192,7 @@ export function SettingsPage() {
   ]);
   return (
     <SubPageLayout>
+      <PageTitle subpage k="global.pages.settings" />
       <SettingsLayout>
         <div id="settings-account">
           <Heading1 border className="!mb-0">

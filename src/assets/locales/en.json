@@ -56,7 +56,15 @@
     "goHome": "Back to home"
   },
   "global": {
-    "name": "movie-web"
+    "name": "movie-web",
+    "pages": {
+      "pagetitle": "{{title}} - movie-web",
+      "dmca": "DMCA",
+      "settings": "Settings",
+      "about": "About",
+      "login": "Login",
+      "register": "Register"
+    }
   },
   "media": {
     "types": {
