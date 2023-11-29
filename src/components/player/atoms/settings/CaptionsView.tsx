@@ -36,7 +36,7 @@ export function CaptionOption(props: {
         data-active-link={props.selected ? true : undefined}
         className="flex items-center"
       >
-        <span data-code={props.countryCode} className="mr-3">
+        <span data-code={props.countryCode} className="mr-3 inline-flex">
           <FlagIcon countryCode={props.countryCode} />
         </span>
         <span>{props.children}</span>
