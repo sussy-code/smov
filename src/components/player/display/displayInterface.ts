@@ -1,7 +1,7 @@
 import { LoadableSource, SourceQuality } from "@/stores/player/utils/qualities";
 import { Listener } from "@/utils/events";
 
-export type DisplayErrorType = "hls" | "htmlvideo";
+export type DisplayErrorType = "hls" | "htmlvideo" | "global";
 export type DisplayError = {
   stackTrace?: string;
   message?: string;

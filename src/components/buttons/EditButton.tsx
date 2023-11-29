@@ -26,7 +26,7 @@ export function EditButton(props: EditButtonProps) {
       <span ref={parent}>
         {props.editing ? (
           <span className="mx-4 whitespace-nowrap">
-            {t("media.stopEditing")}
+            {t("home.mediaList.stopEditing")}
           </span>
         ) : (
           <Icon icon={Icons.EDIT} />

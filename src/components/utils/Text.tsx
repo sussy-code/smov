@@ -24,7 +24,7 @@ export function Heading2(props: TextProps) {
   return (
     <h2
       className={[
-        "text-xl lg:text-3xl font-bold text-white mt-20 mb-9",
+        "text-xl lg:text-2xl font-bold text-white mt-20 mb-9",
         props.border ? borderClass : null,
         props.className ?? "",
       ].join(" ")}

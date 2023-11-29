@@ -18,6 +18,13 @@ i18n.use(initReactI18next).init({
 });
 
 export const appLanguageOptions = langCodes.map((lang) => {
+  if (lang === "pirate") {
+    return {
+      code: "pirate",
+      name: "Pirate",
+      nativeName: "Pirate Tongue",
+    };
+  }
   const [langObj] = ISO6391.getLanguages([lang]);
   if (!langObj)
     throw new Error(`Language with code ${lang} cannot be found in database`);

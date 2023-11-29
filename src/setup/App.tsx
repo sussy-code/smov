@@ -13,6 +13,7 @@ import { generateQuickSearchMediaUrl } from "@/backend/metadata/tmdb";
 import { useOnlineListener } from "@/hooks/usePing";
 import { AboutPage } from "@/pages/About";
 import { AdminPage } from "@/pages/admin/AdminPage";
+import VideoTesterView from "@/pages/developer/VideoTesterView";
 import { DmcaPage } from "@/pages/Dmca";
 import { NotFoundPage } from "@/pages/errors/NotFoundPage";
 import { HomePage } from "@/pages/HomePage";
@@ -106,15 +107,12 @@ function App() {
           path="/dev"
           component={lazy(() => import("@/pages/DeveloperPage"))}
         />
-        <Route
-          exact
-          path="/dev/video"
-          component={lazy(() => import("@/pages/developer/VideoTesterView"))}
-        />
+        <Route path="/dev/video">
+          <VideoTesterView />
+        </Route>
         {/* developer routes that can abuse workers are disabled in production */}
         {process.env.NODE_ENV === "development" ? (
           <Route
-            exact
             path="/dev/test"
             component={lazy(() => import("@/pages/developer/TestView"))}
           />

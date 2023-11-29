@@ -40,10 +40,14 @@ export function Time(props: { short?: boolean }) {
   const timeFinished = new Date(Date.now() + secondsRemaining * 1e3);
   const duration = formatSeconds(timeDuration, hasHours);
 
-  let localizationKey = "regular";
-  if (props.short) localizationKey = "short";
-  else if (timeFormat === VideoPlayerTimeFormat.REMAINING)
-    localizationKey = "remaining";
+  let localizationKey =
+    timeFormat === VideoPlayerTimeFormat.REGULAR ? "regular" : "remaining";
+  if (props.short) {
+    localizationKey =
+      timeFormat === VideoPlayerTimeFormat.REGULAR
+        ? "shortRegular"
+        : "shortRemaining";
+  }
 
   return (
     <VideoPlayerButton onClick={() => toggleMode()}>

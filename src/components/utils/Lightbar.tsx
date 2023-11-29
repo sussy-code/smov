@@ -1,4 +1,3 @@
-import classNames from "classnames";
 import { useEffect, useRef } from "react";
 import "./Lightbar.css";
 
@@ -162,15 +161,14 @@ function ParticlesCanvas() {
 
 export function Lightbar(props: { className?: string }) {
   return (
-    <div
-      className={classNames(
-        "grid grid-cols-[100%] w-full overflow-x-hidden",
-        props.className
-      )}
-    >
-      <div className="lightbar">
-        <ParticlesCanvas />
-        <div className="lightbar-visual" />
+    <div className="absolute inset-0 w-full h-screen overflow-hidden pointer-events-none -mt-64">
+      <div className="max-w-screen w-full h-screen relative pt-64">
+        <div className={props.className}>
+          <div className="lightbar">
+            <ParticlesCanvas />
+            <div className="lightbar-visual" />
+          </div>
+        </div>
       </div>
     </div>
   );

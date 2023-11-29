@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { ThinContainer } from "@/components/layout/ThinContainer";
 import { Ol } from "@/components/utils/Ol";
 import { Heading1, Heading2, Paragraph } from "@/components/utils/Text";
+import { PageTitle } from "@/pages/parts/util/PageTitle";
 
 import { SubPageLayout } from "./layouts/SubPageLayout";
 
@@ -19,6 +20,7 @@ export function AboutPage() {
   const { t } = useTranslation();
   return (
     <SubPageLayout>
+      <PageTitle subpage k="global.pages.about" />
       <ThinContainer>
         <Heading1>{t("faq.title")}</Heading1>
         <Ol

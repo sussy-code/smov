@@ -15,6 +15,7 @@ import { Button } from "@/components/buttons/Button";
 import { WideContainer } from "@/components/layout/WideContainer";
 import { UserIcons } from "@/components/UserIcon";
 import { Heading1 } from "@/components/utils/Text";
+import { Transition } from "@/components/utils/Transition";
 import { useAuth } from "@/hooks/auth/useAuth";
 import { useBackendUrl } from "@/hooks/auth/useBackendUrl";
 import { useIsMobile } from "@/hooks/useIsMobile";
@@ -27,6 +28,7 @@ import { DeviceListPart } from "@/pages/parts/settings/DeviceListPart";
 import { RegisterCalloutPart } from "@/pages/parts/settings/RegisterCalloutPart";
 import { SidebarPart } from "@/pages/parts/settings/SidebarPart";
 import { ThemePart } from "@/pages/parts/settings/ThemePart";
+import { PageTitle } from "@/pages/parts/util/PageTitle";
 import { AccountWithToken, useAuthStore } from "@/stores/auth";
 import { useLanguageStore } from "@/stores/language";
 import { useSubtitleStore } from "@/stores/subtitles";
@@ -190,6 +192,7 @@ export function SettingsPage() {
   ]);
   return (
     <SubPageLayout>
+      <PageTitle subpage k="global.pages.settings" />
       <SettingsLayout>
         <div id="settings-account">
           <Heading1 border className="!mb-0">
@@ -241,10 +244,10 @@ export function SettingsPage() {
           />
         </div>
       </SettingsLayout>
-      <div
-        className={`bg-settings-saveBar-background border-t border-settings-card-border/50 py-4 transition-opacity w-full fixed bottom-0 flex justify-between flex-col md:flex-row px-8 items-start md:items-center gap-3 ${
-          state.changed ? "opacity-100" : "opacity-0"
-        }`}
+      <Transition
+        animation="fade"
+        show={state.changed}
+        className="bg-settings-saveBar-background border-t border-settings-card-border/50 py-4 transition-opacity w-full fixed bottom-0 flex justify-between flex-col md:flex-row px-8 items-start md:items-center gap-3"
       >
         <p className="text-type-danger">{t("settings.unsaved")}</p>
         <div className="space-x-3 w-full md:w-auto flex">
@@ -263,7 +266,7 @@ export function SettingsPage() {
             {t("settings.save")}
           </Button>
         </div>
-      </div>
+      </Transition>
     </SubPageLayout>
   );
 }

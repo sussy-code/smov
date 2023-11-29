@@ -1,9 +1,9 @@
-/* eslint-disable react/no-unescaped-entities */
 import { useTranslation } from "react-i18next";
 
 import { Icon, Icons } from "@/components/Icon";
 import { ThinContainer } from "@/components/layout/ThinContainer";
 import { Heading1, Paragraph } from "@/components/utils/Text";
+import { PageTitle } from "@/pages/parts/util/PageTitle";
 
 import { SubPageLayout } from "./layouts/SubPageLayout";
 
@@ -13,6 +13,7 @@ export function DmcaPage() {
 
   return (
     <SubPageLayout>
+      <PageTitle subpage k="global.pages.dmca" />
       <ThinContainer>
         <Heading1>{t("screens.dmca.title")}</Heading1>
         <Paragraph>{t("screens.dmca.text")}</Paragraph>

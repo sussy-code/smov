@@ -4,6 +4,7 @@ import en from "@/assets/locales/en.json";
 import fr from "@/assets/locales/fr.json";
 import it from "@/assets/locales/it.json";
 import nl from "@/assets/locales/nl.json";
+import pirate from "@/assets/locales/pirate.json";
 import pl from "@/assets/locales/pl.json";
 import tr from "@/assets/locales/tr.json";
 import vi from "@/assets/locales/vi.json";
@@ -20,4 +21,5 @@ export const locales = {
   tr,
   vi,
   zh,
+  pirate,
 };

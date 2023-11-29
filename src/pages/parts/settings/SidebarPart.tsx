@@ -75,7 +75,7 @@ export function SidebarPart() {
     function recheck() {
       const windowHeight =
         window.innerHeight || document.documentElement.clientHeight;
-      const middle = windowHeight / 2;
+      const centerTarget = windowHeight / 4;
 
       const viewList = settingLinks
         .map((link) => {
@@ -83,15 +83,15 @@ export function SidebarPart() {
           if (!el) return { distance: Infinity, link: link.id };
           const rect = el.getBoundingClientRect();
 
-          const distanceTop = Math.abs(middle - rect.top);
-          const distanceBottom = Math.abs(middle - rect.bottom);
+          const distanceTop = Math.abs(centerTarget - rect.top);
+          const distanceBottom = Math.abs(centerTarget - rect.bottom);
 
           const distance = Math.min(distanceBottom, distanceTop);
           return { distance, link: link.id };
         })
         .sort((a, b) => a.distance - b.distance);
 
-      // shortest distance to middle of screen is the active link
+      // shortest distance to the part of the screen we want is the active link
       setActiveLink(viewList[0]?.link ?? "");
     }
     document.addEventListener("scroll", recheck);
@@ -151,10 +151,10 @@ export function SidebarPart() {
 
             {/* Backend URL */}
             <div className="col-span-2 space-y-1">
-              <p className="text-type-dimmed font-medium flex items-center">
-                {t("settings.sidebar.info.backendUrl")}
+              <div className="text-type-dimmed font-medium flex items-center">
+                <p>{t("settings.sidebar.info.backendUrl")}</p>
                 <SecureBadge url={backendUrl} />
-              </p>
+              </div>
               <p className="text-white">
                 {backendUrl.replace(/https?:\/\//, "")}
               </p>
@@ -193,7 +193,7 @@ export function SidebarPart() {
                   />
                 ) : null}
                 {backendMeta.loading ? (
-                  <div className="h-4 w-12 bg-type-dimmed/20 rounded" />
+                  <span className="block h-4 w-12 bg-type-dimmed/20 rounded" />
                 ) : (
                   backendMeta?.value?.version ||
                   t("settings.sidebar.info.unknownVersion")
