@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { generatePath, useHistory, useParams } from "react-router-dom";
 
+function decode(query: string | null | undefined) {
+  return query ? decodeURIComponent(query) : "";
+}
+
 export function useSearchQuery(): [
   string,
   (inp: string, force?: boolean) => void,
@@ -8,10 +12,10 @@ export function useSearchQuery(): [
 ] {
   const history = useHistory();
   const params = useParams<{ query: string }>();
-  const [search, setSearch] = useState(params.query ?? "");
+  const [search, setSearch] = useState(decode(params.query));
 
   useEffect(() => {
-    setSearch(params.query ?? "");
+    setSearch(decode(params.query));
   }, [params.query]);
 
   const updateParams = (inp: string, commitToUrl = false) => {
