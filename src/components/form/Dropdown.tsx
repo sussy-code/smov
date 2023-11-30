@@ -21,7 +21,7 @@ export function Dropdown(props: DropdownProps) {
       <Listbox value={props.selectedItem} onChange={props.setSelectedItem}>
         {() => (
           <>
-            <Listbox.Button className="relative w-full cursor-default rounded-lg bg-dropdown-background py-3 pl-3 pr-10 text-left text-white shadow-md focus:outline-none tabbable">
+            <Listbox.Button className="relative w-full rounded-lg bg-dropdown-background py-3 pl-3 pr-10 text-left text-white shadow-md focus:outline-none tabbable cursor-pointer">
               <span className="flex gap-4 items-center truncate">
                 {props.selectedItem.leftIcon
                   ? props.selectedItem.leftIcon
@@ -45,7 +45,7 @@ export function Dropdown(props: DropdownProps) {
                 {props.options.map((opt) => (
                   <Listbox.Option
                     className={({ active }) =>
-                      `flex gap-4 items-center relative cursor-default select-none py-3 pl-4 pr-4 ${
+                      `cursor-pointer flex gap-4 items-center relative select-none py-3 pl-4 pr-4 ${
                         active
                           ? "bg-background-secondaryHover text-type-link"
                           : "text-white"

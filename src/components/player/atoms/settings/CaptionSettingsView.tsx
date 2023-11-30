@@ -230,7 +230,7 @@ export function CaptionSettingsView({ id }: { id: string }) {
       </Menu.BackLink>
       <Menu.Section className="space-y-6">
         <CaptionSetting
-          label={t("player.menus.captions.settings.fixCapitals")}
+          label={t("player.menus.captions.settings.delay")}
           max={10}
           min={-10}
           onChange={(v) => setDelay(v)}
@@ -241,7 +241,7 @@ export function CaptionSettingsView({ id }: { id: string }) {
         />
         <div className="flex justify-between items-center">
           <Menu.FieldTitle>
-            {t("player.menus.captions.settings.delay")}
+            {t("player.menus.captions.settings.fixCapitals")}
           </Menu.FieldTitle>
           <div className="flex justify-center items-center">
             <Toggle

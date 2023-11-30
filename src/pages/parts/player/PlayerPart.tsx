@@ -64,38 +64,54 @@ export function PlayerPart(props: PlayerPartProps) {
             <BrandPill />
           </div>
           <div className="flex sm:hidden items-center justify-end">
-            <Player.Airplay />
-            <Player.Chromecast />
+            {status === playerStatus.PLAYING ? (
+              <>
+                <Player.Airplay />
+                <Player.Chromecast />
+              </>
+            ) : null}
           </div>
         </div>
       </Player.TopControls>
 
       <Player.BottomControls show={showTargets}>
         <div className="flex items-center space-x-3">
-          {isMobile ? <Player.Time short /> : null}
-          <Player.ProgressBar />
+          {status === playerStatus.PLAYING ? (
+            <>
+              {isMobile ? <Player.Time short /> : null}
+              <Player.ProgressBar />
+            </>
+          ) : null}
         </div>
         <div className="hidden lg:flex justify-between">
           <Player.LeftSideControls>
-            <Player.Pause />
-            <Player.SkipBackward />
-            <Player.SkipForward />
-            <Player.Volume />
-            <Player.Time />
+            {status === playerStatus.PLAYING ? (
+              <>
+                <Player.Pause />
+                <Player.SkipBackward />
+                <Player.SkipForward />
+                <Player.Volume />
+                <Player.Time />
+              </>
+            ) : null}
           </Player.LeftSideControls>
           <div className="flex items-center space-x-3">
             <Player.Episodes />
-            <Player.Pip />
-            <Player.Airplay />
-            <Player.Chromecast />
-            <Player.Settings />
+            {status === playerStatus.PLAYING ? (
+              <>
+                <Player.Pip />
+                <Player.Airplay />
+                <Player.Chromecast />
+                <Player.Settings />
+              </>
+            ) : null}
             <Player.Fullscreen />
           </div>
         </div>
         <div className="grid grid-cols-[2.5rem,1fr,2.5rem] gap-3 lg:hidden">
           <div />
           <div className="flex justify-center space-x-3">
-            <Player.Pip />
+            {status === playerStatus.PLAYING ? <Player.Pip /> : null}
             <Player.Episodes />
             <Player.Settings />
           </div>

@@ -46,6 +46,7 @@
   "errors": {
     "details": "Error details",
     "reloadPage": "Reload the page",
+    "showError": "Show error details",
     "badge": "It broke",
     "title": "That's an error boss"
   },

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { ButtonPlain } from "@/components/buttons/Button";
@@ -7,10 +8,11 @@ import { DisplayError } from "@/components/player/display/displayInterface";
 import { Title } from "@/components/text/Title";
 import { Paragraph } from "@/components/utils/Text";
 import { ErrorContainer, ErrorLayout } from "@/pages/layouts/ErrorLayout";
-import { ErrorCard } from "@/pages/parts/errors/ErrorCard";
+import { ErrorCardInPlainModal } from "@/pages/parts/errors/ErrorCard";
 
 export function ErrorPart(props: { error: any; errorInfo: any }) {
   const { t } = useTranslation();
+  const [showErrorCard, setShowErrorCard] = useState(false);
 
   const maxLineCount = 5;
   const errorLines = (props.errorInfo.componentStack || "")
@@ -30,15 +32,30 @@ export function ErrorPart(props: { error: any; errorInfo: any }) {
           <ErrorContainer maxWidth="max-w-2xl">
             <IconPill icon={Icons.EYE_SLASH}>{t("errors.badge")}</IconPill>
             <Title>{t("errors.title")}</Title>
+
             <Paragraph>{props.error.toString()}</Paragraph>
-            <ErrorCard error={error} />
-            <ButtonPlain
-              theme="purple"
-              className="mt-6 md:px-12 p-2.5"
-              onClick={() => window.location.reload()}
-            >
-              {t("errors.reloadPage")}
-            </ButtonPlain>
+            <ErrorCardInPlainModal
+              show={showErrorCard}
+              onClose={() => setShowErrorCard(false)}
+              error={error}
+            />
+
+            <div className="flex gap-3">
+              <ButtonPlain
+                theme="secondary"
+                className="mt-6 md:px-12 p-2.5"
+                onClick={() => window.location.reload()}
+              >
+                {t("errors.reloadPage")}
+              </ButtonPlain>
+              <ButtonPlain
+                theme="purple"
+                className="mt-6 md:px-12 p-2.5"
+                onClick={() => setShowErrorCard(true)}
+              >
+                {t("errors.showError")}
+              </ButtonPlain>
+            </div>
           </ErrorContainer>
         </ErrorLayout>
       </div>

@@ -9,8 +9,8 @@ export const defaultTheme = {
 
       // Branding
       pill: {
-        background: "#1C1C36",
-        backgroundHover: "#1C1C36",
+        background: "#2e2e4d",
+        backgroundHover: "#3d3d61",
         highlight: "#714C97",
       },
       
@@ -97,7 +97,7 @@ export const defaultTheme = {
       dropdown: {
         background: "#171728",
         altBackground: "#151525",
-        highlight: "#FCEC61",
+        highlight: "#afa349",
         highlightHover: "#FCEC61",
         text: "#846D95",
         secondary: "#73739D",
@@ -179,6 +179,11 @@ export const defaultTheme = {
       video: {
         buttonBackground: "#444B5C",
 
+        autoPlay: {
+          background: "#161C26",
+          hover: "#252533"
+        },
+
         scraping: {
           card: "#161620",
           error: "#E44F4F",
@@ -210,6 +215,7 @@ export const defaultTheme = {
             list: "#161C26",
             active: "#0D1317",
           },
+
 
           type: {
             main: "#617A8A",
