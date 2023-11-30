@@ -59,6 +59,7 @@ export function Navigation(props: NavigationProps) {
               <BlurEllipsis positionClass="absolute" />
             </div>
           ) : null}
+          <div className="opacity-0 absolute inset-0 block h-20 pointer-events-auto" />
           <div
             className={`${
               props.bg ? "opacity-100" : "opacity-0"
@@ -77,8 +78,8 @@ export function Navigation(props: NavigationProps) {
         }}
       >
         <div className={classNames("fixed left-0 right-0 flex items-center")}>
-          <div className="pointer-events-auto px-7 py-5 relative z-[60] flex flex-1 items-center">
-            <div className="flex items-center flex-1 space-x-3">
+          <div className="px-7 py-5 relative z-[60] flex flex-1 items-center justify-between">
+            <div className="flex items-center space-x-3 pointer-events-auto">
               <Link className="block tabbable rounded-full" to="/">
                 <BrandPill clickable />
               </Link>
@@ -99,7 +100,7 @@ export function Navigation(props: NavigationProps) {
                 <IconPatch icon={Icons.GITHUB} clickable downsized />
               </a>
             </div>
-            <div className="relative">
+            <div className="relative pointer-events-auto">
               <LinksDropdown>
                 {loggedIn ? <UserAvatar withName /> : <NoUserAvatar />}
               </LinksDropdown>

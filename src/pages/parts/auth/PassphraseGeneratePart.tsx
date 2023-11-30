@@ -31,7 +31,7 @@ export function PassphraseGeneratePart(props: PassphraseGeneratePartProps) {
 
       <LargeCardButtons>
         <Button theme="purple" onClick={() => props.onNext?.(mnemonic)}>
-          {t("actions.next")}
+          {t("auth.generate.next")}
         </Button>
       </LargeCardButtons>
     </LargeCard>

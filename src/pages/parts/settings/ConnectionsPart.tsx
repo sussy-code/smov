@@ -115,10 +115,10 @@ function BackendEdit({ backendUrl, setBackendUrl }: BackendEditProps) {
       <div className="flex justify-between items-center gap-4">
         <div className="my-3">
           <p className="text-white font-bold mb-3">
-            {t("settings.connections.workers.label")}
+            {t("settings.connections.server.label")}
           </p>
           <p className="max-w-[20rem] font-medium">
-            {t("settings.connections.workers.description")}
+            {t("settings.connections.server.description")}
           </p>
         </div>
         <div>
@@ -132,7 +132,7 @@ function BackendEdit({ backendUrl, setBackendUrl }: BackendEditProps) {
         <>
           <Divider marginClass="my-6 px-8 box-content -mx-8" />
           <p className="text-white font-bold mb-3">
-            {t("settings.connections.workers.urlLabel")}
+            {t("settings.connections.server.urlLabel")}
           </p>
           <AuthInputBox onChange={setBackendUrl} value={backendUrl ?? ""} />
         </>

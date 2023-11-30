@@ -3,10 +3,13 @@ import { useTranslation } from "react-i18next";
 
 import { Button } from "@/components/buttons/Button";
 import { Icon, Icons } from "@/components/Icon";
+import { Modal } from "@/components/overlays/Modal";
 import { DisplayError } from "@/components/player/display/displayInterface";
 
-export function ErrorCard(props: { error: DisplayError | string }) {
-  const [showErrorCard, setShowErrorCard] = useState(true);
+export function ErrorCard(props: {
+  error: DisplayError | string;
+  onClose: () => void;
+}) {
   const [hasCopied, setHasCopied] = useState(false);
   const hasCopiedUnsetDebounce = useRef<ReturnType<typeof setTimeout> | null>(
     null
@@ -31,8 +34,6 @@ export function ErrorCard(props: { error: DisplayError | string }) {
       clearTimeout(hasCopiedUnsetDebounce.current);
     hasCopiedUnsetDebounce.current = setTimeout(() => setHasCopied(false), 2e3);
   }
-
-  if (!showErrorCard) return null;
 
   return (
     // I didn't put a <Transition> here because it'd fade out, then jump height weirdly
@@ -60,7 +61,7 @@ export function ErrorCard(props: { error: DisplayError | string }) {
           <Button
             theme="secondary"
             padding="p-2 md:px-2"
-            onClick={() => setShowErrorCard(false)}
+            onClick={props.onClose}
           >
             <Icon icon={Icons.X} className="text-2xl" />
           </Button>
@@ -70,5 +71,37 @@ export function ErrorCard(props: { error: DisplayError | string }) {
         {errorMessage}
       </div>
     </div>
+  );
+}
+
+// use plain modal version if there is no access to history api (like in error boundary)
+export function ErrorCardInPlainModal(props: {
+  error?: DisplayError | string;
+  onClose: () => void;
+  show?: boolean;
+}) {
+  if (!props.show || !props.error) return null;
+  return (
+    <div className="fixed inset-0 w-full h-full bg-black bg-opacity-30 flex justify-center items-center p-12">
+      <div className="max-w-2xl">
+        <ErrorCard error={props.error} onClose={props.onClose} />
+      </div>
+    </div>
+  );
+}
+
+export function ErrorCardInModal(props: {
+  error?: DisplayError | string;
+  id: string;
+  onClose: () => void;
+}) {
+  if (!props.error) return null;
+
+  return (
+    <Modal id={props.id}>
+      <div className="max-w-2xl pointer-events-auto">
+        <ErrorCard error={props.error} onClose={props.onClose} />
+      </div>
+    </Modal>
   );
 }

@@ -99,6 +99,8 @@ export function Button(props: Props) {
   );
 }
 
+// Sometimes you can't use normal button, due to not having access to a useHistory context
+// When that happens, use this!
 interface ButtonPlainProps {
   onClick?: () => void;
   children?: ReactNode;

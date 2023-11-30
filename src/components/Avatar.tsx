@@ -81,20 +81,10 @@ export function UserAvatar(props: {
   );
 }
 
-export function NoUserAvatar(props: {
-  sizeClass?: string;
-  iconClass?: string;
-}) {
+export function NoUserAvatar(props: { iconClass?: string }) {
   return (
-    <div className="relative inline-block">
-      <div
-        className={classNames(
-          props.sizeClass ?? "w-[2rem] h-[2rem]",
-          "rounded-full overflow-hidden flex items-center justify-center text-type-dimmed hover:text-type-secondary bg-pill-background bg-opacity-50 hover:bg-opacity-100 transition-colors duration-100"
-        )}
-      >
-        <Icon className={props.iconClass ?? "text-xl"} icon={Icons.MENU} />
-      </div>
+    <div className="relative inline-block p-1 text-type-dimmed">
+      <Icon className={props.iconClass ?? "text-xl"} icon={Icons.MENU} />
     </div>
   );
 }

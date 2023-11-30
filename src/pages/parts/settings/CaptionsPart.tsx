@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 
 import { Icon, Icons } from "@/components/Icon";
@@ -29,6 +30,11 @@ export function CaptionPreview(props: {
         "fixed inset-0 z-[60]": props.fullscreen,
       })}
     >
+      {props.fullscreen && props.show ? (
+        <Helmet>
+          <html data-no-scroll />
+        </Helmet>
+      ) : null}
       <Transition animation="fade" show={props.show}>
         <div
           className="absolute inset-0 pointer-events-auto"

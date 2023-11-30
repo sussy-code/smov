@@ -78,7 +78,7 @@ export function AccountCreatePart(props: AccountCreatePartProps) {
       </div>
       <LargeCardButtons>
         <Button theme="purple" onClick={() => nextStep()}>
-          {t("actions.next")}
+          {t("auth.register.information.next")}
         </Button>
       </LargeCardButtons>
     </LargeCard>
