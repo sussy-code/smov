@@ -1,255 +1,127 @@
 {
+  "actions": {
+    "copied": "Copied",
+    "copy": "Copy"
+  },
   "auth": {
     "deviceNameLabel": "Ship name",
     "deviceNamePlaceholder": "Muad'Dib's Pirate Ship",
-    "register": {
-      "information": {
-        "title": "Pirate Account information",
-        "color1": "First Mate color",
-        "color2": "Second Mate color",
-        "icon": "Pirate icon",
-        "header": "Enter a moniker for yer ship and choose a pirate icon and colors, arrr!"
-      }
+    "generate": {
+      "description": "If ye lose this, ye be a silly goose and will be posted on the wall of shame™️",
+      "title": "Yer Passphrase"
     },
     "login": {
-      "title": "Hoist the Jolly Roger",
       "description": "Arr, ye be askin' for the key to me top-secret lair, also known as The Fortress of Wordsmithery, accessed only by recitin' the sacred incantation of the 12-word passphrase!",
-      "validationError": "Arr, invalid or incomplete passphrase",
-      "submit": "Hoist Anchor",
       "passphraseLabel": "12-Word Passphrase",
-      "passphrasePlaceholder": "Passphrase"
+      "passphrasePlaceholder": "Passphrase",
+      "submit": "Hoist Anchor",
+      "title": "Hoist the Jolly Roger",
+      "validationError": "Arr, invalid or incomplete passphrase"
     },
-    "generate": {
-      "title": "Yer Passphrase",
-      "description": "If ye lose this, ye be a silly goose and will be posted on the wall of shame™️"
+    "register": {
+      "information": {
+        "color1": "First Mate color",
+        "color2": "Second Mate color",
+        "header": "Enter a moniker for yer ship and choose a pirate icon and colors, arrr!",
+        "icon": "Pirate icon",
+        "title": "Pirate Account information"
+      }
     },
     "trust": {
-      "title": "Do ye trust this ship?",
-      "host": "Do ye trust <0>{{hostname}}</0>?",
       "failed": {
-        "title": "Failed to reach the backend",
-        "text": "Did ye configure it correctly?"
+        "text": "Did ye configure it correctly?",
+        "title": "Failed to reach the backend"
       },
-      "yes": "Trust",
-      "no": "Abandon Ship"
+      "host": "Do ye trust <0>{{hostname}}</0>?",
+      "no": "Abandon Ship",
+      "title": "Do ye trust this ship?",
+      "yes": "Trust"
     },
     "verify": {
-      "title": "Enter yer passphrase",
       "description": "If ye already lost it, how will ye ever be able to take care of a wee buccaneer?",
       "invalidData": "Data be not valid",
       "noMatch": "Passphrase doesn't match",
-      "recaptchaFailed": "ReCaptcha validation failed",
       "passphraseLabel": "Yer passphrase",
-      "register": "Register"
+      "recaptchaFailed": "ReCaptcha validation failed",
+      "register": "Register",
+      "title": "Enter yer passphrase"
     }
   },
   "errors": {
+    "badge": "Shiver me timbers",
     "details": "Error details",
     "reloadPage": "Reload the page",
-    "badge": "Shiver me timbers",
     "title": "That be an error, Captain"
   },
-  "notFound": {
-    "badge": "Not found",
-    "title": "Couldn't find that treasure map",
-    "message": "We looked everywhere: under the bins, in the closet, behind the proxy but ultimately couldn't find the treasure map ye be lookin' for.",
-    "goHome": "Back to home port"
+  "faq": {
+    "how": {
+      "body": "Body of 1",
+      "title": "1"
+    },
+    "q1": {
+      "body": "Body of 1",
+      "title": "1"
+    },
+    "title": "About us"
+  },
+  "footer": {
+    "legal": {
+      "disclaimer": "Disclaimer",
+      "disclaimerText": "movie-web does not host any files, it merely links to 3rd party services. Legal issues should be taken up with the file hosts and providers. movie-web be not responsible for any media files shown by the video providers."
+    },
+    "links": {
+      "discord": "Discord",
+      "dmca": "DMCA",
+      "github": "GitHub"
+    },
+    "tagline": "Watch yer favorite shows and movies with this open source streaming ship."
   },
   "global": {
     "name": "movie-web",
     "pages": {
-      "pagetitle": "{{title}} - movie-web",
-      "dmca": "DMCA",
-      "settings": "Settings",
       "about": "About",
+      "dmca": "DMCA",
       "login": "Login",
-      "register": "Register"
-    }
-  },
-  "media": {
-    "types": {
-      "movie": "Film",
-      "show": "Show"
-    },
-    "episodeDisplay": "S{{season}} E{{episode}}"
-  },
-  "player": {
-    "scraping": {
-      "notFound": {
-        "badge": "Not found",
-        "title": "Goo goo gaa gaa",
-        "text": "Oh, me apologies, sweetie! The itty-bitty movie-web did its utmost bestest, but alas, no wucky videos to be spotted anywhere (´⊙ω⊙`) Please don't be angwy, wittle movie-web ish twying so hard. Can ye find it in yer heart to forgive? UwU 💖",
-        "homeButton": "Go home port"
-      },
-      "items": {
-        "pending": "Checkin' for videos...",
-        "notFound": "Doesn't have the video",
-        "failure": "Error occurred"
-      }
-    },
-    "playbackError": {
-      "badge": "Not found",
-      "title": "Whoops, it broke!",
-      "text": "Oh, me apologies, sweetie! The itty-bitty movie-web did its utmost bestest, but alas, no wucky videos to be spotted anywhere (´⊙ω⊙`) Please don't be angwy, wittle movie-web ish twying so hard. Can ye find it in yer heart to forgive? UwU 💖",
-      "homeButton": "Go home port",
-      "errors": {
-        "errorAborted": "The fetchin' of the associated resource was aborted by the user's request.",
-        "errorNetwork": "Some kind of network error occurred which prevented the media from bein' successfully fetched, despite havin' previously been available.",
-        "errorDecode": "Despite havin' previously been determined to be usable, an error occurred while tryin' to decode the media resource, resultin' in an error.",
-        "errorNotSupported": "The associated resource or media provider object has been found to be unsuitable.",
-        "errorGenericMedia": "Unknown media error occurred"
-      }
-    },
-    "metadata": {
-      "notFound": {
-        "badge": "Not found",
-        "title": "Couldn't find that media.",
-        "text": "We couldn't find the media ye requested. Either it's been removed or ye tampered with the URL.",
-        "homeButton": "Back to home port"
-      },
-      "failed": {
-        "badge": "Failed",
-        "title": "Failed to load meta data",
-        "text": "Oh, me apologies, sweetie! The itty-bitty movie-web did its utmost bestest, but alas, no wucky videos to be spotted anywhere (´⊙ω⊙`) Please don't be angwy, wittle movie-web ish twying so hard. Can ye find it in yer heart to forgive? UwU 💖",
-        "homeButton": "Go home port"
-      }
-    },
-    "back": {
-      "default": "Back to home port",
-      "short": "Back"
-    },
-    "time": {
-      "regular": "{{timeWatched}} / {{duration}}",
-      "shortRegular": "{{timeWatched}}",
-      "remaining": "{{timeLeft}} left • Finish at {{timeFinished, datetime}}",
-      "shortRemaining": "-{{timeLeft}}"
-    },
-    "nextEpisode": {
-      "next": "Next episode",
-      "cancel": "Cancel"
-    },
-    "menus": {
-      "settings": {
-        "videoSection": "Video settings",
-        "experienceSection": "Viewing Experience",
-        "enableCaptions": "Enable Sea Shanties",
-        "captionItem": "Sea Shanty settings",
-        "sourceItem": "Video sources",
-        "playbackItem": "Playback settings",
-        "downloadItem": "Buried Treasure",
-        "qualityItem": "Quality"
-      },
-      "episodes": {
-        "button": "Episodes",
-        "loadingTitle": "Loading...",
-        "loadingList": "Loading...",
-        "loadingError": "Error loadin' season",
-        "emptyState": "There be no episodes in this season, check back later!",
-        "episodeBadge": "E{{episode}}"
-      },
-      "sources": {
-        "title": "Sources",
-        "unknownOption": "Unknown",
-        "noStream": {
-          "title": "No stream",
-          "text": "This source has no streams for this film or show."
-        },
-        "noEmbeds": {
-          "title": "No embeds found",
-          "text": "We were unable to find any embeds for this source, please try another."
-        },
-        "failed": {
-          "title": "Failed to scrape",
-          "text": "We were unable to find any videos for this source. Don't come bitchin' to us about it, just try another source."
-        }
-      },
-      "captions": {
-        "title": "Sea Shanties",
-        "customizeLabel": "Customize",
-        "settings": {
-          "fixCapitals": "Fix capitalization",
-          "delay": "Shanty delay"
-        },
-        "customChoice": "Upload sea shanties",
-        "offChoice": "Off",
-        "unknownLanguage": "Unknown"
-      },
-      "downloads": {
-        "title": "Buried Treasure",
-        "disclaimer": "Downloads be taken directly from the provider. movie-web does not have control over how the downloads be provided.",
-        "hlsExplanation": "Insert explanation for why ye can't download HLS here",
-        "downloadVideo": "Download film",
-        "downloadCaption": "Download sea shanty",
-        "onPc": {
-          "1": "On PC, right click the film and select <bold>Save film as</bold>",
-          "title": "Downloadin' on PC",
-          "shortTitle": "Download / PC"
-        },
-        "onAndroid": {
-          "1": "To download on Android, <bold>tap and hold</bold> on the film, then select <bold>save</bold>.",
-          "title": "Downloadin' on Android",
-          "shortTitle": "Download / Android"
-        },
-        "onIos": {
-          "1": "To download on iOS, click <bold><ios_share /></bold>, then <bold>Save to Files <ios_files /></bold>. All that's left to do now be to pick a nice and cozy chest for yer film!",
-          "title": "Downloadin' on iOS",
-          "shortTitle": "Download / iOS"
-        }
-      },
-      "playback": {
-        "title": "Playback settings",
-        "speedLabel": "Playback speed"
-      },
-      "quality": {
-        "title": "Quality",
-        "automaticLabel": "Automatic quality",
-        "hint": "Ye can try <0>switchin' source</0> to get different quality options.",
-        "iosNoQuality": "Due to Apple-defined limitations, quality selection be not available on iOS for this source. Ye can try <0>switchin' to another source</0> to get different quality options."
-      }
+      "pagetitle": "{{title}} - movie-web",
+      "register": "Register",
+      "settings": "Settings"
     }
   },
   "home": {
-    "mediaList": {
-      "stopEditing": "Stop editin'"
-    },
-    "titles": {
-      "morning": ["Morning title"],
-      "day": ["Day title"],
-      "night": ["Night title"]
-    },
-    "search": {
-      "loading": "Loading...",
-      "sectionTitle": "Searchin' results",
-      "allResults": "That's all we have, me heartie!",
-      "noResults": "We couldn't find anythin', arrr!",
-      "failed": "Failed to find media, try again!",
-      "placeholder": "What do ye want to watch?"
+    "bookmarks": {
+      "sectionTitle": "Bookmarks"
     },
     "continueWatching": {
       "sectionTitle": "Continue Watchin'"
     },
-    "bookmarks": {
-      "sectionTitle": "Bookmarks"
+    "mediaList": {
+      "stopEditing": "Stop editin'"
+    },
+    "search": {
+      "allResults": "That's all we have, me heartie!",
+      "failed": "Failed to find media, try again!",
+      "loading": "Loading...",
+      "noResults": "We couldn't find anythin', arrr!",
+      "placeholder": "What do ye want to watch?",
+      "sectionTitle": "Searchin' results"
+    },
+    "titles": {
+      "day": [
+        "Day title"
+      ],
+      "morning": [
+        "Morning title"
+      ],
+      "night": [
+        "Night title"
+      ]
     }
   },
-  "overlays": {
-    "close": "Close"
-  },
-  "screens": {
-    "loadingUser": "Loadin' yer pirate profile",
-    "loadingApp": "Loadin' application",
-    "loadingUserError": {
-      "text": "Failed to load yer pirate profile",
-      "textWithReset": "Failed to load yer pirate profile from yer custom ship, want to reset back to default?",
-      "reset": "Reset custom ship"
-    },
-    "migration": {
-      "failed": "Failed to migrate yer booty.",
-      "inProgress": "Please hold, we be migratin' yer booty. This shouldn't take long."
-    },
-    "dmca": {
-      "title": "DMCA",
-      "text": "In an effort to address the copyright concerns associated with the website known as \"movie-web,\" the DMCA, or Digital Jolly Roger Copyright Act, has been initiated to safeguard the intellectual property rights of content creators by reportin' infringements on this platform, thereby adherin' to legal protocols for takedown requests, which, like, ye know, it's all about, like, maintainin' the integrity of intellectual property, and, um, makin' sure, like, creators get their fair share, but then, it's, like, this intricate dance of digital legalities, where ye have to, uh, like, navigate this labyrinth of code and bytes and, uh, send, ye know, these, like, electronic documents that, um, point out the, uh, alleged infringement, and it's, like, this whole, like, teeter-totter of legality, where ye're, like, balancin', um, the rights of the, ye know, creators and the, um, operation of this, like, online, uh, entity, and, like, the DMCA, it's, like, this, um, powerful tool, but, uh, it's also, like, this, um, complex puzzle, where, ye know, ye're, like, seekin' justice in the digital wilderness, and, uh, strivin' for harmony amidst the chaos of the internet, and, um, yeah, that's, like, the whole, like, DMCA-ing thing with movie-web, ye know?"
+  "media": {
+    "episodeDisplay": "S{{season}} E{{episode}}",
+    "types": {
+      "movie": "Film",
+      "show": "Show"
     }
   },
   "navigation": {
@@ -257,135 +129,268 @@
       "offline": "Check yer internet connection"
     },
     "menu": {
+      "about": "About us",
+      "logout": "Abandon ship",
       "register": "Sync to the cloud",
       "settings": "Settings",
-      "about": "About us",
-      "support": "Support",
-      "logout": "Abandon ship"
+      "support": "Support"
     }
   },
-  "actions": {
-    "copy": "Copy",
-    "copied": "Copied",
-    "next": "Next"
+  "notFound": {
+    "badge": "Not found",
+    "goHome": "Back to home port",
+    "message": "We looked everywhere: under the bins, in the closet, behind the proxy but ultimately couldn't find the treasure map ye be lookin' for.",
+    "title": "Couldn't find that treasure map"
+  },
+  "overlays": {
+    "close": "Close"
+  },
+  "player": {
+    "back": {
+      "default": "Back to home port",
+      "short": "Back"
+    },
+    "menus": {
+      "captions": {
+        "customChoice": "Upload sea shanties",
+        "customizeLabel": "Customize",
+        "offChoice": "Off",
+        "settings": {
+          "delay": "Shanty delay",
+          "fixCapitals": "Fix capitalization"
+        },
+        "title": "Sea Shanties",
+        "unknownLanguage": "Unknown"
+      },
+      "downloads": {
+        "disclaimer": "Downloads be taken directly from the provider. movie-web does not have control over how the downloads be provided.",
+        "downloadCaption": "Download sea shanty",
+        "downloadVideo": "Download film",
+        "hlsExplanation": "Insert explanation for why ye can't download HLS here",
+        "onAndroid": {
+          "1": "To download on Android, <bold>tap and hold</bold> on the film, then select <bold>save</bold>.",
+          "shortTitle": "Download / Android",
+          "title": "Downloadin' on Android"
+        },
+        "onIos": {
+          "1": "To download on iOS, click <bold><ios_share /></bold>, then <bold>Save to Files <ios_files /></bold>. All that's left to do now be to pick a nice and cozy chest for yer film!",
+          "shortTitle": "Download / iOS",
+          "title": "Downloadin' on iOS"
+        },
+        "onPc": {
+          "1": "On PC, right click the film and select <bold>Save film as</bold>",
+          "shortTitle": "Download / PC",
+          "title": "Downloadin' on PC"
+        },
+        "title": "Buried Treasure"
+      },
+      "episodes": {
+        "button": "Episodes",
+        "emptyState": "There be no episodes in this season, check back later!",
+        "episodeBadge": "E{{episode}}",
+        "loadingError": "Error loadin' season",
+        "loadingList": "Loading...",
+        "loadingTitle": "Loading..."
+      },
+      "playback": {
+        "speedLabel": "Playback speed",
+        "title": "Playback settings"
+      },
+      "quality": {
+        "automaticLabel": "Automatic quality",
+        "hint": "Ye can try <0>switchin' source</0> to get different quality options.",
+        "iosNoQuality": "Due to Apple-defined limitations, quality selection be not available on iOS for this source. Ye can try <0>switchin' to another source</0> to get different quality options.",
+        "title": "Quality"
+      },
+      "settings": {
+        "captionItem": "Sea Shanty settings",
+        "downloadItem": "Buried Treasure",
+        "enableCaptions": "Enable Sea Shanties",
+        "experienceSection": "Viewing Experience",
+        "playbackItem": "Playback settings",
+        "qualityItem": "Quality",
+        "sourceItem": "Video sources",
+        "videoSection": "Video settings"
+      },
+      "sources": {
+        "failed": {
+          "text": "We were unable to find any videos for this source. Don't come bitchin' to us about it, just try another source.",
+          "title": "Failed to scrape"
+        },
+        "noEmbeds": {
+          "text": "We were unable to find any embeds for this source, please try another.",
+          "title": "No embeds found"
+        },
+        "noStream": {
+          "text": "This source has no streams for this film or show.",
+          "title": "No stream"
+        },
+        "title": "Sources",
+        "unknownOption": "Unknown"
+      }
+    },
+    "metadata": {
+      "failed": {
+        "badge": "Failed",
+        "homeButton": "Go home port",
+        "text": "Oh, me apologies, sweetie! The itty-bitty movie-web did its utmost bestest, but alas, no wucky videos to be spotted anywhere (´⊙ω⊙`) Please don't be angwy, wittle movie-web ish twying so hard. Can ye find it in yer heart to forgive? UwU 💖",
+        "title": "Failed to load meta data"
+      },
+      "notFound": {
+        "badge": "Not found",
+        "homeButton": "Back to home port",
+        "text": "We couldn't find the media ye requested. Either it's been removed or ye tampered with the URL.",
+        "title": "Couldn't find that media."
+      }
+    },
+    "nextEpisode": {
+      "cancel": "Cancel",
+      "next": "Next episode"
+    },
+    "playbackError": {
+      "badge": "Not found",
+      "errors": {
+        "errorAborted": "The fetchin' of the associated resource was aborted by the user's request.",
+        "errorDecode": "Despite havin' previously been determined to be usable, an error occurred while tryin' to decode the media resource, resultin' in an error.",
+        "errorGenericMedia": "Unknown media error occurred",
+        "errorNetwork": "Some kind of network error occurred which prevented the media from bein' successfully fetched, despite havin' previously been available.",
+        "errorNotSupported": "The associated resource or media provider object has been found to be unsuitable."
+      },
+      "homeButton": "Go home port",
+      "text": "Oh, me apologies, sweetie! The itty-bitty movie-web did its utmost bestest, but alas, no wucky videos to be spotted anywhere (´⊙ω⊙`) Please don't be angwy, wittle movie-web ish twying so hard. Can ye find it in yer heart to forgive? UwU 💖",
+      "title": "Whoops, it broke!"
+    },
+    "scraping": {
+      "items": {
+        "failure": "Error occurred",
+        "notFound": "Doesn't have the video",
+        "pending": "Checkin' for videos..."
+      },
+      "notFound": {
+        "badge": "Not found",
+        "homeButton": "Go home port",
+        "text": "Oh, me apologies, sweetie! The itty-bitty movie-web did its utmost bestest, but alas, no wucky videos to be spotted anywhere (´⊙ω⊙`) Please don't be angwy, wittle movie-web ish twying so hard. Can ye find it in yer heart to forgive? UwU 💖",
+        "title": "Goo goo gaa gaa"
+      }
+    },
+    "time": {
+      "regular": "{{timeWatched}} / {{duration}}",
+      "remaining": "{{timeLeft}} left • Finish at {{timeFinished, datetime}}",
+      "shortRegular": "{{timeWatched}}",
+      "shortRemaining": "-{{timeLeft}}"
+    }
+  },
+  "screens": {
+    "dmca": {
+      "text": "In an effort to address the copyright concerns associated with the website known as \"movie-web,\" the DMCA, or Digital Jolly Roger Copyright Act, has been initiated to safeguard the intellectual property rights of content creators by reportin' infringements on this platform, thereby adherin' to legal protocols for takedown requests, which, like, ye know, it's all about, like, maintainin' the integrity of intellectual property, and, um, makin' sure, like, creators get their fair share, but then, it's, like, this intricate dance of digital legalities, where ye have to, uh, like, navigate this labyrinth of code and bytes and, uh, send, ye know, these, like, electronic documents that, um, point out the, uh, alleged infringement, and it's, like, this whole, like, teeter-totter of legality, where ye're, like, balancin', um, the rights of the, ye know, creators and the, um, operation of this, like, online, uh, entity, and, like, the DMCA, it's, like, this, um, powerful tool, but, uh, it's also, like, this, um, complex puzzle, where, ye know, ye're, like, seekin' justice in the digital wilderness, and, uh, strivin' for harmony amidst the chaos of the internet, and, um, yeah, that's, like, the whole, like, DMCA-ing thing with movie-web, ye know?",
+      "title": "DMCA"
+    },
+    "loadingApp": "Loadin' application",
+    "loadingUser": "Loadin' yer pirate profile",
+    "loadingUserError": {
+      "reset": "Reset custom ship",
+      "text": "Failed to load yer pirate profile",
+      "textWithReset": "Failed to load yer pirate profile from yer custom ship, want to reset back to default?"
+    },
+    "migration": {
+      "failed": "Failed to migrate yer booty.",
+      "inProgress": "Please hold, we be migratin' yer booty. This shouldn't take long."
+    }
   },
   "settings": {
-    "unsaved": "Ye have unsaved changes",
+    "account": {
+      "accountDetails": {
+        "deviceNameLabel": "Ship name",
+        "deviceNamePlaceholder": "Fremen tablet",
+        "editProfile": "Edit",
+        "logoutButton": "Abandon ship"
+      },
+      "actions": {
+        "delete": {
+          "button": "Abandon Account",
+          "confirmButton": "Abandon Account",
+          "confirmDescription": "Arrr ye sure ye want to abandon yer account? All yer booty will be lost!",
+          "confirmTitle": "Arrr ye sure?",
+          "text": "This action be irreversible. All booty will be deleted and nothin' can be recovered.",
+          "title": "Abandon Account"
+        },
+        "title": "Actions"
+      },
+      "devices": {
+        "deviceNameLabel": "Ship name",
+        "failed": "Failed to load sessions",
+        "removeDevice": "Abandon ship",
+        "title": "Shipmates"
+      },
+      "profile": {
+        "finish": "Finish editing",
+        "firstColor": "First color",
+        "secondColor": "Second color",
+        "title": "Edit Pirate Portrait",
+        "userIcon": "Pirate icon"
+      },
+      "register": {
+        "cta": "Get started",
+        "text": "Instantly share yer watch progress between devices and keep 'em synced.",
+        "title": "Sync to the Cloud"
+      },
+      "title": "Treasure Chest"
+    },
+    "appearance": {
+      "activeTheme": "Active",
+      "themes": {
+        "blue": "Blue",
+        "default": "Default",
+        "gray": "Gray",
+        "red": "Red",
+        "teal": "Teal"
+      },
+      "title": "Appearance"
+    },
+    "captions": {
+      "backgroundLabel": "Background opacity",
+      "colorLabel": "Color",
+      "previewQuote": "I must not fear. Fear be the mind-killer.",
+      "textSizeLabel": "Text size",
+      "title": "Captions"
+    },
+    "connections": {
+      "server": {
+        "description": "To make the application function, all traffic be routed through proxies. Enable this if ye want to bring yer own sailors.",
+        "label": "Custom ship",
+        "urlLabel": "Custom ship URL"
+      },
+      "title": "Connections",
+      "workers": {
+        "addButton": "Recruit new sailor",
+        "description": "To make the application function, all traffic be routed through proxies. Enable this if ye want to bring yer own sailors.",
+        "emptyState": "No sailors yet, add one below",
+        "label": "Use custom proxy sailors",
+        "urlLabel": "Sailor URLs",
+        "urlPlaceholder": "https://"
+      }
+    },
+    "locale": {
+      "language": "Application language",
+      "languageDescription": "Language applied to the entire application.",
+      "title": "Locale"
+    },
     "reset": "Reset",
     "save": "Save",
     "sidebar": {
       "info": {
-        "title": "App information",
-        "hostname": "Ship name",
-        "backendUrl": "Backend URL",
-        "userId": "Pirate ID",
-        "notLoggedIn": "Not logged in",
         "appVersion": "App version",
+        "backendUrl": "Backend URL",
         "backendVersion": "Backend version",
-        "unknownVersion": "Unknown",
+        "hostname": "Ship name",
+        "insecure": "Insecure",
+        "notLoggedIn": "Not logged in",
         "secure": "Secure",
-        "insecure": "Insecure"
+        "title": "App information",
+        "unknownVersion": "Unknown",
+        "userId": "Pirate ID"
       }
     },
-    "appearance": {
-      "title": "Appearance",
-      "activeTheme": "Active",
-      "themes": {
-        "default": "Default",
-        "blue": "Blue",
-        "teal": "Teal",
-        "red": "Red",
-        "gray": "Gray"
-      }
-    },
-    "account": {
-      "title": "Treasure Chest",
-      "register": {
-        "title": "Sync to the Cloud",
-        "text": "Instantly share yer watch progress between devices and keep 'em synced.",
-        "cta": "Get started"
-      },
-      "profile": {
-        "title": "Edit Pirate Portrait",
-        "firstColor": "First color",
-        "secondColor": "Second color",
-        "userIcon": "Pirate icon",
-        "finish": "Finish editing"
-      },
-      "devices": {
-        "title": "Shipmates",
-        "failed": "Failed to load sessions",
-        "deviceNameLabel": "Ship name",
-        "removeDevice": "Abandon ship"
-      },
-      "accountDetails": {
-        "editProfile": "Edit",
-        "deviceNameLabel": "Ship name",
-        "deviceNamePlaceholder": "Fremen tablet",
-        "logoutButton": "Abandon ship"
-      },
-      "actions": {
-        "title": "Actions",
-        "delete": {
-          "title": "Abandon Account",
-          "text": "This action be irreversible. All booty will be deleted and nothin' can be recovered.",
-          "button": "Abandon Account",
-          "confirmTitle": "Arrr ye sure?",
-          "confirmDescription": "Arrr ye sure ye want to abandon yer account? All yer booty will be lost!",
-          "confirmButton": "Abandon Account"
-        }
-      }
-    },
-    "locale": {
-      "title": "Locale",
-      "language": "Application language",
-      "languageDescription": "Language applied to the entire application."
-    },
-    "captions": {
-      "title": "Captions",
-      "previewQuote": "I must not fear. Fear be the mind-killer.",
-      "backgroundLabel": "Background opacity",
-      "textSizeLabel": "Text size",
-      "colorLabel": "Color"
-    },
-    "connections": {
-      "title": "Connections",
-      "workers": {
-        "label": "Use custom proxy sailors",
-        "description": "To make the application function, all traffic be routed through proxies. Enable this if ye want to bring yer own sailors.",
-        "urlLabel": "Sailor URLs",
-        "emptyState": "No sailors yet, add one below",
-        "urlPlaceholder": "https://",
-        "addButton": "Recruit new sailor"
-      },
-      "server": {
-        "label": "Custom ship",
-        "description": "To make the application function, all traffic be routed through proxies. Enable this if ye want to bring yer own sailors.",
-        "urlLabel": "Custom ship URL"
-      }
-    }
-  },
-  "faq": {
-    "title": "About us",
-    "q1": {
-      "title": "1",
-      "body": "Body of 1"
-    },
-    "how": {
-      "title": "1",
-      "body": "Body of 1"
-    }
-  },
-  "footer": {
-    "tagline": "Watch yer favorite shows and movies with this open source streaming ship.",
-    "links": {
-      "github": "GitHub",
-      "dmca": "DMCA",
-      "discord": "Discord"
-    },
-    "legal": {
-      "disclaimer": "Disclaimer",
-      "disclaimerText": "movie-web does not host any files, it merely links to 3rd party services. Legal issues should be taken up with the file hosts and providers. movie-web be not responsible for any media files shown by the video providers."
-    }
+    "unsaved": "Ye have unsaved changes"
   }
 }
