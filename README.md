@@ -49,7 +49,7 @@ pnpm build
 ```
 
 > [!TIP]
-> You must use pnpm (`npm i -g pnpm`) and run NodeJS 16
+> You must use pnpm (`npm i -g pnpm`) and run NodeJS 20
 
 # 🧬 Selfhosting
 
