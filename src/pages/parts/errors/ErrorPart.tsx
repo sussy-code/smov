@@ -4,7 +4,6 @@ import { useTranslation } from "react-i18next";
 import { ButtonPlain } from "@/components/buttons/Button";
 import { Icons } from "@/components/Icon";
 import { IconPill } from "@/components/layout/IconPill";
-import { DisplayError } from "@/components/player/display/displayInterface";
 import { Title } from "@/components/text/Title";
 import { Paragraph } from "@/components/utils/Text";
 import { ErrorContainer, ErrorLayout } from "@/pages/layouts/ErrorLayout";
@@ -19,11 +18,7 @@ export function ErrorPart(props: { error: any; errorInfo: any }) {
     .split("\n")
     .slice(0, maxLineCount);
 
-  const error: DisplayError = {
-    errorName: "What does this do",
-    type: "global",
-    message: errorLines.join("\n"),
-  };
+  const error = `${props.error.toString()}\n${errorLines.join("\n")}`;
 
   return (
     <div className="relative flex flex-1 flex-col min-h-screen">

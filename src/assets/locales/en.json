@@ -1,46 +1,48 @@
 {
   "auth": {
     "deviceNameLabel": "Device name",
-    "deviceNamePlaceholder": "Muad'Dib's Nintendo Switch",
+    "deviceNamePlaceholder": "Personal phone",
     "register": {
       "information": {
         "title": "Account information",
-        "color1": "First color",
-        "color2": "Second color",
+        "color1": "Profile color one",
+        "color2": "Profile color two",
         "icon": "User icon",
-        "header": "Enter a name for your device and choose a user icon and colours"
+        "header": "Enter a name for your device and pick colours and a user icon of your choosing",
+        "next": "Next"
       }
     },
     "login": {
       "title": "Login to your account",
-      "description": "Oh, you're asking for the key to my top-secret lair, also known as The Fortress of Wordsmithery, accessed only by reciting the sacred incantation of the 12-word passphrase!",
+      "description": "Please enter your passphrase to login to your account",
       "validationError": "Invalid or incomplete passphrase",
       "submit": "Login",
-      "passphraseLabel": "12-Word Passphrase",
+      "passphraseLabel": "12-Word passphrase",
       "passphrasePlaceholder": "Passphrase"
     },
     "generate": {
       "title": "Your passphrase",
-      "description": "If you lose this, you're a silly goose and will be posted on the wall of shame™️"
+      "next": "I have saved my passphrase",
+      "description": "Your passphase acts as your username and password. Make sure to keep it safe as you will need to enter it to login to your account"
     },
     "trust": {
-      "title": "Do you trust this host?",
-      "host": "Do you trust <0>{{hostname}}</0>?",
+      "title": "Do you trust this server?",
+      "host": "You are connecting to <0>{{hostname}}</0> - please confirm you trust it before making an account",
       "failed": {
-        "title": "Failed to reach backend",
+        "title": "Failed to reach server",
         "text": "Did you configure it correctly?"
       },
-      "yes": "Trust",
+      "yes": "I trust this server",
       "no": "Go back"
     },
     "verify": {
-      "title": "Enter your passphrase",
-      "description": "If you've already lost it, how will you ever be able to take care of a child?",
+      "title": "Confirm your passphrase",
+      "description": "Please enter your passphrase from earlier to confirm you have saved it and to create your account",
       "invalidData": "Data is not valid",
       "noMatch": "Passphrase doesn't match",
       "recaptchaFailed": "ReCaptcha validation failed",
-      "passphraseLabel": "Your passphrase",
-      "register": "Register"
+      "passphraseLabel": "Your 12-word passphrase",
+      "register": "Create account"
     }
   },
   "errors": {
@@ -48,7 +50,7 @@
     "reloadPage": "Reload the page",
     "showError": "Show error details",
     "badge": "It broke",
-    "title": "That's an error boss"
+    "title": "We encountered an error!"
   },
   "notFound": {
     "badge": "Not found",
@@ -78,9 +80,10 @@
     "scraping": {
       "notFound": {
         "badge": "Not found",
-        "title": "Goo goo gaa gaa",
-        "text": "Oh, my apowogies, sweetie! The itty-bitty movie-web did its utmost bestest, but alas, no wucky videos to be spotted anywhere (´⊙ω⊙`) Please don't be angwy, wittle movie-web ish twying so hard. Can you find it in your heart to forgive? UwU 💖",
-        "homeButton": "Go home"
+        "title": "We couldn't find that",
+        "text": "We have searched through our providers and cannot find the media you are looking for! We do not host the media and have no control over what is available. Please click 'Show details' below for more details.",
+        "homeButton": "Go home",
+        "detailsButton": "Show details"
       },
       "items": {
         "pending": "Checking for videos...",
@@ -89,16 +92,16 @@
       }
     },
     "playbackError": {
-      "badge": "Not found",
-      "title": "Whoops, it broke!",
-      "text": "Oh, my apowogies, sweetie! The itty-bitty movie-web did its utmost bestest, but alas, no wucky videos to be spotted anywhere (´⊙ω⊙`) Please don't be angwy, wittle movie-web ish twying so hard. Can you find it in your heart to forgive? UwU 💖",
+      "badge": "Playback error",
+      "title": "Failed to play video!",
+      "text": "There was an error trying to play the media. Please try again.",
       "homeButton": "Go home",
       "errors": {
-        "errorAborted": "The fetching of the associated resource was aborted by the user's request.",
+        "errorAborted": "The fetching of the media was aborted by the user's request.",
         "errorNetwork": "Some kind of network error occurred which prevented the media from being successfully fetched, despite having previously been available.",
         "errorDecode": "Despite having previously been determined to be usable, an error occurred while trying to decode the media resource, resulting in an error.",
-        "errorNotSupported": "The associated resource or media provider object has been found to be unsuitable.",
-        "errorGenericMedia": "Unknown media error occured"
+        "errorNotSupported": "The media or media provider object is not supported.",
+        "errorGenericMedia": "Unknown media error occured."
       }
     },
     "metadata": {
@@ -110,8 +113,8 @@
       },
       "failed": {
         "badge": "Failed",
-        "title": "Failed to load meta data",
-        "text": "Oh, my apowogies, sweetie! The itty-bitty movie-web did its utmost bestest, but alas, no wucky videos to be spotted anywhere (´⊙ω⊙`) Please don't be angwy, wittle movie-web ish twying so hard. Can you find it in your heart to forgive? UwU 💖",
+        "title": "Failed to load metadata",
+        "text": "Could not load the media's metadata from TMDB. Please check whether TMDB is down or blocked on your internet connection.",
         "homeButton": "Go home"
       }
     },
@@ -132,8 +135,8 @@
     "menus": {
       "settings": {
         "videoSection": "Video settings",
-        "experienceSection": "Viewing Experience",
-        "enableCaptions": "Enable Captions",
+        "experienceSection": "Viewing experience",
+        "enableCaptions": "Enable captions",
         "captionItem": "Caption settings",
         "sourceItem": "Video sources",
         "playbackItem": "Playback settings",
@@ -157,11 +160,11 @@
         },
         "noEmbeds": {
           "title": "No embeds found",
-          "text": "We were unable to find any embeds for this source, please try another."
+          "text": "We were unable to find any embeds, please try a different source."
         },
         "failed": {
           "title": "Failed to scrape",
-          "text": "We were unable to find any videos for this source. Don't come bitchin' to us about it, just try another source."
+          "text": "There was an error while trying to find any videos, please try a different source."
         }
       },
       "captions": {
@@ -171,28 +174,28 @@
           "fixCapitals": "Fix capitalization",
           "delay": "Caption delay"
         },
-        "customChoice": "Upload captions",
+        "customChoice": "Select caption from file",
         "offChoice": "Off",
         "unknownLanguage": "Unknown"
       },
       "downloads": {
         "title": "Download",
         "disclaimer": "Downloads are taken directly from the provider. movie-web does not have control over how the downloads are provided.",
-        "hlsExplanation": "Insert explanation for why you can't download HLS here",
+        "hlsExplanation": "This media is a HLS stream which cannot be downloaded on movie-web.",
         "downloadVideo": "Download video",
         "downloadCaption": "Download current caption",
         "onPc": {
-          "1": "On PC, right click the video and select <bold>Save video as</bold>",
+          "1": "On PC, click the download button then, on the new page, right click the video and select <bold>Save video as</bold>",
           "title": "Downloading on PC",
           "shortTitle": "Download / PC"
         },
         "onAndroid": {
-          "1": "To download on Android, <bold>tap and hold</bold> on the video, then select <bold>save</bold>.",
+          "1": "To download on Android, click the download button then, on the new page, <bold>tap and hold</bold> on the video, then select <bold>save</bold>.",
           "title": "Downloading on Android",
           "shortTitle": "Download / Android"
         },
         "onIos": {
-          "1": "To download on iOS, click <bold><ios_share /></bold>, then <bold>Save to Files <ios_files /></bold>. All that's left to do now is to pick a nice and cozy folder for your video!",
+          "1": "To download on iOS, click the download button then, on the new page, click <bold><ios_share /></bold>, then <bold>Save to Files <ios_files /></bold>.",
           "title": "Downloading on iOS",
           "shortTitle": "Download / iOS"
         }
@@ -241,7 +244,7 @@
     "loadingApp": "Loading application",
     "loadingUserError": {
       "text": "Failed to load your profile",
-      "textWithReset": "Failed to load your profile from your custom server, want to reset back to default?",
+      "textWithReset": "Failed to load your profile from your custom server, want to reset back to the default server?",
       "reset": "Reset custom server"
     },
     "migration": {
@@ -250,7 +253,7 @@
     },
     "dmca": {
       "title": "DMCA",
-      "text": "In an effort to address the copyright concerns associated with the website known as \"movie-web,\" the DMCA, or Digital Millennium Copyright Act, has been initiated to safeguard the intellectual property rights of content creators by reporting infringements on this platform, thereby adhering to legal protocols for takedown requests, which, like, you know, it's all about, like, maintaining the integrity of intellectual property, and, um, making sure, like, creators get their fair share, but then, it's, like, this intricate dance of digital legalities, where you have to, uh, like, navigate this labyrinth of code and bytes and, uh, send, you know, these, like, electronic documents that, um, point out the, uh, alleged infringement, and it's, like, this whole, like, teeter-totter of legality, where you're, like, balancing, um, the rights of the, you know, creators and the, um, operation of this, like, online, uh, entity, and, like, the DMCA, it's, like, this, um, powerful tool, but, uh, it's also, like, this, um, complex puzzle, where, you know, you're, like, seeking justice in the digital wilderness, and, uh, striving for harmony amidst the chaos of the internet, and, um, yeah, that's, like, the whole, like, DMCA-ing thing with movie-web, you know?"
+      "text": "Welcome to movie-web's DMCA contact page! We respect intellectual property rights and want to address any copyright concerns swiftly. If you believe your copyrighted work has been improperly used on our platform, please send a detailed DMCA notice to the email below. Please include a description of the copyrighted material, your contact details, and a statement of good faith belief. We're committed to resolving these matters promptly and appreciate your cooperation in keeping movie-web a place that respects creativity and copyrights."
     }
   },
   "navigation": {
@@ -267,8 +270,7 @@
   },
   "actions": {
     "copy": "Copy",
-    "copied": "Copied",
-    "next": "Next"
+    "copied": "Copied"
   },
   "settings": {
     "unsaved": "You have unsaved changes",
@@ -280,7 +282,7 @@
         "hostname": "Hostname",
         "backendUrl": "Backend URL",
         "userId": "User ID",
-        "notLoggedIn": "Not logged in",
+        "notLoggedIn": "You are not logged in",
         "appVersion": "App version",
         "backendVersion": "Backend version",
         "unknownVersion": "Unknown",
@@ -303,13 +305,13 @@
       "title": "Account",
       "register": {
         "title": "Sync to the cloud",
-        "text": "Instantly share your watch progress between devices and keep them synced.",
+        "text": "Share your watch progress between devices and keep them synced.",
         "cta": "Get started"
       },
       "profile": {
         "title": "Edit profile picture",
-        "firstColor": "First color",
-        "secondColor": "Second color",
+        "firstColor": "Profile color one",
+        "secondColor": "Profile color two",
         "userIcon": "User icon",
         "finish": "Finish editing"
       },
@@ -322,7 +324,7 @@
       "accountDetails": {
         "editProfile": "Edit",
         "deviceNameLabel": "Device name",
-        "deviceNamePlaceholder": "Fremen tablet",
+        "deviceNamePlaceholder": "Personal phone",
         "logoutButton": "Log out"
       },
       "actions": {
@@ -361,7 +363,7 @@
       },
       "server": {
         "label": "Custom server",
-        "description": "To make the application function, all traffic is routed through proxies. Enable this if you want to bring your own workers.",
+        "description": "If you would like to connect to a custom backend to store your data, enable this and provide the URL.",
         "urlLabel": "Custom server URL"
       }
     }

@@ -61,19 +61,17 @@ export function ScrapeErrorPart(props: ScrapeErrorPartProps) {
             padding="md:px-12 p-2.5"
             className="mt-6"
           >
-            {t("errors.showError")}
+            {t("player.scraping.notFound.detailsButton")}
           </Button>
         </div>
       </ErrorContainer>
-      <ErrorContainer maxWidth="max-w-[45rem]">
-        {error ? (
-          <ErrorCardInModal
-            id={modal.id}
-            onClose={() => modal.hide()}
-            error={error}
-          />
-        ) : null}
-      </ErrorContainer>
+      {error ? (
+        <ErrorCardInModal
+          id={modal.id}
+          onClose={() => modal.hide()}
+          error={error}
+        />
+      ) : null}
     </ErrorLayout>
   );
 }
