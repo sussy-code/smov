@@ -18,6 +18,7 @@ export function PlayerPart(props: PlayerPartProps) {
   const { showTargets, showTouchTargets } = useShouldShowControls();
   const status = usePlayerStore((s) => s.status);
   const { isMobile } = useIsMobile();
+  const isLoading = usePlayerStore((s) => s.mediaPlaying.isLoading);
 
   return (
     <Player.Container onLoad={props.onLoad} showingControls={showTargets}>
@@ -38,10 +39,13 @@ export function PlayerPart(props: PlayerPartProps) {
 
       <Player.CenterMobileControls
         className="text-white"
-        show={showTouchTargets}
+        show={showTouchTargets && status === playerStatus.PLAYING}
       >
         <Player.SkipBackward iconSizeClass="text-3xl" />
-        <Player.Pause iconSizeClass="text-5xl" />
+        <Player.Pause
+          iconSizeClass="text-5xl"
+          className={isLoading ? "opacity-0" : "opacity-100"}
+        />
         <Player.SkipForward iconSizeClass="text-3xl" />
       </Player.CenterMobileControls>
 
