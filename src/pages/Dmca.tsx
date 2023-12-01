@@ -4,10 +4,14 @@ import { Icon, Icons } from "@/components/Icon";
 import { ThinContainer } from "@/components/layout/ThinContainer";
 import { Heading1, Paragraph } from "@/components/utils/Text";
 import { PageTitle } from "@/pages/parts/util/PageTitle";
+import { conf } from "@/setup/config";
 
 import { SubPageLayout } from "./layouts/SubPageLayout";
 
-// TODO make email a constant
+export function shouldHaveDmcaPage() {
+  return !!conf().DMCA_EMAIL;
+}
+
 export function DmcaPage() {
   const { t } = useTranslation();
 
@@ -19,7 +23,7 @@ export function DmcaPage() {
         <Paragraph>{t("screens.dmca.text")}</Paragraph>
         <Paragraph className="flex space-x-3 items-center">
           <Icon icon={Icons.MAIL} />
-          <span>dmca@movie-web.app</span>
+          <span>{conf().DMCA_EMAIL ?? ""}</span>
         </Paragraph>
       </ThinContainer>
     </SubPageLayout>

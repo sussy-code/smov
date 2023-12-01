@@ -10,6 +10,7 @@ interface Config {
   GITHUB_LINK: string;
   DONATION_LINK: string;
   DISCORD_LINK: string;
+  DMCA_EMAIL: string;
   TMDB_READ_API_KEY: string;
   CORS_PROXY_URL: string;
   NORMAL_ROUTER: boolean;
@@ -22,6 +23,7 @@ export interface RuntimeConfig {
   GITHUB_LINK: string;
   DONATION_LINK: string;
   DISCORD_LINK: string;
+  DMCA_EMAIL: string | null;
   TMDB_READ_API_KEY: string;
   NORMAL_ROUTER: boolean;
   PROXY_URLS: string[];
@@ -35,6 +37,7 @@ const env: Record<keyof Config, undefined | string> = {
   GITHUB_LINK: undefined,
   DONATION_LINK: undefined,
   DISCORD_LINK: undefined,
+  DMCA_EMAIL: import.meta.env.VITE_DMCA_EMAIL,
   CORS_PROXY_URL: import.meta.env.VITE_CORS_PROXY_URL,
   NORMAL_ROUTER: import.meta.env.VITE_NORMAL_ROUTER,
   BACKEND_URL: import.meta.env.VITE_BACKEND_URL,
@@ -54,11 +57,13 @@ function getKey(key: keyof Config, defaultString?: string): string {
 }
 
 export function conf(): RuntimeConfig {
+  const dmcaEmail = getKey("DMCA_EMAIL");
   return {
     APP_VERSION,
     GITHUB_LINK,
     DONATION_LINK,
     DISCORD_LINK,
+    DMCA_EMAIL: dmcaEmail.length > 0 ? dmcaEmail : null,
     BACKEND_URL: getKey("BACKEND_URL"),
     TMDB_READ_API_KEY: getKey("TMDB_READ_API_KEY"),
     PROXY_URLS: getKey("CORS_PROXY_URL")
