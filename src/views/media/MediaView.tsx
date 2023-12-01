@@ -15,10 +15,12 @@ import {
 } from "@/backend/metadata/types/mw";
 import { IconPatch } from "@/components/buttons/IconPatch";
 import { Icons } from "@/components/Icon";
+import { ErrorMessage } from "@/components/layout/ErrorBoundary";
 import { Loading } from "@/components/layout/Loading";
 import { useGoBack } from "@/hooks/useGoBack";
 import { useLoading } from "@/hooks/useLoading";
 import { SelectedMediaData, useScrape } from "@/hooks/useScrape";
+import { conf } from "@/setup/config";
 import { useWatchedItem } from "@/state/watched";
 import { MetaController } from "@/video/components/controllers/MetaController";
 import { ProgressListenerController } from "@/video/components/controllers/ProgressListenerController";
@@ -48,6 +50,31 @@ function MediaViewLoading(props: { onGoBack(): void }) {
         <p className="mb-8 text-denim-700">
           {t("videoPlayer.findingBestVideo")}
         </p>
+      </div>
+    </div>
+  );
+}
+
+function MediaVIewNotAllowed(props: { onGoBack(): void }) {
+  const { t } = useTranslation();
+
+  return (
+    <div className="relative flex flex-1 items-center justify-center">
+      <Helmet>
+        <title>{t("videoPlayer.got")}</title>
+      </Helmet>
+      <div className="absolute inset-x-0 top-0 px-8 py-6">
+        <VideoPlayerHeader onClick={props.onGoBack} />
+      </div>
+      <div className="flex flex-col items-center">
+        <ErrorMessage
+          error={{
+            name: "Media not allowed",
+            description:
+              "this media is no longer available due to a takedown notice or copyright claim",
+            path: "",
+          }}
+        />
       </div>
     </div>
   );
@@ -239,6 +266,14 @@ export function MediaView() {
       } else setSelected(null);
     });
   }, [exec, history, params]);
+
+  const disallowedEntries = conf().DISALLOWED_IDS.map((id) => id.split("-"));
+  if (
+    disallowedEntries.find(
+      (entry) => meta?.tmdbId === entry[1] && meta?.meta?.type === entry[0]
+    )
+  )
+    return <MediaVIewNotAllowed onGoBack={goBack} />;
 
   if (loading) return <MediaViewLoading onGoBack={goBack} />;
   if (error) return <MediaFetchErrorView />;

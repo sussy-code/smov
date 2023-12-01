@@ -7,6 +7,7 @@ interface Config {
   TMDB_READ_API_KEY: string;
   CORS_PROXY_URL: string;
   NORMAL_ROUTER: boolean;
+  DISALLOWED_IDS: string;
 }
 
 export interface RuntimeConfig {
@@ -16,6 +17,7 @@ export interface RuntimeConfig {
   TMDB_READ_API_KEY: string;
   NORMAL_ROUTER: boolean;
   PROXY_URLS: string[];
+  DISALLOWED_IDS: string[];
 }
 
 const env: Record<keyof Config, undefined | string> = {
@@ -25,6 +27,7 @@ const env: Record<keyof Config, undefined | string> = {
   DISCORD_LINK: undefined,
   CORS_PROXY_URL: import.meta.env.VITE_CORS_PROXY_URL,
   NORMAL_ROUTER: import.meta.env.VITE_NORMAL_ROUTER,
+  DISALLOWED_IDS: import.meta.env.VITE_DISALLOWED_IDS,
 };
 
 // loads from different locations, in order: environment (VITE_{KEY}), window (public/config.js)
@@ -61,5 +64,8 @@ export function conf(): RuntimeConfig {
       .split(",")
       .map((v) => v.trim()),
     NORMAL_ROUTER: getKey("NORMAL_ROUTER", "false") === "true",
+    DISALLOWED_IDS: getKey("DISALLOWED_IDS", "")
+      .split(",")
+      .map((v) => v.trim()), // Should be comma-seperated and contain the media type and ID, formatted like so: movie-753342,movie-753342,movie-753342
   };
 }
