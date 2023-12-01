@@ -66,6 +66,6 @@ export function conf(): RuntimeConfig {
     NORMAL_ROUTER: getKey("NORMAL_ROUTER", "false") === "true",
     DISALLOWED_IDS: getKey("DISALLOWED_IDS", "")
       .split(",")
-      .map((v) => v.trim()),
+      .map((v) => v.trim()), // Should be comma-seperated and contain the media type and ID, formatted like so: movie-753342,movie-753342,movie-753342
   };
 }
