@@ -13,9 +13,17 @@ import { Loading } from "@/components/layout/Loading";
 import { Paragraph } from "@/components/text/Paragraph";
 import { Title } from "@/components/text/Title";
 import { ErrorContainer, ErrorLayout } from "@/pages/layouts/ErrorLayout";
+import { conf } from "@/setup/config";
 
 export interface MetaPartProps {
   onGetMeta?: (meta: DetailedMeta, episodeId?: string) => void;
+}
+
+function isDisallowedMedia(id: string, type: MWMediaType): boolean {
+  const disallowedEntries = conf().DISALLOWED_IDS.map((v) => v.split("-"));
+  if (disallowedEntries.find((entry) => id === entry[1] && type === entry[0]))
+    return true;
+  return false;
 }
 
 export function MetaPart(props: MetaPartProps) {
@@ -35,6 +43,8 @@ export function MetaPart(props: MetaPartProps) {
       // error dont matter, itll just be a 404
     }
     if (!data) return null;
+
+    if (isDisallowedMedia(data.id, data.type)) throw new Error("dmca");
 
     let meta: AsyncReturnType<typeof getMetaFromId> = null;
     try {
@@ -67,6 +77,29 @@ export function MetaPart(props: MetaPartProps) {
 
     props.onGetMeta?.(meta, epId);
   }, []);
+
+  if (error && error.message === "dmca") {
+    return (
+      <ErrorLayout>
+        <ErrorContainer>
+          <IconPill icon={Icons.DRAGON}>Removed</IconPill>
+          <Title>Media has been removed</Title>
+          <Paragraph>
+            This media is no longer available due to a takedown notice or
+            copyright claim.
+          </Paragraph>
+          <Button
+            href="/"
+            theme="purple"
+            padding="md:px-12 p-2.5"
+            className="mt-6"
+          >
+            {t("player.metadata.failed.homeButton")}
+          </Button>
+        </ErrorContainer>
+      </ErrorLayout>
+    );
+  }
 
   if (error) {
     return (
