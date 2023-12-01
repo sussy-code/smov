@@ -130,10 +130,12 @@ export function CaptionsView({ id }: { id: string }) {
     [selectLanguage, setCurrentlyDownloading]
   );
 
-  const content = subtitleList.map((v) => {
+  const content = subtitleList.map((v, i) => {
     return (
       <CaptionOption
-        key={v.language}
+        // key must use index to prevent url collisions
+        // eslint-disable-next-line react/no-array-index-key
+        key={`${i}-${v.url}`}
         countryCode={v.language}
         selected={lang === v.language}
         loading={v.language === currentlyDownloading && downloadReq.loading}
