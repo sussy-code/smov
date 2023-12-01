@@ -71,7 +71,7 @@ function MediaVIewNotAllowed(props: { onGoBack(): void }) {
           error={{
             name: "Media not allowed",
             description:
-              "this media is no longer availabe due to a takedown notice or copyright claim",
+              "this media is no longer available due to a takedown notice or copyright claim",
             path: "",
           }}
         />
