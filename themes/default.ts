@@ -97,6 +97,7 @@ export const defaultTheme = {
       dropdown: {
         background: "#171728",
         altBackground: "#151525",
+        hoverBackground: "#202036",
         highlight: "#afa349",
         highlightHover: "#FCEC61",
         text: "#846D95",

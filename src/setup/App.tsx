@@ -14,7 +14,7 @@ import { useOnlineListener } from "@/hooks/usePing";
 import { AboutPage } from "@/pages/About";
 import { AdminPage } from "@/pages/admin/AdminPage";
 import VideoTesterView from "@/pages/developer/VideoTesterView";
-import { DmcaPage } from "@/pages/Dmca";
+import { DmcaPage, shouldHaveDmcaPage } from "@/pages/Dmca";
 import { NotFoundPage } from "@/pages/errors/NotFoundPage";
 import { HomePage } from "@/pages/HomePage";
 import { LoginPage } from "@/pages/Login";
@@ -93,7 +93,10 @@ function App() {
         <Route exact path="/register" component={RegisterPage} />
         <Route exact path="/login" component={LoginPage} />
         <Route exact path="/faq" component={AboutPage} />
-        <Route exact path="/dmca" component={DmcaPage} />
+
+        {shouldHaveDmcaPage() ? (
+          <Route exact path="/dmca" component={DmcaPage} />
+        ) : null}
 
         {/* Settings page */}
         <Route exact path="/settings" component={SettingsPage} />

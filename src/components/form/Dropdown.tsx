@@ -21,7 +21,7 @@ export function Dropdown(props: DropdownProps) {
       <Listbox value={props.selectedItem} onChange={props.setSelectedItem}>
         {() => (
           <>
-            <Listbox.Button className="relative w-full rounded-lg bg-dropdown-background py-3 pl-3 pr-10 text-left text-white shadow-md focus:outline-none tabbable cursor-pointer">
+            <Listbox.Button className="relative w-full rounded-lg bg-dropdown-background hover:bg-dropdown-hoverBackground py-3 pl-3 pr-10 text-left text-white shadow-md focus:outline-none tabbable cursor-pointer">
               <span className="flex gap-4 items-center truncate">
                 {props.selectedItem.leftIcon
                   ? props.selectedItem.leftIcon

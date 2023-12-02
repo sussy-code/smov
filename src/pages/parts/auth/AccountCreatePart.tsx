@@ -32,11 +32,18 @@ export function AccountCreatePart(props: AccountCreatePartProps) {
   const [colorB, setColorB] = useState("#2E65CF");
   const [userIcon, setUserIcon] = useState<UserIcons>(UserIcons.USER);
   const { t } = useTranslation();
-  // TODO validate device and account before next step
+  const [hasDeviceError, setHasDeviceError] = useState(false);
 
   const nextStep = useCallback(() => {
+    setHasDeviceError(false);
+    const validatedDevice = device.trim();
+    if (validatedDevice.length === 0) {
+      setHasDeviceError(true);
+      return;
+    }
+
     props.onNext?.({
-      device,
+      device: validatedDevice,
       profile: {
         colorA,
         colorB,
@@ -75,6 +82,11 @@ export function AccountCreatePart(props: AccountCreatePartProps) {
           value={userIcon}
           onInput={setUserIcon}
         />
+        {hasDeviceError ? (
+          <p className="text-authentication-errorText">
+            {t("auth.login.deviceLengthError")}
+          </p>
+        ) : null}
       </div>
       <LargeCardButtons>
         <Button theme="purple" onClick={() => nextStep()}>

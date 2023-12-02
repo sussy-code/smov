@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { Icon, Icons } from "@/components/Icon";
 import { BrandPill } from "@/components/layout/BrandPill";
 import { WideContainer } from "@/components/layout/WideContainer";
+import { shouldHaveDmcaPage } from "@/pages/Dmca";
 import { conf } from "@/setup/config";
 
 function FooterLink(props: {
@@ -29,6 +30,8 @@ function FooterLink(props: {
 function Dmca() {
   const { t } = useTranslation();
   const history = useHistory();
+
+  if (!shouldHaveDmcaPage()) return null;
 
   return (
     <FooterLink icon={Icons.DRAGON} onClick={() => history.push("/dmca")}>

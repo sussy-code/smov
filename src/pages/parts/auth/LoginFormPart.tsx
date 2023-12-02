@@ -29,14 +29,17 @@ export function LoginFormPart(props: LoginFormPartProps) {
 
   const [result, execute] = useAsyncFn(
     async (inputMnemonic: string, inputdevice: string) => {
-      // TODO verify valid device input
       if (!verifyValidMnemonic(inputMnemonic))
         throw new Error(t("auth.login.validationError") ?? undefined);
+
+      const validatedDevice = inputdevice.trim();
+      if (validatedDevice.length === 0)
+        throw new Error(t("auth.login.deviceLengthError") ?? undefined);
 
       const account = await login({
         mnemonic: inputMnemonic,
         userData: {
-          device: inputdevice,
+          device: validatedDevice,
         },
       });
 
@@ -46,7 +49,7 @@ export function LoginFormPart(props: LoginFormPartProps) {
 
       props.onLogin?.();
     },
-    [props, login, restore]
+    [props, login, restore, t]
   );
 
   return (
