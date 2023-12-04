@@ -102,8 +102,11 @@ export function PlayerPart(props: PlayerPartProps) {
                 <Player.Pip />
                 <Player.Airplay />
                 <Player.Chromecast />
-                <Player.Settings />
               </>
+            ) : null}
+            {status === playerStatus.PLAYBACK_ERROR ||
+            status === playerStatus.PLAYING ? (
+              <Player.Settings />
             ) : null}
             <Player.Fullscreen />
           </div>
