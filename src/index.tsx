@@ -1,3 +1,4 @@
+import "@/setup/pwa";
 import "core-js/stable";
 import "./stores/__old/imports";
 import "@/setup/ga";
@@ -10,7 +11,6 @@ import { HelmetProvider } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 import { BrowserRouter, HashRouter } from "react-router-dom";
 import { useAsync } from "react-use";
-import { registerSW } from "virtual:pwa-register";
 
 import { Button } from "@/components/buttons/Button";
 import { Icon, Icons } from "@/components/Icon";
@@ -40,9 +40,6 @@ if (key) {
   (window as any).initMW(conf().PROXY_URLS, key);
 }
 initializeChromecast();
-registerSW({
-  immediate: true,
-});
 
 function LoadingScreen(props: { type: "user" | "lazy" }) {
   const mapping = {
