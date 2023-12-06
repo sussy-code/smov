@@ -1,4 +1,5 @@
 import { useCallback, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import Sticky from "react-sticky-el";
 
 import { SearchBarInput } from "@/components/form/SearchBar";
@@ -15,7 +16,8 @@ export interface HeroPartProps {
 }
 
 export function HeroPart({ setIsSticky, searchParams }: HeroPartProps) {
-  const { t } = useRandomTranslation();
+  const { t: randomT } = useRandomTranslation();
+  const { t } = useTranslation();
   const [search, setSearch, setSearchUnFocus] = searchParams;
   const [, setShowBg] = useState(false);
   const bannerSize = useBannerSize();
@@ -32,7 +34,7 @@ export function HeroPart({ setIsSticky, searchParams }: HeroPartProps) {
   if (hour < 12) time = "morning";
   else if (hour < 19) time = "day";
 
-  const title = t(`home.titles.${time}`);
+  const title = randomT(`home.titles.${time}`);
 
   const inputRef = useRef<HTMLInputElement>(null);
   useSlashFocus(inputRef);
@@ -56,7 +58,7 @@ export function HeroPart({ setIsSticky, searchParams }: HeroPartProps) {
               onChange={setSearch}
               value={search}
               onUnFocus={setSearchUnFocus}
-              placeholder={t("home.search.placeholder")}
+              placeholder={t("home.search.placeholder") ?? ""}
             />
           </Sticky>
         </div>
