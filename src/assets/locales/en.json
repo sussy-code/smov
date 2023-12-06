@@ -218,9 +218,18 @@
       "stopEditing": "Stop editing"
     },
     "titles": {
-      "morning": ["Morning title"],
-      "day": ["Day title"],
-      "night": ["Night title"]
+      "morning": {
+        "default": "What would you like to watch this morning?",
+        "extra": ["I hear Before Sunrise is good"]
+      },
+      "day": {
+        "default": "What would you like to watch this afternoon?",
+        "extra": []
+      },
+      "night": {
+        "default": "What would you like to watch tonight?",
+        "extra": ["Tired? I hear The Excorcist is good."]
+      }
     },
     "search": {
       "loading": "Loading...",
