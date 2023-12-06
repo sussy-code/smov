@@ -22,14 +22,22 @@ export function AboutPage() {
     <SubPageLayout>
       <PageTitle subpage k="global.pages.about" />
       <ThinContainer>
-        <Heading1>{t("faq.title")}</Heading1>
+        <Heading1>{t("about.title")}</Heading1>
+        <Paragraph>{t("about.description")}</Paragraph>
+        <Heading2>{t("about.faqTitle")}</Heading2>
         <Ol
           items={[
-            <Question title={t("faq.q1.title")}>{t("faq.q1.body")}</Question>,
+            <Question title={t("about.q1.title")}>
+              {t("about.q1.body")}
+            </Question>,
+            <Question title={t("about.q2.title")}>
+              {t("about.q2.body")}
+            </Question>,
+            <Question title={t("about.q3.title")}>
+              {t("about.q3.body")}
+            </Question>,
           ]}
         />
-        <Heading2>{t("faq.how.title")}</Heading2>
-        <Paragraph>{t("faq.how.body")}</Paragraph>
       </ThinContainer>
     </SubPageLayout>
   );

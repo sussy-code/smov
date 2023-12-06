@@ -8,7 +8,7 @@ export function Ol(props: { items: React.ReactNode[] }) {
           <li
             className={classNames(
               "grid grid-cols-[auto,1fr] gap-6",
-              i !== props.items.length - 1 ? "pb-6" : undefined
+              i !== props.items.length - 1 ? "pb-12" : undefined
             )}
           >
             <div className="relative z-0">
@@ -17,7 +17,7 @@ export function Ol(props: { items: React.ReactNode[] }) {
               </div>
               {i !== props.items.length - 1 ? (
                 <div
-                  className="h-full w-px absolute top-6 left-1/2 transform -translate-x-1/2"
+                  className="h-[calc(100%+1.5rem)] w-px absolute top-6 left-1/2 transform -translate-x-1/2"
                   style={{
                     backgroundImage:
                       "linear-gradient(to bottom, transparent 5px, #1F1F29 5px, #1F1F29 10px)",
