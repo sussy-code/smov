@@ -19,6 +19,7 @@ export interface ProgressInput {
   episodeId?: string;
   seasonNumber?: number;
   episodeNumber?: number;
+  updatedAt?: string;
 }
 
 export function progressUpdateItemToInput(
@@ -60,6 +61,7 @@ export function progressMediaItemToInputs(
       seasonId: episode.seasonId,
       episodeNumber: episode.number,
       seasonNumber: item.seasons[episode.seasonId].number,
+      updatedAt: new Date(episode.updatedAt).toISOString(),
     }));
   }
   return [
@@ -67,6 +69,7 @@ export function progressMediaItemToInputs(
       duration: item.progress?.duration ?? 0,
       watched: item.progress?.watched ?? 0,
       tmdbId,
+      updatedAt: new Date(item.updatedAt).toISOString(),
       meta: {
         title: item.title ?? "",
         type: item.type ?? "",
