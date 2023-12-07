@@ -42,6 +42,7 @@ export default defineConfig(({ mode }) => {
         disable: process.env.VITE_PWA_ENABLED !== "yes",
         registerType: "autoUpdate",
         workbox: {
+          maximumFileSizeToCacheInBytes: 4000000, // 4mb
           globIgnores: ["**ping.txt**"]
         },
         includeAssets: [

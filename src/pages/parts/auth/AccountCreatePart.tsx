@@ -2,8 +2,8 @@ import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { Button } from "@/components/buttons/Button";
-import { ColorPicker } from "@/components/form/ColorPicker";
-import { IconPicker } from "@/components/form/IconPicker";
+import { ColorPicker, initialColor } from "@/components/form/ColorPicker";
+import { IconPicker, initialIcon } from "@/components/form/IconPicker";
 import { Icon, Icons } from "@/components/Icon";
 import {
   LargeCard,
@@ -28,9 +28,9 @@ interface AccountCreatePartProps {
 
 export function AccountCreatePart(props: AccountCreatePartProps) {
   const [device, setDevice] = useState("");
-  const [colorA, setColorA] = useState("#2E65CF");
-  const [colorB, setColorB] = useState("#2E65CF");
-  const [userIcon, setUserIcon] = useState<UserIcons>(UserIcons.USER);
+  const [colorA, setColorA] = useState(initialColor);
+  const [colorB, setColorB] = useState(initialColor);
+  const [userIcon, setUserIcon] = useState<UserIcons>(initialIcon);
   const { t } = useTranslation();
   const [hasDeviceError, setHasDeviceError] = useState(false);
 

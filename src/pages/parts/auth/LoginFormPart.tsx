@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import { useAsyncFn } from "react-use";
 
 import { verifyValidMnemonic } from "@/backend/accounts/crypto";
@@ -10,6 +10,7 @@ import {
   LargeCardButtons,
   LargeCardText,
 } from "@/components/layout/LargeCard";
+import { MwLink } from "@/components/text/Link";
 import { AuthInputBox } from "@/components/text-inputs/AuthInputBox";
 import { useAuth } from "@/hooks/auth/useAuth";
 import { useBookmarkStore } from "@/stores/bookmarks";
@@ -88,6 +89,11 @@ export function LoginFormPart(props: LoginFormPartProps) {
           {t("auth.login.submit")}
         </Button>
       </LargeCardButtons>
+      <p className="text-center mt-6">
+        <Trans i18nKey="auth.createAccount">
+          <MwLink to="/register">.</MwLink>
+        </Trans>
+      </p>
     </LargeCard>
   );
 }

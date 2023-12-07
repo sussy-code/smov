@@ -53,17 +53,6 @@
     "reloadPage": "Reload the page",
     "title": "That be an error, Captain"
   },
-  "faq": {
-    "how": {
-      "body": "Body of 1",
-      "title": "1"
-    },
-    "q1": {
-      "body": "Body of 1",
-      "title": "1"
-    },
-    "title": "About us"
-  },
   "footer": {
     "legal": {
       "disclaimer": "Disclaimer",
@@ -104,17 +93,6 @@
       "noResults": "We couldn't find anythin', arrr!",
       "placeholder": "What do ye want to watch?",
       "sectionTitle": "Searchin' results"
-    },
-    "titles": {
-      "day": [
-        "Day title"
-      ],
-      "morning": [
-        "Morning title"
-      ],
-      "night": [
-        "Night title"
-      ]
     }
   },
   "media": {

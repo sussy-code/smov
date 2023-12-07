@@ -34,6 +34,7 @@ export interface SubtitleStore {
   setOverrideCasing(enabled: boolean): void;
   setDelay(delay: number): void;
   importSubtitleLanguage(lang: string | null): void;
+  resetSubtitleSpecificSettings(): void;
 }
 
 export const useSubtitleStore = create(
@@ -50,6 +51,12 @@ export const useSubtitleStore = create(
         color: "#ffffff",
         backgroundOpacity: 0.5,
         size: 1,
+      },
+      resetSubtitleSpecificSettings() {
+        set((s) => {
+          s.delay = 0;
+          s.overrideCasing = false;
+        });
       },
       updateStyling(newStyling) {
         set((s) => {

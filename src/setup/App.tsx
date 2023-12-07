@@ -92,7 +92,7 @@ function App() {
         <Route exact path={["/browse/:query?", "/"]} component={HomePage} />
         <Route exact path="/register" component={RegisterPage} />
         <Route exact path="/login" component={LoginPage} />
-        <Route exact path="/faq" component={AboutPage} />
+        <Route exact path="/about" component={AboutPage} />
 
         {shouldHaveDmcaPage() ? (
           <Route exact path="/dmca" component={DmcaPage} />

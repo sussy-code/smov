@@ -2,6 +2,8 @@
   "auth": {
     "deviceNameLabel": "Device name",
     "deviceNamePlaceholder": "Personal phone",
+    "hasAccount": "Already have an account? <0>Login here.</0>",
+    "createAccount": "Dont have an account yet? <0>Create an account.</0>",
     "register": {
       "information": {
         "title": "Account information",
@@ -218,9 +220,18 @@
       "stopEditing": "Stop editing"
     },
     "titles": {
-      "morning": ["Morning title"],
-      "day": ["Day title"],
-      "night": ["Night title"]
+      "morning": {
+        "default": "What would you like to watch this morning?",
+        "extra": ["I hear Before Sunrise is good"]
+      },
+      "day": {
+        "default": "What would you like to watch this afternoon?",
+        "extra": []
+      },
+      "night": {
+        "default": "What would you like to watch tonight?",
+        "extra": ["Tired? I hear The Excorcist is good."]
+      }
     },
     "search": {
       "loading": "Loading...",
@@ -369,15 +380,21 @@
       }
     }
   },
-  "faq": {
-    "title": "About us",
+  "about": {
+    "title": "About movie-web",
+    "description": "movie-web is a web application that searches the internet for streams. The team aims for a mostly minimalistic approach to consuming content.",
+    "faqTitle": "Common questions",
     "q1": {
-      "title": "1",
-      "body": "Body of 1"
+      "title": "Where does the content come from?",
+      "body": "movie-web does not host any content. When you click on something to watch, the internet is searched for the selected media (On the loading screen and in the 'video sources' tab you can see which source you're using). Media never gets uploaded by movie-web, everything is through this searching mechanism."
     },
-    "how": {
-      "title": "1",
-      "body": "Body of 1"
+    "q2": {
+      "title": "Where can I request a show or movie?",
+      "body": "It's not possible to request a show or movie, movie-web does not manage any content. All content is viewed through sources on the internet."
+    },
+    "q3": {
+      "title": "The search results display the show or movie, why can't I play it?",
+      "body": "Our search results are powered by The Movie Database (TMDB) and display regardless of whether our sources actually have the content."
     }
   },
   "footer": {

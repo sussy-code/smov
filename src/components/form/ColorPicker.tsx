@@ -2,7 +2,7 @@ import classNames from "classnames";
 
 import { Icon, Icons } from "../Icon";
 
-const colors = ["#2E65CF", "#7652DD", "#CF2E68", "#C2CF2E", "#2ECFA8"];
+const colors = ["#0A54FF", "#CF2E68", "#F9DD7F", "#7652DD", "#2ECFA8"];
 export const initialColor = colors[0];
 
 export function ColorPicker(props: {
