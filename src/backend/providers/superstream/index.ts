@@ -39,6 +39,10 @@ const apiUrls = [
 ];
 const appKey = atob("bW92aWVib3g=");
 const appId = atob("Y29tLnRkby5zaG93Ym94");
+const captionsDomains = [
+  atob("bWJwaW1hZ2VzLmNodWF4aW4uY29t"),
+  atob("aW1hZ2VzLnNoZWd1Lm5ldA=="),
+];
 
 // cryptography stuff
 const crypto = {
@@ -119,11 +123,18 @@ const convertSubtitles = (subtitleGroup: any): MWCaption | null => {
   let subtitles = subtitleGroup.subtitles;
   subtitles = subtitles
     .map((subFile: any) => {
-      const supported = isSupportedSubtitle(subFile.file_path);
+      const filePath = subFile.file_path
+        .replace(captionsDomains[0], captionsDomains[1])
+        .replace(/\s/g, "+")
+        .replace(/[()]/g, (c: string) => {
+          return `%${c.charCodeAt(0).toString(16)}`;
+        });
+      const supported = isSupportedSubtitle(filePath);
       if (!supported) return null;
-      const type = getMWCaptionTypeFromUrl(subFile.file_path);
+      const type = getMWCaptionTypeFromUrl(filePath);
       return {
         ...subFile,
+        file_path: filePath,
         type: type as MWCaptionType,
       };
     })
