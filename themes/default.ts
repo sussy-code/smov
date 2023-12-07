@@ -63,7 +63,7 @@ export const defaultTheme = {
         secondary: "#64647B",
         danger: "#F46E6E",
         link: "#A87FD1",
-        linkHover: "#A87FD1",
+        linkHover: "#ba8fe6",
       },
 
       // search bar

@@ -12,6 +12,7 @@ import {
   LargeCardText,
 } from "@/components/layout/LargeCard";
 import { Loading } from "@/components/layout/Loading";
+import { MwLink } from "@/components/text/Link";
 import { useBackendUrl } from "@/hooks/auth/useBackendUrl";
 import { conf } from "@/setup/config";
 
@@ -60,16 +61,21 @@ export function TrustBackendPart(props: TrustBackendPartProps) {
         {cardContent}
       </div>
       <LargeCardButtons>
+        <Button theme="secondary" onClick={() => history.push("/")}>
+          {t("auth.trust.no")}
+        </Button>
         <Button
           theme="purple"
           onClick={() => result.value && props.onNext?.(result.value)}
         >
           {t("auth.trust.yes")}
         </Button>
-        <Button theme="secondary" onClick={() => history.push("/")}>
-          {t("auth.trust.no")}
-        </Button>
       </LargeCardButtons>
+      <p className="text-center mt-6">
+        <Trans i18nKey="auth.hasAccount">
+          <MwLink to="/login">.</MwLink>
+        </Trans>
+      </p>
     </LargeCard>
   );
 }
