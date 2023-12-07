@@ -6,13 +6,13 @@ const shouldGiveJokeTitle = () => Math.floor(Math.random() * 10) === 0;
 
 export function useRandomTranslation() {
   const { t } = useTranslation();
+  const shouldJoke = useMemo(() => shouldGiveJokeTitle(), []);
   const seed = useMemo(() => Math.random(), []);
 
   const getRandomTranslation = useCallback(
     (key: string): string => {
-      const shouldRandom = shouldGiveJokeTitle();
       const defaultTitle = t(`${key}.default`) ?? "";
-      if (!shouldRandom) return defaultTitle;
+      if (!shouldJoke) return defaultTitle;
 
       const keys = t(`${key}.extra`, { returnObjects: true });
       if (Array.isArray(keys)) {
@@ -22,7 +22,7 @@ export function useRandomTranslation() {
 
       return typeof keys === "string" ? keys : defaultTitle;
     },
-    [t, seed]
+    [t, seed, shouldJoke]
   );
 
   return { t: getRandomTranslation };
