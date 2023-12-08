@@ -1,227 +1,320 @@
+const tokens = {
+  black: "#000000",
+  white: "#FFFFFF",
+  semantic: {
+    red: {
+      c100: "#F46E6E",
+      c200: "#E44F4F",
+      c300: "#D74747",
+      c400: "#B43434",
+    },
+    green: {
+      c100: "#60D26A",
+      c200: "#40B44B",
+      c300: "#31A33C",
+      c400: "#237A2B",
+    },
+    silver: {
+      c100: "#DEDEDE",
+      c200: "#B6CAD7",
+      c300: "#8EA3B0",
+      c400: "#617A8A",
+    },
+    yellow: {
+      c100: "#FFF599",
+      c200: "#FCEC61",
+      c300: "#D8C947",
+      c400: "#AFA349",
+    },
+    rose: {
+      c100: "#DB3D61",
+      c200: "#8A293B",
+      c300: "#812435",
+      c400: "#701B2B",
+    }
+  },
+  blue: {
+    c50: "#ADADF5",
+    c100: "#7979CC",
+    c200: "#5D5DAE",
+    c300: "#3B3B8C",
+    c400: "#2A2A71",
+    c500: "#1F1F50",
+    c600: "#1B1B41",
+    c700: "#171736",
+    c800: "#101020",
+    c900: "#0B0B13"
+  },
+  purple: {
+    c50: "#D5AAFF",
+    c100: "#C082FF",
+    c200: "#A359EC",
+    c300: "#8D44D6",
+    c400: "#7831BF",
+    c500: "#572887",
+    c600: "#411F64",
+    c700: "#31184A",
+    c800: "#221134",
+    c900: "#160B22"
+  },
+  ash: {
+    c50: "#86869A",
+    c100: "#616174",
+    c200: "#4A4A5B",
+    c300: "#3B3B4B",
+    c400: "#2E2E3D",
+    c500: "#252533",
+    c600: "#21212F",
+    c700: "#151D29",
+    c800: "#0F1720",
+    c900: "#0C1216"
+  },
+  shade: {
+    c50: "#676790",
+    c100: "#52527A",
+    c200: "#3F3F60",
+    c300: "#32324F",
+    c400: "#272741",
+    c500: "#1E1E32",
+    c600: "#171728",
+    c700: "#131322",
+    c800: "#0F0F1B",
+    c900: "#0A0A12"
+  }
+}
+
+/*
+flare of media cards is very desatured (also on context menu)
+app information labels are too purple
+save bar needs more distinction from background
+all ash colors need repicking
+*/
+
 export const defaultTheme = {
   extend: {
     colors: {
       themePreview: {
-        primary: "#505DBD",
-        secondary: "#73739D",
-        ghost: "white",
+        primary: tokens.blue.c200,
+        secondary: tokens.shade.c50,
+        ghost: tokens.white,
       },
 
       // Branding
       pill: {
-        background: "#2e2e4d",
-        backgroundHover: "#3d3d61",
-        highlight: "#714C97",
+        background: tokens.shade.c300,
+        backgroundHover: tokens.shade.c200,
+        highlight: tokens.blue.c200,
       },
       
       // meta data for the theme itself
       global: {
-        accentA: "#505DBD",
-        accentB: "#3440A1",
+        accentA: tokens.blue.c200,
+        accentB: tokens.blue.c300,
       },
       
       // light bar
       lightBar: {
-        light: "#2A2A71",
+        light: tokens.blue.c400,
       },
       
       // Buttons
       buttons: {
-        toggle: "#8D44D6",
-        toggleDisabled: "#202836",
-        danger: "#792131",
-        dangerHover: "#8a293b",
+        toggle: tokens.purple.c300,
+        toggleDisabled: tokens.ash.c500,
+        danger: tokens.semantic.rose.c300,
+        dangerHover: tokens.semantic.rose.c200,
         
-        secondary: "#161F25",
-        secondaryText: "#8EA3B0",
-        secondaryHover: "#1B262E",
-        primary: "#fff",
-        primaryText: "#000",
-        primaryHover: "#dedede",
-        purple: "#6b298a",
-        purpleHover: "#7f35a1",
-        cancel: "#252533",
-        cancelHover: "#3C3C4A",
+        secondary: tokens.ash.c700,
+        secondaryText: tokens.semantic.silver.c300,
+        secondaryHover: tokens.ash.c700,
+        primary: tokens.white,
+        primaryText: tokens.black,
+        primaryHover: tokens.semantic.silver.c100,
+        purple: tokens.purple.c500,
+        purpleHover: tokens.purple.c400,
+        cancel: tokens.ash.c500,
+        cancelHover: tokens.ash.c300,
       },
       
       // only used for body colors/textures
       background: {
-        main: "#0A0A10",
-        secondary: "#151529",
-        secondaryHover: "#252542",
-        accentA: "#6E3B80",
-        accentB: "#1F1F50",
+        main: tokens.shade.c900,
+        secondary: tokens.shade.c600,
+        secondaryHover: tokens.shade.c400,
+        accentA: tokens.purple.c500,
+        accentB: tokens.blue.c500,
       },
       
       // typography
       type: {
-        logo: "#A87FD1",
-        emphasis: "#FFFFFF",
-        text: "#73739D",
-        dimmed: "#926CAD",
-        divider: "#262632",
-        secondary: "#64647B",
-        danger: "#F46E6E",
-        link: "#A87FD1",
-        linkHover: "#ba8fe6",
+        logo: tokens.purple.c100,
+        emphasis: tokens.white,
+        text: tokens.shade.c50,
+        dimmed: tokens.blue.c100,
+        divider: tokens.ash.c500,
+        secondary: tokens.ash.c100,
+        danger: tokens.semantic.red.c100,
+        link: tokens.purple.c100,
+        linkHover: tokens.purple.c100, // TODO
       },
 
       // search bar
       search: {
-        background: "#1E1E33",
-        focused: "#24243C",
-        placeholder: "#4A4A71",
-        icon: "#545476",
-        text: "#FFFFFF",
+        background: tokens.shade.c500,
+        focused: tokens.shade.c400,
+        placeholder: tokens.shade.c100,
+        icon: tokens.shade.c100,
+        text: tokens.white,
       },
 
       // media cards
       mediaCard: {
-        hoverBackground: "#161622",
-        hoverAccent: "#4D79A8",
-        hoverShadow: "#0A0A10",
-        shadow: "#161622",
-        barColor: "#4B4B63",
-        barFillColor: "#BA7FD6",
-        badge: "#151522",
-        badgeText: "#5F5F7A",
+        hoverBackground: tokens.shade.c700,
+        hoverAccent: tokens.semantic.silver.c400,
+        hoverShadow: tokens.shade.c900,
+        shadow: tokens.shade.c700,
+        barColor: tokens.ash.c200,
+        barFillColor: tokens.purple.c100,
+        badge: tokens.shade.c700,
+        badgeText: tokens.ash.c100,
       },
 
       // Large card
       largeCard: {
-        background: "#171728",
-        icon: "#6741A5",
+        background: tokens.shade.c600,
+        icon: tokens.purple.c400,
       },
 
       // Dropdown
       dropdown: {
-        background: "#171728",
-        altBackground: "#151525",
-        hoverBackground: "#202036",
-        highlight: "#afa349",
-        highlightHover: "#FCEC61",
-        text: "#846D95",
-        secondary: "#73739D",
-        border: "#272742",
-        contentBackground: "#232337",
+        background: tokens.shade.c600,
+        altBackground: tokens.shade.c700,
+        hoverBackground: tokens.shade.c500,
+        highlight: tokens.semantic.yellow.c400,
+        highlightHover: tokens.semantic.yellow.c200,
+        text: tokens.shade.c50,
+        secondary: tokens.shade.c50, // TODO
+        border: tokens.shade.c400,
+        contentBackground: tokens.shade.c500,
       },
 
       // Passphrase
       authentication: {
-        border: "#393954",
-        inputBg: "#171728",
-        inputBgHover: "#171726",
-        wordBackground: "#171728",
-        copyText: "#58587A",
-        copyTextHover: "#8888AA",
-        errorText: "#DB3D62",
+        border: tokens.shade.c300,
+        inputBg: tokens.shade.c600,
+        inputBgHover: tokens.shade.c600, // TODO
+        wordBackground: tokens.shade.c600, // TODO
+        copyText: tokens.shade.c100,
+        copyTextHover: tokens.ash.c50,
+        errorText: tokens.semantic.rose.c100,
       },
 
       // Settings page
       settings: {
         sidebar: {
-          activeLink: "#171728",
-          badge: "#0A0A12",
+          activeLink: tokens.shade.c600,
+          badge: tokens.shade.c900,
 
           type: {
-            secondary: "#4B395F",
-            inactive: "#8D68A9",
-            icon: "#926CAD",
-            iconActivated: "#6942A8",
-            activated: "#CBA1E8",
+            secondary: tokens.shade.c200,
+            inactive: tokens.blue.c100,
+            icon: tokens.blue.c100, // TODO
+            iconActivated: tokens.purple.c400,
+            activated: tokens.purple.c50,
           },
         },
 
         card: {
-          border: "#2A243E",
-          background: "#29243D",
-          altBackground: "#29243D",
+          border: tokens.shade.c400, // TODO
+          background: tokens.shade.c400,
+          altBackground: tokens.shade.c400,
         },
 
         saveBar: {
-          background: "#0F0E17"
+          background: tokens.blue.c900
         }
       },
 
       utils: {
-        divider: "#353549",
+        divider: tokens.ash.c300,
       },
 
       // Error page
       errors: {
-        card: "#12121B",
-        border: "#252534",
+        card: tokens.shade.c800,
+        border: tokens.ash.c500,
 
         type: {
-          secondary: "#62627D",
+          secondary: tokens.ash.c100,
         },
       },
 
       // About page
       about: {
-        circle: "#262632",
-        circleText: "#9A9AC3",
+        circle: tokens.ash.c500,
+        circleText: tokens.ash.c50,
       },
 
       // About page
       editBadge: {
-        bg: "#262632",
-        bgHover: "#343443",
-        text: "#9A9AC3",
+        bg: tokens.ash.c500,
+        bgHover: tokens.ash.c400,
+        text: tokens.ash.c50,
       },
 
       progress: {
-        background: "#8787A8",
-        preloaded: "#8787A8",
-        filled: "#A75FC9",
+        background: tokens.ash.c50, // TODO
+        preloaded: tokens.ash.c50,
+        filled: tokens.purple.c200,
       },
 
       // video player
       video: {
-        buttonBackground: "#444B5C",
+        buttonBackground: tokens.ash.c200,
 
         autoPlay: {
-          background: "#161C26",
-          hover: "#252533"
+          background: tokens.ash.c700,
+          hover: tokens.ash.c500
         },
 
         scraping: {
-          card: "#161620",
-          error: "#E44F4F",
-          success: "#40B44B",
-          loading: "#B759D8",
-          noresult: "#64647B",
+          card: tokens.shade.c700,
+          error: tokens.semantic.red.c200,
+          success: tokens.semantic.green.c200,
+          loading: tokens.purple.c200,
+          noresult: tokens.ash.c100,
         },
 
         audio: {
-          set: "#A75FC9",
+          set: tokens.purple.c200,
         },
 
         context: {
-          background: "#0C1216",
-          light: "#4D79A8",
-          border: "#1d252b",
-          hoverColor: "#1E2A32",
-          buttonFocus: "#202836",
-          flagBg: "#202836",
-          inputBg: "#202836",
-          buttonOverInputHover: "#283040",
-          inputPlaceholder: "#374A56",
-          cardBorder: "#1B262E",
-          slider: "#8787A8",
-          sliderFilled: "#A75FC9",
-          error: "#E44F4F",
+          background: tokens.ash.c900,
+          light: tokens.semantic.silver.c400,
+          border: tokens.ash.c600,
+          hoverColor: tokens.ash.c500,
+          buttonFocus: tokens.ash.c500,
+          flagBg: tokens.ash.c500, // TODO
+          inputBg: tokens.ash.c700,
+          buttonOverInputHover: tokens.ash.c500,
+          inputPlaceholder: tokens.ash.c200,
+          cardBorder: tokens.ash.c700,
+          slider: tokens.ash.c50,
+          sliderFilled: tokens.purple.c200,
+          error: tokens.semantic.red.c200,
 
           buttons: {
-            list: "#161C26",
-            active: "#0D1317",
+            list: tokens.ash.c700,
+            active: tokens.ash.c900,
           },
 
+          closeHover: tokens.ash.c800,
 
           type: {
-            main: "#617A8A",
-            secondary: "#374A56",
-            accent: "#A570FA",
+            main: tokens.semantic.silver.c400,
+            secondary: tokens.ash.c200,
+            accent: tokens.purple.c200,
           },
         },
       },
