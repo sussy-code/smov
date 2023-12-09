@@ -37,7 +37,7 @@ export function ErrorCard(props: {
 
   return (
     // I didn't put a <Transition> here because it'd fade out, then jump height weirdly
-    <div className="bg-errors-card w-full rounded-lg p-6">
+    <div className="bg-errors-card w-full rounded-lg p-6 text-left">
       <div className="border-errors-border flex items-center justify-between border-b pb-2">
         <span className="font-medium text-white">{t("errors.details")}</span>
         <div className="flex items-center justify-center gap-3">
@@ -48,13 +48,15 @@ export function ErrorCard(props: {
           >
             {hasCopied ? (
               <>
-                <Icon icon={Icons.CHECKMARK} className="mr-3 text-xs" />
-                {t("actions.copied")}
+                <Icon icon={Icons.CHECKMARK} className="text-xs" />
+                <span className="hidden min-[400px]:inline-block ml-3">
+                  {t("actions.copied")}
+                </span>
               </>
             ) : (
               <>
-                <Icon icon={Icons.COPY} className="min-[400px]:mr-3 text-2xl" />
-                <span className="hidden min-[400px]:inline-block">
+                <Icon icon={Icons.COPY} className="text-2xl" />
+                <span className="hidden min-[400px]:inline-block ml-3">
                   {t("actions.copy")}
                 </span>
               </>
