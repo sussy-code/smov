@@ -43,7 +43,7 @@ export function ErrorCard(props: {
         <div className="flex items-center justify-center gap-3">
           <Button
             theme="secondary"
-            padding="p-2 md:px-4"
+            padding="p-2 h-10 min-w-[40px] md:px-4"
             onClick={() => copyError()}
           >
             {hasCopied ? (
