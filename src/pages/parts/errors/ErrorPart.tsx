@@ -21,10 +21,10 @@ export function ErrorPart(props: { error: any; errorInfo: any }) {
   const error = `${props.error.toString()}\n${errorLines.join("\n")}`;
 
   return (
-    <div className="relative flex flex-1 flex-col min-h-screen">
+    <div className="relative flex min-h-screen flex-1 flex-col">
       <div className="flex h-full flex-1 flex-col items-center justify-center p-5 text-center">
         <ErrorLayout>
-          <ErrorContainer maxWidth="max-w-2xl">
+          <ErrorContainer maxWidth="max-w-2xl w-9/10">
             <IconPill icon={Icons.EYE_SLASH}>{t("errors.badge")}</IconPill>
             <Title>{t("errors.title")}</Title>
 
@@ -38,14 +38,14 @@ export function ErrorPart(props: { error: any; errorInfo: any }) {
             <div className="flex gap-3">
               <ButtonPlain
                 theme="secondary"
-                className="mt-6 md:px-12 p-2.5"
+                className="mt-6 p-2.5 md:px-12"
                 onClick={() => window.location.reload()}
               >
                 {t("errors.reloadPage")}
               </ButtonPlain>
               <ButtonPlain
                 theme="purple"
-                className="mt-6 md:px-12 p-2.5"
+                className="mt-6 p-2.5 md:px-12"
                 onClick={() => setShowErrorCard(true)}
               >
                 {t("errors.showError")}

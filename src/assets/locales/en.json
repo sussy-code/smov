@@ -3,7 +3,7 @@
     "deviceNameLabel": "Device name",
     "deviceNamePlaceholder": "Personal phone",
     "hasAccount": "Already have an account? <0>Login here.</0>",
-    "createAccount": "Dont have an account yet? <0>Create an account.</0>",
+    "createAccount": "Don't have an account yet? <0>Create an account.</0>",
     "register": {
       "information": {
         "title": "Account information",
@@ -26,7 +26,7 @@
     "generate": {
       "title": "Your passphrase",
       "next": "I have saved my passphrase",
-      "description": "Your passphase acts as your username and password. Make sure to keep it safe as you will need to enter it to login to your account"
+      "description": "Your passphrase acts as your username and password. Make sure to keep it safe as you will need to enter it to login to your account"
     },
     "trust": {
       "title": "Do you trust this server?",
@@ -91,7 +91,7 @@
       "items": {
         "pending": "Checking for videos...",
         "notFound": "Doesn't have the video",
-        "failure": "Error occured"
+        "failure": "Error occurred"
       }
     },
     "playbackError": {
@@ -104,7 +104,7 @@
         "errorNetwork": "Some kind of network error occurred which prevented the media from being successfully fetched, despite having previously been available.",
         "errorDecode": "Despite having previously been determined to be usable, an error occurred while trying to decode the media resource, resulting in an error.",
         "errorNotSupported": "The media or media provider object is not supported.",
-        "errorGenericMedia": "Unknown media error occured."
+        "errorGenericMedia": "Unknown media error occurred."
       }
     },
     "metadata": {
@@ -230,7 +230,7 @@
       },
       "night": {
         "default": "What would you like to watch tonight?",
-        "extra": ["Tired? I hear The Excorcist is good."]
+        "extra": ["Tired? I hear The Exorcist is good."]
       }
     },
     "search": {
@@ -276,6 +276,7 @@
       "register": "Sync to cloud",
       "settings": "Settings",
       "about": "About us",
+      "donation": "Donate",
       "support": "Support",
       "logout": "Log out"
     }
@@ -398,7 +399,7 @@
     }
   },
   "footer": {
-    "tagline": "Watch your favorite shows and movies with this open source streaming app.",
+    "tagline": "Watch your favourite shows and movies with this open source streaming app.",
     "links": {
       "github": "GitHub",
       "dmca": "DMCA",
