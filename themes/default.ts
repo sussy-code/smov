@@ -58,15 +58,15 @@ const tokens = {
     c900: "#160B22"
   },
   ash: {
-    c50: "#86869A",
-    c100: "#616174",
-    c200: "#4A4A5B",
-    c300: "#3B3B4B",
-    c400: "#2E2E3D",
-    c500: "#252533",
-    c600: "#21212F",
-    c700: "#151D29",
-    c800: "#0F1720",
+    c50: "#7F8D9B",
+    c100: "#5B6B7B",
+    c200: "#445464",
+    c300: "#2B3D4E",
+    c400: "#203242",
+    c500: "#1C2C3C",
+    c600: "#172532",
+    c700: "#131E29",
+    c800: "#101820",
     c900: "#0C1216"
   },
   shade: {
@@ -82,13 +82,6 @@ const tokens = {
     c900: "#0A0A12"
   }
 }
-
-/*
-flare of media cards is very desatured (also on context menu)
-app information labels are too purple
-save bar needs more distinction from background
-all ash colors need repicking
-*/
 
 export const defaultTheme = {
   extend: {
@@ -150,12 +143,12 @@ export const defaultTheme = {
         logo: tokens.purple.c100,
         emphasis: tokens.white,
         text: tokens.shade.c50,
-        dimmed: tokens.blue.c100,
+        dimmed: tokens.shade.c50,
         divider: tokens.ash.c500,
         secondary: tokens.ash.c100,
         danger: tokens.semantic.red.c100,
         link: tokens.purple.c100,
-        linkHover: tokens.purple.c100, // TODO
+        linkHover: tokens.purple.c50,
       },
 
       // search bar
@@ -169,8 +162,8 @@ export const defaultTheme = {
 
       // media cards
       mediaCard: {
-        hoverBackground: tokens.shade.c700,
-        hoverAccent: tokens.semantic.silver.c400,
+        hoverBackground: tokens.shade.c600,
+        hoverAccent: tokens.shade.c50,
         hoverShadow: tokens.shade.c900,
         shadow: tokens.shade.c700,
         barColor: tokens.ash.c200,
@@ -193,7 +186,7 @@ export const defaultTheme = {
         highlight: tokens.semantic.yellow.c400,
         highlightHover: tokens.semantic.yellow.c200,
         text: tokens.shade.c50,
-        secondary: tokens.shade.c50, // TODO
+        secondary: tokens.shade.c100,
         border: tokens.shade.c400,
         contentBackground: tokens.shade.c500,
       },
@@ -202,8 +195,8 @@ export const defaultTheme = {
       authentication: {
         border: tokens.shade.c300,
         inputBg: tokens.shade.c600,
-        inputBgHover: tokens.shade.c600, // TODO
-        wordBackground: tokens.shade.c600, // TODO
+        inputBgHover: tokens.shade.c500,
+        wordBackground: tokens.shade.c500,
         copyText: tokens.shade.c100,
         copyTextHover: tokens.ash.c50,
         errorText: tokens.semantic.rose.c100,
@@ -217,21 +210,21 @@ export const defaultTheme = {
 
           type: {
             secondary: tokens.shade.c200,
-            inactive: tokens.blue.c100,
-            icon: tokens.blue.c100, // TODO
-            iconActivated: tokens.purple.c400,
+            inactive: tokens.shade.c50,
+            icon: tokens.shade.c50,
+            iconActivated: tokens.purple.c200,
             activated: tokens.purple.c50,
           },
         },
 
         card: {
-          border: tokens.shade.c400, // TODO
+          border: tokens.shade.c400,
           background: tokens.shade.c400,
           altBackground: tokens.shade.c400,
         },
 
         saveBar: {
-          background: tokens.blue.c900
+          background: tokens.shade.c800
         }
       },
 
@@ -263,7 +256,7 @@ export const defaultTheme = {
       },
 
       progress: {
-        background: tokens.ash.c50, // TODO
+        background: tokens.ash.c50,
         preloaded: tokens.ash.c50,
         filled: tokens.purple.c200,
       },
@@ -291,12 +284,12 @@ export const defaultTheme = {
 
         context: {
           background: tokens.ash.c900,
-          light: tokens.semantic.silver.c400,
+          light: tokens.shade.c50,
           border: tokens.ash.c600,
-          hoverColor: tokens.ash.c500,
+          hoverColor: tokens.ash.c600,
           buttonFocus: tokens.ash.c500,
-          flagBg: tokens.ash.c500, // TODO
-          inputBg: tokens.ash.c700,
+          flagBg: tokens.ash.c500,
+          inputBg: tokens.ash.c600,
           buttonOverInputHover: tokens.ash.c500,
           inputPlaceholder: tokens.ash.c200,
           cardBorder: tokens.ash.c700,
