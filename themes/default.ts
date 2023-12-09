@@ -83,8 +83,6 @@ const tokens = {
   }
 }
 
-// TODO body background isn't themed
-
 export const defaultTheme = {
   extend: {
     colors: {
