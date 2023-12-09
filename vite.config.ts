@@ -39,7 +39,7 @@ export default defineConfig(({ mode }) => {
         }
       }),
       VitePWA({
-        disable: process.env.VITE_PWA_ENABLED !== "yes",
+        disable: env.VITE_PWA_ENABLED !== "yes",
         registerType: "autoUpdate",
         workbox: {
           maximumFileSizeToCacheInBytes: 4000000, // 4mb
@@ -57,7 +57,6 @@ export default defineConfig(({ mode }) => {
           theme_color: "#120f1d",
           background_color: "#120f1d",
           display: "standalone",
-          orientation: "portrait-primary",
           start_url: "/",
           icons: [
             {
