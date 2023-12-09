@@ -1,11 +1,13 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Sticky from "react-sticky-el";
+import { useWindowSize } from "react-use";
 
 import { SearchBarInput } from "@/components/form/SearchBar";
 import { ThinContainer } from "@/components/layout/ThinContainer";
 import { useSlashFocus } from "@/components/player/hooks/useSlashFocus";
 import { HeroTitle } from "@/components/text/HeroTitle";
+import { useIsMobile } from "@/hooks/useIsMobile";
 import { useRandomTranslation } from "@/hooks/useRandomTranslation";
 import { useSearchQuery } from "@/hooks/useSearchQuery";
 import { useBannerSize } from "@/stores/banner";
@@ -29,6 +31,20 @@ export function HeroPart({ setIsSticky, searchParams }: HeroPartProps) {
     [setShowBg, setIsSticky]
   );
 
+  const { width: windowWidth } = useWindowSize();
+
+  const topSpacing = 16;
+  const [stickyOffset, setStickyOffset] = useState(topSpacing);
+  useEffect(() => {
+    if (windowWidth > 1200) {
+      // On large screens the bar goes inline with the nav elements
+      setStickyOffset(topSpacing);
+    } else {
+      // On smaller screens the bar goes below the nav elements
+      setStickyOffset(topSpacing + 60);
+    }
+  }, [windowWidth]);
+
   let time = "night";
   const hour = new Date().getHours();
   if (hour < 12) time = "morning";
@@ -47,9 +63,9 @@ export function HeroPart({ setIsSticky, searchParams }: HeroPartProps) {
         </div>
         <div className="relative h-20 z-30">
           <Sticky
-            topOffset={-16 + bannerSize}
+            topOffset={stickyOffset * -1 + bannerSize}
             stickyStyle={{
-              paddingTop: `${16 + bannerSize}px`,
+              paddingTop: `${stickyOffset + bannerSize}px`,
             }}
             onFixedToggle={stickStateChanged}
           >
