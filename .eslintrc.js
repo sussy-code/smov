@@ -22,6 +22,7 @@ module.exports = {
     "/*.js",
     "/*.ts",
     "/plugins/*.ts",
+    "/plugins/*.mjs",
     "/themes/**/*.ts"
   ],
   parser: "@typescript-eslint/parser",

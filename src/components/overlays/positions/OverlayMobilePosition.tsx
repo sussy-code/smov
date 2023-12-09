@@ -24,7 +24,7 @@ export function OverlayMobilePosition(props: MobilePositionProps) {
 
       {/* Close button */}
       <button
-        className="w-full text-video-context-type-main bg-video-context-background z-10 relative hover:bg-video-context-border active:scale-95 rounded-2xl pointer-events-auto transition-all duration-100 flex justify-center items-center py-3 mt-3 font-bold border border-video-context-border hover:text-white"
+        className="w-full text-video-context-type-main bg-video-context-background z-10 relative hover:bg-video-context-closeHover active:scale-95 rounded-2xl pointer-events-auto transition-all duration-100 flex justify-center items-center py-3 mt-3 font-bold border border-video-context-border hover:text-white"
         type="button"
         onClick={() => router.close()}
       >
