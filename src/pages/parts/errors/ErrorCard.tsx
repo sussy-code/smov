@@ -53,8 +53,10 @@ export function ErrorCard(props: {
               </>
             ) : (
               <>
-                <Icon icon={Icons.COPY} className="mr-3 text-2xl" />
-                {t("actions.copy")}
+                <Icon icon={Icons.COPY} className="min-[400px]:mr-3 text-2xl" />
+                <span className="hidden min-[400px]:inline-block">
+                  {t("actions.copy")}
+                </span>
               </>
             )}
           </Button>
