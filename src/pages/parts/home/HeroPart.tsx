@@ -7,7 +7,6 @@ import { SearchBarInput } from "@/components/form/SearchBar";
 import { ThinContainer } from "@/components/layout/ThinContainer";
 import { useSlashFocus } from "@/components/player/hooks/useSlashFocus";
 import { HeroTitle } from "@/components/text/HeroTitle";
-import { useIsMobile } from "@/hooks/useIsMobile";
 import { useRandomTranslation } from "@/hooks/useRandomTranslation";
 import { useSearchQuery } from "@/hooks/useSearchQuery";
 import { useBannerSize } from "@/stores/banner";
