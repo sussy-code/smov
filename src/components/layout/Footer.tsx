@@ -1,5 +1,7 @@
+import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
+import type { RequireExactlyOne } from "type-fest";
 
 import { Icon, Icons } from "@/components/Icon";
 import { BrandPill } from "@/components/layout/BrandPill";
@@ -7,19 +9,33 @@ import { WideContainer } from "@/components/layout/WideContainer";
 import { shouldHaveDmcaPage } from "@/pages/Dmca";
 import { conf } from "@/setup/config";
 
-function FooterLink(props: {
-  href?: string;
-  onClick?: () => void;
-  children: React.ReactNode;
-  icon: Icons;
-}) {
+// to and href are mutually exclusive
+type FooterLinkProps = RequireExactlyOne<
+  {
+    children: React.ReactNode;
+    icon: Icons;
+    to: string;
+    href: string;
+  },
+  "to" | "href"
+>;
+
+function FooterLink(props: FooterLinkProps) {
+  const history = useHistory();
+
+  const navigateTo = useCallback(() => {
+    if (!props.to) return;
+
+    history.push(props.to);
+  }, [history, props.to]);
+
   return (
     <a
-      href={props.href ?? "#"}
-      target="_blank"
-      className="tabbable rounded py-2 px-3 inline-flex items-center space-x-3 transition-colors duration-200 hover:text-type-emphasis"
+      href={props.href}
+      target={props.href ? "_blank" : undefined}
       rel="noreferrer"
-      onClick={props.onClick}
+      className="tabbable rounded py-2 px-3 inline-flex cursor-pointer items-center space-x-3 transition-colors duration-200 hover:text-type-emphasis"
+      onClick={props.to ? navigateTo : undefined}
     >
       <Icon icon={props.icon} className="text-2xl" />
       <span className="font-medium">{props.children}</span>
@@ -29,12 +45,11 @@ function FooterLink(props: {
 
 function Dmca() {
   const { t } = useTranslation();
-  const history = useHistory();
 
   if (!shouldHaveDmcaPage()) return null;
 
   return (
-    <FooterLink icon={Icons.DRAGON} onClick={() => history.push("/dmca")}>
+    <FooterLink to="/dmca" icon={Icons.DRAGON}>
       {t("footer.links.dmca")}
     </FooterLink>
   );
