@@ -142,6 +142,9 @@ export function LinksDropdown(props: { children: React.ReactNode }) {
           <DropdownLink href="/about" icon={Icons.EPISODES}>
             {t("navigation.menu.about")}
           </DropdownLink>
+          <DropdownLink href={conf().DONATION_LINK} icon={Icons.DONATION}>
+            {t("navigation.menu.donation")}
+          </DropdownLink>
           {deviceName ? (
             <DropdownLink
               className="!text-type-danger opacity-75 hover:opacity-100"
@@ -160,7 +163,7 @@ export function LinksDropdown(props: { children: React.ReactNode }) {
             <CircleDropdownLink href={conf().GITHUB_LINK} icon={Icons.GITHUB} />
             <CircleDropdownLink
               href={conf().DONATION_LINK}
-              icon={Icons.COINS}
+              icon={Icons.DONATION}
             />
           </div>
         </div>
