@@ -95,7 +95,7 @@ function MediaCardContent({
           {percentage !== undefined ? (
             <>
               <div
-                className={`absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-mediaCard-shadow to-transparent transition-colors ${
+                className={`absolute inset-x-0 -bottom-px pb-1 h-12 bg-gradient-to-t from-mediaCard-shadow to-transparent transition-colors ${
                   canLink ? "group-hover:from-mediaCard-hoverShadow" : ""
                 }`}
               />
