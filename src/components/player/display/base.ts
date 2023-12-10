@@ -282,6 +282,8 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
     processContainerElement(container) {
       containerElement = container;
     },
+    setMeta() {},
+    setCaption() {},
 
     pause() {
       videoElement?.pause();

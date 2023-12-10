@@ -1,8 +1,11 @@
 import fscreen from "fscreen";
 
+import { MWMediaType } from "@/backend/metadata/types/mw";
 import {
+  DisplayCaption,
   DisplayInterface,
   DisplayInterfaceEvents,
+  DisplayMeta,
 } from "@/components/player/display/displayInterface";
 import { LoadableSource } from "@/stores/player/utils/qualities";
 import {
@@ -18,13 +21,17 @@ export interface ChromeCastDisplayInterfaceOptions {
   instance: cast.framework.CastContext;
 }
 
-// TODO check all functionality
-// TODO listen for events to update the state
+/*
+ ** Chromecasting is unfinished, here is its limitations:
+ **  1. Captions - chromecast requires only VTT, but needs it from a URL. we only have SRT urls
+ **  2. HLS - we've having some issues with content types. sometimes it loads, sometimes it doesn't
+ */
+
 export function makeChromecastDisplayInterface(
   ops: ChromeCastDisplayInterfaceOptions
 ): DisplayInterface {
   const { emit, on, off } = makeEmitter<DisplayInterfaceEvents>();
-  const isPaused = false;
+  let isPaused = false;
   let playbackRate = 1;
   let source: LoadableSource | null = null;
   let videoElement: HTMLVideoElement | null = null;
@@ -33,8 +40,64 @@ export function makeChromecastDisplayInterface(
   let isPausedBeforeSeeking = false;
   let isSeeking = false;
   let startAt = 0;
-  // let automaticQuality = false;
-  // let preferenceQuality: SourceQuality | null = null;
+  let meta: DisplayMeta = {
+    title: "",
+    type: MWMediaType.MOVIE,
+  };
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  let caption: DisplayCaption | null = null;
+
+  function listenForEvents() {
+    const listen = async (e: cast.framework.RemotePlayerChangedEvent) => {
+      switch (e.field) {
+        case "volumeLevel":
+          if (await canChangeVolume()) emit("volumechange", e.value);
+          break;
+        case "currentTime":
+          emit("time", e.value);
+          break;
+        case "duration":
+          emit("duration", e.value ?? 0);
+          break;
+        case "mediaInfo":
+          if (e.value) emit("duration", e.value.duration ?? 0);
+          break;
+        case "playerState":
+          emit("loading", e.value === "BUFFERING");
+          if (e.value === "PLAYING") emit("play", undefined);
+          else if (e.value === "PAUSED") emit("pause", undefined);
+          isPaused = e.value === "PAUSED";
+          break;
+        case "isMuted":
+          emit("volumechange", e.value ? 1 : 0);
+          break;
+        case "displayStatus":
+        case "canSeek":
+        case "title":
+        case "isPaused":
+        case "canPause":
+        case "isMediaLoaded":
+        case "statusText":
+        case "isConnected":
+        case "displayName":
+        case "canControlVolume":
+        case "savedPlayerState":
+          break;
+        default:
+          break;
+      }
+    };
+    ops.controller?.addEventListener(
+      cast.framework.RemotePlayerEventType.ANY_CHANGE,
+      listen
+    );
+    return () => {
+      ops.controller?.removeEventListener(
+        cast.framework.RemotePlayerEventType.ANY_CHANGE,
+        listen
+      );
+    };
+  }
 
   function setupSource() {
     if (!source) {
@@ -42,30 +105,33 @@ export function makeChromecastDisplayInterface(
       return;
     }
 
-    if (source.type === "hls") {
-      // TODO hls support
-      return;
-    }
+    let type = "video/mp4";
+    if (source.type === "hls") type = "application/x-mpegurl";
 
-    // TODO movie meta
-    const movieMeta = new chrome.cast.media.MovieMediaMetadata();
-    movieMeta.title = "";
+    const metaData = new chrome.cast.media.GenericMediaMetadata();
+    metaData.title = meta.title;
 
-    const mediaInfo = new chrome.cast.media.MediaInfo("video", "video/mp4");
+    const mediaInfo = new chrome.cast.media.MediaInfo("video", type);
     (mediaInfo as any).contentUrl = source.url;
     mediaInfo.streamType = chrome.cast.media.StreamType.BUFFERED;
-    mediaInfo.metadata = movieMeta;
+    mediaInfo.metadata = metaData;
     mediaInfo.customData = {
       playbackRate,
     };
 
     const request = new chrome.cast.media.LoadRequest(mediaInfo);
     request.autoplay = true;
+    request.currentTime = startAt;
 
-    ops.player.currentTime = startAt;
+    if (source.type === "hls") {
+      const staticMedia = chrome.cast.media as any;
+      const media = request.media as any;
+      media.hlsSegmentFormat = staticMedia.HlsSegmentFormat.FMP4;
+      media.hlsVideoSegmentFormat = staticMedia.HlsVideoSegmentFormat.FMP4;
+    }
+
     const session = ops.instance.getCurrentSession();
     session?.loadMedia(request);
-    ops.controller.seek();
   }
 
   function setSource() {
@@ -86,25 +152,29 @@ export function makeChromecastDisplayInterface(
   }
   fscreen.addEventListener("fullscreenchange", fullscreenChange);
 
+  // start listening immediately
+  const stopListening = listenForEvents();
+
   return {
     on,
     off,
     destroy: () => {
+      stopListening();
       destroyVideoElement();
       fscreen.removeEventListener("fullscreenchange", fullscreenChange);
     },
     load(loadOps) {
-      // automaticQuality = loadOps.automaticQuality;
-      // preferenceQuality = loadOps.preferredQuality;
       source = loadOps.source;
       emit("loading", true);
       startAt = loadOps.startAt;
       setSource();
     },
-    changeQuality(_newAutomaticQuality, _newPreferredQuality) {
-      // if (source?.type !== "hls") return;
-      // automaticQuality = newAutomaticQuality;
-      // preferenceQuality = newPreferredQuality;
+    changeQuality() {
+      // cant control qualities
+    },
+    setCaption(newCaption) {
+      caption = newCaption;
+      setSource();
     },
 
     processVideoElement(video) {
@@ -115,12 +185,22 @@ export function makeChromecastDisplayInterface(
     processContainerElement(container) {
       containerElement = container;
     },
+    setMeta(data) {
+      meta = data;
+      setSource();
+    },
 
     pause() {
-      if (!isPaused) ops.controller.playOrPause();
+      if (!isPaused) {
+        ops.controller.playOrPause();
+        isPaused = true;
+      }
     },
     play() {
-      if (isPaused) ops.controller.playOrPause();
+      if (isPaused) {
+        ops.controller.playOrPause();
+        isPaused = false;
+      }
     },
     setSeeking(active) {
       if (active === isSeeking) return;
@@ -156,6 +236,7 @@ export function makeChromecastDisplayInterface(
       if (isChangeable) {
         ops.player.volumeLevel = volume;
         ops.controller.setVolumeLevel();
+        emit("volumechange", volume);
       } else {
         // For browsers where it can't be changed
         emit("volumechange", volume === 0 ? 0 : 1);
