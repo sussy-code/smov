@@ -107,8 +107,10 @@ export function SubtitleRenderer() {
 export function SubtitleView(props: { controlsShown: boolean }) {
   const caption = usePlayerStore((s) => s.caption.selected);
   const captionAsTrack = usePlayerStore((s) => s.caption.asTrack);
+  const display = usePlayerStore((s) => s.display);
+  const isCasting = display?.getType() === "casting";
 
-  if (captionAsTrack || !caption) return null;
+  if (captionAsTrack || !caption || isCasting) return null;
 
   return (
     <Transition

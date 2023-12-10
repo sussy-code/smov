@@ -15,3 +15,4 @@ export * from "./Airplay";
 export * from "./VolumeChangedPopout";
 export * from "./NextEpisodeButton";
 export * from "./Chromecast";
+export * from "./CastingNotification";

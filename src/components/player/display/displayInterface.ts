@@ -46,6 +46,8 @@ export interface DisplayCaption {
   url?: string;
 }
 
+export type DisplayType = "web" | "casting";
+
 export interface DisplayInterface extends Listener<DisplayInterfaceEvents> {
   play(): void;
   pause(): void;
@@ -66,4 +68,5 @@ export interface DisplayInterface extends Listener<DisplayInterfaceEvents> {
   setPlaybackRate(rate: number): void;
   setMeta(meta: DisplayMeta): void;
   setCaption(caption: DisplayCaption | null): void;
+  getType(): DisplayType;
 }

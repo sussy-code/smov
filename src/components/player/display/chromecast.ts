@@ -158,6 +158,9 @@ export function makeChromecastDisplayInterface(
   return {
     on,
     off,
+    getType() {
+      return "casting";
+    },
     destroy: () => {
       stopListening();
       destroyVideoElement();

@@ -94,6 +94,9 @@
         "failure": "Error occurred"
       }
     },
+    "casting": {
+      "enabled": "Casting to device..."
+    },
     "playbackError": {
       "badge": "Playback error",
       "title": "Failed to play video!",
