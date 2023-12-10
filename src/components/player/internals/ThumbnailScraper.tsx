@@ -40,6 +40,10 @@ class ThumnbnailWorker {
 
   start(source: LoadableSource) {
     const el = document.createElement("video");
+    el.setAttribute("muted", "true");
+    // ! Remove before merging
+    el.setAttribute("controls", "true");
+    el.setAttribute("playsinline", "true");
     const canvas = document.createElement("canvas");
     this.hls = new Hls();
     if (source.type === "mp4") {
@@ -65,6 +69,8 @@ class ThumnbnailWorker {
 
   private async initVideo() {
     if (!this.videoEl || !this.canvasEl) return;
+    // ! Remove before merging
+    document.body.appendChild(this.videoEl);
     await new Promise((resolve, reject) => {
       this.videoEl?.addEventListener("loadedmetadata", resolve);
       this.videoEl?.addEventListener("error", reject);
@@ -76,9 +82,14 @@ class ThumnbnailWorker {
 
   private async takeSnapshot(at: number) {
     if (!this.videoEl || !this.canvasEl) return;
+    await this.videoEl.play(); // so that `seeked` actually triggers
     this.videoEl.currentTime = at;
     await new Promise((resolve) => {
-      this.videoEl?.addEventListener("seeked", resolve);
+      const onSeeked = () => {
+        this.videoEl?.removeEventListener("seeked", onSeeked);
+        resolve(null);
+      };
+      this.videoEl?.addEventListener("seeked", onSeeked);
     });
     if (!this.videoEl || !this.canvasEl) return;
     const ctx = this.canvasEl.getContext("2d");
@@ -91,6 +102,16 @@ class ThumnbnailWorker {
       this.canvasEl.height
     );
     const imgUrl = this.canvasEl.toDataURL();
+
+    // ! Remove before merging
+    const img = new Image();
+    img.src = imgUrl;
+    img.style.border = "1px solid yellow";
+    document.body.appendChild(img);
+    const p = document.createElement("p");
+    p.innerText = `${at}`;
+    document.body.appendChild(p);
+
     if (this.interrupted) return;
     if (imgUrl === "data:," || !imgUrl) return; // failed image rendering
 
