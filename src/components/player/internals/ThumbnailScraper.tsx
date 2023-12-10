@@ -92,6 +92,7 @@ class ThumnbnailWorker {
     );
     const imgUrl = this.canvasEl.toDataURL();
     if (this.interrupted) return;
+    if (imgUrl === "data:," || !imgUrl) return; // failed image rendering
 
     this.cb({
       at,

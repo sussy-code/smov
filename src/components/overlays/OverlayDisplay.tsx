@@ -70,6 +70,11 @@ export function OverlayPortal(props: {
                     className="absolute inset-0 pointer-events-none"
                     isChild
                   >
+                    {/* a tabable index that does nothing - used so focus trap doesn't error when nothing is rendered yet */}
+                    <div
+                      tabIndex={1}
+                      className="focus:ring-0 focus:outline-none opacity-0"
+                    />
                     {props.children}
                   </Transition>
                 </div>

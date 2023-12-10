@@ -132,6 +132,8 @@ export const createSourceSlice: MakeSlice<SourceSlice> = (set, get) => ({
     });
   },
   setCaption(caption) {
+    const store = get();
+    store.display?.setCaption(caption);
     set((s) => {
       s.caption.selected = caption;
     });

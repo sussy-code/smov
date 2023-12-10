@@ -253,6 +253,9 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
   return {
     on,
     off,
+    getType() {
+      return "web";
+    },
     destroy: () => {
       destroyVideoElement();
       fscreen.removeEventListener("fullscreenchange", fullscreenChange);
@@ -282,6 +285,8 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
     processContainerElement(container) {
       containerElement = container;
     },
+    setMeta() {},
+    setCaption() {},
 
     pause() {
       videoElement?.pause();

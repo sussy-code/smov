@@ -1,3 +1,4 @@
+import { MWMediaType } from "@/backend/metadata/types/mw";
 import { LoadableSource, SourceQuality } from "@/stores/player/utils/qualities";
 import { Listener } from "@/utils/events";
 
@@ -34,6 +35,19 @@ export interface qualityChangeOptions {
   startAt: number;
 }
 
+export interface DisplayMeta {
+  title: string;
+  type: MWMediaType;
+}
+
+export interface DisplayCaption {
+  srtData: string;
+  language: string;
+  url?: string;
+}
+
+export type DisplayType = "web" | "casting";
+
 export interface DisplayInterface extends Listener<DisplayInterfaceEvents> {
   play(): void;
   pause(): void;
@@ -52,4 +66,7 @@ export interface DisplayInterface extends Listener<DisplayInterfaceEvents> {
   destroy(): void;
   startAirplay(): void;
   setPlaybackRate(rate: number): void;
+  setMeta(meta: DisplayMeta): void;
+  setCaption(caption: DisplayCaption | null): void;
+  getType(): DisplayType;
 }
