@@ -17,7 +17,7 @@
     "login": {
       "title": "Login to your account",
       "description": "Please enter your passphrase to login to your account",
-      "validationError": "Invalid or incomplete passphrase",
+      "validationError": "Incorrect or incomplete passphrase",
       "deviceLengthError": "Please enter a device name",
       "submit": "Login",
       "passphraseLabel": "12-Word passphrase",
