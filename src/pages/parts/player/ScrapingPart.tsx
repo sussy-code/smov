@@ -1,6 +1,7 @@
 import { ProviderControls, ScrapeMedia } from "@movie-web/providers";
 import classNames from "classnames";
 import { useEffect, useRef } from "react";
+import { useMountedState } from "react-use";
 import type { AsyncReturnType } from "type-fest";
 
 import {
@@ -30,6 +31,7 @@ export interface ScrapingProps {
 export function ScrapingPart(props: ScrapingProps) {
   const { report } = useReportProviders();
   const { startScraping, sourceOrder, sources, currentSource } = useScrape();
+  const isMounted = useMountedState();
 
   const containerRef = useRef<HTMLDivElement | null>(null);
   const listRef = useRef<HTMLDivElement | null>(null);
@@ -57,6 +59,7 @@ export function ScrapingPart(props: ScrapingProps) {
     started.current = true;
     (async () => {
       const output = await startScraping(props.media);
+      if (!isMounted()) return;
       props.onResult?.(
         resultRef.current.sources,
         resultRef.current.sourceOrder
@@ -70,7 +73,7 @@ export function ScrapingPart(props: ScrapingProps) {
       );
       props.onGetStream?.(output);
     })();
-  }, [startScraping, props, report]);
+  }, [startScraping, props, report, isMounted]);
 
   const currentProvider = sourceOrder.find(
     (s) => sources[s.id].status === "pending"
