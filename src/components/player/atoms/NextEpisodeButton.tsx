@@ -62,9 +62,11 @@ export function NextEpisodeButton(props: {
   if (isHidden || status !== "playing" || duration === 0) show = false;
 
   const animation = showingState === "hover" ? "slide-up" : "fade";
-  let bottom = "bottom-24";
+  let bottom = "bottom-[calc(6rem+env(safe-area-inset-bottom))]";
   if (showingState === "always")
-    bottom = props.controlsShowing ? "bottom-24" : "bottom-12";
+    bottom = props.controlsShowing
+      ? bottom
+      : "bottom-[calc(3rem+env(safe-area-inset-bottom))]";
 
   const nextEp = meta?.episodes?.find(
     (v) => v.number === (meta?.episode?.number ?? 0) + 1
