@@ -1,5 +1,6 @@
 import {
   APP_VERSION,
+  BACKEND_URL,
   DISCORD_LINK,
   DONATION_LINK,
   GITHUB_LINK,
@@ -53,7 +54,7 @@ function getKeyValue(key: keyof Config): string | undefined {
 }
 
 function getKey(key: keyof Config, defaultString?: string): string {
-  return getKeyValue(key) ?? defaultString ?? "";
+  return getKeyValue(key)?.toString() ?? defaultString ?? "";
 }
 
 export function conf(): RuntimeConfig {
@@ -64,7 +65,7 @@ export function conf(): RuntimeConfig {
     DONATION_LINK,
     DISCORD_LINK,
     DMCA_EMAIL: dmcaEmail.length > 0 ? dmcaEmail : null,
-    BACKEND_URL: getKey("BACKEND_URL"),
+    BACKEND_URL: getKey("BACKEND_URL", BACKEND_URL),
     TMDB_READ_API_KEY: getKey("TMDB_READ_API_KEY"),
     PROXY_URLS: getKey("CORS_PROXY_URL")
       .split(",")
