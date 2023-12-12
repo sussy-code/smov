@@ -1,4 +1,9 @@
 {
+  "auth": {
+    "deviceNameLabel": "Toestel naam",
+    "deviceNamePlaceholder": "Huistelefoon",
+    "hasAccount": "Heb je al een account? <0>Log hier in.</0>"
+  },
   "global": {
     "name": "movie-web"
   },
