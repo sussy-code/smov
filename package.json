@@ -3,6 +3,28 @@
   "version": "4.0.0",
   "private": true,
   "homepage": "https://movie-web.app",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "build:pwa": "cross-env VITE_PWA_ENABLED=true vite build",
+    "test": "vitest run",
+    "preview": "vite preview",
+    "lint": "eslint --ext .tsx,.ts src",
+    "lint:fix": "eslint --fix --ext .tsx,.ts src",
+    "lint:report": "eslint --ext .tsx,.ts --output-file eslint_report.json --format json src",
+    "preinstall": "npx -y only-allow pnpm"
+  },
+  "browserslist": {
+    "production": [
+      "defaults",
+      "chrome > 90"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
   "dependencies": {
     "@formkit/auto-animate": "^0.7.0",
     "@headlessui/react": "^1.5.0",
@@ -38,28 +60,6 @@
     "slugify": "^1.6.6",
     "subsrt-ts": "^2.1.1",
     "zustand": "^4.3.9"
-  },
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "build:pwa": "cross-env VITE_PWA_ENABLED=yes vite build",
-    "test": "vitest run",
-    "preview": "vite preview",
-    "lint": "eslint --ext .tsx,.ts src",
-    "lint:fix": "eslint --fix --ext .tsx,.ts src",
-    "lint:report": "eslint --ext .tsx,.ts --output-file eslint_report.json --format json src",
-    "preinstall": "npx -y only-allow pnpm"
-  },
-  "browserslist": {
-    "production": [
-      "defaults",
-      "chrome > 90"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
   },
   "devDependencies": {
     "@babel/core": "^7.21.3",
