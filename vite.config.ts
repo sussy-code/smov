@@ -102,6 +102,10 @@ export default defineConfig(({ mode }) => {
       })
     ],
 
+    build: {
+      sourcemap: true,
+    },
+
     resolve: {
       alias: {
         "@": path.resolve(__dirname, "./src"),
