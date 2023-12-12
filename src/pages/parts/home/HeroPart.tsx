@@ -16,6 +16,14 @@ export interface HeroPartProps {
   searchParams: ReturnType<typeof useSearchQuery>;
 }
 
+function getTimeOfDay(date: Date): "night" | "morning" | "day" {
+  const hour = date.getHours();
+  if (hour < 5) return "night";
+  if (hour < 12) return "morning";
+  if (hour < 19) return "day";
+  return "night";
+}
+
 export function HeroPart({ setIsSticky, searchParams }: HeroPartProps) {
   const { t: randomT } = useRandomTranslation();
   const { t } = useTranslation();
@@ -44,11 +52,7 @@ export function HeroPart({ setIsSticky, searchParams }: HeroPartProps) {
     }
   }, [windowWidth]);
 
-  let time = "night";
-  const hour = new Date().getHours();
-  if (hour < 12) time = "morning";
-  else if (hour < 19) time = "day";
-
+  const time = getTimeOfDay(new Date());
   const title = randomT(`home.titles.${time}`);
 
   const inputRef = useRef<HTMLInputElement>(null);
