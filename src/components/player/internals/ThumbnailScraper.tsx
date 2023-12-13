@@ -79,7 +79,6 @@ class ThumnbnailWorker {
 
   private async takeSnapshot(at: number) {
     if (!this.videoEl || !this.canvasEl) return;
-    await this.videoEl.play(); // so that `seeked` actually triggers
     this.videoEl.currentTime = at;
     await new Promise((resolve) => {
       const onSeeked = () => {
