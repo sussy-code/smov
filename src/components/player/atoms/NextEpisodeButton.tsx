@@ -88,7 +88,7 @@ export function NextEpisodeButton(props: {
     <Transition
       animation={animation}
       show={show}
-      className="absolute right-12 bottom-0"
+      className="absolute right-[calc(3rem+env(safe-area-inset-right))] bottom-0"
     >
       <div
         className={classNames([
