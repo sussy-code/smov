@@ -85,28 +85,10 @@ Here are some tips to make sure that your pull requests are :pinched_fingers: fi
 ### Language Contributions
 Language contributions help movie-web massively, allowing people worldwide to use our app!
 
-Like most apps, our translations are stored in `.json` files. Each language string has a unique key (For example, `notFound.genericTitle`) that references a language string in the appropriate language file.
+We use weblate for crowdsourcing our translations. [Click here to go to our translation tool.](https://weblate.movie-web.app/projects/movie-web/website/)
 
-Each language file is called `translation.json` and is stored in the `src/setup/languages/<language code>/` folder. For example, the English language file is located at `src/setup/languages/en/translation.json`.
-
-> **Warning**
->
-> Before you start a translation, please:
-> - Check there isn't an existing GitHub [issue](https://github.com/movie-web/movie-web/issues) or [pull request](https://github.com/movie-web/movie-web/pulls) open for the language.
-> - Make sure we aren't in the middle of a new feature update. When releasing major versions, we only accept changes to translations once the new version is complete. Otherwise, the language files would need to be updated.
->
-> Please speak to us before starting a language PR. We want to use your time effectively.
-
-To make a translation:
- - Copy the `en` folder inside the `src/setup/languages` folder
- - Rename the copied folder to the 2-letter code for the country/language which is being translated.
-   - [Click this link to see a list of codes](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes). Use the codes in the `639-1` column!
-   - For example, Arabic is `ar` 
- - Edit the language strings inside the `translation.json` file
-   - **Do not** edit the keys. Only edit the values.
-   - e.g. in `"stopEditing": "Stop editing",` - only change the `Stop editing` part, not the `stopEditing` part.
- - In the `src/setup/i18n.ts` file:
-   - Import your new translation file, e.g. `import ar from "./locales/ar/translation.json";`
-   - Add your translation to the `locales` object (Look at other languages for an example)
-
-Once you have completed your translation, please open a pull request. We do not accept partial translations, so please ensure every language string is translated to the intended language.
+1. First make sure you make an account. (click the link above)
+2. Click the language you want to help translate, if it's not listed you can click the plus top left to add a new language.
+3. In the top right of the screen, click "translate"
+4. Here you will be prompted a key to translate, fill in a translation and proceed to the next item by pressing "save and continue".
+5. Thats all there is to it, every translation will eventually come through and be pushed with an update. This usually doesn't take longer than a week.

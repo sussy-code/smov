@@ -43,6 +43,8 @@ pnpm install
 pnpm run dev
 ```
 
+You have to also make an `.env` file to configure your environment. Inspire it from the content of `example.env`.
+
 To build production files, run:
 ```bash
 pnpm build
@@ -55,7 +57,7 @@ pnpm build
 
 A simple guide has been written to assist in hosting your own instance of movie-web. Check it out below
 
-|[Selfhosting guide](https://docs.movie-web.app/self-hosting/self-hosting)|
+|[Selfhosting guide](https://docs.movie-web.app)|
 |---|
 
 
