@@ -260,7 +260,8 @@
     "loadingUserError": {
       "text": "Failed to load your profile",
       "textWithReset": "Failed to load your profile from your custom server, want to reset back to the default server?",
-      "reset": "Reset custom server"
+      "reset": "Reset custom server",
+      "logout": "Logout"
     },
     "migration": {
       "failed": "Failed to migrate your data.",

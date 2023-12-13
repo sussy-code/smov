@@ -15,6 +15,7 @@ import { useAsync } from "react-use";
 import { Button } from "@/components/buttons/Button";
 import { Icon, Icons } from "@/components/Icon";
 import { Loading } from "@/components/layout/Loading";
+import { useAuth } from "@/hooks/auth/useAuth";
 import { useAuthRestore } from "@/hooks/auth/useAuthRestore";
 import { useBackendUrl } from "@/hooks/auth/useBackendUrl";
 import { ErrorBoundary } from "@/pages/errors/ErrorBoundary";
@@ -57,14 +58,22 @@ function LoadingScreen(props: { type: "user" | "lazy" }) {
 function ErrorScreen(props: {
   children: ReactNode;
   showResetButton?: boolean;
+  showLogoutButton?: boolean;
 }) {
   const { t } = useTranslation();
+  const { logout } = useAuth();
   const setBackendUrl = useAuthStore((s) => s.setBackendUrl);
   const resetBackend = useCallback(() => {
     setBackendUrl(null);
     // eslint-disable-next-line no-restricted-globals
     location.reload();
   }, [setBackendUrl]);
+  const logoutFromBackend = useCallback(() => {
+    logout().then(() => {
+      // eslint-disable-next-line no-restricted-globals
+      location.reload();
+    });
+  }, [logout]);
 
   return (
     <LargeTextPart
@@ -80,6 +89,13 @@ function ErrorScreen(props: {
           </Button>
         </div>
       ) : null}
+      {props.showLogoutButton ? (
+        <div className="mt-6">
+          <Button theme="secondary" onClick={logoutFromBackend}>
+            {t("screens.loadingUserError.logout")}
+          </Button>
+        </div>
+      ) : null}
     </LargeTextPart>
   );
 }
@@ -90,12 +106,17 @@ function AuthWrapper() {
   const userBackendUrl = useBackendUrl();
   const { t } = useTranslation();
 
+  const isCustomUrl = backendUrl !== userBackendUrl;
+
   if (status.loading) return <LoadingScreen type="user" />;
   if (status.error)
     return (
-      <ErrorScreen showResetButton={backendUrl !== userBackendUrl}>
+      <ErrorScreen
+        showResetButton={isCustomUrl}
+        showLogoutButton={!isCustomUrl}
+      >
         {t(
-          backendUrl !== userBackendUrl
+          isCustomUrl
             ? "screens.loadingUserError.textWithReset"
             : "screens.loadingUserError.text"
         )}

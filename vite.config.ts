@@ -39,7 +39,7 @@ export default defineConfig(({ mode }) => {
         }
       }),
       VitePWA({
-        disable: env.VITE_PWA_ENABLED !== "yes",
+        disable: env.VITE_PWA_ENABLED !== "true",
         registerType: "autoUpdate",
         workbox: {
           maximumFileSizeToCacheInBytes: 4000000, // 4mb
@@ -101,6 +101,10 @@ export default defineConfig(({ mode }) => {
         }
       })
     ],
+
+    build: {
+      sourcemap: true,
+    },
 
     resolve: {
       alias: {

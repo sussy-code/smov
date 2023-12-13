@@ -1,5 +1,6 @@
 import {
   APP_VERSION,
+  BACKEND_URL,
   DISCORD_LINK,
   DONATION_LINK,
   GITHUB_LINK,
@@ -47,13 +48,17 @@ const env: Record<keyof Config, undefined | string> = {
 // loads from different locations, in order: environment (VITE_{KEY}), window (public/config.js)
 function getKeyValue(key: keyof Config): string | undefined {
   let windowValue = (window as any)?.__CONFIG__?.[`VITE_${key}`];
-  if (windowValue !== undefined && windowValue.length === 0)
+  if (
+    windowValue !== null &&
+    windowValue !== undefined &&
+    windowValue.length === 0
+  )
     windowValue = undefined;
   return env[key] ?? windowValue ?? undefined;
 }
 
 function getKey(key: keyof Config, defaultString?: string): string {
-  return getKeyValue(key) ?? defaultString ?? "";
+  return getKeyValue(key)?.toString() ?? defaultString ?? "";
 }
 
 export function conf(): RuntimeConfig {
@@ -64,7 +69,7 @@ export function conf(): RuntimeConfig {
     DONATION_LINK,
     DISCORD_LINK,
     DMCA_EMAIL: dmcaEmail.length > 0 ? dmcaEmail : null,
-    BACKEND_URL: getKey("BACKEND_URL"),
+    BACKEND_URL: getKey("BACKEND_URL", BACKEND_URL),
     TMDB_READ_API_KEY: getKey("TMDB_READ_API_KEY"),
     PROXY_URLS: getKey("CORS_PROXY_URL")
       .split(",")
