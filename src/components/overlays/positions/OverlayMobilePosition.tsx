@@ -16,7 +16,7 @@ export function OverlayMobilePosition(props: MobilePositionProps) {
   return (
     <div
       className={classNames([
-        "pointer-events-auto px-4 pb-6 z-10 bottom-0 origin-top-left inset-x-0 absolute overflow-hidden max-h-[calc(100vh-1.5rem)] grid grid-rows-[minmax(0,1fr),auto]",
+        "pointer-events-auto px-4 pb-6 z-10 ml-[env(safe-area-inset-left)] mr-[env(safe-area-inset-right)] bottom-0 origin-top-left inset-x-0 absolute overflow-hidden max-h-[calc(100vh-1.5rem)] grid grid-rows-[minmax(0,1fr),auto]",
         props.className,
       ])}
     >

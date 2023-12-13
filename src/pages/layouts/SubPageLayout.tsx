@@ -26,7 +26,7 @@ export function BlurEllipsis(props: { positionClass?: string }) {
 export function SubPageLayout(props: { children: React.ReactNode }) {
   return (
     <div
-      className="from-[#0D0D1A] to-background-main"
+      className="bg-background-main"
       style={{
         backgroundImage:
           "linear-gradient(to bottom, var(--tw-gradient-from), var(--tw-gradient-to) 800px)",

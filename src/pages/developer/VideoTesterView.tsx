@@ -19,7 +19,7 @@ const testMeta: PlayerMeta = {
 
 const testStreams: Record<StreamType, string> = {
   hls: "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8",
-  mp4: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
+  mp4: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
 };
 
 const streamTypes: Record<StreamType, string> = {

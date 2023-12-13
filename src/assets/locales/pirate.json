@@ -16,7 +16,7 @@
       "passphrasePlaceholder": "Passphrase",
       "submit": "Hoist Anchor",
       "title": "Hoist the Jolly Roger",
-      "validationError": "Arr, invalid or incomplete passphrase"
+      "validationError": "Arr, incorrect or incomplete passphrase"
     },
     "register": {
       "information": {
