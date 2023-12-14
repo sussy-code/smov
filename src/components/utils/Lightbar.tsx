@@ -1,6 +1,12 @@
 import { useEffect, useRef } from "react";
 import "./Lightbar.css";
 
+interface LightbarOptions {
+  imgSrc?: string;
+  horizontalMotion?: boolean;
+  sizeRange?: [number, number];
+}
+
 class Particle {
   x = 0;
 
@@ -18,11 +24,23 @@ class Particle {
 
   image: null | HTMLImageElement = null;
 
-  constructor(canvas: HTMLCanvasElement, { doFish } = { doFish: false }) {
-    if (doFish) {
-      this.image = new Image();
-      if (this.image) this.image.src = "/fishie.png";
+  size = 10;
+
+  options: LightbarOptions;
+
+  constructor(
+    canvas: HTMLCanvasElement,
+    options: LightbarOptions = {
+      horizontalMotion: false,
+      sizeRange: [10, 10],
     }
+  ) {
+    if (options.imgSrc) {
+      this.image = new Image();
+      this.image.src = options.imgSrc;
+    }
+
+    this.options = options;
 
     this.reset(canvas);
     this.initialize(canvas);
@@ -39,7 +57,13 @@ class Particle {
     const second = 60;
     this.lifetime = second * 3 + Math.random() * (second * 30);
 
-    if (this.image) {
+    this.size = this.options.sizeRange
+      ? Math.random() *
+          (this.options.sizeRange[1] - this.options.sizeRange[0]) +
+        this.options.sizeRange[0]
+      : 10;
+
+    if (this.options.horizontalMotion) {
       this.direction = Math.random() <= 0.5 ? 0 : Math.PI;
       this.lifetime = 30 * second;
     }
@@ -81,7 +105,7 @@ class Particle {
 
     if (this.image) {
       ctx.translate(this.x, this.y);
-      const w = 10;
+      const w = this.size;
       const h = (this.image.naturalWidth / this.image.naturalHeight) * w;
       ctx.rotate(this.direction - Math.PI);
       ctx.drawImage(this.image, -w / 2, h, h, w);
@@ -113,12 +137,36 @@ function ParticlesCanvas() {
     canvas.width = canvas.scrollWidth;
     canvas.height = canvas.scrollHeight;
 
-    const shouldShowFishie = Math.floor(Math.random() * 600) === 1;
+    // Basic particle config
     const particleCount = 20;
+    let imageParticleCount = particleCount;
 
+    // Holiday overrides
+    let imageOverride;
+    let sizeRange;
+    const date = new Date();
+    const month = date.getMonth();
+    const day = date.getDate();
+    if (month === 11 && day >= 24 && day <= 26) {
+      imageOverride = "/lightbar-images/snowflake.svg";
+      sizeRange = [4, 15] as [number, number];
+    }
+
+    // Fish easter egg
+    const shouldShowFishie = Math.floor(Math.random() * 600) === 1;
+    if (shouldShowFishie) {
+      imageOverride = "/lightbar-images/fishie.png";
+      imageParticleCount = particleCount / 2;
+      sizeRange = [10, 11] as [number, number];
+    }
+
+    // HOIST THE SAIL (of particles)!
     for (let i = 0; i < particleCount; i += 1) {
+      const isImageParticle = imageOverride && i <= imageParticleCount;
       const particle = new Particle(canvas, {
-        doFish: shouldShowFishie && i <= particleCount / 2,
+        imgSrc: isImageParticle ? imageOverride : undefined,
+        horizontalMotion: imageOverride?.includes("fishie"),
+        sizeRange,
       });
       particles.push(particle);
     }
@@ -161,8 +209,8 @@ function ParticlesCanvas() {
 
 export function Lightbar(props: { className?: string }) {
   return (
-    <div className="absolute inset-0 w-full h-[calc(680px)] overflow-hidden pointer-events-none -mt-64">
-      <div className="max-w-screen w-full h-[calc(680px)] relative pt-64">
+    <div className="absolute inset-0 w-full h-[680px] overflow-hidden pointer-events-none -mt-64">
+      <div className="max-w-screen w-full h-[680px] relative pt-64">
         <div className={props.className}>
           <div className="lightbar">
             <ParticlesCanvas />
