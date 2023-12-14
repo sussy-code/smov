@@ -146,7 +146,7 @@ function ParticlesCanvas() {
     const date = new Date();
     const month = date.getMonth();
     const day = date.getDate();
-    if (month === 11 && day >= 12 && day <= 26) {
+    if (month === 11 && day >= 24 && day <= 26) {
       imageOverride = [
         {
           image: "/lightbar-images/snowflake.svg",
