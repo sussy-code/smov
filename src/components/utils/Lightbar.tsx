@@ -142,30 +142,44 @@ function ParticlesCanvas() {
     let imageParticleCount = particleCount;
 
     // Holiday overrides
-    let imageOverride;
-    let sizeRange;
+    let imageOverride: { image: string; sizeRange?: [number, number] }[] = [];
     const date = new Date();
     const month = date.getMonth();
     const day = date.getDate();
-    if (month === 11 && day >= 24 && day <= 26) {
-      imageOverride = "/lightbar-images/snowflake.svg";
-      sizeRange = [4, 15] as [number, number];
+    if (month === 11 && day >= 12 && day <= 26) {
+      imageOverride = [
+        {
+          image: "/lightbar-images/snowflake.svg",
+          sizeRange: [4, 15] as [number, number],
+        },
+        {
+          image: "/lightbar-images/santa.png",
+          sizeRange: [15, 30] as [number, number],
+        },
+      ];
     }
 
     // Fish easter egg
     const shouldShowFishie = Math.floor(Math.random() * 600) === 1;
     if (shouldShowFishie) {
-      imageOverride = "/lightbar-images/fishie.png";
+      imageOverride = [
+        {
+          image: "/lightbar-images/fishie.png",
+          sizeRange: [10, 11] as [number, number],
+        },
+      ];
       imageParticleCount = particleCount / 2;
-      sizeRange = [10, 11] as [number, number];
     }
 
     // HOIST THE SAIL (of particles)!
     for (let i = 0; i < particleCount; i += 1) {
       const isImageParticle = imageOverride && i <= imageParticleCount;
+      const randomImageIndex = Math.floor(Math.random() * imageOverride.length);
+      const sizeRange = imageOverride[randomImageIndex]?.sizeRange;
+      const src = imageOverride[randomImageIndex]?.image;
       const particle = new Particle(canvas, {
-        imgSrc: isImageParticle ? imageOverride : undefined,
-        horizontalMotion: imageOverride?.includes("fishie"),
+        imgSrc: isImageParticle ? src : undefined,
+        horizontalMotion: src?.includes("fishie"),
         sizeRange,
       });
       particles.push(particle);
