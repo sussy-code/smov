@@ -1,0 +1,76 @@
+{
+  "auth": {
+    "deviceNameLabel": "Toestel naam",
+    "deviceNamePlaceholder": "Huistelefoon",
+    "hasAccount": "Heb je al een account? <0>Log hier in.</0>"
+  },
+  "global": {
+    "name": "movie-web"
+  },
+  "home": {
+    "bookmarks": {
+      "sectionTitle": "Opgeslagen"
+    },
+    "continueWatching": {
+      "sectionTitle": "Kijk verder"
+    },
+    "search": {
+      "allResults": "Dat is het!",
+      "failed": "Het is niet gelukt de media te laden, probeer het nog eens!",
+      "loading": "Aan het zoeken...",
+      "noResults": "We konden helaas niets vinden!",
+      "placeholder": "Wat wil je graag kijken?",
+      "sectionTitle": "Zoekresultaten"
+    }
+  },
+  "media": {
+    "episodeDisplay": "S{{season}} A{{episode}}",
+    "types": {
+      "movie": "Films",
+      "show": "Series"
+    }
+  },
+  "navigation": {
+    "banner": {
+      "offline": "Controleer je internetverbinding"
+    }
+  },
+  "notFound": {
+    "badge": "Pagina niet gevonden",
+    "goHome": "Naar de home-pagina",
+    "message": "We hebben echt alles geprobeerd, zelfs tijdrijzen; echter hebben we deze pagina helaas niet kunnen vinden.",
+    "title": "Pagina niet gevonden"
+  },
+  "player": {
+    "back": {
+      "default": "Naar de home-pagina",
+      "short": "Terug"
+    },
+    "menus": {
+      "captions": {
+        "customChoice": "Ondertiteling uploaden",
+        "customizeLabel": "Instellingen",
+        "title": "Ondertiteling"
+      },
+      "episodes": {
+        "button": "Afleveringen",
+        "loadingList": "Aan het zoeken...",
+        "loadingTitle": "Aan het zoeken..."
+      },
+      "sources": {
+        "title": "Bronnen"
+      }
+    },
+    "metadata": {
+      "notFound": {
+        "badge": "Pagina niet gevonden",
+        "homeButton": "Naar de home-pagina",
+        "text": "We konden dit stukje media niet vinden. Het is mogelijk verwijderd, of jij hebt zelf de URL aangepast.",
+        "title": "We konden deze media niet vinden."
+      }
+    },
+    "playbackError": {
+      "title": "Oeps, hier ging iets mis!"
+    }
+  }
+}

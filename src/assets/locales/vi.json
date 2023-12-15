@@ -1,0 +1,71 @@
+{
+    "global": {
+        "name": "movie-web"
+    },
+    "home": {
+        "search": {
+            "allResults": "Đó là tất cả chúng tôi có!",
+            "sectionTitle": "Kết quả tìm kiếm",
+            "noResults": "Chúng tôi không thể tìm thấy gì!",
+            "failed": "Không thể tìm thấy nội dung, hãy thử lại!",
+            "loading": "Đang tải...",
+            "placeholder": "Bạn muốn xem gì?"
+        },
+        "bookmarks": {
+            "sectionTitle": "Đánh dấu"
+        },
+        "continueWatching": {
+            "sectionTitle": "Tiếp tục xem"
+        }
+    },
+    "media": {
+        "types": {
+            "movie": "Phim",
+            "show": "Chương trình truyền hình"
+        },
+        "episodeDisplay": "M{{season}} T{{episode}}"
+    },
+    "player": {
+        "playbackError": {
+            "title": "Rất tiếc, đã hỏng!"
+        },
+        "metadata": {
+            "notFound": {
+                "badge": "Không tìm thấy",
+                "homeButton": "Quay lại trang chính",
+                "title": "Không thể tìm thấy nội dung.",
+                "text": "Chúng tôi không thể tìm thấy nội dung mà bạn yêu cầu. Hoặc là nó đã bị xóa, hoặc bạn đã xáo trộn URL."
+            }
+        },
+        "menus": {
+            "captions": {
+                "customChoice": "Tải phụ đề lên",
+                "customizeLabel": "Tùy chỉnh",
+                "title": "Phụ đề"
+            },
+            "sources": {
+                "title": "Nguồn"
+            },
+            "episodes": {
+                "button": "Tập",
+                "loadingTitle": "Đang tải...",
+                "loadingList": "Đang tải..."
+            }
+        },
+        "back": {
+            "default": "Quay lại trang chính",
+            "short": "Quay lại"
+        }
+    },
+    "notFound": {
+        "badge": "Không tìm thấy",
+        "goHome": "Quay lại trang chính",
+        "title": "Không thể tìm thấy trang",
+        "message": "Chúng tôi đã tìm kiếm khắp nơi: dưới thùng rác, trong tủ quần áo, đằng sau máy chủ proxy nhưng vẫn không thể tìm thấy trang bạn đang tìm kiếm."
+    },
+    "navigation": {
+        "banner": {
+            "offline": "Hãy kiểm tra kết nối Internet của bạn"
+        }
+    }
+}

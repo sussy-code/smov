@@ -1,0 +1,71 @@
+{
+    "global": {
+        "name": "movie-web"
+    },
+    "home": {
+        "search": {
+            "allResults": "以上是我们能找到的所有结果！",
+            "sectionTitle": "搜索结果",
+            "noResults": "我们找不到任何结果！",
+            "failed": "查找媒体失败，请重试！",
+            "loading": "载入中……",
+            "placeholder": "您想看些什么？"
+        },
+        "bookmarks": {
+            "sectionTitle": "书签"
+        },
+        "continueWatching": {
+            "sectionTitle": "继续观看"
+        }
+    },
+    "media": {
+        "types": {
+            "movie": "电影",
+            "show": "连续剧"
+        },
+        "episodeDisplay": "第{{season}}季 第{{episode}}集"
+    },
+    "player": {
+        "playbackError": {
+            "title": "哎呀，出问题了！"
+        },
+        "metadata": {
+            "notFound": {
+                "badge": "未找到",
+                "homeButton": "返回首页",
+                "title": "无法找到媒体.",
+                "text": "我们无法找到您请求的媒体。它可能已被删除，或您篡改了 URL."
+            }
+        },
+        "menus": {
+            "captions": {
+                "customChoice": "上传字幕",
+                "customizeLabel": "自定义",
+                "title": "字幕"
+            },
+            "sources": {
+                "title": "视频源"
+            },
+            "episodes": {
+                "button": "分集",
+                "loadingTitle": "载入中……",
+                "loadingList": "载入中……"
+            }
+        },
+        "back": {
+            "default": "返回首页",
+            "short": "返回"
+        }
+    },
+    "notFound": {
+        "badge": "未找到",
+        "goHome": "返回首页",
+        "title": "无法找到页面",
+        "message": "我们已经到处找过了：不管是垃圾桶下、橱柜里或是代理之后。但最终并没有发现您查找的页面。"
+    },
+    "navigation": {
+        "banner": {
+            "offline": "检查您的互联网连接"
+        }
+    }
+}

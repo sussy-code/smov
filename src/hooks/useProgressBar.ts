@@ -1,10 +1,8 @@
 import React, { RefObject, useCallback, useEffect, useState } from "react";
 
-type ActivityEvent =
-  | React.MouseEvent<HTMLElement>
-  | React.TouchEvent<HTMLElement>
-  | MouseEvent
-  | TouchEvent;
+export type MouseActivity = React.MouseEvent<HTMLElement> | MouseEvent;
+
+type ActivityEvent = MouseActivity | React.TouchEvent<HTMLElement> | TouchEvent;
 
 export function makePercentageString(num: number) {
   return `${num.toFixed(2)}%`;

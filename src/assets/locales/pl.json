@@ -1,0 +1,74 @@
+{
+    "global": {
+        "name": "movie-web"
+    },
+    "home": {
+        "search": {
+            "allResults": "To wszystko co mamy!",
+            "sectionTitle": "Wyniki wyszukiwania",
+            "noResults": "Nie mogliśmy niczego znaleźć!",
+            "failed": "Nie udało się znaleźć mediów, Spróbuj ponownie!",
+            "loading": "Wczytywanie...",
+            "placeholder": "Co chciałbyś obejrzeć?"
+        },
+        "bookmarks": {
+            "sectionTitle": "Zakładki"
+        },
+        "continueWatching": {
+            "sectionTitle": "Kontynuuj oglądanie"
+        }
+    },
+    "media": {
+        "types": {
+            "movie": "Filmy",
+            "show": "Seriale"
+        },
+        "episodeDisplay": "S{{season}} E{{episode}}"
+    },
+    "player": {
+        "playbackError": {
+            "title": "Ups, popsuło się!"
+        },
+        "metadata": {
+            "notFound": {
+                "badge": "Nie znaleziono",
+                "homeButton": "Wróć na stronę główną",
+                "title": "Nie można znaleźć multimediów.",
+                "text": "Nie mogliśmy znaleźć rządanych multimediów. Albo zostały usunięte, albo grzebałeś przy adresie URL."
+            }
+        },
+        "menus": {
+            "captions": {
+                "customChoice": "Załącz",
+                "customizeLabel": "Personalizuj",
+                "title": "Napisy"
+            },
+            "sources": {
+                "title": "Źródła"
+            },
+            "episodes": {
+                "button": "Odcinki",
+                "loadingTitle": "Wczytywanie...",
+                "loadingList": "Wczytywanie..."
+            }
+        },
+        "back": {
+            "default": "Wróć na stronę główną",
+            "short": "Wróć"
+        }
+    },
+    "notFound": {
+        "badge": "Nie znaleziono",
+        "goHome": "Wróć na stronę główną",
+        "title": "Nie można znaleźć tej strony",
+        "message": "Szukaliśmy wszędzie: w koszu, w szafie a nawet w piwnicy, ale nie byliśmy w stanie znaleźć strony której szukasz."
+    },
+    "navigation": {
+        "banner": {
+            "offline": "Sprawdź swoje połączenie sieciowe"
+        }
+    },
+    "overlays": {
+        "close": "Zamknąć"
+    }
+}

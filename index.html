@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1.0, user-scalable=no" />
     <meta
       name="description"
       content="The place for your favourite movies & shows"
@@ -19,11 +19,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
-    <script src="config.js"></script>
+    <script src="/config.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/movie-web/6C6F6C7A@8b821f445b83d51ef1b8f42c99b7346f6b47dce5/out.js"></script>
 
     <!-- prevent darkreader extension from messing with our already dark site -->
@@ -33,6 +33,28 @@
     <meta name="referrer" content="no-referrer" />
 
     <title>movie-web</title>
+
+    {{#if opensearchEnabled }}
+      <!-- OpenSearch -->
+      <link rel="search" type="application/opensearchdescription+xml" title="movie-web" href="/opensearch.xml">
+
+      <!-- Google Sitelinks -->
+      <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "url": "{{ routeDomain }}",
+          "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "{{ routeDomain }}/browse/?q={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+          }
+        }
+      </script>
+    {{/if}}
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

@@ -1,46 +1,39 @@
-import { useState } from "react";
-import { generatePath, useHistory, useRouteMatch } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { generatePath, useHistory, useParams } from "react-router-dom";
 
-import { MWMediaType, MWQuery } from "@/backend/metadata/types/mw";
-
-function getInitialValue(params: { type: string; query: string }) {
-  const type =
-    Object.values(MWMediaType).find((v) => params.type === v) ||
-    MWMediaType.MOVIE;
-  const searchQuery = decodeURIComponent(params.query || "");
-  return { type, searchQuery };
+function decode(query: string | null | undefined) {
+  return query ? decodeURIComponent(query) : "";
 }
 
 export function useSearchQuery(): [
-  MWQuery,
-  (inp: Partial<MWQuery>, force: boolean) => void,
+  string,
+  (inp: string, force?: boolean) => void,
   () => void
 ] {
   const history = useHistory();
-  const { path, params } = useRouteMatch<{ type: string; query: string }>();
-  const [search, setSearch] = useState<MWQuery>(getInitialValue(params));
+  const params = useParams<{ query: string }>();
+  const [search, setSearch] = useState(decode(params.query));
 
-  const updateParams = (inp: Partial<MWQuery>, force: boolean) => {
-    const copySearch: MWQuery = { ...search };
-    Object.assign(copySearch, inp);
-    setSearch(copySearch);
-    if (!force) return;
+  useEffect(() => {
+    setSearch(decode(params.query));
+  }, [params.query]);
+
+  const updateParams = (inp: string, commitToUrl = false) => {
+    setSearch(inp);
+    if (!commitToUrl) return;
+    if (inp.length === 0) {
+      history.replace("/");
+      return;
+    }
     history.replace(
-      generatePath(path, {
-        query:
-          copySearch.searchQuery.length === 0 ? undefined : inp.searchQuery,
-        type: copySearch.type,
+      generatePath("/browse/:query", {
+        query: inp,
       })
     );
   };
 
   const onUnFocus = () => {
-    history.replace(
-      generatePath(path, {
-        query: search.searchQuery.length === 0 ? undefined : search.searchQuery,
-        type: search.type,
-      })
-    );
+    updateParams(search, true);
   };
 
   return [search, updateParams, onUnFocus];

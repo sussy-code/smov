@@ -1,0 +1,417 @@
+{
+  "auth": {
+    "deviceNameLabel": "Device name",
+    "deviceNamePlaceholder": "Personal phone",
+    "hasAccount": "Already have an account? <0>Login here.</0>",
+    "createAccount": "Don't have an account yet? <0>Create an account.</0>",
+    "register": {
+      "information": {
+        "title": "Account information",
+        "color1": "Profile color one",
+        "color2": "Profile color two",
+        "icon": "User icon",
+        "header": "Enter a name for your device and pick colours and a user icon of your choosing",
+        "next": "Next"
+      }
+    },
+    "login": {
+      "title": "Login to your account",
+      "description": "Please enter your passphrase to login to your account",
+      "validationError": "Incorrect or incomplete passphrase",
+      "deviceLengthError": "Please enter a device name",
+      "submit": "Login",
+      "passphraseLabel": "12-Word passphrase",
+      "passphrasePlaceholder": "Passphrase"
+    },
+    "generate": {
+      "title": "Your passphrase",
+      "next": "I have saved my passphrase",
+      "description": "Your passphrase acts as your username and password. Make sure to keep it safe as you will need to enter it to login to your account"
+    },
+    "trust": {
+      "title": "Do you trust this server?",
+      "host": "You are connecting to <0>{{hostname}}</0> - please confirm you trust it before making an account",
+      "failed": {
+        "title": "Failed to reach server",
+        "text": "Did you configure it correctly?"
+      },
+      "yes": "I trust this server",
+      "no": "Go back"
+    },
+    "verify": {
+      "title": "Confirm your passphrase",
+      "description": "Please enter your passphrase from earlier to confirm you have saved it and to create your account",
+      "invalidData": "Data is not valid",
+      "noMatch": "Passphrase doesn't match",
+      "recaptchaFailed": "ReCaptcha validation failed",
+      "passphraseLabel": "Your 12-word passphrase",
+      "register": "Create account"
+    }
+  },
+  "errors": {
+    "details": "Error details",
+    "reloadPage": "Reload the page",
+    "showError": "Show error details",
+    "badge": "It broke",
+    "title": "We encountered an error!"
+  },
+  "notFound": {
+    "badge": "Not found",
+    "title": "Couldn't find that page",
+    "message": "We looked everywhere: under the bins, in the closet, behind the proxy but ultimately couldn't find the page you are looking for.",
+    "goHome": "Back to home"
+  },
+  "global": {
+    "name": "movie-web",
+    "pages": {
+      "pagetitle": "{{title}} - movie-web",
+      "dmca": "DMCA",
+      "settings": "Settings",
+      "about": "About",
+      "login": "Login",
+      "register": "Register"
+    }
+  },
+  "media": {
+    "types": {
+      "movie": "Movie",
+      "show": "Show"
+    },
+    "episodeDisplay": "S{{season}} E{{episode}}"
+  },
+  "player": {
+    "scraping": {
+      "notFound": {
+        "badge": "Not found",
+        "title": "We couldn't find that",
+        "text": "We have searched through our providers and cannot find the media you are looking for! We do not host the media and have no control over what is available. Please click 'Show details' below for more details.",
+        "homeButton": "Go home",
+        "detailsButton": "Show details"
+      },
+      "items": {
+        "pending": "Checking for videos...",
+        "notFound": "Doesn't have the video",
+        "failure": "Error occurred"
+      }
+    },
+    "casting": {
+      "enabled": "Casting to device..."
+    },
+    "playbackError": {
+      "badge": "Playback error",
+      "title": "Failed to play video!",
+      "text": "There was an error trying to play the media. Please try again.",
+      "homeButton": "Go home",
+      "errors": {
+        "errorAborted": "The fetching of the media was aborted by the user's request.",
+        "errorNetwork": "Some kind of network error occurred which prevented the media from being successfully fetched, despite having previously been available.",
+        "errorDecode": "Despite having previously been determined to be usable, an error occurred while trying to decode the media resource, resulting in an error.",
+        "errorNotSupported": "The media or media provider object is not supported.",
+        "errorGenericMedia": "Unknown media error occurred."
+      }
+    },
+    "metadata": {
+      "notFound": {
+        "badge": "Not found",
+        "title": "Couldn't find that media.",
+        "text": "We couldn't find the media you requested. Either it's been removed or you tampered with the URL.",
+        "homeButton": "Back to home"
+      },
+      "failed": {
+        "badge": "Failed",
+        "title": "Failed to load metadata",
+        "text": "Could not load the media's metadata from TMDB. Please check whether TMDB is down or blocked on your internet connection.",
+        "homeButton": "Go home"
+      }
+    },
+    "back": {
+      "default": "Back to home",
+      "short": "Back"
+    },
+    "time": {
+      "regular": "{{timeWatched}} / {{duration}}",
+      "shortRegular": "{{timeWatched}}",
+      "remaining": "{{timeLeft}} left • Finish at {{timeFinished, datetime}}",
+      "shortRemaining": "-{{timeLeft}}"
+    },
+    "nextEpisode": {
+      "next": "Next episode",
+      "cancel": "Cancel"
+    },
+    "menus": {
+      "settings": {
+        "videoSection": "Video settings",
+        "experienceSection": "Viewing experience",
+        "enableCaptions": "Enable captions",
+        "captionItem": "Caption settings",
+        "sourceItem": "Video sources",
+        "playbackItem": "Playback settings",
+        "downloadItem": "Download",
+        "qualityItem": "Quality"
+      },
+      "episodes": {
+        "button": "Episodes",
+        "loadingTitle": "Loading...",
+        "loadingList": "Loading...",
+        "loadingError": "Error loading season",
+        "emptyState": "There are no episodes in this season, check back later!",
+        "episodeBadge": "E{{episode}}"
+      },
+      "sources": {
+        "title": "Sources",
+        "unknownOption": "Unknown",
+        "noStream": {
+          "title": "No stream",
+          "text": "This source has no streams for this movie or show."
+        },
+        "noEmbeds": {
+          "title": "No embeds found",
+          "text": "We were unable to find any embeds, please try a different source."
+        },
+        "failed": {
+          "title": "Failed to scrape",
+          "text": "There was an error while trying to find any videos, please try a different source."
+        }
+      },
+      "captions": {
+        "title": "Captions",
+        "customizeLabel": "Customize",
+        "settings": {
+          "fixCapitals": "Fix capitalization",
+          "delay": "Caption delay"
+        },
+        "customChoice": "Select caption from file",
+        "offChoice": "Off",
+        "unknownLanguage": "Unknown"
+      },
+      "downloads": {
+        "title": "Download",
+        "disclaimer": "Downloads are taken directly from the provider. movie-web does not have control over how the downloads are provided.",
+        "hlsExplanation": "This media is a HLS stream which cannot be downloaded on movie-web.",
+        "downloadVideo": "Download video",
+        "downloadCaption": "Download current caption",
+        "onPc": {
+          "1": "On PC, click the download button then, on the new page, right click the video and select <bold>Save video as</bold>",
+          "title": "Downloading on PC",
+          "shortTitle": "Download / PC"
+        },
+        "onAndroid": {
+          "1": "To download on Android, click the download button then, on the new page, <bold>tap and hold</bold> on the video, then select <bold>save</bold>.",
+          "title": "Downloading on Android",
+          "shortTitle": "Download / Android"
+        },
+        "onIos": {
+          "1": "To download on iOS, click the download button then, on the new page, click <bold><ios_share /></bold>, then <bold>Save to Files <ios_files /></bold>.",
+          "title": "Downloading on iOS",
+          "shortTitle": "Download / iOS"
+        }
+      },
+      "playback": {
+        "title": "Playback settings",
+        "speedLabel": "Playback speed"
+      },
+      "quality": {
+        "title": "Quality",
+        "automaticLabel": "Automatic quality",
+        "hint": "You can try <0>switching source</0> to get different quality options.",
+        "iosNoQuality": "Due to Apple-defined limitations, quality selection is not available on iOS for this source. You can try <0>switching to another source</0> to get different quality options."
+      }
+    }
+  },
+  "home": {
+    "mediaList": {
+      "stopEditing": "Stop editing"
+    },
+    "titles": {
+      "morning": {
+        "default": "What would you like to watch this morning?",
+        "extra": ["I hear Before Sunrise is good"]
+      },
+      "day": {
+        "default": "What would you like to watch this afternoon?",
+        "extra": []
+      },
+      "night": {
+        "default": "What would you like to watch tonight?",
+        "extra": ["Tired? I hear The Exorcist is good."]
+      }
+    },
+    "search": {
+      "loading": "Loading...",
+      "sectionTitle": "Search results",
+      "allResults": "That's all we have!",
+      "noResults": "We couldn't find anything!",
+      "failed": "Failed to find media, try again!",
+      "placeholder": "What do you want to watch?"
+    },
+    "continueWatching": {
+      "sectionTitle": "Continue Watching"
+    },
+    "bookmarks": {
+      "sectionTitle": "Bookmarks"
+    }
+  },
+  "overlays": {
+    "close": "Close"
+  },
+  "screens": {
+    "loadingUser": "Loading your profile",
+    "loadingApp": "Loading application",
+    "loadingUserError": {
+      "text": "Failed to load your profile",
+      "textWithReset": "Failed to load your profile from your custom server, want to reset back to the default server?",
+      "reset": "Reset custom server",
+      "logout": "Logout"
+    },
+    "migration": {
+      "failed": "Failed to migrate your data.",
+      "inProgress": "Please hold, we are migrating your data. This shouldn't take long."
+    },
+    "dmca": {
+      "title": "DMCA",
+      "text": "Welcome to movie-web's DMCA contact page! We respect intellectual property rights and want to address any copyright concerns swiftly. If you believe your copyrighted work has been improperly used on our platform, please send a detailed DMCA notice to the email below. Please include a description of the copyrighted material, your contact details, and a statement of good faith belief. We're committed to resolving these matters promptly and appreciate your cooperation in keeping movie-web a place that respects creativity and copyrights."
+    }
+  },
+  "navigation": {
+    "banner": {
+      "offline": "Check your internet connection"
+    },
+    "menu": {
+      "register": "Sync to cloud",
+      "settings": "Settings",
+      "about": "About us",
+      "donation": "Donate",
+      "support": "Support",
+      "logout": "Log out"
+    }
+  },
+  "actions": {
+    "copy": "Copy",
+    "copied": "Copied"
+  },
+  "settings": {
+    "unsaved": "You have unsaved changes",
+    "reset": "Reset",
+    "save": "Save",
+    "sidebar": {
+      "info": {
+        "title": "App information",
+        "hostname": "Hostname",
+        "backendUrl": "Backend URL",
+        "userId": "User ID",
+        "notLoggedIn": "You are not logged in",
+        "appVersion": "App version",
+        "backendVersion": "Backend version",
+        "unknownVersion": "Unknown",
+        "secure": "Secure",
+        "insecure": "Insecure"
+      }
+    },
+    "appearance": {
+      "title": "Appearance",
+      "activeTheme": "Active",
+      "themes": {
+        "default": "Default",
+        "blue": "Blue",
+        "teal": "Teal",
+        "red": "Red",
+        "gray": "Gray"
+      }
+    },
+    "account": {
+      "title": "Account",
+      "register": {
+        "title": "Sync to the cloud",
+        "text": "Share your watch progress between devices and keep them synced.",
+        "cta": "Get started"
+      },
+      "profile": {
+        "title": "Edit profile picture",
+        "firstColor": "Profile color one",
+        "secondColor": "Profile color two",
+        "userIcon": "User icon",
+        "finish": "Finish editing"
+      },
+      "devices": {
+        "title": "Devices",
+        "failed": "Failed to load sessions",
+        "deviceNameLabel": "Device name",
+        "removeDevice": "Remove"
+      },
+      "accountDetails": {
+        "editProfile": "Edit",
+        "deviceNameLabel": "Device name",
+        "deviceNamePlaceholder": "Personal phone",
+        "logoutButton": "Log out"
+      },
+      "actions": {
+        "title": "Actions",
+        "delete": {
+          "title": "Delete account",
+          "text": "This action is irreversible. All data will be deleted and nothing can be recovered.",
+          "button": "Delete account",
+          "confirmTitle": "Are you sure?",
+          "confirmDescription": "Are you sure you want to delete your account? All your data will be lost!",
+          "confirmButton": "Delete account"
+        }
+      }
+    },
+    "locale": {
+      "title": "Locale",
+      "language": "Application language",
+      "languageDescription": "Language applied to the entire application."
+    },
+    "captions": {
+      "title": "Captions",
+      "previewQuote": "I must not fear. Fear is the mind-killer.",
+      "backgroundLabel": "Background opacity",
+      "textSizeLabel": "Text size",
+      "colorLabel": "Color"
+    },
+    "connections": {
+      "title": "Connections",
+      "workers": {
+        "label": "Use custom proxy workers",
+        "description": "To make the application function, all traffic is routed through proxies. Enable this if you want to bring your own workers.",
+        "urlLabel": "Worker URLs",
+        "emptyState": "No workers yet, add one below",
+        "urlPlaceholder": "https://",
+        "addButton": "Add new worker"
+      },
+      "server": {
+        "label": "Custom server",
+        "description": "If you would like to connect to a custom backend to store your data, enable this and provide the URL.",
+        "urlLabel": "Custom server URL"
+      }
+    }
+  },
+  "about": {
+    "title": "About movie-web",
+    "description": "movie-web is a web application that searches the internet for streams. The team aims for a mostly minimalistic approach to consuming content.",
+    "faqTitle": "Common questions",
+    "q1": {
+      "title": "Where does the content come from?",
+      "body": "movie-web does not host any content. When you click on something to watch, the internet is searched for the selected media (On the loading screen and in the 'video sources' tab you can see which source you're using). Media never gets uploaded by movie-web, everything is through this searching mechanism."
+    },
+    "q2": {
+      "title": "Where can I request a show or movie?",
+      "body": "It's not possible to request a show or movie, movie-web does not manage any content. All content is viewed through sources on the internet."
+    },
+    "q3": {
+      "title": "The search results display the show or movie, why can't I play it?",
+      "body": "Our search results are powered by The Movie Database (TMDB) and display regardless of whether our sources actually have the content."
+    }
+  },
+  "footer": {
+    "tagline": "Watch your favourite shows and movies with this open source streaming app.",
+    "links": {
+      "github": "GitHub",
+      "dmca": "DMCA",
+      "discord": "Discord"
+    },
+    "legal": {
+      "disclaimer": "Disclaimer",
+      "disclaimerText": "movie-web does not host any files, it merely links to 3rd party services. Legal issues should be taken up with the file hosts and providers. movie-web is not responsible for any media files shown by the video providers."
+    }
+  }
+}

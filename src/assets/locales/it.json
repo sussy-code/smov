@@ -1,0 +1,71 @@
+{
+    "global": {
+        "name": "movie-web"
+    },
+    "home": {
+        "search": {
+            "allResults": "Ecco tutto ciò che abbiamo!",
+            "sectionTitle": "Risultati della ricerca",
+            "noResults": "Non abbiamo trovato nulla!",
+            "failed": "Impossibile trovare i media, riprova!",
+            "loading": "Caricamento...",
+            "placeholder": "Cosa vuoi guardare?"
+        },
+        "bookmarks": {
+            "sectionTitle": "Segnalibri"
+        },
+        "continueWatching": {
+            "sectionTitle": "Continua a guardare"
+        }
+    },
+    "media": {
+        "types": {
+            "movie": "Film",
+            "show": "Serie"
+        },
+        "episodeDisplay": "S{{season}} E{{episode}}"
+    },
+    "player": {
+        "playbackError": {
+            "title": "Ops, qualcosa si è rotto!"
+        },
+        "metadata": {
+            "notFound": {
+                "badge": "Non trovato",
+                "homeButton": "Torna alla home",
+                "title": "Impossibile trovare quel media.",
+                "text": "Non siamo riusciti a trovare il media richiesto. È stato rimosso o hai manomesso l'URL."
+            }
+        },
+        "menus": {
+            "captions": {
+                "customChoice": "Carica sottotitolo",
+                "customizeLabel": "Personalizza",
+                "title": "Sottotitoli"
+            },
+            "sources": {
+                "title": "Fonti"
+            },
+            "episodes": {
+                "button": "Episodi",
+                "loadingTitle": "Caricamento...",
+                "loadingList": "Caricamento..."
+            }
+        },
+        "back": {
+            "default": "Torna alla home",
+            "short": "Indietro"
+        }
+    },
+    "notFound": {
+        "badge": "Non trovato",
+        "goHome": "Torna alla home",
+        "title": "Impossibile trovare quella pagina",
+        "message": "Abbiamo cercato ovunque: sotto i bidoni, nell'armadio, dietro il proxy, ma alla fine non siamo riusciti a trovare la pagina che stai cercando."
+    },
+    "navigation": {
+        "banner": {
+            "offline": "Controlla la tua connessione internet"
+        }
+    }
+}

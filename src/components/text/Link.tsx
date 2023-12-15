@@ -1,46 +1,22 @@
 import { ReactNode } from "react";
 import { Link as LinkRouter } from "react-router-dom";
 
-interface ILinkPropsBase {
+export function MwLink(props: {
   children?: ReactNode;
-  className?: string;
+  to?: string;
+  url?: string;
   onClick?: () => void;
-}
-
-interface ILinkPropsExternal extends ILinkPropsBase {
-  url: string;
-  newTab?: boolean;
-}
-
-interface ILinkPropsInternal extends ILinkPropsBase {
-  to: string;
-}
-
-type LinkProps = ILinkPropsExternal | ILinkPropsInternal | ILinkPropsBase;
-
-export function Link(props: LinkProps) {
-  const isExternal = !!(props as ILinkPropsExternal).url;
-  const isInternal = !!(props as ILinkPropsInternal).to;
+}) {
+  const isExternal = !!props.url;
+  const isInternal = !!props.to;
   const content = (
-    <span className="cursor-pointer font-bold text-bink-600 hover:text-bink-700">
+    <span className="group mt-1 cursor-pointer font-bold text-type-link hover:text-type-linkHover active:scale-95">
       {props.children}
     </span>
   );
 
-  if (isExternal)
-    return (
-      <a
-        target={(props as ILinkPropsExternal).newTab ? "_blank" : undefined}
-        rel="noreferrer"
-        href={(props as ILinkPropsExternal).url}
-      >
-        {content}
-      </a>
-    );
-  if (isInternal)
-    return (
-      <LinkRouter to={(props as ILinkPropsInternal).to}>{content}</LinkRouter>
-    );
+  if (isExternal) return <a href={props.url}>{content}</a>;
+  if (isInternal) return <LinkRouter to={props.to ?? ""}>{content}</LinkRouter>;
   return (
     <span onClick={() => props.onClick && props.onClick()}>{content}</span>
   );
