@@ -51,7 +51,7 @@ export function SidebarPart() {
     {
       textKey: "settings.appearance.title",
       id: "settings-appearance",
-      icon: Icons.GITHUB,
+      icon: Icons.BRUSH,
     },
     {
       textKey: "settings.captions.title",
