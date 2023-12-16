@@ -38,10 +38,10 @@ export function PassphraseDisplay(props: { mnemonic: string }) {
           <span className="text-sm">{t("actions.copy")}</span>
         </button>
       </div>
-      <div className="px-4 py-4 grid grid-cols-4 gap-2">
+      <div className="px-4 py-4 grid grid-cols-3 text-sm sm:text-base sm:grid-cols-4 gap-2">
         {individualWords.map((word, i) => (
           <div
-            className="px-4 rounded-md py-2 bg-authentication-wordBackground text-white font-medium text-center"
+            className="rounded-md py-2 bg-authentication-wordBackground text-white font-medium text-center"
             // this doesn't get rerendered nor does it have state so its fine
             // eslint-disable-next-line react/no-array-index-key
             key={i}
