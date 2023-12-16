@@ -1,13 +1,17 @@
 {
   "about": {
+    "description": "movie-web ist eine Web-App, welche das Internet nach Streams durchsucht. Das Team versucht einen minimalistischen Ansatz umzusetzen.",
     "faqTitle": "Häufig gestellte Fragen",
     "q1": {
+      "body": "movie-web hostet keinen eigenen Inhalt. Wenn du auf etwas zum Anschauen klickst, wird das Internet danach durchsucht (Auf dem Ladebildschirm und im Tab \"Videoquellen\" kannst du einstellen, welche Quellen verwendet werden sollen). movie-web lädt keine Videos hoch, alles Videos stammen aus der Suche.",
       "title": "Woher kommen die Videos?"
     },
     "q2": {
+      "body": "Das Anfragen von Serien oder Filmen ist nicht möglich. movie-web verwaltet keine Inhalte. Alle Videos stammen vom Quellen aus dem Internet.",
       "title": "Wo kann ich eine Serie oder einen Film anfragen?"
     },
     "q3": {
+      "body": "Unsere Suchergebnisse werden von The Movie Database (TMDB) bereitgestellt und angezeigt, egal ob unsere Videoquellen über dieses Video verfügen.",
       "title": "Die Suche zeigt eine Serie oder einen Film an, warum kann ich den dann nicht abspielen?"
     },
     "title": "Über movie-web"
@@ -74,13 +78,15 @@
   },
   "footer": {
     "legal": {
-      "disclaimer": "Hinweis"
+      "disclaimer": "Hinweis",
+      "disclaimerText": "movie-web hostet keine Dateien, sondern verlinkt lediglich auf Dienste Dritter. Rechtliche Fragen sollten mit den Dateihostern und -anbietern geklärt werden. movie-web übernimmt keine Verantwortung für die von den Videoanbietern angezeigten Mediendateien."
     },
     "links": {
       "discord": "Discord",
       "dmca": "DMCA",
       "github": "GitHub"
-    }
+    },
+    "tagline": "Schau deine Lieblingsserien und Filme mit dieser quelloffenen Streaming App."
   },
   "global": {
     "name": "movie-web",
@@ -172,23 +178,30 @@
         "customizeLabel": "Bearbeiten",
         "offChoice": "Aus",
         "settings": {
-          "delay": "Untertitelverzögerung"
+          "delay": "Untertitelverzögerung",
+          "fixCapitals": "Großschreibung korrigieren"
         },
         "title": "Untertitel",
         "unknownLanguage": "Unbekannt"
       },
       "downloads": {
+        "disclaimer": "Videos werden direkt vom Provider heruntergeladen. movie-web hat nicht steuern, wie die Downloads bereitgestellt werden.",
         "downloadCaption": "Ausgewählte Untertitel herunterladen",
         "downloadVideo": "Video herunterladen",
         "hlsExplanation": "Dieses Video ist ein HLS-Stream, welcher auf movie-web nicht heruntergeladen werden kann.",
         "onAndroid": {
           "1": "Um auf Android Herunterzuladen, tippe auf den Download-Button, <bold>tippe und halte</bold> auf der neuen Seite auf das Video und wähle <bold>Speichern</bold> aus.",
+          "shortTitle": "Download / Android",
           "title": "Auf Android herunterladen"
         },
         "onIos": {
+          "1": "Um Auf iOS herunterzuladen, klick auf den Download-Button. Klicke dann auf der neuen Seite auf<bold> <ios_share /></bold>, dann auf <bold>In Dateien sichern <ios_files /></bold>.",
+          "shortTitle": "Download / iOS",
           "title": "Auf iOS herunterladen"
         },
         "onPc": {
+          "1": "Um am PC herunterzuladen, klicke auf den Download-Button. Klicke dann mit der rechten Maustaste auf das Video und klicke auf <bold>Video speichern als</bold>",
+          "shortTitle": "Download / PC",
           "title": "Am PC herunterladen"
         },
         "title": "Download"
@@ -207,6 +220,8 @@
       },
       "quality": {
         "automaticLabel": "Automatische Qualitätseinstellung",
+        "hint": "Du kannst versuchen die <0>Quelle zu ändern</0> um andere Qualitätsoptionen zu erhalten.",
+        "iosNoQuality": "Durch eine Einschränkung von Apple ist die Qualitätsauswahl für iOS für diese Quelle nicht verfügbar. Du kannst versuchen <0>einen andere Quelle auszuwählen</0> um andere Qualitätsoptionen zu erhalten.",
         "title": "Qualität"
       },
       "settings": {
@@ -293,8 +308,17 @@
       "text": "Willkommen zu movie-webs DMCA-Kontaktseite! Wir respektieren geistiges Eigentum und wollen uns schnell um urheberrechtlichen Anliegen kümmern. Falls du glaubst, dass dein urheberrechtlich geschütztes Werk unsachgemäß auf unserer Plattform verwendet wurde, sende uns bitte eine genaue DMCA-Anfrage an die unten stehende E-Mail. Diese sollte eine Beschreibung des urheberrechtlich geschützten Material, deine Kontaktinformationen sowie einer Erklärung des guten Glaubens beinhalten. Wir sind engagiert diese Anliegen schnell zu lösen und schätzen deine Hilfe dabei movie-web zu einer Plattform, welche Kreativität und Urheberrechte respektiert.",
       "title": "DMCA"
     },
+    "loadingApp": "Die App wird geladen",
+    "loadingUser": "Dein Profil wird geladen",
     "loadingUserError": {
-      "logout": "Abmelden"
+      "logout": "Abmelden",
+      "reset": "Eigenen Server zurücksetzen",
+      "text": "Beim Laden deines Profils ist ein Fehler aufgetreten",
+      "textWithReset": "Beim Laden deines Profils von deinem Server ist ein Fehler aufgetreten, zurück zum Standard-Server wechseln?"
+    },
+    "migration": {
+      "failed": "Beim Migrieren deiner Daten ist ein Fehler aufgetreten.",
+      "inProgress": "Bitte warte, wir migrieren deine Daten. Das sollte nicht lange dauern."
     }
   },
   "settings": {
@@ -313,7 +337,8 @@
           "confirmTitle": "Bist du sicher?",
           "text": "Diese Aktion kann nicht rückgängig gemacht werden. Alle Daten werden gelöscht und können nicht wiederhergestellt werden.",
           "title": "Konto löschen"
-        }
+        },
+        "title": "Aktionen"
       },
       "devices": {
         "deviceNameLabel": "Gerätename",
@@ -329,6 +354,8 @@
         "userIcon": "Nutzersymbol"
       },
       "register": {
+        "cta": "Los geht's",
+        "text": "Teilen deinen Fortschritt zwischen Geräten und halte sie synchronisiert.",
         "title": "Mit der Cloud synchronisieren"
       },
       "title": "Konto"
@@ -352,12 +379,24 @@
       "title": "Untertitel"
     },
     "connections": {
+      "server": {
+        "description": "Falls du dich mit einem anderen Server verbinden willst, um deine Daten zu speichern. Aktiviere dies und gebe die URL an.",
+        "label": "Eigener Server",
+        "urlLabel": "Eigene Server-URL"
+      },
+      "title": "Verbindungen",
       "workers": {
+        "addButton": "Neuen Worker hinzufügen",
+        "description": "Damit die App funktioniert werden alle Anfrage durch einen Proxy geleitet. Aktiviere dies, falls du deinen eigenen Worker verwenden willst.",
+        "emptyState": "Keine Worker vorhanden, füge einen unten hinzu",
+        "label": "Verwenden deinen eigenen Worker-Proxys",
+        "urlLabel": "Worker-URLs",
         "urlPlaceholder": "https://"
       }
     },
     "locale": {
       "language": "App-Sprache",
+      "languageDescription": "Sprache für die ganze App.",
       "title": "Sprache"
     },
     "reset": "Zurücksetzen",
@@ -365,6 +404,7 @@
     "sidebar": {
       "info": {
         "appVersion": "App-Version",
+        "backendUrl": "Server-URL",
         "backendVersion": "Server-Version",
         "hostname": "Hostname",
         "insecure": "Unsicher",
