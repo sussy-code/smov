@@ -1,16 +1,39 @@
 {
+  "about": {
+    "description": "movie-web internette akışlar için tarama yapan bir web uygulamasıdır. Ekip, içerik tüketmeye karşı ekseriyetle minimalist bir yaklaşım sergilemektedir.",
+    "faqTitle": "Sıkça sorulan sorular",
+    "q1": {
+      "body": "movie-web herhangi bir içerik barındırmaz. İzlemek için bir şeye tıkladığınızda, seçilen medya için internette arama yapılır (Yükleme ekranında ve 'video kaynakları' sekmesinde hangi kaynağı kullandığınızı görebilirsiniz). Medya hiçbir zaman movie-web tarafından yüklenmez, her şey bu arama mekanizması aracılığıyla gerçekleşir.",
+      "title": "İçerikler nereden geliyor?"
+    },
+    "q2": {
+      "body": "Bir dizi veya film talep etmek mümkün değildir, movie-web içeriklerin hiçbirini yönetmez. Tüm içerikler internet üzerindeki kaynaklar aracılığıyla görüntülenir.",
+      "title": "Bir dizi veya filmi nereden talep edebilirim?"
+    },
+    "q3": {
+      "body": "Arama sonuçlarımız The Movie Database (TMDB) tarafından desteklenmektedir ve kaynaklarımızın içeriğe gerçekten sahip olup olmadığına bakılmaksızın görüntülenir.",
+      "title": "Arama sonuçları diziyi veya filmi gösteriyor, neden oynatamıyorum?"
+    },
+    "title": "movie-web hakkında"
+  },
+  "actions": {
+    "copied": "Kopyalandı",
+    "copy": "Kopyala"
+  },
   "auth": {
     "createAccount": "Henüz bir hesabınız yok mu? <0>Hesap oluşturun.</0>",
     "deviceNameLabel": "Cihaz ismi",
     "deviceNamePlaceholder": "Kişisel telefon",
     "generate": {
-      "description": "Parolanız kullanıcı adınıza veya şifrenize benziyor. Hesabınıza giriş yapmak için girmeniz gerekeceğinden onu güvende tuttuğunuzdan emin olun.",
+      "description": "Parolanız, kullanıcı adınız ve şifreniz olarak işlev görür. Hesabınıza giriş yapmak için bu parolayı girmeniz gerekeceğinden onu güvende tuttuğunuzdan emin olun.",
+      "next": "Parolamı kaydettim",
       "title": "Parolanız"
     },
     "hasAccount": "Zaten hesabınız var mı?<0>Giriş yapın.</0>",
     "login": {
       "description": "Hesabınıza giriş yapmak için lütfen parolanızı girin",
       "deviceLengthError": "Lütfen bir cihaz ismi girin",
+      "passphraseLabel": "12 karakterli parola",
       "passphrasePlaceholder": "Parola",
       "submit": "Giriş yap",
       "title": "Hesabınıza giriş yapın",
@@ -28,6 +51,7 @@
     },
     "trust": {
       "failed": {
+        "text": "Doğru şekilde yapılandırdınız mı?",
         "title": "Sunucuya ulaşılamadı"
       },
       "host": "<0>{{hostname}}</0> adlı sunucuya bağlanıyorsunuz - lütfen hesap oluşturmadan önce sunucuya güvendiğinizi onaylayın",
@@ -36,18 +60,33 @@
       "yes": "Bu sunucuya güveniyorum"
     },
     "verify": {
+      "description": "Kaydettiğinizi doğrulamak ve hesabınızı oluşturmak için önceki aşamada gösterilen parolayı girin",
       "invalidData": "Veri geçersiz",
       "noMatch": "Parola eşleşmiyor",
+      "passphraseLabel": "12 kelimelik parolanız",
       "recaptchaFailed": "ReCaptcha doğrulaması başarısız",
-      "register": "Hesap oluşturun",
+      "register": "Hesap oluştur",
       "title": "Parolanızı doğrulayın"
     }
   },
   "errors": {
+    "badge": "Bir şeyler ters gitti",
     "details": "Hata detayları",
     "reloadPage": "Sayfayı yenile",
     "showError": "Hata detaylarını göster",
     "title": "Bir hatayla karşılaştık!"
+  },
+  "footer": {
+    "legal": {
+      "disclaimer": "Sorumluluk Reddi",
+      "disclaimerText": "movie-web herhangi bir dosya barındırmaz, yalnızca 3. parti hizmetlere bağlantı verir. Yasal meseleler, dosya barındırıcıları ve sağlayıcıları ile görüşülmelidir. movie-web, video sağlayıcıları tarafından gösterilen hiçbir medya dosyasından sorumlu değildir."
+    },
+    "links": {
+      "discord": "Discord",
+      "dmca": "DMCA",
+      "github": "GitHub"
+    },
+    "tagline": "Bu açık kaynaklı akış uygulamasıyla en sevdiğiniz dizileri ve filmleri izleyin."
   },
   "global": {
     "name": "movie-web",
@@ -67,6 +106,9 @@
     "continueWatching": {
       "sectionTitle": "İzlemeye devam edin"
     },
+    "mediaList": {
+      "stopEditing": "Düzenlemeyi bırak"
+    },
     "search": {
       "allResults": "Bu kadarını bulabildik!",
       "failed": "Medya bulunamadı, tekrar deneyin!",
@@ -74,6 +116,23 @@
       "noResults": "Hiçbir şey bulamadık!",
       "placeholder": "Ne izlemek istersiniz?",
       "sectionTitle": "Arama sonuçları"
+    },
+    "titles": {
+      "day": {
+        "default": "Bu öğleden sonra ne izlemek istersiniz?"
+      },
+      "morning": {
+        "default": "Bu sabah ne izlemek istersiniz?",
+        "extra": [
+          "Before Sunrise'a iyi diyorlar"
+        ]
+      },
+      "night": {
+        "default": "Bu akşam ne izlemek istersiniz?",
+        "extra": [
+          "Yoruldun mu? The Exorcist'e iyi diyorlar."
+        ]
+      }
     }
   },
   "media": {
@@ -86,6 +145,14 @@
   "navigation": {
     "banner": {
       "offline": "İnternet bağlantınızı kontrol ediniz"
+    },
+    "menu": {
+      "about": "Hakkımızda",
+      "donation": "Bağış yap",
+      "logout": "Çıkış yap",
+      "register": "Buluta eşitle",
+      "settings": "Ayarlar",
+      "support": "Destekle"
     }
   },
   "notFound": {
@@ -128,7 +195,9 @@
           "title": "Android'e indirme"
         },
         "onIos": {
-          "1": "iOS'a indirmek için öncelikle indir butonuna basın, sonra açılan yeni sayfada <bold><ios_share /></bold>'e basın, hemen ardından <bold>Dosyalara Kaydet <ios_files /></bold>'e basın."
+          "1": "iOS'a indirmek için öncelikle indir butonuna basın, sonra açılan yeni sayfada <bold><ios_share /></bold>'e basın, hemen ardından <bold>Dosyalara Kaydet <ios_files /></bold>'e basın.",
+          "shortTitle": "İndir / iOS",
+          "title": "iOS'a indirme"
         },
         "onPc": {
           "1": "Bilgisayarda önce indir butonuna tıklayın, sonra ise açılan yeni sayfada videoya sağ tıklayın ve <bold>Videoyu farklı kaydet </bold> seçeneğini seçin",
@@ -144,6 +213,16 @@
         "loadingError": "Sezon yüklenirken hata oluştu",
         "loadingList": "Yükleniyor...",
         "loadingTitle": "Yükleniyor..."
+      },
+      "playback": {
+        "speedLabel": "Oynatma hızı",
+        "title": "Oynatma ayarları"
+      },
+      "quality": {
+        "automaticLabel": "Otomatik kalite",
+        "hint": "Farklı kalite seçenekleri elde etmek için <0>kaynak değiştirmeyi</0> deneyebilirsiniz.",
+        "iosNoQuality": "Apple tarafından tanımlanan sınırlamalar nedeniyle, iOS'ta bu kaynak için kalite seçimi mevcut değildir. Farklı kalite seçenekleri elde etmek için <0>başka bir kaynağa geçmeyi</0> deneyebilirsiniz.",
+        "title": "Kalite"
       },
       "settings": {
         "captionItem": "Altyazı ayarları",
@@ -174,6 +253,7 @@
     },
     "metadata": {
       "failed": {
+        "badge": "Başarısız oldu",
         "homeButton": "Ana sayfaya dön",
         "text": "Medyanın üstverisi TMDB'den alınamadı. Lütfen TMDB'nin göküp çökmediğini veya internet bağlantınız üzerinden engellenmediğini kontrol edin.",
         "title": "Üstveri yüklenemedi"
@@ -198,6 +278,7 @@
         "errorNetwork": "Medya önceden mevcut olsa da başarıyla alınmasını engelleyen bir tür ağ hatası oluştu.",
         "errorNotSupported": "Medya veya medya sağlayıcısı desteklenmiyor."
       },
+      "homeButton": "Ana sayfaya git",
       "text": "Medya oynatılmaya çalışılırken bir hata oluştu. Lütfen tekrar deneyin.",
       "title": "Video oynatılamadı!"
     },
@@ -210,12 +291,130 @@
       "notFound": {
         "badge": "Bulunamadı",
         "detailsButton": "Detayları göster",
+        "homeButton": "Ana sayfaya git",
         "text": "Sağlayıcılarımız arasında arama yaptık ve aradığınız medyayı bulamadık! Medyaları barındırmıyoruz ve mevcut olanlar üzerinde hiçbir kontrolümüz yok. Daha fazla ayrıntı için lütfen aşağıdaki 'Ayrıntıları göster' seçeneğine tıklayın.",
         "title": "Bunu bulamadık"
       }
     },
     "time": {
-      "remaining": "{{timeLeft}} kaldı • {{timeFinished, datetime}}'de bitiyor"
+      "regular": "{{timeWatched}} / {{duration}}",
+      "remaining": "{{timeLeft}} kaldı • {{timeFinished, datetime}}'de bitiyor",
+      "shortRegular": "{{timeWatched}}",
+      "shortRemaining": "-{{timeLeft}}"
     }
+  },
+  "screens": {
+    "dmca": {
+      "text": "Movie-web'in DMCA iletişim sayfasına hoş geldiniz! Fikri mülkiyet haklarına saygı duyuyoruz ve telif hakkıyla ilgili endişeleri hızlı bir şekilde ele almak istiyoruz. Telif hakkıyla korunan çalışmanızın platformumuzda uygunsuz şekilde kullanıldığını düşünüyorsanız lütfen aşağıdaki e-postaya ayrıntılı bir DMCA bildirimi gönderin. Lütfen telif hakkıyla korunan materyalin açıklamasını, iletişim bilgilerinizi ve iyi niyet beyanınızı ekleyin. Bu sorunları derhal çözmeye kararlıyız ve ayrıca movie-web'i yaratıcılığa ve telif haklarına saygılı bir yer olarak tutma konusundaki işbirliğiniz için teşekkür ederiz.",
+      "title": "DMCA"
+    },
+    "loadingApp": "Uygulama yükleniyor",
+    "loadingUser": "Profiliniz yükleniyor",
+    "loadingUserError": {
+      "logout": "Çıkış yap",
+      "reset": "Özel sunucuyu sıfırla",
+      "text": "Profiliniz yüklenemedi",
+      "textWithReset": "Profiliniz özel sunucunuzdan yüklenemedi, varsayılan sunucuya sıfırlamak ister misiniz?"
+    },
+    "migration": {
+      "failed": "Verileriniz taşınamadı.",
+      "inProgress": "Lütfen bekleyin, verilerinizi taşıyoruz. Bu çok uzun sürmez."
+    }
+  },
+  "settings": {
+    "account": {
+      "accountDetails": {
+        "deviceNameLabel": "Cihaz adı",
+        "deviceNamePlaceholder": "Kişisel telefon",
+        "editProfile": "Düzenle",
+        "logoutButton": "Çıkış yap"
+      },
+      "actions": {
+        "delete": {
+          "button": "Hesabı sil",
+          "confirmButton": "Hesabı sil",
+          "confirmDescription": "Hesabınızı silmek istediğinize emin misiniz? Tüm verileriniz kaybedilecek!",
+          "confirmTitle": "Emin misiniz?",
+          "text": "Bu işlem geri alınamaz. Tüm veriler silinir ve hiçbir şey kurtarılamaz.",
+          "title": "Hesabı sil"
+        },
+        "title": "Eylemler"
+      },
+      "devices": {
+        "deviceNameLabel": "Cihaz adı",
+        "failed": "Oturumlar yüklenemedi",
+        "removeDevice": "Sil",
+        "title": "Cihazlar"
+      },
+      "profile": {
+        "finish": "Düzenlemeyi bitir",
+        "firstColor": "Birinci profil rengi",
+        "secondColor": "İkinci profil rengi",
+        "title": "Profil resmini düzenle",
+        "userIcon": "Kullanıcı simgesi"
+      },
+      "register": {
+        "cta": "Hadi başlayalım",
+        "text": "İzleme ilerlemenizi cihazlar arasında paylaşın ve eşit tutun.",
+        "title": "Buluta eşitle"
+      },
+      "title": "Hesap"
+    },
+    "appearance": {
+      "activeTheme": "Aktif",
+      "themes": {
+        "blue": "Mavi",
+        "default": "Varsayılan",
+        "gray": "Gri",
+        "red": "Kırmızı",
+        "teal": "Camgöbeği"
+      },
+      "title": "Görünüm"
+    },
+    "captions": {
+      "backgroundLabel": "Arka plan opaklığı",
+      "colorLabel": "Renk",
+      "previewQuote": "Korkmamalıyım. Korku aklı öldürür.",
+      "textSizeLabel": "Yazı boyutu",
+      "title": "Altyazılar"
+    },
+    "connections": {
+      "server": {
+        "description": "Verilerinizi depolamak için özel bir arkayüze bağlanmak istiyorsanız, bunu etkinleştirin ve URL'yi sağlayın.",
+        "label": "Özel sunucu",
+        "urlLabel": "Özel sunucu URL'si"
+      },
+      "title": "Bağlantılar",
+      "workers": {
+        "addButton": "Yeni işleyici ekle",
+        "description": "Uygulamanın çalışması için tüm trafik vekil sunucular üzerinden yönlendirilir. Kendi işleyicilerinizi getirmek istiyorsanız bunu etkinleştirin.",
+        "emptyState": "Henüz işleyici yok, aşağıya bir tane ekleyin",
+        "label": "Özel vekil sunucu işleyici kullan",
+        "urlLabel": "İşleyici URL'leri",
+        "urlPlaceholder": "https://"
+      }
+    },
+    "locale": {
+      "language": "Uygulama dili",
+      "languageDescription": "Uygulamanın tamamına uygulanan dil.",
+      "title": "Yerelleştirme"
+    },
+    "reset": "Sıfırla",
+    "save": "Kaydet",
+    "sidebar": {
+      "info": {
+        "appVersion": "Uygulama sürümü",
+        "backendUrl": "Arkayüz URL'si",
+        "backendVersion": "Arkayüz sürümü",
+        "hostname": "Ana makine adı",
+        "insecure": "Güvensiz",
+        "notLoggedIn": "Giriş yapmadınız",
+        "secure": "Güvenli",
+        "title": "Uygulama bilgisi",
+        "unknownVersion": "Bilinmeyen",
+        "userId": "Kullanıcı Kimliği"
+      }
+    },
+    "unsaved": "Kaydedilmemiş değişiklikleriniz mevcut"
   }
 }
