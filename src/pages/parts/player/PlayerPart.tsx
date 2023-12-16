@@ -130,6 +130,7 @@ export function PlayerPart(props: PlayerPartProps) {
       </Player.BottomControls>
 
       <Player.VolumeChangedPopout />
+
       <Player.NextEpisodeButton
         controlsShowing={showTargets}
         onChange={props.onMetaChange}
