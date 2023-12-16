@@ -98,6 +98,8 @@
     "handlebars": "^4.7.7",
     "jsdom": "^21.1.0",
     "postcss": "^8.4.20",
+    "postcss-rtl": "^2.0.0",
+    "postcss-rtlcss": "^4.0.9",
     "prettier": "^2.5.1",
     "prettier-plugin-tailwindcss": "^0.1.7",
     "tailwind-scrollbar": "^2.0.1",

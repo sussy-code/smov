@@ -7,6 +7,9 @@ import path from "path";
 import { handlebars } from "./plugins/handlebars";
 import { loadEnv } from "vite";
 
+import tailwind from "tailwindcss";
+import rtl from "postcss-rtlcss";
+
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd());
   return {
@@ -18,8 +21,8 @@ export default defineConfig(({ mode }) => {
             env.VITE_APP_DOMAIN +
             (env.VITE_NORMAL_ROUTER !== "true" ? "/#" : ""),
           domain: env.VITE_APP_DOMAIN,
-          env
-        }
+          env,
+        },
       }),
       react({
         babel: {
@@ -31,24 +34,24 @@ export default defineConfig(({ mode }) => {
                 modules: false,
                 useBuiltIns: "entry",
                 corejs: {
-                  version: "3.29"
-                }
-              }
-            ]
-          ]
-        }
+                  version: "3.29",
+                },
+              },
+            ],
+          ],
+        },
       }),
       VitePWA({
         disable: env.VITE_PWA_ENABLED !== "true",
         registerType: "autoUpdate",
         workbox: {
           maximumFileSizeToCacheInBytes: 4000000, // 4mb
-          globIgnores: ["**ping.txt**"]
+          globIgnores: ["**ping.txt**"],
         },
         includeAssets: [
           "favicon.ico",
           "apple-touch-icon.png",
-          "safari-pinned-tab.svg"
+          "safari-pinned-tab.svg",
         ],
         manifest: {
           name: "movie-web",
@@ -63,47 +66,52 @@ export default defineConfig(({ mode }) => {
               src: "android-chrome-192x192.png",
               sizes: "192x192",
               type: "image/png",
-              purpose: "any"
+              purpose: "any",
             },
             {
               src: "android-chrome-512x512.png",
               sizes: "512x512",
               type: "image/png",
-              purpose: "any"
+              purpose: "any",
             },
             {
               src: "android-chrome-192x192.png",
               sizes: "192x192",
               type: "image/png",
-              purpose: "maskable"
+              purpose: "maskable",
             },
             {
               src: "android-chrome-512x512.png",
               sizes: "512x512",
               type: "image/png",
-              purpose: "maskable"
-            }
-          ]
-        }
+              purpose: "maskable",
+            },
+          ],
+        },
       }),
       loadVersion(),
       checker({
         overlay: {
-          position: "tr"
+          position: "tr",
         },
         typescript: true, // check typescript build errors in dev server
         eslint: {
           // check lint errors in dev server
           lintCommand: "eslint --ext .tsx,.ts src",
           dev: {
-            logLevel: ["error"]
-          }
-        }
-      })
+            logLevel: ["error"],
+          },
+        },
+      }),
     ],
 
     build: {
       sourcemap: true,
+    },
+    css: {
+      postcss: {
+        plugins: [tailwind(), rtl()],
+      },
     },
 
     resolve: {
@@ -112,12 +120,12 @@ export default defineConfig(({ mode }) => {
         "@sozialhelden/ietf-language-tags": path.resolve(
           __dirname,
           "./node_modules/@sozialhelden/ietf-language-tags/dist/cjs"
-        )
-      }
+        ),
+      },
     },
 
     test: {
-      environment: "jsdom"
-    }
+      environment: "jsdom",
+    },
   };
 });

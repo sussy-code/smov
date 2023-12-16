@@ -1,10 +1,11 @@
 import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";
 
-import i18n from "@/setup/i18n";
 import { rtlLocales } from "@/assets/languages";
+import i18n from "@/setup/i18n";
 
 export interface LanguageStore {
   language: string;
@@ -32,7 +33,7 @@ export function LanguageProvider() {
     i18n.changeLanguage(language);
   }, [language]);
 
-  const isRtl = rtlLocales.includes(language);
+  const isRtl = rtlLocales.includes(language as any);
 
   return (
     <Helmet>
