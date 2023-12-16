@@ -43,7 +43,7 @@
       "information": {
         "color1": "Profila krāsa viens",
         "color2": "Profila krāsa divi",
-        "header": "Ievadi ierīces vārdu un izvēlies krāsu un profila ikonu kādu gribi.",
+        "header": "Ievadi ierīces vārdu un izvēlies krāsu un profila ikonu kādu gribi",
         "icon": "Profila ikona",
         "next": "Nakamais",
         "title": "Konta informācija"
@@ -279,7 +279,7 @@
         "errorNotSupported": "Multivides vai multivides nodrošinātāja objekts netiek atbalstīts."
       },
       "homeButton": "iet majās",
-      "text": "Notika kļūda kamēr meiģināja  atskaņot video. Lūdzu meiģini atkal",
+      "text": "Notika kļūda kamēr meiģināja atskaņot video. Lūdzu meiģini atkal.",
       "title": "Neizdevās palaist video!"
     },
     "scraping": {
