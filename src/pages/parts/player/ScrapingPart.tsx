@@ -60,18 +60,18 @@ export function ScrapingPart(props: ScrapingProps) {
     (async () => {
       const output = await startScraping(props.media);
       if (!isMounted()) return;
-      // props.onResult?.(
-      //   resultRef.current.sources,
-      //   resultRef.current.sourceOrder
-      // );
-      // report(
-      //   scrapePartsToProviderMetric(
-      //     props.media,
-      //     resultRef.current.sourceOrder,
-      //     resultRef.current.sources
-      //   )
-      // );
-      // props.onGetStream?.(output);
+      props.onResult?.(
+        resultRef.current.sources,
+        resultRef.current.sourceOrder
+      );
+      report(
+        scrapePartsToProviderMetric(
+          props.media,
+          resultRef.current.sourceOrder,
+          resultRef.current.sources
+        )
+      );
+      props.onGetStream?.(output);
     })();
   }, [startScraping, props, report, isMounted]);
 
@@ -86,12 +86,13 @@ export function ScrapingPart(props: ScrapingProps) {
 
   return (
     <div
-      className="h-full w-full relative dir-neutral:origin-top-left flex dir-neutral:flex-row dir-neutral:items-start dir-neutral:justify-start"
+      className="h-full w-full relative dir-neutral:origin-top-left flex"
       ref={containerRef}
     >
       <div
         className={classNames({
-          "absolute transition-[transform,opacity] opacity-0": true,
+          "absolute transition-[transform,opacity] opacity-0 dir-neutral:left-0":
+            true,
           "!opacity-100": renderedOnce,
         })}
         ref={listRef}

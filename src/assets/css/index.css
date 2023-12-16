@@ -227,3 +227,7 @@ input[type=range].styled-slider.slider-progress::-ms-fill-lower {
   /* Invert horizontal X offset on transform (Tailwind RTL plugin does the rest) */
   transform: translate(calc(var(--tw-translate-x) * -1), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
 }
+[dir="ltr"] .transform {
+  /* default - otherwise it overwrites*/
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
+}
