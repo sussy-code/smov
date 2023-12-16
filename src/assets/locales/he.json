@@ -1,4 +1,21 @@
 {
+  "about": {
+    "description": "movie-web הוא יישום אינטרנט המחפש באינטרנט אחר זרמים. הצוות שואף לגישה מינימליסטית ברובה לצריכת תוכן.",
+    "faqTitle": "שאלות נפוצות",
+    "q1": {
+      "body": "movie-web אינו מארח תוכן כלשהו. כאשר אתה לוחץ על משהו לצפייה, האינטרנט מחפש את המדיה שנבחרה (במסך הטעינה ובכרטיסייה 'מקורות וידאו' תוכל לראות באיזה מקור אתה משתמש). מדיה אף פעם לא מועלת על ידי movie-web, הכל מתבצע דרך מנגנון חיפוש זה.",
+      "title": "מאיפה התוכן?"
+    },
+    "q2": {
+      "body": "לא ניתן לבקש תוכנית או סרט, movie-web לא מנהלת שום תוכן. כל התוכן נצפה דרך מקורות באינטרנט.",
+      "title": "איפה אני יכול לבקש תוכנית או סרט?"
+    },
+    "q3": {
+      "body": "תוצאות החיפוש שלנו מופעלות על ידי The Movie Database (TMDB) ומוצגות ללא קשר אם למקורות שלנו יש את התוכן.",
+      "title": "תוצאות החיפוש מציגות את התוכנית או הסרט, למה אני לא יכול להפעיל אותם?"
+    },
+    "title": "על movie-web"
+  },
   "actions": {
     "copied": "הועתק",
     "copy": "להעתיק"
@@ -12,7 +29,7 @@
       "next": "אני שמרתי את משפט הסיסמה שלי",
       "title": "משפט הסיסמה שלך"
     },
-    "hasAccount": "כבר יש לך חשבון? <0>התחבר כאן.</0>",
+    "hasAccount": "Already have an account? <0>Login here.</0>",
     "login": {
       "description": "אנא הזן את ביטוי הסיסמה שלך כדי להתחבר לחשבונך",
       "deviceLengthError": "אנא הזן שם מכשיר",
@@ -59,10 +76,25 @@
     "showError": "הצג פרטי שגיאה",
     "title": "נתקלנו בשגיאה!"
   },
+  "footer": {
+    "legal": {
+      "disclaimer": "תנית ויתור",
+      "disclaimerText": "movie-web אינו מארח קבצים, הוא רק מקשר לשירותי צד שלישי. יש להתייחס לסוגיות משפטיות עם המארחים והספקים של הקבצים. movie-web אינה אחראית לכל קבצי מדיה המוצגים על ידי ספקי הווידאו."
+    },
+    "links": {
+      "discord": "דיסקורד",
+      "dmca": "DMCA",
+      "github": "גיטהאב"
+    },
+    "tagline": "צפה בתוכניות ובסרטים האהובים עליך עם אפליקציית סטרימינג זו בקוד פתוח."
+  },
   "global": {
+    "name": "movie-web",
     "pages": {
       "about": "אודות",
+      "dmca": "DMCA",
       "login": "התחבר",
+      "pagetitle": "{{title}} - movie-web",
       "register": "הירשם",
       "settings": "הגדרות"
     }
@@ -104,6 +136,7 @@
     }
   },
   "media": {
+    "episodeDisplay": "S{{season}} E{{episode}}",
     "types": {
       "movie": "סרט",
       "show": "סדרה"
@@ -176,6 +209,7 @@
       "episodes": {
         "button": "פרקים",
         "emptyState": "אין פרקים בעונה זו, אנא בדוק שוב מאוחר יותר!",
+        "episodeBadge": "פ{{episode}}",
         "loadingError": "ארע שגיאה בטעינת העונה",
         "loadingList": "טוען...",
         "loadingTitle": "טוען..."
@@ -186,6 +220,8 @@
       },
       "quality": {
         "automaticLabel": "איכות אוטומטית",
+        "hint": "You can try <0>switching source</0> to get different quality options.",
+        "iosNoQuality": "Due to Apple-defined limitations, quality selection is not available on iOS for this source. You can try <0>switching to another source</0> to get different quality options.",
         "title": "איכות"
       },
       "settings": {
@@ -259,6 +295,12 @@
         "text": "חיפשנו בספקים שלנו ולא מצאנו את המדיה שאתה מחפש! אנו לא מארחים את המדיה ואין לנו שליטה על מה שזמין. אנא לחץ על 'הצג פרטים' למידע נוסף.",
         "title": "לא יכולנו למצוא את זה"
       }
+    },
+    "time": {
+      "regular": "{{timeWatched}} / {{duration}}",
+      "remaining": "{{timeLeft}} נשאר • סיים ב {{timeFinished, datetime}}",
+      "shortRegular": "{{timeWatched}}",
+      "shortRemaining": "-{{timeLeft}}"
     }
   },
   "screens": {
@@ -290,6 +332,8 @@
       "actions": {
         "delete": {
           "button": "מחק משתמש",
+          "confirmButton": "מחק משתמש",
+          "confirmDescription": "אתה בטוח שתרצה למחוק את המשתמש שלך? כל הנתונים שלך יימחקו!",
           "confirmTitle": "אתה בטוח?",
           "text": "פעולה זו היא בלתי הפיכה. כל הנתונים יימחקו ולא ניתן יהיה לשחזר דבר.",
           "title": "מחק משתמש"
@@ -327,12 +371,43 @@
       },
       "title": "מראה"
     },
+    "captions": {
+      "backgroundLabel": "אטימות רקע",
+      "colorLabel": "צבע",
+      "previewQuote": "אסור לי לפחד. הפחד הוא קוטל הנפש.",
+      "textSizeLabel": "גודל הטקסט",
+      "title": "כתוביות"
+    },
+    "connections": {
+      "server": {
+        "description": "אם תרצה להתחבר ל-backend מותאם אישית כדי לאחסן את הנתונים שלך, הפעל זאת וספק את כתובת האתר.",
+        "label": "שרת אישי",
+        "urlLabel": "כתובת אתר מותאמת אישית של שרת"
+      },
+      "title": "התחברויות",
+      "workers": {
+        "addButton": "הוסף עובד חדש",
+        "description": "כדי שהאפליקציה תפעל, כל התעבורה מנותבת דרך פרוקסי. הפעל זאת אם אתה רוצה להביא עובדים משלך.",
+        "emptyState": "עדיין אין עובדים, הוסף אחד למטה",
+        "label": "השתמש בעובדי פרוקסי מותאמים אישית",
+        "urlLabel": "כתובות אתרים של עובדים",
+        "urlPlaceholder": "https://"
+      }
+    },
+    "locale": {
+      "language": "שפת האפליקציה",
+      "languageDescription": "השפה החלה על האפליקציה כולה.",
+      "title": "מקומי"
+    },
     "reset": "איפוס",
     "save": "לשמור",
     "sidebar": {
       "info": {
         "appVersion": "גרסת האפליקציה",
+        "backendUrl": "כתובת אתר אחורי",
+        "backendVersion": "גרסת Backend",
         "hostname": "שם מארח",
+        "insecure": "לא בטוח",
         "notLoggedIn": "אתה לא מחובר",
         "secure": "אבטח",
         "title": "מידע על האפליקציה",
