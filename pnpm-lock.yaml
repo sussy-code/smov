@@ -71,6 +71,9 @@ dependencies:
   lodash.isequal:
     specifier: ^4.5.0
     version: 4.5.0
+  nanoid:
+    specifier: ^5.0.4
+    version: 5.0.4
   node-forge:
     specifier: ^1.3.1
     version: 1.3.1
@@ -223,6 +226,12 @@ devDependencies:
   postcss:
     specifier: '>=8.4.31'
     version: 8.4.31
+  postcss-rtl:
+    specifier: ^2.0.0
+    version: 2.0.0(postcss@8.4.31)
+  postcss-rtlcss:
+    specifier: ^4.0.9
+    version: 4.0.9(postcss@8.4.31)
   prettier:
     specifier: ^2.5.1
     version: 2.8.8
@@ -4747,6 +4756,12 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
+  /nanoid@5.0.4:
+    resolution: {integrity: sha512-vAjmBf13gsmhXSgBrtIclinISzFFy22WwCYoyilZlsrRXNIHSwgFQ1bEdjRwMT3aoadeIF6HMuDRlOxzfXV8ig==}
+    engines: {node: ^18 || >=20}
+    hasBin: true
+    dev: false
+
   /natural-compare-lite@1.4.0:
     resolution: {integrity: sha512-Tj+HTDSJJKaZnfiuw+iaF9skdPpTo2GtEly5JHnWV/hfv2Qj/9RKsGISQtLh2ox3l5EAGw487hnBee0sIJ6v2g==}
     dev: true
@@ -5068,6 +5083,26 @@ packages:
     dependencies:
       postcss: 8.4.31
       postcss-selector-parser: 6.0.13
+    dev: true
+
+  /postcss-rtl@2.0.0(postcss@8.4.31):
+    resolution: {integrity: sha512-vFu78CvaGY9BafWRHNgDm6OjUxzRCWWCrp+KtnyXdgwibLwb/j5ls8Z/ubvOsk9B/Q2NLwSPrXRARKMaa9RBmA==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      postcss: '>=8.4.31'
+    dependencies:
+      postcss: 8.4.31
+      rtlcss: 4.0.0
+    dev: true
+
+  /postcss-rtlcss@4.0.9(postcss@8.4.31):
+    resolution: {integrity: sha512-dCNKEf+FgTv+EA3XI8ysg2RnpS5s3/iZmU+9qpCNFxHU/BhK+4hz7jyCsCAfo0CLnDrMPtaQENhwb+EGm1wh7Q==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      postcss: '>=8.4.31'
+    dependencies:
+      postcss: 8.4.31
+      rtlcss: 4.1.1
     dev: true
 
   /postcss-selector-parser@6.0.13:
@@ -5479,6 +5514,28 @@ packages:
     dependencies:
       '@babel/runtime': 7.22.11
     dev: false
+
+  /rtlcss@4.0.0:
+    resolution: {integrity: sha512-j6oypPP+mgFwDXL1JkLCtm6U/DQntMUqlv5SOhpgHhdIE+PmBcjrtAHIpXfbIup47kD5Sgja9JDsDF1NNOsBwQ==}
+    engines: {node: '>=12.0.0'}
+    hasBin: true
+    dependencies:
+      escalade: 3.1.1
+      picocolors: 1.0.0
+      postcss: 8.4.31
+      strip-json-comments: 3.1.1
+    dev: true
+
+  /rtlcss@4.1.1:
+    resolution: {integrity: sha512-/oVHgBtnPNcggP2aVXQjSy6N1mMAfHg4GSag0QtZBlD5bdDgAHwr4pydqJGd+SUCu9260+Pjqbjwtvu7EMH1KQ==}
+    engines: {node: '>=12.0.0'}
+    hasBin: true
+    dependencies:
+      escalade: 3.1.1
+      picocolors: 1.0.0
+      postcss: 8.4.31
+      strip-json-comments: 3.1.1
+    dev: true
 
   /run-parallel@1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}

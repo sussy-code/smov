@@ -43,11 +43,17 @@ export function useHistoryListener() {
 
 export function useLastNonPlayerLink() {
   const routes = useHistoryStore((s) => s.routes);
+  const location = useLocation();
   const lastNonPlayerLink = useMemo(() => {
     const reversedRoutes = [...routes];
     reversedRoutes.reverse();
-    const route = reversedRoutes.find((v) => !v.path.startsWith("/media"));
+    const route = reversedRoutes.find(
+      (v) =>
+        !v.path.startsWith("/media") && // cannot be a player link
+        location.pathname !== v.path && // cannot be current link
+        !v.path.startsWith("/s/") // cannot be a quick search link
+    );
     return route?.path ?? "/";
-  }, [routes]);
+  }, [routes, location]);
   return lastNonPlayerLink;
 }

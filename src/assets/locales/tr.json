@@ -1,74 +1,91 @@
 {
-    "global": {
-        "name": "movie-web"
+  "auth": {
+    "createAccount": "Henüz bir hesabınız yok mu? <0>Hesap oluşturun.</0>",
+    "deviceNameLabel": "Cihaz ismi",
+    "deviceNamePlaceholder": "Kişisel telefon",
+    "hasAccount": "Zaten hesabınız var mı?<0>Giriş yapın.</0>",
+    "login": {
+      "title": "Hesabınıza giriş yapın"
     },
-    "home": {
-        "search": {
-            "allResults": "Bu kadarını bulabildik!",
-            "sectionTitle": "Arama sonuçları",
-            "noResults": "Hiçbir şey bulamadık!",
-            "failed": "Medya bulunamadı, tekrar deneyin!",
-            "loading": "Yükleniyor...",
-            "placeholder": "Ne izlemek istersiniz?"
-        },
-        "bookmarks": {
-            "sectionTitle": "Yerimleri"
-        },
-        "continueWatching": {
-            "sectionTitle": "İzlemeye devam edin"
-        }
-    },
-    "media": {
-        "types": {
-            "movie": "Film",
-            "show": "Dizi"
-        },
-        "episodeDisplay": "S{{season}} B{{episode}}"
-    },
-    "player": {
-        "playbackError": {
-            "title": "Hay aksi, bozuldu!"
-        },
-        "metadata": {
-            "notFound": {
-                "badge": "Bulunamadı",
-                "homeButton": "Geri",
-                "title": "Medya bulunamadı.",
-                "text": "İstediğiniz medyayı bulamadık. URL'i yanlış girdiniz ya da medya kaldırıldı."
-            }
-        },
-        "menus": {
-            "captions": {
-                "customChoice": "Altyazı yükle",
-                "customizeLabel": "Kişiselleştirme",
-                "title": "Altyazılar"
-            },
-            "sources": {
-                "title": "Kaynaklar"
-            },
-            "episodes": {
-                "button": "Bölümler",
-                "loadingTitle": "Yükleniyor...",
-                "loadingList": "Yükleniyor..."
-            }
-        },
-        "back": {
-            "default": "Ana sayfaya dön",
-            "short": "Geri"
-        }
-    },
-    "notFound": {
-        "badge": "Bulunamadı",
-        "goHome": "Geri",
-        "title": "Sayfa bulunamadı",
-        "message": "Her yere baktık: bazanın altına, dolabın içine hatta ara sunucuya ama maalesef aradığınız sayfayı bulamadık."
-    },
-    "navigation": {
-        "banner": {
-            "offline": "İnternet bağlantınızı kontrol ediniz"
-        }
-    },
-    "overlays": {
-        "close": "Kapat"
+    "register": {
+      "information": {
+        "color1": "Birinci hesap rengi",
+        "color2": "İkinci hesap rengi",
+        "icon": "Kullanıcı simgesi",
+        "title": "Hesap bilgisi"
+      }
     }
+  },
+  "global": {
+    "name": "movie-web"
+  },
+  "home": {
+    "bookmarks": {
+      "sectionTitle": "Yerimleri"
+    },
+    "continueWatching": {
+      "sectionTitle": "İzlemeye devam edin"
+    },
+    "search": {
+      "allResults": "Bu kadarını bulabildik!",
+      "failed": "Medya bulunamadı, tekrar deneyin!",
+      "loading": "Yükleniyor...",
+      "noResults": "Hiçbir şey bulamadık!",
+      "placeholder": "Ne izlemek istersiniz?",
+      "sectionTitle": "Arama sonuçları"
+    }
+  },
+  "media": {
+    "episodeDisplay": "S{{season}} B{{episode}}",
+    "types": {
+      "movie": "Film",
+      "show": "Dizi"
+    }
+  },
+  "navigation": {
+    "banner": {
+      "offline": "İnternet bağlantınızı kontrol ediniz"
+    }
+  },
+  "notFound": {
+    "badge": "Bulunamadı",
+    "goHome": "Geri",
+    "message": "Her yere baktık: bazanın altına, dolabın içine hatta ara sunucuya ama maalesef aradığınız sayfayı bulamadık.",
+    "title": "Sayfa bulunamadı"
+  },
+  "overlays": {
+    "close": "Kapat"
+  },
+  "player": {
+    "back": {
+      "default": "Ana sayfaya dön",
+      "short": "Geri"
+    },
+    "menus": {
+      "captions": {
+        "customChoice": "Altyazı yükle",
+        "customizeLabel": "Kişiselleştirme",
+        "title": "Altyazılar"
+      },
+      "episodes": {
+        "button": "Bölümler",
+        "loadingList": "Yükleniyor...",
+        "loadingTitle": "Yükleniyor..."
+      },
+      "sources": {
+        "title": "Kaynaklar"
+      }
+    },
+    "metadata": {
+      "notFound": {
+        "badge": "Bulunamadı",
+        "homeButton": "Geri",
+        "text": "İstediğiniz medyayı bulamadık. URL'i yanlış girdiniz ya da medya kaldırıldı.",
+        "title": "Medya bulunamadı."
+      }
+    },
+    "playbackError": {
+      "title": "Hay aksi, bozuldu!"
+    }
+  }
 }

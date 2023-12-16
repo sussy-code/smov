@@ -9,8 +9,8 @@ export function EpisodeTitle() {
   if (meta?.type !== "show") return null;
 
   return (
-    <div>
-      <span className="text-white font-medium mr-3">
+    <div className="flex gap-3">
+      <span className="text-white font-medium">
         {t("media.episodeDisplay", {
           season: meta?.season?.number,
           episode: meta?.episode?.number,

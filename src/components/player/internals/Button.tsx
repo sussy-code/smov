@@ -22,20 +22,14 @@ export const VideoPlayerButton = forwardRef<
       type="button"
       onClick={(e) => props.onClick?.(e.currentTarget as HTMLButtonElement)}
       className={classNames([
-        "tabbable p-2 rounded-full hover:bg-video-buttonBackground hover:bg-opacity-50 transition-transform duration-100 flex items-center",
+        "tabbable p-2 rounded-full hover:bg-video-buttonBackground hover:bg-opacity-50 transition-transform duration-100 flex items-center gap-3",
         props.activeClass ??
           "active:scale-110 active:bg-opacity-75 active:text-white",
         props.className ?? "",
       ])}
     >
       {props.icon && (
-        <Icon
-          className={classNames(
-            props.iconSizeClass || "text-2xl",
-            props.children ? "mr-3" : ""
-          )}
-          icon={props.icon}
-        />
+        <Icon className={props.iconSizeClass || "text-2xl"} icon={props.icon} />
       )}
       {props.children}
     </button>

@@ -25,6 +25,15 @@ export const appLanguageOptions = langCodes.map((lang) => {
       nativeName: "Pirate Tongue",
     };
   }
+
+  if (lang === "minion") {
+    return {
+      code: "minion",
+      name: "Minion",
+      nativeName: "Minionese",
+    };
+  }
+
   const [langObj] = ISO6391.getLanguages([lang]);
   if (!langObj)
     throw new Error(`Language with code ${lang} cannot be found in database`);

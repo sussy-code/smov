@@ -98,6 +98,7 @@ export function VerifyPassphrase(props: VerifyPassphraseProps) {
           name="username"
           value={mnemonic}
           onChange={setMnemonic}
+          passwordToggleable
         />
         {result.error ? (
           <p className="mt-3 text-authentication-errorText">
