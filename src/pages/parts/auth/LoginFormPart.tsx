@@ -74,6 +74,7 @@ export function LoginFormPart(props: LoginFormPartProps) {
           name="username"
           onChange={setMnemonic}
           placeholder={t("auth.login.passphrasePlaceholder") ?? undefined}
+          passwordToggleable
         />
         <AuthInputBox
           label={t("auth.deviceNameLabel") ?? undefined}

@@ -1,4 +1,7 @@
-import { forwardRef } from "react";
+import classNames from "classnames";
+import { forwardRef, useState } from "react";
+
+import { Icon, Icons } from "../Icon";
 
 export interface TextInputControlPropsNoLabel {
   onChange?: (data: string) => void;
@@ -9,6 +12,7 @@ export interface TextInputControlPropsNoLabel {
   autoComplete?: string;
   placeholder?: string;
   className?: string;
+  passwordToggleable?: boolean;
 }
 
 export interface TextInputControlProps extends TextInputControlPropsNoLabel {
@@ -30,25 +34,41 @@ export const TextInputControl = forwardRef<
       className,
       placeholder,
       onFocus,
+      passwordToggleable,
     },
     ref
   ) => {
+    let inputType = "text";
+    const [showPassword, setShowPassword] = useState(true);
+    if (passwordToggleable) inputType = showPassword ? "password" : "text";
+
     const input = (
-      <input
-        type="text"
-        ref={ref}
-        className={className}
-        placeholder={placeholder}
-        onChange={(e) => onChange && onChange(e.target.value)}
-        value={value}
-        name={name}
-        autoComplete={autoComplete}
-        onBlur={() => onUnFocus && onUnFocus()}
-        onFocus={() => onFocus?.()}
-        onKeyDown={(e) =>
-          e.key === "Enter" ? (e.target as HTMLInputElement).blur() : null
-        }
-      />
+      <div className="relative">
+        <input
+          type={inputType}
+          ref={ref}
+          className={classNames(className, passwordToggleable && "pr-12")}
+          placeholder={placeholder}
+          onChange={(e) => onChange && onChange(e.target.value)}
+          value={value}
+          name={name}
+          autoComplete={autoComplete}
+          onBlur={() => onUnFocus && onUnFocus()}
+          onFocus={() => onFocus?.()}
+          onKeyDown={(e) =>
+            e.key === "Enter" ? (e.target as HTMLInputElement).blur() : null
+          }
+        />
+        {passwordToggleable ? (
+          <button
+            type="button"
+            className="absolute top-1/2 -translate-y-1/2 right-1 text-xl p-3"
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            <Icon icon={showPassword ? Icons.EYE : Icons.EYE_SLASH} />
+          </button>
+        ) : null}
+      </div>
     );
 
     if (label) {
