@@ -1,4 +1,5 @@
 import { ScrapeMedia } from "@movie-web/providers";
+import { nanoid } from "nanoid";
 import { ofetch } from "ofetch";
 import { useCallback } from "react";
 
@@ -8,6 +9,7 @@ import { PlayerMeta } from "@/stores/player/slices/source";
 // for anybody who cares - these are anonymous metrics.
 // They are just used for figuring out if providers are broken or not
 const metricsEndpoint = "https://backend.movie-web.app/metrics/providers";
+const batchId = () => nanoid(32);
 
 export type ProviderMetric = {
   tmdbId: string;
@@ -34,6 +36,7 @@ export async function reportProviders(items: ProviderMetric[]): Promise<void> {
     method: "POST",
     body: {
       items,
+      batchId: batchId(),
     },
   });
 }

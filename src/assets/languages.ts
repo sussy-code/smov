@@ -27,4 +27,4 @@ export const locales = {
 };
 export type Locales = keyof typeof locales;
 
-export const rtlLocales: Locales[] = ["nl"];
+export const rtlLocales: Locales[] = [];
