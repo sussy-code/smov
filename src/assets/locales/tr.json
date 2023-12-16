@@ -33,7 +33,7 @@
     "login": {
       "description": "Hesabınıza giriş yapmak için lütfen parolanızı girin",
       "deviceLengthError": "Lütfen bir cihaz ismi girin",
-      "passphraseLabel": "12 karakterli parola",
+      "passphraseLabel": "12 kelimelik parola",
       "passphrasePlaceholder": "Parola",
       "submit": "Giriş yap",
       "title": "Hesabınıza giriş yapın",
@@ -185,7 +185,7 @@
         "unknownLanguage": "Bilinmeyen"
       },
       "downloads": {
-        "disclaimer": "İndirme bağlantıları doğrudan sağlayıcının kendisinden alınır. movie-web'in sağlanan indirme bağlantıları üzerine hiçbir konrolü yoktur.",
+        "disclaimer": "İndirme bağlantıları doğrudan sağlayıcının kendisinden alınır. movie-web'in sağlanan indirme bağlantıları üzerinde hiçbir konrolü yoktur.",
         "downloadCaption": "Geçerli altyazıyı indir",
         "downloadVideo": "Videoyu indir",
         "hlsExplanation": "Bu medya, movie-web üzerinden indirilemeyen bir HLS akışıdır.",
