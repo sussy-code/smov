@@ -3,21 +3,62 @@
     "createAccount": "Henüz bir hesabınız yok mu? <0>Hesap oluşturun.</0>",
     "deviceNameLabel": "Cihaz ismi",
     "deviceNamePlaceholder": "Kişisel telefon",
+    "generate": {
+      "description": "Parolanız kullanıcı adınıza veya şifrenize benziyor. Hesabınıza giriş yapmak için girmeniz gerekeceğinden onu güvende tuttuğunuzdan emin olun.",
+      "title": "Parolanız"
+    },
     "hasAccount": "Zaten hesabınız var mı?<0>Giriş yapın.</0>",
     "login": {
-      "title": "Hesabınıza giriş yapın"
+      "description": "Hesabınıza giriş yapmak için lütfen parolanızı girin",
+      "deviceLengthError": "Lütfen bir cihaz ismi girin",
+      "passphrasePlaceholder": "Parola",
+      "submit": "Giriş yap",
+      "title": "Hesabınıza giriş yapın",
+      "validationError": "Yanlış veya eksik parola"
     },
     "register": {
       "information": {
         "color1": "Birinci hesap rengi",
         "color2": "İkinci hesap rengi",
+        "header": "Cihazınız için bir isim girin, zevkinize göre renk ve kullanıcı simgesi seçin.",
         "icon": "Kullanıcı simgesi",
+        "next": "İleri",
         "title": "Hesap bilgisi"
       }
+    },
+    "trust": {
+      "failed": {
+        "title": "Sunucuya ulaşılamadı"
+      },
+      "host": "<0>{{hostname}}</0> adlı sunucuya bağlanıyorsunuz - lütfen hesap oluşturmadan önce sunucuya güvendiğinizi onaylayın",
+      "no": "Geri git",
+      "title": "Bu sunucuya güveniyor musunuz?",
+      "yes": "Bu sunucuya güveniyorum"
+    },
+    "verify": {
+      "invalidData": "Veri geçersiz",
+      "noMatch": "Parola eşleşmiyor",
+      "recaptchaFailed": "ReCaptcha doğrulaması başarısız",
+      "register": "Hesap oluşturun",
+      "title": "Parolanızı doğrulayın"
     }
   },
+  "errors": {
+    "details": "Hata detayları",
+    "reloadPage": "Sayfayı yenile",
+    "showError": "Hata detaylarını göster",
+    "title": "Bir hatayla karşılaştık!"
+  },
   "global": {
-    "name": "movie-web"
+    "name": "movie-web",
+    "pages": {
+      "about": "Hakkında",
+      "dmca": "DMCA",
+      "login": "Giriş yap",
+      "pagetitle": "{{title}} - movie-web",
+      "register": "Kayıt ol",
+      "settings": "Ayarlar"
+    }
   },
   "home": {
     "bookmarks": {
@@ -49,7 +90,7 @@
   },
   "notFound": {
     "badge": "Bulunamadı",
-    "goHome": "Geri",
+    "goHome": "Ana sayfaya dön",
     "message": "Her yere baktık: bazanın altına, dolabın içine hatta ara sunucuya ama maalesef aradığınız sayfayı bulamadık.",
     "title": "Sayfa bulunamadı"
   },
@@ -61,31 +102,117 @@
       "default": "Ana sayfaya dön",
       "short": "Geri"
     },
+    "casting": {
+      "enabled": "Cihaza yansıtılıyor..."
+    },
     "menus": {
       "captions": {
         "customChoice": "Altyazı yükle",
-        "customizeLabel": "Kişiselleştirme",
-        "title": "Altyazılar"
+        "customizeLabel": "Seçenekler",
+        "offChoice": "Kapalı",
+        "settings": {
+          "delay": "Altyazı gecikmesi",
+          "fixCapitals": "Büyük harf kullanımını düzelt"
+        },
+        "title": "Altyazılar",
+        "unknownLanguage": "Bilinmeyen"
+      },
+      "downloads": {
+        "disclaimer": "İndirme bağlantıları doğrudan sağlayıcının kendisinden alınır. movie-web'in sağlanan indirme bağlantıları üzerine hiçbir konrolü yoktur.",
+        "downloadCaption": "Geçerli altyazıyı indir",
+        "downloadVideo": "Videoyu indir",
+        "hlsExplanation": "Bu medya, movie-web üzerinden indirilemeyen bir HLS akışıdır.",
+        "onAndroid": {
+          "1": "Android'e indirmek için önce indir butonuna basın, sonra açılan yeni sayfada video üzerine <bold>basılı tutun</bold>, ardından <bold>Videoyu indir</bold> seçeneğini seçin.",
+          "shortTitle": "İndir / Android",
+          "title": "Android'e indirme"
+        },
+        "onPc": {
+          "1": "Bilgisayarda önce indir butonuna tıklayın, sonra ise açılan yeni sayfada videoya sağ tıklayın ve <bold>Videoyu farklı kaydet </bold> seçeneğini seçin",
+          "shortTitle": "İndir / Bilgisayar",
+          "title": "Bilgisayara indirme"
+        },
+        "title": "İndir"
       },
       "episodes": {
         "button": "Bölümler",
+        "emptyState": "Bu sezonda hiç bölüm yok, sonra tekrar deneyin!",
+        "episodeBadge": "B{{episode}}",
+        "loadingError": "Sezon yüklenirken hata oluştu",
         "loadingList": "Yükleniyor...",
         "loadingTitle": "Yükleniyor..."
       },
+      "settings": {
+        "captionItem": "Altyazı ayarları",
+        "downloadItem": "İndir",
+        "enableCaptions": "Altyazıları etkinleştir",
+        "experienceSection": "İzleme deneyimi",
+        "playbackItem": "Oynatma ayarları",
+        "qualityItem": "Kalite",
+        "sourceItem": "Video kaynakları",
+        "videoSection": "Video ayarları"
+      },
       "sources": {
-        "title": "Kaynaklar"
+        "failed": {
+          "text": "Video bulunmaya çalışılırken sorun oluştu, lütfen farklı bir kaynak deneyin.",
+          "title": "Video alınırken sorun oluştu"
+        },
+        "noEmbeds": {
+          "text": "Herhangi bir video bulamadık, lütfen farklı bir kaynak deneyin.",
+          "title": "Video bulunamadı"
+        },
+        "noStream": {
+          "text": "Bu kaynakta bu film ya da dizi için akış bulunmamaktadır.",
+          "title": "Akış yok"
+        },
+        "title": "Kaynaklar",
+        "unknownOption": "Bilinmeyen"
       }
     },
     "metadata": {
+      "failed": {
+        "homeButton": "Ana sayfaya dön",
+        "text": "Medyanın üstverisi TMDB'den alınamadı. Lütfen TMDB'nin göküp çökmediğini veya internet bağlantınız üzerinden engellenmediğini kontrol edin.",
+        "title": "Üstveri yüklenemedi"
+      },
       "notFound": {
         "badge": "Bulunamadı",
-        "homeButton": "Geri",
-        "text": "İstediğiniz medyayı bulamadık. URL'i yanlış girdiniz ya da medya kaldırıldı.",
+        "homeButton": "Ana sayfaya dön",
+        "text": "İstediğiniz medyayı bulamadık. URL'yi yanlış girdiniz ya da medya kaldırıldı.",
         "title": "Medya bulunamadı."
       }
     },
+    "nextEpisode": {
+      "cancel": "Vazgeç",
+      "next": "Sonraki bölüm"
+    },
     "playbackError": {
-      "title": "Hay aksi, bozuldu!"
+      "badge": "Oynatma hatası",
+      "errors": {
+        "errorAborted": "Medyanın alınması kullanıcının isteği üzerine iptal edildi.",
+        "errorDecode": "Daha önce kullanılabilir olduğu belirlenmiş olmasına rağmen, medya kaynağının kodu çözülmeye çalışılırken bir hata oluştu ve bu da bir hataya neden oldu.",
+        "errorGenericMedia": "Bilinmeyen medya hatası oluştu.",
+        "errorNetwork": "Medya önceden mevcut olsa da başarıyla alınmasını engelleyen bir tür ağ hatası oluştu.",
+        "errorNotSupported": "Medya veya medya sağlayıcısı desteklenmiyor."
+      },
+      "text": "Medya oynatılmaya çalışılırken bir hata oluştu. Lütfen tekrar deneyin.",
+      "title": "Video oynatılamadı!"
+    },
+    "scraping": {
+      "items": {
+        "failure": "Hata oluştu",
+        "notFound": "Video mevcut değil",
+        "pending": "Videolar aranıyor..."
+      },
+      "notFound": {
+        "badge": "Bulunamadı",
+        "detailsButton": "Detayları göster",
+        "text": "Sağlayıcılarımız arasında arama yaptık ve aradığınız medyayı bulamadık! Medyaları barındırmıyoruz ve mevcut olanlar üzerinde hiçbir kontrolümüz yok. Daha fazla ayrıntı için lütfen aşağıdaki 'Ayrıntıları göster' seçeneğine tıklayın.",
+        "title": "Bunu bulamadık"
+      }
+    },
+    "time": {
+      "remaining": "{{timeLeft}} kaldı • {{timeFinished, datetime}}'de bitiyor"
     }
   }
 }
