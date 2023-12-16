@@ -280,12 +280,63 @@
     }
   },
   "settings": {
+    "account": {
+      "accountDetails": {
+        "deviceNameLabel": "שם מכשיר",
+        "deviceNamePlaceholder": "מכשיר אישי",
+        "editProfile": "ערוך",
+        "logoutButton": "התנתק"
+      },
+      "actions": {
+        "delete": {
+          "button": "מחק משתמש",
+          "confirmTitle": "אתה בטוח?",
+          "text": "פעולה זו היא בלתי הפיכה. כל הנתונים יימחקו ולא ניתן יהיה לשחזר דבר.",
+          "title": "מחק משתמש"
+        },
+        "title": "פעולות"
+      },
+      "devices": {
+        "deviceNameLabel": "שם מכשיר",
+        "failed": "טעינת ההפעלות נכשלה",
+        "removeDevice": "הסר",
+        "title": "מכשירים"
+      },
+      "profile": {
+        "finish": "סייםעריכה",
+        "firstColor": "‫‫צבע פרופיל ראשון",
+        "secondColor": "צבע פרופיל שני",
+        "title": "ערוך תמונת פרופיל",
+        "userIcon": "סמל משתמש"
+      },
+      "register": {
+        "cta": "התחל",
+        "text": "שתף את התקדמות הצפייה שלך בין מכשירים ושמור אותם מסונכרנים.",
+        "title": "סנכרון לענן"
+      },
+      "title": "משתמש"
+    },
+    "appearance": {
+      "activeTheme": "פעיל",
+      "themes": {
+        "blue": "כחול",
+        "default": "ברירת מחדל",
+        "gray": "אפור",
+        "red": "אדום",
+        "teal": "ירוק כחלחל"
+      },
+      "title": "מראה"
+    },
     "reset": "איפוס",
     "save": "לשמור",
     "sidebar": {
       "info": {
+        "appVersion": "גרסת האפליקציה",
         "hostname": "שם מארח",
+        "notLoggedIn": "אתה לא מחובר",
+        "secure": "אבטח",
         "title": "מידע על האפליקציה",
+        "unknownVersion": "לא ידוע",
         "userId": "זהות המשתמש"
       }
     },
