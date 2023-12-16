@@ -9,6 +9,11 @@ const config: Config = {
   safelist: safeThemeList,
   theme: {
     extend: {
+      /* breakpoints */
+      screens: {
+        ssm: "400px",
+      },
+
       /* fonts */
       fontFamily: {
         "open-sans": "'Open Sans'",

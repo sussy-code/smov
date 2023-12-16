@@ -47,7 +47,7 @@ export function PlaybackSettingsView({ id }: { id: string }) {
     [display]
   );
 
-  const options = [0.25, 0.5, 1, 1.25, 2];
+  const options = [0.25, 0.5, 1, 1.5, 2];
 
   return (
     <>
