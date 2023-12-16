@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { memo, useEffect, useRef } from "react";
 
 export enum Icons {
@@ -152,10 +153,18 @@ export const Icon = memo((props: IconProps) => {
     return <ChromeCastButton />;
   }
 
+  const flipClass =
+    props.icon === Icons.ARROW_LEFT ||
+    props.icon === Icons.ARROW_RIGHT ||
+    props.icon === Icons.CHEVRON_LEFT ||
+    props.icon === Icons.CHEVRON_RIGHT
+      ? "rtl:-scale-x-100"
+      : "";
+
   return (
     <span
       dangerouslySetInnerHTML={{ __html: iconList[props.icon] }} // eslint-disable-line react/no-danger
-      className={props.className}
+      className={classNames(props.className, flipClass)}
     />
   );
 });

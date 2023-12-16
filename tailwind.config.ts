@@ -1,5 +1,6 @@
 import { allThemes, defaultTheme, safeThemeList } from "./themes";
 import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
 
 const themer = require("tailwindcss-themer");
 
@@ -40,6 +41,9 @@ const config: Config = {
         },
         ...allThemes,
       ],
+    }),
+    plugin(({ addVariant }) => {
+      addVariant("dir-neutral", "[dir] &");
     }),
   ],
 };

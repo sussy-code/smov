@@ -119,7 +119,7 @@ export function ProgressBar() {
   }, [setDraggingTime, duration, dragPercentage]);
 
   return (
-    <div className="w-full relative">
+    <div className="w-full relative" dir="ltr">
       <div className="top-0 absolute inset-x-0">
         <div
           className="absolute bottom-0"
@@ -158,7 +158,7 @@ export function ProgressBar() {
 
             {/* Actual progress bar */}
             <div
-              className="absolute top-0 left-0 h-full rounded-full bg-progress-filled flex justify-end items-center"
+              className="absolute top-0 dir-neutral:left-0 h-full rounded-full bg-progress-filled flex justify-end items-center"
               style={{
                 width: `${
                   Math.max(

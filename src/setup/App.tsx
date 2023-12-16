@@ -23,7 +23,7 @@ import { RegisterPage } from "@/pages/Register";
 import { SettingsPage } from "@/pages/Settings";
 import { Layout } from "@/setup/Layout";
 import { useHistoryListener } from "@/stores/history";
-import { useLanguageListener } from "@/stores/language";
+import { LanguageProvider } from "@/stores/language";
 
 function LegacyUrlView({ children }: { children: ReactElement }) {
   const location = useLocation();
@@ -61,10 +61,10 @@ function QuickSearch() {
 function App() {
   useHistoryListener();
   useOnlineListener();
-  useLanguageListener();
 
   return (
     <Layout>
+      <LanguageProvider />
       <Switch>
         {/* functional routes */}
         <Route exact path="/s/:query">

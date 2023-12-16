@@ -88,7 +88,7 @@ export function PlayerPart(props: PlayerPartProps) {
             </>
           ) : null}
         </div>
-        <div className="hidden lg:flex justify-between">
+        <div className="hidden lg:flex justify-between" dir="ltr">
           <Player.LeftSideControls>
             {status === playerStatus.PLAYING ? (
               <>
@@ -130,6 +130,7 @@ export function PlayerPart(props: PlayerPartProps) {
       </Player.BottomControls>
 
       <Player.VolumeChangedPopout />
+
       <Player.NextEpisodeButton
         controlsShowing={showTargets}
         onChange={props.onMetaChange}

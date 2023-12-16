@@ -25,3 +25,6 @@ export const locales = {
   pirate,
   minion,
 };
+export type Locales = keyof typeof locales;
+
+export const rtlLocales: Locales[] = [];

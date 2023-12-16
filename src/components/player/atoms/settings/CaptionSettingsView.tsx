@@ -97,6 +97,7 @@ export function CaptionSetting(props: {
             onTouchStart={dragMouseDown}
           >
             <div
+              dir="ltr"
               className={[
                 "relative w-full h-1 bg-video-context-slider bg-opacity-25 rounded-full transition-[height] duration-100 group-hover/progress:h-1.5",
                 dragging ? "!h-1.5" : "",

@@ -85,10 +85,14 @@ export function ScrapingPart(props: ScrapingProps) {
     currentProviderIndex = sourceOrder.length - 1;
 
   return (
-    <div className="h-full w-full relative" ref={containerRef}>
+    <div
+      className="h-full w-full relative dir-neutral:origin-top-left flex"
+      ref={containerRef}
+    >
       <div
         className={classNames({
-          "absolute transition-[transform,opacity] opacity-0": true,
+          "absolute transition-[transform,opacity] opacity-0 dir-neutral:left-0":
+            true,
           "!opacity-100": renderedOnce,
         })}
         ref={listRef}
