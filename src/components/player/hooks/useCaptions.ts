@@ -46,10 +46,15 @@ export function useCaptions() {
     else await selectLastUsedLanguage();
   }, [selectLastUsedLanguage, disable, enabled]);
 
+  const selectLastUsedLanguageIfEnabled = useCallback(async () => {
+    if (enabled) await selectLastUsedLanguage();
+  }, [selectLastUsedLanguage, enabled]);
+
   return {
     selectLanguage,
     disable,
     selectLastUsedLanguage,
     toggleLastUsed,
+    selectLastUsedLanguageIfEnabled,
   };
 }

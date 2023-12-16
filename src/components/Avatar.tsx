@@ -66,7 +66,9 @@ export function UserAvatar(props: {
     <>
       <Avatar
         profile={auth.account.profile}
-        sizeClass={props.sizeClass ?? "w-[2rem] h-[2rem]"}
+        sizeClass={
+          props.sizeClass ?? "w-[1.5rem] h-[1.5rem] ssm:w-[2rem] ssm:h-[2rem]"
+        }
         iconClass={props.iconClass}
         bottom={props.bottom}
       />
@@ -84,7 +86,10 @@ export function UserAvatar(props: {
 export function NoUserAvatar(props: { iconClass?: string }) {
   return (
     <div className="relative inline-block p-1 text-type-dimmed">
-      <Icon className={props.iconClass ?? "text-xl"} icon={Icons.MENU} />
+      <Icon
+        className={props.iconClass ?? "text-base ssm:text-xl"}
+        icon={Icons.MENU}
+      />
     </div>
   );
 }
