@@ -127,6 +127,9 @@
           "shortTitle": "İndir / Android",
           "title": "Android'e indirme"
         },
+        "onIos": {
+          "1": "iOS'a indirmek için öncelikle indir butonuna basın, sonra açılan yeni sayfada <bold><ios_share /></bold>'e basın, hemen ardından <bold>Dosyalara Kaydet <ios_files /></bold>'e basın."
+        },
         "onPc": {
           "1": "Bilgisayarda önce indir butonuna tıklayın, sonra ise açılan yeni sayfada videoya sağ tıklayın ve <bold>Videoyu farklı kaydet </bold> seçeneğini seçin",
           "shortTitle": "İndir / Bilgisayar",
