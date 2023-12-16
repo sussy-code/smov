@@ -17,6 +17,7 @@
     "copy": "Kopieren"
   },
   "auth": {
+    "createAccount": "Du hast noch keinen Account? <0>Registriere dich jetzt.</0>",
     "deviceNameLabel": "Gerätename",
     "deviceNamePlaceholder": "Handy",
     "generate": {
@@ -24,9 +25,11 @@
       "next": "Ich habe meine Passphrase gespeichert",
       "title": "Deine Passphrase"
     },
+    "hasAccount": "Du hast bereits einen Account? <0>Anmelden.</0>",
     "login": {
       "description": "Gebe deine Passphrase ein, um dich in deinem Konto anzumelden",
-      "deviceLengthError": "Gebe ein Gerätename ein",
+      "deviceLengthError": "Gebe einen Gerätenamen ein",
+      "passphraseLabel": "12-Wort Passphrase",
       "passphrasePlaceholder": "Passphrase",
       "submit": "Anmelden",
       "title": "Melde dich in deinem Konto an",
@@ -44,15 +47,19 @@
     },
     "trust": {
       "failed": {
-        "title": "Konnte Server nicht erreichen"
+        "text": "Hast du es korrekt konfiguriert?",
+        "title": "Server nicht erreichbar"
       },
+      "host": "Du verbindest dich zu <0>{{hostname}}</0> - stelle sicher, dass du diesem vertraust, bevor du einen Account erstellst",
       "no": "Zurück",
       "title": "Vertraust du diesem Server?",
       "yes": "Ich vertraue diesem Server"
     },
     "verify": {
+      "description": "Bitte gebe deine Passphrase vom früheren Schritt an, um zu bestätigen, dass du sie gespeichert hast und um dein Konto zu erstellen",
       "invalidData": "Daten sind ungültig",
       "noMatch": "Passphrasen stimmen nicht überein",
+      "passphraseLabel": "Deine 12-Wort Passphrase",
       "recaptchaFailed": "ReCaptcha Verifizierung ist fehlgeschlagenen",
       "register": "Konto erstellen",
       "title": "Bestätige deine Passphrase"
@@ -61,6 +68,7 @@
   "errors": {
     "badge": "Kaputt",
     "details": "Fehlerdetails",
+    "reloadPage": "Seite neuladen",
     "showError": "Zeige Fehlerdetails an",
     "title": "Ein Fehler ist aufgetreten!"
   },
@@ -77,6 +85,7 @@
   "global": {
     "name": "movie-web",
     "pages": {
+      "about": "Über",
       "dmca": "DMCA",
       "login": "Anmelden",
       "pagetitle": "{{title}} - movie-web",
@@ -143,7 +152,7 @@
   "notFound": {
     "badge": "Nicht gefunden",
     "goHome": "Zurück zur Startseite",
-    "message": "Wir haben überall gesucht, aber am Ende konnten wir die gesuchte Seite nicht finden.",
+    "message": "Wir haben überall gesucht: Unter den Eimern, im Schrank, hinter der Proxy, aber am Ende konnten wir die gesuchte Seite nicht finden.",
     "title": "Diese Seite wurde nicht gefunden"
   },
   "overlays": {
@@ -153,6 +162,9 @@
     "back": {
       "default": "Zurück zur Startseite",
       "short": "Rückmeldung"
+    },
+    "casting": {
+      "enabled": "Casting zum Gerät..."
     },
     "menus": {
       "captions": {
@@ -200,12 +212,26 @@
       "settings": {
         "captionItem": "Untertiteleinstellungen",
         "downloadItem": "Download",
+        "enableCaptions": "Untertitel aktivieren",
+        "experienceSection": "Anzeigeerlebnis",
         "playbackItem": "Wiedergabeeinstellungen",
         "qualityItem": "Qualität",
         "sourceItem": "Videoquellen",
         "videoSection": "Videoeinstellungen"
       },
       "sources": {
+        "failed": {
+          "text": "Beim Versuch, Videos zu finden, ist ein Fehler aufgetreten. Bitte versuche es mit einer anderen Quelle.",
+          "title": "Scrapen fehlgeschlagen"
+        },
+        "noEmbeds": {
+          "text": "Es konnten keine Embeds gefunden werden. Bitte versuchen es mit einer anderen Quelle.",
+          "title": "Keine Embeds gefunden"
+        },
+        "noStream": {
+          "text": "Diese Quelle bietet keine Streams für diesen Film oder diese Serie.",
+          "title": "Kein Stream"
+        },
         "title": "Quellen",
         "unknownOption": "Unbekannt"
       }
@@ -220,7 +246,7 @@
       "notFound": {
         "badge": "Nicht gefunden",
         "homeButton": "Zurück zur Startseite",
-        "text": "Wir konnten die angeforderten Medien nicht finden.",
+        "text": "Wir konnten das angeforderte Medium nicht finden.",
         "title": "Das Medium konnte nicht gefunden werden."
       }
     },
@@ -232,7 +258,10 @@
       "badge": "Wiedergabefehler",
       "errors": {
         "errorAborted": "Das Laden des Videos wurde vom Nutzer abgebrochen.",
-        "errorGenericMedia": "Unbekannter Videofehler ist aufgetreten."
+        "errorDecode": "Trotz vorheriger Feststellung der Nutzbarkeit trat ein Fehler beim Versuch auf, die Mediumdatei zu decodieren, was zu einem Fehler führte.",
+        "errorGenericMedia": "Unbekannter Videofehler ist aufgetreten.",
+        "errorNetwork": "Es ist ein Netzwerkfehler aufgetreten, der das erfolgreiche Abrufen des Mediums verhinderte, obwohl es zuvor verfügbar war.",
+        "errorNotSupported": "Das Medium- oder Mediumanbieterobjekt wird nicht unterstützt."
       },
       "homeButton": "Zurück zur Startseite",
       "text": "Ein Fehler ist während der Wiedergabe aufgetreten. Versuche es erneut.",
@@ -240,18 +269,23 @@
     },
     "scraping": {
       "items": {
-        "failure": "Ein Fehler ist aufgetreten"
+        "failure": "Ein Fehler ist aufgetreten",
+        "notFound": "Video nicht gefunden",
+        "pending": "Suche nach Videos..."
       },
       "notFound": {
         "badge": "Nicht gefunden",
         "detailsButton": "Details anzeigen",
         "homeButton": "Zurück zur Startseite",
+        "text": "Wir haben alle Anbieter durchsucht, konnten aber nicht das Video finden nach dem du suchst! Wir stellen keine eigenen Videos bereit und haben keine Kontrolle darüber, was verfügbar ist. Bitte klicke \"Details anzeigen\" für mehr Details.",
         "title": "Wir konnten das nicht finden"
       }
     },
     "time": {
       "regular": "{{timeWatched}} / {{duration}}",
-      "shortRegular": "{{timeWatched}}"
+      "remaining": "{{timeLeft}} übrig • Fertig um {{timeFinished, datetime}}",
+      "shortRegular": "{{timeWatched}}",
+      "shortRemaining": "-{{timeLeft}}"
     }
   },
   "screens": {
