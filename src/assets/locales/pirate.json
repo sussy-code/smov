@@ -259,10 +259,6 @@
     }
   },
   "screens": {
-    "dmca": {
-      "text": "In an effort to address the copyright concerns associated with the website known as \"movie-web,\" the DMCA, or Digital Jolly Roger Copyright Act, has been initiated to safeguard the intellectual property rights of content creators by reportin' infringements on this platform, thereby adherin' to legal protocols for takedown requests, which, like, ye know, it's all about, like, maintainin' the integrity of intellectual property, and, um, makin' sure, like, creators get their fair share, but then, it's, like, this intricate dance of digital legalities, where ye have to, uh, like, navigate this labyrinth of code and bytes and, uh, send, ye know, these, like, electronic documents that, um, point out the, uh, alleged infringement, and it's, like, this whole, like, teeter-totter of legality, where ye're, like, balancin', um, the rights of the, ye know, creators and the, um, operation of this, like, online, uh, entity, and, like, the DMCA, it's, like, this, um, powerful tool, but, uh, it's also, like, this, um, complex puzzle, where, ye know, ye're, like, seekin' justice in the digital wilderness, and, uh, strivin' for harmony amidst the chaos of the internet, and, um, yeah, that's, like, the whole, like, DMCA-ing thing with movie-web, ye know?",
-      "title": "DMCA"
-    },
     "loadingApp": "Loadin' application",
     "loadingUser": "Loadin' yer pirate profile",
     "loadingUserError": {
