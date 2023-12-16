@@ -119,7 +119,7 @@ export function ProgressBar() {
   }, [setDraggingTime, duration, dragPercentage]);
 
   return (
-    <div className="w-full relative">
+    <div className="w-full relative" dir="ltr">
       <div className="top-0 absolute inset-x-0">
         <div
           className="absolute bottom-0"

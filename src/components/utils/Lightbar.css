@@ -6,7 +6,7 @@
   user-select: none;
 }
 
-.lightbar {
+[dir] .lightbar {
   left: 50vw;
   transform: translateX(-50%);
 }
@@ -16,13 +16,14 @@
     width: 150vw;
   }
 
-  .lightbar {
+  [dir] .lightbar {
     left: -25vw;
     transform: initial;
   }
+
 }
 
-.lightbar {
+[dir] .lightbar {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,7 +32,7 @@
   animation: boot var(--d) var(--animation) forwards;
 }
 
-.lightbar-visual {
+[dir] .lightbar-visual {
   left: 0;
   --top: theme('colors.background.main');
   --bottom: theme('colors.lightBar.light');
@@ -57,7 +58,6 @@
 
 @keyframes boot {
   from {
-
     opacity: 0.25;
   }
 

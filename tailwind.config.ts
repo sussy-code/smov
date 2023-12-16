@@ -1,5 +1,6 @@
 import { allThemes, defaultTheme, safeThemeList } from "./themes";
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
 
 const themer = require("tailwindcss-themer");
 
@@ -10,18 +11,18 @@ const config: Config = {
     extend: {
       /* fonts */
       fontFamily: {
-        "open-sans": "'Open Sans'"
+        "open-sans": "'Open Sans'",
       },
 
       /* animations */
       keyframes: {
         "loading-pin": {
           "0%, 40%, 100%": { height: "0.5em", "background-color": "#282336" },
-          "20%": { height: "1em", "background-color": "white" }
-        }
+          "20%": { height: "1em", "background-color": "white" },
+        },
       },
-      animation: { "loading-pin": "loading-pin 1.8s ease-in-out infinite" }
-    }
+      animation: { "loading-pin": "loading-pin 1.8s ease-in-out infinite" },
+    },
   },
   plugins: [
     require("tailwind-scrollbar"),
@@ -33,9 +34,13 @@ const config: Config = {
           selectors: [".theme-default"],
           ...defaultTheme,
         },
-        ...allThemes]
-    })
-  ]
+        ...allThemes,
+      ],
+    }),
+    plugin(({ addVariant }) => {
+      addVariant("dir-neutral", "[dir] &");
+    }),
+  ],
 };
 
 export default config;
