@@ -266,10 +266,6 @@
     "migration": {
       "failed": "Banana to banana your banana.",
       "inProgress": "Please banana, we are banana your banana. This shouldn't banana long."
-    },
-    "dmca": {
-      "title": "DMCA",
-      "text": "Welcome to movie-web's DMCA contact page! We respect intellectual property rights and want to address any copyright concerns swiftly. If you believe your copyrighted work has been improperly used on our platform, please send a detailed DMCA notice to the email below. Please include a description of the copyrighted material, your contact details, and a statement of good faith belief. We're committed to resolving these matters promptly and appreciate your cooperation in keeping movie-web a place that respects creativity and copyrights."
     }
   },
   "navigation": {
