@@ -1,0 +1,420 @@
+{
+  "about": {
+    "description": "movie-web הוא יישום אינטרנט המחפש באינטרנט אחר זרמים. הצוות שואף לגישה מינימליסטית ברובה לצריכת תוכן.",
+    "faqTitle": "שאלות נפוצות",
+    "q1": {
+      "body": "movie-web אינו מארח תוכן כלשהו. כאשר אתה לוחץ על משהו לצפייה, האינטרנט מחפש את המדיה שנבחרה (במסך הטעינה ובכרטיסייה 'מקורות וידאו' תוכל לראות באיזה מקור אתה משתמש). מדיה אף פעם לא מועלת על ידי movie-web, הכל מתבצע דרך מנגנון חיפוש זה.",
+      "title": "מאיפה התוכן?"
+    },
+    "q2": {
+      "body": "לא ניתן לבקש תוכנית או סרט, movie-web לא מנהלת שום תוכן. כל התוכן נצפה דרך מקורות באינטרנט.",
+      "title": "איפה אני יכול לבקש תוכנית או סרט?"
+    },
+    "q3": {
+      "body": "תוצאות החיפוש שלנו מופעלות על ידי The Movie Database (TMDB) ומוצגות ללא קשר אם למקורות שלנו יש את התוכן.",
+      "title": "תוצאות החיפוש מציגות את התוכנית או הסרט, למה אני לא יכול להפעיל אותם?"
+    },
+    "title": "על movie-web"
+  },
+  "actions": {
+    "copied": "הועתק",
+    "copy": "להעתיק"
+  },
+  "auth": {
+    "createAccount": "אין לך עדיין חשבון? <0>צור חשבון.</0>",
+    "deviceNameLabel": "שם המכשיר",
+    "deviceNamePlaceholder": "מכשיר אישי",
+    "generate": {
+      "description": "ביטוי הסיסמה שלך משמש כשם המשתמש והסיסמה שלך. אנא הקפד לשמור אותו בטוח מכיוון שתצטרך להזין אותו כדי להתחבר לחשבון שלך",
+      "next": "אני שמרתי את משפט הסיסמה שלי",
+      "title": "משפט הסיסמה שלך"
+    },
+    "hasAccount": "Already have an account? <0>Login here.</0>",
+    "login": {
+      "description": "אנא הזן את ביטוי הסיסמה שלך כדי להתחבר לחשבונך",
+      "deviceLengthError": "אנא הזן שם מכשיר",
+      "passphraseLabel": "ביטוי סיסמא בעל 12 מילים",
+      "passphrasePlaceholder": "ביטוי סיסמא",
+      "submit": "התחבר",
+      "title": "התחבר לחשבונך",
+      "validationError": "ביטוי סיסמה שגוי או לא שלם"
+    },
+    "register": {
+      "information": {
+        "color1": "צבע פרופיל ראשון",
+        "color2": "צבע פרופיל שני",
+        "header": "הזן שם למכשירך ובחר צבעים וסמל משתמש לפי בחירתך",
+        "icon": "סמל משתמש",
+        "next": "הבא",
+        "title": "פרטי חשבון"
+      }
+    },
+    "trust": {
+      "failed": {
+        "text": "האם הגדרת את זה נכון?",
+        "title": "הגישה לשרת נכשלה"
+      },
+      "host": "אתה מתחבר אל <0>{{hostname}}</0> - אנא אשר שאתה סומך עליו לפני יצירת חשבון",
+      "no": "חזור",
+      "title": "האם אתה סומך על שרת זה?",
+      "yes": "אני בוטח בשרת זה"
+    },
+    "verify": {
+      "description": "אנא הזן את משפט הסיסמה שלך מקודם כדי לאשר ששמרת אותו וכדי ליצור את חשבונך",
+      "invalidData": "הנתונים אינם חוקיים",
+      "noMatch": "ביטוי הסיסמה אינו תואם",
+      "passphraseLabel": "ביטוי הסיסמה שלך בעל 12 מילים",
+      "recaptchaFailed": "אימות ReCaptcha נכשל",
+      "register": "צור חשבון",
+      "title": "אשר את ביטוי הסיסמה שלך"
+    }
+  },
+  "errors": {
+    "badge": "זה נשבר",
+    "details": "פרטי שגיאה",
+    "reloadPage": "טען מחדש את הדף",
+    "showError": "הצג פרטי שגיאה",
+    "title": "נתקלנו בשגיאה!"
+  },
+  "footer": {
+    "legal": {
+      "disclaimer": "תנית ויתור",
+      "disclaimerText": "movie-web אינו מארח קבצים, הוא רק מקשר לשירותי צד שלישי. יש להתייחס לסוגיות משפטיות עם המארחים והספקים של הקבצים. movie-web אינה אחראית לכל קבצי מדיה המוצגים על ידי ספקי הווידאו."
+    },
+    "links": {
+      "discord": "דיסקורד",
+      "dmca": "DMCA",
+      "github": "גיטהאב"
+    },
+    "tagline": "צפה בתוכניות ובסרטים האהובים עליך עם אפליקציית סטרימינג זו בקוד פתוח."
+  },
+  "global": {
+    "name": "movie-web",
+    "pages": {
+      "about": "אודות",
+      "dmca": "DMCA",
+      "login": "התחבר",
+      "pagetitle": "{{title}} - movie-web",
+      "register": "הירשם",
+      "settings": "הגדרות"
+    }
+  },
+  "home": {
+    "bookmarks": {
+      "sectionTitle": "סימניות"
+    },
+    "continueWatching": {
+      "sectionTitle": "המשך לצפות"
+    },
+    "mediaList": {
+      "stopEditing": "הפסק עריכה"
+    },
+    "search": {
+      "allResults": "זה כל מה שיש לנו!",
+      "failed": "לא הצלחנו למצוא מדיה, נסה שוב!",
+      "loading": "טוען...",
+      "noResults": "לא יכולנו למצוא כלום!",
+      "placeholder": "במה תרצה לצפות?",
+      "sectionTitle": "תוצאות חיפוש"
+    },
+    "titles": {
+      "day": {
+        "default": "במה תרצה לצפות באחר צהריים זה?"
+      },
+      "morning": {
+        "default": "במה תרצה לצפות הבוקר?",
+        "extra": [
+          "שמעתי שלפני הזריחה זה סרט טוב"
+        ]
+      },
+      "night": {
+        "default": "במה תרצה לצפות הלילה?",
+        "extra": [
+          "עייף? שמעתי שמגרש השדים זה סרט טוב."
+        ]
+      }
+    }
+  },
+  "media": {
+    "episodeDisplay": "S{{season}} E{{episode}}",
+    "types": {
+      "movie": "סרט",
+      "show": "סדרה"
+    }
+  },
+  "navigation": {
+    "banner": {
+      "offline": "תבדוק את חיבור האינטרנט שלך"
+    },
+    "menu": {
+      "about": "עלינו",
+      "donation": "לתרום",
+      "logout": "להתנתק",
+      "register": "סנכרון לענן",
+      "settings": "הגדרות",
+      "support": "תמיכה"
+    }
+  },
+  "notFound": {
+    "badge": "לא נמצא",
+    "goHome": "בחזרה לבית",
+    "message": "חיפשנו בכל מקום: מתחת לפחים, בארון, מאחורי ה-proxy אבל בסופו של דבר לא מצאנו את הדף שאתה מחפש.",
+    "title": "לא יכולנו למצוא את דף זה"
+  },
+  "overlays": {
+    "close": "סגור"
+  },
+  "player": {
+    "back": {
+      "default": "חזרה לדף הבית",
+      "short": "חזור"
+    },
+    "casting": {
+      "enabled": "משדר למכשיר..."
+    },
+    "menus": {
+      "captions": {
+        "customChoice": "בחר כתוביות מהקובץ",
+        "customizeLabel": "התאם אישית",
+        "offChoice": "כבוי",
+        "settings": {
+          "delay": "עיכוב בכיתוב",
+          "fixCapitals": "תקן שימוש באותיות גדולות"
+        },
+        "title": "כתוביות",
+        "unknownLanguage": "לא ידוע"
+      },
+      "downloads": {
+        "disclaimer": "ההורדות נלקחות ישירות מהספק. ל-movie-web אין שליטה על האופן שבו מסופקות ההורדות.",
+        "downloadCaption": "הורד את הכתוביות הנוכחיות",
+        "downloadVideo": "הורד וידאו",
+        "hlsExplanation": "מדיה זו היא זרם HLS שאינו ניתן להורדה ב-movie-web.",
+        "onAndroid": {
+          "1": "כדי להוריד באנדרואיד, לחץ על כפתור ההורדה ולאחר מכן, בדף החדש, <bold>הקש והחזק</bold> על הסרטון, ולאחר מכן בחר <bold>שמור</bold>.",
+          "shortTitle": "הורדה / אנדרויד",
+          "title": "הורדה באנדרויד"
+        },
+        "onIos": {
+          "1": "כדי להוריד ב-iOS, לחץ על כפתור ההורדה ולאחר מכן, בדף החדש, לחץ על <bold><ios_share /></bold> ולאחר מכן על <bold>שמור לקבצים <ios_files /></bold>.",
+          "shortTitle": "הורדה / iOS",
+          "title": "מוריד ב-iOS"
+        },
+        "onPc": {
+          "1": "במחשב, לחץ על כפתור ההורדה ולאחר מכן, בדף החדש, לחץ לחיצה ימנית על הסרטון ובחר <bold>שמור סרטון בשם</bold>",
+          "shortTitle": "הורדה / PC",
+          "title": "הורדה במחשב"
+        },
+        "title": "הורד"
+      },
+      "episodes": {
+        "button": "פרקים",
+        "emptyState": "אין פרקים בעונה זו, אנא בדוק שוב מאוחר יותר!",
+        "episodeBadge": "פ{{episode}}",
+        "loadingError": "ארע שגיאה בטעינת העונה",
+        "loadingList": "טוען...",
+        "loadingTitle": "טוען..."
+      },
+      "playback": {
+        "speedLabel": "מהירות הניגון",
+        "title": "הגדרות ניגון"
+      },
+      "quality": {
+        "automaticLabel": "איכות אוטומטית",
+        "hint": "You can try <0>switching source</0> to get different quality options.",
+        "iosNoQuality": "Due to Apple-defined limitations, quality selection is not available on iOS for this source. You can try <0>switching to another source</0> to get different quality options.",
+        "title": "איכות"
+      },
+      "settings": {
+        "captionItem": "הגדרות כתוביות",
+        "downloadItem": "הורד",
+        "enableCaptions": "אפשר כתוביות",
+        "experienceSection": "חווית צפייה",
+        "playbackItem": "הגדרות השמעה",
+        "qualityItem": "איכות",
+        "sourceItem": "מקורות וידאו",
+        "videoSection": "הגדרות וידאו"
+      },
+      "sources": {
+        "failed": {
+          "text": "אירעה שגיאה בעת ניסיון למצוא סרטונים, אנא נסה מקור אחר.",
+          "title": "לא הצליח לחלץ"
+        },
+        "noEmbeds": {
+          "text": "לא הצלחנו למצוא שום הטעמות, אנא נסה מקור אחר.",
+          "title": "לא נמצאו הטמעות"
+        },
+        "noStream": {
+          "text": "למקור זה אין זרמים עבור הסרט או התוכנית הזו.",
+          "title": "אין זרם"
+        },
+        "title": "מקורות",
+        "unknownOption": "לא ידוע"
+      }
+    },
+    "metadata": {
+      "failed": {
+        "badge": "נכשל",
+        "homeButton": "חזור לדף הבית",
+        "text": "לא היה ניתן לטעון את הmetadata של המדיה מ-TMDB. אנא בדוק אם TMDB מושבת או חסום בחיבור האינטרנט שלך.",
+        "title": "טעינת הmetdata נכשלה"
+      },
+      "notFound": {
+        "badge": "לא נמצא",
+        "homeButton": "חזרה לדף הבית",
+        "text": "לא הצלחנו למצוא את המדיה שביקשת. או שהוא הוסר או שהתעסקת בכתובת האתר.",
+        "title": "לא הצלחנו למצוא את המדיה הזו."
+      }
+    },
+    "nextEpisode": {
+      "cancel": "בטל",
+      "next": "פרק הבא"
+    },
+    "playbackError": {
+      "badge": "שגיאת ניגון",
+      "errors": {
+        "errorAborted": "השגת המדיה בוטלה על ידי בקשת המשתמש.",
+        "errorDecode": "למרות שנקבע קודם כל שהמדיה יכולה להשתמש בה, אירעה שגיאה בעת ניסיון לפענח משאבי המדיה, וכתוצאה מכך קרה שגיאה.",
+        "errorGenericMedia": "‍אירעה שגיאת מדיה לא ידועה.",
+        "errorNetwork": "אירעה סוג של שגיאת רשת שמנעה גישה למדיה, למרות שהיא הייתה זמינה מראש.",
+        "errorNotSupported": "המדיה או ספק המדיה אינם נתמכים."
+      },
+      "homeButton": "חזור לדף הבית",
+      "text": "אירעה שגיאה בהפעלת המדיה. אנא נסה שוב.",
+      "title": "הפעלת הסרטון נכשלה!"
+    },
+    "scraping": {
+      "items": {
+        "failure": "אירעה שגיאה",
+        "notFound": "אין את הסרטון",
+        "pending": "מחפש סרטונים..."
+      },
+      "notFound": {
+        "badge": "לא נמצא",
+        "detailsButton": "הצג פרטים",
+        "homeButton": "חזור לדף הבית",
+        "text": "חיפשנו בספקים שלנו ולא מצאנו את המדיה שאתה מחפש! אנו לא מארחים את המדיה ואין לנו שליטה על מה שזמין. אנא לחץ על 'הצג פרטים' למידע נוסף.",
+        "title": "לא יכולנו למצוא את זה"
+      }
+    },
+    "time": {
+      "regular": "{{timeWatched}} / {{duration}}",
+      "remaining": "{{timeLeft}} נשאר • סיים ב {{timeFinished, datetime}}",
+      "shortRegular": "{{timeWatched}}",
+      "shortRemaining": "-{{timeLeft}}"
+    }
+  },
+  "screens": {
+    "dmca": {
+      "text": "ברוכה הבאה לדף יצירת קשר DMCA של movie-web! אנו מכבדים את זכויות הקניין הרוחני ורוצים לטפל בכל חשש לזכויות יוצרים במהירות. אם אתה סבור שהעבודה שלך המוגנת בזכויות יוצרים נוצלה בצורה לא נכונה בפלטפורמה שלנו, אנא שלח הודעת DMCA מפורטת למייל למטה. אנא כלול תיאור של החומר המוגן בזכויות יוצרים, פרטי ההתקשרות שלך והצהרת תום לב. אנו מחויבים לפתור את העניינים הללו באופן מיידי ומעריכים את שיתוף הפעולה שלך בשמירה על movie-web מקום שמכבד יצירתיות וזכויות יוצרים.",
+      "title": "DMCA"
+    },
+    "loadingApp": "טוען את האפליקציה",
+    "loadingUser": "טוען את הפרופיל שלך",
+    "loadingUserError": {
+      "logout": "להתנתק",
+      "reset": "אפס שרת מותאם אישית",
+      "text": "טעינת הפרופיל שלך נכשלה",
+      "textWithReset": "לא הצלחנו לטעון את הפרופיל שלך מהשרת המותאם אישית שלך, תרצה לאפס בחזרה לשרת ברירת המחדל?"
+    },
+    "migration": {
+      "failed": "העברת הנתונים שלך נכשלה.",
+      "inProgress": "אנא המתן, אנו מעבירים את הנתונים שלך. זה לא אמור לקחת הרבה זמן."
+    }
+  },
+  "settings": {
+    "account": {
+      "accountDetails": {
+        "deviceNameLabel": "שם מכשיר",
+        "deviceNamePlaceholder": "מכשיר אישי",
+        "editProfile": "ערוך",
+        "logoutButton": "התנתק"
+      },
+      "actions": {
+        "delete": {
+          "button": "מחק משתמש",
+          "confirmButton": "מחק משתמש",
+          "confirmDescription": "אתה בטוח שתרצה למחוק את המשתמש שלך? כל הנתונים שלך יימחקו!",
+          "confirmTitle": "אתה בטוח?",
+          "text": "פעולה זו היא בלתי הפיכה. כל הנתונים יימחקו ולא ניתן יהיה לשחזר דבר.",
+          "title": "מחק משתמש"
+        },
+        "title": "פעולות"
+      },
+      "devices": {
+        "deviceNameLabel": "שם מכשיר",
+        "failed": "טעינת ההפעלות נכשלה",
+        "removeDevice": "הסר",
+        "title": "מכשירים"
+      },
+      "profile": {
+        "finish": "סייםעריכה",
+        "firstColor": "‫‫צבע פרופיל ראשון",
+        "secondColor": "צבע פרופיל שני",
+        "title": "ערוך תמונת פרופיל",
+        "userIcon": "סמל משתמש"
+      },
+      "register": {
+        "cta": "התחל",
+        "text": "שתף את התקדמות הצפייה שלך בין מכשירים ושמור אותם מסונכרנים.",
+        "title": "סנכרון לענן"
+      },
+      "title": "משתמש"
+    },
+    "appearance": {
+      "activeTheme": "פעיל",
+      "themes": {
+        "blue": "כחול",
+        "default": "ברירת מחדל",
+        "gray": "אפור",
+        "red": "אדום",
+        "teal": "ירוק כחלחל"
+      },
+      "title": "מראה"
+    },
+    "captions": {
+      "backgroundLabel": "אטימות רקע",
+      "colorLabel": "צבע",
+      "previewQuote": "אסור לי לפחד. הפחד הוא קוטל הנפש.",
+      "textSizeLabel": "גודל הטקסט",
+      "title": "כתוביות"
+    },
+    "connections": {
+      "server": {
+        "description": "אם תרצה להתחבר ל-backend מותאם אישית כדי לאחסן את הנתונים שלך, הפעל זאת וספק את כתובת האתר.",
+        "label": "שרת אישי",
+        "urlLabel": "כתובת אתר מותאמת אישית של שרת"
+      },
+      "title": "התחברויות",
+      "workers": {
+        "addButton": "הוסף עובד חדש",
+        "description": "כדי שהאפליקציה תפעל, כל התעבורה מנותבת דרך פרוקסי. הפעל זאת אם אתה רוצה להביא עובדים משלך.",
+        "emptyState": "עדיין אין עובדים, הוסף אחד למטה",
+        "label": "השתמש בעובדי פרוקסי מותאמים אישית",
+        "urlLabel": "כתובות אתרים של עובדים",
+        "urlPlaceholder": "https://"
+      }
+    },
+    "locale": {
+      "language": "שפת האפליקציה",
+      "languageDescription": "השפה החלה על האפליקציה כולה.",
+      "title": "מקומי"
+    },
+    "reset": "איפוס",
+    "save": "לשמור",
+    "sidebar": {
+      "info": {
+        "appVersion": "גרסת האפליקציה",
+        "backendUrl": "כתובת אתר אחורי",
+        "backendVersion": "גרסת Backend",
+        "hostname": "שם מארח",
+        "insecure": "לא בטוח",
+        "notLoggedIn": "אתה לא מחובר",
+        "secure": "אבטח",
+        "title": "מידע על האפליקציה",
+        "unknownVersion": "לא ידוע",
+        "userId": "זהות המשתמש"
+      }
+    },
+    "unsaved": "יש לך שינויים שלא נשמרו"
+  }
+}

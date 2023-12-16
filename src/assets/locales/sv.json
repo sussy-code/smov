@@ -1,0 +1,420 @@
+{
+  "about": {
+    "description": "movie-web är en webbapplikation som söker efter strömmar på internet. Teamet strävar efter en mestadels minimalistisk ansats för att konsumera innehåll.",
+    "faqTitle": "Vanliga frågor",
+    "q1": {
+      "body": "movie-web hostar inte något innehåll. När du klickar på något att titta på, söks internet efter den valda median (På laddningsskärmen och i fliken 'video sources' kan du se vilken källa du använder). Media laddas aldrig upp av movie-web, allt går genom detta sökmechanism.",
+      "title": "Var kommer innehållet ifrån?"
+    },
+    "q2": {
+      "body": "Det går inte att begära en show eller film, movie-web hanterar inte något innehåll. Allt innehåll visas genom källor på internet.",
+      "title": "Var kan jag begära en show eller film?"
+    },
+    "q3": {
+      "body": "Våra sökresultat drivs av The Movie Database (TMDB) och visas oavsett om våra källor faktiskt har innehållet.",
+      "title": "Sökresultaten visar showen eller filmen, varför kan jag inte spela upp den?"
+    },
+    "title": "Om movie-web"
+  },
+  "actions": {
+    "copied": "Kopierad",
+    "copy": "Kopiera"
+  },
+  "auth": {
+    "createAccount": "Har du inget konto ännu? <0>Skapa ett konto.</0>",
+    "deviceNameLabel": "Enhetsnamn",
+    "deviceNamePlaceholder": "Min telefon",
+    "generate": {
+      "description": "Ditt lösenord fungerar som ditt användarnamn och lösenord. Se till att hålla det säkert eftersom du behöver ange det för att logga in på ditt konto",
+      "next": "Jag har sparat mitt lösenord",
+      "title": "Ditt lösenord"
+    },
+    "hasAccount": "Har redan ett konto? <0>Logga in här.</0>",
+    "login": {
+      "description": "Ange ditt lösenord för att logga in på ditt konto",
+      "deviceLengthError": "Ange ett enhetsnamn",
+      "passphraseLabel": "12-ords lösenord",
+      "passphrasePlaceholder": "Lösenord",
+      "submit": "Logga in",
+      "title": "Logga in på ditt konto",
+      "validationError": "Felaktigt eller ofullständigt lösenord"
+    },
+    "register": {
+      "information": {
+        "color1": "Profilfärg ett",
+        "color2": "Profilfärg två",
+        "header": "Ange ett namn för din enhet och välj färger samt ett användarikon efter eget val",
+        "icon": "Användarikon",
+        "next": "Nästa",
+        "title": "Kontoinformation"
+      }
+    },
+    "trust": {
+      "failed": {
+        "text": "Har du konfigurerat den korrekt?",
+        "title": "Kunde inte nå servern"
+      },
+      "host": "Du ansluter till <0>{{hostname}}</0> - bekräfta att du litar på den innan du skapar ett konto",
+      "no": "Gå tillbaka",
+      "title": "Litar du på denna server?",
+      "yes": "Jag litar på denna server"
+    },
+    "verify": {
+      "description": "Ange ditt lösenord igen för att bekräfta att du har sparat det och skapa ditt konto",
+      "invalidData": "Data är inte giltig",
+      "noMatch": "Lösenorden matchar inte",
+      "passphraseLabel": "Ditt 12-ords lösenord",
+      "recaptchaFailed": "ReCaptcha validering misslyckades",
+      "register": "Skapa konto",
+      "title": "Bekräfta ditt lösenord"
+    }
+  },
+  "errors": {
+    "badge": "Något gick fel",
+    "details": "Felinformation",
+    "reloadPage": "Ladda om sidan",
+    "showError": "Visa felinformation",
+    "title": "Vi stötte på ett fel!"
+  },
+  "footer": {
+    "legal": {
+      "disclaimer": "Ansvarsfriskrivning",
+      "disclaimerText": "movie-web hostar inga filer, den länkar bara till tjänster från tredje part. Juridiska frågor bör tas upp med filvärdar och leverantörer. movie-web ansvarar inte för några mediefiler som visas av videoleverantörerna."
+    },
+    "links": {
+      "discord": "Discord",
+      "dmca": "DMCA",
+      "github": "GitHub"
+    },
+    "tagline": "Titta på dina favoritprogram och filmer med denna öppna källkodsströmapp."
+  },
+  "global": {
+    "name": "movie-web",
+    "pages": {
+      "about": "Om oss",
+      "dmca": "DMCA",
+      "login": "Logga in",
+      "pagetitle": "{{title}} - movie-web",
+      "register": "Registrera",
+      "settings": "Inställningar"
+    }
+  },
+  "home": {
+    "bookmarks": {
+      "sectionTitle": "Bokmärken"
+    },
+    "continueWatching": {
+      "sectionTitle": "Fortsätt titta"
+    },
+    "mediaList": {
+      "stopEditing": "Sluta redigera"
+    },
+    "search": {
+      "allResults": "Det är allt vi har!",
+      "failed": "Misslyckades med att hitta media, försök igen!",
+      "loading": "Laddar...",
+      "noResults": "Vi kunde inte hitta någonting!",
+      "placeholder": "Vad vill du titta på?",
+      "sectionTitle": "Sökresultat"
+    },
+    "titles": {
+      "day": {
+        "default": "Vad vill du titta på i eftermiddag?"
+      },
+      "morning": {
+        "default": "Vad vill du titta på den här morgonen?",
+        "extra": [
+          "Jag hör att Before Sunrise är bra"
+        ]
+      },
+      "night": {
+        "default": "Vad vill du titta på ikväll?",
+        "extra": [
+          "Trött? Jag hör att The Exorcist är bra."
+        ]
+      }
+    }
+  },
+  "media": {
+    "episodeDisplay": "S{{season}} E{{episode}}",
+    "types": {
+      "movie": "Film",
+      "show": "Serie"
+    }
+  },
+  "navigation": {
+    "banner": {
+      "offline": "Kontrollera din internetanslutning"
+    },
+    "menu": {
+      "about": "Om oss",
+      "donation": "Donera",
+      "logout": "Logga ut",
+      "register": "Synkronisera till molnet",
+      "settings": "Inställningar",
+      "support": "Support"
+    }
+  },
+  "notFound": {
+    "badge": "Ej hittad",
+    "goHome": "Tillbaka till startsidan",
+    "message": "Vi letade överallt: under soptunnorna, i garderoben, bakom proxy men kunde slutligen inte hitta sidan du letar efter.",
+    "title": "Kunde inte hitta den sidan"
+  },
+  "overlays": {
+    "close": "Stäng"
+  },
+  "player": {
+    "back": {
+      "default": "Tillbaka till startsidan",
+      "short": "Tillbaka"
+    },
+    "casting": {
+      "enabled": "Castar till enheten..."
+    },
+    "menus": {
+      "captions": {
+        "customChoice": "Välj undertext från fil",
+        "customizeLabel": "Anpassa",
+        "offChoice": "Av",
+        "settings": {
+          "delay": "Fördröjning för undertexter",
+          "fixCapitals": "Åtgärda versaler"
+        },
+        "title": "Undertexter",
+        "unknownLanguage": "Okänd"
+      },
+      "downloads": {
+        "disclaimer": "Nedladdningar görs direkt från leverantören. movie-web har ingen kontroll över hur nedladdningarna tillhandahålls.",
+        "downloadCaption": "Ladda ner aktuell undertext",
+        "downloadVideo": "Ladda ner video",
+        "hlsExplanation": "Denna media är en HLS-ström som inte kan laddas ner på movie-web.",
+        "onAndroid": {
+          "1": "För att ladda ner på Android, klicka på nedladdningsknappen och på den nya sidan <bold>trycker och håller</bold> på videon, välj sedan <bold>spara</bold>.",
+          "shortTitle": "Ladda ner / Android",
+          "title": "Laddar ner på Android"
+        },
+        "onIos": {
+          "1": "För att ladda ner på iOS, klicka på nedladdningsknappen och på den nya sidan klickar du på <bold><ios_share /></bold>, sedan <bold>Spara i filer <ios_files /></bold>.",
+          "shortTitle": "Ladda ner / iOS",
+          "title": "Laddar ner på iOS"
+        },
+        "onPc": {
+          "1": "På PC, klicka på nedladdningsknappen och på den nya sidan högerklickar du sedan på videon och väljer <bold>Spara video som</bold>",
+          "shortTitle": "Ladda ner / PC",
+          "title": "Laddar ner på PC"
+        },
+        "title": "Ladda ner"
+      },
+      "episodes": {
+        "button": "Avsnitt",
+        "emptyState": "Det finns inga avsnitt i denna säsong, kom tillbaka senare!",
+        "episodeBadge": "E{{episode}}",
+        "loadingError": "Fel vid laddning av säsong",
+        "loadingList": "Laddar...",
+        "loadingTitle": "Laddar..."
+      },
+      "playback": {
+        "speedLabel": "Uppspelningshastighet",
+        "title": "Uppspelningsinställningar"
+      },
+      "quality": {
+        "automaticLabel": "Automatisk kvalitet",
+        "hint": "Du kan prova att <0>byta källa</0> för att få olika kvalitetsoptioner.",
+        "iosNoQuality": "På grund av Apple-definierade begränsningar är kvalitetsval inte tillgängligt på iOS för denna källa. Du kan prova att <0>byta till en annan källa</0> för att få olika kvalitetsoptioner.",
+        "title": "Kvalitet"
+      },
+      "settings": {
+        "captionItem": "Undertextinställningar",
+        "downloadItem": "Ladda ner",
+        "enableCaptions": "Aktivera undertexter",
+        "experienceSection": "Visningsupplevelse",
+        "playbackItem": "Uppspelningsinställningar",
+        "qualityItem": "Kvalitet",
+        "sourceItem": "Videokällor",
+        "videoSection": "Videoinställningar"
+      },
+      "sources": {
+        "failed": {
+          "text": "Det uppstod ett fel när vi försökte hitta några videor, försök med en annan källa.",
+          "title": "Misslyckades med att skrapa"
+        },
+        "noEmbeds": {
+          "text": "Vi kunde inte hitta några inbäddningar, försök med en annan källa.",
+          "title": "Inga inbäddningar hittade"
+        },
+        "noStream": {
+          "text": "Den här källan har ingen ström för denna film eller serie.",
+          "title": "Ingen ström"
+        },
+        "title": "Källor",
+        "unknownOption": "Okänd"
+      }
+    },
+    "metadata": {
+      "failed": {
+        "badge": "Misslyckades",
+        "homeButton": "Till startsidan",
+        "text": "Kunde inte ladda medias metadata från TMDB. Kontrollera om TMDB är nere eller blockerat på din internetanslutning.",
+        "title": "Misslyckades att ladda metadata"
+      },
+      "notFound": {
+        "badge": "Ej hittad",
+        "homeButton": "Tillbaka till startsidan",
+        "text": "Vi kunde inte hitta den media du begärde. Antingen har den tagits bort eller så har du manipulerat URL:en.",
+        "title": "Kunde inte hitta den media."
+      }
+    },
+    "nextEpisode": {
+      "cancel": "Avbryt",
+      "next": "Nästa avsnitt"
+    },
+    "playbackError": {
+      "badge": "Uppspelningsfel",
+      "errors": {
+        "errorAborted": "Hämtningen av media avbröts på användarens begäran.",
+        "errorDecode": "Trots att det tidigare bedömts som användbart uppstod ett fel vid försök att avkoda mediaresursen, vilket resulterade i ett fel.",
+        "errorGenericMedia": "Okänt mediafel inträffade.",
+        "errorNetwork": "Någon form av nätverksfel inträffade vilket förhindrade att media framgångsrikt hämtades, trots att det tidigare var tillgängligt.",
+        "errorNotSupported": "Media- eller mediaproviderobjektet stöds inte."
+      },
+      "homeButton": "Till startsidan",
+      "text": "Det uppstod ett fel när vi försökte spela upp media. Försök igen.",
+      "title": "Misslyckades spela upp video!"
+    },
+    "scraping": {
+      "items": {
+        "failure": "Fel inträffade",
+        "notFound": "Har inte videon",
+        "pending": "Söker efter videor..."
+      },
+      "notFound": {
+        "badge": "Ej hittad",
+        "detailsButton": "Visa detaljer",
+        "homeButton": "Till startsidan",
+        "text": "Vi har sökt genom våra leverantörer och kan inte hitta den media du letar efter! Vi hostar inte media och har ingen kontroll över tillgängligheten. Klicka på 'Visa detaljer' nedan för mer information.",
+        "title": "Vi kunde inte hitta det"
+      }
+    },
+    "time": {
+      "regular": "{{timeWatched}} / {{duration}}",
+      "remaining": "{{timeLeft}} kvar • Slutar kl {{timeFinished, datetime}}",
+      "shortRegular": "{{timeWatched}}",
+      "shortRemaining": "-{{timeLeft}}"
+    }
+  },
+  "screens": {
+    "dmca": {
+      "text": "Välkommen till movie-webs DMCA-kontaktsida! Vi respekterar immateriella rättigheter och vill snabbt hantera eventuella upphovsrättsliga bekymmer. Om du tror att ditt upphovsrättsskyddade verk har använts felaktigt på vår plattform, skicka gärna en detaljerad DMCA-notis till e-postadressen nedan. Inkludera en beskrivning av det upphovsrättsskyddade materialet, dina kontaktuppgifter och en tro på god tro. Vi åtar oss att lösa dessa frågor snabbt och uppskattar ditt samarbete för att hålla movie-web som en plats som respekterar kreativitet och upphovsrätt.",
+      "title": "DMCA"
+    },
+    "loadingApp": "Laddar applikationen",
+    "loadingUser": "Laddar din profil",
+    "loadingUserError": {
+      "logout": "Logga ut",
+      "reset": "Återställ anpassad server",
+      "text": "Misslyckades att ladda din profil",
+      "textWithReset": "Misslyckades att ladda din profil från din anpassade server, vill du återställa till standardservern?"
+    },
+    "migration": {
+      "failed": "Misslyckades att migrera dina data.",
+      "inProgress": "Vänligen vänta, vi migrerar dina data. Detta borde inte ta lång tid."
+    }
+  },
+  "settings": {
+    "account": {
+      "accountDetails": {
+        "deviceNameLabel": "Enhetens namn",
+        "deviceNamePlaceholder": "Min telefon",
+        "editProfile": "Redigera",
+        "logoutButton": "Logga ut"
+      },
+      "actions": {
+        "delete": {
+          "button": "Ta bort konto",
+          "confirmButton": "Ta bort konto",
+          "confirmDescription": "Är du säker på att du vill ta bort ditt konto? All din data kommer att gå förlorad!",
+          "confirmTitle": "Är du säker?",
+          "text": "Denna åtgärd är oåterkallelig. All data kommer att raderas och kan inte återställas.",
+          "title": "Ta bort konto"
+        },
+        "title": "Åtgärder"
+      },
+      "devices": {
+        "deviceNameLabel": "Enhetens namn",
+        "failed": "Misslyckades att ladda sessioner",
+        "removeDevice": "Ta bort",
+        "title": "Enheter"
+      },
+      "profile": {
+        "finish": "Slutför redigering",
+        "firstColor": "Profilfärg ett",
+        "secondColor": "Profilfärg två",
+        "title": "Redigera profilbild",
+        "userIcon": "Användarikon"
+      },
+      "register": {
+        "cta": "Kom igång",
+        "text": "Dela din tittarframsteg mellan enheter och håll dem synkroniserade.",
+        "title": "Synkronisera till molnet"
+      },
+      "title": "Konto"
+    },
+    "appearance": {
+      "activeTheme": "Aktiv",
+      "themes": {
+        "blue": "Blå",
+        "default": "Standard",
+        "gray": "Grå",
+        "red": "Röd",
+        "teal": "Blågrön"
+      },
+      "title": "Utseende"
+    },
+    "captions": {
+      "backgroundLabel": "Bakgrundstransparens",
+      "colorLabel": "Färg",
+      "previewQuote": "Jag får inte frukta. Rädsla är tankedödaren.",
+      "textSizeLabel": "Textstorlek",
+      "title": "Textning"
+    },
+    "connections": {
+      "server": {
+        "description": "Om du vill ansluta till en anpassad bakänd för att lagra dina data, aktivera detta och ange URL:en.",
+        "label": "Anpassad server",
+        "urlLabel": "Egen server URL"
+      },
+      "title": "Anslutningar",
+      "workers": {
+        "addButton": "Lägg till ny arbetare",
+        "description": "För att få applikationen att fungera skickas all trafik genom proxys. Aktivera detta om du vill använda egna arbetare.",
+        "emptyState": "Inga arbetare ännu, lägg till en nedan",
+        "label": "Använd egna proxyarbetare",
+        "urlLabel": "Arbetar-URL:er",
+        "urlPlaceholder": "https://"
+      }
+    },
+    "locale": {
+      "language": "Språk för applikationen",
+      "languageDescription": "Språket som används i hela applikationen.",
+      "title": "Plats"
+    },
+    "reset": "Återställ",
+    "save": "Spara",
+    "sidebar": {
+      "info": {
+        "appVersion": "Appversion",
+        "backendUrl": "Bakänd-URL",
+        "backendVersion": "Bakändversion",
+        "hostname": "Värdnamn",
+        "insecure": "Osäker",
+        "notLoggedIn": "Du är inte inloggad",
+        "secure": "Säker",
+        "title": "Appinformation",
+        "unknownVersion": "Okänd",
+        "userId": "Användar-ID"
+      }
+    },
+    "unsaved": "Du har osparade ändringar"
+  }
+}
