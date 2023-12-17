@@ -63,7 +63,7 @@ export function CaptionCue({
         dangerouslySetInnerHTML={{
           __html: parsedHtml,
         }}
-        dir="auto"
+        dir="ltr"
       />
     </p>
   );
