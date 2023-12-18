@@ -24,7 +24,7 @@ function isParsedUrlType(type: string): type is ParsedUrlType {
 }
 
 /**
- * Turn a string like "a=b,c=d,d=e" into a dictionary object
+ * Turn a string like "a=b;c=d;d=e" into a dictionary object
  */
 function parseParams(input: string): Record<string, string> {
   const entriesParams = input
@@ -48,7 +48,7 @@ export function getParsedUrls() {
       }
     }
 
-    const match = url.match(/^|([^|])+|(.*)$/g);
+    const match = /^\|([^|]+)\|(.*)$/g.exec(url);
     if (!match || !match[2]) return;
     if (!canParseUrl(match[2])) return;
     const params = parseParams(match[1]);
@@ -61,6 +61,7 @@ export function getParsedUrls() {
     });
   });
 
+  console.log(urls, output);
   return output;
 }
 

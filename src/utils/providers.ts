@@ -22,7 +22,7 @@ function makeLoadbalancedList(getter: () => string[]) {
   };
 }
 
-const getLoadbalancedProxyUrl = makeLoadbalancedList(getProxyUrls);
+export const getLoadbalancedProxyUrl = makeLoadbalancedList(getProxyUrls);
 export const getLoadbalancedProviderApiUrl =
   makeLoadbalancedList(getProviderApiUrls);
 

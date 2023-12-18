@@ -150,15 +150,56 @@ export function useScrape() {
         startScrape();
         const sseOutput = await new Promise<RunOutput | null>(
           (resolve, reject) => {
-            const scrapeEvents = new EventSource(providerApiUrl);
-            scrapeEvents.addEventListener("error", (err) => reject(err));
-            scrapeEvents.addEventListener("init", (e) => initEvent(e.data));
-            scrapeEvents.addEventListener("start", (e) => startEvent(e.data));
-            scrapeEvents.addEventListener("update", (e) => updateEvent(e.data));
-            scrapeEvents.addEventListener("discoverEmbeds", (e) =>
-              discoverEmbedsEvent(e.data)
+            const finalUrl = new URL(`${providerApiUrl}/scrape`);
+            finalUrl.searchParams.append("type", media.type);
+            finalUrl.searchParams.append(
+              "releaseYear",
+              media.releaseYear.toString()
             );
-            scrapeEvents.addEventListener("finish", (e) => resolve(e.data));
+            finalUrl.searchParams.append("title", media.title);
+            finalUrl.searchParams.append("tmdbId", media.tmdbId);
+            if (media.imdbId)
+              finalUrl.searchParams.append("imdbId", media.imdbId);
+            if (media.type === "show") {
+              finalUrl.searchParams.append(
+                "episodeNumber",
+                media.episode.number.toString()
+              );
+              finalUrl.searchParams.append(
+                "episodeTmdbId",
+                media.episode.tmdbId
+              );
+              finalUrl.searchParams.append(
+                "seasonNumber",
+                media.season.number.toString()
+              );
+              finalUrl.searchParams.append("seasonTmdbId", media.season.tmdbId);
+            }
+            const scrapeEvents = new EventSource(finalUrl.toString());
+            scrapeEvents.addEventListener("init", (e) => {
+              initEvent(JSON.parse(e.data));
+            });
+            scrapeEvents.addEventListener("error", (err) => {
+              console.error("failed to use provider api", err);
+              reject(err);
+            });
+            scrapeEvents.addEventListener("start", (e) =>
+              startEvent(JSON.parse(e.data))
+            );
+            scrapeEvents.addEventListener("update", (e) =>
+              updateEvent(JSON.parse(e.data))
+            );
+            scrapeEvents.addEventListener("discoverEmbeds", (e) =>
+              discoverEmbedsEvent(JSON.parse(e.data))
+            );
+            scrapeEvents.addEventListener("completed", (e) => {
+              scrapeEvents.close();
+              resolve(JSON.parse(e.data));
+            });
+            scrapeEvents.addEventListener("noOutput", () => {
+              scrapeEvents.close();
+              resolve(null);
+            });
           }
         );
         return getResult(sseOutput);
