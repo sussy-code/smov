@@ -11,7 +11,6 @@ import { Menu } from "@/components/player/internals/ContextMenu";
 import { SelectableLink } from "@/components/player/internals/ContextMenu/Links";
 import { useOverlayRouter } from "@/hooks/useOverlayRouter";
 import { usePlayerStore } from "@/stores/player/store";
-import { providers } from "@/utils/providers";
 
 export interface SourceSelectionViewProps {
   id: string;
