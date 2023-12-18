@@ -5,6 +5,7 @@ import {
 } from "@movie-web/providers";
 import { RefObject, useCallback, useEffect, useRef, useState } from "react";
 
+import { makeProviderUrl } from "@/backend/helpers/providerApi";
 import { getLoadbalancedProviderApiUrl, providers } from "@/utils/providers";
 
 export interface ScrapingItems {
@@ -150,32 +151,8 @@ export function useScrape() {
         startScrape();
         const sseOutput = await new Promise<RunOutput | null>(
           (resolve, reject) => {
-            const finalUrl = new URL(`${providerApiUrl}/scrape`);
-            finalUrl.searchParams.append("type", media.type);
-            finalUrl.searchParams.append(
-              "releaseYear",
-              media.releaseYear.toString()
-            );
-            finalUrl.searchParams.append("title", media.title);
-            finalUrl.searchParams.append("tmdbId", media.tmdbId);
-            if (media.imdbId)
-              finalUrl.searchParams.append("imdbId", media.imdbId);
-            if (media.type === "show") {
-              finalUrl.searchParams.append(
-                "episodeNumber",
-                media.episode.number.toString()
-              );
-              finalUrl.searchParams.append(
-                "episodeTmdbId",
-                media.episode.tmdbId
-              );
-              finalUrl.searchParams.append(
-                "seasonNumber",
-                media.season.number.toString()
-              );
-              finalUrl.searchParams.append("seasonTmdbId", media.season.tmdbId);
-            }
-            const scrapeEvents = new EventSource(finalUrl.toString());
+            const baseUrlMaker = makeProviderUrl(providerApiUrl);
+            const scrapeEvents = new EventSource(baseUrlMaker.scrapeAll(media));
             scrapeEvents.addEventListener("init", (e) => {
               initEvent(JSON.parse(e.data));
             });
