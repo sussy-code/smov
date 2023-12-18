@@ -138,8 +138,8 @@ export function SourceSelectionView({
   const currentSourceId = usePlayerStore((s) => s.sourceId);
   const sources = useMemo(() => {
     if (!metaType) return [];
-    return providers
-      .listSources()
+    return getCachedMetadata()
+      .filter((v) => v.type === "source")
       .filter((v) => v.mediaTypes?.includes(metaType));
   }, [metaType]);
 
