@@ -1,6 +1,7 @@
 import { ReactNode, useEffect, useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
 
+import { getCachedMetadata } from "@/backend/helpers/providerApi";
 import { Loading } from "@/components/layout/Loading";
 import {
   useEmbedScraping,
@@ -33,7 +34,7 @@ export function EmbedOption(props: {
 
   const embedName = useMemo(() => {
     if (!props.embedId) return unknownEmbedName;
-    const sourceMeta = providers.getMetadata(props.embedId);
+    const sourceMeta = getCachedMetadata().find((s) => s.id === props.embedId);
     return sourceMeta?.name ?? unknownEmbedName;
   }, [props.embedId, unknownEmbedName]);
 
@@ -61,7 +62,7 @@ export function EmbedSelectionView({ sourceId, id }: EmbedSelectionViewProps) {
 
   const sourceName = useMemo(() => {
     if (!sourceId) return "...";
-    const sourceMeta = providers.getMetadata(sourceId);
+    const sourceMeta = getCachedMetadata().find((s) => s.id === sourceId);
     return sourceMeta?.name ?? "...";
   }, [sourceId]);
 

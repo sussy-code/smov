@@ -5,7 +5,11 @@ import {
 } from "@movie-web/providers";
 import { RefObject, useCallback, useEffect, useRef, useState } from "react";
 
-import { makeProviderUrl } from "@/backend/helpers/providerApi";
+import {
+  connectServerSideEvents,
+  getCachedMetadata,
+  makeProviderUrl,
+} from "@/backend/helpers/providerApi";
 import { getLoadbalancedProviderApiUrl, providers } from "@/utils/providers";
 
 export interface ScrapingItems {
@@ -37,7 +41,7 @@ function useBaseScrape() {
     setSources(
       evt.sourceIds
         .map((v) => {
-          const source = providers.getMetadata(v);
+          const source = getCachedMetadata().find((s) => s.id === v);
           if (!source) throw new Error("invalid source id");
           const out: ScrapingSegment = {
             name: source.name,
@@ -80,7 +84,9 @@ function useBaseScrape() {
     (evt: ScraperEvent<"discoverEmbeds">) => {
       setSources((s) => {
         evt.embeds.forEach((v) => {
-          const source = providers.getMetadata(v.embedScraperId);
+          const source = getCachedMetadata().find(
+            (src) => src.id === v.embedScraperId
+          );
           if (!source) throw new Error("invalid source id");
           const out: ScrapingSegment = {
             embedId: v.embedScraperId,
@@ -149,37 +155,18 @@ export function useScrape() {
       const providerApiUrl = getLoadbalancedProviderApiUrl();
       if (providerApiUrl) {
         startScrape();
-        const sseOutput = await new Promise<RunOutput | null>(
-          (resolve, reject) => {
-            const baseUrlMaker = makeProviderUrl(providerApiUrl);
-            const scrapeEvents = new EventSource(baseUrlMaker.scrapeAll(media));
-            scrapeEvents.addEventListener("init", (e) => {
-              initEvent(JSON.parse(e.data));
-            });
-            scrapeEvents.addEventListener("error", (err) => {
-              console.error("failed to use provider api", err);
-              reject(err);
-            });
-            scrapeEvents.addEventListener("start", (e) =>
-              startEvent(JSON.parse(e.data))
-            );
-            scrapeEvents.addEventListener("update", (e) =>
-              updateEvent(JSON.parse(e.data))
-            );
-            scrapeEvents.addEventListener("discoverEmbeds", (e) =>
-              discoverEmbedsEvent(JSON.parse(e.data))
-            );
-            scrapeEvents.addEventListener("completed", (e) => {
-              scrapeEvents.close();
-              resolve(JSON.parse(e.data));
-            });
-            scrapeEvents.addEventListener("noOutput", () => {
-              scrapeEvents.close();
-              resolve(null);
-            });
-          }
+        const baseUrlMaker = makeProviderUrl(providerApiUrl);
+        const conn = connectServerSideEvents<RunOutput | "">(
+          baseUrlMaker.scrapeAll(media),
+          ["completed", "noOutput"]
         );
-        return getResult(sseOutput);
+        conn.on("init", initEvent);
+        conn.on("start", startEvent);
+        conn.on("update", updateEvent);
+        conn.on("discoverEmbeds", discoverEmbedsEvent);
+        const sseOutput = await conn.promise();
+
+        return getResult(sseOutput === "" ? null : sseOutput);
       }
 
       if (!providers) return null;

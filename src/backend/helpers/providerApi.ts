@@ -1,4 +1,22 @@
-import { ScrapeMedia } from "@movie-web/providers";
+import { MetaOutput, ScrapeMedia } from "@movie-web/providers";
+
+import { mwFetch } from "@/backend/helpers/fetch";
+
+let metaDataCache: MetaOutput[] | null = null;
+
+export function setCachedMetadata(data: MetaOutput[]) {
+  metaDataCache = data;
+}
+
+export function getCachedMetadata(): MetaOutput[] {
+  return metaDataCache ?? [];
+}
+
+export async function fetchMetadata(base: string) {
+  if (metaDataCache) return;
+  const data = await mwFetch<MetaOutput[][]>(`${base}/metadata`);
+  metaDataCache = data.flat();
+}
 
 function scrapeMediaToQueryMedia(media: ScrapeMedia) {
   let extra: Record<string, string> = {};
@@ -15,6 +33,7 @@ function scrapeMediaToQueryMedia(media: ScrapeMedia) {
     type: media.type,
     releaseYear: media.releaseYear.toString(),
     imdbId: media.imdbId,
+    tmdbId: media.tmdbId,
     title: media.title,
     ...extra,
   };
@@ -48,8 +67,31 @@ export function makeProviderUrl(base: string) {
   };
 }
 
-export function connectServerSideEvents(url: string, endEvents: string[]) {
-  const;
+export function connectServerSideEvents<T>(url: string, endEvents: string[]) {
+  const eventSource = new EventSource(url);
+  let promReject: (reason?: any) => void;
+  let promResolve: (value: T) => void;
+  const promise = new Promise<T>((resolve, reject) => {
+    promResolve = resolve;
+    promReject = reject;
+  });
 
-  return {};
+  endEvents.forEach((evt) => {
+    eventSource.addEventListener(evt, (e) => {
+      eventSource.close();
+      promResolve(JSON.parse(e.data));
+    });
+  });
+
+  eventSource.addEventListener("error", (err) => {
+    console.error("Failed to connect to SSE", err);
+    promReject(err);
+  });
+
+  return {
+    promise: () => promise,
+    on<Data>(event: string, cb: (data: Data) => void) {
+      eventSource.addEventListener(event, (e) => cb(JSON.parse(e.data)));
+    },
+  };
 }
