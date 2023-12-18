@@ -61,7 +61,6 @@ export function getParsedUrls() {
     });
   });
 
-  console.log(urls, output);
   return output;
 }
 
