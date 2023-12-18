@@ -1,7 +1,11 @@
-import { ScrapeMedia } from "@movie-web/providers";
+import {
+  FullScraperEvents,
+  RunOutput,
+  ScrapeMedia,
+} from "@movie-web/providers";
 import { RefObject, useCallback, useEffect, useRef, useState } from "react";
 
-import { providers } from "@/utils/providers";
+import { getLoadbalancedProviderApiUrl, providers } from "@/utils/providers";
 
 export interface ScrapingItems {
   id: string;
@@ -18,96 +22,169 @@ export interface ScrapingSegment {
   percentage: number;
 }
 
-export function useScrape() {
+type ScraperEvent<Event extends keyof FullScraperEvents> = Parameters<
+  NonNullable<FullScraperEvents[Event]>
+>[0];
+
+function useBaseScrape() {
   const [sources, setSources] = useState<Record<string, ScrapingSegment>>({});
   const [sourceOrder, setSourceOrder] = useState<ScrapingItems[]>([]);
   const [currentSource, setCurrentSource] = useState<string>();
+  const lastId = useRef<string | null>(null);
+
+  const initEvent = useCallback((evt: ScraperEvent<"init">) => {
+    setSources(
+      evt.sourceIds
+        .map((v) => {
+          const source = providers.getMetadata(v);
+          if (!source) throw new Error("invalid source id");
+          const out: ScrapingSegment = {
+            name: source.name,
+            id: source.id,
+            status: "waiting",
+            percentage: 0,
+          };
+          return out;
+        })
+        .reduce<Record<string, ScrapingSegment>>((a, v) => {
+          a[v.id] = v;
+          return a;
+        }, {})
+    );
+    setSourceOrder(evt.sourceIds.map((v) => ({ id: v, children: [] })));
+  }, []);
+
+  const startEvent = useCallback((id: ScraperEvent<"start">) => {
+    setSources((s) => {
+      if (s[id]) s[id].status = "pending";
+      return { ...s };
+    });
+    setCurrentSource(id);
+    lastId.current = id;
+  }, []);
+
+  const updateEvent = useCallback((evt: ScraperEvent<"update">) => {
+    setSources((s) => {
+      if (s[evt.id]) {
+        s[evt.id].status = evt.status;
+        s[evt.id].reason = evt.reason;
+        s[evt.id].error = evt.error;
+        s[evt.id].percentage = evt.percentage;
+      }
+      return { ...s };
+    });
+  }, []);
+
+  const discoverEmbedsEvent = useCallback(
+    (evt: ScraperEvent<"discoverEmbeds">) => {
+      setSources((s) => {
+        evt.embeds.forEach((v) => {
+          const source = providers.getMetadata(v.embedScraperId);
+          if (!source) throw new Error("invalid source id");
+          const out: ScrapingSegment = {
+            embedId: v.embedScraperId,
+            name: source.name,
+            id: v.id,
+            status: "waiting",
+            percentage: 0,
+          };
+          s[v.id] = out;
+        });
+        return { ...s };
+      });
+      setSourceOrder((s) => {
+        const source = s.find((v) => v.id === evt.sourceId);
+        if (!source) throw new Error("invalid source id");
+        source.children = evt.embeds.map((v) => v.id);
+        return [...s];
+      });
+    },
+    []
+  );
+
+  const startScrape = useCallback(() => {
+    lastId.current = null;
+  }, []);
+
+  const getResult = useCallback((output: RunOutput | null) => {
+    if (output && lastId.current) {
+      setSources((s) => {
+        if (!lastId.current) return s;
+        if (s[lastId.current]) s[lastId.current].status = "success";
+        return { ...s };
+      });
+    }
+    return output;
+  }, []);
+
+  return {
+    initEvent,
+    startEvent,
+    updateEvent,
+    discoverEmbedsEvent,
+    startScrape,
+    getResult,
+    sources,
+    sourceOrder,
+    currentSource,
+  };
+}
+
+export function useScrape() {
+  const {
+    sources,
+    sourceOrder,
+    currentSource,
+    updateEvent,
+    discoverEmbedsEvent,
+    initEvent,
+    getResult,
+    startEvent,
+    startScrape,
+  } = useBaseScrape();
 
   const startScraping = useCallback(
     async (media: ScrapeMedia) => {
-      if (!providers) return null;
+      const providerApiUrl = getLoadbalancedProviderApiUrl();
+      if (providerApiUrl) {
+        startScrape();
+        const sseOutput = await new Promise<RunOutput | null>(
+          (resolve, reject) => {
+            const scrapeEvents = new EventSource(providerApiUrl);
+            scrapeEvents.addEventListener("error", (err) => reject(err));
+            scrapeEvents.addEventListener("init", (e) => initEvent(e.data));
+            scrapeEvents.addEventListener("start", (e) => startEvent(e.data));
+            scrapeEvents.addEventListener("update", (e) => updateEvent(e.data));
+            scrapeEvents.addEventListener("discoverEmbeds", (e) =>
+              discoverEmbedsEvent(e.data)
+            );
+            scrapeEvents.addEventListener("finish", (e) => resolve(e.data));
+          }
+        );
+        return getResult(sseOutput);
+      }
 
-      let lastId: string | null = null;
+      if (!providers) return null;
+      startScrape();
       const output = await providers.runAll({
         media,
         events: {
-          init(evt) {
-            setSources(
-              evt.sourceIds
-                .map((v) => {
-                  const source = providers.getMetadata(v);
-                  if (!source) throw new Error("invalid source id");
-                  const out: ScrapingSegment = {
-                    name: source.name,
-                    id: source.id,
-                    status: "waiting",
-                    percentage: 0,
-                  };
-                  return out;
-                })
-                .reduce<Record<string, ScrapingSegment>>((a, v) => {
-                  a[v.id] = v;
-                  return a;
-                }, {})
-            );
-            setSourceOrder(evt.sourceIds.map((v) => ({ id: v, children: [] })));
-          },
-          start(id) {
-            setSources((s) => {
-              if (s[id]) s[id].status = "pending";
-              return { ...s };
-            });
-            setCurrentSource(id);
-            lastId = id;
-          },
-          update(evt) {
-            setSources((s) => {
-              if (s[evt.id]) {
-                s[evt.id].status = evt.status;
-                s[evt.id].reason = evt.reason;
-                s[evt.id].error = evt.error;
-                s[evt.id].percentage = evt.percentage;
-              }
-              return { ...s };
-            });
-          },
-          discoverEmbeds(evt) {
-            setSources((s) => {
-              evt.embeds.forEach((v) => {
-                const source = providers.getMetadata(v.embedScraperId);
-                if (!source) throw new Error("invalid source id");
-                const out: ScrapingSegment = {
-                  embedId: v.embedScraperId,
-                  name: source.name,
-                  id: v.id,
-                  status: "waiting",
-                  percentage: 0,
-                };
-                s[v.id] = out;
-              });
-              return { ...s };
-            });
-            setSourceOrder((s) => {
-              const source = s.find((v) => v.id === evt.sourceId);
-              if (!source) throw new Error("invalid source id");
-              source.children = evt.embeds.map((v) => v.id);
-              return [...s];
-            });
-          },
+          init: initEvent,
+          start: startEvent,
+          update: updateEvent,
+          discoverEmbeds: discoverEmbedsEvent,
         },
       });
-
-      if (output && lastId) {
-        setSources((s) => {
-          if (!lastId) return s;
-          if (s[lastId]) s[lastId].status = "success";
-          return { ...s };
-        });
-      }
-
-      return output;
+      return getResult(output);
     },
-    [setSourceOrder, setSources]
+    [
+      initEvent,
+      startEvent,
+      updateEvent,
+      discoverEmbedsEvent,
+      getResult,
+      startScrape,
+    ]
   );
 
   return {

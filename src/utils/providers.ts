@@ -7,21 +7,24 @@ import {
   targets,
 } from "@movie-web/providers";
 
-import { conf } from "@/setup/config";
-import { useAuthStore } from "@/stores/auth";
+import { getProviderApiUrls, getProxyUrls } from "@/utils/proxyUrls";
 
-const originalUrls = conf().PROXY_URLS;
-let fetchersIndex = -1;
-
-export function getLoadbalancedProxyUrl() {
-  const fetchers = useAuthStore.getState().proxySet ?? originalUrls;
-  if (fetchersIndex === -1 || fetchersIndex >= fetchers.length) {
-    fetchersIndex = Math.floor(Math.random() * fetchers.length);
-  }
-  const proxyUrl = fetchers[fetchersIndex];
-  fetchersIndex = (fetchersIndex + 1) % fetchers.length;
-  return proxyUrl;
+function makeLoadbalancedList(getter: () => string[]) {
+  let listIndex = -1;
+  return () => {
+    const fetchers = getter();
+    if (listIndex === -1 || listIndex >= fetchers.length) {
+      listIndex = Math.floor(Math.random() * fetchers.length);
+    }
+    const proxyUrl = fetchers[listIndex];
+    listIndex = (listIndex + 1) % fetchers.length;
+    return proxyUrl;
+  };
 }
+
+const getLoadbalancedProxyUrl = makeLoadbalancedList(getProxyUrls);
+export const getLoadbalancedProviderApiUrl =
+  makeLoadbalancedList(getProviderApiUrls);
 
 function makeLoadBalancedSimpleProxyFetcher() {
   const fetcher: ProviderBuilderOptions["fetcher"] = (a, b) => {
