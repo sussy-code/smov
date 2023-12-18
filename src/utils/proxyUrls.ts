@@ -28,7 +28,7 @@ function isParsedUrlType(type: string): type is ParsedUrlType {
  */
 function parseParams(input: string): Record<string, string> {
   const entriesParams = input
-    .split(",")
+    .split(";")
     .map((param) => param.split("=", 2).filter((part) => part.length !== 0))
     .filter((v) => v.length === 2);
   return Object.fromEntries(entriesParams);
