@@ -104,6 +104,9 @@ dependencies:
   react-sticky-el:
     specifier: ^2.1.0
     version: 2.1.0(react-dom@17.0.2)(react@17.0.2)
+  react-turnstile:
+    specifier: ^1.1.2
+    version: 1.1.2(react-dom@17.0.2)(react@17.0.2)
   react-use:
     specifier: ^17.4.0
     version: 17.4.0(react-dom@17.0.2)(react@17.0.2)
@@ -5316,6 +5319,16 @@ packages:
     peerDependencies:
       react: '>=16.3.0'
       react-dom: '>=16.3.0'
+    dependencies:
+      react: 17.0.2
+      react-dom: 17.0.2(react@17.0.2)
+    dev: false
+
+  /react-turnstile@1.1.2(react-dom@17.0.2)(react@17.0.2):
+    resolution: {integrity: sha512-wfhSf4JtXlmLRkfxMryU8yEeCbh401muKoInhx+TegYwP8RprUW5XPZa8WnCNZiYpMy1i6IXAb1Ar7xj5HxJag==}
+    peerDependencies:
+      react: '>= 17.0.0'
+      react-dom: '>= 17.0.0'
     dependencies:
       react: 17.0.2
       react-dom: 17.0.2(react@17.0.2)

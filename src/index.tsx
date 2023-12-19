@@ -10,6 +10,7 @@ import ReactDOM from "react-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 import { BrowserRouter, HashRouter } from "react-router-dom";
+import Turnstile from "react-turnstile";
 import { useAsync } from "react-use";
 
 import { Button } from "@/components/buttons/Button";
@@ -30,16 +31,12 @@ import { useLanguageStore } from "@/stores/language";
 import { ProgressSyncer } from "@/stores/progress/ProgressSyncer";
 import { SettingsSyncer } from "@/stores/subtitles/SettingsSyncer";
 import { ThemeProvider } from "@/stores/theme";
+import { TurnstileProvider } from "@/stores/turnstile";
 
 import { initializeChromecast } from "./setup/chromecast";
 import { initializeOldStores } from "./stores/__old/migrations";
 
 // initialize
-const key =
-  (window as any)?.__CONFIG__?.VITE_KEY ?? import.meta.env.VITE_KEY ?? null;
-if (key) {
-  (window as any).initMW(conf().PROXY_URLS, key);
-}
 initializeChromecast();
 
 function LoadingScreen(props: { type: "user" | "lazy" }) {
@@ -148,6 +145,7 @@ function TheRouter(props: { children: ReactNode }) {
 ReactDOM.render(
   <React.StrictMode>
     <ErrorBoundary>
+      <TurnstileProvider />
       <HelmetProvider>
         <Suspense fallback={<LoadingScreen type="lazy" />}>
           <ThemeProvider applyGlobal>

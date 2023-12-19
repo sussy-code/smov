@@ -1,8 +1,10 @@
 import { MetaOutput, NotFoundError, ScrapeMedia } from "@movie-web/providers";
 
 import { mwFetch } from "@/backend/helpers/fetch";
+import { getTurnstileToken, isTurnstileInitialized } from "@/stores/turnstile";
 
 let metaDataCache: MetaOutput[] | null = null;
+let token: null | string = null;
 
 export function setCachedMetadata(data: MetaOutput[]) {
   metaDataCache = data;
@@ -10,6 +12,20 @@ export function setCachedMetadata(data: MetaOutput[]) {
 
 export function getCachedMetadata(): MetaOutput[] {
   return metaDataCache ?? [];
+}
+
+function getTokenIfValid(): null | string {
+  if (!token) return null;
+  const parts = token.split(".");
+  if (parts.length !== 3) return null;
+  try {
+    const parsedData = JSON.parse(atob(parts[2]));
+    if (!parsedData.exp) return token;
+    if (Date.now() < parsedData.exp) return token;
+  } catch {
+    // we dont care about parse errors
+  }
+  return null;
 }
 
 export async function fetchMetadata(base: string) {
@@ -67,8 +83,21 @@ export function makeProviderUrl(base: string) {
   };
 }
 
-export function connectServerSideEvents<T>(url: string, endEvents: string[]) {
-  const eventSource = new EventSource(url);
+export async function connectServerSideEvents<T>(
+  url: string,
+  endEvents: string[]
+) {
+  // fetch token to use
+  let apiToken = getTokenIfValid();
+  if (!apiToken && isTurnstileInitialized()) {
+    apiToken = await getTurnstileToken();
+  }
+
+  // insert token, if its set
+  const parsedUrl = new URL(url);
+  if (apiToken) parsedUrl.searchParams.set("token", apiToken);
+  const eventSource = new EventSource(parsedUrl.toString());
+
   let promReject: (reason?: any) => void;
   let promResolve: (value: T) => void;
   const promise = new Promise<T>((resolve, reject) => {
@@ -81,6 +110,10 @@ export function connectServerSideEvents<T>(url: string, endEvents: string[]) {
       eventSource.close();
       promResolve(JSON.parse(e.data));
     });
+  });
+
+  eventSource.addEventListener("token", (e) => {
+    token = JSON.parse(e.data);
   });
 
   eventSource.addEventListener("error", (err: MessageEvent<any>) => {

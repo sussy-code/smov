@@ -17,6 +17,7 @@ interface Config {
   NORMAL_ROUTER: boolean;
   BACKEND_URL: string;
   DISALLOWED_IDS: string;
+  TURNSTILE_KEY: string;
 }
 
 export interface RuntimeConfig {
@@ -30,6 +31,7 @@ export interface RuntimeConfig {
   PROXY_URLS: string[];
   BACKEND_URL: string;
   DISALLOWED_IDS: string[];
+  TURNSTILE_KEY: string | null;
 }
 
 const env: Record<keyof Config, undefined | string> = {
@@ -43,6 +45,7 @@ const env: Record<keyof Config, undefined | string> = {
   NORMAL_ROUTER: import.meta.env.VITE_NORMAL_ROUTER,
   BACKEND_URL: import.meta.env.VITE_BACKEND_URL,
   DISALLOWED_IDS: import.meta.env.VITE_DISALLOWED_IDS,
+  TURNSTILE_KEY: import.meta.env.VITE_TURNSTILE_KEY,
 };
 
 // loads from different locations, in order: environment (VITE_{KEY}), window (public/config.js)
@@ -63,6 +66,7 @@ function getKey(key: keyof Config, defaultString?: string): string {
 
 export function conf(): RuntimeConfig {
   const dmcaEmail = getKey("DMCA_EMAIL");
+  const turnstileKey = getKey("TURNSTILE_KEY");
   return {
     APP_VERSION,
     GITHUB_LINK,
@@ -75,6 +79,7 @@ export function conf(): RuntimeConfig {
       .split(",")
       .map((v) => v.trim()),
     NORMAL_ROUTER: getKey("NORMAL_ROUTER", "false") === "true",
+    TURNSTILE_KEY: turnstileKey.length > 0 ? turnstileKey : null,
     DISALLOWED_IDS: getKey("DISALLOWED_IDS", "")
       .split(",")
       .map((v) => v.trim())

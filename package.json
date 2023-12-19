@@ -57,6 +57,7 @@
     "react-i18next": "^12.1.1",
     "react-router-dom": "^5.2.0",
     "react-sticky-el": "^2.1.0",
+    "react-turnstile": "^1.1.2",
     "react-use": "^17.4.0",
     "slugify": "^1.6.6",
     "subsrt-ts": "^2.1.1",

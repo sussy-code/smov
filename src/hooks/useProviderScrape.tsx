@@ -156,7 +156,7 @@ export function useScrape() {
       if (providerApiUrl) {
         startScrape();
         const baseUrlMaker = makeProviderUrl(providerApiUrl);
-        const conn = connectServerSideEvents<RunOutput | "">(
+        const conn = await connectServerSideEvents<RunOutput | "">(
           baseUrlMaker.scrapeAll(media),
           ["completed", "noOutput"]
         );

@@ -41,7 +41,7 @@ export function useEmbedScraping(
     try {
       if (providerApiUrl) {
         const baseUrlMaker = makeProviderUrl(providerApiUrl);
-        const conn = connectServerSideEvents<EmbedOutput>(
+        const conn = await connectServerSideEvents<EmbedOutput>(
           baseUrlMaker.scrapeEmbed(embedId, url),
           ["completed", "noOutput"]
         );
@@ -105,7 +105,7 @@ export function useSourceScraping(sourceId: string | null, routerId: string) {
     try {
       if (providerApiUrl) {
         const baseUrlMaker = makeProviderUrl(providerApiUrl);
-        const conn = connectServerSideEvents<SourcererOutput>(
+        const conn = await connectServerSideEvents<SourcererOutput>(
           baseUrlMaker.scrapeSource(sourceId, scrapeMedia),
           ["completed", "noOutput"]
         );
@@ -146,7 +146,7 @@ export function useSourceScraping(sourceId: string | null, routerId: string) {
       try {
         if (providerApiUrl) {
           const baseUrlMaker = makeProviderUrl(providerApiUrl);
-          const conn = connectServerSideEvents<EmbedOutput>(
+          const conn = await connectServerSideEvents<EmbedOutput>(
             baseUrlMaker.scrapeEmbed(
               result.embeds[0].embedId,
               result.embeds[0].url
