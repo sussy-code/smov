@@ -43,7 +43,7 @@ export function useEmbedScraping(
         const baseUrlMaker = makeProviderUrl(providerApiUrl);
         const conn = connectServerSideEvents<EmbedOutput>(
           baseUrlMaker.scrapeEmbed(embedId, url),
-          ["completed"]
+          ["completed", "noOutput"]
         );
         result = await conn.promise();
       } else {
@@ -107,7 +107,7 @@ export function useSourceScraping(sourceId: string | null, routerId: string) {
         const baseUrlMaker = makeProviderUrl(providerApiUrl);
         const conn = connectServerSideEvents<SourcererOutput>(
           baseUrlMaker.scrapeSource(sourceId, scrapeMedia),
-          ["completed"]
+          ["completed", "noOutput"]
         );
         result = await conn.promise();
       } else {
@@ -151,7 +151,7 @@ export function useSourceScraping(sourceId: string | null, routerId: string) {
               result.embeds[0].embedId,
               result.embeds[0].url
             ),
-            ["completed"]
+            ["completed", "noOutput"]
           );
           embedResult = await conn.promise();
         } else {

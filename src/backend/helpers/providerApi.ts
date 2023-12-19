@@ -1,4 +1,4 @@
-import { MetaOutput, ScrapeMedia } from "@movie-web/providers";
+import { MetaOutput, NotFoundError, ScrapeMedia } from "@movie-web/providers";
 
 import { mwFetch } from "@/backend/helpers/fetch";
 
@@ -83,9 +83,30 @@ export function connectServerSideEvents<T>(url: string, endEvents: string[]) {
     });
   });
 
-  eventSource.addEventListener("error", (err) => {
+  eventSource.addEventListener("error", (err: MessageEvent<any>) => {
+    eventSource.close();
+    if (err.data) {
+      const data = JSON.parse(err.data);
+      let errObj = new Error("scrape error");
+      if (data.name === NotFoundError.name)
+        errObj = new NotFoundError("Notfound from server");
+      Object.assign(errObj, data);
+      promReject(errObj);
+      return;
+    }
+
     console.error("Failed to connect to SSE", err);
     promReject(err);
+  });
+
+  eventSource.addEventListener("message", (ev) => {
+    if (!ev) {
+      eventSource.close();
+      return;
+    }
+    setTimeout(() => {
+      promReject(new Error("SSE closed improperly"));
+    }, 1000);
   });
 
   return {
