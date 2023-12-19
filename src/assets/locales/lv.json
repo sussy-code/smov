@@ -1,0 +1,420 @@
+{
+  "about": {
+    "description": "movie-web ir tīmekļa lietojumprogramma, kas internetā meklē straumes. Komandas mērķis ir galvenokārt minimālistiska pieeja satura patērēšanai.",
+    "faqTitle": "Bieži jautājumi",
+    "q1": {
+      "body": "Movie-web neveic nekādu saturu. Noklikšķinot uz kāda skatāma satura, internetā tiek meklēts atlasītais multivides saturs (ielādes ekrānā un cilnē “video avoti” varat redzēt, kuru avotu izmantojat). Multivide nekad netiek augšupielādēta, izmantojot filmu tīmekli, viss notiek caur šo meklēšanas mehānismu.",
+      "title": "No kurienes nāk saturs?"
+    },
+    "q2": {
+      "body": "Nav iespējams pieprasīt pārraidi vai filmu, filmu tīmeklis nepārvalda saturu. Viss saturs tiek skatīts, izmantojot avotus internetā.",
+      "title": "Kur es varu pieprasīt filmu vai seriālu?"
+    },
+    "q3": {
+      "body": "Mūsu meklēšanas rezultātus nodrošina filmu datu bāze (TMDB), un tie tiek rādīti neatkarīgi no tā, vai mūsu avotos patiešām ir saturs.",
+      "title": "Meklēšanas rezultātos tiek parādīta seriāls vai filma. Kāpēc es nevaru to atskaņot?"
+    },
+    "title": "Par movie-web"
+  },
+  "actions": {
+    "copied": "Nokopēts",
+    "copy": "Kopēt"
+  },
+  "auth": {
+    "createAccount": "Nav vēl konts? <0>Taisīt kontu.</0>",
+    "deviceNameLabel": "Ierīces nosaukums",
+    "deviceNamePlaceholder": "Personiskais telefons",
+    "generate": {
+      "description": "Tava paroles frāze ir kā vārds un parole. Esi drošs ka turi to drošibā jo tev vajadzēs to izmantot lai ieietu kontā",
+      "next": "Esmu saglabājis paroles frāzi",
+      "title": "Tava paroles frāze"
+    },
+    "hasAccount": "Tev jau ir konts> <0>Ienāc šeit.</0>",
+    "login": {
+      "description": "Lūdzu ievadi paroles frāzi lai ieietu kontā",
+      "deviceLengthError": "Lūdzu ievadi ierīces nosaukumu",
+      "passphraseLabel": "12-Vārdu paroles frāze",
+      "passphrasePlaceholder": "Paroles frāze",
+      "submit": "Ieiet",
+      "title": "Reģistrējies savā kontā",
+      "validationError": "Nepareizs vai nepabeigts paroles frāze"
+    },
+    "register": {
+      "information": {
+        "color1": "Profila krāsa viens",
+        "color2": "Profila krāsa divi",
+        "header": "Ievadi ierīces vārdu un izvēlies krāsu un profila ikonu kādu gribi",
+        "icon": "Profila ikona",
+        "next": "Nakamais",
+        "title": "Konta informācija"
+      }
+    },
+    "trust": {
+      "failed": {
+        "text": "Vai tu konfigurēji to pareizi?",
+        "title": "Neizdevās savienot serveri"
+      },
+      "host": "Tu piesaisties <0>{{hostname}}</0> - apstiprini ka uzticies pirms taisi kontu",
+      "no": "Atpakaļ",
+      "title": "Vai tu uzticies šim serverim?",
+      "yes": "Es uzticos šim serverim"
+    },
+    "verify": {
+      "description": "Lūdzu ievadi paroles frāzi ko ieguvi iepriekš lai apstiprinātu ka saglabāji un uztaisītu kontu",
+      "invalidData": "Dati nav pieejami",
+      "noMatch": "paroles frāze nesakrīt",
+      "passphraseLabel": "Tava 12-vārdu paroles frāze",
+      "recaptchaFailed": "ReCaptcha apstiprināšana neizdevās",
+      "register": "Izveidot kontu",
+      "title": "Apstiprini paroles frāzi"
+    }
+  },
+  "errors": {
+    "badge": "Saplīsa",
+    "details": "Kļūdas deteļas",
+    "reloadPage": "Atjaunot lapu",
+    "showError": "Radīt kļūdas deteļas",
+    "title": "Mēs sastapāmies ar kļūdu!"
+  },
+  "footer": {
+    "legal": {
+      "disclaimer": "Atruna",
+      "disclaimerText": "movie-web nemitina nekādus failus, tas tikai veido saites uz trešās puses pakalpojumiem. Juridiskie jautājumi ir jārisina ar failu resursdatoriem un nodrošinātājiem. movie-web nav atbildīgs par video pakalpojumu sniedzēju parādītajiem multivides failiem."
+    },
+    "links": {
+      "discord": "Discord",
+      "dmca": "Autortiesību likums",
+      "github": "GitHub"
+    },
+    "tagline": "Skatieties savas iecienītākās pārraides un filmas, izmantojot šo atvērtā koda straumēšanas lietotni."
+  },
+  "global": {
+    "name": "Filmas-web",
+    "pages": {
+      "about": "Par",
+      "dmca": "Autortiesību likums",
+      "login": "Ieiet",
+      "pagetitle": "{{title}} - filmas-web",
+      "register": "Reģistrēties",
+      "settings": "Iestādijumi"
+    }
+  },
+  "home": {
+    "bookmarks": {
+      "sectionTitle": "Grāmatzīmes"
+    },
+    "continueWatching": {
+      "sectionTitle": "Turpini skatīties"
+    },
+    "mediaList": {
+      "stopEditing": "Pārtraukt rediģēšanu"
+    },
+    "search": {
+      "allResults": "Tass ir viss kas mums ir!",
+      "failed": "Neizdevās atrast multividi. Mēģiniet vēlreiz!",
+      "loading": "Lādejas...",
+      "noResults": "Mēs nevarējām neko atrast!",
+      "placeholder": "Ko tu gribi skatīties?",
+      "sectionTitle": "Meklējuma rezultāti"
+    },
+    "titles": {
+      "day": {
+        "default": "Ko jūs vēlētos noskatīties šajā pēcpusdienā?"
+      },
+      "morning": {
+        "default": "Ko tu gribētu šorīt noskatīties?",
+        "extra": [
+          "Es dzirdu, ka Pirms saullēkta ir labs"
+        ]
+      },
+      "night": {
+        "default": "Ko tu gribētu šovakar skatīties?",
+        "extra": [
+          "Noguris? Es dzirdu, ka Exorcist ir labs."
+        ]
+      }
+    }
+  },
+  "media": {
+    "episodeDisplay": "Sezona{{season}} Episode{{episode}}",
+    "types": {
+      "movie": "Filma",
+      "show": "seriāls"
+    }
+  },
+  "navigation": {
+    "banner": {
+      "offline": "Pārbaudiet interneta savienojumu"
+    },
+    "menu": {
+      "about": "Par mums",
+      "donation": "Ziedot",
+      "logout": "Iziet",
+      "register": "Sinhronizēt ar mākoni",
+      "settings": "Iestādijumi",
+      "support": "Atbalsts"
+    }
+  },
+  "notFound": {
+    "badge": "Nav atrasts",
+    "goHome": "Atpakaļ uz majām",
+    "message": "Mēs apskatijāmies visur: zem miskastes, skapī, aiz proxija bet nevarejām atrast lapu ko tu meklēji.",
+    "title": "Nevarēja atrast lapu"
+  },
+  "overlays": {
+    "close": "Aizvērt"
+  },
+  "player": {
+    "back": {
+      "default": "Atpakaļ uz mājām",
+      "short": "Atpakaļ"
+    },
+    "casting": {
+      "enabled": "Atskaņo uz ierīci..."
+    },
+    "menus": {
+      "captions": {
+        "customChoice": "Atlasiet failā parakstu",
+        "customizeLabel": "Paraksti",
+        "offChoice": "Izslēgts",
+        "settings": {
+          "delay": "Parakstu aizkave",
+          "fixCapitals": "Labojiet lielo burtu lietojumu"
+        },
+        "title": "Paraksti",
+        "unknownLanguage": "Nezināms"
+      },
+      "downloads": {
+        "disclaimer": "Lejupielādes tiek ņemtas tieši no pakalpojumu sniedzēja. Movie-web nevar kontrolēt, kā tiek nodrošinātas lejupielādes.",
+        "downloadCaption": "Lejupielādēt pašreizējo parakstu",
+        "downloadVideo": "Lejupielādēt video",
+        "hlsExplanation": "Šī multivide ir HLS straume, kuru nevar lejupielādēt filmu tīmeklī.",
+        "onAndroid": {
+          "1": "Lai lejupielādētu operētājsistēmā Android, noklikšķiniet uz lejupielādes pogas, pēc tam jaunajā lapā <bold>pieskarieties videoklipam un turiet to</bold>, pēc tam atlasiet <bold>saglabāt</bold>.",
+          "shortTitle": "Lejupielādēt / Android",
+          "title": "Lejupielāde operētājsistēmā Android"
+        },
+        "onIos": {
+          "1": "Lai lejupielādētu operētājsistēmā iOS, noklikšķiniet uz lejupielādes pogas, pēc tam jaunajā lapā noklikšķiniet uz <bold><ios_share /></bold> un pēc tam uz <bold>Saglabāt failos <ios_files /></bold>.",
+          "shortTitle": "Lejupielādēt / iOS",
+          "title": "Lejupielāde operētājsistēmā iOS"
+        },
+        "onPc": {
+          "1": "Datorā noklikšķiniet uz lejupielādes pogas, pēc tam jaunajā lapā ar peles labo pogu noklikšķiniet uz videoklipa un atlasiet <bold>Saglabāt video kā</bold>",
+          "shortTitle": "Lejupielādēt / datorā",
+          "title": "Lejupielāde datorā"
+        },
+        "title": "Lejupladēt"
+      },
+      "episodes": {
+        "button": "Episodes",
+        "emptyState": "Šajā sezonā nav nevienas sērijas. Pārbaudiet vēlāk!",
+        "episodeBadge": "E{{episode}}",
+        "loadingError": "Kļūda ladējot sezonu",
+        "loadingList": "Lādejas...",
+        "loadingTitle": "Lādejas..."
+      },
+      "playback": {
+        "speedLabel": "Atskaņošana ātrums",
+        "title": "Atskaņošana iestādijumi"
+      },
+      "quality": {
+        "automaticLabel": "Automātiskā kvalitāte",
+        "hint": "Varat mēģināt <0>pārslēgt avotu</0>, lai iegūtu dažādas kvalitātes opcijas.",
+        "iosNoQuality": "Apple noteikto ierobežojumu dēļ šim avotam iOS nav pieejama kvalitātes izvēle. Varat mēģināt <0>pārslēgties uz citu avotu</0>, lai iegūtu dažādas kvalitātes opcijas.",
+        "title": "Kvalitāte"
+      },
+      "settings": {
+        "captionItem": "Parakstu iestatījumi",
+        "downloadItem": "Lejupladēt",
+        "enableCaptions": "Iespējot parakstus",
+        "experienceSection": "Skatīšanās pieredze",
+        "playbackItem": "Atskaņošana iestādijumi",
+        "qualityItem": "Kvalitāte",
+        "sourceItem": "Video avoti",
+        "videoSection": "Video iestādijumi"
+      },
+      "sources": {
+        "failed": {
+          "text": "Mēģinot atrast videoklipus, radās kļūda. Lūdzu, mēģiniet izmantot citu avotu.",
+          "title": "Neizdevās nokasīt"
+        },
+        "noEmbeds": {
+          "text": "Mēs nevarējām atrast nevienu iegulšanu. Lūdzu, mēģiniet izmantot citu avotu.",
+          "title": "Netika atrasta neviena iegulšana"
+        },
+        "noStream": {
+          "text": "Šim avotam nav šīs filmas vai pārraides straumju.",
+          "title": "Nav streama"
+        },
+        "title": "Avoti",
+        "unknownOption": "Nezināms"
+      }
+    },
+    "metadata": {
+      "failed": {
+        "badge": "Neizdevās",
+        "homeButton": "iet uz majām",
+        "text": "Nevarēja ielādēt multivides metadatus no TMDB. Lūdzu, pārbaudiet, vai TMDB nedarbojas vai nav bloķēts jūsu interneta savienojumā.",
+        "title": "Neizdevās ielādēt metadatus"
+      },
+      "notFound": {
+        "badge": "Nav atrasts",
+        "homeButton": "Atpakaļ uz mājām",
+        "text": "Mēs nevarējām atrast jūsu pieprasīto multividi. Vai nu tas ir noņemts, vai arī jūs esat mainījis URL.",
+        "title": "Nevarēja atrast mēdiju."
+      }
+    },
+    "nextEpisode": {
+      "cancel": "Atcelt",
+      "next": "Nakamā epizode"
+    },
+    "playbackError": {
+      "badge": "Atskaņošanas kļūda",
+      "errors": {
+        "errorAborted": "Multivides iegūšana tika pārtraukta pēc lietotāja pieprasījuma.",
+        "errorDecode": "Lai gan iepriekš tika noteikts, ka tas ir lietojams, mēģinot atšifrēt multivides resursu, radās kļūda, kā rezultātā radās kļūda.",
+        "errorGenericMedia": "Nezināma medijas kļūda paradijās.",
+        "errorNetwork": "Radās sava veida tīkla kļūda, kas neļāva veiksmīgi ielādēt multividi, lai gan tas iepriekš bija pieejams.",
+        "errorNotSupported": "Multivides vai multivides nodrošinātāja objekts netiek atbalstīts."
+      },
+      "homeButton": "iet majās",
+      "text": "Notika kļūda kamēr meiģināja atskaņot video. Lūdzu meiģini atkal.",
+      "title": "Neizdevās palaist video!"
+    },
+    "scraping": {
+      "items": {
+        "failure": "Parādijās kļūda",
+        "notFound": "Nav šī video",
+        "pending": "Pārbauda priekš video..."
+      },
+      "notFound": {
+        "badge": "Nav atrasts",
+        "detailsButton": "seriāls deteļas",
+        "homeButton": "Iet majās",
+        "text": "Mēs meklejām cour mūsu piedavatājiem un nevarējām atrast ko tu meklēji! Mēs nehostojam mediju un mums nav kontroles kas ir pieejams. Lūdzu uzpied 'šova deteļas' apakšā priekš vairāk deteļām.",
+        "title": "Mēs nevarējām atrast to"
+      }
+    },
+    "time": {
+      "regular": "{{timeWatched}} / {{duration}}",
+      "remaining": "{{timeLeft}} beidza • pabeidza {{timeFinished, datetime}}",
+      "shortRegular": "{{timeWatched}}",
+      "shortRemaining": "-{{timeLeft}}"
+    }
+  },
+  "screens": {
+    "dmca": {
+      "text": "Laipni lūdzam filmu-web Autortiesību kontaktu lapā! Mēs cienām intelektuālā īpašuma tiesības un vēlamies ātri atrisināt visas autortiesību problēmas. Ja uzskatāt, ka jūsu ar autortiesībām aizsargātais darbs ir nepareizi izmantots mūsu platformā, lūdzu, nosūtiet uz tālāk norādīto e-pasta ziņojumu detalizētu Digitālās tūkstošgades autortiesību likuma paziņojumu. Lūdzu, iekļaujiet ar autortiesībām aizsargātā materiāla aprakstu, savu kontaktinformāciju un labas ticības apliecinājumu. Mēs esam apņēmušies ātri atrisināt šīs problēmas un novērtējam jūsu sadarbību, lai saglabātu filmu tīmekli par vietu, kurā tiek ievērotas radošums un autortiesības.",
+      "title": "Autortiesību likums"
+    },
+    "loadingApp": "Notiek aplikācijas ielāde",
+    "loadingUser": "Notiek jūsu profila ielāde",
+    "loadingUserError": {
+      "logout": "iziet",
+      "reset": "Atiestatīt pielāgoto serveri",
+      "text": "Neizdevās ieladēt jūsu profilu",
+      "textWithReset": "Neizdevās ielādēt profilu no pielāgotā servera. Vai vēlaties atiestatīt atpakaļ uz noklusējuma serveri?"
+    },
+    "migration": {
+      "failed": "Neizdevās migrēt jūsu datus.",
+      "inProgress": "Lūdzu, uzgaidiet, mēs migrējam jūsu datus. Tam nevajadzētu ilgt ilgu laiku."
+    }
+  },
+  "settings": {
+    "account": {
+      "accountDetails": {
+        "deviceNameLabel": "Ierīces vārds",
+        "deviceNamePlaceholder": "Personiskais telefons",
+        "editProfile": "Reģistrēt",
+        "logoutButton": "Iziet"
+      },
+      "actions": {
+        "delete": {
+          "button": "Dzēst kontu",
+          "confirmButton": "Dzēst kontu",
+          "confirmDescription": "Vai tiešām vēlaties dzēst savu kontu? Visi jūsu dati tiks zaudēti!",
+          "confirmTitle": "Vai tu esi pārliecināts?",
+          "text": "Šī darbība ir neatgriezeniska. Visi dati tiks dzēsti, un neko nevarēs atgūt.",
+          "title": "Dzēst kontu"
+        },
+        "title": "Darbības"
+      },
+      "devices": {
+        "deviceNameLabel": "Ierīces vārds",
+        "failed": "Neizdevās ielādēt sesijas",
+        "removeDevice": "Nonēmt",
+        "title": "Ierīces"
+      },
+      "profile": {
+        "finish": "Pabeidziet rediģēšanu",
+        "firstColor": "Profila krāsa viens",
+        "secondColor": "Profila krāsa divi",
+        "title": "Mainīt profila bildi",
+        "userIcon": "Konta ikona"
+      },
+      "register": {
+        "cta": "Sākt",
+        "text": "Kopīgojiet pulksteņa progresu starp ierīcēm un sinhronizējiet tās.",
+        "title": "Sinhronizēt ar mākoni"
+      },
+      "title": "Konts"
+    },
+    "appearance": {
+      "activeTheme": "Aktīvs",
+      "themes": {
+        "blue": "Zils",
+        "default": "Parasts",
+        "gray": "Pelēks",
+        "red": "Sarkans",
+        "teal": "zilganzaļš"
+      },
+      "title": "Izskats"
+    },
+    "captions": {
+      "backgroundLabel": "Fona necaurredzamība",
+      "colorLabel": "Krāsa",
+      "previewQuote": "Es nedrīkstu baidīties. Bailes ir prāta slepkava.",
+      "textSizeLabel": "Teksta lielums",
+      "title": "Paraksti"
+    },
+    "connections": {
+      "server": {
+        "description": "Ja vēlaties izveidot savienojumu ar pielāgotu aizmugursistēmu, lai saglabātu savus datus, iespējojiet to un norādiet URL.",
+        "label": "Pielāgots serveris",
+        "urlLabel": "Pielāgota servera URL"
+      },
+      "title": "Savienojumi",
+      "workers": {
+        "addButton": "pievienot jaunu worker",
+        "description": "Lai lietojumprogramma darbotos, visa trafika tiek maršrutēta caur starpniekserveriem. Iespējojiet šo, ja vēlaties piesaistīt savus darbiniekus.",
+        "emptyState": "Vēl nav workers. Pievienojiet vienu zemāk",
+        "label": "Izmantojiet pielāgotus starpniekserverus",
+        "urlLabel": "Worker URLs",
+        "urlPlaceholder": "https://"
+      }
+    },
+    "locale": {
+      "language": "Lietojumprogrammas valoda",
+      "languageDescription": "Visai lietojumprogrammai lietotā valoda.",
+      "title": "Lokalizācija"
+    },
+    "reset": "Restartēt",
+    "save": "Saglabāt",
+    "sidebar": {
+      "info": {
+        "appVersion": "Aplikācijas versija",
+        "backendUrl": "Aizmugursistēmas URL",
+        "backendVersion": "Aizmugurējā versija",
+        "hostname": "Saimniekdatora nosaukums",
+        "insecure": "Nedrošs",
+        "notLoggedIn": "Jūs neesat pievienojies",
+        "secure": "Drošs",
+        "title": "Aplikācijas informācija",
+        "unknownVersion": "Nezināms",
+        "userId": "Lietotāja ID"
+      }
+    },
+    "unsaved": "Jums ir nesaglabātas izmaiņas"
+  }
+}
