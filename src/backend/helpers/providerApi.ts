@@ -1,4 +1,5 @@
 import { MetaOutput, NotFoundError, ScrapeMedia } from "@movie-web/providers";
+import { jwtDecode } from "jwt-decode";
 
 import { mwFetch } from "@/backend/helpers/fetch";
 import { getTurnstileToken, isTurnstileInitialized } from "@/stores/turnstile";
@@ -16,13 +17,11 @@ export function getCachedMetadata(): MetaOutput[] {
 
 function getTokenIfValid(): null | string {
   if (!token) return null;
-  const parts = token.split(".");
-  if (parts.length !== 3) return null;
   try {
-    const parsedData = JSON.parse(atob(parts[2]));
-    if (!parsedData.exp) return token;
-    if (Date.now() < parsedData.exp) return token;
-  } catch {
+    const body = jwtDecode(token);
+    if (!body.exp) return `jwt|${token}`;
+    if (Date.now() / 1000 < body.exp) return `jwt|${token}`;
+  } catch (err) {
     // we dont care about parse errors
   }
   return null;
@@ -90,7 +89,7 @@ export async function connectServerSideEvents<T>(
   // fetch token to use
   let apiToken = getTokenIfValid();
   if (!apiToken && isTurnstileInitialized()) {
-    apiToken = await getTurnstileToken();
+    apiToken = `turnstile|${await getTurnstileToken()}`;
   }
 
   // insert token, if its set
