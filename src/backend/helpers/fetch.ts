@@ -1,5 +1,6 @@
-import { FetchOptions, FetchResponse, ofetch } from "ofetch";
+import { ofetch } from "ofetch";
 
+import { getApiToken, setApiToken } from "@/backend/helpers/providerApi";
 import { getLoadbalancedProxyUrl } from "@/utils/providers";
 
 type P<T> = Parameters<typeof ofetch<T, any>>;
@@ -21,7 +22,11 @@ export function mwFetch<T>(url: string, ops: P<T>[1] = {}): R<T> {
   return baseFetch<T>(url, ops);
 }
 
-export function proxiedFetch<T>(url: string, ops: P<T>[1] = {}): R<T> {
+export async function singularProxiedFetch<T>(
+  proxyUrl: string,
+  url: string,
+  ops: P<T>[1] = {}
+): R<T> {
   let combinedUrl = ops?.baseURL ?? "";
   if (
     combinedUrl.length > 0 &&
@@ -45,45 +50,30 @@ export function proxiedFetch<T>(url: string, ops: P<T>[1] = {}): R<T> {
     parsedUrl.searchParams.set(k, v);
   });
 
-  return baseFetch<T>(getLoadbalancedProxyUrl(), {
+  let headers = ops.headers ?? {};
+  const apiToken = await getApiToken();
+  if (apiToken)
+    headers = {
+      ...headers,
+      "X-Token": apiToken,
+    };
+
+  return baseFetch<T>(proxyUrl, {
     ...ops,
     baseURL: undefined,
     params: {
       destination: parsedUrl.toString(),
     },
     query: {},
+    headers,
+    onResponse(context) {
+      const tokenHeader = context.response.headers.get("X-Token");
+      if (tokenHeader) setApiToken(tokenHeader);
+      ops.onResponse?.(context);
+    },
   });
 }
 
-export function rawProxiedFetch<T>(
-  url: string,
-  ops: FetchOptions = {}
-): Promise<FetchResponse<T>> {
-  let combinedUrl = ops?.baseURL ?? "";
-  if (
-    combinedUrl.length > 0 &&
-    combinedUrl.endsWith("/") &&
-    url.startsWith("/")
-  )
-    combinedUrl += url.slice(1);
-  else if (
-    combinedUrl.length > 0 &&
-    !combinedUrl.endsWith("/") &&
-    !url.startsWith("/")
-  )
-    combinedUrl += `/${url}`;
-  else combinedUrl += url;
-
-  const parsedUrl = new URL(combinedUrl);
-  Object.entries(ops?.params ?? {}).forEach(([k, v]) => {
-    parsedUrl.searchParams.set(k, v);
-  });
-
-  return baseFetch.raw(getLoadbalancedProxyUrl(), {
-    ...ops,
-    baseURL: undefined,
-    params: {
-      destination: parsedUrl.toString(),
-    },
-  });
+export function proxiedFetch<T>(url: string, ops: P<T>[1] = {}): R<T> {
+  return singularProxiedFetch<T>(getLoadbalancedProxyUrl(), url, ops);
 }

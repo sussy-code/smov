@@ -68,6 +68,9 @@ dependencies:
   iso-639-1:
     specifier: ^3.1.0
     version: 3.1.0
+  jwt-decode:
+    specifier: ^4.0.0
+    version: 4.0.0
   lodash.isequal:
     specifier: ^4.5.0
     version: 4.5.0
@@ -104,6 +107,9 @@ dependencies:
   react-sticky-el:
     specifier: ^2.1.0
     version: 2.1.0(react-dom@17.0.2)(react@17.0.2)
+  react-turnstile:
+    specifier: ^1.1.2
+    version: 1.1.2(react-dom@17.0.2)(react@17.0.2)
   react-use:
     specifier: ^17.4.0
     version: 17.4.0(react-dom@17.0.2)(react@17.0.2)
@@ -4523,6 +4529,11 @@ packages:
     resolution: {integrity: sha512-cxQGGUiit6CGUpuuiezY8N4m1wgF4o7127rXEXDFcxeDUFfdV7gSkwA26Fe2wWBiNQq2SZOgN4gSmMxB/StA8Q==}
     dev: true
 
+  /jwt-decode@4.0.0:
+    resolution: {integrity: sha512-+KJGIyHgkGuIq3IEBNftfhW/LfWhXUIY6OmyVWjliu5KH1y0fw7VQ8YndE2O4qZdMSd9SqbnC8GOcZEy0Om7sA==}
+    engines: {node: '>=18'}
+    dev: false
+
   /keyv@4.5.3:
     resolution: {integrity: sha512-QCiSav9WaX1PgETJ+SpNnx2PRRapJ/oRSXM4VO5OGYGSjrxbKPVFVhB3l2OCbLCk329N8qyAtsJjSjvVBWzEug==}
     dependencies:
@@ -5316,6 +5327,16 @@ packages:
     peerDependencies:
       react: '>=16.3.0'
       react-dom: '>=16.3.0'
+    dependencies:
+      react: 17.0.2
+      react-dom: 17.0.2(react@17.0.2)
+    dev: false
+
+  /react-turnstile@1.1.2(react-dom@17.0.2)(react@17.0.2):
+    resolution: {integrity: sha512-wfhSf4JtXlmLRkfxMryU8yEeCbh401muKoInhx+TegYwP8RprUW5XPZa8WnCNZiYpMy1i6IXAb1Ar7xj5HxJag==}
+    peerDependencies:
+      react: '>= 17.0.0'
+      react-dom: '>= 17.0.0'
     dependencies:
       react: 17.0.2
       react-dom: 17.0.2(react@17.0.2)

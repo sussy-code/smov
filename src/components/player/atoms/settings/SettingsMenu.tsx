@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
+import { getCachedMetadata } from "@/backend/helpers/providerApi";
 import { Toggle } from "@/components/buttons/Toggle";
 import { Icon, Icons } from "@/components/Icon";
 import { useCaptions } from "@/components/player/hooks/useCaptions";
@@ -10,7 +11,6 @@ import { useOverlayRouter } from "@/hooks/useOverlayRouter";
 import { usePlayerStore } from "@/stores/player/store";
 import { qualityToString } from "@/stores/player/utils/qualities";
 import { useSubtitleStore } from "@/stores/subtitles";
-import { providers } from "@/utils/providers";
 
 export function SettingsMenu({ id }: { id: string }) {
   const { t } = useTranslation();
@@ -23,7 +23,10 @@ export function SettingsMenu({ id }: { id: string }) {
   const currentSourceId = usePlayerStore((s) => s.sourceId);
   const sourceName = useMemo(() => {
     if (!currentSourceId) return "...";
-    return providers.getMetadata(currentSourceId)?.name ?? "...";
+    const source = getCachedMetadata().find(
+      (src) => src.id === currentSourceId
+    );
+    return source?.name ?? "...";
   }, [currentSourceId]);
   const { toggleLastUsed } = useCaptions();
 
