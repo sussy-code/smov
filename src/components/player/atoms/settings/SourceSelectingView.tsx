@@ -1,6 +1,7 @@
 import { ReactNode, useEffect, useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
 
+import { getCachedMetadata } from "@/backend/helpers/providerApi";
 import { Loading } from "@/components/layout/Loading";
 import {
   useEmbedScraping,
@@ -10,7 +11,6 @@ import { Menu } from "@/components/player/internals/ContextMenu";
 import { SelectableLink } from "@/components/player/internals/ContextMenu/Links";
 import { useOverlayRouter } from "@/hooks/useOverlayRouter";
 import { usePlayerStore } from "@/stores/player/store";
-import { providers } from "@/utils/providers";
 
 export interface SourceSelectionViewProps {
   id: string;
@@ -33,7 +33,7 @@ export function EmbedOption(props: {
 
   const embedName = useMemo(() => {
     if (!props.embedId) return unknownEmbedName;
-    const sourceMeta = providers.getMetadata(props.embedId);
+    const sourceMeta = getCachedMetadata().find((s) => s.id === props.embedId);
     return sourceMeta?.name ?? unknownEmbedName;
   }, [props.embedId, unknownEmbedName]);
 
@@ -61,7 +61,7 @@ export function EmbedSelectionView({ sourceId, id }: EmbedSelectionViewProps) {
 
   const sourceName = useMemo(() => {
     if (!sourceId) return "...";
-    const sourceMeta = providers.getMetadata(sourceId);
+    const sourceMeta = getCachedMetadata().find((s) => s.id === sourceId);
     return sourceMeta?.name ?? "...";
   }, [sourceId]);
 
@@ -137,8 +137,8 @@ export function SourceSelectionView({
   const currentSourceId = usePlayerStore((s) => s.sourceId);
   const sources = useMemo(() => {
     if (!metaType) return [];
-    return providers
-      .listSources()
+    return getCachedMetadata()
+      .filter((v) => v.type === "source")
       .filter((v) => v.mediaTypes?.includes(metaType));
   }, [metaType]);
 

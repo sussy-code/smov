@@ -3,6 +3,10 @@ import { useHistory, useParams } from "react-router-dom";
 import { useAsync } from "react-use";
 import type { AsyncReturnType } from "type-fest";
 
+import {
+  fetchMetadata,
+  setCachedMetadata,
+} from "@/backend/helpers/providerApi";
 import { DetailedMeta, getMetaFromId } from "@/backend/metadata/getmeta";
 import { decodeTMDBId } from "@/backend/metadata/tmdb";
 import { MWMediaType } from "@/backend/metadata/types/mw";
@@ -14,6 +18,7 @@ import { Paragraph } from "@/components/text/Paragraph";
 import { Title } from "@/components/text/Title";
 import { ErrorContainer, ErrorLayout } from "@/pages/layouts/ErrorLayout";
 import { conf } from "@/setup/config";
+import { getLoadbalancedProviderApiUrl, providers } from "@/utils/providers";
 
 export interface MetaPartProps {
   onGetMeta?: (meta: DetailedMeta, episodeId?: string) => void;
@@ -36,6 +41,16 @@ export function MetaPart(props: MetaPartProps) {
   const history = useHistory();
 
   const { error, value, loading } = useAsync(async () => {
+    const providerApiUrl = getLoadbalancedProviderApiUrl();
+    if (providerApiUrl) {
+      await fetchMetadata(providerApiUrl);
+    } else {
+      setCachedMetadata([
+        ...providers.listSources(),
+        ...providers.listEmbeds(),
+      ]);
+    }
+
     let data: ReturnType<typeof decodeTMDBId> = null;
     try {
       data = decodeTMDBId(params.media);
