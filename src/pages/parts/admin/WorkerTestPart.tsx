@@ -8,7 +8,7 @@ import { Icon, Icons } from "@/components/Icon";
 import { Box } from "@/components/layout/Box";
 import { Divider } from "@/components/utils/Divider";
 import { Heading2 } from "@/components/utils/Text";
-import { conf } from "@/setup/config";
+import { getProxyUrls } from "@/utils/proxyUrls";
 
 export function WorkerItem(props: {
   name: string;
@@ -43,7 +43,7 @@ export function WorkerItem(props: {
 
 export function WorkerTestPart() {
   const workerList = useMemo(() => {
-    return conf().PROXY_URLS.map((v, ind) => ({
+    return getProxyUrls().map((v, ind) => ({
       id: ind.toString(),
       url: v,
     }));
