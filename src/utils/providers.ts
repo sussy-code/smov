@@ -7,6 +7,7 @@ import {
   targets,
 } from "@movie-web/providers";
 
+import { getApiToken, setApiToken } from "@/backend/helpers/providerApi";
 import { getProviderApiUrls, getProxyUrls } from "@/utils/proxyUrls";
 
 function makeLoadbalancedList(getter: () => string[]) {
@@ -26,11 +27,32 @@ export const getLoadbalancedProxyUrl = makeLoadbalancedList(getProxyUrls);
 export const getLoadbalancedProviderApiUrl =
   makeLoadbalancedList(getProviderApiUrls);
 
+async function fetchButWithApiTokens(
+  input: RequestInfo | URL,
+  init?: RequestInit | undefined
+): Promise<Response> {
+  const apiToken = await getApiToken();
+  const headers = new Headers(init?.headers);
+  if (apiToken) headers.set("X-Token", apiToken);
+  const response = await fetch(
+    input,
+    init
+      ? {
+          ...init,
+          headers,
+        }
+      : undefined
+  );
+  const newApiToken = response.headers.get("X-Token");
+  if (newApiToken) setApiToken(newApiToken);
+  return response;
+}
+
 function makeLoadBalancedSimpleProxyFetcher() {
-  const fetcher: ProviderBuilderOptions["fetcher"] = (a, b) => {
+  const fetcher: ProviderBuilderOptions["fetcher"] = async (a, b) => {
     const currentFetcher = makeSimpleProxyFetcher(
       getLoadbalancedProxyUrl(),
-      fetch
+      fetchButWithApiTokens
     );
     return currentFetcher(a, b);
   };
