@@ -1,11 +1,68 @@
 {
   "auth": {
-    "deviceNameLabel": "Toestel naam",
-    "deviceNamePlaceholder": "Huistelefoon",
-    "hasAccount": "Heb je al een account? <0>Log hier in.</0>"
+    "createAccount": "Heb je nog geen account? <0>Maak er dan een.</0>",
+    "deviceNameLabel": "Naam toestel",
+    "deviceNamePlaceholder": "Mijn telefoon",
+    "generate": {
+      "description": "Je passphrase werkt als je gebruikersnaam en wachtwoord. Sla je passphrase dus goed op, je hebt hem namelijk nodig om in te loggen",
+      "next": "Ik heb mijn passphrase opgeslagen",
+      "title": "Jouw passphrase"
+    },
+    "hasAccount": "Heb je al een account? <0>Log hier in.</0>",
+    "login": {
+      "description": "Vul je passphrase in",
+      "deviceLengthError": "Vul de naam van je apparaat in",
+      "passphraseLabel": "12-Woordelijke passphrase",
+      "passphrasePlaceholder": "Passphrase",
+      "submit": "Log in",
+      "title": "Log in bij je account",
+      "validationError": "Incorrecte of incompleet passphrase"
+    },
+    "register": {
+      "information": {
+        "color1": "Profielkleur 1",
+        "color2": "Profielkleur 2",
+        "header": "Vul hier het naam van je apparaat. Kies ook je de kleuren die je wil, en een icoontje",
+        "icon": "Icoontje",
+        "next": "Volgende",
+        "title": "Account informatie"
+      }
+    },
+    "trust": {
+      "failed": {
+        "text": "Heb je het goed ingesteld?",
+        "title": "Kon niet met de server verbinden"
+      },
+      "host": "Je gaat zo verbinden met <0>{{hostname}}</0>, check even of je deze link vertrouwt",
+      "no": "Vorige pagina",
+      "title": "Vertrouw je deze server?",
+      "yes": "Ik vertrouw deze server"
+    },
+    "verify": {
+      "description": "Vul je passphrase in zodat we weten dat je het opgeslagen hebt, dan kunnen we je account maken",
+      "invalidData": "Ongeldige data",
+      "noMatch": "Passphrase komt niet overeen",
+      "passphraseLabel": "Jouw passphrase",
+      "recaptchaFailed": "ReCatpcha validatie is mislukt",
+      "register": "Maak een account",
+      "title": "Bevestig je passphrase"
+    }
+  },
+  "errors": {
+    "badge": "Tis kapot",
+    "details": "Informatie over foutmelding",
+    "reloadPage": "Herlaad de pagina",
+    "showError": "Meer informatie over foutmelding",
+    "title": "Er is iets fout gegaan!"
   },
   "global": {
-    "name": "movie-web"
+    "name": "movie-web",
+    "pages": {
+      "about": "Over",
+      "login": "Login",
+      "register": "Registreren",
+      "settings": "Instellingen"
+    }
   },
   "home": {
     "bookmarks": {
@@ -26,8 +83,8 @@
   "media": {
     "episodeDisplay": "S{{season}} A{{episode}}",
     "types": {
-      "movie": "Films",
-      "show": "Series"
+      "movie": "Film",
+      "show": "Serie"
     }
   },
   "navigation": {
@@ -46,22 +103,70 @@
       "default": "Naar de home-pagina",
       "short": "Terug"
     },
+    "casting": {
+      "enabled": "Aan het casten..."
+    },
     "menus": {
       "captions": {
         "customChoice": "Ondertiteling uploaden",
         "customizeLabel": "Instellingen",
-        "title": "Ondertiteling"
+        "offChoice": "Geen ondertiteling",
+        "settings": {
+          "delay": "Tijdverschil ondertiteling",
+          "fixCapitals": "Hoofdletters corrigeren"
+        },
+        "title": "Ondertiteling",
+        "unknownLanguage": "Onbekend"
+      },
+      "downloads": {
+        "disclaimer": "Downloads worden direct bij de bron opgehaald. movie-web heeft geen controle over het bestand dat je ontvangt.",
+        "downloadCaption": "Ondertiteling downloaden",
+        "downloadVideo": "Download filmpje",
+        "hlsExplanation": "Dit filmpje is een HLS bestand, een type bestand dat we helaas niet kunnen downloaden.",
+        "title": "Download"
       },
       "episodes": {
         "button": "Afleveringen",
-        "loadingList": "Aan het zoeken...",
+        "emptyState": "Er zijn in dit seizoen geen afleveringen, kijk over een paar jaar nog eens!",
+        "episodeBadge": "A{{episode}}",
+        "loadingError": "Er ging iets mis bij het laden van dit seizoen",
+        "loadingList": "Aan het laden...",
         "loadingTitle": "Aan het zoeken..."
       },
+      "settings": {
+        "captionItem": "Instellingen ondertiteling",
+        "downloadItem": "Download",
+        "enableCaptions": "Ondertiteling aanzetten",
+        "experienceSection": "Kijk-ervaring",
+        "playbackItem": "Afspeel instellingen",
+        "qualityItem": "Kwaliteit",
+        "sourceItem": "Video-bron",
+        "videoSection": "Video instellingen"
+      },
       "sources": {
-        "title": "Bronnen"
+        "failed": {
+          "text": "Er ging iets mis bij het zoeken naar videos, probeer een andere bron.",
+          "title": "Het is niet gelukt dit op te halen"
+        },
+        "noEmbeds": {
+          "text": "We konden geen embeds vinden, probeer een andere bron.",
+          "title": "Geen embeds gevonden"
+        },
+        "noStream": {
+          "text": "Deze bron heeft geen links voor deze film of serie.",
+          "title": "Geen bron"
+        },
+        "title": "Bronnen",
+        "unknownOption": "Onbekend"
       }
     },
     "metadata": {
+      "failed": {
+        "badge": "Mislukt",
+        "homeButton": "Ga naar de home-pagina",
+        "text": "We konden geen informatie over deze media ophalen bij TMDB. Kijk even na of TMDB te bereiken is op dit netwerk.",
+        "title": "Metadata ophalen mislukt"
+      },
       "notFound": {
         "badge": "Pagina niet gevonden",
         "homeButton": "Naar de home-pagina",
@@ -69,8 +174,39 @@
         "title": "We konden deze media niet vinden."
       }
     },
+    "nextEpisode": {
+      "cancel": "Annuleren",
+      "next": "Volgende aflevering"
+    },
     "playbackError": {
+      "badge": "Afspeelfout",
+      "errors": {
+        "errorAborted": "Het laden van de media is stopgezet omdat de gebruiker daar om vroeg.",
+        "errorDecode": "Ondanks het feit dat we eerder dachten dat deze bron beschikbaar, was dat toch niet zo en is er een decode error ontstaan.",
+        "errorGenericMedia": "Onbekende media foutmelding.",
+        "errorNetwork": "Er ging iets mis waardoor de media niet langer beschikbaar is, al was hij dat eerst wel.",
+        "errorNotSupported": "Deze media or media provider wordt niet ondersteund."
+      },
+      "homeButton": "Naar de home-pagina",
+      "text": "Er ging iets mis bij het afspelen. Probeer het nog eens.",
       "title": "Oeps, hier ging iets mis!"
+    },
+    "scraping": {
+      "items": {
+        "failure": "Daar ging iets mis",
+        "notFound": "Er is geen video gevonden",
+        "pending": "Naar videos aan het zoeken..."
+      },
+      "notFound": {
+        "badge": "Niet gevonden",
+        "detailsButton": "Meer informatie",
+        "homeButton": "Naar de home-pagina",
+        "text": "We hebben al onze providers lief aangekeken maar we hebben niets kunnen vinden. Wij beheersen de media niet, en bepalen dus niet wat er beschikbaar is. Klik op \"meer informatie over foutmelding\" voor meer informatie.",
+        "title": "Dat konden we niet vinden"
+      }
+    },
+    "time": {
+      "remaining": "Nog {{timeLeft}} • Klaar om {{timeFinished, datetime}}"
     }
   }
 }

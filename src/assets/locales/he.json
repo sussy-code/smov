@@ -29,7 +29,7 @@
       "next": "אני שמרתי את משפט הסיסמה שלי",
       "title": "משפט הסיסמה שלך"
     },
-    "hasAccount": "Already have an account? <0>Login here.</0>",
+    "hasAccount": "כבר יש לך חשבון? <0>התחבר כאן.</0>",
     "login": {
       "description": "אנא הזן את ביטוי הסיסמה שלך כדי להתחבר לחשבונך",
       "deviceLengthError": "אנא הזן שם מכשיר",
@@ -92,7 +92,7 @@
     "name": "movie-web",
     "pages": {
       "about": "אודות",
-      "dmca": "DMCA",
+      "dmca": "זכויות יוצרים",
       "login": "התחבר",
       "pagetitle": "{{title}} - movie-web",
       "register": "הירשם",
@@ -220,8 +220,8 @@
       },
       "quality": {
         "automaticLabel": "איכות אוטומטית",
-        "hint": "You can try <0>switching source</0> to get different quality options.",
-        "iosNoQuality": "Due to Apple-defined limitations, quality selection is not available on iOS for this source. You can try <0>switching to another source</0> to get different quality options.",
+        "hint": "אתה יכול לנסות <0>להחליף מקור</0> כדי לקבל אפשרויות איכות שונות.",
+        "iosNoQuality": "בשל מגבלות שהוגדרו על ידי אפל, בחירת איכות אינה זמינה ב-iOS עבור מקור זה. אתה יכול לנסות <0>לעבור למקור אחר</0> כדי לקבל אפשרויות איכות שונות.",
         "title": "איכות"
       },
       "settings": {
@@ -229,7 +229,7 @@
         "downloadItem": "הורד",
         "enableCaptions": "אפשר כתוביות",
         "experienceSection": "חווית צפייה",
-        "playbackItem": "הגדרות השמעה",
+        "playbackItem": "הגדרות ניגון",
         "qualityItem": "איכות",
         "sourceItem": "מקורות וידאו",
         "videoSection": "הגדרות וידאו"
@@ -306,7 +306,7 @@
   "screens": {
     "dmca": {
       "text": "ברוכה הבאה לדף יצירת קשר DMCA של movie-web! אנו מכבדים את זכויות הקניין הרוחני ורוצים לטפל בכל חשש לזכויות יוצרים במהירות. אם אתה סבור שהעבודה שלך המוגנת בזכויות יוצרים נוצלה בצורה לא נכונה בפלטפורמה שלנו, אנא שלח הודעת DMCA מפורטת למייל למטה. אנא כלול תיאור של החומר המוגן בזכויות יוצרים, פרטי ההתקשרות שלך והצהרת תום לב. אנו מחויבים לפתור את העניינים הללו באופן מיידי ומעריכים את שיתוף הפעולה שלך בשמירה על movie-web מקום שמכבד יצירתיות וזכויות יוצרים.",
-      "title": "DMCA"
+      "title": "זכויות יוצרים"
     },
     "loadingApp": "טוען את האפליקציה",
     "loadingUser": "טוען את הפרופיל שלך",
