@@ -82,15 +82,19 @@ export function makeProviderUrl(base: string) {
   };
 }
 
-export async function connectServerSideEvents<T>(
-  url: string,
-  endEvents: string[]
-) {
-  // fetch token to use
+export async function getApiToken(): Promise<string | null> {
   let apiToken = getTokenIfValid();
   if (!apiToken && isTurnstileInitialized()) {
     apiToken = `turnstile|${await getTurnstileToken()}`;
   }
+  return apiToken;
+}
+
+export async function connectServerSideEvents<T>(
+  url: string,
+  endEvents: string[]
+) {
+  const apiToken = await getApiToken();
 
   // insert token, if its set
   const parsedUrl = new URL(url);
