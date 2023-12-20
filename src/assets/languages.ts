@@ -1,3 +1,4 @@
+import ar from "@/assets/locales/ar.json";
 import cs from "@/assets/locales/cs.json";
 import de from "@/assets/locales/de.json";
 import en from "@/assets/locales/en.json";
@@ -34,7 +35,8 @@ export const locales = {
   lv,
   th,
   ne,
+  ar,
 };
 export type Locales = keyof typeof locales;
 
-export const rtlLocales: Locales[] = ["he"];
+export const rtlLocales: Locales[] = ["he", "ar"];
