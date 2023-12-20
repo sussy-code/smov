@@ -15,6 +15,10 @@ export function getCachedMetadata(): MetaOutput[] {
   return metaDataCache ?? [];
 }
 
+export function setApiToken(newToken: string) {
+  token = newToken;
+}
+
 function getTokenIfValid(): null | string {
   if (!token) return null;
   try {
@@ -116,7 +120,7 @@ export async function connectServerSideEvents<T>(
   });
 
   eventSource.addEventListener("token", (e) => {
-    token = JSON.parse(e.data);
+    setApiToken(JSON.parse(e.data));
   });
 
   eventSource.addEventListener("error", (err: MessageEvent<any>) => {
