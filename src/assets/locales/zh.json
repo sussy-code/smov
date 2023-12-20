@@ -23,7 +23,7 @@
   "auth": {
     "createAccount": "还没有账户？ <0>创建一个。</0>",
     "deviceNameLabel": "设备名称",
-    "deviceNamePlaceholder": "个人电话",
+    "deviceNamePlaceholder": "如：个人电话",
     "generate": {
       "description": "您的密码短语相当于用户名与密码。由于您需要输入它来登录账户，请确保将其存放到安全位置",
       "next": "我已保存密码短语",
@@ -325,7 +325,7 @@
     "account": {
       "accountDetails": {
         "deviceNameLabel": "设备名称",
-        "deviceNamePlaceholder": "个人电话",
+        "deviceNamePlaceholder": "如：个人电话",
         "editProfile": "编辑",
         "logoutButton": "登出"
       },

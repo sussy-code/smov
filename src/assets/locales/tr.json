@@ -25,7 +25,7 @@
     "deviceNameLabel": "Cihaz ismi",
     "deviceNamePlaceholder": "Kişisel telefon",
     "generate": {
-      "description": "Parolanız, kullanıcı adınız ve şifreniz olarak işlev görür. Hesabınıza giriş yapmak için bu parolayı girmeniz gerekeceğinden onu güvende tuttuğunuzdan emin olun.",
+      "description": "Parolanız, kullanıcı adınız ve şifreniz olarak işlev görür. Hesabınıza giriş yapmak için bu parolayı girmeniz gerekeceğinden onu güvende tuttuğunuzdan emin olun",
       "next": "Parolamı kaydettim",
       "title": "Parolanız"
     },
@@ -43,7 +43,7 @@
       "information": {
         "color1": "Birinci hesap rengi",
         "color2": "İkinci hesap rengi",
-        "header": "Cihazınız için bir isim girin, zevkinize göre renk ve kullanıcı simgesi seçin.",
+        "header": "Cihazınız için bir isim girin, zevkinize göre renk ve kullanıcı simgesi seçin",
         "icon": "Kullanıcı simgesi",
         "next": "İleri",
         "title": "Hesap bilgisi"
