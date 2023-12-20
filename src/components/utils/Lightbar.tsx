@@ -160,7 +160,7 @@ function ParticlesCanvas() {
     }
 
     // Fish easter egg
-    const shouldShowFishie = Math.floor(Math.random() * 600) === 1;
+    const shouldShowFishie = Math.floor(Math.random() * 600) === 69;
     if (shouldShowFishie) {
       imageOverride = [
         {
