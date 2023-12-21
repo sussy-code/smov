@@ -25,7 +25,9 @@ export function PassphraseDisplay(props: { mnemonic: string }) {
   return (
     <div className="rounded-lg border border-authentication-border/50 ">
       <div className="px-4 py-2 flex justify-between border-b border-authentication-border/50">
-        <p className="font-bold text-sm text-white">Passphrase</p>
+        <p className="font-bold text-sm text-white">
+          {t("auth.generate.passphraseFrameLabel")}
+        </p>
         <button
           type="button"
           className="text-authentication-copyText hover:text-authentication-copyTextHover transition-colors flex gap-2 items-center cursor-pointer"
