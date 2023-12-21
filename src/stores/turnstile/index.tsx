@@ -2,6 +2,7 @@ import Turnstile, { BoundTurnstileObject } from "react-turnstile";
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 
+import { reportCaptchaSolve } from "@/backend/helpers/report";
 import { conf } from "@/setup/config";
 
 export interface TurnstileStore {
@@ -52,11 +53,18 @@ export function isTurnstileInitialized() {
   return !!getTurnstile();
 }
 
-export function getTurnstileToken() {
+export async function getTurnstileToken() {
   const turnstile = getTurnstile();
   turnstile?.reset();
   turnstile?.execute();
-  return useTurnstileStore.getState().getToken();
+  try {
+    const token = await useTurnstileStore.getState().getToken();
+    reportCaptchaSolve(true);
+    return token;
+  } catch (err) {
+    reportCaptchaSolve(false);
+    throw err;
+  }
 }
 
 export function TurnstileProvider() {

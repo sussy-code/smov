@@ -7,11 +7,11 @@
       "title": "D'où vient le contenu ?"
     },
     "q2": {
-      "body": "Il n'est pas possible de demander une émission ou un film, movie-web ne gère aucun contenu. Tous les contenus sont consultés par l'intermédiaire de sources sur Internet.",
-      "title": "Où puis-je demander un show ou un film ?"
+      "body": "Il est impossible de solliciter une émission ou un film car movie-web ne gère aucun contenu. Les sources sur Internet sont utilisées pour consulter tous les contenus.",
+      "title": "Où puis-je demander une série ou un film ?"
     },
     "q3": {
-      "body": "Nos résultats de recherche sont fournis par The Movie Database (TMDB) et s'affichent indépendamment du fait que nos sources possèdent ou non le contenu.",
+      "body": "Nos résultats de recherche sont disponibles dans The Movie Database (TMDB), indépendamment du fait que nos sources possèdent ou non le contenu.",
       "title": "Les résultats de la recherche affichent l'émission ou le film, pourquoi ne puis-je pas le lire ?"
     },
     "title": "A propos de movie-web"
@@ -21,7 +21,7 @@
     "copy": "Copier"
   },
   "auth": {
-    "createAccount": "Vous n'avez pas encore de compte ? <0>Créer un compte.</0>",
+    "createAccount": "N'avez-vous pas encore de compte? <0>Créer un compte.</0>",
     "deviceNameLabel": "Nom de l'appareil",
     "deviceNamePlaceholder": "Téléphone personnel",
     "generate": {
@@ -29,7 +29,7 @@
       "next": "J'ai sauvegardé ma passphrase",
       "title": "Votre passphrase"
     },
-    "hasAccount": "Vous avez déjà un compte ? <0>Connectez-vous ici.</0>",
+    "hasAccount": "Avez-vous déjà un compte? <0>Connectez-vous ici.</0>",
     "login": {
       "description": "Veuillez entrer votre passphrase pour vous connecter à votre compte",
       "deviceLengthError": "Veuillez saisir un nom d'appareil",
@@ -79,14 +79,14 @@
   "footer": {
     "legal": {
       "disclaimer": "Avertissement",
-      "disclaimerText": "movie-web n'héberge aucun fichier, il se contente de proposer des liens vers des services tiers. Les questions juridiques doivent être réglées avec les hébergeurs et les fournisseurs de fichiers. movie-web n'est pas responsable des fichiers multimédias diffusés par les fournisseurs de vidéos."
+      "disclaimerText": "Le site movie-web ne stocke pas de fichiers, mais propose des liens vers des services externes. Les problèmes juridiques doivent être traités avec les fournisseurs et les hébergeurs de fichiers. Les fichiers multimédias diffusés par les fournisseurs de vidéos ne sont pas couverts par movie-web."
     },
     "links": {
       "discord": "Discord",
       "dmca": "DMCA",
       "github": "GitHub"
     },
-    "tagline": "Regardez vos émissions et films préférés avec cette application de streaming open source."
+    "tagline": "Cette application de streaming open source vous permet de regarder vos émissions et films préférés."
   },
   "global": {
     "name": "movie-web",

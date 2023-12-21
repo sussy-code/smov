@@ -10,7 +10,6 @@ import ReactDOM from "react-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 import { BrowserRouter, HashRouter } from "react-router-dom";
-import Turnstile from "react-turnstile";
 import { useAsync } from "react-use";
 
 import { Button } from "@/components/buttons/Button";
