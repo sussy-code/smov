@@ -1,71 +1,162 @@
 {
-    "global": {
-        "name": "movie-web"
+  "about": {
+    "faqTitle": "Běžné otázky"
+  },
+  "actions": {
+    "copied": "Zkopírováno",
+    "copy": "Zkopírovat"
+  },
+  "auth": {
+    "hasAccount": "Již máte účet? <0> Přihlaste se zde.</0>",
+    "login": {
+      "submit": "Přihlásit"
     },
-    "home": {
-        "search": {
-            "allResults": "To je vše co máme!",
-            "sectionTitle": "Výsledky vyhledávání",
-            "noResults": "Nemohli jsme nic najít!",
-            "failed": "Nepodařilo se najít média, zkuste to znovu!",
-            "loading": "Načítání...",
-            "placeholder": "Co si přejete sledovat?"
-        },
-        "bookmarks": {
-            "sectionTitle": "Záložky"
-        },
-        "continueWatching": {
-            "sectionTitle": "Pokračujte ve sledování"
-        }
+    "trust": {
+      "no": "Zpět"
     },
-    "media": {
-        "types": {
-            "movie": "Film",
-            "show": "Seriál"
-        },
-        "episodeDisplay": "S{{season}} E{{episode}}"
-    },
-    "player": {
-        "playbackError": {
-            "title": "Jejda, rozbilo se to!"
-        },
-        "metadata": {
-            "notFound": {
-                "badge": "Nenalezeno",
-                "homeButton": "Zpátky domů",
-                "title": "Nemohli jsme najít Vaše média.",
-                "text": "Nemohli jsme najít média o které jste požádali. Buďto jsme ho nemohli najít, nebo jste manipulovali s URL."
-            }
-        },
-        "menus": {
-            "captions": {
-                "customChoice": "Nahrát titulky",
-                "customizeLabel": "Upravit",
-                "title": "Titulky"
-            },
-            "sources": {
-                "title": "Zdroje"
-            },
-            "episodes": {
-                "button": "Epizody",
-                "loadingTitle": "Načítání...",
-                "loadingList": "Načítání..."
-            }
-        },
-        "back": {
-            "default": "Zpátky domů",
-            "short": "Zpět"
-        }
-    },
-    "notFound": {
-        "badge": "Nenalezeno",
-        "goHome": "Zpátky domů",
-        "title": "Tuto stránku se nepodařilo najít",
-        "message": "Dívali jsme se všude: pod koši, ve skříni, za proxy, ale nakonec jsme nemohli najít stránku, kterou hledáte."
-    },
-    "navigation": {
-        "banner": {
-            "offline": "Zkontrolujte své internetové připojení"
-        }
+    "verify": {
+      "register": "Založit účet"
     }
+  },
+  "footer": {
+    "legal": {
+      "disclaimer": ""
+    },
+    "links": {
+      "discord": "Discord",
+      "dmca": "DMCA",
+      "github": "GitHub"
+    }
+  },
+  "global": {
+    "name": "movie-web",
+    "pages": {
+      "settings": "Nastavení"
+    }
+  },
+  "home": {
+    "bookmarks": {
+      "sectionTitle": "Záložky"
+    },
+    "continueWatching": {
+      "sectionTitle": "Pokračujte ve sledování"
+    },
+    "search": {
+      "allResults": "To je vše co máme!",
+      "failed": "Nepodařilo se najít média, zkuste to znovu!",
+      "loading": "Načítání...",
+      "noResults": "Nemohli jsme nic najít!",
+      "placeholder": "Co si přejete sledovat?",
+      "sectionTitle": "Výsledky vyhledávání"
+    }
+  },
+  "media": {
+    "episodeDisplay": "S{{season}} E{{episode}}",
+    "types": {
+      "movie": "Film",
+      "show": "Seriál"
+    }
+  },
+  "navigation": {
+    "banner": {
+      "offline": "Zkontrolujte své internetové připojení"
+    },
+    "menu": {
+      "about": "O nás",
+      "logout": "Odhlásit se",
+      "settings": "Nastavení",
+      "support": "Podpořte nás"
+    }
+  },
+  "notFound": {
+    "badge": "Nenalezeno",
+    "goHome": "Zpátky domů",
+    "message": "Dívali jsme se všude: pod koši, ve skříni, za proxy, ale nakonec jsme nemohli najít stránku, kterou hledáte.",
+    "title": "Tuto stránku se nepodařilo najít"
+  },
+  "overlays": {
+    "close": "Zavřít"
+  },
+  "player": {
+    "back": {
+      "default": "Zpátky domů",
+      "short": "Zpět"
+    },
+    "menus": {
+      "captions": {
+        "customChoice": "Nahrát titulky",
+        "customizeLabel": "Upravit",
+        "title": "Titulky"
+      },
+      "downloads": {
+        "downloadVideo": "Stáhnout video",
+        "title": "Stáhnout"
+      },
+      "episodes": {
+        "button": "Epizody",
+        "loadingList": "Načítání...",
+        "loadingTitle": "Načítání..."
+      },
+      "playback": {
+        "speedLabel": "Přehrávací rychlost"
+      },
+      "quality": {
+        "automaticLabel": "Automatická kvalita",
+        "title": "Kvalita"
+      },
+      "sources": {
+        "title": "Zdroje"
+      }
+    },
+    "metadata": {
+      "notFound": {
+        "badge": "Nenalezeno",
+        "homeButton": "Zpátky domů",
+        "text": "Nemohli jsme najít média o které jste požádali. Buďto jsme ho nemohli najít, nebo jste manipulovali s URL.",
+        "title": "Nemohli jsme najít Vaše média."
+      }
+    },
+    "playbackError": {
+      "title": "Jejda, rozbilo se to!"
+    }
+  },
+  "screens": {
+    "loadingUserError": {
+      "logout": "Odhlásit se"
+    }
+  },
+  "settings": {
+    "account": {
+      "accountDetails": {
+        "logoutButton": "Odhlásit se"
+      },
+      "devices": {
+        "removeDevice": "Odstranit"
+      },
+      "title": "Účet"
+    },
+    "appearance": {
+      "activeTheme": "Aktivní",
+      "themes": {
+        "blue": "Modrá",
+        "default": "Výchozí",
+        "gray": "Šedá",
+        "red": "Červená",
+        "teal": "Modrozelená"
+      },
+      "title": "Vzhled"
+    },
+    "captions": {
+      "colorLabel": "Barva"
+    },
+    "reset": "Resetovat",
+    "save": "Uložit",
+    "sidebar": {
+      "info": {
+        "appVersion": "Verze aplikace",
+        "userId": "Uživatelské ID"
+      }
+    },
+    "unsaved": "Máte neuložené změny"
+  }
 }
