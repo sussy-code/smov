@@ -9,6 +9,7 @@ import { PlayerMeta } from "@/stores/player/slices/source";
 // for anybody who cares - these are anonymous metrics.
 // They are just used for figuring out if providers are broken or not
 const metricsEndpoint = "https://backend.movie-web.app/metrics/providers";
+const captchaMetricsEndpoint = "https://backend.movie-web.app/metrics/captcha";
 const batchId = () => nanoid(32);
 
 export type ProviderMetric = {
@@ -136,8 +137,17 @@ export function scrapePartsToProviderMetric(
 export function useReportProviders() {
   const report = useCallback((items: ProviderMetric[]) => {
     if (items.length === 0) return;
-    reportProviders(items);
+    reportProviders(items).catch(() => {});
   }, []);
 
   return { report };
+}
+
+export function reportCaptchaSolve(success: boolean) {
+  ofetch(captchaMetricsEndpoint, {
+    method: "POST",
+    body: {
+      success,
+    },
+  }).catch(() => {});
 }

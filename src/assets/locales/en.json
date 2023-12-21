@@ -25,6 +25,7 @@
     },
     "generate": {
       "title": "Your passphrase",
+      "passphraseFrameLabel": "Passphrase",
       "next": "I have saved my passphrase",
       "description": "Your passphrase acts as your username and password. Make sure to keep it safe as you will need to enter it to login to your account"
     },

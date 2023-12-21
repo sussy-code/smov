@@ -24,7 +24,7 @@ export function useDerived<T>(
   const setter = useCallback<Dispatch<SetStateAction<T>>>(
     (inp) => {
       if (!(inp instanceof Function)) setOverwrite(inp);
-      else setOverwrite((s) => inp(s ?? initial));
+      else setOverwrite((s) => inp(s !== undefined ? s : initial));
     },
     [initial, setOverwrite]
   );

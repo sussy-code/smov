@@ -24,7 +24,9 @@ export function useAuthData() {
   const clearProgress = useProgressStore((s) => s.clear);
   const setTheme = useThemeStore((s) => s.setTheme);
   const setAppLanguage = useLanguageStore((s) => s.setLanguage);
-  const setCaptionLanguage = useSubtitleStore((s) => s.setLanguage);
+  const importSubtitleLanguage = useSubtitleStore(
+    (s) => s.importSubtitleLanguage
+  );
 
   const replaceBookmarks = useBookmarkStore((s) => s.replaceBookmarks);
   const replaceItems = useProgressStore((s) => s.replaceItems);
@@ -72,7 +74,7 @@ export function useAuthData() {
       }
 
       if (settings.defaultSubtitleLanguage) {
-        setCaptionLanguage(settings.defaultSubtitleLanguage);
+        importSubtitleLanguage(settings.defaultSubtitleLanguage);
       }
 
       if (settings.applicationTheme) {
@@ -83,7 +85,7 @@ export function useAuthData() {
       replaceBookmarks,
       replaceItems,
       setAppLanguage,
-      setCaptionLanguage,
+      importSubtitleLanguage,
       setTheme,
     ]
   );

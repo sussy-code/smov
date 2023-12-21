@@ -122,7 +122,7 @@ export function SidebarPart() {
         boundaryElement=".sidebar-boundary"
       >
         <div className="hidden lg:block">
-          <SidebarSection title="Settings">
+          <SidebarSection title={t("global.pages.settings")}>
             {settingLinks.map((v) => (
               <SidebarLink
                 icon={v.icon}

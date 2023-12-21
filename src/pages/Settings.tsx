@@ -196,7 +196,7 @@ export function SettingsPage() {
       <SettingsLayout>
         <div id="settings-account">
           <Heading1 border className="!mb-0">
-            Account
+            {t("settings.account.title")}
           </Heading1>
           {user.account && state.profile.state ? (
             <AccountSettings
