@@ -7,12 +7,44 @@
     "copy": "Zkopírovat"
   },
   "auth": {
+    "createAccount": "Ještě nemáte účet? <0>Vytvořte si účet.</0>",
+    "deviceNameLabel": "Název zařízení",
+    "deviceNamePlaceholder": "Osobní telefon",
+    "generate": {
+      "description": "Vaše přístupová fráze se chová jako vaše přezdívka a heslo. Uchovejte jí v bezpečí, protože jí budete muset zadat, abyste se mohli přihlásit ke svému účtu",
+      "next": "Uložil jsem si moji přístupovou frázi",
+      "passphraseFrameLabel": "Přístupová fráze",
+      "title": "Vaše přístupová fráze"
+    },
     "hasAccount": "Již máte účet? <0> Přihlaste se zde.</0>",
     "login": {
-      "submit": "Přihlásit"
+      "description": "Pro přihlášení ke svému účtu zadejte svou přístupovou frázi",
+      "deviceLengthError": "Zadejte název zařízení",
+      "passphraseLabel": "12slovná přístupová fráze",
+      "passphrasePlaceholder": "Přístupová fráze",
+      "submit": "Přihlásit",
+      "title": "Přihlaste se ke svému účtu",
+      "validationError": "Nesprávná nebo neúplná přístupová fráze"
+    },
+    "register": {
+      "information": {
+        "color1": "První barva profilu",
+        "color2": "Druhá barva profilu",
+        "header": "Zadejte název pro vaše zařízení a vyberte barvy a ikonu uživatele podle vašeho výběru",
+        "icon": "Ikona uživatele",
+        "next": "Další",
+        "title": "Informace o účtu"
+      }
     },
     "trust": {
-      "no": "Zpět"
+      "failed": {
+        "text": "Nastavili jste to správně?",
+        "title": "Selhalo připojení k serveru"
+      },
+      "host": "Připojujete se k <0>{{hostname}}</0> - potvrďte, že mu věříte před vytvořením účtu",
+      "no": "Zpět",
+      "title": "Věříte tomuto serveru?",
+      "yes": "Věřím tomuto serveru"
     },
     "verify": {
       "register": "Založit účet"
