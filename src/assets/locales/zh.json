@@ -396,7 +396,7 @@
     },
     "locale": {
       "language": "应用程序语言",
-      "languageDescription": "语言已应用到整个应用程序。",
+      "languageDescription": "当前已应用到整个应用程序的语言。",
       "title": "本地化"
     },
     "reset": "重设",
