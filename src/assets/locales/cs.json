@@ -47,8 +47,21 @@
       "yes": "Věřím tomuto serveru"
     },
     "verify": {
-      "register": "Založit účet"
+      "description": "Zadejte prosím svou přístupovou frázi, abyste potvrdili, že jste si ji uložili, a vytvořte si účet",
+      "invalidData": "Data nejsou platná",
+      "noMatch": "Přístupová fráze neodpovídá",
+      "passphraseLabel": "Vaše 12slovná přístupová fráze",
+      "recaptchaFailed": "ReCaptcha ověření se nezdařilo",
+      "register": "Založit účet",
+      "title": "Potvrďte vaši přístupovou frázi"
     }
+  },
+  "errors": {
+    "badge": "Rozbilo se to",
+    "details": "Detaily chyby",
+    "reloadPage": "Znovu načíst stránku",
+    "showError": "Ukázat detaily chyby",
+    "title": "Narazili jsme na chybu!"
   },
   "footer": {
     "links": {
@@ -60,6 +73,11 @@
   "global": {
     "name": "movie-web",
     "pages": {
+      "about": "O nás",
+      "dmca": "DMCA",
+      "login": "Přihlásit se",
+      "pagetitle": "{{title}} - movie-web",
+      "register": "Zaregistrovat se",
       "settings": "Nastavení"
     }
   },
@@ -111,18 +129,37 @@
       "default": "Zpátky domů",
       "short": "Zpět"
     },
+    "casting": {
+      "enabled": "Odesílání do zařízení..."
+    },
     "menus": {
       "captions": {
-        "customChoice": "Nahrát titulky",
-        "customizeLabel": "Upravit",
-        "title": "Titulky"
+        "customChoice": "Nahrát titulky ze souboru",
+        "customizeLabel": "Přizpůsobit",
+        "offChoice": "Vypnuto",
+        "settings": {
+          "delay": "Posunutí titulků",
+          "fixCapitals": "Opravit velká písmena"
+        },
+        "title": "Titulky",
+        "unknownLanguage": "Neznámo"
       },
       "downloads": {
+        "disclaimer": "Stahování probíhá přímo u poskytovatele. movie-web nemá kontrolu nad tím, jak jsou stahování poskytovány.",
+        "downloadCaption": "Stáhnout titulky",
         "downloadVideo": "Stáhnout video",
+        "hlsExplanation": "Toto médium je proud HLS, který nelze stáhnout na movie-web.",
+        "onPc": {
+          "1": "Na počítači klikněte na tlačítko stahování, poté na nové stránce klikněte pravým tlačítkem na video a vyberte <bold>Uložit video jako</bold>",
+          "title": "Stahování na počítači"
+        },
         "title": "Stáhnout"
       },
       "episodes": {
         "button": "Epizody",
+        "emptyState": "V této sezóně nejsou žádné epizody, vraťte se později!",
+        "episodeBadge": "E{{episode}}",
+        "loadingError": "Chyba při načítání sezóny",
         "loadingList": "Načítání...",
         "loadingTitle": "Načítání..."
       },
@@ -133,20 +170,83 @@
         "automaticLabel": "Automatická kvalita",
         "title": "Kvalita"
       },
+      "settings": {
+        "captionItem": "Nastavení titulků",
+        "downloadItem": "Stáhnout",
+        "enableCaptions": "Povolit titulky",
+        "experienceSection": "Zážitek sledování",
+        "playbackItem": "Nastavení přehrávání",
+        "qualityItem": "Kvalita",
+        "sourceItem": "Zdroje videa",
+        "videoSection": "Nastavení videa"
+      },
       "sources": {
-        "title": "Zdroje"
+        "failed": {
+          "text": "Při pokusu o nalezení videí došlo k chybě. Zkuste prosím jiný zdroj.",
+          "title": "Nepodařilo se extrahovat data"
+        },
+        "noEmbeds": {
+          "text": "Nepodařilo se nám najít žádný vklad, zkuste prosím jiný zdroj.",
+          "title": "Žádné vklady"
+        },
+        "noStream": {
+          "text": "Tento zdroj nemá pro tento film nebo pořad žádné proudy média.",
+          "title": "Žádný proud média"
+        },
+        "title": "Zdroje",
+        "unknownOption": "Neznámý"
       }
     },
     "metadata": {
+      "failed": {
+        "badge": "Neúspěšný",
+        "homeButton": "Jít domů",
+        "text": "Nelze načíst metadata média z TMDB. Zkontrolujte, zda není TMDB nefunkční nebo blokovaný na vašem internetovém připojení.",
+        "title": "Načtení metadat se nezdařilo"
+      },
       "notFound": {
         "badge": "Nenalezeno",
         "homeButton": "Zpátky domů",
-        "text": "Nemohli jsme najít média o které jste požádali. Buďto jsme ho nemohli najít, nebo jste manipulovali s URL.",
+        "text": "Nemohli jsme najít média o které jste požádali. Buď bylo odstraňeno, nebo jste manipulovali s URL.",
         "title": "Nemohli jsme najít Vaše média."
       }
     },
+    "nextEpisode": {
+      "cancel": "Zrušit",
+      "next": "Další epizoda"
+    },
     "playbackError": {
-      "title": "Jejda, rozbilo se to!"
+      "badge": "Chyba přehrávání",
+      "errors": {
+        "errorAborted": "Načítání média bylo přerušeno uživatelem.",
+        "errorDecode": "Navzdory tomu, že bylo dříve určeno jako použitelné došlo při pokusu o dekódování média k chybě.",
+        "errorGenericMedia": "Nastala chyba neznámého média.",
+        "errorNetwork": "Nastala nějaká chyba síťě, která zabránila načtení média, přestože bylo předtím dostupné.",
+        "errorNotSupported": "Médium nebo poskytovatel média není podporovaný."
+      },
+      "homeButton": "Jít domů",
+      "text": "Nastala chyba při přehrávání média. Prosíme skuste to znovu.",
+      "title": "Video se nepodařilo přehrát!"
+    },
+    "scraping": {
+      "items": {
+        "failure": "Nastala chyba",
+        "notFound": "Nemá toto video",
+        "pending": "Ověřování videí..."
+      },
+      "notFound": {
+        "badge": "Nenalezeno",
+        "detailsButton": "Zobrazit podrobnosti",
+        "homeButton": "Jít domů",
+        "text": "Prohledali jsme naše poskytovatele a nenašli jsme média, která hledáte! Nehostujeme žádné média a nemáme žádnou kontrolu nad tím, co je k dispozici. Pro více podrobností klikněte níže na 'Zobrazit podrobnosti'.",
+        "title": "Nedokázali jsme to najít"
+      }
+    },
+    "time": {
+      "regular": "{{timeWatched}} / {{duration}}",
+      "remaining": "{{timeLeft}} zbývá • Dokončeno v {{timeFinished, datetime}}",
+      "shortRegular": "{{timeWatched}}",
+      "shortRemaining": "-{{timeLeft}}"
     }
   },
   "screens": {
