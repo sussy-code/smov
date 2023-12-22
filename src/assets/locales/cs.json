@@ -1,6 +1,20 @@
 {
   "about": {
-    "faqTitle": "Běžné otázky"
+    "description": "movie-web je webová aplikace, která vyhledává na internetu proudy médií. Cílem týmu je převážně minimalistický přístup ke konzumaci obsahu.",
+    "faqTitle": "Často kladené otázky",
+    "q1": {
+      "body": "movie-web nehostuje žádný obsah. Když kliknete na něco, co chcete sledovat, na internetu se vyhledá vybrané médium (Na obrazovce načítání a na kartě 'zdroje videa' můžete vidět, který zdroj používáte). Média se nikdy nenahrávají movie-webem, vše probíhá prostřednictvím tohoto vyhledávacího mechanismu.",
+      "title": "Kde bereme obsah?"
+    },
+    "q2": {
+      "body": "Není možné požádat o pořad nebo film, movie-web nespravuje žádný obsah. Veškerý obsah je prohlížen prostřednictvím zdrojů na internetu.",
+      "title": "Kde můžu požádat o pořad nebo film?"
+    },
+    "q3": {
+      "body": "Naše výsledky vyhledávání jsou založeny na The Movie Database (TMDB) a zobrazují se bez ohledu na to, zda naše zdroje skutečně obsah mají.",
+      "title": "Ve výsledcích vyhledávání se zobrazuje pořad nebo film, proč jej nemůžu přehrát?"
+    },
+    "title": "O movie-webu"
   },
   "actions": {
     "copied": "Zkopírováno",
@@ -64,11 +78,16 @@
     "title": "Narazili jsme na chybu!"
   },
   "footer": {
+    "legal": {
+      "disclaimer": "Zřeknutí odpovědnosti",
+      "disclaimerText": "movie-web nehostuje žádné soubory, pouze odkazuje na služby třetích stran. Právní záležitosti by měly být řešeny s hostiteli souborů a poskytovateli. movie-web nenese odpovědnost za žádné mediální soubory zobrazené poskytovateli videa."
+    },
     "links": {
       "discord": "Discord",
       "dmca": "DMCA",
       "github": "GitHub"
-    }
+    },
+    "tagline": "Sledujte své oblíbené pořady a filmy s touto aplikací pro streamování s otevřeným zdrojovým kódem."
   },
   "global": {
     "name": "movie-web",
@@ -88,6 +107,9 @@
     "continueWatching": {
       "sectionTitle": "Pokračujte ve sledování"
     },
+    "mediaList": {
+      "stopEditing": "Přestat upravovat"
+    },
     "search": {
       "allResults": "To je vše co máme!",
       "failed": "Nepodařilo se najít média, zkuste to znovu!",
@@ -95,6 +117,23 @@
       "noResults": "Nemohli jsme nic najít!",
       "placeholder": "Co si přejete sledovat?",
       "sectionTitle": "Výsledky vyhledávání"
+    },
+    "titles": {
+      "day": {
+        "default": "Na co byste se chtěli dnes odpoledne dívat?"
+      },
+      "morning": {
+        "default": "Na co byste se chtěli dnes ráno dívat?",
+        "extra": [
+          "Slyšel jsem, že Před úsvitem je super."
+        ]
+      },
+      "night": {
+        "default": "Na co byste se chtěli dnes večer dívat?",
+        "extra": [
+          "Unaven? Slyšel jsem, že Vymítač ďábla je super."
+        ]
+      }
     }
   },
   "media": {
@@ -110,7 +149,9 @@
     },
     "menu": {
       "about": "O nás",
+      "donation": "Přispět",
       "logout": "Odhlásit se",
+      "register": "Synchronizovat do cloudu",
       "settings": "Nastavení",
       "support": "Podpořte nás"
     }
@@ -149,8 +190,19 @@
         "downloadCaption": "Stáhnout titulky",
         "downloadVideo": "Stáhnout video",
         "hlsExplanation": "Toto médium je proud HLS, který nelze stáhnout na movie-web.",
+        "onAndroid": {
+          "1": "Na Androidu klikněte na tlačítko stahování, poté na nové stránce <bold>klepněte a podržte</bold> na videu a poté vyberte <bold>uložit</bold>.",
+          "shortTitle": "Stahování / Android",
+          "title": "Stahování na Androidu"
+        },
+        "onIos": {
+          "1": "Na iOS klikněte na tlačítko stahování a poté na nové stránce klikněte na <bold><ios_share /></bold> a poté na <bold>Uložit do souborů <ios_files /></bold>.",
+          "shortTitle": "Stahování / iOS",
+          "title": "Stahování na iOS"
+        },
         "onPc": {
           "1": "Na počítači klikněte na tlačítko stahování, poté na nové stránce klikněte pravým tlačítkem na video a vyberte <bold>Uložit video jako</bold>",
+          "shortTitle": "Stahování / počítač",
           "title": "Stahování na počítači"
         },
         "title": "Stáhnout"
@@ -164,10 +216,13 @@
         "loadingTitle": "Načítání..."
       },
       "playback": {
-        "speedLabel": "Přehrávací rychlost"
+        "speedLabel": "Rychlost přehrávání",
+        "title": "Nastavení přehrávání"
       },
       "quality": {
         "automaticLabel": "Automatická kvalita",
+        "hint": "Chcete-li získat jinou kvalitu, můžete zkusit <0>přepnout zdroj</0>.",
+        "iosNoQuality": "Kvůli omezením definovaným společností Apple není pro tento zdroj v iOS k dispozici výběr kvality. Chcete-li získat jinou kvalitu, můžete zkusit <0>přepnout zdroj</0>.",
         "title": "Kvalita"
       },
       "settings": {
@@ -250,17 +305,59 @@
     }
   },
   "screens": {
+    "dmca": {
+      "text": "Vítejte na DMCA kontaktní stránce movie-webu! Respektujeme práva duševního vlastnictví a chceme rychle řešit jakékoli problémy s autorským právem. Pokud se domníváte, že vaše dílo chráněné autorskými právy bylo na naší platformě neoprávněně použito, zašlete prosím podrobné oznámení DMCA na níže uvedený e-mail. Uveďte prosím popis materiálu chráněného autorským právem, své kontaktní údaje a prohlášení o dobré víře. Jsme odhodláni tyto záležitosti rychle vyřešit a oceňujeme vaši spolupráci při udržování movie-webu jako místa, které respektuje kreativitu a autorská práva.",
+      "title": "DMCA"
+    },
+    "loadingApp": "Načítání aplikace",
+    "loadingUser": "Načítání vášeho profilu",
     "loadingUserError": {
-      "logout": "Odhlásit se"
+      "logout": "Odhlásit se",
+      "reset": "Resetovat vlastní server",
+      "text": "Nezdařilo se načíst váš profil",
+      "textWithReset": "Nezdařilo se načíst váš profil z vašeho serveru, chcete ho přepnout na výchozí server?"
+    },
+    "migration": {
+      "failed": "Migrace dat se nezdařila.",
+      "inProgress": "Počkejte prosím, migrujeme vaše data. Nemělo by to trvat dlouho."
     }
   },
   "settings": {
     "account": {
       "accountDetails": {
+        "deviceNameLabel": "Název zařízení",
+        "deviceNamePlaceholder": "Osobní telefon",
+        "editProfile": "Upravit",
         "logoutButton": "Odhlásit se"
       },
+      "actions": {
+        "delete": {
+          "button": "Smazat účet",
+          "confirmButton": "Smazat účet",
+          "confirmDescription": "Jste si jisti, že chcete smazat váš účet? Všechny data budou ztracena!",
+          "confirmTitle": "Jste si jisti?",
+          "text": "Tato akce nejde vrátit. Všechny data budou smazána a nic nepůjde zachránit.",
+          "title": "Smazat účet"
+        },
+        "title": "Akce"
+      },
       "devices": {
-        "removeDevice": "Odstranit"
+        "deviceNameLabel": "Název zařízení",
+        "failed": "Načtení relací se nezdařilo",
+        "removeDevice": "Odstranit",
+        "title": "Zařízení"
+      },
+      "profile": {
+        "finish": "Dokončit",
+        "firstColor": "První barva profilu",
+        "secondColor": "Druhá barva profilu",
+        "title": "Upravit profilovou fotografii",
+        "userIcon": "Ikona uživatele"
+      },
+      "register": {
+        "cta": "Začněte",
+        "text": "Sdílejte průběh sledování mezi zařízeními a udržujte je synchronizovaná.",
+        "title": "Synchronizace do cloudu"
       },
       "title": "Účet"
     },
@@ -276,13 +373,46 @@
       "title": "Vzhled"
     },
     "captions": {
-      "colorLabel": "Barva"
+      "backgroundLabel": "Neprůhlednost pozadí",
+      "colorLabel": "Barva",
+      "previewQuote": "Nesmím se bát. Strach je zabiják mysli.",
+      "textSizeLabel": "Velikost písma",
+      "title": "Titulky"
+    },
+    "connections": {
+      "server": {
+        "description": "Pokud se chcete připojit k vlastnímu backendu pr ukládání dat, povolte toto a zadejte URL adresu.",
+        "label": "Vlastní server",
+        "urlLabel": "URL adresa vlastního serveru"
+      },
+      "title": "Spojení",
+      "workers": {
+        "addButton": "Přidat nového pracovníka",
+        "description": "Aby byla aplikace funkční, veškerá trafika prochází přes proxy. Povolte toto, pokud chcete používat svoje vlastní pracovníky.",
+        "emptyState": "Zatím žádní pracovníci, přidej jednoho dolů",
+        "label": "Použít vlastní proxy pracovníky",
+        "urlLabel": "URL adresy pracovníků",
+        "urlPlaceholder": "https://"
+      }
+    },
+    "locale": {
+      "language": "Jazyk aplikace",
+      "languageDescription": "Jazyk použitý na celou aplikaci.",
+      "title": "Lokální"
     },
     "reset": "Resetovat",
     "save": "Uložit",
     "sidebar": {
       "info": {
         "appVersion": "Verze aplikace",
+        "backendUrl": "URL backendu",
+        "backendVersion": "Verze backendu",
+        "hostname": "Název hostitele",
+        "insecure": "nebezpečný",
+        "notLoggedIn": "Nejste přihlášen",
+        "secure": "bezpečný",
+        "title": "Informace o aplikaci",
+        "unknownVersion": "Neznámo",
         "userId": "Uživatelské ID"
       }
     },
