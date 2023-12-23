@@ -16,7 +16,7 @@ export interface Source {
 
 function getProgress(
   items: Record<string, ProgressMediaItem>,
-  meta: PlayerMeta | null
+  meta: PlayerMeta | null,
 ): number {
   const item = items[meta?.tmdbId ?? ""];
   if (!item || !meta) return 0;
@@ -38,10 +38,10 @@ export function usePlayer() {
   const setSourceId = usePlayerStore((s) => s.setSourceId);
   const status = usePlayerStore((s) => s.status);
   const shouldStartFromBeginning = usePlayerStore(
-    (s) => s.interface.shouldStartFromBeginning
+    (s) => s.interface.shouldStartFromBeginning,
   );
   const setShouldStartFromBeginning = usePlayerStore(
-    (s) => s.setShouldStartFromBeginning
+    (s) => s.setShouldStartFromBeginning,
   );
   const reset = usePlayerStore((s) => s.reset);
   const meta = usePlayerStore((s) => s.meta);
@@ -61,7 +61,7 @@ export function usePlayer() {
       source: SourceSliceSource,
       captions: CaptionListItem[],
       sourceId: string | null,
-      startAtOverride?: number
+      startAtOverride?: number,
     ) {
       const start = startAtOverride ?? getProgress(progressStore.items, meta);
       setCaption(null);

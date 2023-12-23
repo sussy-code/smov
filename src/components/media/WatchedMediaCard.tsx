@@ -32,7 +32,7 @@ export function WatchedMediaCard(props: WatchedMediaCardProps) {
   }, [progressItems, props.media]);
   const itemToDisplay = useMemo(
     () => (item ? shouldShowProgress(item) : null),
-    [item]
+    [item],
   );
   const percentage = itemToDisplay?.show
     ? (itemToDisplay.progress.watched / itemToDisplay.progress.duration) * 100

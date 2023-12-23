@@ -45,7 +45,7 @@ function SettingsLayout(props: { children: React.ReactNode }) {
       <div
         className={classNames(
           "grid gap-12",
-          isMobile ? "grid-cols-1" : "lg:grid-cols-[280px,1fr]"
+          isMobile ? "grid-cols-1" : "lg:grid-cols-[280px,1fr]",
         )}
       >
         <SidebarPart />
@@ -135,7 +135,7 @@ export function SettingsPage() {
     decryptedName,
     proxySet,
     backendUrlSetting,
-    account?.profile
+    account?.profile,
   );
 
   const saveChanges = useCallback(async () => {
@@ -149,7 +149,7 @@ export function SettingsPage() {
       if (state.deviceName.changed) {
         const newDeviceName = await encryptData(
           state.deviceName.state,
-          base64ToBuffer(account.seed)
+          base64ToBuffer(account.seed),
         );
         await updateSession(backendUrl, account, {
           deviceName: newDeviceName,
@@ -270,3 +270,5 @@ export function SettingsPage() {
     </SubPageLayout>
   );
 }
+
+export default SettingsPage;

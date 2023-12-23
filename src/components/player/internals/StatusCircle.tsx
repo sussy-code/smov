@@ -15,7 +15,7 @@ export interface StatusCircleLoading extends StatusCircle {
 }
 
 function statusIsLoading(
-  props: StatusCircle | StatusCircleLoading
+  props: StatusCircle | StatusCircleLoading,
 ): props is StatusCircleLoading {
   return props.type === "loading";
 }
@@ -25,7 +25,7 @@ export function StatusCircle(props: StatusCircle | StatusCircleLoading) {
     () => ({
       percentage: statusIsLoading(props) ? props.percentage : 0,
     }),
-    [props]
+    [props],
   );
 
   return (

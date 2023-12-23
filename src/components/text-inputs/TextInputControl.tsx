@@ -36,7 +36,7 @@ export const TextInputControl = forwardRef<
       onFocus,
       passwordToggleable,
     },
-    ref
+    ref,
   ) => {
     let inputType = "text";
     const [showPassword, setShowPassword] = useState(true);
@@ -81,5 +81,5 @@ export const TextInputControl = forwardRef<
     }
 
     return input;
-  }
+  },
 );

@@ -22,8 +22,8 @@ export const useLanguageStore = create(
         });
       },
     })),
-    { name: "__MW::locale" }
-  )
+    { name: "__MW::locale" },
+  ),
 );
 
 export function LanguageProvider() {

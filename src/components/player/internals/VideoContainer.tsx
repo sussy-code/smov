@@ -70,7 +70,7 @@ function VideoElement() {
   const language = usePlayerStore((s) => s.caption.selected?.language);
   const trackObjectUrl = useObjectUrl(
     () => (srtData ? convertSubtitlesToObjectUrl(srtData) : null),
-    [srtData]
+    [srtData],
   );
 
   // report video element to display interface

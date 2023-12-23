@@ -10,7 +10,7 @@ export function VideoClickTarget(props: { showingControls: boolean }) {
   const display = usePlayerStore((s) => s.display);
   const isPaused = usePlayerStore((s) => s.mediaPlaying.isPaused);
   const updateInterfaceHovering = usePlayerStore(
-    (s) => s.updateInterfaceHovering
+    (s) => s.updateInterfaceHovering,
   );
   const hovering = usePlayerStore((s) => s.interface.hovering);
 
@@ -33,7 +33,7 @@ export function VideoClickTarget(props: { showingControls: boolean }) {
         updateInterfaceHovering(PlayerHoverState.MOBILE_TAPPED);
       else updateInterfaceHovering(PlayerHoverState.NOT_HOVERING);
     },
-    [display, isPaused, hovering, updateInterfaceHovering]
+    [display, isPaused, hovering, updateInterfaceHovering],
   );
 
   if (!show) return null;

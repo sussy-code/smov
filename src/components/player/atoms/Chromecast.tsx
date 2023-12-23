@@ -18,7 +18,7 @@ export function Chromecast(props: ChromecastProps) {
       const isVisible = (tag.getAttribute("style") ?? "").includes("inline");
       setHidden(!isVisible);
     },
-    [setHidden]
+    [setHidden],
   );
 
   useEffect(() => {

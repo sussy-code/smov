@@ -26,7 +26,7 @@ export async function getSessions(url: string, account: AccountWithToken) {
 export async function updateSession(
   url: string,
   account: AccountWithToken,
-  update: SessionUpdate
+  update: SessionUpdate,
 ) {
   return ofetch<SessionResponse[]>(`/sessions/${account.sessionId}`, {
     method: "PATCH",
@@ -39,7 +39,7 @@ export async function updateSession(
 export async function removeSession(
   url: string,
   token: string,
-  sessionId: string
+  sessionId: string,
 ) {
   return ofetch<SessionResponse[]>(`/sessions/${sessionId}`, {
     method: "DELETE",

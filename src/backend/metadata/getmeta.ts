@@ -34,7 +34,7 @@ export interface DetailedMeta {
 
 export function formatTMDBMetaResult(
   details: TMDBShowData | TMDBMovieData,
-  type: MWMediaType
+  type: MWMediaType,
 ): TMDBMediaResult {
   if (type === MWMediaType.MOVIE) {
     const movie = details as TMDBMovieData;
@@ -68,7 +68,7 @@ export function formatTMDBMetaResult(
 export async function getMetaFromId(
   type: MWMediaType,
   id: string,
-  seasonId?: string
+  seasonId?: string,
 ): Promise<DetailedMeta | null> {
   const details = await getMediaDetails(id, mediaTypeToTMDB(type));
 
@@ -89,7 +89,7 @@ export async function getMetaFromId(
     if (selectedSeason) {
       const episodes = await getEpisodes(
         details.id.toString(),
-        selectedSeason.season_number
+        selectedSeason.season_number,
       );
 
       seasonData = {
@@ -116,7 +116,7 @@ export async function getMetaFromId(
 export async function getLegacyMetaFromId(
   type: MWMediaType,
   id: string,
-  seasonId?: string
+  seasonId?: string,
 ): Promise<DetailedMeta | null> {
   const queryType = mediaTypeToJW(type);
 
@@ -135,15 +135,13 @@ export async function getLegacyMetaFromId(
     throw err;
   }
 
-  let imdbId = data.external_ids.find(
-    (v) => v.provider === "imdb_latest"
-  )?.external_id;
+  let imdbId = data.external_ids.find((v) => v.provider === "imdb_latest")
+    ?.external_id;
   if (!imdbId)
     imdbId = data.external_ids.find((v) => v.provider === "imdb")?.external_id;
 
-  let tmdbId = data.external_ids.find(
-    (v) => v.provider === "tmdb_latest"
-  )?.external_id;
+  let tmdbId = data.external_ids.find((v) => v.provider === "tmdb_latest")
+    ?.external_id;
   if (!tmdbId)
     tmdbId = data.external_ids.find((v) => v.provider === "tmdb")?.external_id;
 
@@ -175,7 +173,7 @@ export function isLegacyMediaType(url: string): boolean {
 }
 
 export async function convertLegacyUrl(
-  url: string
+  url: string,
 ): Promise<string | undefined> {
   if (!isLegacyUrl(url)) return undefined;
 
@@ -191,7 +189,7 @@ export async function convertLegacyUrl(
     return `/media/${TMDBIdToUrlId(
       MWMediaType.SERIES,
       details.id.toString(),
-      details.name
+      details.name,
     )}${suffix}`;
   }
 

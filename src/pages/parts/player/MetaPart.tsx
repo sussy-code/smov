@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useAsync } from "react-use";
 import type { AsyncReturnType } from "type-fest";
 
@@ -38,7 +38,7 @@ export function MetaPart(props: MetaPartProps) {
     episode?: string;
     season?: string;
   }>();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const { error, value, loading } = useAsync(async () => {
     const providerApiUrl = getLoadbalancedProviderApiUrl();
@@ -53,7 +53,7 @@ export function MetaPart(props: MetaPartProps) {
 
     let data: ReturnType<typeof decodeTMDBId> = null;
     try {
-      data = decodeTMDBId(params.media);
+      data = decodeTMDBId(params.media as string);
     } catch {
       // error dont matter, itll just be a 404
     }
@@ -76,7 +76,7 @@ export function MetaPart(props: MetaPartProps) {
     let epId = params.episode;
     if (meta.meta.type === MWMediaType.SERIES) {
       let ep = meta.meta.seasonData.episodes.find(
-        (v) => v.id === params.episode
+        (v) => v.id === params.episode,
       );
       if (!ep) ep = meta.meta.seasonData.episodes[0];
       epId = ep.id;
@@ -84,9 +84,9 @@ export function MetaPart(props: MetaPartProps) {
         params.season !== meta.meta.seasonData.id ||
         params.episode !== ep.id
       ) {
-        history.replace(
-          `/media/${params.media}/${meta.meta.seasonData.id}/${ep.id}`
-        );
+        navigate(`/media/${params.media}/${meta.meta.seasonData.id}/${ep.id}`, {
+          replace: true,
+        });
       }
     }
 

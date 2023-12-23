@@ -25,7 +25,7 @@ export function mwFetch<T>(url: string, ops: P<T>[1] = {}): R<T> {
 export async function singularProxiedFetch<T>(
   proxyUrl: string,
   url: string,
-  ops: P<T>[1] = {}
+  ops: P<T>[1] = {},
 ): R<T> {
   let combinedUrl = ops?.baseURL ?? "";
   if (

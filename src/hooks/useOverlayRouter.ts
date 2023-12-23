@@ -17,7 +17,7 @@ export function useRouterAnchorUpdate(id: string) {
   const setAnchorPoint = useOverlayStore((s) => s.setAnchorPoint);
   const routerActive = useMemo(
     () => !!route && route.startsWith(`/${id}`),
-    [route, id]
+    [route, id],
   );
 
   const update = useCallback(() => {
@@ -96,7 +96,7 @@ export function useInternalOverlayRouter(id: string) {
       if (route && !preventRouteClear) setRoute(null);
       setTransition(null);
     },
-    [setRoute, route, setTransition]
+    [setRoute, route, setTransition],
   );
 
   const open = useCallback(
@@ -104,7 +104,7 @@ export function useInternalOverlayRouter(id: string) {
       setTransition(null);
       setRoute(joinPath(splitPath(defaultRoute, id)));
     },
-    [id, setRoute, setTransition]
+    [id, setRoute, setTransition],
   );
 
   const activeRoute = routerActive

@@ -33,6 +33,6 @@ export const useQualityStore = create(
     })),
     {
       name: "__MW::quality",
-    }
-  )
+    },
+  ),
 );

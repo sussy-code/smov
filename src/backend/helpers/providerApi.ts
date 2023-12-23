@@ -96,7 +96,7 @@ export async function getApiToken(): Promise<string | null> {
 
 export async function connectServerSideEvents<T>(
   url: string,
-  endEvents: string[]
+  endEvents: string[],
 ) {
   const apiToken = await getApiToken();
 

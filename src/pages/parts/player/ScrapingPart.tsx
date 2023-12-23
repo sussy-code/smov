@@ -24,7 +24,7 @@ export interface ScrapingProps {
   onGetStream?: (stream: AsyncReturnType<ProviderControls["runAll"]>) => void;
   onResult?: (
     sources: Record<string, ScrapingSegment>,
-    sourceOrder: ScrapingItems[]
+    sourceOrder: ScrapingItems[],
   ) => void;
 }
 
@@ -39,7 +39,7 @@ export function ScrapingPart(props: ScrapingProps) {
     containerRef,
     listRef,
     sourceOrder,
-    currentSource
+    currentSource,
   );
 
   const resultRef = useRef({
@@ -62,24 +62,24 @@ export function ScrapingPart(props: ScrapingProps) {
       if (!isMounted()) return;
       props.onResult?.(
         resultRef.current.sources,
-        resultRef.current.sourceOrder
+        resultRef.current.sourceOrder,
       );
       report(
         scrapePartsToProviderMetric(
           props.media,
           resultRef.current.sourceOrder,
-          resultRef.current.sources
-        )
+          resultRef.current.sources,
+        ),
       );
       props.onGetStream?.(output);
     })();
   }, [startScraping, props, report, isMounted]);
 
   const currentProvider = sourceOrder.find(
-    (s) => sources[s.id].status === "pending"
+    (s) => sources[s.id].status === "pending",
   );
   let currentProviderIndex = sourceOrder.findIndex(
-    (provider) => currentProvider?.id === provider.id
+    (provider) => currentProvider?.id === provider.id,
   );
   if (currentProviderIndex === -1)
     currentProviderIndex = sourceOrder.length - 1;
@@ -101,7 +101,7 @@ export function ScrapingPart(props: ScrapingProps) {
           const source = sources[order.id];
           const distance = Math.abs(
             sourceOrder.findIndex((t) => t.id === order.id) -
-              currentProviderIndex
+              currentProviderIndex,
           );
           return (
             <div

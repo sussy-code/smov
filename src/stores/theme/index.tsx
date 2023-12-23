@@ -21,8 +21,8 @@ export const useThemeStore = create(
     })),
     {
       name: "__MW::theme",
-    }
-  )
+    },
+  ),
 );
 
 export function ThemeProvider(props: {

@@ -23,7 +23,7 @@ export interface ProgressInput {
 }
 
 export function progressUpdateItemToInput(
-  item: ProgressUpdateItem
+  item: ProgressUpdateItem,
 ): ProgressInput {
   return {
     duration: item.progress?.duration ?? 0,
@@ -44,7 +44,7 @@ export function progressUpdateItemToInput(
 
 export function progressMediaItemToInputs(
   tmdbId: string,
-  item: ProgressMediaItem
+  item: ProgressMediaItem,
 ): ProgressInput[] {
   if (item.type === "show") {
     return Object.entries(item.episodes).flatMap(([_, episode]) => ({
@@ -83,7 +83,7 @@ export function progressMediaItemToInputs(
 export async function setProgress(
   url: string,
   account: AccountWithToken,
-  input: ProgressInput
+  input: ProgressInput,
 ) {
   return ofetch<ProgressResponse>(
     `/users/${account.userId}/progress/${input.tmdbId}`,
@@ -92,7 +92,7 @@ export async function setProgress(
       headers: getAuthHeaders(account.token),
       baseURL: url,
       body: input,
-    }
+    },
   );
 }
 
@@ -101,7 +101,7 @@ export async function removeProgress(
   account: AccountWithToken,
   id: string,
   episodeId?: string,
-  seasonId?: string
+  seasonId?: string,
 ) {
   await ofetch(`/users/${account.userId}/progress/${id}`, {
     method: "DELETE",

@@ -54,7 +54,7 @@ export default function VideoTesterView() {
       setMeta(testMeta);
       playMedia(source, [], null);
     },
-    [playMedia, setMeta]
+    [playMedia, setMeta],
   );
 
   return (

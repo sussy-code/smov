@@ -26,7 +26,7 @@ export function ScrapeErrorPart(props: ScrapeErrorPartProps) {
   const error = useMemo(() => {
     const data = props.data;
     const amountError = Object.values(data.sources).filter(
-      (v) => v.status === "failure"
+      (v) => v.status === "failure",
     );
     if (amountError.length === 0) return null;
     let str = "";

@@ -11,7 +11,7 @@ import {
 import { SubtitleStyling } from "@/stores/subtitles";
 
 export function useDerived<T>(
-  initial: T
+  initial: T,
 ): [T, Dispatch<SetStateAction<T>>, () => void, boolean] {
   const [overwrite, setOverwrite] = useState<T | undefined>(undefined);
   useEffect(() => {
@@ -19,14 +19,14 @@ export function useDerived<T>(
   }, [initial]);
   const changed = useMemo(
     () => !isEqual(overwrite, initial) && overwrite !== undefined,
-    [overwrite, initial]
+    [overwrite, initial],
   );
   const setter = useCallback<Dispatch<SetStateAction<T>>>(
     (inp) => {
       if (!(inp instanceof Function)) setOverwrite(inp);
       else setOverwrite((s) => inp(s !== undefined ? s : initial));
     },
-    [initial, setOverwrite]
+    [initial, setOverwrite],
   );
   const data = overwrite === undefined ? initial : overwrite;
 
@@ -48,7 +48,7 @@ export function useSettingsState(
         colorB: string;
         icon: string;
       }
-    | undefined
+    | undefined,
 ) {
   const [proxyUrlsState, setProxyUrls, resetProxyUrls, proxyUrlsChanged] =
     useDerived(proxyUrls);

@@ -15,7 +15,7 @@ async function syncProgress(
   items: ProgressUpdateItem[],
   finish: (id: string) => void,
   url: string,
-  account: AccountWithToken | null
+  account: AccountWithToken | null,
 ) {
   for (const item of items) {
     // complete it beforehand so it doesn't get handled while in progress
@@ -30,7 +30,7 @@ async function syncProgress(
           account,
           item.tmdbId,
           item.seasonId,
-          item.episodeId
+          item.episodeId,
         );
         continue;
       }
@@ -42,7 +42,7 @@ async function syncProgress(
     } catch (err) {
       console.error(
         `Failed to sync progress: ${item.tmdbId} - ${item.action}`,
-        err
+        err,
       );
     }
   }
@@ -68,7 +68,7 @@ export function ProgressSyncer() {
           state.updateQueue,
           removeUpdateItem,
           url,
-          user.account
+          user.account,
         );
       })();
     }, syncIntervalMs);

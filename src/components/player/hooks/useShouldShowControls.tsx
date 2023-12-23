@@ -4,12 +4,12 @@ import { usePlayerStore } from "@/stores/player/store";
 export function useShouldShowControls() {
   const hovering = usePlayerStore((s) => s.interface.hovering);
   const lastHoveringState = usePlayerStore(
-    (s) => s.interface.lastHoveringState
+    (s) => s.interface.lastHoveringState,
   );
   const isPaused = usePlayerStore((s) => s.mediaPlaying.isPaused);
   const hasOpenOverlay = usePlayerStore((s) => s.interface.hasOpenOverlay);
   const isHoveringControls = usePlayerStore(
-    (s) => s.interface.isHoveringControls
+    (s) => s.interface.isHoveringControls,
   );
 
   const isUsingTouch = lastHoveringState === PlayerHoverState.MOBILE_TAPPED;

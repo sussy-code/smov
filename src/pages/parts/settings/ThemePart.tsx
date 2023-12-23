@@ -44,7 +44,7 @@ function ThemePreview(props: {
           "tabbable scroll-mt-32 w-full h-32 relative rounded-lg border bg-gradient-to-br from-themePreview-primary/20 to-themePreview-secondary/10 bg-clip-content transition-colors duration-150",
           props.active
             ? "border-themePreview-primary"
-            : "border-transparent group-hover:border-white/20"
+            : "border-transparent group-hover:border-white/20",
         )}
       >
         {/* Dots */}
@@ -57,7 +57,7 @@ function ThemePreview(props: {
           icon={Icons.CHECKMARK}
           className={classNames(
             "absolute top-3 right-3 text-xs text-white transition-opacity duration-150",
-            props.active ? "opacity-100" : "opacity-0"
+            props.active ? "opacity-100" : "opacity-0",
           )}
         />
         {/* Mini movie-web. So Kawaiiiii! */}
@@ -105,7 +105,7 @@ function ThemePreview(props: {
         <span
           className={classNames(
             "inline-block px-3 text-sm transition-opacity duration-150 rounded-full bg-[#27182F] text-white",
-            props.active ? "opacity-100" : "opacity-0 pointer-events-none"
+            props.active ? "opacity-100" : "opacity-0 pointer-events-none",
           )}
         >
           {t("settings.appearance.activeTheme")}

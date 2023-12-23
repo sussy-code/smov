@@ -20,7 +20,7 @@ export function Avatar(props: AvatarProps) {
       <div
         className={classNames(
           props.sizeClass,
-          "rounded-full overflow-hidden flex items-center justify-center text-white"
+          "rounded-full overflow-hidden flex items-center justify-center text-white",
         )}
         style={{
           background: `linear-gradient(to bottom right, ${props.profile.colorA}, ${props.profile.colorB})`,
@@ -53,7 +53,7 @@ export function UserAvatar(props: {
       auth.account && auth.account.seed
         ? base64ToBuffer(auth.account.seed)
         : null,
-    [auth]
+    [auth],
   );
 
   if (!auth.account || auth.account === null) return null;

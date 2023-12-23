@@ -47,14 +47,14 @@ function progressIsAcceptableRange(duration: number, watched: number): boolean {
 }
 
 export function shouldShowProgress(
-  item: ProgressMediaItem
+  item: ProgressMediaItem,
 ): ShowProgressResult {
   // non shows just hide or show depending on acceptable ranges
   if (item.type !== "show") {
     return {
       show: progressIsAcceptableRange(
         item.progress?.duration ?? 0,
-        item.progress?.watched ?? 0
+        item.progress?.watched ?? 0,
       ),
       progress: item.progress ?? defaultProgress,
     };
@@ -66,7 +66,7 @@ export function shouldShowProgress(
     .sort((a, b) => b.updatedAt - a.updatedAt)
     .filter(
       (epi) =>
-        !progressIsNotStarted(epi.progress.duration, epi.progress.watched)
+        !progressIsNotStarted(epi.progress.duration, epi.progress.watched),
     )[0];
   const season = item.seasons[ep?.seasonId];
   if (!ep || !season)

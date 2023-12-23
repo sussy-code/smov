@@ -41,7 +41,7 @@ export function genMnemonic(): string {
 
 export async function signCode(
   code: string,
-  privateKey: Uint8Array
+  privateKey: Uint8Array,
 ): Promise<Uint8Array> {
   return forge.pki.ed25519.sign({
     encoding: "utf8",
@@ -91,7 +91,7 @@ export async function encryptData(data: string, secret: Uint8Array) {
 
   const cipher = forge.cipher.createCipher(
     "AES-GCM",
-    forge.util.createBuffer(secret)
+    forge.util.createBuffer(secret),
   );
   cipher.start({
     iv,
@@ -104,7 +104,7 @@ export async function encryptData(data: string, secret: Uint8Array) {
   const tag = cipher.mode.tag;
 
   return `${forge.util.encode64(iv)}.${stringBufferToBase64(
-    encryptedData
+    encryptedData,
   )}.${stringBufferToBase64(tag)}` as const;
 }
 
@@ -115,7 +115,7 @@ export function decryptData(data: string, secret: Uint8Array) {
 
   const decipher = forge.cipher.createDecipher(
     "AES-GCM",
-    forge.util.createBuffer(secret)
+    forge.util.createBuffer(secret),
   );
   decipher.start({
     iv: base64ToStringBuffer(iv),

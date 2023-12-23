@@ -46,11 +46,11 @@ function Light(props: FlareProps) {
       const halfSize = size / 2;
       outerRef.current.style.setProperty(
         "--bg-x",
-        `${(e.clientX - rect.left - halfSize).toFixed(0)}px`
+        `${(e.clientX - rect.left - halfSize).toFixed(0)}px`,
       );
       outerRef.current.style.setProperty(
         "--bg-y",
-        `${(e.clientY - rect.top - halfSize).toFixed(0)}px`
+        `${(e.clientY - rect.top - halfSize).toFixed(0)}px`,
       );
     }
     document.addEventListener("mousemove", mouseMove);
@@ -66,7 +66,7 @@ function Light(props: FlareProps) {
         props.className,
         {
           "!opacity-100": props.enabled ?? false,
-        }
+        },
       )}
       style={{
         backgroundImage: `radial-gradient(circle at center, rgba(var(${cssVar}), 1), rgba(var(${cssVar}), 0) 70%)`,
@@ -79,7 +79,7 @@ function Light(props: FlareProps) {
         className={c(
           "absolute inset-[1px] overflow-hidden",
           props.className,
-          props.backgroundClass
+          props.backgroundClass,
         )}
       >
         <div

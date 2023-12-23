@@ -17,7 +17,7 @@ export function BrandPill(props: {
         props.backgroundClass ?? "bg-pill-background bg-opacity-50",
         props.clickable
           ? "transition-[transform,background-color] hover:scale-105 hover:bg-pill-backgroundHover hover:text-type-logo active:scale-95"
-          : ""
+          : "",
       )}
     >
       <Icon className="text-xl" icon={Icons.MOVIE_WEB} />

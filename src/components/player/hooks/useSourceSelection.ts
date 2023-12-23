@@ -24,7 +24,7 @@ export function useEmbedScraping(
   routerId: string,
   sourceId: string,
   url: string,
-  embedId: string
+  embedId: string,
 ) {
   const setSource = usePlayerStore((s) => s.setSource);
   const setCaption = usePlayerStore((s) => s.setCaption);
@@ -43,7 +43,7 @@ export function useEmbedScraping(
         const baseUrlMaker = makeProviderUrl(providerApiUrl);
         const conn = await connectServerSideEvents<EmbedOutput>(
           baseUrlMaker.scrapeEmbed(embedId, url),
-          ["completed", "noOutput"]
+          ["completed", "noOutput"],
         );
         result = await conn.promise();
       } else {
@@ -62,7 +62,7 @@ export function useEmbedScraping(
           sourceId,
           embedId,
           status,
-          err
+          err,
         ),
       ]);
       throw err;
@@ -75,7 +75,7 @@ export function useEmbedScraping(
     setSource(
       convertRunoutputToSource({ stream: result.stream }),
       convertProviderCaption(result.stream.captions),
-      progress
+      progress,
     );
     router.close();
   }, [embedId, sourceId, meta, router, report, setCaption]);
@@ -107,7 +107,7 @@ export function useSourceScraping(sourceId: string | null, routerId: string) {
         const baseUrlMaker = makeProviderUrl(providerApiUrl);
         const conn = await connectServerSideEvents<SourcererOutput>(
           baseUrlMaker.scrapeSource(sourceId, scrapeMedia),
-          ["completed", "noOutput"]
+          ["completed", "noOutput"],
         );
         result = await conn.promise();
       } else {
@@ -134,7 +134,7 @@ export function useSourceScraping(sourceId: string | null, routerId: string) {
       setSource(
         convertRunoutputToSource({ stream: result.stream }),
         convertProviderCaption(result.stream.captions),
-        progress
+        progress,
       );
       setSourceId(sourceId);
       router.close();
@@ -149,9 +149,9 @@ export function useSourceScraping(sourceId: string | null, routerId: string) {
           const conn = await connectServerSideEvents<EmbedOutput>(
             baseUrlMaker.scrapeEmbed(
               result.embeds[0].embedId,
-              result.embeds[0].url
+              result.embeds[0].url,
             ),
-            ["completed", "noOutput"]
+            ["completed", "noOutput"],
           );
           embedResult = await conn.promise();
         } else {
@@ -170,7 +170,7 @@ export function useSourceScraping(sourceId: string | null, routerId: string) {
             sourceId,
             result.embeds[0].embedId,
             status,
-            err
+            err,
           ),
         ]);
         throw err;
@@ -181,7 +181,7 @@ export function useSourceScraping(sourceId: string | null, routerId: string) {
           sourceId,
           result.embeds[0].embedId,
           "success",
-          null
+          null,
         ),
       ]);
       setSourceId(sourceId);
@@ -189,7 +189,7 @@ export function useSourceScraping(sourceId: string | null, routerId: string) {
       setSource(
         convertRunoutputToSource({ stream: embedResult.stream }),
         convertProviderCaption(embedResult.stream.captions),
-        progress
+        progress,
       );
       router.close();
     }

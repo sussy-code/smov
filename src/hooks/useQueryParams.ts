@@ -1,12 +1,12 @@
 import { useCallback, useMemo } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export function useQueryParams() {
   const loc = useLocation();
 
   const queryParams = useMemo(() => {
     const obj: Record<string, string> = Object.fromEntries(
-      new URLSearchParams(loc.search).entries()
+      new URLSearchParams(loc.search).entries(),
     );
 
     return obj;
@@ -16,11 +16,11 @@ export function useQueryParams() {
 }
 
 export function useQueryParam(
-  param: string
+  param: string,
 ): [string | null, (a: string | null) => void] {
   const params = useQueryParams();
   const location = useLocation();
-  const router = useHistory();
+  const navigate = useNavigate();
   const currentValue = params[param] ?? null;
 
   const set = useCallback(
@@ -28,11 +28,11 @@ export function useQueryParam(
       const parsed = new URLSearchParams(location.search);
       if (value) parsed.set(param, value);
       else parsed.delete(param);
-      router.push({
+      navigate({
         search: parsed.toString(),
       });
     },
-    [param, location.search, router]
+    [param, location.search, navigate],
   );
 
   return [currentValue, set];
