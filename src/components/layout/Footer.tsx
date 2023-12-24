@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import type { RequireExactlyOne } from "type-fest";
 
 import { Icon, Icons } from "@/components/Icon";
@@ -21,13 +21,13 @@ type FooterLinkProps = RequireExactlyOne<
 >;
 
 function FooterLink(props: FooterLinkProps) {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const navigateTo = useCallback(() => {
     if (!props.to) return;
 
-    history.push(props.to);
-  }, [history, props.to]);
+    navigate(props.to);
+  }, [navigate, props.to]);
 
   return (
     <a
@@ -99,7 +99,7 @@ export function FooterView(props: {
   return (
     <div
       className={["flex min-h-screen flex-col", props.className || ""].join(
-        " "
+        " ",
       )}
     >
       <div style={{ flex: "1 0 auto" }}>{props.children}</div>

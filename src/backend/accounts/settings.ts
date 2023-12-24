@@ -18,7 +18,7 @@ export interface SettingsResponse {
 export function updateSettings(
   url: string,
   account: AccountWithToken,
-  settings: SettingsInput
+  settings: SettingsInput,
 ) {
   return ofetch<SettingsResponse>(`/users/${account.userId}/settings`, {
     method: "PUT",

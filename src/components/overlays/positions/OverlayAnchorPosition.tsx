@@ -25,11 +25,11 @@ function useCalculatePositions() {
       setLeft(
         Math.min(
           buttonCenter - card.width / 2,
-          window.innerWidth - card.width - 30
-        )
+          window.innerWidth - card.width - 30,
+        ),
       );
     },
-    []
+    [],
   );
 
   useEffect(() => {

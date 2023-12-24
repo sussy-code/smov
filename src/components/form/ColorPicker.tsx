@@ -24,7 +24,7 @@ export function ColorPicker(props: {
               tabIndex={0}
               className={classNames(
                 "w-full h-10 rounded flex justify-center items-center text-white pointer border-2 border-opacity-10 cursor-pointer",
-                props.value === color ? "border-white" : "border-transparent"
+                props.value === color ? "border-white" : "border-transparent",
               )}
               onClick={() => props.onInput(color)}
               style={{ backgroundColor: color }}

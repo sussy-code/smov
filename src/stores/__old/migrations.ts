@@ -47,7 +47,7 @@ export async function initializeOldStores() {
         if (version.migrate) {
           localStorage.setItem(
             `BACKUP-v${version.version}-${internal.key}`,
-            JSON.stringify(mostRecentData)
+            JSON.stringify(mostRecentData),
           );
           mostRecentData = await version.migrate(mostRecentData);
         }
@@ -121,7 +121,7 @@ function buildStorageObject<T>(store: InternalStoreData): StoreRet<T> {
 
 function assertStore(store: InternalStoreData) {
   const versionListSorted = store.versions.sort(
-    (a, b) => a.version - b.version
+    (a, b) => a.version - b.version,
   );
   versionListSorted.forEach((v, i, arr) => {
     if (i === 0) return;

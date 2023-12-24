@@ -67,7 +67,7 @@ export function useAuth() {
       const publicKeyBase64Url = bytesToBase64Url(keys.publicKey);
       const { challenge } = await getLoginChallengeToken(
         backendUrl,
-        publicKeyBase64Url
+        publicKeyBase64Url,
       );
       const signature = await signChallenge(keys, challenge);
       const loginResult = await loginAccount(backendUrl, {
@@ -83,7 +83,7 @@ export function useAuth() {
       const seedBase64 = bytesToBase64(keys.seed);
       return userDataLogin(loginResult, user.user, user.session, seedBase64);
     },
-    [userDataLogin, backendUrl]
+    [userDataLogin, backendUrl],
   );
 
   const logout = useCallback(async () => {
@@ -92,7 +92,7 @@ export function useAuth() {
       await removeSession(
         backendUrl,
         currentAccount.token,
-        currentAccount.sessionId
+        currentAccount.sessionId,
       );
     } catch {
       // we dont care about failing to delete session
@@ -104,7 +104,7 @@ export function useAuth() {
     async (registerData: RegistrationData) => {
       const { challenge } = await getRegisterChallengeToken(
         backendUrl,
-        registerData.recaptchaToken
+        registerData.recaptchaToken,
       );
       const keys = await keysFromMnemonic(registerData.mnemonic);
       const signature = await signChallenge(keys, challenge);
@@ -122,17 +122,17 @@ export function useAuth() {
         registerResult,
         registerResult.user,
         registerResult.session,
-        bytesToBase64(keys.seed)
+        bytesToBase64(keys.seed),
       );
     },
-    [backendUrl, userDataLogin]
+    [backendUrl, userDataLogin],
   );
 
   const importData = useCallback(
     async (
       account: AccountWithToken,
       progressItems: Record<string, ProgressMediaItem>,
-      bookmarks: Record<string, BookmarkMediaItem>
+      bookmarks: Record<string, BookmarkMediaItem>,
     ) => {
       if (
         Object.keys(progressItems).length === 0 &&
@@ -142,17 +142,17 @@ export function useAuth() {
       }
 
       const progressInputs = Object.entries(progressItems).flatMap(
-        ([tmdbId, item]) => progressMediaItemToInputs(tmdbId, item)
+        ([tmdbId, item]) => progressMediaItemToInputs(tmdbId, item),
       );
 
       const bookmarkInputs = Object.entries(bookmarks).map(([tmdbId, item]) =>
-        bookmarkMediaToInput(tmdbId, item)
+        bookmarkMediaToInput(tmdbId, item),
       );
 
       await importProgress(backendUrl, account, progressInputs);
       await importBookmarks(backendUrl, account, bookmarkInputs);
     },
-    [backendUrl]
+    [backendUrl],
   );
 
   const restore = useCallback(
@@ -180,7 +180,7 @@ export function useAuth() {
 
       syncData(user.user, user.session, progress, bookmarks, settings);
     },
-    [backendUrl, syncData, logout]
+    [backendUrl, syncData, logout],
   );
 
   return {

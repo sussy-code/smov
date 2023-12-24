@@ -19,5 +19,5 @@ export const usePlayerStore = create(
     ...createDisplaySlice(...a),
     ...createCastingSlice(...a),
     ...createThumbnailSlice(...a),
-  }))
+  })),
 );

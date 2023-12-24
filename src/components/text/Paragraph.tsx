@@ -8,7 +8,7 @@ export function Paragraph(props: {
     <p
       className={classNames(
         "text-errors-type-secondary",
-        props.marginClass ?? "mt-6"
+        props.marginClass ?? "mt-6",
       )}
     >
       {props.children}

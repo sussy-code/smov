@@ -25,7 +25,7 @@ export function useAuthData() {
   const setTheme = useThemeStore((s) => s.setTheme);
   const setAppLanguage = useLanguageStore((s) => s.setLanguage);
   const importSubtitleLanguage = useSubtitleStore(
-    (s) => s.importSubtitleLanguage
+    (s) => s.importSubtitleLanguage,
   );
 
   const replaceBookmarks = useBookmarkStore((s) => s.replaceBookmarks);
@@ -36,7 +36,7 @@ export function useAuthData() {
       loginResponse: LoginResponse,
       user: UserResponse,
       session: SessionResponse,
-      seed: string
+      seed: string,
     ) => {
       const account = {
         token: loginResponse.token,
@@ -49,7 +49,7 @@ export function useAuthData() {
       setAccount(account);
       return account;
     },
-    [setAccount]
+    [setAccount],
   );
 
   const logout = useCallback(async () => {
@@ -64,7 +64,7 @@ export function useAuthData() {
       _session: SessionResponse,
       progress: ProgressResponse[],
       bookmarks: BookmarkResponse[],
-      settings: SettingsResponse
+      settings: SettingsResponse,
     ) => {
       replaceBookmarks(bookmarkResponsesToEntries(bookmarks));
       replaceItems(progressResponsesToEntries(progress));
@@ -87,7 +87,7 @@ export function useAuthData() {
       setAppLanguage,
       importSubtitleLanguage,
       setTheme,
-    ]
+    ],
   );
 
   return {

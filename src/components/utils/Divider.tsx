@@ -5,7 +5,7 @@ export function Divider(props: { marginClass?: string }) {
     <hr
       className={classNames(
         "w-full h-px border-0 bg-utils-divider bg-opacity-50",
-        props.marginClass ?? "my-8"
+        props.marginClass ?? "my-8",
       )}
     />
   );

@@ -22,7 +22,7 @@ export function useInitializeSource() {
   const source = usePlayerStore((s) => s.source);
   const sourceIdentifier = useMemo(
     () => (source ? JSON.stringify(source) : null),
-    [source]
+    [source],
   );
   const { selectLastUsedLanguageIfEnabled } = useCaptions();
 

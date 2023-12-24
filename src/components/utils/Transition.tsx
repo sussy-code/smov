@@ -24,7 +24,7 @@ interface Props {
 
 function getClasses(
   animation: TransitionAnimations,
-  duration: string
+  duration: string,
 ): TransitionClasses {
   if (animation === "slide-down") {
     return {

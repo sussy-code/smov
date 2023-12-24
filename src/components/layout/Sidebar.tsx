@@ -31,13 +31,13 @@ export function SidebarLink(props: {
         "tabbable w-full px-3 py-2 flex items-center space-x-3 cursor-pointer rounded my-2",
         props.active
           ? "bg-settings-sidebar-activeLink text-settings-sidebar-type-activated"
-          : null
+          : null,
       )}
     >
       <Icon
         className={classNames(
           "text-2xl text-settings-sidebar-type-icon",
-          props.active ? "text-settings-sidebar-type-iconActivated" : null
+          props.active ? "text-settings-sidebar-type-iconActivated" : null,
         )}
         icon={props.icon}
       />

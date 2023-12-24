@@ -119,21 +119,21 @@ export function progressResponsesToEntries(responses: ProgressResponse[]) {
 
 export async function getUser(
   url: string,
-  token: string
+  token: string,
 ): Promise<{ user: UserResponse; session: SessionResponse }> {
   return ofetch<{ user: UserResponse; session: SessionResponse }>(
     "/users/@me",
     {
       headers: getAuthHeaders(token),
       baseURL: url,
-    }
+    },
   );
 }
 
 export async function editUser(
   url: string,
   account: AccountWithToken,
-  object: UserEdit
+  object: UserEdit,
 ): Promise<{ user: UserResponse; session: SessionResponse }> {
   return ofetch<{ user: UserResponse; session: SessionResponse }>(
     `/users/${account.userId}`,
@@ -142,13 +142,13 @@ export async function editUser(
       headers: getAuthHeaders(account.token),
       body: object,
       baseURL: url,
-    }
+    },
   );
 }
 
 export async function deleteUser(
   url: string,
-  account: AccountWithToken
+  account: AccountWithToken,
 ): Promise<UserResponse> {
   return ofetch<UserResponse>(`/users/${account.userId}`, {
     headers: getAuthHeaders(account.token),

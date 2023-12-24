@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { Trans, useTranslation } from "react-i18next";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAsync } from "react-use";
 
 import { MetaResponse, getBackendMeta } from "@/backend/accounts/meta";
@@ -21,7 +21,7 @@ interface TrustBackendPartProps {
 }
 
 export function TrustBackendPart(props: TrustBackendPartProps) {
-  const history = useHistory();
+  const navigate = useNavigate();
   const backendUrl = useBackendUrl();
   const hostname = useMemo(() => new URL(backendUrl).hostname, [backendUrl]);
   const result = useAsync(() => {
@@ -54,8 +54,13 @@ export function TrustBackendPart(props: TrustBackendPartProps) {
         title={t("auth.trust.title")}
         icon={<Icon icon={Icons.CIRCLE_EXCLAMATION} />}
       >
-        <Trans i18nKey="auth.trust.host">
-          <span className="text-white">{{ hostname }}</span>
+        <Trans
+          i18nKey="auth.trust.host"
+          values={{
+            hostname,
+          }}
+        >
+          <span className="text-white" />
         </Trans>
       </LargeCardText>
 
@@ -63,7 +68,7 @@ export function TrustBackendPart(props: TrustBackendPartProps) {
         {cardContent}
       </div>
       <LargeCardButtons>
-        <Button theme="secondary" onClick={() => history.push("/")}>
+        <Button theme="secondary" onClick={() => navigate("/")}>
           {t("auth.trust.no")}
         </Button>
         <Button

@@ -11,7 +11,7 @@ async function syncBookmarks(
   items: BookmarkUpdateItem[],
   finish: (id: string) => void,
   url: string,
-  account: AccountWithToken | null
+  account: AccountWithToken | null,
 ) {
   for (const item of items) {
     // complete it beforehand so it doesn't get handled while in progress
@@ -40,7 +40,7 @@ async function syncBookmarks(
     } catch (err) {
       console.error(
         `Failed to sync bookmark: ${item.tmdbId} - ${item.action}`,
-        err
+        err,
       );
     }
   }
@@ -66,7 +66,7 @@ export function BookmarkSyncer() {
           state.updateQueue,
           removeUpdateItem,
           url,
-          user.account
+          user.account,
         );
       })();
     }, syncIntervalMs);

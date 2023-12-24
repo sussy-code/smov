@@ -1,6 +1,6 @@
 import { RunOutput } from "@movie-web/providers";
 import { useCallback, useEffect, useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { usePlayer } from "@/components/player/hooks/usePlayer";
 import { usePlayerMeta } from "@/components/player/hooks/usePlayerMeta";
@@ -18,7 +18,7 @@ import { PlayerMeta, playerStatus } from "@/stores/player/slices/source";
 import { parseTimestamp } from "@/utils/timestamp";
 
 export function PlayerView() {
-  const history = useHistory();
+  const navigate = useNavigate();
   const params = useParams<{
     media: string;
     episode?: string;
@@ -52,12 +52,12 @@ export function PlayerView() {
   const metaChange = useCallback(
     (meta: PlayerMeta) => {
       if (meta?.type === "show")
-        history.push(
-          `/media/${params.media}/${meta.season?.tmdbId}/${meta.episode?.tmdbId}`
+        navigate(
+          `/media/${params.media}/${meta.season?.tmdbId}/${meta.episode?.tmdbId}`,
         );
-      else history.push(`/media/${params.media}`);
+      else navigate(`/media/${params.media}`);
     },
-    [history, params]
+    [navigate, params],
   );
 
   const playAfterScrape = useCallback(
@@ -71,7 +71,7 @@ export function PlayerView() {
         convertRunoutputToSource(out),
         convertProviderCaption(out.stream.captions),
         out.sourceId,
-        shouldStartFromBeginning ? 0 : startAt
+        shouldStartFromBeginning ? 0 : startAt,
       );
       setShouldStartFromBeginning(false);
     },
@@ -80,7 +80,7 @@ export function PlayerView() {
       startAtParam,
       shouldStartFromBeginning,
       setShouldStartFromBeginning,
-    ]
+    ],
   );
 
   return (
@@ -108,3 +108,5 @@ export function PlayerView() {
     </PlayerPart>
   );
 }
+
+export default PlayerView;

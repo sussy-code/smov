@@ -8,7 +8,7 @@ export function BottomControls(props: {
   children: React.ReactNode;
 }) {
   const setHoveringAnyControls = usePlayerStore(
-    (s) => s.setHoveringAnyControls
+    (s) => s.setHoveringAnyControls,
   );
 
   useEffect(() => {

@@ -80,7 +80,7 @@ export function OverlayPortal(props: {
                 </div>
               </FocusTrap>
             </Transition>,
-            portalElement
+            portalElement,
           )
         : null}
     </div>

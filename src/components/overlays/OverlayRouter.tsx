@@ -21,7 +21,7 @@ function RouterBase(props: { id: string; children: ReactNode }) {
   const router = useInternalOverlayRouter(props.id);
   const routeMeta = useMemo(
     () => routes[router.currentRoute ?? ""],
-    [routes, router]
+    [routes, router],
   );
 
   const [dimensions, api] = useSpring(
@@ -34,7 +34,7 @@ function RouterBase(props: { id: string; children: ReactNode }) {
         easing: easings.linear,
       },
     }),
-    []
+    [],
   );
 
   const currentState = useRef<null | string>(null);

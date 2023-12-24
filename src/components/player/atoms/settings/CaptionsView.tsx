@@ -127,7 +127,7 @@ export function CaptionsView({ id }: { id: string }) {
       setCurrentlyDownloading(language);
       return selectLanguage(language);
     },
-    [selectLanguage, setCurrentlyDownloading]
+    [selectLanguage, setCurrentlyDownloading],
   );
 
   const content = subtitleList.map((v, i) => {
@@ -141,7 +141,7 @@ export function CaptionsView({ id }: { id: string }) {
         loading={v.language === currentlyDownloading && downloadReq.loading}
         error={
           v.language === currentlyDownloading && downloadReq.error
-            ? downloadReq.error
+            ? downloadReq.error.toString()
             : undefined
         }
         onClick={() => startDownload(v.language)}
@@ -182,3 +182,5 @@ export function CaptionsView({ id }: { id: string }) {
     </>
   );
 }
+
+export default CaptionsView;

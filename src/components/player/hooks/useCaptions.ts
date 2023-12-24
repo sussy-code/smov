@@ -8,7 +8,7 @@ export function useCaptions() {
   const setLanguage = useSubtitleStore((s) => s.setLanguage);
   const enabled = useSubtitleStore((s) => s.enabled);
   const resetSubtitleSpecificSettings = useSubtitleStore(
-    (s) => s.resetSubtitleSpecificSettings
+    (s) => s.resetSubtitleSpecificSettings,
   );
   const setCaption = usePlayerStore((s) => s.setCaption);
   const lastSelectedLanguage = useSubtitleStore((s) => s.lastSelectedLanguage);
@@ -27,7 +27,7 @@ export function useCaptions() {
       resetSubtitleSpecificSettings();
       setLanguage(language);
     },
-    [setLanguage, captionList, setCaption, resetSubtitleSpecificSettings]
+    [setLanguage, captionList, setCaption, resetSubtitleSpecificSettings],
   );
 
   const disable = useCallback(async () => {

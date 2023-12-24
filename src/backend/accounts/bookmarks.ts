@@ -19,7 +19,7 @@ export interface BookmarkInput {
 
 export function bookmarkMediaToInput(
   tmdbId: string,
-  item: BookmarkMediaItem
+  item: BookmarkMediaItem,
 ): BookmarkInput {
   return {
     meta: {
@@ -35,7 +35,7 @@ export function bookmarkMediaToInput(
 export async function addBookmark(
   url: string,
   account: AccountWithToken,
-  input: BookmarkInput
+  input: BookmarkInput,
 ) {
   return ofetch<BookmarkResponse>(
     `/users/${account.userId}/bookmarks/${input.tmdbId}`,
@@ -44,14 +44,14 @@ export async function addBookmark(
       headers: getAuthHeaders(account.token),
       baseURL: url,
       body: input,
-    }
+    },
   );
 }
 
 export async function removeBookmark(
   url: string,
   account: AccountWithToken,
-  id: string
+  id: string,
 ) {
   return ofetch<{ tmdbId: string }>(
     `/users/${account.userId}/bookmarks/${id}`,
@@ -59,6 +59,6 @@ export async function removeBookmark(
       method: "DELETE",
       headers: getAuthHeaders(account.token),
       baseURL: url,
-    }
+    },
   );
 }

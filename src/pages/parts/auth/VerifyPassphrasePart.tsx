@@ -36,7 +36,7 @@ export function VerifyPassphrase(props: VerifyPassphraseProps) {
 
   const applicationLanguage = useLanguageStore((store) => store.language);
   const defaultSubtitleLanguage = useSubtitleStore(
-    (store) => store.lastSelectedLanguage
+    (store) => store.lastSelectedLanguage,
   );
   const applicationTheme = useThemeStore((store) => store.theme);
 
@@ -80,7 +80,7 @@ export function VerifyPassphrase(props: VerifyPassphraseProps) {
 
       props.onNext?.();
     },
-    [props, register, restore]
+    [props, register, restore],
   );
 
   return (

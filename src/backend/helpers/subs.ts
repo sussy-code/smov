@@ -14,7 +14,7 @@ const expirySeconds = 24 * 60 * 60;
  * Always returns SRT
  */
 export async function downloadCaption(
-  caption: CaptionListItem
+  caption: CaptionListItem,
 ): Promise<string> {
   const cached = downloadCache.get(caption.url);
   if (cached) return cached;

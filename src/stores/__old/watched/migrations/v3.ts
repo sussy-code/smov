@@ -13,7 +13,7 @@ import { WatchedStoreData } from "../types";
 
 async function migrateId(
   id: string,
-  type: MWMediaType
+  type: MWMediaType,
 ): Promise<string | undefined> {
   const meta = await getLegacyMetaFromId(type, id);
 
@@ -44,14 +44,14 @@ export async function migrateV2Bookmarks(old: BookmarkStoreData) {
 }
 
 export async function migrateV3Videos(
-  old: WatchedStoreData
+  old: WatchedStoreData,
 ): Promise<WatchedStoreData> {
   const updatedItems = await Promise.all(
     old.items.map(async (progress) => {
       try {
         const migratedId = await migrateId(
           progress.item.meta.id,
-          progress.item.meta.type
+          progress.item.meta.type,
         );
 
         if (!migratedId) return null;
@@ -62,17 +62,17 @@ export async function migrateV3Videos(
           const series = clone.item.series;
           const details = await getMediaDetails(
             migratedId,
-            TMDBContentTypes.TV
+            TMDBContentTypes.TV,
           );
 
           const season = details.seasons.find(
-            (v) => v.season_number === series.season
+            (v) => v.season_number === series.season,
           );
           if (!season) return null;
 
           const episodes = await getEpisodes(migratedId, season.season_number);
           const episode = episodes.find(
-            (v) => v.episode_number === series.episode
+            (v) => v.episode_number === series.episode,
           );
           if (!episode) return null;
 
@@ -84,7 +84,7 @@ export async function migrateV3Videos(
       } catch (err) {
         return null;
       }
-    })
+    }),
   );
 
   return {

@@ -95,7 +95,7 @@ class ThumnbnailWorker {
       0,
       0,
       this.canvasEl.width,
-      this.canvasEl.height
+      this.canvasEl.height,
     );
     const imgUrl = this.canvasEl.toDataURL();
 

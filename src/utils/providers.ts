@@ -29,7 +29,7 @@ export const getLoadbalancedProviderApiUrl =
 
 async function fetchButWithApiTokens(
   input: RequestInfo | URL,
-  init?: RequestInit | undefined
+  init?: RequestInit | undefined,
 ): Promise<Response> {
   const apiToken = await getApiToken();
   const headers = new Headers(init?.headers);
@@ -41,7 +41,7 @@ async function fetchButWithApiTokens(
           ...init,
           headers,
         }
-      : undefined
+      : undefined,
   );
   const newApiToken = response.headers.get("X-Token");
   if (newApiToken) setApiToken(newApiToken);
@@ -52,7 +52,7 @@ function makeLoadBalancedSimpleProxyFetcher() {
   const fetcher: ProviderBuilderOptions["fetcher"] = async (a, b) => {
     const currentFetcher = makeSimpleProxyFetcher(
       getLoadbalancedProxyUrl(),
-      fetchButWithApiTokens
+      fetchButWithApiTokens,
     );
     return currentFetcher(a, b);
   };

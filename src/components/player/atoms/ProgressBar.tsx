@@ -58,7 +58,7 @@ function ThumbnailDisplay(props: { at: number; show: boolean }) {
             <p className="text-center mt-1">
               {formatSeconds(
                 Math.max(props.at, 0),
-                durationExceedsHour(props.at)
+                durationExceedsHour(props.at),
               )}
             </p>
           </div>
@@ -79,7 +79,7 @@ function useMouseHoverPosition(barRef: RefObject<HTMLDivElement>) {
       const pos = (e.pageX - rect.left) / barRef.current.offsetWidth;
       setMousePos(pos * 100);
     },
-    [setMousePos, barRef]
+    [setMousePos, barRef],
   );
 
   const mouseLeave = useCallback(() => {
@@ -97,10 +97,10 @@ export function ProgressBar() {
   const { isSeeking } = usePlayerStore((s) => s.interface);
 
   const commitTime = useCallback(
-    (percentage) => {
+    (percentage: number) => {
       display?.setTime(percentage * duration);
     },
-    [duration, display]
+    [duration, display],
   );
 
   const ref = useRef<HTMLDivElement>(null);
@@ -108,7 +108,7 @@ export function ProgressBar() {
 
   const { dragging, dragPercentage, dragMouseDown } = useProgressBar(
     ref,
-    commitTime
+    commitTime,
   );
   useEffect(() => {
     setSeeking(dragging);
@@ -165,8 +165,8 @@ export function ProgressBar() {
                     0,
                     Math.min(
                       1,
-                      dragging ? dragPercentage / 100 : time / duration
-                    )
+                      dragging ? dragPercentage / 100 : time / duration,
+                    ),
                   ) * 100
                 }%`,
               }}

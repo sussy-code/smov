@@ -13,14 +13,14 @@ export function usePlayerMeta() {
   const { meta, setMeta } = usePlayer();
   const scrapeMedia = useMemo(
     () => (meta ? metaToScrapeMedia(meta) : null),
-    [meta]
+    [meta],
   );
 
   const setDirectMeta = useCallback(
     (m: PlayerMeta) => {
       setMeta(m, playerStatus.SCRAPING);
     },
-    [setMeta]
+    [setMeta],
   );
 
   const setPlayerMeta = useCallback(
@@ -65,7 +65,7 @@ export function usePlayerMeta() {
       setDirectMeta(playerMeta);
       return playerMeta;
     },
-    [setDirectMeta]
+    [setDirectMeta],
   );
 
   return {

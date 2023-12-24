@@ -11,7 +11,7 @@ export function TopControls(props: {
 }) {
   const bannerSize = useBannerSize("player");
   const setHoveringAnyControls = usePlayerStore(
-    (s) => s.setHoveringAnyControls
+    (s) => s.setHoveringAnyControls,
   );
 
   useEffect(() => {

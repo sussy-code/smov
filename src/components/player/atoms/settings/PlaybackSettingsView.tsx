@@ -21,7 +21,7 @@ function ButtonList(props: {
               "w-full px-2 py-1 rounded-md tabbable",
               props.selected === option
                 ? "bg-video-context-buttons-active text-white"
-                : null
+                : null,
             )}
             onClick={() => props.onClick(option)}
             key={option}
@@ -44,7 +44,7 @@ export function PlaybackSettingsView({ id }: { id: string }) {
     (v: number) => {
       display?.setPlaybackRate(v);
     },
-    [display]
+    [display],
   );
 
   const options = [0.25, 0.5, 1, 1.5, 2];

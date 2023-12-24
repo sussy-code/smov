@@ -48,5 +48,5 @@ export const useOverlayStore = create(
         s.anchorPoint = point;
       });
     },
-  }))
+  })),
 );

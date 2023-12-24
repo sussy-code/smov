@@ -23,7 +23,7 @@ function SecureBadge(props: { url: string }) {
       {t(
         secure
           ? "settings.sidebar.info.secure"
-          : "settings.sidebar.info.insecure"
+          : "settings.sidebar.info.insecure",
       )}
     </div>
   );

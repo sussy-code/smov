@@ -58,7 +58,7 @@ export function LoginFormPart(props: LoginFormPartProps) {
 
       props.onLogin?.();
     },
-    [props, login, restore, t]
+    [props, login, restore, t],
   );
 
   return (

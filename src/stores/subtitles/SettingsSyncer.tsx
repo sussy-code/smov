@@ -9,7 +9,7 @@ const syncIntervalMs = 5 * 1000;
 
 export function SettingsSyncer() {
   const importSubtitleLanguage = useSubtitleStore(
-    (s) => s.importSubtitleLanguage
+    (s) => s.importSubtitleLanguage,
   );
   const url = useBackendUrl();
 

@@ -66,7 +66,7 @@ function MediaCardContent({
             "relative mb-4 pb-[150%] w-full overflow-hidden rounded-xl bg-mediaCard-hoverBackground bg-cover bg-center transition-[border-radius] duration-100",
             {
               "group-hover:rounded-lg": !closable,
-            }
+            },
           )}
           style={{
             backgroundImage: media.poster ? `url(${media.poster})` : undefined,
@@ -152,7 +152,7 @@ export function MediaCard(props: MediaCardProps) {
       link += `/${encodeURIComponent(props.series.seasonId)}`;
     } else {
       link += `/${encodeURIComponent(
-        props.series.seasonId
+        props.series.seasonId,
       )}/${encodeURIComponent(props.series.episodeId)}`;
     }
   }
@@ -164,7 +164,7 @@ export function MediaCard(props: MediaCardProps) {
       tabIndex={-1}
       className={classNames(
         "tabbable",
-        props.closable ? "hover:cursor-default" : ""
+        props.closable ? "hover:cursor-default" : "",
       )}
     >
       {content}

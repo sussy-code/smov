@@ -14,5 +14,5 @@ export const MediaGrid = forwardRef<HTMLDivElement, MediaGridProps>(
         {props.children}
       </div>
     );
-  }
+  },
 );

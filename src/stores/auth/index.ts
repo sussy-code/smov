@@ -82,6 +82,6 @@ export const useAuthStore = create(
     })),
     {
       name: "__MW::auth",
-    }
-  )
+    },
+  ),
 );

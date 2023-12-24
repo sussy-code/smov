@@ -21,6 +21,7 @@ module.exports = {
     "dist/*",
     "/*.js",
     "/*.ts",
+    "/*.mts",
     "/plugins/*.ts",
     "/plugins/*.mjs",
     "/themes/**/*.ts"

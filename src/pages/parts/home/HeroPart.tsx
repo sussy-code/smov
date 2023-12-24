@@ -31,11 +31,11 @@ export function HeroPart({ setIsSticky, searchParams }: HeroPartProps) {
   const [, setShowBg] = useState(false);
   const bannerSize = useBannerSize();
   const stickStateChanged = useCallback(
-    (isFixed) => {
+    (isFixed: boolean) => {
       setShowBg(isFixed);
       setIsSticky(isFixed);
     },
-    [setShowBg, setIsSticky]
+    [setShowBg, setIsSticky],
   );
 
   const { width: windowWidth } = useWindowSize();

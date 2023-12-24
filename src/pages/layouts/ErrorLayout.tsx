@@ -9,7 +9,7 @@ export function ErrorContainer(props: {
     <div
       className={classNames(
         "w-full p-6 text-center flex flex-col items-center",
-        props.maxWidth ?? "max-w-[28rem]"
+        props.maxWidth ?? "max-w-[28rem]",
       )}
     >
       {props.children}

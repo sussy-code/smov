@@ -4,9 +4,9 @@ import "./stores/__old/imports";
 import "@/setup/ga";
 import "@/assets/css/index.css";
 
-import React, { Suspense, useCallback } from "react";
+import { StrictMode, Suspense, useCallback } from "react";
 import type { ReactNode } from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import { HelmetProvider } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 import { BrowserRouter, HashRouter } from "react-router-dom";
@@ -114,7 +114,7 @@ function AuthWrapper() {
         {t(
           isCustomUrl
             ? "screens.loadingUserError.textWithReset"
-            : "screens.loadingUserError.text"
+            : "screens.loadingUserError.text",
         )}
       </ErrorScreen>
     );
@@ -141,8 +141,11 @@ function TheRouter(props: { children: ReactNode }) {
   return <HashRouter>{props.children}</HashRouter>;
 }
 
-ReactDOM.render(
-  <React.StrictMode>
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
+root.render(
+  <StrictMode>
     <ErrorBoundary>
       <TurnstileProvider />
       <HelmetProvider>
@@ -158,6 +161,5 @@ ReactDOM.render(
         </Suspense>
       </HelmetProvider>
     </ErrorBoundary>
-  </React.StrictMode>,
-  document.getElementById("root")
+  </StrictMode>,
 );
