@@ -1,4 +1,13 @@
 {
+  "about": {
+    "description": "movie-web on veebirakendus, mis otsib internetti voogude jaoks. Meeskonna eesmärk on enamasti minimalistlik lähenemine sisu tarbimisele.",
+    "q1": {
+      "body": "movie-web ei hoiusta enda sisu. Kui klõpsate, et midagi vaadata, otsitakse valitud meediat internetist (laadimisekraanil ja vahekaardil \"videoallikad\" näete, millist allikat te kasutate). Meediat ei lae movie-web kunagi üles, kõik toimub selle otsingumehhanismi kaudu."
+    },
+    "q2": {
+      "body": "Saadet või filmi ei ole võimalik taotelda, movie-web ei halda mingit sisu. Kogu sisu vaadatakse interneti allikate kaudu."
+    }
+  },
   "auth": {
     "createAccount": "Ei ole kontot veel?<0>Loo konto.</0>",
     "deviceNameLabel": "Seadme nimi",
@@ -56,6 +65,11 @@
     "showError": "Näita vea üksikasju",
     "title": "Tekkis viga!"
   },
+  "footer": {
+    "legal": {
+      "disclaimerText": "movie-web ei hoiusta ühtegi faili, vaid ainult lingib kolmandate osapoolte teenustele. Juriidilised küsimused tuleks lahendada failihostide ja teenusepakkujatega. movie-web ei vastuta videopakkujate poolt näidatud meediafailide eest."
+    }
+  },
   "global": {
     "name": "movie-web",
     "pages": {
@@ -65,6 +79,42 @@
       "pagetitle": "{{title}} - movie-web",
       "register": "Registreeri",
       "settings": "Sätted"
+    }
+  },
+  "home": {
+    "bookmarks": {
+      "sectionTitle": "Järjehoidjad"
+    },
+    "continueWatching": {
+      "sectionTitle": "Jätka vaatamist"
+    },
+    "mediaList": {
+      "stopEditing": "Lõpeta redigeerimine"
+    },
+    "search": {
+      "allResults": "See on kõik, mis meil on!",
+      "failed": "Meedia leidmine ebaõnnestus, proovige uuesti!",
+      "loading": "Laadimine....",
+      "noResults": "Me ei leidnud midagi!",
+      "placeholder": "Mida tahate vaadata?",
+      "sectionTitle": "Otsingutulemused"
+    },
+    "titles": {
+      "day": {
+        "default": "Mida te soovite täna pärastlõunal vaadata?"
+      },
+      "morning": {
+        "default": "Mida te soovite täna hommikul vaadata?",
+        "extra": [
+          "Ma kuulsin, et Before Sunrise on hea"
+        ]
+      },
+      "night": {
+        "default": "Mida te soovite täna õhtul vaadata?",
+        "extra": [
+          "Väsinud? Olen kuulnud, et The Exorcist on hea."
+        ]
+      }
     }
   },
   "media": {
@@ -79,6 +129,9 @@
     "goHome": "Tagasi koju",
     "message": "Otsisime kõikjalt: prügikastide alt, kapist, proksi tagant, kuid lõpuks ei leidnud otsitud lehte.",
     "title": "Ei leidnud seda lehekülge"
+  },
+  "overlays": {
+    "close": "Sulge"
   },
   "player": {
     "back": {
@@ -99,7 +152,24 @@
       },
       "downloads": {
         "disclaimer": "Allalaadimine toimub otse teenusepakkujalt. movie-web ei saa kontrollida, kuidas allalaadimine toimub.",
-        "hlsExplanation": "See meedia on HLS voog, mida ei saa alla laadida",
+        "downloadCaption": "Lae alla praegused subtiitrid",
+        "downloadVideo": "Lae alla video",
+        "hlsExplanation": "See meedia on HLS voog, mida ei saa alla laadida.",
+        "onAndroid": {
+          "1": "Et allalaadida Androidi telefonil, vajuta allalaadimise nupule, siis uuel leheküljel <bold>vajuta ja hoia</bold> video peal, siis vali <bold>salvesta</bold>.",
+          "shortTitle": "Allalaadimine / Android",
+          "title": "Androidil allalaadimine"
+        },
+        "onIos": {
+          "1": "Et allalaadida iOS telefonil, vajuta allalaadimise nupule, siis uuel leheküljel vajuta <bold><ios_share /></bold>, siis <bold>Salvesta failidesse <ios_files /></bold>",
+          "shortTitle": "Allalaadimine / iOS",
+          "title": "iOSil allalaadimine"
+        },
+        "onPc": {
+          "1": "Klõpsake arvutis allalaadimise nupule, seejärel klõpsake uuel lehel parema klõpsuga videol ja valige <bold>Salvesta video</bold>",
+          "shortTitle": "Allalaadimine / Arvutis",
+          "title": "Arvutis allalaadimine"
+        },
         "title": "Lae alla"
       },
       "episodes": {
@@ -109,6 +179,16 @@
         "loadingError": "Hooaja laadimine ebaōnnestus",
         "loadingList": "Laadimine...",
         "loadingTitle": "Laadimine..."
+      },
+      "playback": {
+        "speedLabel": "Taasesituse kiirus",
+        "title": "Taasesituse sätted"
+      },
+      "quality": {
+        "automaticLabel": "Automaatne kvaliteet",
+        "hint": "Võid proovida <0>vahetada allikat</0>, et saada teisi kvaliteedi valikuid.",
+        "iosNoQuality": "Apple'i poolt määratletud piirangute tõttu ei ole sellel allikal kvaliteedivalik saadaval. Te võite proovida <0>vahetada teisele allikale</0>, et saada erinevaid kvaliteedivalikuid.",
+        "title": "Kvaliteet"
       },
       "settings": {
         "captionItem": "Subtiitrite sätted",
@@ -187,6 +267,16 @@
       "remaining": "{{timeLeft}} alles • Lõppeb {{timeFinished, datetime}}",
       "shortRegular": "{{timeWatched}}",
       "shortRemaining": "-{{timeLeft}}"
+    }
+  },
+  "screens": {
+    "dmca": {
+      "text": "Tere tulemast movie-webi DMCA kontaktilehele! Me austame intellektuaalomandi õigusi ja soovime kiiresti lahendada kõik autoriõigusega seotud probleemid. Kui usute, et teie autoriõigusega kaitstud tööd on meie platvormil vääralt kasutatud, saatke palun üksikasjalik DMCA-teade alljärgnevale e-posti aadressile. Palun lisage autoriõigusega kaitstud materjali kirjeldus, oma kontaktandmed ja avaldus heauskse veendumuse kohta. Oleme pühendunud nende küsimuste kiirele lahendamisele ja hindame teie koostööd, et movie-web oleks koht, kus austatakse loovust ja autoriõigusi."
+    },
+    "loadingApp": "Rakenduse laadimine",
+    "loadingUser": "Teie profiili laadimine",
+    "loadingUserError": {
+      "text": "Profiili laadimine ebaōnnestus"
     }
   }
 }
