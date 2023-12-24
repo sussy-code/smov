@@ -53,7 +53,8 @@ export function MetaPart(props: MetaPartProps) {
 
     let data: ReturnType<typeof decodeTMDBId> = null;
     try {
-      data = decodeTMDBId(params.media as string);
+      if (!params.media) throw new Error("no media params");
+      data = decodeTMDBId(params.media);
     } catch {
       // error dont matter, itll just be a 404
     }

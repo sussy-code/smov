@@ -4,7 +4,7 @@ import "./stores/__old/imports";
 import "@/setup/ga";
 import "@/assets/css/index.css";
 
-import React, { Suspense, useCallback } from "react";
+import { StrictMode, Suspense, useCallback } from "react";
 import type { ReactNode } from "react";
 import { createRoot } from "react-dom/client";
 import { HelmetProvider } from "react-helmet-async";
@@ -145,19 +145,21 @@ const container = document.getElementById("root");
 const root = createRoot(container!);
 
 root.render(
-  <ErrorBoundary>
-    <TurnstileProvider />
-    <HelmetProvider>
-      <Suspense fallback={<LoadingScreen type="lazy" />}>
-        <ThemeProvider applyGlobal>
-          <ProgressSyncer />
-          <BookmarkSyncer />
-          <SettingsSyncer />
-          <TheRouter>
-            <MigrationRunner />
-          </TheRouter>
-        </ThemeProvider>
-      </Suspense>
-    </HelmetProvider>
-  </ErrorBoundary>,
+  <StrictMode>
+    <ErrorBoundary>
+      <TurnstileProvider />
+      <HelmetProvider>
+        <Suspense fallback={<LoadingScreen type="lazy" />}>
+          <ThemeProvider applyGlobal>
+            <ProgressSyncer />
+            <BookmarkSyncer />
+            <SettingsSyncer />
+            <TheRouter>
+              <MigrationRunner />
+            </TheRouter>
+          </ThemeProvider>
+        </Suspense>
+      </HelmetProvider>
+    </ErrorBoundary>
+  </StrictMode>,
 );

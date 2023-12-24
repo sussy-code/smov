@@ -55,7 +55,7 @@ export function TrustBackendPart(props: TrustBackendPartProps) {
         icon={<Icon icon={Icons.CIRCLE_EXCLAMATION} />}
       >
         <span className="text-white">
-          <Trans i18nKey="auth.trust.host">{{ hostname }}</Trans>
+          <Trans i18nKey="auth.trust.host">{[{ hostname }]}</Trans>
         </span>
       </LargeCardText>
 
