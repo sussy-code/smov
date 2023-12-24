@@ -27,6 +27,7 @@
     "generate": {
       "description": "Deine Passphrase dient als dein Nutzername und Passwort. Speiche sie sicher ab, damit du dich in deinem Konto anmelden kannst",
       "next": "Ich habe meine Passphrase gespeichert",
+      "passphraseFrameLabel": "Passphrase",
       "title": "Deine Passphrase"
     },
     "hasAccount": "Du hast bereits einen Account? <0>Anmelden.</0>",
