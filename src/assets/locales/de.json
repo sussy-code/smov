@@ -55,7 +55,7 @@
         "text": "Hast du es korrekt konfiguriert?",
         "title": "Server nicht erreichbar"
       },
-      "host": "Du verbindest dich zu <0>{{hostname}}</0> - stelle sicher, dass du diesem vertraust, bevor du einen Account erstellst",
+      "host": "Du verbindest dich mit <0>{{hostname}}</0> - stelle sicher das du dem Server vertraust bevor du ein Konto erstellst",
       "no": "Zurück",
       "title": "Vertraust du diesem Server?",
       "yes": "Ich vertraue diesem Server"
@@ -238,7 +238,7 @@
       "sources": {
         "failed": {
           "text": "Beim Versuch, Videos zu finden, ist ein Fehler aufgetreten. Bitte versuche es mit einer anderen Quelle.",
-          "title": "Scrapen fehlgeschlagen"
+          "title": "Fehler beim Laden"
         },
         "noEmbeds": {
           "text": "Es konnten keine Embeds gefunden werden. Bitte versuchen es mit einer anderen Quelle.",
