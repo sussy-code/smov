@@ -6,7 +6,8 @@ import checker from "vite-plugin-checker";
 import path from "path";
 import million from 'million/compiler';
 import { handlebars } from "./plugins/handlebars";
-import { loadEnv, splitVendorChunkPlugin } from "vite";
+import { PluginOption, loadEnv, splitVendorChunkPlugin } from "vite";
+import { visualizer } from "rollup-plugin-visualizer";
 
 import tailwind from "tailwindcss";
 import rtl from "postcss-rtlcss";
@@ -114,7 +115,8 @@ export default defineConfig(({ mode }) => {
           },
         },
       }),
-      splitVendorChunkPlugin()
+      splitVendorChunkPlugin(),
+      visualizer() as PluginOption
     ],
 
     build: {
@@ -133,6 +135,9 @@ export default defineConfig(({ mode }) => {
             }
             if (id.includes("locales") && !id.includes("en.json")) {
               return "locales";
+            }
+            if (id.includes("react-dom")) {
+              return "react-dom";
             }
             if (id.includes("Icon.tsx")) {
               return "Icons";
