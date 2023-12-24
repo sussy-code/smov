@@ -54,9 +54,14 @@ export function TrustBackendPart(props: TrustBackendPartProps) {
         title={t("auth.trust.title")}
         icon={<Icon icon={Icons.CIRCLE_EXCLAMATION} />}
       >
-        <span className="text-white">
-          <Trans i18nKey="auth.trust.host">{[{ hostname }]}</Trans>
-        </span>
+        <Trans
+          i18nKey="auth.trust.host"
+          values={{
+            hostname,
+          }}
+        >
+          <span className="text-white" />
+        </Trans>
       </LargeCardText>
 
       <div className="border border-authentication-border rounded-xl px-4 py-8 flex flex-col items-center space-y-2 my-8">
