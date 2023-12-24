@@ -25,19 +25,20 @@
     "deviceNameLabel": "Cihaz ismi",
     "deviceNamePlaceholder": "Kişisel telefon",
     "generate": {
-      "description": "Parolanız, kullanıcı adınız ve şifreniz olarak işlev görür. Hesabınıza giriş yapmak için bu parolayı girmeniz gerekeceğinden onu güvende tuttuğunuzdan emin olun",
-      "next": "Parolamı kaydettim",
-      "title": "Parolanız"
+      "description": "Şifreleme anahtarınız, kullanıcı adınız ve parolanız olarak işlev görür. Hesabınıza giriş yapmak için bu parolayı girmeniz gerekeceğinden onu güvende tuttuğunuzdan emin olun",
+      "next": "Şifreleme anahtarımı kaydettim",
+      "passphraseFrameLabel": "Şifreleme anahtarı",
+      "title": "Şifreleme anahtarınız"
     },
     "hasAccount": "Zaten hesabınız var mı?<0>Giriş yapın.</0>",
     "login": {
-      "description": "Hesabınıza giriş yapmak için lütfen parolanızı girin",
+      "description": "Hesabınıza giriş yapmak için lütfen şifreleme anahtarınızı girin",
       "deviceLengthError": "Lütfen bir cihaz ismi girin",
-      "passphraseLabel": "12 kelimelik parola",
-      "passphrasePlaceholder": "Parola",
+      "passphraseLabel": "12 kelimelik şifreleme anahtarı",
+      "passphrasePlaceholder": "Şifreleme anahtarı",
       "submit": "Giriş yap",
       "title": "Hesabınıza giriş yapın",
-      "validationError": "Yanlış veya eksik parola"
+      "validationError": "Yanlış veya eksik şifreleme anahtarı"
     },
     "register": {
       "information": {
@@ -55,18 +56,18 @@
         "title": "Sunucuya ulaşılamadı"
       },
       "host": "<0>{{hostname}}</0> adlı sunucuya bağlanıyorsunuz - lütfen hesap oluşturmadan önce sunucuya güvendiğinizi onaylayın",
-      "no": "Geri git",
+      "no": "Geri dön",
       "title": "Bu sunucuya güveniyor musunuz?",
       "yes": "Bu sunucuya güveniyorum"
     },
     "verify": {
-      "description": "Kaydettiğinizi doğrulamak ve hesabınızı oluşturmak için önceki aşamada gösterilen parolayı girin",
+      "description": "Kaydettiğinizi doğrulamak ve hesabınızı oluşturmak için önceki aşamada gösterilen şifreleme anahtarınızı girin",
       "invalidData": "Veri geçersiz",
-      "noMatch": "Parola eşleşmiyor",
-      "passphraseLabel": "12 kelimelik parolanız",
+      "noMatch": "Şifreleme anahtarı eşleşmiyor",
+      "passphraseLabel": "12 kelimelik şifreleme anahtarınız",
       "recaptchaFailed": "ReCaptcha doğrulaması başarısız",
       "register": "Hesap oluştur",
-      "title": "Parolanızı doğrulayın"
+      "title": "Şifreleme anahtarınızı doğrulayın"
     }
   },
   "errors": {
@@ -167,7 +168,7 @@
   "player": {
     "back": {
       "default": "Ana sayfaya dön",
-      "short": "Geri"
+      "short": "Geri dön"
     },
     "casting": {
       "enabled": "Cihaza yansıtılıyor..."
@@ -374,7 +375,7 @@
     "captions": {
       "backgroundLabel": "Arka plan opaklığı",
       "colorLabel": "Renk",
-      "previewQuote": "Korkmamalıyım. Korku aklı öldürür.",
+      "previewQuote": "Korkmamalıyım. Korku aklın katilidir.",
       "textSizeLabel": "Yazı boyutu",
       "title": "Altyazılar"
     },
