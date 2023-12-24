@@ -50,11 +50,7 @@ export function OverlayPortal(props: {
       {portalElement
         ? createPortal(
             <Transition show={props.show} animation="none">
-              <FocusTrap
-                focusTrapOptions={{
-                  onDeactivate: close,
-                }}
-              >
+              <FocusTrap>
                 <div className="popout-wrapper fixed overflow-hidden pointer-events-auto inset-0 z-[999] select-none">
                   <Transition animation="fade" isChild>
                     <div

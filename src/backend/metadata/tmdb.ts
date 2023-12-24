@@ -215,7 +215,7 @@ export function getMediaDetails<
 }
 
 export function getMediaPoster(posterPath: string | null): string | undefined {
-  if (posterPath) return `https://image.tmdb.org/t/p/w185/${posterPath}`;
+  if (posterPath) return `https://image.tmdb.org/t/p/w342/${posterPath}`;
 }
 
 export async function getEpisodes(
