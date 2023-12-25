@@ -21,17 +21,18 @@
     "copy": "Copier"
   },
   "auth": {
-    "createAccount": "N'avez-vous pas encore de compte? <0>Créer un compte.</0>",
+    "createAccount": "N'avez-vous pas encore de compte ? <0>Créer un compte.</0>",
     "deviceNameLabel": "Nom de l'appareil",
     "deviceNamePlaceholder": "Téléphone personnel",
     "generate": {
-      "description": "Votre passphrase fait office de nom d'utilisateur et de mot de passe. Conservez-la précieusement, car vous devrez la saisir pour vous connecter à votre compte",
+      "description": "Le nom d'utilisateur et le mot de passe sont obtenus à partir de votre passphrase. Vous devrez la saisir pour accéder à votre compte, alors gardez-la précieusement",
       "next": "J'ai sauvegardé ma passphrase",
+      "passphraseFrameLabel": "Pass phrase",
       "title": "Votre passphrase"
     },
-    "hasAccount": "Avez-vous déjà un compte? <0>Connectez-vous ici.</0>",
+    "hasAccount": "Avez-vous déjà un compte ? <0>Connectez-vous ici.</0>",
     "login": {
-      "description": "Veuillez entrer votre passphrase pour vous connecter à votre compte",
+      "description": "Veuillez fournir votre passphrase pour accéder à votre compte",
       "deviceLengthError": "Veuillez saisir un nom d'appareil",
       "passphraseLabel": "Passphrase de 12 mots",
       "passphrasePlaceholder": "Passphrase",
@@ -54,9 +55,9 @@
         "text": "L'avez-vous configuré correctement ?",
         "title": "Échec de la connexion au serveur"
       },
-      "host": "Vous vous connectez à <0>{{hostname}}</0> - veuillez confirmer que vous lui faites confiance avant de créer un compte.",
+      "host": "Vous vous connectez à <0>{{hostname}}</0> - veuillez confirmer que vous lui faites confiance avant de créer un compte",
       "no": "Retour",
-      "title": "Faites-vous confiance à ce serveur ?",
+      "title": "Est-ce que vous avez confiance à ce serveur?",
       "yes": "Je fais confiance à ce serveur"
     },
     "verify": {

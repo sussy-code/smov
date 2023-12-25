@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
+import { useLocation } from "react-router-dom";
 
 import { Button } from "@/components/buttons/Button";
 import { Icons } from "@/components/Icon";
@@ -9,6 +10,7 @@ import { Paragraph } from "@/components/text/Paragraph";
 import { Title } from "@/components/text/Title";
 import { ScrapingItems, ScrapingSegment } from "@/hooks/useProviderScrape";
 import { ErrorContainer, ErrorLayout } from "@/pages/layouts/ErrorLayout";
+import { getProviderApiUrls } from "@/utils/proxyUrls";
 
 import { ErrorCardInModal } from "../errors/ErrorCard";
 
@@ -22,21 +24,21 @@ export interface ScrapeErrorPartProps {
 export function ScrapeErrorPart(props: ScrapeErrorPartProps) {
   const { t } = useTranslation();
   const modal = useModal("error");
+  const location = useLocation();
 
   const error = useMemo(() => {
     const data = props.data;
-    const amountError = Object.values(data.sources).filter(
-      (v) => v.status === "failure"
-    );
-    if (amountError.length === 0) return null;
     let str = "";
+    const apiUrls = getProviderApiUrls();
+    str += `URL - ${location.pathname}\n`;
+    str += `API - ${apiUrls.length > 0}\n\n`;
     Object.values(data.sources).forEach((v) => {
       str += `${v.id}: ${v.status}\n`;
       if (v.reason) str += `${v.reason}\n`;
       if (v.error) str += `${v.error.toString()}\n`;
     });
     return str;
-  }, [props]);
+  }, [props, location]);
 
   return (
     <ErrorLayout>

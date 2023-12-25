@@ -10,7 +10,7 @@ import { usePlayerStore } from "@/stores/player/store";
 
 function shouldShowNextEpisodeButton(
   time: number,
-  duration: number
+  duration: number,
 ): "always" | "hover" | "none" {
   const percentage = time / duration;
   const secondsFromEnd = duration - time;
@@ -28,7 +28,7 @@ function Button(props: {
     <button
       className={classNames(
         "font-bold rounded h-10 w-40 scale-95 hover:scale-100 transition-all duration-200",
-        props.className
+        props.className,
       )}
       type="button"
       onClick={props.onClick}
@@ -53,7 +53,7 @@ export function NextEpisodeButton(props: {
   const showingState = shouldShowNextEpisodeButton(time, duration);
   const status = usePlayerStore((s) => s.status);
   const setShouldStartFromBeginning = usePlayerStore(
-    (s) => s.setShouldStartFromBeginning
+    (s) => s.setShouldStartFromBeginning,
   );
 
   let show = false;
@@ -69,7 +69,7 @@ export function NextEpisodeButton(props: {
       : "bottom-[calc(3rem+env(safe-area-inset-bottom))]";
 
   const nextEp = meta?.episodes?.find(
-    (v) => v.number === (meta?.episode?.number ?? 0) + 1
+    (v) => v.number === (meta?.episode?.number ?? 0) + 1,
   );
 
   const loadNextEpisode = useCallback(() => {

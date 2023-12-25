@@ -1,5 +1,5 @@
 import { useEffect, useMemo } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useEffectOnce } from "react-use";
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
@@ -21,23 +21,18 @@ export const useHistoryStore = create(
         s.routes.push(route);
       });
     },
-  }))
+  })),
 );
 
 export function useHistoryListener() {
-  const history = useHistory();
-  const loc = useLocation();
+  const location = useLocation();
   const registerRoute = useHistoryStore((s) => s.registerRoute);
-  useEffect(
-    () =>
-      history.listen((a) => {
-        registerRoute({ path: a.pathname });
-      }),
-    [history, registerRoute]
-  );
+  useEffect(() => {
+    registerRoute({ path: location.pathname });
+  }, [location.pathname, registerRoute]);
 
   useEffectOnce(() => {
-    registerRoute({ path: loc.pathname });
+    registerRoute({ path: location.pathname });
   });
 }
 
@@ -51,7 +46,7 @@ export function useLastNonPlayerLink() {
       (v) =>
         !v.path.startsWith("/media") && // cannot be a player link
         location.pathname !== v.path && // cannot be current link
-        !v.path.startsWith("/s/") // cannot be a quick search link
+        !v.path.startsWith("/s/"), // cannot be a quick search link
     );
     return route?.path ?? "/";
   }, [routes, location]);

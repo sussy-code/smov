@@ -42,7 +42,7 @@ export const useTurnstileStore = create(
         s.turnstile = v;
       });
     },
-  }))
+  })),
 );
 
 export function getTurnstile() {

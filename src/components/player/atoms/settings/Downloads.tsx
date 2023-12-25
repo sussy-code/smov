@@ -48,7 +48,7 @@ export function DownloadView({ id }: { id: string }) {
       selectedCaption
         ? convertSubtitlesToSrtDataurl(selectedCaption?.srtData)
         : null,
-    [selectedCaption]
+    [selectedCaption],
   );
 
   if (!downloadUrl) return null;

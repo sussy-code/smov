@@ -37,7 +37,7 @@ const sortedQualities: SourceQuality[] = Object.entries(qualitySorting)
 
 export function getPreferredQuality(
   availableQualites: SourceQuality[],
-  qualityPreferences: QualityStore["quality"]
+  qualityPreferences: QualityStore["quality"],
 ) {
   if (
     qualityPreferences.automaticQuality ||
@@ -48,7 +48,7 @@ export function getPreferredQuality(
 
   // get preferred quality - not automatic or unknown
   const chosenQualityIndex = sortedQualities.indexOf(
-    qualityPreferences.lastChosenQuality
+    qualityPreferences.lastChosenQuality,
   );
   let nearestChoseQuality: undefined | SourceQuality;
 
@@ -73,7 +73,7 @@ export function getPreferredQuality(
 
 export function selectQuality(
   source: SourceSliceSource,
-  qualityPreferences: QualityStore["quality"]
+  qualityPreferences: QualityStore["quality"],
 ): {
   stream: LoadableSource;
   quality: null | SourceQuality;

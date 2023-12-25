@@ -79,15 +79,15 @@ export function SubtitleRenderer() {
 
   const parsedCaptions = useMemo(
     () => (srtData ? parseSubtitles(srtData, language) : []),
-    [srtData, language]
+    [srtData, language],
   );
 
   const visibileCaptions = useMemo(
     () =>
       parsedCaptions.filter(({ start, end }) =>
-        captionIsVisible(start, end, delay, videoTime)
+        captionIsVisible(start, end, delay, videoTime),
       ),
-    [parsedCaptions, videoTime, delay]
+    [parsedCaptions, videoTime, delay],
   );
 
   return (

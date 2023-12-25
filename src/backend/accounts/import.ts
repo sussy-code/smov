@@ -9,7 +9,7 @@ import { ProgressInput } from "./progress";
 export function importProgress(
   url: string,
   account: AccountWithToken,
-  progressItems: ProgressInput[]
+  progressItems: ProgressInput[],
 ) {
   return ofetch<void>(`/users/${account.userId}/progress/import`, {
     method: "PUT",
@@ -22,7 +22,7 @@ export function importProgress(
 export function importBookmarks(
   url: string,
   account: AccountWithToken,
-  bookmarks: BookmarkInput[]
+  bookmarks: BookmarkInput[],
 ) {
   return ofetch<void>(`/users/${account.userId}/bookmarks`, {
     method: "PUT",

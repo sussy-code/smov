@@ -20,7 +20,7 @@ export function JWMediaToMediaType(type: string): MWMediaType {
 
 export function formatJWMeta(
   media: JWMediaResult,
-  season?: JWSeasonMetaResult
+  season?: JWSeasonMetaResult,
 ): MWMediaMeta {
   const type = JWMediaToMediaType(media.object_type);
   let seasons: undefined | MWSeasonMeta[];
@@ -32,7 +32,7 @@ export function formatJWMeta(
           id: v.id.toString(),
           number: v.season_number,
           title: v.title,
-        })
+        }),
       );
   }
 
@@ -67,7 +67,7 @@ export function JWMediaToId(media: MWMediaMeta): string {
 }
 
 export function decodeJWId(
-  paramId: string
+  paramId: string,
 ): { id: string; type: MWMediaType } | null {
   const [prefix, type, id] = paramId.split("-", 3);
   if (prefix !== "JW") return null;

@@ -75,11 +75,11 @@ export function KeyboardEvents() {
       }
       if (k === "ArrowUp")
         dataRef.current.setVolume(
-          (dataRef.current.mediaPlaying?.volume || 0) + 0.15
+          (dataRef.current.mediaPlaying?.volume || 0) + 0.15,
         );
       if (k === "ArrowDown")
         dataRef.current.setVolume(
-          (dataRef.current.mediaPlaying?.volume || 0) - 0.15
+          (dataRef.current.mediaPlaying?.volume || 0) - 0.15,
         );
       if (k === "m") dataRef.current.toggleMute();
 

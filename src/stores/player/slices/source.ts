@@ -69,7 +69,7 @@ export interface SourceSlice {
   setSource(
     stream: SourceSliceSource,
     captions: CaptionListItem[],
-    startAt: number
+    startAt: number,
   ): void;
   switchQuality(quality: SourceQuality): void;
   setMeta(meta: PlayerMeta, status?: PlayerStatus): void;
@@ -141,7 +141,7 @@ export const createSourceSlice: MakeSlice<SourceSlice> = (set, get) => ({
   setSource(
     stream: SourceSliceSource,
     captions: CaptionListItem[],
-    startAt: number
+    startAt: number,
   ) {
     let qualities: string[] = [];
     if (stream.type === "file") qualities = Object.keys(stream.qualities);

@@ -8,7 +8,7 @@ export function Ol(props: { items: React.ReactNode[] }) {
           <li
             className={classNames(
               "grid grid-cols-[auto,1fr] gap-6",
-              i !== props.items.length - 1 ? "pb-12" : undefined
+              i !== props.items.length - 1 ? "pb-12" : undefined,
             )}
           >
             <div className="relative z-0">

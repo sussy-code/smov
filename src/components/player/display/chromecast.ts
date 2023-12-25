@@ -28,7 +28,7 @@ export interface ChromeCastDisplayInterfaceOptions {
  */
 
 export function makeChromecastDisplayInterface(
-  ops: ChromeCastDisplayInterfaceOptions
+  ops: ChromeCastDisplayInterfaceOptions,
 ): DisplayInterface {
   const { emit, on, off } = makeEmitter<DisplayInterfaceEvents>();
   let isPaused = false;
@@ -89,12 +89,12 @@ export function makeChromecastDisplayInterface(
     };
     ops.controller?.addEventListener(
       cast.framework.RemotePlayerEventType.ANY_CHANGE,
-      listen
+      listen,
     );
     return () => {
       ops.controller?.removeEventListener(
         cast.framework.RemotePlayerEventType.ANY_CHANGE,
-        listen
+        listen,
       );
     };
   }

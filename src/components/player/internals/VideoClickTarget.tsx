@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import { PointerEvent, useCallback } from "react";
+import { useEffectOnce, useTimeoutFn } from "react-use";
 
 import { useShouldShowVideoElement } from "@/components/player/internals/VideoContainer";
 import { PlayerHoverState } from "@/stores/player/slices/interface";
@@ -10,9 +11,15 @@ export function VideoClickTarget(props: { showingControls: boolean }) {
   const display = usePlayerStore((s) => s.display);
   const isPaused = usePlayerStore((s) => s.mediaPlaying.isPaused);
   const updateInterfaceHovering = usePlayerStore(
-    (s) => s.updateInterfaceHovering
+    (s) => s.updateInterfaceHovering,
   );
   const hovering = usePlayerStore((s) => s.interface.hovering);
+  const [_, cancel, reset] = useTimeoutFn(() => {
+    updateInterfaceHovering(PlayerHoverState.NOT_HOVERING);
+  }, 3000);
+  useEffectOnce(() => {
+    cancel();
+  });
 
   const toggleFullscreen = useCallback(() => {
     display?.toggleFullscreen();
@@ -29,11 +36,15 @@ export function VideoClickTarget(props: { showingControls: boolean }) {
       }
 
       // toggle on other types of clicks
-      if (hovering !== PlayerHoverState.MOBILE_TAPPED)
+      if (hovering !== PlayerHoverState.MOBILE_TAPPED) {
         updateInterfaceHovering(PlayerHoverState.MOBILE_TAPPED);
-      else updateInterfaceHovering(PlayerHoverState.NOT_HOVERING);
+        reset();
+      } else {
+        updateInterfaceHovering(PlayerHoverState.NOT_HOVERING);
+        cancel();
+      }
     },
-    [display, isPaused, hovering, updateInterfaceHovering]
+    [display, isPaused, hovering, updateInterfaceHovering, reset, cancel],
   );
 
   if (!show) return null;

@@ -58,7 +58,7 @@ export function scrapeSourceOutputToProviderMetric(
   providerId: string,
   embedId: string | null,
   status: ProviderMetric["status"],
-  err: unknown | null
+  err: unknown | null,
 ): ProviderMetric {
   const episodeId = media.episode?.tmdbId;
   const seasonId = media.season?.tmdbId;
@@ -82,7 +82,7 @@ export function scrapeSourceOutputToProviderMetric(
 export function scrapeSegmentToProviderMetric(
   media: ScrapeMedia,
   providerId: string,
-  segment: ScrapingSegment
+  segment: ScrapingSegment,
 ): ProviderMetric | null {
   const status = segmentStatusMap[segment.status];
   if (!status) return null;
@@ -112,7 +112,7 @@ export function scrapeSegmentToProviderMetric(
 export function scrapePartsToProviderMetric(
   media: ScrapeMedia,
   order: ScrapingItems[],
-  sources: Record<string, ScrapingSegment>
+  sources: Record<string, ScrapingSegment>,
 ): ProviderMetric[] {
   const output: ProviderMetric[] = [];
 

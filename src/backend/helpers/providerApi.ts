@@ -94,9 +94,14 @@ export async function getApiToken(): Promise<string | null> {
   return apiToken;
 }
 
+function parseEventInput(inp: string): any {
+  if (inp.length === 0) return {};
+  return JSON.parse(inp);
+}
+
 export async function connectServerSideEvents<T>(
   url: string,
-  endEvents: string[]
+  endEvents: string[],
 ) {
   const apiToken = await getApiToken();
 
@@ -115,12 +120,12 @@ export async function connectServerSideEvents<T>(
   endEvents.forEach((evt) => {
     eventSource.addEventListener(evt, (e) => {
       eventSource.close();
-      promResolve(JSON.parse(e.data));
+      promResolve(parseEventInput(e.data));
     });
   });
 
   eventSource.addEventListener("token", (e) => {
-    setApiToken(JSON.parse(e.data));
+    setApiToken(parseEventInput(e.data));
   });
 
   eventSource.addEventListener("error", (err: MessageEvent<any>) => {

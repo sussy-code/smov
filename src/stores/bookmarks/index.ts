@@ -97,6 +97,6 @@ export const useBookmarkStore = create(
     })),
     {
       name: "__MW::bookmarks",
-    }
-  )
+    },
+  ),
 );

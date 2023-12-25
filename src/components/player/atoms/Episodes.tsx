@@ -54,7 +54,7 @@ function SeasonsView({
   const meta = usePlayerStore((s) => s.meta);
   const [loadingState, seasons] = useSeasonData(
     meta?.tmdbId ?? "",
-    selectedSeason
+    selectedSeason,
   );
 
   let content: ReactNode = null;
@@ -120,7 +120,7 @@ function EpisodesView({
       // player already switches route after meta change
       router.close(true);
     },
-    [setPlayerMeta, loadingState, router, onChange]
+    [setPlayerMeta, loadingState, router, onChange],
   );
 
   if (!meta?.tmdbId) return null;
@@ -175,7 +175,7 @@ function EpisodesView({
                       "p-0.5 px-2 rounded inline bg-video-context-hoverColor",
                       ep.id === meta?.episode?.tmdbId
                         ? "text-white bg-opacity-100"
-                        : "bg-opacity-50"
+                        : "bg-opacity-50",
                     )}
                   >
                     {t("player.menus.episodes.episodeBadge", {
@@ -226,7 +226,7 @@ function EpisodesOverlay({
       setSelectedSeason(seasonId);
       router.navigate("/episodes");
     },
-    [router]
+    [router],
   );
 
   return (

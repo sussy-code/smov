@@ -54,7 +54,7 @@ function useBaseScrape() {
         .reduce<Record<string, ScrapingSegment>>((a, v) => {
           a[v.id] = v;
           return a;
-        }, {})
+        }, {}),
     );
     setSourceOrder(evt.sourceIds.map((v) => ({ id: v, children: [] })));
   }, []);
@@ -85,7 +85,7 @@ function useBaseScrape() {
       setSources((s) => {
         evt.embeds.forEach((v) => {
           const source = getCachedMetadata().find(
-            (src) => src.id === v.embedScraperId
+            (src) => src.id === v.embedScraperId,
           );
           if (!source) throw new Error("invalid source id");
           const out: ScrapingSegment = {
@@ -106,7 +106,7 @@ function useBaseScrape() {
         return [...s];
       });
     },
-    []
+    [],
   );
 
   const startScrape = useCallback(() => {
@@ -158,7 +158,7 @@ export function useScrape() {
         const baseUrlMaker = makeProviderUrl(providerApiUrl);
         const conn = await connectServerSideEvents<RunOutput | "">(
           baseUrlMaker.scrapeAll(media),
-          ["completed", "noOutput"]
+          ["completed", "noOutput"],
         );
         conn.on("init", initEvent);
         conn.on("start", startEvent);
@@ -189,7 +189,7 @@ export function useScrape() {
       discoverEmbedsEvent,
       getResult,
       startScrape,
-    ]
+    ],
   );
 
   return {
@@ -204,7 +204,7 @@ export function useListCenter(
   containerRef: RefObject<HTMLDivElement | null>,
   listRef: RefObject<HTMLDivElement | null>,
   sourceOrder: ScrapingItems[],
-  currentSource: string | undefined
+  currentSource: string | undefined,
 ) {
   const [renderedOnce, setRenderedOnce] = useState(false);
 
@@ -217,7 +217,7 @@ export function useListCenter(
     ] as HTMLDivElement[];
 
     const currentIndex = elements.findIndex(
-      (e) => e.getAttribute("data-source-id") === currentSource
+      (e) => e.getAttribute("data-source-id") === currentSource,
     );
 
     const currentElement = elements[currentIndex];

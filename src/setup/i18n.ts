@@ -7,7 +7,7 @@ import { locales } from "@/assets/languages";
 // Languages
 const langCodes = Object.keys(locales);
 const resources = Object.fromEntries(
-  Object.entries(locales).map((entry) => [entry[0], { translation: entry[1] }])
+  Object.entries(locales).map((entry) => [entry[0], { translation: entry[1] }]),
 );
 i18n.use(initReactI18next).init({
   fallbackLng: "en",

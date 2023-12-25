@@ -17,14 +17,14 @@ export function SettingsMenu({ id }: { id: string }) {
   const router = useOverlayRouter(id);
   const currentQuality = usePlayerStore((s) => s.currentQuality);
   const selectedCaptionLanguage = usePlayerStore(
-    (s) => s.caption.selected?.language
+    (s) => s.caption.selected?.language,
   );
   const subtitlesEnabled = useSubtitleStore((s) => s.enabled);
   const currentSourceId = usePlayerStore((s) => s.sourceId);
   const sourceName = useMemo(() => {
     if (!currentSourceId) return "...";
     const source = getCachedMetadata().find(
-      (src) => src.id === currentSourceId
+      (src) => src.id === currentSourceId,
     );
     return source?.name ?? "...";
   }, [currentSourceId]);
@@ -59,7 +59,7 @@ export function SettingsMenu({ id }: { id: string }) {
           clickable
           onClick={() =>
             router.navigate(
-              source?.type === "file" ? "/download" : "/download/unable"
+              source?.type === "file" ? "/download" : "/download/unable",
             )
           }
           rightSide={<Icon className="text-xl" icon={Icons.DOWNLOAD} />}

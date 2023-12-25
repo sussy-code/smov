@@ -23,8 +23,8 @@ export function WorkerItem(props: {
           props.errored
             ? Icons.WARNING
             : props.success
-            ? Icons.CIRCLE_CHECK
-            : Icons.EYE_SLASH
+              ? Icons.CIRCLE_CHECK
+              : Icons.EYE_SLASH
         }
         className={classNames({
           "text-xl mr-2 mt-0.5": true,
@@ -72,7 +72,7 @@ export function WorkerTestPart() {
         await singularProxiedFetch(
           worker.url,
           "https://postman-echo.com/get",
-          {}
+          {},
         );
         updateWorker(worker.id, {
           id: worker.id,

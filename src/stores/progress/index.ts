@@ -176,6 +176,6 @@ export const useProgressStore = create(
     })),
     {
       name: "__MW::progress",
-    }
-  )
+    },
+  ),
 );

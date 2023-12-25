@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { MetaResponse } from "@/backend/accounts/meta";
 import { SubPageLayout } from "@/pages/layouts/SubPageLayout";
@@ -26,7 +26,7 @@ function CaptchaProvider(props: {
 }
 
 export function RegisterPage() {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [step, setStep] = useState(0);
   const [mnemonic, setMnemonic] = useState<null | string>(null);
   const [account, setAccount] = useState<null | AccountProfile>(null);
@@ -42,7 +42,7 @@ export function RegisterPage() {
               setSiteKey(
                 meta.hasCaptcha && meta.captchaClientKey
                   ? meta.captchaClientKey
-                  : null
+                  : null,
               );
               setStep(1);
             }}
@@ -70,7 +70,7 @@ export function RegisterPage() {
             mnemonic={mnemonic}
             userData={account}
             onNext={() => {
-              history.push("/");
+              navigate("/");
             }}
           />
         ) : null}

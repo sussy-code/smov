@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { base64ToBuffer, decryptData } from "@/backend/accounts/crypto";
 import { UserAvatar } from "@/components/Avatar";
@@ -21,11 +21,11 @@ function GoToLink(props: {
   className?: string;
   onClick?: () => void;
 }) {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const goTo = (href: string) => {
     if (href.startsWith("http")) window.open(href, "_blank");
-    else history.push(href);
+    else navigate(href);
   };
 
   return (
@@ -61,7 +61,7 @@ function DropdownLink(props: {
         props.highlight
           ? "text-dropdown-highlight hover:text-dropdown-highlightHover"
           : "text-dropdown-text hover:text-white",
-        props.className
+        props.className,
       )}
     >
       {props.icon ? <Icon icon={props.icon} className="text-xl" /> : null}
@@ -88,7 +88,7 @@ export function LinksDropdown(props: { children: React.ReactNode }) {
   const seed = useAuthStore((s) => s.account?.seed);
   const bufferSeed = useMemo(
     () => (seed ? base64ToBuffer(seed) : null),
-    [seed]
+    [seed],
   );
   const { logout } = useAuth();
 
@@ -118,7 +118,7 @@ export function LinksDropdown(props: { children: React.ReactNode }) {
         <Icon
           className={classNames(
             "text-xl transition-transform duration-100",
-            open ? "rotate-180" : ""
+            open ? "rotate-180" : "",
           )}
           icon={Icons.CHEVRON_DOWN}
         />

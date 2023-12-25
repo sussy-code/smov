@@ -1,12 +1,12 @@
 import { useTranslation } from "react-i18next";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { Button } from "@/components/buttons/Button";
 import { SolidSettingsCard } from "@/components/layout/SettingsCard";
 import { Heading3 } from "@/components/utils/Text";
 
 export function RegisterCalloutPart() {
-  const history = useHistory();
+  const navigate = useNavigate();
   const { t } = useTranslation();
 
   return (
@@ -22,7 +22,7 @@ export function RegisterCalloutPart() {
           </p>
         </div>
         <div className="flex justify-end items-center">
-          <Button theme="purple" onClick={() => history.push("/register")}>
+          <Button theme="purple" onClick={() => navigate("/register")}>
             {t("settings.account.register.cta")}
           </Button>
         </div>

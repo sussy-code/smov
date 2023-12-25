@@ -60,5 +60,5 @@ export const SearchBarInput = forwardRef<HTMLInputElement, SearchBarProps>(
         </Flare.Child>
       </Flare.Base>
     );
-  }
+  },
 );

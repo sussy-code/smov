@@ -12,7 +12,7 @@ export function ErrorCard(props: {
 }) {
   const [hasCopied, setHasCopied] = useState(false);
   const hasCopiedUnsetDebounce = useRef<ReturnType<typeof setTimeout> | null>(
-    null
+    null,
   );
   const { t } = useTranslation();
 

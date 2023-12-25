@@ -99,6 +99,6 @@ export const useSubtitleStore = create(
     })),
     {
       name: "__MW::subtitles",
-    }
-  )
+    },
+  ),
 );

@@ -9,7 +9,7 @@ export function SectionTitle(props: {
     <h3
       className={classNames(
         "uppercase font-bold text-video-context-type-secondary text-xs pt-8 pl-1 pb-2.5 border-b border-video-context-border",
-        props.className
+        props.className,
       )}
     >
       {props.children}
@@ -47,7 +47,7 @@ export function ScrollToActiveSection(props: {
 
     scrollingContainer.current?.scrollTo(
       0,
-      activeYPos - boxRect.height / 2 + activeLinkRect.height / 2
+      activeYPos - boxRect.height / 2 + activeLinkRect.height / 2,
     );
   }, [props.loaded]);
 

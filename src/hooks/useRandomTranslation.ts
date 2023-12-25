@@ -22,7 +22,7 @@ export function useRandomTranslation() {
 
       return typeof keys === "string" ? keys : defaultTitle;
     },
-    [t, seed, shouldJoke]
+    [t, seed, shouldJoke],
   );
 
   return { t: getRandomTranslation };

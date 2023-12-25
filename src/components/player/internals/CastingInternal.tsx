@@ -102,13 +102,13 @@ export function CastingInternal() {
     }
     newControlller.addEventListener(
       cast.framework.RemotePlayerEventType.IS_CONNECTED_CHANGED,
-      connectionChanged
+      connectionChanged,
     );
 
     return () => {
       newControlller.removeEventListener(
         cast.framework.RemotePlayerEventType.IS_CONNECTED_CHANGED,
-        connectionChanged
+        connectionChanged,
       );
     };
   }, [available, setPlayer, setController, setInstance, setIsCasting]);

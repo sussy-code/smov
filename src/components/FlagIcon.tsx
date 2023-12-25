@@ -51,7 +51,7 @@ export function FlagIcon(props: FlagIconProps) {
     <span
       className={classNames(
         "!w-8 h-6 rounded overflow-hidden bg-video-context-flagBg bg-cover bg-center block fi",
-        props.countryCode ? `fi-${countryCode}` : undefined
+        props.countryCode ? `fi-${countryCode}` : undefined,
       )}
     />
   );

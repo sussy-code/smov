@@ -1,10 +1,11 @@
-import { ReactElement, lazy, useEffect } from "react";
+import { ReactElement, Suspense, lazy, useEffect } from "react";
+import { lazyWithPreload } from "react-lazy-with-preload";
 import {
-  Redirect,
+  Navigate,
   Route,
-  Switch,
-  useHistory,
+  Routes,
   useLocation,
+  useNavigate,
   useParams,
 } from "react-router-dom";
 
@@ -18,24 +19,30 @@ import { DmcaPage, shouldHaveDmcaPage } from "@/pages/Dmca";
 import { NotFoundPage } from "@/pages/errors/NotFoundPage";
 import { HomePage } from "@/pages/HomePage";
 import { LoginPage } from "@/pages/Login";
-import { PlayerView } from "@/pages/PlayerView";
 import { RegisterPage } from "@/pages/Register";
-import { SettingsPage } from "@/pages/Settings";
 import { Layout } from "@/setup/Layout";
 import { useHistoryListener } from "@/stores/history";
 import { LanguageProvider } from "@/stores/language";
 
+const DeveloperPage = lazy(() => import("@/pages/DeveloperPage"));
+const TestView = lazy(() => import("@/pages/developer/TestView"));
+const PlayerView = lazyWithPreload(() => import("@/pages/PlayerView"));
+const SettingsPage = lazyWithPreload(() => import("@/pages/Settings"));
+
+PlayerView.preload();
+SettingsPage.preload();
+
 function LegacyUrlView({ children }: { children: ReactElement }) {
   const location = useLocation();
-  const { replace } = useHistory();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const url = location.pathname;
     if (!isLegacyUrl(url)) return;
     convertLegacyUrl(location.pathname).then((convertedUrl) => {
-      replace(convertedUrl ?? "/");
+      navigate(convertedUrl ?? "/", { replace: true });
     });
-  }, [location.pathname, replace]);
+  }, [location.pathname, navigate]);
 
   if (isLegacyUrl(location.pathname)) return null;
   return children;
@@ -43,17 +50,32 @@ function LegacyUrlView({ children }: { children: ReactElement }) {
 
 function QuickSearch() {
   const { query } = useParams<{ query: string }>();
-  const { replace } = useHistory();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (query) {
       generateQuickSearchMediaUrl(query).then((url) => {
-        replace(url ?? "/");
+        navigate(url ?? "/", { replace: true });
       });
     } else {
-      replace("/");
+      navigate("/", { replace: true });
     }
-  }, [query, replace]);
+  }, [query, navigate]);
+
+  return null;
+}
+
+function QueryView() {
+  const { query } = useParams<{ query: string }>();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (query) {
+      navigate(`/browse/${query}`, { replace: true });
+    } else {
+      navigate("/", { replace: true });
+    }
+  }, [query, navigate]);
 
   return null;
 }
@@ -65,63 +87,65 @@ function App() {
   return (
     <Layout>
       <LanguageProvider />
-      <Switch>
+      <Routes>
         {/* functional routes */}
-        <Route exact path="/s/:query">
-          <QuickSearch />
-        </Route>
-        <Route exact path="/search/:type">
-          <Redirect to="/browse" push={false} />
-        </Route>
-        <Route exact path="/search/:type/:query?">
-          {({ match }) => {
-            if (match?.params.query)
-              return (
-                <Redirect to={`/browse/${match?.params.query}`} push={false} />
-              );
-            return <Redirect to="/browse" push={false} />;
-          }}
-        </Route>
+        <Route path="/s/:query" element={<QuickSearch />} />
+        <Route path="/search/:type" element={<Navigate to="/browse" />} />
+        <Route path="/search/:type/:query?" element={<QueryView />} />
 
         {/* pages */}
-        <Route exact path={["/media/:media", "/media/:media/:season/:episode"]}>
-          <LegacyUrlView>
-            <PlayerView />
-          </LegacyUrlView>
-        </Route>
-        <Route exact path={["/browse/:query?", "/"]} component={HomePage} />
-        <Route exact path="/register" component={RegisterPage} />
-        <Route exact path="/login" component={LoginPage} />
-        <Route exact path="/about" component={AboutPage} />
+        <Route
+          path="/media/:media"
+          element={
+            <LegacyUrlView>
+              <Suspense fallback={null}>
+                <PlayerView />
+              </Suspense>
+            </LegacyUrlView>
+          }
+        />
+        <Route
+          path="/media/:media/:season/:episode"
+          element={
+            <LegacyUrlView>
+              <Suspense fallback={null}>
+                <PlayerView />
+              </Suspense>
+            </LegacyUrlView>
+          }
+        />
+        <Route path="/browse/:query?" element={<HomePage />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/about" element={<AboutPage />} />
 
         {shouldHaveDmcaPage() ? (
-          <Route exact path="/dmca" component={DmcaPage} />
+          <Route path="/dmca" element={<DmcaPage />} />
         ) : null}
 
         {/* Settings page */}
-        <Route exact path="/settings" component={SettingsPage} />
+        <Route
+          path="/settings"
+          element={
+            <Suspense fallback={null}>
+              <SettingsPage />
+            </Suspense>
+          }
+        />
 
         {/* admin routes */}
-        <Route exact path="/admin" component={AdminPage} />
+        <Route path="/admin" element={<AdminPage />} />
 
         {/* other */}
-        <Route
-          exact
-          path="/dev"
-          component={lazy(() => import("@/pages/DeveloperPage"))}
-        />
-        <Route path="/dev/video">
-          <VideoTesterView />
-        </Route>
+        <Route path="/dev" element={<DeveloperPage />} />
+        <Route path="/dev/video" element={<VideoTesterView />} />
         {/* developer routes that can abuse workers are disabled in production */}
         {process.env.NODE_ENV === "development" ? (
-          <Route
-            path="/dev/test"
-            component={lazy(() => import("@/pages/developer/TestView"))}
-          />
+          <Route path="/dev/test" element={<TestView />} />
         ) : null}
-        <Route path="*" component={NotFoundPage} />
-      </Switch>
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
     </Layout>
   );
 }

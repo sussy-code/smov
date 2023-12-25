@@ -24,8 +24,8 @@ export const useVolumeStore = create(
     })),
     {
       name: "__MW::volume",
-    }
-  )
+    },
+  ),
 );
 
 export const useEmpheralVolumeStore = create(
@@ -36,5 +36,5 @@ export const useEmpheralVolumeStore = create(
         s.showVolume = bool;
       });
     },
-  }))
+  })),
 );

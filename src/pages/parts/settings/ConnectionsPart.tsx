@@ -34,14 +34,14 @@ function ProxyEdit({ proxyUrls, setProxyUrls }: ProxyEditProps) {
         }),
       ]);
     },
-    [setProxyUrls]
+    [setProxyUrls],
   );
 
   const removeItem = useCallback(
     (index: number) => {
       setProxyUrls((s) => [...(s ?? []).filter((v, i) => i !== index)]);
     },
-    [setProxyUrls]
+    [setProxyUrls],
   );
 
   return (

@@ -8,7 +8,7 @@ export function LeftSideControls(props: {
   className?: string;
 }) {
   const setHoveringLeftControls = usePlayerStore(
-    (s) => s.setHoveringLeftControls
+    (s) => s.setHoveringLeftControls,
   );
 
   const mouseLeave = useCallback(() => {

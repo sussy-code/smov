@@ -51,7 +51,7 @@ export function Navigation(props: NavigationProps) {
             "fixed left-0 right-0 h-20 flex items-center",
             props.doBackground
               ? "bg-background-main border-b border-utils-divider border-opacity-50"
-              : null
+              : null,
           )}
         >
           {props.doBackground ? (

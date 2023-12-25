@@ -23,16 +23,16 @@ export function Volume(props: Props) {
   const { setVolume, toggleMute } = useVolume();
 
   const commitVolume = useCallback(
-    (percentage) => {
+    (percentage: number) => {
       setVolume(percentage);
     },
-    [setVolume]
+    [setVolume],
   );
 
   const { dragging, dragPercentage, dragMouseDown } = useProgressBar(
     ref,
     commitVolume,
-    true
+    true,
   );
 
   const handleClick = useCallback(() => {

@@ -53,7 +53,7 @@ export const SettingsStore = createVersionedStore<Record<never, never>>()
       subtitleStore.importSubtitleLanguage(
         old.captionSettings.language === "none"
           ? null
-          : old.captionSettings.language
+          : old.captionSettings.language,
       );
 
       return {};

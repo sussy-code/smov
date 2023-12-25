@@ -4,16 +4,28 @@ import loadVersion from "vite-plugin-package-version";
 import { VitePWA } from "vite-plugin-pwa";
 import checker from "vite-plugin-checker";
 import path from "path";
+import million from 'million/compiler';
 import { handlebars } from "./plugins/handlebars";
-import { loadEnv } from "vite";
+import { PluginOption, loadEnv, splitVendorChunkPlugin } from "vite";
+import { visualizer } from "rollup-plugin-visualizer";
 
 import tailwind from "tailwindcss";
 import rtl from "postcss-rtlcss";
+
+const captioningPackages = [
+  "dompurify",
+  "htmlparser2",
+  "subsrt-ts",
+  "parse5",
+  "entities",
+  "fuse"
+];
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd());
   return {
     plugins: [
+      million.vite({ auto: true }),
       handlebars({
         vars: {
           opensearchEnabled: env.VITE_OPENSEARCH_ENABLED === "true",
@@ -34,7 +46,7 @@ export default defineConfig(({ mode }) => {
                 modules: false,
                 useBuiltIns: "entry",
                 corejs: {
-                  version: "3.29",
+                  version: "3.34",
                 },
               },
             ],
@@ -103,10 +115,40 @@ export default defineConfig(({ mode }) => {
           },
         },
       }),
+      splitVendorChunkPlugin(),
+      visualizer() as PluginOption
     ],
 
     build: {
       sourcemap: true,
+      rollupOptions: {
+        output: {
+          manualChunks(id: string) {
+            if (id.includes("@sozialhelden+ietf-language-tags")) {
+              return "ietf-language-tags";
+            }
+            if (id.includes("hls.js")) {
+              return "hls";
+            }
+            if (id.includes("node-forge") || id.includes("crypto-js")) {
+              return "auth";
+            }
+            if (id.includes("locales") && !id.includes("en.json")) {
+              return "locales";
+            }
+            if (id.includes("react-dom")) {
+              return "react-dom";
+            }
+            if (id.includes("Icon.tsx")) {
+              return "Icons";
+            }
+            const isCaptioningPackage = captioningPackages.some(packageName => id.includes(packageName));
+            if (isCaptioningPackage) {
+              return "caption-parsing";
+            }
+          }
+        }
+      }
     },
     css: {
       postcss: {
