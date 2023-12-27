@@ -8,6 +8,7 @@ import {
   DisplayMeta,
 } from "@/components/player/display/displayInterface";
 import { LoadableSource } from "@/stores/player/utils/qualities";
+import { processCdnLink } from "@/utils/cdn";
 import {
   canChangeVolume,
   canFullscreen,
@@ -112,7 +113,7 @@ export function makeChromecastDisplayInterface(
     metaData.title = meta.title;
 
     const mediaInfo = new chrome.cast.media.MediaInfo("video", type);
-    (mediaInfo as any).contentUrl = source.url;
+    (mediaInfo as any).contentUrl = processCdnLink(source.url);
     mediaInfo.streamType = chrome.cast.media.StreamType.BUFFERED;
     mediaInfo.metadata = metaData;
     mediaInfo.customData = {

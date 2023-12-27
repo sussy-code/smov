@@ -18,6 +18,7 @@ interface Config {
   BACKEND_URL: string;
   DISALLOWED_IDS: string;
   TURNSTILE_KEY: string;
+  CDN_REPLACEMENTS: string;
 }
 
 export interface RuntimeConfig {
@@ -32,6 +33,7 @@ export interface RuntimeConfig {
   BACKEND_URL: string;
   DISALLOWED_IDS: string[];
   TURNSTILE_KEY: string | null;
+  CDN_REPLACEMENTS: Array<string[]>;
 }
 
 const env: Record<keyof Config, undefined | string> = {
@@ -46,6 +48,7 @@ const env: Record<keyof Config, undefined | string> = {
   BACKEND_URL: import.meta.env.VITE_BACKEND_URL,
   DISALLOWED_IDS: import.meta.env.VITE_DISALLOWED_IDS,
   TURNSTILE_KEY: import.meta.env.VITE_TURNSTILE_KEY,
+  CDN_REPLACEMENTS: import.meta.env.VITE_CDN_REPLACEMENTS,
 };
 
 // loads from different locations, in order: environment (VITE_{KEY}), window (public/config.js)
@@ -84,5 +87,9 @@ export function conf(): RuntimeConfig {
       .split(",")
       .map((v) => v.trim())
       .filter((v) => v.length > 0), // Should be comma-seperated and contain the media type and ID, formatted like so: movie-753342,movie-753342,movie-753342
+    CDN_REPLACEMENTS: getKey("CDN_REPLACEMENTS", "")
+      .split(",")
+      .map((v) => v.split(":").map((s) => s.trim()))
+      .filter((v) => v.length > 0), // The format is <beforeA>:<afterA>,<beforeB>:<afterB>
   };
 }
