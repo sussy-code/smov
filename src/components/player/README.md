@@ -12,7 +12,7 @@ These parts are internally used, they aren't exported. Do not use them outside o
 
 ### `/display`
 The display interface, abstraction on how to actually play the content (e.g Video element, chrome casting, etc)
- - It must be completely seperate from any react code
+ - It must be completely separate from any react code
  - It must not interact with state, pass async data back with events
 
 ### `/internals`
