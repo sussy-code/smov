@@ -17,22 +17,34 @@ i18n.use(initReactI18next).init({
   },
 });
 
-export const appLanguageOptions = langCodes.map((lang) => {
-  if (lang === "pirate") {
-    return {
-      code: "pirate",
-      name: "Pirate",
-      nativeName: "Pirate Tongue",
-    };
+const extraLanguages: Record<
+  string,
+  {
+    code: string;
+    name: string;
+    nativeName: string;
   }
+> = {
+  pirate: {
+    code: "pirate",
+    name: "Pirate",
+    nativeName: "Pirate Tongue",
+  },
+  minion: {
+    code: "minion",
+    name: "Minion",
+    nativeName: "Minionese",
+  },
+  tok: {
+    code: "tok",
+    name: "Toki pona",
+    nativeName: "Toki pona",
+  },
+};
 
-  if (lang === "minion") {
-    return {
-      code: "minion",
-      name: "Minion",
-      nativeName: "Minionese",
-    };
-  }
+export const appLanguageOptions = langCodes.map((lang) => {
+  const extraLang = extraLanguages[lang];
+  if (extraLang) return extraLang;
 
   const [langObj] = ISO6391.getLanguages([lang]);
   if (!langObj)
