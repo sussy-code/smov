@@ -188,7 +188,6 @@
         "disclaimer": "Lejupielādes tiek ņemtas tieši no pakalpojumu sniedzēja. Movie-web nevar kontrolēt, kā tiek nodrošinātas lejupielādes.",
         "downloadCaption": "Lejupielādēt pašreizējo parakstu",
         "downloadVideo": "Lejupielādēt video",
-        "hlsExplanation": "Šī multivide ir HLS straume, kuru nevar lejupielādēt filmu tīmeklī.",
         "onAndroid": {
           "1": "Lai lejupielādētu operētājsistēmā Android, noklikšķiniet uz lejupielādes pogas, pēc tam jaunajā lapā <bold>pieskarieties videoklipam un turiet to</bold>, pēc tam atlasiet <bold>saglabāt</bold>.",
           "shortTitle": "Lejupielādēt / Android",

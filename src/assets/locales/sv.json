@@ -188,7 +188,6 @@
         "disclaimer": "Nedladdningar görs direkt från leverantören. movie-web har ingen kontroll över hur nedladdningarna tillhandahålls.",
         "downloadCaption": "Ladda ner aktuell undertext",
         "downloadVideo": "Ladda ner video",
-        "hlsExplanation": "Denna media är en HLS-ström som inte kan laddas ner på movie-web.",
         "onAndroid": {
           "1": "För att ladda ner på Android, klicka på nedladdningsknappen och på den nya sidan <bold>trycker och håller</bold> på videon, välj sedan <bold>spara</bold>.",
           "shortTitle": "Ladda ner / Android",

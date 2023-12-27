@@ -189,7 +189,6 @@
         "disclaimer": "Las descargas se realizan directamente desde el proveedor. movie-web no tiene control sobre cómo se proporcionan las descargas.",
         "downloadCaption": "Descargar subtítulo actual",
         "downloadVideo": "Descargar vídeo",
-        "hlsExplanation": "Este contenido es una transmisión HLS que no se puede descargar en movie-web.",
         "onAndroid": {
           "1": "Para descargar en Android, haz clic en el botón de descarga y luego, en la nueva página, <bold>mantén presionado</bold> el vídeo y selecciona <bold>guardar</bold>.",
           "shortTitle": "Descargar / Android",

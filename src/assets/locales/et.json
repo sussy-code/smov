@@ -154,7 +154,6 @@
         "disclaimer": "Allalaadimine toimub otse teenusepakkujalt. movie-web ei saa kontrollida, kuidas allalaadimine toimub.",
         "downloadCaption": "Lae alla praegused subtiitrid",
         "downloadVideo": "Lae alla video",
-        "hlsExplanation": "See meedia on HLS voog, mida ei saa alla laadida.",
         "onAndroid": {
           "1": "Et allalaadida Androidi telefonil, vajuta allalaadimise nupule, siis uuel leheküljel <bold>vajuta ja hoia</bold> video peal, siis vali <bold>salvesta</bold>.",
           "shortTitle": "Allalaadimine / Android",

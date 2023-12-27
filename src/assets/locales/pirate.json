@@ -144,7 +144,6 @@
         "disclaimer": "Downloads be taken directly from the provider. movie-web does not have control over how the downloads be provided.",
         "downloadCaption": "Download sea shanty",
         "downloadVideo": "Download film",
-        "hlsExplanation": "Insert explanation for why ye can't download HLS here",
         "onAndroid": {
           "1": "To download on Android, <bold>tap and hold</bold> on the film, then select <bold>save</bold>.",
           "shortTitle": "Download / Android",

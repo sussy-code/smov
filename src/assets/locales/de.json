@@ -189,7 +189,6 @@
         "disclaimer": "Videos werden direkt vom Provider heruntergeladen. movie-web hat nicht steuern, wie die Downloads bereitgestellt werden.",
         "downloadCaption": "Ausgewählte Untertitel herunterladen",
         "downloadVideo": "Video herunterladen",
-        "hlsExplanation": "Dieses Video ist ein HLS-Stream, welcher auf movie-web nicht heruntergeladen werden kann.",
         "onAndroid": {
           "1": "Um auf Android Herunterzuladen, tippe auf den Download-Button, <bold>tippe und halte</bold> auf der neuen Seite auf das Video und wähle <bold>Speichern</bold> aus.",
           "shortTitle": "Download / Android",
