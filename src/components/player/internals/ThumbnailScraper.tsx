@@ -5,6 +5,7 @@ import { playerStatus } from "@/stores/player/slices/source";
 import { ThumbnailImage } from "@/stores/player/slices/thumbnails";
 import { usePlayerStore } from "@/stores/player/store";
 import { LoadableSource, selectQuality } from "@/stores/player/utils/qualities";
+import { processCdnLink } from "@/utils/cdn";
 import { isSafari } from "@/utils/detectFeatures";
 
 function makeQueue(layers: number): number[] {
@@ -46,11 +47,11 @@ class ThumnbnailWorker {
     const canvas = document.createElement("canvas");
     this.hls = new Hls();
     if (source.type === "mp4") {
-      el.src = source.url;
+      el.src = processCdnLink(source.url);
       el.crossOrigin = "anonymous";
     } else if (source.type === "hls") {
       this.hls.attachMedia(el);
-      this.hls.loadSource(source.url);
+      this.hls.loadSource(processCdnLink(source.url));
     } else throw new Error("Invalid loadable source type");
     this.videoEl = el;
     this.canvasEl = canvas;

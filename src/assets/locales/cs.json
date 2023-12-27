@@ -189,7 +189,6 @@
         "disclaimer": "Stahování probíhá přímo u poskytovatele. movie-web nemá kontrolu nad tím, jak jsou stahování poskytovány.",
         "downloadCaption": "Stáhnout titulky",
         "downloadVideo": "Stáhnout video",
-        "hlsExplanation": "Toto médium je proud HLS, který nelze stáhnout na movie-web.",
         "onAndroid": {
           "1": "Na Androidu klikněte na tlačítko stahování, poté na nové stránce <bold>klepněte a podržte</bold> na videu a poté vyberte <bold>uložit</bold>.",
           "shortTitle": "Stahování / Android",
