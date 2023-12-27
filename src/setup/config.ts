@@ -89,7 +89,12 @@ export function conf(): RuntimeConfig {
       .filter((v) => v.length > 0), // Should be comma-seperated and contain the media type and ID, formatted like so: movie-753342,movie-753342,movie-753342
     CDN_REPLACEMENTS: getKey("CDN_REPLACEMENTS", "")
       .split(",")
-      .map((v) => v.split(":").map((s) => s.trim()))
+      .map((v) =>
+        v
+          .split(":")
+          .map((s) => s.trim())
+          .filter((s) => s.length > 0),
+      )
       .filter((v) => v.length > 0), // The format is <beforeA>:<afterA>,<beforeB>:<afterB>
   };
 }
