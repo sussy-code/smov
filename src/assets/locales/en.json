@@ -188,8 +188,9 @@
       "downloads": {
         "title": "Download",
         "disclaimer": "Downloads are taken directly from the provider. movie-web does not have control over how the downloads are provided.",
-        "hlsExplanation": "This media is a HLS stream which cannot be downloaded on movie-web.",
+        "hlsDisclaimer": "Downloads are taken directly from the provider. movie-web does not have control over how the downloads are provided. Please note that you are downloading an HLS playlist, this is intended for users familiar with advanced multimedia streaming.",
         "downloadVideo": "Download video",
+        "downloadPlaylist": "Download playlist",
         "downloadCaption": "Download current caption",
         "onPc": {
           "1": "On PC, click the download button then, on the new page, right click the video and select <bold>Save video as</bold>",
