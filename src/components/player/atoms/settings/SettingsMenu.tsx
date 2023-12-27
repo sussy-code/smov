@@ -37,6 +37,8 @@ export function SettingsMenu({ id }: { id: string }) {
 
   const source = usePlayerStore((s) => s.source);
 
+  const downloadable = source?.type === "file" || source?.type === "hls";
+
   return (
     <Menu.Card>
       <Menu.SectionTitle>
@@ -58,12 +60,10 @@ export function SettingsMenu({ id }: { id: string }) {
         <Menu.Link
           clickable
           onClick={() =>
-            router.navigate(
-              source?.type === "file" ? "/download" : "/download/unable",
-            )
+            router.navigate(downloadable ? "/download" : "/download/unable")
           }
           rightSide={<Icon className="text-xl" icon={Icons.DOWNLOAD} />}
-          className={source?.type === "file" ? "opacity-100" : "opacity-50"}
+          className={downloadable ? "opacity-100" : "opacity-50"}
         >
           {t("player.menus.settings.downloadItem")}
         </Menu.Link>

@@ -15,6 +15,7 @@ function useDownloadLink() {
   const url = useMemo(() => {
     if (source?.type === "file" && currentQuality)
       return source.qualities[currentQuality]?.url ?? null;
+    if (source?.type === "hls") return source.url;
     return null;
   }, [source, currentQuality]);
   return url;
@@ -42,6 +43,7 @@ export function DownloadView({ id }: { id: string }) {
   const { t } = useTranslation();
   const downloadUrl = useDownloadLink();
 
+  const sourceType = usePlayerStore((s) => s.source?.type);
   const selectedCaption = usePlayerStore((s) => s.caption?.selected);
   const subtitleUrl = useMemo(
     () =>
@@ -60,36 +62,61 @@ export function DownloadView({ id }: { id: string }) {
       </Menu.BackLink>
       <Menu.Section>
         <div>
-          <Menu.ChevronLink onClick={() => router.navigate("/download/pc")}>
-            {t("player.menus.downloads.onPc.title")}
-          </Menu.ChevronLink>
-          <Menu.ChevronLink onClick={() => router.navigate("/download/ios")}>
-            {t("player.menus.downloads.onIos.title")}
-          </Menu.ChevronLink>
-          <Menu.ChevronLink
-            onClick={() => router.navigate("/download/android")}
-          >
-            {t("player.menus.downloads.onAndroid.title")}
-          </Menu.ChevronLink>
+          {sourceType === "hls" ? (
+            <>
+              <Menu.Paragraph marginClass="mb-6">
+                <StyleTrans k="player.menus.downloads.hlsDisclaimer" />
+              </Menu.Paragraph>
 
-          <Menu.Divider />
+              <Button className="w-full" href={downloadUrl} theme="purple">
+                {t("player.menus.downloads.downloadPlaylist")}
+              </Button>
+              <Button
+                className="w-full mt-2"
+                href={subtitleUrl ?? undefined}
+                disabled={!subtitleUrl}
+                theme="secondary"
+                download="subtitles.srt"
+              >
+                {t("player.menus.downloads.downloadCaption")}
+              </Button>
+            </>
+          ) : (
+            <>
+              <Menu.ChevronLink onClick={() => router.navigate("/download/pc")}>
+                {t("player.menus.downloads.onPc.title")}
+              </Menu.ChevronLink>
+              <Menu.ChevronLink
+                onClick={() => router.navigate("/download/ios")}
+              >
+                {t("player.menus.downloads.onIos.title")}
+              </Menu.ChevronLink>
+              <Menu.ChevronLink
+                onClick={() => router.navigate("/download/android")}
+              >
+                {t("player.menus.downloads.onAndroid.title")}
+              </Menu.ChevronLink>
 
-          <Menu.Paragraph marginClass="my-6">
-            <StyleTrans k="player.menus.downloads.disclaimer" />
-          </Menu.Paragraph>
+              <Menu.Divider />
 
-          <Button className="w-full" href={downloadUrl} theme="purple">
-            {t("player.menus.downloads.downloadVideo")}
-          </Button>
-          <Button
-            className="w-full mt-2"
-            href={subtitleUrl ?? undefined}
-            disabled={!subtitleUrl}
-            theme="secondary"
-            download="subtitles.srt"
-          >
-            {t("player.menus.downloads.downloadCaption")}
-          </Button>
+              <Menu.Paragraph marginClass="my-6">
+                <StyleTrans k="player.menus.downloads.disclaimer" />
+              </Menu.Paragraph>
+
+              <Button className="w-full" href={downloadUrl} theme="purple">
+                {t("player.menus.downloads.downloadVideo")}
+              </Button>
+              <Button
+                className="w-full mt-2"
+                href={subtitleUrl ?? undefined}
+                disabled={!subtitleUrl}
+                theme="secondary"
+                download="subtitles.srt"
+              >
+                {t("player.menus.downloads.downloadCaption")}
+              </Button>
+            </>
+          )}
         </div>
       </Menu.Section>
     </>
