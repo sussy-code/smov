@@ -12,6 +12,7 @@ import {
   SourceQuality,
   getPreferredQuality,
 } from "@/stores/player/utils/qualities";
+import { processCdnLink } from "@/utils/cdn";
 import {
   canChangeVolume,
   canFullscreen,
@@ -101,7 +102,7 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
   function setupSource(vid: HTMLVideoElement, src: LoadableSource) {
     if (src.type === "hls") {
       if (canPlayHlsNatively(vid)) {
-        vid.src = src.url;
+        vid.src = processCdnLink(src.url);
         vid.currentTime = startAt;
         return;
       }
@@ -151,12 +152,12 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
       }
 
       hls.attachMedia(vid);
-      hls.loadSource(src.url);
+      hls.loadSource(processCdnLink(src.url));
       vid.currentTime = startAt;
       return;
     }
 
-    vid.src = src.url;
+    vid.src = processCdnLink(src.url);
     vid.currentTime = startAt;
   }
 
