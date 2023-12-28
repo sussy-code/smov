@@ -58,7 +58,7 @@ export function CaptionPreview(props: {
               }
             >
               <CaptionCue
-                text={t("settings.captions.previewQuote") ?? undefined}
+                text={t("settings.subtitles.previewQuote") ?? undefined}
                 styling={props.styling}
                 overrideCasing={false}
               />
@@ -79,11 +79,11 @@ export function CaptionsPart(props: {
 
   return (
     <div>
-      <Heading1 border>{t("settings.captions.title")}</Heading1>
+      <Heading1 border>{t("settings.subtitles.title")}</Heading1>
       <div className="grid md:grid-cols-[1fr,356px] gap-8">
         <div className="space-y-6">
           <CaptionSetting
-            label={t("settings.captions.backgroundLabel")}
+            label={t("settings.subtitles.backgroundLabel")}
             max={100}
             min={0}
             onChange={(v) =>
@@ -93,7 +93,7 @@ export function CaptionsPart(props: {
             textTransformer={(s) => `${s}%`}
           />
           <CaptionSetting
-            label={t("settings.captions.textSizeLabel")}
+            label={t("settings.subtitles.textSizeLabel")}
             max={200}
             min={1}
             textTransformer={(s) => `${s}%`}
@@ -104,7 +104,7 @@ export function CaptionsPart(props: {
           />
           <div className="flex justify-between items-center">
             <Menu.FieldTitle>
-              {t("settings.captions.colorLabel")}
+              {t("settings.subtitles.colorLabel")}
             </Menu.FieldTitle>
             <div className="flex justify-center items-center">
               {colors.map((v) => (

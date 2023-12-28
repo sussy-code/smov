@@ -32,7 +32,7 @@ export function SettingsMenu({ id }: { id: string }) {
 
   const selectedLanguagePretty = selectedCaptionLanguage
     ? getLanguageFromIETF(selectedCaptionLanguage) ??
-      t("player.menus.captions.unknownLanguage")
+      t("player.menus.subtitles.unknownLanguage")
     : undefined;
 
   const source = usePlayerStore((s) => s.source);
@@ -81,13 +81,13 @@ export function SettingsMenu({ id }: { id: string }) {
             />
           }
         >
-          {t("player.menus.settings.enableCaptions")}
+          {t("player.menus.settings.enableSubtitles")}
         </Menu.Link>
         <Menu.ChevronLink
           onClick={() => router.navigate("/captions")}
           rightText={selectedLanguagePretty ?? undefined}
         >
-          {t("player.menus.settings.captionItem")}
+          {t("player.menus.settings.subtitleItem")}
         </Menu.ChevronLink>
         <Menu.ChevronLink onClick={() => router.navigate("/playback")}>
           {t("player.menus.settings.playbackItem")}
