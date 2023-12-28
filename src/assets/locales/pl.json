@@ -1,10 +1,31 @@
 {
   "auth": {
     "deviceNameLabel": "Nazwa urządzenia",
-    "deviceNamePlaceholder": "Telefon osobisty"
+    "deviceNamePlaceholder": "Telefon osobisty",
+    "register": {
+      "information": {
+        "title": "Informacje o koncie"
+      }
+    },
+    "verify": {
+      "register": "Utwórz konto"
+    }
+  },
+  "footer": {
+    "links": {
+      "discord": "Discord",
+      "dmca": "DMCA",
+      "github": "GitHub"
+    }
   },
   "global": {
-    "name": "movie-web"
+    "name": "movie-web",
+    "pages": {
+      "about": "Informacje",
+      "dmca": "DMCA",
+      "login": "Zaloguj sie",
+      "settings": "Ustawienia"
+    }
   },
   "home": {
     "bookmarks": {
