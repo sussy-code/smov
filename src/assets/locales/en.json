@@ -143,8 +143,8 @@
       "settings": {
         "videoSection": "Video settings",
         "experienceSection": "Viewing experience",
-        "enableCaptions": "Enable captions",
-        "captionItem": "Caption settings",
+        "enableSubtitles": "Enable Subtitles",
+        "subtitleItem": "Subtitle settings",
         "sourceItem": "Video sources",
         "playbackItem": "Playback settings",
         "downloadItem": "Download",
@@ -174,10 +174,11 @@
           "text": "There was an error while trying to find any videos, please try a different source."
         }
       },
-      "captions": {
-        "title": "Captions",
+      "subtitles": {
+        "title": "Subtitles",
         "customizeLabel": "Customize",
         "settings": {
+          "backlink": "Custom Subtitles",
           "fixCapitals": "Fix capitalization",
           "delay": "Caption delay"
         },
@@ -363,8 +364,8 @@
       "language": "Application language",
       "languageDescription": "Language applied to the entire application."
     },
-    "captions": {
-      "title": "Captions",
+    "subtitles": {
+      "title": "Subtitles",
       "previewQuote": "I must not fear. Fear is the mind-killer.",
       "backgroundLabel": "Background opacity",
       "textSizeLabel": "Text size",

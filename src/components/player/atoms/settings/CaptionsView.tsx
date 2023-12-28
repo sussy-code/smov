@@ -57,7 +57,7 @@ function CustomCaptionOption() {
       selected={lang === "custom"}
       onClick={() => fileInput.current?.click()}
     >
-      {t("player.menus.captions.customChoice")}
+      {t("player.menus.subtitles.customChoice")}
       <input
         className="hidden"
         ref={fileInput}
@@ -85,7 +85,7 @@ function CustomCaptionOption() {
 
 function useSubtitleList(subs: CaptionListItem[], searchQuery: string) {
   const { t: translate } = useTranslation();
-  const unknownChoice = translate("player.menus.captions.unknownLanguage");
+  const unknownChoice = translate("player.menus.subtitles.unknownLanguage");
   return useMemo(() => {
     const input = subs.map((t) => ({
       ...t,
@@ -162,11 +162,11 @@ export function CaptionsView({ id }: { id: string }) {
               onClick={() => router.navigate("/captions/settings")}
               className="py-1 -my-1 px-3 -mx-3 rounded tabbable"
             >
-              {t("player.menus.captions.customizeLabel")}
+              {t("player.menus.subtitles.customizeLabel")}
             </button>
           }
         >
-          {t("player.menus.captions.title")}
+          {t("player.menus.subtitles.title")}
         </Menu.BackLink>
         <div className="mt-3">
           <Input value={searchQuery} onInput={setSearchQuery} />
@@ -174,7 +174,7 @@ export function CaptionsView({ id }: { id: string }) {
       </div>
       <Menu.ScrollToActiveSection className="!pt-1 mt-2 pb-3">
         <CaptionOption onClick={() => disable()} selected={!lang}>
-          {t("player.menus.captions.offChoice")}
+          {t("player.menus.subtitles.offChoice")}
         </CaptionOption>
         <CustomCaptionOption />
         {content}
