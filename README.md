@@ -27,7 +27,7 @@ We do not want this project to be yet another bulky streaming site, instead it a
 
 On top of that, hosting should be as cheap and simple as possible. Just a static website with a proxy, with an optional backend if you want cross-device syncing.
 
-Content is fetched from third parties and scraping is done fully done on the client. This means that the hoster has no files or media on their server. All files are streamed directly from the third parties.
+Content is fetched from third parties and scraping is fully done on the client. This means that the hoster has no files or media on their server. All files are streamed directly from the third parties.
 
 ## ⚠️ Limitations
 
