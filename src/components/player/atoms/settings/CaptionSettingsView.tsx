@@ -229,7 +229,7 @@ export function CaptionSettingsView({ id }: { id: string }) {
   return (
     <>
       <Menu.BackLink onClick={() => router.navigate("/captions")}>
-        Custom Subtitles
+        {t("player.menus.subtitles.settings.backlink")}
       </Menu.BackLink>
       <Menu.Section className="space-y-6">
         <CaptionSetting

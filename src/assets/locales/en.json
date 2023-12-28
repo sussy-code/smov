@@ -178,6 +178,7 @@
         "title": "Subtitles",
         "customizeLabel": "Customize",
         "settings": {
+          "backlink": "Custom Subtitles",
           "fixCapitals": "Fix capitalization",
           "delay": "Caption delay"
         },
