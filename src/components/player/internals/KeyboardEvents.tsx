@@ -94,7 +94,8 @@ export function KeyboardEvents() {
       // Video playback speed
       if (k === ">" || k === "<") {
         const options = [0.25, 0.5, 1, 1.5, 2];
-        const idx = options.indexOf(dataRef.current.mediaPlaying?.playbackRate);
+        let idx = options.indexOf(dataRef.current.mediaPlaying?.playbackRate);
+        if (idx === -1) idx = options.indexOf(1);
         const nextIdx = idx + (k === ">" ? 1 : -1);
         const next = options[nextIdx];
         if (next) dataRef.current.display?.setPlaybackRate(next);
