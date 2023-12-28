@@ -50,16 +50,44 @@
         "title": "Informacje o koncie"
       }
     },
+    "trust": {
+      "failed": {
+        "text": "Skonfigurowałeś to poprawnie?",
+        "title": "Nie udało się połączyć z serwerem"
+      },
+      "host": "Łączysz się z <0>{{hostname}}</0> - przed utworzeniem konta potwierdź, że ufasz temu serwerowi",
+      "no": "Wstecz",
+      "title": "Ufasz temu serwerowi?",
+      "yes": "Ufam temu serwerowi"
+    },
     "verify": {
-      "register": "Utwórz konto"
+      "description": "Wprowadź swoją frazę hasła, aby potwierdzić jego zapisanie i utworzyć konto",
+      "invalidData": "Dane są nieprawidłowe",
+      "noMatch": "Fraza hasła nie pasuje",
+      "passphraseLabel": "Twoja 12-wyrazowa fraza hasła",
+      "recaptchaFailed": "Weryfikacja ReCaptcha nie powiodła się",
+      "register": "Utwórz konto",
+      "title": "Potwierdź swoją frazę hasła"
     }
   },
+  "errors": {
+    "badge": "Zepsuło się",
+    "details": "Szczegóły błędu",
+    "reloadPage": "Odśwież stronę",
+    "showError": "Pokaż szczegóły błędu",
+    "title": "Napotkaliśmy błąd!"
+  },
   "footer": {
+    "legal": {
+      "disclaimer": "Zastrzeżenie",
+      "disclaimerText": "movie-web nie przechowuje żadnych plików, zawiera jedynie łącza do usług stron trzecich. Kwestie prawne należy konsultować z hostami plików i dostawcami. movie-web nie ponosi odpowiedzialności za jakiekolwiek pliki multimedialne prezentowane przez dostawców wideo."
+    },
     "links": {
       "discord": "Discord",
       "dmca": "DMCA",
       "github": "GitHub"
-    }
+    },
+    "tagline": "Oglądaj swoje ulubione programy i filmy za pomocą tej aplikacji streamingowej typu open source."
   },
   "global": {
     "name": "movie-web",
@@ -67,6 +95,8 @@
       "about": "Informacje",
       "dmca": "DMCA",
       "login": "Zaloguj sie",
+      "pagetitle": "{{title}} - movie-web",
+      "register": "Zarejestruj się",
       "settings": "Ustawienia"
     }
   },
@@ -77,6 +107,9 @@
     "continueWatching": {
       "sectionTitle": "Kontynuuj oglądanie"
     },
+    "mediaList": {
+      "stopEditing": "Przestań edytować"
+    },
     "search": {
       "allResults": "To wszystko co mamy!",
       "failed": "Nie udało się znaleźć mediów, Spróbuj ponownie!",
@@ -84,6 +117,23 @@
       "noResults": "Nie mogliśmy niczego znaleźć!",
       "placeholder": "Co chciałbyś obejrzeć?",
       "sectionTitle": "Wyniki wyszukiwania"
+    },
+    "titles": {
+      "day": {
+        "default": "Co chciałbyś obejrzeć dziś po południu?"
+      },
+      "morning": {
+        "default": "Co chciałbyś obejrzeć dziś rano?",
+        "extra": [
+          "Słyszałem że „Przed wschodem słońca” jest dobre"
+        ]
+      },
+      "night": {
+        "default": "Co chciałbyś obejrzeć dziś wieczorem?",
+        "extra": [
+          "Zmęczony? Słyszałem że „Egzorcysta” jest dobry."
+        ]
+      }
     }
   },
   "media": {
@@ -96,41 +146,135 @@
   "navigation": {
     "banner": {
       "offline": "Sprawdź swoje połączenie sieciowe"
+    },
+    "menu": {
+      "about": "O nas",
+      "donation": "Wspieraj nas",
+      "logout": "Wyloguj się",
+      "register": "Synchronizuj z chmurą",
+      "settings": "Ustawienia",
+      "support": "Wsparcie"
     }
   },
   "notFound": {
     "badge": "Nie znaleziono",
     "goHome": "Wróć na stronę główną",
-    "message": "Szukaliśmy wszędzie: w koszu, w szafie a nawet w piwnicy, ale nie byliśmy w stanie znaleźć strony której szukasz.",
+    "message": "Szukaliśmy wszędzie: w koszu, w szafie, a nawet w piwnicy, ale nie byliśmy w stanie znaleźć strony której szukasz.",
     "title": "Nie można znaleźć tej strony"
   },
   "overlays": {
-    "close": "Zamknąć"
+    "close": "Zamknij"
   },
   "player": {
     "back": {
       "default": "Wróć na stronę główną",
       "short": "Wróć"
     },
+    "casting": {
+      "enabled": "Przesyłam na urządzenie..."
+    },
     "menus": {
+      "downloads": {
+        "disclaimer": "Pliki do pobrania są pobierane bezpośrednio od dostawcy. movie-web nie ma kontroli nad sposobem dostarczania plików do pobrania.",
+        "downloadCaption": "Pobierz aktualne napisy",
+        "downloadPlaylist": "Pobierz playlistę",
+        "downloadVideo": "Pobierz wideo",
+        "hlsDisclaimer": "Pliki do pobrania są pobierane bezpośrednio od dostawcy. movie-web nie ma kontroli nad sposobem dostarczania plików do pobrania. Należy pamiętać, że pobierana jest playlista HLS, przeznaczona dla użytkowników zaznajomionych z zaawansowanym strumieniowaniem multimediów.",
+        "onAndroid": {
+          "1": "Aby pobrać na Androidzie, kliknij przycisk pobierania, a następnie na nowej stronie <bold>dotknij i przytrzymaj</bold> na filmie, a następnie wybierz <bold>zapisz</bold>.",
+          "shortTitle": "Pobierz / Android",
+          "title": "Pobieranie na Androidzie"
+        },
+        "onIos": {
+          "1": "Aby pobrać na iOS, kliknij przycisk pobierania, a następnie na nowej stronie, kliknij <bold><ios_share /></bold>, a następnie <bold>Zapisz do plików <ios_files /></bold>.",
+          "shortTitle": "Pobierz / iOS",
+          "title": "Pobieranie na iOS"
+        },
+        "onPc": {
+          "1": "Na komputerze, kliknij przycisk pobierania, a następnie na nowej stronie, kliknij wideo prawym przyciskiem myszy i wybierz <bold>Zapisz wideo jako</bold>",
+          "shortTitle": "Pobierz / Komputer",
+          "title": "Pobieranie na komputerze"
+        },
+        "title": "Pobierz"
+      },
       "episodes": {
         "button": "Odcinki",
+        "emptyState": "Nie ma odcinków w tym sezonie, sprawdź później!",
+        "episodeBadge": "E{{episode}}",
+        "loadingError": "Błąd podczas ładowania sezonu",
         "loadingList": "Wczytywanie...",
         "loadingTitle": "Wczytywanie..."
       },
+      "playback": {
+        "speedLabel": "Szybkość odtwarzania",
+        "title": "Ustawienia odtwarzania"
+      },
+      "quality": {
+        "automaticLabel": "Jakość automatyczna",
+        "hint": "Możesz spróbować <0>przełączyć źródło</0> aby uzyskać różne opcje jakości.",
+        "iosNoQuality": "Ze względu na ograniczenia zdefiniowane przez Apple, wybór jakości nie jest dostępny w systemie iOS dla tego źródła. Możesz spróbować <0>przełączyć na inne źródło</0> aby uzyskać inne opcje jakości.",
+        "title": "Jakość"
+      },
+      "settings": {
+        "captionItem": "Ustawienia napisów",
+        "downloadItem": "Pobierz",
+        "enableCaptions": "Włącz napisy",
+        "playbackItem": "Ustawienia odtwarzania",
+        "qualityItem": "Jakość",
+        "sourceItem": "Źródła wideo",
+        "videoSection": "Ustawienia wideo"
+      },
       "sources": {
-        "title": "Źródła"
+        "failed": {
+          "text": "Wystąpił błąd podczas próby znalezienia filmów. Spróbuj użyć innego źródła.",
+          "title": "Nie udało się zgarnąć"
+        },
+        "noEmbeds": {
+          "text": "Nie znaleźliśmy żadnych osadzonych plików. Spróbuj użyć innego źródła.",
+          "title": "Nie znaleziono osadzonych treści"
+        },
+        "noStream": {
+          "text": "To źródło nie ma strumieni dla tego filmu lub programu.",
+          "title": "Brak strumienia"
+        },
+        "title": "Źródła",
+        "unknownOption": "Nieznany"
+      },
+      "subtitles": {
+        "customizeLabel": "Dostosuj",
+        "offChoice": "Wyłączone",
+        "settings": {
+          "backlink": "Własne napisy",
+          "delay": "Opóźnienie napisów",
+          "fixCapitals": "Popraw kapitalizację"
+        },
+        "title": "Napisy",
+        "unknownLanguage": "Nieznany"
       }
     },
     "metadata": {
+      "failed": {
+        "badge": "Nie powiodło się",
+        "homeButton": "Wróć na stronę główną",
+        "text": "Nie można załadować metadanych multimediów z TMDB. Sprawdź czy TMDB nie działa lub jest zablokowany na twoim połączeniu internetowym.",
+        "title": "Nie udało się załadować metadanych"
+      },
       "notFound": {
         "badge": "Nie znaleziono",
         "homeButton": "Wróć na stronę główną",
-        "text": "Nie mogliśmy znaleźć rządanych multimediów. Albo zostały usunięte, albo grzebałeś przy adresie URL.",
+        "text": "Nie znaleźliśmy żądanych multimediów. Albo został usunięty, albo zmieniłeś adres URL.",
         "title": "Nie można znaleźć multimediów."
       }
     },
+    "nextEpisode": {
+      "cancel": "Anuluj",
+      "next": "Następny odcinek"
+    },
     "playbackError": {
+      "badge": "Błąd odtwarzania",
+      "errors": {
+        "errorAborted": "Pobieranie multimediów zostało przerwane na żądanie użytkownika."
+      },
       "title": "Ups, popsuło się!"
     }
   }
