@@ -113,14 +113,6 @@ export function KeyboardEvents() {
         dataRef.current.display?.setTime(dataRef.current.time + 1);
       if (k === "," && dataRef.current.mediaPlaying?.isPaused)
         dataRef.current.display?.setTime(dataRef.current.time - 1);
-      if (/\d/.exec(k) && !dataRef.current.isSeeking) {
-        const num = parseInt(k, 10);
-        if (num === 0) dataRef.current.display?.setTime(0);
-        const percent = num / 10;
-        dataRef.current.display?.setTime(
-          dataRef.current.mediaProgress.duration * percent,
-        );
-      }
 
       // Utils
       if (k === "f") dataRef.current.display?.toggleFullscreen();
