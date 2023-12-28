@@ -124,15 +124,11 @@
       },
       "morning": {
         "default": "What would you like to watch this morning?",
-        "extra": [
-          "I hear Before Sunrise is good"
-        ]
+        "extra": ["I hear Before Sunrise is good"]
       },
       "night": {
         "default": "What would you like to watch tonight?",
-        "extra": [
-          "Tired? I hear The Exorcist is good."
-        ]
+        "extra": ["Tired? I hear The Exorcist is good."]
       }
     }
   },
@@ -211,18 +207,18 @@
       "subtitles": {
         "title": "Subtitles",
         "customizeLabel": "Customize",
-        "offChoice": "Off",
         "settings": {
-          "backlink": "Custom Subtitles",
           "fixCapitals": "Fix capitalization",
-          "delay": "Caption delay"
+          "delay": "Subtitle delay",
+          "backlink": "Custom subtitles"
         },
-        "title": "Captions",
+        "customChoice": "Select subtitle from file",
+        "offChoice": "Off",
         "unknownLanguage": "Unknown"
       },
       "downloads": {
         "disclaimer": "Downloads are taken directly from the provider. movie-web does not have control over how the downloads are provided.",
-        "downloadCaption": "Download current caption",
+        "downloadSubtitle": "Download current subtitle",
         "downloadPlaylist": "Download playlist",
         "downloadVideo": "Download video",
         "hlsDisclaimer": "Downloads are taken directly from the provider. movie-web does not have control over how the downloads are provided. Please note that you are downloading an HLS playlist, this is intended for users familiar with advanced multimedia streaming.",
@@ -243,14 +239,6 @@
         },
         "title": "Download"
       },
-      "episodes": {
-        "button": "Episodes",
-        "emptyState": "There are no episodes in this season, check back later!",
-        "episodeBadge": "E{{episode}}",
-        "loadingError": "Error loading season",
-        "loadingList": "Loading...",
-        "loadingTitle": "Loading..."
-      },
       "playback": {
         "speedLabel": "Playback speed",
         "title": "Playback settings"
@@ -260,32 +248,6 @@
         "hint": "You can try <0>switching source</0> to get different quality options.",
         "iosNoQuality": "Due to Apple-defined limitations, quality selection is not available on iOS for this source. You can try <0>switching to another source</0> to get different quality options.",
         "title": "Quality"
-      },
-      "settings": {
-        "captionItem": "Subtitle settings",
-        "downloadItem": "Download",
-        "enableCaptions": "Enable captions",
-        "experienceSection": "Viewing experience",
-        "playbackItem": "Playback settings",
-        "qualityItem": "Quality",
-        "sourceItem": "Video sources",
-        "videoSection": "Video settings"
-      },
-      "sources": {
-        "failed": {
-          "text": "There was an error while trying to find any videos, please try a different source.",
-          "title": "Failed to scrape"
-        },
-        "noEmbeds": {
-          "text": "We were unable to find any embeds, please try a different source.",
-          "title": "No embeds found"
-        },
-        "noStream": {
-          "text": "This source has no streams for this movie or show.",
-          "title": "No stream"
-        },
-        "title": "Sources",
-        "unknownOption": "Unknown"
       }
     },
     "metadata": {
@@ -412,7 +374,8 @@
       "title": "Subtitles",
       "previewQuote": "I must not fear. Fear is the mind-killer.",
       "textSizeLabel": "Text size",
-      "title": "Captions"
+      "backgroundLabel": "Background opacity",
+      "colorLabel": "Color"
     },
     "connections": {
       "server": {
