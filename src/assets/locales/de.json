@@ -174,17 +174,6 @@
       "enabled": "Casting zum Gerät..."
     },
     "menus": {
-      "captions": {
-        "customChoice": "Untertitel hochladen",
-        "customizeLabel": "Bearbeiten",
-        "offChoice": "Aus",
-        "settings": {
-          "delay": "Untertitelverzögerung",
-          "fixCapitals": "Großschreibung korrigieren"
-        },
-        "title": "Untertitel",
-        "unknownLanguage": "Unbekannt"
-      },
       "downloads": {
         "disclaimer": "Videos werden direkt vom Provider heruntergeladen. movie-web hat nicht steuern, wie die Downloads bereitgestellt werden.",
         "downloadCaption": "Ausgewählte Untertitel herunterladen",
@@ -370,13 +359,6 @@
         "teal": "Türkis"
       },
       "title": "Aussehen"
-    },
-    "captions": {
-      "backgroundLabel": "Hintergrund-Deckkraft",
-      "colorLabel": "Farbe",
-      "previewQuote": "Das Gras wächst nicht schneller, wenn man daran zieht.",
-      "textSizeLabel": "Schriftgröße",
-      "title": "Untertitel"
     },
     "connections": {
       "server": {

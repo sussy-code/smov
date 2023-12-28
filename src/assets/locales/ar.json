@@ -173,17 +173,6 @@
       "enabled": "جارٍ العرض على الجهاز..."
     },
     "menus": {
-      "captions": {
-        "customChoice": "اختيار ترجمة من ملف",
-        "customizeLabel": "تخصيص",
-        "offChoice": "إيقاف",
-        "settings": {
-          "delay": "تأخير الترجمة",
-          "fixCapitals": "تصحيح التهجئة"
-        },
-        "title": "مقاطع الترجمة",
-        "unknownLanguage": "غير معروف"
-      },
       "downloads": {
         "disclaimer": "يتم أخذ التنزيلات مباشرةً من قبل مقدم الخدمة. movie-web لاسيطرة له على كيفية توفير تلك التنزيلات.",
         "downloadCaption": "تنزيل مقاطع الترجمة الحالية",
@@ -369,13 +358,6 @@
         "teal": "تركواز"
       },
       "title": "المظهر"
-    },
-    "captions": {
-      "backgroundLabel": "تعتيم الخلفية",
-      "colorLabel": "لون",
-      "previewQuote": "يجب ألا أخاف. الخوف هو قاتل العقل.",
-      "textSizeLabel": "حجم النص",
-      "title": "مقاطع الترجمة"
     },
     "connections": {
       "server": {

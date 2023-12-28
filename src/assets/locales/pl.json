@@ -49,11 +49,6 @@
       "short": "Wróć"
     },
     "menus": {
-      "captions": {
-        "customChoice": "Załącz",
-        "customizeLabel": "Personalizuj",
-        "title": "Napisy"
-      },
       "episodes": {
         "button": "Odcinki",
         "loadingList": "Wczytywanie...",

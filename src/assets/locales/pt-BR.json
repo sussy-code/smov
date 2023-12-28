@@ -174,17 +174,6 @@
       "enabled": "Transmitindo para o dispositivo..."
     },
     "menus": {
-      "captions": {
-        "customChoice": "Selecionar legenda de arquivo",
-        "customizeLabel": "Personalizar",
-        "offChoice": "Desligado",
-        "settings": {
-          "delay": "Atraso de legendas",
-          "fixCapitals": "Corrigir capitalização"
-        },
-        "title": "Legendas",
-        "unknownLanguage": "Idioma desconhecido"
-      },
       "downloads": {
         "disclaimer": "Os downloads são feitos diretamente do provedor. movie-web não tem controle sobre como os downloads são fornecidos.",
         "downloadCaption": "Baixar legenda atual",
@@ -372,13 +361,6 @@
         "teal": "Verde-azulado"
       },
       "title": "Aparência"
-    },
-    "captions": {
-      "backgroundLabel": "Opacidade do fundo",
-      "colorLabel": "Cor",
-      "previewQuote": "Não devo temer. O medo é o assassino da mente.",
-      "textSizeLabel": "Tamanho do texto",
-      "title": "Legendas"
     },
     "connections": {
       "server": {

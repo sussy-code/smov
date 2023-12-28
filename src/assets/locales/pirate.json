@@ -129,17 +129,6 @@
       "short": "Back"
     },
     "menus": {
-      "captions": {
-        "customChoice": "Upload sea shanties",
-        "customizeLabel": "Customize",
-        "offChoice": "Off",
-        "settings": {
-          "delay": "Shanty delay",
-          "fixCapitals": "Fix capitalization"
-        },
-        "title": "Sea Shanties",
-        "unknownLanguage": "Unknown"
-      },
       "downloads": {
         "disclaimer": "Downloads be taken directly from the provider. movie-web does not have control over how the downloads be provided.",
         "downloadCaption": "Download sea shanty",
@@ -319,13 +308,6 @@
         "teal": "Teal"
       },
       "title": "Appearance"
-    },
-    "captions": {
-      "backgroundLabel": "Background opacity",
-      "colorLabel": "Color",
-      "previewQuote": "I must not fear. Fear be the mind-killer.",
-      "textSizeLabel": "Text size",
-      "title": "Captions"
     },
     "connections": {
       "server": {

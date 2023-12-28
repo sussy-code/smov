@@ -174,17 +174,6 @@
       "enabled": "Casting à l'appareil..."
     },
     "menus": {
-      "captions": {
-        "customChoice": "Télécharger des sous-titres",
-        "customizeLabel": "Personnaliser",
-        "offChoice": "Désactivé",
-        "settings": {
-          "delay": "Délai des sous-titres",
-          "fixCapitals": "Correction de la majuscule"
-        },
-        "title": "Sous-titres",
-        "unknownLanguage": "Inconnu"
-      },
       "downloads": {
         "disclaimer": "Les téléchargements sont effectués directement par le fournisseur. movie-web n'a aucun contrôle sur la manière dont les téléchargements sont effectués.",
         "downloadCaption": "Télécharger les sous-titres actuels",
@@ -370,13 +359,6 @@
         "teal": "Saphir"
       },
       "title": "Apparence"
-    },
-    "captions": {
-      "backgroundLabel": "Opacité de l'arrière-plan",
-      "colorLabel": "Couleur",
-      "previewQuote": "Je ne dois pas avoir peur. La peur est un tueur d'esprit.",
-      "textSizeLabel": "Taille du texte",
-      "title": "Sous-titres"
     },
     "connections": {
       "server": {

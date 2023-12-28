@@ -173,17 +173,6 @@
       "enabled": "Castar till enheten..."
     },
     "menus": {
-      "captions": {
-        "customChoice": "Välj undertext från fil",
-        "customizeLabel": "Anpassa",
-        "offChoice": "Av",
-        "settings": {
-          "delay": "Fördröjning för undertexter",
-          "fixCapitals": "Åtgärda versaler"
-        },
-        "title": "Undertexter",
-        "unknownLanguage": "Okänd"
-      },
       "downloads": {
         "disclaimer": "Nedladdningar görs direkt från leverantören. movie-web har ingen kontroll över hur nedladdningarna tillhandahålls.",
         "downloadCaption": "Ladda ner aktuell undertext",
@@ -369,13 +358,6 @@
         "teal": "Blågrön"
       },
       "title": "Utseende"
-    },
-    "captions": {
-      "backgroundLabel": "Bakgrundstransparens",
-      "colorLabel": "Färg",
-      "previewQuote": "Jag får inte frukta. Rädsla är tankedödaren.",
-      "textSizeLabel": "Textstorlek",
-      "title": "Textning"
     },
     "connections": {
       "server": {

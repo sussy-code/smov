@@ -139,17 +139,6 @@
       "short": "Tagasi"
     },
     "menus": {
-      "captions": {
-        "customChoice": "Vali subtiitrid failist",
-        "customizeLabel": "Kohanda",
-        "offChoice": "Välja",
-        "settings": {
-          "delay": "Subtiitri viivitus",
-          "fixCapitals": "Paranda kapitaliseerimine"
-        },
-        "title": "Subtiitrid",
-        "unknownLanguage": "Teadmata"
-      },
       "downloads": {
         "disclaimer": "Allalaadimine toimub otse teenusepakkujalt. movie-web ei saa kontrollida, kuidas allalaadimine toimub.",
         "downloadCaption": "Lae alla praegused subtiitrid",

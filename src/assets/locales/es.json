@@ -174,17 +174,6 @@
       "enabled": "Transmitiendo a dispositivo..."
     },
     "menus": {
-      "captions": {
-        "customChoice": "Seleccionar subtítulo desde un archivo",
-        "customizeLabel": "Personalizar",
-        "offChoice": "Apagado",
-        "settings": {
-          "delay": "Retraso de subtítulos",
-          "fixCapitals": "Corregir mayúsculas"
-        },
-        "title": "Subtítulos",
-        "unknownLanguage": "Desconocido"
-      },
       "downloads": {
         "disclaimer": "Las descargas se realizan directamente desde el proveedor. movie-web no tiene control sobre cómo se proporcionan las descargas.",
         "downloadCaption": "Descargar subtítulo actual",
@@ -370,13 +359,6 @@
         "teal": "Turquesa"
       },
       "title": "Apariencia"
-    },
-    "captions": {
-      "backgroundLabel": "Opacidad del fondo",
-      "colorLabel": "Color",
-      "previewQuote": "No debo temer. El miedo es el asesino de la mente.",
-      "textSizeLabel": "Tamaño del texto",
-      "title": "Subtítulos"
     },
     "connections": {
       "server": {

@@ -107,17 +107,6 @@
       "enabled": "Aan het casten..."
     },
     "menus": {
-      "captions": {
-        "customChoice": "Ondertiteling uploaden",
-        "customizeLabel": "Instellingen",
-        "offChoice": "Geen ondertiteling",
-        "settings": {
-          "delay": "Tijdverschil ondertiteling",
-          "fixCapitals": "Hoofdletters corrigeren"
-        },
-        "title": "Ondertiteling",
-        "unknownLanguage": "Onbekend"
-      },
       "downloads": {
         "disclaimer": "Downloads worden direct bij de bron opgehaald. movie-web heeft geen controle over het bestand dat je ontvangt.",
         "downloadCaption": "Ondertiteling downloaden",

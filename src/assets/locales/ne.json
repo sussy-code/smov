@@ -174,17 +174,6 @@
       "enabled": "उपकरणमा कास्ट गर्दै..."
     },
     "menus": {
-      "captions": {
-        "customChoice": "फाइलबाट क्याप्शन चयन गर्नुहोस्",
-        "customizeLabel": "रुचिको अनुसार बनाउनु",
-        "offChoice": "बन्द",
-        "settings": {
-          "delay": "क्याप्सन ढिलाइ",
-          "fixCapitals": "पूंजीकरण ठीक गर्नुहोस्"
-        },
-        "title": "क्याप्शन",
-        "unknownLanguage": "अज्ञात"
-      },
       "downloads": {
         "disclaimer": "डाउनलोडहरू सीधा प्रदायकबाट लिइन्छ। movie-web ले डाउनलोडहरू कसरी प्रदान गरिन्छ भन्नेमा नियन्त्रण गर्दैन।",
         "downloadCaption": "डाउनलोड चलिरहेको क्याप्शन",
@@ -370,13 +359,6 @@
         "teal": "हरियो-नीलो"
       },
       "title": "रूप-रंग"
-    },
-    "captions": {
-      "backgroundLabel": "पृष्ठभूमि अस्पष्टता",
-      "colorLabel": "रङ",
-      "previewQuote": "म डराउनु हुँदैन। डर मनको हत्यारा हो।",
-      "textSizeLabel": "शब्दको आकार",
-      "title": "क्याप्शन"
     },
     "connections": {
       "server": {

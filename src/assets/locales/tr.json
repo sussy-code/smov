@@ -174,17 +174,6 @@
       "enabled": "Cihaza yansıtılıyor..."
     },
     "menus": {
-      "captions": {
-        "customChoice": "Altyazı yükle",
-        "customizeLabel": "Seçenekler",
-        "offChoice": "Kapalı",
-        "settings": {
-          "delay": "Altyazı gecikmesi",
-          "fixCapitals": "Büyük harf kullanımını düzelt"
-        },
-        "title": "Altyazılar",
-        "unknownLanguage": "Bilinmeyen"
-      },
       "downloads": {
         "disclaimer": "İndirme bağlantıları doğrudan sağlayıcının kendisinden alınır. movie-web'in sağlanan indirme bağlantıları üzerinde hiçbir konrolü yoktur.",
         "downloadCaption": "Geçerli altyazıyı indir",
@@ -370,13 +359,6 @@
         "teal": "Camgöbeği"
       },
       "title": "Görünüm"
-    },
-    "captions": {
-      "backgroundLabel": "Arka plan opaklığı",
-      "colorLabel": "Renk",
-      "previewQuote": "Korkmamalıyım. Korku aklın katilidir.",
-      "textSizeLabel": "Yazı boyutu",
-      "title": "Altyazılar"
     },
     "connections": {
       "server": {

@@ -174,17 +174,6 @@
       "enabled": "משדר למכשיר..."
     },
     "menus": {
-      "captions": {
-        "customChoice": "בחר כתוביות מהקובץ",
-        "customizeLabel": "התאם אישית",
-        "offChoice": "כבוי",
-        "settings": {
-          "delay": "עיכוב בכיתוב",
-          "fixCapitals": "תקן שימוש באותיות גדולות"
-        },
-        "title": "כתוביות",
-        "unknownLanguage": "לא ידוע"
-      },
       "downloads": {
         "disclaimer": "ההורדות נלקחות ישירות מהספק. ל-movie-web אין שליטה על האופן שבו מסופקות ההורדות.",
         "downloadCaption": "הורד את הכתוביות הנוכחיות",
@@ -370,13 +359,6 @@
         "teal": "ירוק כחלחל"
       },
       "title": "מראה"
-    },
-    "captions": {
-      "backgroundLabel": "אטימות רקע",
-      "colorLabel": "צבע",
-      "previewQuote": "אסור לי לפחד. הפחד הוא קוטל הנפש.",
-      "textSizeLabel": "גודל הטקסט",
-      "title": "כתוביות"
     },
     "connections": {
       "server": {

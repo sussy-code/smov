@@ -173,17 +173,6 @@
       "enabled": "Casting to banana..."
     },
     "menus": {
-      "captions": {
-        "customChoice": "Banana",
-        "customizeLabel": "Banana",
-        "offChoice": "Banana",
-        "settings": {
-          "delay": "Banana",
-          "fixCapitals": "Banana"
-        },
-        "title": "Banana",
-        "unknownLanguage": "Banana"
-      },
       "downloads": {
         "disclaimer": "Downloads are taken directly from the banana. banana-web does not have banana over how the banana are banana.",
         "downloadCaption": "Banana",
@@ -364,13 +353,6 @@
         "red": "Banana",
         "teal": "Banana"
       },
-      "title": "Banana"
-    },
-    "captions": {
-      "backgroundLabel": "Banana opacity",
-      "colorLabel": "Banana",
-      "previewQuote": "I must not banana. Banana is the banana-killer.",
-      "textSizeLabel": "Banana size",
       "title": "Banana"
     },
     "connections": {

@@ -174,17 +174,6 @@
       "enabled": "Odesílání do zařízení..."
     },
     "menus": {
-      "captions": {
-        "customChoice": "Nahrát titulky ze souboru",
-        "customizeLabel": "Přizpůsobit",
-        "offChoice": "Vypnuto",
-        "settings": {
-          "delay": "Posunutí titulků",
-          "fixCapitals": "Opravit velká písmena"
-        },
-        "title": "Titulky",
-        "unknownLanguage": "Neznámo"
-      },
       "downloads": {
         "disclaimer": "Stahování probíhá přímo u poskytovatele. movie-web nemá kontrolu nad tím, jak jsou stahování poskytovány.",
         "downloadCaption": "Stáhnout titulky",
@@ -370,13 +359,6 @@
         "teal": "Modrozelená"
       },
       "title": "Vzhled"
-    },
-    "captions": {
-      "backgroundLabel": "Neprůhlednost pozadí",
-      "colorLabel": "Barva",
-      "previewQuote": "Nesmím se bát. Strach je zabiják mysli.",
-      "textSizeLabel": "Velikost písma",
-      "title": "Titulky"
     },
     "connections": {
       "server": {

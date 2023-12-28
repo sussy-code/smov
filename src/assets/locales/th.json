@@ -173,17 +173,6 @@
       "enabled": "เชื่อมต่ออุปกรณ์.."
     },
     "menus": {
-      "captions": {
-        "customChoice": "เลือกคําบรรยายจากไฟล์",
-        "customizeLabel": "ปรับแต่ง",
-        "offChoice": "ปิด",
-        "settings": {
-          "delay": "คําบรรยายล่าช้า",
-          "fixCapitals": "แก้ไขตัวพิมพ์ใหญ่"
-        },
-        "title": "คําบรรยาย",
-        "unknownLanguage": "ไม่ทราบ"
-      },
       "downloads": {
         "disclaimer": "การดาวน์โหลดจะถูกนํามาจากผู้ให้บริการโดยตรง movie-web ไม่สามารถควบคุมวิธีการดาวน์โหลดได้",
         "downloadCaption": "ดาวน์โหลดคำบรรยายปัจจุบัน",
@@ -369,13 +358,6 @@
         "teal": "เขียวแกมน้ำเงิน"
       },
       "title": "ธีม"
-    },
-    "captions": {
-      "backgroundLabel": "ความทึบของพื้นหลัง",
-      "colorLabel": "สี",
-      "previewQuote": "ข้าต้องไม่กลัว ความกลัวจักพิฆาตจิตใจ",
-      "textSizeLabel": "ขนาดตัวหนังสือ",
-      "title": "คำบรรยาย"
     },
     "connections": {
       "server": {
