@@ -1,1 +1,22 @@
-{}
+{
+  "auth": {
+    "createAccount": "Ainda não tem uma conta? <0>Crie uma conta.</0>",
+    "deviceNameLabel": "Nome do dispositivo",
+    "deviceNamePlaceholder": "Telefone pessoal",
+    "hasAccount": "Já tem uma conta? <0>Entre aqui.</0>",
+    "login": {
+      "description": "Por favor, insira sua frase de acesso para entrar na sua conta",
+      "title": "Entrar na sua conta"
+    },
+    "register": {
+      "information": {
+        "color1": "Cor do perfil um",
+        "color2": "Cor do perfil dois",
+        "header": "Digite um nome para o seu dispositivo e escolha cores e um ícone de usuário de sua preferência",
+        "icon": "ícone do usuário",
+        "next": "Próximo",
+        "title": "Informações da conta"
+      }
+    }
+  }
+}
