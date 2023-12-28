@@ -9,6 +9,8 @@ import { useEmpheralVolumeStore } from "@/stores/volume";
 export function KeyboardEvents() {
   const router = useOverlayRouter("");
   const display = usePlayerStore((s) => s.display);
+  const mediaProgress = usePlayerStore((s) => s.progress);
+  const { isSeeking } = usePlayerStore((s) => s.interface);
   const mediaPlaying = usePlayerStore((s) => s.mediaPlaying);
   const time = usePlayerStore((s) => s.progress.time);
   const { setVolume, toggleMute } = useVolume();
@@ -27,6 +29,8 @@ export function KeyboardEvents() {
     toggleLastUsed,
     display,
     mediaPlaying,
+    mediaProgress,
+    isSeeking,
     isRolling,
     time,
     router,
@@ -40,6 +44,8 @@ export function KeyboardEvents() {
       toggleLastUsed,
       display,
       mediaPlaying,
+      mediaProgress,
+      isSeeking,
       isRolling,
       time,
       router,
@@ -52,6 +58,8 @@ export function KeyboardEvents() {
     toggleLastUsed,
     display,
     mediaPlaying,
+    mediaProgress,
+    isSeeking,
     isRolling,
     time,
     router,
@@ -83,11 +91,38 @@ export function KeyboardEvents() {
         );
       if (k === "m") dataRef.current.toggleMute();
 
+      // Video playback speed
+      if (k === ">" || k === "<") {
+        const playbackRates = [0.25, 0.5, 1, 1.5, 2];
+        const idx = playbackRates.indexOf(
+          dataRef.current.mediaPlaying?.playbackRate,
+        );
+        const nextIdx = idx + (k === ">" ? 1 : -1);
+        const next = playbackRates[nextIdx];
+        if (next) dataRef.current.display?.setPlaybackRate(next);
+      }
+
       // Video progress
       if (k === "ArrowRight")
         dataRef.current.display?.setTime(dataRef.current.time + 5);
       if (k === "ArrowLeft")
         dataRef.current.display?.setTime(dataRef.current.time - 5);
+      if (k === "j")
+        dataRef.current.display?.setTime(dataRef.current.time - 10);
+      if (k === "l")
+        dataRef.current.display?.setTime(dataRef.current.time + 10);
+      if (k === "." && dataRef.current.mediaPlaying?.isPaused)
+        dataRef.current.display?.setTime(dataRef.current.time + 1);
+      if (k === "," && dataRef.current.mediaPlaying?.isPaused)
+        dataRef.current.display?.setTime(dataRef.current.time - 1);
+      if (/\d/.exec(k) && !dataRef.current.isSeeking) {
+        const num = parseInt(k, 10);
+        if (num === 0) dataRef.current.display?.setTime(0);
+        const percent = num / 10;
+        dataRef.current.display?.setTime(
+          dataRef.current.mediaProgress.duration * percent,
+        );
+      }
 
       // Utils
       if (k === "f") dataRef.current.display?.toggleFullscreen();
