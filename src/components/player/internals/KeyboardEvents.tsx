@@ -93,12 +93,10 @@ export function KeyboardEvents() {
 
       // Video playback speed
       if (k === ">" || k === "<") {
-        const playbackRates = [0.25, 0.5, 1, 1.5, 2];
-        const idx = playbackRates.indexOf(
-          dataRef.current.mediaPlaying?.playbackRate,
-        );
+        const options = [0.25, 0.5, 1, 1.5, 2];
+        const idx = options.indexOf(dataRef.current.mediaPlaying?.playbackRate);
         const nextIdx = idx + (k === ">" ? 1 : -1);
-        const next = playbackRates[nextIdx];
+        const next = options[nextIdx];
         if (next) dataRef.current.display?.setPlaybackRate(next);
       }
 
