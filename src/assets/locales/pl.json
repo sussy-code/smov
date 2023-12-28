@@ -1,9 +1,52 @@
 {
+  "about": {
+    "description": "movie-web jest aplikacją internetową która wyszukuje w Internecie strumienie. Zespół dąży do minimalistycznego podejścia do konsumpcji treści.",
+    "faqTitle": "Częste pytania",
+    "q1": {
+      "body": "movie-web nie udostępnia żadnych treści. Kiedy klikniesz na coś co chcesz obejrzeć, internet zostanie przeszukany pod kątem wybranych multimediów (na ekranie ładowania oraz w zakładce „źródła wideo” możesz zobaczyć, z jakiego źródła korzystasz). Media nigdy nie są przesyłane przez movie-web, wszystko odbywa się za pośrednictwem tego mechanizmu wyszukiwania.",
+      "title": "Skąd pochodzą treści?"
+    },
+    "q2": {
+      "body": "Nie można złożyć wniosku o programu ani filmu, movie-web nie zarządza żadną treścią. Wszystkie treści są przeglądane za pośrednictwem źródeł w Internecie.",
+      "title": "Gdzie mogę złożyć wniosek o programie lub filmie?"
+    },
+    "q3": {
+      "body": "Nasze wyniki wyszukiwania pochodzą z TMDB i są wyświetlane niezależnie od tego, czy nasze źródła faktycznie posiadają daną treść.",
+      "title": "W wyniku wyszukiwania wyświetlany jest program lub film. Dlaczego nie mogę go odtworzyć?"
+    },
+    "title": "O movie-web"
+  },
+  "actions": {
+    "copied": "Skopiowano",
+    "copy": "Kopiuj"
+  },
   "auth": {
+    "createAccount": "Nie masz jeszcze konta? <0>Utwórz konto.</0>",
     "deviceNameLabel": "Nazwa urządzenia",
     "deviceNamePlaceholder": "Telefon osobisty",
+    "generate": {
+      "description": "Twoja fraza hasła działa jak nazwa użytkownika i hasło. Pamiętaj aby zachować go w bezpiecznym miejscu, ponieważ będziesz musiał go wprowadzić aby zalogować się na swoje konto",
+      "next": "Zapisałem frazę hasła",
+      "passphraseFrameLabel": "Fraza hasła",
+      "title": "Twoja fraza hasła"
+    },
+    "hasAccount": "Masz już konto? <0>Zaloguj się tutaj.</0>",
+    "login": {
+      "description": "Proszę wpisać frazę hasła, aby zalogować się na swoje konto",
+      "deviceLengthError": "Proszę wpisać nazwę urządzenia",
+      "passphraseLabel": "12-wyrazowa fraza hasła",
+      "passphrasePlaceholder": "Fraza hasła",
+      "submit": "Zaloguj sie",
+      "title": "Zaloguj się na swoje konto",
+      "validationError": "Nieprawidłowe lub niedokończone fraza hasła"
+    },
     "register": {
       "information": {
+        "color1": "Kolor profilu jeden",
+        "color2": "Kolor profilu dwa",
+        "header": "Wpisz nazwę swojego urządzenia i wybierz kolory oraz ikonę użytkownika",
+        "icon": "Ikona użytkownika",
+        "next": "Dalej",
         "title": "Informacje o koncie"
       }
     },
