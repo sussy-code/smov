@@ -177,6 +177,7 @@
       "downloads": {
         "disclaimer": "Stahování probíhá přímo u poskytovatele. movie-web nemá kontrolu nad tím, jak jsou stahování poskytovány.",
         "downloadCaption": "Stáhnout titulky",
+        "downloadPlaylist": "Stáhnout playlist",
         "downloadVideo": "Stáhnout video",
         "onAndroid": {
           "1": "Na Androidu klikněte na tlačítko stahování, poté na nové stránce <bold>klepněte a podržte</bold> na videu a poté vyberte <bold>uložit</bold>.",
@@ -238,6 +239,17 @@
         },
         "title": "Zdroje",
         "unknownOption": "Neznámý"
+      },
+      "subtitles": {
+        "customizeLabel": "Přizpůsobit",
+        "offChoice": "Vypnuto",
+        "settings": {
+          "backlink": "Vlastní titulky",
+          "delay": "Posunutí titulků",
+          "fixCapitals": "Opravit velká písmena"
+        },
+        "title": "Titulky",
+        "unknownLanguage": "Neznámé"
       }
     },
     "metadata": {
@@ -396,6 +408,11 @@
         "unknownVersion": "Neznámo",
         "userId": "Uživatelské ID"
       }
+    },
+    "subtitles": {
+      "previewQuote": "Nesmím se bát. Strach je zabiják mysli.",
+      "textSizeLabel": "Velikost textu",
+      "title": "Titulky"
     },
     "unsaved": "Máte neuložené změny"
   }
