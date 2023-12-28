@@ -175,7 +175,6 @@
     "menus": {
       "downloads": {
         "disclaimer": "Lejupielādes tiek ņemtas tieši no pakalpojumu sniedzēja. Movie-web nevar kontrolēt, kā tiek nodrošinātas lejupielādes.",
-        "downloadCaption": "Lejupielādēt pašreizējo parakstu",
         "downloadVideo": "Lejupielādēt video",
         "onAndroid": {
           "1": "Lai lejupielādētu operētājsistēmā Android, noklikšķiniet uz lejupielādes pogas, pēc tam jaunajā lapā <bold>pieskarieties videoklipam un turiet to</bold>, pēc tam atlasiet <bold>saglabāt</bold>.",
@@ -213,9 +212,7 @@
         "title": "Kvalitāte"
       },
       "settings": {
-        "captionItem": "Parakstu iestatījumi",
         "downloadItem": "Lejupladēt",
-        "enableCaptions": "Iespējot parakstus",
         "experienceSection": "Skatīšanās pieredze",
         "playbackItem": "Atskaņošana iestādijumi",
         "qualityItem": "Kvalitāte",

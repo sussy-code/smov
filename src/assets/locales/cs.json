@@ -176,7 +176,6 @@
     "menus": {
       "downloads": {
         "disclaimer": "Stahování probíhá přímo u poskytovatele. movie-web nemá kontrolu nad tím, jak jsou stahování poskytovány.",
-        "downloadCaption": "Stáhnout titulky",
         "downloadPlaylist": "Stáhnout playlist",
         "downloadVideo": "Stáhnout video",
         "onAndroid": {
@@ -215,9 +214,7 @@
         "title": "Kvalita"
       },
       "settings": {
-        "captionItem": "Nastavení titulků",
         "downloadItem": "Stáhnout",
-        "enableCaptions": "Povolit titulky",
         "experienceSection": "Zážitek sledování",
         "playbackItem": "Nastavení přehrávání",
         "qualityItem": "Kvalita",

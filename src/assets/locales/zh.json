@@ -176,7 +176,6 @@
     "menus": {
       "downloads": {
         "disclaimer": "下载内容是直接从内容提供者获取的。movie-web 无法控制下载内容如何被提供。",
-        "downloadCaption": "下载当前字幕",
         "downloadVideo": "下载视频",
         "onAndroid": {
           "1": "要从 Android 下载，先点击下载按钮，之后在新的页面上， <bold>点击并按住</bold>视频，然后选择 <bold>保存</bold>。",
@@ -214,9 +213,7 @@
         "title": "质量"
       },
       "settings": {
-        "captionItem": "字幕设置",
         "downloadItem": "下载",
-        "enableCaptions": "启用字幕",
         "experienceSection": "观看体验",
         "playbackItem": "播放设置",
         "qualityItem": "质量",

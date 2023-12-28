@@ -175,7 +175,6 @@
     "menus": {
       "downloads": {
         "disclaimer": "Nedladdningar görs direkt från leverantören. movie-web har ingen kontroll över hur nedladdningarna tillhandahålls.",
-        "downloadCaption": "Ladda ner aktuell undertext",
         "downloadVideo": "Ladda ner video",
         "onAndroid": {
           "1": "För att ladda ner på Android, klicka på nedladdningsknappen och på den nya sidan <bold>trycker och håller</bold> på videon, välj sedan <bold>spara</bold>.",
@@ -213,9 +212,7 @@
         "title": "Kvalitet"
       },
       "settings": {
-        "captionItem": "Undertextinställningar",
         "downloadItem": "Ladda ner",
-        "enableCaptions": "Aktivera undertexter",
         "experienceSection": "Visningsupplevelse",
         "playbackItem": "Uppspelningsinställningar",
         "qualityItem": "Kvalitet",

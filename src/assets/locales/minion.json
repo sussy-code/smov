@@ -175,7 +175,6 @@
     "menus": {
       "downloads": {
         "disclaimer": "Downloads are taken directly from the banana. banana-web does not have banana over how the banana are banana.",
-        "downloadCaption": "Banana",
         "downloadVideo": "Banana",
         "onAndroid": {
           "1": "To banana on Banana, click the banana banana then, on the new banana, <bold>tap and hold</bold> on the banana, then select <bold>banana</bold>.",
@@ -213,9 +212,7 @@
         "title": "Banana"
       },
       "settings": {
-        "captionItem": "Banana settings",
         "downloadItem": "Banana",
-        "enableCaptions": "Enable banana",
         "experienceSection": "Banana Viewing experience",
         "playbackItem": "Banana settings",
         "qualityItem": "Banana",

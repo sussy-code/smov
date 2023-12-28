@@ -176,7 +176,6 @@
     "menus": {
       "downloads": {
         "disclaimer": "Videos werden direkt vom Provider heruntergeladen. movie-web hat keinen Einfluss darauf, wie Downloads bereitgestellt werden.",
-        "downloadCaption": "Ausgewählte Untertitel herunterladen",
         "downloadPlaylist": "Playlist herunterladen",
         "downloadVideo": "Video herunterladen",
         "hlsDisclaimer": "movie-web hat keinen Einfluss darauf, wie Downloads bereitgestellt werden. Downloads werden direkt vom Anbieter bezogen. Bitte beachte, dass du eine HLS-Wiedergabeliste herunterlädst, diese ist für Nutzer gedacht, die mit fortgeschrittenem Multimedia-Streaming vertraut sind.",
@@ -216,9 +215,7 @@
         "title": "Qualität"
       },
       "settings": {
-        "captionItem": "Untertiteleinstellungen",
         "downloadItem": "Download",
-        "enableCaptions": "Untertitel aktivieren",
         "experienceSection": "Anzeigeerlebnis",
         "playbackItem": "Wiedergabeeinstellungen",
         "qualityItem": "Qualität",

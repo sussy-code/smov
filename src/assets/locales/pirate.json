@@ -131,7 +131,6 @@
     "menus": {
       "downloads": {
         "disclaimer": "Downloads be taken directly from the provider. movie-web does not have control over how the downloads be provided.",
-        "downloadCaption": "Download sea shanty",
         "downloadVideo": "Download film",
         "onAndroid": {
           "1": "To download on Android, <bold>tap and hold</bold> on the film, then select <bold>save</bold>.",
@@ -169,9 +168,7 @@
         "title": "Quality"
       },
       "settings": {
-        "captionItem": "Sea Shanty settings",
         "downloadItem": "Buried Treasure",
-        "enableCaptions": "Enable Sea Shanties",
         "experienceSection": "Viewing Experience",
         "playbackItem": "Playback settings",
         "qualityItem": "Quality",

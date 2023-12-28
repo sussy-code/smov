@@ -109,7 +109,6 @@
     "menus": {
       "downloads": {
         "disclaimer": "Downloads worden direct bij de bron opgehaald. movie-web heeft geen controle over het bestand dat je ontvangt.",
-        "downloadCaption": "Ondertiteling downloaden",
         "downloadVideo": "Download filmpje",
         "title": "Download"
       },
@@ -122,9 +121,7 @@
         "loadingTitle": "Aan het zoeken..."
       },
       "settings": {
-        "captionItem": "Instellingen ondertiteling",
         "downloadItem": "Download",
-        "enableCaptions": "Ondertiteling aanzetten",
         "experienceSection": "Kijk-ervaring",
         "playbackItem": "Afspeel instellingen",
         "qualityItem": "Kwaliteit",

@@ -176,7 +176,6 @@
     "menus": {
       "downloads": {
         "disclaimer": "Os downloads são feitos diretamente do provedor. movie-web não tem controle sobre como os downloads são fornecidos.",
-        "downloadCaption": "Baixar legenda atual",
         "downloadPlaylist": "Baixar playlist",
         "downloadVideo": "Baixar vídeo",
         "hlsDisclaimer": "Os downloads são feitos diretamente do provedor. movie-web não tem controle sobre como os downloads são fornecidos. Por favor, note que você está baixando uma playlist HLS, isso é destinado para usuários familiarizados com streaming multimídia avançado.",
@@ -216,9 +215,7 @@
         "title": "Qualidade"
       },
       "settings": {
-        "captionItem": "Configurações de legendas",
         "downloadItem": "Baixar",
-        "enableCaptions": "Ativar legendas",
         "experienceSection": "Experiência de visualização",
         "playbackItem": "Configurações de reprodução",
         "qualityItem": "Qualidade",

@@ -176,7 +176,6 @@
     "menus": {
       "downloads": {
         "disclaimer": "ההורדות נלקחות ישירות מהספק. ל-movie-web אין שליטה על האופן שבו מסופקות ההורדות.",
-        "downloadCaption": "הורד את הכתוביות הנוכחיות",
         "downloadVideo": "הורד וידאו",
         "onAndroid": {
           "1": "כדי להוריד באנדרואיד, לחץ על כפתור ההורדה ולאחר מכן, בדף החדש, <bold>הקש והחזק</bold> על הסרטון, ולאחר מכן בחר <bold>שמור</bold>.",
@@ -214,9 +213,7 @@
         "title": "איכות"
       },
       "settings": {
-        "captionItem": "הגדרות כתוביות",
         "downloadItem": "הורד",
-        "enableCaptions": "אפשר כתוביות",
         "experienceSection": "חווית צפייה",
         "playbackItem": "הגדרות ניגון",
         "qualityItem": "איכות",

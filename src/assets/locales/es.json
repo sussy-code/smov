@@ -176,7 +176,6 @@
     "menus": {
       "downloads": {
         "disclaimer": "Las descargas se realizan directamente desde el proveedor. movie-web no tiene control sobre cómo se proporcionan las descargas.",
-        "downloadCaption": "Descargar subtítulo actual",
         "downloadVideo": "Descargar vídeo",
         "onAndroid": {
           "1": "Para descargar en Android, haz clic en el botón de descarga y luego, en la nueva página, <bold>mantén presionado</bold> el vídeo y selecciona <bold>guardar</bold>.",
@@ -214,9 +213,7 @@
         "title": "Calidad"
       },
       "settings": {
-        "captionItem": "Configuración de subtítulos",
         "downloadItem": "Descargar",
-        "enableCaptions": "Habilitar subtítulos",
         "experienceSection": "Experiencia de visualización",
         "playbackItem": "Configuración de reproducción",
         "qualityItem": "Calidad",

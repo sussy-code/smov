@@ -176,7 +176,6 @@
     "menus": {
       "downloads": {
         "disclaimer": "Pliki do pobrania są pobierane bezpośrednio od dostawcy. movie-web nie ma kontroli nad sposobem dostarczania plików do pobrania.",
-        "downloadCaption": "Pobierz aktualne napisy",
         "downloadPlaylist": "Pobierz playlistę",
         "downloadVideo": "Pobierz wideo",
         "hlsDisclaimer": "Pliki do pobrania są pobierane bezpośrednio od dostawcy. movie-web nie ma kontroli nad sposobem dostarczania plików do pobrania. Należy pamiętać, że pobierana jest playlista HLS, przeznaczona dla użytkowników zaznajomionych z zaawansowanym strumieniowaniem multimediów.",
@@ -216,9 +215,7 @@
         "title": "Jakość"
       },
       "settings": {
-        "captionItem": "Ustawienia napisów",
         "downloadItem": "Pobierz",
-        "enableCaptions": "Włącz napisy",
         "playbackItem": "Ustawienia odtwarzania",
         "qualityItem": "Jakość",
         "sourceItem": "Źródła wideo",

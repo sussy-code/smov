@@ -175,7 +175,6 @@
     "menus": {
       "downloads": {
         "disclaimer": "يتم أخذ التنزيلات مباشرةً من قبل مقدم الخدمة. movie-web لاسيطرة له على كيفية توفير تلك التنزيلات.",
-        "downloadCaption": "تنزيل مقاطع الترجمة الحالية",
         "downloadVideo": "تنزيل الفيديو",
         "onAndroid": {
           "1": "للتنزيل على أندرويد، أنقر زر التنزيل وفي الصفحة الموالية <bold>إضغط باستمرار</bold> على الفيديو، وبعدها اختر <bold>حفظ</bold>.",
@@ -213,9 +212,7 @@
         "title": "جودة"
       },
       "settings": {
-        "captionItem": "إعدادات الترجمة",
         "downloadItem": "تنزيل",
-        "enableCaptions": "تفعيل مقاطع الترجمة",
         "experienceSection": "تجربة المشاهدة",
         "playbackItem": "إعدادات التشغيل",
         "qualityItem": "جودة",

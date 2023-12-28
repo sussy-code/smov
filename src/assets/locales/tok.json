@@ -161,7 +161,6 @@
     "menus": {
       "downloads": {
         "disclaimer": "sina kama jo e sitelen tawa ilo sina tan lipu mama. ilo Muwi-We li lawa ala e nasin jo",
-        "downloadCaption": "o jo e nimi toki",
         "downloadVideo": "o jo e sitelen",
         "onAndroid": {
           "1": "ilo Android la o luka e nena 'o jo'. lon lipu sin la <bold>o luka wawa</bold> e sitelen. o luka e nena 'o jo'",
@@ -199,9 +198,7 @@
         "title": "pona lukin"
       },
       "settings": {
-        "captionItem": "nasin nimi",
         "downloadItem": "o jo",
-        "enableCaptions": "nimi toki",
         "experienceSection": "nasin lukin",
         "playbackItem": "nasin pali",
         "qualityItem": "pona lukin",
