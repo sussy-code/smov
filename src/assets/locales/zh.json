@@ -408,6 +408,8 @@
       }
     },
     "subtitles": {
+      "previewQuote": "我不能害怕。恐惧是心灵的杀手。",
+      "textSizeLabel": "字体大小",
       "title": "字幕"
     },
     "unsaved": "您有未保存的更改"
