@@ -14,7 +14,6 @@ import {
 import { Loading } from "@/components/layout/Loading";
 import { MwLink } from "@/components/text/Link";
 import { useBackendUrl } from "@/hooks/auth/useBackendUrl";
-import { conf } from "@/setup/config";
 
 interface TrustBackendPartProps {
   onNext?: (meta: MetaResponse) => void;
@@ -25,7 +24,7 @@ export function TrustBackendPart(props: TrustBackendPartProps) {
   const backendUrl = useBackendUrl();
   const hostname = useMemo(() => new URL(backendUrl).hostname, [backendUrl]);
   const result = useAsync(() => {
-    return getBackendMeta(conf().BACKEND_URL);
+    return getBackendMeta(backendUrl);
   }, [backendUrl]);
   const { t } = useTranslation();
 

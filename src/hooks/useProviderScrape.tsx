@@ -23,7 +23,7 @@ export interface ScrapingSegment {
   embedId?: string;
   status: "failure" | "pending" | "notfound" | "success" | "waiting";
   reason?: string;
-  error?: unknown;
+  error?: any;
   percentage: number;
 }
 
@@ -60,8 +60,10 @@ function useBaseScrape() {
   }, []);
 
   const startEvent = useCallback((id: ScraperEvent<"start">) => {
+    const lastIdTmp = lastId.current;
     setSources((s) => {
       if (s[id]) s[id].status = "pending";
+      if (lastIdTmp && s[lastIdTmp]) s[lastIdTmp].status = "success";
       return { ...s };
     });
     setCurrentSource(id);

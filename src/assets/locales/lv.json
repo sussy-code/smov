@@ -173,20 +173,8 @@
       "enabled": "Atskaņo uz ierīci..."
     },
     "menus": {
-      "captions": {
-        "customChoice": "Atlasiet failā parakstu",
-        "customizeLabel": "Paraksti",
-        "offChoice": "Izslēgts",
-        "settings": {
-          "delay": "Parakstu aizkave",
-          "fixCapitals": "Labojiet lielo burtu lietojumu"
-        },
-        "title": "Paraksti",
-        "unknownLanguage": "Nezināms"
-      },
       "downloads": {
         "disclaimer": "Lejupielādes tiek ņemtas tieši no pakalpojumu sniedzēja. Movie-web nevar kontrolēt, kā tiek nodrošinātas lejupielādes.",
-        "downloadCaption": "Lejupielādēt pašreizējo parakstu",
         "downloadVideo": "Lejupielādēt video",
         "onAndroid": {
           "1": "Lai lejupielādētu operētājsistēmā Android, noklikšķiniet uz lejupielādes pogas, pēc tam jaunajā lapā <bold>pieskarieties videoklipam un turiet to</bold>, pēc tam atlasiet <bold>saglabāt</bold>.",
@@ -224,9 +212,7 @@
         "title": "Kvalitāte"
       },
       "settings": {
-        "captionItem": "Parakstu iestatījumi",
         "downloadItem": "Lejupladēt",
-        "enableCaptions": "Iespējot parakstus",
         "experienceSection": "Skatīšanās pieredze",
         "playbackItem": "Atskaņošana iestādijumi",
         "qualityItem": "Kvalitāte",
@@ -369,13 +355,6 @@
         "teal": "zilganzaļš"
       },
       "title": "Izskats"
-    },
-    "captions": {
-      "backgroundLabel": "Fona necaurredzamība",
-      "colorLabel": "Krāsa",
-      "previewQuote": "Es nedrīkstu baidīties. Bailes ir prāta slepkava.",
-      "textSizeLabel": "Teksta lielums",
-      "title": "Paraksti"
     },
     "connections": {
       "server": {

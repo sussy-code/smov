@@ -21,6 +21,8 @@ const countryOverrides: Record<string, string> = {
   zh: "cn",
   sl: "si",
   sv: "se",
+  et: "ee",
+  ne: "np",
 };
 
 export function FlagIcon(props: FlagIconProps) {
@@ -47,10 +49,14 @@ export function FlagIcon(props: FlagIconProps) {
       </div>
     );
 
+  let backgroundClass = "bg-video-context-flagBg";
+  if (countryCode === "np") backgroundClass = "bg-white";
+
   return (
     <span
       className={classNames(
-        "!w-8 h-6 rounded overflow-hidden bg-video-context-flagBg bg-cover bg-center block fi",
+        "!w-8 h-6 rounded overflow-hidden bg-cover bg-center block fi",
+        backgroundClass,
         props.countryCode ? `fi-${countryCode}` : undefined,
       )}
     />

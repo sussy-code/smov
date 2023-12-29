@@ -1,74 +1,417 @@
 {
-    "global": {
-        "name": "movie-web"
+  "about": {
+    "description": "movie-web jest aplikacją internetową, która wyszukuje w internecie strumienia. Zespół dąży do minimalistycznego podejścia do konsumpcji treści.",
+    "faqTitle": "Częste pytania",
+    "q1": {
+      "body": "movie-web nie udostępnia żadnych treści. Kiedy klikniesz na coś co chcesz obejrzeć, internet zostanie przeszukany pod kątem wybranych multimediów (na ekranie ładowania oraz w zakładce „źródła wideo” możesz zobaczyć, z jakiego źródła korzystasz). Media nigdy nie są przesyłane przez movie-web, wszystko odbywa się za pośrednictwem tego mechanizmu wyszukiwania.",
+      "title": "Skąd pochodzą treści?"
     },
-    "home": {
-        "search": {
-            "allResults": "To wszystko co mamy!",
-            "sectionTitle": "Wyniki wyszukiwania",
-            "noResults": "Nie mogliśmy niczego znaleźć!",
-            "failed": "Nie udało się znaleźć mediów, Spróbuj ponownie!",
-            "loading": "Wczytywanie...",
-            "placeholder": "Co chciałbyś obejrzeć?"
-        },
-        "bookmarks": {
-            "sectionTitle": "Zakładki"
-        },
-        "continueWatching": {
-            "sectionTitle": "Kontynuuj oglądanie"
-        }
+    "q2": {
+      "body": "Nie można złożyć wniosku o programu ani filmu, movie-web nie zarządza żadną treścią. Wszystkie treści są przeglądane za pośrednictwem źródeł w Internecie.",
+      "title": "Gdzie mogę złożyć wniosek o programie lub filmie?"
     },
-    "media": {
-        "types": {
-            "movie": "Filmy",
-            "show": "Seriale"
-        },
-        "episodeDisplay": "S{{season}} E{{episode}}"
+    "q3": {
+      "body": "Nasze wyniki wyszukiwania pochodzą z TMDB i są wyświetlane niezależnie od tego, czy nasze źródła faktycznie posiadają daną treść.",
+      "title": "W wyniku wyszukiwania wyświetlany jest program lub film. Dlaczego nie mogę go odtworzyć?"
     },
-    "player": {
-        "playbackError": {
-            "title": "Ups, popsuło się!"
-        },
-        "metadata": {
-            "notFound": {
-                "badge": "Nie znaleziono",
-                "homeButton": "Wróć na stronę główną",
-                "title": "Nie można znaleźć multimediów.",
-                "text": "Nie mogliśmy znaleźć rządanych multimediów. Albo zostały usunięte, albo grzebałeś przy adresie URL."
-            }
-        },
-        "menus": {
-            "captions": {
-                "customChoice": "Załącz",
-                "customizeLabel": "Personalizuj",
-                "title": "Napisy"
-            },
-            "sources": {
-                "title": "Źródła"
-            },
-            "episodes": {
-                "button": "Odcinki",
-                "loadingTitle": "Wczytywanie...",
-                "loadingList": "Wczytywanie..."
-            }
-        },
-        "back": {
-            "default": "Wróć na stronę główną",
-            "short": "Wróć"
-        }
+    "title": "O movie-web"
+  },
+  "actions": {
+    "copied": "Skopiowano",
+    "copy": "Kopiuj"
+  },
+  "auth": {
+    "createAccount": "Nie masz jeszcze konta? <0>Utwórz konto.</0>",
+    "deviceNameLabel": "Nazwa urządzenia",
+    "deviceNamePlaceholder": "Telefon osobisty",
+    "generate": {
+      "description": "Twoja fraza hasła działa jak nazwa użytkownika i hasło. Pamiętaj aby zachować go w bezpiecznym miejscu, ponieważ będziesz musiał go wprowadzić aby zalogować się na swoje konto",
+      "next": "Zapisałem frazę hasła",
+      "passphraseFrameLabel": "Fraza hasła",
+      "title": "Twoja fraza hasła"
     },
-    "notFound": {
-        "badge": "Nie znaleziono",
-        "goHome": "Wróć na stronę główną",
-        "title": "Nie można znaleźć tej strony",
-        "message": "Szukaliśmy wszędzie: w koszu, w szafie a nawet w piwnicy, ale nie byliśmy w stanie znaleźć strony której szukasz."
+    "hasAccount": "Masz już konto? <0>Zaloguj się tutaj.</0>",
+    "login": {
+      "description": "Proszę wpisać frazę hasła, aby zalogować się na swoje konto",
+      "deviceLengthError": "Proszę wpisać nazwę urządzenia",
+      "passphraseLabel": "12-wyrazowa fraza hasła",
+      "passphrasePlaceholder": "Fraza hasła",
+      "submit": "Zaloguj się",
+      "title": "Zaloguj się na swoje konto",
+      "validationError": "Nieprawidłowe lub niedokończone fraza hasła"
     },
-    "navigation": {
-        "banner": {
-            "offline": "Sprawdź swoje połączenie sieciowe"
-        }
+    "register": {
+      "information": {
+        "color1": "Kolor profilu jeden",
+        "color2": "Kolor profilu dwa",
+        "header": "Wpisz nazwę swojego urządzenia i wybierz kolory oraz ikonę użytkownika",
+        "icon": "Ikona użytkownika",
+        "next": "Dalej",
+        "title": "Informacje o koncie"
+      }
     },
-    "overlays": {
-        "close": "Zamknąć"
+    "trust": {
+      "failed": {
+        "text": "Skonfigurowałeś to poprawnie?",
+        "title": "Nie udało się połączyć z serwerem"
+      },
+      "host": "Łączysz się z <0>{{hostname}}</0> - przed utworzeniem konta potwierdź że ufasz temu serwerowi",
+      "no": "Wstecz",
+      "title": "Ufasz temu serwerowi?",
+      "yes": "Ufam temu serwerowi"
+    },
+    "verify": {
+      "description": "Wprowadź swoją frazę hasła, aby potwierdzić jego zapisanie i utworzyć konto",
+      "invalidData": "Dane są nieprawidłowe",
+      "noMatch": "Fraza hasła nie pasuje",
+      "passphraseLabel": "Twoja 12-wyrazowa fraza hasła",
+      "recaptchaFailed": "Weryfikacja ReCaptcha nie powiodła się",
+      "register": "Utwórz konto",
+      "title": "Potwierdź swoją frazę hasła"
     }
+  },
+  "errors": {
+    "badge": "Zepsuło się",
+    "details": "Szczegóły błędu",
+    "reloadPage": "Odśwież stronę",
+    "showError": "Pokaż szczegóły błędu",
+    "title": "Napotkaliśmy błąd!"
+  },
+  "footer": {
+    "legal": {
+      "disclaimer": "Zastrzeżenie",
+      "disclaimerText": "movie-web nie przechowuje żadnych plików, zawiera jedynie łącza do usług stron trzecich. Kwestie prawne należy konsultować z hostami plików i dostawcami. movie-web nie ponosi odpowiedzialności za jakiekolwiek pliki multimedialne prezentowane przez dostawców wideo."
+    },
+    "links": {
+      "discord": "Discord",
+      "dmca": "DMCA",
+      "github": "GitHub"
+    },
+    "tagline": "Oglądaj swoje ulubione programy i filmy za pomocą tej aplikacji streamingowej typu open source."
+  },
+  "global": {
+    "name": "movie-web",
+    "pages": {
+      "about": "Informacje",
+      "dmca": "DMCA",
+      "login": "Zaloguj sie",
+      "pagetitle": "{{title}} - movie-web",
+      "register": "Zarejestruj się",
+      "settings": "Ustawienia"
+    }
+  },
+  "home": {
+    "bookmarks": {
+      "sectionTitle": "Zakładki"
+    },
+    "continueWatching": {
+      "sectionTitle": "Kontynuuj oglądanie"
+    },
+    "mediaList": {
+      "stopEditing": "Przestań edytować"
+    },
+    "search": {
+      "allResults": "To wszystko co mamy!",
+      "failed": "Nie udało się znaleźć mediów, Spróbuj ponownie!",
+      "loading": "Wczytywanie...",
+      "noResults": "Nie mogliśmy niczego znaleźć!",
+      "placeholder": "Co chciałbyś obejrzeć?",
+      "sectionTitle": "Wyniki wyszukiwania"
+    },
+    "titles": {
+      "day": {
+        "default": "Co chciałbyś obejrzeć dziś po południu?"
+      },
+      "morning": {
+        "default": "Co chciałbyś obejrzeć dziś rano?",
+        "extra": [
+          "Słyszałem że „Przed wschodem słońca” jest dobre"
+        ]
+      },
+      "night": {
+        "default": "Co chciałbyś obejrzeć dziś wieczorem?",
+        "extra": [
+          "Zmęczony? Słyszałem że „Egzorcysta” jest dobry."
+        ]
+      }
+    }
+  },
+  "media": {
+    "episodeDisplay": "S{{season}} E{{episode}}",
+    "types": {
+      "movie": "Filmy",
+      "show": "Seriale"
+    }
+  },
+  "navigation": {
+    "banner": {
+      "offline": "Sprawdź swoje połączenie sieciowe"
+    },
+    "menu": {
+      "about": "O nas",
+      "donation": "Wspieraj nas",
+      "logout": "Wyloguj się",
+      "register": "Synchronizuj z chmurą",
+      "settings": "Ustawienia",
+      "support": "Wsparcie"
+    }
+  },
+  "notFound": {
+    "badge": "Nie znaleziono",
+    "goHome": "Wróć na stronę główną",
+    "message": "Szukaliśmy wszędzie: w koszu, w szafie, a nawet w piwnicy, ale nie byliśmy w stanie znaleźć strony której szukasz.",
+    "title": "Nie można znaleźć tej strony"
+  },
+  "overlays": {
+    "close": "Zamknij"
+  },
+  "player": {
+    "back": {
+      "default": "Wróć na stronę główną",
+      "short": "Wróć"
+    },
+    "casting": {
+      "enabled": "Przesyłam na urządzenie..."
+    },
+    "menus": {
+      "downloads": {
+        "disclaimer": "Pliki do pobrania są pobierane bezpośrednio od dostawcy. movie-web nie ma kontroli nad sposobem dostarczania plików do pobrania.",
+        "downloadPlaylist": "Pobierz playlistę",
+        "downloadVideo": "Pobierz wideo",
+        "hlsDisclaimer": "Pliki do pobrania są pobierane bezpośrednio od dostawcy. movie-web nie ma kontroli nad sposobem dostarczania plików do pobrania. Należy pamiętać, że pobierana jest playlista HLS, przeznaczona dla użytkowników zaznajomionych z zaawansowanym strumieniowaniem multimediów.",
+        "onAndroid": {
+          "1": "Aby pobrać na Androidzie, kliknij przycisk pobierania, a następnie na nowej stronie <bold>dotknij i przytrzymaj</bold> na filmie, a następnie wybierz <bold>zapisz</bold>.",
+          "shortTitle": "Pobierz / Android",
+          "title": "Pobieranie na Androidzie"
+        },
+        "onIos": {
+          "1": "Aby pobrać na iOS, kliknij przycisk pobierania, a następnie na nowej stronie, kliknij <bold><ios_share /></bold>, a następnie <bold>Zapisz do plików <ios_files /></bold>.",
+          "shortTitle": "Pobierz / iOS",
+          "title": "Pobieranie na iOS"
+        },
+        "onPc": {
+          "1": "Na komputerze, kliknij przycisk pobierania, a następnie na nowej stronie, kliknij wideo prawym przyciskiem myszy i wybierz <bold>Zapisz wideo jako</bold>",
+          "shortTitle": "Pobierz / Komputer",
+          "title": "Pobieranie na komputerze"
+        },
+        "title": "Pobierz"
+      },
+      "episodes": {
+        "button": "Odcinki",
+        "emptyState": "Nie ma odcinków w tym sezonie, sprawdź później!",
+        "episodeBadge": "E{{episode}}",
+        "loadingError": "Błąd podczas ładowania sezonu",
+        "loadingList": "Wczytywanie...",
+        "loadingTitle": "Wczytywanie..."
+      },
+      "playback": {
+        "speedLabel": "Szybkość odtwarzania",
+        "title": "Ustawienia odtwarzania"
+      },
+      "quality": {
+        "automaticLabel": "Jakość automatyczna",
+        "hint": "Możesz spróbować <0>przełączyć źródło</0> aby uzyskać różne opcje jakości.",
+        "iosNoQuality": "Ze względu na ograniczenia zdefiniowane przez Apple, wybór jakości nie jest dostępny w systemie iOS dla tego źródła. Możesz spróbować <0>przełączyć na inne źródło</0> aby uzyskać inne opcje jakości.",
+        "title": "Jakość"
+      },
+      "settings": {
+        "downloadItem": "Pobierz",
+        "experienceSection": "Odtwarzanie",
+        "playbackItem": "Ustawienia odtwarzania",
+        "qualityItem": "Jakość",
+        "sourceItem": "Źródła wideo",
+        "videoSection": "Ustawienia wideo"
+      },
+      "sources": {
+        "failed": {
+          "text": "Wystąpił błąd podczas próby znalezienia filmów. Spróbuj użyć innego źródła.",
+          "title": "Nie udało się zgarnąć"
+        },
+        "noEmbeds": {
+          "text": "Nie znaleźliśmy żadnych osadzonych plików. Spróbuj użyć innego źródła.",
+          "title": "Nie znaleziono osadzonych treści"
+        },
+        "noStream": {
+          "text": "To źródło nie ma strumieni dla tego filmu lub programu.",
+          "title": "Brak strumienia"
+        },
+        "title": "Źródła",
+        "unknownOption": "Nieznany"
+      },
+      "subtitles": {
+        "customizeLabel": "Dostosuj",
+        "offChoice": "Wyłączone",
+        "settings": {
+          "backlink": "Własne napisy",
+          "delay": "Opóźnienie napisów",
+          "fixCapitals": "Popraw kapitalizację"
+        },
+        "title": "Napisy",
+        "unknownLanguage": "Nieznany"
+      }
+    },
+    "metadata": {
+      "failed": {
+        "badge": "Nie powiodło się",
+        "homeButton": "Wróć na stronę główną",
+        "text": "Nie można załadować metadanych multimediów z TMDB. Sprawdź czy TMDB nie działa lub jest zablokowany na twoim połączeniu internetowym.",
+        "title": "Nie udało się załadować metadanych"
+      },
+      "notFound": {
+        "badge": "Nie znaleziono",
+        "homeButton": "Wróć na stronę główną",
+        "text": "Nie znaleźliśmy żądanych multimediów. Albo został usunięty, albo zmieniłeś adres URL.",
+        "title": "Nie można znaleźć multimediów."
+      }
+    },
+    "nextEpisode": {
+      "cancel": "Anuluj",
+      "next": "Następny odcinek"
+    },
+    "playbackError": {
+      "badge": "Błąd odtwarzania",
+      "errors": {
+        "errorAborted": "Pobieranie multimediów zostało przerwane na żądanie użytkownika.",
+        "errorDecode": "Pomimo wcześniejszego stwierdzenia że zasób multimedialny nadaje się do użytku, wystąpił błąd podczas próby dekodowania zasobu multimedialnego, co spowodowało błąd.",
+        "errorGenericMedia": "Wystąpił nieznany błąd multimediów.",
+        "errorNetwork": "Wystąpił jakiś błąd sieciowy, który uniemożliwił pomyślne pobranie multimediów, mimo że były one wcześniej dostępne.",
+        "errorNotSupported": "Obiekt multimediów lub dostawcy multimediów nie jest obsługiwany."
+      },
+      "homeButton": "Wróć na stronę główną",
+      "text": "Wystąpił błąd podczas próby odtworzenia multimediów. Spróbuj ponownie.",
+      "title": "Nie udało się odtworzyć wideo!"
+    },
+    "scraping": {
+      "items": {
+        "failure": "Wystąpił błąd",
+        "notFound": "Nie ma wideo",
+        "pending": "Sprawdzanie filmów..."
+      },
+      "notFound": {
+        "badge": "Nie znaleziono",
+        "detailsButton": "Pokaż szczegóły",
+        "homeButton": "Wróć na stronę główną",
+        "text": "Przeszukaliśmy naszych dostawców i nie możemy znaleźć poszukiwanych multimediów! Nie przechowujemy multimediów i nie mamy kontroli nad ich dostępnością. Kliknij \"Pokaż szczegóły\" poniżej, aby uzyskać więcej informacji.",
+        "title": "Nie mogliśmy znaleźć tego"
+      }
+    },
+    "time": {
+      "regular": "{{timeWatched}} / {{duration}}",
+      "remaining": "Zostało {{timeLeft}} • Skończ o {{timeFinished, datetime}}",
+      "shortRegular": "{{timeWatched}}",
+      "shortRemaining": "-{{timeLeft}}"
+    }
+  },
+  "screens": {
+    "dmca": {
+      "text": "Witamy na stronie kontaktowej DMCA serwisu movie-web! Szanujemy prawa własności intelektualnej i chcemy szybko rozwiązywać wszelkie problemy związane z prawami autorskimi. Jeśli uważasz że twoja praca chroniona prawem autorskim została niewłaściwie wykorzystana na naszej platformie, proszę wysłać szczegółowe powiadomienie DMCA na poniższy adres e-mail. Prosimy o dołączenie opisu materiału chronionego prawem autorskim, danych kontaktowych i oświadczenia w dobrej wierze. Zależy nam na szybkim rozwiązywaniu takich spraw i będziemy wdzięczni za współpracę w utrzymaniu movie-web jako miejsce w którym szanuje się kreatywność i prawa autorskie.",
+      "title": "DMCA"
+    },
+    "loadingApp": "Wczytywanie aplikacji",
+    "loadingUser": "Wczytywanie profilu",
+    "loadingUserError": {
+      "logout": "Wyloguj się",
+      "reset": "Zresetuj serwer niestandardowy",
+      "text": "Nie udało się wczytać profilu",
+      "textWithReset": "Nie udało się wczytać profilu z niestandardowego serwera, chcesz powrócić do domyślnego serwera?"
+    },
+    "migration": {
+      "failed": "Migracja danych nie powiodła się.",
+      "inProgress": "Proszę czekać, przeprowadzamy migrację danych. Nie powinno to zająć dużo czasu."
+    }
+  },
+  "settings": {
+    "account": {
+      "accountDetails": {
+        "deviceNameLabel": "Nazwa urządzenia",
+        "deviceNamePlaceholder": "Telefon osobisty",
+        "editProfile": "Edytuj",
+        "logoutButton": "Wyloguj się"
+      },
+      "actions": {
+        "delete": {
+          "button": "Usuń konto",
+          "confirmButton": "Usuń konto",
+          "confirmDescription": "Na pewno chcesz usunąć swoje konto? Wszystkie twoje dane zostaną stracone!",
+          "confirmTitle": "Jesteś pewny?",
+          "text": "Działanie to jest nieodwracalne. Wszystkie dane zostaną usunięte i nie będzie można ich odzyskać.",
+          "title": "Usuń konto"
+        },
+        "title": "Działania"
+      },
+      "devices": {
+        "deviceNameLabel": "Nazwa urządzenia",
+        "failed": "Nie udało się załadować sesji",
+        "removeDevice": "Usuń",
+        "title": "Urządzenia"
+      },
+      "profile": {
+        "finish": "Zakończ edycję",
+        "firstColor": "Kolor profilu jeden",
+        "secondColor": "Kolor profilu dwa",
+        "title": "Edytuj zdjęcie profilowe",
+        "userIcon": "Ikona użytkownika"
+      },
+      "register": {
+        "cta": "Rozpocznij",
+        "text": "Udostępnij postępy oglądania między urządzeniami i synchronizuj je.",
+        "title": "Synchronizuj z chmurą"
+      },
+      "title": "Konto"
+    },
+    "appearance": {
+      "activeTheme": "Aktywny",
+      "themes": {
+        "blue": "Niebieski",
+        "default": "Domyślny",
+        "gray": "Szary",
+        "red": "Czerwony",
+        "teal": "Morski"
+      },
+      "title": "Wygląd"
+    },
+    "connections": {
+      "server": {
+        "description": "Jeśli chcesz połączyć się z niestandardowym backendem w celu przechowywania danych, włącz tę opcję i podaj adres URL.",
+        "label": "Serwer niestandardowy",
+        "urlLabel": "Adres URL niestandardowego serwera"
+      },
+      "title": "Połączenia",
+      "workers": {
+        "addButton": "Dodaj nowego pracownika",
+        "description": "Aby aplikacja działała, cały ruch jest kierowany przez serwery proxy. Włącz tę opcję, jeśli chcesz korzystać z własnych pracowników.",
+        "emptyState": "Brak pracowników, dodaj jednego poniżej",
+        "label": "Używaj niestandardowych pracowników proxy",
+        "urlLabel": "Adresy URL pracowników",
+        "urlPlaceholder": "https://"
+      }
+    },
+    "locale": {
+      "language": "Język aplikacji",
+      "languageDescription": "Język zastosowany do całej aplikacji.",
+      "title": "Język"
+    },
+    "reset": "Reset",
+    "save": "Zapisz",
+    "sidebar": {
+      "info": {
+        "appVersion": "Wersja aplikacji",
+        "backendUrl": "Adres URL backendu",
+        "backendVersion": "Wersja backendu",
+        "hostname": "Nazwa hosta",
+        "insecure": "Niebezpieczny",
+        "notLoggedIn": "Nie jesteś zalogowany",
+        "secure": "Bezpieczne",
+        "title": "Informacje o aplikacji",
+        "unknownVersion": "Nieznany",
+        "userId": "Identyfikator użytkownika"
+      }
+    },
+    "subtitles": {
+      "previewQuote": "Nie wolno mi się bać. Strach zabija myślenie.",
+      "textSizeLabel": "Rozmiar czcionki",
+      "title": "Napisy"
+    },
+    "unsaved": "Masz niezapisane zmiany"
+  }
 }

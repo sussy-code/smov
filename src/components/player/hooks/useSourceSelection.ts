@@ -73,8 +73,8 @@ export function useEmbedScraping(
     setSourceId(sourceId);
     setCaption(null);
     setSource(
-      convertRunoutputToSource({ stream: result.stream }),
-      convertProviderCaption(result.stream.captions),
+      convertRunoutputToSource({ stream: result.stream[0] }),
+      convertProviderCaption(result.stream[0].captions),
       progress,
     );
     router.close();
@@ -132,8 +132,8 @@ export function useSourceScraping(sourceId: string | null, routerId: string) {
     if (result.stream) {
       setCaption(null);
       setSource(
-        convertRunoutputToSource({ stream: result.stream }),
-        convertProviderCaption(result.stream.captions),
+        convertRunoutputToSource({ stream: result.stream[0] }),
+        convertProviderCaption(result.stream[0].captions),
         progress,
       );
       setSourceId(sourceId);
@@ -187,8 +187,8 @@ export function useSourceScraping(sourceId: string | null, routerId: string) {
       setSourceId(sourceId);
       setCaption(null);
       setSource(
-        convertRunoutputToSource({ stream: embedResult.stream }),
-        convertProviderCaption(embedResult.stream.captions),
+        convertRunoutputToSource({ stream: embedResult.stream[0] }),
+        convertProviderCaption(embedResult.stream[0].captions),
         progress,
       );
       router.close();

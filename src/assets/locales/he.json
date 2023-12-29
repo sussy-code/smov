@@ -174,21 +174,11 @@
       "enabled": "משדר למכשיר..."
     },
     "menus": {
-      "captions": {
-        "customChoice": "בחר כתוביות מהקובץ",
-        "customizeLabel": "התאם אישית",
-        "offChoice": "כבוי",
-        "settings": {
-          "delay": "עיכוב בכיתוב",
-          "fixCapitals": "תקן שימוש באותיות גדולות"
-        },
-        "title": "כתוביות",
-        "unknownLanguage": "לא ידוע"
-      },
       "downloads": {
         "disclaimer": "ההורדות נלקחות ישירות מהספק. ל-movie-web אין שליטה על האופן שבו מסופקות ההורדות.",
-        "downloadCaption": "הורד את הכתוביות הנוכחיות",
+        "downloadPlaylist": "הורד פלייליסט",
         "downloadVideo": "הורד וידאו",
+        "hlsDisclaimer": "ההורדות נלקחות ישירות מהספק. ל-movie-web אין שליטה על האופן שבו מסופקות ההורדות. שימו לב שאתם מורידים רשימת השמעה של HLS, זה מיועד למשתמשים שמכירים הזרמת מולטימדיה מתקדמת.",
         "onAndroid": {
           "1": "כדי להוריד באנדרואיד, לחץ על כפתור ההורדה ולאחר מכן, בדף החדש, <bold>הקש והחזק</bold> על הסרטון, ולאחר מכן בחר <bold>שמור</bold>.",
           "shortTitle": "הורדה / אנדרויד",
@@ -225,9 +215,7 @@
         "title": "איכות"
       },
       "settings": {
-        "captionItem": "הגדרות כתוביות",
         "downloadItem": "הורד",
-        "enableCaptions": "אפשר כתוביות",
         "experienceSection": "חווית צפייה",
         "playbackItem": "הגדרות ניגון",
         "qualityItem": "איכות",
@@ -249,6 +237,17 @@
         },
         "title": "מקורות",
         "unknownOption": "לא ידוע"
+      },
+      "subtitles": {
+        "customizeLabel": "התאם",
+        "offChoice": "כבוי",
+        "settings": {
+          "backlink": "כתוביות מותאמות אישית",
+          "delay": "עיכוב בכיתוב",
+          "fixCapitals": "תקן שימוש באותיות גדולות"
+        },
+        "title": "כתוביות",
+        "unknownLanguage": "לא ידוע"
       }
     },
     "metadata": {
@@ -371,13 +370,6 @@
       },
       "title": "מראה"
     },
-    "captions": {
-      "backgroundLabel": "אטימות רקע",
-      "colorLabel": "צבע",
-      "previewQuote": "אסור לי לפחד. הפחד הוא קוטל הנפש.",
-      "textSizeLabel": "גודל הטקסט",
-      "title": "כתוביות"
-    },
     "connections": {
       "server": {
         "description": "אם תרצה להתחבר ל-backend מותאם אישית כדי לאחסן את הנתונים שלך, הפעל זאת וספק את כתובת האתר.",
@@ -414,6 +406,11 @@
         "unknownVersion": "לא ידוע",
         "userId": "זהות המשתמש"
       }
+    },
+    "subtitles": {
+      "previewQuote": "אסור לי לפחד. הפחד הוא קוטל הנפש.",
+      "textSizeLabel": "גודל הטקסט",
+      "title": "כתוביות"
     },
     "unsaved": "יש לך שינויים שלא נשמרו"
   }
