@@ -35,6 +35,8 @@ export function ScrapeErrorPart(props: ScrapeErrorPartProps) {
     Object.values(data.sources).forEach((v) => {
       str += `${v.id}: ${v.status}\n`;
       if (v.reason) str += `${v.reason}\n`;
+      if (v.error?.message)
+        str += `${v.error.name ?? "unknown"}: ${v.error.message}\n`;
       if (v.error) str += `${v.error.toString()}\n`;
     });
     return str;
