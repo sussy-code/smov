@@ -79,14 +79,14 @@
   "footer": {
     "legal": {
       "disclaimer": "Ansvarsfriskrivning",
-      "disclaimerText": "movie-web hostar inga filer, den länkar bara till tjänster från tredje part. Juridiska frågor bör tas upp med filvärdar och leverantörer. movie-web ansvarar inte för några mediefiler som visas av videoleverantörerna."
+      "disclaimerText": "Movie-web hostar inga filer utan länkar endast till filer från tredje part. Eventuella juridiska frågor bör tas upp med källorna till materialet. Movie-web varken ansvarar eller styr över de mediefiler som visas."
     },
     "links": {
       "discord": "Discord",
       "dmca": "DMCA",
       "github": "GitHub"
     },
-    "tagline": "Titta på dina favoritprogram och filmer med denna öppna källkodsströmapp."
+    "tagline": "Titta på dina favoritprogram och filmer helt gratis."
   },
   "global": {
     "name": "movie-web",
