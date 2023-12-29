@@ -54,7 +54,7 @@ export function SidebarPart() {
       icon: Icons.BRUSH,
     },
     {
-      textKey: "settings.captions.title",
+      textKey: "settings.subtitles.title",
       id: "settings-captions",
       icon: Icons.CAPTIONS,
     },

@@ -23,7 +23,7 @@ export interface ScrapingSegment {
   embedId?: string;
   status: "failure" | "pending" | "notfound" | "success" | "waiting";
   reason?: string;
-  error?: unknown;
+  error?: any;
   percentage: number;
 }
 

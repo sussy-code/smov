@@ -229,11 +229,11 @@ export function CaptionSettingsView({ id }: { id: string }) {
   return (
     <>
       <Menu.BackLink onClick={() => router.navigate("/captions")}>
-        Custom captions
+        {t("player.menus.subtitles.settings.backlink")}
       </Menu.BackLink>
       <Menu.Section className="space-y-6">
         <CaptionSetting
-          label={t("player.menus.captions.settings.delay")}
+          label={t("player.menus.subtitles.settings.delay")}
           max={10}
           min={-10}
           onChange={(v) => setDelay(v)}
@@ -244,7 +244,7 @@ export function CaptionSettingsView({ id }: { id: string }) {
         />
         <div className="flex justify-between items-center">
           <Menu.FieldTitle>
-            {t("player.menus.captions.settings.fixCapitals")}
+            {t("player.menus.subtitles.settings.fixCapitals")}
           </Menu.FieldTitle>
           <div className="flex justify-center items-center">
             <Toggle
@@ -255,7 +255,7 @@ export function CaptionSettingsView({ id }: { id: string }) {
         </div>
         <Menu.Divider />
         <CaptionSetting
-          label={t("settings.captions.backgroundLabel")}
+          label={t("settings.subtitles.backgroundLabel")}
           max={100}
           min={0}
           onChange={(v) => updateStyling({ backgroundOpacity: v / 100 })}
@@ -263,7 +263,7 @@ export function CaptionSettingsView({ id }: { id: string }) {
           textTransformer={(s) => `${s}%`}
         />
         <CaptionSetting
-          label={t("settings.captions.textSizeLabel")}
+          label={t("settings.subtitles.textSizeLabel")}
           max={200}
           min={1}
           textTransformer={(s) => `${s}%`}
@@ -271,7 +271,9 @@ export function CaptionSettingsView({ id }: { id: string }) {
           value={styling.size * 100}
         />
         <div className="flex justify-between items-center">
-          <Menu.FieldTitle>{t("settings.captions.colorLabel")}</Menu.FieldTitle>
+          <Menu.FieldTitle>
+            {t("settings.subtitles.colorLabel")}
+          </Menu.FieldTitle>
           <div className="flex justify-center items-center">
             {colors.map((v) => (
               <ColorOption

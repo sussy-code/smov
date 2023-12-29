@@ -32,10 +32,12 @@ export function SettingsMenu({ id }: { id: string }) {
 
   const selectedLanguagePretty = selectedCaptionLanguage
     ? getLanguageFromIETF(selectedCaptionLanguage) ??
-      t("player.menus.captions.unknownLanguage")
+      t("player.menus.subtitles.unknownLanguage")
     : undefined;
 
   const source = usePlayerStore((s) => s.source);
+
+  const downloadable = source?.type === "file" || source?.type === "hls";
 
   return (
     <Menu.Card>
@@ -58,12 +60,10 @@ export function SettingsMenu({ id }: { id: string }) {
         <Menu.Link
           clickable
           onClick={() =>
-            router.navigate(
-              source?.type === "file" ? "/download" : "/download/unable",
-            )
+            router.navigate(downloadable ? "/download" : "/download/unable")
           }
           rightSide={<Icon className="text-xl" icon={Icons.DOWNLOAD} />}
-          className={source?.type === "file" ? "opacity-100" : "opacity-50"}
+          className={downloadable ? "opacity-100" : "opacity-50"}
         >
           {t("player.menus.settings.downloadItem")}
         </Menu.Link>
@@ -81,13 +81,13 @@ export function SettingsMenu({ id }: { id: string }) {
             />
           }
         >
-          {t("player.menus.settings.enableCaptions")}
+          {t("player.menus.settings.enableSubtitles")}
         </Menu.Link>
         <Menu.ChevronLink
           onClick={() => router.navigate("/captions")}
           rightText={selectedLanguagePretty ?? undefined}
         >
-          {t("player.menus.settings.captionItem")}
+          {t("player.menus.settings.subtitleItem")}
         </Menu.ChevronLink>
         <Menu.ChevronLink onClick={() => router.navigate("/playback")}>
           {t("player.menus.settings.playbackItem")}
