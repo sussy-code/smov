@@ -75,11 +75,8 @@ export function ScrapingPart(props: ScrapingProps) {
     })();
   }, [startScraping, props, report, isMounted]);
 
-  const currentProvider = sourceOrder.find(
-    (s) => sources[s.id].status === "pending",
-  );
   let currentProviderIndex = sourceOrder.findIndex(
-    (provider) => currentProvider?.id === provider.id,
+    (s) => s.id === currentSource || s.children.includes(currentSource ?? ""),
   );
   if (currentProviderIndex === -1)
     currentProviderIndex = sourceOrder.length - 1;
