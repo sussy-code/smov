@@ -1,6 +1,8 @@
+import { Qualities } from "@movie-web/providers";
+
 import { QualityStore } from "@/stores/quality";
 
-export type SourceQuality = "unknown" | "360" | "480" | "720" | "1080";
+export type SourceQuality = Qualities;
 
 export type StreamType = "hls" | "mp4";
 
@@ -30,6 +32,7 @@ const qualitySorting: Record<SourceQuality, number> = {
   "480": 20,
   "720": 30,
   "1080": 40,
+  "4k": 50,
 };
 const sortedQualities: SourceQuality[] = Object.entries(qualitySorting)
   .sort((a, b) => b[1] - a[1])
@@ -99,6 +102,7 @@ export function selectQuality(
 }
 
 const qualityMap: Record<SourceQuality, string> = {
+  "4k": "4k",
   "1080": "1080p",
   "360": "360p",
   "480": "480p",
