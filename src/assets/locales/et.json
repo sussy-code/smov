@@ -1,32 +1,44 @@
 {
   "about": {
     "description": "movie-web on veebirakendus, mis otsib internetti voogude jaoks. Meeskonna eesmärk on enamasti minimalistlik lähenemine sisu tarbimisele.",
+    "faqTitle": "Tihti küsitud küsimused",
     "q1": {
-      "body": "movie-web ei hoiusta enda sisu. Kui klõpsate, et midagi vaadata, otsitakse valitud meediat internetist (laadimisekraanil ja vahekaardil \"videoallikad\" näete, millist allikat te kasutate). Meediat ei lae movie-web kunagi üles, kõik toimub selle otsingumehhanismi kaudu."
+      "body": "movie-web ei hoiusta enda sisu. Kui klõpsate, et midagi vaadata, otsitakse valitud meediat internetist (laadimisekraanil ja vahekaardil \"videoallikad\" näete, millist allikat te kasutate). Meediat ei lae movie-web kunagi üles, kõik toimub selle otsingumehhanismi kaudu.",
+      "title": "Kust tuleb meie sisu?"
     },
     "q2": {
-      "body": "Saadet või filmi ei ole võimalik taotelda, movie-web ei halda mingit sisu. Kogu sisu vaadatakse interneti allikate kaudu."
-    }
+      "body": "Saadet või filmi ei ole võimalik taotelda, movie-web ei halda mingit sisu. Kogu sisu vaadatakse interneti allikate kaudu.",
+      "title": "Kust ma saan kindlat saadet või filmi paluda?"
+    },
+    "q3": {
+      "body": "Meie otsingutulemusi toetab The Movie Database (TMDB) ja need kuvatakse sõltumata sellest, kas meie allikates on sisu tegelikult olemas.",
+      "title": "Otsingutulemustes kuvatakse saade või film. Miks ma ei saa seda esitada?"
+    },
+    "title": "movie-web'i kohta"
+  },
+  "actions": {
+    "copied": "Kopeeritud",
+    "copy": "Kopeeri"
   },
   "auth": {
     "createAccount": "Ei ole kontot veel?<0>Loo konto.</0>",
     "deviceNameLabel": "Seadme nimi",
     "deviceNamePlaceholder": "Isiklik telefon",
     "generate": {
-      "description": "Teie parool toimib teie kasutajanime ja paroolina. Veenduge, et see oleks ohutus kohas, kuna peate kasutama seda, et logida oma kontosse sisse",
-      "next": "Olen salvestanud oma parooli",
-      "passphraseFrameLabel": "Parool",
-      "title": "Sinu parool"
+      "description": "Teie paroolifraas toimib teie kasutajanime ja paroolina. Veenduge, et see oleks ohutus kohas, kuna peate kasutama seda, et logida oma kontosse sisse",
+      "next": "Olen salvestanud oma paroolifraasi",
+      "passphraseFrameLabel": "Paroolifraas",
+      "title": "Sinu paroolifraas"
     },
-    "hasAccount": "On juba konto? <0>Logi sisse siin.</0>",
+    "hasAccount": "On juba konto? <0>Logi sisse.</0>",
     "login": {
-      "description": "Palun sisestage parool, et logida kontosse sisse",
+      "description": "Palun sisestage paroolifraas, et logida kontosse sisse",
       "deviceLengthError": "Palun sisesta seadme nimi",
-      "passphraseLabel": "12-Sõnaline parool",
-      "passphrasePlaceholder": "Parool",
+      "passphraseLabel": "12-Sõnaline paroolifraas",
+      "passphrasePlaceholder": "Paroolifraas",
       "submit": "Logi sisse",
       "title": "Logi sisse oma kontosse",
-      "validationError": "Vale vōi mittetäielik parool"
+      "validationError": "Vale vōi mittetäielik paroolifraas"
     },
     "register": {
       "information": {
@@ -49,13 +61,13 @@
       "yes": "Usaldan seda serverit"
     },
     "verify": {
-      "description": "Palun sisestage oma salasõna, et kinnitada, et olete selle salvestanud ja luua oma konto",
+      "description": "Palun sisestage oma paroolifraas, et kinnitada, et olete selle salvestanud ja luua oma konto",
       "invalidData": "Andmed ei kehti",
-      "noMatch": "Parool ei klapi",
-      "passphraseLabel": "Sinu 12-sõnaline parool",
+      "noMatch": "Paroolifraas ei klapi",
+      "passphraseLabel": "Sinu 12-sõnaline paroolifraas",
       "recaptchaFailed": "ReCaptcha valideerimine ebaõnnestua",
       "register": "Loo konto",
-      "title": "Kinnita oma parool"
+      "title": "Kinnita oma paroolifraas"
     }
   },
   "errors": {
@@ -67,8 +79,15 @@
   },
   "footer": {
     "legal": {
+      "disclaimer": "Lahtiütlemine",
       "disclaimerText": "movie-web ei hoiusta ühtegi faili, vaid ainult lingib kolmandate osapoolte teenustele. Juriidilised küsimused tuleks lahendada failihostide ja teenusepakkujatega. movie-web ei vastuta videopakkujate poolt näidatud meediafailide eest."
-    }
+    },
+    "links": {
+      "discord": "Discord",
+      "dmca": "DMCA",
+      "github": "GitHub"
+    },
+    "tagline": "Vaadake selle avatud lähtekoodiga voogesituse rakendusega oma lemmiksaateid ja -filme."
   },
   "global": {
     "name": "movie-web",
@@ -124,6 +143,19 @@
       "show": "Saade"
     }
   },
+  "navigation": {
+    "banner": {
+      "offline": "Kontrollige oma Interneti-ühendust"
+    },
+    "menu": {
+      "about": "Meie kohta",
+      "donation": "Anneta",
+      "logout": "Logi välja",
+      "register": "Sünkrooni pilvega",
+      "settings": "Sätted",
+      "support": "Abi"
+    }
+  },
   "notFound": {
     "badge": "Ei leitud",
     "goHome": "Tagasi koju",
@@ -138,29 +170,22 @@
       "default": "Tagasi koju",
       "short": "Tagasi"
     },
+    "casting": {
+      "enabled": "Seadmesse ülekandmine..."
+    },
     "menus": {
-      "captions": {
-        "customChoice": "Vali subtiitrid failist",
-        "customizeLabel": "Kohanda",
-        "offChoice": "Välja",
-        "settings": {
-          "delay": "Subtiitri viivitus",
-          "fixCapitals": "Paranda kapitaliseerimine"
-        },
-        "title": "Subtiitrid",
-        "unknownLanguage": "Teadmata"
-      },
       "downloads": {
         "disclaimer": "Allalaadimine toimub otse teenusepakkujalt. movie-web ei saa kontrollida, kuidas allalaadimine toimub.",
-        "downloadCaption": "Lae alla praegused subtiitrid",
+        "downloadPlaylist": "Laadige esitusloend alla",
         "downloadVideo": "Lae alla video",
+        "hlsDisclaimer": "Allalaadimised võetakse otse teenusepakkujalt. movie-web ei kontrolli, kuidas allalaadimisi pakutakse. Pange tähele, et laadite alla HLS-i esitusloendit, see on mõeldud kasutajatele, kes on tuttavad multimeediumi voogesitusega.",
         "onAndroid": {
           "1": "Et allalaadida Androidi telefonil, vajuta allalaadimise nupule, siis uuel leheküljel <bold>vajuta ja hoia</bold> video peal, siis vali <bold>salvesta</bold>.",
           "shortTitle": "Allalaadimine / Android",
           "title": "Androidil allalaadimine"
         },
         "onIos": {
-          "1": "Et allalaadida iOS telefonil, vajuta allalaadimise nupule, siis uuel leheküljel vajuta <bold><ios_share /></bold>, siis <bold>Salvesta failidesse <ios_files /></bold>",
+          "1": "Et allalaadida iOS telefonil, vajuta allalaadimise nupule, siis uuel leheküljel vajuta <bold><ios_share /></bold>, siis <bold>Salvesta failidesse <ios_files /></bold>.",
           "shortTitle": "Allalaadimine / iOS",
           "title": "iOSil allalaadimine"
         },
@@ -190,9 +215,7 @@
         "title": "Kvaliteet"
       },
       "settings": {
-        "captionItem": "Subtiitrite sätted",
         "downloadItem": "Lae alla",
-        "enableCaptions": "Luba subtiitrid",
         "experienceSection": "Vaatamise kogemus",
         "playbackItem": "Taasesituse sätted",
         "qualityItem": "Kvaliteet",
@@ -214,6 +237,17 @@
         },
         "title": "Allikad",
         "unknownOption": "Teadmata"
+      },
+      "subtitles": {
+        "customizeLabel": "Kohanda",
+        "offChoice": "Välja",
+        "settings": {
+          "backlink": "Kohandatud Subtiitrid",
+          "delay": "Subtiitrite viivitus",
+          "fixCapitals": "Parandage suurtähtede kasutamine"
+        },
+        "title": "Subtiitrid",
+        "unknownLanguage": "Tundmatu"
       }
     },
     "metadata": {
@@ -270,12 +304,114 @@
   },
   "screens": {
     "dmca": {
-      "text": "Tere tulemast movie-webi DMCA kontaktilehele! Me austame intellektuaalomandi õigusi ja soovime kiiresti lahendada kõik autoriõigusega seotud probleemid. Kui usute, et teie autoriõigusega kaitstud tööd on meie platvormil vääralt kasutatud, saatke palun üksikasjalik DMCA-teade alljärgnevale e-posti aadressile. Palun lisage autoriõigusega kaitstud materjali kirjeldus, oma kontaktandmed ja avaldus heauskse veendumuse kohta. Oleme pühendunud nende küsimuste kiirele lahendamisele ja hindame teie koostööd, et movie-web oleks koht, kus austatakse loovust ja autoriõigusi."
+      "text": "Tere tulemast movie-webi DMCA kontaktilehele! Me austame intellektuaalomandi õigusi ja soovime kiiresti lahendada kõik autoriõigusega seotud probleemid. Kui usute, et teie autoriõigusega kaitstud tööd on meie platvormil vääralt kasutatud, saatke palun üksikasjalik DMCA-teade alljärgnevale e-posti aadressile. Palun lisage autoriõigusega kaitstud materjali kirjeldus, oma kontaktandmed ja avaldus heauskse veendumuse kohta. Oleme pühendunud nende küsimuste kiirele lahendamisele ja hindame teie koostööd, et movie-web oleks koht, kus austatakse loovust ja autoriõigusi.",
+      "title": "DMCA"
     },
     "loadingApp": "Rakenduse laadimine",
     "loadingUser": "Teie profiili laadimine",
     "loadingUserError": {
-      "text": "Profiili laadimine ebaōnnestus"
+      "logout": "Logi välja",
+      "reset": "Lähtestage kohandatud server",
+      "text": "Profiili laadimine ebaōnnestus",
+      "textWithReset": "Profiili laadimine kohandatud serverist ebaõnnestus. Kas soovite lähtestada vaikeserverile?"
+    },
+    "migration": {
+      "failed": "Teie andmete üleviimine ebaõnnestus.",
+      "inProgress": "Palun oodake, me viime teie andmeid üle. See ei tohiks kaua aega võtta."
     }
+  },
+  "settings": {
+    "account": {
+      "accountDetails": {
+        "deviceNameLabel": "Seadme nimi",
+        "deviceNamePlaceholder": "Isiklik telefon",
+        "editProfile": "Muuda",
+        "logoutButton": "Logi välja"
+      },
+      "actions": {
+        "delete": {
+          "button": "Kustuta konto",
+          "confirmButton": "Kustuta konto",
+          "confirmDescription": "Kas olete kindel, et soovite oma konto kustutada? Kõik teie andmed lähevad kaotsi!",
+          "confirmTitle": "Oled sa kindel?",
+          "text": "See toiming on pöördumatu. Kõik andmed kustutatakse ja midagi ei saa taastada.",
+          "title": "Kustuta konto"
+        },
+        "title": "Tegevused"
+      },
+      "devices": {
+        "deviceNameLabel": "Seadme nimi",
+        "failed": "Seansside laadimine ebaõnnestus",
+        "removeDevice": "Eemalda",
+        "title": "Seadmed"
+      },
+      "profile": {
+        "finish": "Lõpeta redigeerimine",
+        "firstColor": "Profiili värv üks",
+        "secondColor": "Profiili värv kaks",
+        "title": "Redigeeri profiilipilti",
+        "userIcon": "Kasutaja ikoon"
+      },
+      "register": {
+        "cta": "Alustama",
+        "text": "Jagage oma vaatamise edenemist seadmete vahel ja hoidke neid sünkroonituna.",
+        "title": "Sünkrooni pilvega"
+      },
+      "title": "Konto"
+    },
+    "appearance": {
+      "activeTheme": "Aktiivne",
+      "themes": {
+        "blue": "Sinine",
+        "default": "Vaikimisi",
+        "gray": "Hall",
+        "red": "Punane",
+        "teal": "Tumesinine"
+      },
+      "title": "Välimus"
+    },
+    "connections": {
+      "server": {
+        "description": "Kui soovite kohandatud backend'i kasutada oma andmete hoidmiseks, siis lubage see ja varustage URL.",
+        "label": "Kohandatud server",
+        "urlLabel": "Kohandatud serveri URL"
+      },
+      "title": "Ühendused",
+      "workers": {
+        "addButton": "Lisa uus töötaja",
+        "description": "Rakenduse toimimiseks suunatakse kogu liiklus puhverserverite kaudu. Lubage see, kui soovite oma puhverserverit kasutada.",
+        "emptyState": "Töötajaid pole veel, lisage üks",
+        "label": "Kasutage kohandatud puhverserveri töötajaid",
+        "urlLabel": "Töötajate URL-id",
+        "urlPlaceholder": "https://"
+      }
+    },
+    "locale": {
+      "language": "Rakenduse keel",
+      "languageDescription": "Keel on rakendatud kogu rakendusele.",
+      "title": "Lokaal"
+    },
+    "reset": "Lähtesta",
+    "save": "Salvesta",
+    "sidebar": {
+      "info": {
+        "appVersion": "Rakenduse versioon",
+        "backendUrl": "Backend'i URL",
+        "backendVersion": "Backend'i versioon",
+        "hostname": "Hostinimi",
+        "insecure": "Ebakindel",
+        "notLoggedIn": "Sa pole sisse loginud",
+        "secure": "Turvaline",
+        "title": "Rakenduse teave",
+        "unknownVersion": "Teadmatu",
+        "userId": "Kasutaja ID"
+      }
+    },
+    "subtitles": {
+      "previewQuote": "Ma ei tohi karta. Hirm on meelemõrvar.",
+      "textSizeLabel": "Teksti suurus",
+      "title": "Subtiitrid"
+    },
+    "unsaved": "Teil on salvestamata muudatusi"
   }
 }

@@ -174,21 +174,11 @@
       "enabled": "Odesílání do zařízení..."
     },
     "menus": {
-      "captions": {
-        "customChoice": "Nahrát titulky ze souboru",
-        "customizeLabel": "Přizpůsobit",
-        "offChoice": "Vypnuto",
-        "settings": {
-          "delay": "Posunutí titulků",
-          "fixCapitals": "Opravit velká písmena"
-        },
-        "title": "Titulky",
-        "unknownLanguage": "Neznámo"
-      },
       "downloads": {
         "disclaimer": "Stahování probíhá přímo u poskytovatele. movie-web nemá kontrolu nad tím, jak jsou stahování poskytovány.",
-        "downloadCaption": "Stáhnout titulky",
+        "downloadPlaylist": "Stáhnout playlist",
         "downloadVideo": "Stáhnout video",
+        "hlsDisclaimer": "Stahování probíhá přímo u poskytovatele. movie-web nemá kontrolu nad tím, jak jsou stahování poskytovány. Vezměte prosím na vědomí, že stahujete HLS playlist, který je určen pro uživatele obeznámené s pokročilým streamováním médií.",
         "onAndroid": {
           "1": "Na Androidu klikněte na tlačítko stahování, poté na nové stránce <bold>klepněte a podržte</bold> na videu a poté vyberte <bold>uložit</bold>.",
           "shortTitle": "Stahování / Android",
@@ -225,9 +215,7 @@
         "title": "Kvalita"
       },
       "settings": {
-        "captionItem": "Nastavení titulků",
         "downloadItem": "Stáhnout",
-        "enableCaptions": "Povolit titulky",
         "experienceSection": "Zážitek sledování",
         "playbackItem": "Nastavení přehrávání",
         "qualityItem": "Kvalita",
@@ -249,6 +237,17 @@
         },
         "title": "Zdroje",
         "unknownOption": "Neznámý"
+      },
+      "subtitles": {
+        "customizeLabel": "Přizpůsobit",
+        "offChoice": "Vypnuto",
+        "settings": {
+          "backlink": "Vlastní titulky",
+          "delay": "Posunutí titulků",
+          "fixCapitals": "Opravit velká písmena"
+        },
+        "title": "Titulky",
+        "unknownLanguage": "Neznámé"
       }
     },
     "metadata": {
@@ -371,13 +370,6 @@
       },
       "title": "Vzhled"
     },
-    "captions": {
-      "backgroundLabel": "Neprůhlednost pozadí",
-      "colorLabel": "Barva",
-      "previewQuote": "Nesmím se bát. Strach je zabiják mysli.",
-      "textSizeLabel": "Velikost písma",
-      "title": "Titulky"
-    },
     "connections": {
       "server": {
         "description": "Pokud se chcete připojit k vlastnímu backendu pr ukládání dat, povolte toto a zadejte URL adresu.",
@@ -414,6 +406,11 @@
         "unknownVersion": "Neznámo",
         "userId": "Uživatelské ID"
       }
+    },
+    "subtitles": {
+      "previewQuote": "Nesmím se bát. Strach je zabiják mysli.",
+      "textSizeLabel": "Velikost textu",
+      "title": "Titulky"
     },
     "unsaved": "Máte neuložené změny"
   }
