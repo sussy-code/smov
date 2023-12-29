@@ -78,7 +78,7 @@ export function DownloadView({ id }: { id: string }) {
                 theme="secondary"
                 download="subtitles.srt"
               >
-                {t("player.menus.downloads.downloadCaption")}
+                {t("player.menus.downloads.downloadSubtitle")}
               </Button>
             </>
           ) : (
@@ -113,7 +113,7 @@ export function DownloadView({ id }: { id: string }) {
                 theme="secondary"
                 download="subtitles.srt"
               >
-                {t("player.menus.downloads.downloadCaption")}
+                {t("player.menus.downloads.downloadSubtitle")}
               </Button>
             </>
           )}
