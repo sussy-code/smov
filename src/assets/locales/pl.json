@@ -1,6 +1,6 @@
 {
   "about": {
-    "description": "movie-web jest aplikacją internetową która wyszukuje w Internecie strumienie. Zespół dąży do minimalistycznego podejścia do konsumpcji treści.",
+    "description": "movie-web jest aplikacją internetową, która wyszukuje w internecie strumienia. Zespół dąży do minimalistycznego podejścia do konsumpcji treści.",
     "faqTitle": "Częste pytania",
     "q1": {
       "body": "movie-web nie udostępnia żadnych treści. Kiedy klikniesz na coś co chcesz obejrzeć, internet zostanie przeszukany pod kątem wybranych multimediów (na ekranie ładowania oraz w zakładce „źródła wideo” możesz zobaczyć, z jakiego źródła korzystasz). Media nigdy nie są przesyłane przez movie-web, wszystko odbywa się za pośrednictwem tego mechanizmu wyszukiwania.",
@@ -36,7 +36,7 @@
       "deviceLengthError": "Proszę wpisać nazwę urządzenia",
       "passphraseLabel": "12-wyrazowa fraza hasła",
       "passphrasePlaceholder": "Fraza hasła",
-      "submit": "Zaloguj sie",
+      "submit": "Zaloguj się",
       "title": "Zaloguj się na swoje konto",
       "validationError": "Nieprawidłowe lub niedokończone fraza hasła"
     },
@@ -55,7 +55,7 @@
         "text": "Skonfigurowałeś to poprawnie?",
         "title": "Nie udało się połączyć z serwerem"
       },
-      "host": "Łączysz się z <0>{{hostname}}</0> - przed utworzeniem konta potwierdź, że ufasz temu serwerowi",
+      "host": "Łączysz się z <0>{{hostname}}</0> - przed utworzeniem konta potwierdź że ufasz temu serwerowi",
       "no": "Wstecz",
       "title": "Ufasz temu serwerowi?",
       "yes": "Ufam temu serwerowi"
@@ -216,6 +216,7 @@
       },
       "settings": {
         "downloadItem": "Pobierz",
+        "experienceSection": "Odtwarzanie",
         "playbackItem": "Ustawienia odtwarzania",
         "qualityItem": "Jakość",
         "sourceItem": "Źródła wideo",
@@ -270,9 +271,147 @@
     "playbackError": {
       "badge": "Błąd odtwarzania",
       "errors": {
-        "errorAborted": "Pobieranie multimediów zostało przerwane na żądanie użytkownika."
+        "errorAborted": "Pobieranie multimediów zostało przerwane na żądanie użytkownika.",
+        "errorDecode": "Pomimo wcześniejszego stwierdzenia że zasób multimedialny nadaje się do użytku, wystąpił błąd podczas próby dekodowania zasobu multimedialnego, co spowodowało błąd.",
+        "errorGenericMedia": "Wystąpił nieznany błąd multimediów.",
+        "errorNetwork": "Wystąpił jakiś błąd sieciowy, który uniemożliwił pomyślne pobranie multimediów, mimo że były one wcześniej dostępne.",
+        "errorNotSupported": "Obiekt multimediów lub dostawcy multimediów nie jest obsługiwany."
       },
-      "title": "Ups, popsuło się!"
+      "homeButton": "Wróć na stronę główną",
+      "text": "Wystąpił błąd podczas próby odtworzenia multimediów. Spróbuj ponownie.",
+      "title": "Nie udało się odtworzyć wideo!"
+    },
+    "scraping": {
+      "items": {
+        "failure": "Wystąpił błąd",
+        "notFound": "Nie ma wideo",
+        "pending": "Sprawdzanie filmów..."
+      },
+      "notFound": {
+        "badge": "Nie znaleziono",
+        "detailsButton": "Pokaż szczegóły",
+        "homeButton": "Wróć na stronę główną",
+        "text": "Przeszukaliśmy naszych dostawców i nie możemy znaleźć poszukiwanych multimediów! Nie przechowujemy multimediów i nie mamy kontroli nad ich dostępnością. Kliknij \"Pokaż szczegóły\" poniżej, aby uzyskać więcej informacji.",
+        "title": "Nie mogliśmy znaleźć tego"
+      }
+    },
+    "time": {
+      "regular": "{{timeWatched}} / {{duration}}",
+      "remaining": "Zostało {{timeLeft}} • Skończ o {{timeFinished, datetime}}",
+      "shortRegular": "{{timeWatched}}",
+      "shortRemaining": "-{{timeLeft}}"
     }
+  },
+  "screens": {
+    "dmca": {
+      "text": "Witamy na stronie kontaktowej DMCA serwisu movie-web! Szanujemy prawa własności intelektualnej i chcemy szybko rozwiązywać wszelkie problemy związane z prawami autorskimi. Jeśli uważasz że twoja praca chroniona prawem autorskim została niewłaściwie wykorzystana na naszej platformie, proszę wysłać szczegółowe powiadomienie DMCA na poniższy adres e-mail. Prosimy o dołączenie opisu materiału chronionego prawem autorskim, danych kontaktowych i oświadczenia w dobrej wierze. Zależy nam na szybkim rozwiązywaniu takich spraw i będziemy wdzięczni za współpracę w utrzymaniu movie-web jako miejsce w którym szanuje się kreatywność i prawa autorskie.",
+      "title": "DMCA"
+    },
+    "loadingApp": "Wczytywanie aplikacji",
+    "loadingUser": "Wczytywanie profilu",
+    "loadingUserError": {
+      "logout": "Wyloguj się",
+      "reset": "Zresetuj serwer niestandardowy",
+      "text": "Nie udało się wczytać profilu",
+      "textWithReset": "Nie udało się wczytać profilu z niestandardowego serwera, chcesz powrócić do domyślnego serwera?"
+    },
+    "migration": {
+      "failed": "Migracja danych nie powiodła się.",
+      "inProgress": "Proszę czekać, przeprowadzamy migrację danych. Nie powinno to zająć dużo czasu."
+    }
+  },
+  "settings": {
+    "account": {
+      "accountDetails": {
+        "deviceNameLabel": "Nazwa urządzenia",
+        "deviceNamePlaceholder": "Telefon osobisty",
+        "editProfile": "Edytuj",
+        "logoutButton": "Wyloguj się"
+      },
+      "actions": {
+        "delete": {
+          "button": "Usuń konto",
+          "confirmButton": "Usuń konto",
+          "confirmDescription": "Na pewno chcesz usunąć swoje konto? Wszystkie twoje dane zostaną stracone!",
+          "confirmTitle": "Jesteś pewny?",
+          "text": "Działanie to jest nieodwracalne. Wszystkie dane zostaną usunięte i nie będzie można ich odzyskać.",
+          "title": "Usuń konto"
+        },
+        "title": "Działania"
+      },
+      "devices": {
+        "deviceNameLabel": "Nazwa urządzenia",
+        "failed": "Nie udało się załadować sesji",
+        "removeDevice": "Usuń",
+        "title": "Urządzenia"
+      },
+      "profile": {
+        "finish": "Zakończ edycję",
+        "firstColor": "Kolor profilu jeden",
+        "secondColor": "Kolor profilu dwa",
+        "title": "Edytuj zdjęcie profilowe",
+        "userIcon": "Ikona użytkownika"
+      },
+      "register": {
+        "cta": "Rozpocznij",
+        "text": "Udostępnij postępy oglądania między urządzeniami i synchronizuj je.",
+        "title": "Synchronizuj z chmurą"
+      },
+      "title": "Konto"
+    },
+    "appearance": {
+      "activeTheme": "Aktywny",
+      "themes": {
+        "blue": "Niebieski",
+        "default": "Domyślny",
+        "gray": "Szary",
+        "red": "Czerwony",
+        "teal": "Morski"
+      },
+      "title": "Wygląd"
+    },
+    "connections": {
+      "server": {
+        "description": "Jeśli chcesz połączyć się z niestandardowym backendem w celu przechowywania danych, włącz tę opcję i podaj adres URL.",
+        "label": "Serwer niestandardowy",
+        "urlLabel": "Adres URL niestandardowego serwera"
+      },
+      "title": "Połączenia",
+      "workers": {
+        "addButton": "Dodaj nowego pracownika",
+        "description": "Aby aplikacja działała, cały ruch jest kierowany przez serwery proxy. Włącz tę opcję, jeśli chcesz korzystać z własnych pracowników.",
+        "emptyState": "Brak pracowników, dodaj jednego poniżej",
+        "label": "Używaj niestandardowych pracowników proxy",
+        "urlLabel": "Adresy URL pracowników",
+        "urlPlaceholder": "https://"
+      }
+    },
+    "locale": {
+      "language": "Język aplikacji",
+      "languageDescription": "Język zastosowany do całej aplikacji.",
+      "title": "Język"
+    },
+    "reset": "Reset",
+    "save": "Zapisz",
+    "sidebar": {
+      "info": {
+        "appVersion": "Wersja aplikacji",
+        "backendUrl": "Adres URL backendu",
+        "backendVersion": "Wersja backendu",
+        "hostname": "Nazwa hosta",
+        "insecure": "Niebezpieczny",
+        "notLoggedIn": "Nie jesteś zalogowany",
+        "secure": "Bezpieczne",
+        "title": "Informacje o aplikacji",
+        "unknownVersion": "Nieznany",
+        "userId": "Identyfikator użytkownika"
+      }
+    },
+    "subtitles": {
+      "previewQuote": "Nie wolno mi się bać. Strach zabija myślenie.",
+      "textSizeLabel": "Rozmiar czcionki",
+      "title": "Napisy"
+    },
+    "unsaved": "Masz niezapisane zmiany"
   }
 }
