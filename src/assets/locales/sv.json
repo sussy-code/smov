@@ -3,7 +3,7 @@
     "description": "movie-web är en webbapplikation som söker efter strömmar på internet. Teamet strävar efter en mestadels minimalistisk ansats för att konsumera innehåll.",
     "faqTitle": "Vanliga frågor",
     "q1": {
-      "body": "movie-web hostar inte något innehåll. När du klickar på något att titta på, söks internet efter den valda median (På laddningsskärmen och i fliken 'video sources' kan du se vilken källa du använder). Media laddas aldrig upp av movie-web, allt går genom detta sökmechanism.",
+      "body": "Movie-web hostar ingen innehåll. När du klickar på något att titta på, söks internet efter det valda mediet (På laddningsskärmen och i fliken 'Videokällor' kan du se vilken källa du använder). Inget medium laddas upp av movie-web, allt sker genom sökmotorn.",
       "title": "Var kommer innehållet ifrån?"
     },
     "q2": {
@@ -78,7 +78,7 @@
   },
   "footer": {
     "legal": {
-      "disclaimer": "Ansvarsfriskrivning",
+      "disclaimer": "Friskriver sig från ansvar",
       "disclaimerText": "Movie-web hostar inga filer utan länkar endast till filer från tredje part. Eventuella juridiska frågor bör tas upp med källorna till materialet. Movie-web varken ansvarar eller styr över de mediefiler som visas."
     },
     "links": {
