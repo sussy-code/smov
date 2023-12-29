@@ -25,7 +25,7 @@ export function TrustBackendPart(props: TrustBackendPartProps) {
   const backendUrl = useBackendUrl();
   const hostname = useMemo(() => new URL(backendUrl).hostname, [backendUrl]);
   const result = useAsync(() => {
-    return getBackendMeta(conf().BACKEND_URL);
+    return getBackendMeta(backendUrl);
   }, [backendUrl]);
   const { t } = useTranslation();
 
