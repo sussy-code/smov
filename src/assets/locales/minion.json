@@ -319,18 +319,18 @@
           "text": "Whaaat? This banana is irreversible. All bananas will be banana and nothing can be banana.",
           "title": "Banana"
         },
-        "title": "Banana"
+        "title": "Bananas"
       },
       "devices": {
         "deviceNameLabel": "Banana name",
-        "failed": "Failed to load bananas",
+        "failed": "Failed to load bananas :'(",
         "removeDevice": "Banana",
-        "title": "Banana"
+        "title": "Bananas"
       },
       "profile": {
-        "finish": "Banana banana",
-        "firstColor": "Minion color one",
-        "secondColor": "Minion color two",
+        "finish": "Finish banana",
+        "firstColor": "Minion color banana",
+        "secondColor": "Minion color banana",
         "title": "Edit banana banana",
         "userIcon": "Minion icon"
       },
@@ -358,14 +358,14 @@
         "label": "Banana banana",
         "urlLabel": "Banana banana URL"
       },
-      "title": "Banana",
+      "title": "Bananas",
       "workers": {
-        "addButton": "Banana banana banana",
+        "addButton": "Add new banana",
         "description": "Banana make the banana function, all banana is banana through bananas. Banana this if you banana to banana your own bananas.",
         "emptyState": "No bananas yet, banana one banana",
-        "label": "Banana custom banana",
+        "label": "Banana custom banana workers",
         "urlLabel": "Banana URLs",
-        "urlPlaceholder": "https://"
+        "urlPlaceholder": "banana://"
       }
     },
     "locale": {
@@ -388,6 +388,11 @@
         "unknownVersion": "Unknown",
         "userId": "Minion ID"
       }
+    },
+    "subtitles": {
+      "previewQuote": "I must not banana. Banana is the minion-killer.",
+      "textSizeLabel": "Banana size",
+      "title": "Bananas"
     },
     "unsaved": "Whaaat? You have unsaved bananas"
   }
