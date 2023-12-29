@@ -11,10 +11,10 @@
       "title": "Où puis-je demander une série ou un film ?"
     },
     "q3": {
-      "body": "Nos résultats de recherche sont disponibles dans The Movie Database (TMDB), indépendamment du fait que nos sources possèdent ou non le contenu.",
+      "body": "Nos résultats de recherche sont fournis et affichés par The Movie Database (TMDB), que nos sources soient propriétaires du contenu ou non.",
       "title": "Les résultats de la recherche affichent l'émission ou le film, pourquoi ne puis-je pas le lire ?"
     },
-    "title": "A propos de movie-web"
+    "title": "À propos de movie-web"
   },
   "actions": {
     "copied": "Copié",
@@ -57,7 +57,7 @@
       },
       "host": "Vous vous connectez à <0>{{hostname}}</0> - veuillez confirmer que vous lui faites confiance avant de créer un compte",
       "no": "Retour",
-      "title": "Est-ce que vous avez confiance à ce serveur?",
+      "title": "Avez-vous confiance en ce serveur ?",
       "yes": "Je fais confiance à ce serveur"
     },
     "verify": {
@@ -176,6 +176,8 @@
     "menus": {
       "downloads": {
         "disclaimer": "Les téléchargements sont effectués directement par le fournisseur. movie-web n'a aucun contrôle sur la manière dont les téléchargements sont effectués.",
+        "downloadPlaylist": "Télécharger la liste de lecture",
+        "downloadSubtitle": "Télécharger les sous-titres",
         "downloadVideo": "Télécharger la vidéo",
         "onAndroid": {
           "1": "Pour télécharger sur Android, cliquez sur le bouton de téléchargement puis, sur la nouvelle page, <bold>tapez et maintenez </bold> sur la vidéo, puis sélectionnez <bold>enregistrer</bold>.",
@@ -214,10 +216,12 @@
       },
       "settings": {
         "downloadItem": "Télécharger",
+        "enableSubtitles": "Activer les sous-titres",
         "experienceSection": "Expérience de visionnage",
         "playbackItem": "Paramètres de lecture",
         "qualityItem": "Qualité",
         "sourceItem": "Sources vidéo",
+        "subtitleItem": "Paramètres des sous-titres",
         "videoSection": "Paramètres vidéo"
       },
       "sources": {
@@ -235,6 +239,18 @@
         },
         "title": "Sources",
         "unknownOption": "Inconnu"
+      },
+      "subtitles": {
+        "customChoice": "Importer des sous-titres depuis un fichier",
+        "customizeLabel": "Personnaliser",
+        "offChoice": "Désactivé",
+        "settings": {
+          "backlink": "Sous-titres personnalisés",
+          "delay": "Délai des sous-titres",
+          "fixCapitals": "Corriger les capitales"
+        },
+        "title": "Sous-titres",
+        "unknownLanguage": "Inconnu"
       }
     },
     "metadata": {
@@ -393,6 +409,13 @@
         "unknownVersion": "Inconnu",
         "userId": "ID de l'utilisateur"
       }
+    },
+    "subtitles": {
+      "backgroundLabel": "Opacité du fond",
+      "colorLabel": "Couleur",
+      "previewQuote": "Je ne dois pas avoir peur. La peur est ce qui nous tue de l'intérieur.",
+      "textSizeLabel": "Taille des textes",
+      "title": "Sous-titres"
     },
     "unsaved": "Vous avez des changements non sauvegardés"
   }
