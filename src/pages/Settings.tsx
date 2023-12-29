@@ -140,10 +140,15 @@ export function SettingsPage() {
 
   const saveChanges = useCallback(async () => {
     if (account) {
-      if (state.appLanguage.changed || state.theme.changed) {
+      if (
+        state.appLanguage.changed ||
+        state.theme.changed ||
+        state.proxyUrls.changed
+      ) {
         await updateSettings(backendUrl, account, {
           applicationLanguage: state.appLanguage.state,
           applicationTheme: state.theme.state,
+          proxyUrls: state.proxyUrls.state?.filter((v) => v !== "") ?? null,
         });
       }
       if (state.deviceName.changed) {
@@ -166,7 +171,7 @@ export function SettingsPage() {
     setAppLanguage(state.appLanguage.state);
     setTheme(state.theme.state);
     setSubStyling(state.subtitleStyling.state);
-    setProxySet(state.proxyUrls.state);
+    setProxySet(state.proxyUrls.state?.filter((v) => v !== "") ?? null);
 
     if (state.profile.state) {
       updateProfile(state.profile.state);

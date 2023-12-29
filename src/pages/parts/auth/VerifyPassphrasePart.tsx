@@ -74,6 +74,7 @@ export function VerifyPassphrase(props: VerifyPassphraseProps) {
         applicationLanguage,
         defaultSubtitleLanguage: defaultSubtitleLanguage ?? undefined,
         applicationTheme: applicationTheme ?? undefined,
+        proxyUrls: undefined,
       });
 
       await restore(account);
