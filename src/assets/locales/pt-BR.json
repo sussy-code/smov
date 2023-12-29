@@ -237,6 +237,17 @@
         },
         "title": "Fontes",
         "unknownOption": "Desconhecido"
+      },
+      "subtitles": {
+        "customizeLabel": "Personalizar",
+        "offChoice": "Desativadas",
+        "settings": {
+          "backlink": "Legendas personalizadas",
+          "delay": "Atraso da legenda",
+          "fixCapitals": "Corrigir letras maiúsculas"
+        },
+        "title": "Legendas",
+        "unknownLanguage": "Desconhecido"
       }
     },
     "metadata": {
@@ -395,6 +406,11 @@
         "unknownVersion": "Desconhecido",
         "userId": "ID do usuário"
       }
+    },
+    "subtitles": {
+      "previewQuote": "Eu não devo ter medo. Medo é o assassino da mente.",
+      "textSizeLabel": "Tamanho do texto",
+      "title": "Legendas"
     },
     "unsaved": "Você tem alterações não salvas"
   }
