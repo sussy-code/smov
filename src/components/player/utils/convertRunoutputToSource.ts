@@ -1,4 +1,4 @@
-import { RunOutput } from "@movie-web/providers";
+import { Stream } from "@movie-web/providers";
 
 import {
   SourceFileStream,
@@ -7,6 +7,7 @@ import {
 } from "@/stores/player/utils/qualities";
 
 const allowedQualitiesMap: Record<SourceQuality, SourceQuality> = {
+  "4k": "4k",
   "1080": "1080",
   "480": "480",
   "360": "360",
@@ -21,7 +22,7 @@ function isAllowedQuality(inp: string): inp is SourceQuality {
 }
 
 export function convertRunoutputToSource(out: {
-  stream: RunOutput["stream"];
+  stream: Stream;
 }): SourceSliceSource {
   if (out.stream.type === "hls") {
     return {

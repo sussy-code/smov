@@ -1,5 +1,5 @@
 import {
-  ProviderBuilderOptions,
+  Fetcher,
   ProviderControls,
   makeProviders,
   makeSimpleProxyFetcher,
@@ -49,7 +49,7 @@ async function fetchButWithApiTokens(
 }
 
 function makeLoadBalancedSimpleProxyFetcher() {
-  const fetcher: ProviderBuilderOptions["fetcher"] = async (a, b) => {
+  const fetcher: Fetcher = async (a, b) => {
     const currentFetcher = makeSimpleProxyFetcher(
       getLoadbalancedProxyUrl(),
       fetchButWithApiTokens,

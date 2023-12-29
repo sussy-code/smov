@@ -174,20 +174,8 @@
       "enabled": "Transmitindo para o dispositivo..."
     },
     "menus": {
-      "captions": {
-        "customChoice": "Selecionar legenda de arquivo",
-        "customizeLabel": "Personalizar",
-        "offChoice": "Desligado",
-        "settings": {
-          "delay": "Atraso de legendas",
-          "fixCapitals": "Corrigir capitalização"
-        },
-        "title": "Legendas",
-        "unknownLanguage": "Idioma desconhecido"
-      },
       "downloads": {
         "disclaimer": "Os downloads são feitos diretamente do provedor. movie-web não tem controle sobre como os downloads são fornecidos.",
-        "downloadCaption": "Baixar legenda atual",
         "downloadPlaylist": "Baixar playlist",
         "downloadVideo": "Baixar vídeo",
         "hlsDisclaimer": "Os downloads são feitos diretamente do provedor. movie-web não tem controle sobre como os downloads são fornecidos. Por favor, note que você está baixando uma playlist HLS, isso é destinado para usuários familiarizados com streaming multimídia avançado.",
@@ -227,9 +215,7 @@
         "title": "Qualidade"
       },
       "settings": {
-        "captionItem": "Configurações de legendas",
         "downloadItem": "Baixar",
-        "enableCaptions": "Ativar legendas",
         "experienceSection": "Experiência de visualização",
         "playbackItem": "Configurações de reprodução",
         "qualityItem": "Qualidade",
@@ -251,6 +237,17 @@
         },
         "title": "Fontes",
         "unknownOption": "Desconhecido"
+      },
+      "subtitles": {
+        "customizeLabel": "Personalizar",
+        "offChoice": "Desativadas",
+        "settings": {
+          "backlink": "Legendas personalizadas",
+          "delay": "Atraso da legenda",
+          "fixCapitals": "Corrigir letras maiúsculas"
+        },
+        "title": "Legendas",
+        "unknownLanguage": "Desconhecido"
       }
     },
     "metadata": {
@@ -373,13 +370,6 @@
       },
       "title": "Aparência"
     },
-    "captions": {
-      "backgroundLabel": "Opacidade do fundo",
-      "colorLabel": "Cor",
-      "previewQuote": "Não devo temer. O medo é o assassino da mente.",
-      "textSizeLabel": "Tamanho do texto",
-      "title": "Legendas"
-    },
     "connections": {
       "server": {
         "description": "Se você deseja se conectar a um backend personalizado para armazenar seus dados, ative isso e forneça a URL.",
@@ -416,6 +406,11 @@
         "unknownVersion": "Desconhecido",
         "userId": "ID do usuário"
       }
+    },
+    "subtitles": {
+      "previewQuote": "Eu não devo ter medo. Medo é o assassino da mente.",
+      "textSizeLabel": "Tamanho do texto",
+      "title": "Legendas"
     },
     "unsaved": "Você tem alterações não salvas"
   }

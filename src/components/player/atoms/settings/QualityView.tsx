@@ -22,6 +22,7 @@ const alwaysVisibleQualities: Record<SourceQuality, boolean> = {
   "480": true,
   "720": true,
   "1080": true,
+  "4k": false,
 };
 
 function useIsIosHls() {

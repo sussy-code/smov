@@ -3,7 +3,7 @@
     "description": "movie-web är en webbapplikation som söker efter strömmar på internet. Teamet strävar efter en mestadels minimalistisk ansats för att konsumera innehåll.",
     "faqTitle": "Vanliga frågor",
     "q1": {
-      "body": "movie-web hostar inte något innehåll. När du klickar på något att titta på, söks internet efter den valda median (På laddningsskärmen och i fliken 'video sources' kan du se vilken källa du använder). Media laddas aldrig upp av movie-web, allt går genom detta sökmechanism.",
+      "body": "Movie-web hostar ingen innehåll. När du klickar på något att titta på, söks internet efter det valda mediet (På laddningsskärmen och i fliken 'Videokällor' kan du se vilken källa du använder). Inget medium laddas upp av movie-web, allt sker genom sökmotorn.",
       "title": "Var kommer innehållet ifrån?"
     },
     "q2": {
@@ -78,15 +78,15 @@
   },
   "footer": {
     "legal": {
-      "disclaimer": "Ansvarsfriskrivning",
-      "disclaimerText": "movie-web hostar inga filer, den länkar bara till tjänster från tredje part. Juridiska frågor bör tas upp med filvärdar och leverantörer. movie-web ansvarar inte för några mediefiler som visas av videoleverantörerna."
+      "disclaimer": "Friskriver sig från ansvar",
+      "disclaimerText": "Movie-web hostar inga filer utan länkar endast till filer från tredje part. Eventuella juridiska frågor bör tas upp med källorna till materialet. Movie-web varken ansvarar eller styr över de mediefiler som visas."
     },
     "links": {
       "discord": "Discord",
       "dmca": "DMCA",
       "github": "GitHub"
     },
-    "tagline": "Titta på dina favoritprogram och filmer med denna öppna källkodsströmapp."
+    "tagline": "Titta på dina favoritprogram och filmer helt gratis."
   },
   "global": {
     "name": "movie-web",
@@ -173,20 +173,8 @@
       "enabled": "Castar till enheten..."
     },
     "menus": {
-      "captions": {
-        "customChoice": "Välj undertext från fil",
-        "customizeLabel": "Anpassa",
-        "offChoice": "Av",
-        "settings": {
-          "delay": "Fördröjning för undertexter",
-          "fixCapitals": "Åtgärda versaler"
-        },
-        "title": "Undertexter",
-        "unknownLanguage": "Okänd"
-      },
       "downloads": {
         "disclaimer": "Nedladdningar görs direkt från leverantören. movie-web har ingen kontroll över hur nedladdningarna tillhandahålls.",
-        "downloadCaption": "Ladda ner aktuell undertext",
         "downloadVideo": "Ladda ner video",
         "onAndroid": {
           "1": "För att ladda ner på Android, klicka på nedladdningsknappen och på den nya sidan <bold>trycker och håller</bold> på videon, välj sedan <bold>spara</bold>.",
@@ -224,9 +212,7 @@
         "title": "Kvalitet"
       },
       "settings": {
-        "captionItem": "Undertextinställningar",
         "downloadItem": "Ladda ner",
-        "enableCaptions": "Aktivera undertexter",
         "experienceSection": "Visningsupplevelse",
         "playbackItem": "Uppspelningsinställningar",
         "qualityItem": "Kvalitet",
@@ -369,13 +355,6 @@
         "teal": "Blågrön"
       },
       "title": "Utseende"
-    },
-    "captions": {
-      "backgroundLabel": "Bakgrundstransparens",
-      "colorLabel": "Färg",
-      "previewQuote": "Jag får inte frukta. Rädsla är tankedödaren.",
-      "textSizeLabel": "Textstorlek",
-      "title": "Textning"
     },
     "connections": {
       "server": {

@@ -174,21 +174,11 @@
       "enabled": "正在投放到设备…"
     },
     "menus": {
-      "captions": {
-        "customChoice": "上传字幕",
-        "customizeLabel": "自定义",
-        "offChoice": "关闭",
-        "settings": {
-          "delay": "字幕延迟",
-          "fixCapitals": "修复大小写"
-        },
-        "title": "字幕",
-        "unknownLanguage": "未知"
-      },
       "downloads": {
         "disclaimer": "下载内容是直接从内容提供者获取的。movie-web 无法控制下载内容如何被提供。",
-        "downloadCaption": "下载当前字幕",
+        "downloadPlaylist": "下载播放列表",
         "downloadVideo": "下载视频",
+        "hlsDisclaimer": "下载内容是直接从内容提供者获取的。movie-web 无法控制下载内容如何被提供。请注意，您正在下载 HLS 播放列表，这适用于熟悉高级多媒体串流技术的用户。",
         "onAndroid": {
           "1": "要从 Android 下载，先点击下载按钮，之后在新的页面上， <bold>点击并按住</bold>视频，然后选择 <bold>保存</bold>。",
           "shortTitle": "下载 / Android",
@@ -225,9 +215,7 @@
         "title": "质量"
       },
       "settings": {
-        "captionItem": "字幕设置",
         "downloadItem": "下载",
-        "enableCaptions": "启用字幕",
         "experienceSection": "观看体验",
         "playbackItem": "播放设置",
         "qualityItem": "质量",
@@ -249,6 +237,17 @@
         },
         "title": "视频源",
         "unknownOption": "未知"
+      },
+      "subtitles": {
+        "customizeLabel": "自定义",
+        "offChoice": "关闭",
+        "settings": {
+          "backlink": "自定义字幕",
+          "delay": "字幕延时",
+          "fixCapitals": "修整大小写"
+        },
+        "title": "字幕",
+        "unknownLanguage": "未知"
       }
     },
     "metadata": {
@@ -371,13 +370,6 @@
       },
       "title": "外观"
     },
-    "captions": {
-      "backgroundLabel": "背景透明度",
-      "colorLabel": "颜色",
-      "previewQuote": "我一定不会害怕。 恐惧是心灵杀手。",
-      "textSizeLabel": "字体大小",
-      "title": "字幕"
-    },
     "connections": {
       "server": {
         "description": "若您想连接到自定义后端保存数据，请启用此选项并提供 URL。",
@@ -414,6 +406,11 @@
         "unknownVersion": "未知",
         "userId": "用户 ID"
       }
+    },
+    "subtitles": {
+      "previewQuote": "我不能害怕。恐惧是心灵的杀手。",
+      "textSizeLabel": "字体大小",
+      "title": "字幕"
     },
     "unsaved": "您有未保存的更改"
   }

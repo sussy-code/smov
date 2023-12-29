@@ -159,20 +159,8 @@
       "enabled": "mi pana e sitelen tawa ilo ante..."
     },
     "menus": {
-      "captions": {
-        "customChoice": "o pana tan ilo",
-        "customizeLabel": "o ante",
-        "offChoice": "ala",
-        "settings": {
-          "delay": "ante tenpo",
-          "fixCapitals": "o pona e suli nimi"
-        },
-        "title": "nimi toki",
-        "unknownLanguage": "mi sona ala"
-      },
       "downloads": {
         "disclaimer": "sina kama jo e sitelen tawa ilo sina tan lipu mama. ilo Muwi-We li lawa ala e nasin jo",
-        "downloadCaption": "o jo e nimi toki",
         "downloadVideo": "o jo e sitelen",
         "onAndroid": {
           "1": "ilo Android la o luka e nena 'o jo'. lon lipu sin la <bold>o luka wawa</bold> e sitelen. o luka e nena 'o jo'",
@@ -210,9 +198,7 @@
         "title": "pona lukin"
       },
       "settings": {
-        "captionItem": "nasin nimi",
         "downloadItem": "o jo",
-        "enableCaptions": "nimi toki",
         "experienceSection": "nasin lukin",
         "playbackItem": "nasin pali",
         "qualityItem": "pona lukin",
@@ -347,13 +333,6 @@
         "teal": "laso walo"
       },
       "title": "kule"
-    },
-    "captions": {
-      "backgroundLabel": "kon",
-      "colorLabel": "kule",
-      "previewQuote": "kijetesantakalu tonsi li lanpan ala lanpan e soko?",
-      "textSizeLabel": "suli",
-      "title": "nimi toki"
     },
     "connections": {
       "title": "kulupu"
