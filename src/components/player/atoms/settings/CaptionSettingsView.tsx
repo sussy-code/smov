@@ -214,7 +214,7 @@ export function CaptionSetting(props: {
   );
 }
 
-export const colors = ["#ffffff", "#80b1fa", "#e2e535"];
+export const colors = ["#a8a8a8", "#ffffff", "#80b1fa", "#e2e535"];
 
 export function CaptionSettingsView({ id }: { id: string }) {
   const { t } = useTranslation();
