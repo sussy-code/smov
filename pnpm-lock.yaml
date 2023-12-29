@@ -18,8 +18,8 @@ dependencies:
     specifier: ^1.7.17
     version: 1.7.17(react-dom@18.2.0)(react@18.2.0)
   '@movie-web/providers':
-    specifier: ^2.0.0
-    version: 2.0.0
+    specifier: ^2.0.1
+    version: 2.0.1
   '@noble/hashes':
     specifier: ^1.3.3
     version: 1.3.3
@@ -1912,8 +1912,8 @@ packages:
       '@jridgewell/resolve-uri': 3.1.1
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  /@movie-web/providers@2.0.0:
-    resolution: {integrity: sha512-+LF7kTLhtpewLdQssnYojW/Dia0UtAkrK9ZvmFSnLIEQoVjVv1vsJUT2JqkjvEC/TM1SnM2N6H+eKLJU4yN2cQ==}
+  /@movie-web/providers@2.0.1:
+    resolution: {integrity: sha512-PB1OxSsm4zwD6fuWBCmuqwMpt1UnlKssVZ8jGl6gHioS9/qFXR9Rsd8SnWISQWxF6lVRUp0DBXHfCrXGY/jwhA==}
     dependencies:
       cheerio: 1.0.0-rc.12
       crypto-js: 4.2.0

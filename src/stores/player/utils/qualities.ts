@@ -32,7 +32,7 @@ const qualitySorting: Record<SourceQuality, number> = {
   "480": 20,
   "720": 30,
   "1080": 40,
-  "4k": 50,
+  "4k": 25, // 4k has lower priority, you need faster internet for it
 };
 const sortedQualities: SourceQuality[] = Object.entries(qualitySorting)
   .sort((a, b) => b[1] - a[1])
@@ -101,8 +101,8 @@ export function selectQuality(
   throw new Error("couldn't select quality");
 }
 
-const qualityMap: Record<SourceQuality, string> = {
-  "4k": "4k",
+const qualityNameMap: Record<SourceQuality, string> = {
+  "4k": "4K",
   "1080": "1080p",
   "360": "360p",
   "480": "480p",
@@ -110,8 +110,8 @@ const qualityMap: Record<SourceQuality, string> = {
   unknown: "unknown",
 };
 
-export const allQualities = Object.keys(qualityMap) as SourceQuality[];
+export const allQualities = Object.keys(qualityNameMap) as SourceQuality[];
 
 export function qualityToString(quality: SourceQuality): string {
-  return qualityMap[quality];
+  return qualityNameMap[quality];
 }

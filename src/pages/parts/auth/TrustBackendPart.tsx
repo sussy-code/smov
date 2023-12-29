@@ -14,7 +14,6 @@ import {
 import { Loading } from "@/components/layout/Loading";
 import { MwLink } from "@/components/text/Link";
 import { useBackendUrl } from "@/hooks/auth/useBackendUrl";
-import { conf } from "@/setup/config";
 
 interface TrustBackendPartProps {
   onNext?: (meta: MetaResponse) => void;
