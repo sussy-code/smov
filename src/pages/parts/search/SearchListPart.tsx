@@ -67,8 +67,6 @@ export function SearchListPart({ searchQuery }: { searchQuery: string }) {
   if (state.error) return <SearchSuffix failed />;
   if (!results) return null;
 
-  // console.log(results);
-
   return (
     <div>
       {results.length > 0 ? (
@@ -78,13 +76,9 @@ export function SearchListPart({ searchQuery }: { searchQuery: string }) {
             icon={Icons.SEARCH}
           />
           <MediaGrid>
-            {results.map((v) =>
-              v.poster === undefined ? (
-                ""
-              ) : (
-                <WatchedMediaCard key={v.id.toString()} media={v} />
-              ),
-            )}
+            {results.map((v) => (
+              <WatchedMediaCard key={v.id.toString()} media={v} />
+            ))}
           </MediaGrid>
         </div>
       ) : null}
