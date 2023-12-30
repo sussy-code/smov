@@ -177,6 +177,7 @@
       "downloads": {
         "disclaimer": "ההורדות נלקחות ישירות מהספק. ל-movie-web אין שליטה על האופן שבו מסופקות ההורדות.",
         "downloadPlaylist": "הורד פלייליסט",
+        "downloadSubtitle": "הורד את הכתוביות הנוכחיות",
         "downloadVideo": "הורד וידאו",
         "hlsDisclaimer": "ההורדות נלקחות ישירות מהספק. ל-movie-web אין שליטה על האופן שבו מסופקות ההורדות. שימו לב שאתם מורידים רשימת השמעה של HLS, זה מיועד למשתמשים שמכירים הזרמת מולטימדיה מתקדמת.",
         "onAndroid": {
@@ -216,10 +217,12 @@
       },
       "settings": {
         "downloadItem": "הורד",
+        "enableSubtitles": "אפשר כתוביות",
         "experienceSection": "חווית צפייה",
         "playbackItem": "הגדרות ניגון",
         "qualityItem": "איכות",
         "sourceItem": "מקורות וידאו",
+        "subtitleItem": "הגדרות כתוביות",
         "videoSection": "הגדרות וידאו"
       },
       "sources": {
@@ -239,6 +242,7 @@
         "unknownOption": "לא ידוע"
       },
       "subtitles": {
+        "customChoice": "בחר כתובית מקובץ",
         "customizeLabel": "התאם",
         "offChoice": "כבוי",
         "settings": {
@@ -401,13 +405,15 @@
         "hostname": "שם מארח",
         "insecure": "לא בטוח",
         "notLoggedIn": "אתה לא מחובר",
-        "secure": "אבטח",
+        "secure": "מאובטח",
         "title": "מידע על האפליקציה",
         "unknownVersion": "לא ידוע",
         "userId": "זהות המשתמש"
       }
     },
     "subtitles": {
+      "backgroundLabel": "אטימות רקע",
+      "colorLabel": "צבע",
       "previewQuote": "אסור לי לפחד. הפחד הוא קוטל הנפש.",
       "textSizeLabel": "גודל הטקסט",
       "title": "כתוביות"
