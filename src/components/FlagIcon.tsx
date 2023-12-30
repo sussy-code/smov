@@ -23,6 +23,8 @@ const countryOverrides: Record<string, string> = {
   sv: "se",
   et: "ee",
   ne: "np",
+  uk: "ua",
+  hi: "in",
 };
 
 export function FlagIcon(props: FlagIconProps) {
@@ -30,6 +32,13 @@ export function FlagIcon(props: FlagIconProps) {
     (props.countryCode || "")?.split("-").pop()?.toLowerCase() || "";
   if (countryOverrides[countryCode])
     countryCode = countryOverrides[countryCode];
+
+  if (countryCode === "tok")
+    return (
+      <div className="w-8 h-6 rounded bg-[#c8e1ed] flex justify-center items-center">
+        <img src="/tokiPona.svg" className="w-7 h-5" />
+      </div>
+    );
 
   if (countryCode === "pirate")
     return (
