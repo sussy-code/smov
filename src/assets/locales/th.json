@@ -176,7 +176,10 @@
     "menus": {
       "downloads": {
         "disclaimer": "การดาวน์โหลดจะถูกนํามาจากผู้ให้บริการโดยตรง movie-web ไม่สามารถควบคุมวิธีการดาวน์โหลดได้",
+        "downloadPlaylist": "ดาวน์โหลดเพลย์ลิสต์",
+        "downloadSubtitle": "ดาวน์โหลดคำบรรยายนี้",
         "downloadVideo": "ดาวน์โหลดวิดีโอ",
+        "hlsDisclaimer": "การดาวน์โหลดจะเป็นการดาวน์โหลดโดยตรงจากผู้ให้บริการ โดยเว็บไซต์ movie-web ไม่สามารถควบคุมวิธีการที่ไฟล์จะถูกดาวน์โหลด โปรดทราบว่าหากคุณกำลังดาวน์โหลดเพลย์ลิสต์ HLS ซึ่งมีจุดประสงค์สำหรับผู้ใช้ที่มีความเข้าใจใน สตรีมมิ่ง และมัลติมีเดียขั้นสูง.",
         "onAndroid": {
           "1": "หากต้องการดาวน์โหลดบน Android ให้คลิกปุ่มดาวน์โหลด จากนั้นในหน้าใหม่ <bold>แตะ</bold> บนวิดีโอค้างไว้ จากนั้นเลือก <bold>บันทึก</bold>",
           "shortTitle": "ดาวน์โหลด / Android",
@@ -197,7 +200,7 @@
       "episodes": {
         "button": "ตอน",
         "emptyState": "ไม่มีตอนเหล่านี้ในภาคนี้ โปรดกลับมาดูทีหลัง!",
-        "episodeBadge": "ต{{episode}}",
+        "episodeBadge": "ตอนที่ {{episode}}",
         "loadingError": "การโหลดภาคผิดพลาด",
         "loadingList": "กำลังโหลด…",
         "loadingTitle": "กำลังโหลด…"
@@ -214,10 +217,12 @@
       },
       "settings": {
         "downloadItem": "ดาวน์โหลด",
+        "enableSubtitles": "เปิดคำบรรยาย",
         "experienceSection": "ประสบการณ์รับชม",
         "playbackItem": "ตั้งค่าการเล่น",
         "qualityItem": "คุณภาพ",
         "sourceItem": "แหล่งที่มาของวิดีโอ",
+        "subtitleItem": "ตั้งค่าคำบรรยาย",
         "videoSection": "ตั้งค่าวิดีโอ"
       },
       "sources": {
@@ -235,6 +240,17 @@
         },
         "title": "แหล่งที่มา",
         "unknownOption": "ไม่ทราบ"
+      },
+      "subtitles": {
+        "customChoice": "เลือกคำบรรยายจากไฟล์",
+        "customizeLabel": "ปรับแต่ง",
+        "offChoice": "ปิด",
+        "settings": {
+          "backlink": "คำบรรยายแบบกำหนดเอง",
+          "delay": "เวลาดีเลย์คำบรรยาย"
+        },
+        "title": "คำบรรยาย",
+        "unknownLanguage": "ไม่ทราบ"
       }
     },
     "metadata": {
@@ -393,6 +409,13 @@
         "unknownVersion": "ไม่ทราบ",
         "userId": "รหัสผู้ใช้"
       }
+    },
+    "subtitles": {
+      "backgroundLabel": "ความทึบของพื้นหลัง",
+      "colorLabel": "สี",
+      "previewQuote": "คำบรรยายจะมีลักษณะแบบนี้",
+      "textSizeLabel": "ขนาดข้อความ",
+      "title": "คำบรรยาย"
     },
     "unsaved": "คุณได้บันทึกการเปลี่ยนแปลงแล้ว"
   }

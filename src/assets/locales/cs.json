@@ -177,6 +177,7 @@
       "downloads": {
         "disclaimer": "Stahování probíhá přímo u poskytovatele. movie-web nemá kontrolu nad tím, jak jsou stahování poskytovány.",
         "downloadPlaylist": "Stáhnout playlist",
+        "downloadSubtitle": "Stáhnout aktuální titulky",
         "downloadVideo": "Stáhnout video",
         "hlsDisclaimer": "Stahování probíhá přímo u poskytovatele. movie-web nemá kontrolu nad tím, jak jsou stahování poskytovány. Vezměte prosím na vědomí, že stahujete HLS playlist, který je určen pro uživatele obeznámené s pokročilým streamováním médií.",
         "onAndroid": {
@@ -216,10 +217,12 @@
       },
       "settings": {
         "downloadItem": "Stáhnout",
+        "enableSubtitles": "Zapnout titulky",
         "experienceSection": "Zážitek sledování",
         "playbackItem": "Nastavení přehrávání",
         "qualityItem": "Kvalita",
         "sourceItem": "Zdroje videa",
+        "subtitleItem": "Nastavení titulků",
         "videoSection": "Nastavení videa"
       },
       "sources": {
@@ -239,6 +242,7 @@
         "unknownOption": "Neznámý"
       },
       "subtitles": {
+        "customChoice": "Vybrat titulky ze souboru",
         "customizeLabel": "Přizpůsobit",
         "offChoice": "Vypnuto",
         "settings": {
@@ -408,6 +412,8 @@
       }
     },
     "subtitles": {
+      "backgroundLabel": "Neprůhlednost pozadí",
+      "colorLabel": "Barva",
       "previewQuote": "Nesmím se bát. Strach je zabiják mysli.",
       "textSizeLabel": "Velikost textu",
       "title": "Titulky"

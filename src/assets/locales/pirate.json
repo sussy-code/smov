@@ -1,17 +1,39 @@
 {
+  "about": {
+    "description": "Ahoy there! \"movie-web\" be a fine vessel on the digital seas, a web application scourin' the vast internet for streams. The crew be settin' their sights on a mostly minimalistic approach to enjoyin' the booty of entertainment. Arrr!",
+    "faqTitle": "Common queries",
+    "q1": {
+      "body": "Arrr! \"movie-web\" be a noble ship that don't harbor any content itself. When ye click to set yer eyes on a treasure, the application sets sail across the internet, scourin' the vast seas for the chosen media. Check the loading screen and the 'video sources' tab to spy on which source be providin' the entertainment. No media be uploaded by \"movie-web\" — it be all through this searchin' mechanism, savvy?",
+      "title": "From which cove does the content emerge, me heartie?"
+    },
+    "q2": {
+      "body": "Avast, ye landlubber! Be warned, ye can't be requestin' a show or movie on \"movie-web,\" for it don't manage any content. All the booty ye set yer eyes on be viewed through sources sailin' the internet. The ship merely be a vessel, not a keeper of the treasures. Navigate wisely, me heartie!",
+      "title": "Where be I able to make a hearty request for a show or movie?"
+    },
+    "q3": {
+      "body": "Arrr, set yer sights on this, me matey! Our search results be fueled by The Movie Database (TMDB), showin' the way regardless of whether our sources in the vast digital seas actually bear the coveted content. It be a guide, not a promise of a sure find. Navigate the waters wisely, for the winds of the internet can be fickle!",
+      "title": "Why be the search results unveilin' the show or movie, yet I can't set sail to watch it?"
+    },
+    "title": "The tales of \"movie-web\""
+  },
   "actions": {
     "copied": "Copied",
     "copy": "Copy"
   },
   "auth": {
+    "createAccount": "Don't have a ship yet? <0>Hoist the sails and make yer own</0>",
     "deviceNameLabel": "Ship name",
     "deviceNamePlaceholder": "Muad'Dib's Pirate Ship",
     "generate": {
       "description": "If ye lose this, ye be a silly goose and will be posted on the wall of shame™️",
+      "next": "Ahoy! I've stashed me secret code away for safe keepin'.",
+      "passphraseFrameLabel": "Secret Code",
       "title": "Yer Passphrase"
     },
+    "hasAccount": "Arrr! Ye already got a ship on the seas? <0>Board here, me heartie!</0>",
     "login": {
       "description": "Arr, ye be askin' for the key to me top-secret lair, also known as The Fortress of Wordsmithery, accessed only by recitin' the sacred incantation of the 12-word passphrase!",
+      "deviceLengthError": "Bestow a name upon yer contraption, me heartie!",
       "passphraseLabel": "12-Word Passphrase",
       "passphrasePlaceholder": "Passphrase",
       "submit": "Hoist Anchor",
@@ -24,6 +46,7 @@
         "color2": "Second Mate color",
         "header": "Enter a moniker for yer ship and choose a pirate icon and colors, arrr!",
         "icon": "Pirate icon",
+        "next": "Forward",
         "title": "Pirate Account information"
       }
     },
@@ -43,14 +66,15 @@
       "noMatch": "Passphrase doesn't match",
       "passphraseLabel": "Yer passphrase",
       "recaptchaFailed": "ReCaptcha validation failed",
-      "register": "Register",
+      "register": "Forge yer account, matey!",
       "title": "Enter yer passphrase"
     }
   },
   "errors": {
     "badge": "Shiver me timbers",
-    "details": "Error details",
+    "details": "Ahoy! What be the secrets of the glitch?",
     "reloadPage": "Reload the page",
+    "showError": "Reveal the details of the error, me matey",
     "title": "That be an error, Captain"
   },
   "footer": {
@@ -72,7 +96,7 @@
       "dmca": "DMCA",
       "login": "Login",
       "pagetitle": "{{title}} - movie-web",
-      "register": "Register",
+      "register": "Forge yer account, matey!",
       "settings": "Settings"
     }
   },
@@ -89,10 +113,27 @@
     "search": {
       "allResults": "That's all we have, me heartie!",
       "failed": "Failed to find media, try again!",
-      "loading": "Loading...",
+      "loading": "Hold yer horses, me heartie!",
       "noResults": "We couldn't find anythin', arrr!",
       "placeholder": "What do ye want to watch?",
       "sectionTitle": "Searchin' results"
+    },
+    "titles": {
+      "day": {
+        "default": "What be yer fancy for this fine afternoon's viewing, me heartie?"
+      },
+      "morning": {
+        "default": "What be yer fancy for this mornin's viewing, me heartie?",
+        "extra": [
+          "I be hearin' that 'Before Sunrise' be a fine choice, me heartie"
+        ]
+      },
+      "night": {
+        "default": "What be yer desire for the night's entertainment, me heartie?",
+        "extra": [
+          "Feelin' weary, are ye? I be hearin' 'The Exorcist' be a good pick to stir the spirits, me heartie."
+        ]
+      }
     }
   },
   "media": {
@@ -108,6 +149,7 @@
     },
     "menu": {
       "about": "About us",
+      "donation": "Share yer treasures and donate to the cause",
       "logout": "Abandon ship",
       "register": "Sync to the cloud",
       "settings": "Settings",
@@ -127,6 +169,9 @@
     "back": {
       "default": "Back to home port",
       "short": "Back"
+    },
+    "casting": {
+      "enabled": "Casting to the contraption, setting sail..."
     },
     "menus": {
       "downloads": {
@@ -169,10 +214,12 @@
       },
       "settings": {
         "downloadItem": "Buried Treasure",
+        "enableSubtitles": "Unfurl the subtitles",
         "experienceSection": "Viewing Experience",
         "playbackItem": "Playback settings",
         "qualityItem": "Quality",
         "sourceItem": "Video sources",
+        "subtitleItem": "Set yer subtitle course",
         "videoSection": "Video settings"
       },
       "sources": {
@@ -190,6 +237,12 @@
         },
         "title": "Sources",
         "unknownOption": "Unknown"
+      },
+      "subtitles": {
+        "customizeLabel": "Tailor it to yer liking",
+        "settings": {
+          "fixCapitals": "Mend the capital letters"
+        }
       }
     },
     "metadata": {
@@ -266,12 +319,12 @@
       },
       "actions": {
         "delete": {
-          "button": "Abandon Account",
-          "confirmButton": "Abandon Account",
-          "confirmDescription": "Arrr ye sure ye want to abandon yer account? All yer booty will be lost!",
+          "button": "Abandon ship for all eternity",
+          "confirmButton": "Abandon ship for all eternity",
+          "confirmDescription": "Arrr ye sure ye want to abandon yer ship for all eternity? All yer booty will be lost!",
           "confirmTitle": "Arrr ye sure?",
           "text": "This action be irreversible. All booty will be deleted and nothin' can be recovered.",
-          "title": "Abandon Account"
+          "title": "Abandon ship for all eternity"
         },
         "title": "Actions"
       },
