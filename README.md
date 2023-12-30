@@ -60,36 +60,8 @@ A simple guide has been written to assist in hosting your own instance of movie-
 |[Selfhosting guide](https://docs.movie-web.app)|
 |---|
 
+## 🤝 Thanks to all Contributors
+Thanks a lot for spending your time helping movie-web grow. Thanks a lot! Keep rocking 🍻.
 
-# 🤝 Contributors
+[![Contributors](https://contrib.rocks/image?repo=movie-web/movie-web)](https://github.com/movie-web/movie-web/graphs/contributors)
 
-This project would not be possible without our amazing contributors and the community.
-
-<table>
-  <tbody>
-    <tr>
-      <td align="center" valign="top" width="100px">
-        <img src="https://images.weserv.nl/?url=https://github.com/JamesHawkinss.png&mask=circle"/><br />
-        <sub><a href="https://github.com/JamesHawkinss">@JamesHawkinss</a></sub>
-      </td>
-      <td align="center" valign="top" width="100px">
-        <img src="https://images.weserv.nl/?url=https://github.com/JipFr.png&mask=circle"/><br />
-        <sub><a href="https://github.com/JipFr">@JipFr</a></sub>
-      </td>
-      <td align="center" valign="top" width="100px">
-        <img src="https://images.weserv.nl/?url=https://github.com/mrjvs.png&mask=circle"/><br />
-        <sub><a href="https://github.com/mrjvs">@mrjvs</a></sub>
-      </td>
-      <td align="center" valign="top" width="100px">
-        <img src="https://images.weserv.nl/?url=https://github.com/binaryoverload.png&mask=circle"/><br />
-        <sub><a href="https://github.com/binaryoverload">@binaryoverload</a></sub>
-      </td>
-    </tr>
-    <tr>
-      <td align="center" valign="top" width="100px">
-        <img src="https://images.weserv.nl/?url=https://github.com/lem6ns.png&mask=circle"/><br />
-        <sub><a href="https://github.com/lem6ns">@lem6ns</a></sub>
-      </td>
-    </tr>
-  </tbody>
-</table>
