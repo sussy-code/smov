@@ -33,6 +33,13 @@ export function FlagIcon(props: FlagIconProps) {
   if (countryOverrides[countryCode])
     countryCode = countryOverrides[countryCode];
 
+  if (countryCode === "tok")
+    return (
+      <div className="w-8 h-6 rounded bg-[#c8e1ed] flex justify-center items-center">
+        <img src="/tokiPona.svg" className="w-7 h-5" />
+      </div>
+    );
+
   if (countryCode === "pirate")
     return (
       <div className="w-8 h-6 rounded bg-[#2E3439] flex justify-center items-center">
