@@ -24,8 +24,6 @@ export async function searchForMedia(query: MWQuery): Promise<MediaItem[]> {
     return formatTMDBMetaToMediaItem(formattedResult);
   });
 
-  cache.set(query, results, 3600);
-
   results.sort((a, b) => {
     if (a.poster === undefined) {
       return 1;
@@ -35,6 +33,8 @@ export async function searchForMedia(query: MWQuery): Promise<MediaItem[]> {
     }
     return 0;
   });
+  
+  cache.set(query, results, 3600);
   // cache results for 1 hour
   return results;
 }
