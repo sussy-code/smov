@@ -63,7 +63,8 @@ function useBaseScrape() {
     const lastIdTmp = lastId.current;
     setSources((s) => {
       if (s[id]) s[id].status = "pending";
-      if (lastIdTmp && s[lastIdTmp]) s[lastIdTmp].status = "success";
+      if (lastIdTmp && s[lastIdTmp] && s[lastIdTmp].status === "pending")
+        s[lastIdTmp].status = "success";
       return { ...s };
     });
     setCurrentSource(id);

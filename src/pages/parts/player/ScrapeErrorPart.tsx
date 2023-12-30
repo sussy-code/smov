@@ -37,7 +37,7 @@ export function ScrapeErrorPart(props: ScrapeErrorPartProps) {
       if (v.reason) str += `${v.reason}\n`;
       if (v.error?.message)
         str += `${v.error.name ?? "unknown"}: ${v.error.message}\n`;
-      if (v.error) str += `${v.error.toString()}\n`;
+      else if (v.error) str += `${v.error.toString()}\n`;
     });
     return str;
   }, [props, location]);

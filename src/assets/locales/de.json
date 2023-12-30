@@ -177,6 +177,7 @@
       "downloads": {
         "disclaimer": "Videos werden direkt vom Provider heruntergeladen. movie-web hat keinen Einfluss darauf, wie Downloads bereitgestellt werden.",
         "downloadPlaylist": "Playlist herunterladen",
+        "downloadSubtitle": "Aktuelle Untertitel herunterladen",
         "downloadVideo": "Video herunterladen",
         "hlsDisclaimer": "movie-web hat keinen Einfluss darauf, wie Downloads bereitgestellt werden. Downloads werden direkt vom Anbieter bezogen. Bitte beachte, dass du eine HLS-Wiedergabeliste herunterlädst, diese ist für Nutzer gedacht, die mit fortgeschrittenem Multimedia-Streaming vertraut sind.",
         "onAndroid": {
@@ -216,10 +217,12 @@
       },
       "settings": {
         "downloadItem": "Download",
+        "enableSubtitles": "Untettitel aktivieren",
         "experienceSection": "Anzeigeerlebnis",
         "playbackItem": "Wiedergabeeinstellungen",
         "qualityItem": "Qualität",
         "sourceItem": "Videoquellen",
+        "subtitleItem": "Untertiteleinstellungen",
         "videoSection": "Videoeinstellungen"
       },
       "sources": {
@@ -239,6 +242,7 @@
         "unknownOption": "Unbekannt"
       },
       "subtitles": {
+        "customChoice": "Untertitel aus Datei wählen",
         "customizeLabel": "Anpassen",
         "offChoice": "Aus",
         "settings": {
@@ -408,6 +412,8 @@
       }
     },
     "subtitles": {
+      "backgroundLabel": "Hintergrunddeckkraft",
+      "colorLabel": "Farbe",
       "previewQuote": "Das Gras wächst nicht schneller, wenn man daran zieht.",
       "textSizeLabel": "Schriftgröße",
       "title": "Untertitel"

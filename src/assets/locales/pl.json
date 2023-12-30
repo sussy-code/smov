@@ -7,12 +7,12 @@
       "title": "Skąd pochodzą treści?"
     },
     "q2": {
-      "body": "Nie można złożyć wniosku o programu ani filmu, movie-web nie zarządza żadną treścią. Wszystkie treści są przeglądane za pośrednictwem źródeł w Internecie.",
-      "title": "Gdzie mogę złożyć wniosek o programie lub filmie?"
+      "body": "Nie można złożyć wniosku o serialu ani filmu, movie-web nie zarządza żadną treścią. Wszystkie treści są przeglądane za pośrednictwem źródeł w Internecie.",
+      "title": "Gdzie mogę złożyć wniosek o seriale lub filmie?"
     },
     "q3": {
       "body": "Nasze wyniki wyszukiwania pochodzą z TMDB i są wyświetlane niezależnie od tego, czy nasze źródła faktycznie posiadają daną treść.",
-      "title": "W wyniku wyszukiwania wyświetlany jest program lub film. Dlaczego nie mogę go odtworzyć?"
+      "title": "W wyniku wyszukiwania wyświetlany jest serial lub film. Dlaczego nie mogę go odtworzyć?"
     },
     "title": "O movie-web"
   },
@@ -87,7 +87,7 @@
       "dmca": "DMCA",
       "github": "GitHub"
     },
-    "tagline": "Oglądaj swoje ulubione programy i filmy za pomocą tej aplikacji streamingowej typu open source."
+    "tagline": "Oglądaj swoje ulubione seriale i filmy za pomocą tej aplikacji streamingowej typu open source."
   },
   "global": {
     "name": "movie-web",
@@ -139,8 +139,8 @@
   "media": {
     "episodeDisplay": "S{{season}} E{{episode}}",
     "types": {
-      "movie": "Filmy",
-      "show": "Seriale"
+      "movie": "Film",
+      "show": "Serial"
     }
   },
   "navigation": {
@@ -177,6 +177,7 @@
       "downloads": {
         "disclaimer": "Pliki do pobrania są pobierane bezpośrednio od dostawcy. movie-web nie ma kontroli nad sposobem dostarczania plików do pobrania.",
         "downloadPlaylist": "Pobierz playlistę",
+        "downloadSubtitle": "Pobierz aktualne napisy",
         "downloadVideo": "Pobierz wideo",
         "hlsDisclaimer": "Pliki do pobrania są pobierane bezpośrednio od dostawcy. movie-web nie ma kontroli nad sposobem dostarczania plików do pobrania. Należy pamiętać, że pobierana jest playlista HLS, przeznaczona dla użytkowników zaznajomionych z zaawansowanym strumieniowaniem multimediów.",
         "onAndroid": {
@@ -216,10 +217,12 @@
       },
       "settings": {
         "downloadItem": "Pobierz",
+        "enableSubtitles": "Włącz napisy",
         "experienceSection": "Odtwarzanie",
         "playbackItem": "Ustawienia odtwarzania",
         "qualityItem": "Jakość",
         "sourceItem": "Źródła wideo",
+        "subtitleItem": "Ustawienia napisów",
         "videoSection": "Ustawienia wideo"
       },
       "sources": {
@@ -232,13 +235,14 @@
           "title": "Nie znaleziono osadzonych treści"
         },
         "noStream": {
-          "text": "To źródło nie ma strumieni dla tego filmu lub programu.",
+          "text": "To źródło nie ma strumieni dla tego filmu lub serialu.",
           "title": "Brak strumienia"
         },
         "title": "Źródła",
         "unknownOption": "Nieznany"
       },
       "subtitles": {
+        "customChoice": "Wybierz napisy z pliku",
         "customizeLabel": "Dostosuj",
         "offChoice": "Wyłączone",
         "settings": {
@@ -389,7 +393,7 @@
     "locale": {
       "language": "Język aplikacji",
       "languageDescription": "Język zastosowany do całej aplikacji.",
-      "title": "Język"
+      "title": "Ustawienia regionalne"
     },
     "reset": "Reset",
     "save": "Zapisz",
@@ -408,6 +412,8 @@
       }
     },
     "subtitles": {
+      "backgroundLabel": "Krycie tła",
+      "colorLabel": "Kolor",
       "previewQuote": "Nie wolno mi się bać. Strach zabija myślenie.",
       "textSizeLabel": "Rozmiar czcionki",
       "title": "Napisy"
