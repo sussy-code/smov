@@ -23,6 +23,8 @@ const countryOverrides: Record<string, string> = {
   sv: "se",
   et: "ee",
   ne: "np",
+  uk: "ua",
+  hi: "in",
 };
 
 export function FlagIcon(props: FlagIconProps) {
