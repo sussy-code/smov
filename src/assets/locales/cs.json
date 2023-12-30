@@ -120,7 +120,10 @@
     },
     "titles": {
       "day": {
-        "default": "Na co byste se chtěli dnes odpoledne dívat?"
+        "default": "Na co byste se chtěli dnes odpoledne dívat?",
+        "extra": [
+          "Chceš zažít dobrodružství? Jurský Park je pro tebe."
+        ]
       },
       "morning": {
         "default": "Na co byste se chtěli dnes ráno dívat?",
