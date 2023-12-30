@@ -120,18 +120,21 @@
     },
     "titles": {
       "day": {
-        "default": "Que voulez-vous regarder cet après-midi ?"
+        "default": "Que voulez-vous regarder cet après-midi ?",
+        "extra": [
+          "Amoureux des films d'animation ? [Suzume] est un incontournable."
+        ]
       },
       "morning": {
         "default": "Que voulez-vous regarder ce matin ?",
         "extra": [
-          "J'ai entendu dire que Before Sunrise était un bon film"
+          "Les films, c'est comme les voyages : ça nous ouvre l'esprit"
         ]
       },
       "night": {
         "default": "Que voulez-vous regarder ce soir ?",
         "extra": [
-          "Fatigué ? J'ai entendu dire que L'Exorciste était bien."
+          "À la recherche d'un bon film d'horreur à regarder ? J'ai entendu dire que Scream était bien."
         ]
       }
     }
