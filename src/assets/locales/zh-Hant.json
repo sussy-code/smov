@@ -1,1 +1,94 @@
-{}
+{
+  "auth": {
+    "login": {
+      "submit": "登入"
+    }
+  },
+  "global": {
+    "pages": {
+      "about": "關於",
+      "login": "登入",
+      "settings": "設定"
+    }
+  },
+  "home": {
+    "bookmarks": {
+      "sectionTitle": "書籤"
+    },
+    "search": {
+      "loading": "載入中..."
+    }
+  },
+  "media": {
+    "types": {
+      "movie": "電影",
+      "show": "節目"
+    }
+  },
+  "navigation": {
+    "menu": {
+      "donation": "捐",
+      "settings": "設定",
+      "support": "支援"
+    }
+  },
+  "overlays": {
+    "close": "關閉"
+  },
+  "player": {
+    "back": {
+      "short": "後退"
+    },
+    "menus": {
+      "downloads": {
+        "title": "下載"
+      },
+      "episodes": {
+        "loadingList": "載入中...",
+        "loadingTitle": "載入中..."
+      },
+      "settings": {
+        "downloadItem": "下載"
+      },
+      "subtitles": {
+        "title": "字幕"
+      }
+    },
+    "metadata": {
+      "failed": {
+        "badge": "失敗"
+      }
+    },
+    "nextEpisode": {
+      "cancel": "取消"
+    }
+  },
+  "screens": {
+    "loadingUserError": {
+      "logout": "登出"
+    }
+  },
+  "settings": {
+    "account": {
+      "title": "帳戶"
+    },
+    "appearance": {
+      "themes": {
+        "blue": "藍色",
+        "gray": "灰色",
+        "red": "紅色",
+        "teal": "青色"
+      }
+    },
+    "sidebar": {
+      "info": {
+        "insecure": "不安全",
+        "secure": "安全"
+      }
+    },
+    "subtitles": {
+      "colorLabel": "顏色",
+      "title": "字幕"
+    }
+  }
+}
