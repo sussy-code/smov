@@ -179,6 +179,7 @@
         "downloadPlaylist": "Télécharger la liste de lecture",
         "downloadSubtitle": "Télécharger les sous-titres",
         "downloadVideo": "Télécharger la vidéo",
+        "hlsDisclaimer": "Les téléchargements sont pris directement de la source. Movie-Web n'exerce aucun contrôle sur les méthodes des fournisseurs de téléchargement. Veuillez noter que vous téléchargez une liste de lecture HLS, destinée aux utilisateurs habitués au streaming multimédia avancé.",
         "onAndroid": {
           "1": "Pour télécharger sur Android, cliquez sur le bouton de téléchargement puis, sur la nouvelle page, <bold>tapez et maintenez </bold> sur la vidéo, puis sélectionnez <bold>enregistrer</bold>.",
           "shortTitle": "Télécharger / Android",
