@@ -167,6 +167,7 @@
     "menus": {
       "downloads": {
         "disclaimer": "sina kama jo e sitelen tawa ilo sina tan lipu mama. ilo Muwi-We li lawa ala e nasin jo",
+        "downloadSubtitle": "o jo e nimi toki",
         "downloadVideo": "o jo e sitelen",
         "onAndroid": {
           "1": "ilo Android la o luka e nena 'o jo'. lon lipu sin la <bold>o luka wawa</bold> e sitelen. o luka e nena 'o jo'",
@@ -205,10 +206,12 @@
       },
       "settings": {
         "downloadItem": "o jo",
+        "enableSubtitles": "nimi toki",
         "experienceSection": "nasin lukin",
         "playbackItem": "nasin pali",
         "qualityItem": "pona lukin",
         "sourceItem": "mama sitelen",
+        "subtitleItem": "nimi toki",
         "videoSection": "nasin sitelen"
       },
       "sources": {
@@ -226,6 +229,18 @@
         },
         "title": "mama",
         "unknownOption": "mi sona ala"
+      },
+      "subtitles": {
+        "customChoice": "o pana tan ilo",
+        "customizeLabel": "o ante",
+        "offChoice": "ala",
+        "settings": {
+          "backlink": "nimi toki ante",
+          "delay": "o ante e tenpo nimi",
+          "fixCapitals": "o pona e suli nimi"
+        },
+        "title": "nimi toki",
+        "unknownLanguage": "mi sona ala"
       }
     },
     "metadata": {
@@ -350,6 +365,13 @@
     },
     "reset": "o weka e ante",
     "save": "o ante",
+    "subtitles": {
+      "backgroundLabel": "kon",
+      "colorLabel": "kule",
+      "previewQuote": "kijetesantakalu tonsi li lanpan ala lanpan e soko?",
+      "textSizeLabel": "suli",
+      "title": "nimi toki"
+    },
     "unsaved": "ante sina li awen ala"
   }
 }
