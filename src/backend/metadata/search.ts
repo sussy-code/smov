@@ -33,8 +33,8 @@ export async function searchForMedia(query: MWQuery): Promise<MediaItem[]> {
     }
     return 0;
   });
-  
-  cache.set(query, results, 3600);
+
   // cache results for 1 hour
+  cache.set(query, results, 3600);
   return results;
 }
