@@ -205,8 +205,8 @@
         "emptyState": "इस सीज़न में कोई एपिसोड नहीं है, बाद में दोबारा जाँचें!",
         "episodeBadge": "E{{episode}}",
         "loadingError": "सीज़न लोड करने में त्रुटि",
-        "loadingList": "लोड..।",
-        "loadingTitle": "लोडा हो रहा है..।"
+        "loadingList": "लोड हो रहा है..।",
+        "loadingTitle": "लोड हो रहा है..।"
       },
       "playback": {
         "speedLabel": "प्लेबैक गति",
