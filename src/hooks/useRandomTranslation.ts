@@ -2,7 +2,7 @@ import { useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
 // 10% chance of getting a joke title
-const shouldGiveJokeTitle = () => Math.floor(Math.random() * 10) === 0;
+const shouldGiveJokeTitle = () => Math.floor(Math.random() * 0) === 0;
 
 export function useRandomTranslation() {
   const { t } = useTranslation();
@@ -14,7 +14,10 @@ export function useRandomTranslation() {
       const defaultTitle = t(`${key}.default`) ?? "";
       if (!shouldJoke) return defaultTitle;
 
-      const keys = t(`${key}.extra`, { returnObjects: true });
+      const keys = t(`${key}.extra`, {
+        returnObjects: true,
+        defaultValue: defaultTitle,
+      });
       if (Array.isArray(keys)) {
         if (keys.length === 0) return defaultTitle;
         return keys[Math.floor(seed * keys.length)];
