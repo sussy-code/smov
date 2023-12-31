@@ -34,7 +34,7 @@
     "login": {
       "description": "તમારા એકાઉન્ટમાં લૉગિન કરવા માટે કૃપા કરીને તમારો પાસફ્રેઝ દાખલ કરો",
       "deviceLengthError": "કૃપા કરીને ડિવાઇસનું નામ દાખલ કરો",
-      "passphraseLabel": "12-શબ્દ પાસફ્રેઝ",
+      "passphraseLabel": "12-શબ્દનો પાસફ્રેઝ",
       "passphrasePlaceholder": "પાસફ્રેઝ",
       "submit": "લોગિન કરો",
       "title": "તમારા એકાઉન્ટમાં લોગિન કરો",
