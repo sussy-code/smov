@@ -1,5 +1,11 @@
 {
   "about": {
+    "description": "ilo Muwi-We li lukin li wile e sitelen. kulupu lawa li lawa pona",
+    "faqTitle": "sona wile",
+    "q1": {
+      "body": "ilo Muwi-We li mama ala e sitelen. sina lukin e sitelen la mi alasa e sitelen lon lipu ale. (sina ken sona e mama sitelen lon tenpo alasa lon poki 'mama'.) sitelen li awen ala lon ilo Muwi-We. ale li lon alasa ni",
+      "title": "sitelen li tan seme?"
+    },
     "title": "ilo Muwi-We la"
   },
   "actions": {
@@ -342,8 +348,8 @@
       "languageDescription": "ilo li toki kepeken toki ni:",
       "title": "toki"
     },
-    "reset": "o sin",
-    "save": "o awen",
+    "reset": "o weka e ante",
+    "save": "o ante",
     "unsaved": "ante sina li awen ala"
   }
 }

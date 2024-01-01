@@ -120,7 +120,10 @@
     },
     "titles": {
       "day": {
-        "default": "What would you like to watch this afternoon?"
+        "default": "What would you like to watch this afternoon?",
+        "extra": [
+          "Feeling adventurous? Jurassic Park might be the perfect choice."
+        ]
       },
       "morning": {
         "default": "What would you like to watch this morning?",

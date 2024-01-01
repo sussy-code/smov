@@ -177,6 +177,7 @@
       "downloads": {
         "disclaimer": "Allalaadimine toimub otse teenusepakkujalt. movie-web ei saa kontrollida, kuidas allalaadimine toimub.",
         "downloadPlaylist": "Laadige esitusloend alla",
+        "downloadSubtitle": "Laadige alla praegune subtiiter",
         "downloadVideo": "Lae alla video",
         "hlsDisclaimer": "Allalaadimised võetakse otse teenusepakkujalt. movie-web ei kontrolli, kuidas allalaadimisi pakutakse. Pange tähele, et laadite alla HLS-i esitusloendit, see on mõeldud kasutajatele, kes on tuttavad multimeediumi voogesitusega.",
         "onAndroid": {
@@ -216,10 +217,12 @@
       },
       "settings": {
         "downloadItem": "Lae alla",
+        "enableSubtitles": "Luba Subtiitrid",
         "experienceSection": "Vaatamise kogemus",
         "playbackItem": "Taasesituse sätted",
         "qualityItem": "Kvaliteet",
         "sourceItem": "Video allikad",
+        "subtitleItem": "Subtiitri sätted",
         "videoSection": "Video sätted"
       },
       "sources": {
@@ -239,10 +242,11 @@
         "unknownOption": "Teadmata"
       },
       "subtitles": {
+        "customChoice": "Vali subtiitrid failist",
         "customizeLabel": "Kohanda",
         "offChoice": "Välja",
         "settings": {
-          "backlink": "Kohandatud Subtiitrid",
+          "backlink": "Kohandatud subtiitrid",
           "delay": "Subtiitrite viivitus",
           "fixCapitals": "Parandage suurtähtede kasutamine"
         },
@@ -408,6 +412,8 @@
       }
     },
     "subtitles": {
+      "backgroundLabel": "Tausta läbipaistmatus",
+      "colorLabel": "Värv",
       "previewQuote": "Ma ei tohi karta. Hirm on meelemõrvar.",
       "textSizeLabel": "Teksti suurus",
       "title": "Subtiitrid"
