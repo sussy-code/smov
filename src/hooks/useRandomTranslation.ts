@@ -14,7 +14,10 @@ export function useRandomTranslation() {
       const defaultTitle = t(`${key}.default`) ?? "";
       if (!shouldJoke) return defaultTitle;
 
-      const keys = t(`${key}.extra`, { returnObjects: true });
+      const keys = t(`${key}.extra`, {
+        returnObjects: true,
+        defaultValue: defaultTitle,
+      });
       if (Array.isArray(keys)) {
         if (keys.length === 0) return defaultTitle;
         return keys[Math.floor(seed * keys.length)];
