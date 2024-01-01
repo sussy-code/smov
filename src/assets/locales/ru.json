@@ -1,6 +1,7 @@
 {
   "about": {
-    "faqTitle": "Общие вопросы"
+    "faqTitle": "Общие вопросы",
+    "title": "О movie-web"
   },
   "actions": {
     "copied": "Скопировано",
@@ -10,7 +11,7 @@
     "createAccount": "У вас ещё нет аккаунта? <0>Создайте учётную запись.</0>",
     "deviceNameLabel": "Имя устройства",
     "deviceNamePlaceholder": "Личный телефон",
-    "hasAccount": "У вас уже есть аккаунт? <0> Войдите здесь.</0>",
+    "hasAccount": "У вас уже есть аккаунт? <0>Войдите здесь.</0>",
     "trust": {
       "host": "Вы подключаетесь к <0>{{hostname}}</0> - пожалуйста, подтвердите, что вы доверяете ему, прежде чем создавать учётную запись",
       "no": "Вернуться назад",
@@ -30,7 +31,44 @@
   },
   "global": {
     "pages": {
-      "dmca": "DMCA"
+      "dmca": "DMCA",
+      "settings": "Настройки"
+    }
+  },
+  "home": {
+    "bookmarks": {
+      "sectionTitle": "Закладки"
+    },
+    "continueWatching": {
+      "sectionTitle": "Продолжить просмотр"
+    },
+    "search": {
+      "loading": "Загрузка..."
+    }
+  },
+  "navigation": {
+    "menu": {
+      "about": "О нас",
+      "donation": "Пожертвовать",
+      "settings": "Настройки",
+      "support": "Поддержка"
+    }
+  },
+  "overlays": {
+    "close": "Закрыть"
+  },
+  "player": {
+    "menus": {
+      "downloads": {
+        "downloadSubtitle": "Скачать текущие субтитры",
+        "title": "Скачать"
+      },
+      "quality": {
+        "automaticLabel": "Автоматическое качество"
+      },
+      "subtitles": {
+        "title": "Субтитры"
+      }
     }
   },
   "settings": {
