@@ -71,7 +71,7 @@ export function formatTMDBMeta(
     type,
     seasons: seasons as any,
     seasonData: season
-      ? ({
+      ? {
           id: season.id.toString(),
           number: season.season_number,
           title: season.title,
@@ -81,8 +81,9 @@ export function formatTMDBMeta(
               id: v.id.toString(),
               number: v.episode_number,
               title: v.title,
+              air_date: v.air_date,
             })),
-        } as any)
+        }
       : (undefined as any),
   };
 }
@@ -227,6 +228,7 @@ export async function getEpisodes(
     id: e.id,
     episode_number: e.episode_number,
     title: e.name,
+    air_date: e.air_date,
   }));
 }
 

@@ -18,6 +18,7 @@ export type MWSeasonWithEpisodeMeta = {
     id: string;
     number: number;
     title: string;
+    air_date: string;
   }[];
 };
 

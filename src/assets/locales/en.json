@@ -189,7 +189,8 @@
         "loadingList": "Loading...",
         "loadingError": "Error loading season",
         "emptyState": "There are no episodes in this season, check back later!",
-        "episodeBadge": "E{{episode}}"
+        "episodeBadge": "E{{episode}}",
+        "unairedEpisodes": "One or more episodes in this season are disabled because they are not out yet."
       },
       "sources": {
         "title": "Sources",
