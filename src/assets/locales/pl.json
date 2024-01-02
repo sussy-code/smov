@@ -120,7 +120,10 @@
     },
     "titles": {
       "day": {
-        "default": "Co chciałbyś obejrzeć dziś po południu?"
+        "default": "Co chciałbyś obejrzeć dziś po południu?",
+        "extra": [
+          "Masz ochotę na przygodę? Park Jurajski może być idealnym wyborem."
+        ]
       },
       "morning": {
         "default": "Co chciałbyś obejrzeć dziś rano?",

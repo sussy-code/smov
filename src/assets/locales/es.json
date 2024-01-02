@@ -120,7 +120,10 @@
     },
     "titles": {
       "day": {
-        "default": "¿Qué te gustaría ver esta tarde?"
+        "default": "¿Qué te gustaría ver esta tarde?",
+        "extra": [
+          "¿Te sientes aventurero? Jurassic Park podría ser la elección perfecta."
+        ]
       },
       "morning": {
         "default": "¿Qué te gustaría ver esta mañana?",
@@ -176,7 +179,10 @@
     "menus": {
       "downloads": {
         "disclaimer": "Las descargas se realizan directamente desde el proveedor. movie-web no tiene control sobre cómo se proporcionan las descargas.",
+        "downloadPlaylist": "Descargar lista de reproducción",
+        "downloadSubtitle": "Descargar subtítulo actual",
         "downloadVideo": "Descargar vídeo",
+        "hlsDisclaimer": "Las descargas se realizan directamente del proveedor. movie-web no tiene control sobre cómo se proporcionan las descargas. Tenga en cuenta que está descargando una lista de reproducción HLS, dirigida a usuarios familiarizados con la transmisión multimedia avanzada.",
         "onAndroid": {
           "1": "Para descargar en Android, haz clic en el botón de descarga y luego, en la nueva página, <bold>mantén presionado</bold> el vídeo y selecciona <bold>guardar</bold>.",
           "shortTitle": "Descargar / Android",
@@ -214,10 +220,12 @@
       },
       "settings": {
         "downloadItem": "Descargar",
+        "enableSubtitles": "Habilitar subtítulos",
         "experienceSection": "Experiencia de visualización",
         "playbackItem": "Configuración de reproducción",
         "qualityItem": "Calidad",
         "sourceItem": "Fuentes de vídeo",
+        "subtitleItem": "Configuración de subtítulos",
         "videoSection": "Configuración de vídeo"
       },
       "sources": {
@@ -235,6 +243,18 @@
         },
         "title": "Fuentes",
         "unknownOption": "Desconocida"
+      },
+      "subtitles": {
+        "customChoice": "Seleccionar subtítulo del archivo",
+        "customizeLabel": "Personalizar",
+        "offChoice": "Apagado",
+        "settings": {
+          "backlink": "Subtítulos personalizados",
+          "delay": "Retraso de subtítulos",
+          "fixCapitals": "Arreglar capitalización"
+        },
+        "title": "Subtítulos",
+        "unknownLanguage": "Desconocido"
       }
     },
     "metadata": {
@@ -393,6 +413,13 @@
         "unknownVersion": "Desconocida",
         "userId": "ID de usuario"
       }
+    },
+    "subtitles": {
+      "backgroundLabel": "Opacidad del fondo",
+      "colorLabel": "Color",
+      "previewQuote": "No debo temer. El miedo es el asesino de la mente.",
+      "textSizeLabel": "Tamaño del texto",
+      "title": "Subtítulos"
     },
     "unsaved": "Tienes cambios sin guardar"
   }

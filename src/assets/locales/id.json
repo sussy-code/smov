@@ -1,0 +1,426 @@
+{
+  "about": {
+    "description": "movie-web adalah website yang mengumpulkan sumber media streaming dari internet. Didesain khusus dengan pendekatan minimalis agar mempermudah konsumsi konten.",
+    "faqTitle": "Pertanyaan umum",
+    "q1": {
+      "body": "movie-web tidak menyimpan berkas media apapun. Ketika anda mengklik sesuatu untuk ditonton, aplikasi akan mencari berkas media di internet (saat media dimuat dan pada tab 'sumber media' anda dapat melihat sumber mana yang digunakan). movie-web tidak pernah mengunggah media apapun, semua media didapat melalui mekanisme pencarian di internet.",
+      "title": "Dari mana konten media di sini berasal?"
+    },
+    "q2": {
+      "body": "Kami tidak menerima permintaan penambahan serial televisi atau film, movie-web tidak mengelola konten apapun. Semua konten ditonton melalui sumber-sumber dari internet.",
+      "title": "Di mana saya dapat meminta serial televisi atau film untuk ditambahkan?"
+    },
+    "q3": {
+      "body": "Hasil pencarian aplikasi ini menggunakan API milik The Movie Database (TMDB) dan menampilkan semua hasil pencarian terlepas dari apakah sumber media tersebut dapat ditemukan di penyedia pihak ketiga atau tidak.",
+      "title": "Hasil pencarian menampilkan serial televisi atau film yang saya cari, tapi mengapa saya tidak bisa memutarnya?"
+    },
+    "title": "Tentang movie-web"
+  },
+  "actions": {
+    "copied": "Disalin",
+    "copy": "Salin"
+  },
+  "auth": {
+    "createAccount": "Belum memiliki akun? <0>Buat akun.</0>",
+    "deviceNameLabel": "Nama perangkat",
+    "deviceNamePlaceholder": "Perangkat personal",
+    "generate": {
+      "description": "Kombinasi kata ini berfungsi sebagai nama pengguna sekaligus kata sandi anda. Pastikan untuk menyimpannya dengan aman karena anda memerlukannya untuk masuk ke akun anda",
+      "next": "Saya sudah menyimpan kombinasi kata di atas",
+      "passphraseFrameLabel": "Kombinasi kata",
+      "title": "Kombinasi kata anda"
+    },
+    "hasAccount": "Sudah memiliki akun? <0>Masuk disini.</0>",
+    "login": {
+      "description": "Mohon masukkan kombinasi kata anda untuk masuk ke akun anda",
+      "deviceLengthError": "Mohon masukkan nama perangkat",
+      "passphraseLabel": "12 kombinasi kata unik",
+      "passphrasePlaceholder": "Kombinasi kata",
+      "submit": "Masuk",
+      "title": "Masuk ke akun anda",
+      "validationError": "Kombinasi kata unik salah"
+    },
+    "register": {
+      "information": {
+        "color1": "Gradasi warna profil pertama",
+        "color2": "Gradasi warna profil kedua",
+        "header": "Masukkan nama perangkat anda lalu pilih warna latar belakang dan ikon pengguna yang ingin anda gunakan",
+        "icon": "Ikon pengguna",
+        "next": "Berikutnya",
+        "title": "Informasi akun"
+      }
+    },
+    "trust": {
+      "failed": {
+        "text": "Apakah anda mengkonfigurasi server dengan benar?",
+        "title": "Gagal terhubung dengan server"
+      },
+      "host": "Anda ingin terhubung ke <0>{{hostname}}</0> - mohon konfirmasi anda mempercayai server ini sebelum anda membuat akun",
+      "no": "Kembali",
+      "title": "Apakah anda mempercayai server ini?",
+      "yes": "Saya percaya"
+    },
+    "verify": {
+      "description": "Mohon masukkan kombinasi kata pribadi anda sebelumnya untuk mengonfirmasi bahwa anda telah menyimpannya untuk melanjutkan proses pembuatan akun",
+      "invalidData": "Data tidak valid",
+      "noMatch": "Kombinasi kata tidak cocok",
+      "passphraseLabel": "12 kombinasi kata pribadi anda",
+      "recaptchaFailed": "Validasi reCaptcha gagal",
+      "register": "Buat akun",
+      "title": "Konfirmasi kombinasi kata pribadi anda"
+    }
+  },
+  "errors": {
+    "badge": "Terjadi masalah",
+    "details": "Detail eror",
+    "reloadPage": "Muat ulang halaman",
+    "showError": "Lihat detail eror",
+    "title": "Kami mengalami galat!"
+  },
+  "footer": {
+    "legal": {
+      "disclaimer": "Sanggahan",
+      "disclaimerText": "movie-web tidak menyimpan berkas media apapun, aplikasi ini hanya menampilkan tautan dari pihak ketiga. Sengketa hukum harus diajukan langsung kepada penyedia pihak ketiga. movie-web tidak bertanggung jawab atas berkas media yang ditampilkan oleh penyedia pihak ketiga."
+    },
+    "links": {
+      "discord": "Discord",
+      "dmca": "DMCA",
+      "github": "GitHub"
+    },
+    "tagline": "Tonton serial televisi dan film favorit anda dengan aplikasi streaming open source ini."
+  },
+  "global": {
+    "name": "movie-web",
+    "pages": {
+      "about": "Tentang",
+      "dmca": "DMCA",
+      "login": "Masuk",
+      "pagetitle": "{{title}} - movie-web",
+      "register": "Daftar",
+      "settings": "Pengaturan"
+    }
+  },
+  "home": {
+    "bookmarks": {
+      "sectionTitle": "Penanda"
+    },
+    "continueWatching": {
+      "sectionTitle": "Lanjut menonton"
+    },
+    "mediaList": {
+      "stopEditing": "Berhenti mengubah"
+    },
+    "search": {
+      "allResults": "Hanya itu yang kami punya!",
+      "failed": "Gagal menemukan media, coba lagi!",
+      "loading": "Memuat...",
+      "noResults": "Kami tidak dapat menemukan apapun!",
+      "placeholder": "Apa yang ingin anda tonton?",
+      "sectionTitle": "Hasil pencarian"
+    },
+    "titles": {
+      "day": {
+        "default": "Apa yang ingin anda tonton sore ini?",
+        "extra": [
+          "Lagi pengen nonton genre Adventure? Jurassic Park mungkin cocok buat anda."
+        ]
+      },
+      "morning": {
+        "default": "Apa yang ingin anda tonton pagi ini?",
+        "extra": [
+          "Kayaknya film Before Sunrise bagus deh"
+        ]
+      },
+      "night": {
+        "default": "Apa yang ingin anda tonton malam ini?",
+        "extra": [
+          "Capek? Katanya The Exocist rekomended."
+        ]
+      }
+    }
+  },
+  "media": {
+    "episodeDisplay": "S{{season}} E{{episode}}",
+    "types": {
+      "movie": "Film",
+      "show": "Serial TV"
+    }
+  },
+  "navigation": {
+    "banner": {
+      "offline": "Periksa koneksi internet anda"
+    },
+    "menu": {
+      "about": "Tentang kami",
+      "donation": "Donasi",
+      "logout": "Keluar",
+      "register": "Sinkronkan ke cloud",
+      "settings": "Pengaturan",
+      "support": "Bantuan"
+    }
+  },
+  "notFound": {
+    "badge": "Tidak ditemukan",
+    "goHome": "Kembali",
+    "message": "Kami sudah mencari dimana-mana: di bawah tempat sampah, di lemari, di belakang server proxy, tapi tetap gagal menemukan halaman yang anda cari.",
+    "title": "Gagal menemukan halaman"
+  },
+  "overlays": {
+    "close": "Tutup"
+  },
+  "player": {
+    "back": {
+      "default": "Kembali",
+      "short": "Kembali"
+    },
+    "casting": {
+      "enabled": "Casting ke perangkat..."
+    },
+    "menus": {
+      "downloads": {
+        "disclaimer": "Tautan unduhan diambil langsung dari penyedia pihak ketiga. Aplikasi ini tidak memiliki kendali bagaimana unduhan disediakan.",
+        "downloadPlaylist": "Unduh playlist",
+        "downloadSubtitle": "Unduh subtitle",
+        "downloadVideo": "Unduh media",
+        "hlsDisclaimer": "Tautan unduhan diambil langsung dari penyedia pihak ketiga. Aplikasi ini tidak memiliki kendali bagaimana unduhan disediakan. Harap diperhatikan, anda akan mengunduh HLS playlist, media ini hanya ditunjukan bagi pengguna tingkat lanjut.",
+        "onAndroid": {
+          "1": "Untuk mengunduh di Android, klik tombol unduh, lalu di halaman baru <bold>klik dan tahan</bold> pada video, lalu pilih <bold>save</bold>.",
+          "shortTitle": "Unduh / Android",
+          "title": "Unduh di Android"
+        },
+        "onIos": {
+          "1": "Untuk mengunduh di iOS, klik tombol unduh, lalu di halaman baru, klik <bold><ios_share /></bold>, lalu <bold>Save to Files <ios_files /></bold>.",
+          "shortTitle": "Unduh / iOS",
+          "title": "Unduh di iOS"
+        },
+        "onPc": {
+          "1": "Untuk mengunduh di PC, klik tombol unduh, lalu di halaman baru klik kanan video, dan pilih <bold>Save video as</bold>",
+          "shortTitle": "Unduh / PC",
+          "title": "Unduh di PC"
+        },
+        "title": "Unduh"
+      },
+      "episodes": {
+        "button": "Episode",
+        "emptyState": "Tidak ada episode di season ini, check lagi nanti!",
+        "episodeBadge": "E{{episode}}",
+        "loadingError": "Eror memuat season",
+        "loadingList": "Memuat...",
+        "loadingTitle": "Memuat..."
+      },
+      "playback": {
+        "speedLabel": "Kecepatan pemutar",
+        "title": "Pengaturan pemutar"
+      },
+      "quality": {
+        "automaticLabel": "Otomatis",
+        "hint": "Anda dapat mencoba <0>mengganti sumber media</0> untuk mendapatkan opsi kualitas yang berbeda.",
+        "iosNoQuality": "Karena keterbatasan dari Apple, opsi kualitas pada sumber ini tidak tersedia untuk iOS. Anda dapat mencoba <0>mengganti sumber media</0> untuk mendapatkan opsi kualitas yang berbeda.",
+        "title": "Kualitas"
+      },
+      "settings": {
+        "downloadItem": "Unduh",
+        "enableSubtitles": "Hidupkan subtitle",
+        "experienceSection": "Pengaturan tambahan",
+        "playbackItem": "Pengaturan pemutar",
+        "qualityItem": "Kualitas",
+        "sourceItem": "Sumber media",
+        "subtitleItem": "Pengaturan subtitle",
+        "videoSection": "Pengaturan media"
+      },
+      "sources": {
+        "failed": {
+          "text": "Terjadi galat saat mencoba mencari media, mohon pilih sumber yang lain.",
+          "title": "Gagal memuat data"
+        },
+        "noEmbeds": {
+          "text": "Kami tidak dapat menemukan tautan, mohon pilih sumber yang lain.",
+          "title": "Tautan tidak ditemukan"
+        },
+        "noStream": {
+          "text": "Sumber ini tidak memiliki media untuk film atau seri yang anda cari.",
+          "title": "Tidak ada media"
+        },
+        "title": "Sumber",
+        "unknownOption": "Tidak diketahui"
+      },
+      "subtitles": {
+        "customChoice": "Pilih subtitle dari file",
+        "customizeLabel": "Sesuaikan",
+        "offChoice": "Matikan",
+        "settings": {
+          "backlink": "Subtitle khusus",
+          "delay": "Penundaan subtitle",
+          "fixCapitals": "Perbaiki kapitalisasi"
+        },
+        "title": "Subtitle",
+        "unknownLanguage": "Tidak diketahui"
+      }
+    },
+    "metadata": {
+      "failed": {
+        "badge": "Gagal",
+        "homeButton": "Kembali",
+        "text": "Tidak dapat memuat metadata dari TMDB. Mohon periksa apakah TMDB sedang nonaktif atau diblokir pada koneksi internet anda.",
+        "title": "Gagal memuat metadata"
+      },
+      "notFound": {
+        "badge": "Tidak ditemukan",
+        "homeButton": "Kembali",
+        "text": "Kami tidak dapat menemukan media yang anda cari. Media mungkin sudah dihapus atau URL yang anda masukan salah.",
+        "title": "Tidak dapat menemukan media."
+      }
+    },
+    "nextEpisode": {
+      "cancel": "Batal",
+      "next": "Episode selanjutnya"
+    },
+    "playbackError": {
+      "badge": "Galat pemutar",
+      "errors": {
+        "errorAborted": "Proses pemuatan media dibatalkan oleh permintaan penguna.",
+        "errorDecode": "Meskipun sebelumnya media diputuskan dapat digunakan, terjadi masalah saat mencoba memutar berkas media, yang mengakibatkan terjadinya eror.",
+        "errorGenericMedia": "Terjadi masalah yang tidak diketahui pada media.",
+        "errorNetwork": "Terjadi kesalahan pada jaringan yang menyebabkan media gagal dimuat, meskipun sebelumnya berhasil.",
+        "errorNotSupported": "Berkas media atau objek penyedia media tidak didukung."
+      },
+      "homeButton": "Kembali",
+      "text": "Terjadi masalah saat mencoba memutar media. Mohon coba lagi.",
+      "title": "Gagal memutar media!"
+    },
+    "scraping": {
+      "items": {
+        "failure": "Terjadi masalah",
+        "notFound": "Media tidak ditemukan",
+        "pending": "Mencari media..."
+      },
+      "notFound": {
+        "badge": "Tidak ditemukan",
+        "detailsButton": "Lihat detail",
+        "homeButton": "Kembali",
+        "text": "Kami sudah mencari ke semua penyedia yang kami miliki dan gagal menemukan media yang anda cari! Kami tidak menyimpan berkas media dan tidak memiliki kontrol atas apa yang tersedia. Periksa tombol 'Lihat detail' dibawah ini untuk informasi lebih lanjut.",
+        "title": "Kami tidak dapat menemukannya"
+      }
+    },
+    "time": {
+      "regular": "{{timeWatched}} / {{duration}}",
+      "remaining": "{{timeLeft}} tersisa • Selesai pada pukul {{timeFinished, datetime}}",
+      "shortRegular": "{{timeWatched}}",
+      "shortRemaining": "-{{timeLeft}}"
+    }
+  },
+  "screens": {
+    "dmca": {
+      "text": "Selamat datang di halaman kontak DMCA movie-web! Kami menghormati hak kekayaan intelektual dan ingin menangani masalah hak cipta dengan cepat. Jika anda yakin bahwa karya berhak cipta anda telah digunakan secara tidak benar di platform kami, silakan kirim pemberitahuan DMCA secara terperinci ke email di bawah ini. Mohon sertakan deskripsi materi berhak cipta, detail kontak anda, dan pernyataan itikad baik. Kami berkomitmen untuk menyelesaikan masalah ini sesegera mungkin dan kami menghargai kerja sama anda dalam menjaga movie-web sebagai tempat yang menghormati kreativitas dan hak cipta.",
+      "title": "DMCA"
+    },
+    "loadingApp": "Memuat aplikasi",
+    "loadingUser": "Memuat profil anda",
+    "loadingUserError": {
+      "logout": "Keluar",
+      "reset": "Reset server khusus",
+      "text": "Gagal memuat profil anda",
+      "textWithReset": "Gagal memuat profil anda dari server khusus yang anda pilih, ingin kembali ke server default?"
+    },
+    "migration": {
+      "failed": "Gagal memigrasi data anda.",
+      "inProgress": "Mohon tunggu, kami sedang memigrasi data anda. Ini tidak akan memakan waktu lama."
+    }
+  },
+  "settings": {
+    "account": {
+      "accountDetails": {
+        "deviceNameLabel": "Nama perangkat",
+        "deviceNamePlaceholder": "Ponsel personal",
+        "editProfile": "Ubah",
+        "logoutButton": "Keluar"
+      },
+      "actions": {
+        "delete": {
+          "button": "Hapus akun",
+          "confirmButton": "Hapus akun",
+          "confirmDescription": "Apakah anda yakin ingin menghapus akun anda? Seluruh data anda akan hilang!",
+          "confirmTitle": "Apakah anda yakin?",
+          "text": "Tindakan ini tidak dapat dibatalkan. Seluruh data akan dihapus dan tidak dapat dipulihkan.",
+          "title": "Hapus akun"
+        },
+        "title": "Tindakan"
+      },
+      "devices": {
+        "deviceNameLabel": "Nama perangkat",
+        "failed": "Gagal memuat sesi",
+        "removeDevice": "Hapus",
+        "title": "Perangkat"
+      },
+      "profile": {
+        "finish": "Selesai mengubah",
+        "firstColor": "Gradasi warna profil pertama",
+        "secondColor": "Gradasi warna profil kedua",
+        "title": "Ubah foto profil",
+        "userIcon": "Ikon pengguna"
+      },
+      "register": {
+        "cta": "Memulai",
+        "text": "Bagikan dan sinkronkan antar perangkat progres tontonan anda.",
+        "title": "Sinkronkan ke cloud"
+      },
+      "title": "Akun"
+    },
+    "appearance": {
+      "activeTheme": "Aktif",
+      "themes": {
+        "blue": "Biru",
+        "default": "Default",
+        "gray": "Abu",
+        "red": "Merah",
+        "teal": "Hijau"
+      },
+      "title": "Tampilan"
+    },
+    "connections": {
+      "server": {
+        "description": "Jika anda ingin menghubungkan dengan backend khusus untuk menyimpan data, hidupkan ini dan masukkan URL-nya.",
+        "label": "Server khusus",
+        "urlLabel": "URL server khusus"
+      },
+      "title": "Koneksi",
+      "workers": {
+        "addButton": "Tambah worker baru",
+        "description": "Agar aplikasi dapat bekerja, seluruh koneksi dialihkan menggunakan proxy. Hidupkan ini jika anda ingin menggunakan worker khusus.",
+        "emptyState": "Belum ada worker, tambahkan dibawah",
+        "label": "Gunakan proxy worker khusus",
+        "urlLabel": "URL worker",
+        "urlPlaceholder": "https://"
+      }
+    },
+    "locale": {
+      "language": "Bahasa aplikasi",
+      "languageDescription": "Bahasa yang akan digunakan di seluruh aplikasi.",
+      "title": "Bahasa"
+    },
+    "reset": "Reset",
+    "save": "Simpan",
+    "sidebar": {
+      "info": {
+        "appVersion": "Versi aplikasi",
+        "backendUrl": "URL Backend",
+        "backendVersion": "Versi Backend",
+        "hostname": "Nama host",
+        "insecure": "Tidak aman",
+        "notLoggedIn": "Anda belum masuk ke akun anda",
+        "secure": "Aman",
+        "title": "Informasi aplikasi",
+        "unknownVersion": "Tidak diketahui",
+        "userId": "ID pengguna"
+      }
+    },
+    "subtitles": {
+      "backgroundLabel": "Transparansi latar belakang",
+      "colorLabel": "Warna teks",
+      "previewQuote": "Jangan takut. Ketakutan adalah pembunuh pikiran.",
+      "textSizeLabel": "Ukuran teks",
+      "title": "Subtitle"
+    },
+    "unsaved": "Anda memiliki perubahan yang belum disimpan"
+  }
+}

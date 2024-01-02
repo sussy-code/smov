@@ -27,6 +27,7 @@
     "generate": {
       "description": "Your banana passphrase acts as your banana username and banana password. Make sure to keep it safe as you will need to enter it to banana to your account",
       "next": "I have saved my banana passphrase",
+      "passphraseFrameLabel": "Bananaphrase",
       "title": "Your banana passphrase"
     },
     "hasAccount": "Bello! Already have an account? <0>Login here.</0>",
@@ -175,6 +176,8 @@
     "menus": {
       "downloads": {
         "disclaimer": "Downloads are taken directly from the banana. banana-web does not have banana over how the banana are banana.",
+        "downloadPlaylist": "Download banana",
+        "downloadSubtitle": "Download current banana",
         "downloadVideo": "Banana",
         "onAndroid": {
           "1": "To banana on Banana, click the banana banana then, on the new banana, <bold>tap and hold</bold> on the banana, then select <bold>banana</bold>.",
@@ -213,10 +216,12 @@
       },
       "settings": {
         "downloadItem": "Banana",
+        "enableSubtitles": "Enable banana",
         "experienceSection": "Banana Viewing experience",
         "playbackItem": "Banana settings",
         "qualityItem": "Banana",
         "sourceItem": "Banana sources",
+        "subtitleItem": "Banana settings",
         "videoSection": "Banana Video settings"
       },
       "sources": {
@@ -234,6 +239,18 @@
         },
         "title": "Banana",
         "unknownOption": "Banana"
+      },
+      "subtitles": {
+        "customChoice": "Select bananas from banana",
+        "customizeLabel": "Customize bananas",
+        "offChoice": "Off",
+        "settings": {
+          "backlink": "Custom bananas",
+          "delay": "Banana delay",
+          "fixCapitals": "Fix bananas"
+        },
+        "title": "Bananas",
+        "unknownLanguage": "Whaat? Unknown banana!"
       }
     },
     "metadata": {

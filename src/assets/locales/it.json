@@ -21,12 +21,12 @@
     "copy": "Copia"
   },
   "auth": {
-    "createAccount": "Non hai ancora un account? <0>Crea un account</0>",
+    "createAccount": "Non hai ancora un account? <0>Crea un account.</0>",
     "deviceNameLabel": "Nome del dispositivo",
     "deviceNamePlaceholder": "Telefono personale",
     "generate": {
       "description": "La tua frase password agisce come il tuo nome utente e password. Assicurati di tenerla al sicuro dato che ti servirà per accedere al tuo account",
-      "next": "Ho salvato il mio passphrase",
+      "next": "Ho salvato il mio frase password",
       "passphraseFrameLabel": "Frase password",
       "title": "La tua frase password"
     },
@@ -120,7 +120,10 @@
     },
     "titles": {
       "day": {
-        "default": "Cosa vorresti vedere questo pomeriggio?"
+        "default": "Cosa vorresti vedere questo pomeriggio?",
+        "extra": [
+          "Senti avventuroso? Jurassic Park potrebbe essere la scelta perfetta."
+        ]
       },
       "morning": {
         "default": "Cosa vorresti vedere questa mattina?",
@@ -414,7 +417,7 @@
     "subtitles": {
       "backgroundLabel": "Opacità di sfondo",
       "colorLabel": "Colore",
-      "previewQuote": "Non devo avere paura. La paura è l'assassino della mente.",
+      "previewQuote": "Cantami o Diva del pelide Achille l'ira funesta.",
       "textSizeLabel": "Dimensione testo",
       "title": "Sottotitoli"
     },
