@@ -13,6 +13,7 @@ export type TMDBEpisodeShort = {
   title: string;
   id: number;
   episode_number: number;
+  air_date: string;
 };
 
 export type TMDBMediaResult = {

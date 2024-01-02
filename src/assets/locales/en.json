@@ -120,7 +120,10 @@
     },
     "titles": {
       "day": {
-        "default": "What would you like to watch this afternoon?"
+        "default": "What would you like to watch this afternoon?",
+        "extra": [
+          "Feeling adventurous? Jurassic Park might be the perfect choice."
+        ]
       },
       "morning": {
         "default": "What would you like to watch this morning?",
@@ -186,7 +189,8 @@
         "loadingList": "Loading...",
         "loadingError": "Error loading season",
         "emptyState": "There are no episodes in this season, check back later!",
-        "episodeBadge": "E{{episode}}"
+        "episodeBadge": "E{{episode}}",
+        "unairedEpisodes": "One or more episodes in this season have been disabled because they haven't been aired yet."
       },
       "sources": {
         "title": "Sources",

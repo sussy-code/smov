@@ -20,6 +20,7 @@ export function useAuthData() {
   const loggedIn = !!useAuthStore((s) => s.account);
   const setAccount = useAuthStore((s) => s.setAccount);
   const removeAccount = useAuthStore((s) => s.removeAccount);
+  const setProxySet = useAuthStore((s) => s.setProxySet);
   const clearBookmarks = useBookmarkStore((s) => s.clear);
   const clearProgress = useProgressStore((s) => s.clear);
   const setTheme = useThemeStore((s) => s.setTheme);
@@ -80,6 +81,10 @@ export function useAuthData() {
       if (settings.applicationTheme) {
         setTheme(settings.applicationTheme);
       }
+
+      if (settings.proxyUrls) {
+        setProxySet(settings.proxyUrls);
+      }
     },
     [
       replaceBookmarks,
@@ -87,6 +92,7 @@ export function useAuthData() {
       setAppLanguage,
       importSubtitleLanguage,
       setTheme,
+      setProxySet,
     ],
   );
 

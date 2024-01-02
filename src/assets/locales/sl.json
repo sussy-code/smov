@@ -1,0 +1,426 @@
+{
+  "about": {
+    "description": "movie-web je spletna aplikacija, ki omogoča enostavno iskanje filmov in serij. Ekipa si prizadeva za minimalističen pristop pri ogledu vsebin.",
+    "faqTitle": "Pogosto zastavljena vprašanja",
+    "q1": {
+      "body": "movie-web ne hrani nobene vsebine. Ko si želite film ali serijo ogledati, se izvede iskanje vsebine na internetu (na zaslonu za nalaganje in v zavihku \"viri videa\" lahko vidite, kateri vir uporabljate). Vsebina medija se nikoli ne naloži na strežnike movie-weba, ker vse poteka iskalnega mehanizma.",
+      "title": "Od kod prihaja vsebina?"
+    },
+    "q2": {
+      "body": "Serije in filmov ni mogoče zahtevati, ker movie-web ne upravlja z nobeno vsebino. Vse vsebine si lahko ogledate prek virov na internetu.",
+      "title": "Kje lahko oddam predlog za serijo ali film?"
+    },
+    "q3": {
+      "body": "Rezultati iskanja so privzeti iz podatkovne baze \"The Movie Database\" (TMDB) in se prikazujejo ne glede na to, ali je vsebina dejansko na voljo.",
+      "title": "Rezultati iskanja prikazujejo serijo oz. film, zakaj ga potem ne morem predvajati?"
+    },
+    "title": "O movie-webbu"
+  },
+  "actions": {
+    "copied": "Kopirano",
+    "copy": "Kopiraj"
+  },
+  "auth": {
+    "createAccount": "Še nimate računa? <0>Ustvari račun.</0>",
+    "deviceNameLabel": "Ime naprave",
+    "deviceNamePlaceholder": "Mobilni telefon",
+    "generate": {
+      "description": "Vaša fraza deluje kot vaše uporabniško ime in geslo. Shranite ga na varnem mestu, saj ga boste morali vnesti za prijavo v svoj račun",
+      "next": "Frazo sem shranil na varno mesto",
+      "passphraseFrameLabel": "Varnostna fraza",
+      "title": "Varnostna Fraza"
+    },
+    "hasAccount": "Že imate račun?<0>Prijavi se tukaj.</0>",
+    "login": {
+      "description": "Vnesite frazo za prijavo v račun",
+      "deviceLengthError": "Vnesi ime naprave",
+      "passphraseLabel": "12-besedna varnostna fraza",
+      "passphrasePlaceholder": "Varnostna fraza",
+      "submit": "Prijava",
+      "title": "Prijava v račun",
+      "validationError": "Nepravilna ali nepopolna varnostna fraza"
+    },
+    "register": {
+      "information": {
+        "color1": "Barva prvega profila",
+        "color2": "Barva drugega profila",
+        "header": "Vnesite ime za napravo ter izberi barvo in ikono uporabnika",
+        "icon": "Ikona uporabnika",
+        "next": "Naprej",
+        "title": "Informacije o profilu"
+      }
+    },
+    "trust": {
+      "failed": {
+        "text": "Ali ste pravilno konfigurirali nastavitve?",
+        "title": "Neuspešen dostop do strežnika"
+      },
+      "host": "Povezujete se z <0>{{hostname}}</0> - pred ustvarjanjem računa potrdite, da mu zaupate",
+      "no": "Nazaj",
+      "title": "Ali zaupate temu strežniku?",
+      "yes": "Zaupam strežniku"
+    },
+    "verify": {
+      "description": "Vnesite varnostno frazo, ki ste ga uporabili prej, da potrdite varno hrambo, in ustvarite svoj račun",
+      "invalidData": "Vnešeni podatki niso pravilni",
+      "noMatch": "Varnostna fraza se ne ujema",
+      "passphraseLabel": "Vaša 12-besedna varnostna fraza",
+      "recaptchaFailed": "Preizkus ReCaptcha ni uspel",
+      "register": "Ustvari Račun",
+      "title": "Potrdite varnostno frazo"
+    }
+  },
+  "errors": {
+    "badge": "Nekaj se je pokvarilo",
+    "details": "Podatki o napaki",
+    "reloadPage": "Osveži stran",
+    "showError": "Pokaži informacije o napaki",
+    "title": "Prišlo je do napake!"
+  },
+  "footer": {
+    "legal": {
+      "disclaimer": "Opozorilo",
+      "disclaimerText": "movie-web ne gosti nobenih medijev ali datotek, temveč le povezave do storitev tretjih oseb. Pravna vprašanja je potrebno posredovati gostiteljem in ponudnikom datotek. movie-web ni odgovoren za medijske datoteke, ki jih prikazujejo ponudniki."
+    },
+    "links": {
+      "discord": "Discord",
+      "dmca": "DMCA",
+      "github": "GitHub"
+    },
+    "tagline": "Z odprtokodno aplikacijo movie-web si oglejte najljubše oddaje in filme."
+  },
+  "global": {
+    "name": "movie-web",
+    "pages": {
+      "about": "O projektu",
+      "dmca": "DMCA",
+      "login": "Prijava",
+      "pagetitle": "{{title}} - movie-web",
+      "register": "Registriraj se",
+      "settings": "Nastavitve"
+    }
+  },
+  "home": {
+    "bookmarks": {
+      "sectionTitle": "Zaznamki"
+    },
+    "continueWatching": {
+      "sectionTitle": "Nadaljuj z ogledom"
+    },
+    "mediaList": {
+      "stopEditing": "Ustavite urejanje"
+    },
+    "search": {
+      "allResults": "To je vse, kar imamo na voljo!",
+      "failed": "Ni uspelo najti medija, prosim poskusite znova!",
+      "loading": "Nalaganje...",
+      "noResults": "Vsebin nismo našli!",
+      "placeholder": "Kaj si želite gledati?",
+      "sectionTitle": "Rezultati iskanja"
+    },
+    "titles": {
+      "day": {
+        "default": "Kateri film ali serijo bi si želeli ogledati ob tem popoldnevu?",
+        "extra": [
+          "Se počutite pustolovsko? Jurski park je morda odlična izbira."
+        ]
+      },
+      "morning": {
+        "default": "Kateri film ali serijo bi si želeli ogledati ob tem jutru?",
+        "extra": [
+          "Slišala sem, da je film \"Pred sončnim vzhodom\" odličen"
+        ]
+      },
+      "night": {
+        "default": "Kateri film ali serijo bi si želeli ogledati nocoj?",
+        "extra": [
+          "Utrujeni? Slišal sem, da je \"Izganjalec mrtvih\" odličen film."
+        ]
+      }
+    }
+  },
+  "media": {
+    "episodeDisplay": "S{{season}} E{{episode}}",
+    "types": {
+      "movie": "Film",
+      "show": "Serija"
+    }
+  },
+  "navigation": {
+    "banner": {
+      "offline": "Preverite vašo internetno povezavo"
+    },
+    "menu": {
+      "about": "O nas",
+      "donation": "Doniraj",
+      "logout": "Odjava",
+      "register": "Sinhronizacija z oblakom",
+      "settings": "Nastavitve",
+      "support": "Podpora"
+    }
+  },
+  "notFound": {
+    "badge": "Ni najdeno",
+    "goHome": "Nazaj domov",
+    "message": "Iskali smo povsod: pod preprogo, v omari, za \"proxyjem\", vendar na koncu nismo našli strani, ki jo iščete.",
+    "title": "Ni bilo mogoče najti te strani"
+  },
+  "overlays": {
+    "close": "Zapri"
+  },
+  "player": {
+    "back": {
+      "default": "Nazaj domov",
+      "short": "Nazaj"
+    },
+    "casting": {
+      "enabled": "Predvajanje vsebine v napravo..."
+    },
+    "menus": {
+      "downloads": {
+        "disclaimer": "Prenosi se opravijo neposredno pri ponudniku vsebin. movie-web nima nadzora nad načinom zagotavljanja prenosov.",
+        "downloadPlaylist": "Prenesi playlisto",
+        "downloadSubtitle": "Prenesi trenutne podnapise",
+        "downloadVideo": "Prenesi video",
+        "hlsDisclaimer": "Prenosi se opravijo neposredno pri ponudniku vsebin. movie-web nima nadzora nad načinom zagotavljanja prenosov. Upoštevajte, da prenašate seznam predvajanja tipa \"HLS\"; ta je namenjen uporabnikom, ki poznajo napredno pretakanje večpredstavnostnih vsebin.",
+        "onAndroid": {
+          "1": "Če želite prenesti v sistemu Android, kliknite gumb za prenos, nato na novi strani <bold>tipnite in držite</bold> videoposnetek ter izberite <bold>shrani</bold>.",
+          "shortTitle": "Prenesi / Android",
+          "title": "Prenos v operacijskem sistemu Android"
+        },
+        "onIos": {
+          "1": "Če želite prenesti v sistemu iOS, kliknite gumb za prenos, nato na novi strani kliknite <bold><ios_share /></bold> in nato <bold>Shrani v datoteke <ios_files /></bold>.",
+          "shortTitle": "Prenesu / iOS",
+          "title": "Prenašanje v sistemu iOS"
+        },
+        "onPc": {
+          "1": "V računalniku kliknite gumb za prenos, nato na novi strani desno kliknite videoposnetek in izberite <bold>Shrani videoposnetek kot</bold>",
+          "shortTitle": "Prenesi / Računalnik",
+          "title": "Prenos na računalnik"
+        },
+        "title": "Prenos"
+      },
+      "episodes": {
+        "button": "Epizode",
+        "emptyState": "V tej sezoni ni epizod, oglejte si jo pozneje!",
+        "episodeBadge": "E{{episode}}",
+        "loadingError": "Napaka pri nalaganju sezone",
+        "loadingList": "Nalaganje...",
+        "loadingTitle": "Nalaganje..."
+      },
+      "playback": {
+        "speedLabel": "Hitrost predvajanja",
+        "title": "Nastavitve predvajanja"
+      },
+      "quality": {
+        "automaticLabel": "Avtomatska izbira kvalitete",
+        "hint": "Poskusite <0>preklop vira</0>, da dobite različne možnosti kakovosti.",
+        "iosNoQuality": "Zaradi omejitev, ki jih je določil Apple, izbira kakovosti v sistemu iOS za ta vir ni na voljo. Poskusite <0>preklopiti na drug vir</0>, da dobite različne možnosti kakovosti.",
+        "title": "Kvaliteta"
+      },
+      "settings": {
+        "downloadItem": "Prenesi",
+        "enableSubtitles": "Vklopi podnapise",
+        "experienceSection": "Izkušnje ogleda",
+        "playbackItem": "Nastavitve predvajanja",
+        "qualityItem": "Kvaliteta",
+        "sourceItem": "Viri vsebin",
+        "subtitleItem": "Nastavitve podnapisov",
+        "videoSection": "Nastavitve ogleda"
+      },
+      "sources": {
+        "failed": {
+          "text": "Pri iskanju videoposnetkov je prišlo do napake, zato poskusite z drugim virom.",
+          "title": "Neuspešno iskanje"
+        },
+        "noEmbeds": {
+          "text": "Nismo našli nobenih integriranih virov, poskusite z drugim virom.",
+          "title": "Ni bilo najdenih nobenih integriranih virov"
+        },
+        "noStream": {
+          "text": "Ta vir nima tokov za ta film ali serijo.",
+          "title": "Ni vira"
+        },
+        "title": "Viri",
+        "unknownOption": "Neznano"
+      },
+      "subtitles": {
+        "customChoice": "Izberi podnapise iz datoteke",
+        "customizeLabel": "Prilagodi",
+        "offChoice": "Off",
+        "settings": {
+          "backlink": "Podnapisi po meri",
+          "delay": "Zamik podnapisov",
+          "fixCapitals": "Popravi velike začetnice"
+        },
+        "title": "Podnapisi",
+        "unknownLanguage": "Neznano"
+      }
+    },
+    "metadata": {
+      "failed": {
+        "badge": "Neuspešno",
+        "homeButton": "Domov",
+        "text": "Metapodatkov medija ni bilo mogoče naložiti iz baze TMDB. Preverite, ali je TMDB na vaši internetni povezavi onemogočen ali blokiran.",
+        "title": "Ni uspelo naložiti metapodatkov"
+      },
+      "notFound": {
+        "badge": "Ni najdeno",
+        "homeButton": "Nazaj domov",
+        "text": "Medija, ki ste ga zahtevali, nismo našli. Ali je bil odstranjen ali pa ste spremenili spletni naslov.",
+        "title": "Tega medija ni bilo mogoče najti."
+      }
+    },
+    "nextEpisode": {
+      "cancel": "Prekliči",
+      "next": "Naslednja epizoda"
+    },
+    "playbackError": {
+      "badge": "Napaka v predvajanju",
+      "errors": {
+        "errorAborted": "Uporabnikova zahteva je prekinila pridobivanje medija.",
+        "errorDecode": "Kljub temu, da je bilo predhodno ugotovljeno, da je medijski vir uporaben, je pri poskusu dekodiranja prišlo do napake.",
+        "errorGenericMedia": "Piršlo je do neznane napake na mediju.",
+        "errorNetwork": "Prišlo je do napake v omrežju, ki je preprečila uspešno pridobivanje medija, čeprav je bil prej na voljo.",
+        "errorNotSupported": "Objekt medija ali ponudnik medija ni podprt."
+      },
+      "homeButton": "Domov",
+      "text": "Pri poskusu predvajanja medija je prišlo do napake. Poskusite znova.",
+      "title": "Ni uspelo predvajati videoposnetka!"
+    },
+    "scraping": {
+      "items": {
+        "failure": "Zgodila se je napaka",
+        "notFound": "Nima videoposnetka",
+        "pending": "Preverjanje videoposnetkov..."
+      },
+      "notFound": {
+        "badge": "Ni najdeno",
+        "detailsButton": "Pokaži podrobnosti",
+        "homeButton": "Domov",
+        "text": "Iskali smo med našimi ponudniki ampak medija, ki ga iščete, nismo našli! Medijev ne gostimo in nimamo nadzora nad tem, katere vsebine so na voljo. Za več podrobnosti kliknite \"Prikaži podrobnosti\" spodaj.",
+        "title": "Iskanega nismo našli"
+      }
+    },
+    "time": {
+      "regular": "{{timeWatched}} / {{duration}}",
+      "remaining": "{{timeLeft}} do konca • Konča ob {{timeFinished, datetime}}",
+      "shortRegular": "{{timeWatched}}",
+      "shortRemaining": "-{{timeLeft}}"
+    }
+  },
+  "screens": {
+    "dmca": {
+      "text": "Dobrodošli na movie-webovi kontaktni strani DMCA! Spoštujemo pravice intelektualne lastnine in želimo hitro odpraviti vse težave v zvezi z avtorskimi pravicami. Če menite, da je bilo vaše avtorsko zaščiteno delo na naši platformi nepravilno uporabljeno, pošljite podrobno obvestilo DMCA na spodnji e-poštni naslov. Vključite opis avtorsko zaščitenega gradiva, svoje kontaktne podatke in izjavo o \"prepričanju v dobri veri\". Zavezani smo k takojšnji rešitvi teh zadev in cenimo vaše sodelovanje pri ohranjanju filmskega spleta, ki spoštuje ustvarjalnost in avtorske pravice.",
+      "title": "DMCA"
+    },
+    "loadingApp": "Nalagam aplikacijo",
+    "loadingUser": "Nalagam profil",
+    "loadingUserError": {
+      "logout": "Odjava",
+      "reset": "Ponastavitev strežnika po meri",
+      "text": "Neuspešno nalaganje vašega profila",
+      "textWithReset": "Neuspešno nalaganje vašega profila iz strežnika po meri. Želite ponastaviti nastavitve nazaj na privzeti strežnik?"
+    },
+    "migration": {
+      "failed": "Podatkov ni uspelo preseliti.",
+      "inProgress": "Prosimo počakajte, saj vaše podatke prenašamo. To ne bi smelo trajati dolgo."
+    }
+  },
+  "settings": {
+    "account": {
+      "accountDetails": {
+        "deviceNameLabel": "Ime naprave",
+        "deviceNamePlaceholder": "Mobilni telefon",
+        "editProfile": "Uredi",
+        "logoutButton": "Odjava"
+      },
+      "actions": {
+        "delete": {
+          "button": "Izbriši profil",
+          "confirmButton": "Izbriši profil",
+          "confirmDescription": "Ste prepričani, da želite izbrisati svoj račun? Vsi vaši podatki bodo izgubljeni!",
+          "confirmTitle": "Ali ste prepričani?",
+          "text": "Ta ukaz je nereverzibilen. Vsi podatki bodo izbrisani in nobenih podatkov ne bo mogoče obnoviti.",
+          "title": "Izbirši profil"
+        },
+        "title": "Ukazi"
+      },
+      "devices": {
+        "deviceNameLabel": "Ime naprave",
+        "failed": "Neuspešno nalaganje sej",
+        "removeDevice": "Odstrani",
+        "title": "Naprave"
+      },
+      "profile": {
+        "finish": "Zaključi urejanje",
+        "firstColor": "Barva prvega profila",
+        "secondColor": "Barva drugega profila",
+        "title": "Urejanje slike profila",
+        "userIcon": "Ikona uporabnika"
+      },
+      "register": {
+        "cta": "Začni",
+        "text": "Napredek ogleda lahko delite med napravami in jih sinhronizirate.",
+        "title": "Sinhroniziraj z oblakom"
+      },
+      "title": "Profil"
+    },
+    "appearance": {
+      "activeTheme": "Aktivno",
+      "themes": {
+        "blue": "Modra",
+        "default": "Privzeto",
+        "gray": "Siva",
+        "red": "Rdeča",
+        "teal": "Turkizna"
+      },
+      "title": "Izgled"
+    },
+    "connections": {
+      "server": {
+        "description": "Če se želite povezati z zaledjem po meri za hrambo podatkov, to omogočite in navedite URL naslov.",
+        "label": "Strežnik po meri",
+        "urlLabel": "Naslov strežnika po meri (URL)"
+      },
+      "title": "Povezave",
+      "workers": {
+        "addButton": "Dodaj novega \"workerja\"",
+        "description": "Za delovanje aplikacije je ves promet usmerjen prek posredniških strežnikov. To nastavitev omogočite, če želite pripeljati lastne delavce.",
+        "emptyState": "Niste dodali \"workerja\", dodajte ga spodaj",
+        "label": "Uporaba posrednikov po meri",
+        "urlLabel": "Naslov Workerja (URL)",
+        "urlPlaceholder": "https://"
+      }
+    },
+    "locale": {
+      "language": "Jezik aplikacije",
+      "languageDescription": "Jezik, ki se uporablja za celotno aplikacijo.",
+      "title": "Jezik"
+    },
+    "reset": "Ponastavi",
+    "save": "Shrani",
+    "sidebar": {
+      "info": {
+        "appVersion": "Verzija aplikacije",
+        "backendUrl": "Naslov zaledja",
+        "backendVersion": "Verzija zaledja",
+        "hostname": "Hostname",
+        "insecure": "\"Nevarna povezava\"",
+        "notLoggedIn": "Niste prijavljeni",
+        "secure": "Varna povezava",
+        "title": "Informacije o aplikaciji",
+        "unknownVersion": "Neznano",
+        "userId": "ID uporabnika"
+      }
+    },
+    "subtitles": {
+      "backgroundLabel": "Motnost ozadja",
+      "colorLabel": "Barva",
+      "previewQuote": "Ne smem se bati. Strah je ubijalec misli.",
+      "textSizeLabel": "Velikost pisave",
+      "title": "Podnapisi"
+    },
+    "unsaved": "Imate neshranjene spremembe"
+  }
+}

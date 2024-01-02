@@ -1,0 +1,109 @@
+{
+  "about": {
+    "description": "movie-webは、ウェブアプリケーションで、インターネットを検索してストリームを見つけます。チームは、コンテンツの消費において主にミニマリストなアプローチを目指しています。",
+    "faqTitle": "一般的な質問",
+    "q1": {
+      "body": "movie-webはいかなるコンテンツもホストしていません。視聴するために何かをクリックすると、選択したメディアがインターネットで検索されます（ローディング画面と「ビデオソース」タブでは、使用しているソースが表示されます）。メディアは決してmovie-webにアップロードされず、すべてがこの検索メカニズムを通じて行われます。",
+      "title": "コンテンツはどこから来ていますか？"
+    },
+    "q2": {
+      "body": "ショーまたは映画のリクエストはできません。movie-webはどのコンテンツも管理していません。すべてのコンテンツはインターネット上のソースを通じて閲覧されます。",
+      "title": "ショーまたは映画のリクエストはどこでできますか？"
+    },
+    "q3": {
+      "body": "私たちの検索結果は、The Movie Database（TMDB）によって提供され、実際にはコンテンツを持っているかどうかに関係なく表示されます。",
+      "title": "検索結果には番組や映画が表示されますが、なぜ再生できないのでしょうか？"
+    },
+    "title": "movie-webについて"
+  },
+  "actions": {
+    "copied": "コピーしました",
+    "copy": "コピー"
+  },
+  "auth": {
+    "createAccount": "まだアカウントをお持ちでないですか？ <0>アカウントを作成</0> してください。",
+    "deviceNameLabel": "デバイス名",
+    "deviceNamePlaceholder": "個人用の電話",
+    "generate": {
+      "description": "パスフレーズはユーザー名とパスワードとして機能します。アカウントにログインする際には必ず入力する必要があるため、安全に保管してください。"
+    },
+    "login": {
+      "submit": "ログイン",
+      "title": "自分の口座にログインする"
+    }
+  },
+  "footer": {
+    "tagline": "あなたのお気に入りの番組や映画を、このオープンソースのストリーミングアプリで視聴してください。"
+  },
+  "global": {
+    "name": "映画ウェブ",
+    "pages": {
+      "about": "概要",
+      "login": "ログイン",
+      "settings": "設定"
+    }
+  },
+  "home": {
+    "continueWatching": {
+      "sectionTitle": "視聴を続ける"
+    },
+    "search": {
+      "allResults": "それがすべてです！",
+      "loading": "読み込み中...",
+      "noResults": "見つかりませんでした！",
+      "placeholder": "どんな映画を見たい？",
+      "sectionTitle": "検索結果"
+    },
+    "titles": {
+      "day": {
+        "default": "今日の午後はどんな映画を見たい？"
+      },
+      "morning": {
+        "default": "今朝はどんな映画を見たい？"
+      },
+      "night": {
+        "default": "今夜はどんな映画を見たい？"
+      }
+    }
+  },
+  "media": {
+    "types": {
+      "movie": "映画",
+      "show": "テレビ番組"
+    }
+  },
+  "navigation": {
+    "menu": {
+      "about": "会社概要",
+      "donation": "寄付",
+      "logout": "退室",
+      "register": "クラウドに同期して",
+      "settings": "設定"
+    }
+  },
+  "player": {
+    "menus": {
+      "episodes": {
+        "loadingList": "読み込み中...",
+        "loadingTitle": "読み込み中..."
+      }
+    }
+  },
+  "screens": {
+    "loadingApp": "申込の読み込み",
+    "loadingUser": "プロフィールの読み込み",
+    "loadingUserError": {
+      "logout": "退出"
+    }
+  },
+  "settings": {
+    "account": {
+      "accountDetails": {
+        "logoutButton": "退室"
+      },
+      "register": {
+        "title": "クラウドに同期して"
+      }
+    }
+  }
+}

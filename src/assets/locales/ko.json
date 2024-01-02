@@ -1,0 +1,411 @@
+{
+  "about": {
+    "description": "movie-web은 인터넷에서 스트림을 검색하는 웹 애플리케이션입니다. 저희 팀은 콘텐츠 소비에 대한 최소한의 접근 방식을 지향합니다.",
+    "faqTitle": "자주 묻는 질문",
+    "q1": {
+      "body": "movie-web은 어떠한 콘텐츠도 호스팅하지 않습니다. 시청할 콘텐츠를 클릭하면 인터넷에서 선택한 미디어가 검색됩니다(로딩 화면과 '비디오 소스' 탭에서 사용 중인 소스를 확인할 수 있습니다). 무비웹에서 미디어를 업로드하지 않으며, 모든 것이 이 검색 메커니즘을 통해 이루어집니다.",
+      "title": "콘텐츠의 출처는 어디인가요?"
+    },
+    "q2": {
+      "body": "프로그램이나 영화를 요청할 수 없으며, movie-web은 어떠한 콘텐츠도 관리하지 않습니다. 모든 콘텐츠는 인터넷의 소스를 통해 볼 수 있습니다.",
+      "title": "프로그램이나 영화는 어디에서 요청할 수 있나요?"
+    },
+    "q3": {
+      "body": "검색 결과는 영화 데이터베이스(TMDB)를 기반으로 하며, 출처에 실제 콘텐츠가 있는지 여부와 관계없이 표시됩니다.",
+      "title": "검색 결과에 프로그램이나 영화가 표시되는데 왜 재생할 수 없나요?"
+    },
+    "title": "movie-web에 대하여"
+  },
+  "actions": {
+    "copied": "복사되었습니다",
+    "copy": "복사하기"
+  },
+  "auth": {
+    "createAccount": "계정이 없으십니까? <0>계정을 생성하세요.</0>",
+    "deviceNameLabel": "기기명",
+    "deviceNamePlaceholder": "개인 휴대폰",
+    "generate": {
+      "description": "암호문은 사용자 아이디와 비밀번호 역할을 합니다. 계정에 로그인할 때 발급 받은 암호문을 입력해야 하므로 안전하게 보관하세요",
+      "next": "암호문을 저장했습니다",
+      "passphraseFrameLabel": "암호문",
+      "title": "암호 문구"
+    },
+    "hasAccount": "이미 계정을 보유하고 있으십니까? <0>로그인 하기.</0>",
+    "login": {
+      "description": "계정에 로그인하기위해 암호문을 입력하세요",
+      "deviceLengthError": "기기명을 입력하세요",
+      "passphraseLabel": "12단어 암호 문구",
+      "passphrasePlaceholder": "암호 문구",
+      "submit": "로그인",
+      "title": "계정에 로그인하기",
+      "validationError": "틀리거나 잘못된 암호문입니다"
+    },
+    "register": {
+      "information": {
+        "color1": "프로필 색상 1",
+        "color2": "프로필 색상 2",
+        "header": "기기명을 입력하고 원하는 색상과 사용자 아이콘을 선택하세요",
+        "icon": "유저 아이콘",
+        "next": "다음",
+        "title": "계정 정보"
+      }
+    },
+    "trust": {
+      "failed": {
+        "text": "올바르게 구성하셨습니까?",
+        "title": "서버 연결에 실패했습니다"
+      },
+      "host": "<0>{{hostname}}</0>에 연결 중입니다 - 계정을 만들기 전에 신뢰하는지 확인해 주세요",
+      "no": "뒤로 가기",
+      "title": "이 서버를 신뢰하십니까?",
+      "yes": "네, 신뢰합니다"
+    },
+    "verify": {
+      "description": "암호문을 저장했는지 확인하고 계정을 만들려면 앞서 입력한 암호문을 입력하세요",
+      "invalidData": "데이터가 유효하지 않습니다",
+      "noMatch": "암호문이 일치하지 않습니다",
+      "passphraseLabel": "12단어 암호 문구",
+      "recaptchaFailed": "캡챠인증 실패",
+      "register": "계정 생성",
+      "title": "암호문 확인"
+    }
+  },
+  "errors": {
+    "badge": "어딘가 고장났습니다",
+    "details": "에러 상세",
+    "reloadPage": "페이지 새로고침",
+    "showError": "에러 상세 보기",
+    "title": "오류가 발생했습니다!"
+  },
+  "footer": {
+    "legal": {
+      "disclaimer": "면책 조항",
+      "disclaimerText": "movie-web은 어떠한 파일도 호스팅하지 않으며, 제3자 서비스에 대한 링크만 제공합니다. 법적 문제는 파일 호스트 및 제공업체와 해결해야 합니다. 동영상 제공업체가 표시하는 미디어 파일에 대해 movie-web은 책임을 지지 않습니다."
+    },
+    "tagline": "이 오픈 소스 스트리밍 앱으로 좋아하는 프로그램과 영화를 시청하세요."
+  },
+  "global": {
+    "pages": {
+      "about": "소개",
+      "login": "로그인",
+      "register": "회원가입",
+      "settings": "설정"
+    }
+  },
+  "home": {
+    "bookmarks": {
+      "sectionTitle": "북마크"
+    },
+    "continueWatching": {
+      "sectionTitle": "이어보기"
+    },
+    "mediaList": {
+      "stopEditing": "수정 중지"
+    },
+    "search": {
+      "allResults": "이게 전부입니다!",
+      "failed": "미디어 검색에 실패하였습니다, 다시 시도해주세요!",
+      "loading": "로딩...",
+      "noResults": "검색결과가 없습니다!",
+      "placeholder": "무엇을 보고 싶으신가요?",
+      "sectionTitle": "검색 결과"
+    },
+    "titles": {
+      "day": {
+        "default": "오늘 오후에 무엇을 보고 싶으신가요?",
+        "extra": [
+          "모험을 즐기고 싶으신가요? 쥬라기 공원이 완벽한 선택이 될 수 있습니다."
+        ]
+      },
+      "morning": {
+        "default": "오늘 아침에 무엇을 보고 싶으신가요?",
+        "extra": [
+          "Before Sunrise가 좋다고 들었어요"
+        ]
+      },
+      "night": {
+        "default": "오늘 밤에 무엇을 보고 싶으신가요?",
+        "extra": [
+          "피곤하신가요? The Exorcist가 좋다고 들었어요."
+        ]
+      }
+    }
+  },
+  "media": {
+    "types": {
+      "movie": "영화",
+      "show": "쇼"
+    }
+  },
+  "navigation": {
+    "banner": {
+      "offline": "인터넷 연결을 확인해주세요"
+    },
+    "menu": {
+      "about": "서비스 소개",
+      "donation": "후원",
+      "logout": "로그아웃",
+      "register": "클라우드 동기화",
+      "settings": "설정",
+      "support": "지원"
+    }
+  },
+  "notFound": {
+    "badge": "찾을 수 없음",
+    "goHome": "메인으로 돌아가기",
+    "message": "쓰레기통 아래, 옷장, 프록시 뒤 등 모든 곳을 찾아보았지만 결국 원하는 페이지를 찾을 수 없었습니다.",
+    "title": "해당 페이지를 찾을 수 없습니다"
+  },
+  "overlays": {
+    "close": "닫기"
+  },
+  "player": {
+    "back": {
+      "default": "메인으로 돌아가기",
+      "short": "뒤로가기"
+    },
+    "casting": {
+      "enabled": "장치로 전송 중..."
+    },
+    "menus": {
+      "downloads": {
+        "disclaimer": "다운로드는 제공업체에서 직접 가져옵니다. movie-web은 다운로드 제공 방식을 통제할 수 없습니다.",
+        "downloadPlaylist": "플레이리스트 다운로드",
+        "downloadSubtitle": "현재 자막 다운로드",
+        "downloadVideo": "영상 다운로드",
+        "hlsDisclaimer": "다운로드는 제공업체에서 직접 가져옵니다. movie-web은 다운로드 제공 방식을 통제할 수 없습니다. 고급 멀티미디어 스트리밍에 익숙한 사용자를 위한 HLS 재생 목록을 다운로드하고 있다는 점에 유의하세요.",
+        "onAndroid": {
+          "1": "Android에서 다운로드하려면 다운로드 버튼을 클릭한 다음 새 페이지에서 동영상을 <bold>길게 눌러</bold>저장을 선택합니다.",
+          "shortTitle": "다운로드 / Android",
+          "title": "Android에서 다운로드하기"
+        },
+        "onIos": {
+          "1": "iOS에서 다운로드하려면 다운로드 버튼을 클릭한 다음 새 페이지에서 <bold><ios_share /></bold>를 클릭한 다음 <bold>파일로 저장 <ios_files /></bold>을 클릭합니다.",
+          "shortTitle": "다운로드 / iOS",
+          "title": "iOS에서 다운로드하기"
+        },
+        "onPc": {
+          "1": "PC에서는 다운로드 버튼을 클릭한 다음 새 페이지에서 동영상을 마우스 오른쪽 버튼으로 클릭하고 <bold>다른 이름으로 동영상 저장</bold>을 선택합니다",
+          "shortTitle": "다운로드 / PC",
+          "title": "PC에서 다운로드하기"
+        },
+        "title": "다운로드"
+      },
+      "episodes": {
+        "button": "회차",
+        "emptyState": "이번 시즌에는 에피소드가 없으니 나중에 다시 확인하세요!",
+        "loadingError": "시즌 로딩중 에러 발생",
+        "loadingList": "로딩...",
+        "loadingTitle": "로딩..."
+      },
+      "playback": {
+        "speedLabel": "재생 속도",
+        "title": "재생 설정"
+      },
+      "quality": {
+        "automaticLabel": "자동 품질 제어",
+        "hint": "<0>소스 전환</0>을 사용하여 다양한 화질 옵션을 확인할 수 있습니다.",
+        "iosNoQuality": "Apple에서 정의한 제한 사항으로 인해 이 소스에 대해 iOS에서 품질 선택을 사용할 수 없습니다. <0>다른 소스로 전환</0>하여 다른 품질 옵션을 사용해 볼 수 있습니다.",
+        "title": "화질"
+      },
+      "settings": {
+        "downloadItem": "다운로드",
+        "enableSubtitles": "자막 활성화",
+        "experienceSection": "시청 경험",
+        "playbackItem": "재생 설정",
+        "qualityItem": "화질",
+        "sourceItem": "영상 소스",
+        "subtitleItem": "자막 설정",
+        "videoSection": "영상 설정"
+      },
+      "sources": {
+        "failed": {
+          "text": "동영상을 찾는 동안 오류가 발생했습니다. 다른 소스를 사용해 보세요.",
+          "title": "스크래핑 실패"
+        },
+        "noEmbeds": {
+          "text": "임베드를 찾을 수 없습니다. 다른 소스를 사용해 보세요.",
+          "title": "발견된 임베드없음"
+        },
+        "noStream": {
+          "text": "이 소스에는 해당 영화 또는 프로그램에 대한 스트림이 없습니다.",
+          "title": "발견된 스트림 없음"
+        },
+        "title": "소스",
+        "unknownOption": "알수없음"
+      },
+      "subtitles": {
+        "customChoice": "파일에서 자막 선택하기",
+        "customizeLabel": "사용자 정의",
+        "offChoice": "끔",
+        "settings": {
+          "backlink": "자막 커스텀",
+          "delay": "자막 딜레이",
+          "fixCapitals": "대문자 표기 수정"
+        },
+        "title": "자막",
+        "unknownLanguage": "알수없음"
+      }
+    },
+    "metadata": {
+      "failed": {
+        "badge": "실패함",
+        "homeButton": "메인으로 돌아가기",
+        "text": "TMDB에서 미디어의 메타데이터를 로드할 수 없습니다. 인터넷 연결에서 TMDB가 다운되었거나 차단되었는지 확인하세요.",
+        "title": "메타데이터를 불러오지 못했습니다"
+      },
+      "notFound": {
+        "badge": "찾을 수 없음",
+        "homeButton": "메인으로 돌아가기",
+        "text": "요청하신 미디어를 찾을 수 없습니다. 미디어가 삭제되었거나 사용자가 URL을 변조했습니다.",
+        "title": "해당 미디어를 찾을 수 없습니다."
+      }
+    },
+    "nextEpisode": {
+      "cancel": "닫기",
+      "next": "다음 회차"
+    },
+    "playbackError": {
+      "badge": "재생 에러",
+      "errors": {
+        "errorAborted": "사용자의 요청으로 미디어 가져오기가 중단되었습니다.",
+        "errorDecode": "이전에 사용 가능한 것으로 확인되었지만 미디어 리소스를 디코딩하는 동안 오류가 발생하여 오류가 발생했습니다.",
+        "errorGenericMedia": "알 수 없는 미디어 오류가 발생했습니다.",
+        "errorNetwork": "네트워크 오류가 발생하여 이전에 미디어를 사용할 수 있었으나 미디어를 성공적으로 가져오지 못했습니다.",
+        "errorNotSupported": "미디어 또는 미디어 공급자 개체는 지원되지 않습니다."
+      },
+      "homeButton": "메인으로 돌아가기",
+      "text": "미디어를 재생하는 동안 오류가 발생했습니다. 다시 시도해 주세요.",
+      "title": "동영상 재생에 실패했습니다!"
+    },
+    "scraping": {
+      "items": {
+        "failure": "오류 발생",
+        "notFound": "동영상이 없습니다",
+        "pending": "동영상 확인 중..."
+      },
+      "notFound": {
+        "badge": "찾을 수 없음",
+        "detailsButton": "상세 보기",
+        "homeButton": "메인으로 돌아가기",
+        "text": "제공업체를 통해 검색했지만 원하는 미디어를 찾을 수 없습니다! 당사는 해당 미디어를 호스팅하지 않으며 이용 가능한 미디어에 대한 통제권이 없습니다. 자세한 내용을 보려면 아래의 '세부 정보 보기'를 클릭하세요.",
+        "title": "찾을 수 없습니다"
+      }
+    },
+    "time": {
+      "remaining": "{{timeLeft}} 남음 • {{timeFinished, datetime}}에 종료"
+    }
+  },
+  "screens": {
+    "dmca": {
+      "text": "movie-web의 DMCA 문의 페이지에 오신 것을 환영합니다! 당사는 지적 재산권을 존중하며 저작권 관련 문제를 신속하게 해결하고자 합니다. 귀하의 저작권이 있는 저작물이 당사 플랫폼에서 부적절하게 사용되었다고 생각되는 경우, 아래 이메일로 자세한 DMCA 통지를 보내주시기 바랍니다. 저작권이 있는 자료에 대한 설명, 연락처 정보, 선의의 신념을 담은 진술서를 포함하시기 바랍니다. 당사는 이러한 문제를 신속하게 해결하기 위해 최선을 다하고 있으며, movie-web을 창의성과 저작권을 존중하는 공간으로 유지하는 데 협조해 주셔서 감사합니다."
+    },
+    "loadingApp": "애플리케이션 로딩 중",
+    "loadingUser": "프로필 로 중",
+    "loadingUserError": {
+      "logout": "로그아웃",
+      "reset": "사용자 지정 서버 초기화",
+      "text": "프로필을 로드하지 못했습니다",
+      "textWithReset": "사용자 지정 서버에서 프로필을 불러오는 데 실패하여 기본 서버로 다시 초기화하시겠습니까?"
+    },
+    "migration": {
+      "failed": "데이터를 마이그레이션하지 못했습니다.",
+      "inProgress": "데이터를 마이그레이션하는 중이니 잠시만 기다려 주세요. 오래 걸리지 않을 것입니다."
+    }
+  },
+  "settings": {
+    "account": {
+      "accountDetails": {
+        "deviceNameLabel": "기기명",
+        "deviceNamePlaceholder": "개인 휴대폰",
+        "editProfile": "수정",
+        "logoutButton": "로그아웃"
+      },
+      "actions": {
+        "delete": {
+          "button": "계정 삭제",
+          "confirmButton": "계정 삭제",
+          "confirmDescription": "정말 계정을 삭제하시겠습니까? 모든 데이터가 손실됩니다!",
+          "confirmTitle": "진행 할까요?",
+          "text": "이 작업은 되돌릴 수 없습니다. 모든 데이터가 삭제되며 아무것도 복구할 수 없습니다.",
+          "title": "계정 삭제"
+        },
+        "title": "작업"
+      },
+      "devices": {
+        "deviceNameLabel": "기기명",
+        "failed": "세션을 로드하지 못했습니다",
+        "removeDevice": "제거",
+        "title": "기기"
+      },
+      "profile": {
+        "finish": "수정 완료",
+        "firstColor": "프로필 색상 1",
+        "secondColor": "프로필 색상 2",
+        "title": "프로필 이미지 수정",
+        "userIcon": "유저 아이콘"
+      },
+      "register": {
+        "cta": "시작하기",
+        "text": "기기 간에 시계 진행 상황을 공유하고 동기화 상태를 유지하세요.",
+        "title": "클라우드에 동기화"
+      },
+      "title": "계정"
+    },
+    "appearance": {
+      "activeTheme": "활성화",
+      "themes": {
+        "blue": "블루",
+        "default": "기본",
+        "gray": "그레",
+        "red": "레드",
+        "teal": "청록"
+      },
+      "title": "외관"
+    },
+    "connections": {
+      "server": {
+        "description": "사용자 지정 백엔드에 연결하여 데이터를 저장하려면 이 기능을 활성화하고 URL을 입력합니다.",
+        "label": "사용자 지정 서버",
+        "urlLabel": "사용자 지정 서버 URL"
+      },
+      "title": "연결",
+      "workers": {
+        "addButton": "새 워커 추가하기",
+        "description": "애플리케이션이 작동하도록 하기 위해 모든 트래픽은 프록시를 통해 라우팅됩니다. 직접 워커를 사용하려면 이 옵션을 사용 설정하세요.",
+        "emptyState": "아직 워커가 없는 경우 아래에서 워커를 추가하세요",
+        "label": "사용자 지정 프록시 워커 사용",
+        "urlLabel": "워커 URL"
+      }
+    },
+    "locale": {
+      "language": "애플리케이션 언어",
+      "languageDescription": "전체 애플리케이션에 적용되는 언어입니다.",
+      "title": "지"
+    },
+    "reset": "초기화",
+    "save": "저장",
+    "sidebar": {
+      "info": {
+        "appVersion": "앱 버전",
+        "backendUrl": "백엔드 URL",
+        "backendVersion": "백엔드 버전",
+        "hostname": "호스트명",
+        "insecure": "안전하지 않음",
+        "notLoggedIn": "로그인하지 않으셨습니다",
+        "secure": "안전함",
+        "title": "앱 정보",
+        "unknownVersion": "알 수 없음",
+        "userId": "유저 ID"
+      }
+    },
+    "subtitles": {
+      "backgroundLabel": "배경 투명도",
+      "colorLabel": "색상",
+      "previewQuote": "두려워해서는 안 됩니다. 두려움은 마음을 죽이는 존재입니다.",
+      "textSizeLabel": "글자 크기",
+      "title": "자막"
+    },
+    "unsaved": "저장하지 않은 변경 사항이 있습니다"
+  }
+}

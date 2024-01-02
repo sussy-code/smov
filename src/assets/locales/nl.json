@@ -1,4 +1,25 @@
 {
+  "about": {
+    "description": "movie-web is een webapplicatie die het internet afzoekt naar streams. Het team streeft naar een minimalistische benadering van het consumeren van inhoud.",
+    "faqTitle": "Veelgestelde vragen",
+    "q1": {
+      "body": "movie-web host geen inhoud. Wanneer je op iets klikt om te bekijken, wordt het internet afgezocht naar de geselecteerde media (op het laadscherm en in het tabblad 'videobronnen' kun je zien welke bron je gebruikt). Media wordt nooit geüpload door movie-web, alles gaat via dit zoekmechanisme.",
+      "title": "Waar komt de content vandaan?"
+    },
+    "q2": {
+      "body": "Het is niet mogelijk om een show of film aan te vragen, movie-web beheert geen content. Alle inhoud wordt bekeken via bronnen op het internet.",
+      "title": "Waar kan ik een show of film aanvragen?"
+    },
+    "q3": {
+      "body": "Onze zoekresultaten worden aangestuurd door The Movie Database (TMDB) en worden weergegeven ongeacht of onze bronnen de inhoud daadwerkelijk hebben.",
+      "title": "De zoekresultaten tonen de show of film, waarom kan ik hem niet afspelen?"
+    },
+    "title": "Over movie-web"
+  },
+  "actions": {
+    "copied": "Gekopieerd",
+    "copy": "Kopieer"
+  },
   "auth": {
     "createAccount": "Heb je nog geen account? <0>Maak er dan een.</0>",
     "deviceNameLabel": "Naam toestel",
@@ -6,17 +27,18 @@
     "generate": {
       "description": "Je passphrase werkt als je gebruikersnaam en wachtwoord. Sla je passphrase dus goed op, je hebt hem namelijk nodig om in te loggen",
       "next": "Ik heb mijn passphrase opgeslagen",
-      "title": "Jouw passphrase"
+      "passphraseFrameLabel": "Wachtwoord",
+      "title": "Uw wachtwoord"
     },
     "hasAccount": "Heb je al een account? <0>Log hier in.</0>",
     "login": {
-      "description": "Vul je passphrase in",
+      "description": "Vul je wachtwoord in",
       "deviceLengthError": "Vul de naam van je apparaat in",
-      "passphraseLabel": "12-Woordelijke passphrase",
-      "passphrasePlaceholder": "Passphrase",
+      "passphraseLabel": "12-Woordelijke wachtwoord",
+      "passphrasePlaceholder": "Wachtwoord",
       "submit": "Log in",
       "title": "Log in bij je account",
-      "validationError": "Incorrecte of incompleet passphrase"
+      "validationError": "Incorrecte of incompleet wachtwoord"
     },
     "register": {
       "information": {
@@ -39,13 +61,13 @@
       "yes": "Ik vertrouw deze server"
     },
     "verify": {
-      "description": "Vul je passphrase in zodat we weten dat je het opgeslagen hebt, dan kunnen we je account maken",
+      "description": "Vul je wachtwoord in zodat we weten dat je het opgeslagen hebt, dan kunnen we je account maken",
       "invalidData": "Ongeldige data",
-      "noMatch": "Passphrase komt niet overeen",
-      "passphraseLabel": "Jouw passphrase",
+      "noMatch": "Wachtwoord komt niet overeen",
+      "passphraseLabel": "Jouw wachtwoord",
       "recaptchaFailed": "ReCatpcha validatie is mislukt",
       "register": "Maak een account",
-      "title": "Bevestig je passphrase"
+      "title": "Bevestig je wachtwoord"
     }
   },
   "errors": {
@@ -55,11 +77,25 @@
     "showError": "Meer informatie over foutmelding",
     "title": "Er is iets fout gegaan!"
   },
+  "footer": {
+    "legal": {
+      "disclaimer": "Disclaimer",
+      "disclaimerText": "movie-web host geen bestanden, maar linkt alleen naar diensten van derden. Juridische kwesties moeten worden opgenomen met de bestandshosts en providers. movie-web is niet verantwoordelijk voor mediabestanden die worden getoond door de videoproviders."
+    },
+    "links": {
+      "discord": "Discord",
+      "dmca": "DMCA",
+      "github": "Github"
+    },
+    "tagline": "Bekijk je favoriete shows en films met deze open source streaming app."
+  },
   "global": {
     "name": "movie-web",
     "pages": {
       "about": "Over",
+      "dmca": "DMCA",
       "login": "Login",
+      "pagetitle": "{{title}} - movie-web",
       "register": "Registreren",
       "settings": "Instellingen"
     }
@@ -71,6 +107,9 @@
     "continueWatching": {
       "sectionTitle": "Kijk verder"
     },
+    "mediaList": {
+      "stopEditing": "Stoppen met bewerken"
+    },
     "search": {
       "allResults": "Dat is het!",
       "failed": "Het is niet gelukt de media te laden, probeer het nog eens!",
@@ -78,6 +117,26 @@
       "noResults": "We konden helaas niets vinden!",
       "placeholder": "Wat wil je graag kijken?",
       "sectionTitle": "Zoekresultaten"
+    },
+    "titles": {
+      "day": {
+        "default": "Wat wil je vanmiddag kijken?",
+        "extra": [
+          "Voel je je avontuurlijk? Dan is Jurassic Park misschien wel de perfecte keuze."
+        ]
+      },
+      "morning": {
+        "default": "Waar wil je deze ochtend naar kijken?",
+        "extra": [
+          "Ik hoor dat Before Sunrise goed is"
+        ]
+      },
+      "night": {
+        "default": "Wat wil je vanavond bekijken?",
+        "extra": [
+          "Moe? Ik hoor dat The Exorcist goed is."
+        ]
+      }
     }
   },
   "media": {
@@ -90,6 +149,14 @@
   "navigation": {
     "banner": {
       "offline": "Controleer je internetverbinding"
+    },
+    "menu": {
+      "about": "Over ons",
+      "donation": "Doneer",
+      "logout": "Log uit",
+      "register": "Synchroniseren met de cloud",
+      "settings": "Instellingen",
+      "support": "Ondersteuning"
     }
   },
   "notFound": {
@@ -97,6 +164,9 @@
     "goHome": "Naar de home-pagina",
     "message": "We hebben echt alles geprobeerd, zelfs tijdrijzen; echter hebben we deze pagina helaas niet kunnen vinden.",
     "title": "Pagina niet gevonden"
+  },
+  "overlays": {
+    "close": "Sluiten"
   },
   "player": {
     "back": {
@@ -109,7 +179,25 @@
     "menus": {
       "downloads": {
         "disclaimer": "Downloads worden direct bij de bron opgehaald. movie-web heeft geen controle over het bestand dat je ontvangt.",
+        "downloadPlaylist": "Afspeellijst downloaden",
+        "downloadSubtitle": "Download huidige ondertiteling",
         "downloadVideo": "Download filmpje",
+        "hlsDisclaimer": "Downloads worden rechtstreeks van de aanbieder gehaald. movie-web heeft geen controle over hoe de downloads worden aangeboden. Houd er rekening mee dat u een HLS-afspeellijst downloadt, deze is bedoeld voor gebruikers die bekend zijn met geavanceerde multimediastreaming.",
+        "onAndroid": {
+          "1": "Om te downloaden op Android, klik je op de downloadknop en vervolgens, op de nieuwe pagina, <bold>tap and hold</bold> op de video en selecteer <bold>save</bold>.",
+          "shortTitle": "Download / Android",
+          "title": "Downloaden op Android"
+        },
+        "onIos": {
+          "1": "Als je wilt downloaden op iOS, klik je op de downloadknop en vervolgens op de nieuwe pagina op <bold><ios_share /></bold> en vervolgens op <bold>Save to Files <ios_files /></bold>.",
+          "shortTitle": "Download / iOS",
+          "title": "Downloaden op iOS"
+        },
+        "onPc": {
+          "1": "Klik op de downloadknop op de pc en klik op de nieuwe pagina met de rechtermuisknop op de video en selecteer <bold>Video opslaan als</bold>.",
+          "shortTitle": "Download / PC",
+          "title": "Downloaden op PC"
+        },
         "title": "Download"
       },
       "episodes": {
@@ -120,12 +208,24 @@
         "loadingList": "Aan het laden...",
         "loadingTitle": "Aan het zoeken..."
       },
+      "playback": {
+        "speedLabel": "Afspeelsnelheid",
+        "title": "Afspeel instellingen"
+      },
+      "quality": {
+        "automaticLabel": "Automatische kwaliteit",
+        "hint": "Je kunt <0>bron omschakelen</0> proberen om verschillende kwaliteitsopties te krijgen.",
+        "iosNoQuality": "Vanwege door Apple gedefinieerde beperkingen is kwaliteitsselectie niet beschikbaar op iOS voor deze bron. U kunt <0>omschakelen naar een andere bron</0> proberen om andere kwaliteitsopties te krijgen.",
+        "title": "Kwaliteit"
+      },
       "settings": {
         "downloadItem": "Download",
+        "enableSubtitles": "Ondertitels inschakelen",
         "experienceSection": "Kijk-ervaring",
         "playbackItem": "Afspeel instellingen",
         "qualityItem": "Kwaliteit",
         "sourceItem": "Video-bron",
+        "subtitleItem": "Instellingen ondertiteling",
         "videoSection": "Video instellingen"
       },
       "sources": {
@@ -143,6 +243,18 @@
         },
         "title": "Bronnen",
         "unknownOption": "Onbekend"
+      },
+      "subtitles": {
+        "customChoice": "Selecteer ondertiteling uit bestand",
+        "customizeLabel": "Aanpassen",
+        "offChoice": "Uit",
+        "settings": {
+          "backlink": "Aangepaste ondertiteling",
+          "delay": "Ondertiteling vertraging",
+          "fixCapitals": "Hoofdlettergebruik corrigeren"
+        },
+        "title": "Ondertiteling",
+        "unknownLanguage": "Onbekend"
       }
     },
     "metadata": {
@@ -191,7 +303,66 @@
       }
     },
     "time": {
-      "remaining": "Nog {{timeLeft}} • Klaar om {{timeFinished, datetime}}"
+      "regular": "{{timeWatched}} / {{duration}}",
+      "remaining": "Nog {{timeLeft}} • Klaar om {{timeFinished, datetime}}",
+      "shortRegular": "{{timeWatched}}",
+      "shortRemaining": "-{{timeLeft}}"
+    }
+  },
+  "screens": {
+    "dmca": {
+      "text": "Welkom op de DMCA-contactpagina van movie-web! Wij respecteren intellectuele eigendomsrechten en willen eventuele problemen met auteursrechten snel aanpakken. Als u van mening bent dat uw auteursrechtelijk beschermde werk onjuist is gebruikt op ons platform, stuur dan een gedetailleerde DMCA-kennisgeving naar het onderstaande e-mailadres. Vermeld een beschrijving van het auteursrechtelijk beschermde materiaal, uw contactgegevens en een verklaring dat u te goeder trouw bent. Wij zetten ons in om deze zaken snel op te lossen en waarderen uw medewerking om movie-web een plek te houden waar creativiteit en auteursrechten worden gerespecteerd.",
+      "title": "DMCA"
+    },
+    "loadingApp": "Toepassing laden",
+    "loadingUser": "Je profiel laden",
+    "loadingUserError": {
+      "logout": "Uitloggen",
+      "reset": "Aangepaste server resetten",
+      "text": "Het laden van uw profiel is mislukt",
+      "textWithReset": "Is het laden van je profiel van je aangepaste server mislukt en wil je terug naar de standaardserver?"
+    },
+    "migration": {
+      "failed": "Het migreren van uw gegevens is mislukt.",
+      "inProgress": "Even geduld, we zijn je gegevens aan het migreren. Dit zal niet lang duren."
+    }
+  },
+  "settings": {
+    "account": {
+      "accountDetails": {
+        "deviceNameLabel": "Apparaatnaam",
+        "deviceNamePlaceholder": "Persoonlijke telefoon",
+        "editProfile": "Bewerken",
+        "logoutButton": "Uitloggen"
+      },
+      "actions": {
+        "delete": {
+          "button": "Account verwijderen",
+          "confirmButton": "Account verwijderen",
+          "confirmDescription": "Weet je zeker dat je je account wilt verwijderen? Al je gegevens zullen verloren gaan!",
+          "confirmTitle": "Weet je het zeker?",
+          "text": "Deze actie is onomkeerbaar. Alle gegevens worden verwijderd en er kan niets worden hersteld.",
+          "title": "Account verwijderen"
+        },
+        "title": "Acties"
+      },
+      "devices": {
+        "deviceNameLabel": "Apparaatnaam",
+        "failed": "Sessies niet geladen",
+        "removeDevice": "Verwijder",
+        "title": "Apparaten"
+      },
+      "profile": {
+        "finish": "Bewerken voltooien",
+        "firstColor": "Profielkleur 1",
+        "secondColor": "Profielkleur 2",
+        "title": "Profielfoto bewerken",
+        "userIcon": "Gebruikerspictogram"
+      },
+      "register": {
+        "cta": "Aan de slag",
+        "text": "Deel de voortgang van je film tussen apparaten en houd ze gesynchroniseerd."
+      }
     }
   }
 }
