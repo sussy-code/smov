@@ -24,10 +24,10 @@ export async function searchForMedia(query: MWQuery): Promise<MediaItem[]> {
     return formatTMDBMetaToMediaItem(formattedResult);
   });
 
-  const movieWithposters = results.filter((movie) => movie.poster);
-  const movieWithoutposters = results.filter((movie) => !movie.poster);
+  const movieWithPosters = results.filter((movie) => movie.poster);
+  const movieWithoutPosters = results.filter((movie) => !movie.poster);
 
-  const sortedresult = movieWithposters.concat(movieWithoutposters);
+  const sortedresult = movieWithPosters.concat(movieWithoutPosters);
 
   // cache results for 1 hour
   cache.set(query, sortedresult, 3600);
