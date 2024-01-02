@@ -39,7 +39,7 @@ function ThumbnailDisplay(props: { at: number; show: boolean }) {
 
   if (!props.show || !currentThumbnail) return null;
   return (
-    <div className="flex flex-col items-center -translate-x-1/2">
+    <div className="flex flex-col items-center -translate-x-1/2 pointer-events-none">
       <div className="w-screen flex justify-center">
         <div ref={ref}>
           <div
