@@ -120,7 +120,10 @@
     },
     "titles": {
       "day": {
-        "default": "Mida te soovite täna pärastlõunal vaadata?"
+        "default": "Mida te soovite täna pärastlõunal vaadata?",
+        "extra": [
+          "Kas tunnete end seiklushimulisena? Jurassic Park võib olla ideaalne valik."
+        ]
       },
       "morning": {
         "default": "Mida te soovite täna hommikul vaadata?",

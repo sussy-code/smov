@@ -24,6 +24,12 @@ export async function searchForMedia(query: MWQuery): Promise<MediaItem[]> {
     return formatTMDBMetaToMediaItem(formattedResult);
   });
 
-  cache.set(query, results, 3600); // cache results for 1 hour
-  return results;
+  const movieWithPosters = results.filter((movie) => movie.poster);
+  const movieWithoutPosters = results.filter((movie) => !movie.poster);
+
+  const sortedresult = movieWithPosters.concat(movieWithoutPosters);
+
+  // cache results for 1 hour
+  cache.set(query, sortedresult, 3600);
+  return sortedresult;
 }

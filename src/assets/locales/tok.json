@@ -6,6 +6,14 @@
       "body": "ilo Muwi-We li mama ala e sitelen. sina lukin e sitelen la mi alasa e sitelen lon lipu ale. (sina ken sona e mama sitelen lon tenpo alasa lon poki 'mama'.) sitelen li awen ala lon ilo Muwi-We. ale li lon alasa ni",
       "title": "sitelen li tan seme?"
     },
+    "q2": {
+      "body": "sina ken ala wile alasa e sitelen. ilo Muwi-We li lawa ala e sitelen. sitelen li tan lipu mama ante",
+      "title": "mi wile alasa e sitelen lon seme?"
+    },
+    "q3": {
+      "body": "sitelen lon lukin ilo li tan lipu The Movie Database (lipu TMDB). jo li ante ala e ni",
+      "title": "sitelen pi wile mi li lon lukin ilo. seme la mi ken ala lukin e ona?"
+    },
     "title": "ilo Muwi-We la"
   },
   "actions": {
@@ -111,7 +119,10 @@
     },
     "titles": {
       "day": {
-        "default": "tenpo suno ni la sina wile lukin e seme?"
+        "default": "tenpo suno ni la sina wile lukin e seme?",
+        "extra": [
+          "sina pilin alasa la o lukin e sitelen Jurassic Park"
+        ]
       },
       "morning": {
         "default": "tenpo sin ni la sina wile lukin e seme?",
@@ -167,7 +178,10 @@
     "menus": {
       "downloads": {
         "disclaimer": "sina kama jo e sitelen tawa ilo sina tan lipu mama. ilo Muwi-We li lawa ala e nasin jo",
+        "downloadPlaylist": "o jo e lipu sitelen",
+        "downloadSubtitle": "o jo e nimi toki",
         "downloadVideo": "o jo e sitelen",
+        "hlsDisclaimer": "jo li tan mama. ilo Muwi-We li lawa ala e nasin jo. o sona e ni: sina jo e lipu sitelen HLS. ni li tawa jan pi sona sitelen",
         "onAndroid": {
           "1": "ilo Android la o luka e nena 'o jo'. lon lipu sin la <bold>o luka wawa</bold> e sitelen. o luka e nena 'o jo'",
           "shortTitle": "Android ) o jo",
@@ -205,10 +219,12 @@
       },
       "settings": {
         "downloadItem": "o jo",
+        "enableSubtitles": "nimi toki",
         "experienceSection": "nasin lukin",
         "playbackItem": "nasin pali",
         "qualityItem": "pona lukin",
         "sourceItem": "mama sitelen",
+        "subtitleItem": "nimi toki",
         "videoSection": "nasin sitelen"
       },
       "sources": {
@@ -226,6 +242,18 @@
         },
         "title": "mama",
         "unknownOption": "mi sona ala"
+      },
+      "subtitles": {
+        "customChoice": "o pana tan ilo",
+        "customizeLabel": "o ante",
+        "offChoice": "ala",
+        "settings": {
+          "backlink": "nimi toki ante",
+          "delay": "o ante e tenpo nimi",
+          "fixCapitals": "o pona e suli nimi"
+        },
+        "title": "nimi toki",
+        "unknownLanguage": "mi sona ala"
       }
     },
     "metadata": {
@@ -350,6 +378,13 @@
     },
     "reset": "o weka e ante",
     "save": "o ante",
+    "subtitles": {
+      "backgroundLabel": "kon",
+      "colorLabel": "kule",
+      "previewQuote": "kijetesantakalu tonsi li lanpan ala lanpan e soko?",
+      "textSizeLabel": "suli",
+      "title": "nimi toki"
+    },
     "unsaved": "ante sina li awen ala"
   }
 }
