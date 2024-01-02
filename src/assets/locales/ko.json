@@ -82,12 +82,20 @@
       "disclaimer": "면책 조항",
       "disclaimerText": "movie-web은 어떠한 파일도 호스팅하지 않으며, 제3자 서비스에 대한 링크만 제공합니다. 법적 문제는 파일 호스트 및 제공업체와 해결해야 합니다. 동영상 제공업체가 표시하는 미디어 파일에 대해 movie-web은 책임을 지지 않습니다."
     },
+    "links": {
+      "discord": "",
+      "dmca": "",
+      "github": ""
+    },
     "tagline": "이 오픈 소스 스트리밍 앱으로 좋아하는 프로그램과 영화를 시청하세요."
   },
   "global": {
+    "name": "",
     "pages": {
       "about": "소개",
+      "dmca": "",
       "login": "로그인",
+      "pagetitle": "",
       "register": "회원가입",
       "settings": "설정"
     }
