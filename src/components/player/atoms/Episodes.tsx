@@ -168,9 +168,7 @@ function EpisodesView({
           return (
             <Menu.Link
               key={ep.id}
-              onClick={() =>
-                hasAired(ep.air_date) ? playEpisode(ep.id) : null
-              }
+              onClick={() => playEpisode(ep.id)}
               active={ep.id === meta?.episode?.tmdbId}
               clickable={hasAired(ep.air_date)}
               rightSide={rightSide}
