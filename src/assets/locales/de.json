@@ -206,7 +206,8 @@
         "episodeBadge": "E{{episode}}",
         "loadingError": "Fehler beim Laden der Sitzung",
         "loadingList": "Wird geladen...",
-        "loadingTitle": "Wird geladen..."
+        "loadingTitle": "Wird geladen...",
+        "unairedEpisodes": "Eine oder mehrere Episoden dieser Staffel wurden deaktiviert, weil sie noch nicht ausgestrahlt wurden."
       },
       "playback": {
         "speedLabel": "Wiedergabegeschwindigkeit",

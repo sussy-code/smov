@@ -206,7 +206,8 @@
         "episodeBadge": "એપિસોડ{{episode}}",
         "loadingError": "સીઝન લોડ કરવામાં ભૂલ",
         "loadingList": "લોડ થાય છે...",
-        "loadingTitle": "લોડ થાય છે..."
+        "loadingTitle": "લોડ થાય છે...",
+        "unairedEpisodes": "આ સિઝનમાં એક અથવા વધુ એપિસોડ અક્ષમ કરવામાં આવ્યા છે કારણ કે તે હજુ સુધી પ્રસારિત થયા નથી."
       },
       "playback": {
         "speedLabel": "પ્લેબેક ઝડપ",

@@ -206,7 +206,8 @@
         "episodeBadge": "E{{episode}}",
         "loadingError": "خطأ في تحميل الموسم",
         "loadingList": "تحميل...",
-        "loadingTitle": "تحميل..."
+        "loadingTitle": "تحميل...",
+        "unairedEpisodes": "تم تعطيل حلقة واحدة أو أكثر من هذا الموسم لأنه لم يتم بثها بعد."
       },
       "playback": {
         "speedLabel": "سرعة التشغيل",

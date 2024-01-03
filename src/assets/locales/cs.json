@@ -206,7 +206,8 @@
         "episodeBadge": "E{{episode}}",
         "loadingError": "Chyba při načítání sezóny",
         "loadingList": "Načítání...",
-        "loadingTitle": "Načítání..."
+        "loadingTitle": "Načítání...",
+        "unairedEpisodes": "Jedna nebo více epizod v této sezóně nejsou dostupné, protože ještě nebyly odvysílány."
       },
       "playback": {
         "speedLabel": "Rychlost přehrávání",
