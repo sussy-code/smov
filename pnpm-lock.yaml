@@ -17,6 +17,9 @@ dependencies:
   '@headlessui/react':
     specifier: ^1.7.17
     version: 1.7.17(react-dom@18.2.0)(react@18.2.0)
+  '@ladjs/country-language':
+    specifier: ^1.0.3
+    version: 1.0.3
   '@movie-web/providers':
     specifier: ^2.0.2
     version: 2.0.3
@@ -65,9 +68,6 @@ dependencies:
   immer:
     specifier: ^10.0.3
     version: 10.0.3
-  iso-639-1:
-    specifier: ^3.1.0
-    version: 3.1.0
   jwt-decode:
     specifier: ^4.0.0
     version: 4.0.0
@@ -1911,6 +1911,11 @@ packages:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.1
       '@jridgewell/sourcemap-codec': 1.4.15
+
+  /@ladjs/country-language@1.0.3:
+    resolution: {integrity: sha512-FJROu9/hh4eqVAGDyfL8vpv6Vb0qKHX1ozYLRZ+beUzD5xFf+3r0J+SVIWKviEa7W524Qvqou+ta1WrsRgzxGw==}
+    engines: {node: '>= 14'}
+    dev: false
 
   /@movie-web/providers@2.0.3:
     resolution: {integrity: sha512-6UNk5EebiNjGoFTuyHuu0eZZTreRYv0cdsn52CVYjm6CXG63w4dMbx8ybxcvMUrDF3o8bWlqnlovG142sdOmNw==}

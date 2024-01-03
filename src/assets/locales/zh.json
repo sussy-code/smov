@@ -206,7 +206,8 @@
         "episodeBadge": "第{{episode}}集",
         "loadingError": "加载分季时发生错误",
         "loadingList": "载入中……",
-        "loadingTitle": "载入中……"
+        "loadingTitle": "载入中……",
+        "unairedEpisodes": "本季中的一集或多集已因尚未播出而被禁用。"
       },
       "playback": {
         "speedLabel": "播放速度",

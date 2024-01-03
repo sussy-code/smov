@@ -1,0 +1,18 @@
+{
+  "actions": {
+    "copy": "ਕਾਪੀ"
+  },
+  "auth": {
+    "login": {
+      "submit": "ਲੌਗ-ਇਨ"
+    },
+    "register": {
+      "information": {
+        "next": "ਅਗਲਾ"
+      }
+    },
+    "trust": {
+      "no": "ਵਾਪਸ ਜਾਓ"
+    }
+  }
+}

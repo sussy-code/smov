@@ -10,12 +10,14 @@ import { useCaptions } from "@/components/player/hooks/useCaptions";
 import { Menu } from "@/components/player/internals/ContextMenu";
 import { Input } from "@/components/player/internals/ContextMenu/Input";
 import { SelectableLink } from "@/components/player/internals/ContextMenu/Links";
-import { getLanguageFromIETF } from "@/components/player/utils/language";
 import { useOverlayRouter } from "@/hooks/useOverlayRouter";
 import { CaptionListItem } from "@/stores/player/slices/source";
 import { usePlayerStore } from "@/stores/player/store";
 import { useSubtitleStore } from "@/stores/subtitles";
-import { sortLangCodes } from "@/utils/sortLangCodes";
+import {
+  getPrettyLanguageNameFromLocale,
+  sortLangCodes,
+} from "@/utils/language";
 
 export function CaptionOption(props: {
   countryCode?: string;
@@ -37,7 +39,7 @@ export function CaptionOption(props: {
         className="flex items-center"
       >
         <span data-code={props.countryCode} className="mr-3 inline-flex">
-          <FlagIcon countryCode={props.countryCode} />
+          <FlagIcon langCode={props.countryCode} />
         </span>
         <span>{props.children}</span>
       </span>
@@ -89,7 +91,8 @@ function useSubtitleList(subs: CaptionListItem[], searchQuery: string) {
   return useMemo(() => {
     const input = subs.map((t) => ({
       ...t,
-      languageName: getLanguageFromIETF(t.language) ?? unknownChoice,
+      languageName:
+        getPrettyLanguageNameFromLocale(t.language) ?? unknownChoice,
     }));
     const sorted = sortLangCodes(input.map((t) => t.language));
     let results = input.sort((a, b) => {

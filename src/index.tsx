@@ -23,10 +23,9 @@ import { MigrationPart } from "@/pages/parts/migrations/MigrationPart";
 import { LargeTextPart } from "@/pages/parts/util/LargeTextPart";
 import App from "@/setup/App";
 import { conf } from "@/setup/config";
-import i18n from "@/setup/i18n";
 import { useAuthStore } from "@/stores/auth";
 import { BookmarkSyncer } from "@/stores/bookmarks/BookmarkSyncer";
-import { useLanguageStore } from "@/stores/language";
+import { changeAppLanguage, useLanguageStore } from "@/stores/language";
 import { ProgressSyncer } from "@/stores/progress/ProgressSyncer";
 import { SettingsSyncer } from "@/stores/subtitles/SettingsSyncer";
 import { ThemeProvider } from "@/stores/theme";
@@ -123,7 +122,7 @@ function AuthWrapper() {
 
 function MigrationRunner() {
   const status = useAsync(async () => {
-    i18n.changeLanguage(useLanguageStore.getState().language);
+    changeAppLanguage(useLanguageStore.getState().language);
     await initializeOldStores();
   }, []);
   const { t } = useTranslation();

@@ -1,0 +1,437 @@
+{
+  "about": {
+    "description": "movie-web é unha aplicación web que busca transmisións na rede. O equipo ten como obxectivo manter un enfoque principalmente minimalista para consumir os contidos.",
+    "faqTitle": "Preguntas frecuentes",
+    "q1": {
+      "body": "movie-web non aloxa ningún contido. Cando premes en algo para ver o contenido, búscase en internet o medio seleccionado. (Na pantalla de carga e na lapela 'fontes de video' podes ver que fonte se está a empregar. O contido nunca se carga en movie-web, todo realízase a través deste método de busca.",
+      "title": "De onde proveñen os contidos?"
+    },
+    "q2": {
+      "body": "Non é posible solicitar unha película. movie-web non xestiona ningún contido. Todo o contido é xestionado a través de fontes na rede.",
+      "title": "Onde poido solicitar unha película a engadir?"
+    },
+    "q3": {
+      "body": "Os nosos resultados de busqueda proveñen de The Movie Database (TMDB) e se mostran independentemente de se as nosas fontes multimedia teñen realmente o contido.",
+      "title": "Os resultados da busca mostran a serie ou película... Por qué non poido reproducila?"
+    },
+    "title": "Acerca de movie-web"
+  },
+  "actions": {
+    "copied": "Copiado",
+    "copy": "Copiar"
+  },
+  "auth": {
+    "createAccount": "Non tes unha conta aínda? <0>Crea unha conta.</0>",
+    "deviceNameLabel": "Nome do dispositivo",
+    "deviceNamePlaceholder": "Teléfono persoal",
+    "generate": {
+      "description": "A túa contraseña actua como o teu nome de usuario e contraseña. Asegúrate de mantelas seguras, xa que as necesitarás para iniciar sesión na túa conta",
+      "next": "Gardei a contraseña exitosamente",
+      "passphraseFrameLabel": "Contraseña",
+      "title": "A túa contraseña"
+    },
+    "hasAccount": "Tes xa unha conta? <0>Inicia sesión aquí.</0>",
+    "login": {
+      "description": "Por favor, ingresa a túa contraseña para iniciar sesión na túa conta",
+      "deviceLengthError": "Por favor, ingresa un nome de dispositivo",
+      "passphraseLabel": "Contraseña de 12 caracteres",
+      "passphrasePlaceholder": "Contraseña",
+      "submit": "Iniciar sesión",
+      "title": "Inicia sesión na túa conta",
+      "validationError": "Contraseña incorrecta ou incompleta"
+    },
+    "register": {
+      "information": {
+        "color1": "Cór de perfil un",
+        "color2": "Cór de perfil dous",
+        "header": "Ingresa un nome para o teu dispositivo, elixe cores, e un icono de usuario",
+        "icon": "Ícono de usuario",
+        "next": "Seguinte",
+        "title": "Información da conta"
+      }
+    },
+    "trust": {
+      "failed": {
+        "text": "Configurachelo correctamente?",
+        "title": "Non se puido conectar ao servidor"
+      },
+      "host": "Estaste a conectar a <0>{{hostname}}</0> - por favor, confirma se confías antes de crear a conta",
+      "no": "Regresar",
+      "title": "Confías neste servidor?",
+      "yes": "Si, si que confío neste servidor"
+    },
+    "verify": {
+      "description": "Por favor, ingresa a túa contraseña para confirmar que está gardada para crear a túa conta",
+      "invalidData": "Os datos non son válidos",
+      "noMatch": "A contraseña non coincide",
+      "passphraseLabel": "A contraseña debe de ser de 12 caracteres",
+      "recaptchaFailed": "A validación ReCaptcha fallou",
+      "register": "Crear conta",
+      "title": "Confirma a túa contraseña"
+    }
+  },
+  "errors": {
+    "badge": "Rompeu",
+    "details": "Detalles do erro",
+    "reloadPage": "Recargar a páxina",
+    "showError": "Mostrar detalles do erro",
+    "title": "Atopamos un erro!"
+  },
+  "footer": {
+    "legal": {
+      "disclaimer": "Descargo de responsabilidade",
+      "disclaimerText": "movie-web non aloxa ningún arquivo, simplemente enlaza con servizos de terceiros. Os problemas legais deben ser tratados cós proovedores de arquivos e servizos. movie-web non se fai responsable dos arquivos multimedia mostrados polos provedores de video."
+    },
+    "links": {
+      "discord": "Discord",
+      "dmca": "DMCA",
+      "github": "GitHub"
+    },
+    "tagline": "Disfruta das túas series e películas favoritas con esta aplicación de transmisión de código aberto."
+  },
+  "global": {
+    "name": "movie-web",
+    "pages": {
+      "about": "Acerca de",
+      "dmca": "DMCA",
+      "login": "Iniciar sesión",
+      "pagetitle": "{{title}} - movie-web",
+      "register": "Rexistrarse",
+      "settings": "Configuración"
+    }
+  },
+  "home": {
+    "bookmarks": {
+      "sectionTitle": "Marcadores"
+    },
+    "continueWatching": {
+      "sectionTitle": "Continuar vendo"
+    },
+    "mediaList": {
+      "stopEditing": "Deter edición"
+    },
+    "search": {
+      "allResults": "Esto é todo o que temos!",
+      "failed": "Error ao encontrar contido... intentao de novo!",
+      "loading": "Cargando...",
+      "noResults": "Non atopamos nada!",
+      "placeholder": "Que che gustaría ver?",
+      "sectionTitle": "Resultados da busca"
+    },
+    "titles": {
+      "day": {
+        "default": "Que che gustaría ver esta tarde?",
+        "extra": [
+          "Sínteste aventureiro? Jurassic Park podería ser a elección perfecta."
+        ]
+      },
+      "morning": {
+        "default": "Que che gustaría ver esta mañá?",
+        "extra": [
+          "Escoitei que “Antes del amanecer” é boa"
+        ]
+      },
+      "night": {
+        "default": "Que che gustaría ver esta noite?",
+        "extra": [
+          "Canso? Escoitei que “El Exorcista” é boa."
+        ]
+      }
+    }
+  },
+  "media": {
+    "episodeDisplay": "T{{season}} E{{episode}}",
+    "types": {
+      "movie": "Película",
+      "show": "Serie"
+    }
+  },
+  "navigation": {
+    "banner": {
+      "offline": "Verifica a túa conexión a internet"
+    },
+    "menu": {
+      "about": "Acerca de nós",
+      "donation": "Doar",
+      "logout": "Cerrar sesión",
+      "register": "Sincronizar coa nube",
+      "settings": "Configuración",
+      "support": "Soporte"
+    }
+  },
+  "notFound": {
+    "badge": "Non atopado",
+    "goHome": "Volver ao inicio",
+    "message": "Prometocho, buscamos en todas partes: debaixo dos contenedores, no armario, detrás do proxy, pero ao final non puidemos atopar a páxina que estabas buscando.",
+    "title": "Non atopei a páxona que estabas a buscar"
+  },
+  "overlays": {
+    "close": "Cerrar"
+  },
+  "player": {
+    "back": {
+      "default": "Volver ao inicio",
+      "short": "Volver"
+    },
+    "casting": {
+      "enabled": "Transmitiendo ao dispositivo..."
+    },
+    "menus": {
+      "downloads": {
+        "disclaimer": "As descargas proveñen do provedor. movie-web non ten control sobre as descargas e a súa procedencia.",
+        "downloadPlaylist": "Descargar lista",
+        "downloadSubtitle": "Descargar subtítulos actuais",
+        "downloadVideo": "Descargar video",
+        "hlsDisclaimer": "As descargas realizanse directamente dende o proovedor. movie-web non ten control sobre como se xestionan as descargas. Ten en conta que estás a descargar unha lista de reproducción HLS, dirixidos a usuarios familiarizados coa transmisión multimedia avanzada.",
+        "onAndroid": {
+          "1": "Para descargar en Android, fai click no botón de descarga e despois, na nova páxina, <bold>mantén presionado</bold>o vídeo e selecciona <bold>gardar</bold>.",
+          "shortTitle": "Descargar / Android",
+          "title": "Descargando en Android"
+        },
+        "onIos": {
+          "1": "Para descargar en iOS, fai clic no botón de descarga e despois, na nova páxina, fai click en <bold><ios_share /></bold>, e despois <bold>Gardar en archivos <ios_files /></bold>.",
+          "shortTitle": "Descargar / iOS",
+          "title": "Descargando en iOS"
+        },
+        "onPc": {
+          "1": "Nunha PC, fai click no botón de descargas e despois, na nova páxina, fai click dereito no video e selecciona <bold>Gardar vídeo como...</bold>",
+          "shortTitle": "Descargar / PC",
+          "title": "Descargando en PC"
+        },
+        "title": "Descargar"
+      },
+      "episodes": {
+        "button": "Episodios",
+        "emptyState": "Non hai episodios nesta temporada, Intentao máis tarde!",
+        "episodeBadge": "E{{episode}}",
+        "loadingError": "Error cargando a sesión",
+        "loadingList": "Cargando...",
+        "loadingTitle": "Cargando...",
+        "unairedEpisodes": "Un ou máis episodios nesta temporada foron desactivados porque non sairon aínda."
+      },
+      "playback": {
+        "speedLabel": "Velocidade de reproducción",
+        "title": "Configuración de reproducción"
+      },
+      "quality": {
+        "automaticLabel": "Calidade automática",
+        "hint": "Podes intentar <0>cambiar de fonte</0> para obter diferentes opcións de calidade.",
+        "iosNoQuality": "Debido a limitacións definidas por Apple, a selección de calidade no está disponible en iOS para esta fonte. Podes intentar <0>cambiar a outra fonte</0> para obter diferentes opcións de calidade.",
+        "title": "Calidade"
+      },
+      "settings": {
+        "downloadItem": "Descargar",
+        "enableSubtitles": "Activar subtítulos",
+        "experienceSection": "Configuración de experiencia",
+        "playbackItem": "Configuración do playback",
+        "qualityItem": "Calidade",
+        "sourceItem": "Fonte do video",
+        "subtitleItem": "Configuración dos subtítulos",
+        "videoSection": "Configuración de video"
+      },
+      "sources": {
+        "failed": {
+          "text": "Acaba de producirse un erro ao intentar atopar videos, por favor, intenta cunha fonte distinta.",
+          "title": "Erro ao retirar"
+        },
+        "noEmbeds": {
+          "text": "Non puidemos atopar ningún embed, por favor, intenta cunha fonte diferente.",
+          "title": "No se atoparon embeds"
+        },
+        "noStream": {
+          "text": "Nesta fonte non hai contidos sobre esta película ou episodio.",
+          "title": "Sin fonte"
+        },
+        "title": "Fontes",
+        "unknownOption": "Descoñecido"
+      },
+      "subtitles": {
+        "customChoice": "Seleccionar subtítulos dende o arquivo",
+        "customizeLabel": "Personalizar",
+        "offChoice": "Apagar",
+        "settings": {
+          "backlink": "Subtítulos personalizados",
+          "delay": "Retardo dos subtítulos",
+          "fixCapitals": "Arreglar capitalización"
+        },
+        "title": "Subtítulos",
+        "unknownLanguage": "Descoñecido"
+      }
+    },
+    "metadata": {
+      "api": {
+        "text": "Non puiden cargar os metadatos da API, por favor, comproba a túa conexión a internet.",
+        "title": "Non foi posible cargar os metadatos da API"
+      },
+      "failed": {
+        "badge": "Erro",
+        "homeButton": "Ir ao inicio",
+        "text": "Non se puideron cargar os metadatos do contido de TMDB. Por favor, verifica se TMDB está caído ou bloqueado na túa conexión a internet.",
+        "title": "Error ao cargar os metadatos"
+      },
+      "notFound": {
+        "badge": "Non atopado",
+        "homeButton": "Volver ao inicio",
+        "text": "Non puidemos encontrar o contenido que solicitache. Xa seña que se eliminara ou modificara a URL.",
+        "title": "No se pudo atopar ese contenido."
+      }
+    },
+    "nextEpisode": {
+      "cancel": "Cancelar",
+      "next": "Seguinte episodio"
+    },
+    "playbackError": {
+      "badge": "Error de reproducción",
+      "errors": {
+        "errorAborted": "A obtención do contido foi cancelada pola solicitude do usuario.",
+        "errorDecode": "A pesar de ser determinado previamente como utilizable, produciuse un erro ao intentar decodificar o recurso do contido, o que resultou nun erro.",
+        "errorGenericMedia": "Produxose un erro descoñecido no contido.",
+        "errorNetwork": "Produxose un erro de rede que impidideu obter o contido de maneira exitosa, a pesar de estar disponible anteriormente.",
+        "errorNotSupported": "O contido ou o proovedor do contido non é compatible."
+      },
+      "homeButton": "Ir ao inicio",
+      "text": "Produxose un erro ao intentar reproducir o contenido. Por favor, inténtao de novo.",
+      "title": "Non se puido reproducir o video!"
+    },
+    "scraping": {
+      "items": {
+        "failure": "Ocurreu un erro",
+        "notFound": "Non ten o video",
+        "pending": "Verificando vídeos..."
+      },
+      "notFound": {
+        "badge": "Non atopado",
+        "detailsButton": "Mostrar detalles",
+        "homeButton": "Ir ao inicio",
+        "text": "Buscamos nos nosos proovedores e non puidemos atopar o contido que estás a buscar. Nós, non aloxamos o contido e non temos control sobre o que está dispoñible. Fai click en 'Mostrar detalles' a continuación para obter máis información.",
+        "title": "Non puidemos atopar eso"
+      }
+    },
+    "time": {
+      "regular": "{{timeWatched}} / {{duration}}",
+      "remaining": "{{timeLeft}} restante • Finaliza ás {{timeFinished, datetime}}",
+      "shortRegular": "{{timeWatched}}",
+      "shortRemaining": "-{{timeLeft}}"
+    },
+    "turnstile": {
+      "description": "Por favor, verifica que eres un humán completando o Captcha. Isto é para mantee movie-web seguro!",
+      "error": "Houbo un erro ao verificar a túa humanidade. Por favor, volve a intentalo.",
+      "title": "Necesitamos verificar que realmente eres un humán.",
+      "verifyingHumanity": "Verificando a túa humanidade…"
+    }
+  },
+  "screens": {
+    "dmca": {
+      "text": "Benvido/a á páxona de contacto DMA de movie-web! Respetamos os dereitos de propiedade intelectual e queremos abordar calqueiro problema de dereitos de autor de maneira más rápida. Se crees que o teu traballo con dereitos de autor está sendo empregado incorrectamente na nosa plataforma, envñia un aviso DMCA detallado ao correo electrónico que se mostra a continuación. Inclue unha descripción do material con dereitos de autor, os seus datos de contacto e unha declaración de boa fé. Estamos comprometidos a resolver estos asuntos o máis rápido posible e agradecemos a túa cooperación para manter a movie-web como un lugar que respeta a creatividade e os dereitos de autor.",
+      "title": "DMCA"
+    },
+    "loadingApp": "Cargando aplicación",
+    "loadingUser": "Cargando o teu perfil",
+    "loadingUserError": {
+      "logout": "Pechar sesión",
+      "reset": "Reiniciar servidor personalizado",
+      "text": "Erro ao cargar o teu perfil",
+      "textWithReset": "Erro ao cargar o teu perfil dende o teu servidor personalizado, queres reiniciar e volver ao servidor por defecto?"
+    },
+    "migration": {
+      "failed": "Erro ao migrar os teus datos.",
+      "inProgress": "Porfavor, espera mientras migramos tus datos. Esto no debería llevar mucho."
+    }
+  },
+  "settings": {
+    "account": {
+      "accountDetails": {
+        "deviceNameLabel": "Nome do dispositivo",
+        "deviceNamePlaceholder": "Teléfono persoal",
+        "editProfile": "Editar",
+        "logoutButton": "Pechar sesión"
+      },
+      "actions": {
+        "delete": {
+          "button": "Eliminar conta",
+          "confirmButton": "Eliminar conta",
+          "confirmDescription": "Estas seguro/a que queres eliminar a túa conta? Todos os datos serán eliminados!",
+          "confirmTitle": "Estás seguro/a?",
+          "text": "Esta acción é irreversible. Todos os datos serán eliminados e nada poderá ser recuperado.",
+          "title": "Eliminar conta"
+        },
+        "title": "Accións"
+      },
+      "devices": {
+        "deviceNameLabel": "Nome do dispositivo",
+        "failed": "Erro ao cargar sesións",
+        "removeDevice": "Quitar",
+        "title": "Dispositivos"
+      },
+      "profile": {
+        "finish": "Acabar de editar",
+        "firstColor": "Cór de perfil un",
+        "secondColor": "Cór de perfil dous",
+        "title": "Editar foto de perfil",
+        "userIcon": "Icono de usuario"
+      },
+      "register": {
+        "cta": "Empezar",
+        "text": "Compartir o teu progreso entre dispositivos e mantelos sincronizados.",
+        "title": "Sincronizar á nube"
+      },
+      "title": "Conta"
+    },
+    "appearance": {
+      "activeTheme": "Activo",
+      "themes": {
+        "blue": "Azul",
+        "default": "Por defecto",
+        "gray": "Gris",
+        "red": "Vermello",
+        "teal": "Turquesa"
+      },
+      "title": "Apariencia"
+    },
+    "connections": {
+      "server": {
+        "description": "Se che gustaría conectar un servidor personalizado de backend para almacenar os teus datos, activa esto e indica a URL.",
+        "label": "Servidor personalizado",
+        "urlLabel": "Servidor personalizado URL"
+      },
+      "title": "Conexións",
+      "workers": {
+        "addButton": "Añadir novo",
+        "description": "Para facer que a aplicación funcione, todo o tráfico é organizado en proxies. Activa esta opción se queres empregar os teus propios workers.",
+        "emptyState": "Non hai workers aínda, engade un abaixo",
+        "label": "Usar proxy workers personalizados",
+        "urlLabel": "URLs dos workers",
+        "urlPlaceholder": "https://"
+      }
+    },
+    "locale": {
+      "language": "Lingua da aplicación",
+      "languageDescription": "Lingua empregada en toda aplicación.",
+      "title": "Local"
+    },
+    "reset": "Reinicio",
+    "save": "Gardar",
+    "sidebar": {
+      "info": {
+        "appVersion": "Versión da aplicación",
+        "backendUrl": "URL do Backend",
+        "backendVersion": "Versión do Backend",
+        "hostname": "Nome do Host (Hostname)",
+        "insecure": "Non seguro",
+        "notLoggedIn": "Non iniciache sesión",
+        "secure": "Seguro",
+        "title": "Información da aplicación",
+        "unknownVersion": "Descoñecido",
+        "userId": "ID do usuario"
+      }
+    },
+    "subtitles": {
+      "backgroundLabel": "Opacidade do fondo",
+      "colorLabel": "Cór",
+      "previewQuote": "Non debo temer. O medo é o asasino da mente.",
+      "textSizeLabel": "Tamaño da fonte",
+      "title": "Subtítulos"
+    },
+    "unsaved": "Tes cambios sen gardar"
+  }
+}
