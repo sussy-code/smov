@@ -111,7 +111,103 @@
       "stopEditing": "Opriți editarea"
     },
     "search": {
-      "allResults": "Asta e tot ce avem!"
+      "allResults": "Asta e tot ce avem!",
+      "failed": "Găsire media eșuată, încearcă din nou!",
+      "loading": "Se încarcă...",
+      "noResults": "Nu am putut găsi nimic!",
+      "placeholder": "La ce dorești să te uiți?",
+      "sectionTitle": "Rezultate de căutare"
+    },
+    "titles": {
+      "day": {
+        "default": "La ce vrei să te uiți după-amiaza asta?",
+        "extra": [
+          "Te simți aventuros? Jurassic Park ar putea fi o alegere perfectă."
+        ]
+      },
+      "morning": {
+        "default": "La ce dorești să te in uiți dimineață aceasta?",
+        "extra": [
+          "Aud că Before Sunrise este bun"
+        ]
+      },
+      "night": {
+        "default": "La ce dorești să te uiți în astă seară?",
+        "extra": [
+          "Obosit? Aud că The Exorcist is good."
+        ]
+      }
+    }
+  },
+  "media": {
+    "episodeDisplay": "S{{season}} E{{episode}}",
+    "types": {
+      "movie": "Film",
+      "show": "Spectacol"
+    }
+  },
+  "navigation": {
+    "banner": {
+      "offline": "Verificați-vă conexiunea de internet"
+    },
+    "menu": {
+      "about": "Despre noi",
+      "donation": "Donează",
+      "logout": "Deconectați-vă",
+      "register": "Sincronizare în cloud",
+      "settings": "Setări",
+      "support": "Ajutor"
+    }
+  },
+  "notFound": {
+    "badge": "Nu a fost găsit",
+    "goHome": "Înapoi acasă",
+    "message": "Ne-am uitat peste tot: sub pubele, în dulap, În spatele proxy-ului dar din păcate nu am găsit pagina pe care dumneavoastră o căutați.",
+    "title": "N-am putut găsi pagina"
+  },
+  "overlays": {
+    "close": "Închide"
+  },
+  "player": {
+    "back": {
+      "default": "Înapoi acasă",
+      "short": "Înapoi"
+    },
+    "casting": {
+      "enabled": "Casting pe dispozitiv..."
+    },
+    "menus": {
+      "episodes": {
+        "button": "Episoade",
+        "emptyState": "Nu sunt episoade in sezonul acesta, reveniți mai târziu!",
+        "episodeBadge": "E{{episode}}",
+        "loadingError": "Eroare la încărcarea sezonul",
+        "loadingList": "Se încarcă...",
+        "loadingTitle": "Se încarcă...",
+        "unairedEpisodes": "Unul sau mai multe episoade din sezonul acesta sunt indisponibile deoarece incă nu au venit încă."
+      },
+      "settings": {
+        "downloadItem": "Descarcă",
+        "enableSubtitles": "Activează subtitlurile",
+        "experienceSection": "Experiență de vizionare",
+        "playbackItem": "Setări de redare",
+        "qualityItem": "Calitate",
+        "sourceItem": "Surse video",
+        "subtitleItem": "Setările subtitlului",
+        "videoSection": "Setări video"
+      },
+      "sources": {
+        "noEmbeds": {
+          "text": "Nu am putut găsi nicio incorporare, vă rog să încercați o altă sursă.",
+          "title": "Nu a fost găsită nicio încorporare"
+        },
+        "noStream": {
+          "text": "Sursa asta nu are nicio sursă de streaming pentru filmul său spectacolul.",
+          "title": "Niciun stream"
+        },
+        "title": "Surse",
+        "unknownOption": "Necunoscut"
+      }
     }
   },
   "settings": {
