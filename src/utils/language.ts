@@ -16,6 +16,8 @@ const countryPriority: Record<string, string> = {
   ar: "sa",
   es: "es",
   zh: "cn",
+  ko: "kr",
+  ta: "lk",
 };
 
 // list of iso639_1 Alpha-2 codes used as default languages
@@ -39,6 +41,17 @@ const defaultLanguageCodes: string[] = [
   "ar-SA",
   "es-ES",
   "et-EE",
+  "bg-BG",
+  "bn-BD",
+  "el-GR",
+  "fa-IR",
+  "gu-IN",
+  "id-ID",
+  "ja-JP",
+  "ko-KR",
+  "sl-SI",
+  "ta-LK",
+  "ru-RU",
 ];
 
 export interface LocaleInfo {
@@ -80,7 +93,6 @@ function populateLanguageCode(language: string): string {
  */
 export function getPrettyLanguageNameFromLocale(locale: string): string | null {
   const tag = getTag(populateLanguageCode(locale), true);
-
   const lang = tag?.language?.Description?.[0] ?? null;
   if (!lang) return null;
 
@@ -159,12 +171,15 @@ export function getLocaleInfo(locale: string): LocaleInfo | null {
   });
   if (!output) return null;
 
+  const extras = [];
+  if (tag.region?.Description) extras.push(tag.region.Description[0]);
+  if (tag.script?.Description) extras.push(tag.script.Description[0]);
+  const extraStringified = extras.map((v) => `(${v})`).join(" ");
+
   return {
     code: tag.parts.langtag ?? realLocale,
     isRtl: output.direction === "RTL",
-    name:
-      output.name[0] +
-      (tag.region?.Description ? ` (${tag.region.Description[0]})` : ""),
+    name: output.name[0] + (extraStringified ? ` ${extraStringified}` : ""),
     nativeName: output.nativeName[0] ?? undefined,
   };
 }
