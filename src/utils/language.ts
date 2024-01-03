@@ -1,4 +1,4 @@
-import countryLanguages from "@ladjs/country-language";
+import countryLanguages, { LanguageObj } from "@ladjs/country-language";
 import { getTag } from "@sozialhelden/ietf-language-tags";
 
 const languageOrder = ["en", "hi", "fr", "de", "nl", "pt"];
@@ -46,18 +46,6 @@ export interface LocaleInfo {
   nativeName?: string;
   code: string;
   isRtl?: boolean;
-}
-
-interface LanguageObj {
-  countries: Array<{
-    code_2: string;
-    code_3: string;
-    numCode: string;
-  }>;
-  direction: "RTL" | "LTR";
-  name: string[];
-  nativeName: string[];
-  iso639_1: string;
 }
 
 const extraLanguages: Record<string, LocaleInfo> = {
@@ -136,12 +124,9 @@ export function getCountryCodeForLocale(locale: string): string | null {
   const tag = getTag(locale, true);
   if (!tag?.language?.Subtag) return null;
   // this function isnt async, so its garuanteed to work like this
-  countryLanguages.getLanguage(
-    tag.language.Subtag,
-    (_err: string, lang: LanguageObj) => {
-      if (lang) output = lang;
-    },
-  );
+  countryLanguages.getLanguage(tag.language.Subtag, (_err, lang) => {
+    if (lang) output = lang;
+  });
   if (!output) return null;
   if (output.countries.length === 0) return null;
   const priority = countryPriority[output.iso639_1.toLowerCase()];
@@ -169,12 +154,9 @@ export function getLocaleInfo(locale: string): LocaleInfo | null {
 
   let output: LanguageObj | null = null as any as LanguageObj;
   // this function isnt async, so its garuanteed to work like this
-  countryLanguages.getLanguage(
-    tag.language.Subtag,
-    (_err: string, lang: LanguageObj) => {
-      if (lang) output = lang;
-    },
-  );
+  countryLanguages.getLanguage(tag.language.Subtag, (_err, lang) => {
+    if (lang) output = lang;
+  });
   if (!output) return null;
 
   return {
