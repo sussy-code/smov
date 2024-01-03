@@ -50,5 +50,3 @@ export const locales = {
   uk,
 };
 export type Locales = keyof typeof locales;
-
-export const rtlLocales: Locales[] = ["he", "ar"];

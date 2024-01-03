@@ -17,7 +17,7 @@ interface DropdownProps {
 
 export function Dropdown(props: DropdownProps) {
   return (
-    <div className="relative my-4 max-w-[18rem]">
+    <div className="relative my-4 max-w-[25rem]">
       <Listbox value={props.selectedItem} onChange={props.setSelectedItem}>
         {() => (
           <>

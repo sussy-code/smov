@@ -4,8 +4,8 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";
 
-import { rtlLocales } from "@/assets/languages";
 import i18n from "@/setup/i18n";
+import { getLocaleInfo } from "@/utils/language";
 
 export interface LanguageStore {
   language: string;
@@ -26,14 +26,25 @@ export const useLanguageStore = create(
   ),
 );
 
+export function changeAppLanguage(language: string) {
+  const lang = getLocaleInfo(language);
+  if (lang) i18n.changeLanguage(lang.code);
+}
+
+export function isRightToLeft(language: string) {
+  const lang = getLocaleInfo(language);
+  if (!lang) return false;
+  return lang.isRtl;
+}
+
 export function LanguageProvider() {
   const language = useLanguageStore((s) => s.language);
 
   useEffect(() => {
-    i18n.changeLanguage(language);
+    changeAppLanguage(language);
   }, [language]);
 
-  const isRtl = rtlLocales.includes(language as any);
+  const isRtl = isRightToLeft(language);
 
   return (
     <Helmet>
