@@ -11,22 +11,30 @@ interface BannerInstance {
 interface BannerStore {
   banners: BannerInstance[];
   isOnline: boolean;
+  isTurnstile: boolean;
   location: string | null;
   updateHeight(id: string, height: number): void;
   showBanner(id: string): void;
   hideBanner(id: string): void;
   setLocation(loc: string | null): void;
   updateOnline(isOnline: boolean): void;
+  updateTurnstile(isTurnstile: boolean): void;
 }
 
 export const useBannerStore = create(
   immer<BannerStore>((set) => ({
     banners: [],
     isOnline: true,
+    isTurnstile: false,
     location: null,
     updateOnline(isOnline) {
       set((s) => {
         s.isOnline = isOnline;
+      });
+    },
+    updateTurnstile(isTurnstile) {
+      set((s) => {
+        s.isTurnstile = isTurnstile;
       });
     },
     setLocation(loc) {

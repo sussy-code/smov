@@ -165,6 +165,12 @@
     "close": "Close"
   },
   "player": {
+    "turnstile": {
+      "verifyingHumanity": "Verifying your humanity...",
+      "title": "We need to verify that you're human.",
+      "description": "Please verify that you are human by completing the Captcha on the right. This is to keep movie-web safe!",
+      "error": "Failed to verify your humanity. Please try again."
+    },
     "back": {
       "default": "Back to home",
       "short": "Back"
@@ -260,6 +266,10 @@
         "homeButton": "Go home",
         "text": "Could not load the media's metadata from TMDB. Please check whether TMDB is down or blocked on your internet connection.",
         "title": "Failed to load metadata"
+      },
+      "api": {
+        "text": "Could not load API metadata, please check your internet connection.",
+        "title": "Failed to load API metadata"
       },
       "notFound": {
         "badge": "Not found",

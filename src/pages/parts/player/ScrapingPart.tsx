@@ -1,6 +1,7 @@
 import { ProviderControls, ScrapeMedia } from "@movie-web/providers";
 import classNames from "classnames";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useMountedState } from "react-use";
 import type { AsyncReturnType } from "type-fest";
 
@@ -8,6 +9,8 @@ import {
   scrapePartsToProviderMetric,
   useReportProviders,
 } from "@/backend/helpers/report";
+import { Icon, Icons } from "@/components/Icon";
+import { Loading } from "@/components/layout/Loading";
 import {
   ScrapeCard,
   ScrapeItem,
@@ -18,6 +21,7 @@ import {
   useListCenter,
   useScrape,
 } from "@/hooks/useProviderScrape";
+import { LargeTextPart } from "@/pages/parts/util/LargeTextPart";
 
 export interface ScrapingProps {
   media: ScrapeMedia;
@@ -32,9 +36,11 @@ export function ScrapingPart(props: ScrapingProps) {
   const { report } = useReportProviders();
   const { startScraping, sourceOrder, sources, currentSource } = useScrape();
   const isMounted = useMountedState();
+  const { t } = useTranslation();
 
   const containerRef = useRef<HTMLDivElement | null>(null);
   const listRef = useRef<HTMLDivElement | null>(null);
+  const [failedStartScrape, setFailedStartScrape] = useState<boolean>(false);
   const renderedOnce = useListCenter(
     containerRef,
     listRef,
@@ -72,7 +78,7 @@ export function ScrapingPart(props: ScrapingProps) {
         ),
       );
       props.onGetStream?.(output);
-    })();
+    })().catch(() => setFailedStartScrape(true));
   }, [startScraping, props, report, isMounted]);
 
   let currentProviderIndex = sourceOrder.findIndex(
@@ -81,11 +87,28 @@ export function ScrapingPart(props: ScrapingProps) {
   if (currentProviderIndex === -1)
     currentProviderIndex = sourceOrder.length - 1;
 
+  if (failedStartScrape)
+    return (
+      <LargeTextPart
+        iconSlot={
+          <Icon className="text-type-danger text-2xl" icon={Icons.WARNING} />
+        }
+      >
+        {t("player.turnstile.error")}
+      </LargeTextPart>
+    );
+
   return (
     <div
       className="h-full w-full relative dir-neutral:origin-top-left flex"
       ref={containerRef}
     >
+      {!sourceOrder || sourceOrder.length === 0 ? (
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center flex flex-col justify-center z-0">
+          <Loading className="mb-8" />
+          <p>{t("player.turnstile.verifyingHumanity")}</p>
+        </div>
+      ) : null}
       <div
         className={classNames({
           "absolute transition-[transform,opacity] opacity-0 dir-neutral:left-0":
@@ -97,7 +120,7 @@ export function ScrapingPart(props: ScrapingProps) {
         {sourceOrder.map((order) => {
           const source = sources[order.id];
           const distance = Math.abs(
-            sourceOrder.findIndex((t) => t.id === order.id) -
+            sourceOrder.findIndex((o) => o.id === order.id) -
               currentProviderIndex,
           );
           return (

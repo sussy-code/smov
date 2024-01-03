@@ -2,17 +2,47 @@ import classNames from "classnames";
 import FocusTrap from "focus-trap-react";
 import { ReactNode, useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { useTranslation } from "react-i18next";
 
 import { Transition } from "@/components/utils/Transition";
 import {
   useInternalOverlayRouter,
   useRouterAnchorUpdate,
 } from "@/hooks/useOverlayRouter";
+import { TurnstileProvider } from "@/stores/turnstile";
 
 export interface OverlayProps {
   id: string;
   children?: ReactNode;
   darken?: boolean;
+}
+
+function TurnstileInteractive() {
+  const { t } = useTranslation();
+  const [show, setShow] = useState(false);
+
+  // this may not rerender with different dom structure, must be exactly the same always
+  return (
+    <div
+      className={classNames(
+        "absolute w-10/12 max-w-[800px] bg-background-main p-20 rounded-lg select-none z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform",
+        show ? "" : "hidden",
+      )}
+    >
+      <div className="w-full grid lg:grid-cols-[1fr,auto] gap-12 items-center">
+        <div className="text-left">
+          <h2 className="text-type-emphasis font-bold text-xl mb-6">
+            {t("player.turnstile.title")}
+          </h2>
+          <p>{t("player.turnstile.description")}</p>
+        </div>
+        <TurnstileProvider
+          isInPopout
+          onUpdateShow={(shouldShow) => setShow(shouldShow)}
+        />
+      </div>
+    </div>
+  );
 }
 
 export function OverlayDisplay(props: { children: ReactNode }) {
@@ -27,7 +57,12 @@ export function OverlayDisplay(props: { children: ReactNode }) {
       r.close();
     };
   }, []);
-  return <div className="popout-location">{props.children}</div>;
+  return (
+    <div className="popout-location">
+      <TurnstileInteractive />
+      {props.children}
+    </div>
+  );
 }
 
 export function OverlayPortal(props: {
