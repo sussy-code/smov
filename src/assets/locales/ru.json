@@ -135,6 +135,9 @@
       "subtitles": {
         "title": "Субтитры"
       }
+    },
+    "playbackError": {
+      "badge": "Ошибка воспроизведения"
     }
   },
   "settings": {
