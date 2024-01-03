@@ -43,7 +43,11 @@ export function MetaPart(props: MetaPartProps) {
   const { error, value, loading } = useAsync(async () => {
     const providerApiUrl = getLoadbalancedProviderApiUrl();
     if (providerApiUrl) {
-      await fetchMetadata(providerApiUrl);
+      try {
+        await fetchMetadata(providerApiUrl);
+      } catch (err) {
+        throw new Error("failed-api-metadata");
+      }
     } else {
       setCachedMetadata([
         ...providers.listSources(),
@@ -104,6 +108,28 @@ export function MetaPart(props: MetaPartProps) {
             This media is no longer available due to a takedown notice or
             copyright claim.
           </Paragraph>
+          <Button
+            href="/"
+            theme="purple"
+            padding="md:px-12 p-2.5"
+            className="mt-6"
+          >
+            {t("player.metadata.failed.homeButton")}
+          </Button>
+        </ErrorContainer>
+      </ErrorLayout>
+    );
+  }
+
+  if (error && error.message === "failed-api-metadata") {
+    return (
+      <ErrorLayout>
+        <ErrorContainer>
+          <IconPill icon={Icons.WAND}>
+            {t("player.metadata.failed.badge")}
+          </IconPill>
+          <Title>{t("player.metadata.api.text")}</Title>
+          <Paragraph>{t("player.metadata.api.title")}</Paragraph>
           <Button
             href="/"
             theme="purple"
