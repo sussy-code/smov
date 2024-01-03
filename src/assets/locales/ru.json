@@ -84,9 +84,13 @@
     "continueWatching": {
       "sectionTitle": "Продолжить просмотр"
     },
+    "mediaList": {
+      "stopEditing": "Завершить редактирование"
+    },
     "search": {
       "allResults": "Это все, что у нас есть!",
-      "loading": "Загрузка..."
+      "loading": "Загрузка...",
+      "sectionTitle": "Результаты поиска"
     }
   },
   "media": {
@@ -112,6 +116,9 @@
     "close": "Закрыть"
   },
   "player": {
+    "back": {
+      "default": "Вернуться на главную"
+    },
     "menus": {
       "downloads": {
         "downloadSubtitle": "Скачать текущие субтитры",
@@ -119,6 +126,8 @@
       },
       "episodes": {
         "button": "Эпизоды",
+        "emptyState": "В этом сезоне нет ни одной серии, загляните позже!",
+        "episodeBadge": "Э{{episode}}",
         "loadingError": "Ошибка при загрузке сезона",
         "loadingList": "Загрузка...",
         "loadingTitle": "Загрузка..."
@@ -139,8 +148,15 @@
         "videoSection": "Настройки видео"
       },
       "subtitles": {
+        "settings": {
+          "backlink": "Пользовательские субтитры"
+        },
         "title": "Субтитры"
       }
+    },
+    "nextEpisode": {
+      "cancel": "Отмена",
+      "next": "След. эпизод"
     },
     "playbackError": {
       "badge": "Ошибка воспроизведения",
