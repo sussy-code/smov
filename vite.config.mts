@@ -124,8 +124,8 @@ export default defineConfig(({ mode }) => {
       rollupOptions: {
         output: {
           manualChunks(id: string) {
-            if (id.includes("@sozialhelden+ietf-language-tags")) {
-              return "ietf-language-tags";
+            if (id.includes("@sozialhelden+ietf-language-tags") || id.includes("country-language")) {
+              return "language-db";
             }
             if (id.includes("hls.js")) {
               return "hls";
