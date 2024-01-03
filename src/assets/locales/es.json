@@ -206,7 +206,8 @@
         "episodeBadge": "E{{episode}}",
         "loadingError": "Error al cargar la temporada",
         "loadingList": "Cargando...",
-        "loadingTitle": "Cargando..."
+        "loadingTitle": "Cargando...",
+        "unairedEpisodes": "Uno o más episodios de esta temporada se han desactivado porque aún no se han emitido."
       },
       "playback": {
         "speedLabel": "Velocidad de reproducción",

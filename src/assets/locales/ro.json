@@ -1,0 +1,216 @@
+{
+  "about": {
+    "description": "movie-web este o aplicație web care caută fluxuri pe internet. Echipa urmărește o abordare mai ales minimalistă a consumului de conținut.",
+    "faqTitle": "Intrebari obisnuite",
+    "q1": {
+      "body": "movie-web nu găzduiește niciun conținut. Când faceți clic pe ceva pentru a viziona, pe Internet este căutat media selectată (Pe ecranul de încărcare și în fila „Surse video”, puteți vedea ce sursă utilizați). Media nu este niciodată încărcată de movie-web, totul se face prin acest mecanism de căutare.",
+      "title": "De unde vine conținutul?"
+    },
+    "q2": {
+      "body": "Nu este posibil să solicitați o emisiune sau un film, movie-web nu gestionează niciun conținut. Tot conținutul este vizualizat prin surse de internet.",
+      "title": "Unde pot solicita o emisiune sau un film?"
+    },
+    "q3": {
+      "body": "Rezultatele căutării noastre sunt furnizate de The Movie Database (TMDB) și afișați indiferent dacă sursele noastre au de fapt conținutul.",
+      "title": "Rezultatele căutării afișează emisiunea sau filmul, de ce nu îl pot reda?"
+    },
+    "title": "Despre movie-web"
+  },
+  "actions": {
+    "copied": "Copiat",
+    "copy": "Copie"
+  },
+  "auth": {
+    "createAccount": "Nu aveți încă un cont? <0>Creați un cont.</0>",
+    "deviceNameLabel": "Nume dispozitiv",
+    "deviceNamePlaceholder": "Telefon personal",
+    "generate": {
+      "description": "Fraza de acces acționează ca nume de utilizator și parolă. Asigurați-vă că îl păstrați în siguranță, deoarece va trebui să îl introduceți pentru a vă conecta la contul dvs",
+      "next": "Mi-am salvat expresia de acces",
+      "passphraseFrameLabel": "Fraza de acces",
+      "title": "Fraza dvs. de acces"
+    },
+    "hasAccount": "ai deja un cont? <0>Autentificați-vă aici.</0>",
+    "login": {
+      "description": "Vă rugăm să introduceți fraza de acces pentru a vă conecta la contul dvs",
+      "deviceLengthError": "Introduceți un nume de dispozitiv",
+      "passphraseLabel": "Expresie de acces din 12 cuvinte",
+      "passphrasePlaceholder": "Fraza de acces",
+      "submit": "Log in",
+      "title": "conecteaza-te la contul tau",
+      "validationError": "Fraza de acces incorectă sau incompletă"
+    },
+    "register": {
+      "information": {
+        "color1": "Culoarea profilului unu",
+        "color2": "Culoarea profilului doi",
+        "header": "Introduceți un nume pentru dispozitivul dvs. și alegeți culorile și o pictogramă de utilizator la alegerea dvs",
+        "icon": "Pictograma utilizator",
+        "next": "Următorul",
+        "title": "Informatii despre cont"
+      }
+    },
+    "trust": {
+      "failed": {
+        "text": "L-ai configurat corect?",
+        "title": "Nu s-a putut ajunge la server"
+      },
+      "host": "Vă conectați la <0>{{hostname}}</0> - vă rugăm să confirmați că aveți încredere înainte de a vă crea un cont",
+      "no": "Întoarce-te",
+      "title": "Ai încredere în acest server?",
+      "yes": "Am încredere în acest server"
+    },
+    "verify": {
+      "description": "Introduceți expresia de acces de mai devreme pentru a confirma că ați salvat-o și pentru a vă crea contul",
+      "invalidData": "Datele nu sunt valide",
+      "noMatch": "Fraza de acces nu se potrivește",
+      "passphraseLabel": "Fraza dvs. de acces de 12 cuvinte",
+      "recaptchaFailed": "Validarea ReCaptcha a eșuat",
+      "register": "Creează cont",
+      "title": "Confirmați-vă fraza de acces"
+    }
+  },
+  "errors": {
+    "badge": "S-a spart",
+    "details": "Detalii despre eroare",
+    "reloadPage": "Reîncărcați pagina",
+    "showError": "Afișați detalii despre eroare",
+    "title": "Am intampinat o eroare!"
+  },
+  "footer": {
+    "legal": {
+      "disclaimer": "Disclaimer",
+      "disclaimerText": "movie-web nu găzduiește niciun fișier, ci doar trimite la servicii terțe. Problemele juridice ar trebui abordate cu gazdele și furnizorii de fișiere. movie-web nu este responsabil pentru niciun fișier media afișat de furnizorii de video."
+    },
+    "links": {
+      "discord": "Discord",
+      "dmca": "DMCA",
+      "github": "GitHub"
+    },
+    "tagline": "Urmăriți emisiunile și filmele preferate cu această aplicație de streaming open source."
+  },
+  "global": {
+    "name": "movie-web",
+    "pages": {
+      "about": "Despre",
+      "dmca": "DMCA",
+      "login": "Log in",
+      "pagetitle": "{{title}} - movie-web",
+      "register": "Inregistreaza-te",
+      "settings": "Setări"
+    }
+  },
+  "home": {
+    "bookmarks": {
+      "sectionTitle": "Marcaje"
+    },
+    "continueWatching": {
+      "sectionTitle": "Continuați vizionarea"
+    },
+    "mediaList": {
+      "stopEditing": "Opriți editarea"
+    },
+    "search": {
+      "allResults": "Asta e tot ce avem!",
+      "failed": "Găsire media eșuată, încearcă din nou!",
+      "loading": "Se încarcă...",
+      "noResults": "Nu am putut găsi nimic!",
+      "placeholder": "La ce dorești să te uiți?",
+      "sectionTitle": "Rezultate de căutare"
+    },
+    "titles": {
+      "day": {
+        "default": "La ce vrei să te uiți după-amiaza asta?",
+        "extra": [
+          "Te simți aventuros? Jurassic Park ar putea fi o alegere perfectă."
+        ]
+      },
+      "morning": {
+        "default": "La ce dorești să te in uiți dimineață aceasta?",
+        "extra": [
+          "Aud că Before Sunrise este bun"
+        ]
+      },
+      "night": {
+        "default": "La ce dorești să te uiți în astă seară?",
+        "extra": [
+          "Obosit? Aud că The Exorcist is good."
+        ]
+      }
+    }
+  },
+  "media": {
+    "episodeDisplay": "S{{season}} E{{episode}}",
+    "types": {
+      "movie": "Film",
+      "show": "Spectacol"
+    }
+  },
+  "navigation": {
+    "banner": {
+      "offline": "Verificați-vă conexiunea de internet"
+    },
+    "menu": {
+      "about": "Despre noi",
+      "donation": "Donează",
+      "logout": "Deconectați-vă",
+      "register": "Sincronizare în cloud",
+      "settings": "Setări",
+      "support": "Ajutor"
+    }
+  },
+  "notFound": {
+    "badge": "Nu a fost găsit",
+    "goHome": "Înapoi acasă",
+    "message": "Ne-am uitat peste tot: sub pubele, în dulap, În spatele proxy-ului dar din păcate nu am găsit pagina pe care dumneavoastră o căutați.",
+    "title": "N-am putut găsi pagina"
+  },
+  "overlays": {
+    "close": "Închide"
+  },
+  "player": {
+    "back": {
+      "default": "Înapoi acasă",
+      "short": "Înapoi"
+    },
+    "casting": {
+      "enabled": "Casting pe dispozitiv..."
+    },
+    "menus": {
+      "episodes": {
+        "button": "Episoade",
+        "emptyState": "Nu sunt episoade in sezonul acesta, reveniți mai târziu!",
+        "episodeBadge": "E{{episode}}",
+        "loadingError": "Eroare la încărcarea sezonul",
+        "loadingList": "Se încarcă...",
+        "loadingTitle": "Se încarcă...",
+        "unairedEpisodes": "Unul sau mai multe episoade din sezonul acesta sunt indisponibile deoarece incă nu au venit încă."
+      },
+      "settings": {
+        "downloadItem": "Descarcă",
+        "enableSubtitles": "Activează subtitlurile",
+        "experienceSection": "Experiență de vizionare",
+        "playbackItem": "Setări de redare",
+        "qualityItem": "Calitate",
+        "sourceItem": "Surse video",
+        "subtitleItem": "Setările subtitlului",
+        "videoSection": "Setări video"
+      },
+      "sources": {
+        "noEmbeds": {
+          "text": "Nu am putut găsi nicio incorporare, vă rog să încercați o altă sursă.",
+          "title": "Nu a fost găsită nicio încorporare"
+        },
+        "noStream": {
+          "text": "Sursa asta nu are nicio sursă de streaming pentru filmul său spectacolul.",
+          "title": "Niciun stream"
+        },
+        "title": "Surse",
+        "unknownOption": "Necunoscut"
+      }
+    }
+  },
+  "settings": {
+    "unsaved": "Aveți modificări nesalvate"
+  }
+}

@@ -206,7 +206,8 @@
         "episodeBadge": "A{{episode}}",
         "loadingError": "Er ging iets mis bij het laden van dit seizoen",
         "loadingList": "Aan het laden...",
-        "loadingTitle": "Aan het zoeken..."
+        "loadingTitle": "Aan het zoeken...",
+        "unairedEpisodes": "Een of meer afleveringen van dit seizoen zijn uitgeschakeld omdat ze nog niet zijn uitgezonden."
       },
       "playback": {
         "speedLabel": "Afspeelsnelheid",
@@ -361,8 +362,66 @@
       },
       "register": {
         "cta": "Aan de slag",
-        "text": "Deel de voortgang van je film tussen apparaten en houd ze gesynchroniseerd."
+        "text": "Deel uw kijkvoortgang tussen apparaten en houd ze gesynchroniseerd.",
+        "title": "Synchroniseren met de cloud"
+      },
+      "title": "Account"
+    },
+    "appearance": {
+      "activeTheme": "Actief",
+      "themes": {
+        "blue": "Blauw",
+        "default": "Standaard",
+        "gray": "Grijs",
+        "red": "Rood",
+        "teal": "Groenblauw"
+      },
+      "title": "Uiterlijk"
+    },
+    "connections": {
+      "server": {
+        "description": "Als je verbinding wilt maken met een eigen backend om je gegevens op te slaan, schakel dan deze optie in en geef de URL op.",
+        "label": "Eigen server",
+        "urlLabel": "Eigen server URL"
+      },
+      "title": "Verbindingen",
+      "workers": {
+        "addButton": "Nieuwe worker toevoegen",
+        "description": "Om de applicatie te laten werken, wordt al het verkeer omgeleid via proxies. Schakel dit in als je je eigen workers wilt gebruiken.",
+        "emptyState": "Nog geen workers, voeg er hieronder een toe",
+        "label": "Eigen proxy werker gebruiken",
+        "urlLabel": "Worker URLs",
+        "urlPlaceholder": "https://"
       }
-    }
+    },
+    "locale": {
+      "language": "Applicatietaal",
+      "languageDescription": "Taal wordt toegepast op de hele applicatie.",
+      "title": "Lokaal"
+    },
+    "reset": "Resetten",
+    "save": "Wijzigingen opslaan",
+    "sidebar": {
+      "info": {
+        "appVersion": "App versie",
+        "backendUrl": "Backend URL",
+        "backendVersion": "Backend versie",
+        "hostname": "hostnaam",
+        "insecure": "Onveilig",
+        "notLoggedIn": "U bent niet ingelogd",
+        "secure": "Veilig",
+        "title": "App informatie",
+        "unknownVersion": "Onbekend",
+        "userId": "Gebruiker ID"
+      }
+    },
+    "subtitles": {
+      "backgroundLabel": "Achtergrond dekking",
+      "colorLabel": "Kleur",
+      "previewQuote": "Ik mag niet bang zijn. Angst doodt de geest.",
+      "textSizeLabel": "Tekengrootte",
+      "title": "Ondertiteling"
+    },
+    "unsaved": "U heeft niet-opgeslagen wijzigingen"
   }
 }

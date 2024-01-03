@@ -155,7 +155,7 @@
       "donation": "दान करें",
       "logout": "लॉग आउट",
       "register": "क्लाउड से सिंक करें",
-      "settings": "चेड चाड करे",
+      "settings": "सेटिंग्स",
       "support": "सहायता"
     }
   },
@@ -206,7 +206,8 @@
         "episodeBadge": "E{{episode}}",
         "loadingError": "सीज़न लोड करने में त्रुटि",
         "loadingList": "लोड हो रहा है..।",
-        "loadingTitle": "लोड हो रहा है..।"
+        "loadingTitle": "लोड हो रहा है..।",
+        "unairedEpisodes": "इस सीज़न में एक या अधिक एपिसोड अक्षम कर दिए गए हैं क्योंकि वे अभी तक प्रसारित नहीं हुए हैं।"
       },
       "playback": {
         "speedLabel": "प्लेबैक गति",
