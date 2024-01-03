@@ -259,6 +259,10 @@
       }
     },
     "metadata": {
+      "api": {
+        "text": "Non puiden cargar os metadatos da API, por favor, comproba a túa conexión a internet.",
+        "title": "Non foi posible cargar os metadatos da API"
+      },
       "failed": {
         "badge": "Erro",
         "homeButton": "Ir ao inicio",
@@ -308,6 +312,12 @@
       "remaining": "{{timeLeft}} restante • Finaliza ás {{timeFinished, datetime}}",
       "shortRegular": "{{timeWatched}}",
       "shortRemaining": "-{{timeLeft}}"
+    },
+    "turnstile": {
+      "description": "Por favor, verifica que eres un humán completando o Captcha. Isto é para mantee movie-web seguro!",
+      "error": "Houbo un erro ao verificar a túa humanidade. Por favor, volve a intentalo.",
+      "title": "Necesitamos verificar que realmente eres un humán.",
+      "verifyingHumanity": "Verificando a túa humanidade…"
     }
   },
   "screens": {
