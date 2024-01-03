@@ -9,6 +9,7 @@ import es from "@/assets/locales/es.json";
 import et from "@/assets/locales/et.json";
 import fa from "@/assets/locales/fa.json";
 import fr from "@/assets/locales/fr.json";
+import gl from "@/assets/locales/gl.json";
 import gu from "@/assets/locales/gu.json";
 import he from "@/assets/locales/he.json";
 import hi from "@/assets/locales/hi.json";
@@ -20,9 +21,11 @@ import lv from "@/assets/locales/lv.json";
 import minion from "@/assets/locales/minion.json";
 import ne from "@/assets/locales/ne.json";
 import nl from "@/assets/locales/nl.json";
+import pa from "@/assets/locales/pa.json";
 import pirate from "@/assets/locales/pirate.json";
 import pl from "@/assets/locales/pl.json";
 import ptbr from "@/assets/locales/pt-BR.json";
+import ro from "@/assets/locales/ro.json";
 import ru from "@/assets/locales/ru.json";
 import sl from "@/assets/locales/sl.json";
 import sv from "@/assets/locales/sv.json";
@@ -72,5 +75,8 @@ export const locales = {
   ta,
   "zh-HANT": zhhant,
   ru,
+  gl,
+  pa,
+  ro,
 };
 export type Locales = keyof typeof locales;

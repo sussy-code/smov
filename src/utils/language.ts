@@ -18,6 +18,7 @@ const countryPriority: Record<string, string> = {
   zh: "cn",
   ko: "kr",
   ta: "lk",
+  gl: "es",
 };
 
 // list of iso639_1 Alpha-2 codes used as default languages
@@ -52,6 +53,7 @@ const defaultLanguageCodes: string[] = [
   "sl-SI",
   "ta-LK",
   "ru-RU",
+  "gl-ES",
 ];
 
 export interface LocaleInfo {
@@ -134,14 +136,17 @@ export function sortLangCodes(langCodes: string[]) {
 export function getCountryCodeForLocale(locale: string): string | null {
   let output: LanguageObj | null = null as any as LanguageObj;
   const tag = getTag(locale, true);
+
   if (!tag?.language?.Subtag) return null;
   // this function isnt async, so its garuanteed to work like this
   countryLanguages.getLanguage(tag.language.Subtag, (_err, lang) => {
     if (lang) output = lang;
   });
   if (!output) return null;
-  if (output.countries.length === 0) return null;
   const priority = countryPriority[output.iso639_1.toLowerCase()];
+  if (output.countries.length === 0) {
+    return priority ?? null;
+  }
   if (priority) {
     const priotizedCountry = output.countries.find(
       (v) => v.code_2.toLowerCase() === priority,
