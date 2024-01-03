@@ -46,7 +46,7 @@ export const locales = {
   et,
   tok,
   hi,
-  pt: ptbr,
+  "pt-BR": ptbr,
   uk,
 };
 export type Locales = keyof typeof locales;
