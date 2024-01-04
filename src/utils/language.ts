@@ -8,7 +8,7 @@ const languageOrder = ["en", "hi", "fr", "de", "nl", "pt"];
 // This mapping purely exists to prioritize a country over another in languages.
 // iso639_1 -> iso3166 Alpha-2
 const countryPriority: Record<string, string> = {
-  en: "gb",
+  en: "us",
   nl: "nl",
   fr: "fr",
   de: "de",
@@ -18,7 +18,6 @@ const countryPriority: Record<string, string> = {
   zh: "cn",
   ko: "kr",
   ta: "lk",
-  gl: "es",
 };
 
 // list of iso639_1 Alpha-2 codes used as default languages
