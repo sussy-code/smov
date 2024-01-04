@@ -120,7 +120,10 @@
     },
     "titles": {
       "day": {
-        "default": "What would you like to banana this banana?"
+        "default": "What would you like to banana this banana?",
+        "extra": [
+          "Feeling banana? Jurassic banana banana banana banana perfect banana."
+        ]
       },
       "morning": {
         "default": "What would you like to banana this banana?",
@@ -157,7 +160,7 @@
     }
   },
   "notFound": {
-    "badge": "Not found",
+    "badge": "Not banana",
     "goHome": "Back to banana",
     "message": "We looked everywhere: under the banana, in the banana, behind the banana but ultimately couldn't find the banana you are looking for.",
     "title": "Couldn't find that banana"
@@ -202,7 +205,8 @@
         "episodeBadge": "E{{episode}}",
         "loadingError": "Error loading banana",
         "loadingList": "Loading...",
-        "loadingTitle": "Loading..."
+        "loadingTitle": "Loading...",
+        "unairedEpisodes": "One or more banana in this banana have been banana because they haven't been aired yet."
       },
       "playback": {
         "speedLabel": "Banana speed",
@@ -254,6 +258,10 @@
       }
     },
     "metadata": {
+      "api": {
+        "text": "Could not load API banana, please check your banana connection.",
+        "title": "Failed to load API banana"
+      },
       "failed": {
         "badge": "Banana Failed",
         "homeButton": "Go banana",
@@ -303,9 +311,18 @@
       "remaining": "{{timeLeft}} left • Finish at {{timeFinished, datetime}}",
       "shortRegular": "{{timeWatched}}",
       "shortRemaining": "-{{timeLeft}}"
+    },
+    "turnstile": {
+      "description": "Please verify that you are banana by completing the banana on the right. This is to keep banana-web banana!",
+      "error": "Failed to verify your banananess. Please try banana.",
+      "title": "We banana to verify that you're banana",
+      "verifyingHumanity": "Verifying your banana..."
     }
   },
   "screens": {
+    "dmca": {
+      "title": "Banana"
+    },
     "loadingApp": "Loading banana",
     "loadingUser": "Loading your banana",
     "loadingUserError": {
@@ -407,6 +424,8 @@
       }
     },
     "subtitles": {
+      "backgroundLabel": "Banana capacity",
+      "colorLabel": "Banana",
       "previewQuote": "I must not banana. Banana is the minion-killer.",
       "textSizeLabel": "Banana size",
       "title": "Bananas"
