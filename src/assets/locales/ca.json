@@ -275,6 +275,11 @@
         "title": "Dispositiu"
       }
     },
+    "sidebar": {
+      "info": {
+        "unknownVersion": "Desconeguda"
+      }
+    },
     "unsaved": "Hi ha canvis sense desar"
   }
 }
