@@ -259,6 +259,10 @@
       }
     },
     "metadata": {
+      "api": {
+        "text": "无法载入 API 元数据，请检查您的互联网连接。",
+        "title": "载入 API 元数据失败"
+      },
       "failed": {
         "badge": "失败",
         "homeButton": "返回首页",
@@ -308,6 +312,12 @@
       "remaining": "剩余 {{timeLeft}} • 完结于 {{timeFinished, datetime}}",
       "shortRegular": "{{timeWatched}}",
       "shortRemaining": "-{{timeLeft}}"
+    },
+    "turnstile": {
+      "description": "请完成右侧的验证码以验证您是人类。这是为了确保 movie-web 的安全！",
+      "error": "验证失败。请重试。",
+      "title": "我们需要验证您是人类。",
+      "verifyingHumanity": "正在验证您是否为人类…"
     }
   },
   "screens": {
