@@ -15,14 +15,14 @@ export function FlagIcon(props: FlagIconProps) {
   if (props.langCode === "tok")
     return (
       <div className="w-8 h-6 rounded bg-[#c8e1ed] flex justify-center items-center">
-        <img src="/tokiPona.svg" className="w-7 h-5" />
+        <img src="/flags/tokiPona.svg" className="w-7 h-5" />
       </div>
     );
 
   if (props.langCode === "pirate")
     return (
       <div className="w-8 h-6 rounded bg-[#2E3439] flex justify-center items-center">
-        <img src="/skull.svg" className="w-4 h-4" />
+        <img src="/flags/skull.svg" className="w-4 h-4" />
       </div>
     );
 
