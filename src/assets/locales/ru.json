@@ -155,6 +155,7 @@
       },
       "settings": {
         "downloadItem": "Скачать",
+        "enableSubtitles": "Включить субтитры",
         "playbackItem": "Настройки воспроизведения",
         "qualityItem": "Качество",
         "sourceItem": "Видео источники",
@@ -184,6 +185,8 @@
   "settings": {
     "account": {
       "accountDetails": {
+        "deviceNameLabel": "Имя устройства",
+        "editProfile": "Редактировать",
         "logoutButton": "Выйти"
       },
       "actions": {
@@ -215,7 +218,7 @@
       "title": "Аккаунт"
     },
     "appearance": {
-      "activeTheme": "Активная тема",
+      "activeTheme": "Активная",
       "themes": {
         "blue": "Cиний",
         "default": "Стандартный",
@@ -251,6 +254,7 @@
     "sidebar": {
       "info": {
         "appVersion": "Версия приложения",
+        "hostname": "Имя хоста",
         "notLoggedIn": "Вы не авторизованы",
         "secure": "Безопасный",
         "title": "Информация о приложении",
