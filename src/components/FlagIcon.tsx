@@ -37,6 +37,14 @@ export function FlagIcon(props: FlagIconProps) {
       </div>
     );
 
+  // Galicia - Not a country (Is a region of Spain) so have to add the flag manually
+  if (props.langCode === "gl-ES")
+    return (
+      <div className="w-8 h-6 rounded bg-[#2E3439] flex justify-center items-center">
+        <img src="/flags/galicia.svg" className="rounded" />
+      </div>
+    );
+
   let backgroundClass = "bg-video-context-flagBg";
   if (countryCode === "np") backgroundClass = "bg-white";
 

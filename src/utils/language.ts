@@ -18,7 +18,6 @@ const countryPriority: Record<string, string> = {
   zh: "cn",
   ko: "kr",
   ta: "lk",
-  gl: "es",
 };
 
 // list of iso639_1 Alpha-2 codes used as default languages
