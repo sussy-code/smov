@@ -1,4 +1,11 @@
 {
+  "about": {
+    "description": "movie-web là một ứng dụng web tìm kiếm các truyền pháp trực tuyến trên internet. Nhóm phát triển ứng dụng này nhắm đến một cách tiêu thụ nội dung chủ yếu là đơn giản hơn.",
+    "faqTitle": "Các câu hỏi thường gặp",
+    "q1": {
+      "body": "movie-web không lưu trữ bất kì nội dung nào. Khi bạn bấm vào một cái gì đó để xem, ứng dụng sẽ tìm kiếm nội dung đó trên internet (Trên màn hình tải và trong tab 'nguồn video' bạn sẽ tìm thấy nguồn đang được dùng). Nội dung không bao giờ được tải lên trên movie-web, mọi thứ đều thông qua cơ chế tìm kiếm này."
+    }
+  },
   "global": {
     "name": "movie-web"
   },
