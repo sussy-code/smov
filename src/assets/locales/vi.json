@@ -46,7 +46,13 @@
         "color2": "Màu hồ sơ số hai",
         "header": "Hãy nhập tên cho thiết bị của bạn và chọn màu sắc và biểu tượng người dùng",
         "icon": "Biểu tượng người dùng",
-        "next": "Tiếp theo"
+        "next": "Tiếp theo",
+        "title": "Thông tin tài khoản"
+      }
+    },
+    "trust": {
+      "failed": {
+        "text": "Bạn đã lắp đặt nó một cách chính xác chưa?"
       }
     }
   },
