@@ -259,6 +259,10 @@
       }
     },
     "metadata": {
+      "api": {
+        "text": "Metadata API nelze načíst, zkontrolujte prosím vaše připojení k internetu.",
+        "title": "Nepodařilo se načíst API metadata"
+      },
       "failed": {
         "badge": "Neúspěšný",
         "homeButton": "Jít domů",
@@ -308,6 +312,12 @@
       "remaining": "{{timeLeft}} zbývá • Dokončeno v {{timeFinished, datetime}}",
       "shortRegular": "{{timeWatched}}",
       "shortRemaining": "-{{timeLeft}}"
+    },
+    "turnstile": {
+      "description": "Ověřte, prosím, že jste člověk, vyplněním Captchy napravo. Toto je pro zajištění bezpečnosti movie-web!",
+      "error": "Nepodařilo se ověřit vaši lidskost. Zkuste to prosím znovu.",
+      "title": "Potřebujeme ověřit, zda jste člověk.",
+      "verifyingHumanity": "Ověřování vaši lidskosti..."
     }
   },
   "screens": {
