@@ -3,7 +3,51 @@
     "description": "movie-web là một ứng dụng web tìm kiếm các truyền pháp trực tuyến trên internet. Nhóm phát triển ứng dụng này nhắm đến một cách tiêu thụ nội dung chủ yếu là đơn giản hơn.",
     "faqTitle": "Các câu hỏi thường gặp",
     "q1": {
-      "body": "movie-web không lưu trữ bất kì nội dung nào. Khi bạn bấm vào một cái gì đó để xem, ứng dụng sẽ tìm kiếm nội dung đó trên internet (Trên màn hình tải và trong tab 'nguồn video' bạn sẽ tìm thấy nguồn đang được dùng). Nội dung không bao giờ được tải lên trên movie-web, mọi thứ đều thông qua cơ chế tìm kiếm này."
+      "body": "movie-web không lưu trữ bất kì nội dung nào. Khi bạn bấm vào một cái gì đó để xem, ứng dụng sẽ tìm kiếm nội dung đó trên internet (Trên màn hình tải và trong tab 'nguồn video' bạn sẽ tìm thấy nguồn đang được dùng). Nội dung không bao giờ được tải lên trên movie-web, mọi thứ đều thông qua cơ chế tìm kiếm này.",
+      "title": "Nội dung đến từ đâu?"
+    },
+    "q2": {
+      "body": "Việc yêu cầu một chương trình truyền hình hoặc phim là bất khả thi bởi vì movie-web không quản lý nội dung nào. Tất cả nội dung được truyền thông qua các nguồn trên internet.",
+      "title": "Tôi có thể yêu cầu một chương trình truyền hình hoặc phim ở đâu?"
+    },
+    "q3": {
+      "body": "Các kết quả tìm kiếm được cung cấp bởi The Movie Database (TMDB) và hiện lên bất kể các nguồn của trang thực sự có lưu trữ nội dung hay không.",
+      "title": "Tại sao kết quả tìm kiếm hiển thị chương trình truyền hình hoặc phim nhưng tôi không thể chơi nó?"
+    },
+    "title": "Về movie-web"
+  },
+  "actions": {
+    "copied": "Đã sao chép",
+    "copy": "Sao chép"
+  },
+  "auth": {
+    "createAccount": "Chưa có tài khoản? <0>Hãy tạo tài khoản.</0>",
+    "deviceNameLabel": "Tên thiết bị",
+    "deviceNamePlaceholder": "Điện thoại cá nhân",
+    "generate": {
+      "description": "Mật ngữ của bạn đóng vai trò là tên người dùng và mật khẩu của bạn. Hãy giữ nó an toàn vì bạn sẽ cần nhập nó để đăng nhập vào tài khoản của bạn",
+      "next": "Tôi đã lưu giữ mật ngữ của mình",
+      "passphraseFrameLabel": "Mật ngữ",
+      "title": "Mật ngữ của bạn"
+    },
+    "hasAccount": "Đã có tài khoản? <0>Hãy đăng nhập.</0>",
+    "login": {
+      "description": "Hãy nhập mật ngữ của bạn để đăng nhập vào tài khoản",
+      "deviceLengthError": "Hãy nhập tên thiết bị",
+      "passphraseLabel": "Mật ngữ gồm 12 từ",
+      "passphrasePlaceholder": "Mật ngữ",
+      "submit": "Đăng nhập",
+      "title": "Đăng nhập vào tài khoản của bạn",
+      "validationError": "Mật ngữ không chính xác hoặc không đầy đủ"
+    },
+    "register": {
+      "information": {
+        "color1": "Màu hồ sơ số một",
+        "color2": "Màu hồ sơ số hai",
+        "header": "Hãy nhập tên cho thiết bị của bạn và chọn màu sắc và biểu tượng người dùng",
+        "icon": "Biểu tượng người dùng",
+        "next": "Tiếp theo"
+      }
     }
   },
   "global": {
