@@ -259,6 +259,10 @@
       }
     },
     "metadata": {
+      "api": {
+        "text": "Kan API-metagegevens niet laden. Controleer uw internetverbinding.",
+        "title": "Kan API-metagegevens niet laden"
+      },
       "failed": {
         "badge": "Mislukt",
         "homeButton": "Ga naar de home-pagina",
@@ -308,6 +312,12 @@
       "remaining": "Nog {{timeLeft}} • Klaar om {{timeFinished, datetime}}",
       "shortRegular": "{{timeWatched}}",
       "shortRemaining": "-{{timeLeft}}"
+    },
+    "turnstile": {
+      "description": "Bevestig dat u een mens bent door de Captcha aan de rechterkant in te vullen. Dit is om movie-web veilig te houden!",
+      "error": "Kan uw menselijkheid niet verifiëren. Probeer het opnieuw.",
+      "title": "We moeten verifiëren dat u een mens bent.",
+      "verifyingHumanity": "Je menselijkheid verifiëren..."
     }
   },
   "screens": {
