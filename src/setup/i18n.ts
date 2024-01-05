@@ -10,7 +10,7 @@ const resources = Object.fromEntries(
   Object.entries(locales).map((entry) => [entry[0], { translation: entry[1] }]),
 );
 i18n.use(initReactI18next).init({
-  fallbackLng: "en-US",
+  fallbackLng: "en",
   resources,
   interpolation: {
     escapeValue: false, // not needed for react as it escapes by default
