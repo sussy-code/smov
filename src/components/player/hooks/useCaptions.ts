@@ -14,12 +14,30 @@ export function useCaptions() {
   const lastSelectedLanguage = useSubtitleStore((s) => s.lastSelectedLanguage);
   const captionList = usePlayerStore((s) => s.captionList);
 
+  const selectCaptionById = useCallback(
+    async (captionId: string) => {
+      const caption = captionList.find((v) => v.id === captionId);
+      if (!caption) return;
+      const srtData = await downloadCaption(caption);
+      setCaption({
+        id: caption.id,
+        language: caption.language,
+        srtData,
+        url: caption.url,
+      });
+      resetSubtitleSpecificSettings();
+      setLanguage(caption.language);
+    },
+    [setLanguage, captionList, setCaption, resetSubtitleSpecificSettings],
+  );
+
   const selectLanguage = useCallback(
     async (language: string) => {
       const caption = captionList.find((v) => v.language === language);
       if (!caption) return;
       const srtData = await downloadCaption(caption);
       setCaption({
+        id: caption.id,
         language: caption.language,
         srtData,
         url: caption.url,
@@ -56,5 +74,6 @@ export function useCaptions() {
     selectLastUsedLanguage,
     toggleLastUsed,
     selectLastUsedLanguageIfEnabled,
+    selectCaptionById,
   };
 }
