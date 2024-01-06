@@ -5,8 +5,8 @@ const languageOrder = ["en", "hi", "fr", "de", "nl", "pt"];
 
 // mapping of language code to country code.
 // multiple mappings can exist, since languages are spoken in multiple countries.
-// This mapping purely exists to prioritize a country over another in languages where the
-// base language code does not contain a region (i.e. if the language code is zh-Hant where Hant is a script)
+// This mapping purely exists to prioritize a country over another in languages where the base language code does
+// not contain a region (i.e. if the language code is zh-Hant where Hant is a script) or if the region in the language code is incorrect
 // iso639_1 -> iso3166 Alpha-2
 const countryPriority: Record<string, string> = {
   zh: "cn",
@@ -140,6 +140,13 @@ export function getCountryCodeForLocale(locale: string): string | null {
     return priority ?? null;
   }
 
+  if (priority) {
+    const prioritizedCountry = output.countries.find(
+      (v) => v.code_2.toLowerCase() === priority,
+    );
+    if (prioritizedCountry) return prioritizedCountry.code_2.toLowerCase();
+  }
+
   // If the language contains a region, check that against the countries and
   // return the region if it matches
   const regionSubtag = tag?.region?.Subtag.toLowerCase();
@@ -150,13 +157,6 @@ export function getCountryCodeForLocale(locale: string): string | null {
         c.code_3.toLowerCase() === regionSubtag,
     );
     if (regionCode) return regionCode.code_2.toLowerCase();
-  }
-
-  if (priority) {
-    const prioritizedCountry = output.countries.find(
-      (v) => v.code_2.toLowerCase() === priority,
-    );
-    if (prioritizedCountry) return prioritizedCountry.code_2.toLowerCase();
   }
   return output.countries[0].code_2.toLowerCase();
 }
