@@ -204,6 +204,7 @@
       },
       "devices": {
         "deviceNameLabel": "Имя устройства",
+        "failed": "Не удалось загрузить сеансы",
         "removeDevice": "Удалить",
         "title": "Устройства"
       },
