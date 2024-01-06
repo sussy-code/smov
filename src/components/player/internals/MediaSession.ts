@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 
 import { usePlayerStore } from "@/stores/player/store";
 
@@ -66,6 +66,22 @@ export function MediaSession() {
   useEffect(() => {
     if (!("mediaSession" in navigator)) return;
 
+    // If the media is paused, update the navigator
+    if (mediaPlaying.isPaused) {
+      navigator.mediaSession.playbackState = "paused";
+    } else {
+      navigator.mediaSession.playbackState = "playing";
+    }
+  }, [mediaPlaying.isPaused]);
+
+  useEffect(() => {
+    if (!("mediaSession" in navigator)) return;
+
+    updatePositionState(dataRef.current.progress.time);
+  }, [mediaPlaying.playbackRate, updatePositionState]);
+
+  useEffect(() => {
+    if (!("mediaSession" in navigator)) return;
     // If not already updating the position state, and the media is loading, queue an update
     if (
       !shouldUpdatePositionState.current &&
@@ -76,8 +92,7 @@ export function MediaSession() {
 
     // If the user has skipped (or MediaSession desynced) by more than 5 seconds, queue an update
     if (
-      Math.abs(dataRef.current.progress.time - lastPlaybackPosition.current) >
-        5 &&
+      Math.abs(progress.time - lastPlaybackPosition.current) >= 5 &&
       !dataRef.current.mediaPlaying.isLoading &&
       !shouldUpdatePositionState.current
     ) {
@@ -90,21 +105,29 @@ export function MediaSession() {
       !dataRef.current.mediaPlaying.isLoading
     ) {
       shouldUpdatePositionState.current = false;
-      updatePositionState(dataRef.current.progress.time);
+      updatePositionState(progress.time);
     }
 
-    lastPlaybackPosition.current = dataRef.current.progress.time;
-    navigator.mediaSession.playbackState = dataRef.current.mediaPlaying
-      .isPlaying
-      ? "playing"
-      : "paused";
+    lastPlaybackPosition.current = progress.time;
+  }, [updatePositionState, progress.time]);
+
+  useEffect(() => {
+    if (
+      !("mediaSession" in navigator) ||
+      dataRef.current.mediaPlaying.hasPlayedOnce ||
+      dataRef.current.progress.duration === 0
+    )
+      return;
+
+    const title = meta?.episode?.title ?? meta?.title ?? "";
+    const artist = meta?.type === "movie" ? undefined : meta?.title ?? "";
 
     navigator.mediaSession.metadata = new MediaMetadata({
-      title: dataRef.current.meta?.episode?.title,
-      artist: dataRef.current.meta?.title,
+      title,
+      artist,
       artwork: [
         {
-          src: dataRef.current.meta?.poster ?? "",
+          src: meta?.poster ?? "",
           sizes: "342x513",
           type: "image/png",
         },
@@ -115,7 +138,6 @@ export function MediaSession() {
       if (dataRef.current.mediaPlaying.isLoading) return;
       dataRef.current.display?.play();
 
-      navigator.mediaSession.playbackState = "playing";
       updatePositionState(dataRef.current.progress.time);
     });
 
@@ -123,24 +145,7 @@ export function MediaSession() {
       if (dataRef.current.mediaPlaying.isLoading) return;
       dataRef.current.display?.pause();
 
-      navigator.mediaSession.playbackState = "paused";
       updatePositionState(dataRef.current.progress.time);
-    });
-
-    navigator.mediaSession.setActionHandler("seekbackward", (evt) => {
-      const skipTime = evt.seekOffset ?? 10;
-      dataRef.current.display?.setTime(
-        dataRef.current.progress.time - skipTime,
-      );
-      updatePositionState(dataRef.current.progress.time - skipTime);
-    });
-
-    navigator.mediaSession.setActionHandler("seekforward", (evt) => {
-      const skipTime = evt.seekOffset ?? 10; // Time to skip in seconds
-      dataRef.current.display?.setTime(
-        dataRef.current.progress.time + skipTime,
-      );
-      updatePositionState(dataRef.current.progress.time + skipTime);
     });
 
     navigator.mediaSession.setActionHandler("seekto", (e) => {
@@ -149,7 +154,7 @@ export function MediaSession() {
       updatePositionState(e.seekTime);
     });
 
-    if (dataRef.current.meta?.episode?.number !== 1) {
+    if ((dataRef.current.meta?.episode?.number ?? 1) !== 1) {
       navigator.mediaSession.setActionHandler("previoustrack", () => {
         changeEpisode(-1);
       });
@@ -167,12 +172,6 @@ export function MediaSession() {
     } else {
       navigator.mediaSession.setActionHandler("nexttrack", null);
     }
-  }, [
-    changeEpisode,
-    meta,
-    setDirectMeta,
-    setShouldStartFromBeginning,
-    updatePositionState,
-  ]);
+  }, [changeEpisode, updatePositionState, meta]);
   return null;
 }
