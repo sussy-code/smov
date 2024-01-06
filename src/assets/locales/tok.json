@@ -309,6 +309,9 @@
     }
   },
   "screens": {
+    "dmca": {
+      "title": "DMCA"
+    },
     "loadingApp": "mi alasa e ilo",
     "loadingUser": "mi alasa e lipu sina",
     "loadingUserError": {
@@ -316,6 +319,9 @@
       "reset": "o sin e lawa ilo sina",
       "text": "alasa li pakala",
       "textWithReset": "alasa tan lawa ilo sina li pakala. sina wile e lawa ilo mi anu seme?"
+    },
+    "migration": {
+      "inProgress": "o awen lili. mi alasa tawa e sona sina"
     }
   },
   "settings": {
@@ -369,6 +375,11 @@
       "title": "kule"
     },
     "connections": {
+      "server": {
+        "description": "sina wile e poki sona ante la o pana e nimi ona lon ni",
+        "label": "lawa ante",
+        "urlLabel": "nimi pi lawa ante"
+      },
       "title": "kulupu"
     },
     "locale": {
