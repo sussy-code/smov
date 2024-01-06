@@ -126,7 +126,7 @@ export function sortLangCodes(langCodes: string[]) {
  */
 export function getCountryCodeForLocale(locale: string): string | null {
   let output: LanguageObj | null = null as any as LanguageObj;
-  const tag = getTag(locale, true);
+  const tag = getTag(populateLanguageCode(locale), true);
 
   if (!tag?.language?.Subtag) return null;
   // this function isn't async, so its guaranteed to work like this
