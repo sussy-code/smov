@@ -1,6 +1,7 @@
 import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import { Avatar } from "@/components/Avatar";
 import { Button } from "@/components/buttons/Button";
 import { ColorPicker, initialColor } from "@/components/form/ColorPicker";
 import { IconPicker, initialIcon } from "@/components/form/IconPicker";
@@ -55,7 +56,13 @@ export function AccountCreatePart(props: AccountCreatePartProps) {
   return (
     <LargeCard>
       <LargeCardText
-        icon={<Icon icon={Icons.USER} />}
+        icon={
+          <Avatar
+            profile={{ colorA, colorB, icon: userIcon }}
+            iconClass="text-3xl"
+            sizeClass="w-16 h-16"
+          />
+        }
         title={t("auth.register.information.title") ?? undefined}
       >
         {t("auth.register.information.header")}
