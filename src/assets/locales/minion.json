@@ -182,6 +182,7 @@
         "downloadPlaylist": "Download banana",
         "downloadSubtitle": "Download current banana",
         "downloadVideo": "Banana",
+        "hlsDisclaimer": "Downloads are taken directly from the banana. Banana-web does not have control over how the downloads are banana. please note that you are downloading Banana playlist, this is intended for minions familiar with advanced multimedia banana.",
         "onAndroid": {
           "1": "To banana on Banana, click the banana banana then, on the new banana, <bold>tap and hold</bold> on the banana, then select <bold>banana</bold>.",
           "shortTitle": "Banana / Banana",
@@ -321,6 +322,7 @@
   },
   "screens": {
     "dmca": {
+      "text": "Very long and boring banana.",
       "title": "Banana"
     },
     "loadingApp": "Loading banana",
