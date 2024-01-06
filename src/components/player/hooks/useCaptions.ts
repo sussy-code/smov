@@ -35,17 +35,9 @@ export function useCaptions() {
     async (language: string) => {
       const caption = captionList.find((v) => v.language === language);
       if (!caption) return;
-      const srtData = await downloadCaption(caption);
-      setCaption({
-        id: caption.id,
-        language: caption.language,
-        srtData,
-        url: caption.url,
-      });
-      resetSubtitleSpecificSettings();
-      setLanguage(language);
+      selectCaptionById(caption.id);
     },
-    [setLanguage, captionList, setCaption, resetSubtitleSpecificSettings],
+    [captionList, selectCaptionById],
   );
 
   const disable = useCallback(async () => {
