@@ -1,7 +1,7 @@
 {
   "about": {
     "description": "movie-web este o aplicație web care caută fluxuri pe internet. Echipa urmărește o abordare mai ales minimalistă a consumului de conținut.",
-    "faqTitle": "Intrebari obisnuite",
+    "faqTitle": "Întrebări obișnuite",
     "q1": {
       "body": "movie-web nu găzduiește niciun conținut. Când faceți clic pe ceva pentru a viziona, pe Internet este căutat media selectată (Pe ecranul de încărcare și în fila „Surse video”, puteți vedea ce sursă utilizați). Media nu este niciodată încărcată de movie-web, totul se face prin acest mecanism de căutare.",
       "title": "De unde vine conținutul?"
@@ -18,7 +18,7 @@
   },
   "actions": {
     "copied": "Copiat",
-    "copy": "Copie"
+    "copy": "Copiați"
   },
   "auth": {
     "createAccount": "Nu aveți încă un cont? <0>Creați un cont.</0>",
@@ -26,8 +26,8 @@
     "deviceNamePlaceholder": "Telefon personal",
     "generate": {
       "description": "Fraza de acces acționează ca nume de utilizator și parolă. Asigurați-vă că îl păstrați în siguranță, deoarece va trebui să îl introduceți pentru a vă conecta la contul dvs",
-      "next": "Mi-am salvat expresia de acces",
-      "passphraseFrameLabel": "Fraza de acces",
+      "next": "Mi-am salvat fraza de acces",
+      "passphraseFrameLabel": "Frază de acces",
       "title": "Fraza dvs. de acces"
     },
     "hasAccount": "ai deja un cont? <0>Autentificați-vă aici.</0>",
@@ -35,19 +35,19 @@
       "description": "Vă rugăm să introduceți fraza de acces pentru a vă conecta la contul dvs",
       "deviceLengthError": "Introduceți un nume de dispozitiv",
       "passphraseLabel": "Expresie de acces din 12 cuvinte",
-      "passphrasePlaceholder": "Fraza de acces",
-      "submit": "Log in",
+      "passphrasePlaceholder": "Frază de acces",
+      "submit": "Conectează te",
       "title": "conecteaza-te la contul tau",
-      "validationError": "Fraza de acces incorectă sau incompletă"
+      "validationError": "Fraza de acces este incorectă sau incompletă"
     },
     "register": {
       "information": {
         "color1": "Culoarea profilului unu",
         "color2": "Culoarea profilului doi",
         "header": "Introduceți un nume pentru dispozitivul dvs. și alegeți culorile și o pictogramă de utilizator la alegerea dvs",
-        "icon": "Pictograma utilizator",
+        "icon": "Pictograma utilizatorului",
         "next": "Următorul",
-        "title": "Informatii despre cont"
+        "title": "Informații despre cont"
       }
     },
     "trust": {
@@ -177,6 +177,29 @@
       "enabled": "Casting pe dispozitiv..."
     },
     "menus": {
+      "downloads": {
+        "disclaimer": "Descărcările sunt luate direct de la furnizor. Movie-web nu are control cum descărcările sunt furnizate.",
+        "downloadPlaylist": "Descarcă lista de redare",
+        "downloadSubtitle": "Descărcați subtitlul curente",
+        "downloadVideo": "Descarcă video",
+        "hlsDisclaimer": "Descărcările sunt preluate direct de la furnizor. movie-web nu are control asupra modului în care sunt furnizate descărcările. Vă rugăm să rețineți că descărcați o listă de redare HLS, aceasta este destinată utilizatorilor familiar cu streamingul avansat.",
+        "onAndroid": {
+          "1": "Pentru a descărca pe android, apăsați butonul de descărcare apoi în pagina nouă,<bold>apăsați și țineți</bold> pe video, apoi selectați <bold>salvează</bold>.",
+          "shortTitle": "Descărcare / Android",
+          "title": "Descărcare pe Android"
+        },
+        "onIos": {
+          "1": "Pentru a instala pe iOS, apăsați butonul de instalare apoi în pagina nouă apăsați <bold><ios_share /></bold>, apoi <bold>Salvează in File <ios_files /></bold>.",
+          "shortTitle": "Descărcare / iOS",
+          "title": "Descărcare pe iOS"
+        },
+        "onPc": {
+          "1": "Pe calculator, apăsați butonul de descărcare apoi în pagina nouă, apăsați click drept pe video și selectați <bold> Salvați videoul ca</bold>",
+          "shortTitle": "Descarcă / Calculator",
+          "title": "Descărcare pe calculator"
+        },
+        "title": "Descarcă"
+      },
       "episodes": {
         "button": "Episoade",
         "emptyState": "Nu sunt episoade in sezonul acesta, reveniți mai târziu!",
@@ -185,6 +208,16 @@
         "loadingList": "Se încarcă...",
         "loadingTitle": "Se încarcă...",
         "unairedEpisodes": "Unul sau mai multe episoade din sezonul acesta sunt indisponibile deoarece incă nu au venit încă."
+      },
+      "playback": {
+        "speedLabel": "Viteză de redare",
+        "title": "Setările de redare"
+      },
+      "quality": {
+        "automaticLabel": "Calitate automată",
+        "hint": "Puteți încerca <0>Schimbarea sursei</0> pentru a primi opțiuni de calitate diferită.",
+        "iosNoQuality": "Din cauza limitărilor definite de Apple, selecția calității nu este disponibilă pe iOS pentru această sursă. Puteți încerca să <0>treceți la altă sursă</0> pentru a obține diferite opțiuni de calitate.",
+        "title": "Calitate"
       },
       "settings": {
         "downloadItem": "Descarcă",
@@ -197,6 +230,10 @@
         "videoSection": "Setări video"
       },
       "sources": {
+        "failed": {
+          "text": "Aici a fost o eroare încercând să găsim video, încercați o altă sursă.",
+          "title": "Nu s-a răzuit"
+        },
         "noEmbeds": {
           "text": "Nu am putut găsi nicio incorporare, vă rog să încercați o altă sursă.",
           "title": "Nu a fost găsită nicio încorporare"
@@ -207,10 +244,194 @@
         },
         "title": "Surse",
         "unknownOption": "Necunoscut"
+      },
+      "subtitles": {
+        "customChoice": "Selectați subtitlul din filă",
+        "customizeLabel": "Costumizează",
+        "offChoice": "Oprit",
+        "settings": {
+          "backlink": "Subtitluri personalizate",
+          "delay": "Intârziera subtitlurilor",
+          "fixCapitals": "Fixați capitalizația"
+        },
+        "title": "Subtitluri",
+        "unknownLanguage": "Necunoscut"
       }
+    },
+    "metadata": {
+      "api": {
+        "text": "Metadatele API nu au putut fi încărcate, vă rugăm să vă verificați conexiunea la internet.",
+        "title": "Nu s-a putut incărca API metadata"
+      },
+      "failed": {
+        "badge": "Eșuat",
+        "homeButton": "Du-te acasă :)",
+        "text": "Nu s-au putut încărca metadatele media din TMDB. Vă rugăm să verificați dacă TMDB este oprit sau blocat pe conexiunea ta. la internet.",
+        "title": "Nu s-au încărcat metadatele"
+      },
+      "notFound": {
+        "badge": "Nu a fost găsit",
+        "homeButton": "Înapoi acasă :)",
+        "text": "Nu am putut găsi media pe care ați cerut-o. Poate este ștearsă sau ați manipulat adresa URL.",
+        "title": "Nu am putut găsi acel media."
+      }
+    },
+    "nextEpisode": {
+      "cancel": "Anulare",
+      "next": "Episodul următor"
+    },
+    "playbackError": {
+      "badge": "Eroare la redare",
+      "errors": {
+        "errorAborted": "Preluarea media a fost întreruptă la cererea utilizatorului.",
+        "errorDecode": "În ciuda faptului că anterior a fost determinată a fi utilizabilă, a apărut o eroare în timpul încercării de a decoda resursa media, rezultând o eroare.",
+        "errorGenericMedia": "Eroare media cumva sa întâmplat.",
+        "errorNetwork": "A apărut o eroare de rețea care a împiedicat preluarea cu succes a suportului media, în ciuda faptului că fusese disponibil anterior.",
+        "errorNotSupported": "Obiectul media sau furnizorul media nu este acceptat."
+      },
+      "homeButton": "Du-te acasă :)",
+      "text": "A apărut o eroare la încercarea de a reda media. Vă rugăm să încercați din nou.",
+      "title": "O eroare la redarea videoului!"
+    },
+    "scraping": {
+      "items": {
+        "failure": "Sa întâmplat o eraore",
+        "notFound": "Nu are acel video",
+        "pending": "Verificând pentru videouri..."
+      },
+      "notFound": {
+        "badge": "Nu a fost găsit",
+        "detailsButton": "Arată detalii",
+        "homeButton": "Du-te acasă",
+        "text": "Am căutat prin furnizorii noștri și nu putem găsi media pe care o căutați! Nu găzduim mass-media și nu avem control asupra a ceea ce este disponibil. Vă rugăm să faceți clic pe „Afișați detalii” de mai jos pentru mai multe detalii.",
+        "title": "Nu am putut găsi aia"
+      }
+    },
+    "time": {
+      "regular": "{{timeWatched}} / {{duration}}",
+      "remaining": "{{timeLeft}} rămas • Se termină la{{timeFinished, datetime}}",
+      "shortRegular": "{{timeWatched}}",
+      "shortRemaining": "-{{timeLeft}}"
+    },
+    "turnstile": {
+      "description": "Vă rog să vă verificați umanitatea completând acest captcha in partea dreapta. Asta este pentru a pastra movie-web sigur!",
+      "error": "Verificarea umanității tale a eșuat. Încercați din nou.",
+      "title": "Noi trebuie să verificăm dacă sunteți un om.",
+      "verifyingHumanity": "Verificați-vă umanitatea voastră..."
+    }
+  },
+  "screens": {
+    "dmca": {
+      "text": "Bun venit pe pagina de contact DMCA a movie-web! Respectăm drepturile de proprietate intelectuală și dorim să abordăm rapid orice problemă privind drepturile de autor. Dacă credeți că lucrarea dumneavoastră protejată prin drepturi de autor a fost utilizată necorespunzător pe platforma noastră, vă rugăm să trimiteți o notificare detaliată DMCA la e-mailul de mai jos. Vă rugăm să includeți o descriere a materialului protejat prin drepturi de autor, detaliile dvs. de contact și o declarație de bună credință. Ne angajăm să rezolvăm aceste probleme cu promptitudine și apreciem cooperarea dumneavoastră pentru a menține movie-web un loc care respectă creativitatea și drepturile de autor.",
+      "title": "DMCA"
+    },
+    "loadingApp": "Se încarcă aplicația",
+    "loadingUser": "Se încarcă profilul tău",
+    "loadingUserError": {
+      "logout": "Deconectare",
+      "reset": "Resetare servere personalizate",
+      "text": "Nu s-a încărcat profilul dvs",
+      "textWithReset": "Nu s-a încărcat profilul dvs. de pe serverul personalizat, doriți să reveniți la serverul implicit?"
+    },
+    "migration": {
+      "failed": "Eroare la migrarea datelor voastre.",
+      "inProgress": "Vă rugăm să așteptați, migrăm datele dvs. Acest lucru nu ar trebui să dureze mult."
     }
   },
   "settings": {
+    "account": {
+      "accountDetails": {
+        "deviceNameLabel": "Numele dispozitivului",
+        "deviceNamePlaceholder": "Telefonul personal",
+        "editProfile": "Editează",
+        "logoutButton": "Deconectați-vă"
+      },
+      "actions": {
+        "delete": {
+          "button": "Șterge contul",
+          "confirmButton": "Șterge contul",
+          "confirmDescription": "Ești sigur că vrei să ștergi contul tău? Toate datele tale vor dispărea!",
+          "confirmTitle": "Ești sigur?",
+          "text": "Acțiunea asta este ireversibilă. Toate datele tale vor dispărea și nimic nu va putea fi recuperat.",
+          "title": "Șterge contul"
+        },
+        "title": "Acțiuni"
+      },
+      "devices": {
+        "deviceNameLabel": "Numele dispozitivului",
+        "failed": "Eroare la încărcarea sesiunii",
+        "removeDevice": "Șterge",
+        "title": "Dispozitive"
+      },
+      "profile": {
+        "finish": "Termină editarea",
+        "firstColor": "Culoarea profilului unu",
+        "secondColor": "Culoare profilului doi",
+        "title": "Editează poza de profil",
+        "userIcon": "Iconița utilizatorului"
+      },
+      "register": {
+        "cta": "Începeți",
+        "text": "Partajați progresul vizionării între dispozitive și păstrați-le sincronizate.",
+        "title": "Sincronizare în cloud"
+      },
+      "title": "Cont"
+    },
+    "appearance": {
+      "activeTheme": "Activ",
+      "themes": {
+        "blue": "Albastru",
+        "default": "Implicit",
+        "gray": "Gri",
+        "red": "Roșu",
+        "teal": "Albastru verziu"
+      },
+      "title": "Aparență"
+    },
+    "connections": {
+      "server": {
+        "description": "Dacă doriți să vă conectați la un backend personalizat pentru a vă stoca datele, activați acest lucru și furnizați adresa URL.",
+        "label": "Server personalizat",
+        "urlLabel": "Adresa URL personalizată a serverului"
+      },
+      "title": "Conexiuni",
+      "workers": {
+        "addButton": "Adaugă un nou muncitor",
+        "description": "Pentru ca aplicația să funcționeze, tot traficul este direcționat prin proxy. Activați acest lucru dacă doriți să vă aduceți proprii lucrători.",
+        "emptyState": "Niciun muncitor incă, adaugă unu",
+        "label": "Utilizați lucrători proxy personalizați",
+        "urlLabel": "Adresele URL ale lucrătorilor",
+        "urlPlaceholder": "https://"
+      }
+    },
+    "locale": {
+      "language": "Limba aplicației",
+      "languageDescription": "Limbajul aplicat întregii aplicații.",
+      "title": "Local"
+    },
+    "reset": "Resetare",
+    "save": "Salvează",
+    "sidebar": {
+      "info": {
+        "appVersion": "Versiunea aplicației",
+        "backendUrl": "URL de backend",
+        "backendVersion": "Versiunea backend",
+        "hostname": "Numele gazdei",
+        "insecure": "Nesigur",
+        "notLoggedIn": "Nu sunteți autentificat",
+        "secure": "Securizat",
+        "title": "Informația aplicației",
+        "unknownVersion": "Necunoscut",
+        "userId": "ID-ul utilizatorului"
+      }
+    },
+    "subtitles": {
+      "backgroundLabel": "Opacitatea fundalului",
+      "colorLabel": "Culoare",
+      "previewQuote": "nu trebuie să mă tem. Frica este ucigașul minții.",
+      "textSizeLabel": "Dimensiunea textului",
+      "title": "Subtitluri"
+    },
     "unsaved": "Aveți modificări nesalvate"
   }
 }

@@ -307,6 +307,11 @@
       "remaining": "Zostało {{timeLeft}} • Skończ o {{timeFinished, datetime}}",
       "shortRegular": "{{timeWatched}}",
       "shortRemaining": "-{{timeLeft}}"
+    },
+    "turnstile": {
+      "error": "Nie udało się zweryfikować Twojego człowieczeństwa. Proszę spróbuj ponownie.",
+      "title": "Musimy sprawdzić, czy jesteś człowiekiem.",
+      "verifyingHumanity": "Sprawdzasz swoje człowieczeństwo..."
     }
   },
   "screens": {

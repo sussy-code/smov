@@ -206,7 +206,8 @@
         "episodeBadge": "פ{{episode}}",
         "loadingError": "ארע שגיאה בטעינת העונה",
         "loadingList": "טוען...",
-        "loadingTitle": "טוען..."
+        "loadingTitle": "טוען...",
+        "unairedEpisodes": "פרק אחד או יותר בעונה זו הושבת מכיוון שהם עדיין לא שודרו."
       },
       "playback": {
         "speedLabel": "מהירות הניגון",
@@ -258,6 +259,10 @@
       }
     },
     "metadata": {
+      "api": {
+        "text": "לא ניתן היה לטעון מטא נתונים של ה-API, אנא בדוק את חיבור האינטרנט שלך.",
+        "title": "טעינת מטא נתונים של ממשק API נכשלה"
+      },
       "failed": {
         "badge": "נכשל",
         "homeButton": "חזור לדף הבית",
@@ -307,6 +312,12 @@
       "remaining": "{{timeLeft}} נשאר • סיים ב {{timeFinished, datetime}}",
       "shortRegular": "{{timeWatched}}",
       "shortRemaining": "-{{timeLeft}}"
+    },
+    "turnstile": {
+      "description": "אנא ודא שאתה אנושי על ידי מילוי ה-Captcha בצד ימין. זה כדי לשמור על movie-web!",
+      "error": "נכשל אימות האנושיות שלך. בבקשה נסה שוב.",
+      "title": "אנחנו צריכים לאמת שאתה אנושי.",
+      "verifyingHumanity": "מאמת את האנושיות שלך..."
     }
   },
   "screens": {
