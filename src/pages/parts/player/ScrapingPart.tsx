@@ -9,7 +9,6 @@ import {
   scrapePartsToProviderMetric,
   useReportProviders,
 } from "@/backend/helpers/report";
-import { Icon, Icons } from "@/components/Icon";
 import { Loading } from "@/components/layout/Loading";
 import {
   ScrapeCard,
@@ -21,7 +20,8 @@ import {
   useListCenter,
   useScrape,
 } from "@/hooks/useProviderScrape";
-import { LargeTextPart } from "@/pages/parts/util/LargeTextPart";
+
+import { WarningPart } from "../util/WarningPart";
 
 export interface ScrapingProps {
   media: ScrapeMedia;
@@ -88,15 +88,7 @@ export function ScrapingPart(props: ScrapingProps) {
     currentProviderIndex = sourceOrder.length - 1;
 
   if (failedStartScrape)
-    return (
-      <LargeTextPart
-        iconSlot={
-          <Icon className="text-type-danger text-2xl" icon={Icons.WARNING} />
-        }
-      >
-        {t("player.turnstile.error")}
-      </LargeTextPart>
-    );
+    return <WarningPart>{t("player.turnstile.error")}</WarningPart>;
 
   return (
     <div

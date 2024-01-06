@@ -15,14 +15,14 @@ export function FlagIcon(props: FlagIconProps) {
   if (props.langCode === "tok")
     return (
       <div className="w-8 h-6 rounded bg-[#c8e1ed] flex justify-center items-center">
-        <img src="/tokiPona.svg" className="w-7 h-5" />
+        <img src="/flags/tokiPona.svg" className="w-7 h-5" />
       </div>
     );
 
   if (props.langCode === "pirate")
     return (
       <div className="w-8 h-6 rounded bg-[#2E3439] flex justify-center items-center">
-        <img src="/skull.svg" className="w-4 h-4" />
+        <img src="/flags/skull.svg" className="w-4 h-4" />
       </div>
     );
 
@@ -34,6 +34,14 @@ export function FlagIcon(props: FlagIconProps) {
             <div className="absolute top-0 left-0 w-1 h-1 bg-white rounded-full transform -translate-x-1/3 -translate-y-1/3" />
           </div>
         </div>
+      </div>
+    );
+
+  // Galicia - Not a country (Is a region of Spain) so have to add the flag manually
+  if (props.langCode === "gl-ES")
+    return (
+      <div className="w-8 h-6 rounded bg-[#2E3439] flex justify-center items-center">
+        <img src="/flags/galicia.svg" className="rounded" />
       </div>
     );
 

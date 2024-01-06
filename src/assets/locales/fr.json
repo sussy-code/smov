@@ -215,7 +215,7 @@
       },
       "quality": {
         "automaticLabel": "Qualité automatique",
-        "hint": "Vous pouvez essayer de <0>changer de fournisseur/0> pour obtenir différentes options de qualité.",
+        "hint": "Vous pouvez essayer de <0>changer de fournisseur</0> pour obtenir différentes options de qualité.",
         "iosNoQuality": "En raison des limitations définies par Apple, la sélection de la qualité n'est pas disponible sur iOS pour cette source. Vous pouvez essayer <0>de passer à une autre source</0> pour obtenir des options de qualité différentes.",
         "title": "Qualité"
       },
@@ -259,9 +259,13 @@
       }
     },
     "metadata": {
+      "api": {
+        "text": "Impossible de charger les métadonnées de l'API, veuillez vérifier votre connexion Internet.",
+        "title": "Échec du chargement des métadonnées de l'API"
+      },
       "failed": {
         "badge": "Échec",
-        "homeButton": "Retour à la maison",
+        "homeButton": "Revenir à l'accueil",
         "text": "Impossible de charger les métadonnées du média à partir de TMDB. Veuillez vérifier si TMDB est en panne ou bloqué sur votre connexion internet.",
         "title": "Échec du chargement des métadonnées"
       },
@@ -308,6 +312,12 @@
       "remaining": "{{timeLeft}} restant • Fini à {{timeFinished, datetime}}",
       "shortRegular": "{{timeWatched}}",
       "shortRemaining": "-{{timeLeft}}"
+    },
+    "turnstile": {
+      "description": "Veuillez vérifier que vous êtes bien humain en complétant le Captcha à droite. C'est pour assurer la sécurité de movie-web !",
+      "error": "Échec de la vérification de votre humanité. Veuillez réessayer.",
+      "title": "Nous devons vérifier que vous êtes un humain.",
+      "verifyingHumanity": "Vérification de votre humanité..."
     }
   },
   "screens": {

@@ -1,0 +1,437 @@
+{
+  "about": {
+    "description": "movie-web és una aplicació web que cerca fluxos a internet. L'equip té com a objectiu un enfocament majoritàriament minimalista del consum de contingut.",
+    "faqTitle": "Preguntes freqüents",
+    "q1": {
+      "body": "movie-web no allotja cap contingut. Quan feu clic a alguna cosa per a mirar-la, es busca a Internet el contingut seleccionat (a la pantalla de càrrega i a la pestanya «Fonts de vídeo» podeu veure quina font utilitzeu). movie-web mai hi puja contingut, tot és a través d'aquest mecanisme de cerca.",
+      "title": "D'on prové el contingut?"
+    },
+    "q2": {
+      "body": "No és possible sol·licitar un programa o una pel·lícula, movie-web no gestiona cap contingut. Tot el contingut es visualitza a través de fonts a internet.",
+      "title": "On puc sol·licitar un programa o una pel·lícula?"
+    },
+    "q3": {
+      "body": "Els resultats de cerca funcionen amb The Movie Database (TMDB) i es mostren independentment de si les nostres fonts realment tenen el contingut.",
+      "title": "Els resultats de la cerca mostren el programa o la pel·lícula, per què no puc reproduir-lo?"
+    },
+    "title": "Sobre movie-web"
+  },
+  "actions": {
+    "copied": "S'ha copiat",
+    "copy": "Cipia"
+  },
+  "auth": {
+    "createAccount": "Encara no teniu un compte? <0>Creeu un compte.</0>",
+    "deviceNameLabel": "Nom del dispositiu",
+    "deviceNamePlaceholder": "Telèfon personal",
+    "generate": {
+      "description": "La frase de contrasenya actua com a nom d'usuari i contrasenya. Assegureu-vos de mantenir-la segura, ja que haureu d'introduir-la per a iniciar la sessió al vostre compte",
+      "next": "He desat la frase de contrasenya",
+      "passphraseFrameLabel": "Frase de contrasenya",
+      "title": "La vostra frase de contrasenya"
+    },
+    "hasAccount": "Ja teniu un compte? <0>Inicieu sessió aquí.</0>",
+    "login": {
+      "description": "Introduïu la vostra frase de contrasenya per a iniciar sessió al vostre compte",
+      "deviceLengthError": "Introduïu un nom per al dispositiu",
+      "passphraseLabel": "Frase de contrasenya de 12 paraules",
+      "passphrasePlaceholder": "Frase de contrasenya",
+      "submit": "Inicia sessió",
+      "title": "Inicieu sessió al vostre compte",
+      "validationError": "Frase de contrasenya incorrecta o incompleta"
+    },
+    "register": {
+      "information": {
+        "color1": "Color de perfil 1",
+        "color2": "Color de perfil 2",
+        "header": "Introduïu un nom per al dispositiu i trieu els colors i la icona d'usuari que vulgueu",
+        "icon": "Icona d'usuari",
+        "next": "Següent",
+        "title": "Informació del compte"
+      }
+    },
+    "trust": {
+      "failed": {
+        "text": "L'heu configurada correctament?",
+        "title": "No s'ha pogut accedir al servidor"
+      },
+      "host": "Us esteu connectant a <0>{{hostname}}</0>. Confirmeu que hi confieu abans de crear un compte",
+      "no": "Torna",
+      "title": "Confieu en aquest servidor?",
+      "yes": "Confie en aquest servidor"
+    },
+    "verify": {
+      "description": "Introduïu la vostra frase de contrasenya anterior per a confirmar que l'heu desat, i crear el compte",
+      "invalidData": "La data no és vàlida",
+      "noMatch": "La frase de contrasenya no coincideix",
+      "passphraseLabel": "Frase de contrasenya de 12 paraules",
+      "recaptchaFailed": "Ha fallat la validació de ReCaptcha",
+      "register": "Crea el compte",
+      "title": "Confirmeu la frase de contrasenya"
+    }
+  },
+  "errors": {
+    "badge": "S'ha trencat",
+    "details": "Detalls de l'error",
+    "reloadPage": "Recarrega la pàgina",
+    "showError": "Mostra els detalls de l'error",
+    "title": "Hem trobat un error!"
+  },
+  "footer": {
+    "legal": {
+      "disclaimer": "Avís d'exempció de responsabilitat",
+      "disclaimerText": "movie-web no allotja cap fitxer, només enllaça a serveis de tercers. Els problemes legals s'han d'abordar amb qui allotja i els proveïdors de fitxers. movie-web no es fa responsable del contingut mostrat pels proveïdors de vídeo."
+    },
+    "links": {
+      "discord": "Discord",
+      "dmca": "DMCA",
+      "github": "GitHub"
+    },
+    "tagline": "Mireu els vostres programes i pel·lícules preferits amb aquesta aplicació de codi obert de reproducció en temps real."
+  },
+  "global": {
+    "name": "movie-web",
+    "pages": {
+      "about": "Quant a",
+      "dmca": "DMCA",
+      "login": "Inicia sessió",
+      "pagetitle": "{{title}} - movie-web",
+      "register": "Registra",
+      "settings": "Configuració"
+    }
+  },
+  "home": {
+    "bookmarks": {
+      "sectionTitle": "Marcadors"
+    },
+    "continueWatching": {
+      "sectionTitle": "Continueu mirant"
+    },
+    "mediaList": {
+      "stopEditing": "Atura l'edició"
+    },
+    "search": {
+      "allResults": "Això és tot el que tenim!",
+      "failed": "No s'ha pogut trobar cap contingut, torneu-ho a provar!",
+      "loading": "S'està carregant…",
+      "noResults": "No hem pogut trobar res!",
+      "placeholder": "Què voleu mirar?",
+      "sectionTitle": "Resultats de la cerca"
+    },
+    "titles": {
+      "day": {
+        "default": "Què us agradaria mirar aquesta vesprada/tarda?",
+        "extra": [
+          "Voleu aventura? Jurassic Park podria ser l'elecció perfecta."
+        ]
+      },
+      "morning": {
+        "default": "Què us agradaria mirar aquest matí?",
+        "extra": [
+          "He sentit que «Abans de l'alba» és bona"
+        ]
+      },
+      "night": {
+        "default": "Què us agradaria mirar aquesta nit?",
+        "extra": [
+          "Esteu cansat? He sentit que «L'exorcista» és bona."
+        ]
+      }
+    }
+  },
+  "media": {
+    "episodeDisplay": "T{{season}} E{{episode}}",
+    "types": {
+      "movie": "Pel·lícula",
+      "show": "Sèrie/Programa"
+    }
+  },
+  "navigation": {
+    "banner": {
+      "offline": "Comproveu la connexió a internet"
+    },
+    "menu": {
+      "about": "Quant a nosaltres",
+      "donation": "Feu una donació",
+      "logout": "Tanca la sessió",
+      "register": "Sincronitza al núvol",
+      "settings": "Configuració",
+      "support": "Ajuda"
+    }
+  },
+  "notFound": {
+    "badge": "No s'ha trobat",
+    "goHome": "Torna a l'inici",
+    "message": "Hem mirat per tot arreu: davall de les papereres, a l'armari, darrere del servidor intermediari, però al remat no hem pogut trobar la pàgina que busqueu.",
+    "title": "No s'ha pogut trobar la pàgina"
+  },
+  "overlays": {
+    "close": "Tanca"
+  },
+  "player": {
+    "back": {
+      "default": "Torna a l'inici",
+      "short": "Torna"
+    },
+    "casting": {
+      "enabled": "S'està emetent al dispositiu…"
+    },
+    "menus": {
+      "downloads": {
+        "disclaimer": "Les baixades s'obtenen directament del proveïdor. movie-web no té control sobre com es proporcionen les baixades.",
+        "downloadPlaylist": "Baixa la llista de reproducció",
+        "downloadSubtitle": "Baixa els subtítols actuals",
+        "downloadVideo": "Baixa el vídeo",
+        "hlsDisclaimer": "Les baixades s'obtenen directament del proveïdor. movie-web no té control sobre com es proporcionen les baixades. Tingueu en compte que esteu baixant una llista de reproducció HLS, destinada als usuaris familiaritzats amb la transmissió multimèdia avançada.",
+        "onAndroid": {
+          "1": "Per a baixar-lo a Android, feu clic al botó de baixada i, a la pàgina nova, <bold>manteniu premut</bold> el vídeo i, a continuació, seleccioneu <bold>Desa</bold>.",
+          "shortTitle": "Baixa / Android",
+          "title": "Baixada a Android"
+        },
+        "onIos": {
+          "1": "Per a baixar a iOS, feu clic al botó de baixada i, a la pàgina nova, feu clic a <bold><ios_share /></bold> /> i, a continuació, <bold>Desa als Arxius <ios_files /></bold>.",
+          "shortTitle": "Baixa / iOS",
+          "title": "Baixada a iOS"
+        },
+        "onPc": {
+          "1": "En un PC, feu clic al botó de baixada i, a la pàgina nova, feu clic amb el botó dret al vídeo i seleccioneu <bold>Anomena i desa el vídeo</bold>",
+          "shortTitle": "Baixa / PC",
+          "title": "Baixada a un PC"
+        },
+        "title": "Baixa"
+      },
+      "episodes": {
+        "button": "Episodi",
+        "emptyState": "No hi ha episodis en aquesta temporada, torneu-ho a comprovar més tard!",
+        "episodeBadge": "E{{episode}}",
+        "loadingError": "Error en carregar la temporada",
+        "loadingList": "S'està carregant…",
+        "loadingTitle": "S'està carregant…",
+        "unairedEpisodes": "Un o més episodis d'aquesta temporada s'han desactivat perquè encara no s'han emés."
+      },
+      "playback": {
+        "speedLabel": "Velocitat de la reproducció",
+        "title": "Configuració de la reproducció"
+      },
+      "quality": {
+        "automaticLabel": "Qualitat automàtica",
+        "hint": "Podeu provar a <0>canviar la font</0> per a obtenir diferents opcions de qualitat.",
+        "iosNoQuality": "A causa de les limitacions definides per Apple, la selecció de qualitat no està disponible a iOS per a aquesta font. Podeu provar a <0>canviar a una altra font</0> per a obtenir diferents opcions de qualitat.",
+        "title": "Qualitat"
+      },
+      "settings": {
+        "downloadItem": "Baixa",
+        "enableSubtitles": "Activa els subtítols",
+        "experienceSection": "Experiència de visualització",
+        "playbackItem": "Configuració de la reproducció",
+        "qualityItem": "Qualitat",
+        "sourceItem": "Fonts de vídeo",
+        "subtitleItem": "Configuració dels subtítols",
+        "videoSection": "Configuració de vídeo"
+      },
+      "sources": {
+        "failed": {
+          "text": "S'ha produït un error en intentar trobar vídeos, proveu una font diferent.",
+          "title": "No s'ha pogut obtenir"
+        },
+        "noEmbeds": {
+          "text": "No hem pogut trobar cap incrustat, proveu una font diferent.",
+          "title": "No s'ha trobat cap incrustació"
+        },
+        "noStream": {
+          "text": "Aquesta font no té fluxos per a aquesta pel·lícula o programa.",
+          "title": "Cap flux"
+        },
+        "title": "Fonts",
+        "unknownOption": "Desconeguda"
+      },
+      "subtitles": {
+        "customChoice": "Selecciona un fitxer de subtítols",
+        "customizeLabel": "Personalitza",
+        "offChoice": "Desactivats",
+        "settings": {
+          "backlink": "Subtítols personalitzats",
+          "delay": "Retard dels subtítols",
+          "fixCapitals": "Corregeix les majúscules/minúscules"
+        },
+        "title": "Subtítols",
+        "unknownLanguage": "Desconeguda"
+      }
+    },
+    "metadata": {
+      "api": {
+        "text": "No s'han pogut carregar les metadades de l'API, comproveu la connexió a Internet.",
+        "title": "No s'han pogut carregar les metadades de l'API"
+      },
+      "failed": {
+        "badge": "Ha fallat",
+        "homeButton": "Vés a l'inici",
+        "text": "No s'han pogut carregar les metadades del contingut des de TMDB. Comproveu si TMDB no funciona o està bloquejat a la vostra connexió a Internet.",
+        "title": "Ha fallat la càrrega de les metadades"
+      },
+      "notFound": {
+        "badge": "No s'ha trobat",
+        "homeButton": "Torna a l'inici",
+        "text": "No hem pogut trobar el contingut sol·licitat. O bé s'ha eliminat o bé heu alterat l'URL.",
+        "title": "No s'ha trobat el contingut."
+      }
+    },
+    "nextEpisode": {
+      "cancel": "Cancel·la",
+      "next": "Episodi següent"
+    },
+    "playbackError": {
+      "badge": "Error en la reproducció",
+      "errors": {
+        "errorAborted": "S'ha interromput l'obtenció del contingut per petició de l'usuari.",
+        "errorDecode": "Tot i haver-se determinat prèviament que era utilitzable, s'ha produït un error en intentar descodificar el recurs multimèdia.",
+        "errorGenericMedia": "S'ha produït un error desconegut al contingut.",
+        "errorNetwork": "S'ha produït algun tipus d'error de xarxa que ha impedit que el contingut s'obtinga correctament, tot i haver estat disponibles prèviament.",
+        "errorNotSupported": "El contingut o el proveïdor del contingut no és compatible."
+      },
+      "homeButton": "Torna a l'inici",
+      "text": "S'ha produït un error en intentar reproduir el contingut. Torneu-ho a provar.",
+      "title": "No s'ha pogut reproduir el vídeo!"
+    },
+    "scraping": {
+      "items": {
+        "failure": "S'ha produït un error",
+        "notFound": "No té el vídeo",
+        "pending": "S'estan cercant vídeos…"
+      },
+      "notFound": {
+        "badge": "No s'ha trobat",
+        "detailsButton": "Mostra els detalls",
+        "homeButton": "Torna a l'inici",
+        "text": "Hem buscat a través dels nostres proveïdors i no trobem el contingut que busqueu! No allotgem contingut i no tenim control sobre què hi ha disponible. Feu clic a «Mostra els detalls» a continuació per a més informació.",
+        "title": "No s'ha pogut trobar"
+      }
+    },
+    "time": {
+      "regular": "{{timeWatched}} / {{duration}}",
+      "remaining": "{{timeLeft}} restants • Acaba a les {{timeFinished, datetime}}",
+      "shortRegular": "{{timeWatched}}",
+      "shortRemaining": "-{{timeLeft}}"
+    },
+    "turnstile": {
+      "description": "Verifiqueu que sou humà completant el Captcha de la dreta. Ho fem per a mantenir segura movie-web!",
+      "error": "No s'ha pogut verificar la humanitat. Torneu-ho a provar.",
+      "title": "Necessitem verificar que sou humà.",
+      "verifyingHumanity": "Verificant la vostra humanitat…"
+    }
+  },
+  "screens": {
+    "dmca": {
+      "text": "Us donem la benvinguda a la pàgina de contacte DMCA de movie-web! Respectem els drets de propietat intel·lectual i volem resoldre qualsevol problema de drets d'autor ràpidament. Si creieu que la vostra obra protegida per drets d'autor s'ha utilitzat incorrectament a la nostra plataforma, envieu un avís detallat de la DMCA al correu electrònic següent. Incloeu una descripció del material protegit per drets d'autor, les vostres dades de contacte i una declaració de creença de bona fe. Ens comprometem a resoldre aquests assumptes amb agilitat i agraïm la vostra col·laboració per a mantenir movie-web en un lloc que respecta la creativitat i els drets d'autor.",
+      "title": "DMCA"
+    },
+    "loadingApp": "S'està carregant l'aplicació",
+    "loadingUser": "S'està carregant el perfil",
+    "loadingUserError": {
+      "logout": "Tanca la sessió",
+      "reset": "Restableix el servidor personalitzat",
+      "text": "Ha fallat la càrrega del perfil",
+      "textWithReset": "Error en carregar el vostre perfil des del servidor personalitzat, voleu restablir el servidor per defecte?"
+    },
+    "migration": {
+      "failed": "La migració de les dades ha fallat.",
+      "inProgress": "Espereu, estem migrant les vostres dades. No hauria de tardar massa."
+    }
+  },
+  "settings": {
+    "account": {
+      "accountDetails": {
+        "deviceNameLabel": "Nom del dispositiu",
+        "deviceNamePlaceholder": "Telèfon personal",
+        "editProfile": "Edita",
+        "logoutButton": "Tanca la sessió"
+      },
+      "actions": {
+        "delete": {
+          "button": "Elimina el compte",
+          "confirmButton": "Elimina el compte",
+          "confirmDescription": "Segur que voleu eliminar el compte? Es perdran totes les dades!",
+          "confirmTitle": "Segur?",
+          "text": "Aquesta acció és irreversible. Totes les dades s'eliminaran i no es podrà recuperar res.",
+          "title": "Elimina el compte"
+        },
+        "title": "Accions"
+      },
+      "devices": {
+        "deviceNameLabel": "Nom del dispositiu",
+        "failed": "La càrrega de sessions ha fallat",
+        "removeDevice": "Elimina",
+        "title": "Dispositiu"
+      },
+      "profile": {
+        "finish": "Finalitza l'edició",
+        "firstColor": "Color de perfil 1",
+        "secondColor": "Color de perfil dos",
+        "title": "Edita la foto de perfil",
+        "userIcon": "Icona d'usuari"
+      },
+      "register": {
+        "cta": "Comença",
+        "text": "Compartiu el progrés de la visualització entre dispositius i manteniu-los sincronitzats.",
+        "title": "Sincronització amb el núvol"
+      },
+      "title": "Compte"
+    },
+    "appearance": {
+      "activeTheme": "Actiu",
+      "themes": {
+        "blue": "Blau",
+        "default": "Per defecte",
+        "gray": "Gris",
+        "red": "Vermell",
+        "teal": "Verd blavós"
+      },
+      "title": "Aparença"
+    },
+    "connections": {
+      "server": {
+        "description": "Si voleu connectar-vos a un rerefons personalitzat per a emmagatzemar les vostres dades, activeu-ho i proporcioneu l'URL.",
+        "label": "Servidor personalitzat",
+        "urlLabel": "URL del servidor personalitzat"
+      },
+      "title": "Connexions",
+      "workers": {
+        "addButton": "Afig un «worker»",
+        "description": "Per fer funcionar l'aplicació, tot el trànsit s'encamina a través de servidors intermediaris. Activeu-ho si voleu portar els vostres propis «workers».",
+        "emptyState": "Encara no hi ha «workers», afegiu-ne un a continuació",
+        "label": "Utilitza «workers» intermediaris personalitzats",
+        "urlLabel": "URL dels «workers»",
+        "urlPlaceholder": "https://"
+      }
+    },
+    "locale": {
+      "language": "Llengua de l'aplicació",
+      "languageDescription": "La llengua s'aplica a tota l'aplicació.",
+      "title": "Llengua"
+    },
+    "reset": "Restableix",
+    "save": "Desa",
+    "sidebar": {
+      "info": {
+        "appVersion": "Versió de l'aplicacií",
+        "backendUrl": "URL del rerefons",
+        "backendVersion": "Versió del rerefons",
+        "hostname": "Nom de l'amfitrió",
+        "insecure": "Insegur",
+        "notLoggedIn": "No heu iniciat sessió",
+        "secure": "Segur",
+        "title": "Informació de l'aplicació",
+        "unknownVersion": "Desconeguda",
+        "userId": "ID d'usuari"
+      }
+    },
+    "subtitles": {
+      "backgroundLabel": "Opacitat del fons",
+      "colorLabel": "Color",
+      "previewQuote": "No he de tenir por. La por és l'assassina de la ment.",
+      "textSizeLabel": "Grandària del text",
+      "title": "Subtítols"
+    },
+    "unsaved": "Hi ha canvis sense desar"
+  }
+}

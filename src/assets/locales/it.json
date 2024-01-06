@@ -206,7 +206,8 @@
         "episodeBadge": "E{{episode}}",
         "loadingError": "Errore nel caricare la stagione",
         "loadingList": "Caricamento...",
-        "loadingTitle": "Caricamento..."
+        "loadingTitle": "Caricamento...",
+        "unairedEpisodes": "Uno o più episodi di questa stagione sono stati disabilitati perché non sono ancora andati in onda."
       },
       "playback": {
         "speedLabel": "Velocità di riproduzione",
@@ -258,6 +259,10 @@
       }
     },
     "metadata": {
+      "api": {
+        "text": "Impossibile caricare metadati API, verifica la connessione internet.",
+        "title": "Impossibile caricare metadati API"
+      },
       "failed": {
         "badge": "Fallito",
         "homeButton": "Vai alla pagina iniziale",
@@ -307,6 +312,12 @@
       "remaining": "{{timeLeft}} rimasto • Finisce a {{timeFinished, datetime}}",
       "shortRegular": "{{timeWatched}}",
       "shortRemaining": "-{{timeLeft}}"
+    },
+    "turnstile": {
+      "description": "Verifica che siate umani completando il Captcha sulla destra. Questo serve a mantenere movie-web sicuro!",
+      "error": "Impossibile verificare il proprio umanità. Riprova.",
+      "title": "Dobbiamo verificare che lei sia umano.",
+      "verifyingHumanity": "verificare il proprio umanità..."
     }
   },
   "screens": {

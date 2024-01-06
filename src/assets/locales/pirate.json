@@ -112,7 +112,7 @@
     },
     "search": {
       "allResults": "That's all we have, me heartie!",
-      "failed": "Failed to find media, try again!",
+      "failed": "Arrrr failed to find media, try again!",
       "loading": "Hold yer horses, me heartie!",
       "noResults": "We couldn't find anythin', arrr!",
       "placeholder": "What do ye want to watch?",
