@@ -138,8 +138,7 @@ export function CaptionsView({ id }: { id: string }) {
     return (
       <CaptionOption
         // key must use index to prevent url collisions
-        // eslint-disable-next-line react/no-array-index-key
-        key={`${i}-${v.url}`}
+        key={v.id}
         countryCode={v.language}
         selected={v.id === selectedCaptionId}
         loading={v.id === currentlyDownloading && downloadReq.loading}
