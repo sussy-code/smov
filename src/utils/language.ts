@@ -5,19 +5,11 @@ const languageOrder = ["en", "hi", "fr", "de", "nl", "pt"];
 
 // mapping of language code to country code.
 // multiple mappings can exist, since languages are spoken in multiple countries.
-// This mapping purely exists to prioritize a country over another in languages.
+// This mapping purely exists to prioritize a country over another in languages where the
+// base language code does not contain a region (i.e. if the language code is zh-Hant where Hant is a script)
 // iso639_1 -> iso3166 Alpha-2
 const countryPriority: Record<string, string> = {
-  en: "us",
-  nl: "nl",
-  fr: "fr",
-  de: "de",
-  pt: "pt",
-  ar: "sa",
-  es: "es",
   zh: "cn",
-  ko: "kr",
-  ta: "lk",
 };
 
 // list of iso639_1 Alpha-2 codes used as default languages
@@ -89,7 +81,7 @@ function populateLanguageCode(language: string): string {
 }
 
 /**
- * @param locale idk what kinda code this takes, anytihhng in ietf format I guess
+ * @param locale idk what kinda code this takes, anything in ietf format I guess
  * @returns pretty format for language, null if it no info can be found for language
  */
 export function getPrettyLanguageNameFromLocale(locale: string): string | null {
@@ -105,12 +97,12 @@ export function getPrettyLanguageNameFromLocale(locale: string): string | null {
 }
 
 /**
- * Sort locale codes by occurance, rest on alphabetical order
+ * Sort locale codes by occurrence, rest on alphabetical order
  * @param langCodes list language codes to sort
  * @returns sorted version of inputted list
  */
 export function sortLangCodes(langCodes: string[]) {
-  const languagesOrder = [...languageOrder].reverse(); // Reverse is neccesary, not sure why
+  const languagesOrder = [...languageOrder].reverse(); // Reverse is necessary, not sure why
 
   const results = langCodes.sort((a, b) => {
     const langOrderA = languagesOrder.findIndex(
@@ -137,20 +129,34 @@ export function getCountryCodeForLocale(locale: string): string | null {
   const tag = getTag(locale, true);
 
   if (!tag?.language?.Subtag) return null;
-  // this function isnt async, so its garuanteed to work like this
+  // this function isn't async, so its guaranteed to work like this
   countryLanguages.getLanguage(tag.language.Subtag, (_err, lang) => {
     if (lang) output = lang;
   });
+
   if (!output) return null;
   const priority = countryPriority[output.iso639_1.toLowerCase()];
   if (output.countries.length === 0) {
     return priority ?? null;
   }
+
+  // If the language contains a region, check that against the countries and
+  // return the region if it matches
+  const regionSubtag = tag?.region?.Subtag.toLowerCase();
+  if (regionSubtag) {
+    const regionCode = output.countries.find(
+      (c) =>
+        c.code_2.toLowerCase() === regionSubtag ||
+        c.code_3.toLowerCase() === regionSubtag,
+    );
+    if (regionCode) return regionCode.code_2.toLowerCase();
+  }
+
   if (priority) {
-    const priotizedCountry = output.countries.find(
+    const prioritizedCountry = output.countries.find(
       (v) => v.code_2.toLowerCase() === priority,
     );
-    if (priotizedCountry) return priotizedCountry.code_2.toLowerCase();
+    if (prioritizedCountry) return prioritizedCountry.code_2.toLowerCase();
   }
   return output.countries[0].code_2.toLowerCase();
 }
