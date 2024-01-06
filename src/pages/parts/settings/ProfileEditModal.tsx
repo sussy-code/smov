@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 
+import { Avatar } from "@/components/Avatar";
 import { Button } from "@/components/buttons/Button";
 import { ColorPicker } from "@/components/form/ColorPicker";
 import { IconPicker } from "@/components/form/IconPicker";
@@ -24,9 +25,20 @@ export function ProfileEditModal(props: ProfileEditModalProps) {
   return (
     <Modal id={props.id}>
       <ModalCard>
-        <Heading2 className="!mt-0">
-          {t("settings.account.profile.title")}
-        </Heading2>
+        <div className="flex justify-between items-center mb-9">
+          <Heading2 className="!mt-0 !mb-0">
+            {t("settings.account.profile.title")}
+          </Heading2>
+          <Avatar
+            profile={{
+              colorA: props.colorA,
+              colorB: props.colorB,
+              icon: props.userIcon,
+            }}
+            iconClass="text-2xl"
+            sizeClass="w-12 h-12"
+          />
+        </div>
         <div className="space-y-6">
           <ColorPicker
             label={t("settings.account.profile.firstColor")}
