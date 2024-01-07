@@ -35,7 +35,7 @@
       "description": "Veuillez fournir votre passphrase pour accéder à votre compte",
       "deviceLengthError": "Veuillez saisir un nom d'appareil",
       "passphraseLabel": "Passphrase de 12 mots",
-      "passphrasePlaceholder": "Passphrase",
+      "passphrasePlaceholder": "Phrase secrète",
       "submit": "Se connecter",
       "title": "Se connecter à votre compte",
       "validationError": "Passphrase incorrecte ou incomplete"
