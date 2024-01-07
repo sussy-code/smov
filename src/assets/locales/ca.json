@@ -413,7 +413,7 @@
     "save": "Desa",
     "sidebar": {
       "info": {
-        "appVersion": "Versió de l'aplicacií",
+        "appVersion": "Versió de l'aplicació",
         "backendUrl": "URL del rerefons",
         "backendVersion": "Versió del rerefons",
         "hostname": "Nom de l'amfitrió",
