@@ -206,7 +206,8 @@
         "episodeBadge": "E{{episode}}",
         "loadingError": "सिजन लोड गर्दा त्रुटि भयो",
         "loadingList": "लोड गर्दै...",
-        "loadingTitle": "लोड गर्दै..."
+        "loadingTitle": "लोड गर्दै...",
+        "unairedEpisodes": "यस सिजनका एक वा बढी एपिसोडहरू अझै प्रसारण नभएकाले असक्षम पारिएका छन्।"
       },
       "playback": {
         "speedLabel": "प्लेब्याकको गति",
@@ -258,6 +259,10 @@
       }
     },
     "metadata": {
+      "api": {
+        "text": "API मेटाडेटा लोड गर्न सकिएन, कृपया आफ्नो इन्टरनेट जडान जाँच गर्नुहोस्।",
+        "title": "API मेटाडेटा लोड गर्न असफल भयो"
+      },
       "failed": {
         "badge": "असफल",
         "homeButton": "होम् जाउँ",
@@ -307,6 +312,12 @@
       "remaining": "{{timeLeft}} बाकी • {{timeFinished, datetime}} मा सक्किनेछ",
       "shortRegular": "{{timeWatched}}",
       "shortRemaining": "-{{timeLeft}}"
+    },
+    "turnstile": {
+      "description": "कृपया दायाँपट्टि Captch पूरा गरेर तपाईं मानव हुनुहुन्छ भनी प्रमाणित गर्नुहोस्। यो movie-web लाई सुरक्षित राख्न को लागी हो!",
+      "error": "तपाईंको मानवता प्रमाणित गर्न असफल भयौ। फेरि प्रयास गर्नुहोस।",
+      "title": "हामीले तपाईं मानव हुनुहुन्छ भनेर प्रमाणित गर्न आवश्यक छ।",
+      "verifyingHumanity": "तपाईंको मानवता प्रमाणित हुदैछ..."
     }
   },
   "screens": {

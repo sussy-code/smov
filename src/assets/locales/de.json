@@ -259,6 +259,10 @@
       }
     },
     "metadata": {
+      "api": {
+        "text": "API Metadaten konnten nicht geladen werden, überprüfe deine Netzwerkverbindung.",
+        "title": "API Metadaten konnten nicht geladen werden"
+      },
       "failed": {
         "badge": "Fehlgeschlagen",
         "homeButton": "Zurück zur Startseite",
@@ -308,6 +312,12 @@
       "remaining": "{{timeLeft}} übrig • Fertig um {{timeFinished, datetime}}",
       "shortRegular": "{{timeWatched}}",
       "shortRemaining": "-{{timeLeft}}"
+    },
+    "turnstile": {
+      "description": "Bitte verifiziere deine Menschlichkeit mit dem Captcha auf der Rechten Seite. Dies ist um movie-web sicher zu halten!",
+      "error": "Menschlichkeit konnte nicht verifiziert werden. Bitte versuche es erneut.",
+      "title": "Wir müssen sicherstellen, dass du Menschlich bist.",
+      "verifyingHumanity": "Verifiziere deine Menschlichkeit..."
     }
   },
   "screens": {
