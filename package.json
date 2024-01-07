@@ -70,6 +70,7 @@
     "@babel/core": "^7.23.6",
     "@babel/preset-env": "^7.23.6",
     "@babel/preset-typescript": "^7.23.3",
+    "@rollup/wasm-node": "^4.9.4",
     "@types/chromecast-caf-sender": "^1.0.8",
     "@types/crypto-js": "^4.2.1",
     "@types/dompurify": "^3.0.5",
@@ -125,7 +126,8 @@
       "get-func-name@<2.0.1": ">=2.0.1",
       "postcss@<8.4.31": ">=8.4.31",
       "@babel/traverse@<7.23.2": ">=7.23.2",
-      "crypto-js@<4.2.0": ">=4.2.0"
+      "crypto-js@<4.2.0": ">=4.2.0",
+      "rollup": "npm:@rollup/wasm-node"
     }
   }
 }
