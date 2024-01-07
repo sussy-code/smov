@@ -206,7 +206,8 @@
         "episodeBadge": "B{{episode}}",
         "loadingError": "Sezon yüklenirken hata oluştu",
         "loadingList": "Yükleniyor...",
-        "loadingTitle": "Yükleniyor..."
+        "loadingTitle": "Yükleniyor...",
+        "unairedEpisodes": "Bu sezondaki bir veya daha fazla bölüm henüz yayınlanmadığı için devre dışı bırakılmıştır."
       },
       "playback": {
         "speedLabel": "Oynatma hızı",
@@ -246,7 +247,7 @@
       },
       "subtitles": {
         "customChoice": "Altyazı dosyası yükle",
-        "customizeLabel": "Kişiselleştir",
+        "customizeLabel": "Seçenekler",
         "offChoice": "Kapat",
         "settings": {
           "backlink": "Kişisel altyazılar",
@@ -258,6 +259,10 @@
       }
     },
     "metadata": {
+      "api": {
+        "text": "API üstverisi yüklenemedi, lütfen internet bağlantınızı kontrol edin.",
+        "title": "API üstverisi yüklenemedi"
+      },
       "failed": {
         "badge": "Başarısız oldu",
         "homeButton": "Ana sayfaya dön",
@@ -307,6 +312,12 @@
       "remaining": "{{timeLeft}} kaldı • {{timeFinished, datetime}}'de bitiyor",
       "shortRegular": "{{timeWatched}}",
       "shortRemaining": "-{{timeLeft}}"
+    },
+    "turnstile": {
+      "description": "Lütfen sağ taraftaki Captcha'yı çözerek insan olduğunuzu doğrulayın. Bu, movie-web'i güvende tutmak içindir!",
+      "error": "İnsan olduğunuz doğrulanamadı. Lütfen tekrar deneyin.",
+      "title": "İnsan olduğunuzu doğrulamamız gerekiyor.",
+      "verifyingHumanity": "İnsan olduğunuz doğrulanıyor..."
     }
   },
   "screens": {
