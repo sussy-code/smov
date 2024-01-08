@@ -79,11 +79,22 @@
   },
   "footer": {
     "legal": {
+      "disclaimer": "Tuyên bố miễn trừ trách nhiệm",
       "disclaimerText": "movie-web không lưu trữ bất kì file nào, nó chỉ đến những đường dẫn của các dịch vụ bên thứ ba. Bất kỳ vấn đề nào về pháp lý nên được đưa đến chủ sỡ hữu của file hoặc những nhà cung cấp đó. movie-web hoàn toàn không chịu trách nhiệm cho bất kỳ nội dung nào được chiếu từ các nhà cung cấp."
-    }
+    },
+    "links": {
+      "discord": "Discord",
+      "dmca": "DMCA",
+      "github": "GitHub"
+    },
+    "tagline": "Xem các chương trình và phim yêu thích của bạn với ứng dụng phát trực tuyến nguồn mở này."
   },
   "global": {
-    "name": "movie-web"
+    "name": "movie-web",
+    "pages": {
+      "pagetitle": "{{title}} - movie-web",
+      "register": "Đăng ký"
+    }
   },
   "home": {
     "bookmarks": {
