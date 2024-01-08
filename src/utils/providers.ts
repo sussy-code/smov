@@ -62,5 +62,7 @@ function makeLoadBalancedSimpleProxyFetcher() {
 export const providers = makeProviders({
   fetcher: makeStandardFetcher(fetch),
   proxiedFetcher: makeLoadBalancedSimpleProxyFetcher(),
-  target: targets.BROWSER,
+  // TODO: Add check whether the extension is installed
+  // target: targets.BROWSER,
+  target: targets.BROWSER_EXTENSION,
 }) as any as ProviderControls;
