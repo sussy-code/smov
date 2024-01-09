@@ -57,9 +57,7 @@ export function makeExtensionFetcher() {
   const fetcher: Fetcher = async (url, ops) => {
     return sendExtensionRequest({
       url,
-      method: ops?.method ?? "GET",
-      headers: ops?.headers,
-      body: ops?.body,
+      ...ops,
     }) as any;
   };
   return fetcher;
