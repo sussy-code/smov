@@ -1,8 +1,6 @@
-import { sendToBackgroundViaRelay } from "@plasmohq/messaging";
 import fscreen from "fscreen";
 import Hls, { Level } from "hls.js";
 
-import { PlasmoRequestBody, PlasmoResponseBody } from "@/@types/plasmo";
 import {
   DisplayInterface,
   DisplayInterfaceEvents,
@@ -43,6 +41,7 @@ function qualityToHlsLevel(quality: SourceQuality): number | null {
   );
   return found ? +found[0] : null;
 }
+
 function hlsLevelsToQualities(levels: Level[]): SourceQuality[] {
   return levels
     .map((v) => hlsLevelToQuality(v))
@@ -103,74 +102,65 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
 
   function setupSource(vid: HTMLVideoElement, src: LoadableSource) {
     // TODO: Add check whether the extension is installed
-    sendToBackgroundViaRelay<PlasmoRequestBody, PlasmoResponseBody>({
-      name: "declarative-net-request",
-      body: {
-        ruleId: 1,
-        domain: src.type === "hls" ? new URL(src.url).hostname : src.url,
-        requestHeaders: src.preferredHeaders,
-      },
-    }).then(() => {
-      if (src.type === "hls") {
-        if (canPlayHlsNatively(vid)) {
-          vid.src = processCdnLink(src.url);
-          vid.currentTime = startAt;
-          return;
-        }
-
-        if (!Hls.isSupported()) throw new Error("HLS not supported");
-        if (!hls) {
-          hls = new Hls({
-            maxBufferSize: 500 * 1000 * 1000, // 500 mb of buffering, should load more fragments at once
-            fragLoadPolicy: {
-              default: {
-                maxLoadTimeMs: 30 * 1000, // allow it load extra long, fragments are slow if requested for the first time on an origin
-                maxTimeToFirstByteMs: 30 * 1000,
-                errorRetry: {
-                  maxNumRetry: 2,
-                  retryDelayMs: 1000,
-                  maxRetryDelayMs: 8000,
-                },
-                timeoutRetry: {
-                  maxNumRetry: 3,
-                  maxRetryDelayMs: 0,
-                  retryDelayMs: 0,
-                },
-              },
-            },
-          });
-          hls.on(Hls.Events.ERROR, (event, data) => {
-            console.error("HLS error", data);
-            if (data.fatal) {
-              emit("error", {
-                message: data.error.message,
-                stackTrace: data.error.stack,
-                errorName: data.error.name,
-                type: "hls",
-              });
-            }
-          });
-          hls.on(Hls.Events.MANIFEST_LOADED, () => {
-            if (!hls) return;
-            reportLevels();
-            setupQualityForHls();
-          });
-          hls.on(Hls.Events.LEVEL_SWITCHED, () => {
-            if (!hls) return;
-            const quality = hlsLevelToQuality(hls.levels[hls.currentLevel]);
-            emit("changedquality", quality);
-          });
-        }
-
-        hls.attachMedia(vid);
-        hls.loadSource(processCdnLink(src.url));
+    if (src.type === "hls") {
+      if (canPlayHlsNatively(vid)) {
+        vid.src = processCdnLink(src.url);
         vid.currentTime = startAt;
         return;
       }
 
-      vid.src = processCdnLink(src.url);
+      if (!Hls.isSupported()) throw new Error("HLS not supported");
+      if (!hls) {
+        hls = new Hls({
+          maxBufferSize: 500 * 1000 * 1000, // 500 mb of buffering, should load more fragments at once
+          fragLoadPolicy: {
+            default: {
+              maxLoadTimeMs: 30 * 1000, // allow it load extra long, fragments are slow if requested for the first time on an origin
+              maxTimeToFirstByteMs: 30 * 1000,
+              errorRetry: {
+                maxNumRetry: 2,
+                retryDelayMs: 1000,
+                maxRetryDelayMs: 8000,
+              },
+              timeoutRetry: {
+                maxNumRetry: 3,
+                maxRetryDelayMs: 0,
+                retryDelayMs: 0,
+              },
+            },
+          },
+        });
+        hls.on(Hls.Events.ERROR, (event, data) => {
+          console.error("HLS error", data);
+          if (data.fatal) {
+            emit("error", {
+              message: data.error.message,
+              stackTrace: data.error.stack,
+              errorName: data.error.name,
+              type: "hls",
+            });
+          }
+        });
+        hls.on(Hls.Events.MANIFEST_LOADED, () => {
+          if (!hls) return;
+          reportLevels();
+          setupQualityForHls();
+        });
+        hls.on(Hls.Events.LEVEL_SWITCHED, () => {
+          if (!hls) return;
+          const quality = hlsLevelToQuality(hls.levels[hls.currentLevel]);
+          emit("changedquality", quality);
+        });
+      }
+
+      hls.attachMedia(vid);
+      hls.loadSource(processCdnLink(src.url));
       vid.currentTime = startAt;
-    });
+      return;
+    }
+
+    vid.src = processCdnLink(src.url);
+    vid.currentTime = startAt;
   }
 
   function setSource() {

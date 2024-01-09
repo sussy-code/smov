@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useAsync } from "react-use";
 import type { AsyncReturnType } from "type-fest";
 
+import { isExtensionActive } from "@/backend/extension/messaging";
 import {
   fetchMetadata,
   setCachedMetadata,
@@ -10,6 +11,8 @@ import {
 import { DetailedMeta, getMetaFromId } from "@/backend/metadata/getmeta";
 import { decodeTMDBId } from "@/backend/metadata/tmdb";
 import { MWMediaType } from "@/backend/metadata/types/mw";
+import { getLoadbalancedProviderApiUrl } from "@/backend/providers/fetchers";
+import { getProviders } from "@/backend/providers/providers";
 import { Button } from "@/components/buttons/Button";
 import { Icons } from "@/components/Icon";
 import { IconPill } from "@/components/layout/IconPill";
@@ -18,7 +21,6 @@ import { Paragraph } from "@/components/text/Paragraph";
 import { Title } from "@/components/text/Title";
 import { ErrorContainer, ErrorLayout } from "@/pages/layouts/ErrorLayout";
 import { conf } from "@/setup/config";
-import { getLoadbalancedProviderApiUrl, providers } from "@/utils/providers";
 
 export interface MetaPartProps {
   onGetMeta?: (meta: DetailedMeta, episodeId?: string) => void;
@@ -41,8 +43,12 @@ export function MetaPart(props: MetaPartProps) {
   const navigate = useNavigate();
 
   const { error, value, loading } = useAsync(async () => {
+    // check extension
+    const isActive = await isExtensionActive();
+
+    // use api metadata or providers metadata
     const providerApiUrl = getLoadbalancedProviderApiUrl();
-    if (providerApiUrl) {
+    if (providerApiUrl && !isActive) {
       try {
         await fetchMetadata(providerApiUrl);
       } catch (err) {
@@ -50,11 +56,12 @@ export function MetaPart(props: MetaPartProps) {
       }
     } else {
       setCachedMetadata([
-        ...providers.listSources(),
-        ...providers.listEmbeds(),
+        ...getProviders().listSources(),
+        ...getProviders().listEmbeds(),
       ]);
     }
 
+    // get media meta data
     let data: ReturnType<typeof decodeTMDBId> = null;
     try {
       if (!params.media) throw new Error("no media params");

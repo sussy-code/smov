@@ -1,12 +1,6 @@
-import {
-  Fetcher,
-  ProviderControls,
-  makeProviders,
-  makeSimpleProxyFetcher,
-  makeStandardFetcher,
-  targets,
-} from "@movie-web/providers";
+import { Fetcher, makeSimpleProxyFetcher } from "@movie-web/providers";
 
+import { sendExtensionRequest } from "@/backend/extension/messaging";
 import { getApiToken, setApiToken } from "@/backend/helpers/providerApi";
 import { getProviderApiUrls, getProxyUrls } from "@/utils/proxyUrls";
 
@@ -48,7 +42,7 @@ async function fetchButWithApiTokens(
   return response;
 }
 
-function makeLoadBalancedSimpleProxyFetcher() {
+export function makeLoadBalancedSimpleProxyFetcher() {
   const fetcher: Fetcher = async (a, b) => {
     const currentFetcher = makeSimpleProxyFetcher(
       getLoadbalancedProxyUrl(),
@@ -59,10 +53,9 @@ function makeLoadBalancedSimpleProxyFetcher() {
   return fetcher;
 }
 
-export const providers = makeProviders({
-  fetcher: makeStandardFetcher(fetch),
-  proxiedFetcher: makeLoadBalancedSimpleProxyFetcher(),
-  // TODO: Add check whether the extension is installed
-  // target: targets.BROWSER,
-  target: targets.BROWSER_EXTENSION,
-}) as any as ProviderControls;
+export function makeExtensionFetcher() {
+  const fetcher: Fetcher = async (a, b) => {
+    return sendExtensionRequest(a, b) as any;
+  };
+  return fetcher;
+}

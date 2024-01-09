@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-types */
-import "@plasmohq/messaging";
-
 export interface PlasmoRequestBody {
   ruleId: number;
   domain: string;
@@ -8,7 +5,11 @@ export interface PlasmoRequestBody {
   responseHeaders?: Record<string, string>;
 }
 
-export type PlasmoResponseBody =
+export interface ExtensionHelloReply {
+  version: string;
+}
+
+export type ExtensionRequestReply =
   | {
       success: true;
       ruleId: number;
@@ -21,11 +22,15 @@ export type PlasmoResponseBody =
 interface MmMetadata {
   "declarative-net-request": {
     req: PlasmoRequestBody;
-    res: PlasmoResponseBody;
+    res: ExtensionRequestReply;
   };
   "proxy-request": {
     req: PlasmoRequestBody;
-    res: PlasmoResponseBody;
+    res: ExtensionRequestReply;
+  };
+  hello: {
+    req: null;
+    res: ExtensionHelloReply;
   };
 }
 

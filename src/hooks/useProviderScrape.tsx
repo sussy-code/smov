@@ -10,7 +10,8 @@ import {
   getCachedMetadata,
   makeProviderUrl,
 } from "@/backend/helpers/providerApi";
-import { getLoadbalancedProviderApiUrl, providers } from "@/utils/providers";
+import { getLoadbalancedProviderApiUrl } from "@/backend/providers/fetchers";
+import { getProviders } from "@/backend/providers/providers";
 
 export interface ScrapingItems {
   id: string;
@@ -172,8 +173,8 @@ export function useScrape() {
         return getResult(sseOutput === "" ? null : sseOutput);
       }
 
-      if (!providers) return null;
       startScrape();
+      const providers = getProviders();
       const output = await providers.runAll({
         media,
         events: {
