@@ -35,7 +35,7 @@ export function useCaptions() {
     async (language: string) => {
       const caption = captionList.find((v) => v.language === language);
       if (!caption) return;
-      selectCaptionById(caption.id);
+      return selectCaptionById(caption.id);
     },
     [captionList, selectCaptionById],
   );
