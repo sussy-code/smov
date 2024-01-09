@@ -20,11 +20,11 @@ export type ExtensionRequestReply =
     };
 
 interface MmMetadata {
-  "declarative-net-request": {
+  "prepare-stream": {
     req: PlasmoRequestBody;
     res: ExtensionRequestReply;
   };
-  "proxy-request": {
+  "make-request": {
     req: PlasmoRequestBody;
     res: ExtensionRequestReply;
   };

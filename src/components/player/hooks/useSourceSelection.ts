@@ -5,6 +5,7 @@ import {
 } from "@movie-web/providers";
 import { useAsyncFn } from "react-use";
 
+import { prepareStream } from "@/backend/extension/streams";
 import {
   connectServerSideEvents,
   makeProviderUrl,
@@ -131,6 +132,7 @@ export function useSourceScraping(sourceId: string | null, routerId: string) {
     ]);
 
     if (result.stream) {
+      await prepareStream(result.stream[0]);
       setCaption(null);
       setSource(
         convertRunoutputToSource({ stream: result.stream[0] }),
@@ -187,6 +189,7 @@ export function useSourceScraping(sourceId: string | null, routerId: string) {
       ]);
       setSourceId(sourceId);
       setCaption(null);
+      await prepareStream(embedResult.stream[0]);
       setSource(
         convertRunoutputToSource({ stream: embedResult.stream[0] }),
         convertProviderCaption(embedResult.stream[0].captions),

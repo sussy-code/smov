@@ -3,6 +3,8 @@ import {
   sendToBackgroundViaRelay,
 } from "@plasmohq/messaging";
 
+import { isAllowedExtensionVersion } from "@/backend/extension/compatibility";
+
 let activeExtension = false;
 
 export interface ExtensionHello {
@@ -35,7 +37,14 @@ export async function sendExtensionRequest(
   url: string,
   ops: any,
 ): Promise<ExtensionHello | null> {
-  return sendMessage("proxy-request", { url, ...ops });
+  return sendMessage("make-request", { url, ...ops });
+}
+
+export async function setDomainRule(
+  domains: string[],
+  headers: Record<string, string>,
+): Promise<ExtensionHello | null> {
+  return sendMessage("prepare-stream", { domains, headers });
 }
 
 export async function extensionInfo(): Promise<ExtensionHello | null> {
@@ -47,5 +56,9 @@ export function isExtensionActiveCached(): boolean {
 }
 
 export async function isExtensionActive(): Promise<boolean> {
-  return !!(await extensionInfo());
+  const info = await extensionInfo();
+  if (!info) return false;
+  const allowedVersion = isAllowedExtensionVersion(info.version);
+  if (!allowedVersion) return false;
+  return true;
 }

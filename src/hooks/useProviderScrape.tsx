@@ -5,6 +5,7 @@ import {
 } from "@movie-web/providers";
 import { RefObject, useCallback, useEffect, useRef, useState } from "react";
 
+import { prepareStream } from "@/backend/extension/streams";
 import {
   connectServerSideEvents,
   getCachedMetadata,
@@ -169,6 +170,7 @@ export function useScrape() {
         conn.on("update", updateEvent);
         conn.on("discoverEmbeds", discoverEmbedsEvent);
         const sseOutput = await conn.promise();
+        if (sseOutput) await prepareStream(sseOutput.stream);
 
         return getResult(sseOutput === "" ? null : sseOutput);
       }
@@ -184,6 +186,7 @@ export function useScrape() {
           discoverEmbeds: discoverEmbedsEvent,
         },
       });
+      if (output) await prepareStream(output.stream);
       return getResult(output);
     },
     [
