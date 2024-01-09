@@ -7,18 +7,17 @@ import { isAllowedExtensionVersion } from "@/backend/extension/compatibility";
 
 let activeExtension = false;
 
-export interface ExtensionHello {
-  version: string;
-}
-
-function sendMessage<T, Payload>(
-  message: keyof MessagesMetadata,
-  payload: any,
+function sendMessage<MessageKey extends keyof MessagesMetadata>(
+  message: MessageKey,
+  payload: MessagesMetadata[MessageKey]["req"],
   timeout: number = -1,
 ) {
-  return new Promise<T | null>((resolve) => {
+  return new Promise<MessagesMetadata[MessageKey]["res"] | null>((resolve) => {
     if (timeout >= 0) setTimeout(() => resolve(null), timeout);
-    sendToBackgroundViaRelay<Payload, T>({
+    sendToBackgroundViaRelay<
+      MessagesMetadata[MessageKey]["req"],
+      MessagesMetadata[MessageKey]["res"]
+    >({
       name: message,
       body: payload,
     })
@@ -34,21 +33,33 @@ function sendMessage<T, Payload>(
 }
 
 export async function sendExtensionRequest(
-  url: string,
-  ops: any,
-): Promise<ExtensionHello | null> {
-  return sendMessage("make-request", { url, ...ops });
+  ops: Omit<MessagesMetadata["makeRequest"]["req"], "requestDomain">,
+): Promise<MessagesMetadata["makeRequest"]["res"] | null> {
+  return sendMessage("makeRequest", {
+    requestDomain: window.location.origin,
+    ...ops,
+  });
 }
 
 export async function setDomainRule(
-  domains: string[],
-  headers: Record<string, string>,
-): Promise<ExtensionHello | null> {
-  return sendMessage("prepare-stream", { domains, headers });
+  ops: Omit<MessagesMetadata["prepareStream"]["req"], "requestDomain">,
+): Promise<MessagesMetadata["prepareStream"]["res"] | null> {
+  return sendMessage("prepareStream", {
+    requestDomain: window.location.origin,
+    ...ops,
+  });
 }
 
-export async function extensionInfo(): Promise<ExtensionHello | null> {
-  return sendMessage("hello", null, 300);
+export async function extensionInfo(): Promise<
+  MessagesMetadata["hello"]["res"] | null
+> {
+  return sendMessage(
+    "hello",
+    {
+      requestDomain: window.location.origin,
+    },
+    300,
+  );
 }
 
 export function isExtensionActiveCached(): boolean {
@@ -57,7 +68,7 @@ export function isExtensionActiveCached(): boolean {
 
 export async function isExtensionActive(): Promise<boolean> {
   const info = await extensionInfo();
-  if (!info) return false;
+  if (!info?.success) return false;
   const allowedVersion = isAllowedExtensionVersion(info.version);
   if (!allowedVersion) return false;
   return true;

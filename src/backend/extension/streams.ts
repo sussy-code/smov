@@ -33,8 +33,9 @@ function buildHeadersFromStream(stream: Stream): Record<string, string> {
 }
 
 export async function prepareStream(stream: Stream) {
-  await setDomainRule(
-    extractDomainsFromStream(stream),
-    buildHeadersFromStream(stream),
-  );
+  await setDomainRule({
+    ruleId: 1,
+    targetDomains: extractDomainsFromStream(stream),
+    requestHeaders: buildHeadersFromStream(stream),
+  });
 }

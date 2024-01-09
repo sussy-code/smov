@@ -1,6 +1,37 @@
-export interface PlasmoRequestBody {
+export interface ExtensionBaseRequest {
+  requestDomain: string;
+}
+
+export type ExtensionBaseResponse<T = object> =
+  | ({
+      success: true;
+    } & T)
+  | {
+      success: false;
+      error: string;
+    };
+
+export type ExtensionHelloResponse = ExtensionBaseResponse<{
+  version: string;
+}>;
+
+export interface ExtensionMakeRequest extends ExtensionBaseRequest {
+  url: string;
+  method: string;
+  headers?: Record<string, string>;
+  body?: string | FormData | URLSearchParams | Record<string, any>;
+}
+
+export type ExtensionMakeRequestResponse = ExtensionBaseResponse<{
+  status: number;
+  requestHeaders: Record<string, string>;
+  responseHeaders: Record<string, string>;
+  data: string | Record<string, unknown>;
+}>;
+
+export interface ExtensionPrepareStreamRequest extends ExtensionBaseRequest {
   ruleId: number;
-  domain: string;
+  targetDomains: string[];
   requestHeaders?: Record<string, string>;
   responseHeaders?: Record<string, string>;
 }
@@ -9,28 +40,18 @@ export interface ExtensionHelloReply {
   version: string;
 }
 
-export type ExtensionRequestReply =
-  | {
-      success: true;
-      ruleId: number;
-    }
-  | {
-      success: false;
-      error: string;
-    };
-
-interface MmMetadata {
-  "prepare-stream": {
-    req: PlasmoRequestBody;
-    res: ExtensionRequestReply;
-  };
-  "make-request": {
-    req: PlasmoRequestBody;
-    res: ExtensionRequestReply;
-  };
+export interface MmMetadata {
   hello: {
-    req: null;
-    res: ExtensionHelloReply;
+    req: ExtensionBaseRequest;
+    res: ExtensionHelloResponse;
+  };
+  makeRequest: {
+    req: ExtensionMakeRequest;
+    res: ExtensionMakeRequestResponse;
+  };
+  prepareStream: {
+    req: ExtensionPrepareStreamRequest;
+    res: ExtensionBaseResponse;
   };
 }
 

@@ -54,8 +54,13 @@ export function makeLoadBalancedSimpleProxyFetcher() {
 }
 
 export function makeExtensionFetcher() {
-  const fetcher: Fetcher = async (a, b) => {
-    return sendExtensionRequest(a, b) as any;
+  const fetcher: Fetcher = async (url, ops) => {
+    return sendExtensionRequest({
+      url,
+      method: ops?.method ?? "GET",
+      headers: ops?.headers,
+      body: ops?.body,
+    }) as any;
   };
   return fetcher;
 }
