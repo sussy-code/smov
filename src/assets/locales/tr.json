@@ -74,7 +74,7 @@
     "badge": "Bir şeyler ters gitti",
     "details": "Hata detayları",
     "reloadPage": "Sayfayı yenile",
-    "showError": "Hata detaylarını göster",
+    "showError": "Hata ayrıntılarını göster",
     "title": "Bir hatayla karşılaştık!"
   },
   "footer": {
@@ -301,7 +301,7 @@
       },
       "notFound": {
         "badge": "Bulunamadı",
-        "detailsButton": "Detayları göster",
+        "detailsButton": "Ayrıntıları göster",
         "homeButton": "Ana sayfaya git",
         "text": "Sağlayıcılarımız arasında arama yaptık ve aradığınız medyayı bulamadık! Medyaları barındırmıyoruz ve mevcut olanlar üzerinde hiçbir kontrolümüz yok. Daha fazla ayrıntı için lütfen aşağıdaki 'Ayrıntıları göster' seçeneğine tıklayın.",
         "title": "Bunu bulamadık"
@@ -428,7 +428,7 @@
     "subtitles": {
       "backgroundLabel": "Arka plan opaklığı",
       "colorLabel": "Renk",
-      "previewQuote": "Korkmamalıyım. Korku akıl katilidir.",
+      "previewQuote": "Korkmamalıyım. Korku aklın katilidir.",
       "textSizeLabel": "Yazı boyutu",
       "title": "Altyazılar"
     },
