@@ -72,6 +72,7 @@ export function useEmbedScraping(
     report([
       scrapeSourceOutputToProviderMetric(meta, sourceId, null, "success", null),
     ]);
+    await prepareStream(result.stream[0]);
     setSourceId(sourceId);
     setCaption(null);
     setSource(
