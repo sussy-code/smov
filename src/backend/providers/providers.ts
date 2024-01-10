@@ -15,6 +15,7 @@ export function getProviders() {
     return makeProviders({
       fetcher: makeExtensionFetcher(),
       target: targets.BROWSER_EXTENSION,
+      consistentIpForRequests: true,
     });
   }
 

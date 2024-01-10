@@ -13,6 +13,7 @@ export type ExtensionBaseResponse<T = object> =
 
 export type ExtensionHelloResponse = ExtensionBaseResponse<{
   version: string;
+  allowed: boolean;
 }>;
 
 export interface ExtensionMakeRequest extends ExtensionBaseRequest {
@@ -36,10 +37,6 @@ export interface ExtensionPrepareStreamRequest extends ExtensionBaseRequest {
   targetDomains: string[];
   requestHeaders?: Record<string, string>;
   responseHeaders?: Record<string, string>;
-}
-
-export interface ExtensionHelloReply {
-  version: string;
 }
 
 export interface MmMetadata {

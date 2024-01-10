@@ -37,7 +37,7 @@ export async function sendExtensionRequest<T>(
   ops: Omit<MessagesMetadata["makeRequest"]["req"], "requestDomain">,
 ): Promise<ExtensionMakeRequestResponse<T> | null> {
   return sendMessage("makeRequest", {
-    requestDomain: window.location.origin,
+    requestDomain: window.location.origin, // TODO unsafe
     ...ops,
   });
 }
@@ -54,13 +54,16 @@ export async function setDomainRule(
 export async function extensionInfo(): Promise<
   MessagesMetadata["hello"]["res"] | null
 > {
-  return sendMessage(
+  const message = await sendMessage(
     "hello",
     {
       requestDomain: window.location.origin,
     },
     300,
   );
+  if (!message?.success) return null;
+  if (!message.allowed) return null;
+  return message;
 }
 
 export function isExtensionActiveCached(): boolean {
