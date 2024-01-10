@@ -54,7 +54,9 @@ function ProxyEdit({ proxyUrls, setProxyUrls }: ProxyEditProps) {
           </p>
           <p className="max-w-[20rem] font-medium">
             <Trans i18nKey="settings.connections.workers.description">
-              <MwLink to="https://google.com">Google</MwLink>
+              <MwLink to="https://docs.movie-web.app/proxy/deploy">
+                Proxy documentation
+              </MwLink>
             </Trans>
           </p>
         </div>
@@ -122,7 +124,9 @@ function BackendEdit({ backendUrl, setBackendUrl }: BackendEditProps) {
           </p>
           <p className="max-w-[20rem] font-medium">
             <Trans i18nKey="settings.connections.server.description">
-              <MwLink to="https://google.com">Google</MwLink>
+              <MwLink to="https://docs.movie-web.app/backend/deploy">
+                Backend documentation
+              </MwLink>
             </Trans>
           </p>
         </div>
