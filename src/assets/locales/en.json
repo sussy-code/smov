@@ -393,14 +393,14 @@
     },
     "connections": {
       "server": {
-        "description": "If you would like to connect to a custom backend to store your data, enable this and provide the URL.",
+        "description": "If you would like to connect to a custom backend to store your data, enable this and provide the URL. <0>Instructions.</0>",
         "label": "Custom server",
         "urlLabel": "Custom server URL"
       },
       "title": "Connections",
       "workers": {
         "addButton": "Add new worker",
-        "description": "To make the application function, all traffic is routed through proxies. Enable this if you want to bring your own workers.",
+        "description": "To make the application function, all traffic is routed through proxies. Enable this if you want to bring your own workers. <0>Instructions.</0>",
         "emptyState": "No workers yet, add one below",
         "label": "Use custom proxy workers",
         "urlLabel": "Worker URLs",
