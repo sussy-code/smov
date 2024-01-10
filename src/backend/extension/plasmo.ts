@@ -22,11 +22,13 @@ export interface ExtensionMakeRequest extends ExtensionBaseRequest {
   body?: string | FormData | URLSearchParams | Record<string, any>;
 }
 
-export type ExtensionMakeRequestResponse = ExtensionBaseResponse<{
-  status: number;
-  requestHeaders: Record<string, string>;
-  responseHeaders: Record<string, string>;
-  data: string | Record<string, unknown>;
+export type ExtensionMakeRequestResponse<T> = ExtensionBaseResponse<{
+  response: {
+    statusCode: number;
+    headers: Record<string, string>;
+    finalUrl: string;
+    body: T;
+  };
 }>;
 
 export interface ExtensionPrepareStreamRequest extends ExtensionBaseRequest {
@@ -47,7 +49,7 @@ export interface MmMetadata {
   };
   makeRequest: {
     req: ExtensionMakeRequest;
-    res: ExtensionMakeRequestResponse;
+    res: ExtensionMakeRequestResponse<any>;
   };
   prepareStream: {
     req: ExtensionPrepareStreamRequest;

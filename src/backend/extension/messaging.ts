@@ -4,6 +4,7 @@ import {
 } from "@plasmohq/messaging";
 
 import { isAllowedExtensionVersion } from "@/backend/extension/compatibility";
+import { ExtensionMakeRequestResponse } from "@/backend/extension/plasmo";
 
 let activeExtension = false;
 
@@ -32,9 +33,9 @@ function sendMessage<MessageKey extends keyof MessagesMetadata>(
   });
 }
 
-export async function sendExtensionRequest(
+export async function sendExtensionRequest<T>(
   ops: Omit<MessagesMetadata["makeRequest"]["req"], "requestDomain">,
-): Promise<MessagesMetadata["makeRequest"]["res"] | null> {
+): Promise<ExtensionMakeRequestResponse<T> | null> {
   return sendMessage("makeRequest", {
     requestDomain: window.location.origin,
     ...ops,

@@ -53,12 +53,32 @@ export function makeLoadBalancedSimpleProxyFetcher() {
   return fetcher;
 }
 
+function makeFinalHeaders(
+  readHeaders: string[],
+  headers: Record<string, string>,
+): Headers {
+  const lowercasedHeaders = readHeaders.map((v) => v.toLowerCase());
+  return new Headers(
+    Object.entries(headers).filter((entry) =>
+      lowercasedHeaders.includes(entry[0].toLowerCase()),
+    ),
+  );
+}
+
 export function makeExtensionFetcher() {
   const fetcher: Fetcher = async (url, ops) => {
-    return sendExtensionRequest({
+    const result = await sendExtensionRequest<any>({
       url,
       ...ops,
-    }) as any;
+    });
+    if (!result?.success) throw new Error(`extension error: ${result?.error}`);
+    const res = result.response;
+    return {
+      body: res.body,
+      finalUrl: res.finalUrl,
+      statusCode: res.statusCode,
+      headers: makeFinalHeaders(ops.readHeaders, res.headers),
+    };
   };
   return fetcher;
 }
