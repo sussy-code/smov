@@ -1,6 +1,4 @@
-export interface ExtensionBaseRequest {
-  requestDomain: string;
-}
+export interface ExtensionBaseRequest {}
 
 export type ExtensionBaseResponse<T = object> =
   | ({

@@ -36,31 +36,19 @@ function sendMessage<MessageKey extends keyof MessagesMetadata>(
 export async function sendExtensionRequest<T>(
   ops: Omit<MessagesMetadata["makeRequest"]["req"], "requestDomain">,
 ): Promise<ExtensionMakeRequestResponse<T> | null> {
-  return sendMessage("makeRequest", {
-    requestDomain: window.location.origin, // TODO unsafe
-    ...ops,
-  });
+  return sendMessage("makeRequest", ops);
 }
 
 export async function setDomainRule(
   ops: Omit<MessagesMetadata["prepareStream"]["req"], "requestDomain">,
 ): Promise<MessagesMetadata["prepareStream"]["res"] | null> {
-  return sendMessage("prepareStream", {
-    requestDomain: window.location.origin,
-    ...ops,
-  });
+  return sendMessage("prepareStream", ops);
 }
 
 export async function extensionInfo(): Promise<
   MessagesMetadata["hello"]["res"] | null
 > {
-  const message = await sendMessage(
-    "hello",
-    {
-      requestDomain: window.location.origin,
-    },
-    300,
-  );
+  const message = await sendMessage("hello", {}, 300);
   if (!message?.success) return null;
   if (!message.allowed) return null;
   return message;
