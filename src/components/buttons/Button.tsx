@@ -41,7 +41,7 @@ export function Button(props: Props) {
     props.padding ?? "px-4 py-3",
     props.className,
     colorClasses,
-    props.disabled ? "cursor-not-allowed bg-opacity-60 text-opacity-60" : null,
+    props.disabled ? "!cursor-not-allowed bg-opacity-60 text-opacity-60" : null,
   );
 
   if (props.disabled)

@@ -5,7 +5,6 @@ import { Avatar } from "@/components/Avatar";
 import { Button } from "@/components/buttons/Button";
 import { ColorPicker, initialColor } from "@/components/form/ColorPicker";
 import { IconPicker, initialIcon } from "@/components/form/IconPicker";
-import { Icon, Icons } from "@/components/Icon";
 import {
   LargeCard,
   LargeCardButtons,
