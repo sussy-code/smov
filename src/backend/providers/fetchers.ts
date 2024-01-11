@@ -1,8 +1,10 @@
 import { Fetcher, makeSimpleProxyFetcher } from "@movie-web/providers";
 
-import { sendExtensionRequest } from "@/backend/extension/messaging";
+import { setDomainRule } from "@/backend/extension/messaging";
 import { getApiToken, setApiToken } from "@/backend/helpers/providerApi";
 import { getProviderApiUrls, getProxyUrls } from "@/utils/proxyUrls";
+
+import { makeFullUrl } from "./utils";
 
 function makeLoadbalancedList(getter: () => string[]) {
   let listIndex = -1;
@@ -67,17 +69,31 @@ function makeFinalHeaders(
 
 export function makeExtensionFetcher() {
   const fetcher: Fetcher = async (url, ops) => {
-    const result = await sendExtensionRequest<any>({
-      url,
-      ...ops,
+    const fullUrl = makeFullUrl(url, ops);
+    const res = await setDomainRule({
+      ruleId: 1,
+      targetDomains: [fullUrl],
+      requestHeaders: ops.headers,
     });
-    if (!result?.success) throw new Error(`extension error: ${result?.error}`);
-    const res = result.response;
+    console.log(res, fullUrl);
+    const response = await fetch(fullUrl, {
+      method: ops.method,
+      headers: ops.headers,
+      body: ops.body as any,
+    });
+    const contentType = response.headers.get("content-type");
+    const body = contentType?.includes("application/json")
+      ? await response.json()
+      : await response.text();
+
     return {
-      body: res.body,
-      finalUrl: res.finalUrl,
-      statusCode: res.statusCode,
-      headers: makeFinalHeaders(ops.readHeaders, res.headers),
+      body,
+      finalUrl: response.url,
+      statusCode: response.status,
+      headers: makeFinalHeaders(
+        ops.readHeaders,
+        Object.fromEntries(response.headers.entries()),
+      ),
     };
   };
   return fetcher;
