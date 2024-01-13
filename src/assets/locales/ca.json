@@ -18,7 +18,7 @@
   },
   "actions": {
     "copied": "S'ha copiat",
-    "copy": "Cipia"
+    "copy": "Copia"
   },
   "auth": {
     "createAccount": "Encara no teniu un compte? <0>Creeu un compte.</0>",
@@ -108,7 +108,7 @@
       "sectionTitle": "Continueu mirant"
     },
     "mediaList": {
-      "stopEditing": "Atura l'edició"
+      "stopEditing": "Deixa d'editar"
     },
     "search": {
       "allResults": "Això és tot el que tenim!",
