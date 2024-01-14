@@ -34,15 +34,21 @@ function sendMessage<MessageKey extends keyof MessagesMetadata>(
 }
 
 export async function sendExtensionRequest<T>(
-  ops: Omit<MessagesMetadata["makeRequest"]["req"], "requestDomain">,
+  ops: MessagesMetadata["makeRequest"]["req"],
 ): Promise<ExtensionMakeRequestResponse<T> | null> {
   return sendMessage("makeRequest", ops);
 }
 
 export async function setDomainRule(
-  ops: Omit<MessagesMetadata["prepareStream"]["req"], "requestDomain">,
+  ops: MessagesMetadata["prepareStream"]["req"],
 ): Promise<MessagesMetadata["prepareStream"]["res"] | null> {
   return sendMessage("prepareStream", ops);
+}
+
+export async function sendPage(
+  ops: MessagesMetadata["openPage"]["req"],
+): Promise<MessagesMetadata["openPage"]["res"] | null> {
+  return sendMessage("openPage", ops);
 }
 
 export async function extensionInfo(): Promise<

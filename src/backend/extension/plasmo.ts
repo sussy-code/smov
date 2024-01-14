@@ -12,6 +12,7 @@ export type ExtensionBaseResponse<T = object> =
 export type ExtensionHelloResponse = ExtensionBaseResponse<{
   version: string;
   allowed: boolean;
+  hasPermission: boolean;
 }>;
 
 export interface ExtensionMakeRequest extends ExtensionBaseRequest {
@@ -48,6 +49,13 @@ export interface MmMetadata {
   };
   prepareStream: {
     req: ExtensionPrepareStreamRequest;
+    res: ExtensionBaseResponse;
+  };
+  openPage: {
+    req: ExtensionBaseRequest & {
+      page: string;
+      redirectUrl: string;
+    };
     res: ExtensionBaseResponse;
   };
 }

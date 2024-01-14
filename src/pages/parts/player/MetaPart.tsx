@@ -3,7 +3,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useAsync } from "react-use";
 import type { AsyncReturnType } from "type-fest";
 
-import { isExtensionActive } from "@/backend/extension/messaging";
+import { isAllowedExtensionVersion } from "@/backend/extension/compatibility";
+import { extensionInfo, sendPage } from "@/backend/extension/messaging";
 import {
   fetchMetadata,
   setCachedMetadata,
@@ -43,12 +44,16 @@ export function MetaPart(props: MetaPartProps) {
   const navigate = useNavigate();
 
   const { error, value, loading } = useAsync(async () => {
-    // check extension
-    const isActive = await isExtensionActive();
+    const info = await extensionInfo();
+    const isAllowed = info?.success && isAllowedExtensionVersion(info.version);
+
+    if (isAllowed) {
+      if (!info.hasPermission) throw new Error("extension-no-permission");
+    }
 
     // use api metadata or providers metadata
     const providerApiUrl = getLoadbalancedProviderApiUrl();
-    if (providerApiUrl && !isActive) {
+    if (providerApiUrl && !isAllowed) {
       try {
         await fetchMetadata(providerApiUrl);
       } catch (err) {
@@ -104,6 +109,36 @@ export function MetaPart(props: MetaPartProps) {
 
     props.onGetMeta?.(meta, epId);
   }, []);
+
+  if (error && error.message === "extension-no-permission") {
+    return (
+      <ErrorLayout>
+        <ErrorContainer>
+          <IconPill icon={Icons.WAND}>
+            {t("player.metadata.failed.badge")}
+          </IconPill>
+          <Title>Configure the extension</Title>
+          <Paragraph>
+            You have the browser extension, but we need your permission to get
+            started using the extension.
+          </Paragraph>
+          <Button
+            onClick={() => {
+              sendPage({
+                page: "PermissionGrant",
+                redirectUrl: window.location.href,
+              });
+            }}
+            theme="purple"
+            padding="md:px-12 p-2.5"
+            className="mt-6"
+          >
+            Use extension
+          </Button>
+        </ErrorContainer>
+      </ErrorLayout>
+    );
+  }
 
   if (error && error.message === "dmca") {
     return (
