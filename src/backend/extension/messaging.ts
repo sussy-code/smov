@@ -10,7 +10,7 @@ let activeExtension = false;
 
 function sendMessage<MessageKey extends keyof MessagesMetadata>(
   message: MessageKey,
-  payload: MessagesMetadata[MessageKey]["req"],
+  payload: MessagesMetadata[MessageKey]["req"] | undefined = undefined,
   timeout: number = -1,
 ) {
   return new Promise<MessagesMetadata[MessageKey]["res"] | null>((resolve) => {
@@ -54,9 +54,7 @@ export async function sendPage(
 export async function extensionInfo(): Promise<
   MessagesMetadata["hello"]["res"] | null
 > {
-  const message = await sendMessage("hello", {}, 300);
-  if (!message?.success) return null;
-  if (!message.allowed) return null;
+  const message = await sendMessage("hello", undefined, 300);
   return message;
 }
 

@@ -45,15 +45,17 @@ export function MetaPart(props: MetaPartProps) {
 
   const { error, value, loading } = useAsync(async () => {
     const info = await extensionInfo();
-    const isAllowed = info?.success && isAllowedExtensionVersion(info.version);
+    const isValidExtension =
+      info?.success && isAllowedExtensionVersion(info.version);
 
-    if (isAllowed) {
-      if (!info.hasPermission) throw new Error("extension-no-permission");
+    if (isValidExtension) {
+      if (!info.allowed || !info.hasPermission)
+        throw new Error("extension-no-permission");
     }
 
     // use api metadata or providers metadata
     const providerApiUrl = getLoadbalancedProviderApiUrl();
-    if (providerApiUrl && !isAllowed) {
+    if (providerApiUrl && !isValidExtension) {
       try {
         await fetchMetadata(providerApiUrl);
       } catch (err) {
