@@ -1,10 +1,11 @@
 import { Dispatch, SetStateAction, useCallback } from "react";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 
 import { Button } from "@/components/buttons/Button";
 import { Toggle } from "@/components/buttons/Toggle";
 import { Icon, Icons } from "@/components/Icon";
 import { SettingsCard } from "@/components/layout/SettingsCard";
+import { MwLink } from "@/components/text/Link";
 import { AuthInputBox } from "@/components/text-inputs/AuthInputBox";
 import { Divider } from "@/components/utils/Divider";
 import { Heading1 } from "@/components/utils/Text";
@@ -52,7 +53,11 @@ function ProxyEdit({ proxyUrls, setProxyUrls }: ProxyEditProps) {
             {t("settings.connections.workers.label")}
           </p>
           <p className="max-w-[20rem] font-medium">
-            {t("settings.connections.workers.description")}
+            <Trans i18nKey="settings.connections.workers.description">
+              <MwLink to="https://docs.movie-web.app/proxy/deploy">
+                Proxy documentation
+              </MwLink>
+            </Trans>
           </p>
         </div>
         <div>
@@ -118,7 +123,11 @@ function BackendEdit({ backendUrl, setBackendUrl }: BackendEditProps) {
             {t("settings.connections.server.label")}
           </p>
           <p className="max-w-[20rem] font-medium">
-            {t("settings.connections.server.description")}
+            <Trans i18nKey="settings.connections.server.description">
+              <MwLink to="https://docs.movie-web.app/backend/deploy">
+                Backend documentation
+              </MwLink>
+            </Trans>
           </p>
         </div>
         <div>
