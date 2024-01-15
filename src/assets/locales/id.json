@@ -206,7 +206,8 @@
         "episodeBadge": "E{{episode}}",
         "loadingError": "Eror memuat season",
         "loadingList": "Memuat...",
-        "loadingTitle": "Memuat..."
+        "loadingTitle": "Memuat...",
+        "unairedEpisodes": ""
       },
       "playback": {
         "speedLabel": "Kecepatan pemutar",
@@ -258,6 +259,10 @@
       }
     },
     "metadata": {
+      "api": {
+        "text": "",
+        "title": ""
+      },
       "failed": {
         "badge": "Gagal",
         "homeButton": "Kembali",
@@ -307,6 +312,12 @@
       "remaining": "{{timeLeft}} tersisa • Selesai pada pukul {{timeFinished, datetime}}",
       "shortRegular": "{{timeWatched}}",
       "shortRemaining": "-{{timeLeft}}"
+    },
+    "turnstile": {
+      "description": "",
+      "error": "",
+      "title": "",
+      "verifyingHumanity": ""
     }
   },
   "screens": {
