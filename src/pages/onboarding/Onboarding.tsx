@@ -12,7 +12,7 @@ import { PageTitle } from "@/pages/parts/util/PageTitle";
 export function OnboardingPage() {
   const navigate = useNavigate();
   const skipModal = useModal("skip");
-  const { skipAndRedirect } = useRedirectBack();
+  const { completeAndRedirect } = useRedirectBack();
 
   return (
     <MinimalPageLayout>
@@ -25,7 +25,7 @@ export function OnboardingPage() {
             <Button theme="secondary" onClick={skipModal.hide}>
               Lorem ipsum
             </Button>
-            <Button theme="danger" onClick={() => skipAndRedirect()}>
+            <Button theme="danger" onClick={() => completeAndRedirect()}>
               Lorem ipsum
             </Button>
           </ModalCard>

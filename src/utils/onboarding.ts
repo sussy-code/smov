@@ -15,9 +15,9 @@ export async function needsOnboarding(): Promise<boolean> {
   const proxyUrls = useAuthStore.getState().proxySet;
   if (proxyUrls) return false;
 
-  // if onboarding has been skipped, no onboarding needed
-  const skipped = useOnboardingStore.getState().skipped;
-  if (skipped) return false;
+  // if onboarding has been completed, no onboarding needed
+  const completed = useOnboardingStore.getState().completed;
+  if (completed) return false;
 
   return true;
 }

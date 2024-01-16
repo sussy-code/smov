@@ -3,17 +3,17 @@ import { persist } from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";
 
 export interface OnboardingStore {
-  skipped: boolean;
-  setSkipped(v: boolean): void;
+  completed: boolean;
+  setCompleted(v: boolean): void;
 }
 
 export const useOnboardingStore = create(
   persist(
     immer<OnboardingStore>((set) => ({
-      skipped: false,
-      setSkipped(v) {
+      completed: false,
+      setCompleted(v) {
         set((s) => {
-          s.skipped = v;
+          s.completed = v;
         });
       },
     })),

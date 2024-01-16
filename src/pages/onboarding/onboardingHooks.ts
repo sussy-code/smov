@@ -7,16 +7,16 @@ import { useOnboardingStore } from "@/stores/onboarding";
 export function useRedirectBack() {
   const [url] = useQueryParam("redirect");
   const navigate = useNavigate();
-  const setSkipped = useOnboardingStore((s) => s.setSkipped);
+  const setCompleted = useOnboardingStore((s) => s.setCompleted);
 
   const redirectBack = useCallback(() => {
     navigate(url ?? "/");
   }, [navigate, url]);
 
-  const skipAndRedirect = useCallback(() => {
-    setSkipped(true);
+  const completeAndRedirect = useCallback(() => {
+    setCompleted(true);
     redirectBack();
-  }, [redirectBack, setSkipped]);
+  }, [redirectBack, setCompleted]);
 
-  return { redirectBack, skipAndRedirect };
+  return { completeAndRedirect };
 }
