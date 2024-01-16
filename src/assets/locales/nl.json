@@ -390,7 +390,7 @@
     },
     "connections": {
       "server": {
-        "description": "Als je verbinding wilt maken met een eigen backend om je gegevens op te slaan, schakel dan deze optie in en geef de URL op.",
+        "description": "Als je verbinding wilt maken met een eigen backend om je gegevens op te slaan, schakel dan deze optie in en geef de URL op. <0>Instructies.</0>",
         "label": "Eigen server",
         "urlLabel": "Eigen server URL"
       },
