@@ -390,7 +390,7 @@
     },
     "connections": {
       "server": {
-        "description": "Se si desideri connettersi a un backend personalizzato per memorizzare i dati, attivare questo e fornire l'URL.",
+        "description": "Se si desideri connettersi a un backend personalizzato per memorizzare i dati, attivare questo e fornire l'URL. <0>Instructions.</0>",
         "label": "Server personalizzato",
         "urlLabel": "URL del server personalizzato"
       },
