@@ -397,7 +397,7 @@
       "title": "Verbindingen",
       "workers": {
         "addButton": "Nieuwe worker toevoegen",
-        "description": "Om de applicatie te laten werken, wordt al het verkeer omgeleid via proxies. Schakel dit in als je je eigen workers wilt gebruiken.",
+        "description": "Om de applicatie te laten werken, wordt al het verkeer omgeleid via proxies. Schakel dit in als je je eigen workers wilt gebruiken. <0>Instructies.</0>",
         "emptyState": "Nog geen workers, voeg er hieronder een toe",
         "label": "Eigen proxy werker gebruiken",
         "urlLabel": "Worker URLs",
