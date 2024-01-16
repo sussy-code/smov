@@ -390,14 +390,14 @@
     },
     "connections": {
       "server": {
-        "description": "Se si desideri connettersi a un backend personalizzato per memorizzare i dati, attivare questo e fornire l'URL. <0>Instructions.</0>",
+        "description": "Se si desideri connettersi a un backend personalizzato per memorizzare i dati, attivare questo e fornire l'URL. <0>Istruzioni.</0>",
         "label": "Server personalizzato",
         "urlLabel": "URL del server personalizzato"
       },
       "title": "Connessioni",
       "workers": {
         "addButton": "Aggiungere un nuovo lavoratore",
-        "description": "Per far funzionare l'applicazione, tutto il traffico viene instradato attraverso i proxy. Abilitare questa opzione se si desidera portare i propri lavoratori.",
+        "description": "Per far funzionare l'applicazione, tutto il traffico viene instradato attraverso i proxy. Abilitare questa opzione se si desidera portare i propri lavoratori. <0>Istruzioni.</0>",
         "emptyState": "Non ci sono ancora lavoratori, aggiungetene uno sotto",
         "label": "Utilizzare proxy worker personalizzati",
         "urlLabel": "URL dei lavoratori",
