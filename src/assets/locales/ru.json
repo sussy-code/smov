@@ -180,6 +180,8 @@
         "unknownOption": "Неизвестный"
       },
       "subtitles": {
+        "customChoice": "Выбрать субтитры из файла",
+        "offChoice": "Выключить",
         "settings": {
           "backlink": "Пользовательские субтитры"
         },
