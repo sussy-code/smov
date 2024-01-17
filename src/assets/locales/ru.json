@@ -202,8 +202,12 @@
     },
     "scraping": {
       "notFound": {
-        "detailsButton": "Показать детали"
+        "detailsButton": "Показать детали",
+        "title": "Мы не смогли найти"
       }
+    },
+    "time": {
+      "regular": "{{timeWatched}} / {{duration}}"
     }
   },
   "screens": {
