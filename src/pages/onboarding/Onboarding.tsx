@@ -70,7 +70,7 @@ export function OnboardingPage() {
           <Card onClick={() => navigate("/onboarding/extension")}>
             <CardContent
               colorClass="!text-onboarding-best"
-              title="Browser extension — best quality"
+              title="Browser extension"
               subtitle="Best quality"
               description="Install browser extension and gain access to the best sources."
             >
@@ -84,7 +84,7 @@ export function OnboardingPage() {
           <a
             onClick={skipModal.show}
             type="button"
-            className="text-onboarding-link cursor-pointer"
+            className="text-onboarding-link hover:opacity-75 cursor-pointer"
           >
             use the default setup
           </a>

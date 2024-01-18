@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { ReactNode } from "react";
 
 import { Icon, Icons } from "@/components/Icon";
 import { Heading2, Heading3, Paragraph } from "@/components/utils/Text";
@@ -18,9 +19,9 @@ export function Card(props: {
 }
 
 export function CardContent(props: {
-  title: string;
-  description: string;
-  subtitle: string;
+  title: ReactNode;
+  description: ReactNode;
+  subtitle: ReactNode;
   colorClass: string;
   children?: React.ReactNode;
 }) {
@@ -51,9 +52,12 @@ export function CardContent(props: {
 
 export function Link(props: { children: React.ReactNode }) {
   return (
-    <a className="text-onboarding-link cursor-pointer flex gap-2 items-center">
+    <a className="text-onboarding-link cursor-pointer flex gap-2 items-center group hover:opacity-75 transition-opacity">
       {props.children}
-      <Icon icon={Icons.ARROW_RIGHT} />
+      <Icon
+        icon={Icons.ARROW_RIGHT}
+        className="group-hover:translate-x-0.5 transition-transform text-xl group-active:translate-x-0"
+      />
     </a>
   );
 }
