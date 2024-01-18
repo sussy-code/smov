@@ -5,6 +5,7 @@ import {
 } from "@movie-web/providers";
 import { RefObject, useCallback, useEffect, useRef, useState } from "react";
 
+import { isExtensionActiveCached } from "@/backend/extension/messaging";
 import { prepareStream } from "@/backend/extension/streams";
 import {
   connectServerSideEvents,
@@ -186,7 +187,8 @@ export function useScrape() {
           discoverEmbeds: discoverEmbedsEvent,
         },
       });
-      if (output) await prepareStream(output.stream);
+      if (output && isExtensionActiveCached())
+        await prepareStream(output.stream);
       return getResult(output);
     },
     [
