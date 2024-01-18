@@ -228,8 +228,22 @@ export const defaultTheme = {
         }
       },
 
+      // Utilities
       utils: {
         divider: tokens.ash.c300,
+      },
+
+      // Onboarding
+      onboarding: {
+        bar: tokens.shade.c400,
+        barFilled: tokens.purple.c300,
+        divider: tokens.shade.c200,
+        card: tokens.shade.c800,
+        cardHover: tokens.shade.c700,
+        border: tokens.shade.c600,
+        good: tokens.purple.c100,
+        best: tokens.semantic.yellow.c100,
+        link: tokens.purple.c100,
       },
 
       // Error page

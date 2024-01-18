@@ -12,9 +12,9 @@ export function Stepper(props: StepperProps) {
       <p className="mb-2">
         {props.current}/{props.steps}
       </p>
-      <div className="max-w-full h-1 w-32 bg-white rounded-full overflow-hidden">
+      <div className="max-w-full h-1 w-32 bg-onboarding-bar rounded-full overflow-hidden">
         <div
-          className="h-full bg-blue-500 transition-[width] rounded-full"
+          className="h-full bg-onboarding-barFilled transition-[width] rounded-full"
           style={{
             width: `${percentage.toFixed(0)}%`,
           }}

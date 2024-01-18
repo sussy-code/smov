@@ -26,7 +26,7 @@ export function CenterContainer(props: ThinContainerProps) {
         props.classNames,
       )}
     >
-      <div className="w-[600px] max-w-full">{props.children}</div>
+      <div className="w-[700px] max-w-full">{props.children}</div>
     </div>
   );
 }
