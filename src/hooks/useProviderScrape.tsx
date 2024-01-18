@@ -171,7 +171,8 @@ export function useScrape() {
         conn.on("update", updateEvent);
         conn.on("discoverEmbeds", discoverEmbedsEvent);
         const sseOutput = await conn.promise();
-        if (sseOutput) await prepareStream(sseOutput.stream);
+        if (sseOutput && isExtensionActiveCached())
+          await prepareStream(sseOutput.stream);
 
         return getResult(sseOutput === "" ? null : sseOutput);
       }

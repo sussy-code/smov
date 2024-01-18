@@ -11,7 +11,6 @@ import { VideoClickTarget } from "@/components/player/internals/VideoClickTarget
 import { VideoContainer } from "@/components/player/internals/VideoContainer";
 import { PlayerHoverState } from "@/stores/player/slices/interface";
 import { usePlayerStore } from "@/stores/player/store";
-import { usePreferencesStore } from "@/stores/preferences";
 
 export interface PlayerProps {
   children?: ReactNode;
@@ -79,7 +78,6 @@ function BaseContainer(props: { children?: ReactNode }) {
 
 export function Container(props: PlayerProps) {
   const propRef = useRef(props.onLoad);
-  const enableThumbnails = usePreferencesStore((s) => s.enableThumbnails);
   useEffect(() => {
     propRef.current?.();
   }, []);
@@ -88,7 +86,7 @@ export function Container(props: PlayerProps) {
     <div className="relative">
       <BaseContainer>
         <MetaReporter />
-        {enableThumbnails ? <ThumbnailScraper /> : null}
+        <ThumbnailScraper />
         <CastingInternal />
         <VideoContainer />
         <ProgressSaver />

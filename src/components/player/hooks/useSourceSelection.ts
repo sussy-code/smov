@@ -5,6 +5,7 @@ import {
 } from "@movie-web/providers";
 import { useAsyncFn } from "react-use";
 
+import { isExtensionActiveCached } from "@/backend/extension/messaging";
 import { prepareStream } from "@/backend/extension/streams";
 import {
   connectServerSideEvents,
@@ -72,7 +73,7 @@ export function useEmbedScraping(
     report([
       scrapeSourceOutputToProviderMetric(meta, sourceId, null, "success", null),
     ]);
-    await prepareStream(result.stream[0]);
+    if (isExtensionActiveCached()) await prepareStream(result.stream[0]);
     setSourceId(sourceId);
     setCaption(null);
     setSource(
@@ -133,7 +134,7 @@ export function useSourceScraping(sourceId: string | null, routerId: string) {
     ]);
 
     if (result.stream) {
-      await prepareStream(result.stream[0]);
+      if (isExtensionActiveCached()) await prepareStream(result.stream[0]);
       setCaption(null);
       setSource(
         convertRunoutputToSource({ stream: result.stream[0] }),
@@ -190,7 +191,7 @@ export function useSourceScraping(sourceId: string | null, routerId: string) {
       ]);
       setSourceId(sourceId);
       setCaption(null);
-      await prepareStream(embedResult.stream[0]);
+      if (isExtensionActiveCached()) await prepareStream(embedResult.stream[0]);
       setSource(
         convertRunoutputToSource({ stream: embedResult.stream[0] }),
         convertProviderCaption(embedResult.stream[0].captions),
