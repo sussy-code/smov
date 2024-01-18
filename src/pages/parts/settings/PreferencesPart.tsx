@@ -6,9 +6,11 @@ import { Heading1 } from "@/components/utils/Text";
 import { appLanguageOptions } from "@/setup/i18n";
 import { getLocaleInfo, sortLangCodes } from "@/utils/language";
 
-export function LocalePart(props: {
+export function PreferencesPart(props: {
   language: string;
   setLanguage: (l: string) => void;
+  enableThumbnails: boolean;
+  setEnableThumbnails: (v: boolean) => void;
 }) {
   const { t } = useTranslation();
   const sorted = sortLangCodes(appLanguageOptions.map((item) => item.code));
@@ -39,6 +41,9 @@ export function LocalePart(props: {
         selectedItem={selected || options[0]}
         setSelectedItem={(opt) => props.setLanguage(opt.id)}
       />
+      <p onClick={() => props.setEnableThumbnails(!props.enableThumbnails)}>
+        thumbnails: {props.enableThumbnails.toString()}
+      </p>
     </div>
   );
 }
