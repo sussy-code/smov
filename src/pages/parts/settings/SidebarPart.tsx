@@ -45,8 +45,8 @@ export function SidebarPart() {
     },
     {
       textKey: "settings.locale.title",
-      id: "settings-locale",
-      icon: Icons.BOOKMARK,
+      id: "settings-preferences",
+      icon: Icons.SETTINGS,
     },
     {
       textKey: "settings.appearance.title",
