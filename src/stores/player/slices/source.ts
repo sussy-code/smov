@@ -42,12 +42,14 @@ export interface PlayerMeta {
 }
 
 export interface Caption {
+  id: string;
   language: string;
   url?: string;
   srtData: string;
 }
 
 export interface CaptionListItem {
+  id: string;
   language: string;
   url: string;
   needsProxy: boolean;
