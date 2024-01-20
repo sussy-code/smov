@@ -277,6 +277,17 @@
         "homeButton": "Back to home",
         "text": "We couldn't find the media you requested. Either it's been removed or you tampered with the URL.",
         "title": "Couldn't find that media."
+      },
+      "extensionPermission": {
+        "badge": "Permission Missing",
+        "title": "Configure the extension",
+        "text": "You have the browser extension, but we need your permission to get started using the extension.",
+        "button": "Use extension"
+      },
+      "dmca": {
+        "badge": "Removed",
+        "title": "Media has been removed",
+        "text": "This media is no longer available due to a takedown notice or copyright claim."
       }
     },
     "nextEpisode": {

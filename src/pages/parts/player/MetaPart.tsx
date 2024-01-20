@@ -116,13 +116,10 @@ export function MetaPart(props: MetaPartProps) {
       <ErrorLayout>
         <ErrorContainer>
           <IconPill icon={Icons.WAND}>
-            {t("player.metadata.failed.badge")}
+            {t("player.metadata.extensionPermission.badge")}
           </IconPill>
-          <Title>Configure the extension</Title>
-          <Paragraph>
-            You have the browser extension, but we need your permission to get
-            started using the extension.
-          </Paragraph>
+          <Title>{t("player.metadata.extensionPermission.title")}</Title>
+          <Paragraph>{t("player.metadata.extensionPermission.text")}</Paragraph>
           <Button
             onClick={() => {
               sendPage({
@@ -134,7 +131,7 @@ export function MetaPart(props: MetaPartProps) {
             padding="md:px-12 p-2.5"
             className="mt-6"
           >
-            Use extension
+            {t("player.metadata.extensionPermission.button")}
           </Button>
         </ErrorContainer>
       </ErrorLayout>
@@ -145,12 +142,11 @@ export function MetaPart(props: MetaPartProps) {
     return (
       <ErrorLayout>
         <ErrorContainer>
-          <IconPill icon={Icons.DRAGON}>Removed</IconPill>
-          <Title>Media has been removed</Title>
-          <Paragraph>
-            This media is no longer available due to a takedown notice or
-            copyright claim.
-          </Paragraph>
+          <IconPill icon={Icons.DRAGON}>
+            {t("player.metadata.dmca.badge")}
+          </IconPill>
+          <Title>{t("player.metadata.dmca.title")}</Title>
+          <Paragraph>{t("player.metadata.dmca.text")}</Paragraph>
           <Button
             href="/"
             theme="purple"
