@@ -232,7 +232,7 @@
         "downloadSubtitle": "Download current subtitle",
         "downloadPlaylist": "Download playlist",
         "downloadVideo": "Download video",
-        "hlsDisclaimer": "Downloads are taken directly from the provider. movie-web does not have control over how the downloads are provided.<br /><br />Please note that you are downloading an HLS playlist, it is <bold>not recommended to download if you are not familiar for advanced streaming formats</bold>. Try different sources for different formats.",
+        "hlsDisclaimer": "Downloads are taken directly from the provider. movie-web does not have control over how the downloads are provided.<br /><br />Please note that you are downloading an HLS playlist, it is <bold>not recommended to download if you are not familiar with advanced streaming formats</bold>. Try different sources for different formats.",
         "onAndroid": {
           "1": "To download on Android, click the download button then, on the new page, <bold>tap and hold</bold> on the video, then select <bold>save</bold>.",
           "shortTitle": "Download / Android",
