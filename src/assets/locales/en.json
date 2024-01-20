@@ -97,7 +97,8 @@
       "login": "Login",
       "pagetitle": "{{title}} - movie-web",
       "register": "Register",
-      "settings": "Settings"
+      "settings": "Settings",
+      "onboarding": "Setup"
     }
   },
   "home": {
@@ -429,5 +430,64 @@
       }
     },
     "unsaved": "You have unsaved changes"
+  },
+  "onboarding": {
+    "start": {
+      "title": "Let's get you setup with movie-web",
+      "explainer": "To get the best streams possible. You will need to choose which streaming method you want to use.",
+      "options": {
+        "proxy": {
+          "quality": "Good quality",
+          "title": "Custom proxy",
+          "description": "Setup a proxy in just 5 minutes and gain access to great sources.",
+          "action": "Setup proxy"
+        },
+        "extension": {
+          "quality": "Best quality",
+          "title": "Browser extension",
+          "description": "Install browser extension and gain access to the best sources.",
+          "action": "Install extension"
+        },
+        "default": {
+          "text": "I don't want good quality streams,<0 /> <1>use the default setup</1>"
+        }
+      }
+    },
+    "proxy": {
+      "title": "Let's make a new proxy",
+      "explainer": "With the proxy method, you can get great quality streams by making a self-service proxy.",
+      "link": "Learn how to make a proxy",
+      "input": {
+        "label": "Proxy URL",
+        "placeholder": "https://",
+        "errorInvalidUrl": "Not a valid URL",
+        "errorConnection": "Could not connect to proxy",
+        "errorNotProxy": "Expected a proxy but got a website"
+      },
+      "back": "Go back",
+      "submit": "Submit proxy"
+    },
+    "extension": {
+      "title": "Let's start with an extension",
+      "explainer": "Using the browser extension, you can get the best streams we have to offer. With just a simple install.",
+      "link": "Install extension",
+      "back": "Go back",
+      "status": {
+        "loading": "Waiting on extension",
+        "disallowed": "Extension disabled for this page",
+        "failed": "Failed to request status",
+        "outdated": "Extension version too old",
+        "noperms": "Extension does not have sufficient permissions",
+        "success": "Extension is working as expected!"
+      },
+      "submitCheck": "Check for extension",
+      "submitFinal": "Continue"
+    },
+    "defaultConfirm": {
+      "title": "Are you sure?",
+      "description": "The default setup does not have the best streams and can be unbearably slow.",
+      "cancel": "Cancel",
+      "confirm": "Use default setup"
+    }
   }
 }

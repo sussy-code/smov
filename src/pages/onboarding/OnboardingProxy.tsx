@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { useAsyncFn } from "react-use";
 
@@ -19,52 +20,55 @@ import { useAuthStore } from "@/stores/auth";
 const testUrl = "https://postman-echo.com/get";
 
 export function OnboardingProxyPage() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const { completeAndRedirect } = useRedirectBack();
   const [url, setUrl] = useState("");
   const setProxySet = useAuthStore((s) => s.setProxySet);
 
   const [{ loading, error }, test] = useAsyncFn(async () => {
-    if (!url.startsWith("http")) throw new Error("Not a valid URL");
+    if (!url.startsWith("http"))
+      throw new Error("onboarding.proxy.input.errorInvalidUrl");
     try {
       const res = await singularProxiedFetch(url, testUrl, {});
-      if (res.url !== testUrl) throw new Error("Not a proxy");
+      if (res.url !== testUrl)
+        throw new Error("onboarding.proxy.input.errorNotProxy");
       setProxySet([url]);
       completeAndRedirect();
     } catch (e) {
-      throw new Error("Could not connect to proxy");
+      throw new Error("onboarding.proxy.input.errorConnection");
     }
   }, [url, completeAndRedirect, setProxySet]);
 
   return (
     <MinimalPageLayout>
-      <PageTitle subpage k="global.pages.about" />
+      <PageTitle subpage k="global.pages.onboarding" />
       <CenterContainer>
         <Stepper steps={2} current={2} className="mb-12" />
         <Heading2 className="!mt-0 !text-3xl max-w-[435px]">
-          Let&apos;s setup a custom proxy
+          {t("onboarding.proxy.title")}
         </Heading2>
         <Paragraph className="max-w-[320px] !mb-5">
-          Using a custom proxy, you can get great quality streams!
+          {t("onboarding.proxy.explainer")}
         </Paragraph>
-        <Link>Learn how to make a custom proxy</Link>
+        <Link>{t("onboarding.proxy.link")}</Link>
         <div className="w-[400px] max-w-full  mt-14 mb-28">
           <AuthInputBox
-            label="Proxy URL"
+            label={t("onboarding.proxy.input.label")}
             value={url}
             onChange={setUrl}
-            placeholder="lorem ipsum"
+            placeholder={t("onboarding.proxy.input.placeholder")}
             className="mb-4"
           />
-          {error ? <ErrorLine>{error.message}</ErrorLine> : null}
+          {error ? <ErrorLine>{t(error.message)}</ErrorLine> : null}
         </div>
         <Divider />
         <div className="flex justify-between">
           <Button theme="secondary" onClick={() => navigate("/onboarding")}>
-            Back
+            {t("onboarding.proxy.back")}
           </Button>
           <Button theme="purple" loading={loading} onClick={test}>
-            Submit proxy
+            {t("onboarding.proxy.submit")}
           </Button>
         </div>
       </CenterContainer>

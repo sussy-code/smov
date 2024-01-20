@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { Trans, useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 import { Button } from "@/components/buttons/Button";
@@ -23,20 +24,23 @@ export function OnboardingPage() {
   const navigate = useNavigate();
   const skipModal = useModal("skip");
   const { completeAndRedirect } = useRedirectBack();
+  const { t } = useTranslation();
 
   return (
     <MinimalPageLayout>
-      <PageTitle subpage k="global.pages.about" />
+      <PageTitle subpage k="global.pages.onboarding" />
       <Modal id={skipModal.id}>
         <ModalCard>
           <ModalCard>
-            <Heading1 className="!mt-0">Lorem ipsum</Heading1>
-            <Paragraph>Lorem ipsum Lorem ipsum Lorem ipsum</Paragraph>
+            <Heading1 className="!mt-0">
+              {t("onboarding.defaultConfirm.title")}
+            </Heading1>
+            <Paragraph>{t("onboarding.defaultConfirm.description")}</Paragraph>
             <Button theme="secondary" onClick={skipModal.hide}>
-              Lorem ipsum
+              {t("onboarding.defaultConfirm.cancel")}
             </Button>
             <Button theme="danger" onClick={() => completeAndRedirect()}>
-              Lorem ipsum
+              {t("onboarding.defaultConfirm.confirm")}
             </Button>
           </ModalCard>
         </ModalCard>
@@ -44,22 +48,21 @@ export function OnboardingPage() {
       <CenterContainer>
         <Stepper steps={2} current={1} className="mb-12" />
         <Heading2 className="!mt-0 !text-3xl max-w-[435px]">
-          Let&apos;s get you set up with movie-web
+          {t("onboarding.start.title")}
         </Heading2>
         <Paragraph className="max-w-[320px]">
-          To get the best streams possible, you will need to choose which
-          streaming method you want to use.
+          {t("onboarding.start.explainer")}
         </Paragraph>
 
         <div className="w-full grid grid-cols-[1fr,auto,1fr] gap-3">
           <Card onClick={() => navigate("/onboarding/proxy")}>
             <CardContent
               colorClass="!text-onboarding-good"
-              title="Custom proxy"
-              subtitle="Good quality"
-              description="Set up a proxy in only 5 minutes and gain access to great sources."
+              title={t("onboarding.start.options.proxy.title")}
+              subtitle={t("onboarding.start.options.proxy.quality")}
+              description={t("onboarding.start.options.proxy.description")}
             >
-              <Link>Set up proxy</Link>
+              <Link>{t("onboarding.start.options.proxy.action")}</Link>
             </CardContent>
           </Card>
           <div className="grid grid-rows-[1fr,auto,1fr] justify-center gap-4">
@@ -70,24 +73,24 @@ export function OnboardingPage() {
           <Card onClick={() => navigate("/onboarding/extension")}>
             <CardContent
               colorClass="!text-onboarding-best"
-              title="Browser extension"
-              subtitle="Best quality"
-              description="Install browser extension and gain access to the best sources."
+              title={t("onboarding.start.options.extension.title")}
+              subtitle={t("onboarding.start.options.extension.quality")}
+              description={t("onboarding.start.options.extension.description")}
             >
-              <Link>Install extension</Link>
+              <Link>{t("onboarding.start.options.extension.action")}</Link>
             </CardContent>
           </Card>
         </div>
 
         <p className="text-center mt-12">
-          I don&apos;t want good quality, <br />
-          <a
-            onClick={skipModal.show}
-            type="button"
-            className="text-onboarding-link hover:opacity-75 cursor-pointer"
-          >
-            use the default setup
-          </a>
+          <Trans i18nKey="onboarding.start.options.default.text">
+            <br />
+            <a
+              onClick={skipModal.show}
+              type="button"
+              className="text-onboarding-link hover:opacity-75 cursor-pointer"
+            />
+          </Trans>
         </p>
       </CenterContainer>
     </MinimalPageLayout>
