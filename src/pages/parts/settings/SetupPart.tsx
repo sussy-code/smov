@@ -76,6 +76,7 @@ function useIsSetup() {
 function SetupCheckList(props: {
   status: Status;
   grey?: boolean;
+  highlight?: boolean;
   children?: ReactNode;
 }) {
   const { t } = useTranslation();
@@ -98,9 +99,10 @@ function SetupCheckList(props: {
       <div>
         <p
           className={classNames({
-            "text-type-dimmed opacity-75": props.grey,
+            "!text-white": props.grey && props.highlight,
+            "!text-type-dimmed opacity-75": props.grey && !props.highlight,
             "text-type-danger": props.status === "error",
-            "text-white !opacity-100": props.status === "success",
+            "text-white": props.status === "success",
           })}
         >
           {props.children}
@@ -119,7 +121,7 @@ export function SetupPart() {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { loading, setupStates, globalState } = useIsSetup();
-  if (loading || !setupStates) return <p>Loading states...</p>;
+  if (loading || !setupStates) return <p>Loading states...</p>; // TODO proper loading screen
 
   const textLookupMap: Record<
     Status,
@@ -174,7 +176,11 @@ export function SetupPart() {
           <SetupCheckList status={setupStates.proxy}>
             {t("settings.connections.setup.items.proxy")}
           </SetupCheckList>
-          <SetupCheckList grey status={setupStates.defaultProxy}>
+          <SetupCheckList
+            grey
+            highlight={globalState === "unset"}
+            status={setupStates.defaultProxy}
+          >
             {t("settings.connections.setup.items.default")}
           </SetupCheckList>
         </div>

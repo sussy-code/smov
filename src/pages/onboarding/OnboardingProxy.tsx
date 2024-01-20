@@ -40,6 +40,7 @@ export function OnboardingProxyPage() {
     }
   }, [url, completeAndRedirect, setProxySet]);
 
+  // TODO proper link to proxy deployment docs
   return (
     <MinimalPageLayout>
       <PageTitle subpage k="global.pages.onboarding" />

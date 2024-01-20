@@ -47,6 +47,7 @@ export function ExtensionStatus(props: {
         <p>{t("onboarding.extension.status.loading")}</p>
       </>
     );
+  // TODO make proper actions for all of these states below
   if (props.status === "disallowed")
     content = <p>{t("onboarding.extension.status.disallowed")}</p>;
   else if (props.status === "failed")
@@ -81,6 +82,7 @@ export function OnboardingExtensionPage() {
   );
   useInterval(exec, 1000);
 
+  // TODO proper link to install extension
   return (
     <MinimalPageLayout>
       <PageTitle subpage k="global.pages.onboarding" />
