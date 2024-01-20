@@ -67,5 +67,5 @@ export async function isExtensionActive(): Promise<boolean> {
   if (!info?.success) return false;
   const allowedVersion = isAllowedExtensionVersion(info.version);
   if (!allowedVersion) return false;
-  return true;
+  return info.allowed && info.hasPermission;
 }
