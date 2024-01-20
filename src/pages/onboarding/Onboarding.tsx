@@ -89,14 +89,6 @@ export function OnboardingPage() {
             use the default setup
           </a>
         </p>
-
-        {/* <Button onClick={() => navigate("/onboarding/proxy")}>
-          Custom proxy
-        </Button>
-        <Button onClick={() => navigate("/onboarding/extension")}>
-          Extension
-        </Button>
-        <Button onClick={skipModal.show}>Default</Button> */}
       </CenterContainer>
     </MinimalPageLayout>
   );

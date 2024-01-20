@@ -5,11 +5,13 @@ import { useAsyncFn, useInterval } from "react-use";
 import { isAllowedExtensionVersion } from "@/backend/extension/compatibility";
 import { extensionInfo } from "@/backend/extension/messaging";
 import { Button } from "@/components/buttons/Button";
+import { Loading } from "@/components/layout/Loading";
 import { Stepper } from "@/components/layout/Stepper";
 import { CenterContainer } from "@/components/layout/ThinContainer";
 import { Heading2, Paragraph } from "@/components/utils/Text";
 import { MinimalPageLayout } from "@/pages/layouts/MinimalPageLayout";
 import { useRedirectBack } from "@/pages/onboarding/onboardingHooks";
+import { Card, Link } from "@/pages/onboarding/utils";
 import { PageTitle } from "@/pages/parts/util/PageTitle";
 
 type ExtensionStatus =
@@ -36,14 +38,25 @@ export function ExtensionStatus(props: {
 }) {
   let content: ReactNode = null;
   if (props.loading || props.status === "unknown")
-    content = <p>waiting on extension...</p>;
+    content = (
+      <>
+        <Loading />
+        <p>waiting on extension</p>
+      </>
+    );
   if (props.status === "disallowed")
     content = <p>Extension disabled for this page</p>;
   else if (props.status === "failed") content = <p>Failed to request status</p>;
   else if (props.status === "outdated") content = <p>Extension too old</p>;
   else if (props.status === "noperms") content = <p>No permissions to act</p>;
   else if (props.status === "success") content = <p>Extension is working!</p>;
-  return <div>{content}</div>;
+  return (
+    <Card>
+      <div className="flex py-6 flex-col space-y-2 items-center justify-center">
+        {content}
+      </div>
+    </Card>
+  );
 }
 
 export function OnboardingExtensionPage() {
@@ -65,13 +78,26 @@ export function OnboardingExtensionPage() {
       <PageTitle subpage k="global.pages.about" />
       <CenterContainer>
         <Stepper steps={2} current={2} className="mb-12" />
-        <Heading2 className="!mt-0">Lorem ipsum</Heading2>
-        <Paragraph>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum</Paragraph>
+        <Heading2 className="!mt-0 !text-3xl max-w-[435px]">
+          Let&apos;s start with an extension
+        </Heading2>
+        <Paragraph className="max-w-[320px] mb-4">
+          Using the browser extension, you can get the best streams we have to
+          offer. With just a simple install.
+        </Paragraph>
+        <Link href="https://google.com" target="_blank" className="mb-12">
+          Install extension
+        </Link>
+
         <ExtensionStatus status={value ?? "unknown"} loading={loading} />
-        <Button onClick={() => navigate("/onboarding")}>Back</Button>
-        <Button onClick={() => exec(true)}>
-          {value === "success" ? "Continue" : "Check extension"}{" "}
-        </Button>
+        <div className="flex justify-between items-center mt-8">
+          <Button onClick={() => navigate("/onboarding")} theme="secondary">
+            Back
+          </Button>
+          <Button onClick={() => exec(true)} theme="purple">
+            {value === "success" ? "Continue" : "Check extension"}{" "}
+          </Button>
+        </div>
       </CenterContainer>
     </MinimalPageLayout>
   );

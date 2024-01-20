@@ -5,7 +5,7 @@ export interface StepperProps {
 }
 
 export function Stepper(props: StepperProps) {
-  const percentage = (props.current / (props.steps + 1)) * 100;
+  const percentage = (props.current / props.steps) * 100;
 
   return (
     <div className={props.className}>

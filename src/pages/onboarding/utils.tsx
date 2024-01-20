@@ -1,16 +1,22 @@
 import classNames from "classnames";
 import { ReactNode } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { Icon, Icons } from "@/components/Icon";
 import { Heading2, Heading3, Paragraph } from "@/components/utils/Text";
 
 export function Card(props: {
-  children: React.ReactNode;
-  onClick: () => void;
+  children?: React.ReactNode;
+  onClick?: () => void;
 }) {
   return (
     <div
-      className="bg-onboarding-card hover:bg-onboarding-cardHover transition-colors duration-300 border border-onboarding-border rounded-lg p-7 cursor-pointer "
+      className={classNames({
+        "bg-onboarding-card duration-300 border border-onboarding-border rounded-lg p-7":
+          true,
+        "hover:bg-onboarding-cardHover transition-colors cursor-pointer":
+          !!props.onClick,
+      })}
       onClick={props.onClick}
     >
       {props.children}
@@ -50,9 +56,27 @@ export function CardContent(props: {
   );
 }
 
-export function Link(props: { children: React.ReactNode }) {
+export function Link(props: {
+  children?: React.ReactNode;
+  to?: string;
+  href?: string;
+  className?: string;
+  target?: "_blank";
+}) {
+  const navigate = useNavigate();
   return (
-    <a className="text-onboarding-link cursor-pointer flex gap-2 items-center group hover:opacity-75 transition-opacity">
+    <a
+      onClick={() => {
+        if (props.to) navigate(props.to);
+      }}
+      href={props.href}
+      target={props.target}
+      className={classNames(
+        "text-onboarding-link cursor-pointer inline-flex gap-2 items-center group hover:opacity-75 transition-opacity",
+        props.className,
+      )}
+      rel="noreferrer"
+    >
       {props.children}
       <Icon
         icon={Icons.ARROW_RIGHT}
