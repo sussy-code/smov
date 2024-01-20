@@ -393,6 +393,28 @@
       "colorLabel": "Color"
     },
     "connections": {
+      "setup": {
+        "errorStatus": {
+          "title": "Something needs your attention",
+          "description": "It seems that one or more items in this setup need your attention."
+        },
+        "unsetStatus": {
+          "title": "You haven't gone through setup",
+          "description": "Please click the button to the right to start the setup process."
+        },
+        "successStatus": {
+          "title": "Everything is set up!",
+          "description": "All things are in place for you to start watching your favourite media."
+        },
+        "redoSetup": "Redo setup",
+        "doSetup": "Do setup",
+        "itemError": "There is something wrong with this setting. Go through setup again to fix it.",
+        "items": {
+          "extension": "Extension",
+          "proxy": "Custom proxy",
+          "default": "Default setup"
+        }
+      },
       "server": {
         "description": "If you would like to connect to a custom backend to store your data, enable this and provide the URL.",
         "label": "Custom server",

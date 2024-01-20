@@ -1,6 +1,6 @@
 import classNames from "classnames";
-import { t } from "i18next";
 import { ReactNode } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { useAsync } from "react-use";
 
@@ -78,6 +78,7 @@ function SetupCheckList(props: {
   grey?: boolean;
   children?: ReactNode;
 }) {
+  const { t } = useTranslation();
   const statusMap: Record<Status, StatusCircleProps["type"]> = {
     error: "error",
     success: "success",
@@ -97,17 +98,16 @@ function SetupCheckList(props: {
       <div>
         <p
           className={classNames({
-            "!text-type-dimmed opacity-75": props.grey,
+            "text-type-dimmed opacity-75": props.grey,
             "text-type-danger": props.status === "error",
-            "text-white": props.status === "success",
+            "text-white !opacity-100": props.status === "success",
           })}
         >
           {props.children}
         </p>
         {props.status === "error" ? (
           <p className="max-w-96">
-            There is something wrong with this setting. Go through setup again
-            to fix it.
+            {t("settings.connections.setup.itemError")}
           </p>
         ) : null}
       </div>
@@ -116,22 +116,29 @@ function SetupCheckList(props: {
 }
 
 export function SetupPart() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const { loading, setupStates, globalState } = useIsSetup();
   if (loading || !setupStates) return <p>Loading states...</p>;
 
-  const textLookupMap: Record<Status, { title: string; desc: string }> = {
+  const textLookupMap: Record<
+    Status,
+    { title: string; desc: string; button: string }
+  > = {
     error: {
-      title: "err1",
-      desc: "err2",
+      title: "settings.connections.setup.errorStatus.title",
+      desc: "settings.connections.setup.errorStatus.description",
+      button: "settings.connections.setup.redoSetup",
     },
     success: {
-      title: "success1",
-      desc: "success2",
+      title: "settings.connections.setup.successStatus.title",
+      desc: "settings.connections.setup.successStatus.description",
+      button: "settings.connections.setup.redoSetup",
     },
     unset: {
-      title: "unset1",
-      desc: "unset2",
+      title: "settings.connections.setup.unsetStatus.title",
+      desc: "settings.connections.setup.unsetStatus.description",
+      button: "settings.connections.setup.doSetup",
     },
   };
 
@@ -162,18 +169,18 @@ export function SetupPart() {
             {t(textLookupMap[globalState].desc)}
           </p>
           <SetupCheckList status={setupStates.extension}>
-            Extension
+            {t("settings.connections.setup.items.extension")}
           </SetupCheckList>
           <SetupCheckList status={setupStates.proxy}>
-            Custom proxy
+            {t("settings.connections.setup.items.proxy")}
           </SetupCheckList>
           <SetupCheckList grey status={setupStates.defaultProxy}>
-            Default setup
+            {t("settings.connections.setup.items.default")}
           </SetupCheckList>
         </div>
         <div className="mt-5">
           <Button theme="purple" onClick={() => navigate("/onboarding")}>
-            Do setup
+            {t(textLookupMap[globalState].button)}
           </Button>
         </div>
       </div>
