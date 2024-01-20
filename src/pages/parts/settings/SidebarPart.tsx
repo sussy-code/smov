@@ -44,7 +44,7 @@ export function SidebarPart() {
       icon: Icons.USER,
     },
     {
-      textKey: "settings.locale.title",
+      textKey: "settings.preferences.title",
       id: "settings-preferences",
       icon: Icons.SETTINGS,
     },
