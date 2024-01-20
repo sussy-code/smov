@@ -46,11 +46,10 @@ export function MetaPart(props: MetaPartProps) {
   const { error, value, loading } = useAsync(async () => {
     const info = await extensionInfo();
     const isValidExtension =
-      info?.success && isAllowedExtensionVersion(info.version);
+      info?.success && isAllowedExtensionVersion(info.version) && info.allowed;
 
     if (isValidExtension) {
-      if (!info.allowed || !info.hasPermission)
-        throw new Error("extension-no-permission");
+      if (!info.hasPermission) throw new Error("extension-no-permission");
     }
 
     // use api metadata or providers metadata
