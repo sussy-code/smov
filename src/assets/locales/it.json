@@ -120,19 +120,19 @@
     },
     "titles": {
       "day": {
-        "default": "Cosa vorresti vedere questo pomeriggio?",
+        "default": "Cosa vorresti guardare questo pomeriggio?",
         "extra": [
           "Senti avventuroso? Jurassic Park potrebbe essere la scelta perfetta."
         ]
       },
       "morning": {
-        "default": "Cosa vorresti vedere questa mattina?",
+        "default": "Cosa vorresti guardare questa mattina?",
         "extra": [
           "Ho sentito che «Prima Dell'alba» è buono"
         ]
       },
       "night": {
-        "default": "Cosa vorresti vedere questa stasera?",
+        "default": "Cosa vorresti guardare questa sera?",
         "extra": [
           "Stanco? Ho sentito che L'esorciccio è buono."
         ]
