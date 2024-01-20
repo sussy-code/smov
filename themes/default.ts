@@ -137,6 +137,11 @@ export const defaultTheme = {
         accentA: tokens.purple.c500,
         accentB: tokens.blue.c500,
       },
+
+      // Modals
+      modal: {
+        background: tokens.shade.c800,
+      },
       
       // typography
       type: {

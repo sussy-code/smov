@@ -31,18 +31,20 @@ export function OnboardingPage() {
       <PageTitle subpage k="global.pages.onboarding" />
       <Modal id={skipModal.id}>
         <ModalCard>
-          <ModalCard>
-            <Heading1 className="!mt-0">
-              {t("onboarding.defaultConfirm.title")}
-            </Heading1>
-            <Paragraph>{t("onboarding.defaultConfirm.description")}</Paragraph>
+          <Heading1 className="!mt-0 !mb-4 !text-2xl">
+            {t("onboarding.defaultConfirm.title")}
+          </Heading1>
+          <Paragraph className="!mt-1 !mb-12">
+            {t("onboarding.defaultConfirm.description")}
+          </Paragraph>
+          <div className="flex items-end justify-between">
             <Button theme="secondary" onClick={skipModal.hide}>
               {t("onboarding.defaultConfirm.cancel")}
             </Button>
-            <Button theme="danger" onClick={() => completeAndRedirect()}>
+            <Button theme="purple" onClick={() => completeAndRedirect()}>
               {t("onboarding.defaultConfirm.confirm")}
             </Button>
-          </ModalCard>
+          </div>
         </ModalCard>
       </Modal>
       <CenterContainer>
