@@ -101,7 +101,6 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
   }
 
   function setupSource(vid: HTMLVideoElement, src: LoadableSource) {
-    // TODO: Add check whether the extension is installed
     if (src.type === "hls") {
       if (canPlayHlsNatively(vid)) {
         vid.src = processCdnLink(src.url);
