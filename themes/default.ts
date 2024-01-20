@@ -152,6 +152,7 @@ export const defaultTheme = {
         divider: tokens.ash.c500,
         secondary: tokens.ash.c100,
         danger: tokens.semantic.red.c100,
+        success: tokens.semantic.green.c100,
         link: tokens.purple.c100,
         linkHover: tokens.purple.c50,
       },
