@@ -390,14 +390,14 @@
     },
     "connections": {
       "server": {
-        "description": "Verilerinizi depolamak için özel bir arkayüze bağlanmak istiyorsanız, bunu etkinleştirin ve URL'yi sağlayın.",
+        "description": "Verilerinizi depolamak için özel bir arkayüze bağlanmak istiyorsanız, bunu etkinleştirin ve URL'yi sağlayın. <0>Yönergeler.</0>",
         "label": "Özel sunucu",
         "urlLabel": "Özel sunucu URL'si"
       },
       "title": "Bağlantılar",
       "workers": {
         "addButton": "Yeni işleyici ekle",
-        "description": "Uygulamanın çalışması için tüm trafik vekil sunucular üzerinden yönlendirilir. Kendi işleyicilerinizi getirmek istiyorsanız bunu etkinleştirin.",
+        "description": "Uygulamanın çalışması için tüm trafik vekil sunucular üzerinden yönlendirilir. Kendi işleyicilerinizi getirmek istiyorsanız bunu etkinleştirin.<0>Yönergeler.</0>",
         "emptyState": "Henüz işleyici yok, aşağıya bir tane ekleyin",
         "label": "Özel vekil sunucu işleyici kullan",
         "urlLabel": "İşleyici URL'leri",
