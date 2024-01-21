@@ -97,7 +97,8 @@
       "login": "Login",
       "pagetitle": "{{title}} - movie-web",
       "register": "Register",
-      "settings": "Settings"
+      "settings": "Settings",
+      "onboarding": "Setup"
     }
   },
   "home": {
@@ -231,7 +232,7 @@
         "downloadSubtitle": "Download current subtitle",
         "downloadPlaylist": "Download playlist",
         "downloadVideo": "Download video",
-        "hlsDisclaimer": "Downloads are taken directly from the provider. movie-web does not have control over how the downloads are provided. Please note that you are downloading an HLS playlist, this is intended for users familiar with advanced multimedia streaming.",
+        "hlsDisclaimer": "Downloads are taken directly from the provider. movie-web does not have control over how the downloads are provided.<br /><br />Please note that you are downloading an HLS playlist, it is <bold>not recommended to download if you are not familiar with advanced streaming formats</bold>. Try different sources for different formats.",
         "onAndroid": {
           "1": "To download on Android, click the download button then, on the new page, <bold>tap and hold</bold> on the video, then select <bold>save</bold>.",
           "shortTitle": "Download / Android",
@@ -276,6 +277,17 @@
         "homeButton": "Back to home",
         "text": "We couldn't find the media you requested. Either it's been removed or you tampered with the URL.",
         "title": "Couldn't find that media."
+      },
+      "extensionPermission": {
+        "badge": "Permission Missing",
+        "title": "Configure the extension",
+        "text": "You have the browser extension, but we need your permission to get started using the extension.",
+        "button": "Use extension"
+      },
+      "dmca": {
+        "badge": "Removed",
+        "title": "Media has been removed",
+        "text": "This media is no longer available due to a takedown notice or copyright claim."
       }
     },
     "nextEpisode": {
@@ -392,6 +404,28 @@
       "colorLabel": "Color"
     },
     "connections": {
+      "setup": {
+        "errorStatus": {
+          "title": "Something needs your attention",
+          "description": "It seems that one or more items in this setup need your attention."
+        },
+        "unsetStatus": {
+          "title": "You haven't gone through setup",
+          "description": "Please click the button to the right to start the setup process."
+        },
+        "successStatus": {
+          "title": "Everything is set up!",
+          "description": "All things are in place for you to start watching your favourite media."
+        },
+        "redoSetup": "Redo setup",
+        "doSetup": "Do setup",
+        "itemError": "There is something wrong with this setting. Go through setup again to fix it.",
+        "items": {
+          "extension": "Extension",
+          "proxy": "Custom proxy",
+          "default": "Default setup"
+        }
+      },
       "server": {
         "description": "If you would like to connect to a custom backend to store your data, enable this and provide the URL. <0>Instructions.</0>",
         "label": "Custom server",
@@ -407,10 +441,13 @@
         "urlPlaceholder": "https://"
       }
     },
-    "locale": {
+    "preferences": {
       "language": "Application language",
       "languageDescription": "Language applied to the entire application.",
-      "title": "Locale"
+      "title": "Preferences",
+      "thumbnail": "Generate thumbnails",
+      "thumbnailDescription": "Most of the time, videos don't have thumbnails. You can enable this setting to generate them on the fly but they can make your video slower.",
+      "thumbnailLabel": "Generate thumbnails"
     },
     "reset": "Reset",
     "save": "Save",
@@ -429,5 +466,64 @@
       }
     },
     "unsaved": "You have unsaved changes"
+  },
+  "onboarding": {
+    "start": {
+      "title": "Let's get you setup with movie-web",
+      "explainer": "To get the best streams possible. You will need to choose which streaming method you want to use.",
+      "options": {
+        "proxy": {
+          "quality": "Good quality",
+          "title": "Custom proxy",
+          "description": "Setup a proxy in just 5 minutes and gain access to great sources.",
+          "action": "Setup proxy"
+        },
+        "extension": {
+          "quality": "Best quality",
+          "title": "Browser extension",
+          "description": "Install browser extension and gain access to the best sources.",
+          "action": "Install extension"
+        },
+        "default": {
+          "text": "I don't want good quality streams,<0 /> <1>use the default setup</1>"
+        }
+      }
+    },
+    "proxy": {
+      "title": "Let's make a new proxy",
+      "explainer": "With the proxy method, you can get great quality streams by making a self-service proxy.",
+      "link": "Learn how to make a proxy",
+      "input": {
+        "label": "Proxy URL",
+        "placeholder": "https://",
+        "errorInvalidUrl": "Not a valid URL",
+        "errorConnection": "Could not connect to proxy",
+        "errorNotProxy": "Expected a proxy but got a website"
+      },
+      "back": "Go back",
+      "submit": "Submit proxy"
+    },
+    "extension": {
+      "title": "Let's start with an extension",
+      "explainer": "Using the browser extension, you can get the best streams we have to offer. With just a simple install.",
+      "extensionHelp": "If you've installed the extension but it's not detected. <bold>Open the extension through your browsers extension menu</bold> and follow the steps on screen.",
+      "link": "Install extension",
+      "back": "Go back",
+      "status": {
+        "loading": "Waiting for you to install the extension",
+        "disallowed": "Extension is not enabled for this page",
+        "disallowedAction": "Enable extension",
+        "failed": "Failed to request status",
+        "outdated": "Extension version too old",
+        "success": "Extension is working as expected!"
+      },
+      "submit": "Continue"
+    },
+    "defaultConfirm": {
+      "title": "Are you sure?",
+      "description": "The default setup does not have the best streams and can be unbearably slow.",
+      "cancel": "Cancel",
+      "confirm": "Use default setup"
+    }
   }
 }

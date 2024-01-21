@@ -1,7 +1,7 @@
 import { ofetch } from "ofetch";
 
 import { getApiToken, setApiToken } from "@/backend/helpers/providerApi";
-import { getLoadbalancedProxyUrl } from "@/utils/providers";
+import { getLoadbalancedProxyUrl } from "@/backend/providers/fetchers";
 
 type P<T> = Parameters<typeof ofetch<T, any>>;
 type R<T> = ReturnType<typeof ofetch<T, any>>;

@@ -19,6 +19,9 @@ import { DmcaPage, shouldHaveDmcaPage } from "@/pages/Dmca";
 import { NotFoundPage } from "@/pages/errors/NotFoundPage";
 import { HomePage } from "@/pages/HomePage";
 import { LoginPage } from "@/pages/Login";
+import { OnboardingPage } from "@/pages/onboarding/Onboarding";
+import { OnboardingExtensionPage } from "@/pages/onboarding/OnboardingExtension";
+import { OnboardingProxyPage } from "@/pages/onboarding/OnboardingProxy";
 import { RegisterPage } from "@/pages/Register";
 import { Layout } from "@/setup/Layout";
 import { useHistoryListener } from "@/stores/history";
@@ -119,6 +122,12 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/onboarding" element={<OnboardingPage />} />
+        <Route
+          path="/onboarding/extension"
+          element={<OnboardingExtensionPage />}
+        />
+        <Route path="/onboarding/proxy" element={<OnboardingProxyPage />} />
 
         {shouldHaveDmcaPage() ? (
           <Route path="/dmca" element={<DmcaPage />} />

@@ -27,6 +27,7 @@ function StyleTrans(props: { k: string }) {
       i18nKey={props.k}
       components={{
         bold: <Menu.Highlight />,
+        br: <br />,
         ios_share: (
           <Icon icon={Icons.IOS_SHARE} className="inline-block text-xl -mb-1" />
         ),
@@ -123,24 +124,6 @@ export function DownloadView({ id }: { id: string }) {
   );
 }
 
-export function CantDownloadView({ id }: { id: string }) {
-  const router = useOverlayRouter(id);
-  const { t } = useTranslation();
-
-  return (
-    <>
-      <Menu.BackLink onClick={() => router.navigate("/")}>
-        {t("player.menus.downloads.title")}
-      </Menu.BackLink>
-      <Menu.Section>
-        <Menu.Paragraph>
-          <StyleTrans k="player.menus.downloads.hlsExplanation" />
-        </Menu.Paragraph>
-      </Menu.Section>
-    </>
-  );
-}
-
 function AndroidExplanationView({ id }: { id: string }) {
   const router = useOverlayRouter(id);
   const { t } = useTranslation();
@@ -200,11 +183,6 @@ export function DownloadRoutes({ id }: { id: string }) {
       <OverlayPage id={id} path="/download" width={343} height={490}>
         <Menu.CardWithScrollable>
           <DownloadView id={id} />
-        </Menu.CardWithScrollable>
-      </OverlayPage>
-      <OverlayPage id={id} path="/download/unable" width={343} height={440}>
-        <Menu.CardWithScrollable>
-          <CantDownloadView id={id} />
         </Menu.CardWithScrollable>
       </OverlayPage>
       <OverlayPage id={id} path="/download/ios" width={343} height={440}>

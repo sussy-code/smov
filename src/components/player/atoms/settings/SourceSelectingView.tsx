@@ -147,7 +147,7 @@ export function SourceSelectionView({
       <Menu.BackLink onClick={() => router.navigate("/")}>
         {t("player.menus.sources.title")}
       </Menu.BackLink>
-      <Menu.Section>
+      <Menu.Section className="pb-4">
         {sources.map((v) => (
           <SelectableLink
             key={v.id}

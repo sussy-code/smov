@@ -95,6 +95,10 @@ export default createTheme({
         accentB: tokens.blue.c500
       },
 
+      modal: {
+        background: tokens.shade.c800,
+      },
+
       type: {
         logo: tokens.purple.c100,
         text: tokens.shade.c50,
