@@ -2,21 +2,23 @@ import { Stream } from "@movie-web/providers";
 
 import { setDomainRule } from "@/backend/extension/messaging";
 
-function extractDomain(url: string): string {
+function extractDomain(url: string): string | null {
   try {
     const u = new URL(url);
     return u.hostname;
   } catch {
-    return url;
+    return null;
   }
 }
 
 function extractDomainsFromStream(stream: Stream): string[] {
   if (stream.type === "hls") {
-    return [extractDomain(stream.playlist)];
+    return [extractDomain(stream.playlist)].filter((v): v is string => !!v);
   }
   if (stream.type === "file") {
-    return Object.values(stream.qualities).map((v) => extractDomain(v.url));
+    return Object.values(stream.qualities)
+      .map((v) => extractDomain(v.url))
+      .filter((v): v is string => !!v);
   }
   return [];
 }
