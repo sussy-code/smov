@@ -7,16 +7,20 @@ import { Heading2, Heading3, Paragraph } from "@/components/utils/Text";
 
 export function Card(props: {
   children?: React.ReactNode;
+  className?: string;
   onClick?: () => void;
 }) {
   return (
     <div
-      className={classNames({
-        "bg-onboarding-card duration-300 border border-onboarding-border rounded-lg p-7":
-          true,
-        "hover:bg-onboarding-cardHover transition-colors cursor-pointer":
-          !!props.onClick,
-      })}
+      className={classNames(
+        {
+          "bg-onboarding-card duration-300 border border-onboarding-border rounded-lg p-7":
+            true,
+          "hover:bg-onboarding-cardHover transition-colors cursor-pointer":
+            !!props.onClick,
+        },
+        props.className,
+      )}
       onClick={props.onClick}
     >
       {props.children}

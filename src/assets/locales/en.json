@@ -506,18 +506,18 @@
     "extension": {
       "title": "Let's start with an extension",
       "explainer": "Using the browser extension, you can get the best streams we have to offer. With just a simple install.",
+      "extensionHelp": "If you've installed the extension but it's not detected. <bold>Open the extension through your browsers extension menu</bold> and follow the steps on screen.",
       "link": "Install extension",
       "back": "Go back",
       "status": {
-        "loading": "Waiting on extension",
-        "disallowed": "Extension disabled for this page",
+        "loading": "Waiting for you to install the extension",
+        "disallowed": "Extension is not enabled for this page",
+        "disallowedAction": "Enabled extension",
         "failed": "Failed to request status",
         "outdated": "Extension version too old",
-        "noperms": "Extension does not have sufficient permissions",
         "success": "Extension is working as expected!"
       },
-      "submitCheck": "Check for extension",
-      "submitFinal": "Continue"
+      "submit": "Continue"
     },
     "defaultConfirm": {
       "title": "Are you sure?",

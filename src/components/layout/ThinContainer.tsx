@@ -22,7 +22,7 @@ export function CenterContainer(props: ThinContainerProps) {
   return (
     <div
       className={classNames(
-        "min-h-screen w-full flex justify-center p-8 items-center",
+        "min-h-screen w-full flex justify-center p-8 py-24 items-center",
         props.classNames,
       )}
     >

@@ -1,11 +1,12 @@
 import { ReactNode } from "react";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { useAsyncFn, useInterval } from "react-use";
 
 import { isAllowedExtensionVersion } from "@/backend/extension/compatibility";
-import { extensionInfo } from "@/backend/extension/messaging";
+import { extensionInfo, sendPage } from "@/backend/extension/messaging";
 import { Button } from "@/components/buttons/Button";
+import { Icon, Icons } from "@/components/Icon";
 import { Loading } from "@/components/layout/Loading";
 import { Stepper } from "@/components/layout/Stepper";
 import { CenterContainer } from "@/components/layout/ThinContainer";
@@ -47,23 +48,57 @@ export function ExtensionStatus(props: {
         <p>{t("onboarding.extension.status.loading")}</p>
       </>
     );
-  // TODO make proper actions for all of these states below
-  if (props.status === "disallowed")
-    content = <p>{t("onboarding.extension.status.disallowed")}</p>;
+  if (props.status === "disallowed" || props.status === "noperms")
+    content = (
+      <>
+        <p>{t("onboarding.extension.status.disallowed")}</p>
+        <Button
+          onClick={() => {
+            sendPage({
+              page: "PermissionGrant",
+              redirectUrl: window.location.href,
+            });
+          }}
+          theme="purple"
+          padding="md:px-12 p-2.5"
+          className="mt-6"
+        >
+          {t("onboarding.extension.status.disallowedAction")}
+        </Button>
+      </>
+    );
   else if (props.status === "failed")
     content = <p>{t("onboarding.extension.status.failed")}</p>;
   else if (props.status === "outdated")
     content = <p>{t("onboarding.extension.status.outdated")}</p>;
-  else if (props.status === "noperms")
-    content = <p>{t("onboarding.extension.status.noperms")}</p>;
   else if (props.status === "success")
-    content = <p>{t("onboarding.extension.status.success")}</p>;
+    content = (
+      <p className="flex items-center">
+        <Icon icon={Icons.CHECKMARK} className="text-type-success mr-4" />
+        {t("onboarding.extension.status.success")}
+      </p>
+    );
   return (
-    <Card>
-      <div className="flex py-6 flex-col space-y-2 items-center justify-center">
-        {content}
-      </div>
-    </Card>
+    <>
+      <Card>
+        <div className="flex py-6 flex-col space-y-2 items-center justify-center">
+          {content}
+        </div>
+      </Card>
+      <Card className="mt-4">
+        <div className="flex items-center space-x-7">
+          <Icon icon={Icons.WARNING} className="text-type-danger text-2xl" />
+          <p className="flex-1">
+            <Trans
+              i18nKey="onboarding.extension.extensionHelp"
+              components={{
+                bold: <span className="text-white" />,
+              }}
+            />
+          </p>
+        </div>
+      </Card>
+    </>
   );
 }
 
@@ -103,13 +138,11 @@ export function OnboardingExtensionPage() {
           <Button onClick={() => navigate("/onboarding")} theme="secondary">
             {t("onboarding.extension.back")}
           </Button>
-          <Button onClick={() => exec(true)} theme="purple">
-            {t(
-              value === "success"
-                ? "onboarding.extension.submitFinal"
-                : "onboarding.extension.submitCheck",
-            )}
-          </Button>
+          {value === "success" ? (
+            <Button onClick={() => exec(true)} theme="purple">
+              {t("onboarding.extension.submit")}
+            </Button>
+          ) : null}
         </div>
       </CenterContainer>
     </MinimalPageLayout>
