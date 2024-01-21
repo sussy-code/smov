@@ -512,7 +512,7 @@
       "status": {
         "loading": "Waiting for you to install the extension",
         "disallowed": "Extension is not enabled for this page",
-        "disallowedAction": "Enabled extension",
+        "disallowedAction": "Enable extension",
         "failed": "Failed to request status",
         "outdated": "Extension version too old",
         "success": "Extension is working as expected!"
