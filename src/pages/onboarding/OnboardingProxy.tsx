@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
 import { useAsyncFn } from "react-use";
 
 import { singularProxiedFetch } from "@/backend/helpers/fetch";
@@ -12,7 +11,10 @@ import { Divider } from "@/components/utils/Divider";
 import { ErrorLine } from "@/components/utils/ErrorLine";
 import { Heading2, Paragraph } from "@/components/utils/Text";
 import { MinimalPageLayout } from "@/pages/layouts/MinimalPageLayout";
-import { useRedirectBack } from "@/pages/onboarding/onboardingHooks";
+import {
+  useNavigateOnboarding,
+  useRedirectBack,
+} from "@/pages/onboarding/onboardingHooks";
 import { Link } from "@/pages/onboarding/utils";
 import { PageTitle } from "@/pages/parts/util/PageTitle";
 import { useAuthStore } from "@/stores/auth";
@@ -21,7 +23,7 @@ const testUrl = "https://postman-echo.com/get";
 
 export function OnboardingProxyPage() {
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  const navigate = useNavigateOnboarding();
   const { completeAndRedirect } = useRedirectBack();
   const [url, setUrl] = useState("");
   const setProxySet = useAuthStore((s) => s.setProxySet);

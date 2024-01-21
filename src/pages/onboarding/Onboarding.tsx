@@ -1,6 +1,5 @@
 import classNames from "classnames";
 import { Trans, useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
 
 import { Button } from "@/components/buttons/Button";
 import { Stepper } from "@/components/layout/Stepper";
@@ -8,7 +7,10 @@ import { CenterContainer } from "@/components/layout/ThinContainer";
 import { Modal, ModalCard, useModal } from "@/components/overlays/Modal";
 import { Heading1, Heading2, Paragraph } from "@/components/utils/Text";
 import { MinimalPageLayout } from "@/pages/layouts/MinimalPageLayout";
-import { useRedirectBack } from "@/pages/onboarding/onboardingHooks";
+import {
+  useNavigateOnboarding,
+  useRedirectBack,
+} from "@/pages/onboarding/onboardingHooks";
 import { Card, CardContent, Link } from "@/pages/onboarding/utils";
 import { PageTitle } from "@/pages/parts/util/PageTitle";
 
@@ -21,7 +23,7 @@ function VerticalLine(props: { className?: string }) {
 }
 
 export function OnboardingPage() {
-  const navigate = useNavigate();
+  const navigate = useNavigateOnboarding();
   const skipModal = useModal("skip");
   const { completeAndRedirect } = useRedirectBack();
   const { t } = useTranslation();

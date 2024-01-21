@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
 import { Trans, useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
 import { useAsyncFn, useInterval } from "react-use";
 
 import { isAllowedExtensionVersion } from "@/backend/extension/compatibility";
@@ -12,7 +11,10 @@ import { Stepper } from "@/components/layout/Stepper";
 import { CenterContainer } from "@/components/layout/ThinContainer";
 import { Heading2, Paragraph } from "@/components/utils/Text";
 import { MinimalPageLayout } from "@/pages/layouts/MinimalPageLayout";
-import { useRedirectBack } from "@/pages/onboarding/onboardingHooks";
+import {
+  useNavigateOnboarding,
+  useRedirectBack,
+} from "@/pages/onboarding/onboardingHooks";
 import { Card, Link } from "@/pages/onboarding/utils";
 import { PageTitle } from "@/pages/parts/util/PageTitle";
 
@@ -104,7 +106,7 @@ export function ExtensionStatus(props: {
 
 export function OnboardingExtensionPage() {
   const { t } = useTranslation();
-  const navigate = useNavigate();
+  const navigate = useNavigateOnboarding();
   const { completeAndRedirect } = useRedirectBack();
 
   const [{ loading, value }, exec] = useAsyncFn(
