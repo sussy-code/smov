@@ -404,11 +404,6 @@
         "urlPlaceholder": "https://"
       }
     },
-    "locale": {
-      "language": "Jazyk aplikace",
-      "languageDescription": "Jazyk použitý na celou aplikaci.",
-      "title": "Lokální"
-    },
     "reset": "Resetovat",
     "save": "Uložit",
     "sidebar": {

@@ -394,11 +394,6 @@
         "urlPlaceholder": "https://"
       }
     },
-    "locale": {
-      "language": "لغة التطبيق",
-      "languageDescription": "اللغة المطبقة على كامل التطبيق.",
-      "title": "اللغة"
-    },
     "reset": "إعادة تعيين",
     "save": "حفظ",
     "sidebar": {

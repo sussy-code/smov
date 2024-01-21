@@ -404,11 +404,6 @@
         "urlPlaceholder": "https://"
       }
     },
-    "locale": {
-      "language": "زبان",
-      "languageDescription": "زبانی در کل برنامه اعمال می‌شود.",
-      "title": "زبان"
-    },
     "reset": "بازنشانی",
     "save": "ذخیره",
     "sidebar": {

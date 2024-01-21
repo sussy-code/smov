@@ -287,11 +287,6 @@
         "urlPlaceholder": "https://"
       }
     },
-    "locale": {
-      "language": "Язык приложения",
-      "languageDescription": "Язык применяется ко всему приложению.",
-      "title": "Локализация"
-    },
     "reset": "Сброс",
     "save": "Сохранить",
     "sidebar": {

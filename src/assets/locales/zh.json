@@ -404,11 +404,6 @@
         "urlPlaceholder": "https://"
       }
     },
-    "locale": {
-      "language": "应用程序语言",
-      "languageDescription": "当前已应用到整个应用程序的语言。",
-      "title": "本地化"
-    },
     "reset": "重设",
     "save": "保存",
     "sidebar": {

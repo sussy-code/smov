@@ -404,11 +404,6 @@
         "urlPlaceholder": "https://"
       }
     },
-    "locale": {
-      "language": "Llengua de l'aplicació",
-      "languageDescription": "La llengua s'aplica a tota l'aplicació.",
-      "title": "Llengua"
-    },
     "reset": "Restableix",
     "save": "Desa",
     "sidebar": {

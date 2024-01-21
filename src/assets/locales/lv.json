@@ -372,11 +372,6 @@
         "urlPlaceholder": "https://"
       }
     },
-    "locale": {
-      "language": "Lietojumprogrammas valoda",
-      "languageDescription": "Visai lietojumprogrammai lietotā valoda.",
-      "title": "Lokalizācija"
-    },
     "reset": "Restartēt",
     "save": "Saglabāt",
     "sidebar": {

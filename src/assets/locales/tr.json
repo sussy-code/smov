@@ -404,11 +404,6 @@
         "urlPlaceholder": "https://"
       }
     },
-    "locale": {
-      "language": "Uygulama dili",
-      "languageDescription": "Uygulamanın tamamına uygulanan dil.",
-      "title": "Yerelleştirme"
-    },
     "reset": "Sıfırla",
     "save": "Kaydet",
     "sidebar": {

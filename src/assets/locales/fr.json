@@ -404,11 +404,6 @@
         "urlPlaceholder": "https://"
       }
     },
-    "locale": {
-      "language": "Langue de l'application",
-      "languageDescription": "Langue appliquée dans l'ensemble de l'app.",
-      "title": "Local"
-    },
     "reset": "Réinitialiser",
     "save": "Sauvegarder",
     "sidebar": {

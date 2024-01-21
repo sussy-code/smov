@@ -404,11 +404,6 @@
         "urlPlaceholder": "https://"
       }
     },
-    "locale": {
-      "language": "Applicatietaal",
-      "languageDescription": "Taal wordt toegepast op de hele applicatie.",
-      "title": "Lokaal"
-    },
     "reset": "Resetten",
     "save": "Wijzigingen opslaan",
     "sidebar": {

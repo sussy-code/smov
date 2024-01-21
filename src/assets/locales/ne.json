@@ -404,11 +404,6 @@
         "urlPlaceholder": "https://"
       }
     },
-    "locale": {
-      "language": "एपको भाषा",
-      "languageDescription": "सम्पूर्ण अनुप्रयोगमा भाषा लागू गरियो।",
-      "title": "भाषा"
-    },
     "reset": "रिसेट गर्नुहोस्",
     "save": "सेभ गर्नुहोस्",
     "sidebar": {
