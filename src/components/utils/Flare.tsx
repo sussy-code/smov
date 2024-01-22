@@ -69,7 +69,7 @@ function Light(props: FlareProps) {
         },
       )}
       style={{
-        backgroundImage: `radial-gradient(circle at center, rgba(var(${cssVar}), 1), rgba(var(${cssVar}), 0) 70%)`,
+        backgroundImage: `radial-gradient(circle at center, rgba(var(${cssVar}) / 1), rgba(var(${cssVar}) / 0) 70%)`,
         backgroundPosition: `var(--bg-x) var(--bg-y)`,
         backgroundRepeat: "no-repeat",
         backgroundSize: `${size.toFixed(0)}px ${size.toFixed(0)}px`,
@@ -85,7 +85,7 @@ function Light(props: FlareProps) {
         <div
           className="absolute inset-0 opacity-10"
           style={{
-            background: `radial-gradient(circle at center, rgba(var(${cssVar}), 1), rgba(var(${cssVar}), 0) 70%)`,
+            background: `radial-gradient(circle at center, rgba(var(${cssVar}) / 1), rgba(var(${cssVar}) / 0) 70%)`,
             backgroundPosition: `var(--bg-x) var(--bg-y)`,
             backgroundRepeat: "no-repeat",
             backgroundSize: `${size.toFixed(0)}px ${size.toFixed(0)}px`,

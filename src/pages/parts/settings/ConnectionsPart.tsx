@@ -9,6 +9,7 @@ import { MwLink } from "@/components/text/Link";
 import { AuthInputBox } from "@/components/text-inputs/AuthInputBox";
 import { Divider } from "@/components/utils/Divider";
 import { Heading1 } from "@/components/utils/Text";
+import { SetupPart } from "@/pages/parts/settings/SetupPart";
 
 interface ProxyEditProps {
   proxyUrls: string[] | null;
@@ -156,6 +157,7 @@ export function ConnectionsPart(props: BackendEditProps & ProxyEditProps) {
     <div>
       <Heading1 border>{t("settings.connections.title")}</Heading1>
       <div className="space-y-6">
+        <SetupPart />
         <ProxyEdit
           proxyUrls={props.proxyUrls}
           setProxyUrls={props.setProxyUrls}

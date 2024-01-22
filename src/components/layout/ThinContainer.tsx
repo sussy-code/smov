@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { ReactNode } from "react";
 
 interface ThinContainerProps {
@@ -13,6 +14,19 @@ export function ThinContainer(props: ThinContainerProps) {
       }`}
     >
       {props.children}
+    </div>
+  );
+}
+
+export function CenterContainer(props: ThinContainerProps) {
+  return (
+    <div
+      className={classNames(
+        "min-h-screen w-full flex justify-center p-8 py-24 items-center",
+        props.classNames,
+      )}
+    >
+      <div className="w-[700px] max-w-full">{props.children}</div>
     </div>
   );
 }

@@ -3,6 +3,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useAsync } from "react-use";
 import type { AsyncReturnType } from "type-fest";
 
+import { isAllowedExtensionVersion } from "@/backend/extension/compatibility";
+import { extensionInfo, sendPage } from "@/backend/extension/messaging";
 import {
   fetchMetadata,
   setCachedMetadata,
@@ -10,6 +12,8 @@ import {
 import { DetailedMeta, getMetaFromId } from "@/backend/metadata/getmeta";
 import { decodeTMDBId } from "@/backend/metadata/tmdb";
 import { MWMediaType } from "@/backend/metadata/types/mw";
+import { getLoadbalancedProviderApiUrl } from "@/backend/providers/fetchers";
+import { getProviders } from "@/backend/providers/providers";
 import { Button } from "@/components/buttons/Button";
 import { Icons } from "@/components/Icon";
 import { IconPill } from "@/components/layout/IconPill";
@@ -18,7 +22,6 @@ import { Paragraph } from "@/components/text/Paragraph";
 import { Title } from "@/components/text/Title";
 import { ErrorContainer, ErrorLayout } from "@/pages/layouts/ErrorLayout";
 import { conf } from "@/setup/config";
-import { getLoadbalancedProviderApiUrl, providers } from "@/utils/providers";
 
 export interface MetaPartProps {
   onGetMeta?: (meta: DetailedMeta, episodeId?: string) => void;
@@ -41,8 +44,17 @@ export function MetaPart(props: MetaPartProps) {
   const navigate = useNavigate();
 
   const { error, value, loading } = useAsync(async () => {
+    const info = await extensionInfo();
+    const isValidExtension =
+      info?.success && isAllowedExtensionVersion(info.version) && info.allowed;
+
+    if (isValidExtension) {
+      if (!info.hasPermission) throw new Error("extension-no-permission");
+    }
+
+    // use api metadata or providers metadata
     const providerApiUrl = getLoadbalancedProviderApiUrl();
-    if (providerApiUrl) {
+    if (providerApiUrl && !isValidExtension) {
       try {
         await fetchMetadata(providerApiUrl);
       } catch (err) {
@@ -50,11 +62,12 @@ export function MetaPart(props: MetaPartProps) {
       }
     } else {
       setCachedMetadata([
-        ...providers.listSources(),
-        ...providers.listEmbeds(),
+        ...getProviders().listSources(),
+        ...getProviders().listEmbeds(),
       ]);
     }
 
+    // get media meta data
     let data: ReturnType<typeof decodeTMDBId> = null;
     try {
       if (!params.media) throw new Error("no media params");
@@ -98,16 +111,42 @@ export function MetaPart(props: MetaPartProps) {
     props.onGetMeta?.(meta, epId);
   }, []);
 
+  if (error && error.message === "extension-no-permission") {
+    return (
+      <ErrorLayout>
+        <ErrorContainer>
+          <IconPill icon={Icons.WAND}>
+            {t("player.metadata.extensionPermission.badge")}
+          </IconPill>
+          <Title>{t("player.metadata.extensionPermission.title")}</Title>
+          <Paragraph>{t("player.metadata.extensionPermission.text")}</Paragraph>
+          <Button
+            onClick={() => {
+              sendPage({
+                page: "PermissionGrant",
+                redirectUrl: window.location.href,
+              });
+            }}
+            theme="purple"
+            padding="md:px-12 p-2.5"
+            className="mt-6"
+          >
+            {t("player.metadata.extensionPermission.button")}
+          </Button>
+        </ErrorContainer>
+      </ErrorLayout>
+    );
+  }
+
   if (error && error.message === "dmca") {
     return (
       <ErrorLayout>
         <ErrorContainer>
-          <IconPill icon={Icons.DRAGON}>Removed</IconPill>
-          <Title>Media has been removed</Title>
-          <Paragraph>
-            This media is no longer available due to a takedown notice or
-            copyright claim.
-          </Paragraph>
+          <IconPill icon={Icons.DRAGON}>
+            {t("player.metadata.dmca.badge")}
+          </IconPill>
+          <Title>{t("player.metadata.dmca.title")}</Title>
+          <Paragraph>{t("player.metadata.dmca.text")}</Paragraph>
           <Button
             href="/"
             theme="purple"
