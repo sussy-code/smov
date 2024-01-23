@@ -167,7 +167,30 @@
     "title": "Impossible de trouver cette page"
   },
   "onboarding": {
+    "defaultConfirm": {
+      "cancel": "Annuler",
+      "confirm": "Utiliser la configuration de départ",
+      "description": "La configuration par défaut n'offre pas les meilleurs flux et peut être insupportablement lente.",
+      "title": "Es-tu sûr ?"
+    },
+    "extension": {
+      "back": "Retour en arrière",
+      "explainer": "En utilisant l'extension de navigateur, vous pouvez obtenir les meilleurs flux que nous avons à offrir. Avec juste une simple installation.",
+      "extensionHelp": "Si vous avez installé l'extension mais qu'elle n'est pas détectée. <bold>Ouvrez l'extension via le menu des extensions de votre navigateur</bold> et suivez les étapes à l'écran.",
+      "link": "Installer l'extension",
+      "status": {
+        "disallowed": "L'extension n'est pas activée pour cette page",
+        "disallowedAction": "Activer l'extension",
+        "failed": "Échec de la demande de statut",
+        "loading": "En attendant que vous installiez l'extension",
+        "outdated": "Version d'extension trop ancienne",
+        "success": "L'extension fonctionne comme prévu !"
+      },
+      "submit": "Continuer",
+      "title": "Commençons par une extension"
+    },
     "proxy": {
+      "back": "Retour en arrière",
       "explainer": "Avec la méthode du proxy, vous pouvez obtenir des flux de bonne qualité en créant un proxy en libre-service.",
       "input": {
         "errorConnection": "Impossible de se connecter au proxy",
@@ -177,6 +200,7 @@
         "placeholder": "https://"
       },
       "link": "Apprenez à créer un proxy",
+      "submit": "Soumettre le proxy",
       "title": "Créons un nouveau proxy"
     },
     "start": {
