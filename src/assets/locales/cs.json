@@ -165,6 +165,11 @@
     "message": "Dívali jsme se všude: pod koši, ve skříni, za proxy, ale nakonec jsme nemohli najít stránku, kterou hledáte.",
     "title": "Tuto stránku se nepodařilo najít"
   },
+  "onboarding": {
+    "start": {
+      "title": "Pojďme vám nastavit movie-web"
+    }
+  },
   "overlays": {
     "close": "Zavřít"
   },
@@ -404,6 +409,13 @@
         "label": "Vlastní server",
         "urlLabel": "URL adresa vlastního serveru"
       },
+      "setup": {
+        "items": {
+          "default": "Výchozí proxy",
+          "extension": "Rozšíření",
+          "proxy": "Vlastní proxy"
+        }
+      },
       "title": "Spojení",
       "workers": {
         "addButton": "Přidat nového pracovníka",
@@ -413,6 +425,14 @@
         "urlLabel": "URL adresy pracovníků",
         "urlPlaceholder": "https://"
       }
+    },
+    "preferences": {
+      "language": "Jazyk aplikace",
+      "languageDescription": "Jazyk aplikován na celou aplikaci.",
+      "thumbnail": "Generovat miniatury",
+      "thumbnailDescription": "Videa většinou nemají miniatury. Toto nastavení můžete povolit, ale mohou zpomalit vaše video.",
+      "thumbnailLabel": "Generovat miniatury",
+      "title": "Preference"
     },
     "reset": "Resetovat",
     "save": "Uložit",
