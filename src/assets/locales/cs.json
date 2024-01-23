@@ -168,12 +168,15 @@
   },
   "onboarding": {
     "defaultConfirm": {
-      "cancel": "Zrušit"
+      "cancel": "Zrušit",
+      "title": "Jste si jist?"
     },
     "extension": {
       "back": "Zpět",
       "link": "Instalovat rozšíření",
       "status": {
+        "disallowed": "Rozšíření není pro tuto stránku povoleno",
+        "disallowedAction": "Povolit rozšíření",
         "outdated": "Verze rozšíření je příliš stará.",
         "success": "Rozšíření funguje podle očekávání!"
       },
