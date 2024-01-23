@@ -79,8 +79,7 @@
   },
   "footer": {
     "legal": {
-      "disclaimer": "o sona e ni:",
-      "disclaimerText": ""
+      "disclaimer": "o sona e ni:"
     },
     "links": {
       "discord": "kulupu Siko",
@@ -206,8 +205,7 @@
         "episodeBadge": "E{{episode}}",
         "loadingError": "alasa li pakala",
         "loadingList": "alasa...",
-        "loadingTitle": "alasa...",
-        "unairedEpisodes": ""
+        "loadingTitle": "alasa..."
       },
       "playback": {
         "speedLabel": "tenpo lukin",
@@ -259,10 +257,6 @@
       }
     },
     "metadata": {
-      "api": {
-        "text": "",
-        "title": ""
-      },
       "failed": {
         "badge": "pakala",
         "homeButton": "o tawa weka",
@@ -312,17 +306,10 @@
       "remaining": "tenpo {{timeLeft}} la o awen • tenpo {{timeFinished, datetime}} la ona li pini",
       "shortRegular": "{{timeWatched}}",
       "shortRemaining": "-{{timeLeft}}"
-    },
-    "turnstile": {
-      "description": "",
-      "error": "",
-      "title": "",
-      "verifyingHumanity": ""
     }
   },
   "screens": {
     "dmca": {
-      "text": "",
       "title": "DMCA"
     },
     "loadingApp": "mi alasa e ilo",
@@ -334,7 +321,6 @@
       "textWithReset": "alasa tan lawa ilo sina li pakala. sina wile e lawa ilo mi anu seme?"
     },
     "migration": {
-      "failed": "",
       "inProgress": "o awen lili. mi alasa tawa e sona sina"
     }
   },
@@ -394,32 +380,10 @@
         "label": "lawa ante",
         "urlLabel": "nimi pi lawa ante"
       },
-      "title": "kulupu",
-      "workers": {
-        "addButton": "",
-        "description": "",
-        "emptyState": "",
-        "label": "",
-        "urlLabel": "",
-        "urlPlaceholder": ""
-      }
+      "title": "kulupu"
     },
     "reset": "o weka e ante",
     "save": "o ante",
-    "sidebar": {
-      "info": {
-        "appVersion": "",
-        "backendUrl": "",
-        "backendVersion": "",
-        "hostname": "",
-        "insecure": "",
-        "notLoggedIn": "",
-        "secure": "",
-        "title": "",
-        "unknownVersion": "",
-        "userId": ""
-      }
-    },
     "subtitles": {
       "backgroundLabel": "kon",
       "colorLabel": "kule",

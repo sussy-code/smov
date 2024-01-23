@@ -92,13 +92,8 @@
   "global": {
     "name": "movie-web",
     "pages": {
-      "about": "",
-      "dmca": "",
-      "login": "",
-      "onboarding": "",
       "pagetitle": "{{title}} - movie-web",
-      "register": "Đăng ký",
-      "settings": ""
+      "register": "Đăng ký"
     }
   },
   "home": {
@@ -108,9 +103,6 @@
     "continueWatching": {
       "sectionTitle": "Tiếp tục xem"
     },
-    "mediaList": {
-      "stopEditing": ""
-    },
     "search": {
       "allResults": "Đó là tất cả chúng tôi có!",
       "failed": "Không thể tìm thấy nội dung, hãy thử lại!",
@@ -118,26 +110,6 @@
       "noResults": "Chúng tôi không thể tìm thấy gì!",
       "placeholder": "Bạn muốn xem gì?",
       "sectionTitle": "Kết quả tìm kiếm"
-    },
-    "titles": {
-      "day": {
-        "default": "",
-        "extra": [
-          ""
-        ]
-      },
-      "morning": {
-        "default": "",
-        "extra": [
-          ""
-        ]
-      },
-      "night": {
-        "default": "",
-        "extra": [
-          ""
-        ]
-      }
     }
   },
   "media": {
@@ -150,14 +122,6 @@
   "navigation": {
     "banner": {
       "offline": "Hãy kiểm tra kết nối Internet của bạn"
-    },
-    "menu": {
-      "about": "",
-      "donation": "",
-      "logout": "",
-      "register": "",
-      "settings": "",
-      "support": ""
     }
   },
   "notFound": {
@@ -166,180 +130,22 @@
     "message": "Chúng tôi đã tìm kiếm khắp nơi: dưới thùng rác, trong tủ quần áo, đằng sau máy chủ proxy nhưng vẫn không thể tìm thấy trang bạn đang tìm kiếm.",
     "title": "Không thể tìm thấy trang"
   },
-  "onboarding": {
-    "defaultConfirm": {
-      "cancel": "",
-      "confirm": "",
-      "description": "",
-      "title": ""
-    },
-    "extension": {
-      "back": "",
-      "explainer": "",
-      "extensionHelp": "",
-      "link": "",
-      "status": {
-        "disallowed": "",
-        "disallowedAction": "",
-        "failed": "",
-        "loading": "",
-        "outdated": "",
-        "success": ""
-      },
-      "submit": "",
-      "title": ""
-    },
-    "proxy": {
-      "back": "",
-      "explainer": "",
-      "input": {
-        "errorConnection": "",
-        "errorInvalidUrl": "",
-        "errorNotProxy": "",
-        "label": "",
-        "placeholder": ""
-      },
-      "link": "",
-      "submit": "",
-      "title": ""
-    },
-    "start": {
-      "explainer": "",
-      "options": {
-        "default": {
-          "text": ""
-        },
-        "extension": {
-          "action": "",
-          "description": "",
-          "quality": "",
-          "title": ""
-        },
-        "proxy": {
-          "action": "",
-          "description": "",
-          "quality": "",
-          "title": ""
-        }
-      },
-      "title": ""
-    }
-  },
-  "overlays": {
-    "close": ""
-  },
   "player": {
     "back": {
       "default": "Quay lại trang chính",
       "short": "Quay lại"
     },
-    "casting": {
-      "enabled": ""
-    },
     "menus": {
-      "downloads": {
-        "disclaimer": "",
-        "downloadPlaylist": "",
-        "downloadSubtitle": "",
-        "downloadVideo": "",
-        "hlsDisclaimer": "",
-        "onAndroid": {
-          "1": "",
-          "shortTitle": "",
-          "title": ""
-        },
-        "onIos": {
-          "1": "",
-          "shortTitle": "",
-          "title": ""
-        },
-        "onPc": {
-          "1": "",
-          "shortTitle": "",
-          "title": ""
-        },
-        "title": ""
-      },
       "episodes": {
         "button": "Tập",
-        "emptyState": "",
-        "episodeBadge": "",
-        "loadingError": "",
         "loadingList": "Đang tải...",
-        "loadingTitle": "Đang tải...",
-        "unairedEpisodes": ""
-      },
-      "playback": {
-        "speedLabel": "",
-        "title": ""
-      },
-      "quality": {
-        "automaticLabel": "",
-        "hint": "",
-        "iosNoQuality": "",
-        "title": ""
-      },
-      "settings": {
-        "downloadItem": "",
-        "enableSubtitles": "",
-        "experienceSection": "",
-        "playbackItem": "",
-        "qualityItem": "",
-        "sourceItem": "",
-        "subtitleItem": "",
-        "videoSection": ""
+        "loadingTitle": "Đang tải..."
       },
       "sources": {
-        "failed": {
-          "text": "",
-          "title": ""
-        },
-        "noEmbeds": {
-          "text": "",
-          "title": ""
-        },
-        "noStream": {
-          "text": "",
-          "title": ""
-        },
-        "title": "Nguồn",
-        "unknownOption": ""
-      },
-      "subtitles": {
-        "customChoice": "",
-        "customizeLabel": "",
-        "offChoice": "",
-        "settings": {
-          "backlink": "",
-          "delay": "",
-          "fixCapitals": ""
-        },
-        "title": "",
-        "unknownLanguage": ""
+        "title": "Nguồn"
       }
     },
     "metadata": {
-      "api": {
-        "text": "",
-        "title": ""
-      },
-      "dmca": {
-        "badge": "",
-        "text": "",
-        "title": ""
-      },
-      "extensionPermission": {
-        "badge": "",
-        "button": "",
-        "text": "",
-        "title": ""
-      },
-      "failed": {
-        "badge": "",
-        "homeButton": "",
-        "text": "",
-        "title": ""
-      },
       "notFound": {
         "badge": "Không tìm thấy",
         "homeButton": "Quay lại trang chính",
@@ -347,187 +153,8 @@
         "title": "Không thể tìm thấy nội dung."
       }
     },
-    "nextEpisode": {
-      "cancel": "",
-      "next": ""
-    },
     "playbackError": {
-      "badge": "",
-      "errors": {
-        "errorAborted": "",
-        "errorDecode": "",
-        "errorGenericMedia": "",
-        "errorNetwork": "",
-        "errorNotSupported": ""
-      },
-      "homeButton": "",
-      "text": "",
       "title": "Rất tiếc, đã hỏng!"
-    },
-    "scraping": {
-      "items": {
-        "failure": "",
-        "notFound": "",
-        "pending": ""
-      },
-      "notFound": {
-        "badge": "",
-        "detailsButton": "",
-        "homeButton": "",
-        "text": "",
-        "title": ""
-      }
-    },
-    "time": {
-      "regular": "",
-      "remaining": "",
-      "shortRegular": "",
-      "shortRemaining": ""
-    },
-    "turnstile": {
-      "description": "",
-      "error": "",
-      "title": "",
-      "verifyingHumanity": ""
     }
-  },
-  "screens": {
-    "dmca": {
-      "text": "",
-      "title": ""
-    },
-    "loadingApp": "",
-    "loadingUser": "",
-    "loadingUserError": {
-      "logout": "",
-      "reset": "",
-      "text": "",
-      "textWithReset": ""
-    },
-    "migration": {
-      "failed": "",
-      "inProgress": ""
-    }
-  },
-  "settings": {
-    "account": {
-      "accountDetails": {
-        "deviceNameLabel": "",
-        "deviceNamePlaceholder": "",
-        "editProfile": "",
-        "logoutButton": ""
-      },
-      "actions": {
-        "delete": {
-          "button": "",
-          "confirmButton": "",
-          "confirmDescription": "",
-          "confirmTitle": "",
-          "text": "",
-          "title": ""
-        },
-        "title": ""
-      },
-      "devices": {
-        "deviceNameLabel": "",
-        "failed": "",
-        "removeDevice": "",
-        "title": ""
-      },
-      "profile": {
-        "finish": "",
-        "firstColor": "",
-        "secondColor": "",
-        "title": "",
-        "userIcon": ""
-      },
-      "register": {
-        "cta": "",
-        "text": "",
-        "title": ""
-      },
-      "title": ""
-    },
-    "appearance": {
-      "activeTheme": "",
-      "themes": {
-        "blue": "",
-        "default": "",
-        "gray": "",
-        "red": "",
-        "teal": ""
-      },
-      "title": ""
-    },
-    "connections": {
-      "server": {
-        "description": "",
-        "label": "",
-        "urlLabel": ""
-      },
-      "setup": {
-        "doSetup": "",
-        "errorStatus": {
-          "description": "",
-          "title": ""
-        },
-        "itemError": "",
-        "items": {
-          "default": "",
-          "extension": "",
-          "proxy": ""
-        },
-        "redoSetup": "",
-        "successStatus": {
-          "description": "",
-          "title": ""
-        },
-        "unsetStatus": {
-          "description": "",
-          "title": ""
-        }
-      },
-      "title": "",
-      "workers": {
-        "addButton": "",
-        "description": "",
-        "emptyState": "",
-        "label": "",
-        "urlLabel": "",
-        "urlPlaceholder": ""
-      }
-    },
-    "preferences": {
-      "language": "",
-      "languageDescription": "",
-      "thumbnail": "",
-      "thumbnailDescription": "",
-      "thumbnailLabel": "",
-      "title": ""
-    },
-    "reset": "",
-    "save": "",
-    "sidebar": {
-      "info": {
-        "appVersion": "",
-        "backendUrl": "",
-        "backendVersion": "",
-        "hostname": "",
-        "insecure": "",
-        "notLoggedIn": "",
-        "secure": "",
-        "title": "",
-        "unknownVersion": "",
-        "userId": ""
-      }
-    },
-    "subtitles": {
-      "backgroundLabel": "",
-      "colorLabel": "",
-      "previewQuote": "",
-      "textSizeLabel": "",
-      "title": ""
-    },
-    "unsaved": ""
   }
 }

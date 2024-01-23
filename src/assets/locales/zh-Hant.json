@@ -5,99 +5,17 @@
     "q1": {
       "body": "movie-web 不託管任何內容。您點選觀看內容時，系統均從互聯網搜尋（在加載提示頁和“視頻源”選項卡中，您可以看到正在使用的源）。媒體從未在 movie-web 中上傳，所有內容均通過搜索機制而得。",
       "title": "內容來自哪裡？"
-    },
-    "q2": {
-      "body": "",
-      "title": ""
-    },
-    "q3": {
-      "body": "",
-      "title": ""
-    },
-    "title": ""
-  },
-  "actions": {
-    "copied": "",
-    "copy": ""
-  },
-  "auth": {
-    "createAccount": "",
-    "deviceNameLabel": "",
-    "deviceNamePlaceholder": "",
-    "generate": {
-      "description": "",
-      "next": "",
-      "passphraseFrameLabel": "",
-      "title": ""
-    },
-    "hasAccount": "",
-    "login": {
-      "description": "",
-      "deviceLengthError": "",
-      "passphraseLabel": "",
-      "passphrasePlaceholder": "",
-      "submit": "登入",
-      "title": "",
-      "validationError": ""
-    },
-    "register": {
-      "information": {
-        "color1": "",
-        "color2": "",
-        "header": "",
-        "icon": "",
-        "next": "",
-        "title": ""
-      }
-    },
-    "trust": {
-      "failed": {
-        "text": "",
-        "title": ""
-      },
-      "host": "",
-      "no": "",
-      "title": "",
-      "yes": ""
-    },
-    "verify": {
-      "description": "",
-      "invalidData": "",
-      "noMatch": "",
-      "passphraseLabel": "",
-      "recaptchaFailed": "",
-      "register": "",
-      "title": ""
     }
   },
-  "errors": {
-    "badge": "",
-    "details": "",
-    "reloadPage": "",
-    "showError": "",
-    "title": ""
-  },
-  "footer": {
-    "legal": {
-      "disclaimer": "",
-      "disclaimerText": ""
-    },
-    "links": {
-      "discord": "",
-      "dmca": "",
-      "github": ""
-    },
-    "tagline": ""
+  "auth": {
+    "login": {
+      "submit": "登入"
+    }
   },
   "global": {
-    "name": "",
     "pages": {
       "about": "關於",
-      "dmca": "",
       "login": "登入",
-      "onboarding": "",
-      "pagetitle": "",
-      "register": "",
       "settings": "設定"
     }
   },
@@ -105,124 +23,21 @@
     "bookmarks": {
       "sectionTitle": "書籤"
     },
-    "continueWatching": {
-      "sectionTitle": ""
-    },
-    "mediaList": {
-      "stopEditing": ""
-    },
     "search": {
-      "allResults": "",
-      "failed": "",
-      "loading": "載入中...",
-      "noResults": "",
-      "placeholder": "",
-      "sectionTitle": ""
-    },
-    "titles": {
-      "day": {
-        "default": "",
-        "extra": [
-          ""
-        ]
-      },
-      "morning": {
-        "default": "",
-        "extra": [
-          ""
-        ]
-      },
-      "night": {
-        "default": "",
-        "extra": [
-          ""
-        ]
-      }
+      "loading": "載入中..."
     }
   },
   "media": {
-    "episodeDisplay": "",
     "types": {
       "movie": "電影",
       "show": "節目"
     }
   },
   "navigation": {
-    "banner": {
-      "offline": ""
-    },
     "menu": {
-      "about": "",
       "donation": "捐",
-      "logout": "",
-      "register": "",
       "settings": "設定",
       "support": "支援"
-    }
-  },
-  "notFound": {
-    "badge": "",
-    "goHome": "",
-    "message": "",
-    "title": ""
-  },
-  "onboarding": {
-    "defaultConfirm": {
-      "cancel": "",
-      "confirm": "",
-      "description": "",
-      "title": ""
-    },
-    "extension": {
-      "back": "",
-      "explainer": "",
-      "extensionHelp": "",
-      "link": "",
-      "status": {
-        "disallowed": "",
-        "disallowedAction": "",
-        "failed": "",
-        "loading": "",
-        "outdated": "",
-        "success": ""
-      },
-      "submit": "",
-      "title": ""
-    },
-    "proxy": {
-      "back": "",
-      "explainer": "",
-      "input": {
-        "errorConnection": "",
-        "errorInvalidUrl": "",
-        "errorNotProxy": "",
-        "label": "",
-        "placeholder": ""
-      },
-      "link": "",
-      "submit": "",
-      "title": ""
-    },
-    "start": {
-      "explainer": "",
-      "options": {
-        "default": {
-          "text": ""
-        },
-        "extension": {
-          "action": "",
-          "description": "",
-          "quality": "",
-          "title": ""
-        },
-        "proxy": {
-          "action": "",
-          "description": "",
-          "quality": "",
-          "title": ""
-        }
-      },
-      "title": ""
     }
   },
   "overlays": {
@@ -230,304 +45,58 @@
   },
   "player": {
     "back": {
-      "default": "",
       "short": "後退"
-    },
-    "casting": {
-      "enabled": ""
     },
     "menus": {
       "downloads": {
-        "disclaimer": "",
-        "downloadPlaylist": "",
-        "downloadSubtitle": "",
-        "downloadVideo": "",
-        "hlsDisclaimer": "",
-        "onAndroid": {
-          "1": "",
-          "shortTitle": "",
-          "title": ""
-        },
-        "onIos": {
-          "1": "",
-          "shortTitle": "",
-          "title": ""
-        },
-        "onPc": {
-          "1": "",
-          "shortTitle": "",
-          "title": ""
-        },
         "title": "下載"
       },
       "episodes": {
-        "button": "",
-        "emptyState": "",
-        "episodeBadge": "",
-        "loadingError": "",
         "loadingList": "載入中...",
-        "loadingTitle": "載入中...",
-        "unairedEpisodes": ""
-      },
-      "playback": {
-        "speedLabel": "",
-        "title": ""
-      },
-      "quality": {
-        "automaticLabel": "",
-        "hint": "",
-        "iosNoQuality": "",
-        "title": ""
+        "loadingTitle": "載入中..."
       },
       "settings": {
-        "downloadItem": "下載",
-        "enableSubtitles": "",
-        "experienceSection": "",
-        "playbackItem": "",
-        "qualityItem": "",
-        "sourceItem": "",
-        "subtitleItem": "",
-        "videoSection": ""
-      },
-      "sources": {
-        "failed": {
-          "text": "",
-          "title": ""
-        },
-        "noEmbeds": {
-          "text": "",
-          "title": ""
-        },
-        "noStream": {
-          "text": "",
-          "title": ""
-        },
-        "title": "",
-        "unknownOption": ""
+        "downloadItem": "下載"
       },
       "subtitles": {
-        "customChoice": "",
-        "customizeLabel": "",
-        "offChoice": "",
-        "settings": {
-          "backlink": "",
-          "delay": "",
-          "fixCapitals": ""
-        },
-        "title": "字幕",
-        "unknownLanguage": ""
+        "title": "字幕"
       }
     },
     "metadata": {
-      "api": {
-        "text": "",
-        "title": ""
-      },
-      "dmca": {
-        "badge": "",
-        "text": "",
-        "title": ""
-      },
-      "extensionPermission": {
-        "badge": "",
-        "button": "",
-        "text": "",
-        "title": ""
-      },
       "failed": {
-        "badge": "失敗",
-        "homeButton": "",
-        "text": "",
-        "title": ""
-      },
-      "notFound": {
-        "badge": "",
-        "homeButton": "",
-        "text": "",
-        "title": ""
+        "badge": "失敗"
       }
     },
     "nextEpisode": {
-      "cancel": "取消",
-      "next": ""
-    },
-    "playbackError": {
-      "badge": "",
-      "errors": {
-        "errorAborted": "",
-        "errorDecode": "",
-        "errorGenericMedia": "",
-        "errorNetwork": "",
-        "errorNotSupported": ""
-      },
-      "homeButton": "",
-      "text": "",
-      "title": ""
-    },
-    "scraping": {
-      "items": {
-        "failure": "",
-        "notFound": "",
-        "pending": ""
-      },
-      "notFound": {
-        "badge": "",
-        "detailsButton": "",
-        "homeButton": "",
-        "text": "",
-        "title": ""
-      }
-    },
-    "time": {
-      "regular": "",
-      "remaining": "",
-      "shortRegular": "",
-      "shortRemaining": ""
-    },
-    "turnstile": {
-      "description": "",
-      "error": "",
-      "title": "",
-      "verifyingHumanity": ""
+      "cancel": "取消"
     }
   },
   "screens": {
-    "dmca": {
-      "text": "",
-      "title": ""
-    },
-    "loadingApp": "",
-    "loadingUser": "",
     "loadingUserError": {
-      "logout": "登出",
-      "reset": "",
-      "text": "",
-      "textWithReset": ""
-    },
-    "migration": {
-      "failed": "",
-      "inProgress": ""
+      "logout": "登出"
     }
   },
   "settings": {
     "account": {
-      "accountDetails": {
-        "deviceNameLabel": "",
-        "deviceNamePlaceholder": "",
-        "editProfile": "",
-        "logoutButton": ""
-      },
-      "actions": {
-        "delete": {
-          "button": "",
-          "confirmButton": "",
-          "confirmDescription": "",
-          "confirmTitle": "",
-          "text": "",
-          "title": ""
-        },
-        "title": ""
-      },
-      "devices": {
-        "deviceNameLabel": "",
-        "failed": "",
-        "removeDevice": "",
-        "title": ""
-      },
-      "profile": {
-        "finish": "",
-        "firstColor": "",
-        "secondColor": "",
-        "title": "",
-        "userIcon": ""
-      },
-      "register": {
-        "cta": "",
-        "text": "",
-        "title": ""
-      },
       "title": "帳戶"
     },
     "appearance": {
-      "activeTheme": "",
       "themes": {
         "blue": "藍色",
-        "default": "",
         "gray": "灰色",
         "red": "紅色",
         "teal": "青色"
-      },
-      "title": ""
-    },
-    "connections": {
-      "server": {
-        "description": "",
-        "label": "",
-        "urlLabel": ""
-      },
-      "setup": {
-        "doSetup": "",
-        "errorStatus": {
-          "description": "",
-          "title": ""
-        },
-        "itemError": "",
-        "items": {
-          "default": "",
-          "extension": "",
-          "proxy": ""
-        },
-        "redoSetup": "",
-        "successStatus": {
-          "description": "",
-          "title": ""
-        },
-        "unsetStatus": {
-          "description": "",
-          "title": ""
-        }
-      },
-      "title": "",
-      "workers": {
-        "addButton": "",
-        "description": "",
-        "emptyState": "",
-        "label": "",
-        "urlLabel": "",
-        "urlPlaceholder": ""
       }
     },
-    "preferences": {
-      "language": "",
-      "languageDescription": "",
-      "thumbnail": "",
-      "thumbnailDescription": "",
-      "thumbnailLabel": "",
-      "title": ""
-    },
-    "reset": "",
-    "save": "",
     "sidebar": {
       "info": {
-        "appVersion": "",
-        "backendUrl": "",
-        "backendVersion": "",
-        "hostname": "",
         "insecure": "不安全",
-        "notLoggedIn": "",
-        "secure": "安全",
-        "title": "",
-        "unknownVersion": "",
-        "userId": ""
+        "secure": "安全"
       }
     },
     "subtitles": {
-      "backgroundLabel": "",
       "colorLabel": "顏色",
-      "previewQuote": "",
-      "textSizeLabel": "",
       "title": "字幕"
-    },
-    "unsaved": ""
+    }
   }
 }

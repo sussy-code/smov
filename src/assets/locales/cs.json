@@ -95,6 +95,7 @@
       "about": "O nás",
       "dmca": "DMCA",
       "login": "Přihlásit se",
+      "onboarding": "Nastavení",
       "pagetitle": "{{title}} - movie-web",
       "register": "Zaregistrovat se",
       "settings": "Nastavení"
@@ -165,6 +166,65 @@
     "message": "Dívali jsme se všude: pod koši, ve skříni, za proxy, ale nakonec jsme nemohli najít stránku, kterou hledáte.",
     "title": "Tuto stránku se nepodařilo najít"
   },
+  "onboarding": {
+    "defaultConfirm": {
+      "cancel": "Zrušit",
+      "confirm": "Použít výchozí nastavení",
+      "description": "Výchozí nastavení nemá nejlepší streamy a může být strašně pomalá.",
+      "title": "Jste si jist?"
+    },
+    "extension": {
+      "back": "Zpět",
+      "explainer": "Pomocí rozšíření prohlížeče můžete získat nejlepší streamy, které nabízíme. S pouhou instalací.",
+      "extensionHelp": "Pokud jste rozšíření nainstalovali, ale nebylo zjištěno. <bold>Otevřete rozšíření pomocí nabídky rozšíření ve vašem prohlížeči</bold> a postupujte podle pokynů na obrazovce.",
+      "link": "Instalovat rozšíření",
+      "status": {
+        "disallowed": "Rozšíření není pro tuto stránku povoleno",
+        "disallowedAction": "Povolit rozšíření",
+        "failed": "Nezdařilo se získávání stavu",
+        "loading": "Čekání na instalaci rozšíření",
+        "outdated": "Verze rozšíření je příliš stará",
+        "success": "Rozšíření funguje podle očekávání!"
+      },
+      "submit": "Pokračovat",
+      "title": "Začněme s rozšířením"
+    },
+    "proxy": {
+      "back": "Zpět",
+      "explainer": "Pomocí metody proxy můžete získat streamy ve skvělé kvalitě vytvořením proxy serveru.",
+      "input": {
+        "errorConnection": "Nelze se připojit k proxy",
+        "errorInvalidUrl": "Adresa URL není platná",
+        "errorNotProxy": "Byla očekávaná proxy, ale byla předána webová stránka",
+        "label": "Proxy URL",
+        "placeholder": "https://"
+      },
+      "link": "Naučit se vytvořit proxy",
+      "submit": "Předložit proxy",
+      "title": "Pojďme uďelat novou proxy"
+    },
+    "start": {
+      "explainer": "Abyste získali co nejlepší streamy. Musíte si zvolit, kterou streamovací metodu chcete použít.",
+      "options": {
+        "default": {
+          "text": "Nechci zdroje s dobrou kvalitou,<0 /> <1>použít výchozí nastavení</1>"
+        },
+        "extension": {
+          "action": "Nainstalujte si rozšíření",
+          "description": "Nainstalujte si rozšíření prohlížeče a získejte přístup k nejlepším zdrojům.",
+          "quality": "Nejlepší kvalita",
+          "title": "Rozšíření prohlížeče"
+        },
+        "proxy": {
+          "action": "Nastavit proxy",
+          "description": "Nastavte si proxy během 5 minut, pro získání přístupu k skvělým zdrojům.",
+          "quality": "Dobrá kvalita",
+          "title": "Vlastní proxy"
+        }
+      },
+      "title": "Pojďme vám nastavit movie-web"
+    }
+  },
   "overlays": {
     "close": "Zavřít"
   },
@@ -182,7 +242,7 @@
         "downloadPlaylist": "Stáhnout playlist",
         "downloadSubtitle": "Stáhnout aktuální titulky",
         "downloadVideo": "Stáhnout video",
-        "hlsDisclaimer": "Stahování probíhá přímo u poskytovatele. movie-web nemá kontrolu nad tím, jak jsou stahování poskytovány. Vezměte prosím na vědomí, že stahujete HLS playlist, který je určen pro uživatele obeznámené s pokročilým streamováním médií.",
+        "hlsDisclaimer": "Stahování probíhá přímo u poskytovatele. movie-web nemá kontrolu nad tím, jak jsou stahování poskytovány.<br /><br />Vezměte prosím na vědomí, že stahujete HLS playlist, který <bold>není doporučen stahovat pokud nejste obeznámeni s pokročilým streamováním médií</bold>. Raději skuste jiný zdroj pro jiný formát.",
         "onAndroid": {
           "1": "Na Androidu klikněte na tlačítko stahování, poté na nové stránce <bold>klepněte a podržte</bold> na videu a poté vyberte <bold>uložit</bold>.",
           "shortTitle": "Stahování / Android",
@@ -262,6 +322,17 @@
       "api": {
         "text": "Metadata API nelze načíst, zkontrolujte prosím vaše připojení k internetu.",
         "title": "Nepodařilo se načíst API metadata"
+      },
+      "dmca": {
+        "badge": "Odstraněno",
+        "text": "Toto média není dostupné, kvůli oznámení o zastavení šíření nebo nároku na autorská práva.",
+        "title": "Média byla odstraněna"
+      },
+      "extensionPermission": {
+        "badge": "Chybí povolení",
+        "button": "Použít rozšíření",
+        "text": "Máte rozšíření, ale k jeho použití potřebujeme vaše povolení.",
+        "title": "Konfigurace rozšíření"
       },
       "failed": {
         "badge": "Neúspěšný",
@@ -390,19 +461,49 @@
     },
     "connections": {
       "server": {
-        "description": "Pokud se chcete připojit k vlastnímu backendu pr ukládání dat, povolte toto a zadejte URL adresu.",
+        "description": "Pokud se chcete připojit k vlastnímu backendu pro ukládání dat, povolte toto a zadejte URL adresu. <0>Instrukce.</0>",
         "label": "Vlastní server",
         "urlLabel": "URL adresa vlastního serveru"
+      },
+      "setup": {
+        "doSetup": "Proveďte nastavení",
+        "errorStatus": {
+          "description": "Vypadá to, že jedna nebo více položek v tomto nastavení potřebuje vaši pozornost.",
+          "title": "Něco potřebuje vaši pozornost"
+        },
+        "itemError": "S tímto nastavením je něco špatně. Projděte znovu nastavením abyste to opravili.",
+        "items": {
+          "default": "Výchozí nastavení",
+          "extension": "Rozšíření",
+          "proxy": "Vlastní proxy"
+        },
+        "redoSetup": "Proveďte znovu nastavení",
+        "successStatus": {
+          "description": "Všechny věci jsou připraveny, abyste mohli začít sledovat svá oblíbená média.",
+          "title": "Všechno je nastaveno!"
+        },
+        "unsetStatus": {
+          "description": "Prosím klikněte na vedlejší tlačítko abyste začali proces nastavování.",
+          "title": "Neprošli jste nastavením"
+        }
       },
       "title": "Spojení",
       "workers": {
         "addButton": "Přidat nového pracovníka",
-        "description": "Aby byla aplikace funkční, veškerá trafika prochází přes proxy. Povolte toto, pokud chcete používat svoje vlastní pracovníky.",
+        "description": "Aby byla aplikace funkční, veškerá trafika prochází přes proxy. Povolte toto, pokud chcete používat svoje vlastní pracovníky. <0>Instrukce.</0>",
         "emptyState": "Zatím žádní pracovníci, přidej jednoho dolů",
         "label": "Použít vlastní proxy pracovníky",
         "urlLabel": "URL adresy pracovníků",
         "urlPlaceholder": "https://"
       }
+    },
+    "preferences": {
+      "language": "Jazyk aplikace",
+      "languageDescription": "Jazyk aplikován na celou aplikaci.",
+      "thumbnail": "Generovat miniatury",
+      "thumbnailDescription": "Videa většinou nemají miniatury. Toto nastavení můžete povolit, ale mohou zpomalit vaše video.",
+      "thumbnailLabel": "Generovat miniatury",
+      "title": "Preference"
     },
     "reset": "Resetovat",
     "save": "Uložit",

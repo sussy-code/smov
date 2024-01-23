@@ -263,6 +263,11 @@
         "text": "API Metadaten konnten nicht geladen werden, überprüfe deine Netzwerkverbindung.",
         "title": "API Metadaten konnten nicht geladen werden"
       },
+      "dmca": {
+        "badge": "Entfernt",
+        "text": "Das Video ist aufgrund einer Takedown-Anfrage oder eines Urheberrechtsanspruchs nicht mehr verfügbar.",
+        "title": "Video wurde entfernt"
+      },
       "failed": {
         "badge": "Fehlgeschlagen",
         "homeButton": "Zurück zur Startseite",
@@ -393,6 +398,16 @@
         "description": "Falls du dich mit einem anderen Server verbinden willst, um deine Daten zu speichern. Aktiviere dies und gebe die URL an. <0>Anweisungen.</0>",
         "label": "Eigener Server",
         "urlLabel": "Eigene Server-URL"
+      },
+      "setup": {
+        "doSetup": "Einrichten",
+        "items": {
+          "extension": "Erweiterung"
+        },
+        "redoSetup": "Erneut einrichten",
+        "successStatus": {
+          "title": "Alles eingerichtet!"
+        }
       },
       "title": "Verbindung",
       "workers": {

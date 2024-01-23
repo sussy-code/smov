@@ -71,7 +71,6 @@
     }
   },
   "errors": {
-    "badge": "",
     "details": "Подробности ошибки",
     "reloadPage": "Перезагрузить страницу",
     "showError": "Показать сведения об ошибке",
@@ -94,9 +93,7 @@
     "pages": {
       "about": "О",
       "dmca": "DMCA",
-      "login": "",
       "pagetitle": "{{title}} - movie-web",
-      "register": "",
       "settings": "Настройки"
     }
   },
@@ -112,31 +109,8 @@
     },
     "search": {
       "allResults": "Это все, что у нас есть!",
-      "failed": "",
       "loading": "Загрузка...",
-      "noResults": "",
-      "placeholder": "",
       "sectionTitle": "Результаты поиска"
-    },
-    "titles": {
-      "day": {
-        "default": "",
-        "extra": [
-          ""
-        ]
-      },
-      "morning": {
-        "default": "",
-        "extra": [
-          ""
-        ]
-      },
-      "night": {
-        "default": "",
-        "extra": [
-          ""
-        ]
-      }
     }
   },
   "media": {
@@ -154,15 +128,11 @@
       "about": "О нас",
       "donation": "Пожертвовать",
       "logout": "Выйти",
-      "register": "",
       "settings": "Настройки",
       "support": "Поддержка"
     }
   },
   "notFound": {
-    "badge": "",
-    "goHome": "",
-    "message": "",
     "title": "Не удалось найти эту страницу"
   },
   "overlays": {
@@ -170,34 +140,11 @@
   },
   "player": {
     "back": {
-      "default": "Вернуться на главную",
-      "short": ""
-    },
-    "casting": {
-      "enabled": ""
+      "default": "Вернуться на главную"
     },
     "menus": {
       "downloads": {
-        "disclaimer": "",
-        "downloadPlaylist": "",
         "downloadSubtitle": "Скачать текущие субтитры",
-        "downloadVideo": "",
-        "hlsDisclaimer": "",
-        "onAndroid": {
-          "1": "",
-          "shortTitle": "",
-          "title": ""
-        },
-        "onIos": {
-          "1": "",
-          "shortTitle": "",
-          "title": ""
-        },
-        "onPc": {
-          "1": "",
-          "shortTitle": "",
-          "title": ""
-        },
         "title": "Скачать"
       },
       "episodes": {
@@ -206,23 +153,18 @@
         "episodeBadge": "Э{{episode}}",
         "loadingError": "Ошибка при загрузке сезона",
         "loadingList": "Загрузка...",
-        "loadingTitle": "Загрузка...",
-        "unairedEpisodes": ""
+        "loadingTitle": "Загрузка..."
       },
       "playback": {
         "speedLabel": "Скорость воспроизведения",
         "title": "Настройки воспроизведения"
       },
       "quality": {
-        "automaticLabel": "Автоматическое качество",
-        "hint": "",
-        "iosNoQuality": "",
-        "title": ""
+        "automaticLabel": "Автоматическое качество"
       },
       "settings": {
         "downloadItem": "Скачать",
         "enableSubtitles": "Включить субтитры",
-        "experienceSection": "",
         "playbackItem": "Настройки воспроизведения",
         "qualityItem": "Качество",
         "sourceItem": "Видео источники",
@@ -231,8 +173,7 @@
       },
       "sources": {
         "failed": {
-          "text": "При попытке найти видео произошла ошибка, пожалуйста, попробуйте использовать другой источник.",
-          "title": ""
+          "text": "При попытке найти видео произошла ошибка, пожалуйста, попробуйте использовать другой источник."
         },
         "noEmbeds": {
           "text": "Мы не смогли найти ни одной вставки, пожалуйста, попробуйте использовать другой источник.",
@@ -247,33 +188,11 @@
       },
       "subtitles": {
         "customChoice": "Выбрать субтитры из файла",
-        "customizeLabel": "",
         "offChoice": "Выключить",
         "settings": {
-          "backlink": "Пользовательские субтитры",
-          "delay": "",
-          "fixCapitals": ""
+          "backlink": "Пользовательские субтитры"
         },
-        "title": "Субтитры",
-        "unknownLanguage": ""
-      }
-    },
-    "metadata": {
-      "api": {
-        "text": "",
-        "title": ""
-      },
-      "failed": {
-        "badge": "",
-        "homeButton": "",
-        "text": "",
-        "title": ""
-      },
-      "notFound": {
-        "badge": "",
-        "homeButton": "",
-        "text": "",
-        "title": ""
+        "title": "Субтитры"
       }
     },
     "nextEpisode": {
@@ -283,66 +202,30 @@
     "playbackError": {
       "badge": "Ошибка воспроизведения",
       "errors": {
-        "errorAborted": "",
-        "errorDecode": "Несмотря на то, что ранее этот медиаресурс был пригодным для использования, при попытке его декодирования произошла ошибка.",
-        "errorGenericMedia": "",
-        "errorNetwork": "",
-        "errorNotSupported": ""
+        "errorDecode": "Несмотря на то, что ранее этот медиаресурс был пригодным для использования, при попытке его декодирования произошла ошибка."
       },
-      "homeButton": "",
       "text": "При попытке воспроизвести медиа файл произошла ошибка. Пожалуйста, попробуйте ещё раз.",
       "title": "Не удалось воспроизвести видео!"
     },
     "scraping": {
-      "items": {
-        "failure": "",
-        "notFound": "",
-        "pending": ""
-      },
       "notFound": {
-        "badge": "",
         "detailsButton": "Показать детали",
-        "homeButton": "",
-        "text": "",
         "title": "Мы не смогли найти"
       }
     },
     "time": {
-      "regular": "{{timeWatched}} / {{duration}}",
-      "remaining": "",
-      "shortRegular": "",
-      "shortRemaining": ""
-    },
-    "turnstile": {
-      "description": "",
-      "error": "",
-      "title": "",
-      "verifyingHumanity": ""
+      "regular": "{{timeWatched}} / {{duration}}"
     }
   },
   "screens": {
     "dmca": {
-      "text": "",
       "title": "DMCA"
-    },
-    "loadingApp": "",
-    "loadingUser": "",
-    "loadingUserError": {
-      "logout": "",
-      "reset": "",
-      "text": "",
-      "textWithReset": ""
-    },
-    "migration": {
-      "failed": "",
-      "inProgress": ""
     }
   },
   "settings": {
     "account": {
       "accountDetails": {
         "deviceNameLabel": "Имя устройства",
-        "deviceNamePlaceholder": "",
         "editProfile": "Редактировать",
         "logoutButton": "Выйти"
       },

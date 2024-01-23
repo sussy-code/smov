@@ -95,6 +95,7 @@
       "about": "À propos",
       "dmca": "DMCA",
       "login": "Se connecter",
+      "onboarding": "Setup",
       "pagetitle": "{{title}} - movie-web",
       "register": "Créer un compte",
       "settings": "Paramètres"
@@ -165,6 +166,65 @@
     "message": "Nous avons cherché partout : sous les poubelles, dans le placard, derrière le proxy, mais nous n'avons finalement pas trouvé la page que vous cherchez.",
     "title": "Impossible de trouver cette page"
   },
+  "onboarding": {
+    "defaultConfirm": {
+      "cancel": "Annuler",
+      "confirm": "Utiliser la configuration de départ",
+      "description": "La configuration par défaut n'offre pas les meilleurs flux et peut être insupportablement lente.",
+      "title": "Es-tu sûr ?"
+    },
+    "extension": {
+      "back": "Retour en arrière",
+      "explainer": "En utilisant l'extension de navigateur, vous pouvez obtenir les meilleurs flux que nous avons à offrir. Avec juste une simple installation.",
+      "extensionHelp": "Si vous avez installé l'extension mais qu'elle n'est pas détectée. <bold>Ouvrez l'extension via le menu des extensions de votre navigateur</bold> et suivez les étapes à l'écran.",
+      "link": "Installer l'extension",
+      "status": {
+        "disallowed": "L'extension n'est pas activée pour cette page",
+        "disallowedAction": "Activer l'extension",
+        "failed": "Échec de la demande de statut",
+        "loading": "En attendant que vous installiez l'extension",
+        "outdated": "Version d'extension trop ancienne",
+        "success": "L'extension fonctionne comme prévu !"
+      },
+      "submit": "Continuer",
+      "title": "Commençons par une extension"
+    },
+    "proxy": {
+      "back": "Retour en arrière",
+      "explainer": "Avec la méthode du proxy, vous pouvez obtenir des flux de bonne qualité en créant un proxy en libre-service.",
+      "input": {
+        "errorConnection": "Impossible de se connecter au proxy",
+        "errorInvalidUrl": "URL non valide",
+        "errorNotProxy": "Je m'attendais à un proxy mais j'ai obtenu un site Web",
+        "label": "URL du proxy",
+        "placeholder": "https://"
+      },
+      "link": "Apprenez à créer un proxy",
+      "submit": "Soumettre le proxy",
+      "title": "Créons un nouveau proxy"
+    },
+    "start": {
+      "explainer": "Pour obtenir les meilleurs flux possibles. Vous devrez choisir la méthode de streaming que vous souhaitez utiliser.",
+      "options": {
+        "default": {
+          "text": "Je ne veux pas de flux de bonne qualité,<0 /> <1>use the default setup</1>"
+        },
+        "extension": {
+          "action": "Installer l'extension",
+          "description": "Installez l'extension de navigateur et accédez aux meilleures sources.",
+          "quality": "Meilleur qualité",
+          "title": "Extension du navigateur"
+        },
+        "proxy": {
+          "action": "Configurez le proxy",
+          "description": "Configurez un proxy en seulement 5 minutes et accédez à d'excellentes sources.",
+          "quality": "Bonne qualité",
+          "title": "Proxy personnalisé"
+        }
+      },
+      "title": "Commençons par vous configurer movie-web"
+    }
+  },
   "overlays": {
     "close": "Fermer"
   },
@@ -182,7 +242,7 @@
         "downloadPlaylist": "Télécharger la liste de lecture",
         "downloadSubtitle": "Télécharger les sous-titres",
         "downloadVideo": "Télécharger la vidéo",
-        "hlsDisclaimer": "Les téléchargements sont pris directement de la source. Movie-Web n'exerce aucun contrôle sur les méthodes des fournisseurs de téléchargement. Veuillez noter que vous téléchargez une liste de lecture HLS, destinée aux utilisateurs habitués au streaming multimédia avancé.",
+        "hlsDisclaimer": "Les téléchargements sont effectués directement auprès du fournisseur. movie-web n'a aucun contrôle sur la façon dont les téléchargements sont fournis.<br /><br />Veuillez noter que vous téléchargez une liste de lecture HLS, il n'est <bold>pas recommandé de télécharger si vous n'êtes pas familier avec les formats de streaming avancés. </bold>. Essayez différentes sources pour différents formats.",
         "onAndroid": {
           "1": "Pour télécharger sur Android, cliquez sur le bouton de téléchargement puis, sur la nouvelle page, <bold>tapez et maintenez </bold> sur la vidéo, puis sélectionnez <bold>enregistrer</bold>.",
           "shortTitle": "Télécharger / Android",
@@ -262,6 +322,17 @@
       "api": {
         "text": "Impossible de charger les métadonnées de l'API, veuillez vérifier votre connexion Internet.",
         "title": "Échec du chargement des métadonnées de l'API"
+      },
+      "dmca": {
+        "badge": "Supprimé",
+        "text": "Ce média n'est plus disponible en raison d'un avis de retrait ou d'une réclamation pour atteinte aux droits d'auteur.",
+        "title": "Le média a été supprimé"
+      },
+      "extensionPermission": {
+        "badge": "Autorisation manquante",
+        "button": "Utiliser l'extension",
+        "text": "Vous disposez de l'extension de navigateur, mais nous avons besoin de votre autorisation pour commencer à utiliser l'extension.",
+        "title": "Configurer l'extension"
       },
       "failed": {
         "badge": "Échec",
@@ -394,6 +465,28 @@
         "label": "Serveur personnalisé",
         "urlLabel": "URL du serveur personnalisé"
       },
+      "setup": {
+        "doSetup": "Faire la configuration",
+        "errorStatus": {
+          "description": "Il semble qu'un ou plusieurs éléments de cette configuration nécessitent votre attention.",
+          "title": "Quelque chose nécessite votre attention"
+        },
+        "itemError": "Ce paramètre présente un problème. Résolvez le problème en redémarrant la configuration.",
+        "items": {
+          "default": "Configuration par défaut",
+          "extension": "Extension",
+          "proxy": "Proxy personnalisé"
+        },
+        "redoSetup": "Refaire la configuration",
+        "successStatus": {
+          "description": "Tout est réuni pour que vous puissiez commencer à regarder vos médias préférés.",
+          "title": "Tout est mis en place !"
+        },
+        "unsetStatus": {
+          "description": "Pour commencer le processus de configuration, veuillez cliquer sur le bouton à droite.",
+          "title": "Vous n'avez pas fait la configuration"
+        }
+      },
       "title": "Connexions",
       "workers": {
         "addButton": "Ajouter un nouveau worker",
@@ -403,6 +496,14 @@
         "urlLabel": "URLs des workers",
         "urlPlaceholder": "https://"
       }
+    },
+    "preferences": {
+      "language": "Language de l'application",
+      "languageDescription": "Langue appliquée à l’ensemble de l’application.",
+      "thumbnail": "Générer des miniatures",
+      "thumbnailDescription": "La plupart du temps, les vidéos n'ont pas de miniatures. Vous pouvez activer ce paramètre pour les générer à la volée, mais ils peuvent ralentir votre vidéo.",
+      "thumbnailLabel": "Générer des miniatures",
+      "title": "Préférences"
     },
     "reset": "Réinitialiser",
     "save": "Sauvegarder",

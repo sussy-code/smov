@@ -120,10 +120,7 @@
     },
     "titles": {
       "day": {
-        "default": "What be yer fancy for this fine afternoon's viewing, me heartie?",
-        "extra": [
-          ""
-        ]
+        "default": "What be yer fancy for this fine afternoon's viewing, me heartie?"
       },
       "morning": {
         "default": "What be yer fancy for this mornin's viewing, me heartie?",
@@ -179,10 +176,7 @@
     "menus": {
       "downloads": {
         "disclaimer": "Downloads be taken directly from the provider. movie-web does not have control over how the downloads be provided.",
-        "downloadPlaylist": "",
-        "downloadSubtitle": "",
         "downloadVideo": "Download film",
-        "hlsDisclaimer": "",
         "onAndroid": {
           "1": "To download on Android, <bold>tap and hold</bold> on the film, then select <bold>save</bold>.",
           "shortTitle": "Download / Android",
@@ -206,8 +200,7 @@
         "episodeBadge": "E{{episode}}",
         "loadingError": "Error loadin' season",
         "loadingList": "Loading...",
-        "loadingTitle": "Loading...",
-        "unairedEpisodes": ""
+        "loadingTitle": "Loading..."
       },
       "playback": {
         "speedLabel": "Playback speed",
@@ -246,23 +239,13 @@
         "unknownOption": "Unknown"
       },
       "subtitles": {
-        "customChoice": "",
         "customizeLabel": "Tailor it to yer liking",
-        "offChoice": "",
         "settings": {
-          "backlink": "",
-          "delay": "",
           "fixCapitals": "Mend the capital letters"
-        },
-        "title": "",
-        "unknownLanguage": ""
+        }
       }
     },
     "metadata": {
-      "api": {
-        "text": "",
-        "title": ""
-      },
       "failed": {
         "badge": "Failed",
         "homeButton": "Go home port",
@@ -301,7 +284,6 @@
       },
       "notFound": {
         "badge": "Not found",
-        "detailsButton": "",
         "homeButton": "Go home port",
         "text": "Oh, me apologies, sweetie! The itty-bitty movie-web did its utmost bestest, but alas, no wucky videos to be spotted anywhere (´⊙ω⊙`) Please don't be angwy, wittle movie-web ish twying so hard. Can ye find it in yer heart to forgive? UwU 💖",
         "title": "Goo goo gaa gaa"
@@ -312,23 +294,12 @@
       "remaining": "{{timeLeft}} left • Finish at {{timeFinished, datetime}}",
       "shortRegular": "{{timeWatched}}",
       "shortRemaining": "-{{timeLeft}}"
-    },
-    "turnstile": {
-      "description": "",
-      "error": "",
-      "title": "",
-      "verifyingHumanity": ""
     }
   },
   "screens": {
-    "dmca": {
-      "text": "",
-      "title": ""
-    },
     "loadingApp": "Loadin' application",
     "loadingUser": "Loadin' yer pirate profile",
     "loadingUserError": {
-      "logout": "",
       "reset": "Reset custom ship",
       "text": "Failed to load yer pirate profile",
       "textWithReset": "Failed to load yer pirate profile from yer custom ship, want to reset back to default?"
@@ -419,13 +390,6 @@
         "unknownVersion": "Unknown",
         "userId": "Pirate ID"
       }
-    },
-    "subtitles": {
-      "backgroundLabel": "",
-      "colorLabel": "",
-      "previewQuote": "",
-      "textSizeLabel": "",
-      "title": ""
     },
     "unsaved": "Ye have unsaved changes"
   }
