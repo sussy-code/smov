@@ -167,6 +167,13 @@
   },
   "onboarding": {
     "start": {
+      "explainer": "Abyste získali co nejlepší streamy. Musíte si zvolit, kterou streamovací metodu chcete použít.",
+      "options": {
+        "proxy": {
+          "quality": "Dobrá kvalita",
+          "title": "Vlastní proxy"
+        }
+      },
       "title": "Pojďme vám nastavit movie-web"
     }
   },
