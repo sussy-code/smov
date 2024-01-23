@@ -169,6 +169,14 @@
   "onboarding": {
     "proxy": {
       "explainer": "Avec la méthode du proxy, vous pouvez obtenir des flux de bonne qualité en créant un proxy en libre-service.",
+      "input": {
+        "errorConnection": "Impossible de se connecter au proxy",
+        "errorInvalidUrl": "URL non valide",
+        "errorNotProxy": "Je m'attendais à un proxy mais j'ai obtenu un site Web",
+        "label": "URL du proxy",
+        "placeholder": "https://"
+      },
+      "link": "Apprenez à créer un proxy",
       "title": "Créons un nouveau proxy"
     },
     "start": {
