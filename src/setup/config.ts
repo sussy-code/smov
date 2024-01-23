@@ -20,6 +20,8 @@ interface Config {
   TURNSTILE_KEY: string;
   CDN_REPLACEMENTS: string;
   HAS_ONBOARDING: string;
+  ONBOARDING_EXTENSION_INSTALL_LINK: string;
+  ONBOARDING_PROXY_INSTALL_LINK: string;
 }
 
 export interface RuntimeConfig {
@@ -36,6 +38,8 @@ export interface RuntimeConfig {
   TURNSTILE_KEY: string | null;
   CDN_REPLACEMENTS: Array<string[]>;
   HAS_ONBOARDING: boolean;
+  ONBOARDING_EXTENSION_INSTALL_LINK: string | null;
+  ONBOARDING_PROXY_INSTALL_LINK: string | null;
 }
 
 const env: Record<keyof Config, undefined | string> = {
@@ -44,6 +48,10 @@ const env: Record<keyof Config, undefined | string> = {
   GITHUB_LINK: undefined,
   DONATION_LINK: undefined,
   DISCORD_LINK: undefined,
+  ONBOARDING_EXTENSION_INSTALL_LINK: import.meta.env
+    .VITE_ONBOARDING_EXTENSION_INSTALL_LINK,
+  ONBOARDING_PROXY_INSTALL_LINK: import.meta.env
+    .VITE_ONBOARDING_PROXY_INSTALL_LINK,
   DMCA_EMAIL: import.meta.env.VITE_DMCA_EMAIL,
   CORS_PROXY_URL: import.meta.env.VITE_CORS_PROXY_URL,
   NORMAL_ROUTER: import.meta.env.VITE_NORMAL_ROUTER,
@@ -72,6 +80,8 @@ function getKey(key: keyof Config, defaultString?: string): string {
 
 export function conf(): RuntimeConfig {
   const dmcaEmail = getKey("DMCA_EMAIL");
+  const extensionLink = getKey("ONBOARDING_EXTENSION_INSTALL_LINK");
+  const proxyInstallLink = getKey("ONBOARDING_PROXY_INSTALL_LINK");
   const turnstileKey = getKey("TURNSTILE_KEY");
   return {
     APP_VERSION,
@@ -79,6 +89,10 @@ export function conf(): RuntimeConfig {
     DONATION_LINK,
     DISCORD_LINK,
     DMCA_EMAIL: dmcaEmail.length > 0 ? dmcaEmail : null,
+    ONBOARDING_EXTENSION_INSTALL_LINK:
+      extensionLink.length > 0 ? extensionLink : null,
+    ONBOARDING_PROXY_INSTALL_LINK:
+      proxyInstallLink.length > 0 ? proxyInstallLink : null,
     BACKEND_URL: getKey("BACKEND_URL", BACKEND_URL),
     TMDB_READ_API_KEY: getKey("TMDB_READ_API_KEY"),
     PROXY_URLS: getKey("CORS_PROXY_URL")

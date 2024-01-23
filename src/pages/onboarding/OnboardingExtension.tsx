@@ -17,6 +17,7 @@ import {
 } from "@/pages/onboarding/onboardingHooks";
 import { Card, Link } from "@/pages/onboarding/utils";
 import { PageTitle } from "@/pages/parts/util/PageTitle";
+import { conf } from "@/setup/config";
 
 type ExtensionStatus =
   | "unknown"
@@ -108,6 +109,7 @@ export function OnboardingExtensionPage() {
   const { t } = useTranslation();
   const navigate = useNavigateOnboarding();
   const { completeAndRedirect } = useRedirectBack();
+  const installLink = conf().ONBOARDING_EXTENSION_INSTALL_LINK;
 
   const [{ loading, value }, exec] = useAsyncFn(
     async (triggeredManually: boolean = false) => {
@@ -119,7 +121,6 @@ export function OnboardingExtensionPage() {
   );
   useInterval(exec, 1000);
 
-  // TODO proper link to install extension
   return (
     <MinimalPageLayout>
       <PageTitle subpage k="global.pages.onboarding" />
@@ -131,9 +132,11 @@ export function OnboardingExtensionPage() {
         <Paragraph className="max-w-[320px] mb-4">
           {t("onboarding.extension.explainer")}
         </Paragraph>
-        <Link href="https://google.com" target="_blank" className="mb-12">
-          {t("onboarding.extension.link")}
-        </Link>
+        {installLink ? (
+          <Link href={installLink} target="_blank" className="mb-12">
+            {t("onboarding.extension.link")}
+          </Link>
+        ) : null}
 
         <ExtensionStatus status={value ?? "unknown"} loading={loading} />
         <div className="flex justify-between items-center mt-8">

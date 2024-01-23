@@ -8,6 +8,7 @@ import { isExtensionActive } from "@/backend/extension/messaging";
 import { singularProxiedFetch } from "@/backend/helpers/fetch";
 import { Button } from "@/components/buttons/Button";
 import { Icon, Icons } from "@/components/Icon";
+import { Loading } from "@/components/layout/Loading";
 import { SettingsCard } from "@/components/layout/SettingsCard";
 import {
   StatusCircle,
@@ -121,7 +122,15 @@ export function SetupPart() {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { loading, setupStates, globalState } = useIsSetup();
-  if (loading || !setupStates) return <p>Loading states...</p>; // TODO proper loading screen
+  if (loading || !setupStates) {
+    return (
+      <SettingsCard>
+        <div className="flex py-6 items-center justify-center">
+          <Loading />
+        </div>
+      </SettingsCard>
+    );
+  }
 
   const textLookupMap: Record<
     Status,
