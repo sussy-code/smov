@@ -173,14 +173,18 @@
     },
     "extension": {
       "back": "Zpět",
+      "explainer": "Pomocí rozšíření prohlížeče můžete získat nejlepší streamy, které nabízíme. S pouhou instalací.",
+      "extensionHelp": "Pokud jste rozšíření nainstalovali, ale nebylo zjištěno. <bold>Otevřete rozšíření pomocí nabídky rozšíření ve vašem prohlížeči</bold> a postupujte podle pokynů na obrazovce.",
       "link": "Instalovat rozšíření",
       "status": {
         "disallowed": "Rozšíření není pro tuto stránku povoleno",
         "disallowedAction": "Povolit rozšíření",
+        "loading": "Čekání na instalaci rozšíření",
         "outdated": "Verze rozšíření je příliš stará.",
         "success": "Rozšíření funguje podle očekávání!"
       },
-      "submit": "Pokračovat"
+      "submit": "Pokračovat",
+      "title": "Začněme s rozšířením"
     },
     "proxy": {
       "back": "Zpět",
@@ -193,6 +197,7 @@
         "placeholder": "https://"
       },
       "link": "Naučit se vytvořit proxy",
+      "submit": "Předložit proxy",
       "title": "Pojďme uďelat novou proxy"
     },
     "start": {
