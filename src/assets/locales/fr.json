@@ -95,6 +95,7 @@
       "about": "À propos",
       "dmca": "DMCA",
       "login": "Se connecter",
+      "onboarding": "Setup",
       "pagetitle": "{{title}} - movie-web",
       "register": "Créer un compte",
       "settings": "Paramètres"
@@ -262,6 +263,17 @@
       "api": {
         "text": "Impossible de charger les métadonnées de l'API, veuillez vérifier votre connexion Internet.",
         "title": "Échec du chargement des métadonnées de l'API"
+      },
+      "dmca": {
+        "badge": "Supprimé",
+        "text": "Ce média n'est plus disponible en raison d'un avis de retrait ou d'une réclamation pour atteinte aux droits d'auteur.",
+        "title": "Le média a été supprimé"
+      },
+      "extensionPermission": {
+        "badge": "Autorisation manquante",
+        "button": "Utiliser l'extension",
+        "text": "Vous disposez de l'extension de navigateur, mais nous avons besoin de votre autorisation pour commencer à utiliser l'extension.",
+        "title": "Configurer l'extension"
       },
       "failed": {
         "badge": "Échec",
