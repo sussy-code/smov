@@ -167,8 +167,22 @@
     "title": "Tuto stránku se nepodařilo najít"
   },
   "onboarding": {
+    "defaultConfirm": {
+      "cancel": "Zrušit"
+    },
+    "extension": {
+      "status": {
+        "outdated": "Verze rozšíření je příliš stará.",
+        "success": "Rozšíření funguje podle očekávání!"
+      },
+      "submit": "Pokračovat"
+    },
     "proxy": {
       "explainer": "Pomocí metody proxy můžete získat streamy ve skvělé kvalitě vytvořením proxy serveru.",
+      "input": {
+        "label": "Proxy URL",
+        "placeholder": "https://"
+      },
       "link": "Naučit se vytvořit proxy",
       "title": "Pojďme uďelat novou proxy"
     },
