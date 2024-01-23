@@ -259,6 +259,10 @@
       }
     },
     "metadata": {
+      "api": {
+        "text": "",
+        "title": ""
+      },
       "failed": {
         "badge": "فشل",
         "homeButton": "عُدْ للصفحة الرئيسية",
@@ -308,6 +312,12 @@
       "remaining": "باقٍ {{timeLeft}} • سينتهي مع {{timeFinished, datetime}}",
       "shortRegular": "{{timeWatched}}",
       "shortRemaining": "-{{timeLeft}}"
+    },
+    "turnstile": {
+      "description": "",
+      "error": "",
+      "title": "",
+      "verifyingHumanity": ""
     }
   },
   "screens": {
@@ -393,11 +403,6 @@
         "urlLabel": "روابط الوكلاء",
         "urlPlaceholder": "https://"
       }
-    },
-    "locale": {
-      "language": "لغة التطبيق",
-      "languageDescription": "اللغة المطبقة على كامل التطبيق.",
-      "title": "اللغة"
     },
     "reset": "إعادة تعيين",
     "save": "حفظ",

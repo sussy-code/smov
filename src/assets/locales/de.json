@@ -390,24 +390,19 @@
     },
     "connections": {
       "server": {
-        "description": "Falls du dich mit einem anderen Server verbinden willst, um deine Daten zu speichern. Aktiviere dies und gebe die URL an.",
+        "description": "Falls du dich mit einem anderen Server verbinden willst, um deine Daten zu speichern. Aktiviere dies und gebe die URL an. <0>Anweisungen.</0>",
         "label": "Eigener Server",
         "urlLabel": "Eigene Server-URL"
       },
       "title": "Verbindung",
       "workers": {
         "addButton": "Neuen Worker hinzufügen",
-        "description": "Damit die App funktioniert werden alle Anfrage durch einen Proxy geleitet. Aktiviere dies, falls du deinen eigenen Worker verwenden willst.",
+        "description": "Damit die App funktioniert werden alle Anfrage durch einen Proxy geleitet. Aktiviere dies, falls du deinen eigenen Worker verwenden willst. <0>Anweisungen.</0>",
         "emptyState": "Keine Worker vorhanden, füge einen unten hinzu",
         "label": "Verwenden deinen eigenen Worker-Proxys",
         "urlLabel": "Worker-URLs",
         "urlPlaceholder": "https://"
       }
-    },
-    "locale": {
-      "language": "App-Sprache",
-      "languageDescription": "Sprache für die ganze App.",
-      "title": "Sprache"
     },
     "reset": "Zurücksetzen",
     "save": "Speichern",

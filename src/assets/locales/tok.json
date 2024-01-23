@@ -79,7 +79,8 @@
   },
   "footer": {
     "legal": {
-      "disclaimer": "o sona e ni:"
+      "disclaimer": "o sona e ni:",
+      "disclaimerText": ""
     },
     "links": {
       "discord": "kulupu Siko",
@@ -205,7 +206,8 @@
         "episodeBadge": "E{{episode}}",
         "loadingError": "alasa li pakala",
         "loadingList": "alasa...",
-        "loadingTitle": "alasa..."
+        "loadingTitle": "alasa...",
+        "unairedEpisodes": ""
       },
       "playback": {
         "speedLabel": "tenpo lukin",
@@ -257,6 +259,10 @@
       }
     },
     "metadata": {
+      "api": {
+        "text": "",
+        "title": ""
+      },
       "failed": {
         "badge": "pakala",
         "homeButton": "o tawa weka",
@@ -306,9 +312,19 @@
       "remaining": "tenpo {{timeLeft}} la o awen • tenpo {{timeFinished, datetime}} la ona li pini",
       "shortRegular": "{{timeWatched}}",
       "shortRemaining": "-{{timeLeft}}"
+    },
+    "turnstile": {
+      "description": "",
+      "error": "",
+      "title": "",
+      "verifyingHumanity": ""
     }
   },
   "screens": {
+    "dmca": {
+      "text": "",
+      "title": "DMCA"
+    },
     "loadingApp": "mi alasa e ilo",
     "loadingUser": "mi alasa e lipu sina",
     "loadingUserError": {
@@ -316,6 +332,10 @@
       "reset": "o sin e lawa ilo sina",
       "text": "alasa li pakala",
       "textWithReset": "alasa tan lawa ilo sina li pakala. sina wile e lawa ilo mi anu seme?"
+    },
+    "migration": {
+      "failed": "",
+      "inProgress": "o awen lili. mi alasa tawa e sona sina"
     }
   },
   "settings": {
@@ -369,15 +389,37 @@
       "title": "kule"
     },
     "connections": {
-      "title": "kulupu"
-    },
-    "locale": {
-      "language": "toki ilo",
-      "languageDescription": "ilo li toki kepeken toki ni:",
-      "title": "toki"
+      "server": {
+        "description": "sina wile e poki sona ante la o pana e nimi ona lon ni",
+        "label": "lawa ante",
+        "urlLabel": "nimi pi lawa ante"
+      },
+      "title": "kulupu",
+      "workers": {
+        "addButton": "",
+        "description": "",
+        "emptyState": "",
+        "label": "",
+        "urlLabel": "",
+        "urlPlaceholder": ""
+      }
     },
     "reset": "o weka e ante",
     "save": "o ante",
+    "sidebar": {
+      "info": {
+        "appVersion": "",
+        "backendUrl": "",
+        "backendVersion": "",
+        "hostname": "",
+        "insecure": "",
+        "notLoggedIn": "",
+        "secure": "",
+        "title": "",
+        "unknownVersion": "",
+        "userId": ""
+      }
+    },
     "subtitles": {
       "backgroundLabel": "kon",
       "colorLabel": "kule",

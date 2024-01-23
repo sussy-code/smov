@@ -404,11 +404,6 @@
         "urlPlaceholder": "https://"
       }
     },
-    "locale": {
-      "language": "Rakenduse keel",
-      "languageDescription": "Keel on rakendatud kogu rakendusele.",
-      "title": "Lokaal"
-    },
     "reset": "Lähtesta",
     "save": "Salvesta",
     "sidebar": {

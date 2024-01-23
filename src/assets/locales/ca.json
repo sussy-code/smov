@@ -18,7 +18,7 @@
   },
   "actions": {
     "copied": "S'ha copiat",
-    "copy": "Cipia"
+    "copy": "Copia"
   },
   "auth": {
     "createAccount": "Encara no teniu un compte? <0>Creeu un compte.</0>",
@@ -108,7 +108,7 @@
       "sectionTitle": "Continueu mirant"
     },
     "mediaList": {
-      "stopEditing": "Atura l'edició"
+      "stopEditing": "Deixa d'editar"
     },
     "search": {
       "allResults": "Això és tot el que tenim!",
@@ -390,30 +390,25 @@
     },
     "connections": {
       "server": {
-        "description": "Si voleu connectar-vos a un rerefons personalitzat per a emmagatzemar les vostres dades, activeu-ho i proporcioneu l'URL.",
+        "description": "Si voleu connectar-vos a un rerefons personalitzat per a emmagatzemar les vostres dades, activeu-ho i proporcioneu l'URL. <0>Instruccions.</0>",
         "label": "Servidor personalitzat",
         "urlLabel": "URL del servidor personalitzat"
       },
       "title": "Connexions",
       "workers": {
         "addButton": "Afig un «worker»",
-        "description": "Per fer funcionar l'aplicació, tot el trànsit s'encamina a través de servidors intermediaris. Activeu-ho si voleu portar els vostres propis «workers».",
+        "description": "Per fer funcionar l'aplicació, tot el trànsit s'encamina a través de servidors intermediaris. Activeu-ho si voleu portar els vostres propis «workers».<0>Instruccions.</0>",
         "emptyState": "Encara no hi ha «workers», afegiu-ne un a continuació",
         "label": "Utilitza «workers» intermediaris personalitzats",
         "urlLabel": "URL dels «workers»",
         "urlPlaceholder": "https://"
       }
     },
-    "locale": {
-      "language": "Llengua de l'aplicació",
-      "languageDescription": "La llengua s'aplica a tota l'aplicació.",
-      "title": "Llengua"
-    },
     "reset": "Restableix",
     "save": "Desa",
     "sidebar": {
       "info": {
-        "appVersion": "Versió de l'aplicacií",
+        "appVersion": "Versió de l'aplicació",
         "backendUrl": "URL del rerefons",
         "backendVersion": "Versió del rerefons",
         "hostname": "Nom de l'amfitrió",

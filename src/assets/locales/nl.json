@@ -390,24 +390,19 @@
     },
     "connections": {
       "server": {
-        "description": "Als je verbinding wilt maken met een eigen backend om je gegevens op te slaan, schakel dan deze optie in en geef de URL op.",
+        "description": "Als je verbinding wilt maken met een eigen backend om je gegevens op te slaan, schakel dan deze optie in en geef de URL op. <0>Instructies.</0>",
         "label": "Eigen server",
         "urlLabel": "Eigen server URL"
       },
       "title": "Verbindingen",
       "workers": {
         "addButton": "Nieuwe worker toevoegen",
-        "description": "Om de applicatie te laten werken, wordt al het verkeer omgeleid via proxies. Schakel dit in als je je eigen workers wilt gebruiken.",
+        "description": "Om de applicatie te laten werken, wordt al het verkeer omgeleid via proxies. Schakel dit in als je je eigen workers wilt gebruiken. <0>Instructies.</0>",
         "emptyState": "Nog geen workers, voeg er hieronder een toe",
         "label": "Eigen proxy werker gebruiken",
         "urlLabel": "Worker URLs",
         "urlPlaceholder": "https://"
       }
-    },
-    "locale": {
-      "language": "Applicatietaal",
-      "languageDescription": "Taal wordt toegepast op de hele applicatie.",
-      "title": "Lokaal"
     },
     "reset": "Resetten",
     "save": "Wijzigingen opslaan",

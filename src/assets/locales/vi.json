@@ -1,18 +1,18 @@
 {
   "about": {
-    "description": "movie-web là một ứng dụng web tìm kiếm các truyền pháp trực tuyến trên internet. Nhóm phát triển ứng dụng này nhắm đến một cách tiêu thụ nội dung chủ yếu là đơn giản hơn.",
+    "description": "movie-web là một ứng dụng web tìm kiếm các nguồn truyền phát trực tuyến trên Internet. Nhóm phát triển ứng dụng này nhắm đến một cách dễ dàng hơn trong việc tiêu thụ nội dung.",
     "faqTitle": "Các câu hỏi thường gặp",
     "q1": {
-      "body": "movie-web không lưu trữ bất kì nội dung nào. Khi bạn bấm vào một cái gì đó để xem, ứng dụng sẽ tìm kiếm nội dung đó trên internet (Trên màn hình tải và trong tab 'nguồn video' bạn sẽ tìm thấy nguồn đang được dùng). Nội dung không bao giờ được tải lên trên movie-web, mọi thứ đều thông qua cơ chế tìm kiếm này.",
+      "body": "movie-web không lưu trữ bất kì nội dung nào. Khi bạn chọn xem một nội dung nào đó, ứng dụng sẽ tìm kiếm nội dung đó trên Internet (Khi nội dung tải và trong tab 'nguồn video' bạn sẽ tìm thấy nguồn đang được dùng). Nội dung không bao giờ được tải lên trên movie-web, mọi thứ đều được tìm kiếm thông qua phương thức này.",
       "title": "Nội dung đến từ đâu?"
     },
     "q2": {
-      "body": "Việc yêu cầu một chương trình truyền hình hoặc phim là bất khả thi bởi vì movie-web không quản lý nội dung nào. Tất cả nội dung được truyền thông qua các nguồn trên internet.",
-      "title": "Tôi có thể yêu cầu một chương trình truyền hình hoặc phim ở đâu?"
+      "body": "Việc yêu cầu thêm một chương trình truyền hình hoặc phim là điều bất khả thi bởi vì movie-web không quản lý bất kỳ nội dung nào. Tất cả nội dung được truyền thông qua những nguồn trên internet.",
+      "title": "Tôi có thể yêu cầu thêm một chương trình truyền hình hoặc phim ở đâu?"
     },
     "q3": {
-      "body": "Các kết quả tìm kiếm được cung cấp bởi The Movie Database (TMDB) và hiện lên bất kể các nguồn của trang thực sự có lưu trữ nội dung hay không.",
-      "title": "Tại sao kết quả tìm kiếm hiển thị chương trình truyền hình hoặc phim nhưng tôi không thể chơi nó?"
+      "body": "Các kết quả tìm kiếm được cung cấp bởi The Movie Database (TMDB) và hiện lên bất kể các nguồn của trang thực sự có lưu trữ nội dung đó hay không.",
+      "title": "Tại sao kết quả tìm kiếm hiển thị chương trình truyền hình hoặc phim nhưng tôi không thể xem nó?"
     },
     "title": "Về movie-web"
   },
@@ -52,12 +52,54 @@
     },
     "trust": {
       "failed": {
-        "text": "Bạn đã lắp đặt nó một cách chính xác chưa?"
-      }
+        "text": "Bạn đã cài đặt nó một cách chính xác chưa?",
+        "title": "Không thể truy vấn máy chủ"
+      },
+      "host": "Bạn đang kết nối đến máy chủ <0>{{hostname}}</0> - vui lòng chắc chắn rằng bạn tin tưởng máy chủ này trước khi tạo tài khoản",
+      "no": "Quay lại",
+      "title": "Bạn có tin tưởng máy chủ này không?",
+      "yes": "Tôi tin tưởng máy chủ này"
+    },
+    "verify": {
+      "description": "Vui lòng nhập mật ngữ của bạn lúc nãy đễ chắc chắn rằng bạn đã lưu nó và để tạo tài khoản",
+      "invalidData": "Dữ liệu không hợp lệ",
+      "noMatch": "Mật ngữ không khớp",
+      "passphraseLabel": "Mật ngữ 12 ký tự của bạn",
+      "recaptchaFailed": "Xác minh bằng ReCaptcha không hợp lệ",
+      "register": "Tạo tài khoản",
+      "title": "Nhập lại mật ngữ của bạn"
     }
   },
+  "errors": {
+    "badge": "Lỗi",
+    "details": "Thông tin về lỗi",
+    "reloadPage": "Tải lại trang",
+    "showError": "Hiển thị thông tin về lỗi",
+    "title": "Đã xảy ra lỗi!"
+  },
+  "footer": {
+    "legal": {
+      "disclaimer": "Tuyên bố miễn trừ trách nhiệm",
+      "disclaimerText": "movie-web không lưu trữ bất kì file nào, nó chỉ đến những đường dẫn của các dịch vụ bên thứ ba. Bất kỳ vấn đề nào về pháp lý nên được đưa đến chủ sỡ hữu của file hoặc những nhà cung cấp đó. movie-web hoàn toàn không chịu trách nhiệm cho bất kỳ nội dung nào được chiếu từ các nhà cung cấp."
+    },
+    "links": {
+      "discord": "Discord",
+      "dmca": "DMCA",
+      "github": "GitHub"
+    },
+    "tagline": "Xem các chương trình và phim yêu thích của bạn với ứng dụng phát trực tuyến nguồn mở này."
+  },
   "global": {
-    "name": "movie-web"
+    "name": "movie-web",
+    "pages": {
+      "about": "",
+      "dmca": "",
+      "login": "",
+      "onboarding": "",
+      "pagetitle": "{{title}} - movie-web",
+      "register": "Đăng ký",
+      "settings": ""
+    }
   },
   "home": {
     "bookmarks": {
@@ -66,6 +108,9 @@
     "continueWatching": {
       "sectionTitle": "Tiếp tục xem"
     },
+    "mediaList": {
+      "stopEditing": ""
+    },
     "search": {
       "allResults": "Đó là tất cả chúng tôi có!",
       "failed": "Không thể tìm thấy nội dung, hãy thử lại!",
@@ -73,6 +118,26 @@
       "noResults": "Chúng tôi không thể tìm thấy gì!",
       "placeholder": "Bạn muốn xem gì?",
       "sectionTitle": "Kết quả tìm kiếm"
+    },
+    "titles": {
+      "day": {
+        "default": "",
+        "extra": [
+          ""
+        ]
+      },
+      "morning": {
+        "default": "",
+        "extra": [
+          ""
+        ]
+      },
+      "night": {
+        "default": "",
+        "extra": [
+          ""
+        ]
+      }
     }
   },
   "media": {
@@ -85,6 +150,14 @@
   "navigation": {
     "banner": {
       "offline": "Hãy kiểm tra kết nối Internet của bạn"
+    },
+    "menu": {
+      "about": "",
+      "donation": "",
+      "logout": "",
+      "register": "",
+      "settings": "",
+      "support": ""
     }
   },
   "notFound": {
@@ -93,22 +166,180 @@
     "message": "Chúng tôi đã tìm kiếm khắp nơi: dưới thùng rác, trong tủ quần áo, đằng sau máy chủ proxy nhưng vẫn không thể tìm thấy trang bạn đang tìm kiếm.",
     "title": "Không thể tìm thấy trang"
   },
+  "onboarding": {
+    "defaultConfirm": {
+      "cancel": "",
+      "confirm": "",
+      "description": "",
+      "title": ""
+    },
+    "extension": {
+      "back": "",
+      "explainer": "",
+      "extensionHelp": "",
+      "link": "",
+      "status": {
+        "disallowed": "",
+        "disallowedAction": "",
+        "failed": "",
+        "loading": "",
+        "outdated": "",
+        "success": ""
+      },
+      "submit": "",
+      "title": ""
+    },
+    "proxy": {
+      "back": "",
+      "explainer": "",
+      "input": {
+        "errorConnection": "",
+        "errorInvalidUrl": "",
+        "errorNotProxy": "",
+        "label": "",
+        "placeholder": ""
+      },
+      "link": "",
+      "submit": "",
+      "title": ""
+    },
+    "start": {
+      "explainer": "",
+      "options": {
+        "default": {
+          "text": ""
+        },
+        "extension": {
+          "action": "",
+          "description": "",
+          "quality": "",
+          "title": ""
+        },
+        "proxy": {
+          "action": "",
+          "description": "",
+          "quality": "",
+          "title": ""
+        }
+      },
+      "title": ""
+    }
+  },
+  "overlays": {
+    "close": ""
+  },
   "player": {
     "back": {
       "default": "Quay lại trang chính",
       "short": "Quay lại"
     },
+    "casting": {
+      "enabled": ""
+    },
     "menus": {
+      "downloads": {
+        "disclaimer": "",
+        "downloadPlaylist": "",
+        "downloadSubtitle": "",
+        "downloadVideo": "",
+        "hlsDisclaimer": "",
+        "onAndroid": {
+          "1": "",
+          "shortTitle": "",
+          "title": ""
+        },
+        "onIos": {
+          "1": "",
+          "shortTitle": "",
+          "title": ""
+        },
+        "onPc": {
+          "1": "",
+          "shortTitle": "",
+          "title": ""
+        },
+        "title": ""
+      },
       "episodes": {
         "button": "Tập",
+        "emptyState": "",
+        "episodeBadge": "",
+        "loadingError": "",
         "loadingList": "Đang tải...",
-        "loadingTitle": "Đang tải..."
+        "loadingTitle": "Đang tải...",
+        "unairedEpisodes": ""
+      },
+      "playback": {
+        "speedLabel": "",
+        "title": ""
+      },
+      "quality": {
+        "automaticLabel": "",
+        "hint": "",
+        "iosNoQuality": "",
+        "title": ""
+      },
+      "settings": {
+        "downloadItem": "",
+        "enableSubtitles": "",
+        "experienceSection": "",
+        "playbackItem": "",
+        "qualityItem": "",
+        "sourceItem": "",
+        "subtitleItem": "",
+        "videoSection": ""
       },
       "sources": {
-        "title": "Nguồn"
+        "failed": {
+          "text": "",
+          "title": ""
+        },
+        "noEmbeds": {
+          "text": "",
+          "title": ""
+        },
+        "noStream": {
+          "text": "",
+          "title": ""
+        },
+        "title": "Nguồn",
+        "unknownOption": ""
+      },
+      "subtitles": {
+        "customChoice": "",
+        "customizeLabel": "",
+        "offChoice": "",
+        "settings": {
+          "backlink": "",
+          "delay": "",
+          "fixCapitals": ""
+        },
+        "title": "",
+        "unknownLanguage": ""
       }
     },
     "metadata": {
+      "api": {
+        "text": "",
+        "title": ""
+      },
+      "dmca": {
+        "badge": "",
+        "text": "",
+        "title": ""
+      },
+      "extensionPermission": {
+        "badge": "",
+        "button": "",
+        "text": "",
+        "title": ""
+      },
+      "failed": {
+        "badge": "",
+        "homeButton": "",
+        "text": "",
+        "title": ""
+      },
       "notFound": {
         "badge": "Không tìm thấy",
         "homeButton": "Quay lại trang chính",
@@ -116,8 +347,187 @@
         "title": "Không thể tìm thấy nội dung."
       }
     },
+    "nextEpisode": {
+      "cancel": "",
+      "next": ""
+    },
     "playbackError": {
+      "badge": "",
+      "errors": {
+        "errorAborted": "",
+        "errorDecode": "",
+        "errorGenericMedia": "",
+        "errorNetwork": "",
+        "errorNotSupported": ""
+      },
+      "homeButton": "",
+      "text": "",
       "title": "Rất tiếc, đã hỏng!"
+    },
+    "scraping": {
+      "items": {
+        "failure": "",
+        "notFound": "",
+        "pending": ""
+      },
+      "notFound": {
+        "badge": "",
+        "detailsButton": "",
+        "homeButton": "",
+        "text": "",
+        "title": ""
+      }
+    },
+    "time": {
+      "regular": "",
+      "remaining": "",
+      "shortRegular": "",
+      "shortRemaining": ""
+    },
+    "turnstile": {
+      "description": "",
+      "error": "",
+      "title": "",
+      "verifyingHumanity": ""
     }
+  },
+  "screens": {
+    "dmca": {
+      "text": "",
+      "title": ""
+    },
+    "loadingApp": "",
+    "loadingUser": "",
+    "loadingUserError": {
+      "logout": "",
+      "reset": "",
+      "text": "",
+      "textWithReset": ""
+    },
+    "migration": {
+      "failed": "",
+      "inProgress": ""
+    }
+  },
+  "settings": {
+    "account": {
+      "accountDetails": {
+        "deviceNameLabel": "",
+        "deviceNamePlaceholder": "",
+        "editProfile": "",
+        "logoutButton": ""
+      },
+      "actions": {
+        "delete": {
+          "button": "",
+          "confirmButton": "",
+          "confirmDescription": "",
+          "confirmTitle": "",
+          "text": "",
+          "title": ""
+        },
+        "title": ""
+      },
+      "devices": {
+        "deviceNameLabel": "",
+        "failed": "",
+        "removeDevice": "",
+        "title": ""
+      },
+      "profile": {
+        "finish": "",
+        "firstColor": "",
+        "secondColor": "",
+        "title": "",
+        "userIcon": ""
+      },
+      "register": {
+        "cta": "",
+        "text": "",
+        "title": ""
+      },
+      "title": ""
+    },
+    "appearance": {
+      "activeTheme": "",
+      "themes": {
+        "blue": "",
+        "default": "",
+        "gray": "",
+        "red": "",
+        "teal": ""
+      },
+      "title": ""
+    },
+    "connections": {
+      "server": {
+        "description": "",
+        "label": "",
+        "urlLabel": ""
+      },
+      "setup": {
+        "doSetup": "",
+        "errorStatus": {
+          "description": "",
+          "title": ""
+        },
+        "itemError": "",
+        "items": {
+          "default": "",
+          "extension": "",
+          "proxy": ""
+        },
+        "redoSetup": "",
+        "successStatus": {
+          "description": "",
+          "title": ""
+        },
+        "unsetStatus": {
+          "description": "",
+          "title": ""
+        }
+      },
+      "title": "",
+      "workers": {
+        "addButton": "",
+        "description": "",
+        "emptyState": "",
+        "label": "",
+        "urlLabel": "",
+        "urlPlaceholder": ""
+      }
+    },
+    "preferences": {
+      "language": "",
+      "languageDescription": "",
+      "thumbnail": "",
+      "thumbnailDescription": "",
+      "thumbnailLabel": "",
+      "title": ""
+    },
+    "reset": "",
+    "save": "",
+    "sidebar": {
+      "info": {
+        "appVersion": "",
+        "backendUrl": "",
+        "backendVersion": "",
+        "hostname": "",
+        "insecure": "",
+        "notLoggedIn": "",
+        "secure": "",
+        "title": "",
+        "unknownVersion": "",
+        "userId": ""
+      }
+    },
+    "subtitles": {
+      "backgroundLabel": "",
+      "colorLabel": "",
+      "previewQuote": "",
+      "textSizeLabel": "",
+      "title": ""
+    },
+    "unsaved": ""
   }
 }

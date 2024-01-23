@@ -25,30 +25,95 @@
     "deviceNameLabel": "デバイス名",
     "deviceNamePlaceholder": "個人用の電話",
     "generate": {
-      "description": "パスフレーズはユーザー名とパスワードとして機能します。アカウントにログインする際には必ず入力する必要があるため、安全に保管してください。"
+      "description": "パスフレーズはユーザー名とパスワードとして機能します。アカウントにログインする際には必ず入力する必要があるため、安全に保管してください。",
+      "next": "",
+      "passphraseFrameLabel": "",
+      "title": ""
     },
+    "hasAccount": "",
     "login": {
+      "description": "",
+      "deviceLengthError": "",
+      "passphraseLabel": "",
+      "passphrasePlaceholder": "",
       "submit": "ログイン",
-      "title": "自分の口座にログインする"
+      "title": "自分の口座にログインする",
+      "validationError": ""
+    },
+    "register": {
+      "information": {
+        "color1": "",
+        "color2": "",
+        "header": "",
+        "icon": "",
+        "next": "",
+        "title": ""
+      }
+    },
+    "trust": {
+      "failed": {
+        "text": "",
+        "title": ""
+      },
+      "host": "",
+      "no": "",
+      "title": "",
+      "yes": ""
+    },
+    "verify": {
+      "description": "",
+      "invalidData": "",
+      "noMatch": "",
+      "passphraseLabel": "",
+      "recaptchaFailed": "",
+      "register": "",
+      "title": ""
     }
   },
+  "errors": {
+    "badge": "",
+    "details": "",
+    "reloadPage": "",
+    "showError": "",
+    "title": ""
+  },
   "footer": {
+    "legal": {
+      "disclaimer": "",
+      "disclaimerText": ""
+    },
+    "links": {
+      "discord": "",
+      "dmca": "",
+      "github": ""
+    },
     "tagline": "あなたのお気に入りの番組や映画を、このオープンソースのストリーミングアプリで視聴してください。"
   },
   "global": {
     "name": "映画ウェブ",
     "pages": {
       "about": "概要",
+      "dmca": "",
       "login": "ログイン",
+      "onboarding": "",
+      "pagetitle": "",
+      "register": "",
       "settings": "設定"
     }
   },
   "home": {
+    "bookmarks": {
+      "sectionTitle": ""
+    },
     "continueWatching": {
       "sectionTitle": "視聴を続ける"
     },
+    "mediaList": {
+      "stopEditing": ""
+    },
     "search": {
       "allResults": "それがすべてです！",
+      "failed": "",
       "loading": "読み込み中...",
       "noResults": "見つかりませんでした！",
       "placeholder": "どんな映画を見たい？",
@@ -56,54 +121,413 @@
     },
     "titles": {
       "day": {
-        "default": "今日の午後はどんな映画を見たい？"
+        "default": "今日の午後はどんな映画を見たい？",
+        "extra": [
+          ""
+        ]
       },
       "morning": {
-        "default": "今朝はどんな映画を見たい？"
+        "default": "今朝はどんな映画を見たい？",
+        "extra": [
+          ""
+        ]
       },
       "night": {
-        "default": "今夜はどんな映画を見たい？"
+        "default": "今夜はどんな映画を見たい？",
+        "extra": [
+          ""
+        ]
       }
     }
   },
   "media": {
+    "episodeDisplay": "",
     "types": {
       "movie": "映画",
       "show": "テレビ番組"
     }
   },
   "navigation": {
+    "banner": {
+      "offline": ""
+    },
     "menu": {
       "about": "会社概要",
       "donation": "寄付",
       "logout": "退室",
       "register": "クラウドに同期して",
-      "settings": "設定"
+      "settings": "設定",
+      "support": ""
     }
   },
+  "notFound": {
+    "badge": "",
+    "goHome": "",
+    "message": "",
+    "title": ""
+  },
+  "onboarding": {
+    "defaultConfirm": {
+      "cancel": "",
+      "confirm": "",
+      "description": "",
+      "title": ""
+    },
+    "extension": {
+      "back": "",
+      "explainer": "",
+      "extensionHelp": "",
+      "link": "",
+      "status": {
+        "disallowed": "",
+        "disallowedAction": "",
+        "failed": "",
+        "loading": "",
+        "outdated": "",
+        "success": ""
+      },
+      "submit": "",
+      "title": ""
+    },
+    "proxy": {
+      "back": "",
+      "explainer": "",
+      "input": {
+        "errorConnection": "",
+        "errorInvalidUrl": "",
+        "errorNotProxy": "",
+        "label": "",
+        "placeholder": ""
+      },
+      "link": "",
+      "submit": "",
+      "title": ""
+    },
+    "start": {
+      "explainer": "",
+      "options": {
+        "default": {
+          "text": ""
+        },
+        "extension": {
+          "action": "",
+          "description": "",
+          "quality": "",
+          "title": ""
+        },
+        "proxy": {
+          "action": "",
+          "description": "",
+          "quality": "",
+          "title": ""
+        }
+      },
+      "title": ""
+    }
+  },
+  "overlays": {
+    "close": ""
+  },
   "player": {
+    "back": {
+      "default": "",
+      "short": ""
+    },
+    "casting": {
+      "enabled": ""
+    },
     "menus": {
+      "downloads": {
+        "disclaimer": "",
+        "downloadPlaylist": "",
+        "downloadSubtitle": "",
+        "downloadVideo": "",
+        "hlsDisclaimer": "",
+        "onAndroid": {
+          "1": "",
+          "shortTitle": "",
+          "title": ""
+        },
+        "onIos": {
+          "1": "",
+          "shortTitle": "",
+          "title": ""
+        },
+        "onPc": {
+          "1": "",
+          "shortTitle": "",
+          "title": ""
+        },
+        "title": ""
+      },
       "episodes": {
+        "button": "",
+        "emptyState": "",
+        "episodeBadge": "",
+        "loadingError": "",
         "loadingList": "読み込み中...",
-        "loadingTitle": "読み込み中..."
+        "loadingTitle": "読み込み中...",
+        "unairedEpisodes": ""
+      },
+      "playback": {
+        "speedLabel": "",
+        "title": ""
+      },
+      "quality": {
+        "automaticLabel": "",
+        "hint": "",
+        "iosNoQuality": "",
+        "title": ""
+      },
+      "settings": {
+        "downloadItem": "",
+        "enableSubtitles": "",
+        "experienceSection": "",
+        "playbackItem": "",
+        "qualityItem": "",
+        "sourceItem": "",
+        "subtitleItem": "",
+        "videoSection": ""
+      },
+      "sources": {
+        "failed": {
+          "text": "",
+          "title": ""
+        },
+        "noEmbeds": {
+          "text": "",
+          "title": ""
+        },
+        "noStream": {
+          "text": "",
+          "title": ""
+        },
+        "title": "",
+        "unknownOption": ""
+      },
+      "subtitles": {
+        "customChoice": "",
+        "customizeLabel": "",
+        "offChoice": "",
+        "settings": {
+          "backlink": "",
+          "delay": "",
+          "fixCapitals": ""
+        },
+        "title": "",
+        "unknownLanguage": ""
       }
+    },
+    "metadata": {
+      "api": {
+        "text": "",
+        "title": ""
+      },
+      "dmca": {
+        "badge": "",
+        "text": "",
+        "title": ""
+      },
+      "extensionPermission": {
+        "badge": "",
+        "button": "",
+        "text": "",
+        "title": ""
+      },
+      "failed": {
+        "badge": "",
+        "homeButton": "",
+        "text": "",
+        "title": ""
+      },
+      "notFound": {
+        "badge": "",
+        "homeButton": "",
+        "text": "",
+        "title": ""
+      }
+    },
+    "nextEpisode": {
+      "cancel": "",
+      "next": ""
+    },
+    "playbackError": {
+      "badge": "",
+      "errors": {
+        "errorAborted": "",
+        "errorDecode": "",
+        "errorGenericMedia": "",
+        "errorNetwork": "",
+        "errorNotSupported": ""
+      },
+      "homeButton": "",
+      "text": "",
+      "title": ""
+    },
+    "scraping": {
+      "items": {
+        "failure": "",
+        "notFound": "",
+        "pending": ""
+      },
+      "notFound": {
+        "badge": "",
+        "detailsButton": "",
+        "homeButton": "",
+        "text": "",
+        "title": ""
+      }
+    },
+    "time": {
+      "regular": "",
+      "remaining": "",
+      "shortRegular": "",
+      "shortRemaining": ""
+    },
+    "turnstile": {
+      "description": "",
+      "error": "",
+      "title": "",
+      "verifyingHumanity": ""
     }
   },
   "screens": {
+    "dmca": {
+      "text": "",
+      "title": ""
+    },
     "loadingApp": "申込の読み込み",
     "loadingUser": "プロフィールの読み込み",
     "loadingUserError": {
-      "logout": "退出"
+      "logout": "退出",
+      "reset": "",
+      "text": "",
+      "textWithReset": ""
+    },
+    "migration": {
+      "failed": "",
+      "inProgress": ""
     }
   },
   "settings": {
     "account": {
       "accountDetails": {
+        "deviceNameLabel": "",
+        "deviceNamePlaceholder": "",
+        "editProfile": "",
         "logoutButton": "退室"
       },
+      "actions": {
+        "delete": {
+          "button": "",
+          "confirmButton": "",
+          "confirmDescription": "",
+          "confirmTitle": "",
+          "text": "",
+          "title": ""
+        },
+        "title": ""
+      },
+      "devices": {
+        "deviceNameLabel": "",
+        "failed": "",
+        "removeDevice": "",
+        "title": ""
+      },
+      "profile": {
+        "finish": "",
+        "firstColor": "",
+        "secondColor": "",
+        "title": "",
+        "userIcon": ""
+      },
       "register": {
+        "cta": "",
+        "text": "",
         "title": "クラウドに同期して"
+      },
+      "title": ""
+    },
+    "appearance": {
+      "activeTheme": "",
+      "themes": {
+        "blue": "",
+        "default": "",
+        "gray": "",
+        "red": "",
+        "teal": ""
+      },
+      "title": ""
+    },
+    "connections": {
+      "server": {
+        "description": "",
+        "label": "",
+        "urlLabel": ""
+      },
+      "setup": {
+        "doSetup": "",
+        "errorStatus": {
+          "description": "",
+          "title": ""
+        },
+        "itemError": "",
+        "items": {
+          "default": "",
+          "extension": "",
+          "proxy": ""
+        },
+        "redoSetup": "",
+        "successStatus": {
+          "description": "",
+          "title": ""
+        },
+        "unsetStatus": {
+          "description": "",
+          "title": ""
+        }
+      },
+      "title": "",
+      "workers": {
+        "addButton": "",
+        "description": "",
+        "emptyState": "",
+        "label": "",
+        "urlLabel": "",
+        "urlPlaceholder": ""
       }
-    }
+    },
+    "preferences": {
+      "language": "",
+      "languageDescription": "",
+      "thumbnail": "",
+      "thumbnailDescription": "",
+      "thumbnailLabel": "",
+      "title": ""
+    },
+    "reset": "",
+    "save": "",
+    "sidebar": {
+      "info": {
+        "appVersion": "",
+        "backendUrl": "",
+        "backendVersion": "",
+        "hostname": "",
+        "insecure": "",
+        "notLoggedIn": "",
+        "secure": "",
+        "title": "",
+        "unknownVersion": "",
+        "userId": ""
+      }
+    },
+    "subtitles": {
+      "backgroundLabel": "",
+      "colorLabel": "",
+      "previewQuote": "",
+      "textSizeLabel": "",
+      "title": ""
+    },
+    "unsaved": ""
   }
 }

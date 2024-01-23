@@ -64,13 +64,18 @@
       "description": "Пожалуйста, введите фразу, полученную ранее, чтобы подтвердить, что вы ее сохранили, и создать свой аккаунт",
       "invalidData": "Дата инвалидная",
       "noMatch": "Парольная фраза не совпадает",
-      "register": "Создать учётную запись"
+      "passphraseLabel": "Ваша 12-словная парольная фраза",
+      "recaptchaFailed": "Проверка ReCaptcha не удалась",
+      "register": "Создать учётную запись",
+      "title": "Подтвердите парольную фразу"
     }
   },
   "errors": {
+    "badge": "",
     "details": "Подробности ошибки",
     "reloadPage": "Перезагрузить страницу",
-    "showError": "Показать сведения об ошибке"
+    "showError": "Показать сведения об ошибке",
+    "title": "Мы столкнулись с ошибкой!"
   },
   "footer": {
     "legal": {
@@ -89,7 +94,9 @@
     "pages": {
       "about": "О",
       "dmca": "DMCA",
+      "login": "",
       "pagetitle": "{{title}} - movie-web",
+      "register": "",
       "settings": "Настройки"
     }
   },
@@ -105,8 +112,31 @@
     },
     "search": {
       "allResults": "Это все, что у нас есть!",
+      "failed": "",
       "loading": "Загрузка...",
+      "noResults": "",
+      "placeholder": "",
       "sectionTitle": "Результаты поиска"
+    },
+    "titles": {
+      "day": {
+        "default": "",
+        "extra": [
+          ""
+        ]
+      },
+      "morning": {
+        "default": "",
+        "extra": [
+          ""
+        ]
+      },
+      "night": {
+        "default": "",
+        "extra": [
+          ""
+        ]
+      }
     }
   },
   "media": {
@@ -124,20 +154,50 @@
       "about": "О нас",
       "donation": "Пожертвовать",
       "logout": "Выйти",
+      "register": "",
       "settings": "Настройки",
       "support": "Поддержка"
     }
+  },
+  "notFound": {
+    "badge": "",
+    "goHome": "",
+    "message": "",
+    "title": "Не удалось найти эту страницу"
   },
   "overlays": {
     "close": "Закрыть"
   },
   "player": {
     "back": {
-      "default": "Вернуться на главную"
+      "default": "Вернуться на главную",
+      "short": ""
+    },
+    "casting": {
+      "enabled": ""
     },
     "menus": {
       "downloads": {
+        "disclaimer": "",
+        "downloadPlaylist": "",
         "downloadSubtitle": "Скачать текущие субтитры",
+        "downloadVideo": "",
+        "hlsDisclaimer": "",
+        "onAndroid": {
+          "1": "",
+          "shortTitle": "",
+          "title": ""
+        },
+        "onIos": {
+          "1": "",
+          "shortTitle": "",
+          "title": ""
+        },
+        "onPc": {
+          "1": "",
+          "shortTitle": "",
+          "title": ""
+        },
         "title": "Скачать"
       },
       "episodes": {
@@ -146,29 +206,74 @@
         "episodeBadge": "Э{{episode}}",
         "loadingError": "Ошибка при загрузке сезона",
         "loadingList": "Загрузка...",
-        "loadingTitle": "Загрузка..."
+        "loadingTitle": "Загрузка...",
+        "unairedEpisodes": ""
       },
       "playback": {
         "speedLabel": "Скорость воспроизведения",
         "title": "Настройки воспроизведения"
       },
       "quality": {
-        "automaticLabel": "Автоматическое качество"
+        "automaticLabel": "Автоматическое качество",
+        "hint": "",
+        "iosNoQuality": "",
+        "title": ""
       },
       "settings": {
         "downloadItem": "Скачать",
         "enableSubtitles": "Включить субтитры",
+        "experienceSection": "",
         "playbackItem": "Настройки воспроизведения",
         "qualityItem": "Качество",
         "sourceItem": "Видео источники",
         "subtitleItem": "Настройки субтитров",
         "videoSection": "Настройки видео"
       },
-      "subtitles": {
-        "settings": {
-          "backlink": "Пользовательские субтитры"
+      "sources": {
+        "failed": {
+          "text": "При попытке найти видео произошла ошибка, пожалуйста, попробуйте использовать другой источник.",
+          "title": ""
         },
-        "title": "Субтитры"
+        "noEmbeds": {
+          "text": "Мы не смогли найти ни одной вставки, пожалуйста, попробуйте использовать другой источник.",
+          "title": "Не найдено ни одной вставки"
+        },
+        "noStream": {
+          "text": "В этом источнике нет потоков для этого фильма или сериала.",
+          "title": "Нет потока"
+        },
+        "title": "Источники",
+        "unknownOption": "Неизвестный"
+      },
+      "subtitles": {
+        "customChoice": "Выбрать субтитры из файла",
+        "customizeLabel": "",
+        "offChoice": "Выключить",
+        "settings": {
+          "backlink": "Пользовательские субтитры",
+          "delay": "",
+          "fixCapitals": ""
+        },
+        "title": "Субтитры",
+        "unknownLanguage": ""
+      }
+    },
+    "metadata": {
+      "api": {
+        "text": "",
+        "title": ""
+      },
+      "failed": {
+        "badge": "",
+        "homeButton": "",
+        "text": "",
+        "title": ""
+      },
+      "notFound": {
+        "badge": "",
+        "homeButton": "",
+        "text": "",
+        "title": ""
       }
     },
     "nextEpisode": {
@@ -178,16 +283,66 @@
     "playbackError": {
       "badge": "Ошибка воспроизведения",
       "errors": {
-        "errorDecode": "Несмотря на то, что ранее этот медиаресурс был пригодным для использования, при попытке его декодирования произошла ошибка."
+        "errorAborted": "",
+        "errorDecode": "Несмотря на то, что ранее этот медиаресурс был пригодным для использования, при попытке его декодирования произошла ошибка.",
+        "errorGenericMedia": "",
+        "errorNetwork": "",
+        "errorNotSupported": ""
       },
+      "homeButton": "",
       "text": "При попытке воспроизвести медиа файл произошла ошибка. Пожалуйста, попробуйте ещё раз.",
       "title": "Не удалось воспроизвести видео!"
+    },
+    "scraping": {
+      "items": {
+        "failure": "",
+        "notFound": "",
+        "pending": ""
+      },
+      "notFound": {
+        "badge": "",
+        "detailsButton": "Показать детали",
+        "homeButton": "",
+        "text": "",
+        "title": "Мы не смогли найти"
+      }
+    },
+    "time": {
+      "regular": "{{timeWatched}} / {{duration}}",
+      "remaining": "",
+      "shortRegular": "",
+      "shortRemaining": ""
+    },
+    "turnstile": {
+      "description": "",
+      "error": "",
+      "title": "",
+      "verifyingHumanity": ""
+    }
+  },
+  "screens": {
+    "dmca": {
+      "text": "",
+      "title": "DMCA"
+    },
+    "loadingApp": "",
+    "loadingUser": "",
+    "loadingUserError": {
+      "logout": "",
+      "reset": "",
+      "text": "",
+      "textWithReset": ""
+    },
+    "migration": {
+      "failed": "",
+      "inProgress": ""
     }
   },
   "settings": {
     "account": {
       "accountDetails": {
         "deviceNameLabel": "Имя устройства",
+        "deviceNamePlaceholder": "",
         "editProfile": "Редактировать",
         "logoutButton": "Выйти"
       },
@@ -216,6 +371,8 @@
         "userIcon": "Значок пользователя"
       },
       "register": {
+        "cta": "Начать",
+        "text": "Обменивайтесь информацией о прогрессе часов между устройствами и синхронизируйте их.",
         "title": "Синхронизировать с облаком"
       },
       "title": "Аккаунт"
@@ -241,26 +398,25 @@
       "workers": {
         "addButton": "Добавить новый прокси-сервер",
         "description": "Для работы приложения весь трафик маршрутизируется через прокси. Включите это, если вы хотите использовать свои собственных прокси-серверы.",
-        "emptyState": "Прокси ещё нет, добавьте их ниже",
+        "emptyState": "Прокси отсутствуют, добавьте их ниже",
         "label": "Использовать прокси-сервера",
         "urlLabel": "URL-адреса",
         "urlPlaceholder": "https://"
       }
-    },
-    "locale": {
-      "language": "Язык приложения",
-      "languageDescription": "Язык применяется ко всему приложению.",
-      "title": "Локализация"
     },
     "reset": "Сброс",
     "save": "Сохранить",
     "sidebar": {
       "info": {
         "appVersion": "Версия приложения",
+        "backendUrl": "Внутренний URL-адрес",
+        "backendVersion": "Серверная версия",
         "hostname": "Имя хоста",
+        "insecure": "Небезопасно",
         "notLoggedIn": "Вы не авторизованы",
         "secure": "Безопасный",
         "title": "Информация о приложении",
+        "unknownVersion": "Неизвестный",
         "userId": "ID пользователя"
       }
     },

@@ -82,12 +82,20 @@
       "disclaimer": "면책 조항",
       "disclaimerText": "movie-web은 어떠한 파일도 호스팅하지 않으며, 제3자 서비스에 대한 링크만 제공합니다. 법적 문제는 파일 호스트 및 제공업체와 해결해야 합니다. 동영상 제공업체가 표시하는 미디어 파일에 대해 movie-web은 책임을 지지 않습니다."
     },
+    "links": {
+      "discord": "",
+      "dmca": "",
+      "github": ""
+    },
     "tagline": "이 오픈 소스 스트리밍 앱으로 좋아하는 프로그램과 영화를 시청하세요."
   },
   "global": {
+    "name": "",
     "pages": {
       "about": "소개",
+      "dmca": "",
       "login": "로그인",
+      "pagetitle": "",
       "register": "회원가입",
       "settings": "설정"
     }
@@ -132,6 +140,7 @@
     }
   },
   "media": {
+    "episodeDisplay": "",
     "types": {
       "movie": "영화",
       "show": "쇼"
@@ -194,9 +203,11 @@
       "episodes": {
         "button": "회차",
         "emptyState": "이번 시즌에는 에피소드가 없으니 나중에 다시 확인하세요!",
+        "episodeBadge": "",
         "loadingError": "시즌 로딩중 에러 발생",
         "loadingList": "로딩...",
-        "loadingTitle": "로딩..."
+        "loadingTitle": "로딩...",
+        "unairedEpisodes": ""
       },
       "playback": {
         "speedLabel": "재생 속도",
@@ -248,6 +259,10 @@
       }
     },
     "metadata": {
+      "api": {
+        "text": "",
+        "title": ""
+      },
       "failed": {
         "badge": "실패함",
         "homeButton": "메인으로 돌아가기",
@@ -293,12 +308,22 @@
       }
     },
     "time": {
-      "remaining": "{{timeLeft}} 남음 • {{timeFinished, datetime}}에 종료"
+      "regular": "",
+      "remaining": "{{timeLeft}} 남음 • {{timeFinished, datetime}}에 종료",
+      "shortRegular": "",
+      "shortRemaining": ""
+    },
+    "turnstile": {
+      "description": "",
+      "error": "",
+      "title": "",
+      "verifyingHumanity": ""
     }
   },
   "screens": {
     "dmca": {
-      "text": "movie-web의 DMCA 문의 페이지에 오신 것을 환영합니다! 당사는 지적 재산권을 존중하며 저작권 관련 문제를 신속하게 해결하고자 합니다. 귀하의 저작권이 있는 저작물이 당사 플랫폼에서 부적절하게 사용되었다고 생각되는 경우, 아래 이메일로 자세한 DMCA 통지를 보내주시기 바랍니다. 저작권이 있는 자료에 대한 설명, 연락처 정보, 선의의 신념을 담은 진술서를 포함하시기 바랍니다. 당사는 이러한 문제를 신속하게 해결하기 위해 최선을 다하고 있으며, movie-web을 창의성과 저작권을 존중하는 공간으로 유지하는 데 협조해 주셔서 감사합니다."
+      "text": "movie-web의 DMCA 문의 페이지에 오신 것을 환영합니다! 당사는 지적 재산권을 존중하며 저작권 관련 문제를 신속하게 해결하고자 합니다. 귀하의 저작권이 있는 저작물이 당사 플랫폼에서 부적절하게 사용되었다고 생각되는 경우, 아래 이메일로 자세한 DMCA 통지를 보내주시기 바랍니다. 저작권이 있는 자료에 대한 설명, 연락처 정보, 선의의 신념을 담은 진술서를 포함하시기 바랍니다. 당사는 이러한 문제를 신속하게 해결하기 위해 최선을 다하고 있으며, movie-web을 창의성과 저작권을 존중하는 공간으로 유지하는 데 협조해 주셔서 감사합니다.",
+      "title": ""
     },
     "loadingApp": "애플리케이션 로딩 중",
     "loadingUser": "프로필 로 중",
@@ -375,13 +400,9 @@
         "description": "애플리케이션이 작동하도록 하기 위해 모든 트래픽은 프록시를 통해 라우팅됩니다. 직접 워커를 사용하려면 이 옵션을 사용 설정하세요.",
         "emptyState": "아직 워커가 없는 경우 아래에서 워커를 추가하세요",
         "label": "사용자 지정 프록시 워커 사용",
-        "urlLabel": "워커 URL"
+        "urlLabel": "워커 URL",
+        "urlPlaceholder": ""
       }
-    },
-    "locale": {
-      "language": "애플리케이션 언어",
-      "languageDescription": "전체 애플리케이션에 적용되는 언어입니다.",
-      "title": "지"
     },
     "reset": "초기화",
     "save": "저장",

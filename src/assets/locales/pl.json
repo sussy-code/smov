@@ -206,7 +206,8 @@
         "episodeBadge": "E{{episode}}",
         "loadingError": "Błąd podczas ładowania sezonu",
         "loadingList": "Wczytywanie...",
-        "loadingTitle": "Wczytywanie..."
+        "loadingTitle": "Wczytywanie...",
+        "unairedEpisodes": "Jeden lub więcej odcinków tego sezonu zostało wyłączonych, ponieważ nie zostały jeszcze wyemitowane."
       },
       "playback": {
         "speedLabel": "Szybkość odtwarzania",
@@ -258,6 +259,10 @@
       }
     },
     "metadata": {
+      "api": {
+        "text": "Nie można załadować metadanych API, sprawdź połączenie internetowe.",
+        "title": "Nie udało się załadować metadanych API"
+      },
       "failed": {
         "badge": "Nie powiodło się",
         "homeButton": "Wróć na stronę główną",
@@ -309,6 +314,7 @@
       "shortRemaining": "-{{timeLeft}}"
     },
     "turnstile": {
+      "description": "Proszę potwierdź że jesteś człowiekiem, wypełniając Captcha po prawej stronie. Ma to zapewnić bezpieczeństwo movie-web!",
       "error": "Nie udało się zweryfikować Twojego człowieczeństwa. Proszę spróbuj ponownie.",
       "title": "Musimy sprawdzić, czy jesteś człowiekiem.",
       "verifyingHumanity": "Sprawdzasz swoje człowieczeństwo..."
@@ -397,11 +403,6 @@
         "urlLabel": "Adresy URL pracowników",
         "urlPlaceholder": "https://"
       }
-    },
-    "locale": {
-      "language": "Język aplikacji",
-      "languageDescription": "Język zastosowany do całej aplikacji.",
-      "title": "Ustawienia regionalne"
     },
     "reset": "Reset",
     "save": "Zapisz",

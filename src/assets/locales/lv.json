@@ -27,6 +27,7 @@
     "generate": {
       "description": "Tava paroles frāze ir kā vārds un parole. Esi drošs ka turi to drošibā jo tev vajadzēs to izmantot lai ieietu kontā",
       "next": "Esmu saglabājis paroles frāzi",
+      "passphraseFrameLabel": "",
       "title": "Tava paroles frāze"
     },
     "hasAccount": "Tev jau ir konts> <0>Ienāc šeit.</0>",
@@ -119,7 +120,10 @@
     },
     "titles": {
       "day": {
-        "default": "Ko jūs vēlētos noskatīties šajā pēcpusdienā?"
+        "default": "Ko jūs vēlētos noskatīties šajā pēcpusdienā?",
+        "extra": [
+          ""
+        ]
       },
       "morning": {
         "default": "Ko tu gribētu šorīt noskatīties?",
@@ -175,7 +179,10 @@
     "menus": {
       "downloads": {
         "disclaimer": "Lejupielādes tiek ņemtas tieši no pakalpojumu sniedzēja. Movie-web nevar kontrolēt, kā tiek nodrošinātas lejupielādes.",
+        "downloadPlaylist": "",
+        "downloadSubtitle": "",
         "downloadVideo": "Lejupielādēt video",
+        "hlsDisclaimer": "",
         "onAndroid": {
           "1": "Lai lejupielādētu operētājsistēmā Android, noklikšķiniet uz lejupielādes pogas, pēc tam jaunajā lapā <bold>pieskarieties videoklipam un turiet to</bold>, pēc tam atlasiet <bold>saglabāt</bold>.",
           "shortTitle": "Lejupielādēt / Android",
@@ -199,7 +206,8 @@
         "episodeBadge": "E{{episode}}",
         "loadingError": "Kļūda ladējot sezonu",
         "loadingList": "Lādejas...",
-        "loadingTitle": "Lādejas..."
+        "loadingTitle": "Lādejas...",
+        "unairedEpisodes": ""
       },
       "playback": {
         "speedLabel": "Atskaņošana ātrums",
@@ -213,10 +221,12 @@
       },
       "settings": {
         "downloadItem": "Lejupladēt",
+        "enableSubtitles": "",
         "experienceSection": "Skatīšanās pieredze",
         "playbackItem": "Atskaņošana iestādijumi",
         "qualityItem": "Kvalitāte",
         "sourceItem": "Video avoti",
+        "subtitleItem": "",
         "videoSection": "Video iestādijumi"
       },
       "sources": {
@@ -234,9 +244,25 @@
         },
         "title": "Avoti",
         "unknownOption": "Nezināms"
+      },
+      "subtitles": {
+        "customChoice": "",
+        "customizeLabel": "",
+        "offChoice": "",
+        "settings": {
+          "backlink": "",
+          "delay": "",
+          "fixCapitals": ""
+        },
+        "title": "",
+        "unknownLanguage": ""
       }
     },
     "metadata": {
+      "api": {
+        "text": "",
+        "title": ""
+      },
       "failed": {
         "badge": "Neizdevās",
         "homeButton": "iet uz majām",
@@ -286,6 +312,12 @@
       "remaining": "{{timeLeft}} beidza • pabeidza {{timeFinished, datetime}}",
       "shortRegular": "{{timeWatched}}",
       "shortRemaining": "-{{timeLeft}}"
+    },
+    "turnstile": {
+      "description": "",
+      "error": "",
+      "title": "",
+      "verifyingHumanity": ""
     }
   },
   "screens": {
@@ -372,11 +404,6 @@
         "urlPlaceholder": "https://"
       }
     },
-    "locale": {
-      "language": "Lietojumprogrammas valoda",
-      "languageDescription": "Visai lietojumprogrammai lietotā valoda.",
-      "title": "Lokalizācija"
-    },
     "reset": "Restartēt",
     "save": "Saglabāt",
     "sidebar": {
@@ -392,6 +419,13 @@
         "unknownVersion": "Nezināms",
         "userId": "Lietotāja ID"
       }
+    },
+    "subtitles": {
+      "backgroundLabel": "",
+      "colorLabel": "",
+      "previewQuote": "",
+      "textSizeLabel": "",
+      "title": ""
     },
     "unsaved": "Jums ir nesaglabātas izmaiņas"
   }

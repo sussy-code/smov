@@ -120,7 +120,10 @@
     },
     "titles": {
       "day": {
-        "default": "คุณอยากดูเรื่องอะไรในช่วงบ่ายนี้?"
+        "default": "คุณอยากดูเรื่องอะไรในช่วงบ่ายนี้?",
+        "extra": [
+          ""
+        ]
       },
       "morning": {
         "default": "คุณอยากดูอะไรเช้านี้?",
@@ -203,7 +206,8 @@
         "episodeBadge": "ตอนที่ {{episode}}",
         "loadingError": "การโหลดภาคผิดพลาด",
         "loadingList": "กำลังโหลด…",
-        "loadingTitle": "กำลังโหลด…"
+        "loadingTitle": "กำลังโหลด…",
+        "unairedEpisodes": ""
       },
       "playback": {
         "speedLabel": "ความเร็วในการเล่น",
@@ -247,13 +251,18 @@
         "offChoice": "ปิด",
         "settings": {
           "backlink": "คำบรรยายแบบกำหนดเอง",
-          "delay": "เวลาดีเลย์คำบรรยาย"
+          "delay": "เวลาดีเลย์คำบรรยาย",
+          "fixCapitals": ""
         },
         "title": "คำบรรยาย",
         "unknownLanguage": "ไม่ทราบ"
       }
     },
     "metadata": {
+      "api": {
+        "text": "",
+        "title": ""
+      },
       "failed": {
         "badge": "ล้มเหลว",
         "homeButton": "กลับหน้าหลัก",
@@ -303,6 +312,12 @@
       "remaining": "{{timeLeft}} หมดเวลา • สิ้นสุดใน {{timeFinished, datetime}}",
       "shortRegular": "{{timeWatched}}",
       "shortRemaining": "-{{timeLeft}}"
+    },
+    "turnstile": {
+      "description": "",
+      "error": "",
+      "title": "",
+      "verifyingHumanity": ""
     }
   },
   "screens": {
@@ -388,11 +403,6 @@
         "urlLabel": "ลูกทีม URLs",
         "urlPlaceholder": "https://"
       }
-    },
-    "locale": {
-      "language": "ภาษา",
-      "languageDescription": "ภาษาที่ใช้กับแอปพลิเคชันทั้งหมด",
-      "title": "ตำแหน่งที่ตั้ง"
     },
     "reset": "เริ่มใหม่",
     "save": "บันทึก",

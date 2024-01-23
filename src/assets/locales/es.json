@@ -390,24 +390,19 @@
     },
     "connections": {
       "server": {
-        "description": "Si deseas conectarte a un backend personalizado para almacenar tus datos, habilita esto y proporciona la URL.",
+        "description": "Si deseas conectarte a un backend personalizado para almacenar tus datos, habilita esto y proporciona la URL. <0>Instrucciones.</0>",
         "label": "Servidor personalizado",
         "urlLabel": "URL del servidor personalizado"
       },
       "title": "Conexiones",
       "workers": {
         "addButton": "Agregar nuevo worker",
-        "description": "Para que la aplicación funcione, todo el tráfico se enruta a través de proxies. Habilita esto si quieres usar tus propios workers.",
+        "description": "Para que la aplicación funcione, todo el tráfico se enruta a través de proxies. Habilita esto si quieres usar tus propios workers. <0>Instrucciones.</0>",
         "emptyState": "Aún no hay workers, agrega uno a continuación",
         "label": "Usar proxy workers personalizados",
         "urlLabel": "URL de los workers",
         "urlPlaceholder": "https://"
       }
-    },
-    "locale": {
-      "language": "Idioma de la aplicación",
-      "languageDescription": "Idioma aplicado a toda la aplicación.",
-      "title": "Idioma"
     },
     "reset": "Restablecer",
     "save": "Guardar",

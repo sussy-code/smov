@@ -206,7 +206,8 @@
         "episodeBadge": "E{{episode}}",
         "loadingError": "Napaka pri nalaganju sezone",
         "loadingList": "Nalaganje...",
-        "loadingTitle": "Nalaganje..."
+        "loadingTitle": "Nalaganje...",
+        "unairedEpisodes": ""
       },
       "playback": {
         "speedLabel": "Hitrost predvajanja",
@@ -258,6 +259,10 @@
       }
     },
     "metadata": {
+      "api": {
+        "text": "",
+        "title": ""
+      },
       "failed": {
         "badge": "Neuspešno",
         "homeButton": "Domov",
@@ -307,6 +312,12 @@
       "remaining": "{{timeLeft}} do konca • Konča ob {{timeFinished, datetime}}",
       "shortRegular": "{{timeWatched}}",
       "shortRemaining": "-{{timeLeft}}"
+    },
+    "turnstile": {
+      "description": "",
+      "error": "",
+      "title": "",
+      "verifyingHumanity": ""
     }
   },
   "screens": {
@@ -392,11 +403,6 @@
         "urlLabel": "Naslov Workerja (URL)",
         "urlPlaceholder": "https://"
       }
-    },
-    "locale": {
-      "language": "Jezik aplikacije",
-      "languageDescription": "Jezik, ki se uporablja za celotno aplikacijo.",
-      "title": "Jezik"
     },
     "reset": "Ponastavi",
     "save": "Shrani",

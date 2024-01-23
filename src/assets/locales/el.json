@@ -404,11 +404,6 @@
         "urlPlaceholder": "https://"
       }
     },
-    "locale": {
-      "language": "Γλώσσα εφαρμογής",
-      "languageDescription": "Γλώσσα που εφαρμόζεται σε ολόκληρη την εφαρμογή.",
-      "title": "Τοποθεσία"
-    },
     "reset": "Επαναφορά",
     "save": "Αποθήκευση",
     "sidebar": {

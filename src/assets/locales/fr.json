@@ -35,7 +35,7 @@
       "description": "Veuillez fournir votre passphrase pour accéder à votre compte",
       "deviceLengthError": "Veuillez saisir un nom d'appareil",
       "passphraseLabel": "Passphrase de 12 mots",
-      "passphrasePlaceholder": "Passphrase",
+      "passphrasePlaceholder": "Phrase secrète",
       "submit": "Se connecter",
       "title": "Se connecter à votre compte",
       "validationError": "Passphrase incorrecte ou incomplete"
@@ -390,24 +390,19 @@
     },
     "connections": {
       "server": {
-        "description": "Si vous souhaitez vous connecter à un backend personnalisé pour stocker vos données, activez cette option et indiquez l'URL.",
+        "description": "Si vous désirez utiliser un système de stockage externe pour enregistrer vos données, activez cette option et indiquez l'URL. <0>Instructions.</0>",
         "label": "Serveur personnalisé",
         "urlLabel": "URL du serveur personnalisé"
       },
       "title": "Connexions",
       "workers": {
         "addButton": "Ajouter un nouveau worker",
-        "description": "Pour que l'application fonctionne, tout le trafic est acheminé via des proxys. Activez cette option si vous souhaitez faire appel à vos propres workers.",
+        "description": "Pour que l'application fonctionne, tout le trafic est acheminé via des proxys. Activez cette option si vous souhaitez faire appel à vos propres workers. <0>Instructions.</0>",
         "emptyState": "Pas encore de workers, ajoutez-en un ci-dessous",
         "label": "Utiliser des agents proxy personnalisés",
         "urlLabel": "URLs des workers",
         "urlPlaceholder": "https://"
       }
-    },
-    "locale": {
-      "language": "Langue de l'application",
-      "languageDescription": "Langue appliquée dans l'ensemble de l'app.",
-      "title": "Local"
     },
     "reset": "Réinitialiser",
     "save": "Sauvegarder",
