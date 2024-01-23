@@ -171,6 +171,8 @@
       "cancel": "Zrušit"
     },
     "extension": {
+      "back": "Zpět",
+      "link": "Instalovat rozšíření",
       "status": {
         "outdated": "Verze rozšíření je příliš stará.",
         "success": "Rozšíření funguje podle očekávání!"
@@ -178,9 +180,10 @@
       "submit": "Pokračovat"
     },
     "proxy": {
+      "back": "Zpět",
       "explainer": "Pomocí metody proxy můžete získat streamy ve skvělé kvalitě vytvořením proxy serveru.",
       "input": {
-        "errorInvalidUrl": "Adresa URL není platná.",
+        "errorInvalidUrl": "Adresa URL není platná",
         "label": "Proxy URL",
         "placeholder": "https://"
       },
