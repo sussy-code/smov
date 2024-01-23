@@ -17,6 +17,7 @@ import {
 } from "@/pages/onboarding/onboardingHooks";
 import { Link } from "@/pages/onboarding/utils";
 import { PageTitle } from "@/pages/parts/util/PageTitle";
+import { conf } from "@/setup/config";
 import { useAuthStore } from "@/stores/auth";
 
 const testUrl = "https://postman-echo.com/get";
@@ -27,6 +28,7 @@ export function OnboardingProxyPage() {
   const { completeAndRedirect } = useRedirectBack();
   const [url, setUrl] = useState("");
   const setProxySet = useAuthStore((s) => s.setProxySet);
+  const installLink = conf().ONBOARDING_PROXY_INSTALL_LINK;
 
   const [{ loading, error }, test] = useAsyncFn(async () => {
     if (!url.startsWith("http"))
@@ -42,7 +44,6 @@ export function OnboardingProxyPage() {
     }
   }, [url, completeAndRedirect, setProxySet]);
 
-  // TODO proper link to proxy deployment docs
   return (
     <MinimalPageLayout>
       <PageTitle subpage k="global.pages.onboarding" />
@@ -54,7 +55,11 @@ export function OnboardingProxyPage() {
         <Paragraph className="max-w-[320px] !mb-5">
           {t("onboarding.proxy.explainer")}
         </Paragraph>
-        <Link>{t("onboarding.proxy.link")}</Link>
+        {installLink ? (
+          <Link href={installLink} target="_blank" className="mb-12">
+            {t("onboarding.proxy.link")}
+          </Link>
+        ) : null}
         <div className="w-[400px] max-w-full  mt-14 mb-28">
           <AuthInputBox
             label={t("onboarding.proxy.input.label")}
