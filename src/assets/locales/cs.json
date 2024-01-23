@@ -183,7 +183,9 @@
       "back": "Zpět",
       "explainer": "Pomocí metody proxy můžete získat streamy ve skvělé kvalitě vytvořením proxy serveru.",
       "input": {
+        "errorConnection": "Nelze se připojit k proxy",
         "errorInvalidUrl": "Adresa URL není platná",
+        "errorNotProxy": "Byla očekávaná proxy, ale byla předána webová stránka",
         "label": "Proxy URL",
         "placeholder": "https://"
       },
