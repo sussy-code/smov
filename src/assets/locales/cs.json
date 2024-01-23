@@ -263,6 +263,10 @@
         "text": "Metadata API nelze načíst, zkontrolujte prosím vaše připojení k internetu.",
         "title": "Nepodařilo se načíst API metadata"
       },
+      "extensionPermission": {
+        "badge": "Chybí povolení",
+        "title": "Konfigurace rozšíření"
+      },
       "failed": {
         "badge": "Neúspěšný",
         "homeButton": "Jít domů",
