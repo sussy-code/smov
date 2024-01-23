@@ -95,6 +95,7 @@
       "about": "O nás",
       "dmca": "DMCA",
       "login": "Přihlásit se",
+      "onboarding": "Nastavení",
       "pagetitle": "{{title}} - movie-web",
       "register": "Zaregistrovat se",
       "settings": "Nastavení"
@@ -425,7 +426,7 @@
         },
         "itemError": "S tímto nastavením je něco špatně. Projděte znovu nastavením abyste to opravili.",
         "items": {
-          "default": "Výchozí proxy",
+          "default": "Výchozí nastavení",
           "extension": "Rozšíření",
           "proxy": "Vlastní proxy"
         },
