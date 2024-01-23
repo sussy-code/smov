@@ -263,8 +263,14 @@
         "text": "Metadata API nelze načíst, zkontrolujte prosím vaše připojení k internetu.",
         "title": "Nepodařilo se načíst API metadata"
       },
+      "dmca": {
+        "badge": "Odstraněno",
+        "title": "Média byla odstraněna"
+      },
       "extensionPermission": {
         "badge": "Chybí povolení",
+        "button": "Použít rozšíření",
+        "text": "Máte rozšíření, ale k jeho použití potřebujeme vaše povolení.",
         "title": "Konfigurace rozšíření"
       },
       "failed": {
