@@ -167,10 +167,26 @@
     "title": "Tuto stránku se nepodařilo najít"
   },
   "onboarding": {
+    "proxy": {
+      "explainer": "Pomocí metody proxy můžete získat streamy ve skvělé kvalitě vytvořením proxy serveru.",
+      "link": "Naučit se vytvořit proxy",
+      "title": "Pojďme uďelat novou proxy"
+    },
     "start": {
       "explainer": "Abyste získali co nejlepší streamy. Musíte si zvolit, kterou streamovací metodu chcete použít.",
       "options": {
+        "default": {
+          "text": "Nechci zdroje s dobrou kvalitou,<0 /> <1>použít výchozí nastavení</1>"
+        },
+        "extension": {
+          "action": "Nainstalujte si rozšíření",
+          "description": "Nainstalujte si rozšíření prohlížeče a získejte přístup k nejlepším zdrojům.",
+          "quality": "Nejlepší kvalita",
+          "title": "Rozšíření prohlížeče"
+        },
         "proxy": {
+          "action": "Nastavit proxy",
+          "description": "Nastavte si proxy během 5 minut, pro získání přístupu k skvělým zdrojům.",
           "quality": "Dobrá kvalita",
           "title": "Vlastní proxy"
         }
