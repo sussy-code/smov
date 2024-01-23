@@ -166,6 +166,33 @@
     "message": "Nous avons cherché partout : sous les poubelles, dans le placard, derrière le proxy, mais nous n'avons finalement pas trouvé la page que vous cherchez.",
     "title": "Impossible de trouver cette page"
   },
+  "onboarding": {
+    "proxy": {
+      "explainer": "Avec la méthode du proxy, vous pouvez obtenir des flux de bonne qualité en créant un proxy en libre-service.",
+      "title": "Créons un nouveau proxy"
+    },
+    "start": {
+      "explainer": "Pour obtenir les meilleurs flux possibles. Vous devrez choisir la méthode de streaming que vous souhaitez utiliser.",
+      "options": {
+        "default": {
+          "text": "Je ne veux pas de flux de bonne qualité,<0 /> <1>use the default setup</1>"
+        },
+        "extension": {
+          "action": "Installer l'extension",
+          "description": "Installez l'extension de navigateur et accédez aux meilleures sources.",
+          "quality": "Meilleur qualité",
+          "title": "Extension du navigateur"
+        },
+        "proxy": {
+          "action": "Configurez le proxy",
+          "description": "Configurez un proxy en seulement 5 minutes et accédez à d'excellentes sources.",
+          "quality": "Bonne qualité",
+          "title": "Proxy personnalisé"
+        }
+      },
+      "title": "Commençons par vous configurer movie-web"
+    }
+  },
   "overlays": {
     "close": "Fermer"
   },
@@ -406,6 +433,28 @@
         "label": "Serveur personnalisé",
         "urlLabel": "URL du serveur personnalisé"
       },
+      "setup": {
+        "doSetup": "Faire la configuration",
+        "errorStatus": {
+          "description": "Il semble qu'un ou plusieurs éléments de cette configuration nécessitent votre attention.",
+          "title": "Quelque chose nécessite votre attention"
+        },
+        "itemError": "Ce paramètre présente un problème. Résolvez le problème en redémarrant la configuration.",
+        "items": {
+          "default": "Configuration par défaut",
+          "extension": "Extension",
+          "proxy": "Proxy personnalisé"
+        },
+        "redoSetup": "Refaire la configuration",
+        "successStatus": {
+          "description": "Tout est réuni pour que vous puissiez commencer à regarder vos médias préférés.",
+          "title": "Tout est mis en place !"
+        },
+        "unsetStatus": {
+          "description": "Pour commencer le processus de configuration, veuillez cliquer sur le bouton à droite.",
+          "title": "Vous n'avez pas fait la configuration"
+        }
+      },
       "title": "Connexions",
       "workers": {
         "addButton": "Ajouter un nouveau worker",
@@ -415,6 +464,14 @@
         "urlLabel": "URLs des workers",
         "urlPlaceholder": "https://"
       }
+    },
+    "preferences": {
+      "language": "Language de l'application",
+      "languageDescription": "Langue appliquée à l’ensemble de l’application.",
+      "thumbnail": "Générer des thumbnails",
+      "thumbnailDescription": "La plupart du temps, les vidéos n'ont pas de miniatures. Vous pouvez activer ce paramètre pour les générer à la volée, mais ils peuvent ralentir votre vidéo.",
+      "thumbnailLabel": "Générer des miniatures",
+      "title": "Préférences"
     },
     "reset": "Réinitialiser",
     "save": "Sauvegarder",
