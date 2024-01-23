@@ -27,7 +27,6 @@
     "generate": {
       "description": "Ditt lösenord fungerar som ditt användarnamn och lösenord. Se till att hålla det säkert eftersom du behöver ange det för att logga in på ditt konto",
       "next": "Jag har sparat mitt lösenord",
-      "passphraseFrameLabel": "",
       "title": "Ditt lösenord"
     },
     "hasAccount": "Har redan ett konto? <0>Logga in här.</0>",
@@ -120,10 +119,7 @@
     },
     "titles": {
       "day": {
-        "default": "Vad vill du titta på i eftermiddag?",
-        "extra": [
-          ""
-        ]
+        "default": "Vad vill du titta på i eftermiddag?"
       },
       "morning": {
         "default": "Vad vill du titta på den här morgonen?",
@@ -179,10 +175,7 @@
     "menus": {
       "downloads": {
         "disclaimer": "Nedladdningar görs direkt från leverantören. movie-web har ingen kontroll över hur nedladdningarna tillhandahålls.",
-        "downloadPlaylist": "",
-        "downloadSubtitle": "",
         "downloadVideo": "Ladda ner video",
-        "hlsDisclaimer": "",
         "onAndroid": {
           "1": "För att ladda ner på Android, klicka på nedladdningsknappen och på den nya sidan <bold>trycker och håller</bold> på videon, välj sedan <bold>spara</bold>.",
           "shortTitle": "Ladda ner / Android",
@@ -206,8 +199,7 @@
         "episodeBadge": "E{{episode}}",
         "loadingError": "Fel vid laddning av säsong",
         "loadingList": "Laddar...",
-        "loadingTitle": "Laddar...",
-        "unairedEpisodes": ""
+        "loadingTitle": "Laddar..."
       },
       "playback": {
         "speedLabel": "Uppspelningshastighet",
@@ -221,12 +213,10 @@
       },
       "settings": {
         "downloadItem": "Ladda ner",
-        "enableSubtitles": "",
         "experienceSection": "Visningsupplevelse",
         "playbackItem": "Uppspelningsinställningar",
         "qualityItem": "Kvalitet",
         "sourceItem": "Videokällor",
-        "subtitleItem": "",
         "videoSection": "Videoinställningar"
       },
       "sources": {
@@ -244,25 +234,9 @@
         },
         "title": "Källor",
         "unknownOption": "Okänd"
-      },
-      "subtitles": {
-        "customChoice": "",
-        "customizeLabel": "",
-        "offChoice": "",
-        "settings": {
-          "backlink": "",
-          "delay": "",
-          "fixCapitals": ""
-        },
-        "title": "",
-        "unknownLanguage": ""
       }
     },
     "metadata": {
-      "api": {
-        "text": "",
-        "title": ""
-      },
       "failed": {
         "badge": "Misslyckades",
         "homeButton": "Till startsidan",
@@ -312,12 +286,6 @@
       "remaining": "{{timeLeft}} kvar • Slutar kl {{timeFinished, datetime}}",
       "shortRegular": "{{timeWatched}}",
       "shortRemaining": "-{{timeLeft}}"
-    },
-    "turnstile": {
-      "description": "",
-      "error": "",
-      "title": "",
-      "verifyingHumanity": ""
     }
   },
   "screens": {
@@ -419,13 +387,6 @@
         "unknownVersion": "Okänd",
         "userId": "Användar-ID"
       }
-    },
-    "subtitles": {
-      "backgroundLabel": "",
-      "colorLabel": "",
-      "previewQuote": "",
-      "textSizeLabel": "",
-      "title": ""
     },
     "unsaved": "Du har osparade ändringar"
   }

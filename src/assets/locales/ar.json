@@ -259,10 +259,6 @@
       }
     },
     "metadata": {
-      "api": {
-        "text": "",
-        "title": ""
-      },
       "failed": {
         "badge": "فشل",
         "homeButton": "عُدْ للصفحة الرئيسية",
@@ -312,12 +308,6 @@
       "remaining": "باقٍ {{timeLeft}} • سينتهي مع {{timeFinished, datetime}}",
       "shortRegular": "{{timeWatched}}",
       "shortRemaining": "-{{timeLeft}}"
-    },
-    "turnstile": {
-      "description": "",
-      "error": "",
-      "title": "",
-      "verifyingHumanity": ""
     }
   },
   "screens": {
