@@ -270,6 +270,7 @@
       },
       "dmca": {
         "badge": "Odstraněno",
+        "text": "Toto média není dostupné, kvůli oznámení o zastavení šíření nebo nároku na autorská práva.",
         "title": "Média byla odstraněna"
       },
       "extensionPermission": {
@@ -410,10 +411,25 @@
         "urlLabel": "URL adresa vlastního serveru"
       },
       "setup": {
+        "doSetup": "Proveďte nastavení",
+        "errorStatus": {
+          "description": "Vypadá to, že jedna nebo více položek v tomto nastavení potřebuje vaši pozornost.",
+          "title": "Něco potřebuje vaši pozornost"
+        },
+        "itemError": "S tímto nastavením je něco špatně. Projděte znovu nastavením abyste to opravili.",
         "items": {
           "default": "Výchozí proxy",
           "extension": "Rozšíření",
           "proxy": "Vlastní proxy"
+        },
+        "redoSetup": "Proveďte znovu nastavení",
+        "successStatus": {
+          "description": "Všechny věci jsou připraveny, abyste mohli začít sledovat svá oblíbená média.",
+          "title": "Všechno je nastaveno!"
+        },
+        "unsetStatus": {
+          "description": "Prosím klikněte na vedlejší tlačítko abyste začali proces nastavování.",
+          "title": "Neprošli jste nastavením"
         }
       },
       "title": "Spojení",
