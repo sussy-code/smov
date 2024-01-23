@@ -242,7 +242,7 @@
         "downloadPlaylist": "Télécharger la liste de lecture",
         "downloadSubtitle": "Télécharger les sous-titres",
         "downloadVideo": "Télécharger la vidéo",
-        "hlsDisclaimer": "Les téléchargements sont pris directement de la source. Movie-Web n'exerce aucun contrôle sur les méthodes des fournisseurs de téléchargement. Veuillez noter que vous téléchargez une liste de lecture HLS, destinée aux utilisateurs habitués au streaming multimédia avancé.",
+        "hlsDisclaimer": "Les téléchargements sont effectués directement auprès du fournisseur. movie-web n'a aucun contrôle sur la façon dont les téléchargements sont fournis.<br /><br />Veuillez noter que vous téléchargez une liste de lecture HLS, il n'est <bold>pas recommandé de télécharger si vous n'êtes pas familier avec les formats de streaming avancés. </bold>. Essayez différentes sources pour différents formats.",
         "onAndroid": {
           "1": "Pour télécharger sur Android, cliquez sur le bouton de téléchargement puis, sur la nouvelle page, <bold>tapez et maintenez </bold> sur la vidéo, puis sélectionnez <bold>enregistrer</bold>.",
           "shortTitle": "Télécharger / Android",
@@ -500,7 +500,7 @@
     "preferences": {
       "language": "Language de l'application",
       "languageDescription": "Langue appliquée à l’ensemble de l’application.",
-      "thumbnail": "Générer des thumbnails",
+      "thumbnail": "Générer des miniatures",
       "thumbnailDescription": "La plupart du temps, les vidéos n'ont pas de miniatures. Vous pouvez activer ce paramètre pour les générer à la volée, mais ils peuvent ralentir votre vidéo.",
       "thumbnailLabel": "Générer des miniatures",
       "title": "Préférences"
