@@ -74,7 +74,7 @@
     "badge": "Bir şeyler ters gitti",
     "details": "Hata detayları",
     "reloadPage": "Sayfayı yenile",
-    "showError": "Hata detaylarını göster",
+    "showError": "Hata ayrıntılarını göster",
     "title": "Bir hatayla karşılaştık!"
   },
   "footer": {
@@ -206,7 +206,8 @@
         "episodeBadge": "B{{episode}}",
         "loadingError": "Sezon yüklenirken hata oluştu",
         "loadingList": "Yükleniyor...",
-        "loadingTitle": "Yükleniyor..."
+        "loadingTitle": "Yükleniyor...",
+        "unairedEpisodes": "Bu sezondaki bir veya daha fazla bölüm henüz yayınlanmadığı için devre dışı bırakılmıştır."
       },
       "playback": {
         "speedLabel": "Oynatma hızı",
@@ -246,7 +247,7 @@
       },
       "subtitles": {
         "customChoice": "Altyazı dosyası yükle",
-        "customizeLabel": "Kişiselleştir",
+        "customizeLabel": "Seçenekler",
         "offChoice": "Kapat",
         "settings": {
           "backlink": "Kişisel altyazılar",
@@ -258,6 +259,10 @@
       }
     },
     "metadata": {
+      "api": {
+        "text": "API üstverisi yüklenemedi, lütfen internet bağlantınızı kontrol edin.",
+        "title": "API üstverisi yüklenemedi"
+      },
       "failed": {
         "badge": "Başarısız oldu",
         "homeButton": "Ana sayfaya dön",
@@ -296,7 +301,7 @@
       },
       "notFound": {
         "badge": "Bulunamadı",
-        "detailsButton": "Detayları göster",
+        "detailsButton": "Ayrıntıları göster",
         "homeButton": "Ana sayfaya git",
         "text": "Sağlayıcılarımız arasında arama yaptık ve aradığınız medyayı bulamadık! Medyaları barındırmıyoruz ve mevcut olanlar üzerinde hiçbir kontrolümüz yok. Daha fazla ayrıntı için lütfen aşağıdaki 'Ayrıntıları göster' seçeneğine tıklayın.",
         "title": "Bunu bulamadık"
@@ -307,6 +312,12 @@
       "remaining": "{{timeLeft}} kaldı • {{timeFinished, datetime}}'de bitiyor",
       "shortRegular": "{{timeWatched}}",
       "shortRemaining": "-{{timeLeft}}"
+    },
+    "turnstile": {
+      "description": "Lütfen sağ taraftaki Captcha'yı çözerek insan olduğunuzu doğrulayın. Bu, movie-web'i güvende tutmak içindir!",
+      "error": "İnsan olduğunuz doğrulanamadı. Lütfen tekrar deneyin.",
+      "title": "İnsan olduğunuzu doğrulamamız gerekiyor.",
+      "verifyingHumanity": "İnsan olduğunuz doğrulanıyor..."
     }
   },
   "screens": {
@@ -379,24 +390,19 @@
     },
     "connections": {
       "server": {
-        "description": "Verilerinizi depolamak için özel bir arkayüze bağlanmak istiyorsanız, bunu etkinleştirin ve URL'yi sağlayın.",
+        "description": "Verilerinizi depolamak için özel bir arkayüze bağlanmak istiyorsanız, bunu etkinleştirin ve URL'yi sağlayın. <0>Yönergeler.</0>",
         "label": "Özel sunucu",
         "urlLabel": "Özel sunucu URL'si"
       },
       "title": "Bağlantılar",
       "workers": {
         "addButton": "Yeni işleyici ekle",
-        "description": "Uygulamanın çalışması için tüm trafik vekil sunucular üzerinden yönlendirilir. Kendi işleyicilerinizi getirmek istiyorsanız bunu etkinleştirin.",
+        "description": "Uygulamanın çalışması için tüm trafik vekil sunucular üzerinden yönlendirilir. Kendi işleyicilerinizi getirmek istiyorsanız bunu etkinleştirin.<0>Yönergeler.</0>",
         "emptyState": "Henüz işleyici yok, aşağıya bir tane ekleyin",
         "label": "Özel vekil sunucu işleyici kullan",
         "urlLabel": "İşleyici URL'leri",
         "urlPlaceholder": "https://"
       }
-    },
-    "locale": {
-      "language": "Uygulama dili",
-      "languageDescription": "Uygulamanın tamamına uygulanan dil.",
-      "title": "Yerelleştirme"
     },
     "reset": "Sıfırla",
     "save": "Kaydet",
@@ -417,7 +423,7 @@
     "subtitles": {
       "backgroundLabel": "Arka plan opaklığı",
       "colorLabel": "Renk",
-      "previewQuote": "Korkmamalıyım. Korku akıl katilidir.",
+      "previewQuote": "Korkmamalıyım. Korku aklın katilidir.",
       "textSizeLabel": "Yazı boyutu",
       "title": "Altyazılar"
     },

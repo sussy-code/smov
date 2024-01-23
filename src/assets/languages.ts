@@ -26,6 +26,7 @@ import pa from "@/assets/locales/pa.json";
 import pirate from "@/assets/locales/pirate.json";
 import pl from "@/assets/locales/pl.json";
 import ptbr from "@/assets/locales/pt-BR.json";
+import ptpt from "@/assets/locales/pt-PT.json";
 import ro from "@/assets/locales/ro.json";
 import ru from "@/assets/locales/ru.json";
 import sl from "@/assets/locales/sl.json";
@@ -64,6 +65,7 @@ export const locales = {
   tok,
   hi,
   "pt-BR": ptbr,
+  "pt-PT": ptpt,
   uk,
   bg,
   bn,

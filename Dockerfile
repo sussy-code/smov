@@ -1,4 +1,4 @@
-FROM node:16.15-alpine as build
+FROM node:20-alpine as build
 WORKDIR /app
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"

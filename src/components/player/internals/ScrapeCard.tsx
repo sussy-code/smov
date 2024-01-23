@@ -2,7 +2,10 @@ import classNames from "classnames";
 import { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 
-import { StatusCircle } from "@/components/player/internals/StatusCircle";
+import {
+  StatusCircle,
+  StatusCircleProps,
+} from "@/components/player/internals/StatusCircle";
 import { Transition } from "@/components/utils/Transition";
 
 export interface ScrapeItemProps {
@@ -23,13 +26,14 @@ const statusTextMap: Partial<Record<ScrapeCardProps["status"], string>> = {
   pending: "player.scraping.items.pending",
 };
 
-const statusMap: Record<ScrapeCardProps["status"], StatusCircle["type"]> = {
-  failure: "error",
-  notfound: "noresult",
-  pending: "loading",
-  success: "success",
-  waiting: "waiting",
-};
+const statusMap: Record<ScrapeCardProps["status"], StatusCircleProps["type"]> =
+  {
+    failure: "error",
+    notfound: "noresult",
+    pending: "loading",
+    success: "success",
+    waiting: "waiting",
+  };
 
 export function ScrapeItem(props: ScrapeItemProps) {
   const { t } = useTranslation();

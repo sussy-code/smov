@@ -404,11 +404,6 @@
         "urlPlaceholder": "https://"
       }
     },
-    "locale": {
-      "language": "שפת האפליקציה",
-      "languageDescription": "השפה החלה על האפליקציה כולה.",
-      "title": "מקומי"
-    },
     "reset": "איפוס",
     "save": "לשמור",
     "sidebar": {

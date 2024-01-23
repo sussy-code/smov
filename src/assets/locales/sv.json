@@ -372,11 +372,6 @@
         "urlPlaceholder": "https://"
       }
     },
-    "locale": {
-      "language": "Språk för applikationen",
-      "languageDescription": "Språket som används i hela applikationen.",
-      "title": "Plats"
-    },
     "reset": "Återställ",
     "save": "Spara",
     "sidebar": {

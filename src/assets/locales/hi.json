@@ -404,11 +404,6 @@
         "urlPlaceholder": "https://"
       }
     },
-    "locale": {
-      "language": "अनुप्रयोग भाषा",
-      "languageDescription": "भाषा संपूर्ण अनुप्रयोग पर लागू होती है।",
-      "title": "स्थानीय"
-    },
     "reset": "रीसेट",
     "save": "सेव",
     "sidebar": {

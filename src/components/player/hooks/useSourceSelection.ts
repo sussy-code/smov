@@ -5,6 +5,8 @@ import {
 } from "@movie-web/providers";
 import { useAsyncFn } from "react-use";
 
+import { isExtensionActiveCached } from "@/backend/extension/messaging";
+import { prepareStream } from "@/backend/extension/streams";
 import {
   connectServerSideEvents,
   makeProviderUrl,
@@ -13,12 +15,13 @@ import {
   scrapeSourceOutputToProviderMetric,
   useReportProviders,
 } from "@/backend/helpers/report";
+import { getLoadbalancedProviderApiUrl } from "@/backend/providers/fetchers";
+import { getProviders } from "@/backend/providers/providers";
 import { convertProviderCaption } from "@/components/player/utils/captions";
 import { convertRunoutputToSource } from "@/components/player/utils/convertRunoutputToSource";
 import { useOverlayRouter } from "@/hooks/useOverlayRouter";
 import { metaToScrapeMedia } from "@/stores/player/slices/source";
 import { usePlayerStore } from "@/stores/player/store";
-import { getLoadbalancedProviderApiUrl, providers } from "@/utils/providers";
 
 export function useEmbedScraping(
   routerId: string,
@@ -47,7 +50,7 @@ export function useEmbedScraping(
         );
         result = await conn.promise();
       } else {
-        result = await providers.runEmbedScraper({
+        result = await getProviders().runEmbedScraper({
           id: embedId,
           url,
         });
@@ -70,6 +73,7 @@ export function useEmbedScraping(
     report([
       scrapeSourceOutputToProviderMetric(meta, sourceId, null, "success", null),
     ]);
+    if (isExtensionActiveCached()) await prepareStream(result.stream[0]);
     setSourceId(sourceId);
     setCaption(null);
     setSource(
@@ -111,7 +115,7 @@ export function useSourceScraping(sourceId: string | null, routerId: string) {
         );
         result = await conn.promise();
       } else {
-        result = await providers.runSourceScraper({
+        result = await getProviders().runSourceScraper({
           id: sourceId,
           media: scrapeMedia,
         });
@@ -130,6 +134,7 @@ export function useSourceScraping(sourceId: string | null, routerId: string) {
     ]);
 
     if (result.stream) {
+      if (isExtensionActiveCached()) await prepareStream(result.stream[0]);
       setCaption(null);
       setSource(
         convertRunoutputToSource({ stream: result.stream[0] }),
@@ -155,7 +160,7 @@ export function useSourceScraping(sourceId: string | null, routerId: string) {
           );
           embedResult = await conn.promise();
         } else {
-          embedResult = await providers.runEmbedScraper({
+          embedResult = await getProviders().runEmbedScraper({
             id: result.embeds[0].embedId,
             url: result.embeds[0].url,
           });
@@ -186,6 +191,7 @@ export function useSourceScraping(sourceId: string | null, routerId: string) {
       ]);
       setSourceId(sourceId);
       setCaption(null);
+      if (isExtensionActiveCached()) await prepareStream(embedResult.stream[0]);
       setSource(
         convertRunoutputToSource({ stream: embedResult.stream[0] }),
         convertProviderCaption(embedResult.stream[0].captions),

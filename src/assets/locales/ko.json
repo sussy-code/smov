@@ -378,11 +378,6 @@
         "urlLabel": "워커 URL"
       }
     },
-    "locale": {
-      "language": "애플리케이션 언어",
-      "languageDescription": "전체 애플리케이션에 적용되는 언어입니다.",
-      "title": "지"
-    },
     "reset": "초기화",
     "save": "저장",
     "sidebar": {

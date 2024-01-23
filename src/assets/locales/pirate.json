@@ -375,11 +375,6 @@
         "urlPlaceholder": "https://"
       }
     },
-    "locale": {
-      "language": "Application language",
-      "languageDescription": "Language applied to the entire application.",
-      "title": "Locale"
-    },
     "reset": "Reset",
     "save": "Save",
     "sidebar": {

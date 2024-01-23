@@ -86,7 +86,7 @@ function populateLanguageCode(language: string): string {
  * @returns pretty format for language, null if it no info can be found for language
  */
 export function getPrettyLanguageNameFromLocale(locale: string): string | null {
-  const tag = getTag(populateLanguageCode(locale), true);
+  const tag = getTag(locale, true);
   const lang = tag?.language?.Description?.[0] ?? null;
   if (!lang) return null;
 

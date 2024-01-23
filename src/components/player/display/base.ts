@@ -41,6 +41,7 @@ function qualityToHlsLevel(quality: SourceQuality): number | null {
   );
   return found ? +found[0] : null;
 }
+
 function hlsLevelsToQualities(levels: Level[]): SourceQuality[] {
   return levels
     .map((v) => hlsLevelToQuality(v))

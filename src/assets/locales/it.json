@@ -120,19 +120,19 @@
     },
     "titles": {
       "day": {
-        "default": "Cosa vorresti vedere questo pomeriggio?",
+        "default": "Cosa vorresti guardare questo pomeriggio?",
         "extra": [
           "Senti avventuroso? Jurassic Park potrebbe essere la scelta perfetta."
         ]
       },
       "morning": {
-        "default": "Cosa vorresti vedere questa mattina?",
+        "default": "Cosa vorresti guardare questa mattina?",
         "extra": [
           "Ho sentito che «Prima Dell'alba» è buono"
         ]
       },
       "night": {
-        "default": "Cosa vorresti vedere questa stasera?",
+        "default": "Cosa vorresti guardare questa sera?",
         "extra": [
           "Stanco? Ho sentito che L'esorciccio è buono."
         ]
@@ -390,24 +390,19 @@
     },
     "connections": {
       "server": {
-        "description": "Se si desideri connettersi a un backend personalizzato per memorizzare i dati, attivare questo e fornire l'URL.",
+        "description": "Se si desideri connettersi a un backend personalizzato per memorizzare i dati, attivare questo e fornire l'URL. <0>Istruzioni.</0>",
         "label": "Server personalizzato",
         "urlLabel": "URL del server personalizzato"
       },
       "title": "Connessioni",
       "workers": {
         "addButton": "Aggiungere un nuovo lavoratore",
-        "description": "Per far funzionare l'applicazione, tutto il traffico viene instradato attraverso i proxy. Abilitare questa opzione se si desidera portare i propri lavoratori.",
+        "description": "Per far funzionare l'applicazione, tutto il traffico viene instradato attraverso i proxy. Abilitare questa opzione se si desidera portare i propri lavoratori. <0>Istruzioni.</0>",
         "emptyState": "Non ci sono ancora lavoratori, aggiungetene uno sotto",
         "label": "Utilizzare proxy worker personalizzati",
         "urlLabel": "URL dei lavoratori",
         "urlPlaceholder": "https://"
       }
-    },
-    "locale": {
-      "language": "Lingua di applicazione",
-      "languageDescription": "Lingua applicata all'intera applicazione.",
-      "title": "Località"
     },
     "reset": "Reset",
     "save": "Salva",

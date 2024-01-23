@@ -390,24 +390,19 @@
     },
     "connections": {
       "server": {
-        "description": "若您想连接到自定义后端保存数据，请启用此选项并提供 URL。",
+        "description": "若您想连接到自定义后端保存数据，请启用此选项并提供 URL。 <0>查看指引。</0>",
         "label": "自定义服务器",
         "urlLabel": "自定义服务器 URL"
       },
       "title": "连接",
       "workers": {
         "addButton": "添加新的 Worker",
-        "description": "要让应用程序正常运作，所有流量会通过代理路由。若您想使用自己的 Worker，请启用该选项。",
+        "description": "要让应用程序正常运作，所有流量会通过代理路由。若您想使用自己的 Worker，请启用该选项。 <0>查看指引。</0>",
         "emptyState": "还没有 Worker，在下方添加一个",
         "label": "使用自定义代理 Worker",
         "urlLabel": "Worker URL",
         "urlPlaceholder": "https://"
       }
-    },
-    "locale": {
-      "language": "应用程序语言",
-      "languageDescription": "当前已应用到整个应用程序的语言。",
-      "title": "本地化"
     },
     "reset": "重设",
     "save": "保存",

@@ -80,6 +80,7 @@ export function convertProviderCaption(
   captions: RunOutput["stream"]["captions"],
 ): CaptionListItem[] {
   return captions.map((v) => ({
+    id: v.id,
     language: v.language,
     url: v.url,
     needsProxy: v.hasCorsRestrictions,

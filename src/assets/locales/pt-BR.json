@@ -122,7 +122,7 @@
       "day": {
         "default": "O que você gostaria de assistir esta tarde?",
         "extra": [
-          "Me sentindo aventureiro? Jurassic Park pode ser a escolha perfeita."
+          "Se sentindo aventureiro? Jurassic Park pode ser a escolha perfeita."
         ]
       },
       "morning": {
@@ -390,24 +390,19 @@
     },
     "connections": {
       "server": {
-        "description": "Se você deseja se conectar a um backend personalizado para armazenar seus dados, ative isso e forneça a URL.",
+        "description": "Se você deseja se conectar a um backend personalizado para armazenar seus dados, ative isso e forneça a URL. <0>Instruções.</0>",
         "label": "Servidor personalizado",
         "urlLabel": "URL do servidor personalizado"
       },
       "title": "Conexões",
       "workers": {
         "addButton": "Adicionar novo worker",
-        "description": "Para fazer o aplicativo funcionar, todo o tráfego é roteado através de proxies. Ative isso se você quiser trazer seus próprios workers.",
+        "description": "Para fazer o aplicativo funcionar, todo o tráfego é roteado através de proxies. Ative isso se você quiser trazer seus próprios workers. <0>Instruções.</0>",
         "emptyState": "Ainda não há workers, adicione um abaixo",
         "label": "Usar proxy workers personalizados",
         "urlLabel": "URLs dos workers",
         "urlPlaceholder": "https://"
       }
-    },
-    "locale": {
-      "language": "Idioma do aplicativo",
-      "languageDescription": "Idioma aplicado a todo o aplicativo.",
-      "title": "Região"
     },
     "reset": "Redefinir",
     "save": "Salvar",

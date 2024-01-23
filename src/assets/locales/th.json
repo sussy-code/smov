@@ -389,11 +389,6 @@
         "urlPlaceholder": "https://"
       }
     },
-    "locale": {
-      "language": "ภาษา",
-      "languageDescription": "ภาษาที่ใช้กับแอปพลิเคชันทั้งหมด",
-      "title": "ตำแหน่งที่ตั้ง"
-    },
     "reset": "เริ่มใหม่",
     "save": "บันทึก",
     "sidebar": {
