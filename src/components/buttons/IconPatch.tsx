@@ -25,7 +25,7 @@ export function IconPatch(props: IconPatchProps) {
   return (
     <div className={props.className || undefined} onClick={props.onClick}>
       <div
-        className={`flex items-center justify-center rounded-full border-2 border-transparent bg-pill-background bg-opacity-50 transition-[background-color,color,transform,border-color] duration-75 ${transparentClasses} ${clickableClasses} ${activeClasses} ${sizeClasses}`}
+        className={`flex items-center justify-center rounded-full border-2 border-transparent backdrop-blur-lg bg-pill-background bg-opacity-50 transition-[background-color,color,transform,border-color] duration-75 ${transparentClasses} ${clickableClasses} ${activeClasses} ${sizeClasses}`}
       >
         <Icon icon={props.icon} />
       </div>
