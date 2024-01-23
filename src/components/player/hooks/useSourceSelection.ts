@@ -42,7 +42,7 @@ export function useEmbedScraping(
     let result: EmbedOutput | undefined;
     if (!meta) return;
     try {
-      if (providerApiUrl) {
+      if (providerApiUrl && !isExtensionActiveCached()) {
         const baseUrlMaker = makeProviderUrl(providerApiUrl);
         const conn = await connectServerSideEvents<EmbedOutput>(
           baseUrlMaker.scrapeEmbed(embedId, url),
@@ -107,7 +107,7 @@ export function useSourceScraping(sourceId: string | null, routerId: string) {
 
     let result: SourcererOutput | undefined;
     try {
-      if (providerApiUrl) {
+      if (providerApiUrl && !isExtensionActiveCached()) {
         const baseUrlMaker = makeProviderUrl(providerApiUrl);
         const conn = await connectServerSideEvents<SourcererOutput>(
           baseUrlMaker.scrapeSource(sourceId, scrapeMedia),
@@ -149,7 +149,7 @@ export function useSourceScraping(sourceId: string | null, routerId: string) {
       let embedResult: EmbedOutput | undefined;
       if (!meta) return;
       try {
-        if (providerApiUrl) {
+        if (providerApiUrl && !isExtensionActiveCached()) {
           const baseUrlMaker = makeProviderUrl(providerApiUrl);
           const conn = await connectServerSideEvents<EmbedOutput>(
             baseUrlMaker.scrapeEmbed(
