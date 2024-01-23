@@ -1,5 +1,7 @@
-const allowedExtensionVersion = ["0.0.1"];
+import { satisfies } from "semver";
+
+const allowedExtensionRange = "~1.0.0";
 
 export function isAllowedExtensionVersion(version: string): boolean {
-  return allowedExtensionVersion.includes(version);
+  return satisfies(version, allowedExtensionRange);
 }
