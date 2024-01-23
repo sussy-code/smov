@@ -169,6 +169,8 @@
   "onboarding": {
     "defaultConfirm": {
       "cancel": "Zrušit",
+      "confirm": "Použít výchozí nastavení",
+      "description": "Výchozí nastavení nemá nejlepší streamy a může být strašně pomalá.",
       "title": "Jste si jist?"
     },
     "extension": {
@@ -179,8 +181,9 @@
       "status": {
         "disallowed": "Rozšíření není pro tuto stránku povoleno",
         "disallowedAction": "Povolit rozšíření",
+        "failed": "Nezdařilo se získávání stavu",
         "loading": "Čekání na instalaci rozšíření",
-        "outdated": "Verze rozšíření je příliš stará.",
+        "outdated": "Verze rozšíření je příliš stará",
         "success": "Rozšíření funguje podle očekávání!"
       },
       "submit": "Pokračovat",
