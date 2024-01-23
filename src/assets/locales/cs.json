@@ -180,6 +180,7 @@
     "proxy": {
       "explainer": "Pomocí metody proxy můžete získat streamy ve skvělé kvalitě vytvořením proxy serveru.",
       "input": {
+        "errorInvalidUrl": "Adresa URL není platná.",
         "label": "Proxy URL",
         "placeholder": "https://"
       },
