@@ -15,6 +15,7 @@ import gu from "@/assets/locales/gu.json";
 import he from "@/assets/locales/he.json";
 import hi from "@/assets/locales/hi.json";
 import id from "@/assets/locales/id.json";
+import is from "@/assets/locales/is-IS.json";
 import it from "@/assets/locales/it.json";
 import ja from "@/assets/locales/ja.json";
 import ko from "@/assets/locales/ko.json";
@@ -78,6 +79,7 @@ export const locales = {
   sl,
   ta,
   "zh-HANT": zhhant,
+  is,
   ru,
   gl,
   pa,
