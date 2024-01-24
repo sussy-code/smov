@@ -263,6 +263,17 @@
         "text": "Metadatele API nu au putut fi încărcate, vă rugăm să vă verificați conexiunea la internet.",
         "title": "Nu s-a putut incărca API metadata"
       },
+      "dmca": {
+        "badge": "Șters",
+        "text": "Această medie nu mai este valabilă din vina copyright-ului.",
+        "title": "Media a fost ștearsă"
+      },
+      "extensionPermission": {
+        "badge": "Permisune pierdută",
+        "button": "Folosește extensia",
+        "text": "Tu ai extensia, dar noi avem nevoie de permisiune ca să începem să folosim extensia.",
+        "title": "Configurează extensia"
+      },
       "failed": {
         "badge": "Eșuat",
         "homeButton": "Du-te acasă :)",
@@ -393,6 +404,11 @@
         "description": "Dacă doriți să vă conectați la un backend personalizat pentru a vă stoca datele, activați acest lucru și furnizați adresa URL.",
         "label": "Server personalizat",
         "urlLabel": "Adresa URL personalizată a serverului"
+      },
+      "setup": {
+        "errorStatus": {
+          "title": "Ceva are nevoie de atenția ta"
+        }
       },
       "title": "Conexiuni",
       "workers": {
