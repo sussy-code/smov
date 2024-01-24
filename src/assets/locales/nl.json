@@ -167,15 +167,44 @@
     "title": "Pagina niet gevonden"
   },
   "onboarding": {
+    "defaultConfirm": {
+      "cancel": "Annuleren",
+      "confirm": "Gebruik standaardinstallatie",
+      "description": "De standaardinstallatie heeft niet de beste streams en kan onbruikbaar traag zijn.",
+      "title": "Weet je het zeker?"
+    },
+    "extension": {
+      "back": "Terug",
+      "explainer": "Door gebruik te maken van de browserextensie kun je de beste streams krijgen. Met slechts een eenvoudige installatie.",
+      "explainerIos": "Helaas, de browserextensie is niet ondersteund op iOS. Druk op <bold>Terug</bold> om een andere optie te kiezen.",
+      "extensionHelp": "Als je de extensie hebt geïnstalleerd maar niet wordt gedetecteerd, <bold>Open dan de extensie via het extensies menu in je browser</bold> en volg de stappen op het scherm.",
+      "linkChrome": "Installeer de Chrome-extensie",
+      "linkFirefox": "Installeer de Firefox-extensie",
+      "notDetecting": "Geïnstalleerd op Chrome maar wordt niet weergegeven? Probeer de pagina opnieuw te laden!",
+      "notDetectingAction": "Pagina opnieuw laden",
+      "status": {
+        "disallowed": "Extensie is niet ingeschakeld voor deze pagina",
+        "disallowedAction": "Extensie inschakelen",
+        "failed": "Mislukt om status aan te vragen",
+        "loading": "Aan het wachten tot je de extensie hebt geïnstalleerd",
+        "outdated": "Extensieversie te oud",
+        "success": "Extensie werkt zoals verwacht!"
+      },
+      "submit": "Doorgaan",
+      "title": "Laten we beginnen met de extensie"
+    },
     "proxy": {
+      "back": "Terug",
       "explainer": "Met de proxy-methode kun je hoogwaardige streams verkrijgen door zelf een proxy op te zetten.",
       "input": {
         "errorConnection": "Kon geen verbinding maken met de proxy",
         "errorInvalidUrl": "Geen geldige URL",
+        "errorNotProxy": "Verwachtte een proxy maar kreeg een website",
         "label": "Proxy URL",
         "placeholder": "https://"
       },
       "link": "Leer hoe je de proxy kunt instellen",
+      "submit": "Proxy opslaan",
       "title": "Laten we een nieuwe proxy instellen"
     },
     "start": {
