@@ -166,6 +166,19 @@
     "message": "Abbiamo cercato ovunque: sotto i bidoni, nell'armadio, dietro il proxy, ma alla fine non siamo riusciti a trovare la pagina che stai cercando.",
     "title": "Impossibile trovare quella pagina"
   },
+  "onboarding": {
+    "start": {
+      "explainer": "Per ottenere i migliori streaming possibili. È necessario scegliere il metodo di streaming da utilizzare.",
+      "options": {
+        "proxy": {
+          "description": "Configurate un proxy in soli 5 minuti e ottenete l'accesso a ottimi fonti.",
+          "quality": "Buona qualità",
+          "title": "Proxy personalizzato"
+        }
+      },
+      "title": "Configuriamo movie-web"
+    }
+  },
   "overlays": {
     "close": "Chiudi"
   },
@@ -407,9 +420,25 @@
         "urlLabel": "URL del server personalizzato"
       },
       "setup": {
+        "doSetup": "Fare setup",
         "errorStatus": {
           "description": "Sembra che uno o più articoli in questo setup serve la vostra attenzione.",
           "title": "Qualcosa serve la vostra attenzione"
+        },
+        "itemError": "C'è un errore in questo setup. Eseguire nuovamente il setup per correggerlo.",
+        "items": {
+          "default": "Setup predefinita",
+          "extension": "Estensione",
+          "proxy": "Proxy personalizzato"
+        },
+        "redoSetup": "Rifare setup",
+        "successStatus": {
+          "description": "Tutto è pronto per iniziare a guardare i vostri media preferiti.",
+          "title": "Tutto è setup!"
+        },
+        "unsetStatus": {
+          "description": "Fare clic sul pulsante a destra per avviare il setup.",
+          "title": "Non l'avete completato il setup"
         }
       },
       "title": "Connessioni",
@@ -421,6 +450,14 @@
         "urlLabel": "URL dei lavoratori",
         "urlPlaceholder": "https://"
       }
+    },
+    "preferences": {
+      "language": "Lingua di applicazione",
+      "languageDescription": "Lingua applicato all'intera applicazione.",
+      "thumbnail": "Generare miniature",
+      "thumbnailDescription": "Nella maggior parte dei casi, i video non hanno miniature. È possibile attivare questa impostazione per generarle quando è necessario, ma possono rendere il video più lento.",
+      "thumbnailLabel": "Generare miniature",
+      "title": "Preferenze"
     },
     "reset": "Reset",
     "save": "Salva",
