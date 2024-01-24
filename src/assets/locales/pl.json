@@ -264,8 +264,13 @@
         "text": "Nie można załadować metadanych API, sprawdź połączenie internetowe.",
         "title": "Nie udało się załadować metadanych API"
       },
+      "dmca": {
+        "badge": "Usunięte",
+        "title": "Media zostały usunięte"
+      },
       "extensionPermission": {
         "badge": "Brak uprawnień",
+        "button": "Użyj rozszerzenia",
         "text": "Masz nasze rozszerzenie przeglądarki, ale potrzebujemy pozwolenia, aby zacząć z niego korzystać.",
         "title": "Skonfiguruj rozszerzenie"
       },
