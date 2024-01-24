@@ -406,6 +406,11 @@
         "label": "Server personalizzato",
         "urlLabel": "URL del server personalizzato"
       },
+      "setup": {
+        "errorStatus": {
+          "title": "Qualcosa serve la vostra attenzione"
+        }
+      },
       "title": "Connessioni",
       "workers": {
         "addButton": "Aggiungere un nuovo lavoratore",
