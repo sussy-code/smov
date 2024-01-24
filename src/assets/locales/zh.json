@@ -37,7 +37,7 @@
       "passphraseLabel": "12 词密码短语",
       "passphrasePlaceholder": "密码短语",
       "submit": "登录",
-      "title": "登录到您的账户",
+      "title": "登录您的账户",
       "validationError": "密码短语不正确或不完整"
     },
     "register": {
@@ -52,7 +52,7 @@
     },
     "trust": {
       "failed": {
-        "text": "您是否正确配置了它？",
+        "text": "您是否正确配置了？",
         "title": "服务器连通失败"
       },
       "host": "您正在连接到 <0>{{hostname}}</0> - 在创建账户前，确保您信任它",
