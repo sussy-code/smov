@@ -414,7 +414,9 @@
         },
         "itemError": "यस सेटिङमा केही गडबड छ। यसलाई ठीक गर्न फेरि सेटअप गर्नुहोस्।",
         "items": {
-          "extension": "एक्सटेन्सन"
+          "default": "डिफल्ट सेटअप",
+          "extension": "एक्सटेन्सन",
+          "proxy": "आफ्नै प्रोक्सी"
         },
         "redoSetup": "पुन: सेटअप गर्नुहोस्",
         "successStatus": {
@@ -435,6 +437,10 @@
         "urlLabel": "Worker URL हरु",
         "urlPlaceholder": "https://"
       }
+    },
+    "preferences": {
+      "language": "एपको भाषा",
+      "languageDescription": "सम्पूर्ण एप्लिकेसनमा भाषा लागू भयो।"
     },
     "reset": "रिसेट गर्नुहोस्",
     "save": "सेभ गर्नुहोस्",
