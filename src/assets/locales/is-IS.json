@@ -1,1 +1,6 @@
-{}
+{
+  "about": {
+    "description": "movie-web er vefforrit sem leitar á netinu að straumum. Markmið liðsins er naumhyggju nálgun á að horfa á efni.",
+    "faqTitle": "Algengar spurningar"
+  }
+}
