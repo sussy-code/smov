@@ -95,6 +95,7 @@
       "about": "Su di movie-web",
       "dmca": "DMCA",
       "login": "Accedi",
+      "onboarding": "Setup",
       "pagetitle": "{{title}} - movie-web",
       "register": "Registrarsi",
       "settings": "Impostazioni"
@@ -182,7 +183,7 @@
         "downloadPlaylist": "Scarica playlist",
         "downloadSubtitle": "Scarica sottotitolo attuale",
         "downloadVideo": "Scarica video",
-        "hlsDisclaimer": "I download vengono effettuati direttamente dal provider. movie-web non ha il controllo sul modo in cui i download vengono forniti. Nota che state scaricando un playlist HLS, questio è destinato agli utenti che conoscono streaming multimediale avanzato.",
+        "hlsDisclaimer": "I download vengono effettuati direttamente dal provider. movie-web non ha il controllo sul modo in cui i download vengono forniti.<br /><br />Nota che se state scaricando un playlist HLS, <bold>non è raccomandato di scaricare se non si ha familiarità con i formati di streaming avanzati</bold>. Prova altri sorgenti per diversi formati.",
         "onAndroid": {
           "1": "Per scaricare su Android, fai clic sul pulsante di scaricare, e poi nella nuova paggina, <bold>toccare e tenere premuto</bold> sul video, e selezionare <bold>salva</bold>.",
           "shortTitle": "Scarica / Android",
@@ -262,6 +263,17 @@
       "api": {
         "text": "Impossibile caricare metadati API, verifica la connessione internet.",
         "title": "Impossibile caricare metadati API"
+      },
+      "dmca": {
+        "badge": "Rimosso",
+        "text": "Questa media non è più disponibile a causa di un notizia takedown o un rivendicazione di copyright.",
+        "title": "I media sono stati rimossi"
+      },
+      "extensionPermission": {
+        "badge": "Permesso mancato",
+        "button": "Usa l'estensione",
+        "text": "Avete l'estensione del browser, ma serve il vostro permesso per iniziare usare l'estensione.",
+        "title": "Configura l'estensione"
       },
       "failed": {
         "badge": "Fallito",
