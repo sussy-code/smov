@@ -71,11 +71,11 @@
     }
   },
   "errors": {
-    "badge": "它损坏了",
+    "badge": "它已损坏",
     "details": "错误细节",
     "reloadPage": "刷新页面",
     "showError": "显示错误细节",
-    "title": "我们遇到了错误！"
+    "title": "我们遭遇到错误！"
   },
   "footer": {
     "legal": {
@@ -149,7 +149,7 @@
   },
   "navigation": {
     "banner": {
-      "offline": "检查您的互联网连接"
+      "offline": "­请检查您的互联网信号"
     },
     "menu": {
       "about": "关于我们",
@@ -163,7 +163,7 @@
   "notFound": {
     "badge": "未找到",
     "goHome": "返回首页",
-    "message": "我们已经到处找过了：不管是垃圾桶下、橱柜里或是代理之后。但最终并没有发现您查找的页面。",
+    "message": "我们已经到处找过了：不管是垃圾桶低下、橱柜里或是代理之后。但最终并没有发现您查找的页面。",
     "title": "无法找到页面"
   },
   "onboarding": {
@@ -386,7 +386,7 @@
     "turnstile": {
       "description": "请完成右侧的验证码以验证您是人类。这是为了确保 movie-web 的安全！",
       "error": "验证失败。请重试。",
-      "title": "我们需要验证您是人类。",
+      "title": "我们需要验证您是不是人类。",
       "verifyingHumanity": "正在验证您是否为人类…"
     }
   },
