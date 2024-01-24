@@ -241,7 +241,7 @@
         "downloadPlaylist": "Descargar lista de reproducción",
         "downloadSubtitle": "Descargar subtítulo actual",
         "downloadVideo": "Descargar vídeo",
-        "hlsDisclaimer": "Las descargas se realizan directamente del proveedor. movie-web no tiene control sobre cómo se proporcionan las descargas. <br /><br />Tenga en cuenta que está descargando una lista de reproducción HLS, dirigida a <bold>usuarios familiarizados con la transmisión multimedia avanzada.<bold>",
+        "hlsDisclaimer": "Las descargas se realizan directamente del proveedor. movie-web no tiene control sobre cómo se proporcionan las descargas. <br /><br />Tenga en cuenta que está descargando una lista de reproducción HLS, <bold>dirigida a usuarios familiarizados con la transmisión multimedia avanzada.</bold>",
         "onAndroid": {
           "1": "Para descargar en Android, haz clic en el botón de descarga y luego, en la nueva página, <bold>mantén presionado</bold> el vídeo y selecciona <bold>guardar</bold>.",
           "shortTitle": "Descargar / Android",
