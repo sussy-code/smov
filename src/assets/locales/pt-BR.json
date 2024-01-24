@@ -165,6 +165,29 @@
     "message": "Procuramos em todos os lugares: debaixo das lixeiras, no armário, atrás do proxy, mas no final não conseguimos encontrar a página que você está procurando.",
     "title": "Não conseguimos encontrar essa página"
   },
+  "onboarding": {
+    "start": {
+      "explainer": "Para obter os melhores streams possíveis. Você precisará escolher qual método de streaming deseja usar.",
+      "options": {
+        "default": {
+          "text": "Eu não quero streams de boa qualidade, <0 /> <1>use a configuração padrão</1>"
+        },
+        "extension": {
+          "action": "Instalar extensão",
+          "description": "Instale a extensão de navegador e tenha acesso às melhores fontes.",
+          "quality": "Melhor qualidade",
+          "title": "Extensão de navegador"
+        },
+        "proxy": {
+          "action": "Configurar proxy",
+          "description": "Configure um proxy em apenas 5 minutos e tenha acesso a ótimas fontes.",
+          "quality": "Boa qualidade",
+          "title": "Proxy personalizado"
+        }
+      },
+      "title": "Vamos juntos configurar o movie-web"
+    }
+  },
   "overlays": {
     "close": "Fechar"
   },
@@ -182,7 +205,7 @@
         "downloadPlaylist": "Baixar playlist",
         "downloadSubtitle": "Baixar legenda atual",
         "downloadVideo": "Baixar vídeo",
-        "hlsDisclaimer": "Os downloads são feitos diretamente do provedor. movie-web não tem controle sobre como os downloads são fornecidos. Por favor, note que você está baixando uma playlist HLS, isso é destinado para usuários familiarizados com streaming multimídia avançado.",
+        "hlsDisclaimer": "Os downloads são feitos diretamente do provedor. movie-web não tem controle sobre como os downloads são fornecidos.<br /><br />Por favor, note que você está baixando uma playlist HLS, <bold>isso é destinado para usuários familiarizados com streaming multimídia avançado.</bold>. Experimente outras fontes para formatos diferentes.",
         "onAndroid": {
           "1": "Para baixar no Android, clique no botão de download e, na nova página, <bold>toque e segure</bold> no vídeo, depois selecione <bold>salvar</bold>.",
           "shortTitle": "Baixar / Android",
@@ -262,6 +285,16 @@
       "api": {
         "text": "Não foi possível carregar os metadados da API. Por favor, verifique sua conexão com a internet.",
         "title": "Falha ao carregar os metadados da API"
+      },
+      "dmca": {
+        "badge": "Removido",
+        "text": "Esta mídia não está mais disponível devido a um aviso de remoção ou reivindicação de direitos autorais.",
+        "title": "A mídia foi removida"
+      },
+      "extensionPermission": {
+        "button": "Usar extensão",
+        "text": "Você possui a extensão de navegador, mas nós precisamos de sua permissão para começar a usá-la.",
+        "title": "Configure a extensão"
       },
       "failed": {
         "badge": "Falhou",
@@ -394,6 +427,28 @@
         "label": "Servidor personalizado",
         "urlLabel": "URL do servidor personalizado"
       },
+      "setup": {
+        "doSetup": "Configurar",
+        "errorStatus": {
+          "description": "Parece que um ou mais itens nesta configuração necessitam sua atenção.",
+          "title": "Algo necessita de sua atenção"
+        },
+        "itemError": "Há algo errado com esta configuração. Realize uma nova configuração para corrigir.",
+        "items": {
+          "default": "Configuração padrão",
+          "extension": "Extensão",
+          "proxy": "Proxy personalizado"
+        },
+        "redoSetup": "Refazer configuração",
+        "successStatus": {
+          "description": "Tudo está pronto para você começar a assistir sua mídia favorita.",
+          "title": "Está tudo pronto!"
+        },
+        "unsetStatus": {
+          "description": "Por favor, clique no botão à direita para iniciar a configuração.",
+          "title": "Você não realizou a configuração"
+        }
+      },
       "title": "Conexões",
       "workers": {
         "addButton": "Adicionar novo worker",
@@ -403,6 +458,14 @@
         "urlLabel": "URLs dos workers",
         "urlPlaceholder": "https://"
       }
+    },
+    "preferences": {
+      "language": "Idioma do aplicativo",
+      "languageDescription": "Idioma aplicado para todo o aplicativo.",
+      "thumbnail": "Gerar miniaturas",
+      "thumbnailDescription": "Na maior parte do tempo, os vídeos não possuem miniaturas. Você pode ativar esta configuração para gerá-las dinamicamente, mas elas podem tornar seu vídeo mais lento.",
+      "thumbnailLabel": "Gerar miniaturas",
+      "title": "Preferências"
     },
     "reset": "Redefinir",
     "save": "Salvar",

@@ -149,8 +149,10 @@ export function useAuth() {
         bookmarkMediaToInput(tmdbId, item),
       );
 
-      await importProgress(backendUrl, account, progressInputs);
-      await importBookmarks(backendUrl, account, bookmarkInputs);
+      await Promise.all([
+        importProgress(backendUrl, account, progressInputs),
+        importBookmarks(backendUrl, account, bookmarkInputs),
+      ]);
     },
     [backendUrl],
   );
@@ -174,9 +176,11 @@ export function useAuth() {
         throw err;
       }
 
-      const bookmarks = await getBookmarks(backendUrl, account);
-      const progress = await getProgress(backendUrl, account);
-      const settings = await getSettings(backendUrl, account);
+      const [bookmarks, progress, settings] = await Promise.all([
+        getBookmarks(backendUrl, account),
+        getProgress(backendUrl, account),
+        getSettings(backendUrl, account),
+      ]);
 
       syncData(user.user, user.session, progress, bookmarks, settings);
     },

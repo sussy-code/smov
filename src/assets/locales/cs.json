@@ -177,7 +177,6 @@
       "back": "Zpět",
       "explainer": "Pomocí rozšíření prohlížeče můžete získat nejlepší streamy, které nabízíme. S pouhou instalací.",
       "extensionHelp": "Pokud jste rozšíření nainstalovali, ale nebylo zjištěno. <bold>Otevřete rozšíření pomocí nabídky rozšíření ve vašem prohlížeči</bold> a postupujte podle pokynů na obrazovce.",
-      "link": "Instalovat rozšíření",
       "status": {
         "disallowed": "Rozšíření není pro tuto stránku povoleno",
         "disallowedAction": "Povolit rozšíření",

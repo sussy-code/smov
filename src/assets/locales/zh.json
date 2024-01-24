@@ -21,9 +21,9 @@
     "copy": "复制"
   },
   "auth": {
-    "createAccount": "还没有账户？ <0>创建一个。</0>",
+    "createAccount": "还没有账户？ <0>创建一个</0>",
     "deviceNameLabel": "设备名称",
-    "deviceNamePlaceholder": "如：个人电话",
+    "deviceNamePlaceholder": "如：我的手机",
     "generate": {
       "description": "您的密码短语相当于用户名与密码。由于您需要输入它来登录账户，请确保将其存放到安全位置",
       "next": "我已保存密码短语",
@@ -37,13 +37,13 @@
       "passphraseLabel": "12 词密码短语",
       "passphrasePlaceholder": "密码短语",
       "submit": "登录",
-      "title": "登录到您的账户",
+      "title": "登录您的账户",
       "validationError": "密码短语不正确或不完整"
     },
     "register": {
       "information": {
-        "color1": "个人资料颜色 1",
-        "color2": "个人资料颜色 2",
+        "color1": "头像配色 1",
+        "color2": "头像配色 2",
         "header": "为您的设备输入名称，并选取一组代表色和一个用户图标",
         "icon": "用户图标",
         "next": "下一步",
@@ -52,8 +52,8 @@
     },
     "trust": {
       "failed": {
-        "text": "您是否正确配置了它？",
-        "title": "服务器连通失败"
+        "text": "您的配置是否正确？",
+        "title": "服务器无法接通"
       },
       "host": "您正在连接到 <0>{{hostname}}</0> - 在创建账户前，确保您信任它",
       "no": "返回",
@@ -95,6 +95,7 @@
       "about": "关于",
       "dmca": "DMCA",
       "login": "登录",
+      "onboarding": "设定",
       "pagetitle": "{{title}} - movie-web",
       "register": "注册",
       "settings": "设置"
@@ -165,6 +166,64 @@
     "message": "我们已经到处找过了：不管是垃圾桶下、橱柜里或是代理之后。但最终并没有发现您查找的页面。",
     "title": "无法找到页面"
   },
+  "onboarding": {
+    "defaultConfirm": {
+      "cancel": "取消",
+      "confirm": "使用默认设定",
+      "description": "默认设定不具备最好的视频流，并且播放速度可能慢得难以忍受。",
+      "title": "您确定吗？"
+    },
+    "extension": {
+      "back": "返回",
+      "explainer": "使用浏览器扩展，您可以获得我们提供的最佳串流。只需简单的安装即可。",
+      "extensionHelp": "如您已安装扩展程序但未被检测到，<bold>请从浏览器的扩展菜单打开扩展</bold> 并按屏幕上的指示操作。",
+      "status": {
+        "disallowed": "扩展程序未对本页面启用",
+        "disallowedAction": "启用扩展程序",
+        "failed": "请求状态失败",
+        "loading": "正等待您安装扩展程序",
+        "outdated": "扩展版本过旧",
+        "success": "扩展程序工作正常！"
+      },
+      "submit": "继续",
+      "title": "让我们从扩展程序开始"
+    },
+    "proxy": {
+      "back": "返回",
+      "explainer": "使用代理方式，您可以通过自助代理服务获得高质量的串流。",
+      "input": {
+        "errorConnection": "无法连接到代理",
+        "errorInvalidUrl": "URL 无效",
+        "errorNotProxy": "检测到常规网站，链接应指向代理",
+        "label": "代理 URL",
+        "placeholder": "https://"
+      },
+      "link": "了解如何设置代理",
+      "submit": "提交代理",
+      "title": "让我们设置新的代理"
+    },
+    "start": {
+      "explainer": "为了尽可能获得最佳串流，您将需要选择使用何种串流方法。",
+      "options": {
+        "default": {
+          "text": "我不想使用高质量串流，<0 /> <1>使用默认设定</1>"
+        },
+        "extension": {
+          "action": "安装扩展程序",
+          "description": "安装浏览器扩展并获取最佳视频源。",
+          "quality": "最佳质量",
+          "title": "浏览器扩展"
+        },
+        "proxy": {
+          "action": "设定代理",
+          "description": "在 5 分钟内设定好代理并获取优质资源。",
+          "quality": "高质量",
+          "title": "自定义代理"
+        }
+      },
+      "title": "让我们为您设定 movie-web"
+    }
+  },
   "overlays": {
     "close": "关闭"
   },
@@ -182,7 +241,7 @@
         "downloadPlaylist": "下载播放列表",
         "downloadSubtitle": "下载当前字幕",
         "downloadVideo": "下载视频",
-        "hlsDisclaimer": "下载内容是直接从内容提供者获取的。movie-web 无法控制下载内容如何被提供。请注意，您正在下载 HLS 播放列表，这适用于熟悉高级多媒体串流技术的用户。",
+        "hlsDisclaimer": "下载内容是直接从内容提供者获取的。movie-web 无法控制下载内容如何被提供。<br /><br />请注意，您正在下载 HLS 播放列表，<bold>如您不熟悉高级流媒体格式，我们不推荐此操作</bold>。如需下载其他格式，请尝试切换视频源。",
         "onAndroid": {
           "1": "要从 Android 下载，先点击下载按钮，之后在新的页面上， <bold>点击并按住</bold>视频，然后选择 <bold>保存</bold>。",
           "shortTitle": "下载 / Android",
@@ -262,6 +321,17 @@
       "api": {
         "text": "无法载入 API 元数据，请检查您的互联网连接。",
         "title": "载入 API 元数据失败"
+      },
+      "dmca": {
+        "badge": "已移除",
+        "text": "由于收到删除通知或版权声索，此媒体不再可用。",
+        "title": "媒体已被移除"
+      },
+      "extensionPermission": {
+        "badge": "缺失权限",
+        "button": "使用扩展程序",
+        "text": "您已安装浏览器扩展，但我们需要您的许可才能启用它。",
+        "title": "配置扩展程序"
       },
       "failed": {
         "badge": "失败",
@@ -390,19 +460,49 @@
     },
     "connections": {
       "server": {
-        "description": "若您想连接到自定义后端保存数据，请启用此选项并提供 URL。 <0>查看指引。</0>",
+        "description": "若您想连接到自定义后端保存数据，请启用此选项并提供 URL。 <0>查看指引</0>",
         "label": "自定义服务器",
         "urlLabel": "自定义服务器 URL"
+      },
+      "setup": {
+        "doSetup": "进行设定",
+        "errorStatus": {
+          "description": "看起来此配置中的一项或多项需要您的注意。",
+          "title": "有件事需要您的注意"
+        },
+        "itemError": "此设置存在错误。再次进行设定过程以修复它。",
+        "items": {
+          "default": "默认设定",
+          "extension": "扩展程序",
+          "proxy": "自定义代理"
+        },
+        "redoSetup": "重新进行设定",
+        "successStatus": {
+          "description": "一切已经就绪，您可以开始观赏喜爱的媒体了。",
+          "title": "一切就绪！"
+        },
+        "unsetStatus": {
+          "description": "请单击右侧的按钮开始进行设定。",
+          "title": "您尚未完成设定"
+        }
       },
       "title": "连接",
       "workers": {
         "addButton": "添加新的 Worker",
-        "description": "要让应用程序正常运作，所有流量会通过代理路由。若您想使用自己的 Worker，请启用该选项。 <0>查看指引。</0>",
+        "description": "要让应用程序正常运作，所有流量会通过代理路由。若您想使用自己的 Worker，请启用该选项。 <0>查看指引</0>",
         "emptyState": "还没有 Worker，在下方添加一个",
         "label": "使用自定义代理 Worker",
         "urlLabel": "Worker URL",
         "urlPlaceholder": "https://"
       }
+    },
+    "preferences": {
+      "language": "应用程序语言",
+      "languageDescription": "作用于整个应用程序的语言。",
+      "thumbnail": "生成缩略图",
+      "thumbnailDescription": "大多数时候，视频没有缩略图。您可以启用此设置以在视频播放时动态生成它们，但此选项可能会拖慢视频速度。",
+      "thumbnailLabel": "生成缩略图",
+      "title": "偏好设置"
     },
     "reset": "重设",
     "save": "保存",

@@ -95,6 +95,7 @@
       "about": "Su di movie-web",
       "dmca": "DMCA",
       "login": "Accedi",
+      "onboarding": "Setup",
       "pagetitle": "{{title}} - movie-web",
       "register": "Registrarsi",
       "settings": "Impostazioni"
@@ -165,6 +166,69 @@
     "message": "Abbiamo cercato ovunque: sotto i bidoni, nell'armadio, dietro il proxy, ma alla fine non siamo riusciti a trovare la pagina che stai cercando.",
     "title": "Impossibile trovare quella pagina"
   },
+  "onboarding": {
+    "defaultConfirm": {
+      "cancel": "Annulla",
+      "confirm": "Utilizzare setup predefinita",
+      "description": "Il setup predefinita non offre i migliori stream e può essere incredibilmente lento.",
+      "title": "Sei sicuro?"
+    },
+    "extension": {
+      "back": "Torna indietro",
+      "explainer": "Utilizzando l'estensione del browser, è possibile ottenere i stream ottimi che abbiamo da offrire. Basta una semplice installazione.",
+      "explainerIos": "Purtroppo, l'estensione del browser non è supportato su IOS, premere <bold>Torna indietro</bold> per scegliere un'altra opzione.",
+      "extensionHelp": "Se avete installato l'estensione ma non viene rilevata. <bold>Aprire l'estensione attraverso il menu delle estensioni del browser</bold> e seguire i passaggi sullo schermo.",
+      "linkChrome": "Installa l'estensione su Chrome",
+      "linkFirefox": "Installa l'estensione su Firefox",
+      "notDetecting": "Installato su Chrome ma non viene visualizzato? Prova a ricaricare la pagina!",
+      "notDetectingAction": "Ricarica pagina",
+      "status": {
+        "disallowed": "L'estensione non è attivato per questa pagina",
+        "disallowedAction": "Attiva l'estensione",
+        "failed": "Richiesta di stato fallita",
+        "loading": "In attesa di installare l'estensione",
+        "outdated": "Versione dell'estensione troppo vecchia",
+        "success": "L'estensione funziona come previsto!"
+      },
+      "submit": "Continua",
+      "title": "Iniziamo con un'estensione"
+    },
+    "proxy": {
+      "back": "Torna indietro",
+      "explainer": "Con il metodo proxy, è possibile ottenere stream di qualità ottima creando un proxy self-service.",
+      "input": {
+        "errorConnection": "Impossibile connettere al proxy",
+        "errorInvalidUrl": "URL non valido",
+        "errorNotProxy": "Avevamo previsto un proxy, ma abbiamo ottenuto un sito web",
+        "label": "URL proxy",
+        "placeholder": "https://"
+      },
+      "link": "Impare a creare un proxy",
+      "submit": "Invia proxy",
+      "title": "Creiamo un nuovo proxy"
+    },
+    "start": {
+      "explainer": "Per ottenere i migliori streaming possibili. È necessario scegliere il metodo di streaming da utilizzare.",
+      "options": {
+        "default": {
+          "text": "Non voglio stream di buona qualità, <0 /> <1>usa setup predefinita</1>"
+        },
+        "extension": {
+          "action": "Installa l'estensione",
+          "description": "Installate l'estensione del browser per accedere alle migliori sorgenti.",
+          "quality": "Migliore qualità",
+          "title": "Estensione del browser"
+        },
+        "proxy": {
+          "action": "Setup proxy",
+          "description": "Configurate un proxy in soli 5 minuti e ottenete l'accesso a ottimi fonti.",
+          "quality": "Buona qualità",
+          "title": "Proxy personalizzato"
+        }
+      },
+      "title": "Configuriamo movie-web"
+    }
+  },
   "overlays": {
     "close": "Chiudi"
   },
@@ -182,7 +246,7 @@
         "downloadPlaylist": "Scarica playlist",
         "downloadSubtitle": "Scarica sottotitolo attuale",
         "downloadVideo": "Scarica video",
-        "hlsDisclaimer": "I download vengono effettuati direttamente dal provider. movie-web non ha il controllo sul modo in cui i download vengono forniti. Nota che state scaricando un playlist HLS, questio è destinato agli utenti che conoscono streaming multimediale avanzato.",
+        "hlsDisclaimer": "I download vengono effettuati direttamente dal provider. movie-web non ha il controllo sul modo in cui i download vengono forniti.<br /><br />Nota che se state scaricando un playlist HLS, <bold>non è raccomandato di scaricare se non si ha familiarità con i formati di streaming avanzati</bold>. Prova altri sorgenti per diversi formati.",
         "onAndroid": {
           "1": "Per scaricare su Android, fai clic sul pulsante di scaricare, e poi nella nuova paggina, <bold>toccare e tenere premuto</bold> sul video, e selezionare <bold>salva</bold>.",
           "shortTitle": "Scarica / Android",
@@ -262,6 +326,17 @@
       "api": {
         "text": "Impossibile caricare metadati API, verifica la connessione internet.",
         "title": "Impossibile caricare metadati API"
+      },
+      "dmca": {
+        "badge": "Rimosso",
+        "text": "Questa media non è più disponibile a causa di un notizia takedown o un rivendicazione di copyright.",
+        "title": "I media sono stati rimossi"
+      },
+      "extensionPermission": {
+        "badge": "Permesso mancato",
+        "button": "Usa l'estensione",
+        "text": "Avete l'estensione del browser, ma serve il vostro permesso per iniziare usare l'estensione.",
+        "title": "Configura l'estensione"
       },
       "failed": {
         "badge": "Fallito",
@@ -394,6 +469,28 @@
         "label": "Server personalizzato",
         "urlLabel": "URL del server personalizzato"
       },
+      "setup": {
+        "doSetup": "Fare setup",
+        "errorStatus": {
+          "description": "Sembra che uno o più articoli in questo setup serve la vostra attenzione.",
+          "title": "Qualcosa serve la vostra attenzione"
+        },
+        "itemError": "C'è un errore in questo setup. Eseguire nuovamente il setup per correggerlo.",
+        "items": {
+          "default": "Setup predefinita",
+          "extension": "Estensione",
+          "proxy": "Proxy personalizzato"
+        },
+        "redoSetup": "Rifare setup",
+        "successStatus": {
+          "description": "Tutto è pronto per iniziare a guardare i vostri media preferiti.",
+          "title": "Tutto è setup!"
+        },
+        "unsetStatus": {
+          "description": "Fare clic sul pulsante a destra per avviare il setup.",
+          "title": "Non l'avete completato il setup"
+        }
+      },
       "title": "Connessioni",
       "workers": {
         "addButton": "Aggiungere un nuovo lavoratore",
@@ -403,6 +500,14 @@
         "urlLabel": "URL dei lavoratori",
         "urlPlaceholder": "https://"
       }
+    },
+    "preferences": {
+      "language": "Lingua di applicazione",
+      "languageDescription": "Lingua applicato all'intera applicazione.",
+      "thumbnail": "Generare miniature",
+      "thumbnailDescription": "Nella maggior parte dei casi, i video non hanno miniature. È possibile attivare questa impostazione per generarle quando è necessario, ma possono rendere il video più lento.",
+      "thumbnailLabel": "Generare miniature",
+      "title": "Preferenze"
     },
     "reset": "Reset",
     "save": "Salva",

@@ -95,6 +95,7 @@
       "about": "Over",
       "dmca": "DMCA",
       "login": "Login",
+      "onboarding": "Instellen",
       "pagetitle": "{{title}} - movie-web",
       "register": "Registreren",
       "settings": "Instellingen"
@@ -165,6 +166,69 @@
     "message": "We hebben echt alles geprobeerd, zelfs tijdrijzen; echter hebben we deze pagina helaas niet kunnen vinden.",
     "title": "Pagina niet gevonden"
   },
+  "onboarding": {
+    "defaultConfirm": {
+      "cancel": "Annuleren",
+      "confirm": "Gebruik standaardinstallatie",
+      "description": "De standaardinstallatie heeft niet de beste streams en kan onbruikbaar traag zijn.",
+      "title": "Weet je het zeker?"
+    },
+    "extension": {
+      "back": "Terug",
+      "explainer": "Door gebruik te maken van de browserextensie kun je de beste streams krijgen. Met slechts een eenvoudige installatie.",
+      "explainerIos": "Helaas, de browserextensie is niet ondersteund op iOS. Druk op <bold>Terug</bold> om een andere optie te kiezen.",
+      "extensionHelp": "Als je de extensie hebt geïnstalleerd maar niet wordt gedetecteerd, <bold>Open dan de extensie via het extensies menu in je browser</bold> en volg de stappen op het scherm.",
+      "linkChrome": "Installeer de Chrome-extensie",
+      "linkFirefox": "Installeer de Firefox-extensie",
+      "notDetecting": "Geïnstalleerd op Chrome maar wordt niet weergegeven? Probeer de pagina opnieuw te laden!",
+      "notDetectingAction": "Pagina opnieuw laden",
+      "status": {
+        "disallowed": "Extensie is niet ingeschakeld voor deze pagina",
+        "disallowedAction": "Extensie inschakelen",
+        "failed": "Mislukt om status aan te vragen",
+        "loading": "Aan het wachten tot je de extensie hebt geïnstalleerd",
+        "outdated": "Extensieversie te oud",
+        "success": "Extensie werkt zoals verwacht!"
+      },
+      "submit": "Doorgaan",
+      "title": "Laten we beginnen met de extensie"
+    },
+    "proxy": {
+      "back": "Terug",
+      "explainer": "Met de proxy-methode kun je hoogwaardige streams verkrijgen door zelf een proxy op te zetten.",
+      "input": {
+        "errorConnection": "Kon geen verbinding maken met de proxy",
+        "errorInvalidUrl": "Geen geldige URL",
+        "errorNotProxy": "Verwachtte een proxy maar kreeg een website",
+        "label": "Proxy URL",
+        "placeholder": "https://"
+      },
+      "link": "Leer hoe je de proxy kunt instellen",
+      "submit": "Proxy opslaan",
+      "title": "Laten we een nieuwe proxy instellen"
+    },
+    "start": {
+      "explainer": "Om de beste mogelijke streams te krijgen, moet je kiezen welke streamingmethode je wilt gebruiken.",
+      "options": {
+        "default": {
+          "text": "Ik wil geen streams van goede kwaliteit, <0 /> <1>Gebruik de standaardinstellingen.</1>"
+        },
+        "extension": {
+          "action": "Installeer extensie",
+          "description": "Installeer browserextensie en krijg toegang tot de beste bronnen.",
+          "quality": "Beste kwaliteit",
+          "title": "Browserextensie"
+        },
+        "proxy": {
+          "action": "Proxy instellen",
+          "description": "Proxy instellen in slechts 5 minuten en krijg toegang tot geweldige bronnen.",
+          "quality": "Goede kwaliteit",
+          "title": "Eigen proxy"
+        }
+      },
+      "title": "Laten we beginnen met het instellen van movie-web"
+    }
+  },
   "overlays": {
     "close": "Sluiten"
   },
@@ -182,7 +246,7 @@
         "downloadPlaylist": "Afspeellijst downloaden",
         "downloadSubtitle": "Download huidige ondertiteling",
         "downloadVideo": "Download filmpje",
-        "hlsDisclaimer": "Downloads worden rechtstreeks van de aanbieder gehaald. movie-web heeft geen controle over hoe de downloads worden aangeboden. Houd er rekening mee dat u een HLS-afspeellijst downloadt, deze is bedoeld voor gebruikers die bekend zijn met geavanceerde multimediastreaming.",
+        "hlsDisclaimer": "Downloads worden rechtstreeks van de aanbieder gehaald. movie-web heeft geen controle over de manier waarop de downloads worden aangeboden.<br /><br />Houd er rekening mee dat u nu een HLS-afspeellijst downloadt, het wordt <bold>afgeraden deze te downloaden als u niet bekend bent met geavanceerde streamingbestandstypen</bold>. Probeer verschillende bronnen voor verschillende streamingbestandstypen.",
         "onAndroid": {
           "1": "Om te downloaden op Android, klik je op de downloadknop en vervolgens, op de nieuwe pagina, <bold>tap and hold</bold> op de video en selecteer <bold>save</bold>.",
           "shortTitle": "Download / Android",
@@ -194,7 +258,7 @@
           "title": "Downloaden op iOS"
         },
         "onPc": {
-          "1": "Klik op de downloadknop op de pc en klik op de nieuwe pagina met de rechtermuisknop op de video en selecteer <bold>Video opslaan als</bold>.",
+          "1": "Klik op de downloadknop op de pc en klik op de nieuwe pagina met de rechtermuisknop op de video en selecteer <bold>Video opslaan als</bold>",
           "shortTitle": "Download / PC",
           "title": "Downloaden op PC"
         },
@@ -262,6 +326,17 @@
       "api": {
         "text": "Kan API-metagegevens niet laden. Controleer uw internetverbinding.",
         "title": "Kan API-metagegevens niet laden"
+      },
+      "dmca": {
+        "badge": "Weggehaald",
+        "text": "Deze media is niet langer beschikbaar vanwege een verwijderingsverzoek of auteursrechtenclaim.",
+        "title": "Media is weggehaald"
+      },
+      "extensionPermission": {
+        "badge": "Toestemming ontbreekt",
+        "button": "Gebruik de extensie",
+        "text": "Je hebt de browserextensie, maar we hebben jouw toestemming nodig om gebruik te maken van de extensie.",
+        "title": "Configureer de extensie"
       },
       "failed": {
         "badge": "Mislukt",
@@ -394,6 +469,28 @@
         "label": "Eigen server",
         "urlLabel": "Eigen server URL"
       },
+      "setup": {
+        "doSetup": "Instellen",
+        "errorStatus": {
+          "description": "Het lijkt erop dat één of meer items in deze configuratie jouw aandacht nodig hebben.",
+          "title": "Iets vereist jouw aandacht"
+        },
+        "itemError": "Er is iets mis met deze instelling. Klik op opnieuw instellen om op te lossen.",
+        "items": {
+          "default": "Standaard installatie",
+          "extension": "Extensie",
+          "proxy": "Eigen proxy"
+        },
+        "redoSetup": "Opnieuw instellen",
+        "successStatus": {
+          "description": "In alles is ingesteld, je kunt nu je favoriete media bekijken.",
+          "title": "Alles is ingesteld!"
+        },
+        "unsetStatus": {
+          "description": "Klik op de knop aan de rechterkant om het installatieproces te starten.",
+          "title": "Je hebt de installatieprocedure nog niet doorlopen"
+        }
+      },
       "title": "Verbindingen",
       "workers": {
         "addButton": "Nieuwe worker toevoegen",
@@ -403,6 +500,14 @@
         "urlLabel": "Worker URLs",
         "urlPlaceholder": "https://"
       }
+    },
+    "preferences": {
+      "language": "Applicatietaal",
+      "languageDescription": "Taal toegepast op de gehele applicatie.",
+      "thumbnail": "Genereer miniaturen",
+      "thumbnailDescription": "Meestal hebben video's geen miniaturen. Je kunt deze instelling inschakelen om ze dynamisch te genereren, maar dit kan je video vertragen.",
+      "thumbnailLabel": "Genereer miniaturen",
+      "title": "Voorkeuren"
     },
     "reset": "Resetten",
     "save": "Wijzigingen opslaan",
