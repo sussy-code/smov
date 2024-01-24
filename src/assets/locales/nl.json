@@ -166,6 +166,40 @@
     "message": "We hebben echt alles geprobeerd, zelfs tijdrijzen; echter hebben we deze pagina helaas niet kunnen vinden.",
     "title": "Pagina niet gevonden"
   },
+  "onboarding": {
+    "proxy": {
+      "explainer": "Met de proxy-methode kun je hoogwaardige streams verkrijgen door zelf een proxy op te zetten.",
+      "input": {
+        "errorConnection": "Kon geen verbinding maken met de proxy",
+        "errorInvalidUrl": "Geen geldige URL",
+        "label": "Proxy URL",
+        "placeholder": "https://"
+      },
+      "link": "Leer hoe je de proxy kunt instellen",
+      "title": "Laten we een nieuwe proxy instellen"
+    },
+    "start": {
+      "explainer": "Om de beste mogelijke streams te krijgen, moet je kiezen welke streamingmethode je wilt gebruiken.",
+      "options": {
+        "default": {
+          "text": "Ik wil geen streams van goede kwaliteit, <0 /> <1>Gebruik de standaardinstellingen.</1>"
+        },
+        "extension": {
+          "action": "Installeer extensie",
+          "description": "Installeer browserextensie en krijg toegang tot de beste bronnen.",
+          "quality": "Beste kwaliteit",
+          "title": "Browserextensie"
+        },
+        "proxy": {
+          "action": "Proxy instellen",
+          "description": "Proxy instellen in slechts 5 minuten en krijg toegang tot geweldige bronnen.",
+          "quality": "Goede kwaliteit",
+          "title": "Eigen proxy"
+        }
+      },
+      "title": "Laten we beginnen met het instellen van movie-web"
+    }
+  },
   "overlays": {
     "close": "Sluiten"
   },
@@ -407,11 +441,20 @@
         "urlLabel": "Eigen server URL"
       },
       "setup": {
+        "doSetup": "Instellen",
         "errorStatus": {
           "description": "Het lijkt erop dat één of meer items in deze configuratie jouw aandacht nodig hebben.",
           "title": "Iets vereist jouw aandacht"
         },
+        "itemError": "Er is iets mis met deze instelling. Klik op opnieuw instellen om op te lossen.",
+        "items": {
+          "default": "Standaard installatie",
+          "extension": "Extensie",
+          "proxy": "Eigen proxy"
+        },
+        "redoSetup": "Opnieuw instellen",
         "successStatus": {
+          "description": "In alles is ingesteld, je kunt nu je favoriete media bekijken.",
           "title": "Alles is ingesteld!"
         },
         "unsetStatus": {
@@ -428,6 +471,14 @@
         "urlLabel": "Worker URLs",
         "urlPlaceholder": "https://"
       }
+    },
+    "preferences": {
+      "language": "Applicatietaal",
+      "languageDescription": "Taal toegepast op de gehele applicatie.",
+      "thumbnail": "Genereer miniaturen",
+      "thumbnailDescription": "Meestal hebben video's geen miniaturen. Je kunt deze instelling inschakelen om ze dynamisch te genereren, maar dit kan je video vertragen.",
+      "thumbnailLabel": "Genereer miniaturen",
+      "title": "Voorkeuren"
     },
     "reset": "Resetten",
     "save": "Wijzigingen opslaan",
