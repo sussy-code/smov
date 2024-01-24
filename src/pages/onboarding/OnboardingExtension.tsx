@@ -1,4 +1,4 @@
-import { ReactNode, useMemo } from "react";
+import { ReactNode, useCallback, useEffect, useMemo, useState } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { useAsyncFn, useInterval } from "react-use";
 
@@ -41,12 +41,33 @@ async function getExtensionState(): Promise<ExtensionStatus> {
   return "success"; // no problems
 }
 
+function RefreshBar() {
+  const { t } = useTranslation();
+  const reload = useCallback(() => {
+    window.location.reload();
+  }, []);
+  return (
+    <Card className="mt-4">
+      <div className="flex items-center space-x-7">
+        <p className="flex-1">{t("onboarding.extension.notDetecting")}</p>
+        <Button theme="secondary" onClick={reload}>
+          {t("onboarding.extension.notDetectingAction")}
+        </Button>
+      </div>
+    </Card>
+  );
+}
+
 export function ExtensionStatus(props: {
   status: ExtensionStatus;
   loading: boolean;
   showHelp?: boolean;
 }) {
   const { t } = useTranslation();
+  const [lastKnownStatus, setLastKnownStatus] = useState(props.status);
+  useEffect(() => {
+    if (!props.loading) setLastKnownStatus(props.status);
+  }, [props.status, props.loading]);
 
   let content: ReactNode = null;
   if (props.loading || props.status === "unknown")
@@ -93,6 +114,7 @@ export function ExtensionStatus(props: {
           {content}
         </div>
       </Card>
+      {lastKnownStatus === "unknown" ? <RefreshBar /> : null}
       {props.showHelp ? (
         <Card className="mt-4">
           <div className="flex items-center space-x-7">

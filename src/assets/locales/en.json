@@ -508,6 +508,8 @@
       "explainer": "Using the browser extension, you can get the best streams we have to offer. With just a simple install.",
       "explainerIos": "Unfortunately, the browser extension is not supported on IOS, Press <bold>Go back</bold> to choose another option.",
       "extensionHelp": "If you've installed the extension but it's not detected. <bold>Open the extension through your browsers extension menu</bold> and follow the steps on screen.",
+      "notDetecting": "Installed on chrome but not showing up? Try reloading the page!",
+      "notDetectingAction": "Reload page",
       "linkChrome": "Install Chrome extension",
       "linkFirefox": "Install Firefox extension",
       "back": "Go back",
