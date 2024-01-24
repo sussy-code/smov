@@ -166,6 +166,12 @@
     "message": "Szukaliśmy wszędzie: w koszu, w szafie, a nawet w piwnicy, ale nie byliśmy w stanie znaleźć strony której szukasz.",
     "title": "Nie można znaleźć tej strony"
   },
+  "onboarding": {
+    "start": {
+      "explainer": "Aby uzyskać najlepsze transmisje strumieniowe. Będziesz musiał wybrać metodę strumieniowania, której chcesz użyć.",
+      "title": "Przejdźmy do konfiguracji z movie-web"
+    }
+  },
   "overlays": {
     "close": "Zamknij"
   },
@@ -266,6 +272,7 @@
       },
       "dmca": {
         "badge": "Usunięte",
+        "text": "Ten materiał nie jest już dostępny z powodu żądania usunięcia lub roszczenia dotyczącego praw autorskich.",
         "title": "Media zostały usunięte"
       },
       "extensionPermission": {
@@ -401,19 +408,49 @@
     },
     "connections": {
       "server": {
-        "description": "Jeśli chcesz połączyć się z niestandardowym backendem w celu przechowywania danych, włącz tę opcję i podaj adres URL.",
+        "description": "Jeśli chcesz połączyć się z niestandardowym backendem w celu przechowywania danych, włącz tę opcję i podaj adres URL. <0>Instrukcje.</0>",
         "label": "Serwer niestandardowy",
         "urlLabel": "Adres URL niestandardowego serwera"
+      },
+      "setup": {
+        "doSetup": "Konfiguruj",
+        "errorStatus": {
+          "description": "Wygląda na to, że jeden lub więcej elementów tej konfiguracji wymaga Twojej uwagi.",
+          "title": "Coś wymaga twojej uwagi"
+        },
+        "itemError": "Coś jest nie tak z tym ustawieniem. Ponownie przejdź przez konfigurację, aby to naprawić.",
+        "items": {
+          "default": "Domyślna konfiguracja",
+          "extension": "Rozszerzenie",
+          "proxy": "Niestandardowy serwer proxy"
+        },
+        "redoSetup": "Ponów konfigurację",
+        "successStatus": {
+          "description": "Wszystko jest gotowe, abyś mógł zacząć oglądać ulubione media.",
+          "title": "Wszystko jest gotowe!"
+        },
+        "unsetStatus": {
+          "description": "Kliknij przycisk po prawej stronie, aby rozpocząć proces konfiguracji.",
+          "title": "Nie przeszedłeś konfiguracji"
+        }
       },
       "title": "Połączenia",
       "workers": {
         "addButton": "Dodaj nowego pracownika",
-        "description": "Aby aplikacja działała, cały ruch jest kierowany przez serwery proxy. Włącz tę opcję, jeśli chcesz korzystać z własnych pracowników.",
+        "description": "Aby aplikacja działała, cały ruch jest kierowany przez serwery proxy. Włącz tę opcję, jeśli chcesz korzystać z własnych pracowników. <0>Instrukcje.</0>",
         "emptyState": "Brak pracowników, dodaj jednego poniżej",
         "label": "Używaj niestandardowych pracowników proxy",
         "urlLabel": "Adresy URL pracowników",
         "urlPlaceholder": "https://"
       }
+    },
+    "preferences": {
+      "language": "Język aplikacji",
+      "languageDescription": "Język zastosowany do całej aplikacji.",
+      "thumbnail": "Generuj miniatury",
+      "thumbnailDescription": "W większości przypadków filmy nie mają miniatur. Możesz włączyć to ustawienie, aby generować je na bieżąco, ale może to spowolnić wideo.",
+      "thumbnailLabel": "Generuj miniatury",
+      "title": "Preferencje"
     },
     "reset": "Reset",
     "save": "Zapisz",
