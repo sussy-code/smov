@@ -6,13 +6,22 @@ import {
 import { isAllowedExtensionVersion } from "@/backend/extension/compatibility";
 import { ExtensionMakeRequestResponse } from "@/backend/extension/plasmo";
 
+// for some reason, about 500 ms is needed after
+// page load before the extension starts responding properly
+const isExtensionReady = new Promise<void>((resolve) => {
+  setTimeout(() => {
+    resolve();
+  }, 500);
+});
+
 let activeExtension = false;
 
-function sendMessage<MessageKey extends keyof MessagesMetadata>(
+async function sendMessage<MessageKey extends keyof MessagesMetadata>(
   message: MessageKey,
   payload: MessagesMetadata[MessageKey]["req"] | undefined = undefined,
   timeout: number = -1,
 ) {
+  await isExtensionReady;
   return new Promise<MessagesMetadata[MessageKey]["res"] | null>((resolve) => {
     if (timeout >= 0) setTimeout(() => resolve(null), timeout);
     sendToBackgroundViaRelay<
@@ -54,7 +63,7 @@ export async function sendPage(
 export async function extensionInfo(): Promise<
   MessagesMetadata["hello"]["res"] | null
 > {
-  const message = await sendMessage("hello", undefined, 300);
+  const message = await sendMessage("hello", undefined, 500);
   return message;
 }
 
