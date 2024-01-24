@@ -167,10 +167,45 @@
     "title": "Impossibile trovare quella pagina"
   },
   "onboarding": {
+    "extension": {
+      "back": "Torna indietro",
+      "explainer": "Utilizzando l'estensione del browser, è possibile ottenere i stream ottimi che abbiamo da offrire. Basta una semplice installazione.",
+      "explainerIos": "Purtroppo, l'estensione del browser non è supportato su IOS, premere <bold>Torna indietro</bold> per scegliere un'altra opzione.",
+      "extensionHelp": "Se avete installato l'estensione ma non viene rilevata. <bold>Aprire l'estensione attraverso il menu delle estensioni del browser</bold> e seguire i passaggi sullo schermo.",
+      "linkChrome": "Installa l'estensione su Chrome",
+      "linkFirefox": "Installa l'estensione su Firefox",
+      "notDetecting": "Installato su Chrome ma non viene visualizzato? Prova a ricaricare la pagina!",
+      "notDetectingAction": "Ricarica pagina",
+      "title": "Iniziamo con un'estensione"
+    },
+    "proxy": {
+      "back": "Torna indietro",
+      "explainer": "Con il metodo proxy, è possibile ottenere stream di qualità ottima creando un proxy self-service.",
+      "input": {
+        "errorConnection": "Impossibile connettere al proxy",
+        "errorInvalidUrl": "URL non valido",
+        "errorNotProxy": "Avevamo previsto un proxy, ma abbiamo ottenuto un sito web",
+        "label": "URL proxy",
+        "placeholder": "https://"
+      },
+      "link": "Impare a creare un proxy",
+      "submit": "Invia proxy",
+      "title": "Creiamo un nuovo proxy"
+    },
     "start": {
       "explainer": "Per ottenere i migliori streaming possibili. È necessario scegliere il metodo di streaming da utilizzare.",
       "options": {
+        "default": {
+          "text": "Non voglio stream di buona qualità, <0 /> <1>usa setup predefinita</1>"
+        },
+        "extension": {
+          "action": "Installa l'estensione",
+          "description": "Installate l'estensione del browser per accedere alle migliori sorgenti.",
+          "quality": "Migliore qualità",
+          "title": "Estensione del browser"
+        },
         "proxy": {
+          "action": "Setup proxy",
           "description": "Configurate un proxy in soli 5 minuti e ottenete l'accesso a ottimi fonti.",
           "quality": "Buona qualità",
           "title": "Proxy personalizzato"
