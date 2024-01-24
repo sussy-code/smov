@@ -39,7 +39,7 @@ export function OnboardingPage() {
           <Paragraph className="!mt-1 !mb-12">
             {t("onboarding.defaultConfirm.description")}
           </Paragraph>
-          <div className="flex items-end justify-between">
+          <div className="flex flex-col-reverse gap-3 md:flex-row md:justify-between">
             <Button theme="secondary" onClick={skipModal.hide}>
               {t("onboarding.defaultConfirm.cancel")}
             </Button>
@@ -58,7 +58,7 @@ export function OnboardingPage() {
           {t("onboarding.start.explainer")}
         </Paragraph>
 
-        <div className="w-full grid grid-cols-[1fr,auto,1fr] gap-3">
+        <div className="w-full flex flex-col-reverse md:flex-row gap-3">
           <Card onClick={() => navigate("/onboarding/proxy")}>
             <CardContent
               colorClass="!text-onboarding-good"
@@ -69,7 +69,7 @@ export function OnboardingPage() {
               <Link>{t("onboarding.start.options.proxy.action")}</Link>
             </CardContent>
           </Card>
-          <div className="grid grid-rows-[1fr,auto,1fr] justify-center gap-4">
+          <div className="hidden md:grid grid-rows-[1fr,auto,1fr] justify-center gap-4">
             <VerticalLine className="items-end" />
             <span className="text-xs uppercase font-bold">or</span>
             <VerticalLine />
@@ -86,7 +86,7 @@ export function OnboardingPage() {
           </Card>
         </div>
 
-        <p className="text-center mt-12">
+        <p className="text-center hidden md:block mt-12">
           <Trans i18nKey="onboarding.start.options.default.text">
             <br />
             <a
@@ -96,6 +96,21 @@ export function OnboardingPage() {
             />
           </Trans>
         </p>
+
+        <div className=" max-w-[300px] mx-auto md:hidden mt-12 ">
+          <Button
+            className="!text-type-text !bg-opacity-50"
+            theme="secondary"
+            onClick={skipModal.show}
+          >
+            <span>
+              <Trans i18nKey="onboarding.start.options.default.text">
+                <span />
+                <span />
+              </Trans>
+            </span>
+          </Button>
+        </div>
       </CenterContainer>
     </MinimalPageLayout>
   );
