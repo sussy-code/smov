@@ -29,7 +29,7 @@ type SetupData = {
 
 function testProxy(url: string) {
   return new Promise<void>((resolve, reject) => {
-    setTimeout(() => reject(new Error("Timed out!")), 1000);
+    setTimeout(() => reject(new Error("Timed out!")), 3000);
     singularProxiedFetch(url, testUrl, {})
       .then((res) => {
         if (res.url !== testUrl) return reject(new Error("Not a proxy"));
