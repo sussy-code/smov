@@ -171,6 +171,7 @@
     },
     "menus": {
       "downloads": {
+        "disclaimer": "Niðurhalningar eru teknar beint frá heimildini. movie-web hefur engan kraft yfir hvernig niðurhalningarnar eru gefnar.",
         "downloadPlaylist": "Hlaða niður spilarlista",
         "downloadSubtitle": "Hlaða niður nú verandi texta",
         "downloadVideo": "Hlaða niður myndbandi",
@@ -191,9 +192,11 @@
       "episodes": {
         "button": "Þættir",
         "emptyState": "Það eru engir þættir í þessari seríu, kíktu aftur seinna!",
+        "episodeBadge": "Þ{{episode}}",
         "loadingError": "Villa að hlaða seríu",
         "loadingList": "Hleðsla...",
-        "loadingTitle": "Hleðsla..."
+        "loadingTitle": "Hleðsla...",
+        "unairedEpisodes": "Einn eða fleiri þættir í þessari seríu eru ekki komnir, út að þeir hafa ekki komið út."
       },
       "playback": {
         "speedLabel": "Spilunarhraði",
@@ -214,10 +217,16 @@
         "videoSection": "Myndbands stillingar"
       },
       "sources": {
+        "failed": {
+          "text": "Það kom upp villa á meðan við vorum að reyna að finna myndbönd, vinsamlegast reyndu að nota aðra heimild.",
+          "title": "Skröpun mistókst"
+        },
         "noEmbeds": {
+          "text": "Við gátum ekki fundið neina innfellu, vinsamlegast reyndu að nota aðra heimild.",
           "title": "Engar innifellur fundnar"
         },
         "noStream": {
+          "text": "Þessi heimild hefur engin streymi fyrir þessa mynd eða þætti.",
           "title": "Ekkert streymi"
         },
         "title": "Heimildir",
