@@ -177,7 +177,6 @@
       "back": "Volver atrás",
       "explainer": "Usando la extensión de navegador, puedes obtener las mejores transiciones que ofrecemos. Simplemente con una simple instalación.",
       "extensionHelp": "Si has instalado la extensión pero no es detectada, <bold>abre la extensión desde la sección en el menú de extensiones</bold> y sigue los pasos de la pantalla.",
-      "link": "Instalar extensión",
       "status": {
         "disallowed": "La extensión no está activada para esta página",
         "disallowedAction": "Activar extensión",

@@ -177,7 +177,6 @@
       "back": "返回",
       "explainer": "使用浏览器扩展，您可以获得我们提供的最佳串流。只需简单的安装即可。",
       "extensionHelp": "如您已安装扩展程序但未被检测到，<bold>请从浏览器的扩展菜单打开扩展</bold> 并按屏幕上的指示操作。",
-      "link": "安装扩展程序",
       "status": {
         "disallowed": "扩展程序未对本页面启用",
         "disallowedAction": "启用扩展程序",

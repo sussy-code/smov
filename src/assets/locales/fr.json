@@ -177,7 +177,6 @@
       "back": "Retour en arrière",
       "explainer": "En utilisant l'extension de navigateur, vous pouvez obtenir les meilleurs flux que nous avons à offrir. Avec juste une simple installation.",
       "extensionHelp": "Si vous avez installé l'extension mais qu'elle n'est pas détectée. <bold>Ouvrez l'extension via le menu des extensions de votre navigateur</bold> et suivez les étapes à l'écran.",
-      "link": "Installer l'extension",
       "status": {
         "disallowed": "L'extension n'est pas activée pour cette page",
         "disallowedAction": "Activer l'extension",
