@@ -408,6 +408,7 @@
       },
       "setup": {
         "errorStatus": {
+          "description": "Sembra che uno o più articoli in questo setup serve la vostra attenzione.",
           "title": "Qualcosa serve la vostra attenzione"
         }
       },
