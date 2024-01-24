@@ -70,7 +70,8 @@ export function detectExtensionInstall(): ExtensionDetectionResult {
   if (
     res.name === "chrome" ||
     res.name === "chromium-webview" ||
-    res.name === "edge-chromium"
+    res.name === "edge-chromium" ||
+    res.name === "opera"
   )
     return "chrome";
   if (res.name === "firefox") return "firefox";
