@@ -119,7 +119,7 @@ interface ExtensionPageProps {
 
 function ChromeExtensionPage(props: ExtensionPageProps) {
   const { t } = useTranslation();
-  const installLink = conf().ONBOARDING_EXTENSION_INSTALL_LINK;
+  const installLink = conf().ONBOARDING_CHROME_EXTENSION_INSTALL_LINK;
   return (
     <>
       <Heading2 className="!mt-0 !text-3xl max-w-[435px]">
@@ -141,7 +141,7 @@ function ChromeExtensionPage(props: ExtensionPageProps) {
 
 function FirefoxExtensionPage(props: ExtensionPageProps) {
   const { t } = useTranslation();
-  const installLink = conf().ONBOARDING_EXTENSION_INSTALL_LINK;
+  const installLink = conf().ONBOARDING_FIREFOX_EXTENSION_INSTALL_LINK;
   return (
     <>
       <Heading2 className="!mt-0 !text-3xl max-w-[435px]">
@@ -180,8 +180,8 @@ function IosExtensionPage(_props: ExtensionPageProps) {
 
 function UnknownExtensionPage(props: ExtensionPageProps) {
   const { t } = useTranslation();
-  const installChromeLink = conf().ONBOARDING_EXTENSION_INSTALL_LINK;
-  const installFirefoxLink = conf().ONBOARDING_EXTENSION_INSTALL_LINK;
+  const installChromeLink = conf().ONBOARDING_CHROME_EXTENSION_INSTALL_LINK;
+  const installFirefoxLink = conf().ONBOARDING_FIREFOX_EXTENSION_INSTALL_LINK;
   return (
     <>
       <Heading2 className="!mt-0 !text-3xl max-w-[435px]">
