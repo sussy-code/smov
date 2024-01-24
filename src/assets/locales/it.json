@@ -167,6 +167,12 @@
     "title": "Impossibile trovare quella pagina"
   },
   "onboarding": {
+    "defaultConfirm": {
+      "cancel": "Annulla",
+      "confirm": "Utilizzare setup predefinita",
+      "description": "Il setup predefinita non offre i migliori stream e può essere incredibilmente lento.",
+      "title": "Sei sicuro?"
+    },
     "extension": {
       "back": "Torna indietro",
       "explainer": "Utilizzando l'estensione del browser, è possibile ottenere i stream ottimi che abbiamo da offrire. Basta una semplice installazione.",
@@ -176,6 +182,15 @@
       "linkFirefox": "Installa l'estensione su Firefox",
       "notDetecting": "Installato su Chrome ma non viene visualizzato? Prova a ricaricare la pagina!",
       "notDetectingAction": "Ricarica pagina",
+      "status": {
+        "disallowed": "L'estensione non è attivato per questa pagina",
+        "disallowedAction": "Attiva l'estensione",
+        "failed": "Richiesta di stato fallita",
+        "loading": "In attesa di installare l'estensione",
+        "outdated": "Versione dell'estensione troppo vecchia",
+        "success": "L'estensione funziona come previsto!"
+      },
+      "submit": "Continua",
       "title": "Iniziamo con un'estensione"
     },
     "proxy": {
