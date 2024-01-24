@@ -166,6 +166,18 @@
     "message": "Wir haben überall gesucht: Unter den Eimern, im Schrank, hinter dem Proxy. Wir konnten die gesuchte Seite nicht finden.",
     "title": "Diese Seite wurde nicht gefunden"
   },
+  "onboarding": {
+    "proxy": {
+      "back": "Zurück gehen"
+    },
+    "start": {
+      "options": {
+        "extension": {
+          "quality": "Beste Qualität"
+        }
+      }
+    }
+  },
   "overlays": {
     "close": "Schließen"
   },
@@ -412,12 +424,20 @@
           "description": "Es scheint so, als bräuchte eine oder mehrere Schritte in dieser Einrichtung deine Aufmerksamkeit.",
           "title": "Etwas braucht deine Aufmerksamkeit"
         },
+        "itemError": "Mit diesem Setup stimmt etwas nicht. Führen Sie das Setup erneut durch, um das Problem zu beheben.",
         "items": {
-          "extension": "Erweiterung"
+          "default": "Standard Einstellungen",
+          "extension": "Erweiterung",
+          "proxy": "Eigene Proxy"
         },
         "redoSetup": "Erneut einrichten",
         "successStatus": {
+          "description": "Alles ist bereit, damit du deine Lieblingsserien und Filme ansehen kannst.",
           "title": "Alles eingerichtet!"
+        },
+        "unsetStatus": {
+          "description": "Klicken Sie bitte auf den Button rechts, um die Setup zu starten.",
+          "title": "Du hast das Setup noch nicht durchgeführt"
         }
       },
       "title": "Verbindung",
@@ -429,6 +449,13 @@
         "urlLabel": "Worker-URLs",
         "urlPlaceholder": "https://"
       }
+    },
+    "preferences": {
+      "language": "App-Sprache",
+      "languageDescription": "Sprache für die ganze App.",
+      "thumbnail": "Miniaturansichten generieren",
+      "thumbnailDescription": "Meistens haben Videos keine Miniaturansicht. Du kannst diese Einstellung anmachen, um sie automatisch zu generieren, aber Sie können dein Video langsamer machen.",
+      "title": "Einstellungen"
     },
     "reset": "Zurücksetzen",
     "save": "Speichern",
