@@ -232,7 +232,7 @@
         "downloadSubtitle": "Download current subtitle",
         "downloadPlaylist": "Download playlist",
         "downloadVideo": "Download video",
-        "hlsDisclaimer": "Downloads are taken directly from the provider. movie-web does not have control over how the downloads are provided.<br /><br />Please note that you are downloading an HLS playlist, it is <bold>not recommended to download if you are not familiar with advanced streaming formats</bold>. Try different sources for different formats.",
+        "hlsDisclaimer": "Downloads are taken directly from the provider. movie-web does not have control over how the downloads are provided.<br /><br />Please note that you are downloading an HLS playlist, <bold>it is not recommended to download if you are not familiar with advanced streaming formats</bold>. Try different sources for different formats.",
         "onAndroid": {
           "1": "To download on Android, click the download button then, on the new page, <bold>tap and hold</bold> on the video, then select <bold>save</bold>.",
           "shortTitle": "Download / Android",
@@ -506,8 +506,10 @@
     "extension": {
       "title": "Let's start with an extension",
       "explainer": "Using the browser extension, you can get the best streams we have to offer. With just a simple install.",
+      "explainerIos": "Unfortunately, the browser extension is not supported on IOS, Press <bold>Go back</bold> to choose another option.",
       "extensionHelp": "If you've installed the extension but it's not detected. <bold>Open the extension through your browsers extension menu</bold> and follow the steps on screen.",
-      "link": "Install extension",
+      "linkChrome": "Install Chrome extension",
+      "linkFirefox": "Install Firefox extension",
       "back": "Go back",
       "status": {
         "loading": "Waiting for you to install the extension",

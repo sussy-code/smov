@@ -48,6 +48,9 @@ dependencies:
   core-js:
     specifier: ^3.34.0
     version: 3.34.0
+  detect-browser:
+    specifier: ^5.3.0
+    version: 5.3.0
   dompurify:
     specifier: ^3.0.6
     version: 3.0.6
@@ -3336,6 +3339,10 @@ packages:
 
   /destr@2.0.1:
     resolution: {integrity: sha512-M1Ob1zPSIvlARiJUkKqvAZ3VAqQY6Jcuth/pBKQ2b1dX/Qx0OnJ8Vux6J2H5PTMQeRzWrrbTu70VxBfv/OPDJA==}
+    dev: false
+
+  /detect-browser@5.3.0:
+    resolution: {integrity: sha512-53rsFbGdwMwlF7qvCt0ypLM5V5/Mbl0szB7GPN8y9NCcbknYOeVVXdrXEq+90IwAfrrzt6Hd+u2E2ntakICU8w==}
     dev: false
 
   /didyoumean@1.2.2:
