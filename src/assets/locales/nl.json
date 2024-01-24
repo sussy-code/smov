@@ -95,6 +95,7 @@
       "about": "Over",
       "dmca": "DMCA",
       "login": "Login",
+      "onboarding": "Instellen",
       "pagetitle": "{{title}} - movie-web",
       "register": "Registreren",
       "settings": "Instellingen"
@@ -182,7 +183,7 @@
         "downloadPlaylist": "Afspeellijst downloaden",
         "downloadSubtitle": "Download huidige ondertiteling",
         "downloadVideo": "Download filmpje",
-        "hlsDisclaimer": "Downloads worden rechtstreeks van de aanbieder gehaald. movie-web heeft geen controle over hoe de downloads worden aangeboden. Houd er rekening mee dat u een HLS-afspeellijst downloadt, deze is bedoeld voor gebruikers die bekend zijn met geavanceerde multimediastreaming.",
+        "hlsDisclaimer": "Downloads worden rechtstreeks van de aanbieder gehaald. movie-web heeft geen controle over de manier waarop de downloads worden aangeboden.<br /><br />Houd er rekening mee dat u nu een HLS-afspeellijst downloadt, het wordt <bold>afgeraden deze te downloaden als u niet bekend bent met geavanceerde streamingbestandstypen</bold>. Probeer verschillende bronnen voor verschillende streamingbestandstypen.",
         "onAndroid": {
           "1": "Om te downloaden op Android, klik je op de downloadknop en vervolgens, op de nieuwe pagina, <bold>tap and hold</bold> op de video en selecteer <bold>save</bold>.",
           "shortTitle": "Download / Android",
@@ -262,6 +263,17 @@
       "api": {
         "text": "Kan API-metagegevens niet laden. Controleer uw internetverbinding.",
         "title": "Kan API-metagegevens niet laden"
+      },
+      "dmca": {
+        "badge": "Weggehaald",
+        "text": "Deze media is niet langer beschikbaar vanwege een verwijderingsverzoek of auteursrechtenclaim.",
+        "title": "Media is weggehaald"
+      },
+      "extensionPermission": {
+        "badge": "Toestemming ontbreekt",
+        "button": "Gebruik de extensie",
+        "text": "Je hebt de browserextensie, maar we hebben jouw toestemming nodig om gebruik te maken van de extensie.",
+        "title": "Configureer de extensie"
       },
       "failed": {
         "badge": "Mislukt",
@@ -393,6 +405,19 @@
         "description": "Als je verbinding wilt maken met een eigen backend om je gegevens op te slaan, schakel dan deze optie in en geef de URL op. <0>Instructies.</0>",
         "label": "Eigen server",
         "urlLabel": "Eigen server URL"
+      },
+      "setup": {
+        "errorStatus": {
+          "description": "Het lijkt erop dat één of meer items in deze configuratie jouw aandacht nodig hebben.",
+          "title": "Iets vereist jouw aandacht"
+        },
+        "successStatus": {
+          "title": "Alles is ingesteld!"
+        },
+        "unsetStatus": {
+          "description": "Klik op de knop aan de rechterkant om het installatieproces te starten.",
+          "title": "Je hebt de installatieprocedure nog niet doorlopen"
+        }
       },
       "title": "Verbindingen",
       "workers": {
