@@ -502,7 +502,7 @@
       "language": "App-Sprache",
       "languageDescription": "Sprache für die ganze App.",
       "thumbnail": "Miniaturansichten generieren",
-      "thumbnailDescription": "Meistens haben Videos keine Miniaturansicht. Du kannst diese Einstellung anmachen, um sie automatisch zu generieren, aber Sie können dein Video langsamer machen.",
+      "thumbnailDescription": "Meistens haben Videos keine Miniaturansicht. Du kannst diese Einstellung anmachen, um sie automatisch zu generieren, aber sie können dein Video langsamer machen.",
       "thumbnailLabel": "Miniaturansichten generieren",
       "title": "Einstellungen"
     },
