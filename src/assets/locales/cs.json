@@ -203,7 +203,7 @@
       "title": "Pojďme uďelat novou proxy"
     },
     "start": {
-      "explainer": "Abyste získali co nejlepší streamy. Musíte si zvolit, kterou streamovací metodu chcete použít.",
+      "explainer": "Abyste získali co nejlepší streamy, musíte zvolit, kterou streamovací metodu chcete použít.",
       "options": {
         "default": {
           "text": "Nechci zdroje s dobrou kvalitou,<0 /> <1>použít výchozí nastavení</1>"
@@ -241,7 +241,7 @@
         "downloadPlaylist": "Stáhnout playlist",
         "downloadSubtitle": "Stáhnout aktuální titulky",
         "downloadVideo": "Stáhnout video",
-        "hlsDisclaimer": "Stahování probíhá přímo u poskytovatele. movie-web nemá kontrolu nad tím, jak jsou stahování poskytovány.<br /><br />Vezměte prosím na vědomí, že stahujete HLS playlist, který <bold>není doporučen stahovat pokud nejste obeznámeni s pokročilým streamováním médií</bold>. Raději skuste jiný zdroj pro jiný formát.",
+        "hlsDisclaimer": "Stahování probíhá přímo u poskytovatele. movie-web nemá kontrolu nad tím, jak jsou stahování poskytovány.<br /><br />Vezměte prosím na vědomí, že stahujete HLS playlist,<bold> který není doporučen stahovat pokud nejste obeznámeni s pokročilým streamováním médií</bold>. Raději skuste jiný zdroj pro jiný formát.",
         "onAndroid": {
           "1": "Na Androidu klikněte na tlačítko stahování, poté na nové stránce <bold>klepněte a podržte</bold> na videu a poté vyberte <bold>uložit</bold>.",
           "shortTitle": "Stahování / Android",
