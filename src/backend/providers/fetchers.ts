@@ -74,10 +74,8 @@ export function makeExtensionFetcher() {
       url,
       ...opsWithoutBody,
       ...(ops.body && {
-        body: {
-          bodyType: getBodyTypeFromBody(ops.body),
-          value: convertBodyToObject(ops.body),
-        },
+        body: convertBodyToObject(ops.body),
+        bodyType: getBodyTypeFromBody(ops.body),
       }),
     });
     if (!result?.success) throw new Error(`extension error: ${result?.error}`);
