@@ -7,7 +7,7 @@ export function getBodyTypeFromBody(
   if (body instanceof FormData) return "FormData";
   if (body instanceof URLSearchParams) return "URLSearchParams";
   if (typeof body === "object") return "object";
-  return "string";
+  return undefined;
 }
 
 export function convertBodyToObject(body: unknown): any {

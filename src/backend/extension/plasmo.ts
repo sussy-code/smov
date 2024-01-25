@@ -15,24 +15,15 @@ export type ExtensionHelloResponse = ExtensionBaseResponse<{
   hasPermission: boolean;
 }>;
 
-export type ExtensionMakeRequestBody =
-  | {
-      bodyType: "string";
-      value: string;
-    }
-  | {
-      bodyType: "FormData" | "URLSearchParams" | "object";
-      value: Record<string, any>;
-    };
-
-export type ExtensionMakeRequestBodyType = ExtensionMakeRequestBody["bodyType"];
-
 export interface ExtensionMakeRequest extends ExtensionBaseRequest {
   url: string;
   method: string;
   headers?: Record<string, string>;
-  body?: ExtensionMakeRequestBody;
+  body?: string | Record<string, any>;
+  bodyType?: "string" | "FormData" | "URLSearchParams" | "object";
 }
+
+export type ExtensionMakeRequestBodyType = ExtensionMakeRequest["bodyType"];
 
 export type ExtensionMakeRequestResponse<T> = ExtensionBaseResponse<{
   response: {

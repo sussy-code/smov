@@ -69,14 +69,11 @@ function makeFinalHeaders(
 
 export function makeExtensionFetcher() {
   const fetcher: Fetcher = async (url, ops) => {
-    const opsWithoutBody = { ...ops, body: undefined };
     const result = await sendExtensionRequest<any>({
       url,
-      ...opsWithoutBody,
-      ...(ops.body && {
-        body: convertBodyToObject(ops.body),
-        bodyType: getBodyTypeFromBody(ops.body),
-      }),
+      ...ops,
+      body: convertBodyToObject(ops.body),
+      bodyType: getBodyTypeFromBody(ops.body),
     });
     if (!result?.success) throw new Error(`extension error: ${result?.error}`);
     const res = result.response;
