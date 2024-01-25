@@ -4,6 +4,8 @@ import { sendExtensionRequest } from "@/backend/extension/messaging";
 import { getApiToken, setApiToken } from "@/backend/helpers/providerApi";
 import { getProviderApiUrls, getProxyUrls } from "@/utils/proxyUrls";
 
+import { convertBodyToObject, getBodyTypeFromBody } from "../extension/request";
+
 function makeLoadbalancedList(getter: () => string[]) {
   let listIndex = -1;
   return () => {
@@ -67,10 +69,12 @@ function makeFinalHeaders(
 
 export function makeExtensionFetcher() {
   const fetcher: Fetcher = async (url, ops) => {
-    const result = (await sendExtensionRequest<any>({
+    const result = await sendExtensionRequest<any>({
       url,
       ...ops,
-    })) as any;
+      body: convertBodyToObject(ops.body),
+      bodyType: getBodyTypeFromBody(ops.body),
+    });
     if (!result?.success) throw new Error(`extension error: ${result?.error}`);
     const res = result.response;
     return {
