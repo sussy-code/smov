@@ -80,7 +80,7 @@
   "footer": {
     "legal": {
       "disclaimer": "Fyrirvari",
-      "disclaimerText": "movie-web hýsir engar skrár, það tengist eingöngu þjónustu þriðja aðila. Lagleg atriði ættu að vera rætt við skráarhýsinga og veitanda. movie-web er ekki ábyrg fyrir neinum skrám sýndar af myndbands veitöndum."
+      "disclaimerText": "movie-web hýsir engar skrár, það tengist eingöngu þjónustu þriðja aðila. Lagleg atriði ættu að vera rædd við skráarhýsinga og veitanda. movie-web er ekki ábyrg fyrir neinum skrám sýndar af myndbands veitöndum."
     },
     "tagline": "Horfðu á uppáhalds þætti og myndirnar þínar með þessu opna hugbúnaða forriti."
   },
@@ -145,7 +145,7 @@
     },
     "menu": {
       "about": "Um okkur",
-      "donation": "Gefa",
+      "donation": "Styrkja",
       "logout": "Skrá út",
       "register": "Samstilla við ský",
       "settings": "Stillingar",
@@ -175,16 +175,19 @@
         "downloadPlaylist": "Hlaða niður spilarlista",
         "downloadSubtitle": "Hlaða niður nú verandi texta",
         "downloadVideo": "Hlaða niður myndbandi",
-        "hlsDisclaimer": "Niðurhalningar eru teknar beint frá heimildini. movie-web hefur engan kraft yfir hvernig niðurhalningarnar eru gefnar.<br /><br />Vinsamlegast fattaðu að þú ert að niðurhala HLS spilunarlista, Það er<bold>ekki mælt með að niðurhala ef þú kannt ekki mikið á háþróað streymis sniði.</bold>. Reyndu aðrar heimildir fyrir önnur sniði.",
+        "hlsDisclaimer": "Niðurhalningar eru teknar beint frá heimildini. movie-web hefur engan kraft yfir hvernig niðurhalningarnar eru gefnar.<br /><br />Vinsamlegast fattaðu að þú ert að niðurhala HLS spilunarlista, <bold>það er ekki mælt með að niðurhala ef þú kannt ekki mikið á háþróað streymis sniði.</bold>. Reyndu aðrar heimildir fyrir önnur sniði.",
         "onAndroid": {
+          "1": "Til þess að niðurhala á Android, ýttu á niðurhalningar takkan síðan, á nýju síðunni, <bold>smelltu og haltu niðri</bold> á myndbandinu, veldu síðan <bold>vista</bold>.",
           "shortTitle": "Hlaða niður / Android",
           "title": "Að hlaða niður á Android"
         },
         "onIos": {
+          "1": "Til þess að niðurhala á iOS, ýttu á niðurhalninga takkan síðan, á nýju síðunni, ýttu á <bold><ios_share /></bold>, síðan <bold>Vista í skrár <ios_files /></bold>.",
           "shortTitle": "Hlaða niður / iOS",
           "title": "Að hlaða niður á iOS"
         },
         "onPc": {
+          "1": "Á PC, ýttu á niðurhalningar takkan síðan, á nýju síðunni, hægri smelltu á myndbandið og veldu <bold>Vista myndband sem</bold>",
           "shortTitle": "Hlaða niður / PC",
           "title": "Að hlaða niður á PC"
         },
@@ -205,6 +208,7 @@
       },
       "quality": {
         "automaticLabel": "Sjálfkrafa gæði",
+        "hint": "Þú getur reynt að <0>skipta um heimild</0>til að fá öðruvísi gæða valkosti.",
         "title": "Gæði"
       },
       "settings": {
