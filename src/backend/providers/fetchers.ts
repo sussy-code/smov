@@ -4,7 +4,7 @@ import { sendExtensionRequest } from "@/backend/extension/messaging";
 import { getApiToken, setApiToken } from "@/backend/helpers/providerApi";
 import { getProviderApiUrls, getProxyUrls } from "@/utils/proxyUrls";
 
-import { ExtensionMakeRequestBodyType } from "../extension/plasmo";
+import { convertBodyToObject, getBodyTypeFromBody } from "../extension/request";
 
 function makeLoadbalancedList(getter: () => string[]) {
   let listIndex = -1;
@@ -67,47 +67,20 @@ function makeFinalHeaders(
   );
 }
 
-function getBodyTypeFromBody(body: any): ExtensionMakeRequestBodyType {
-  if (typeof body === "string") return "string";
-  if (body instanceof FormData) return "FormData";
-  if (body instanceof URLSearchParams) return "URLSearchParams";
-  if (typeof body === "object") return "Object";
-  return "string";
-}
-
-function convertBodyToObject(body: any): Record<string, any> {
-  if (body instanceof FormData) {
-    const obj: Record<string, any> = {};
-    for (const [key, value] of body.entries()) {
-      obj[key] = value;
-    }
-    return obj;
-  }
-  if (body instanceof URLSearchParams) {
-    const obj: Record<string, any> = {};
-    for (const [key, value] of body.entries()) {
-      obj[key] = value;
-    }
-    return obj;
-  }
-  return body;
-}
-
 export function makeExtensionFetcher() {
   const fetcher: Fetcher = async (url, ops) => {
     const opsWithoutBody = { ...ops, body: undefined };
-    const result = (await sendExtensionRequest<any>({
+    const result = await sendExtensionRequest<any>({
       url,
       ...opsWithoutBody,
       ...(ops.body && {
         body: {
           bodyType: getBodyTypeFromBody(ops.body),
-          value: convertBodyToObject(ops.body) as any,
+          value: convertBodyToObject(ops.body),
         },
       }),
-    })) as any;
+    });
     if (!result?.success) throw new Error(`extension error: ${result?.error}`);
-    console.log(result);
     const res = result.response;
     return {
       body: res.body,

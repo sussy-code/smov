@@ -21,7 +21,7 @@ export type ExtensionMakeRequestBody =
       value: string;
     }
   | {
-      bodyType: "FormData" | "URLSearchParams" | "Object";
+      bodyType: "FormData" | "URLSearchParams" | "object";
       value: Record<string, any>;
     };
 
