@@ -95,6 +95,7 @@
       "about": "Über",
       "dmca": "DMCA",
       "login": "Anmelden",
+      "onboarding": "Einrichtung",
       "pagetitle": "{{title}} - movie-web",
       "register": "Registrieren",
       "settings": "Einstellungen"
@@ -165,6 +166,18 @@
     "message": "Wir haben überall gesucht: Unter den Eimern, im Schrank, hinter dem Proxy. Wir konnten die gesuchte Seite nicht finden.",
     "title": "Diese Seite wurde nicht gefunden"
   },
+  "onboarding": {
+    "proxy": {
+      "back": "Zurück gehen"
+    },
+    "start": {
+      "options": {
+        "extension": {
+          "quality": "Beste Qualität"
+        }
+      }
+    }
+  },
   "overlays": {
     "close": "Schließen"
   },
@@ -182,7 +195,7 @@
         "downloadPlaylist": "Playlist herunterladen",
         "downloadSubtitle": "Aktuelle Untertitel herunterladen",
         "downloadVideo": "Video herunterladen",
-        "hlsDisclaimer": "movie-web hat keinen Einfluss darauf, wie Downloads bereitgestellt werden. Downloads werden direkt vom Anbieter bezogen. Bitte beachte, dass du eine HLS-Wiedergabeliste herunterlädst, diese ist für Nutzer gedacht, die mit fortgeschrittenem Multimedia-Streaming vertraut sind.",
+        "hlsDisclaimer": "movie-web hat keinen Einfluss darauf, wie Downloads bereitgestellt werden. Downloads werden direkt vom Anbieter bezogen. Bitte beachte, dass du eine HLS-Wiedergabeliste herunterlädst, dies ist nicht empfohlen für Nutzer die nicht mit Erweiterten Streaming Formaten vertraut sind. Probiere andere Anbieter für andere Formate.",
         "onAndroid": {
           "1": "Um auf Android Herunterzuladen, tippe auf den Download-Button, <bold>tippe und halte</bold> auf der neuen Seite auf das Video und wähle <bold>Speichern</bold> aus.",
           "shortTitle": "Download / Android",
@@ -267,6 +280,12 @@
         "badge": "Entfernt",
         "text": "Das Video ist aufgrund einer Takedown-Anfrage oder eines Urheberrechtsanspruchs nicht mehr verfügbar.",
         "title": "Video wurde entfernt"
+      },
+      "extensionPermission": {
+        "badge": "Berechtigung fehlt",
+        "button": "Verwende Erweiterung",
+        "text": "Du hast die Browser-Erweiterung, aber wir brauchen deine Berechtigung um mit der Erweiterung zu starten.",
+        "title": "Konfiguriere die Erweiterung"
       },
       "failed": {
         "badge": "Fehlgeschlagen",
@@ -401,12 +420,24 @@
       },
       "setup": {
         "doSetup": "Einrichten",
+        "errorStatus": {
+          "description": "Es scheint so, als bräuchte eine oder mehrere Schritte in dieser Einrichtung deine Aufmerksamkeit.",
+          "title": "Etwas braucht deine Aufmerksamkeit"
+        },
+        "itemError": "Mit diesem Setup stimmt etwas nicht. Führen Sie das Setup erneut durch, um das Problem zu beheben.",
         "items": {
-          "extension": "Erweiterung"
+          "default": "Standard Einstellungen",
+          "extension": "Erweiterung",
+          "proxy": "Eigene Proxy"
         },
         "redoSetup": "Erneut einrichten",
         "successStatus": {
+          "description": "Alles ist bereit, damit du deine Lieblingsserien und Filme ansehen kannst.",
           "title": "Alles eingerichtet!"
+        },
+        "unsetStatus": {
+          "description": "Klicken Sie bitte auf den Button rechts, um die Setup zu starten.",
+          "title": "Du hast das Setup noch nicht durchgeführt"
         }
       },
       "title": "Verbindung",
@@ -418,6 +449,14 @@
         "urlLabel": "Worker-URLs",
         "urlPlaceholder": "https://"
       }
+    },
+    "preferences": {
+      "language": "App-Sprache",
+      "languageDescription": "Sprache für die ganze App.",
+      "thumbnail": "Miniaturansichten generieren",
+      "thumbnailDescription": "Meistens haben Videos keine Miniaturansicht. Du kannst diese Einstellung anmachen, um sie automatisch zu generieren, aber Sie können dein Video langsamer machen.",
+      "thumbnailLabel": "Miniaturansichten generieren",
+      "title": "Einstellungen"
     },
     "reset": "Zurücksetzen",
     "save": "Speichern",

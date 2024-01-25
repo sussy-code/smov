@@ -1,0 +1,309 @@
+{
+  "about": {
+    "description": "movie-web er vefforrit sem leitar á netinu að straumum. Markmið liðsins er naumhyggju nálgun á að horfa á efni.",
+    "faqTitle": "Algengar spurningar",
+    "q1": {
+      "body": "movie-web hýsir ekki neitt efni. Þegar þú ýtir á eitthvað til að horfa á, leitað er á netinu fyrir það efni (Þú getur séð hvaða heimild við erum að nota á hleðslu skjánum og í 'myndbands heimildir' flipanum). Skrár eru aldrei settar in af movie-web, allt er í gegnum leitarvél.",
+      "title": "Hvaðan kemur efnið?"
+    },
+    "q2": {
+      "body": "Þú getur ekki beðið um þætti eða myndir, movie-web stýrir ekki neinu efni. Allt efni er skoðað í gegnum heimildir á netinu.",
+      "title": "Hvar get ég beðið um þætti eða myndir?"
+    },
+    "q3": {
+      "body": "Okkar leitar niðurstöður eru knúnar af The Movie Database (TMDB) og eru sýndar þótt að okkar heimildir hafa ekki efnið.",
+      "title": "Leitarniðurstöðurnar sýna þættina eða myndina, af hverju get ég ekki spilað það?"
+    },
+    "title": "Um movie-web"
+  },
+  "actions": {
+    "copied": "Afritað",
+    "copy": "Afrita"
+  },
+  "auth": {
+    "createAccount": "Hefurðu ekki reikning ennþá? <0>Búðu til reikning.</0>",
+    "deviceNameLabel": "Nafn tækis",
+    "deviceNamePlaceholder": "Einkasími",
+    "generate": {
+      "description": "Þitt lykilorð lætur eins og notandanafn og lykilorð. Vertu viss um að halda því öruggu út að þú munt þurfa að nota það til að komast inn í reikningin þinn",
+      "next": "Ég hef vistað lykilorðið mitt",
+      "passphraseFrameLabel": "Lykilorð",
+      "title": "Þitt lykilorð"
+    },
+    "hasAccount": "Hefurðu reikning nú þegar? <0>Skráðu þig inn hér.</0>",
+    "login": {
+      "description": "Vinsamlegast sláðu inn lykilorðið þitt til þess að skrá þig inn í reikningin þinn",
+      "deviceLengthError": "Vinsamlegast settu inn nafn fyrir tækið þitt",
+      "passphraseLabel": "12-Orða lykilorð",
+      "passphrasePlaceholder": "Lykilorð",
+      "submit": "Skrá inn",
+      "title": "Skráðu þig inn í reikningin þinn",
+      "validationError": "Vitlaust eða óklárað lykilorð"
+    },
+    "register": {
+      "information": {
+        "color1": "Prófíl litur eitt",
+        "color2": "Prófíl litur tvö",
+        "header": "Sláðu inn nafn fyrir tækið þitt og veldu liti og notanda tákn að þínu vali",
+        "icon": "Notanda tákn",
+        "next": "Næst",
+        "title": "Reiknings upplýsingar"
+      }
+    },
+    "trust": {
+      "failed": {
+        "text": "Stilltirðu það rétt?",
+        "title": "Náðist ekki í netþjón"
+      },
+      "host": "Þú ert að tengjast við <0>{{hostname}}</0> - vinsamlegast staðfestu að þú treystir því áður en þú býrð til reikning",
+      "no": "Fara til baka",
+      "title": "Treystir þú þessum netþjóni?",
+      "yes": "Ég treysti þessum netþjóni"
+    },
+    "verify": {
+      "description": "Vinsamlegst sláðu inn lykilorðið þitt frá því áðan til þess að staðfesta að þú hefur vistað það og til að stofna nýjan reikning",
+      "invalidData": "Gögn eru ekki gild",
+      "noMatch": "Lykilorð passar ekki saman",
+      "passphraseLabel": "Þitt 12-orða lykilorð",
+      "recaptchaFailed": "ReCaptcha staðfesting mistókst",
+      "register": "Stofna reikning",
+      "title": "Staðfestu þitt lykilorð"
+    }
+  },
+  "errors": {
+    "badge": "Það bilaði",
+    "details": "Villu upplýsingar",
+    "reloadPage": "Endurhlaðaðu vefsíðuna",
+    "showError": "Sýna villu upplýsingar",
+    "title": "Við lentum í villu!"
+  },
+  "footer": {
+    "legal": {
+      "disclaimer": "Fyrirvari",
+      "disclaimerText": "movie-web hýsir engar skrár, það tengist eingöngu þjónustu þriðja aðila. Lagleg atriði ættu að vera rætt við skráarhýsinga og veitanda. movie-web er ekki ábyrg fyrir neinum skrám sýndar af myndbands veitöndum."
+    },
+    "tagline": "Horfðu á uppáhalds þætti og myndirnar þínar með þessu opna hugbúnaða forriti."
+  },
+  "global": {
+    "pages": {
+      "about": "Um",
+      "login": "Skrá inn",
+      "onboarding": "Setja upp",
+      "register": "Skrá",
+      "settings": "Stillingar"
+    }
+  },
+  "home": {
+    "bookmarks": {
+      "sectionTitle": "Bókamerki"
+    },
+    "continueWatching": {
+      "sectionTitle": "Haltu Áfram Að Horfa"
+    },
+    "mediaList": {
+      "stopEditing": "Hætta að breyta"
+    },
+    "search": {
+      "allResults": "Þetta er allt sem við höfum!",
+      "failed": "Mostókst að finna miðil, reyndu aftur!",
+      "loading": "Hlaðið...",
+      "noResults": "Við gátum ekki fundið neitt!",
+      "placeholder": "Hvað viltu horfa á?",
+      "sectionTitle": "Leitar niðurstöður"
+    },
+    "titles": {
+      "day": {
+        "default": "Hvað myndirðu vilja horfa á þetta kvöldið?",
+        "extra": [
+          "Fynnst þér þú vera ævintýralegur? Jurrasic Park gæti verið fullkomna valið."
+        ]
+      },
+      "morning": {
+        "default": "Hvað myndirðu vilja horfa á þessum morgni?",
+        "extra": [
+          "Ég heyrði að Before Sunrise sé góð"
+        ]
+      },
+      "night": {
+        "default": "Hvað myndirðu vilja horfa á í nótt?",
+        "extra": [
+          "Þreytt? Ég heyrði að The Exorcist sé góð."
+        ]
+      }
+    }
+  },
+  "media": {
+    "episodeDisplay": "S{{season}} Þ{{episode}}",
+    "types": {
+      "movie": "Mynd",
+      "show": "Þáttur"
+    }
+  },
+  "navigation": {
+    "banner": {
+      "offline": "Athugaðu net tengingu þína"
+    },
+    "menu": {
+      "about": "Um okkur",
+      "donation": "Gefa",
+      "logout": "Skrá út",
+      "register": "Samstilla við ský",
+      "settings": "Stillingar",
+      "support": "Stuðningur"
+    }
+  },
+  "notFound": {
+    "badge": "Ekki fundið",
+    "goHome": "Aftur heim",
+    "message": "Við leituðum alls staðar: undir ruslafötunum, inn í skápnum, á bakvið proxy þjónin en við gátum ekki fundið síðuna sem þú ert að leita af.",
+    "title": "Gat ekki fundið síðu"
+  },
+  "overlays": {
+    "close": "Loka"
+  },
+  "player": {
+    "back": {
+      "default": "Aftur heim",
+      "short": "Til baka"
+    },
+    "casting": {
+      "enabled": "Steypandi í tæki..."
+    },
+    "menus": {
+      "downloads": {
+        "disclaimer": "Niðurhalningar eru teknar beint frá heimildini. movie-web hefur engan kraft yfir hvernig niðurhalningarnar eru gefnar.",
+        "downloadPlaylist": "Hlaða niður spilarlista",
+        "downloadSubtitle": "Hlaða niður nú verandi texta",
+        "downloadVideo": "Hlaða niður myndbandi",
+        "hlsDisclaimer": "Niðurhalningar eru teknar beint frá heimildini. movie-web hefur engan kraft yfir hvernig niðurhalningarnar eru gefnar.<br /><br />Vinsamlegast fattaðu að þú ert að niðurhala HLS spilunarlista, Það er<bold>ekki mælt með að niðurhala ef þú kannt ekki mikið á háþróað streymis sniði.</bold>. Reyndu aðrar heimildir fyrir önnur sniði.",
+        "onAndroid": {
+          "shortTitle": "Hlaða niður / Android",
+          "title": "Að hlaða niður á Android"
+        },
+        "onIos": {
+          "shortTitle": "Hlaða niður / iOS",
+          "title": "Að hlaða niður á iOS"
+        },
+        "onPc": {
+          "shortTitle": "Hlaða niður / PC",
+          "title": "Að hlaða niður á PC"
+        },
+        "title": "Hlaða niður"
+      },
+      "episodes": {
+        "button": "Þættir",
+        "emptyState": "Það eru engir þættir í þessari seríu, kíktu aftur seinna!",
+        "episodeBadge": "Þ{{episode}}",
+        "loadingError": "Villa að hlaða seríu",
+        "loadingList": "Hleðsla...",
+        "loadingTitle": "Hleðsla...",
+        "unairedEpisodes": "Einn eða fleiri þættir í þessari seríu eru ekki komnir, út að þeir hafa ekki komið út."
+      },
+      "playback": {
+        "speedLabel": "Spilunarhraði",
+        "title": "Spilunar stillingar"
+      },
+      "quality": {
+        "automaticLabel": "Sjálfkrafa gæði",
+        "title": "Gæði"
+      },
+      "settings": {
+        "downloadItem": "Niðurhala",
+        "enableSubtitles": "Virkja texta",
+        "experienceSection": "Útsýnis upplifun",
+        "playbackItem": "Spilunar stillingar",
+        "qualityItem": "Gæði",
+        "sourceItem": "Myndbands heimildir",
+        "subtitleItem": "Texta stillingar",
+        "videoSection": "Myndbands stillingar"
+      },
+      "sources": {
+        "failed": {
+          "text": "Það kom upp villa á meðan við vorum að reyna að finna myndbönd, vinsamlegast reyndu að nota aðra heimild.",
+          "title": "Skröpun mistókst"
+        },
+        "noEmbeds": {
+          "text": "Við gátum ekki fundið neina innfellu, vinsamlegast reyndu að nota aðra heimild.",
+          "title": "Engar innifellur fundnar"
+        },
+        "noStream": {
+          "text": "Þessi heimild hefur engin streymi fyrir þessa mynd eða þætti.",
+          "title": "Ekkert streymi"
+        },
+        "title": "Heimildir",
+        "unknownOption": "Óvitað"
+      },
+      "subtitles": {
+        "customChoice": "Veldu texta frá skrá",
+        "customizeLabel": "Sérsníða",
+        "offChoice": "Af",
+        "settings": {
+          "backlink": "Sérsniðir textar",
+          "delay": "Texta seinkun",
+          "fixCapitals": "Lagaðu hástafi"
+        },
+        "title": "Textar",
+        "unknownLanguage": "Óvitað"
+      }
+    },
+    "metadata": {
+      "dmca": {
+        "badge": "Fjarlæga",
+        "title": "Miðill hefur verið fjarlægður"
+      },
+      "extensionPermission": {
+        "badge": "Leyfi vantar",
+        "button": "Nota viðbótina",
+        "title": "Stilltu viðbótina"
+      },
+      "failed": {
+        "badge": "Mistókst",
+        "homeButton": "Fara heim"
+      },
+      "notFound": {
+        "badge": "Ekki fundið",
+        "homeButton": "Aftur heim",
+        "title": "Gat ekki fundið miðil."
+      }
+    },
+    "nextEpisode": {
+      "cancel": "Hætta við",
+      "next": "Næsti þáttur"
+    },
+    "playbackError": {
+      "badge": "Spilunar villa",
+      "errors": {
+        "errorGenericMedia": "Óvituð miðla villa átti sér stað."
+      },
+      "homeButton": "Fara heim",
+      "title": "Spilun myndbands mistóksts!"
+    },
+    "scraping": {
+      "items": {
+        "failure": "Villa kom upp",
+        "notFound": "Hefur ekki myndbandið",
+        "pending": "Leitandi af myndböndum..."
+      },
+      "notFound": {
+        "badge": "Ekki fundið",
+        "detailsButton": "Sýna smáatriði",
+        "homeButton": "Fara heim",
+        "title": "Við gátum ekki fundið þetta"
+      }
+    },
+    "turnstile": {
+      "description": "Vinsamlegast sannreyndu að þú sért manneskja með því að klára Captcha-ið til hægri. Þetta er til þess að halda movie-web öruggu!",
+      "error": "Mistókst að sannreyna að þú sért manneskja. Vinsamlegast reyndu aftur.",
+      "title": "Við þurfum að sannræna að þú ert manneskja.",
+      "verifyingHumanity": "Að sannræna að þú sért manneskja..."
+    }
+  },
+  "screens": {
+    "loadingApp": "Hlaðandi forriti",
+    "loadingUser": "Hlaðandi þínum reikningi",
+    "loadingUserError": {
+      "logout": "Skrá út",
+      "reset": "Endurstilla sérsniðin netþjón"
+    }
+  }
+}

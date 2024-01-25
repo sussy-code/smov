@@ -95,6 +95,7 @@
       "about": "Informacje",
       "dmca": "DMCA",
       "login": "Zaloguj sie",
+      "onboarding": "Konfiguracja",
       "pagetitle": "{{title}} - movie-web",
       "register": "Zarejestruj się",
       "settings": "Ustawienia"
@@ -165,6 +166,69 @@
     "message": "Szukaliśmy wszędzie: w koszu, w szafie, a nawet w piwnicy, ale nie byliśmy w stanie znaleźć strony której szukasz.",
     "title": "Nie można znaleźć tej strony"
   },
+  "onboarding": {
+    "defaultConfirm": {
+      "cancel": "Anuluj",
+      "confirm": "Użyj domyślnej konfiguracji",
+      "description": "Domyślna konfiguracja nie ma najlepszych strumieni i może być strasznie powolna.",
+      "title": "Jesteś pewien?"
+    },
+    "extension": {
+      "back": "Wstecz",
+      "explainer": "Korzystając z rozszerzenia przeglądarki, możesz uzyskać najlepsze strumienie. Wystarczy prosta instalacja.",
+      "explainerIos": "Niestety, rozszerzenie przeglądarki nie jest obsługiwane w systemie iOS, naciśnij <bold>Wstecz</bold>, aby wybrać inną opcję.",
+      "extensionHelp": "Jeżeli zainstalowałeś rozszerzenie, ale nie zostało ono wykryte. <bold>Otwórz rozszerzenie za pomocą menu rozszerzeń przeglądarki</bold> i postępuj zgodnie z instrukcjami wyświetlanymi na ekranie.",
+      "linkChrome": "Zainstaluj rozszerzenie na Chrome",
+      "linkFirefox": "Zainstaluj rozszerzenie na Firefox",
+      "notDetecting": "Zainstalowano na Chrome, ale się nie wyświetla? Spróbuj odświeżyć stronę!",
+      "notDetectingAction": "Odśwież stronę",
+      "status": {
+        "disallowed": "Rozszerzenie nie jest włączone dla tej strony",
+        "disallowedAction": "Włącz rozszerzenie",
+        "failed": "Nie udało się uzyskać statusu",
+        "loading": "Oczekiwanie na instalację rozszerzenia",
+        "outdated": "Za stara wersja rozszerzenia",
+        "success": "Rozszerzenie działa tak jak powinno!"
+      },
+      "submit": "Kontynuuj",
+      "title": "Zacznijmy od rozszerzenia"
+    },
+    "proxy": {
+      "back": "Wstecz",
+      "explainer": "Za pomocą metody proxy można uzyskać strumienie o doskonałej jakości, tworząc samoobsługowy serwer proxy.",
+      "input": {
+        "errorConnection": "Nie można połączyć się z serwerem proxy",
+        "errorInvalidUrl": "Nieprawidłowy adres URL",
+        "errorNotProxy": "Spodziewano proxy, ale otrzymano stronę internetową",
+        "label": "Adres URL serwera proxy",
+        "placeholder": "https://"
+      },
+      "link": "Dowiedz się, jak utworzyć proxy",
+      "submit": "Prześlij proxy",
+      "title": "Stwórzmy nowe proxy"
+    },
+    "start": {
+      "explainer": "Aby uzyskać najlepsze transmisje strumieniowe. Będziesz musiał wybrać metodę strumieniowania, której chcesz użyć.",
+      "options": {
+        "default": {
+          "text": "Nie chcę dobrej jakości strumieni, <0 /> <1>użyj domyślnej konfiguracji</1>"
+        },
+        "extension": {
+          "action": "Zainstaluj rozszerzenie",
+          "description": "Zainstaluj rozszerzenie przeglądarki i uzyskaj dostęp do najlepszych źródeł.",
+          "quality": "Najlepsza jakość",
+          "title": "Rozszerzenie przeglądarki"
+        },
+        "proxy": {
+          "action": "Skonfiguruj serwer proxy",
+          "description": "Skonfiguruj proxy w 5 minut i uzyskaj dostęp do świetnych źródeł.",
+          "quality": "Dobra jakość",
+          "title": "Niestandardowy serwer proxy"
+        }
+      },
+      "title": "Przejdźmy do konfiguracji z movie-web"
+    }
+  },
   "overlays": {
     "close": "Zamknij"
   },
@@ -182,7 +246,7 @@
         "downloadPlaylist": "Pobierz playlistę",
         "downloadSubtitle": "Pobierz aktualne napisy",
         "downloadVideo": "Pobierz wideo",
-        "hlsDisclaimer": "Pliki do pobrania są pobierane bezpośrednio od dostawcy. movie-web nie ma kontroli nad sposobem dostarczania plików do pobrania. Należy pamiętać, że pobierana jest playlista HLS, przeznaczona dla użytkowników zaznajomionych z zaawansowanym strumieniowaniem multimediów.",
+        "hlsDisclaimer": "Pliki do pobrania są pobierane bezpośrednio od dostawcy. movie-web nie ma kontroli nad sposobem dostarczania plików do pobrania.<br /><br />Należy pamiętać, że pobierasz playlistę HLS, <bold>nie zaleca się pobierania, jeśli nie jesteś zaznajomiony z zaawansowanymi formatami przesyłania strumieniowego</bold>. Wypróbuj różne źródła dla innych formatów.",
         "onAndroid": {
           "1": "Aby pobrać na Androidzie, kliknij przycisk pobierania, a następnie na nowej stronie <bold>dotknij i przytrzymaj</bold> na filmie, a następnie wybierz <bold>zapisz</bold>.",
           "shortTitle": "Pobierz / Android",
@@ -262,6 +326,17 @@
       "api": {
         "text": "Nie można załadować metadanych API, sprawdź połączenie internetowe.",
         "title": "Nie udało się załadować metadanych API"
+      },
+      "dmca": {
+        "badge": "Usunięte",
+        "text": "Ten materiał nie jest już dostępny z powodu żądania usunięcia lub roszczenia dotyczącego praw autorskich.",
+        "title": "Media zostały usunięte"
+      },
+      "extensionPermission": {
+        "badge": "Brak uprawnień",
+        "button": "Użyj rozszerzenia",
+        "text": "Masz nasze rozszerzenie przeglądarki, ale potrzebujemy pozwolenia, aby zacząć z niego korzystać.",
+        "title": "Skonfiguruj rozszerzenie"
       },
       "failed": {
         "badge": "Nie powiodło się",
@@ -390,19 +465,49 @@
     },
     "connections": {
       "server": {
-        "description": "Jeśli chcesz połączyć się z niestandardowym backendem w celu przechowywania danych, włącz tę opcję i podaj adres URL.",
+        "description": "Jeśli chcesz połączyć się z niestandardowym backendem w celu przechowywania danych, włącz tę opcję i podaj adres URL. <0>Instrukcje.</0>",
         "label": "Serwer niestandardowy",
         "urlLabel": "Adres URL niestandardowego serwera"
+      },
+      "setup": {
+        "doSetup": "Konfiguruj",
+        "errorStatus": {
+          "description": "Wygląda na to, że jeden lub więcej elementów tej konfiguracji wymaga Twojej uwagi.",
+          "title": "Coś wymaga twojej uwagi"
+        },
+        "itemError": "Coś jest nie tak z tym ustawieniem. Ponownie przejdź przez konfigurację, aby to naprawić.",
+        "items": {
+          "default": "Domyślna konfiguracja",
+          "extension": "Rozszerzenie",
+          "proxy": "Niestandardowy serwer proxy"
+        },
+        "redoSetup": "Ponów konfigurację",
+        "successStatus": {
+          "description": "Wszystko jest gotowe, abyś mógł zacząć oglądać ulubione media.",
+          "title": "Wszystko jest gotowe!"
+        },
+        "unsetStatus": {
+          "description": "Kliknij przycisk po prawej stronie, aby rozpocząć proces konfiguracji.",
+          "title": "Nie przeszedłeś konfiguracji"
+        }
       },
       "title": "Połączenia",
       "workers": {
         "addButton": "Dodaj nowego pracownika",
-        "description": "Aby aplikacja działała, cały ruch jest kierowany przez serwery proxy. Włącz tę opcję, jeśli chcesz korzystać z własnych pracowników.",
+        "description": "Aby aplikacja działała, cały ruch jest kierowany przez serwery proxy. Włącz tę opcję, jeśli chcesz korzystać z własnych pracowników. <0>Instrukcje.</0>",
         "emptyState": "Brak pracowników, dodaj jednego poniżej",
         "label": "Używaj niestandardowych pracowników proxy",
         "urlLabel": "Adresy URL pracowników",
         "urlPlaceholder": "https://"
       }
+    },
+    "preferences": {
+      "language": "Język aplikacji",
+      "languageDescription": "Język zastosowany do całej aplikacji.",
+      "thumbnail": "Generuj miniatury",
+      "thumbnailDescription": "W większości przypadków filmy nie mają miniatur. Możesz włączyć to ustawienie, aby generować je na bieżąco, ale może to spowolnić wideo.",
+      "thumbnailLabel": "Generuj miniatury",
+      "title": "Preferencje"
     },
     "reset": "Reset",
     "save": "Zapisz",
