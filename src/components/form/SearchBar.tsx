@@ -57,6 +57,15 @@ export const SearchBarInput = forwardRef<HTMLInputElement, SearchBarProps>(
             className="w-full flex-1 bg-transparent px-4 py-4 pl-12 text-search-text placeholder-search-placeholder focus:outline-none sm:py-4 sm:pr-2"
             placeholder={props.placeholder}
           />
+
+          <div
+            onClick={() => {
+              setSearch("");
+            }}
+            className="cursor-pointer absolute bottom-0 right-5 top-0 flex max-h-14 items-center text-search-icon"
+          >
+            <Icon icon={Icons.X} />
+          </div>
         </Flare.Child>
       </Flare.Base>
     );
