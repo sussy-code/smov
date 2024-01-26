@@ -167,6 +167,12 @@
     "title": "Non atopei a páxona que estabas a buscar"
   },
   "onboarding": {
+    "defaultConfirm": {
+      "cancel": "Cancelar",
+      "confirm": "Usar configuración por defecto",
+      "description": "A configuración por defecto non ten a mellor calidade e pode ser moi lenta.",
+      "title": "Estás seguro?"
+    },
     "extension": {
       "back": "Volver atrás",
       "explainer": "Usando a extensión de navegador, podes obter os mellores streams á mellor calidade. Cunha simple instalación.",
@@ -179,8 +185,12 @@
       "status": {
         "disallowed": "A extensión non está habilitada para esta páxina",
         "disallowedAction": "Activar extensión",
-        "loading": "Esperando a que instales a extensión"
+        "failed": "Error ao solicitar estado",
+        "loading": "Esperando a que instales a extensión",
+        "outdated": "A versión da extensión é moi vella",
+        "success": "A extensión funciona como se esperaba!"
       },
+      "submit": "Continuar",
       "title": "Vamos a empezar coa extensión"
     },
     "proxy": {
