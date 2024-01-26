@@ -19,8 +19,11 @@ export interface ExtensionMakeRequest extends ExtensionBaseRequest {
   url: string;
   method: string;
   headers?: Record<string, string>;
-  body?: string | FormData | URLSearchParams | Record<string, any>;
+  body?: string | Record<string, any>;
+  bodyType?: "string" | "FormData" | "URLSearchParams" | "object";
 }
+
+export type ExtensionMakeRequestBodyType = ExtensionMakeRequest["bodyType"];
 
 export type ExtensionMakeRequestResponse<T> = ExtensionBaseResponse<{
   response: {

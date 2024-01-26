@@ -9,6 +9,7 @@ import en from "@/assets/locales/en.json";
 import es from "@/assets/locales/es.json";
 import et from "@/assets/locales/et.json";
 import fa from "@/assets/locales/fa.json";
+import fi from "@/assets/locales/fi-FI.json";
 import fr from "@/assets/locales/fr.json";
 import gl from "@/assets/locales/gl.json";
 import gu from "@/assets/locales/gu.json";
@@ -23,6 +24,7 @@ import lv from "@/assets/locales/lv.json";
 import minion from "@/assets/locales/minion.json";
 import ne from "@/assets/locales/ne.json";
 import nl from "@/assets/locales/nl.json";
+import nv from "@/assets/locales/nv.json";
 import pa from "@/assets/locales/pa.json";
 import pirate from "@/assets/locales/pirate.json";
 import pl from "@/assets/locales/pl.json";
@@ -84,5 +86,8 @@ export const locales = {
   gl,
   pa,
   ro,
+  fi,
+  nv,
 };
+
 export type Locales = keyof typeof locales;

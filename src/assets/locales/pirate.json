@@ -95,6 +95,7 @@
       "about": "About",
       "dmca": "DMCA",
       "login": "Login",
+      "onboarding": "Setup",
       "pagetitle": "{{title}} - movie-web",
       "register": "Forge yer account, matey!",
       "settings": "Settings"
@@ -120,7 +121,10 @@
     },
     "titles": {
       "day": {
-        "default": "What be yer fancy for this fine afternoon's viewing, me heartie?"
+        "default": "What be yer fancy for this fine afternoon's viewing, me heartie?",
+        "extra": [
+          "Feelin' adventurous? Pirates of the Caribbean might be the perfect choice."
+        ]
       },
       "morning": {
         "default": "What be yer fancy for this mornin's viewing, me heartie?",
@@ -162,6 +166,69 @@
     "message": "We looked everywhere: under the bins, in the closet, behind the proxy but ultimately couldn't find the treasure map ye be lookin' for.",
     "title": "Couldn't find that treasure map"
   },
+  "onboarding": {
+    "defaultConfirm": {
+      "cancel": "Cancel",
+      "confirm": "Use default setup",
+      "description": "The default setup does nah 'ave the best streams 'n can be unbearably slow.",
+      "title": "Are ye sure?"
+    },
+    "extension": {
+      "back": "Go back",
+      "explainer": "Usin' the browser extension, ye can get the best streams we 'ave t' offer. Wit' jus' a simple install.",
+      "explainerIos": "Unfortunately, the browser extension ain't supported on iOS, Press <bold>Go back</bold> t' choose another option.",
+      "extensionHelp": "If ye've installed the extension but 'tisn't detected, <bold>open the extension through yer browsers extension menu</bold> 'n follow the steps on screen.",
+      "linkChrome": "Install Chrome extension",
+      "linkFirefox": "Install Firefox extension",
+      "notDetecting": "Installed on Chrome, but the site ain't detecting it? Give the page a good reload!",
+      "notDetectingAction": "Reload page",
+      "status": {
+        "disallowed": "Extension ain't enabled fer this page",
+        "disallowedAction": "Enable extension",
+        "failed": "Failed t' request status",
+        "loading": "Waitin' fer ye t' install the extension",
+        "outdated": "Extension version too ole",
+        "success": "Extension be workin' as expected!"
+      },
+      "submit": "Continue",
+      "title": "Let's start wit' an extension"
+    },
+    "proxy": {
+      "back": "Go back",
+      "explainer": "Wit' the proxy method, ye can get great quality streams by makin' a self-service proxy.",
+      "input": {
+        "errorConnection": "Couldn't connect t' proxy",
+        "errorInvalidUrl": "Ain't a valid URL",
+        "errorNotProxy": "Expected a proxy but got a website",
+        "label": "Proxy URL",
+        "placeholder": "https://"
+      },
+      "link": "Learn how t' make a proxy",
+      "submit": "Submit proxy",
+      "title": "Let's make a new proxy"
+    },
+    "start": {
+      "explainer": "T' get the best streams possible, ye will needs t' choose which streamin' method ye wants t' use.",
+      "options": {
+        "default": {
+          "text": "I don't wants good quality streams,<0 /> <1>use the default setup</1>"
+        },
+        "extension": {
+          "action": "Install extension",
+          "description": "Install browser extension 'n gain access t' the best sources.",
+          "quality": "Best quality",
+          "title": "Browser extension"
+        },
+        "proxy": {
+          "action": "Setup proxy",
+          "description": "Setup a proxy in jus' 5 minutes 'n gain access t' great sources.",
+          "quality": "Good quality",
+          "title": "Custom proxy"
+        }
+      },
+      "title": "Let's get ye setup wit' movie-web"
+    }
+  },
   "overlays": {
     "close": "Close"
   },
@@ -176,7 +243,10 @@
     "menus": {
       "downloads": {
         "disclaimer": "Downloads be taken directly from the provider. movie-web does not have control over how the downloads be provided.",
+        "downloadPlaylist": "Download playlist",
+        "downloadSubtitle": "Download current subtitle",
         "downloadVideo": "Download film",
+        "hlsDisclaimer": "Loot are taken directly from the provider. movie-web does nah 'ave control o'er how the loot are provided. <br /><br />Please note that ye be downloadin' an HLS playlist, <bold>'tisn't recommended t' download if ye be nah familiar wit' advanced streamin' formats</bold>. Try different sources fer different formats.",
         "onAndroid": {
           "1": "To download on Android, <bold>tap and hold</bold> on the film, then select <bold>save</bold>.",
           "shortTitle": "Download / Android",
@@ -200,7 +270,8 @@
         "episodeBadge": "E{{episode}}",
         "loadingError": "Error loadin' season",
         "loadingList": "Loading...",
-        "loadingTitle": "Loading..."
+        "loadingTitle": "Loading...",
+        "unairedEpisodes": "One or more episodes in this season 'ave been disabled 'cause they haven't been shipped yet."
       },
       "playback": {
         "speedLabel": "Playback speed",
@@ -239,13 +310,34 @@
         "unknownOption": "Unknown"
       },
       "subtitles": {
+        "customChoice": "Select subtitle from file",
         "customizeLabel": "Tailor it to yer liking",
+        "offChoice": "Off",
         "settings": {
+          "backlink": "Custom subtitles",
+          "delay": "Subtitle delay",
           "fixCapitals": "Mend the capital letters"
-        }
+        },
+        "title": "Subtitles",
+        "unknownLanguage": "Unknown"
       }
     },
     "metadata": {
+      "api": {
+        "text": "Could nah load API metadata, please check yer internet connection.",
+        "title": "Failed t' load API metadata"
+      },
+      "dmca": {
+        "badge": "Removed",
+        "text": "This media be no longer available due t' a takedown notice or copyright claim.",
+        "title": "Media has been scuttled"
+      },
+      "extensionPermission": {
+        "badge": "Permission Missin'",
+        "button": "Use extension",
+        "text": "Ye 'ave the browser extension, but we needs yer permission t' get started usin' the extension.",
+        "title": "Configure the extension"
+      },
       "failed": {
         "badge": "Failed",
         "homeButton": "Go home port",
@@ -284,6 +376,7 @@
       },
       "notFound": {
         "badge": "Not found",
+        "detailsButton": "Show details",
         "homeButton": "Go home port",
         "text": "Oh, me apologies, sweetie! The itty-bitty movie-web did its utmost bestest, but alas, no wucky videos to be spotted anywhere (´⊙ω⊙`) Please don't be angwy, wittle movie-web ish twying so hard. Can ye find it in yer heart to forgive? UwU 💖",
         "title": "Goo goo gaa gaa"
@@ -294,12 +387,23 @@
       "remaining": "{{timeLeft}} left • Finish at {{timeFinished, datetime}}",
       "shortRegular": "{{timeWatched}}",
       "shortRemaining": "-{{timeLeft}}"
+    },
+    "turnstile": {
+      "description": "Please verify that ye be human by completin' the Captcha on right. 'tis t' keep movie-web safe!",
+      "error": "Failed t' verify yer piracy. Please try again.",
+      "title": "We needs t' verify that ye're real pirate.",
+      "verifyingHumanity": "Verifyin' yer piracy..."
     }
   },
   "screens": {
+    "dmca": {
+      "text": "Ahoy t' movie-web's DMCA contact page! We respect intellectual property rights 'n wants t' address any copyright concerns swiftly. If ye believe yer copyrighted work has been improperly used on our platform, please send a detailed DMCA notice t' the email below. Please include a description o' the copyrighted material, yer contact details, 'n a statement o' good faith belief. We be committed t' resolvin' these matters promptly 'n appreciate yer cooperation in keepin' movie-web a galleon that respects creativity 'n copyrights.",
+      "title": "DMCA"
+    },
     "loadingApp": "Loadin' application",
     "loadingUser": "Loadin' yer pirate profile",
     "loadingUserError": {
+      "logout": "Logout",
       "reset": "Reset custom ship",
       "text": "Failed to load yer pirate profile",
       "textWithReset": "Failed to load yer pirate profile from yer custom ship, want to reset back to default?"
@@ -361,19 +465,49 @@
     },
     "connections": {
       "server": {
-        "description": "To make the application function, all traffic be routed through proxies. Enable this if ye want to bring yer own sailors.",
+        "description": "To make the application function, all traffic be routed through proxies. Enable this if ye want to bring yer own sailors. <0>Instructions.</0>",
         "label": "Custom ship",
         "urlLabel": "Custom ship URL"
+      },
+      "setup": {
+        "doSetup": "Do setup",
+        "errorStatus": {
+          "description": "It seems that one or more items in this setup needs yer attention.",
+          "title": "Somethin' needs yer attention"
+        },
+        "itemError": "Thar be somethin' wrong wit' this settin'. Go through setup again t' fix it.",
+        "items": {
+          "default": "Default setup",
+          "extension": "Extension",
+          "proxy": "Custom proxy"
+        },
+        "redoSetup": "Redo setup",
+        "successStatus": {
+          "description": "All things are in ship fer ye t' start watchin' yer favourite media.",
+          "title": "Everythin' be set up!"
+        },
+        "unsetStatus": {
+          "description": "Please skewer the button t' starb'rd t' start the setup process.",
+          "title": "Ye haven't gone through setup"
+        }
       },
       "title": "Connections",
       "workers": {
         "addButton": "Recruit new sailor",
-        "description": "To make the application function, all traffic be routed through proxies. Enable this if ye want to bring yer own sailors.",
+        "description": "To make the application function, all traffic be routed through proxies. Enable this if ye want to bring yer own sailors. <0>Instructions.</0>",
         "emptyState": "No sailors yet, add one below",
         "label": "Use custom proxy sailors",
         "urlLabel": "Sailor URLs",
         "urlPlaceholder": "https://"
       }
+    },
+    "preferences": {
+      "language": "Application language",
+      "languageDescription": "Language applied t' the entire application.",
+      "thumbnail": "Generate thumbnails",
+      "thumbnailDescription": "Most o' the time, videos don't 'ave thumbnails. Ye can enable this settin' t' generate 'em on the trip but they can make yer video slower.",
+      "thumbnailLabel": "Generate thumbnails",
+      "title": "Preferences"
     },
     "reset": "Reset",
     "save": "Save",
@@ -390,6 +524,13 @@
         "unknownVersion": "Unknown",
         "userId": "Pirate ID"
       }
+    },
+    "subtitles": {
+      "backgroundLabel": "Background opacity",
+      "colorLabel": "Color",
+      "previewQuote": "I must not fear. Fear is the mind-killer.",
+      "textSizeLabel": "Text size",
+      "title": "Subtitles"
     },
     "unsaved": "Ye have unsaved changes"
   }
