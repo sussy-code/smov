@@ -166,6 +166,43 @@
     "message": "Prometocho, buscamos en todas partes: debaixo dos contenedores, no armario, detrás do proxy, pero ao final non puidemos atopar a páxina que estabas buscando.",
     "title": "Non atopei a páxona que estabas a buscar"
   },
+  "onboarding": {
+    "proxy": {
+      "back": "Vover atrás",
+      "explainer": "Có método do proxy, podes obter streams de boa calidade creando un proxy hosteado por ti mesmo.",
+      "input": {
+        "errorConnection": "Non foi posible a conexión có proxy",
+        "errorInvalidUrl": "URL non válida",
+        "errorNotProxy": "Estaba previsto obter o proxy pero obtuven unha páxina web",
+        "label": "URL do proxy",
+        "placeholder": "https://"
+      },
+      "link": "Aprender a configurar o proxy",
+      "submit": "Validar proxy",
+      "title": "Vamos crear un novo proxy"
+    },
+    "start": {
+      "explainer": "Para obter a maior calidade posible, terás que elexir que método de streaming queres usar.",
+      "options": {
+        "default": {
+          "text": "Non quero streams de boa calidade, <0 /> <1>usarei a configuración por defecto</1>"
+        },
+        "extension": {
+          "action": "Instalar extensión",
+          "description": "Instala a extensión de navegador e obtén acceso ás mellores fontes.",
+          "quality": "A mellor calidade",
+          "title": "Extensión de navegador"
+        },
+        "proxy": {
+          "action": "Configurar proxy",
+          "description": "Configura un proxy en só 5 minutos e gaña acceso ás mellores fontes.",
+          "quality": "Boa calidade",
+          "title": "Proxy personalizado"
+        }
+      },
+      "title": "Vamos a empezar coa configuración de movie-web"
+    }
+  },
   "overlays": {
     "close": "Cerrar"
   },
@@ -407,8 +444,25 @@
         "urlLabel": "Servidor personalizado URL"
       },
       "setup": {
+        "doSetup": "Configurar",
         "errorStatus": {
+          "description": "Parece que hay un ou varios puntos que precisan da tua atención.",
           "title": "Hai algo que require da túa atención"
+        },
+        "itemError": "Hai un erro nesta configuración. Volve atrás para solucionalo.",
+        "items": {
+          "default": "Configuración por defecto",
+          "extension": "Extensión",
+          "proxy": "Proxy personalizado"
+        },
+        "redoSetup": "Retroceder na configuración",
+        "successStatus": {
+          "description": "Todo está no seu sitio para que podas empezar a ver os teus contidos favoritos.",
+          "title": "Todo está configurado!"
+        },
+        "unsetStatus": {
+          "description": "Por favor, preme no botón para empezar o proceso de configuración.",
+          "title": "Non empezaches ningunha configuración"
         }
       },
       "title": "Conexións",
@@ -420,6 +474,14 @@
         "urlLabel": "URLs dos workers",
         "urlPlaceholder": "https://"
       }
+    },
+    "preferences": {
+      "language": "Linguaxe da aplicación",
+      "languageDescription": "Lingua aplicada a toda a aplicación.",
+      "thumbnail": "Xerar miniaturas",
+      "thumbnailDescription": "Na maioría das veces, os videos non teñen miniaturas. Podes activar esta configuración para xeralas ao momento, pero podes realentizar o video.",
+      "thumbnailLabel": "Xerar miniaturas",
+      "title": "Preferencias"
     },
     "reset": "Reinicio",
     "save": "Gardar",
