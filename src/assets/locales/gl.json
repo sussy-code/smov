@@ -167,6 +167,22 @@
     "title": "Non atopei a páxona que estabas a buscar"
   },
   "onboarding": {
+    "extension": {
+      "back": "Volver atrás",
+      "explainer": "Usando a extensión de navegador, podes obter os mellores streams á mellor calidade. Cunha simple instalación.",
+      "explainerIos": "Por desgraza, a extensión de navegador non é soportada en iOS. Pulsa <bold>volver atrás</bold> para escoller outra opción.",
+      "extensionHelp": "Se instalaches a extensión pero non é detectada, <bold>abre a extensión dende o menú de extensións do navegador</bold> e sigue os pasos na pantalla.",
+      "linkChrome": "Instalar extensión de Chrome",
+      "linkFirefox": "Instalar extensión de Firefox",
+      "notDetecting": "Instalada en Chrome, pero o sitio web non a está a detectar? Proba recargando a páxina!",
+      "notDetectingAction": "Recargar a páxina",
+      "status": {
+        "disallowed": "A extensión non está habilitada para esta páxina",
+        "disallowedAction": "Activar extensión",
+        "loading": "Esperando a que instales a extensión"
+      },
+      "title": "Vamos a empezar coa extensión"
+    },
     "proxy": {
       "back": "Vover atrás",
       "explainer": "Có método do proxy, podes obter streams de boa calidade creando un proxy hosteado por ti mesmo.",
