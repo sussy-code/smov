@@ -9,6 +9,7 @@ import en from "@/assets/locales/en.json";
 import es from "@/assets/locales/es.json";
 import et from "@/assets/locales/et.json";
 import fa from "@/assets/locales/fa.json";
+import fi from "@/assets/locales/fi-FI.json";
 import fr from "@/assets/locales/fr.json";
 import gl from "@/assets/locales/gl.json";
 import gu from "@/assets/locales/gu.json";
@@ -84,5 +85,7 @@ export const locales = {
   gl,
   pa,
   ro,
+  fi,
 };
+
 export type Locales = keyof typeof locales;
