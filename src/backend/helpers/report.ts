@@ -3,7 +3,9 @@ import { nanoid } from "nanoid";
 import { ofetch } from "ofetch";
 import { useCallback } from "react";
 
+import { isExtensionActiveCached } from "@/backend/extension/messaging";
 import { ScrapingItems, ScrapingSegment } from "@/hooks/useProviderScrape";
+import { useAuthStore } from "@/stores/auth";
 import { PlayerMeta } from "@/stores/player/slices/source";
 
 // for anybody who cares - these are anonymous metrics.
@@ -25,6 +27,15 @@ export type ProviderMetric = {
   fullError?: string;
 };
 
+export type ScrapeTool = "default" | "custom-proxy" | "extension";
+
+export function getScrapeTool(): ScrapeTool {
+  if (isExtensionActiveCached()) return "extension";
+  const hasProxySet = !!useAuthStore.getState().proxySet;
+  if (hasProxySet) return "custom-proxy";
+  return "default";
+}
+
 function getStackTrace(error: Error, lines: number) {
   const topMessage = error.toString();
   const stackTraceLines = (error.stack ?? "").split("\n", lines + 1);
@@ -37,6 +48,7 @@ export async function reportProviders(items: ProviderMetric[]): Promise<void> {
     method: "POST",
     body: {
       items,
+      tool: getScrapeTool(),
       batchId: batchId(),
     },
   });
