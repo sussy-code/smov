@@ -24,6 +24,7 @@ import lv from "@/assets/locales/lv.json";
 import minion from "@/assets/locales/minion.json";
 import ne from "@/assets/locales/ne.json";
 import nl from "@/assets/locales/nl.json";
+import nv from "@/assets/locales/nv.json";
 import pa from "@/assets/locales/pa.json";
 import pirate from "@/assets/locales/pirate.json";
 import pl from "@/assets/locales/pl.json";
@@ -86,6 +87,7 @@ export const locales = {
   pa,
   ro,
   fi,
+  nv,
 };
 
 export type Locales = keyof typeof locales;

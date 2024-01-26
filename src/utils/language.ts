@@ -10,6 +10,7 @@ const languageOrder = ["en", "hi", "fr", "de", "nl", "pt"];
 // iso639_1 -> iso3166 Alpha-2
 const countryPriority: Record<string, string> = {
   zh: "cn",
+  nv: "us",
 };
 
 // list of iso639_1 Alpha-2 codes used as default languages
@@ -46,6 +47,7 @@ const defaultLanguageCodes: string[] = [
   "tr-TR",
   "vi-VN",
   "zh-CN",
+  "nv-US",
 ];
 
 export interface LocaleInfo {
