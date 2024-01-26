@@ -95,6 +95,7 @@
       "about": "Acerca de",
       "dmca": "DMCA",
       "login": "Iniciar sesión",
+      "onboarding": "Configuración",
       "pagetitle": "{{title}} - movie-web",
       "register": "Rexistrarse",
       "settings": "Configuración"
@@ -263,6 +264,17 @@
         "text": "Non puiden cargar os metadatos da API, por favor, comproba a túa conexión a internet.",
         "title": "Non foi posible cargar os metadatos da API"
       },
+      "dmca": {
+        "badge": "Agochado",
+        "text": "Este contido non está dispoñible debido a unha reclamación dos dereitos de autor.",
+        "title": "Os contidos foron retirados"
+      },
+      "extensionPermission": {
+        "badge": "Non hai permisos suficientes",
+        "button": "Usar extensión",
+        "text": "Si que tes a extensión de navegador, pero precisamos do teu permiso para empezar a usala.",
+        "title": "Configura a extensión"
+      },
       "failed": {
         "badge": "Erro",
         "homeButton": "Ir ao inicio",
@@ -393,6 +405,11 @@
         "description": "Se che gustaría conectar un servidor personalizado de backend para almacenar os teus datos, activa esto e indica a URL. <0>Instruccións.</0>",
         "label": "Servidor personalizado",
         "urlLabel": "Servidor personalizado URL"
+      },
+      "setup": {
+        "errorStatus": {
+          "title": "Hai algo que require da túa atención"
+        }
       },
       "title": "Conexións",
       "workers": {
