@@ -167,13 +167,61 @@
     "title": "Diese Seite wurde nicht gefunden"
   },
   "onboarding": {
+    "defaultConfirm": {
+      "cancel": "Abbrechen",
+      "confirm": "Standard-Setup verwenden",
+      "description": "Das Standard-Setup verfügt nicht über die besten Streams und kann unerträglich langsam sein.",
+      "title": "Sicher?"
+    },
+    "extension": {
+      "back": "Zurück gehen",
+      "explainer": "Mit der Browser-Erweiterung kannst du die besten Streams benutzen, die wir zu bieten haben. Mit nur einer einfachen Installation.",
+      "explainerIos": "Leider ist die Browser-Extension unter iOS nicht unterstützt. Klicken Sie auf <bold>Zurück</bold>, um eine andere Option auszuwählen.",
+      "extensionHelp": "Falls du die Erweiterung installiert hast, aber sie aber nicht erkannt wird, <bold>öffne die Erweiterung über das Erweiterungsmenü Ihres Browsers</bold> und befolge die Schritte auf dem Bildschirm.",
+      "linkChrome": "Chrome Erweiterung installieren",
+      "linkFirefox": "Firefox Erweiterung installieren",
+      "notDetecting": "Auf Chrome Installiert, aber die Website erkennt es nicht? Versuche, die Seite wieder zu laden!",
+      "notDetectingAction": "Seite neuladen",
+      "status": {
+        "disallowed": "Browser-Erweiterung ist für diese Website nicht aktiviert",
+        "disallowedAction": "Browser-Erweiterung aktivieren",
+        "failed": "Statusanforderung fehlgeschlagen",
+        "loading": "Wartet dass du die Erweiterung installierst",
+        "outdated": "Erweiterungsversion zu alt",
+        "success": "Die Browser-Erweiterung funktioniert wie erwartet!"
+      },
+      "submit": "Weiter"
+    },
     "proxy": {
-      "back": "Zurück gehen"
+      "back": "Zurück gehen",
+      "explainer": "Mit der Proxy-Methode kannst du Streams mit guter Qualität benutzen, indem du einen eigenen Proxy einstellst.",
+      "input": {
+        "errorConnection": "Es konnte keine Verbindung zum Proxy hergestellt werden",
+        "errorInvalidUrl": "Keine gültige URL",
+        "errorNotProxy": "Ein Proxy wurde erwartet, aber eine Website wurde eingegeben",
+        "label": "Proxy-URL",
+        "placeholder": "https://"
+      },
+      "link": "Erfahre, wie man einen Proxy einstellt",
+      "submit": "Proxy einreichen"
     },
     "start": {
+      "explainer": "Um die bestmöglichen Streams zu erhalten, müssen Sie auswählen, welche Streaming-Methode Sie verwenden möchten.",
       "options": {
+        "default": {
+          "text": "Ich möchte keine Streams mit guter Qualität. <0 /> <1>Standardeinstellung benutzen</1>"
+        },
         "extension": {
-          "quality": "Beste Qualität"
+          "action": "Browser-Erweitung installieren",
+          "description": "Installiere die Browser-Erweitung, um Zugriff auf die besten Quellen zu bekommen.",
+          "quality": "Beste Qualität",
+          "title": "Browser extension"
+        },
+        "proxy": {
+          "action": "Proxy einstellen",
+          "description": "Richte in nur 5 Minuten einen Proxy ein und erhalte Zugriff auf großartige Quellen.",
+          "quality": "Gute Qualität",
+          "title": "Eigene Proxy"
         }
       }
     }
@@ -195,7 +243,7 @@
         "downloadPlaylist": "Playlist herunterladen",
         "downloadSubtitle": "Aktuelle Untertitel herunterladen",
         "downloadVideo": "Video herunterladen",
-        "hlsDisclaimer": "movie-web hat keinen Einfluss darauf, wie Downloads bereitgestellt werden. Downloads werden direkt vom Anbieter bezogen. Bitte beachte, dass du eine HLS-Wiedergabeliste herunterlädst, dies ist nicht empfohlen für Nutzer die nicht mit Erweiterten Streaming Formaten vertraut sind. Probiere andere Anbieter für andere Formate.",
+        "hlsDisclaimer": "movie-web hat keinen Einfluss darauf, wie Downloads bereitgestellt werden. Downloads werden direkt vom Anbieter bezogen. <br /><br />Bitte beachte, dass du eine HLS-Wiedergabeliste herunterlädst, <bold>dies ist nicht empfohlen für Nutzer die nicht mit Erweiterten Streaming Formaten vertraut sind</bold>. Probiere andere Anbieter für andere Formate.",
         "onAndroid": {
           "1": "Um auf Android Herunterzuladen, tippe auf den Download-Button, <bold>tippe und halte</bold> auf der neuen Seite auf das Video und wähle <bold>Speichern</bold> aus.",
           "shortTitle": "Download / Android",
@@ -454,7 +502,7 @@
       "language": "App-Sprache",
       "languageDescription": "Sprache für die ganze App.",
       "thumbnail": "Miniaturansichten generieren",
-      "thumbnailDescription": "Meistens haben Videos keine Miniaturansicht. Du kannst diese Einstellung anmachen, um sie automatisch zu generieren, aber Sie können dein Video langsamer machen.",
+      "thumbnailDescription": "Meistens haben Videos keine Miniaturansicht. Du kannst diese Einstellung anmachen, um sie automatisch zu generieren, aber sie können dein Video langsamer machen.",
       "thumbnailLabel": "Miniaturansichten generieren",
       "title": "Einstellungen"
     },

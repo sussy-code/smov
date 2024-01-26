@@ -95,6 +95,7 @@
       "about": "Sobre",
       "dmca": "DMCA",
       "login": "Entrar",
+      "onboarding": "Configuração",
       "pagetitle": "{{title}} - movie-web",
       "register": "Registrar",
       "settings": "Configurações"
@@ -166,8 +167,48 @@
     "title": "Não conseguimos encontrar essa página"
   },
   "onboarding": {
+    "defaultConfirm": {
+      "cancel": "Cancelar",
+      "confirm": "Usar configuração padrão",
+      "description": "A configuração padrão não possui os melhores streams e pode ser insuportavelmente lenta.",
+      "title": "Você tem certeza?"
+    },
+    "extension": {
+      "back": "Voltar",
+      "explainer": "Usando a extensão de navegador, você pode obter os melhores streams que temos a oferecer. Com apenas uma simples instalação.",
+      "explainerIos": "Infelizmente, a extensão de navegador não é suportado no iOS. Pressione <bold>Voltar</bold> para escolher outra opção.",
+      "extensionHelp": "Se você instalou a extensão mas ela não foi detectada, <bold>abra a extensão através do menu de extensões do seu navegador</bold> e siga as instruções na tela.",
+      "linkChrome": "Instalar extensão do Chrome",
+      "linkFirefox": "Instalar extensão do Firefox",
+      "notDetecting": "Instalou no Chrome, mas o site não está detectando? Tente recarregar a página!",
+      "notDetectingAction": "Recarregar página",
+      "status": {
+        "disallowed": "A extensão não está ativada para esta página",
+        "disallowedAction": "Ativar extensão",
+        "failed": "Falha ao solicitar status",
+        "loading": "Aguardando que você instale a extensão",
+        "outdated": "A versão da extensão é muito antiga",
+        "success": "A extensão está funcionado como esperado!"
+      },
+      "submit": "Continuar",
+      "title": "Vamos começar com uma extensão"
+    },
+    "proxy": {
+      "back": "Voltar",
+      "explainer": "Com o método proxy, você pode obter streams de ótima qualidade criando um proxy de autoatendimento.",
+      "input": {
+        "errorConnection": "Não foi possível conectar ao proxy",
+        "errorInvalidUrl": "Não é uma URL válida",
+        "errorNotProxy": "Esperava um proxy, mas recebi um site",
+        "label": "URL do Proxy",
+        "placeholder": "https://"
+      },
+      "link": "Aprenda como criar um proxy",
+      "submit": "Enviar proxy",
+      "title": "Vamos preparar um novo proxy"
+    },
     "start": {
-      "explainer": "Para obter os melhores streams possíveis. Você precisará escolher qual método de streaming deseja usar.",
+      "explainer": "Para obter os melhores streams possíveis, você precisará escolher qual método de streaming deseja usar.",
       "options": {
         "default": {
           "text": "Eu não quero streams de boa qualidade, <0 /> <1>use a configuração padrão</1>"
@@ -292,6 +333,7 @@
         "title": "A mídia foi removida"
       },
       "extensionPermission": {
+        "badge": "Permissão Pendente",
         "button": "Usar extensão",
         "text": "Você possui a extensão de navegador, mas nós precisamos de sua permissão para começar a usá-la.",
         "title": "Configure a extensão"
