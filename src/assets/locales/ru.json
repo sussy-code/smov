@@ -321,7 +321,7 @@
     },
     "time": {
       "regular": "{{timeWatched}} / {{duration}}",
-      "remaining": "{{timeLeft}} осталось до конца• Просмотр завершится в {{timeFinished, datetime}}",
+      "remaining": "{{timeLeft}} осталось до конца • Просмотр завершится в {{timeFinished, datetime}}",
       "shortRemaining": "-{{timeLeft}}"
     },
     "turnstile": {
