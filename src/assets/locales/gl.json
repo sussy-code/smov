@@ -95,6 +95,7 @@
       "about": "Acerca de",
       "dmca": "DMCA",
       "login": "Iniciar sesión",
+      "onboarding": "Configuración",
       "pagetitle": "{{title}} - movie-web",
       "register": "Rexistrarse",
       "settings": "Configuración"
@@ -164,6 +165,69 @@
     "goHome": "Volver ao inicio",
     "message": "Prometocho, buscamos en todas partes: debaixo dos contenedores, no armario, detrás do proxy, pero ao final non puidemos atopar a páxina que estabas buscando.",
     "title": "Non atopei a páxona que estabas a buscar"
+  },
+  "onboarding": {
+    "defaultConfirm": {
+      "cancel": "Cancelar",
+      "confirm": "Usar configuración por defecto",
+      "description": "A configuración por defecto non ten a mellor calidade e pode ser moi lenta.",
+      "title": "Estás seguro?"
+    },
+    "extension": {
+      "back": "Volver atrás",
+      "explainer": "Usando a extensión de navegador, podes obter os mellores streams á mellor calidade. Cunha simple instalación.",
+      "explainerIos": "Por desgraza, a extensión de navegador non é soportada en iOS. Pulsa <bold>volver atrás</bold> para escoller outra opción.",
+      "extensionHelp": "Se instalaches a extensión pero non é detectada, <bold>abre a extensión dende o menú de extensións do navegador</bold> e sigue os pasos na pantalla.",
+      "linkChrome": "Instalar extensión de Chrome",
+      "linkFirefox": "Instalar extensión de Firefox",
+      "notDetecting": "Instalada en Chrome, pero o sitio web non a está a detectar? Proba recargando a páxina!",
+      "notDetectingAction": "Recargar a páxina",
+      "status": {
+        "disallowed": "A extensión non está habilitada para esta páxina",
+        "disallowedAction": "Activar extensión",
+        "failed": "Error ao solicitar estado",
+        "loading": "Esperando a que instales a extensión",
+        "outdated": "A versión da extensión é moi vella",
+        "success": "A extensión funciona como se esperaba!"
+      },
+      "submit": "Continuar",
+      "title": "Vamos a empezar coa extensión"
+    },
+    "proxy": {
+      "back": "Vover atrás",
+      "explainer": "Có método do proxy, podes obter streams de boa calidade creando un proxy hosteado por ti mesmo.",
+      "input": {
+        "errorConnection": "Non foi posible a conexión có proxy",
+        "errorInvalidUrl": "URL non válida",
+        "errorNotProxy": "Estaba previsto obter o proxy pero obtuven unha páxina web",
+        "label": "URL do proxy",
+        "placeholder": "https://"
+      },
+      "link": "Aprender a configurar o proxy",
+      "submit": "Validar proxy",
+      "title": "Vamos crear un novo proxy"
+    },
+    "start": {
+      "explainer": "Para obter a maior calidade posible, terás que elexir que método de streaming queres usar.",
+      "options": {
+        "default": {
+          "text": "Non quero streams de boa calidade, <0 /> <1>usarei a configuración por defecto</1>"
+        },
+        "extension": {
+          "action": "Instalar extensión",
+          "description": "Instala a extensión de navegador e obtén acceso ás mellores fontes.",
+          "quality": "A mellor calidade",
+          "title": "Extensión de navegador"
+        },
+        "proxy": {
+          "action": "Configurar proxy",
+          "description": "Configura un proxy en só 5 minutos e gaña acceso ás mellores fontes.",
+          "quality": "Boa calidade",
+          "title": "Proxy personalizado"
+        }
+      },
+      "title": "Vamos a empezar coa configuración de movie-web"
+    }
   },
   "overlays": {
     "close": "Cerrar"
@@ -262,6 +326,17 @@
       "api": {
         "text": "Non puiden cargar os metadatos da API, por favor, comproba a túa conexión a internet.",
         "title": "Non foi posible cargar os metadatos da API"
+      },
+      "dmca": {
+        "badge": "Agochado",
+        "text": "Este contido non está dispoñible debido a unha reclamación dos dereitos de autor.",
+        "title": "Os contidos foron retirados"
+      },
+      "extensionPermission": {
+        "badge": "Non hai permisos suficientes",
+        "button": "Usar extensión",
+        "text": "Si que tes a extensión de navegador, pero precisamos do teu permiso para empezar a usala.",
+        "title": "Configura a extensión"
       },
       "failed": {
         "badge": "Erro",
@@ -394,6 +469,28 @@
         "label": "Servidor personalizado",
         "urlLabel": "Servidor personalizado URL"
       },
+      "setup": {
+        "doSetup": "Configurar",
+        "errorStatus": {
+          "description": "Parece que hay un ou varios puntos que precisan da tua atención.",
+          "title": "Hai algo que require da túa atención"
+        },
+        "itemError": "Hai un erro nesta configuración. Volve atrás para solucionalo.",
+        "items": {
+          "default": "Configuración por defecto",
+          "extension": "Extensión",
+          "proxy": "Proxy personalizado"
+        },
+        "redoSetup": "Retroceder na configuración",
+        "successStatus": {
+          "description": "Todo está no seu sitio para que podas empezar a ver os teus contidos favoritos.",
+          "title": "Todo está configurado!"
+        },
+        "unsetStatus": {
+          "description": "Por favor, preme no botón para empezar o proceso de configuración.",
+          "title": "Non empezaches ningunha configuración"
+        }
+      },
       "title": "Conexións",
       "workers": {
         "addButton": "Añadir novo",
@@ -403,6 +500,14 @@
         "urlLabel": "URLs dos workers",
         "urlPlaceholder": "https://"
       }
+    },
+    "preferences": {
+      "language": "Linguaxe da aplicación",
+      "languageDescription": "Lingua aplicada a toda a aplicación.",
+      "thumbnail": "Xerar miniaturas",
+      "thumbnailDescription": "Na maioría das veces, os videos non teñen miniaturas. Podes activar esta configuración para xeralas ao momento, pero podes realentizar o video.",
+      "thumbnailLabel": "Xerar miniaturas",
+      "title": "Preferencias"
     },
     "reset": "Reinicio",
     "save": "Gardar",

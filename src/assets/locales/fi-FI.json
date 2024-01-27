@@ -1,0 +1,181 @@
+{
+  "about": {
+    "description": "movie-web on verkkosovellus, joka etsii suoratoistoja internetistä. Tiimi pyrkii enimmäkseen minimalistiseen lähestymistapaan sisällön kuluttamiseen.",
+    "faqTitle": "Yleisiä kysymyksiä",
+    "q1": {
+      "body": "movie-web ei isännöi mitään sisältöä. Kun klikkaat jotain katsottavaa, valittua mediaa etsitään internetistä (latausnäytössä ja 'videolähteet'-välilehdellä näet, mitä lähdettä käytät). movie-web ei koskaan lataa mediaa, kaikki tapahtuu tämän hakumekanismin kautta.",
+      "title": "Mistä sisältö tulee?"
+    },
+    "q2": {
+      "body": "Ohjelmaa tai elokuvaa ei voi pyytää, movie-web ei hallinnoi sisältöä. Kaikki sisältö katsotaan internetin lähteistä.",
+      "title": "Missä voin pyytää sarjaa tai elokuvaa?"
+    },
+    "q3": {
+      "body": "Hakutuloksemme perustuvat The Movie Database (TMDB) -tietokantaan, ja ne näkyvät riippumatta siitä, onko sisältöä oikeasti lähteissämme.",
+      "title": "Hakutuloksissa näytetään ohjelma tai elokuva. Miksi en voi toistaa sitä?"
+    },
+    "title": "Tietoja movie-webistä"
+  },
+  "actions": {
+    "copied": "Kopioitu",
+    "copy": "Kopioi"
+  },
+  "auth": {
+    "createAccount": "Eikö sinulla ole vielä tiliä? <0>Luo tili.</0>",
+    "deviceNameLabel": "Laitteen nimi",
+    "deviceNamePlaceholder": "Henkilökohtainen puhelin",
+    "generate": {
+      "description": "Tunnuslauseesi toimii käyttäjätunnuksena ja salasanana. Varmista, että pidät sen turvassa, sillä sinun on annettava se kirjautuaksesi tilillesi",
+      "next": "Olen tallentanut tunnuslauseeni",
+      "passphraseFrameLabel": "Tunnuslause",
+      "title": "Sinun tunnuslause"
+    },
+    "hasAccount": "Onko sinulla jo tili? <0>Kirjaudu sisään tästä.</0>",
+    "login": {
+      "description": "Anna tunnuslauseesi kirjautuaksesi tilillesi",
+      "deviceLengthError": "Anna laitteen nimi",
+      "passphraseLabel": "12-sanainen tunnuslause",
+      "passphrasePlaceholder": "Tunnuslause",
+      "submit": "Kirjaudu sisään",
+      "title": "Kirjaudu tilillesi",
+      "validationError": "Väärä tai puutteellinen tunnuslause"
+    },
+    "register": {
+      "information": {
+        "color1": "Profiilin väri yksi",
+        "color2": "Profiilin väri kaksi",
+        "header": "Anna laitteellesi nimi ja valitse haluamasi värit ja käyttäjäkuvake",
+        "icon": "Käyttäjäkuvake",
+        "next": "Seuraava",
+        "title": "Tilitiedot"
+      }
+    },
+    "trust": {
+      "failed": {
+        "text": "Oletko määrittänyt sen oikein?",
+        "title": "Palvelimeen ei saada yhteyttä"
+      },
+      "host": "Olet muodostamassa yhteyttä <0>{{hostname}}</0> - vahvista, että luotat siihen ennen kuin luot tilin",
+      "no": "Mene takaisin",
+      "title": "Luotatko tähän palvelimeen?",
+      "yes": "Luotan tähän palvelimeen"
+    },
+    "verify": {
+      "description": "Anna aikaisemmin saamasi tunnuslause vahvistaaksesi, että olet tallentanut sen ja luodaksesi tilisi",
+      "invalidData": "Tiedot eivät kelpaa",
+      "noMatch": "Tunnuslause ei täsmää",
+      "passphraseLabel": "12-sanainen tunnuslauseesi",
+      "recaptchaFailed": "ReCaptcha-tarkistus epäonnistui",
+      "register": "Luo tili",
+      "title": "Vahvista tunnuslauseesi"
+    }
+  },
+  "errors": {
+    "badge": "Se hajosi",
+    "details": "Virheen tiedot",
+    "reloadPage": "Lataa sivu uudelleen",
+    "showError": "Näytä virheen tiedot",
+    "title": "Havaitsimme virheen!"
+  },
+  "footer": {
+    "legal": {
+      "disclaimer": "Vastuuvapauslauseke",
+      "disclaimerText": "movie-web ei isännöi tiedostoja, se vain linkittää kolmannen osapuolen palveluihin. Lakiasioista tulee ottaa yhteyttä tiedostoisäntään ja palveluntarjoajiin. movie-web ei ole vastuussa videontarjoajien näyttämistä mediatiedostoista."
+    },
+    "links": {
+      "discord": "Discord",
+      "dmca": "DMCA",
+      "github": "GitHub"
+    },
+    "tagline": "Katso suosikkiohjelmiasi ja elokuviasi tällä avoimen lähdekoodin suoratoistosovelluksella."
+  },
+  "global": {
+    "name": "movie-web",
+    "pages": {
+      "about": "Meistä",
+      "dmca": "DMCA",
+      "login": "Kirjaudu sisään",
+      "pagetitle": "{{title}} - movie-web",
+      "register": "Rekisteröidy",
+      "settings": "Asetukset"
+    }
+  },
+  "home": {
+    "bookmarks": {
+      "sectionTitle": "Kirjanmerkit"
+    },
+    "continueWatching": {
+      "sectionTitle": "Jatka katselua"
+    },
+    "mediaList": {
+      "stopEditing": "Lopeta muokkaaminen"
+    },
+    "search": {
+      "allResults": "Siinä kaikki mitä meillä on!",
+      "failed": "Mediaa ei löytynyt, yritä uudelleen!",
+      "loading": "Ladataan...",
+      "noResults": "Emme löytäneet mitään!",
+      "placeholder": "Mitä haluat katsoa?",
+      "sectionTitle": "Hakutulokset"
+    },
+    "titles": {
+      "day": {
+        "default": "Mitä haluaisit katsoa tänä iltapäivänä?",
+        "extra": [
+          "Onko seikkailunhaluinen olo? Jurassic Park saattaa olla täydellinen valinta."
+        ]
+      },
+      "morning": {
+        "default": "Mitä haluaisit katsoa tänä aamuna?",
+        "extra": [
+          "Kuulen, että Rakkautta ennen aamua (Before Sunrise) on hyvä"
+        ]
+      },
+      "night": {
+        "default": "Mitä haluaisit katsoa tänä iltana?",
+        "extra": [
+          "Väsynyt? Kuulin, että Manaaja (The Exorcist) on hyvä."
+        ]
+      }
+    }
+  },
+  "media": {
+    "episodeDisplay": "K{{season}} J{{episode}}",
+    "types": {
+      "movie": "Elokuva",
+      "show": "Sarja"
+    }
+  },
+  "navigation": {
+    "banner": {
+      "offline": "Tarkista Internet-yhteytesi"
+    },
+    "menu": {
+      "about": "Meistä",
+      "donation": "Lahjoita",
+      "logout": "Kirjaudu ulos",
+      "register": "Synkronoi pilveen",
+      "settings": "Asetukset",
+      "support": "Tuki"
+    }
+  },
+  "notFound": {
+    "badge": "Ei löydetty",
+    "goHome": "Takaisin kotiin",
+    "message": "Etsimme kaikkialta: roskakorien alta, kaapista, välityspalvelimen takaa, mutta emme lopulta löytäneet etsimääsi sivua.",
+    "title": "Sivua ei löytynyt"
+  },
+  "onboarding": {
+    "defaultConfirm": {
+      "cancel": "Peruuta",
+      "confirm": "Käytä oletuksia",
+      "description": "Oletuksissa ei ole parhaita suoratoistoja ja se voi olla sietämättömän hidasta.",
+      "title": "Oletko varma?"
+    },
+    "extension": {
+      "back": "Mene takaisin",
+      "explainer": "Käyttämällä selainlaajennusta voit saada parhaat tarjoamamme suoratoistot. Yksinkertaisella asennuksella.",
+      "explainerIos": "Valitettavasti selainlaajennusta ei tueta iOS:ssä. Valitse toinen vaihtoehto painamalla <bold>Palaa</bold>."
+    }
+  }
+}
