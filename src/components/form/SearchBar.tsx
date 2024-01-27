@@ -1,5 +1,5 @@
 import c from "classnames";
-import { forwardRef, useState } from "react";
+import { forwardRef, useRef, useState } from "react";
 
 import { Flare } from "@/components/utils/Flare";
 
@@ -16,9 +16,20 @@ export interface SearchBarProps {
 export const SearchBarInput = forwardRef<HTMLInputElement, SearchBarProps>(
   (props, ref) => {
     const [focused, setFocused] = useState(false);
+    const clearButtonRef = useRef<HTMLDivElement>(null);
 
     function setSearch(value: string) {
       props.onChange(value, false);
+      clearButtonRef.current!.hidden = value.length >= 0;
+    }
+
+    function refocusSearch() {
+      if (ref && typeof ref !== "function") {
+        ref.current?.blur();
+        setTimeout(() => ref.current?.focus(), 10);
+        setTimeout(() => ref.current?.blur(), 20);
+        setTimeout(() => ref.current?.focus(), 30);
+      }
     }
 
     return (
@@ -59,8 +70,10 @@ export const SearchBarInput = forwardRef<HTMLInputElement, SearchBarProps>(
           />
 
           <div
+            ref={clearButtonRef}
             onClick={() => {
               setSearch("");
+              setTimeout(() => refocusSearch(), 100);
             }}
             className="cursor-pointer absolute bottom-0 right-5 top-0 flex max-h-14 items-center text-search-icon"
           >
