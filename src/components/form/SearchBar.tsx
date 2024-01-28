@@ -15,13 +15,15 @@ export interface SearchBarProps {
 
 export const SearchBarInput = forwardRef<HTMLInputElement, SearchBarProps>(
   (props, ref) => {
+    const [canClear, setCanClear] = useState(false);
     const [focused, setFocused] = useState(false);
     const clearButtonRef = useRef<HTMLDivElement>(null);
 
     function setSearch(value: string) {
       props.onChange(value, false);
-      const opacity = value.length > 0 ? "1" : "0";
-      clearButtonRef.current!.style.opacity = opacity;
+      setCanClear(value.length > 0);
+      clearButtonRef.current!.style.opacity = canClear ? "1" : "0";
+      clearButtonRef.current!.style.cursor = canClear ? "pointer" : "auto";
     }
 
     function refocusSearch() {
@@ -79,8 +81,10 @@ export const SearchBarInput = forwardRef<HTMLInputElement, SearchBarProps>(
           <div
             ref={clearButtonRef}
             onClick={() => {
-              setSearch("");
-              setTimeout(() => refocusSearch(), 10);
+              if (canClear) {
+                setSearch("");
+                setTimeout(() => refocusSearch(), 10);
+              }
             }}
             className="group/clear cursor-pointer absolute p-1 bottom-0 right-2 top-0 flex justify-center my-auto max-h-10 max-w-10 h-full w-full items-center hover:bg-search-hoverBackground active:scale-110 text-search-icon rounded-full opacity-0 transition duration-100"
           >
