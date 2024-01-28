@@ -58,7 +58,7 @@ export function OnboardingPage() {
           {t("onboarding.start.explainer")}
         </Paragraph>
 
-        <div className="w-full flex flex-col-reverse md:flex-row gap-3">
+        <div className="w-full flex flex-col md:flex-row gap-3">
           <Card onClick={() => navigate("/onboarding/extension")}>
             <CardContent
               colorClass="!text-onboarding-best"
