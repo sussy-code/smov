@@ -1,5 +1,5 @@
 import c from "classnames";
-import { forwardRef, useRef, useState } from "react";
+import { forwardRef, useEffect, useRef, useState } from "react";
 
 import { Flare } from "@/components/utils/Flare";
 
@@ -20,7 +20,8 @@ export const SearchBarInput = forwardRef<HTMLInputElement, SearchBarProps>(
 
     function setSearch(value: string) {
       props.onChange(value, false);
-      clearButtonRef.current!.hidden = value.length >= 0;
+      const opacity = value.length > 0 ? "1" : "0";
+      clearButtonRef.current!.style.opacity = opacity;
     }
 
     function refocusSearch() {
@@ -31,6 +32,12 @@ export const SearchBarInput = forwardRef<HTMLInputElement, SearchBarProps>(
         setTimeout(() => ref.current?.focus(), 30);
       }
     }
+
+    useEffect(() => {
+      if (ref && typeof ref !== "function") {
+        setSearch(ref.current?.value || "");
+      }
+    });
 
     return (
       <Flare.Base
@@ -73,11 +80,14 @@ export const SearchBarInput = forwardRef<HTMLInputElement, SearchBarProps>(
             ref={clearButtonRef}
             onClick={() => {
               setSearch("");
-              setTimeout(() => refocusSearch(), 100);
+              setTimeout(() => refocusSearch(), 10);
             }}
-            className="cursor-pointer absolute bottom-0 right-5 top-0 flex max-h-14 items-center text-search-icon"
+            className="group/clear cursor-pointer absolute p-1 bottom-0 right-2 top-0 flex justify-center my-auto max-h-10 max-w-10 h-full w-full items-center hover:bg-search-hoverBackground active:scale-110 text-search-icon rounded-full opacity-0 transition duration-100"
           >
-            <Icon icon={Icons.X} />
+            <Icon
+              icon={Icons.X}
+              className="group-hover/clear:text-white transition duration-100"
+            />
           </div>
         </Flare.Child>
       </Flare.Base>
