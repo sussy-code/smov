@@ -100,29 +100,22 @@ export function progressResponsesToEntries(responses: ProgressResponse[]) {
     }
 
     if (item.type === "show" && v.season.id && v.episode.id) {
-      if (
-        !item.seasons[v.season.id] ||
-        (item.episodes[v.episode.id] &&
-          new Date(v.updatedAt).getTime() >
-            item.episodes[v.episode.id].updatedAt)
-      ) {
-        item.seasons[v.season.id] = {
-          id: v.season.id,
-          number: v.season.number ?? 0,
-          title: "",
-        };
-        item.episodes[v.episode.id] = {
-          id: v.episode.id,
-          number: v.episode.number ?? 0,
-          title: "",
-          progress: {
-            duration: Number(v.duration),
-            watched: Number(v.watched),
-          },
-          seasonId: v.season.id,
-          updatedAt: new Date(v.updatedAt).getTime(),
-        };
-      }
+      item.seasons[v.season.id] = {
+        id: v.season.id,
+        number: v.season.number ?? 0,
+        title: "",
+      };
+      item.episodes[v.episode.id] = {
+        id: v.episode.id,
+        number: v.episode.number ?? 0,
+        title: "",
+        progress: {
+          duration: Number(v.duration),
+          watched: Number(v.watched),
+        },
+        seasonId: v.season.id,
+        updatedAt: new Date(v.updatedAt).getTime(),
+      };
     }
   });
 
