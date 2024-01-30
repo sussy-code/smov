@@ -34,9 +34,7 @@ export function useSearchQuery(): [
   };
 
   const onUnFocus = (newSearch?: string) => {
-    // eslint-disable-next-line eqeqeq
-    const updated = newSearch == undefined ? search : newSearch;
-    updateParams(updated, true);
+    updateParams(newSearch ?? search, true);
   };
 
   return [search, updateParams, onUnFocus];

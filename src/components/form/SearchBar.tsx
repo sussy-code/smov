@@ -66,12 +66,9 @@ export const SearchBarInput = forwardRef<HTMLInputElement, SearchBarProps>(
                   ref.current?.focus();
                 }
               }}
-              className="cursor-pointer absolute p-1 bottom-0 right-2 top-0 flex justify-center my-auto max-h-10 max-w-10 h-full w-full items-center hover:bg-search-hoverBackground active:scale-110 text-search-icon rounded-full transition duration-100"
+              className="cursor-pointer hover:text-white  absolute bottom-0 right-2 top-0 flex justify-center my-auto h-10 w-10 items-center hover:bg-search-hoverBackground active:scale-110 text-search-icon rounded-full transition-[transform,background-color] duration-200"
             >
-              <Icon
-                icon={Icons.X}
-                className="hover:text-white transition duration-100"
-              />
+              <Icon icon={Icons.X} className="transition-colors duration-200" />
             </div>
           )}
         </Flare.Child>
