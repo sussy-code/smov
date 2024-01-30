@@ -87,7 +87,9 @@ export function progressResponsesToEntries(responses: ProgressResponse[]) {
     }
 
     const item = items[v.tmdbId];
-    // Update the item only if the new update is more recent than the current one
+
+    // Since each watched episode is a single array entry but with the same tmdbId, the root item updatedAt will only have the first episode's timestamp (which is not the newest).
+    // Here, we are setting it explicitly so the updatedAt always has the highest updatedAt from the episodes.
     if (new Date(v.updatedAt).getTime() > item.updatedAt) {
       item.updatedAt = new Date(v.updatedAt).getTime();
     }
