@@ -155,7 +155,7 @@ export function SetupPart() {
 
   return (
     <SettingsCard>
-      <div className="flex items-start gap-4">
+      <div className="flex flex-col md:flex-row items-start gap-4">
         <div>
           <div
             className={classNames({
@@ -193,7 +193,7 @@ export function SetupPart() {
             {t("settings.connections.setup.items.default")}
           </SetupCheckList>
         </div>
-        <div className="mt-5">
+        <div className="md:mt-5">
           <Button theme="purple" onClick={() => navigate("/onboarding")}>
             {t(textLookupMap[globalState].button)}
           </Button>
