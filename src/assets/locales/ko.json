@@ -82,9 +82,15 @@
       "disclaimer": "면책 조항",
       "disclaimerText": "movie-web은 어떠한 파일도 호스팅하지 않으며, 제3자 서비스에 대한 링크만 제공합니다. 법적 문제는 파일 호스트 및 제공업체와 해결해야 합니다. 동영상 제공업체가 표시하는 미디어 파일에 대해 movie-web은 책임을 지지 않습니다."
     },
+    "links": {
+      "discord": "디스코드",
+      "dmca": "DMCA",
+      "github": "깃허브"
+    },
     "tagline": "이 오픈 소스 스트리밍 앱으로 좋아하는 프로그램과 영화를 시청하세요."
   },
   "global": {
+    "name": "무비-웹",
     "pages": {
       "about": "소개",
       "login": "로그인",
@@ -132,6 +138,7 @@
     }
   },
   "media": {
+    "episodeDisplay": "시즌{{season}} {{episode}}화",
     "types": {
       "movie": "영화",
       "show": "쇼"
@@ -194,6 +201,7 @@
       "episodes": {
         "button": "회차",
         "emptyState": "이번 시즌에는 에피소드가 없으니 나중에 다시 확인하세요!",
+        "episodeBadge": "{{episode}}화",
         "loadingError": "시즌 로딩중 에러 발생",
         "loadingList": "로딩...",
         "loadingTitle": "로딩..."
@@ -294,6 +302,11 @@
     },
     "time": {
       "remaining": "{{timeLeft}} 남음 • {{timeFinished, datetime}}에 종료"
+    },
+    "turnstile": {
+      "description": "우측에 있는 캡챠를 통해 인간임을 인증해주새요. 이것은 무비-웹의 안전을 위한 것입니다!",
+      "error": "인류애를 인증하는 데에 실패했습니다. 다시 시도해주새요.",
+      "verifyingHumanity": "인류애 인증 중..."
     }
   },
   "screens": {
