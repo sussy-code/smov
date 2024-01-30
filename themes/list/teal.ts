@@ -111,6 +111,7 @@ export default createTheme({
 
       search: {
         background: tokens.shade.c500,
+        hoverBackground: tokens.shade.c600,
         focused: tokens.shade.c400,
         placeholder: tokens.shade.c100,
         icon: tokens.shade.c100
