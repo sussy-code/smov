@@ -1,5 +1,6 @@
 import { useCallback, useMemo } from "react";
 import { Trans, useTranslation } from "react-i18next";
+import { useCopyToClipboard } from "react-use";
 
 import { Button } from "@/components/buttons/Button";
 import { Icon, Icons } from "@/components/Icon";
@@ -43,6 +44,7 @@ export function DownloadView({ id }: { id: string }) {
   const router = useOverlayRouter(id);
   const { t } = useTranslation();
   const downloadUrl = useDownloadLink();
+  const [, copyToClipboard] = useCopyToClipboard();
 
   const sourceType = usePlayerStore((s) => s.source?.type);
   const selectedCaption = usePlayerStore((s) => s.caption?.selected);
@@ -77,7 +79,7 @@ export function DownloadView({ id }: { id: string }) {
                   // Allow context menu & left click to copy
                   event.preventDefault();
 
-                  navigator.clipboard.writeText(downloadUrl);
+                  copyToClipboard(downloadUrl);
                 }}
               >
                 {t("player.menus.downloads.downloadPlaylist")}
