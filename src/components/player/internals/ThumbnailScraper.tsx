@@ -5,6 +5,7 @@ import { playerStatus } from "@/stores/player/slices/source";
 import { ThumbnailImage } from "@/stores/player/slices/thumbnails";
 import { usePlayerStore } from "@/stores/player/store";
 import { LoadableSource, selectQuality } from "@/stores/player/utils/qualities";
+import { usePreferencesStore } from "@/stores/preferences";
 import { processCdnLink } from "@/utils/cdn";
 import { isSafari } from "@/utils/detectFeatures";
 
@@ -128,6 +129,7 @@ export function ThumbnailScraper() {
   const resetImages = usePlayerStore((s) => s.thumbnails.resetImages);
   const meta = usePlayerStore((s) => s.meta);
   const source = usePlayerStore((s) => s.source);
+  const enableThumbnails = usePreferencesStore((s) => s.enableThumbnails);
   const workerRef = useRef<ThumnbnailWorker | null>(null);
 
   // object references dont always trigger changes, so we serialize it to detect *any* change
@@ -159,8 +161,8 @@ export function ThumbnailScraper() {
 
   // start worker with the stream
   useEffect(() => {
-    startRef.current();
-  }, [sourceSeralized]);
+    if (enableThumbnails) startRef.current();
+  }, [sourceSeralized, enableThumbnails]);
 
   // destroy worker on unmount
   useEffect(() => {
@@ -183,8 +185,8 @@ export function ThumbnailScraper() {
       workerRef.current.destroy();
       workerRef.current = null;
     }
-    startRef.current();
-  }, [serializedMeta, sourceSeralized, status]);
+    if (enableThumbnails) startRef.current();
+  }, [serializedMeta, sourceSeralized, status, enableThumbnails]);
 
   return null;
 }

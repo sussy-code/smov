@@ -95,6 +95,10 @@ export default createTheme({
         accentB: tokens.blue.c500
       },
 
+      modal: {
+        background: tokens.shade.c800,
+      },
+
       type: {
         logo: tokens.purple.c100,
         text: tokens.shade.c50,
@@ -107,6 +111,7 @@ export default createTheme({
 
       search: {
         background: tokens.shade.c500,
+        hoverBackground: tokens.shade.c600,
         focused: tokens.shade.c400,
         placeholder: tokens.shade.c100,
         icon: tokens.shade.c100

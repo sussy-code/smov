@@ -393,11 +393,6 @@
         "urlPlaceholder": "https://"
       }
     },
-    "locale": {
-      "language": "Jezik aplikacije",
-      "languageDescription": "Jezik, ki se uporablja za celotno aplikacijo.",
-      "title": "Jezik"
-    },
     "reset": "Ponastavi",
     "save": "Shrani",
     "sidebar": {

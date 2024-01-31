@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import { Trans, useTranslation } from "react-i18next";
 
 import { Button } from "@/components/buttons/Button";
@@ -27,6 +27,7 @@ function StyleTrans(props: { k: string }) {
       i18nKey={props.k}
       components={{
         bold: <Menu.Highlight />,
+        br: <br />,
         ios_share: (
           <Icon icon={Icons.IOS_SHARE} className="inline-block text-xl -mb-1" />
         ),
@@ -45,13 +46,13 @@ export function DownloadView({ id }: { id: string }) {
 
   const sourceType = usePlayerStore((s) => s.source?.type);
   const selectedCaption = usePlayerStore((s) => s.caption?.selected);
-  const subtitleUrl = useMemo(
-    () =>
-      selectedCaption
-        ? convertSubtitlesToSrtDataurl(selectedCaption?.srtData)
-        : null,
-    [selectedCaption],
-  );
+  const openSubtitleDownload = useCallback(() => {
+    const dataUrl = selectedCaption
+      ? convertSubtitlesToSrtDataurl(selectedCaption?.srtData)
+      : null;
+    if (!dataUrl) return;
+    window.open(dataUrl);
+  }, [selectedCaption]);
 
   if (!downloadUrl) return null;
 
@@ -73,10 +74,9 @@ export function DownloadView({ id }: { id: string }) {
               </Button>
               <Button
                 className="w-full mt-2"
-                href={subtitleUrl ?? undefined}
-                disabled={!subtitleUrl}
+                onClick={openSubtitleDownload}
+                disabled={!selectedCaption}
                 theme="secondary"
-                download="subtitles.srt"
               >
                 {t("player.menus.downloads.downloadSubtitle")}
               </Button>
@@ -108,8 +108,8 @@ export function DownloadView({ id }: { id: string }) {
               </Button>
               <Button
                 className="w-full mt-2"
-                href={subtitleUrl ?? undefined}
-                disabled={!subtitleUrl}
+                onClick={openSubtitleDownload}
+                disabled={!selectedCaption}
                 theme="secondary"
                 download="subtitles.srt"
               >
@@ -118,24 +118,6 @@ export function DownloadView({ id }: { id: string }) {
             </>
           )}
         </div>
-      </Menu.Section>
-    </>
-  );
-}
-
-export function CantDownloadView({ id }: { id: string }) {
-  const router = useOverlayRouter(id);
-  const { t } = useTranslation();
-
-  return (
-    <>
-      <Menu.BackLink onClick={() => router.navigate("/")}>
-        {t("player.menus.downloads.title")}
-      </Menu.BackLink>
-      <Menu.Section>
-        <Menu.Paragraph>
-          <StyleTrans k="player.menus.downloads.hlsExplanation" />
-        </Menu.Paragraph>
       </Menu.Section>
     </>
   );
@@ -200,11 +182,6 @@ export function DownloadRoutes({ id }: { id: string }) {
       <OverlayPage id={id} path="/download" width={343} height={490}>
         <Menu.CardWithScrollable>
           <DownloadView id={id} />
-        </Menu.CardWithScrollable>
-      </OverlayPage>
-      <OverlayPage id={id} path="/download/unable" width={343} height={440}>
-        <Menu.CardWithScrollable>
-          <CantDownloadView id={id} />
         </Menu.CardWithScrollable>
       </OverlayPage>
       <OverlayPage id={id} path="/download/ios" width={343} height={440}>

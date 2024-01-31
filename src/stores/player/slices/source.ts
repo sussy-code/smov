@@ -118,6 +118,7 @@ export const createSourceSlice: MakeSlice<SourceSlice> = (set, get) => ({
   },
   setSourceId(id) {
     set((s) => {
+      s.status = playerStatus.PLAYING;
       s.sourceId = id;
     });
   },
@@ -155,6 +156,8 @@ export const createSourceSlice: MakeSlice<SourceSlice> = (set, get) => ({
       s.qualities = qualities as SourceQuality[];
       s.currentQuality = loadableStream.quality;
       s.captionList = captions;
+      s.interface.error = undefined;
+      s.status = playerStatus.PLAYING;
     });
     const store = get();
     store.redisplaySource(startAt);
@@ -168,7 +171,10 @@ export const createSourceSlice: MakeSlice<SourceSlice> = (set, get) => ({
       automaticQuality: qualityPreferences.quality.automaticQuality,
       lastChosenQuality: quality,
     });
-
+    set((s) => {
+      s.interface.error = undefined;
+      s.status = playerStatus.PLAYING;
+    });
     store.display?.load({
       source: loadableStream.stream,
       startAt,
@@ -184,6 +190,8 @@ export const createSourceSlice: MakeSlice<SourceSlice> = (set, get) => ({
       if (!selectedQuality) return;
       set((s) => {
         s.currentQuality = quality;
+        s.status = playerStatus.PLAYING;
+        s.interface.error = undefined;
       });
       store.display?.load({
         source: selectedQuality,

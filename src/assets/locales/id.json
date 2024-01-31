@@ -393,11 +393,6 @@
         "urlPlaceholder": "https://"
       }
     },
-    "locale": {
-      "language": "Bahasa aplikasi",
-      "languageDescription": "Bahasa yang akan digunakan di seluruh aplikasi.",
-      "title": "Bahasa"
-    },
     "reset": "Reset",
     "save": "Simpan",
     "sidebar": {

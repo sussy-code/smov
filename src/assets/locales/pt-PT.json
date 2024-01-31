@@ -1,0 +1,432 @@
+{
+  "about": {
+    "description": "movie-web é uma aplicação web que pesquisa a internet por streams. A equipa visa uma abordagem maioritariamente minimalista na consumação de conteúdos.",
+    "faqTitle": "Perguntas frequentes",
+    "q1": {
+      "body": "movie-web não hospeda nenhum conteúdo. Quando clica para assistir a algo, a internet é pesquisada para o media selecionado (Na tela de carregamento e na aba 'fontes de vídeo', pode ver qual a fonte que está a ser utilizada). O media nunca é carregado pelo movie-web, tudo é feito através deste mecanismo de pesquisa.",
+      "title": "De onde vem o conteúdo?"
+    },
+    "q2": {
+      "body": "Não é possível solicitar um programa ou filme, o movie-web não gere nenhum conteúdo. Todo o conteúdo é visualizado através de fontes na internet.",
+      "title": "Onde posso solicitar um programa ou filme?"
+    },
+    "q3": {
+      "body": "Os nossos resultados de pesquisa são alimentados pela The Movie Database (TMDB) e são exibidos independentemente de as nossas fontes realmente terem o conteúdo.",
+      "title": "Os resultados da pesquisa mostram o programa ou filme, por que não consigo reproduzi-lo?"
+    },
+    "title": "Sobre o movie-web"
+  },
+  "actions": {
+    "copied": "Copiado",
+    "copy": "Copiar"
+  },
+  "auth": {
+    "createAccount": "Ainda não tem uma conta? <0>Crie uma conta.</0>",
+    "deviceNameLabel": "Nome do dispositivo",
+    "deviceNamePlaceholder": "Telemóvel pessoal",
+    "generate": {
+      "description": "A sua frase-passe age como o seu nome de utilizador e senha. Certifique-se de a manter segura, pois precisará dela para entrar na sua conta",
+      "next": "Guardei a minha frase-passe",
+      "passphraseFrameLabel": "Frase-passe",
+      "title": "A sua frase-passe"
+    },
+    "hasAccount": "Já tem uma conta? <0>Entre aqui.</0>",
+    "login": {
+      "description": "Por favor, introduza a sua frase-passe para entrar na sua conta",
+      "deviceLengthError": "Por favor, introduza um nome de dispositivo",
+      "passphraseLabel": "Frase-passe de 12 palavras",
+      "passphrasePlaceholder": "Frase-passe",
+      "submit": "Entrar",
+      "title": "Entrar na sua conta",
+      "validationError": "Frase-passe incorreta ou incompleta"
+    },
+    "register": {
+      "information": {
+        "color1": "Cor de perfil um",
+        "color2": "Cor de perfil dois",
+        "header": "Introduza um nome para o seu dispositivo e escolha cores e um ícone de utilizador da sua escolha",
+        "icon": "Ícone de utilizador",
+        "next": "Próximo",
+        "title": "Informações da conta"
+      }
+    },
+    "trust": {
+      "failed": {
+        "text": "Configurou corretamente?",
+        "title": "Falha ao conectar-se ao servidor"
+      },
+      "host": "Está a conectar-se a <0>{{hostname}}</0> - confirme se confia antes de criar uma conta",
+      "no": "Voltar",
+      "title": "Confia neste servidor?",
+      "yes": "Confio neste servidor"
+    },
+    "verify": {
+      "description": "Por favor, introduza a sua frase-passe anterior para confirmar que a guardou e para criar a sua conta",
+      "invalidData": "Dados inválidos",
+      "noMatch": "A frase-passe não coincide",
+      "passphraseLabel": "A sua frase-passe de 12 palavras",
+      "recaptchaFailed": "Falha na validação do ReCaptcha",
+      "register": "Criar conta",
+      "title": "Confirmar a sua frase-passe"
+    }
+  },
+  "errors": {
+    "badge": "Houve um erro",
+    "details": "Detalhes do erro",
+    "reloadPage": "Recarregar a página",
+    "showError": "Mostrar detalhes do erro",
+    "title": "Encontrámos um erro!"
+  },
+  "footer": {
+    "legal": {
+      "disclaimer": "Aviso legal",
+      "disclaimerText": "movie-web não hospeda quaisquer ficheiros, apenas faz ligações para serviços de terceiros. Problemas legais devem ser tratados com os anfitriões e fornecedores de ficheiros. O movie-web não é responsável por quaisquer ficheiros multimédia mostrados pelos fornecedores de vídeo."
+    },
+    "links": {
+      "discord": "Discord",
+      "dmca": "DMCA",
+      "github": "GitHub"
+    },
+    "tagline": "Assista aos seus programas e filmes favoritos com esta aplicação de streaming de código aberto."
+  },
+  "global": {
+    "name": "movie-web",
+    "pages": {
+      "about": "Sobre",
+      "dmca": "DMCA",
+      "login": "Entrar",
+      "pagetitle": "{{title}} - movie-web",
+      "register": "Registrar",
+      "settings": "Configurações"
+    }
+  },
+  "home": {
+    "bookmarks": {
+      "sectionTitle": "Marcadores"
+    },
+    "continueWatching": {
+      "sectionTitle": "Continuar a assistir"
+    },
+    "mediaList": {
+      "stopEditing": "Parar de editar"
+    },
+    "search": {
+      "allResults": "É tudo o que temos!",
+      "failed": "Falha ao encontrar mídia, tente novamente!",
+      "loading": "A carregar...",
+      "noResults": "Não conseguimos encontrar nada!",
+      "placeholder": "O que deseja assistir?",
+      "sectionTitle": "Resultados da pesquisa"
+    },
+    "titles": {
+      "day": {
+        "default": "O que gostaria de assistir esta tarde?",
+        "extra": [
+          "Sentindo-se aventureiro? Jurassic Park pode ser a escolha perfeita."
+        ]
+      },
+      "morning": {
+        "default": "O que gostaria de assistir esta manhã?",
+        "extra": [
+          "Dizem que Antes do Amanhecer é bom"
+        ]
+      },
+      "night": {
+        "default": "O que gostaria de assistir esta noite?",
+        "extra": [
+          "Cansado? Dizem que O Exorcista é bom."
+        ]
+      }
+    }
+  },
+  "media": {
+    "episodeDisplay": "T{{season}} E{{episode}}",
+    "types": {
+      "movie": "Filme",
+      "show": "Série"
+    }
+  },
+  "navigation": {
+    "banner": {
+      "offline": "Verifique a sua conexão à internet"
+    },
+    "menu": {
+      "about": "Sobre nós",
+      "donation": "Doar",
+      "logout": "Sair",
+      "register": "Sincronizar com a nuvem",
+      "settings": "Configurações",
+      "support": "Suporte"
+    }
+  },
+  "notFound": {
+    "badge": "Não encontrado",
+    "goHome": "Voltar para casa",
+    "message": "Procurámos em todo lugar: embaixo dos caixotes, no armário, atrás do proxy, mas, no final, não conseguimos encontrar a página que procura.",
+    "title": "Não foi possível encontrar essa página"
+  },
+  "overlays": {
+    "close": "Fechar"
+  },
+  "player": {
+    "back": {
+      "default": "Voltar para casa",
+      "short": "Voltar"
+    },
+    "casting": {
+      "enabled": "Transmitindo para o dispositivo..."
+    },
+    "menus": {
+      "downloads": {
+        "disclaimer": "Os downloads são feitos diretamente pelo fornecedor. O movie-web não tem controle sobre como os downloads são fornecidos.",
+        "downloadPlaylist": "Baixar lista de reprodução",
+        "downloadSubtitle": "Baixar legenda atual",
+        "downloadVideo": "Baixar vídeo",
+        "hlsDisclaimer": "Os downloads são feitos diretamente pelo fornecedor. O movie-web não tem controle sobre como os downloads são fornecidos. Por favor, note que está a baixar uma lista de reprodução HLS, isso é destinado a utilizadores familiarizados com streaming multimídia avançado.",
+        "onAndroid": {
+          "1": "Para baixar no Android, clique no botão de download e, na nova página, <bold>toque e segure</bold> no vídeo, depois selecione <bold>guardar</bold>.",
+          "shortTitle": "Baixar / Android",
+          "title": "Baixando no Android"
+        },
+        "onIos": {
+          "1": "Para baixar no iOS, clique no botão de download e, na nova página, clique em <bold><ios_share /></bold>, depois em <bold>Guardar no Ficheiro <ios_files /></bold>.",
+          "shortTitle": "Baixar / iOS",
+          "title": "Baixando no iOS"
+        },
+        "onPc": {
+          "1": "No PC, clique no botão de download e, na nova página, clique com o botão direito no vídeo e selecione <bold>Guardar vídeo como</bold>",
+          "shortTitle": "Baixar / PC",
+          "title": "Baixando no PC"
+        },
+        "title": "Baixar"
+      },
+      "episodes": {
+        "button": "Episódios",
+        "emptyState": "Não há episódios nesta temporada, volte mais tarde!",
+        "episodeBadge": "E{{episode}}",
+        "loadingError": "Erro ao carregar a temporada",
+        "loadingList": "A carregar...",
+        "loadingTitle": "A carregar...",
+        "unairedEpisodes": "Um ou mais episódios nesta temporada foram desativados porque ainda não foram transmitidos."
+      },
+      "playback": {
+        "speedLabel": "Velocidade de reprodução",
+        "title": "Configurações de reprodução"
+      },
+      "quality": {
+        "automaticLabel": "Qualidade automática",
+        "hint": "Pode tentar <0>mudar de fonte</0> para obter opções de qualidade diferentes.",
+        "iosNoQuality": "Devido a limitações definidas pela Apple, a seleção de qualidade não está disponível no iOS para esta fonte. Pode tentar <0>mudar para outra fonte</0> para obter opções de qualidade diferentes.",
+        "title": "Qualidade"
+      },
+      "settings": {
+        "downloadItem": "Download",
+        "enableSubtitles": "Ativar legendas",
+        "experienceSection": "Experiência de visualização",
+        "playbackItem": "Configurações de reprodução",
+        "qualityItem": "Qualidade",
+        "sourceItem": "Fontes de vídeo",
+        "subtitleItem": "Configurações de legendas",
+        "videoSection": "Configurações de vídeo"
+      },
+      "sources": {
+        "failed": {
+          "text": "Houve um erro ao tentar encontrar vídeos, por favor, tente uma fonte diferente.",
+          "title": "Falha ao obter"
+        },
+        "noEmbeds": {
+          "text": "Não conseguimos encontrar nenhum embed, por favor, tente uma fonte diferente.",
+          "title": "Nenhum embed encontrado"
+        },
+        "noStream": {
+          "text": "Esta fonte não tem transmissões para este filme ou série.",
+          "title": "Sem transmissão"
+        },
+        "title": "Fontes",
+        "unknownOption": "Desconhecido"
+      },
+      "subtitles": {
+        "customChoice": "Selecionar legenda do arquivo",
+        "customizeLabel": "Personalizar",
+        "offChoice": "Desativar",
+        "settings": {
+          "backlink": "Legendas personalizadas",
+          "delay": "Atraso das legendas",
+          "fixCapitals": "Corrigir maiúsculas"
+        },
+        "title": "Legendas",
+        "unknownLanguage": "Desconhecido"
+      }
+    },
+    "metadata": {
+      "api": {
+        "text": "Não foi possível carregar os metadados da API, por favor verifique a sua conexão à internet.",
+        "title": "Falha ao carregar os metadados da API"
+      },
+      "failed": {
+        "badge": "Falhou",
+        "homeButton": "Ir para casa",
+        "text": "Não foi possível carregar os metadados do media da TMDB. Por favor, verifique se a TMDB está indisponível ou bloqueada na sua conexão à internet.",
+        "title": "Falha ao carregar os metadados"
+      },
+      "notFound": {
+        "badge": "Não encontrado",
+        "homeButton": "Voltar para casa",
+        "text": "Não conseguimos encontrar o conteúdo que solicitou. Ou foi removido ou houve manipulação na URL.",
+        "title": "Não foi possível encontrar esse conteúdo."
+      }
+    },
+    "nextEpisode": {
+      "cancel": "Cancelar",
+      "next": "Próximo episódio"
+    },
+    "playbackError": {
+      "badge": "Erro de reprodução",
+      "errors": {
+        "errorAborted": "A recuperação do conteúdo foi cancelada a pedido do utilizador.",
+        "errorDecode": "Apesar de ter sido anteriormente considerado utilizável, ocorreu um erro ao tentar decodificar o recurso multimédia, resultando em um erro.",
+        "errorGenericMedia": "Ocorreu um erro desconhecido no multimédia.",
+        "errorNetwork": "Ocorreu algum tipo de erro de rede que impediu a recuperação bem-sucedida do multimédia, apesar de estar disponível anteriormente.",
+        "errorNotSupported": "O objeto multimédia ou do fornecedor de multimédia não é suportado."
+      },
+      "homeButton": "Ir para casa",
+      "text": "Ocorreu um erro ao tentar reproduzir o conteúdo multimédia. Por favor, tente novamente.",
+      "title": "Falha ao reproduzir o vídeo!"
+    },
+    "scraping": {
+      "items": {
+        "failure": "Ocorreu um erro",
+        "notFound": "Não possui o vídeo",
+        "pending": "A verificar vídeos..."
+      },
+      "notFound": {
+        "badge": "Não encontrado",
+        "detailsButton": "Mostrar detalhes",
+        "homeButton": "Ir para casa",
+        "text": "Pesquisámos pelos nossos fornecedores e não conseguimos encontrar o conteúdo que procura! Não alojamos o conteúdo multimédia e não temos controlo sobre o que está disponível. Por favor, clique em 'Mostrar detalhes' abaixo para mais informações.",
+        "title": "Não conseguimos encontrar isso"
+      }
+    },
+    "time": {
+      "regular": "{{timeWatched}} / {{duration}}",
+      "remaining": "{{timeLeft}} restantes • Termina às {{timeFinished, datetime}}",
+      "shortRegular": "{{timeWatched}}",
+      "shortRemaining": "-{{timeLeft}}"
+    },
+    "turnstile": {
+      "description": "Por favor, verifique que é humano completando o Captcha à direita. Isso é para manter o movie-web seguro!",
+      "error": "Falha ao verificar a sua humanidade. Por favor, tente novamente.",
+      "title": "Precisamos verificar que você é humano.",
+      "verifyingHumanity": "Verificando a sua humanidade..."
+    }
+  },
+  "screens": {
+    "dmca": {
+      "text": "Bem-vindo à página de contacto DMCA da movie-web! Respeitamos os direitos de propriedade intelectual e queremos resolver rapidamente quaisquer preocupações de direitos autorais. Se acredita que a sua obra protegida por direitos autorais foi usada indevidamente na nossa plataforma, envie um aviso DMCA detalhado para o email abaixo. Inclua uma descrição do material protegido por direitos autorais, os seus detalhes de contacto e uma declaração de boa fé. Comprometemo-nos a resolver essas questões prontamente e agradecemos a sua cooperação para manter a movie-web como um lugar que respeita a criatividade e os direitos autorais.",
+      "title": "DMCA"
+    },
+    "loadingApp": "A carregar a aplicação",
+    "loadingUser": "A carregar o seu perfil",
+    "loadingUserError": {
+      "logout": "Terminar sessão",
+      "reset": "Repor servidor personalizado",
+      "text": "Falha ao carregar o seu perfil",
+      "textWithReset": "Falha ao carregar o seu perfil do servidor personalizado. Deseja repor para o servidor padrão?"
+    },
+    "migration": {
+      "failed": "Falha ao migrar os seus dados.",
+      "inProgress": "Por favor aguarde, estamos a migrar os seus dados. Isto não deverá demorar muito."
+    }
+  },
+  "settings": {
+    "account": {
+      "accountDetails": {
+        "deviceNameLabel": "Nome do dispositivo",
+        "deviceNamePlaceholder": "Telemóvel pessoal",
+        "editProfile": "Editar",
+        "logoutButton": "Terminar sessão"
+      },
+      "actions": {
+        "delete": {
+          "button": "Eliminar conta",
+          "confirmButton": "Eliminar conta",
+          "confirmDescription": "Tem a certeza de que deseja eliminar a sua conta? Todos os seus dados serão perdidos!",
+          "confirmTitle": "Tem a certeza?",
+          "text": "Esta ação é irreversível. Todos os dados serão eliminados e nada poderá ser recuperado.",
+          "title": "Eliminar conta"
+        },
+        "title": "Ações"
+      },
+      "devices": {
+        "deviceNameLabel": "Nome do dispositivo",
+        "failed": "Falha ao carregar as sessões",
+        "removeDevice": "Remover",
+        "title": "Dispositivos"
+      },
+      "profile": {
+        "finish": "Terminar edição",
+        "firstColor": "Cor do perfil um",
+        "secondColor": "Cor do perfil dois",
+        "title": "Editar imagem de perfil",
+        "userIcon": "Ícone de utilizador"
+      },
+      "register": {
+        "cta": "Começar",
+        "text": "Partilhe o seu progresso de visualização entre dispositivos e mantenha-os sincronizados.",
+        "title": "Sincronizar com a nuvem"
+      },
+      "title": "Conta"
+    },
+    "appearance": {
+      "activeTheme": "Ativo",
+      "themes": {
+        "blue": "Azul",
+        "default": "Padrão",
+        "gray": "Cinzento",
+        "red": "Vermelho",
+        "teal": "Verde-azulado"
+      },
+      "title": "Aparência"
+    },
+    "connections": {
+      "server": {
+        "description": "Se desejar ligar a um servidor personalizado para armazenar os seus dados, ative isto e forneça o URL.",
+        "label": "Servidor personalizado",
+        "urlLabel": "URL do servidor personalizado"
+      },
+      "title": "Conexões",
+      "workers": {
+        "addButton": "Adicionar novo trabalhador",
+        "description": "Para que a aplicação funcione, todo o tráfego é encaminhado através de proxies. Ative isto se quiser utilizar os seus próprios trabalhadores.",
+        "emptyState": "Ainda não há trabalhadores, adicione um abaixo",
+        "label": "Utilizar trabalhadores de proxy personalizados",
+        "urlLabel": "URLs do trabalhador",
+        "urlPlaceholder": "https://"
+      }
+    },
+    "reset": "Repor",
+    "save": "Guardar",
+    "sidebar": {
+      "info": {
+        "appVersion": "Versão da aplicação",
+        "backendUrl": "URL do backend",
+        "backendVersion": "Versão do backend",
+        "hostname": "Hostname",
+        "insecure": "Inseguro",
+        "notLoggedIn": "Não está autenticado",
+        "secure": "Seguro",
+        "title": "Informações da aplicação",
+        "unknownVersion": "Desconhecida",
+        "userId": "ID de utilizador"
+      }
+    },
+    "subtitles": {
+      "backgroundLabel": "Opacidade do fundo",
+      "colorLabel": "Cor",
+      "previewQuote": "Não devo temer. O medo é o assassino da mente.",
+      "textSizeLabel": "Tamanho do texto",
+      "title": "Legendas"
+    },
+    "unsaved": "Tem alterações não guardadas"
+  }
+}

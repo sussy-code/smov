@@ -95,6 +95,7 @@
       "about": "Über",
       "dmca": "DMCA",
       "login": "Anmelden",
+      "onboarding": "Einrichtung",
       "pagetitle": "{{title}} - movie-web",
       "register": "Registrieren",
       "settings": "Einstellungen"
@@ -165,6 +166,66 @@
     "message": "Wir haben überall gesucht: Unter den Eimern, im Schrank, hinter dem Proxy. Wir konnten die gesuchte Seite nicht finden.",
     "title": "Diese Seite wurde nicht gefunden"
   },
+  "onboarding": {
+    "defaultConfirm": {
+      "cancel": "Abbrechen",
+      "confirm": "Standard-Setup verwenden",
+      "description": "Das Standard-Setup verfügt nicht über die besten Streams und kann unerträglich langsam sein.",
+      "title": "Sicher?"
+    },
+    "extension": {
+      "back": "Zurück gehen",
+      "explainer": "Mit der Browser-Erweiterung kannst du die besten Streams benutzen, die wir zu bieten haben. Mit nur einer einfachen Installation.",
+      "explainerIos": "Leider ist die Browser-Extension unter iOS nicht unterstützt. Klicken Sie auf <bold>Zurück</bold>, um eine andere Option auszuwählen.",
+      "extensionHelp": "Falls du die Erweiterung installiert hast, aber sie aber nicht erkannt wird, <bold>öffne die Erweiterung über das Erweiterungsmenü Ihres Browsers</bold> und befolge die Schritte auf dem Bildschirm.",
+      "linkChrome": "Chrome Erweiterung installieren",
+      "linkFirefox": "Firefox Erweiterung installieren",
+      "notDetecting": "Auf Chrome Installiert, aber die Website erkennt es nicht? Versuche, die Seite wieder zu laden!",
+      "notDetectingAction": "Seite neuladen",
+      "status": {
+        "disallowed": "Browser-Erweiterung ist für diese Website nicht aktiviert",
+        "disallowedAction": "Browser-Erweiterung aktivieren",
+        "failed": "Statusanforderung fehlgeschlagen",
+        "loading": "Wartet dass du die Erweiterung installierst",
+        "outdated": "Erweiterungsversion zu alt",
+        "success": "Die Browser-Erweiterung funktioniert wie erwartet!"
+      },
+      "submit": "Weiter"
+    },
+    "proxy": {
+      "back": "Zurück gehen",
+      "explainer": "Mit der Proxy-Methode kannst du Streams mit guter Qualität benutzen, indem du einen eigenen Proxy einstellst.",
+      "input": {
+        "errorConnection": "Es konnte keine Verbindung zum Proxy hergestellt werden",
+        "errorInvalidUrl": "Keine gültige URL",
+        "errorNotProxy": "Ein Proxy wurde erwartet, aber eine Website wurde eingegeben",
+        "label": "Proxy-URL",
+        "placeholder": "https://"
+      },
+      "link": "Erfahre, wie man einen Proxy einstellt",
+      "submit": "Proxy einreichen"
+    },
+    "start": {
+      "explainer": "Um die bestmöglichen Streams zu erhalten, müssen Sie auswählen, welche Streaming-Methode Sie verwenden möchten.",
+      "options": {
+        "default": {
+          "text": "Ich möchte keine Streams mit guter Qualität. <0 /> <1>Standardeinstellung benutzen</1>"
+        },
+        "extension": {
+          "action": "Browser-Erweitung installieren",
+          "description": "Installiere die Browser-Erweitung, um Zugriff auf die besten Quellen zu bekommen.",
+          "quality": "Beste Qualität",
+          "title": "Browser extension"
+        },
+        "proxy": {
+          "action": "Proxy einstellen",
+          "description": "Richte in nur 5 Minuten einen Proxy ein und erhalte Zugriff auf großartige Quellen.",
+          "quality": "Gute Qualität",
+          "title": "Eigene Proxy"
+        }
+      }
+    }
+  },
   "overlays": {
     "close": "Schließen"
   },
@@ -182,7 +243,7 @@
         "downloadPlaylist": "Playlist herunterladen",
         "downloadSubtitle": "Aktuelle Untertitel herunterladen",
         "downloadVideo": "Video herunterladen",
-        "hlsDisclaimer": "movie-web hat keinen Einfluss darauf, wie Downloads bereitgestellt werden. Downloads werden direkt vom Anbieter bezogen. Bitte beachte, dass du eine HLS-Wiedergabeliste herunterlädst, diese ist für Nutzer gedacht, die mit fortgeschrittenem Multimedia-Streaming vertraut sind.",
+        "hlsDisclaimer": "movie-web hat keinen Einfluss darauf, wie Downloads bereitgestellt werden. Downloads werden direkt vom Anbieter bezogen. <br /><br />Bitte beachte, dass du eine HLS-Wiedergabeliste herunterlädst, <bold>dies ist nicht empfohlen für Nutzer die nicht mit Erweiterten Streaming Formaten vertraut sind</bold>. Probiere andere Anbieter für andere Formate.",
         "onAndroid": {
           "1": "Um auf Android Herunterzuladen, tippe auf den Download-Button, <bold>tippe und halte</bold> auf der neuen Seite auf das Video und wähle <bold>Speichern</bold> aus.",
           "shortTitle": "Download / Android",
@@ -262,6 +323,17 @@
       "api": {
         "text": "API Metadaten konnten nicht geladen werden, überprüfe deine Netzwerkverbindung.",
         "title": "API Metadaten konnten nicht geladen werden"
+      },
+      "dmca": {
+        "badge": "Entfernt",
+        "text": "Das Video ist aufgrund einer Takedown-Anfrage oder eines Urheberrechtsanspruchs nicht mehr verfügbar.",
+        "title": "Video wurde entfernt"
+      },
+      "extensionPermission": {
+        "badge": "Berechtigung fehlt",
+        "button": "Verwende Erweiterung",
+        "text": "Du hast die Browser-Erweiterung, aber wir brauchen deine Berechtigung um mit der Erweiterung zu starten.",
+        "title": "Konfiguriere die Erweiterung"
       },
       "failed": {
         "badge": "Fehlgeschlagen",
@@ -390,24 +462,49 @@
     },
     "connections": {
       "server": {
-        "description": "Falls du dich mit einem anderen Server verbinden willst, um deine Daten zu speichern. Aktiviere dies und gebe die URL an.",
+        "description": "Falls du dich mit einem anderen Server verbinden willst, um deine Daten zu speichern. Aktiviere dies und gebe die URL an. <0>Anweisungen.</0>",
         "label": "Eigener Server",
         "urlLabel": "Eigene Server-URL"
+      },
+      "setup": {
+        "doSetup": "Einrichten",
+        "errorStatus": {
+          "description": "Es scheint so, als bräuchte eine oder mehrere Schritte in dieser Einrichtung deine Aufmerksamkeit.",
+          "title": "Etwas braucht deine Aufmerksamkeit"
+        },
+        "itemError": "Mit diesem Setup stimmt etwas nicht. Führen Sie das Setup erneut durch, um das Problem zu beheben.",
+        "items": {
+          "default": "Standard Einstellungen",
+          "extension": "Erweiterung",
+          "proxy": "Eigene Proxy"
+        },
+        "redoSetup": "Erneut einrichten",
+        "successStatus": {
+          "description": "Alles ist bereit, damit du deine Lieblingsserien und Filme ansehen kannst.",
+          "title": "Alles eingerichtet!"
+        },
+        "unsetStatus": {
+          "description": "Klicken Sie bitte auf den Button rechts, um die Setup zu starten.",
+          "title": "Du hast das Setup noch nicht durchgeführt"
+        }
       },
       "title": "Verbindung",
       "workers": {
         "addButton": "Neuen Worker hinzufügen",
-        "description": "Damit die App funktioniert werden alle Anfrage durch einen Proxy geleitet. Aktiviere dies, falls du deinen eigenen Worker verwenden willst.",
+        "description": "Damit die App funktioniert werden alle Anfrage durch einen Proxy geleitet. Aktiviere dies, falls du deinen eigenen Worker verwenden willst. <0>Anweisungen.</0>",
         "emptyState": "Keine Worker vorhanden, füge einen unten hinzu",
         "label": "Verwenden deinen eigenen Worker-Proxys",
         "urlLabel": "Worker-URLs",
         "urlPlaceholder": "https://"
       }
     },
-    "locale": {
+    "preferences": {
       "language": "App-Sprache",
       "languageDescription": "Sprache für die ganze App.",
-      "title": "Sprache"
+      "thumbnail": "Miniaturansichten generieren",
+      "thumbnailDescription": "Meistens haben Videos keine Miniaturansicht. Du kannst diese Einstellung anmachen, um sie automatisch zu generieren, aber sie können dein Video langsamer machen.",
+      "thumbnailLabel": "Miniaturansichten generieren",
+      "title": "Einstellungen"
     },
     "reset": "Zurücksetzen",
     "save": "Speichern",

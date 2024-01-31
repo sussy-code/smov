@@ -134,7 +134,7 @@ export function CaptionsView({ id }: { id: string }) {
     [selectCaptionById, setCurrentlyDownloading],
   );
 
-  const content = subtitleList.map((v, i) => {
+  const content = subtitleList.map((v) => {
     return (
       <CaptionOption
         // key must use index to prevent url collisions

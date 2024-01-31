@@ -33,8 +33,8 @@ export function useSearchQuery(): [
     );
   };
 
-  const onUnFocus = () => {
-    updateParams(search, true);
+  const onUnFocus = (newSearch?: string) => {
+    updateParams(newSearch ?? search, true);
   };
 
   return [search, updateParams, onUnFocus];

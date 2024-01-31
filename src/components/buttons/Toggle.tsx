@@ -1,6 +1,6 @@
 import classNames from "classnames";
 
-export function Toggle(props: { onClick: () => void; enabled?: boolean }) {
+export function Toggle(props: { onClick?: () => void; enabled?: boolean }) {
   return (
     <button
       type="button"

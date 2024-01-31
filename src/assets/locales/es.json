@@ -95,6 +95,7 @@
       "about": "Acerca de",
       "dmca": "DMCA",
       "login": "Iniciar sesión",
+      "onboarding": "Configurar",
       "pagetitle": "{{title}} - movie-web",
       "register": "Registrarse",
       "settings": "Configuración"
@@ -165,6 +166,69 @@
     "message": "Buscamos en todas partes: debajo de los contenedores, en el armario, detrás del proxy, pero al final no pudimos encontrar la página que estás buscando.",
     "title": "No se puede encontrar esa página"
   },
+  "onboarding": {
+    "defaultConfirm": {
+      "cancel": "Cancelar",
+      "confirm": "Usar configuración por defecto",
+      "description": "La configuración predeterminada no tiene las mejores transmisiones y puede ser insoportablemente lenta.",
+      "title": "Estás seguro?"
+    },
+    "extension": {
+      "back": "Volver atrás",
+      "explainer": "Usando la extensión de navegador, puedes obtener las mejores transiciones que ofrecemos. Simplemente con una simple instalación.",
+      "explainerIos": "Desafortunadamente, la extensión para el navegador no es compatible con IOS. Pulsa <bold>ir atrás</bold> para elegir otra opción.",
+      "extensionHelp": "Si has instalado la extensión pero no es detectada, <bold>abre la extensión desde la sección en el menú de extensiones</bold> y sigue los pasos de la pantalla.",
+      "linkChrome": "Instalar extensión para Chrome",
+      "linkFirefox": "Instalar extensión para Firefox",
+      "notDetecting": "Instalada en Chrome, pero la página no la está detectado. ¡Prueba a recargar la web!",
+      "notDetectingAction": "Recargar página",
+      "status": {
+        "disallowed": "La extensión no está activada para esta página",
+        "disallowedAction": "Activar extensión",
+        "failed": "No se pudo solicitar el estado",
+        "loading": "Esperando que instales la extensión",
+        "outdated": "La versión de la extensión es muy antigua",
+        "success": "¡La extensión está funcionando como se esperaba!"
+      },
+      "submit": "Continuar",
+      "title": "Vamos a empezar con la extensión"
+    },
+    "proxy": {
+      "back": "Volver atrás",
+      "explainer": "Con el método de proxy, puede obtener una my buena calidad de las transmisiones creando un proxy propio.",
+      "input": {
+        "errorConnection": "No se pudo conectar al proxy",
+        "errorInvalidUrl": "URL no válida",
+        "errorNotProxy": "Esperaba un proxy pero obtuve un sitio web",
+        "label": "URL del Proxy",
+        "placeholder": "https://"
+      },
+      "link": "Aprender a crear un proxy",
+      "submit": "Enviar proxy",
+      "title": "Vamos a crear un nuevo proxy"
+    },
+    "start": {
+      "explainer": "Para conseguir las mejores transmisiones, necesitarás elegir que método de transmisión quieres usar.",
+      "options": {
+        "default": {
+          "text": "No quiero buena calidad en las transmisiones,<0 /> <1>usar la configuración por defecto</1>"
+        },
+        "extension": {
+          "action": "Instalar extensión",
+          "description": "Instala la extensión de navegador y gana acceso a las mejore fuentes.",
+          "quality": "La mejor calidad",
+          "title": "Extensión de navegador"
+        },
+        "proxy": {
+          "action": "Configurar proxy",
+          "description": "Configura un proxy en tan solo 5 minutos y obtén acceso a buenas fuentes.",
+          "quality": "Buena calidad",
+          "title": "Proxy personalizado"
+        }
+      },
+      "title": "Vamos a configurar movie-web"
+    }
+  },
   "overlays": {
     "close": "Cerrar"
   },
@@ -182,7 +246,7 @@
         "downloadPlaylist": "Descargar lista de reproducción",
         "downloadSubtitle": "Descargar subtítulo actual",
         "downloadVideo": "Descargar vídeo",
-        "hlsDisclaimer": "Las descargas se realizan directamente del proveedor. movie-web no tiene control sobre cómo se proporcionan las descargas. Tenga en cuenta que está descargando una lista de reproducción HLS, dirigida a usuarios familiarizados con la transmisión multimedia avanzada.",
+        "hlsDisclaimer": "Las descargas se realizan directamente del proveedor. movie-web no tiene control sobre cómo se proporcionan las descargas. <br /><br />Tenga en cuenta que está descargando una lista de reproducción HLS, <bold>dirigida a usuarios familiarizados con la transmisión multimedia avanzada.</bold> Prueba con diferentes fuentes para diferentes formatos.",
         "onAndroid": {
           "1": "Para descargar en Android, haz clic en el botón de descarga y luego, en la nueva página, <bold>mantén presionado</bold> el vídeo y selecciona <bold>guardar</bold>.",
           "shortTitle": "Descargar / Android",
@@ -262,6 +326,17 @@
       "api": {
         "text": "No ha sido posible cargar la metadata de la API, por favor, comprueba tu conexión a internet.",
         "title": "No ha sido posible cargar los metadatos de la API"
+      },
+      "dmca": {
+        "badge": "Eliminado",
+        "text": "Este contenido no va a estar disponible debido a un aviso de eliminación o un reclamo de derechos de autor.",
+        "title": "El contenido ha sido eliminado"
+      },
+      "extensionPermission": {
+        "badge": "Permisos insuficientes",
+        "button": "Usar extensión",
+        "text": "Tienes la extensión de navegador, pero necesitamos tu permiso para empezar a usarla.",
+        "title": "Configura la extensión"
       },
       "failed": {
         "badge": "Error",
@@ -390,24 +465,49 @@
     },
     "connections": {
       "server": {
-        "description": "Si deseas conectarte a un backend personalizado para almacenar tus datos, habilita esto y proporciona la URL.",
+        "description": "Si deseas conectarte a un backend personalizado para almacenar tus datos, habilita esto y proporciona la URL. <0>Instrucciones.</0>",
         "label": "Servidor personalizado",
         "urlLabel": "URL del servidor personalizado"
+      },
+      "setup": {
+        "doSetup": "Configurar",
+        "errorStatus": {
+          "description": "Parece que hay uno o más items en esta configuración que requieren de tu atención.",
+          "title": "Algo necesita de tu atención"
+        },
+        "itemError": "Hay algo que no fue bien con esta configuración. Ve otra vez a la configuración para solucionarlo.",
+        "items": {
+          "default": "Configuración por defecto",
+          "extension": "Extensión",
+          "proxy": "Proxy personalizado"
+        },
+        "redoSetup": "Rehacer configuración",
+        "successStatus": {
+          "description": "Todo lo necesario está en su sitio para que empieces a ver tu contenido favorito.",
+          "title": "Todo está configurado!"
+        },
+        "unsetStatus": {
+          "description": "Haga clic en el botón a la derecha para iniciar el proceso de configuración.",
+          "title": "No has pasado por la configuración"
+        }
       },
       "title": "Conexiones",
       "workers": {
         "addButton": "Agregar nuevo worker",
-        "description": "Para que la aplicación funcione, todo el tráfico se enruta a través de proxies. Habilita esto si quieres usar tus propios workers.",
+        "description": "Para que la aplicación funcione, todo el tráfico se enruta a través de proxies. Habilita esto si quieres usar tus propios workers. <0>Instrucciones.</0>",
         "emptyState": "Aún no hay workers, agrega uno a continuación",
         "label": "Usar proxy workers personalizados",
         "urlLabel": "URL de los workers",
         "urlPlaceholder": "https://"
       }
     },
-    "locale": {
+    "preferences": {
       "language": "Idioma de la aplicación",
       "languageDescription": "Idioma aplicado a toda la aplicación.",
-      "title": "Idioma"
+      "thumbnail": "Generar miniaturas",
+      "thumbnailDescription": "La mayor parte del tiempo, los videos no tienen miniaturas. Puedes activar esta configuración para generarlas sobre la marcha, pero pueden realentizar tu video.",
+      "thumbnailLabel": "Generar miniaturas",
+      "title": "Preferencias"
     },
     "reset": "Restablecer",
     "save": "Guardar",

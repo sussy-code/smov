@@ -31,11 +31,12 @@ import { ThemePart } from "@/pages/parts/settings/ThemePart";
 import { PageTitle } from "@/pages/parts/util/PageTitle";
 import { AccountWithToken, useAuthStore } from "@/stores/auth";
 import { useLanguageStore } from "@/stores/language";
+import { usePreferencesStore } from "@/stores/preferences";
 import { useSubtitleStore } from "@/stores/subtitles";
 import { useThemeStore } from "@/stores/theme";
 
 import { SubPageLayout } from "./layouts/SubPageLayout";
-import { LocalePart } from "./parts/settings/LocalePart";
+import { PreferencesPart } from "./parts/settings/PreferencesPart";
 
 function SettingsLayout(props: { children: React.ReactNode }) {
   const { isMobile } = useIsMobile();
@@ -115,6 +116,9 @@ export function SettingsPage() {
   const backendUrlSetting = useAuthStore((s) => s.backendUrl);
   const setBackendUrl = useAuthStore((s) => s.setBackendUrl);
 
+  const enableThumbnails = usePreferencesStore((s) => s.enableThumbnails);
+  const setEnableThumbnails = usePreferencesStore((s) => s.setEnableThumbnails);
+
   const account = useAuthStore((s) => s.account);
   const updateProfile = useAuthStore((s) => s.setAccountProfile);
   const updateDeviceName = useAuthStore((s) => s.updateDeviceName);
@@ -136,6 +140,7 @@ export function SettingsPage() {
     proxySet,
     backendUrlSetting,
     account?.profile,
+    enableThumbnails,
   );
 
   const saveChanges = useCallback(async () => {
@@ -168,6 +173,7 @@ export function SettingsPage() {
       }
     }
 
+    setEnableThumbnails(state.enableThumbnails.state);
     setAppLanguage(state.appLanguage.state);
     setTheme(state.theme.state);
     setSubStyling(state.subtitleStyling.state);
@@ -186,6 +192,7 @@ export function SettingsPage() {
     state,
     account,
     backendUrl,
+    setEnableThumbnails,
     setAppLanguage,
     setTheme,
     setSubStyling,
@@ -225,10 +232,12 @@ export function SettingsPage() {
             <RegisterCalloutPart />
           )}
         </div>
-        <div id="settings-locale" className="mt-48">
-          <LocalePart
+        <div id="settings-preferences" className="mt-48">
+          <PreferencesPart
             language={state.appLanguage.state}
             setLanguage={state.appLanguage.set}
+            enableThumbnails={state.enableThumbnails.state}
+            setEnableThumbnails={state.enableThumbnails.set}
           />
         </div>
         <div id="settings-appearance" className="mt-48">

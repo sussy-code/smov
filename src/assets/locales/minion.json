@@ -404,11 +404,6 @@
         "urlPlaceholder": "banana://"
       }
     },
-    "locale": {
-      "language": "Banana",
-      "languageDescription": "Banana applied to the entire banana.",
-      "title": "Banana"
-    },
     "reset": "Banana",
     "save": "Banana",
     "sidebar": {

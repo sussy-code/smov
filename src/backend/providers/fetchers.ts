@@ -1,14 +1,10 @@
-import {
-  Fetcher,
-  ProviderControls,
-  makeProviders,
-  makeSimpleProxyFetcher,
-  makeStandardFetcher,
-  targets,
-} from "@movie-web/providers";
+import { Fetcher, makeSimpleProxyFetcher } from "@movie-web/providers";
 
+import { sendExtensionRequest } from "@/backend/extension/messaging";
 import { getApiToken, setApiToken } from "@/backend/helpers/providerApi";
 import { getProviderApiUrls, getProxyUrls } from "@/utils/proxyUrls";
+
+import { convertBodyToObject, getBodyTypeFromBody } from "../extension/request";
 
 function makeLoadbalancedList(getter: () => string[]) {
   let listIndex = -1;
@@ -48,7 +44,7 @@ async function fetchButWithApiTokens(
   return response;
 }
 
-function makeLoadBalancedSimpleProxyFetcher() {
+export function makeLoadBalancedSimpleProxyFetcher() {
   const fetcher: Fetcher = async (a, b) => {
     const currentFetcher = makeSimpleProxyFetcher(
       getLoadbalancedProxyUrl(),
@@ -59,8 +55,34 @@ function makeLoadBalancedSimpleProxyFetcher() {
   return fetcher;
 }
 
-export const providers = makeProviders({
-  fetcher: makeStandardFetcher(fetch),
-  proxiedFetcher: makeLoadBalancedSimpleProxyFetcher(),
-  target: targets.BROWSER,
-}) as any as ProviderControls;
+function makeFinalHeaders(
+  readHeaders: string[],
+  headers: Record<string, string>,
+): Headers {
+  const lowercasedHeaders = readHeaders.map((v) => v.toLowerCase());
+  return new Headers(
+    Object.entries(headers).filter((entry) =>
+      lowercasedHeaders.includes(entry[0].toLowerCase()),
+    ),
+  );
+}
+
+export function makeExtensionFetcher() {
+  const fetcher: Fetcher = async (url, ops) => {
+    const result = await sendExtensionRequest<any>({
+      url,
+      ...ops,
+      body: convertBodyToObject(ops.body),
+      bodyType: getBodyTypeFromBody(ops.body),
+    });
+    if (!result?.success) throw new Error(`extension error: ${result?.error}`);
+    const res = result.response;
+    return {
+      body: res.body,
+      finalUrl: res.finalUrl,
+      statusCode: res.statusCode,
+      headers: makeFinalHeaders(ops.readHeaders, res.headers),
+    };
+  };
+  return fetcher;
+}

@@ -49,6 +49,7 @@ export function useSettingsState(
         icon: string;
       }
     | undefined,
+  enableThumbnails: boolean,
 ) {
   const [proxyUrlsState, setProxyUrls, resetProxyUrls, proxyUrlsChanged] =
     useDerived(proxyUrls);
@@ -71,6 +72,12 @@ export function useSettingsState(
   ] = useDerived(deviceName);
   const [profileState, setProfileState, resetProfile, profileChanged] =
     useDerived(profile);
+  const [
+    enableThumbnailsState,
+    setEnableThumbnailsState,
+    resetEnableThumbnails,
+    enableThumbnailsChanged,
+  ] = useDerived(enableThumbnails);
 
   function reset() {
     resetTheme();
@@ -80,6 +87,7 @@ export function useSettingsState(
     resetBackendUrl();
     resetDeviceName();
     resetProfile();
+    resetEnableThumbnails();
   }
 
   const changed =
@@ -89,7 +97,8 @@ export function useSettingsState(
     deviceNameChanged ||
     backendUrlChanged ||
     proxyUrlsChanged ||
-    profileChanged;
+    profileChanged ||
+    enableThumbnailsChanged;
 
   return {
     reset,
@@ -128,6 +137,11 @@ export function useSettingsState(
       state: profileState,
       set: setProfileState,
       changed: profileChanged,
+    },
+    enableThumbnails: {
+      state: enableThumbnailsState,
+      set: setEnableThumbnailsState,
+      changed: enableThumbnailsChanged,
     },
   };
 }

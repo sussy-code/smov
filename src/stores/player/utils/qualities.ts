@@ -1,4 +1,4 @@
-import { Qualities } from "@movie-web/providers";
+import { Qualities, Stream } from "@movie-web/providers";
 
 import { QualityStore } from "@/stores/quality";
 
@@ -14,16 +14,19 @@ export type SourceFileStream = {
 export type LoadableSource = {
   type: StreamType;
   url: string;
+  preferredHeaders?: Stream["preferredHeaders"];
 };
 
 export type SourceSliceSource =
   | {
       type: "file";
       qualities: Partial<Record<SourceQuality, SourceFileStream>>;
+      preferredHeaders?: Stream["preferredHeaders"];
     }
   | {
       type: "hls";
       url: string;
+      preferredHeaders?: Stream["preferredHeaders"];
     };
 
 const qualitySorting: Record<SourceQuality, number> = {
