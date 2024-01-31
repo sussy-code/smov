@@ -69,7 +69,17 @@ export function DownloadView({ id }: { id: string }) {
                 <StyleTrans k="player.menus.downloads.hlsDisclaimer" />
               </Menu.Paragraph>
 
-              <Button className="w-full" href={downloadUrl} theme="purple">
+              <Button
+                className="w-full"
+                theme="purple"
+                href={downloadUrl}
+                onClick={(event) => {
+                  // Allow context menu & left click to copy
+                  event.preventDefault();
+
+                  navigator.clipboard.writeText(downloadUrl);
+                }}
+              >
                 {t("player.menus.downloads.downloadPlaylist")}
               </Button>
               <Button
