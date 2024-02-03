@@ -243,7 +243,6 @@
     "menus": {
       "downloads": {
         "disclaimer": "下載直接從供應商處獲取。movie-web 無法控制下載的提供方式。",
-        "downloadPlaylist": "下載播放清單",
         "downloadSubtitle": "下載當前字幕",
         "downloadVideo": "下載視頻",
         "hlsDisclaimer": "下載直接從供應商處獲取。movie-web 無法控制下載的提供方式。<br /><br /> 請注意，您正在下載 HLS 播放清單， <bold>如果您不熟悉高級流媒體格式，則不建議下載 </bold> 。嘗試使用不同格式的不同來源。",

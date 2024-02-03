@@ -243,7 +243,6 @@
     "menus": {
       "downloads": {
         "disclaimer": "I download vengono effettuati direttamente dal provider. movie-web non ha il controllo sulle modalità di fornitura dei download.",
-        "downloadPlaylist": "Scarica playlist",
         "downloadSubtitle": "Scarica sottotitolo attuale",
         "downloadVideo": "Scarica video",
         "hlsDisclaimer": "I download vengono effettuati direttamente dal provider. movie-web non ha il controllo sul modo in cui i download vengono forniti.<br /><br />Nota che se state scaricando un playlist HLS, <bold>non è raccomandato di scaricare se non si ha familiarità con i formati di streaming avanzati</bold>. Prova altri sorgenti per diversi formati.",

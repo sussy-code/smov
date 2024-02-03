@@ -240,7 +240,6 @@
     "menus": {
       "downloads": {
         "disclaimer": "Videos werden direkt vom Provider heruntergeladen. movie-web hat keinen Einfluss darauf, wie Downloads bereitgestellt werden.",
-        "downloadPlaylist": "Playlist herunterladen",
         "downloadSubtitle": "Aktuelle Untertitel herunterladen",
         "downloadVideo": "Video herunterladen",
         "hlsDisclaimer": "movie-web hat keinen Einfluss darauf, wie Downloads bereitgestellt werden. Downloads werden direkt vom Anbieter bezogen. <br /><br />Bitte beachte, dass du eine HLS-Wiedergabeliste herunterlädst, <bold>dies ist nicht empfohlen für Nutzer die nicht mit Erweiterten Streaming Formaten vertraut sind</bold>. Probiere andere Anbieter für andere Formate.",

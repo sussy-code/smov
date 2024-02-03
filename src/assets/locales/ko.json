@@ -177,7 +177,6 @@
     "menus": {
       "downloads": {
         "disclaimer": "다운로드는 제공업체에서 직접 가져옵니다. movie-web은 다운로드 제공 방식을 통제할 수 없습니다.",
-        "downloadPlaylist": "플레이리스트 다운로드",
         "downloadSubtitle": "현재 자막 다운로드",
         "downloadVideo": "영상 다운로드",
         "hlsDisclaimer": "다운로드는 제공업체에서 직접 가져옵니다. movie-web은 다운로드 제공 방식을 통제할 수 없습니다. 고급 멀티미디어 스트리밍에 익숙한 사용자를 위한 HLS 재생 목록을 다운로드하고 있다는 점에 유의하세요.",
