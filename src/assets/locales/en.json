@@ -128,15 +128,11 @@
       },
       "morning": {
         "default": "What would you like to watch this morning?",
-        "extra": [
-          "I hear Before Sunrise is good"
-        ]
+        "extra": ["I hear Before Sunrise is good"]
       },
       "night": {
         "default": "What would you like to watch tonight?",
-        "extra": [
-          "Tired? I hear The Exorcist is good."
-        ]
+        "extra": ["Tired? I hear The Exorcist is good."]
       }
     }
   },
@@ -243,7 +239,7 @@
     "menus": {
       "downloads": {
         "disclaimer": "Downloads are taken directly from the provider. movie-web does not have control over how the downloads are provided.",
-        "downloadPlaylist": "Download playlist",
+        "copyHlsPlaylist": "Copy HLS playlist link",
         "downloadSubtitle": "Download current subtitle",
         "downloadVideo": "Download video",
         "hlsDisclaimer": "Downloads are taken directly from the provider. movie-web does not have control over how the downloads are provided.<br /><br />Please note that you are downloading an HLS playlist, <bold>it is not recommended to download if you are not familiar with advanced streaming formats</bold>. Try different sources for different formats.",
