@@ -97,6 +97,8 @@ export const defaultTheme = {
         background: tokens.shade.c300,
         backgroundHover: tokens.shade.c200,
         highlight: tokens.blue.c200,
+
+        activeBackground: tokens.shade.c300,
       },
       
       // meta data for the theme itself
