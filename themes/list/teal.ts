@@ -63,7 +63,9 @@ export default createTheme({
       pill: {
         background: tokens.shade.c300,
         backgroundHover: tokens.shade.c200,
-        highlight: tokens.blue.c200
+        highlight: tokens.blue.c200,
+
+        activeBackground: tokens.shade.c300,
       },
 
       global: {

@@ -104,7 +104,7 @@ function ThemePreview(props: {
         <span className="font-medium text-white">{props.name}</span>
         <span
           className={classNames(
-            "inline-block px-3 text-sm transition-opacity duration-150 rounded-full bg-[#27182F] text-white",
+            "inline-block px-3 py-1 leading-tight text-sm transition-opacity duration-150 rounded-full bg-pill-activeBackground text-white/85",
             props.active ? "opacity-100" : "opacity-0 pointer-events-none",
           )}
         >
