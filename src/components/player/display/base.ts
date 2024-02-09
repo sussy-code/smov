@@ -131,7 +131,7 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
         });
         hls.on(Hls.Events.ERROR, (event, data) => {
           console.error("HLS error", data);
-          if (data.fatal) {
+          if (data.fatal && src?.url === data.frag?.baseurl) {
             emit("error", {
               message: data.error.message,
               stackTrace: data.error.stack,
