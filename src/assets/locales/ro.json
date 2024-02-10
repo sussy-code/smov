@@ -79,7 +79,6 @@
   },
   "footer": {
     "legal": {
-      "disclaimer": "Disclaimer",
       "disclaimerText": "movie-web nu găzduiește niciun fișier, ci doar trimite la servicii terțe. Problemele juridice ar trebui abordate cu gazdele și furnizorii de fișiere. movie-web nu este responsabil pentru niciun fișier media afișat de furnizorii de video."
     },
     "links": {
@@ -179,7 +178,6 @@
     "menus": {
       "downloads": {
         "disclaimer": "Descărcările sunt luate direct de la furnizor. Movie-web nu are control cum descărcările sunt furnizate.",
-        "downloadPlaylist": "Descarcă lista de redare",
         "downloadSubtitle": "Descărcați subtitlul curente",
         "downloadVideo": "Descarcă video",
         "hlsDisclaimer": "Descărcările sunt preluate direct de la furnizor. movie-web nu are control asupra modului în care sunt furnizate descărcările. Vă rugăm să rețineți că descărcați o listă de redare HLS, aceasta este destinată utilizatorilor familiar cu streamingul avansat.",

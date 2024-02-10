@@ -95,6 +95,7 @@
       "about": "Hakkında",
       "dmca": "DMCA",
       "login": "Giriş yap",
+      "onboarding": "Kur",
       "pagetitle": "{{title}} - movie-web",
       "register": "Kayıt ol",
       "settings": "Ayarlar"
@@ -179,7 +180,6 @@
     "menus": {
       "downloads": {
         "disclaimer": "İndirme bağlantıları doğrudan sağlayıcının kendisinden alınır. movie-web'in sağlanan indirme bağlantıları üzerinde hiçbir konrolü yoktur.",
-        "downloadPlaylist": "Oynatma listesini indir",
         "downloadSubtitle": "Geçerli altyazıyı indir",
         "downloadVideo": "Videoyu indir",
         "hlsDisclaimer": "İndirme bağlantıları doğrudan sağlayıcının kendisinden alınır. movie-web'in sağlanan indirme bağlantıları üzerinde hiçbir konrolü yoktur. Lütfen bir HLS oynatma listesi indirdiğinizi unutmayın; bu, gelişmiş multimedya akışına aşina olan kullanıcılara yöneliktir.",

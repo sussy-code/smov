@@ -95,6 +95,7 @@
       "about": "Meistä",
       "dmca": "DMCA",
       "login": "Kirjaudu sisään",
+      "onboarding": "asetus",
       "pagetitle": "{{title}} - movie-web",
       "register": "Rekisteröidy",
       "settings": "Asetukset"
@@ -175,7 +176,115 @@
     "extension": {
       "back": "Mene takaisin",
       "explainer": "Käyttämällä selainlaajennusta voit saada parhaat tarjoamamme suoratoistot. Yksinkertaisella asennuksella.",
-      "explainerIos": "Valitettavasti selainlaajennusta ei tueta iOS:ssä. Valitse toinen vaihtoehto painamalla <bold>Palaa</bold>."
+      "explainerIos": "Valitettavasti selainlaajennusta ei tueta iOS:ssä. Valitse toinen vaihtoehto painamalla <bold>Palaa</bold>.",
+      "extensionHelp": "Jos olet asentanut laajennuksen, mutta se ei havaitse sitä, <bold>avaa laajennus selaimen laajennusvalikosta</bold> ja noudata näytön ohjeita.",
+      "linkChrome": "Asenna Chromen laajennus",
+      "linkFirefox": "Asenna Firefoxin laajennus",
+      "notDetecting": "Asensitko sen Chromelle, mutta sivusto ei havaitse sitä? Kokeile ladata sivu uudelleen!",
+      "notDetectingAction": "Lataa sivu uudelleen",
+      "status": {
+        "disallowed": "Laajennus ei ole otettu käyttöön tälle sivulle",
+        "disallowedAction": "Ota laajennus käyttöön",
+        "failed": "Pyynnön tilan hakeminen epäonnistui",
+        "loading": "Odottaa, että asennat laajennuksen",
+        "outdated": "Laajennuksen versio on liian vanha",
+        "success": "Laajennus toimii odotetusti!"
+      },
+      "submit": "Jatketaan",
+      "title": "Aloitetaan laajennuksella"
+    },
+    "proxy": {
+      "back": "Mene takaisin",
+      "explainer": "Proxy-menetelmällä voit saada erinomaisen laadukkaita suoratoistoja luomalla itsepalveluvaltuutetun proxyn.",
+      "input": {
+        "errorConnection": "Yhteys proxyn kanssa ei onnistunut",
+        "errorInvalidUrl": "Ei kelvollinen URL-osoite",
+        "errorNotProxy": "Odotettiin proxya, mutta saatiinkin verkkosivu",
+        "label": "Proxyn URL-osoite",
+        "placeholder": "https://"
+      },
+      "link": "Opi luomaan proxy",
+      "submit": "Toimita proxy",
+      "title": "Luodaan uusi proxy"
+    },
+    "start": {
+      "explainer": "Parhaiden suoratoistojen saamiseksi sinun täytyy valita, mitä suoratoistomenetelmää haluat käyttää.",
+      "options": {
+        "default": {
+          "text": "En halua hyvälaatuisia suoratoistoja,<0 /> <1>käytä oletusasetusta</1>"
+        },
+        "extension": {
+          "action": "Asenna laajennus",
+          "description": "Asenna selaimen laajennus ja saa pääsy parhaisiin lähteisiin."
+        }
+      },
+      "title": "Aloitetaan asennus elokuva-webin kanssa"
+    }
+  },
+  "player": {
+    "menus": {
+      "episodes": {
+        "emptyState": "Tässä kaudessa ei ole jaksoja, tarkista myöhemmin!"
+      },
+      "quality": {
+        "hint": "Voit kokeilla <0>vaihtaa lähdettä</0> saadaksesi eri laatuasetuksia."
+      },
+      "sources": {
+        "noEmbeds": {
+          "text": "Emme löytäneet upotuksia, kokeile toista lähdettä."
+        },
+        "noStream": {
+          "text": "Tässä lähteessä ei ole suoratoistoja tälle elokuvalle tai ohjelmalle."
+        }
+      }
+    },
+    "metadata": {
+      "api": {
+        "text": "API-metatietoja ei voitu ladata, tarkista internet-yhteys.",
+        "title": "Ei voitu ladata API:n metatietoja."
+      }
+    },
+    "playbackError": {
+      "errors": {
+        "errorAborted": "Mediatiedon haku keskeytettiin käyttäjän pyynnöstä.",
+        "errorNotSupported": "Mediaa tai mediantarjoajaa ei tueta."
+      },
+      "text": "Tapahtui virhe yritettäessä toistaa mediaa. Yritä uudelleen."
+    },
+    "time": {
+      "remaining": "{{timeLeft}} jäljellä • Päättyy {{timeFinished, datetime}}"
+    },
+    "turnstile": {
+      "error": "Ei voitu varmistaa inhimillisyyttäsi. Yritä uudelleen.",
+      "title": "Meidän täytyy varmistaa, että olet ihminen."
+    }
+  },
+  "screens": {
+    "migration": {
+      "inProgress": "Pysy hetkisen odotuksessa, siirrämme tietojasi. Tämä ei kestä kauan."
+    }
+  },
+  "settings": {
+    "account": {
+      "register": {
+        "text": "Jaa katseluetenemisesi laitteiden välillä ja pidä ne synkronoituina."
+      }
+    },
+    "connections": {
+      "setup": {
+        "unsetStatus": {
+          "description": "Käynnistä asennusprosessi napsauttamalla oikealla olevaa painiketta."
+        }
+      },
+      "workers": {
+        "emptyState": "Ei vielä työntekijöitä, lisää yksi alle"
+      }
+    },
+    "preferences": {
+      "languageDescription": "Kieli sovellettu koko sovellukseen."
+    },
+    "subtitles": {
+      "previewQuote": "Minun ei pidä pelätä. Pelko on mielen tappaja."
     }
   }
 }

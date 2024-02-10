@@ -238,7 +238,6 @@
     "menus": {
       "downloads": {
         "disclaimer": "Stahování probíhá přímo u poskytovatele. movie-web nemá kontrolu nad tím, jak jsou stahování poskytovány.",
-        "downloadPlaylist": "Stáhnout playlist",
         "downloadSubtitle": "Stáhnout aktuální titulky",
         "downloadVideo": "Stáhnout video",
         "hlsDisclaimer": "Stahování probíhá přímo u poskytovatele. movie-web nemá kontrolu nad tím, jak jsou stahování poskytovány.<br /><br />Vezměte prosím na vědomí, že stahujete HLS playlist,<bold> který není doporučen stahovat pokud nejste obeznámeni s pokročilým streamováním médií</bold>. Raději skuste jiný zdroj pro jiný formát.",

@@ -243,10 +243,9 @@
     "menus": {
       "downloads": {
         "disclaimer": "As descargas proveñen do provedor. movie-web non ten control sobre as descargas e a súa procedencia.",
-        "downloadPlaylist": "Descargar lista",
         "downloadSubtitle": "Descargar subtítulos actuais",
         "downloadVideo": "Descargar video",
-        "hlsDisclaimer": "As descargas realizanse directamente dende o proovedor. movie-web non ten control sobre como se xestionan as descargas. Ten en conta que estás a descargar unha lista de reproducción HLS, dirixidos a usuarios familiarizados coa transmisión multimedia avanzada.",
+        "hlsDisclaimer": "As descargas realizanse directamente dende o proovedor. movie-web non ten control sobre como se xestionan as descargas. <br /><br />Ten en conta que estás a descargar unha lista de reproducción HLS, <bold>non está recomendado instalalos se non estás familiarizado con estos sistemas de contidos avanzados</bold> Proba fontes diferentes ou formatos diferentes.",
         "onAndroid": {
           "1": "Para descargar en Android, fai click no botón de descarga e despois, na nova páxina, <bold>mantén presionado</bold>o vídeo e selecciona <bold>gardar</bold>.",
           "shortTitle": "Descargar / Android",
