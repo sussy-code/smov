@@ -243,7 +243,6 @@
     "menus": {
       "downloads": {
         "disclaimer": "Downloads be taken directly from the provider. movie-web does not have control over how the downloads be provided.",
-        "downloadPlaylist": "Download playlist",
         "downloadSubtitle": "Download current subtitle",
         "downloadVideo": "Download film",
         "hlsDisclaimer": "Loot are taken directly from the provider. movie-web does nah 'ave control o'er how the loot are provided. <br /><br />Please note that ye be downloadin' an HLS playlist, <bold>'tisn't recommended t' download if ye be nah familiar wit' advanced streamin' formats</bold>. Try different sources fer different formats.",

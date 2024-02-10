@@ -243,7 +243,6 @@
     "menus": {
       "downloads": {
         "disclaimer": "Downloads worden direct bij de bron opgehaald. movie-web heeft geen controle over het bestand dat je ontvangt.",
-        "downloadPlaylist": "Afspeellijst downloaden",
         "downloadSubtitle": "Download huidige ondertiteling",
         "downloadVideo": "Download filmpje",
         "hlsDisclaimer": "Downloads worden rechtstreeks van de aanbieder gehaald. movie-web heeft geen controle over de manier waarop de downloads worden aangeboden.<br /><br />Houd er rekening mee dat u nu een HLS-afspeellijst downloadt, het wordt <bold>afgeraden deze te downloaden als u niet bekend bent met geavanceerde streamingbestandstypen</bold>. Probeer verschillende bronnen voor verschillende streamingbestandstypen.",

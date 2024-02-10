@@ -179,7 +179,6 @@
     "menus": {
       "downloads": {
         "disclaimer": "Les baixades s'obtenen directament del proveïdor. movie-web no té control sobre com es proporcionen les baixades.",
-        "downloadPlaylist": "Baixa la llista de reproducció",
         "downloadSubtitle": "Baixa els subtítols actuals",
         "downloadVideo": "Baixa el vídeo",
         "hlsDisclaimer": "Les baixades s'obtenen directament del proveïdor. movie-web no té control sobre com es proporcionen les baixades. Tingueu en compte que esteu baixant una llista de reproducció HLS, destinada als usuaris familiaritzats amb la transmissió multimèdia avançada.",

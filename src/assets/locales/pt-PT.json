@@ -179,7 +179,6 @@
     "menus": {
       "downloads": {
         "disclaimer": "Os downloads são feitos diretamente pelo fornecedor. O movie-web não tem controle sobre como os downloads são fornecidos.",
-        "downloadPlaylist": "Baixar lista de reprodução",
         "downloadSubtitle": "Baixar legenda atual",
         "downloadVideo": "Baixar vídeo",
         "hlsDisclaimer": "Os downloads são feitos diretamente pelo fornecedor. O movie-web não tem controle sobre como os downloads são fornecidos. Por favor, note que está a baixar uma lista de reprodução HLS, isso é destinado a utilizadores familiarizados com streaming multimídia avançado.",

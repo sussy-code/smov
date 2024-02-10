@@ -179,7 +179,6 @@
     "menus": {
       "downloads": {
         "disclaimer": "Allalaadimine toimub otse teenusepakkujalt. movie-web ei saa kontrollida, kuidas allalaadimine toimub.",
-        "downloadPlaylist": "Laadige esitusloend alla",
         "downloadSubtitle": "Laadige alla praegune subtiiter",
         "downloadVideo": "Lae alla video",
         "hlsDisclaimer": "Allalaadimised võetakse otse teenusepakkujalt. movie-web ei kontrolli, kuidas allalaadimisi pakutakse. Pange tähele, et laadite alla HLS-i esitusloendit, see on mõeldud kasutajatele, kes on tuttavad multimeediumi voogesitusega.",

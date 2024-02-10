@@ -243,7 +243,6 @@
     "menus": {
       "downloads": {
         "disclaimer": "Les téléchargements sont effectués directement par le fournisseur. movie-web n'a aucun contrôle sur la manière dont les téléchargements sont effectués.",
-        "downloadPlaylist": "Télécharger la liste de lecture",
         "downloadSubtitle": "Télécharger les sous-titres",
         "downloadVideo": "Télécharger la vidéo",
         "hlsDisclaimer": "Les téléchargements sont effectués directement auprès du fournisseur. movie-web n'a aucun contrôle sur la façon dont les téléchargements sont fournis.<br /><br />Veuillez noter que vous téléchargez une liste de lecture HLS, <bold>il n'est pas recommandé de la télécharger si vous n'êtes pas familier avec les formats de streaming avancés. </bold>. Essayez différentes sources pour différents formats.",

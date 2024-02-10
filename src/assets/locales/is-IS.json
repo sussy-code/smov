@@ -234,7 +234,6 @@
     "menus": {
       "downloads": {
         "disclaimer": "Niðurhalningar eru teknar beint frá heimildini. movie-web hefur engan kraft yfir hvernig niðurhalningarnar eru gefnar.",
-        "downloadPlaylist": "Hlaða niður spilarlista",
         "downloadSubtitle": "Hlaða niður nú verandi texta",
         "downloadVideo": "Hlaða niður myndbandi",
         "hlsDisclaimer": "Niðurhalningar eru teknar beint frá heimildini. movie-web hefur engan kraft yfir hvernig niðurhalningarnar eru gefnar.<br /><br />Vinsamlegast fattaðu að þú ert að niðurhala HLS spilunarlista, <bold>það er ekki mælt með að niðurhala ef þú kannt ekki mikið á háþróað streymis sniði.</bold>. Reyndu aðrar heimildir fyrir önnur sniði.",

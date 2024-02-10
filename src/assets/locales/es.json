@@ -243,7 +243,6 @@
     "menus": {
       "downloads": {
         "disclaimer": "Las descargas se realizan directamente desde el proveedor. movie-web no tiene control sobre cómo se proporcionan las descargas.",
-        "downloadPlaylist": "Descargar lista de reproducción",
         "downloadSubtitle": "Descargar subtítulo actual",
         "downloadVideo": "Descargar vídeo",
         "hlsDisclaimer": "Las descargas se realizan directamente del proveedor. movie-web no tiene control sobre cómo se proporcionan las descargas. <br /><br />Tenga en cuenta que está descargando una lista de reproducción HLS, <bold>dirigida a usuarios familiarizados con la transmisión multimedia avanzada.</bold> Prueba con diferentes fuentes para diferentes formatos.",

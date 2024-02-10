@@ -179,7 +179,6 @@
     "menus": {
       "downloads": {
         "disclaimer": "Prenosi se opravijo neposredno pri ponudniku vsebin. movie-web nima nadzora nad načinom zagotavljanja prenosov.",
-        "downloadPlaylist": "Prenesi playlisto",
         "downloadSubtitle": "Prenesi trenutne podnapise",
         "downloadVideo": "Prenesi video",
         "hlsDisclaimer": "Prenosi se opravijo neposredno pri ponudniku vsebin. movie-web nima nadzora nad načinom zagotavljanja prenosov. Upoštevajte, da prenašate seznam predvajanja tipa \"HLS\"; ta je namenjen uporabnikom, ki poznajo napredno pretakanje večpredstavnostnih vsebin.",

@@ -97,6 +97,8 @@ export const defaultTheme = {
         background: tokens.shade.c300,
         backgroundHover: tokens.shade.c200,
         highlight: tokens.blue.c200,
+
+        activeBackground: tokens.shade.c300,
       },
       
       // meta data for the theme itself
@@ -160,6 +162,7 @@ export const defaultTheme = {
       // search bar
       search: {
         background: tokens.shade.c500,
+        hoverBackground: tokens.shade.c600,
         focused: tokens.shade.c400,
         placeholder: tokens.shade.c100,
         icon: tokens.shade.c100,

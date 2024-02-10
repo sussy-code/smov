@@ -58,22 +58,7 @@ export function OnboardingPage() {
           {t("onboarding.start.explainer")}
         </Paragraph>
 
-        <div className="w-full flex flex-col-reverse md:flex-row gap-3">
-          <Card onClick={() => navigate("/onboarding/proxy")}>
-            <CardContent
-              colorClass="!text-onboarding-good"
-              title={t("onboarding.start.options.proxy.title")}
-              subtitle={t("onboarding.start.options.proxy.quality")}
-              description={t("onboarding.start.options.proxy.description")}
-            >
-              <Link>{t("onboarding.start.options.proxy.action")}</Link>
-            </CardContent>
-          </Card>
-          <div className="hidden md:grid grid-rows-[1fr,auto,1fr] justify-center gap-4">
-            <VerticalLine className="items-end" />
-            <span className="text-xs uppercase font-bold">or</span>
-            <VerticalLine />
-          </div>
+        <div className="w-full flex flex-col md:flex-row gap-3">
           <Card onClick={() => navigate("/onboarding/extension")}>
             <CardContent
               colorClass="!text-onboarding-best"
@@ -82,6 +67,21 @@ export function OnboardingPage() {
               description={t("onboarding.start.options.extension.description")}
             >
               <Link>{t("onboarding.start.options.extension.action")}</Link>
+            </CardContent>
+          </Card>
+          <div className="hidden md:grid grid-rows-[1fr,auto,1fr] justify-center gap-4">
+            <VerticalLine className="items-end" />
+            <span className="text-xs uppercase font-bold">or</span>
+            <VerticalLine />
+          </div>
+          <Card onClick={() => navigate("/onboarding/proxy")}>
+            <CardContent
+              colorClass="!text-onboarding-good"
+              title={t("onboarding.start.options.proxy.title")}
+              subtitle={t("onboarding.start.options.proxy.quality")}
+              description={t("onboarding.start.options.proxy.description")}
+            >
+              <Link>{t("onboarding.start.options.proxy.action")}</Link>
             </CardContent>
           </Card>
         </div>
