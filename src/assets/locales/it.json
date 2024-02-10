@@ -176,11 +176,11 @@
     "extension": {
       "back": "Torna indietro",
       "explainer": "Utilizzando l'estensione del browser, è possibile ottenere i stream ottimi che abbiamo da offrire. Basta una semplice installazione.",
-      "explainerIos": "Purtroppo, l'estensione del browser non è supportato su IOS, premere <bold>Torna indietro</bold> per scegliere un'altra opzione.",
-      "extensionHelp": "Se avete installato l'estensione ma non viene rilevata. <bold>Aprire l'estensione attraverso il menu delle estensioni del browser</bold> e seguire i passaggi sullo schermo.",
+      "explainerIos": "Purtroppo, l'estensione del browser non è supportato su iOS, premere <bold>Torna indietro</bold> per scegliere un'altra opzione.",
+      "extensionHelp": "Se avete installato l'estensione ma non viene rilevata. <bold>Apri l'estensione attraverso il menu delle estensioni del browser</bold> e seguire i passaggi sullo schermo.",
       "linkChrome": "Installa l'estensione su Chrome",
       "linkFirefox": "Installa l'estensione su Firefox",
-      "notDetecting": "Installato su Chrome ma non viene visualizzato? Prova a ricaricare la pagina!",
+      "notDetecting": "Installato su Chrome ma il sito non lo rileva? Prova a ricaricare la pagina!",
       "notDetectingAction": "Ricarica pagina",
       "status": {
         "disallowed": "L'estensione non è attivato per questa pagina",
@@ -208,7 +208,7 @@
       "title": "Creiamo un nuovo proxy"
     },
     "start": {
-      "explainer": "Per ottenere i migliori streaming possibili. È necessario scegliere il metodo di streaming da utilizzare.",
+      "explainer": "Per ottenere i migliori streaming possibili, è necessario scegliere il metodo di streaming da utilizzare.",
       "options": {
         "default": {
           "text": "Non voglio stream di buona qualità, <0 /> <1>usa setup predefinita</1>"
@@ -243,7 +243,6 @@
     "menus": {
       "downloads": {
         "disclaimer": "I download vengono effettuati direttamente dal provider. movie-web non ha il controllo sulle modalità di fornitura dei download.",
-        "downloadPlaylist": "Scarica playlist",
         "downloadSubtitle": "Scarica sottotitolo attuale",
         "downloadVideo": "Scarica video",
         "hlsDisclaimer": "I download vengono effettuati direttamente dal provider. movie-web non ha il controllo sul modo in cui i download vengono forniti.<br /><br />Nota che se state scaricando un playlist HLS, <bold>non è raccomandato di scaricare se non si ha familiarità con i formati di streaming avanzati</bold>. Prova altri sorgenti per diversi formati.",

@@ -42,8 +42,8 @@
     },
     "register": {
       "information": {
-        "color1": "头像配色 1",
-        "color2": "头像配色 2",
+        "color1": "头像配色一",
+        "color2": "头像配色二",
         "header": "为您的设备输入名称，并选取一组代表色和一个用户图标",
         "icon": "用户图标",
         "next": "下一步",
@@ -243,7 +243,6 @@
     "menus": {
       "downloads": {
         "disclaimer": "下载内容是直接从内容提供者获取的。movie-web 无法控制下载内容如何被提供。",
-        "downloadPlaylist": "下载播放列表",
         "downloadSubtitle": "下载当前字幕",
         "downloadVideo": "下载视频",
         "hlsDisclaimer": "下载内容是直接从内容提供者获取的。movie-web 无法控制下载内容如何被提供。<br /><br />请注意，您正在下载 HLS 播放列表，<bold>如您不熟悉高级流媒体格式，我们不推荐此操作</bold>。如需下载其他格式，请尝试切换视频源。",

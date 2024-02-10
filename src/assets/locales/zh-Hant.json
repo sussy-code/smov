@@ -5,17 +5,99 @@
     "q1": {
       "body": "movie-web 不託管任何內容。您點選觀看內容時，系統均從互聯網搜尋（在加載提示頁和“視頻源”選項卡中，您可以看到正在使用的源）。媒體從未在 movie-web 中上傳，所有內容均通過搜索機制而得。",
       "title": "內容來自哪裡？"
-    }
+    },
+    "q2": {
+      "body": "無法主動要求影視劇或其他節目，movie-web 不管理任何內容。所有內容均從網路影片來源取得並供您觀看。",
+      "title": "我可以從哪裡請求觀看影視劇或其他節目？"
+    },
+    "q3": {
+      "body": "我們的搜尋結果由電影資料庫（TMDB）驅動，無論視訊來源是否有對應內容，都會顯示結果。",
+      "title": "搜尋結果中已顯示了影視劇或其他節目，為何我無法播放？"
+    },
+    "title": "關於 movie-web"
+  },
+  "actions": {
+    "copied": "已複製",
+    "copy": "複製"
   },
   "auth": {
+    "createAccount": "還沒有帳戶？ <0>建立一個</0>",
+    "deviceNameLabel": "設備名稱",
+    "deviceNamePlaceholder": "我的手機",
+    "generate": {
+      "description": "您的密碼短語相當於使用者名稱與密碼。由於您需要輸入它來登入帳戶，請確保將其存放到安全位置",
+      "next": "我已儲存密碼短語",
+      "passphraseFrameLabel": "密碼短語",
+      "title": "您的密碼短語"
+    },
+    "hasAccount": "已經擁有帳戶？ <0>點此登入。 </0>",
     "login": {
-      "submit": "登入"
+      "description": "請輸入密碼短語以登入您的帳戶",
+      "deviceLengthError": "請輸入設備名稱",
+      "passphraseLabel": "12 字密碼短語",
+      "passphrasePlaceholder": "密碼短語",
+      "submit": "登入",
+      "title": "登入您的帳戶",
+      "validationError": "密碼短語不正確或不完整"
+    },
+    "register": {
+      "information": {
+        "color1": "頭像配色一",
+        "color2": "輪廓顏色二",
+        "header": "為您的裝置輸入名稱，並選取一組代表色和一個使用者圖示",
+        "icon": "使用者圖示",
+        "next": "下一步",
+        "title": "帳號資訊"
+      }
+    },
+    "trust": {
+      "failed": {
+        "text": "您的配置是否正確？",
+        "title": "無法連接伺服器"
+      },
+      "host": "您正在連線到 <0>{{hostname}}</0> - 在建立帳戶之前，請確保您信任它",
+      "no": "返回",
+      "title": "您是否信任這個伺服器？",
+      "yes": "我信任這個伺服器"
+    },
+    "verify": {
+      "description": "請輸入早前的密碼短語，以確認您已經保存它，並建立您的帳戶",
+      "invalidData": "資料無效",
+      "noMatch": "密碼短語不匹配",
+      "passphraseLabel": "您的 12 字密碼短語",
+      "recaptchaFailed": "ReCaptcha 驗證失敗",
+      "register": "創建帳戶",
+      "title": "確認您的密碼短語"
     }
   },
+  "errors": {
+    "badge": "它已損壞",
+    "details": "錯誤詳情",
+    "reloadPage": "重新加載頁面",
+    "showError": "顯示錯誤詳情",
+    "title": "我們遇到了一個錯誤！"
+  },
+  "footer": {
+    "legal": {
+      "disclaimer": "免責聲明",
+      "disclaimerText": "movie-web 不託管任何文件，僅連結至第三方服務。法律問題應由文件託管者和內容提供者解決。 movie-web 對影片提供者顯示的任何媒體檔案不承擔任何責任。"
+    },
+    "links": {
+      "discord": "Discord",
+      "dmca": "DMCA",
+      "github": "GitHub"
+    },
+    "tagline": "使用這個開源流媒體應用程序觀看您最喜歡的節目和電影。"
+  },
   "global": {
+    "name": "movie-web",
     "pages": {
       "about": "關於",
+      "dmca": "DMCA",
       "login": "登入",
+      "onboarding": "設定",
+      "pagetitle": "{{title}} - movie-web",
+      "register": "註冊",
       "settings": "設定"
     }
   },
@@ -23,21 +105,128 @@
     "bookmarks": {
       "sectionTitle": "書籤"
     },
+    "continueWatching": {
+      "sectionTitle": "繼續觀看"
+    },
+    "mediaList": {
+      "stopEditing": "停止編輯"
+    },
     "search": {
-      "loading": "載入中..."
+      "allResults": "以上是我們能找到的所有結果!",
+      "failed": "未能找到媒體，請重試！",
+      "loading": "載入中...",
+      "noResults": "我们找不到任何结果！",
+      "placeholder": "您想看什麼？",
+      "sectionTitle": "搜索結果"
+    },
+    "titles": {
+      "day": {
+        "default": "您今天下午想看什麼？",
+        "extra": [
+          "想要來場冒險嗎？《侏羅紀公園》可能是完美選擇。"
+        ]
+      },
+      "morning": {
+        "default": "您今天早上想看什麼？",
+        "extra": [
+          "我聽說《情留半天》不錯"
+        ]
+      },
+      "night": {
+        "default": "您今晚想看什麼？",
+        "extra": [
+          "疲倦了嗎？我聽說《驅魔人》不錯。"
+        ]
+      }
     }
   },
   "media": {
+    "episodeDisplay": "S{{season}} E{{episode}}",
     "types": {
       "movie": "電影",
       "show": "節目"
     }
   },
   "navigation": {
+    "banner": {
+      "offline": "請檢查您的網絡連接"
+    },
     "menu": {
+      "about": "關於我們",
       "donation": "捐",
+      "logout": "登出",
+      "register": "同步到雲端",
       "settings": "設定",
       "support": "支援"
+    }
+  },
+  "notFound": {
+    "badge": "未找到",
+    "goHome": "返回首頁",
+    "message": "我們到處尋找：在垃圾桶下面，在壁櫥裡，在代理伺服器後面，但最終找不到您要找的頁面。",
+    "title": "找不到該頁面"
+  },
+  "onboarding": {
+    "defaultConfirm": {
+      "cancel": "取消",
+      "confirm": "使用預設設置",
+      "description": "默認設置沒有最好的直播，並且可能慢得令人難以忍受。",
+      "title": "您確定嗎？"
+    },
+    "extension": {
+      "back": "返回",
+      "explainer": "使用瀏覽器擴展程式，您可以獲得我們提供的最佳直播。只需簡單的安裝。",
+      "explainerIos": "不幸的是，iOS 不支援瀏覽器擴展程式，按 <bold>返回 </bold>選擇其他選項。",
+      "extensionHelp": "如果您已安裝該擴展程式，但未檢測到該擴展程式， <bold>請通過瀏覽器的擴展程式功能表打開該擴展 程式 </bold>，然後按照螢幕上的步驟操作。",
+      "linkChrome": "安裝 Chrome 擴展程式",
+      "linkFirefox": "安裝 Firefox 擴展程式",
+      "notDetecting": "安裝在 Chrome 上，但網站沒有檢測到它？嘗試重新載入頁面！",
+      "notDetectingAction": "重新加載頁面",
+      "status": {
+        "disallowed": "未為此頁面啟用擴展程式",
+        "disallowedAction": "啟用擴展程式",
+        "failed": "無法請求狀態",
+        "loading": "等待您安裝擴展程式",
+        "outdated": "擴展程式版本太舊",
+        "success": "擴展程式正在按預期工作！"
+      },
+      "submit": "繼續",
+      "title": "讓我們從擴展程式開始"
+    },
+    "proxy": {
+      "back": "返回",
+      "explainer": "使用代理伺服器，您可以通過製作自定代理伺服器來獲得高品質的直播。",
+      "input": {
+        "errorConnection": "無法連接到代理伺服器",
+        "errorInvalidUrl": "URL 無效",
+        "errorNotProxy": "期待一個代理伺服器，但得到了一個網站",
+        "label": "代理伺服器 URL",
+        "placeholder": "https://"
+      },
+      "link": "瞭解如何製作代理伺服器",
+      "submit": "提交代理伺服器",
+      "title": "讓我們創建一個新的代理伺服器"
+    },
+    "start": {
+      "explainer": "為了獲得最好的流媒體，您需要選擇您想使用的流媒體方法。",
+      "options": {
+        "default": {
+          "text": "我不想要高品質的流，<0 /> <1> 使用預設設置</1>"
+        },
+        "extension": {
+          "action": "安裝擴展程式",
+          "description": "安裝瀏覽器擴展程式並訪問最佳資源。",
+          "quality": "最好的品質",
+          "title": "瀏覽器擴展程式"
+        },
+        "proxy": {
+          "action": "設置代理伺服器",
+          "description": "只需 5 分鐘即可設置代理伺服器並訪問優質資源。",
+          "quality": "好品質",
+          "title": "自訂代理伺服器"
+        }
+      },
+      "title": "讓我們為您設定 movie-web"
     }
   },
   "overlays": {
@@ -45,58 +234,303 @@
   },
   "player": {
     "back": {
+      "default": "返回首頁",
       "short": "後退"
+    },
+    "casting": {
+      "enabled": "正在投放到設備…"
     },
     "menus": {
       "downloads": {
+        "disclaimer": "下載直接從供應商處獲取。movie-web 無法控制下載的提供方式。",
+        "downloadSubtitle": "下載當前字幕",
+        "downloadVideo": "下載視頻",
+        "hlsDisclaimer": "下載直接從供應商處獲取。movie-web 無法控制下載的提供方式。<br /><br /> 請注意，您正在下載 HLS 播放清單， <bold>如果您不熟悉高級流媒體格式，則不建議下載 </bold> 。嘗試使用不同格式的不同來源。",
+        "onAndroid": {
+          "1": "要在 Android 上下載，請按下下載按鈕，然後在新頁面上<bold>點擊並按住 </bold>視頻，然後選擇 <bold>保存</bold>。",
+          "shortTitle": "下載 / Android",
+          "title": "在Android上下載"
+        },
+        "onIos": {
+          "1": "要在 iOS 上下載，請按下下載按鈕，然後在新頁面上，按下 <bold><ios_share /> </bold>然後<bold>保存到檔案 <ios_files /></bold> 。",
+          "shortTitle": "下載 / iOS",
+          "title": "正在 iOS 上下载"
+        },
+        "onPc": {
+          "1": "在PC上，按下下載按鈕，然後在新頁面上右鍵按下視頻並選擇 <bold>將視頻另存為</bold>",
+          "shortTitle": "下載 / PC",
+          "title": "正在PC 上下载"
+        },
         "title": "下載"
       },
       "episodes": {
+        "button": "分集",
+        "emptyState": "該季暫無分集，請稍後再來！",
+        "episodeBadge": "E{{episode}}",
+        "loadingError": "加載分集時出錯",
         "loadingList": "載入中...",
-        "loadingTitle": "載入中..."
+        "loadingTitle": "載入中...",
+        "unairedEpisodes": "本季中的一集或多集已因尚未播出而被禁用。"
+      },
+      "playback": {
+        "speedLabel": "播放速度",
+        "title": "播放設置"
+      },
+      "quality": {
+        "automaticLabel": "自動品質",
+        "hint": "您可以嘗試<0>切換源</0>以獲得不同的質量選項。",
+        "iosNoQuality": "由於 Apple 定義的限制，此來源的品質選擇在 iOS 上不可用。您可以嘗試<0>切換到另一個來源</0>以獲得不同的質量選項。",
+        "title": "品質"
       },
       "settings": {
-        "downloadItem": "下載"
+        "downloadItem": "下載",
+        "enableSubtitles": "啟用字幕",
+        "experienceSection": "觀看體驗",
+        "playbackItem": "播放設定",
+        "qualityItem": "品質",
+        "sourceItem": "影片來源",
+        "subtitleItem": "字幕設定",
+        "videoSection": "影片設定"
+      },
+      "sources": {
+        "failed": {
+          "text": "嘗試查找任何視頻時出錯，請嘗試其他來源。",
+          "title": "無法刮取"
+        },
+        "noEmbeds": {
+          "text": "我們無法找到任何嵌入内容，請嘗試其他來源。",
+          "title": "未找到嵌入内容"
+        },
+        "noStream": {
+          "text": "此來源沒有此電影或節目的串流。",
+          "title": "無視頻源"
+        },
+        "title": "來源",
+        "unknownOption": "未知"
       },
       "subtitles": {
-        "title": "字幕"
+        "customChoice": "從檔案中選擇字幕",
+        "customizeLabel": "自訂",
+        "offChoice": "關閉",
+        "settings": {
+          "backlink": "自訂字幕",
+          "delay": "字幕延遲",
+          "fixCapitals": "修復大小寫"
+        },
+        "title": "字幕",
+        "unknownLanguage": "未知"
       }
     },
     "metadata": {
+      "api": {
+        "text": "無法載入 API 元數據，請檢查您的互聯網連接。",
+        "title": "載入 API 元數據失敗"
+      },
+      "dmca": {
+        "badge": "已移除",
+        "text": "由於收到刪除通知或版權聲明，此媒體不再可用。",
+        "title": "媒體已被移除"
+      },
+      "extensionPermission": {
+        "badge": "缺少權限",
+        "button": "使用擴展程式",
+        "text": "您已安裝瀏覽器擴展，但我們需要您的許可才能啟用它。",
+        "title": "配置擴展程式"
+      },
       "failed": {
-        "badge": "失敗"
+        "badge": "失敗",
+        "homeButton": "返回首頁",
+        "text": "無法從 TMDB 載入媒體的元資料。請檢查 TMDB 是否斷線或在您的網路連線中被封鎖。",
+        "title": "載入元資料失敗"
+      },
+      "notFound": {
+        "badge": "未找到",
+        "homeButton": "返回首頁",
+        "text": "我們無法找到您請求的媒體。它可能已被刪除，或者您修改了 URL。",
+        "title": "無法找到媒體。"
       }
     },
     "nextEpisode": {
-      "cancel": "取消"
+      "cancel": "取消",
+      "next": "下一集"
+    },
+    "playbackError": {
+      "badge": "播放錯誤",
+      "errors": {
+        "errorAborted": "媒體的提取因使用者的請求而中止。",
+        "errorDecode": "儘管之前已確定可用，但在嘗試解碼媒體資源時發生錯誤，從而導致錯誤。",
+        "errorGenericMedia": "發生未知的媒體錯誤。",
+        "errorNetwork": "發生了某種網路錯誤，導致無法成功提取媒體，儘管以前可用。",
+        "errorNotSupported": "不支援媒體或媒體提供者物件。"
+      },
+      "homeButton": "返回首頁",
+      "text": "嘗試播放媒體時出錯。請再試一次。",
+      "title": "無法播放視頻！"
+    },
+    "scraping": {
+      "items": {
+        "failure": "發生錯誤",
+        "notFound": "沒有視頻",
+        "pending": "檢查影片..."
+      },
+      "notFound": {
+        "badge": "未找到",
+        "detailsButton": "顯示詳情",
+        "homeButton": "返回首頁",
+        "text": "我們已經搜索了我們的供應商，但找不到您正在尋找的媒體！我們不託管媒體，也無法控制可用的內容。請點擊下面的「顯示詳情」瞭解更多詳情。",
+        "title": "我們找不到"
+      }
+    },
+    "time": {
+      "regular": "{{timeWatched}} / {{duration}}",
+      "remaining": "剩餘{{timeLeft}} • 在{{timeFinished, datetime}}完結",
+      "shortRegular": "{{timeWatched}}",
+      "shortRemaining": "-{{timeLeft}}"
+    },
+    "turnstile": {
+      "description": "請通過右側的驗證碼來確認您是人類。這是為了保護 movie-web 的安全！",
+      "error": "無法驗證您的人類身份。請再試一次。",
+      "title": "我們需要驗證您是否為人類。",
+      "verifyingHumanity": "正在驗證您的人類身份..."
     }
   },
   "screens": {
+    "dmca": {
+      "text": "歡迎來到movie-web的DMCA聯繫頁面！我們尊重智慧財產權，並希望迅速解決任何版權問題。如果您認為您的版權作品在我們的平臺上被不當使用，請向以下電子郵件發送詳細的DMCA通知。請附上受版權保護材料的描述、您的聯繫方式以及善意信念的聲明。我們致力於迅速解決這些問題，並感謝您的合作，使電影網成為一個尊重創意和版權的地方。",
+      "title": "DMCA"
+    },
+    "loadingApp": "正在載入應用程式",
+    "loadingUser": "正在載入您的個人資料",
     "loadingUserError": {
-      "logout": "登出"
+      "logout": "登出",
+      "reset": "重置您的自定義伺服器",
+      "text": "無法載入您的個人資料",
+      "textWithReset": "無法從您的自定義伺服器載入設定檔，您想要重置回預設伺服器？"
+    },
+    "migration": {
+      "failed": "資料遷移失敗。",
+      "inProgress": "請稍等，我們正在遷移您的數據。這不應該需要太久。"
     }
   },
   "settings": {
     "account": {
+      "accountDetails": {
+        "deviceNameLabel": "設備名稱",
+        "deviceNamePlaceholder": "個人電話",
+        "editProfile": "編輯",
+        "logoutButton": "登出"
+      },
+      "actions": {
+        "delete": {
+          "button": "刪除帳戶",
+          "confirmButton": "刪除帳戶",
+          "confirmDescription": "您確定要刪除您的帳戶嗎？所有數據都將丟失！",
+          "confirmTitle": "您確定嗎？",
+          "text": "此操作不可逆轉。所有數據將被刪除，且無法恢復。",
+          "title": "刪除帳戶"
+        },
+        "title": "操作"
+      },
+      "devices": {
+        "deviceNameLabel": "設備名稱",
+        "failed": "無法載入階段",
+        "removeDevice": "刪除",
+        "title": "設備"
+      },
+      "profile": {
+        "finish": "完成編輯",
+        "firstColor": "頭像配色一",
+        "secondColor": "頭像配色二",
+        "title": "編輯個人資料圖片",
+        "userIcon": "用戶圖示"
+      },
+      "register": {
+        "cta": "開始使用",
+        "text": "在設備之間共用並持續同步您的觀看進度。",
+        "title": "同步到雲端"
+      },
       "title": "帳戶"
     },
     "appearance": {
+      "activeTheme": "使用中",
       "themes": {
         "blue": "藍色",
+        "default": "預設",
         "gray": "灰色",
         "red": "紅色",
         "teal": "青色"
+      },
+      "title": "外觀"
+    },
+    "connections": {
+      "server": {
+        "description": "若您想連接到自定義後端保存數據，請啟用此選項並提供 URL。<0>查看指引</0>",
+        "label": "自訂伺服器",
+        "urlLabel": "自訂伺服器 URL"
+      },
+      "setup": {
+        "doSetup": "進行設置",
+        "errorStatus": {
+          "description": "此設置中的一項或多項似乎需要您注意。",
+          "title": "有些事情需要你注意"
+        },
+        "itemError": "此設置有問題。重新設置以修復它。",
+        "items": {
+          "default": "預設設置",
+          "extension": "擴展程式",
+          "proxy": "自訂代理伺服器"
+        },
+        "redoSetup": "重做設置",
+        "successStatus": {
+          "description": "一切都已準備就緒，您可以開始觀看自己喜歡的媒體。",
+          "title": "一切都設置好了！"
+        },
+        "unsetStatus": {
+          "description": "請按下右側的按鈕開始設置過程。",
+          "title": "您尚未完成設置"
+        }
+      },
+      "title": "連接",
+      "workers": {
+        "addButton": "添加新的 Worker",
+        "description": "為了使應用程式正常運行，所有流量都通過代理伺服器。如果要自帶 Worker，請啟用此功能。 <0>說明</0>",
+        "emptyState": "還沒有Worker，在下面添加一個",
+        "label": "使用自訂代理伺服器 Workers",
+        "urlLabel": "Worker URLs",
+        "urlPlaceholder": "https://"
       }
     },
+    "preferences": {
+      "language": "應用程式語言",
+      "languageDescription": "語言已應用於整個應用程式。",
+      "thumbnail": "生成縮圖",
+      "thumbnailDescription": "大多數時候，視頻沒有縮圖。您可以啟用此設置以即時生成它們，但它們會使您的視頻變慢。",
+      "thumbnailLabel": "生成縮圖",
+      "title": "偏好"
+    },
+    "reset": "重置",
+    "save": "保存",
     "sidebar": {
       "info": {
+        "appVersion": "應用版本",
+        "backendUrl": "後端URL",
+        "backendVersion": "後端版本",
+        "hostname": "主機名",
         "insecure": "不安全",
-        "secure": "安全"
+        "notLoggedIn": "您尚未登錄",
+        "secure": "安全",
+        "title": "應用資訊",
+        "unknownVersion": "未知",
+        "userId": "使用者ID"
       }
     },
     "subtitles": {
+      "backgroundLabel": "背景不透明度",
       "colorLabel": "顏色",
+      "previewQuote": "我絕不能害怕。 恐懼會扼殺思維能力。",
+      "textSizeLabel": "字體大小",
       "title": "字幕"
-    }
+    },
+    "unsaved": "您有未儲存的變更"
   }
 }

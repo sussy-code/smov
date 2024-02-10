@@ -190,7 +190,8 @@
         "outdated": "Erweiterungsversion zu alt",
         "success": "Die Browser-Erweiterung funktioniert wie erwartet!"
       },
-      "submit": "Weiter"
+      "submit": "Weiter",
+      "title": "Lass uns mit einer Erweiterung starten"
     },
     "proxy": {
       "back": "Zurück gehen",
@@ -203,7 +204,8 @@
         "placeholder": "https://"
       },
       "link": "Erfahre, wie man einen Proxy einstellt",
-      "submit": "Proxy einreichen"
+      "submit": "Proxy einreichen",
+      "title": "Lass uns eine neue Proxy erstellen"
     },
     "start": {
       "explainer": "Um die bestmöglichen Streams zu erhalten, müssen Sie auswählen, welche Streaming-Methode Sie verwenden möchten.",
@@ -223,7 +225,8 @@
           "quality": "Gute Qualität",
           "title": "Eigene Proxy"
         }
-      }
+      },
+      "title": "Lass uns mit der Einrichtung von movie-web starten"
     }
   },
   "overlays": {
@@ -240,7 +243,6 @@
     "menus": {
       "downloads": {
         "disclaimer": "Videos werden direkt vom Provider heruntergeladen. movie-web hat keinen Einfluss darauf, wie Downloads bereitgestellt werden.",
-        "downloadPlaylist": "Playlist herunterladen",
         "downloadSubtitle": "Aktuelle Untertitel herunterladen",
         "downloadVideo": "Video herunterladen",
         "hlsDisclaimer": "movie-web hat keinen Einfluss darauf, wie Downloads bereitgestellt werden. Downloads werden direkt vom Anbieter bezogen. <br /><br />Bitte beachte, dass du eine HLS-Wiedergabeliste herunterlädst, <bold>dies ist nicht empfohlen für Nutzer die nicht mit Erweiterten Streaming Formaten vertraut sind</bold>. Probiere andere Anbieter für andere Formate.",

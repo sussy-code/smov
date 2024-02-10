@@ -82,12 +82,21 @@
       "disclaimer": "면책 조항",
       "disclaimerText": "movie-web은 어떠한 파일도 호스팅하지 않으며, 제3자 서비스에 대한 링크만 제공합니다. 법적 문제는 파일 호스트 및 제공업체와 해결해야 합니다. 동영상 제공업체가 표시하는 미디어 파일에 대해 movie-web은 책임을 지지 않습니다."
     },
+    "links": {
+      "discord": "디스코드",
+      "dmca": "DMCA",
+      "github": "깃허브"
+    },
     "tagline": "이 오픈 소스 스트리밍 앱으로 좋아하는 프로그램과 영화를 시청하세요."
   },
   "global": {
+    "name": "무비-웹",
     "pages": {
       "about": "소개",
+      "dmca": "DMCA",
       "login": "로그인",
+      "onboarding": "기본 구성",
+      "pagetitle": "{{title}} - movie-web",
       "register": "회원가입",
       "settings": "설정"
     }
@@ -132,6 +141,7 @@
     }
   },
   "media": {
+    "episodeDisplay": "시즌{{season}} {{episode}}화",
     "types": {
       "movie": "영화",
       "show": "쇼"
@@ -156,6 +166,69 @@
     "message": "쓰레기통 아래, 옷장, 프록시 뒤 등 모든 곳을 찾아보았지만 결국 원하는 페이지를 찾을 수 없었습니다.",
     "title": "해당 페이지를 찾을 수 없습니다"
   },
+  "onboarding": {
+    "defaultConfirm": {
+      "cancel": "취소",
+      "confirm": "기본 설정 사용",
+      "description": "기본 설정은 쾌적한 스트리밍 환경을 제공하지 않으므로 다소 시청이 불편할 수 있습니다.",
+      "title": "정말 진행할까요?"
+    },
+    "extension": {
+      "back": "돌아가기",
+      "explainer": "확장 프로그램을 이용하므로서, 저희가 제공해야 할 최고 화질의 영상을 시청할 수 있습니다. 간단한 설치 한 번으로요.",
+      "explainerIos": "죄송하지만, 해당 확장 프로그램은 애플 모바일 환경에서 지원하지 않습니다, <bold> 돌아가기</bold>을 눌러 다른 옵션을 선택해 주세요.",
+      "extensionHelp": "확장 프로그램을 설치했지만 인식되지 않는다면, <bold>브라우저의 확장 프로그램 메뉴를 열어 해당 확장 프로그램을 클릭한 후</bold> 화면의 안내를 따라주세요.",
+      "linkChrome": "크롬 확장 프로그램 설치",
+      "linkFirefox": "파이어폭스 확장 프로그램 설치",
+      "notDetecting": "크롬 환경에서 설치했지만 사이트가 인식하지 못하나요? 새로고침을 시도해 보세요!",
+      "notDetectingAction": "새로고침",
+      "status": {
+        "disallowed": "이 페이지는 확장 프로그램 사용이 불가능합니다",
+        "disallowedAction": "확장 프로그램 사용",
+        "failed": "상태 요청 실패",
+        "loading": "확장 프로그램 설치를 기다리는 중입니다",
+        "outdated": "확장 프로그램의 버전이 오래됨",
+        "success": "확장 프로그램 정상 작동 중!"
+      },
+      "submit": "계속",
+      "title": "확장 프로그램으로 시작해 봅시다"
+    },
+    "proxy": {
+      "back": "돌아가기",
+      "explainer": "프록시 방식을 통하여, 직접 운영하는 프록시를 만들어 훌륭한 화질의 영상을 시청할 수 있습니다.",
+      "input": {
+        "errorConnection": "프록시에 연결할 수 없음",
+        "errorInvalidUrl": "유효하지 않은 URL",
+        "errorNotProxy": "프록시가 아닌 웹사이트가 입력되었습니다",
+        "label": "프록시 URL",
+        "placeholder": "https://"
+      },
+      "link": "프록시 만드는 방법 배우기",
+      "submit": "프록시 제출",
+      "title": "새로운 프록시를 만들어 봅시다"
+    },
+    "start": {
+      "explainer": "가장 쾌적한 송출을 위하여 사용하고 싶은 송출 방식을 선택해야 합니다.",
+      "options": {
+        "default": {
+          "text": "화질 좋은 영상을 원하지는 않아요, <0 /><1>기본 설정 사용</1>"
+        },
+        "extension": {
+          "action": "확장 프로그램 설치",
+          "description": "고화질의 영상을 시청하기 위하여 브라우저 확장 프로그램을 설치해주세요.",
+          "quality": "최고의 화질",
+          "title": "브라우저 확장 프로그램"
+        },
+        "proxy": {
+          "action": "프록시 설정",
+          "description": "단 5분 만에 프록시를 설정하고 쾌적한 송출 환경을 이용하세요.",
+          "quality": "좋은 화질",
+          "title": "커스텀 프록시"
+        }
+      },
+      "title": "movie-web의 설정을 진행해 봅시다"
+    }
+  },
   "overlays": {
     "close": "닫기"
   },
@@ -170,10 +243,9 @@
     "menus": {
       "downloads": {
         "disclaimer": "다운로드는 제공업체에서 직접 가져옵니다. movie-web은 다운로드 제공 방식을 통제할 수 없습니다.",
-        "downloadPlaylist": "플레이리스트 다운로드",
         "downloadSubtitle": "현재 자막 다운로드",
         "downloadVideo": "영상 다운로드",
-        "hlsDisclaimer": "다운로드는 제공업체에서 직접 가져옵니다. movie-web은 다운로드 제공 방식을 통제할 수 없습니다. 고급 멀티미디어 스트리밍에 익숙한 사용자를 위한 HLS 재생 목록을 다운로드하고 있다는 점에 유의하세요.",
+        "hlsDisclaimer": "다운로드는 제공업체에서 직접 가져옵니다. movie-web은 다운로드 제공 방식을 통제할 수 없습니다.<br /><br />사용자께서는 HLS 플레이리스트를 다운로드 하고 있으며, <bold>이는 고급 스트리밍 포맷의 사용에 익숙하지 않은 사용자에게는 추천하지 않는다는 것을 유의해주세요<bold>. 혹은 다른 소스와 포맷을 이용하여 보세요.",
         "onAndroid": {
           "1": "Android에서 다운로드하려면 다운로드 버튼을 클릭한 다음 새 페이지에서 동영상을 <bold>길게 눌러</bold>저장을 선택합니다.",
           "shortTitle": "다운로드 / Android",
@@ -194,9 +266,11 @@
       "episodes": {
         "button": "회차",
         "emptyState": "이번 시즌에는 에피소드가 없으니 나중에 다시 확인하세요!",
+        "episodeBadge": "{{episode}}화",
         "loadingError": "시즌 로딩중 에러 발생",
         "loadingList": "로딩...",
-        "loadingTitle": "로딩..."
+        "loadingTitle": "로딩...",
+        "unairedEpisodes": "해당 시즌의 다수의 에피소드들이 아직 방송되지 않은 이유로 비공개 처리되었습니다."
       },
       "playback": {
         "speedLabel": "재생 속도",
@@ -248,6 +322,21 @@
       }
     },
     "metadata": {
+      "api": {
+        "text": "API 메타데이터를 불러올 수 없었습니다. 인터넷 연결 상태를 확인해 주세요.",
+        "title": "API 메타데이터을 읽어오지 못했습니다"
+      },
+      "dmca": {
+        "badge": "삭제됨",
+        "text": "이 미디어는 저작권 침해 및 신고로 인하여 더 이상 이용이 불가합니다.",
+        "title": "미디어가 삭제됨"
+      },
+      "extensionPermission": {
+        "badge": "권한 없음",
+        "button": "확장 프로그램 사용",
+        "text": "브라우저의 확장 프로그램을 사용하기 위해서는 사용자의 권한이 필요합니다.",
+        "title": "확장 프로그램 설정"
+      },
       "failed": {
         "badge": "실패함",
         "homeButton": "메인으로 돌아가기",
@@ -293,12 +382,22 @@
       }
     },
     "time": {
-      "remaining": "{{timeLeft}} 남음 • {{timeFinished, datetime}}에 종료"
+      "regular": "{{timeWatched}} / {{duration}}",
+      "remaining": "{{timeLeft}} 남음 • {{timeFinished, datetime}}에 종료",
+      "shortRegular": "{{timeWatched}}",
+      "shortRemaining": "-{{timeLeft}}"
+    },
+    "turnstile": {
+      "description": "우측에 있는 캡챠를 통해 인간임을 인증해주새요. 이것은 무비-웹의 안전을 위한 것입니다!",
+      "error": "인류애를 인증하는 데에 실패했습니다. 다시 시도해주새요.",
+      "title": "당신이 로봇이 아닌지 확인해야 합니다.",
+      "verifyingHumanity": "인류애 인증 중..."
     }
   },
   "screens": {
     "dmca": {
-      "text": "movie-web의 DMCA 문의 페이지에 오신 것을 환영합니다! 당사는 지적 재산권을 존중하며 저작권 관련 문제를 신속하게 해결하고자 합니다. 귀하의 저작권이 있는 저작물이 당사 플랫폼에서 부적절하게 사용되었다고 생각되는 경우, 아래 이메일로 자세한 DMCA 통지를 보내주시기 바랍니다. 저작권이 있는 자료에 대한 설명, 연락처 정보, 선의의 신념을 담은 진술서를 포함하시기 바랍니다. 당사는 이러한 문제를 신속하게 해결하기 위해 최선을 다하고 있으며, movie-web을 창의성과 저작권을 존중하는 공간으로 유지하는 데 협조해 주셔서 감사합니다."
+      "text": "movie-web의 DMCA 문의 페이지에 오신 것을 환영합니다! 당사는 지적 재산권을 존중하며 저작권 관련 문제를 신속하게 해결하고자 합니다. 귀하의 저작권이 있는 저작물이 당사 플랫폼에서 부적절하게 사용되었다고 생각되는 경우, 아래 이메일로 자세한 DMCA 통지를 보내주시기 바랍니다. 저작권이 있는 자료에 대한 설명, 연락처 정보, 선의의 신념을 담은 진술서를 포함하시기 바랍니다. 당사는 이러한 문제를 신속하게 해결하기 위해 최선을 다하고 있으며, movie-web을 창의성과 저작권을 존중하는 공간으로 유지하는 데 협조해 주셔서 감사합니다.",
+      "title": "DMCA"
     },
     "loadingApp": "애플리케이션 로딩 중",
     "loadingUser": "프로필 로 중",
@@ -365,18 +464,49 @@
     },
     "connections": {
       "server": {
-        "description": "사용자 지정 백엔드에 연결하여 데이터를 저장하려면 이 기능을 활성화하고 URL을 입력합니다.",
+        "description": "사용자 지정 백엔드에 연결하여 데이터를 저장하려면 이 기능을 활성화하고 URL을 입력합니다. <0>Instructions.</0>",
         "label": "사용자 지정 서버",
         "urlLabel": "사용자 지정 서버 URL"
+      },
+      "setup": {
+        "doSetup": "설정 진행하기",
+        "errorStatus": {
+          "description": "아직 완료되지 않은 설정이 있는 것 같습니다.",
+          "title": "완료되지 않은 설정이 있습니다"
+        },
+        "itemError": "설정에 문제가 발생하였습니다. 설정을 다시 진행하여 주세요.",
+        "items": {
+          "default": "기본 설정",
+          "extension": "확장 프로그램",
+          "proxy": "커스텀 프록시"
+        },
+        "redoSetup": "설정을 다시하기",
+        "successStatus": {
+          "description": "찜한 리스트의 영상을 시청할 모든 준비가 끝났습니다.",
+          "title": "모든 설정이 완료되었습니다!"
+        },
+        "unsetStatus": {
+          "description": "기본 구성을 진행하기 위하여 오른쪽 버튼을 눌러주세요.",
+          "title": "기본 구성이 완료되지 않았습니다"
+        }
       },
       "title": "연결",
       "workers": {
         "addButton": "새 워커 추가하기",
-        "description": "애플리케이션이 작동하도록 하기 위해 모든 트래픽은 프록시를 통해 라우팅됩니다. 직접 워커를 사용하려면 이 옵션을 사용 설정하세요.",
+        "description": "애플리케이션이 작동하도록 하기 위해 모든 트래픽은 프록시를 통해 라우팅됩니다. 직접 워커를 사용하려면 이 옵션을 사용 설정하세요. <0>Instructions.</0>",
         "emptyState": "아직 워커가 없는 경우 아래에서 워커를 추가하세요",
         "label": "사용자 지정 프록시 워커 사용",
-        "urlLabel": "워커 URL"
+        "urlLabel": "워커 URL",
+        "urlPlaceholder": "https://"
       }
+    },
+    "preferences": {
+      "language": "애플리케이션 언어",
+      "languageDescription": "애플리케이션 전체에 적용될 언어.",
+      "thumbnail": "썸네일 생성",
+      "thumbnailDescription": "대부분의 영상들은 섬네일을 가지고 있지 않습니다. 사용자가 직접 영상의 섬네일을 생성할 수 있지만, 잦은 버퍼링을 일으킬 수 있습니다.",
+      "thumbnailLabel": "섬네일 생성",
+      "title": "환경 설정"
     },
     "reset": "초기화",
     "save": "저장",
