@@ -92,8 +92,13 @@
   "global": {
     "name": "movie-web",
     "pages": {
+      "about": "Thông tin",
+      "dmca": "DMCA",
+      "login": "Đăng nhập",
+      "onboarding": "Cài đặt",
       "pagetitle": "{{title}} - movie-web",
-      "register": "Đăng ký"
+      "register": "Đăng ký",
+      "settings": "Cài đặt"
     }
   },
   "home": {
@@ -103,6 +108,9 @@
     "continueWatching": {
       "sectionTitle": "Tiếp tục xem"
     },
+    "mediaList": {
+      "stopEditing": "Hoàn thành"
+    },
     "search": {
       "allResults": "Đó là tất cả chúng tôi có!",
       "failed": "Không thể tìm thấy nội dung, hãy thử lại!",
@@ -110,6 +118,11 @@
       "noResults": "Chúng tôi không thể tìm thấy gì!",
       "placeholder": "Bạn muốn xem gì?",
       "sectionTitle": "Kết quả tìm kiếm"
+    },
+    "titles": {
+      "night": {
+        "default": "Đêm nay bạn muốn coi gì?"
+      }
     }
   },
   "media": {
@@ -122,6 +135,13 @@
   "navigation": {
     "banner": {
       "offline": "Hãy kiểm tra kết nối Internet của bạn"
+    },
+    "menu": {
+      "about": "Về chúng tôi",
+      "donation": "Ủng hộ",
+      "logout": "Đăng xuất",
+      "settings": "Cài đặt",
+      "support": "Hỗ trợ"
     }
   },
   "notFound": {
@@ -129,6 +149,17 @@
     "goHome": "Quay lại trang chính",
     "message": "Chúng tôi đã tìm kiếm khắp nơi: dưới thùng rác, trong tủ quần áo, đằng sau máy chủ proxy nhưng vẫn không thể tìm thấy trang bạn đang tìm kiếm.",
     "title": "Không thể tìm thấy trang"
+  },
+  "onboarding": {
+    "defaultConfirm": {
+      "cancel": "Huỷ",
+      "confirm": "Chọn cài đặt mặc định",
+      "description": "Cài đặt mặc định có thể dẫn đến việc phát video chậm.",
+      "title": "Bạn có chắc không?"
+    },
+    "extension": {
+      "back": "Trở lại"
+    }
   },
   "player": {
     "back": {

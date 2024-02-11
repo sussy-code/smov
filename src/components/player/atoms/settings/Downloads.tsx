@@ -82,7 +82,7 @@ export function DownloadView({ id }: { id: string }) {
                   copyToClipboard(downloadUrl);
                 }}
               >
-                {t("player.menus.downloads.downloadPlaylist")}
+                {t("player.menus.downloads.copyHlsPlaylist")}
               </Button>
               <Button
                 className="w-full mt-2"
