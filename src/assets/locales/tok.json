@@ -94,6 +94,7 @@
       "about": "o sona",
       "dmca": "DMCA",
       "login": "o open",
+      "onboarding": "o pali",
       "pagetitle": "{{title}} - ilo Muwi-We",
       "register": "o pali open",
       "settings": "o ante"
@@ -164,6 +165,11 @@
     "message": "mi lukin lon anpa poki, lon insa tomo, lon monsi ilo. taso mi lukin ala e lipu pi wile sina",
     "title": "mi ken ala lukin e lipu ona"
   },
+  "onboarding": {
+    "start": {
+      "title": "o open e ilo Muwi-We"
+    }
+  },
   "overlays": {
     "close": "o pini"
   },
@@ -204,7 +210,8 @@
         "episodeBadge": "E{{episode}}",
         "loadingError": "alasa li pakala",
         "loadingList": "alasa...",
-        "loadingTitle": "alasa..."
+        "loadingTitle": "alasa...",
+        "unairedEpisodes": "sitelen li lon ala lukin la ken la sina lukin ala e ona"
       },
       "playback": {
         "speedLabel": "tenpo lukin",
@@ -256,6 +263,14 @@
       }
     },
     "metadata": {
+      "dmca": {
+        "badge": "weka",
+        "text": "wile weka li kama tan mama sitelen la sitelen ni li ken ala",
+        "title": "sitelen li weka"
+      },
+      "extensionPermission": {
+        "button": "o kepeken namako"
+      },
       "failed": {
         "badge": "pakala",
         "homeButton": "o tawa weka",
@@ -305,6 +320,12 @@
       "remaining": "tenpo {{timeLeft}} la o awen • tenpo {{timeFinished, datetime}} la ona li pini",
       "shortRegular": "{{timeWatched}}",
       "shortRemaining": "-{{timeLeft}}"
+    },
+    "turnstile": {
+      "description": "sina jan la o pali e ilo Captcha lon poka ni. mi wile awen e ilo Muwi-We a!",
+      "error": "mi lukin e ni: ken la sina jan ala. o alasa sin",
+      "title": "sina o jan",
+      "verifyingHumanity": "sina jan ala jan?"
     }
   },
   "screens": {
@@ -320,6 +341,7 @@
       "textWithReset": "alasa tan lawa ilo sina li pakala. sina wile e lawa ilo mi anu seme?"
     },
     "migration": {
+      "failed": "tawa pi sona sina li pakala",
       "inProgress": "o awen lili. mi alasa tawa e sona sina"
     }
   },
@@ -375,14 +397,58 @@
     },
     "connections": {
       "server": {
-        "description": "sina wile e poki sona ante la o pana e nimi ona lon ni",
+        "description": "sina wile e poki sona ante la o pana e nimi ona lon ni: <0>nasin</0>",
         "label": "lawa ante",
         "urlLabel": "nimi pi lawa ante"
       },
-      "title": "kulupu"
+      "setup": {
+        "doSetup": "o pali",
+        "errorStatus": {
+          "description": "ni li wile e lukin sina",
+          "title": "o lukin"
+        },
+        "itemError": "ni li pakala. o pali sin",
+        "items": {
+          "default": "pali sama",
+          "extension": "namako"
+        },
+        "redoSetup": "o pali sin",
+        "successStatus": {
+          "description": "ijo ale li pona. sina ken lukin e sitelen ale pi wile sina",
+          "title": "pali li pini a!"
+        },
+        "unsetStatus": {
+          "description": "o luka e nena lon poka ni tawa open pali",
+          "title": "sina pali ala"
+        }
+      },
+      "title": "kulupu",
+      "workers": {
+        "urlPlaceholder": "https://"
+      }
+    },
+    "preferences": {
+      "language": "toki ilo",
+      "languageDescription": "ilo li toki kepeken toki ni",
+      "thumbnail": "o pali e sitelen awen",
+      "thumbnailDescription": "tenpo mute la, sitelen tawa li jo ala e sitelen awen. sina wile e sitelen lili pi lukin wan la o lon e ni. taso, ni li ken suli ike e tenpo sitelen sina",
+      "thumbnailLabel": "o pali e sitelen awen",
+      "title": "wile"
     },
     "reset": "o weka e ante",
     "save": "o ante",
+    "sidebar": {
+      "info": {
+        "appVersion": "nanpa ilo",
+        "hostname": "nimi mama",
+        "insecure": "ike",
+        "notLoggedIn": "mi sona ala e sina",
+        "secure": "pona",
+        "title": "sona ilo",
+        "unknownVersion": "mi sona ala",
+        "userId": "nanpa sina"
+      }
+    },
     "subtitles": {
       "backgroundLabel": "kon",
       "colorLabel": "kule",

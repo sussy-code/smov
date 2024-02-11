@@ -1,6 +1,6 @@
 {
   "about": {
-    "description": "movie-web on veebirakendus, mis otsib internetti voogude jaoks. Meeskonna eesmärk on enamasti minimalistlik lähenemine sisu tarbimisele.",
+    "description": "movie-web on veebirakendus, mis otsib internetti striimide jaoks. Meie eesmärk on enamasti minimalistlik lähenemine sisu tarbimisele.",
     "faqTitle": "Tihti küsitud küsimused",
     "q1": {
       "body": "movie-web ei hoiusta enda sisu. Kui klõpsate, et midagi vaadata, otsitakse valitud meediat internetist (laadimisekraanil ja vahekaardil \"videoallikad\" näete, millist allikat te kasutate). Meediat ei lae movie-web kunagi üles, kõik toimub selle otsingumehhanismi kaudu.",
@@ -87,7 +87,7 @@
       "dmca": "DMCA",
       "github": "GitHub"
     },
-    "tagline": "Vaadake selle avatud lähtekoodiga voogesituse rakendusega oma lemmiksaateid ja -filme."
+    "tagline": "Vaadake selle avatud lähtekoodiga striimimis rakendusega oma lemmiksaateid ja -filme."
   },
   "global": {
     "name": "movie-web",
@@ -95,6 +95,7 @@
       "about": "Meist",
       "dmca": "DMCA",
       "login": "Logi sisse",
+      "onboarding": "Seadistamine",
       "pagetitle": "{{title}} - movie-web",
       "register": "Registreeri",
       "settings": "Sätted"
@@ -165,6 +166,69 @@
     "message": "Otsisime kõikjalt: prügikastide alt, kapist, proksi tagant, kuid lõpuks ei leidnud otsitud lehte.",
     "title": "Ei leidnud seda lehekülge"
   },
+  "onboarding": {
+    "defaultConfirm": {
+      "cancel": "Tühista",
+      "confirm": "Kasuta tavalist seadistust",
+      "description": "Tavalises seadistuses ei ole parimad striimid ja see võib olla talumatult aeglane.",
+      "title": "Oled kindel?"
+    },
+    "extension": {
+      "back": "Mine tagasi",
+      "explainer": "Kasutades brauserilaiendust, saate parimaid striime, mida meil on pakkuda. Seda saab paigaldada vaid paari hetkega.",
+      "explainerIos": "Kahjuks ei toeta iOS meie brauserilaiendust, Vajutage <bold>Minge tagasi</bold>, et valida teine valik.",
+      "extensionHelp": "Kui olete laienduse paigaldanud, kuid seda ei tuvastata, <bold> avage laiendus oma brauseri laienduste menüüst</bold> ja järgige ekraanil olevaid juhendeid.",
+      "linkChrome": "Paigalda Chrome laiendus",
+      "linkFirefox": "Paigalda Firefox'i laiendus",
+      "notDetecting": "Paigaldasite laienduse Chrome'ile, kuid sait ei tuvasta seda? Proovige lehte värskendada!",
+      "notDetectingAction": "Värskenda leht",
+      "status": {
+        "disallowed": "Laiendus ei ole lubatud sellel lehel",
+        "disallowedAction": "Laienduse lubamine",
+        "failed": "Päring staatuse saamiseks ei õnnestunud",
+        "loading": "Ootame, et paigaldaksite laienduse",
+        "outdated": "Laienduse versioon liiga vana",
+        "success": "Laiendus töötab ootuspäraselt!"
+      },
+      "submit": "Jätka",
+      "title": "Alustame laiendusega"
+    },
+    "proxy": {
+      "back": "Mine tagasi",
+      "explainer": "Proksi abiga saate suurepärase kvaliteediga striime.",
+      "input": {
+        "errorConnection": "Ei saanud proksiga ühendatud",
+        "errorInvalidUrl": "Ei ole kehtiv URL",
+        "errorNotProxy": "Oodati proksit, kuid saadi veebileht",
+        "label": "Proksi URL",
+        "placeholder": "https://"
+      },
+      "link": "Õpi kuidas teha proksi",
+      "submit": "Esita proksi",
+      "title": "Teeme uue proksi"
+    },
+    "start": {
+      "explainer": "Parimate võimalike striimide saamiseks peate valima, millist striimimismeetodit soovite kasutada.",
+      "options": {
+        "default": {
+          "text": "Ma ei taha hea kvaliteediga striimi, <0 /> <1>kasuta tavalist seadistust</1>"
+        },
+        "extension": {
+          "action": "Paigalda laiendus",
+          "description": "Paigaldage brauseri laiendus ja saage ligi parimatele allikatele.",
+          "quality": "Parim kvaliteet",
+          "title": "Brauseri laiendus"
+        },
+        "proxy": {
+          "action": "Proxy seadistamine",
+          "description": "Seadistage proksi kõigest 5 minutiga ja pääsete ligi suurepärastele allikatele.",
+          "quality": "Hea kvaliteet",
+          "title": "Kohandatud proxy"
+        }
+      },
+      "title": "Teeme algust movie-webi kasutamisega"
+    }
+  },
   "overlays": {
     "close": "Sulge"
   },
@@ -181,7 +245,7 @@
         "disclaimer": "Allalaadimine toimub otse teenusepakkujalt. movie-web ei saa kontrollida, kuidas allalaadimine toimub.",
         "downloadSubtitle": "Laadige alla praegune subtiiter",
         "downloadVideo": "Lae alla video",
-        "hlsDisclaimer": "Allalaadimised võetakse otse teenusepakkujalt. movie-web ei kontrolli, kuidas allalaadimisi pakutakse. Pange tähele, et laadite alla HLS-i esitusloendit, see on mõeldud kasutajatele, kes on tuttavad multimeediumi voogesitusega.",
+        "hlsDisclaimer": "Allalaadimised võetakse otse teenusepakkujalt. movie-web ei kontrolli, kuidas allalaadimisi pakutakse. <br /><br /><bold>Pange tähele, et laadite alla HLS-i esitusloendit, see on mõeldud kasutajatele, kes on tuttavad multimeediumi striimimisega</bold>.",
         "onAndroid": {
           "1": "Et allalaadida Androidi telefonil, vajuta allalaadimise nupule, siis uuel leheküljel <bold>vajuta ja hoia</bold> video peal, siis vali <bold>salvesta</bold>.",
           "shortTitle": "Allalaadimine / Android",
@@ -238,8 +302,8 @@
           "title": "Ei leitud manuseid"
         },
         "noStream": {
-          "text": "Sellel allikal ei ole selle filmi või seriaali jaoks ühtegi voogedastust.",
-          "title": "Puudub voog"
+          "text": "Sellel allikal ei ole selle filmi või seriaali jaoks ühtegi striimi.",
+          "title": "Puudub striim"
         },
         "title": "Allikad",
         "unknownOption": "Teadmata"
@@ -261,6 +325,17 @@
       "api": {
         "text": "API metaandmete laadimine ebaõnnestus, palun kontrollige oma internetiühendust.",
         "title": "API metaandmete laadimine ebaõnnestus"
+      },
+      "dmca": {
+        "badge": "Eemaldatud",
+        "text": "See meedia pole enam saadaval kas eemaldamisteate või autoriõiguse nõue tõttu.",
+        "title": "Meedia on eemaldatud"
+      },
+      "extensionPermission": {
+        "badge": "Luba puudub",
+        "button": "Kasuta laiendust",
+        "text": "Sul on meie laiendus aga meil on vaja sinu luba, et saaksid alustada laienduse kasutamist.",
+        "title": "Seadistage laiendus"
       },
       "failed": {
         "badge": "Ebaōnnestus",
@@ -389,19 +464,49 @@
     },
     "connections": {
       "server": {
-        "description": "Kui soovite kohandatud backend'i kasutada oma andmete hoidmiseks, siis lubage see ja varustage URL.",
+        "description": "Kui soovite kohandatud backend'i kasutada oma andmete hoidmiseks, siis lubage see ja varustage URL. <o>Juhised.</0>",
         "label": "Kohandatud server",
         "urlLabel": "Kohandatud serveri URL"
+      },
+      "setup": {
+        "doSetup": "Seadista",
+        "errorStatus": {
+          "description": "Üks või mitu selle seadistuse üksust vajavad teie tähelepanu.",
+          "title": "Midagi vajab teie tähelepanu"
+        },
+        "itemError": "Midagi on valesti selle sättega. Selle parandamiseks läbige seadistus uuesti.",
+        "items": {
+          "default": "Tavaline seadistamine",
+          "extension": "Laiendus",
+          "proxy": "Kohandatud proksi"
+        },
+        "redoSetup": "Seadista uuesti",
+        "successStatus": {
+          "description": "Kõik on paigas, et saaksite enda lemmikmeediat nautima hakata.",
+          "title": "Kõik on seadistatud!"
+        },
+        "unsetStatus": {
+          "description": "Seadistusprotsessi alustamiseks klõpsake paremal asuvat nuppu.",
+          "title": "Te pole seadistamist läbinud"
+        }
       },
       "title": "Ühendused",
       "workers": {
         "addButton": "Lisa uus töötaja",
-        "description": "Rakenduse toimimiseks suunatakse kogu liiklus puhverserverite kaudu. Lubage see, kui soovite oma puhverserverit kasutada.",
+        "description": "Rakenduse toimimiseks suunatakse kogu liiklus puhverserverite kaudu. Lubage see, kui soovite oma puhverserverit kasutada. <0>Juhised.</0>",
         "emptyState": "Töötajaid pole veel, lisage üks",
         "label": "Kasutage kohandatud puhverserveri töötajaid",
         "urlLabel": "Töötajate URL-id",
         "urlPlaceholder": "https://"
       }
+    },
+    "preferences": {
+      "language": "Rakenduse keel",
+      "languageDescription": "Keel, mis on rakendatud tervele rakendusele.",
+      "thumbnail": "Genereeri pisipilte",
+      "thumbnailDescription": "Enamasti pole videodel pisipilte. Selle sätte lubamisega genereeritakse pispildid vaatamise ajal, kuid need võivad teie video aeglasemaks muuta.",
+      "thumbnailLabel": "Genereeri pisipilte",
+      "title": "Eelistused"
     },
     "reset": "Lähtesta",
     "save": "Salvesta",
