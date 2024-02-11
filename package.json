@@ -1,6 +1,6 @@
 {
   "name": "movie-web",
-  "version": "4.4.0",
+  "version": "4.4.1",
   "private": true,
   "homepage": "https://movie-web.app",
   "scripts": {
