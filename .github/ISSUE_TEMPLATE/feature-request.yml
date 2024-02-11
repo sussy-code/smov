@@ -21,6 +21,6 @@ body:
   - type: textarea
     id: other-details
     attributes:
-      label: Anything other details to share?
+      label: Any other details to share?
     validations:
       required: false
