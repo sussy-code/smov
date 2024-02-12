@@ -241,6 +241,7 @@
     },
     "menus": {
       "downloads": {
+        "copyHlsPlaylist": "Copia link HLS playlist",
         "disclaimer": "I download vengono effettuati direttamente dal provider. movie-web non ha il controllo sulle modalità di fornitura dei download.",
         "downloadSubtitle": "Scarica sottotitolo attuale",
         "downloadVideo": "Scarica video",
