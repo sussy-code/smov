@@ -7,12 +7,12 @@
       "title": "D'où vient le contenu ?"
     },
     "q2": {
-      "body": "Il est impossible de solliciter une émission ou un film car movie-web ne gère aucun contenu. Les sources sur Internet sont utilisées pour consulter tous les contenus.",
+      "body": "Il est impossible de demander un film ou une série car movie-web ne gère aucun contenu. Le contenu est récupéré en explorant d'autres sites sur Internet.",
       "title": "Où puis-je demander une série ou un film ?"
     },
     "q3": {
-      "body": "Que nos sources soient propriétaires du contenu ou non, The Movie Database (TMDB) fournit et affiche nos résultats de recherche.",
-      "title": "Les résultats de la recherche affichent l'émission ou le film, pourquoi ne puis-je pas le lire ?"
+      "body": "Nos résultats de recherche sont alimentés par The Movie Database (TMDB) et s'affichent indépendamment de la disponibilité réelle du contenu dans nos sources.",
+      "title": "Les résultats de la recherche affichent la série ou le film, pourquoi ne puis-je pas le lire ?"
     },
     "title": "À propos de movie-web"
   },
@@ -27,27 +27,27 @@
     "generate": {
       "description": "Le nom d'utilisateur et le mot de passe sont obtenus à partir de votre passphrase. Vous devrez la saisir pour accéder à votre compte, alors gardez-la précieusement",
       "next": "J'ai sauvegardé ma passphrase",
-      "passphraseFrameLabel": "Pass phrase",
+      "passphraseFrameLabel": "Passphrase",
       "title": "Votre passphrase"
     },
     "hasAccount": "Avez-vous déjà un compte ? <0>Connectez-vous ici.</0>",
     "login": {
-      "description": "Veuillez fournir votre passphrase pour accéder à votre compte",
+      "description": "Veuillez saisir votre passphrase pour accéder à votre compte",
       "deviceLengthError": "Veuillez saisir un nom d'appareil",
       "passphraseLabel": "Passphrase de 12 mots",
-      "passphrasePlaceholder": "Phrase secrète",
+      "passphrasePlaceholder": "Passphrase",
       "submit": "Se connecter",
-      "title": "Se connecter à votre compte",
-      "validationError": "Passphrase incorrecte ou incomplete"
+      "title": "Connectez-vous à votre compte",
+      "validationError": "Passphrase incorrecte ou incomplète"
     },
     "register": {
       "information": {
-        "color1": "Couleur de profile un",
-        "color2": "Couleur de profile deux",
-        "header": "Entrez un nom pour votre appareil et choisissez une couleur de profile ainsi qu'une icône d'utilisateur de votre choix",
+        "color1": "Première couleur de profil",
+        "color2": "Seconde couleur de profil",
+        "header": "Veuillez entrer un nom pour votre appareil, choisir une couleur et une icône utilisateur de votre choix",
         "icon": "Icône d'utilisateur",
-        "next": "Prochain",
-        "title": "Informations sur le compte"
+        "next": "Suivant",
+        "title": "Informations du compte"
       }
     },
     "trust": {
@@ -55,7 +55,7 @@
         "text": "L'avez-vous configuré correctement ?",
         "title": "Échec de la connexion au serveur"
       },
-      "host": "Vous vous connectez à <0>{{hostname}}</0> - veuillez confirmer que vous lui faites confiance avant de créer un compte",
+      "host": "Vous êtes en train de vous connecter à <0>{{hostname}}</0> - veuillez confirmer que vous lui faites confiance avant de créer un compte",
       "no": "Retour",
       "title": "Avez-vous confiance en ce serveur ?",
       "yes": "Je fais confiance à ce serveur"
@@ -65,13 +65,13 @@
       "invalidData": "Les données ne sont pas valides",
       "noMatch": "La passphrase ne correspond pas",
       "passphraseLabel": "Votre passphrase de 12 mots",
-      "recaptchaFailed": "La validation ReCaptcha a échoué",
+      "recaptchaFailed": "La validation ReCaptcha a échouée",
       "register": "Créer un compte",
-      "title": "Confirmez votre passphrase"
+      "title": "Resaisissez votre passphrase"
     }
   },
   "errors": {
-    "badge": "Il s'est cassé",
+    "badge": "Tout est cassé",
     "details": "Détails de l'erreur",
     "reloadPage": "Actualiser la page",
     "showError": "Afficher les détails de l'erreur",
@@ -87,7 +87,7 @@
       "dmca": "DMCA",
       "github": "GitHub"
     },
-    "tagline": "Cette application de streaming open source vous permet de regarder vos émissions et films préférés."
+    "tagline": "Regardez vos séries et films préférés avec cette application de streaming open source."
   },
   "global": {
     "name": "movie-web",
@@ -95,7 +95,7 @@
       "about": "À propos",
       "dmca": "DMCA",
       "login": "Se connecter",
-      "onboarding": "Setup",
+      "onboarding": "Mise en place",
       "pagetitle": "{{title}} - movie-web",
       "register": "Créer un compte",
       "settings": "Paramètres"
@@ -106,7 +106,7 @@
       "sectionTitle": "Favoris"
     },
     "continueWatching": {
-      "sectionTitle": "Continuer le visionnage"
+      "sectionTitle": "Reprendre la lecture"
     },
     "mediaList": {
       "stopEditing": "Arrêter l'édition"
@@ -163,21 +163,21 @@
   },
   "notFound": {
     "badge": "Introuvable",
-    "goHome": "Retour à l'accueil",
+    "goHome": "Retourer à l'accueil",
     "message": "Nous avons cherché partout : sous les poubelles, dans le placard, derrière le proxy, mais nous n'avons finalement pas trouvé la page que vous cherchez.",
     "title": "Impossible de trouver cette page"
   },
   "onboarding": {
     "defaultConfirm": {
       "cancel": "Annuler",
-      "confirm": "Utiliser la configuration de départ",
+      "confirm": "Utiliser la configuration par défaut",
       "description": "La configuration par défaut n'offre pas les meilleurs flux et peut être insupportablement lente.",
-      "title": "Es-tu sûr ?"
+      "title": "Êtes-vous sûr ?"
     },
     "extension": {
-      "back": "Retour en arrière",
+      "back": "Revenir en arrière",
       "explainer": "En utilisant l'extension de navigateur, vous pouvez obtenir les meilleurs flux que nous avons à offrir. Avec juste une simple installation.",
-      "explainerIos": "Malheureusement, l'extension web n'est pas prise en charge sur iOS, appuyez sur <bold> Retour en arrière </bold> pour choisir une autre option.",
+      "explainerIos": "Malheureusement, l'extension web n'est pas prise en charge sur iOS, appuyez sur <bold> Revenir en arrière </bold> pour choisir une autre option.",
       "extensionHelp": "Si vous avez installé l'extension mais qu'elle n'est pas détectée, <bold>ouvrez l'extension via le menu des extensions de votre navigateur</bold> et suivez les étapes à l'écran.",
       "linkChrome": "Installer l'extension Chrome",
       "linkFirefox": "Installer l'extension Firefox",
@@ -187,7 +187,7 @@
         "disallowed": "L'extension n'est pas activée pour cette page",
         "disallowedAction": "Activer l'extension",
         "failed": "Échec de la demande de statut",
-        "loading": "En attendant que vous installiez l'extension",
+        "loading": "En attente que vous installiez l'extension",
         "outdated": "Version d'extension trop ancienne",
         "success": "L'extension fonctionne comme prévu !"
       },
@@ -195,7 +195,7 @@
       "title": "Commençons par une extension"
     },
     "proxy": {
-      "back": "Retour en arrière",
+      "back": "Revenir en arrière",
       "explainer": "Avec la méthode du proxy, vous pouvez obtenir des flux de bonne qualité en créant un proxy en libre-service.",
       "input": {
         "errorConnection": "Impossible de se connecter au proxy",
@@ -205,18 +205,18 @@
         "placeholder": "https://"
       },
       "link": "Apprenez à créer un proxy",
-      "submit": "Soumettre le proxy",
+      "submit": "Valider le proxy",
       "title": "Créons un nouveau proxy"
     },
     "start": {
       "explainer": "Pour obtenir les meilleurs flux possibles, vous devrez choisir la méthode de streaming que vous souhaitez utiliser.",
       "options": {
         "default": {
-          "text": "Je ne veux pas de flux de bonne qualité,<0 /> <1>use the default setup</1>"
+          "text": "Je ne veux pas de flux de bonne qualité,<0 /> <1>Utiliser le flux par défaut</1>"
         },
         "extension": {
           "action": "Installer l'extension",
-          "description": "Installez l'extension de navigateur et accédez aux meilleures sources.",
+          "description": "Installez l'extension pour navigateur et accédez aux meilleures sources.",
           "quality": "Meilleur qualité",
           "title": "Extension du navigateur"
         },
@@ -227,7 +227,7 @@
           "title": "Proxy personnalisé"
         }
       },
-      "title": "Commençons par vous configurer movie-web"
+      "title": "Commençons par configurer movie-web"
     }
   },
   "overlays": {
@@ -235,14 +235,15 @@
   },
   "player": {
     "back": {
-      "default": "Retour à la page d'accueil",
+      "default": "Revenir à la page d'accueil",
       "short": "Retour"
     },
     "casting": {
-      "enabled": "Casting à l'appareil..."
+      "enabled": "Casting vers l'appareil..."
     },
     "menus": {
       "downloads": {
+        "copyHlsPlaylist": "Copier le lien de la playlist HLS",
         "disclaimer": "Les téléchargements sont effectués directement par le fournisseur. movie-web n'a aucun contrôle sur la manière dont les téléchargements sont effectués.",
         "downloadSubtitle": "Télécharger les sous-titres",
         "downloadVideo": "Télécharger la vidéo",
@@ -266,9 +267,9 @@
       },
       "episodes": {
         "button": "Épisodes",
-        "emptyState": "Il n'y a pas d'épisodes dans cette saison, revenez plus tard !",
+        "emptyState": "Cette saison ne contient aucun épisode, revenez plus tard !",
         "episodeBadge": "E{{episode}}",
-        "loadingError": "Erreur de chargement de la saison",
+        "loadingError": "Erreur lors du chargement de la saison",
         "loadingList": "Chargement...",
         "loadingTitle": "Chargement...",
         "unairedEpisodes": "Un ou plusieurs épisodes de cette saison ont été désactivés car ils n'ont pas encore été diffusés."
@@ -279,7 +280,7 @@
       },
       "quality": {
         "automaticLabel": "Qualité automatique",
-        "hint": "Vous pouvez essayer de <0>changer de fournisseur</0> pour obtenir différentes options de qualité.",
+        "hint": "Vous pouvez essayer de <0>changer de source</0> pour obtenir différentes options de qualité.",
         "iosNoQuality": "En raison des limitations définies par Apple, la sélection de la qualité n'est pas disponible sur iOS pour cette source. Vous pouvez essayer <0>de passer à une autre source</0> pour obtenir des options de qualité différentes.",
         "title": "Qualité"
       },
@@ -303,7 +304,7 @@
           "title": "Pas d'embeds trouvés"
         },
         "noStream": {
-          "text": "Cette source n'a pas de flux pour ce film ou cette émission.",
+          "text": "Cette source n'a pas de flux pour ce film ou cette série.",
           "title": "Pas de flux"
         },
         "title": "Sources",
@@ -346,7 +347,7 @@
       },
       "notFound": {
         "badge": "Introuvable",
-        "homeButton": "Retour à l'accueil",
+        "homeButton": "Revenir à l'accueil",
         "text": "Nous n'avons pas trouvé le média que vous avez demandé. Soit il a été supprimé, soit vous avez modifié l'URL.",
         "title": "Impossible de trouver ce média."
       }
@@ -364,7 +365,7 @@
         "errorNetwork": "Une erreur de réseau s'est produite qui a empêché la récupération du média, bien qu'il ait été disponible auparavant.",
         "errorNotSupported": "L'objet du media ou de la source du média n'est pas supporté."
       },
-      "homeButton": "Retour à la maison",
+      "homeButton": "Revenir à l'accueil",
       "text": "Une erreur s'est produite lors de la lecture du média. Veuillez réessayer.",
       "title": "Oups, c'est coupé !"
     },
@@ -377,7 +378,7 @@
       "notFound": {
         "badge": "Non trouvé",
         "detailsButton": "Afficher les détails",
-        "homeButton": "Retour à la maison",
+        "homeButton": "Revenir à l'accueil",
         "text": "Nous avons cherché parmi nos sources et n'avons pas trouvé les médias que vous recherchez ! Nous n'hébergeons pas les médias et n'avons aucun contrôle sur ce qui est disponible. Veuillez cliquer sur \"Afficher les détails\" ci-dessous pour plus d'informations.",
         "title": "Nous n'avons pas trouvé cela"
       }
@@ -409,7 +410,7 @@
       "textWithReset": "Echec du chargement de votre profil à partir de votre serveur personnalisé, souhaitez-vous revenir au serveur par défaut ?"
     },
     "migration": {
-      "failed": "La migration de vos données a échoué.",
+      "failed": "La migration de vos données a échouée.",
       "inProgress": "Veuillez patienter, nous sommes en train de migrer vos données. Cela ne devrait pas prendre longtemps."
     }
   },
@@ -435,18 +436,18 @@
       "devices": {
         "deviceNameLabel": "Nom de l'appareil",
         "failed": "Échec du chargement des sessions",
-        "removeDevice": "Enlever",
+        "removeDevice": "Supprimer",
         "title": "Appareils"
       },
       "profile": {
         "finish": "Terminer l'édition",
-        "firstColor": "Couleur de profil un",
-        "secondColor": "Couleur de profil deux",
-        "title": "Éditer la photo de profil",
+        "firstColor": "Première couleur de profil",
+        "secondColor": "Seconde couleur de profil",
+        "title": "Modifier la photo de profil",
         "userIcon": "Icône de l'utilisateur"
       },
       "register": {
-        "cta": "Commencer",
+        "cta": "Démarrer",
         "text": "Partagez la progression de vos films et séries entre vos appareils et gardez-les synchronisés.",
         "title": "Synchroniser au Cloud"
       },
@@ -470,12 +471,12 @@
         "urlLabel": "URL du serveur personnalisé"
       },
       "setup": {
-        "doSetup": "Faire la configuration",
+        "doSetup": "Configurer",
         "errorStatus": {
           "description": "Il semble qu'un ou plusieurs éléments de cette configuration nécessitent votre attention.",
           "title": "Quelque chose nécessite votre attention"
         },
-        "itemError": "Ce paramètre présente un problème. Résolvez le problème en redémarrant la configuration.",
+        "itemError": "Ce paramètre présente un problème. Résolvez le problème en recommençant la configuration.",
         "items": {
           "default": "Configuration par défaut",
           "extension": "Extension",
@@ -488,7 +489,7 @@
         },
         "unsetStatus": {
           "description": "Pour commencer le processus de configuration, veuillez cliquer sur le bouton à droite.",
-          "title": "Vous n'avez pas fait la configuration"
+          "title": "Vous n'avez pas encore effectué la configuration"
         }
       },
       "title": "Connexions",
@@ -515,9 +516,9 @@
       "info": {
         "appVersion": "Version de l'application",
         "backendUrl": "URL de Backend",
-        "backendVersion": "Version de la Backend",
+        "backendVersion": "Version du Backend",
         "hostname": "Nom d'hôte",
-        "insecure": "Insécure",
+        "insecure": "Non sécurisé",
         "notLoggedIn": "Vous n'êtes pas connecté",
         "secure": "Sécurisé",
         "title": "Informations sur l'application",
