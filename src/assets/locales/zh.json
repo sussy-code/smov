@@ -71,11 +71,11 @@
     }
   },
   "errors": {
-    "badge": "它已损坏",
+    "badge": "坏了",
     "details": "错误细节",
     "reloadPage": "刷新页面",
     "showError": "显示错误细节",
-    "title": "我们遭遇到错误！"
+    "title": "我们遇到了错误！"
   },
   "footer": {
     "legal": {
