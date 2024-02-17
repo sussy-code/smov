@@ -54,7 +54,7 @@ export function HeroPart({ setIsSticky, searchParams }: HeroPartProps) {
 
   const time = getTimeOfDay(new Date());
   const title = randomT(`home.titles.${time}`);
-
+  const placeholder = randomT(`home.search.placeholder`);
   const inputRef = useRef<HTMLInputElement>(null);
   useSlashFocus(inputRef);
 
@@ -77,7 +77,7 @@ export function HeroPart({ setIsSticky, searchParams }: HeroPartProps) {
               onChange={setSearch}
               value={search}
               onUnFocus={setSearchUnFocus}
-              placeholder={t("home.search.placeholder") ?? ""}
+              placeholder={placeholder ?? ""}
             />
           </Sticky>
         </div>

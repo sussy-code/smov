@@ -116,7 +116,26 @@
       "failed": "Failed to find media, try again!",
       "loading": "Loading...",
       "noResults": "We couldn't find anything!",
-      "placeholder": "What do you want to watch?",
+      "placeholder": {
+        "default": "What do you want to watch?",
+        "extra": [
+          "What's on your movie radar today?",
+          "What's your cinematic preference today?",
+          "What kind of entertainment are you seeking?",
+          "What's your ideal movie or series right now?",
+          "What do you want to explore in the film world?",
+          "What's on your watchlist for today?",
+          "What movie or series piques your interest?",
+          "What's your desired film experience at the moment?",
+          "What are you in the mood to watch?",
+          "Looking for a classic or something new?",
+          "Any specific mood you're in for your watch?",
+          "In the mood for a thrilling adventure or a cozy drama?",
+          "Searching for your favorite entertainment?",
+          "Interested in recent releases or timeless classics?",
+          "Prefer a short movie night or a binge-watching session?"
+        ]
+      },
       "sectionTitle": "Search results"
     },
     "titles": {
