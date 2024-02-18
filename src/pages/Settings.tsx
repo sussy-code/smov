@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { useCallback, useEffect, useMemo } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useAsyncFn } from "react-use";
 
@@ -105,6 +105,8 @@ export function SettingsPage() {
   const setTheme = useThemeStore((s) => s.setTheme);
   const previewTheme = usePreviewThemeStore((s) => s.previewTheme) ?? "default";
   const setPreviewTheme = usePreviewThemeStore((s) => s.setPreviewTheme);
+  const activeThemeRef = useRef(activeTheme);
+  activeThemeRef.current = activeTheme;
 
   const appLanguage = useLanguageStore((s) => s.language);
   const setAppLanguage = useLanguageStore((s) => s.setLanguage);
@@ -143,6 +145,15 @@ export function SettingsPage() {
     backendUrlSetting,
     account?.profile,
     enableThumbnails,
+  );
+
+  useEffect(
+    () => () => {
+      setPreviewTheme(
+        activeThemeRef.current === "default" ? null : activeThemeRef.current,
+      );
+    },
+    [setPreviewTheme],
   );
 
   const setThemeWithPreview = useCallback(
