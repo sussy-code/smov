@@ -116,27 +116,24 @@
       "failed": "Nepodařilo se najít média, zkuste to znovu!",
       "loading": "Načítání...",
       "noResults": "Nemohli jsme nic najít!",
-      "placeholder": "Co si přejete sledovat?",
+      "placeholder": {
+        "default": "Co si přejete sledovat?",
+        "extra": []
+      },
       "sectionTitle": "Výsledky vyhledávání"
     },
     "titles": {
       "day": {
         "default": "Na co byste se chtěli dnes odpoledne dívat?",
-        "extra": [
-          "Chceš zažít dobrodružství? Jurský Park je pro tebe."
-        ]
+        "extra": ["Chceš zažít dobrodružství? Jurský Park je pro tebe."]
       },
       "morning": {
         "default": "Na co byste se chtěli dnes ráno dívat?",
-        "extra": [
-          "Slyšel jsem, že Před úsvitem je super."
-        ]
+        "extra": ["Slyšel jsem, že Před úsvitem je super."]
       },
       "night": {
         "default": "Na co byste se chtěli dnes večer dívat?",
-        "extra": [
-          "Unaven? Slyšel jsem, že Vymítač ďábla je super."
-        ]
+        "extra": ["Unaven? Slyšel jsem, že Vymítač ďábla je super."]
       }
     }
   },

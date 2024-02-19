@@ -115,7 +115,10 @@
       "failed": "No s'ha pogut trobar cap contingut, torneu-ho a provar!",
       "loading": "S'està carregant…",
       "noResults": "No hem pogut trobar res!",
-      "placeholder": "Què voleu mirar?",
+      "placeholder": {
+        "default": "Què voleu mirar?",
+        "extra": []
+      },
       "sectionTitle": "Resultats de la cerca"
     },
     "titles": {
@@ -127,15 +130,11 @@
       },
       "morning": {
         "default": "Què us agradaria mirar aquest matí?",
-        "extra": [
-          "He sentit que «Abans de l'alba» és bona"
-        ]
+        "extra": ["He sentit que «Abans de l'alba» és bona"]
       },
       "night": {
         "default": "Què us agradaria mirar aquesta nit?",
-        "extra": [
-          "Esteu cansat? He sentit que «L'exorcista» és bona."
-        ]
+        "extra": ["Esteu cansat? He sentit que «L'exorcista» és bona."]
       }
     }
   },

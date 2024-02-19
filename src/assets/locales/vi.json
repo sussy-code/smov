@@ -116,7 +116,10 @@
       "failed": "Không thể tìm thấy nội dung, hãy thử lại!",
       "loading": "Đang tải...",
       "noResults": "Chúng tôi không thể tìm thấy gì!",
-      "placeholder": "Bạn muốn xem gì?",
+      "placeholder": {
+        "default": "Bạn muốn xem gì?",
+        "extra": []
+      },
       "sectionTitle": "Kết quả tìm kiếm"
     },
     "titles": {
