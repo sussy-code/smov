@@ -116,7 +116,10 @@
       "failed": "Mediaa ei löytynyt, yritä uudelleen!",
       "loading": "Ladataan...",
       "noResults": "Emme löytäneet mitään!",
-      "placeholder": "Mitä haluat katsoa?",
+      "placeholder": {
+        "default": "Mitä haluat katsoa?",
+        "extra": []
+      },
       "sectionTitle": "Hakutulokset"
     },
     "titles": {
@@ -128,15 +131,11 @@
       },
       "morning": {
         "default": "Mitä haluaisit katsoa tänä aamuna?",
-        "extra": [
-          "Kuulen, että Rakkautta ennen aamua (Before Sunrise) on hyvä"
-        ]
+        "extra": ["Kuulen, että Rakkautta ennen aamua (Before Sunrise) on hyvä"]
       },
       "night": {
         "default": "Mitä haluaisit katsoa tänä iltana?",
-        "extra": [
-          "Väsynyt? Kuulin, että Manaaja (The Exorcist) on hyvä."
-        ]
+        "extra": ["Väsynyt? Kuulin, että Manaaja (The Exorcist) on hyvä."]
       }
     }
   },

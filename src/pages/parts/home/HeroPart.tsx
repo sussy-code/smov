@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useTranslation } from "react-i18next";
 import Sticky from "react-sticky-el";
 import { useWindowSize } from "react-use";
 
@@ -26,7 +25,6 @@ function getTimeOfDay(date: Date): "night" | "morning" | "day" {
 
 export function HeroPart({ setIsSticky, searchParams }: HeroPartProps) {
   const { t: randomT } = useRandomTranslation();
-  const { t } = useTranslation();
   const [search, setSearch, setSearchUnFocus] = searchParams;
   const [, setShowBg] = useState(false);
   const bannerSize = useBannerSize();
@@ -54,7 +52,7 @@ export function HeroPart({ setIsSticky, searchParams }: HeroPartProps) {
 
   const time = getTimeOfDay(new Date());
   const title = randomT(`home.titles.${time}`);
-
+  const placeholder = randomT(`home.search.placeholder`);
   const inputRef = useRef<HTMLInputElement>(null);
   useSlashFocus(inputRef);
 
@@ -77,7 +75,7 @@ export function HeroPart({ setIsSticky, searchParams }: HeroPartProps) {
               onChange={setSearch}
               value={search}
               onUnFocus={setSearchUnFocus}
-              placeholder={t("home.search.placeholder") ?? ""}
+              placeholder={placeholder ?? ""}
             />
           </Sticky>
         </div>

@@ -115,7 +115,10 @@
       "failed": "Falha ao encontrar mídia, tente novamente!",
       "loading": "A carregar...",
       "noResults": "Não conseguimos encontrar nada!",
-      "placeholder": "O que deseja assistir?",
+      "placeholder": {
+        "default": "O que deseja assistir?",
+        "extra": []
+      },
       "sectionTitle": "Resultados da pesquisa"
     },
     "titles": {
@@ -127,15 +130,11 @@
       },
       "morning": {
         "default": "O que gostaria de assistir esta manhã?",
-        "extra": [
-          "Dizem que Antes do Amanhecer é bom"
-        ]
+        "extra": ["Dizem que Antes do Amanhecer é bom"]
       },
       "night": {
         "default": "O que gostaria de assistir esta noite?",
-        "extra": [
-          "Cansado? Dizem que O Exorcista é bom."
-        ]
+        "extra": ["Cansado? Dizem que O Exorcista é bom."]
       }
     }
   },

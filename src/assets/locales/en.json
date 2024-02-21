@@ -116,7 +116,15 @@
       "failed": "Failed to find media, try again!",
       "loading": "Loading...",
       "noResults": "We couldn't find anything!",
-      "placeholder": "What do you want to watch?",
+      "placeholder": {
+        "default": "What do you want to watch?",
+        "extra": [
+          "What do you want to explore?",
+          "What's on your watchlist?",
+          "What's your favorite movie?",
+          "What's your favorite series?"
+        ]
+      },
       "sectionTitle": "Search results"
     },
     "titles": {

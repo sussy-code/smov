@@ -108,7 +108,10 @@
       "failed": "Mostókst að finna miðil, reyndu aftur!",
       "loading": "Hlaðið...",
       "noResults": "Við gátum ekki fundið neitt!",
-      "placeholder": "Hvað viltu horfa á?",
+      "placeholder": {
+        "default": "Hvað viltu horfa á?",
+        "extra": []
+      },
       "sectionTitle": "Leitar niðurstöður"
     },
     "titles": {
@@ -120,15 +123,11 @@
       },
       "morning": {
         "default": "Hvað myndirðu vilja horfa á þessum morgni?",
-        "extra": [
-          "Ég heyrði að Before Sunrise sé góð"
-        ]
+        "extra": ["Ég heyrði að Before Sunrise sé góð"]
       },
       "night": {
         "default": "Hvað myndirðu vilja horfa á í nótt?",
-        "extra": [
-          "Þreytt? Ég heyrði að The Exorcist sé góð."
-        ]
+        "extra": ["Þreytt? Ég heyrði að The Exorcist sé góð."]
       }
     }
   },

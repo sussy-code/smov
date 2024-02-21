@@ -114,7 +114,10 @@
       "failed": "Găsire media eșuată, încearcă din nou!",
       "loading": "Se încarcă...",
       "noResults": "Nu am putut găsi nimic!",
-      "placeholder": "La ce dorești să te uiți?",
+      "placeholder": {
+        "default": "La ce dorești să te uiți?",
+        "extra": []
+      },
       "sectionTitle": "Rezultate de căutare"
     },
     "titles": {
@@ -126,15 +129,11 @@
       },
       "morning": {
         "default": "La ce dorești să te in uiți dimineață aceasta?",
-        "extra": [
-          "Aud că Before Sunrise este bun"
-        ]
+        "extra": ["Aud că Before Sunrise este bun"]
       },
       "night": {
         "default": "La ce dorești să te uiți în astă seară?",
-        "extra": [
-          "Obosit? Aud că The Exorcist is good."
-        ]
+        "extra": ["Obosit? Aud că The Exorcist is good."]
       }
     }
   },
