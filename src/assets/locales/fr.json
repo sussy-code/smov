@@ -116,7 +116,10 @@
       "failed": "Le média n'a pas été trouvé, veuillez réessayez !",
       "loading": "Chargement...",
       "noResults": "Nous n'avons rien trouvé !",
-      "placeholder": "Que voulez-vous voir ?",
+      "placeholder": {
+        "default": "Que voulez-vous voir ?",
+        "extra": []
+      },
       "sectionTitle": "Résultats de la recherche"
     },
     "titles": {
@@ -128,9 +131,7 @@
       },
       "morning": {
         "default": "Que voulez-vous regarder ce matin ?",
-        "extra": [
-          "Les films, c'est comme les voyages : ça nous ouvre l'esprit"
-        ]
+        "extra": ["Les films, c'est comme les voyages : ça nous ouvre l'esprit"]
       },
       "night": {
         "default": "Que voulez-vous regarder ce soir ?",

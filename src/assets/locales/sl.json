@@ -115,7 +115,10 @@
       "failed": "Ni uspelo najti medija, prosim poskusite znova!",
       "loading": "Nalaganje...",
       "noResults": "Vsebin nismo našli!",
-      "placeholder": "Kaj si želite gledati?",
+      "placeholder": {
+        "default": "Kaj si želite gledati?",
+        "extra": []
+      },
       "sectionTitle": "Rezultati iskanja"
     },
     "titles": {
@@ -127,9 +130,7 @@
       },
       "morning": {
         "default": "Kateri film ali serijo bi si želeli ogledati ob tem jutru?",
-        "extra": [
-          "Slišala sem, da je film \"Pred sončnim vzhodom\" odličen"
-        ]
+        "extra": ["Slišala sem, da je film \"Pred sončnim vzhodom\" odličen"]
       },
       "night": {
         "default": "Kateri film ali serijo bi si želeli ogledati nocoj?",

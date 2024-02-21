@@ -116,7 +116,10 @@
       "failed": "Impossibile trovare i media, riprova!",
       "loading": "Caricamento...",
       "noResults": "Non abbiamo trovato nulla!",
-      "placeholder": "Cosa vuoi guardare?",
+      "placeholder": {
+        "default": "Cosa vuoi guardare?",
+        "extra": []
+      },
       "sectionTitle": "Risultati della ricerca"
     },
     "titles": {
@@ -128,15 +131,11 @@
       },
       "morning": {
         "default": "Cosa vorresti guardare questa mattina?",
-        "extra": [
-          "Ho sentito che «Prima Dell'alba» è buono"
-        ]
+        "extra": ["Ho sentito che «Prima Dell'alba» è buono"]
       },
       "night": {
         "default": "Cosa vorresti guardare questa sera?",
-        "extra": [
-          "Stanco? Ho sentito che L'esorciccio è buono."
-        ]
+        "extra": ["Stanco? Ho sentito che L'esorciccio è buono."]
       }
     }
   },
