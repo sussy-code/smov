@@ -8,6 +8,10 @@ COPY package.json ./
 COPY pnpm-lock.yaml ./
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 
+ARG PWA_ENABLED="false"
+
+ENV VITE_PWA_ENABLED=${PWA_ENABLED}
+
 COPY . ./
 RUN pnpm run build
 

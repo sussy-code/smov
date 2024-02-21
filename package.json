@@ -123,7 +123,8 @@
     "vite-plugin-package-version": "^1.1.0",
     "vite-plugin-pwa": "^0.17.4",
     "vite-plugin-static-copy": "^1.0.0",
-    "vitest": "^1.1.0"
+    "vitest": "^1.1.0",
+    "workbox-window": "^7.0.0"
   },
   "pnpm": {
     "overrides": {
