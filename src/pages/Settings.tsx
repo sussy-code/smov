@@ -105,8 +105,6 @@ export function SettingsPage() {
   const setTheme = useThemeStore((s) => s.setTheme);
   const previewTheme = usePreviewThemeStore((s) => s.previewTheme) ?? "default";
   const setPreviewTheme = usePreviewThemeStore((s) => s.setPreviewTheme);
-  const activeThemeRef = useRef(activeTheme);
-  activeThemeRef.current = activeTheme;
 
   const appLanguage = useLanguageStore((s) => s.language);
   const setAppLanguage = useLanguageStore((s) => s.setLanguage);
@@ -147,11 +145,10 @@ export function SettingsPage() {
     enableThumbnails,
   );
 
+  // Reset the preview theme when the settings page is unmounted
   useEffect(
     () => () => {
-      setPreviewTheme(
-        activeThemeRef.current === "default" ? null : activeThemeRef.current,
-      );
+      setPreviewTheme(null);
     },
     [setPreviewTheme],
   );
