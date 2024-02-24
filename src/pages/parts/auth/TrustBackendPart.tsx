@@ -22,8 +22,12 @@ interface TrustBackendPartProps {
 export function TrustBackendPart(props: TrustBackendPartProps) {
   const navigate = useNavigate();
   const backendUrl = useBackendUrl();
-  const hostname = useMemo(() => new URL(backendUrl).hostname, [backendUrl]);
+  const hostname = useMemo(
+    () => (backendUrl ? new URL(backendUrl).hostname : ""),
+    [backendUrl],
+  );
   const result = useAsync(() => {
+    if (!backendUrl) return Promise.resolve(null);
     return getBackendMeta(backendUrl);
   }, [backendUrl]);
   const { t } = useTranslation();

@@ -14,9 +14,9 @@ import { useAuthStore } from "@/stores/auth";
 
 const rem = 16;
 
-function SecureBadge(props: { url: string }) {
+function SecureBadge(props: { url: string | undefined }) {
   const { t } = useTranslation();
-  const secure = props.url.startsWith("https://");
+  const secure = props.url ? props.url.startsWith("https://") : false;
   return (
     <div className="flex items-center gap-1 -mx-1 ml-3 px-1 rounded bg-largeCard-background font-bold">
       <Icon icon={secure ? Icons.LOCK : Icons.UNLOCK} />
@@ -68,6 +68,7 @@ export function SidebarPart() {
   const backendUrl = useBackendUrl();
 
   const backendMeta = useAsync(async () => {
+    if (!backendUrl) return;
     return getBackendMeta(backendUrl);
   }, [backendUrl]);
 
@@ -159,7 +160,7 @@ export function SidebarPart() {
                 <SecureBadge url={backendUrl} />
               </div>
               <p className="text-white">
-                {backendUrl.replace(/https?:\/\//, "")}
+                {backendUrl?.replace(/https?:\/\//, "") ?? "—"}
               </p>
             </div>
 

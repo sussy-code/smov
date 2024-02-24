@@ -47,6 +47,8 @@ export function VerifyPassphrase(props: VerifyPassphraseProps) {
 
   const [result, execute] = useAsyncFn(
     async (inputMnemonic: string) => {
+      if (!backendUrl)
+        throw new Error(t("auth.verify.noBackendUrl") ?? undefined);
       if (!props.mnemonic || !props.userData)
         throw new Error(t("auth.verify.invalidData") ?? undefined);
 
@@ -67,6 +69,9 @@ export function VerifyPassphrase(props: VerifyPassphraseProps) {
         userData: props.userData,
         recaptchaToken,
       });
+
+      if (!account)
+        throw new Error(t("auth.verify.registrationFailed") ?? undefined);
 
       await importData(account, progressItems, bookmarkItems);
 

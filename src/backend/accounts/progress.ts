@@ -2,7 +2,6 @@ import { ofetch } from "ofetch";
 
 import { getAuthHeaders } from "@/backend/accounts/auth";
 import { ProgressResponse } from "@/backend/accounts/user";
-import { BACKEND_URL } from "@/setup/constants";
 import { AccountWithToken } from "@/stores/auth";
 import { ProgressMediaItem, ProgressUpdateItem } from "@/stores/progress";
 
@@ -104,7 +103,6 @@ export async function removeProgress(
   episodeId?: string,
   seasonId?: string,
 ) {
-  if (!BACKEND_URL) return;
   await ofetch(`/users/${account.userId}/progress/${id}`, {
     method: "DELETE",
     headers: getAuthHeaders(account.token),
