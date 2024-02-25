@@ -2,12 +2,9 @@
 
 ## Supported Versions
 
-The movie-web maintainers only support the latest version of movie-web published at https://movie-web.app.
-
-Support is not provided for any forks or mirrors of movie-web.
+The latest version of movie-web is the only version that is supported, as it is the only version that is being actively developed.
 
 ## Reporting a Vulnerability
 
-There are two ways you can contact the movie-web maintainers to report a vulnerability:
- - Email [security@movie-web.app](mailto:security@movie-web.app)
- - Report the vulnerability in the [movie-web Discord server](https://discord.movie-web.app)
+You can contact the movie-web maintainers to report a vulnerability:
+ - Report the vulnerability in the [movie-web Discord server](https://discord.gg/gQYB6fGArX)

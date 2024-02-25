@@ -4,13 +4,13 @@
 <p align="center">
   <img src="https://skillicons.dev/icons?i=react,vite,ts" />
   <br/>
-  <a href="https://discord.movie-web.app"><kbd>🔵 discord</kbd></a> <a href="https://movie-web.app"><kbd>🟢 website</kbd></a>
+  <a href="https://discord.gg/gQYB6fGArX"><kbd>🔵 discord</kbd></a> <a href="https://movie-web.github.io/docs"><kbd>🟢 docs</kbd></a>
 </p>
 <br/><br/>
 
 # ⚡What is movie-web?
 
-movie-web is a web app for watching movies easily. Check it out at <a href="https://movie-web.app"><kbd>movie-web.app</kbd></a>.
+movie-web is a web app for watching movies easily.
 
 This service works by displaying video files from third-party providers inside an intuitive and aesthetic user interface.
 
@@ -57,7 +57,7 @@ pnpm build
 
 A simple guide has been written to assist in hosting your own instance of movie-web. Check it out below
 
-|[Selfhosting guide](https://docs.movie-web.app)|
+|[Selfhosting guide](https://movie-web.github.io/docs)|
 |---|
 
 ## 🤝 Thanks to all Contributors

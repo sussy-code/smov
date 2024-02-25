@@ -70,6 +70,7 @@ export function AccountSettings(props: {
   const url = useBackendUrl();
   const { account } = props;
   const [sessionsResult, execSessions] = useAsyncFn(() => {
+    if (!url) return Promise.resolve([]);
     return getSessions(url, account);
   }, [account, url]);
   useEffect(() => {
@@ -144,7 +145,7 @@ export function SettingsPage() {
   );
 
   const saveChanges = useCallback(async () => {
-    if (account) {
+    if (account && backendUrl) {
       if (
         state.appLanguage.changed ||
         state.theme.changed ||

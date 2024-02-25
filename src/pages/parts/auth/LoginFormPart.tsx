@@ -52,6 +52,9 @@ export function LoginFormPart(props: LoginFormPartProps) {
         throw err;
       }
 
+      if (!account)
+        throw new Error(t("auth.login.validationError") ?? undefined);
+
       await importData(account, progressItems, bookmarkItems);
 
       await restore(account);
