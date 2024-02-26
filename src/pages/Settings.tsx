@@ -102,9 +102,9 @@ export function AccountSettings(props: {
 
 export function SettingsPage() {
   const { t } = useTranslation();
-  const activeTheme = useThemeStore((s) => s.theme) ?? "default";
+  const activeTheme = useThemeStore((s) => s.theme);
   const setTheme = useThemeStore((s) => s.setTheme);
-  const previewTheme = usePreviewThemeStore((s) => s.previewTheme) ?? "default";
+  const previewTheme = usePreviewThemeStore((s) => s.previewTheme);
   const setPreviewTheme = usePreviewThemeStore((s) => s.setPreviewTheme);
 
   const appLanguage = useLanguageStore((s) => s.language);
@@ -146,18 +146,21 @@ export function SettingsPage() {
     enableThumbnails,
   );
 
-  // Reset the preview theme when the settings page is unmounted
-  useEffect(
-    () => () => {
+  useEffect(() => {
+    setPreviewTheme(activeTheme ?? "default");
+  }, [setPreviewTheme, activeTheme]);
+
+  useEffect(() => {
+    // Clear preview theme on unmount
+    return () => {
       setPreviewTheme(null);
-    },
-    [setPreviewTheme],
-  );
+    };
+  }, [setPreviewTheme]);
 
   const setThemeWithPreview = useCallback(
-    (v: string | null) => {
-      state.theme.set(v === "default" ? null : v);
-      setPreviewTheme(v);
+    (theme: string) => {
+      state.theme.set(theme === "default" ? null : theme);
+      setPreviewTheme(theme);
     },
     [state.theme, setPreviewTheme],
   );
@@ -261,8 +264,8 @@ export function SettingsPage() {
         </div>
         <div id="settings-appearance" className="mt-48">
           <ThemePart
-            active={previewTheme}
-            inUse={activeTheme}
+            active={previewTheme ?? "default"}
+            inUse={activeTheme ?? "default"}
             setTheme={setThemeWithPreview}
           />
         </div>
