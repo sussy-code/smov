@@ -1,6 +1,5 @@
 import classNames from "classnames";
 import { ReactNode, useCallback } from "react";
-import { useNavigate } from "react-router-dom";
 
 import { Icon, Icons } from "@/components/Icon";
 import { Spinner } from "@/components/layout/Spinner";
@@ -21,7 +20,6 @@ interface Props {
 }
 
 export function Button(props: Props) {
-  const navigate = useNavigate();
   const { onClick, href, loading } = props;
   const cb = useCallback(
     (
@@ -31,10 +29,12 @@ export function Button(props: Props) {
       >,
     ) => {
       if (loading) return;
-      if (href && !onClick) navigate(href);
-      else onClick?.(event);
+      if (href && !onClick) {
+        event.preventDefault();
+        window.open(href, "_blank", "noreferrer");
+      } else onClick?.(event);
     },
-    [onClick, href, navigate, loading],
+    [onClick, href, loading],
   );
 
   let colorClasses = "bg-white hover:bg-gray-200 text-black";
