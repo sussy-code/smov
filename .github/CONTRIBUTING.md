@@ -5,15 +5,17 @@ Thank you for investing your time in contributing to our project! Your contribut
 Please read our [Code of Conduct](./CODE_OF_CONDUCT.md) to keep our community approachable and respectable.
 
 ## Contents
- - [New Contributor Guide](#new-contributor-guide)
- - [Requesting a feature or reporting a bug](#requesting-a-feature-or-reporting-a-bug)
-   - [Discord Server](#discord-server)
-   - [GitHub Issues](#github-issues)
- - [Before you start](#before-you-start)
- - [Contributing](#before-you-start)
-   - [Recommended Development Environment](#recommended-development-environment)
-   - [Tips](#tips)
-   - [Language Contributions](#language-contributions)
+- [Contributing Guidelines for movie-web](#contributing-guidelines-for-movie-web)
+  - [Contents](#contents)
+  - [New contributor guide](#new-contributor-guide)
+  - [Requesting a feature or reporting a bug](#requesting-a-feature-or-reporting-a-bug)
+    - [Discord Server](#discord-server)
+    - [GitHub Issues](#github-issues)
+  - [Before you start!](#before-you-start)
+  - [Contributing](#contributing)
+    - [Recommended Development Environment](#recommended-development-environment)
+    - [Tips](#tips)
+    - [Language Contributions](#language-contributions)
 
 ## New contributor guide
 

@@ -66,9 +66,9 @@ export default defineConfig(({ mode }) => {
           "safari-pinned-tab.svg",
         ],
         manifest: {
-          name: "movie-web",
-          short_name: "movie-web",
-          description: "The place for your favourite movies & shows",
+          name: "sudo-flix",
+          short_name: "sudo-flix",
+          description: "A mirror of movie-web",
           theme_color: "#120f1d",
           background_color: "#120f1d",
           display: "standalone",

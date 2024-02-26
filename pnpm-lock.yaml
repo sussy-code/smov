@@ -302,9 +302,6 @@ devDependencies:
   vitest:
     specifier: ^1.1.0
     version: 1.1.0(@types/node@20.10.5)(jsdom@23.0.1)
-  workbox-window:
-    specifier: ^7.0.0
-    version: 7.0.0
 
 packages:
 

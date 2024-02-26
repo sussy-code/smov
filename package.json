@@ -1,8 +1,8 @@
 {
-  "name": "movie-web",
+  "name": "sudo-flix",
   "version": "4.5.0",
   "private": true,
-  "homepage": "https://github.com/movie-web/movie-web",
+  "homepage": "https://sudo-flix.lol",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -123,8 +123,7 @@
     "vite-plugin-package-version": "^1.1.0",
     "vite-plugin-pwa": "^0.17.4",
     "vite-plugin-static-copy": "^1.0.0",
-    "vitest": "^1.1.0",
-    "workbox-window": "^7.0.0"
+    "vitest": "^1.1.0"
   },
   "pnpm": {
     "overrides": {
