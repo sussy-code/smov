@@ -1,0 +1,26 @@
+name: Feature Request
+description: Suggest a new feature
+title: "[Feature]: "
+labels: ["feature", "awaiting-approval"]
+assignees: []
+body:
+  - type: textarea
+    id: what-feature
+    attributes:
+      label: What feature do you want to add?
+      placeholder: A new button!
+    validations:
+      required: true
+  - type: textarea
+    id: why-feature
+    attributes:
+      label: Why do you want to have this feature?
+      placeholder: A new button!
+    validations:
+      required: true
+  - type: textarea
+    id: other-details
+    attributes:
+      label: Any other details to share?
+    validations:
+      required: false

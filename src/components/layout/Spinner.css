@@ -1,0 +1,19 @@
+.spinner {
+  width: 1em;
+  height: 1em;
+  border: 0.12em solid var(--color,white);
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: spinner-rotation 800ms linear infinite;
+}
+
+@keyframes spinner-rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

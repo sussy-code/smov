@@ -1,0 +1,233 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  @apply bg-background-main font-open-sans text-type-text;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+html[data-full],
+html[data-full] body {
+  overscroll-behavior-y: none;
+}
+
+body[data-no-scroll] {
+  overflow-y: hidden;
+  height: 100vh;
+}
+
+#root {
+  padding: 0.05px;
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+}
+
+body[data-no-select] {
+  user-select: none;
+}
+
+html[data-no-scroll], html[data-no-scroll] body {
+  overflow: hidden;
+}
+
+.roll {
+  animation: roll 1s;
+}
+
+.roll-infinite {
+  animation: roll 2s infinite;
+}
+
+@keyframes roll {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.line-clamp {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.google-cast-button:not(.casting) google-cast-launcher {
+  @apply brightness-[500];
+}
+
+.is-mobile-view .overflow-y-auto {
+  height: 60vh;
+}
+
+.h-screen {
+  height: 100vh;
+  height: 100dvh;
+}
+
+.min-h-screen {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/*generated with Input range slider CSS style generator (version 20211225)
+https://toughengineer.github.io/demo/slider-styler*/
+:root {
+  --slider-height: 0.25rem;
+  --slider-border-radius: 1em;
+  --slider-progress-background: #8652bb;
+}
+
+input[type=range].styled-slider {
+  height: var(--slider-height);
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: var(--slider-border-radius);
+  background: #1C161B;
+}
+
+/*progress support*/
+input[type=range].styled-slider.slider-progress {
+  --range: calc(var(--max) - var(--min));
+  --ratio: calc((var(--value) - var(--min)) / var(--range));
+  --sx: calc(0.5 * 1rem + var(--ratio) * (100% - 1rem));
+}
+
+/*webkit*/
+input[type=range].styled-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 1rem;
+  height: 1rem;
+  border-radius: var(--slider-border-radius);
+  background: #FFFFFF;
+  border: none;
+  box-shadow: 0 0 2px #000000;
+  margin-top: calc(0.25em * 0.5 - 1rem * 0.5);
+}
+
+input[type=range].styled-slider::-webkit-slider-runnable-track {
+  height: var(--slider-height);
+  border: none;
+  box-shadow: none;
+  border-radius: var(--slider-border-radius);
+}
+
+input[type=range].styled-slider::-webkit-slider-thumb:hover {
+  background: #DCDCDC;
+}
+
+input[type=range].styled-slider.slider-progress::-webkit-slider-runnable-track {
+  background: linear-gradient(var(--slider-progress-background), var(--slider-progress-background)) 0/var(--sx) 100% no-repeat, #1C161B;
+}
+
+/*mozilla*/
+input[type=range].styled-slider::-moz-range-thumb {
+  width: 1rem;
+  height: 1rem;
+  border-radius: var(--slider-border-radius);
+  background: #FFFFFF;
+  border: none;
+  box-shadow: 0 0 2px #000000;
+}
+
+input[type=range].styled-slider::-moz-range-track {
+  height: var(--slider-height);
+  border: none;
+  border-radius: var(--slider-border-radius);
+  background: #1C161B;
+  box-shadow: none;
+}
+
+input[type=range].styled-slider::-moz-range-thumb:hover {
+  background: #DCDCDC;
+}
+
+input[type=range].styled-slider.slider-progress::-moz-range-track {
+  background: linear-gradient(var(--slider-progress-background), var(--slider-progress-background)) 0/var(--sx) 100% no-repeat, #1C161B;
+}
+
+/*ms*/
+input[type=range].styled-slider::-ms-fill-upper {
+  background: transparent;
+  border-color: transparent;
+}
+
+input[type=range].styled-slider::-ms-fill-lower {
+  background: transparent;
+  border-color: transparent;
+}
+
+input[type=range].styled-slider::-ms-thumb {
+  width: 1rem;
+  height: 1rem;
+  border-radius: var(--slider-border-radius);
+  background: #FFFFFF;
+  border: none;
+  box-shadow: 0 0 2px #000000;
+  margin-top: 0;
+  box-sizing: border-box;
+}
+
+input[type=range].styled-slider::-ms-track {
+  height: var(--slider-height);
+  border-radius: var(--slider-border-radius);
+  background: #1C161B;
+  border: none;
+  box-shadow: none;
+  box-sizing: border-box;
+}
+
+input[type=range].styled-slider::-ms-thumb:hover {
+  background: #DCDCDC;
+}
+
+input[type=range].styled-slider.slider-progress::-ms-fill-lower {
+  height: var(--slider-height);
+  border-radius: var(--slider-border-radius) 0 0 5px;
+  margin: -undefined 0 -undefined -undefined;
+  background: var(--slider-progress-background);
+  border: none;
+  border-right-width: 0;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: theme("colors.video.context.border");
+  border: 5px solid transparent;
+  border-left: 0;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar {
+  /* For some reason the styles don't get applied without the width */
+  width: 13px;
+}
+
+.grecaptcha-badge {
+  display: none !important;
+}
+
+.tabbable:focus-visible {
+  outline: 2px solid theme('colors.themePreview.primary');
+  box-shadow: 0 0 10px theme('colors.themePreview.secondary');
+}
+
+[dir="rtl"] .transform {
+  /* Invert horizontal X offset on transform (Tailwind RTL plugin does the rest) */
+  transform: translate(calc(var(--tw-translate-x) * -1), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
+}
+[dir="ltr"] .transform {
+  /* default - otherwise it overwrites*/
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
+}
