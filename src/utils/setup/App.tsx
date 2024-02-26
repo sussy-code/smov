@@ -1,4 +1,3 @@
-import { Analytics } from "@vercel/analytics/react";
 import { ReactElement, Suspense, lazy, useEffect } from "react";
 import { lazyWithPreload } from "react-lazy-with-preload";
 import {
@@ -156,7 +155,6 @@ function App() {
         ) : null}
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
-      <Analytics />
     </Layout>
   );
 }
