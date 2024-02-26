@@ -1,6 +1,5 @@
 import classNames from "classnames";
 import { ReactNode, useCallback } from "react";
-import { useNavigate } from "react-router-dom";
 
 import { Icon, Icons } from "@/components/Icon";
 import { Spinner } from "@/components/layout/Spinner";
