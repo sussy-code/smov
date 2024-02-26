@@ -47,8 +47,22 @@ export function Volume(props: Props) {
   if (dragging) percentage = makePercentage(dragPercentage);
   const percentageString = makePercentageString(percentage);
 
+  const handleWheel = useCallback(
+    (event: React.WheelEvent<HTMLDivElement>) => {
+      event.preventDefault();
+      let newVolume = volume - event.deltaY / 1000;
+      newVolume = Math.max(0, Math.min(newVolume, 1));
+      setVolume(newVolume);
+    },
+    [volume, setVolume],
+  );
+
   return (
-    <div className={props.className} onMouseEnter={handleMouseEnter}>
+    <div
+      className={props.className}
+      onMouseEnter={handleMouseEnter}
+      onWheel={handleWheel}
+    >
       <div className="pointer-events-auto flex cursor-pointer items-center py-0">
         <div className="px-4 text-2xl text-white" onClick={handleClick}>
           <Icon icon={percentage > 0 ? Icons.VOLUME : Icons.VOLUME_X} />
