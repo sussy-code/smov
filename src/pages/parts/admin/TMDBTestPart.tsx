@@ -29,7 +29,7 @@ export function TMDBTestPart() {
       return setStatus({
         hasTested: true,
         success: false,
-        errorText: "TMDB api key is not set",
+        errorText: "TMDB API key is not set",
       });
     }
     const isJWT = tmdbApiKey.split(".").length > 2;
@@ -37,7 +37,7 @@ export function TMDBTestPart() {
       return setStatus({
         hasTested: true,
         success: false,
-        errorText: "TMDB api key is not a read only key",
+        errorText: "TMDB API key is not a read only key",
       });
     }
 
@@ -48,7 +48,7 @@ export function TMDBTestPart() {
         hasTested: true,
         success: false,
         errorText:
-          "Failed to call tmdb, double check api key and your internet connection",
+          "Failed to call TMDB, double check API key and your internet connection",
       });
     }
 
@@ -61,7 +61,7 @@ export function TMDBTestPart() {
 
   return (
     <>
-      <Heading2 className="mb-8 mt-12">TMDB tests</Heading2>
+      <Heading2 className="mb-8 mt-12">TMDB test</Heading2>
       <Box>
         <div className="flex items-center">
           <div className="flex-1">

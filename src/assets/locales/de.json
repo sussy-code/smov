@@ -1,20 +1,20 @@
 {
   "about": {
-    "description": "sudo-flix ist eine Web-App, welche das Internet nach Streams durchsucht. Das Team versucht einen minimalistischen Ansatz umzusetzen.",
+    "description": "movie-web ist eine Web-App, welche das Internet nach Streams durchsucht. Das Team versucht einen minimalistischen Ansatz umzusetzen.",
     "faqTitle": "Häufig gestellte Fragen",
     "q1": {
-      "body": "sudo-flix hostet keinen eigenen Inhalt. Wenn du auf etwas zum Anschauen klickst, wird das Internet danach durchsucht (Auf dem Ladebildschirm und im Tab \"Videoquellen\" kannst du einstellen, welche Quellen verwendet werden sollen). sudo-flix lädt keine Videos hoch, alleVideos stammen aus der Suche.",
+      "body": "movie-web hostet keinen eigenen Inhalt. Wenn du auf etwas zum Anschauen klickst, wird das Internet danach durchsucht (Auf dem Ladebildschirm und im Tab \"Videoquellen\" kannst du einstellen, welche Quellen verwendet werden sollen). movie-web lädt keine Videos hoch, alleVideos stammen aus der Suche.",
       "title": "Woher stammen die Videos?"
     },
     "q2": {
-      "body": "Das Anfragen von Serien oder Filmen ist nicht möglich. sudo-flix verwaltet keine Inhalte. Alle Videos stammen vom Quellen aus dem Internet.",
+      "body": "Das Anfragen von Serien oder Filmen ist nicht möglich. movie-web verwaltet keine Inhalte. Alle Videos stammen vom Quellen aus dem Internet.",
       "title": "Wo kann ich eine Serie oder einen Film anfragen?"
     },
     "q3": {
       "body": "Unsere Suchergebnisse werden von The Movie Database (TMDB) bereitgestellt und, egal ob unsere Videoquellen über dieses Video verfügen, angezeigt.",
       "title": "Die Suche zeigt eine Serie oder einen Film an, warum kann ich den dann nicht abspielen?"
     },
-    "title": "Über sudo-flix"
+    "title": "Über movie-web"
   },
   "actions": {
     "copied": "Kopiert",
@@ -80,7 +80,7 @@
   "footer": {
     "legal": {
       "disclaimer": "Hinweis",
-      "disclaimerText": "sudo-flix hostet keine Dateien, sondern verlinkt lediglich auf Dienste Dritter. Rechtliche Fragen sollten mit den Dateihostern und -anbietern geklärt werden. sudo-flix übernimmt keine Verantwortung für die von den Videoanbietern angezeigten Mediendateien."
+      "disclaimerText": "movie-web hostet keine Dateien, sondern verlinkt lediglich auf Dienste Dritter. Rechtliche Fragen sollten mit den Dateihostern und -anbietern geklärt werden. movie-web übernimmt keine Verantwortung für die von den Videoanbietern angezeigten Mediendateien."
     },
     "links": {
       "discord": "Discord",
@@ -90,13 +90,13 @@
     "tagline": "Schau deine Lieblingsserien und Filme mit dieser quelloffenen Streaming App."
   },
   "global": {
-    "name": "sudo-flix",
+    "name": "movie-web",
     "pages": {
       "about": "Über",
       "dmca": "DMCA",
       "login": "Anmelden",
       "onboarding": "Einrichtung",
-      "pagetitle": "{{title}} - sudo-flix",
+      "pagetitle": "{{title}} - movie-web",
       "register": "Registrieren",
       "settings": "Einstellungen"
     }
@@ -116,7 +116,10 @@
       "failed": "Das Medium wurde nicht gefunden, bitte versuchen Sie es erneut!",
       "loading": "Wird geladen...",
       "noResults": "Wir haben nichts gefunden!",
-      "placeholder": "Was möchtest du schauen?",
+      "placeholder": {
+        "default": "Was möchtest du schauen?",
+        "extra": []
+      },
       "sectionTitle": "Suchergebnisse"
     },
     "titles": {
@@ -163,15 +166,66 @@
     "title": "Diese Seite wurde nicht gefunden"
   },
   "onboarding": {
+    "defaultConfirm": {
+      "cancel": "Abbrechen",
+      "confirm": "Standard-Setup verwenden",
+      "description": "Das Standard-Setup verfügt nicht über die besten Streams und kann unerträglich langsam sein.",
+      "title": "Sicher?"
+    },
+    "extension": {
+      "back": "Zurück gehen",
+      "explainer": "Mit der Browser-Erweiterung kannst du die besten Streams benutzen, die wir zu bieten haben. Mit nur einer einfachen Installation.",
+      "explainerIos": "Leider ist die Browser-Extension unter iOS nicht unterstützt. Klicken Sie auf <bold>Zurück</bold>, um eine andere Option auszuwählen.",
+      "extensionHelp": "Falls du die Erweiterung installiert hast, aber sie aber nicht erkannt wird, <bold>öffne die Erweiterung über das Erweiterungsmenü Ihres Browsers</bold> und befolge die Schritte auf dem Bildschirm.",
+      "linkChrome": "Chrome Erweiterung installieren",
+      "linkFirefox": "Firefox Erweiterung installieren",
+      "notDetecting": "Auf Chrome Installiert, aber die Website erkennt es nicht? Versuche, die Seite wieder zu laden!",
+      "notDetectingAction": "Seite neuladen",
+      "status": {
+        "disallowed": "Browser-Erweiterung ist für diese Website nicht aktiviert",
+        "disallowedAction": "Browser-Erweiterung aktivieren",
+        "failed": "Statusanforderung fehlgeschlagen",
+        "loading": "Wartet dass du die Erweiterung installierst",
+        "outdated": "Erweiterungsversion zu alt",
+        "success": "Die Browser-Erweiterung funktioniert wie erwartet!"
+      },
+      "submit": "Weiter",
+      "title": "Lass uns mit einer Erweiterung starten"
+    },
     "proxy": {
-      "back": "Zurück gehen"
+      "back": "Zurück gehen",
+      "explainer": "Mit der Proxy-Methode kannst du Streams mit guter Qualität benutzen, indem du einen eigenen Proxy einstellst.",
+      "input": {
+        "errorConnection": "Es konnte keine Verbindung zum Proxy hergestellt werden",
+        "errorInvalidUrl": "Keine gültige URL",
+        "errorNotProxy": "Ein Proxy wurde erwartet, aber eine Website wurde eingegeben",
+        "label": "Proxy-URL",
+        "placeholder": "https://"
+      },
+      "link": "Erfahre, wie man einen Proxy einstellt",
+      "submit": "Proxy einreichen",
+      "title": "Lass uns eine neue Proxy erstellen"
     },
     "start": {
+      "explainer": "Um die bestmöglichen Streams zu erhalten, müssen Sie auswählen, welche Streaming-Methode Sie verwenden möchten.",
       "options": {
+        "default": {
+          "text": "Ich möchte keine Streams mit guter Qualität. <0 /> <1>Standardeinstellung benutzen</1>"
+        },
         "extension": {
-          "quality": "Beste Qualität"
+          "action": "Browser-Erweitung installieren",
+          "description": "Installiere die Browser-Erweitung, um Zugriff auf die besten Quellen zu bekommen.",
+          "quality": "Beste Qualität",
+          "title": "Browser extension"
+        },
+        "proxy": {
+          "action": "Proxy einstellen",
+          "description": "Richte in nur 5 Minuten einen Proxy ein und erhalte Zugriff auf großartige Quellen.",
+          "quality": "Gute Qualität",
+          "title": "Eigene Proxy"
         }
-      }
+      },
+      "title": "Lass uns mit der Einrichtung von movie-web starten"
     }
   },
   "overlays": {
@@ -187,11 +241,10 @@
     },
     "menus": {
       "downloads": {
-        "disclaimer": "Videos werden direkt vom Provider heruntergeladen. sudo-flix hat keinen Einfluss darauf, wie Downloads bereitgestellt werden.",
-        "downloadPlaylist": "Playlist herunterladen",
+        "disclaimer": "Videos werden direkt vom Provider heruntergeladen. movie-web hat keinen Einfluss darauf, wie Downloads bereitgestellt werden.",
         "downloadSubtitle": "Aktuelle Untertitel herunterladen",
         "downloadVideo": "Video herunterladen",
-        "hlsDisclaimer": "sudo-flix hat keinen Einfluss darauf, wie Downloads bereitgestellt werden. Downloads werden direkt vom Anbieter bezogen. Bitte beachte, dass du eine HLS-Wiedergabeliste herunterlädst, dies ist nicht empfohlen für Nutzer die nicht mit Erweiterten Streaming Formaten vertraut sind. Probiere andere Anbieter für andere Formate.",
+        "hlsDisclaimer": "movie-web hat keinen Einfluss darauf, wie Downloads bereitgestellt werden. Downloads werden direkt vom Anbieter bezogen. <br /><br />Bitte beachte, dass du eine HLS-Wiedergabeliste herunterlädst, <bold>dies ist nicht empfohlen für Nutzer die nicht mit Erweiterten Streaming Formaten vertraut sind</bold>. Probiere andere Anbieter für andere Formate.",
         "onAndroid": {
           "1": "Um auf Android Herunterzuladen, tippe auf den Download-Button, <bold>tippe und halte</bold> auf der neuen Seite auf das Video und wähle <bold>Speichern</bold> aus.",
           "shortTitle": "Download / Android",
@@ -334,7 +387,7 @@
       "shortRemaining": "-{{timeLeft}}"
     },
     "turnstile": {
-      "description": "Bitte verifiziere deine Menschlichkeit mit dem Captcha auf der Rechten Seite. Dies ist um sudo-flix sicher zu halten!",
+      "description": "Bitte verifiziere deine Menschlichkeit mit dem Captcha auf der Rechten Seite. Dies ist um movie-web sicher zu halten!",
       "error": "Menschlichkeit konnte nicht verifiziert werden. Bitte versuche es erneut.",
       "title": "Wir müssen sicherstellen, dass du Menschlich bist.",
       "verifyingHumanity": "Verifiziere deine Menschlichkeit..."
@@ -342,7 +395,7 @@
   },
   "screens": {
     "dmca": {
-      "text": "Willkommen zu sudo-flixs DMCA-Kontaktseite! Wir respektieren geistiges Eigentum und wollen uns schnell um urheberrechtlichen Anliegen kümmern. Falls du glaubst, dass dein urheberrechtlich geschütztes Werk unsachgemäß auf unserer Plattform verwendet wurde, sende uns bitte eine genaue DMCA-Anfrage an die unten stehende E-Mail. Diese sollte eine Beschreibung des urheberrechtlich geschützten Material, deine Kontaktinformationen sowie einer Erklärung des guten Glaubens beinhalten. Wir sind engagiert diese Anliegen schnell zu lösen und schätzen deine Hilfe dabei sudo-flix zu einer Plattform, welche Kreativität und Urheberrechte respektiert.",
+      "text": "Willkommen zu movie-webs DMCA-Kontaktseite! Wir respektieren geistiges Eigentum und wollen uns schnell um urheberrechtlichen Anliegen kümmern. Falls du glaubst, dass dein urheberrechtlich geschütztes Werk unsachgemäß auf unserer Plattform verwendet wurde, sende uns bitte eine genaue DMCA-Anfrage an die unten stehende E-Mail. Diese sollte eine Beschreibung des urheberrechtlich geschützten Material, deine Kontaktinformationen sowie einer Erklärung des guten Glaubens beinhalten. Wir sind engagiert diese Anliegen schnell zu lösen und schätzen deine Hilfe dabei movie-web zu einer Plattform, welche Kreativität und Urheberrechte respektiert.",
       "title": "DMCA"
     },
     "loadingApp": "Die App wird geladen",
@@ -450,7 +503,7 @@
       "language": "App-Sprache",
       "languageDescription": "Sprache für die ganze App.",
       "thumbnail": "Miniaturansichten generieren",
-      "thumbnailDescription": "Meistens haben Videos keine Miniaturansicht. Du kannst diese Einstellung anmachen, um sie automatisch zu generieren, aber Sie können dein Video langsamer machen.",
+      "thumbnailDescription": "Meistens haben Videos keine Miniaturansicht. Du kannst diese Einstellung anmachen, um sie automatisch zu generieren, aber sie können dein Video langsamer machen.",
       "thumbnailLabel": "Miniaturansichten generieren",
       "title": "Einstellungen"
     },

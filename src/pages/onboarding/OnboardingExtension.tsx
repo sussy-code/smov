@@ -115,7 +115,7 @@ export function ExtensionStatus(props: {
         </div>
       </Card>
       {lastKnownStatus === "unknown" ? <RefreshBar /> : null}
-      {props.showHelp ? (
+      {props.showHelp && props.status !== "success" ? (
         <Card className="mt-4">
           <div className="flex items-center space-x-7">
             <Icon icon={Icons.WARNING} className="text-type-danger text-2xl" />

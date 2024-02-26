@@ -60,6 +60,7 @@ export function BookmarkSyncer() {
   useEffect(() => {
     const interval = setInterval(() => {
       (async () => {
+        if (!url) return;
         const state = useBookmarkStore.getState();
         const user = useAuthStore.getState();
         await syncBookmarks(

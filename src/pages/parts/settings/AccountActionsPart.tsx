@@ -18,7 +18,7 @@ export function AccountActionsPart() {
   const deleteModal = useModal("account-delete");
 
   const [deleteResult, deleteExec] = useAsyncFn(async () => {
-    if (!account) return;
+    if (!account || !url) return;
     await deleteUser(url, account);
     await logout();
     deleteModal.hide();
