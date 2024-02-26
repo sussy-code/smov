@@ -1,20 +1,20 @@
 {
   "about": {
-    "description": "movie-web 是一款在互联网上搜寻流媒体的网络应用程序。团队致力于让用户采取最简约的方式消费内容。",
+    "description": "sudo-flix 是一款在互联网上搜寻流媒体的网络应用程序。团队致力于让用户采取最简约的方式消费内容。",
     "faqTitle": "常见问题",
     "q1": {
-      "body": "movie-web 不托管任何内容。您点选观看内容时，系统均从互联网搜寻（在加载提示页和“视频源”选项卡中，您可以看到正在使用的源）。媒体从未在 movie-web 中上传，所有内容均通过搜索机制而得。",
+      "body": "sudo-flix 不托管任何内容。您点选观看内容时，系统均从互联网搜寻（在加载提示页和“视频源”选项卡中，您可以看到正在使用的源）。媒体从未在 sudo-flix 中上传，所有内容均通过搜索机制而得。",
       "title": "内容来自哪里？"
     },
     "q2": {
-      "body": "无法主动请求影视剧或其他节目，movie-web 不管理任何内容。所有内容均从互联网视频源获取并供您观看。",
+      "body": "无法主动请求影视剧或其他节目，sudo-flix 不管理任何内容。所有内容均从互联网视频源获取并供您观看。",
       "title": "我可以从哪里请求观看影视剧或其他节目？"
     },
     "q3": {
       "body": "我们的搜索结果由电影数据库（TMDB）驱动，无论视频源是否有对应内容，均会显示结果。",
       "title": "搜索结果中已显示了影视剧或其他节目，为何我无法播放？"
     },
-    "title": "关于 movie-web"
+    "title": "关于 sudo-flix"
   },
   "actions": {
     "copied": "已复制",
@@ -80,7 +80,7 @@
   "footer": {
     "legal": {
       "disclaimer": "免责声明",
-      "disclaimerText": "movie-web 不托管任何文件，仅链接到第三方服务。 法律问题应由文件托管者和内容提供者解决。 movie-web 对视频提供者显示的任何媒体文件不承担任何责任。"
+      "disclaimerText": "sudo-flix 不托管任何文件，仅链接到第三方服务。 法律问题应由文件托管者和内容提供者解决。 sudo-flix 对视频提供者显示的任何媒体文件不承担任何责任。"
     },
     "links": {
       "discord": "Discord",
@@ -90,13 +90,13 @@
     "tagline": "在这个开源流媒体应用上观看你最喜爱的影视剧或其他节目。"
   },
   "global": {
-    "name": "movie-web",
+    "name": "sudo-flix",
     "pages": {
       "about": "关于",
       "dmca": "DMCA",
       "login": "登录",
       "onboarding": "设定",
-      "pagetitle": "{{title}} - movie-web",
+      "pagetitle": "{{title}} - sudo-flix",
       "register": "注册",
       "settings": "设置"
     }
@@ -223,7 +223,7 @@
           "title": "自定义代理"
         }
       },
-      "title": "让我们为您设定 movie-web"
+      "title": "让我们为您设定 sudo-flix"
     }
   },
   "overlays": {
@@ -239,10 +239,10 @@
     },
     "menus": {
       "downloads": {
-        "disclaimer": "下载内容是直接从内容提供者获取的。movie-web 无法控制下载内容如何被提供。",
+        "disclaimer": "下载内容是直接从内容提供者获取的。sudo-flix 无法控制下载内容如何被提供。",
         "downloadSubtitle": "下载当前字幕",
         "downloadVideo": "下载视频",
-        "hlsDisclaimer": "下载内容是直接从内容提供者获取的。movie-web 无法控制下载内容如何被提供。<br /><br />请注意，您正在下载 HLS 播放列表，<bold>如您不熟悉高级流媒体格式，我们不推荐此操作</bold>。如需下载其他格式，请尝试切换视频源。",
+        "hlsDisclaimer": "下载内容是直接从内容提供者获取的。sudo-flix 无法控制下载内容如何被提供。<br /><br />请注意，您正在下载 HLS 播放列表，<bold>如您不熟悉高级流媒体格式，我们不推荐此操作</bold>。如需下载其他格式，请尝试切换视频源。",
         "onAndroid": {
           "1": "要从 Android 下载，先点击下载按钮，之后在新的页面上， <bold>点击并按住</bold>视频，然后选择 <bold>保存</bold>。",
           "shortTitle": "下载 / Android",
@@ -385,7 +385,7 @@
       "shortRemaining": "-{{timeLeft}}"
     },
     "turnstile": {
-      "description": "请完成右侧的验证码以验证您是人类。这是为了确保 movie-web 的安全！",
+      "description": "请完成右侧的验证码以验证您是人类。这是为了确保 sudo-flix 的安全！",
       "error": "验证失败。请重试。",
       "title": "我们需要验证您是不是人类。",
       "verifyingHumanity": "正在验证您是否为人类…"
@@ -393,7 +393,7 @@
   },
   "screens": {
     "dmca": {
-      "text": "欢迎来到 movie-web 的 DMCA 联系页面！我们尊重知识产权，并希望迅速解决任何版权问题。如果您认为您的版权作品在我们的平台上被不当使用，请发送详细的 DMCA 通知至以下邮箱。同时请附上受版权保护的材料的描述、您的具体联系方式以及善意信念声明。 我们承诺及时解决这些问题，并感谢您的合作，让 movie-web 成为尊重创意和版权之地。",
+      "text": "欢迎来到 sudo-flix 的 DMCA 联系页面！我们尊重知识产权，并希望迅速解决任何版权问题。如果您认为您的版权作品在我们的平台上被不当使用，请发送详细的 DMCA 通知至以下邮箱。同时请附上受版权保护的材料的描述、您的具体联系方式以及善意信念声明。 我们承诺及时解决这些问题，并感谢您的合作，让 sudo-flix 成为尊重创意和版权之地。",
       "title": "DMCA"
     },
     "loadingApp": "正在载入应用程序",

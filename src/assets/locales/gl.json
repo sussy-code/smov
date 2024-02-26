@@ -1,20 +1,20 @@
 {
   "about": {
-    "description": "movie-web é unha aplicación web que busca transmisións na rede. O equipo ten como obxectivo manter un enfoque principalmente minimalista para consumir os contidos.",
+    "description": "sudo-flix é unha aplicación web que busca transmisións na rede. O equipo ten como obxectivo manter un enfoque principalmente minimalista para consumir os contidos.",
     "faqTitle": "Preguntas frecuentes",
     "q1": {
-      "body": "movie-web non aloxa ningún contido. Cando premes en algo para ver o contenido, búscase en internet o medio seleccionado. (Na pantalla de carga e na lapela 'fontes de video' podes ver que fonte se está a empregar. O contido nunca se carga en movie-web, todo realízase a través deste método de busca.",
+      "body": "sudo-flix non aloxa ningún contido. Cando premes en algo para ver o contenido, búscase en internet o medio seleccionado. (Na pantalla de carga e na lapela 'fontes de video' podes ver que fonte se está a empregar. O contido nunca se carga en sudo-flix, todo realízase a través deste método de busca.",
       "title": "De onde proveñen os contidos?"
     },
     "q2": {
-      "body": "Non é posible solicitar unha película. movie-web non xestiona ningún contido. Todo o contido é xestionado a través de fontes na rede.",
+      "body": "Non é posible solicitar unha película. sudo-flix non xestiona ningún contido. Todo o contido é xestionado a través de fontes na rede.",
       "title": "Onde poido solicitar unha película a engadir?"
     },
     "q3": {
       "body": "Os nosos resultados de busqueda proveñen de The Movie Database (TMDB) e se mostran independentemente de se as nosas fontes multimedia teñen realmente o contido.",
       "title": "Os resultados da busca mostran a serie ou película... Por qué non poido reproducila?"
     },
-    "title": "Acerca de movie-web"
+    "title": "Acerca de sudo-flix"
   },
   "actions": {
     "copied": "Copiado",
@@ -80,7 +80,7 @@
   "footer": {
     "legal": {
       "disclaimer": "Descargo de responsabilidade",
-      "disclaimerText": "movie-web non aloxa ningún arquivo, simplemente enlaza con servizos de terceiros. Os problemas legais deben ser tratados cós proovedores de arquivos e servizos. movie-web non se fai responsable dos arquivos multimedia mostrados polos provedores de video."
+      "disclaimerText": "sudo-flix non aloxa ningún arquivo, simplemente enlaza con servizos de terceiros. Os problemas legais deben ser tratados cós proovedores de arquivos e servizos. sudo-flix non se fai responsable dos arquivos multimedia mostrados polos provedores de video."
     },
     "links": {
       "discord": "Discord",
@@ -90,13 +90,13 @@
     "tagline": "Disfruta das túas series e películas favoritas con esta aplicación de transmisión de código aberto."
   },
   "global": {
-    "name": "movie-web",
+    "name": "sudo-flix",
     "pages": {
       "about": "Acerca de",
       "dmca": "DMCA",
       "login": "Iniciar sesión",
       "onboarding": "Configuración",
-      "pagetitle": "{{title}} - movie-web",
+      "pagetitle": "{{title}} - sudo-flix",
       "register": "Rexistrarse",
       "settings": "Configuración"
     }
@@ -225,7 +225,7 @@
           "title": "Proxy personalizado"
         }
       },
-      "title": "Vamos a empezar coa configuración de movie-web"
+      "title": "Vamos a empezar coa configuración de sudo-flix"
     }
   },
   "overlays": {
@@ -241,10 +241,10 @@
     },
     "menus": {
       "downloads": {
-        "disclaimer": "As descargas proveñen do provedor. movie-web non ten control sobre as descargas e a súa procedencia.",
+        "disclaimer": "As descargas proveñen do provedor. sudo-flix non ten control sobre as descargas e a súa procedencia.",
         "downloadSubtitle": "Descargar subtítulos actuais",
         "downloadVideo": "Descargar video",
-        "hlsDisclaimer": "As descargas realizanse directamente dende o proovedor. movie-web non ten control sobre como se xestionan as descargas. <br /><br />Ten en conta que estás a descargar unha lista de reproducción HLS, <bold>non está recomendado instalalos se non estás familiarizado con estos sistemas de contidos avanzados</bold> Proba fontes diferentes ou formatos diferentes.",
+        "hlsDisclaimer": "As descargas realizanse directamente dende o proovedor. sudo-flix non ten control sobre como se xestionan as descargas. <br /><br />Ten en conta que estás a descargar unha lista de reproducción HLS, <bold>non está recomendado instalalos se non estás familiarizado con estos sistemas de contidos avanzados</bold> Proba fontes diferentes ou formatos diferentes.",
         "onAndroid": {
           "1": "Para descargar en Android, fai click no botón de descarga e despois, na nova páxina, <bold>mantén presionado</bold>o vídeo e selecciona <bold>gardar</bold>.",
           "shortTitle": "Descargar / Android",
@@ -387,7 +387,7 @@
       "shortRemaining": "-{{timeLeft}}"
     },
     "turnstile": {
-      "description": "Por favor, verifica que eres un humán completando o Captcha. Isto é para mantee movie-web seguro!",
+      "description": "Por favor, verifica que eres un humán completando o Captcha. Isto é para mantee sudo-flix seguro!",
       "error": "Houbo un erro ao verificar a túa humanidade. Por favor, volve a intentalo.",
       "title": "Necesitamos verificar que realmente eres un humán.",
       "verifyingHumanity": "Verificando a túa humanidade…"
@@ -395,7 +395,7 @@
   },
   "screens": {
     "dmca": {
-      "text": "Benvido/a á páxona de contacto DMA de movie-web! Respetamos os dereitos de propiedade intelectual e queremos abordar calqueiro problema de dereitos de autor de maneira más rápida. Se crees que o teu traballo con dereitos de autor está sendo empregado incorrectamente na nosa plataforma, envñia un aviso DMCA detallado ao correo electrónico que se mostra a continuación. Inclue unha descripción do material con dereitos de autor, os seus datos de contacto e unha declaración de boa fé. Estamos comprometidos a resolver estos asuntos o máis rápido posible e agradecemos a túa cooperación para manter a movie-web como un lugar que respeta a creatividade e os dereitos de autor.",
+      "text": "Benvido/a á páxona de contacto DMA de sudo-flix! Respetamos os dereitos de propiedade intelectual e queremos abordar calqueiro problema de dereitos de autor de maneira más rápida. Se crees que o teu traballo con dereitos de autor está sendo empregado incorrectamente na nosa plataforma, envñia un aviso DMCA detallado ao correo electrónico que se mostra a continuación. Inclue unha descripción do material con dereitos de autor, os seus datos de contacto e unha declaración de boa fé. Estamos comprometidos a resolver estos asuntos o máis rápido posible e agradecemos a túa cooperación para manter a sudo-flix como un lugar que respeta a creatividade e os dereitos de autor.",
       "title": "DMCA"
     },
     "loadingApp": "Cargando aplicación",

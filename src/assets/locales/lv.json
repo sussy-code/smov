@@ -1,9 +1,9 @@
 {
   "about": {
-    "description": "movie-web ir tīmekļa lietojumprogramma, kas internetā meklē straumes. Komandas mērķis ir galvenokārt minimālistiska pieeja satura patērēšanai.",
+    "description": "sudo-flix ir tīmekļa lietojumprogramma, kas internetā meklē straumes. Komandas mērķis ir galvenokārt minimālistiska pieeja satura patērēšanai.",
     "faqTitle": "Bieži jautājumi",
     "q1": {
-      "body": "Movie-web neveic nekādu saturu. Noklikšķinot uz kāda skatāma satura, internetā tiek meklēts atlasītais multivides saturs (ielādes ekrānā un cilnē “video avoti” varat redzēt, kuru avotu izmantojat). Multivide nekad netiek augšupielādēta, izmantojot filmu tīmekli, viss notiek caur šo meklēšanas mehānismu.",
+      "body": "sudo-flix neveic nekādu saturu. Noklikšķinot uz kāda skatāma satura, internetā tiek meklēts atlasītais multivides saturs (ielādes ekrānā un cilnē “video avoti” varat redzēt, kuru avotu izmantojat). Multivide nekad netiek augšupielādēta, izmantojot filmu tīmekli, viss notiek caur šo meklēšanas mehānismu.",
       "title": "No kurienes nāk saturs?"
     },
     "q2": {
@@ -14,7 +14,7 @@
       "body": "Mūsu meklēšanas rezultātus nodrošina filmu datu bāze (TMDB), un tie tiek rādīti neatkarīgi no tā, vai mūsu avotos patiešām ir saturs.",
       "title": "Meklēšanas rezultātos tiek parādīta seriāls vai filma. Kāpēc es nevaru to atskaņot?"
     },
-    "title": "Par movie-web"
+    "title": "Par "
   },
   "actions": {
     "copied": "Nokopēts",
@@ -79,7 +79,7 @@
   "footer": {
     "legal": {
       "disclaimer": "Atruna",
-      "disclaimerText": "movie-web nemitina nekādus failus, tas tikai veido saites uz trešās puses pakalpojumiem. Juridiskie jautājumi ir jārisina ar failu resursdatoriem un nodrošinātājiem. movie-web nav atbildīgs par video pakalpojumu sniedzēju parādītajiem multivides failiem."
+      "disclaimerText": "sudo-flix nemitina nekādus failus, tas tikai veido saites uz trešās puses pakalpojumiem. Juridiskie jautājumi ir jārisina ar failu resursdatoriem un nodrošinātājiem. sudo-flix nav atbildīgs par video pakalpojumu sniedzēju parādītajiem multivides failiem."
     },
     "links": {
       "discord": "Discord",
@@ -173,7 +173,7 @@
     },
     "menus": {
       "downloads": {
-        "disclaimer": "Lejupielādes tiek ņemtas tieši no pakalpojumu sniedzēja. Movie-web nevar kontrolēt, kā tiek nodrošinātas lejupielādes.",
+        "disclaimer": "Lejupielādes tiek ņemtas tieši no pakalpojumu sniedzēja. sudo-flix nevar kontrolēt, kā tiek nodrošinātas lejupielādes.",
         "downloadVideo": "Lejupielādēt video",
         "onAndroid": {
           "1": "Lai lejupielādētu operētājsistēmā Android, noklikšķiniet uz lejupielādes pogas, pēc tam jaunajā lapā <bold>pieskarieties videoklipam un turiet to</bold>, pēc tam atlasiet <bold>saglabāt</bold>.",

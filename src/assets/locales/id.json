@@ -1,20 +1,20 @@
 {
   "about": {
-    "description": "movie-web adalah website yang mengumpulkan sumber media streaming dari internet. Didesain khusus dengan pendekatan minimalis agar mempermudah konsumsi konten.",
+    "description": "sudo-flix adalah website yang mengumpulkan sumber media streaming dari internet. Didesain khusus dengan pendekatan minimalis agar mempermudah konsumsi konten.",
     "faqTitle": "Pertanyaan umum",
     "q1": {
-      "body": "movie-web tidak menyimpan berkas media apapun. Ketika anda mengklik sesuatu untuk ditonton, aplikasi akan mencari berkas media di internet (saat media dimuat dan pada tab 'sumber media' anda dapat melihat sumber mana yang digunakan). movie-web tidak pernah mengunggah media apapun, semua media didapat melalui mekanisme pencarian di internet.",
+      "body": "sudo-flix tidak menyimpan berkas media apapun. Ketika anda mengklik sesuatu untuk ditonton, aplikasi akan mencari berkas media di internet (saat media dimuat dan pada tab 'sumber media' anda dapat melihat sumber mana yang digunakan). sudo-flix tidak pernah mengunggah media apapun, semua media didapat melalui mekanisme pencarian di internet.",
       "title": "Dari mana konten media di sini berasal?"
     },
     "q2": {
-      "body": "Kami tidak menerima permintaan penambahan serial televisi atau film, movie-web tidak mengelola konten apapun. Semua konten ditonton melalui sumber-sumber dari internet.",
+      "body": "Kami tidak menerima permintaan penambahan serial televisi atau film, sudo-flix tidak mengelola konten apapun. Semua konten ditonton melalui sumber-sumber dari internet.",
       "title": "Di mana saya dapat meminta serial televisi atau film untuk ditambahkan?"
     },
     "q3": {
       "body": "Hasil pencarian aplikasi ini menggunakan API milik The Movie Database (TMDB) dan menampilkan semua hasil pencarian terlepas dari apakah sumber media tersebut dapat ditemukan di penyedia pihak ketiga atau tidak.",
       "title": "Hasil pencarian menampilkan serial televisi atau film yang saya cari, tapi mengapa saya tidak bisa memutarnya?"
     },
-    "title": "Tentang movie-web"
+    "title": "Tentang sudo-flix"
   },
   "actions": {
     "copied": "Disalin",
@@ -80,7 +80,7 @@
   "footer": {
     "legal": {
       "disclaimer": "Sanggahan",
-      "disclaimerText": "movie-web tidak menyimpan berkas media apapun, aplikasi ini hanya menampilkan tautan dari pihak ketiga. Sengketa hukum harus diajukan langsung kepada penyedia pihak ketiga. movie-web tidak bertanggung jawab atas berkas media yang ditampilkan oleh penyedia pihak ketiga."
+      "disclaimerText": "sudo-flix tidak menyimpan berkas media apapun, aplikasi ini hanya menampilkan tautan dari pihak ketiga. Sengketa hukum harus diajukan langsung kepada penyedia pihak ketiga. sudo-flix tidak bertanggung jawab atas berkas media yang ditampilkan oleh penyedia pihak ketiga."
     },
     "links": {
       "discord": "Discord",
@@ -90,12 +90,12 @@
     "tagline": "Tonton serial televisi dan film favorit anda dengan aplikasi streaming open source ini."
   },
   "global": {
-    "name": "movie-web",
+    "name": "sudo-flix",
     "pages": {
       "about": "Tentang",
       "dmca": "DMCA",
       "login": "Masuk",
-      "pagetitle": "{{title}} - movie-web",
+      "pagetitle": "{{title}} - sudo-flix",
       "register": "Daftar",
       "settings": "Pengaturan"
     }
@@ -309,7 +309,7 @@
   },
   "screens": {
     "dmca": {
-      "text": "Selamat datang di halaman kontak DMCA movie-web! Kami menghormati hak kekayaan intelektual dan ingin menangani masalah hak cipta dengan cepat. Jika anda yakin bahwa karya berhak cipta anda telah digunakan secara tidak benar di platform kami, silakan kirim pemberitahuan DMCA secara terperinci ke email di bawah ini. Mohon sertakan deskripsi materi berhak cipta, detail kontak anda, dan pernyataan itikad baik. Kami berkomitmen untuk menyelesaikan masalah ini sesegera mungkin dan kami menghargai kerja sama anda dalam menjaga movie-web sebagai tempat yang menghormati kreativitas dan hak cipta.",
+      "text": "Selamat datang di halaman kontak DMCA sudo-flix! Kami menghormati hak kekayaan intelektual dan ingin menangani masalah hak cipta dengan cepat. Jika anda yakin bahwa karya berhak cipta anda telah digunakan secara tidak benar di platform kami, silakan kirim pemberitahuan DMCA secara terperinci ke email di bawah ini. Mohon sertakan deskripsi materi berhak cipta, detail kontak anda, dan pernyataan itikad baik. Kami berkomitmen untuk menyelesaikan masalah ini sesegera mungkin dan kami menghargai kerja sama anda dalam menjaga sudo-flix sebagai tempat yang menghormati kreativitas dan hak cipta.",
       "title": "DMCA"
     },
     "loadingApp": "Memuat aplikasi",

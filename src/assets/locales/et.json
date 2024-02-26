@@ -1,20 +1,20 @@
 {
   "about": {
-    "description": "movie-web on veebirakendus, mis otsib internetti striimide jaoks. Meie eesmärk on enamasti minimalistlik lähenemine sisu tarbimisele.",
+    "description": "sudo-flix on veebirakendus, mis otsib internetti striimide jaoks. Meie eesmärk on enamasti minimalistlik lähenemine sisu tarbimisele.",
     "faqTitle": "Tihti küsitud küsimused",
     "q1": {
-      "body": "movie-web ei hoiusta enda sisu. Kui klõpsate, et midagi vaadata, otsitakse valitud meediat internetist (laadimisekraanil ja vahekaardil \"videoallikad\" näete, millist allikat te kasutate). Meediat ei lae movie-web kunagi üles, kõik toimub selle otsingumehhanismi kaudu.",
+      "body": "sudo-flix ei hoiusta enda sisu. Kui klõpsate, et midagi vaadata, otsitakse valitud meediat internetist (laadimisekraanil ja vahekaardil \"videoallikad\" näete, millist allikat te kasutate). Meediat ei lae sudo-flix kunagi üles, kõik toimub selle otsingumehhanismi kaudu.",
       "title": "Kust tuleb meie sisu?"
     },
     "q2": {
-      "body": "Saadet või filmi ei ole võimalik taotelda, movie-web ei halda mingit sisu. Kogu sisu vaadatakse interneti allikate kaudu.",
+      "body": "Saadet või filmi ei ole võimalik taotelda, sudo-flix ei halda mingit sisu. Kogu sisu vaadatakse interneti allikate kaudu.",
       "title": "Kust ma saan kindlat saadet või filmi paluda?"
     },
     "q3": {
       "body": "Meie otsingutulemusi toetab The Movie Database (TMDB) ja need kuvatakse sõltumata sellest, kas meie allikates on sisu tegelikult olemas.",
       "title": "Otsingutulemustes kuvatakse saade või film. Miks ma ei saa seda esitada?"
     },
-    "title": "movie-web'i kohta"
+    "title": "sudo-flix'i kohta"
   },
   "actions": {
     "copied": "Kopeeritud",
@@ -80,7 +80,7 @@
   "footer": {
     "legal": {
       "disclaimer": "Lahtiütlemine",
-      "disclaimerText": "movie-web ei hoiusta ühtegi faili, vaid ainult lingib kolmandate osapoolte teenustele. Juriidilised küsimused tuleks lahendada failihostide ja teenusepakkujatega. movie-web ei vastuta videopakkujate poolt näidatud meediafailide eest."
+      "disclaimerText": "sudo-flix ei hoiusta ühtegi faili, vaid ainult lingib kolmandate osapoolte teenustele. Juriidilised küsimused tuleks lahendada failihostide ja teenusepakkujatega. sudo-flix ei vastuta videopakkujate poolt näidatud meediafailide eest."
     },
     "links": {
       "discord": "Discord",
@@ -90,13 +90,13 @@
     "tagline": "Vaadake selle avatud lähtekoodiga striimimis rakendusega oma lemmiksaateid ja -filme."
   },
   "global": {
-    "name": "movie-web",
+    "name": "sudo-flix",
     "pages": {
       "about": "Meist",
       "dmca": "DMCA",
       "login": "Logi sisse",
       "onboarding": "Seadistamine",
-      "pagetitle": "{{title}} - movie-web",
+      "pagetitle": "{{title}} - sudo-flix",
       "register": "Registreeri",
       "settings": "Sätted"
     }
@@ -225,7 +225,7 @@
           "title": "Kohandatud proxy"
         }
       },
-      "title": "Teeme algust movie-webi kasutamisega"
+      "title": "Teeme algust sudo-flixi kasutamisega"
     }
   },
   "overlays": {
@@ -241,10 +241,10 @@
     },
     "menus": {
       "downloads": {
-        "disclaimer": "Allalaadimine toimub otse teenusepakkujalt. movie-web ei saa kontrollida, kuidas allalaadimine toimub.",
+        "disclaimer": "Allalaadimine toimub otse teenusepakkujalt. sudo-flix ei saa kontrollida, kuidas allalaadimine toimub.",
         "downloadSubtitle": "Laadige alla praegune subtiiter",
         "downloadVideo": "Lae alla video",
-        "hlsDisclaimer": "Allalaadimised võetakse otse teenusepakkujalt. movie-web ei kontrolli, kuidas allalaadimisi pakutakse. <br /><br /><bold>Pange tähele, et laadite alla HLS-i esitusloendit, see on mõeldud kasutajatele, kes on tuttavad multimeediumi striimimisega</bold>.",
+        "hlsDisclaimer": "Allalaadimised võetakse otse teenusepakkujalt. sudo-flix ei kontrolli, kuidas allalaadimisi pakutakse. <br /><br /><bold>Pange tähele, et laadite alla HLS-i esitusloendit, see on mõeldud kasutajatele, kes on tuttavad multimeediumi striimimisega</bold>.",
         "onAndroid": {
           "1": "Et allalaadida Androidi telefonil, vajuta allalaadimise nupule, siis uuel leheküljel <bold>vajuta ja hoia</bold> video peal, siis vali <bold>salvesta</bold>.",
           "shortTitle": "Allalaadimine / Android",
@@ -387,7 +387,7 @@
       "shortRemaining": "-{{timeLeft}}"
     },
     "turnstile": {
-      "description": "Palun kinnitage, et olete inimene, täites paremal asuva Captcha. See on selleks, et hoida movie-web turvalisena!",
+      "description": "Palun kinnitage, et olete inimene, täites paremal asuva Captcha. See on selleks, et hoida sudo-flix turvalisena!",
       "error": "Ei õnnestunud kontrollida teie inimlikkust. Palun proovige uuesti.",
       "title": "Me peame kontrollima, et te olete inimene.",
       "verifyingHumanity": "Kontrollime kas olete robot..."
@@ -395,7 +395,7 @@
   },
   "screens": {
     "dmca": {
-      "text": "Tere tulemast movie-webi DMCA kontaktilehele! Me austame intellektuaalomandi õigusi ja soovime kiiresti lahendada kõik autoriõigusega seotud probleemid. Kui usute, et teie autoriõigusega kaitstud tööd on meie platvormil vääralt kasutatud, saatke palun üksikasjalik DMCA-teade alljärgnevale e-posti aadressile. Palun lisage autoriõigusega kaitstud materjali kirjeldus, oma kontaktandmed ja avaldus heauskse veendumuse kohta. Oleme pühendunud nende küsimuste kiirele lahendamisele ja hindame teie koostööd, et movie-web oleks koht, kus austatakse loovust ja autoriõigusi.",
+      "text": "Tere tulemast sudo-flixi DMCA kontaktilehele! Me austame intellektuaalomandi õigusi ja soovime kiiresti lahendada kõik autoriõigusega seotud probleemid. Kui usute, et teie autoriõigusega kaitstud tööd on meie platvormil vääralt kasutatud, saatke palun üksikasjalik DMCA-teade alljärgnevale e-posti aadressile. Palun lisage autoriõigusega kaitstud materjali kirjeldus, oma kontaktandmed ja avaldus heauskse veendumuse kohta. Oleme pühendunud nende küsimuste kiirele lahendamisele ja hindame teie koostööd, et sudo-flix oleks koht, kus austatakse loovust ja autoriõigusi.",
       "title": "DMCA"
     },
     "loadingApp": "Rakenduse laadimine",
