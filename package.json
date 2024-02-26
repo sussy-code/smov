@@ -2,7 +2,7 @@
   "name": "sudo-flix",
   "version": "4.4.2",
   "private": true,
-  "homepage": "https://movie-web.app",
+  "homepage": "https://sudo-flix.lol",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
