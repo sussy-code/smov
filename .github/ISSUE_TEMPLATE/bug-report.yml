@@ -1,0 +1,50 @@
+name: Bug Report
+description: File a bug report
+title: "[Bug]: "
+labels: ["bug", "awaiting-approval"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+
+        Please fill out with as much detail as possible
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Also tell us, what did you expect to happen?
+      placeholder: Tell us what you see!
+    validations:
+      required: true
+  - type: dropdown
+    id: browsers
+    attributes:
+      label: What browsers are you seeing the problem on?
+      multiple: true
+      options:
+        - Firefox
+        - Chrome
+        - Safari
+        - Microsoft Edge
+        - Other (tell us in input box below)
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce?
+      description: What steps have you taken to see the bug? (OPTIONAL)
+      placeholder: 1. ...
+    validations:
+      required: false
+  - type: textarea
+    id: other-info
+    attributes:
+      label: Other relevant information
+      description: |
+        Feel free to give us any more information that doesn't fit the above text boxes.
+
+        Tip: You can attach files by clicking this textbox and dragging in files
+    validations:
+      required: false
+

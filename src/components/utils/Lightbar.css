@@ -1,0 +1,77 @@
+.lightbar, .lightbar-visual {
+  position: absolute;
+  width: 500vw;
+  height: 800px;
+  pointer-events: none;
+  user-select: none;
+}
+
+[dir] .lightbar {
+  left: 50vw;
+  transform: translateX(-50%);
+}
+
+@screen sm {
+  .lightbar, .lightbar-visual {
+    width: 150vw;
+  }
+
+  [dir] .lightbar {
+    left: -25vw;
+    transform: initial;
+  }
+
+}
+
+[dir] .lightbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  --d: 3s;
+  --animation: cubic-bezier(.75, -0.00, .25, 1);
+  animation: boot var(--d) var(--animation) forwards;
+}
+
+[dir] .lightbar-visual {
+  left: 0;
+  --top: theme('colors.background.main');
+  --bottom: theme('colors.lightBar.light');
+  --first: conic-gradient(from 90deg at 80% 50%, var(--top), var(--bottom));
+  --second: conic-gradient(from 270deg at 20% 50%, var(--bottom), var(--top));
+  mask-image: radial-gradient(100% 50% at center center, black, transparent);
+  background-image: var(--first), var(--second);
+  background-position-x: 1%, 99%;
+  background-position-y: 0%, 0%;
+  background-size: 50% 100%, 50% 100%;
+  opacity: 1;
+  transform: rotate(180deg) translateZ(0px) translateY(400px);
+  transform-origin: center center;
+  background-repeat: no-repeat;
+  animation: lightbarBoot var(--d) var(--animation) forwards;
+}
+
+.lightbar canvas {
+  width: 40%;
+  height: 300px;
+  transform: translateY(-250px);
+}
+
+@keyframes boot {
+  from {
+    opacity: 0.25;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes lightbarBoot {
+  0% {
+    transform: rotate(180deg) translateZ(0px) translateY(400px) scaleX(0.8);
+  }
+
+  100% {
+    transform: rotate(180deg) translateZ(0px) translateY(400px) scaleX(1);
+  }
+}
