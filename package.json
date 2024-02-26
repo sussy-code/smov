@@ -1,8 +1,8 @@
 {
   "name": "movie-web",
-  "version": "4.4.2",
+  "version": "4.5.0",
   "private": true,
-  "homepage": "https://movie-web.app",
+  "homepage": "https://github.com/movie-web/movie-web",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -123,7 +123,8 @@
     "vite-plugin-package-version": "^1.1.0",
     "vite-plugin-pwa": "^0.17.4",
     "vite-plugin-static-copy": "^1.0.0",
-    "vitest": "^1.1.0"
+    "vitest": "^1.1.0",
+    "workbox-window": "^7.0.0"
   },
   "pnpm": {
     "overrides": {

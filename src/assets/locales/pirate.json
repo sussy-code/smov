@@ -116,7 +116,10 @@
       "failed": "Arrrr failed to find media, try again!",
       "loading": "Hold yer horses, me heartie!",
       "noResults": "We couldn't find anythin', arrr!",
-      "placeholder": "What do ye want to watch?",
+      "placeholder": {
+        "default": "What do ye want to watch?",
+        "extra": []
+      },
       "sectionTitle": "Searchin' results"
     },
     "titles": {

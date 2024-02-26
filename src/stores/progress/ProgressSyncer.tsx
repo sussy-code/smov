@@ -62,6 +62,7 @@ export function ProgressSyncer() {
   useEffect(() => {
     const interval = setInterval(() => {
       (async () => {
+        if (!url) return;
         const state = useProgressStore.getState();
         const user = useAuthStore.getState();
         await syncProgress(

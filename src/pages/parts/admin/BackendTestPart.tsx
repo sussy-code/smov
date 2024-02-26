@@ -32,13 +32,21 @@ export function BackendTestPart() {
       value: null,
     });
 
+    if (!backendUrl) {
+      return setStatus({
+        hasTested: true,
+        success: false,
+        errorText: "Backend URL is not set",
+        value: null,
+      });
+    }
+
     try {
       const backendData = await getBackendMeta(backendUrl);
       return setStatus({
         hasTested: true,
         success: true,
-        errorText:
-          "Failed to call backend, double check the URL key and your internet connection",
+        errorText: "",
         value: backendData,
       });
     } catch (err) {
@@ -46,7 +54,7 @@ export function BackendTestPart() {
         hasTested: true,
         success: false,
         errorText:
-          "Failed to call backend, double check the URL key and your internet connection",
+          "Failed to call backend, double check the URL, your internet connection, and ensure CORS is properly configured on your backend.",
         value: null,
       });
     }

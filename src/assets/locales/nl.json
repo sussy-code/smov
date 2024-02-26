@@ -116,7 +116,10 @@
       "failed": "Het is niet gelukt de media te laden, probeer het nog eens!",
       "loading": "Aan het zoeken...",
       "noResults": "We konden helaas niets vinden!",
-      "placeholder": "Wat wil je graag kijken?",
+      "placeholder": {
+        "default": "Wat wil je graag kijken?",
+        "extra": []
+      },
       "sectionTitle": "Zoekresultaten"
     },
     "titles": {
@@ -128,15 +131,11 @@
       },
       "morning": {
         "default": "Waar wil je deze ochtend naar kijken?",
-        "extra": [
-          "Ik hoor dat Before Sunrise goed is"
-        ]
+        "extra": ["Ik hoor dat Before Sunrise goed is"]
       },
       "night": {
         "default": "Wat wil je vanavond bekijken?",
-        "extra": [
-          "Moe? Ik hoor dat The Exorcist goed is."
-        ]
+        "extra": ["Moe? Ik hoor dat The Exorcist goed is."]
       }
     }
   },

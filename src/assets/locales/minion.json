@@ -115,7 +115,10 @@
       "failed": "Failed to banana banana, try again!",
       "loading": "Loading...",
       "noResults": "We couldn't banana anything!",
-      "placeholder": "Banana do you want to banana?",
+      "placeholder": {
+        "default": "Banana do you want to banana?",
+        "extra": []
+      },
       "sectionTitle": "Banana results"
     },
     "titles": {
@@ -127,15 +130,11 @@
       },
       "morning": {
         "default": "What would you like to banana this banana?",
-        "extra": [
-          "Banana! I hear Banana Sunrise is banana"
-        ]
+        "extra": ["Banana! I hear Banana Sunrise is banana"]
       },
       "night": {
         "default": "What would you like to banana banana?",
-        "extra": [
-          "Banana? I hear The Banana is banana."
-        ]
+        "extra": ["Banana? I hear The Banana is banana."]
       }
     }
   },

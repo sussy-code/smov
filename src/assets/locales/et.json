@@ -116,7 +116,10 @@
       "failed": "Meedia leidmine ebaõnnestus, proovige uuesti!",
       "loading": "Laadimine....",
       "noResults": "Me ei leidnud midagi!",
-      "placeholder": "Mida tahate vaadata?",
+      "placeholder": {
+        "default": "Mida tahate vaadata?",
+        "extra": []
+      },
       "sectionTitle": "Otsingutulemused"
     },
     "titles": {
@@ -128,15 +131,11 @@
       },
       "morning": {
         "default": "Mida te soovite täna hommikul vaadata?",
-        "extra": [
-          "Ma kuulsin, et Before Sunrise on hea"
-        ]
+        "extra": ["Ma kuulsin, et Before Sunrise on hea"]
       },
       "night": {
         "default": "Mida te soovite täna õhtul vaadata?",
-        "extra": [
-          "Väsinud? Olen kuulnud, et The Exorcist on hea."
-        ]
+        "extra": ["Väsinud? Olen kuulnud, et The Exorcist on hea."]
       }
     }
   },

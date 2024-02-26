@@ -116,7 +116,10 @@
       "failed": "¡Error al encontrar contenido, inténtalo de nuevo!",
       "loading": "Cargando...",
       "noResults": "¡No pudimos encontrar nada!",
-      "placeholder": "¿Qué te gustaría ver?",
+      "placeholder": {
+        "default": "¿Qué te gustaría ver?",
+        "extra": []
+      },
       "sectionTitle": "Resultados de búsqueda"
     },
     "titles": {
@@ -128,15 +131,11 @@
       },
       "morning": {
         "default": "¿Qué te gustaría ver esta mañana?",
-        "extra": [
-          "Escuché que “Antes del amanecer” es buena"
-        ]
+        "extra": ["Escuché que “Antes del amanecer” es buena"]
       },
       "night": {
         "default": "¿Qué te gustaría ver esta noche?",
-        "extra": [
-          "¿Cansado? Escuché que “El Exorcista” es buena."
-        ]
+        "extra": ["¿Cansado? Escuché que “El Exorcista” es buena."]
       }
     }
   },

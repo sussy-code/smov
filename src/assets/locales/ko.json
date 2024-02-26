@@ -116,7 +116,10 @@
       "failed": "미디어 검색에 실패하였습니다, 다시 시도해주세요!",
       "loading": "로딩...",
       "noResults": "검색결과가 없습니다!",
-      "placeholder": "무엇을 보고 싶으신가요?",
+      "placeholder": {
+        "default": "무엇을 보고 싶으신가요?",
+        "extra": []
+      },
       "sectionTitle": "검색 결과"
     },
     "titles": {
@@ -128,15 +131,11 @@
       },
       "morning": {
         "default": "오늘 아침에 무엇을 보고 싶으신가요?",
-        "extra": [
-          "Before Sunrise가 좋다고 들었어요"
-        ]
+        "extra": ["Before Sunrise가 좋다고 들었어요"]
       },
       "night": {
         "default": "오늘 밤에 무엇을 보고 싶으신가요?",
-        "extra": [
-          "피곤하신가요? The Exorcist가 좋다고 들었어요."
-        ]
+        "extra": ["피곤하신가요? The Exorcist가 좋다고 들었어요."]
       }
     }
   },

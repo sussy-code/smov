@@ -116,7 +116,10 @@
       "failed": "Medya bulunamadı, tekrar deneyin!",
       "loading": "Yükleniyor...",
       "noResults": "Hiçbir şey bulamadık!",
-      "placeholder": "Ne izlemek istersiniz?",
+      "placeholder": {
+        "default": "Ne izlemek istersiniz?",
+        "extra": []
+      },
       "sectionTitle": "Arama sonuçları"
     },
     "titles": {
@@ -128,15 +131,11 @@
       },
       "morning": {
         "default": "Bu sabah ne izlemek istersiniz?",
-        "extra": [
-          "Before Sunrise'a iyi diyorlar"
-        ]
+        "extra": ["Before Sunrise'a iyi diyorlar"]
       },
       "night": {
         "default": "Bu akşam ne izlemek istersiniz?",
-        "extra": [
-          "Yoruldun mu? The Exorcist'e iyi diyorlar."
-        ]
+        "extra": ["Yoruldun mu? The Exorcist'e iyi diyorlar."]
       }
     }
   },
