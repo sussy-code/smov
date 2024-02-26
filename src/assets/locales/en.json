@@ -1,20 +1,20 @@
 {
   "about": {
-    "description": "sudo-flix is a web application that searches the internet for streams. The team aims for a mostly minimalistic approach to consuming content.",
+    "description": "movie-web is a web application that searches the internet for streams. The team aims for a mostly minimalistic approach to consuming content.",
     "faqTitle": "Common questions",
     "q1": {
-      "body": "sudo-flix does not host any content. When you click on something to watch, the internet is searched for the selected media (On the loading screen and in the 'video sources' tab you can see which source you're using). Media never gets uploaded by sudo-flix, everything is through this searching mechanism.",
+      "body": "movie-web does not host any content. When you click on something to watch, the internet is searched for the selected media (On the loading screen and in the 'video sources' tab you can see which source you're using). Media never gets uploaded by movie-web, everything is through this searching mechanism.",
       "title": "Where does the content come from?"
     },
     "q2": {
-      "body": "It's not possible to request a show or movie, sudo-flix does not manage any content. All content is viewed through sources on the internet.",
+      "body": "It's not possible to request a show or movie, movie-web does not manage any content. All content is viewed through sources on the internet.",
       "title": "Where can I request a show or movie?"
     },
     "q3": {
       "body": "Our search results are powered by The Movie Database (TMDB) and display regardless of whether our sources actually have the content.",
       "title": "The search results display the show or movie, why can't I play it?"
     },
-    "title": "About sudo-flix"
+    "title": "About movie-web"
   },
   "actions": {
     "copied": "Copied",
@@ -55,6 +55,8 @@
         "text": "Did you configure it correctly?",
         "title": "Failed to reach server"
       },
+      "noHostTitle": "Server not configured!",
+      "noHost": "The server has not been configured, therefore you cannot create an account",
       "host": "You are connecting to <0>{{hostname}}</0> - please confirm you trust it before making an account",
       "no": "Go back",
       "title": "Do you trust this server?",
@@ -80,7 +82,7 @@
   "footer": {
     "legal": {
       "disclaimer": "Disclaimer",
-      "disclaimerText": "sudo-flix does not host any files, it merely links to 3rd party services. Legal issues should be taken up with the file hosts and providers. sudo-flix is not responsible for any media files shown by the video providers."
+      "disclaimerText": "movie-web does not host any files, it merely links to 3rd party services. Legal issues should be taken up with the file hosts and providers. movie-web is not responsible for any media files shown by the video providers."
     },
     "links": {
       "discord": "Discord",
@@ -90,15 +92,15 @@
     "tagline": "Watch your favourite shows and movies with this open source streaming app."
   },
   "global": {
-    "name": "sudo-flix",
+    "name": "movie-web",
     "pages": {
       "about": "About",
       "dmca": "DMCA",
       "login": "Login",
-      "pagetitle": "{{title}} - sudo-flix",
+      "onboarding": "Setup",
+      "pagetitle": "{{title}} - movie-web",
       "register": "Register",
-      "settings": "Settings",
-      "onboarding": "Setup"
+      "settings": "Settings"
     }
   },
   "home": {
@@ -116,23 +118,31 @@
       "failed": "Failed to find media, try again!",
       "loading": "Loading...",
       "noResults": "We couldn't find anything!",
-      "placeholder": "What do you want to watch?",
+      "placeholder": {
+        "default": "What do you want to watch?",
+        "extra": [
+          "What do you want to explore?",
+          "What's on your watchlist?",
+          "What's your favorite movie?",
+          "What's your favorite series?"
+        ]
+      },
       "sectionTitle": "Search results"
     },
     "titles": {
       "day": {
         "default": "What would you like to watch this afternoon?",
         "extra": [
-          "Have you heard of South Beach Tow, its a trip."
+          "Feeling adventurous? Jurassic Park might be the perfect choice."
         ]
       },
       "morning": {
         "default": "What would you like to watch this morning?",
-        "extra": ["You should watch Worst Bakers in America."]
+        "extra": ["I hear Before Sunrise is good"]
       },
       "night": {
         "default": "What would you like to watch tonight?",
-        "extra": ["Tired? Try winding down with Friends."]
+        "extra": ["Tired? I hear The Exorcist is good."]
       }
     }
   },
@@ -162,16 +172,73 @@
     "message": "We looked everywhere: under the bins, in the closet, behind the proxy but ultimately couldn't find the page you are looking for.",
     "title": "Couldn't find that page"
   },
+  "onboarding": {
+    "defaultConfirm": {
+      "cancel": "Cancel",
+      "confirm": "Use default setup",
+      "description": "The default setup does not have the best streams and can be unbearably slow.",
+      "title": "Are you sure?"
+    },
+    "extension": {
+      "back": "Go back",
+      "explainer": "Using the browser extension, you can get the best streams we have to offer. With just a simple install.",
+      "explainerIos": "Unfortunately, the browser extension is not supported on iOS, Press <bold>Go back</bold> to choose another option.",
+      "extensionHelp": "If you've installed the extension but it's not detected, <bold>open the extension through your browsers extension menu</bold> and follow the steps on screen.",
+      "linkChrome": "Install Chrome extension",
+      "linkFirefox": "Install Firefox extension",
+      "notDetecting": "Installed on Chrome, but the site isn't detecting it? Try reloading the page!",
+      "notDetectingAction": "Reload page",
+      "status": {
+        "disallowed": "Extension is not enabled for this page",
+        "disallowedAction": "Enable extension",
+        "failed": "Failed to request status",
+        "loading": "Waiting for you to install the extension",
+        "outdated": "Extension version too old",
+        "success": "Extension is working as expected!"
+      },
+      "submit": "Continue",
+      "title": "Let's start with an extension"
+    },
+    "proxy": {
+      "back": "Go back",
+      "explainer": "With the proxy method, you can get great quality streams by making a self-service proxy.",
+      "input": {
+        "errorConnection": "Could not connect to proxy",
+        "errorInvalidUrl": "Not a valid URL",
+        "errorNotProxy": "Expected a proxy but got a website",
+        "label": "Proxy URL",
+        "placeholder": "https://"
+      },
+      "link": "Learn how to make a proxy",
+      "submit": "Submit proxy",
+      "title": "Let's make a new proxy"
+    },
+    "start": {
+      "explainer": "To get the best streams possible, you will need to choose which streaming method you want to use.",
+      "options": {
+        "default": {
+          "text": "I don't want good quality streams,<0 /> <1>use the default setup</1>"
+        },
+        "extension": {
+          "action": "Install extension",
+          "description": "Install browser extension and gain access to the best sources.",
+          "quality": "Best quality",
+          "title": "Browser extension"
+        },
+        "proxy": {
+          "action": "Setup proxy",
+          "description": "Setup a proxy in just 5 minutes and gain access to great sources.",
+          "quality": "Good quality",
+          "title": "Custom proxy"
+        }
+      },
+      "title": "Let's get you setup with movie-web"
+    }
+  },
   "overlays": {
     "close": "Close"
   },
   "player": {
-    "turnstile": {
-      "verifyingHumanity": "Verifying your humanity...",
-      "title": "We need to verify that you're human.",
-      "description": "Please verify that you are human by completing the Captcha on the right. This is to keep sudo-flix safe!",
-      "error": "Failed to verify your humanity. Please try again."
-    },
     "back": {
       "default": "Back to home",
       "short": "Back"
@@ -180,59 +247,12 @@
       "enabled": "Casting to device..."
     },
     "menus": {
-      "settings": {
-        "videoSection": "Video settings",
-        "experienceSection": "Viewing experience",
-        "enableSubtitles": "Enable Subtitles",
-        "subtitleItem": "Subtitle settings",
-        "sourceItem": "Video sources",
-        "playbackItem": "Playback settings",
-        "downloadItem": "Download",
-        "qualityItem": "Quality"
-      },
-      "episodes": {
-        "button": "Episodes",
-        "loadingTitle": "Loading...",
-        "loadingList": "Loading...",
-        "loadingError": "Error loading season",
-        "emptyState": "There are no episodes in this season, check back later!",
-        "episodeBadge": "E{{episode}}",
-        "unairedEpisodes": "One or more episodes in this season have been disabled because they haven't been aired yet."
-      },
-      "sources": {
-        "title": "Sources",
-        "unknownOption": "Unknown",
-        "noStream": {
-          "title": "No stream",
-          "text": "This source has no streams for this movie or show."
-        },
-        "noEmbeds": {
-          "title": "No embeds found",
-          "text": "We were unable to find any embeds, please try a different source."
-        },
-        "failed": {
-          "title": "Failed to scrape",
-          "text": "There was an error while trying to find any videos, please try a different source."
-        }
-      },
-      "subtitles": {
-        "title": "Subtitles",
-        "customizeLabel": "Customize",
-        "settings": {
-          "fixCapitals": "Fix capitalization",
-          "delay": "Subtitle delay",
-          "backlink": "Custom subtitles"
-        },
-        "customChoice": "Select subtitle from file",
-        "offChoice": "Off",
-        "unknownLanguage": "Unknown"
-      },
       "downloads": {
-        "disclaimer": "Downloads are taken directly from the provider. sudo-flix does not have control over how the downloads are provided.",
+        "disclaimer": "Downloads are taken directly from the provider. movie-web does not have control over how the downloads are provided.",
+        "copyHlsPlaylist": "Copy HLS playlist link",
         "downloadSubtitle": "Download current subtitle",
-        "downloadPlaylist": "Download playlist",
         "downloadVideo": "Download video",
-        "hlsDisclaimer": "Downloads are taken directly from the provider. sudo-flix does not have control over how the downloads are provided.<br /><br />Please note that you are downloading an HLS playlist, <bold>it is not recommended to download if you are not familiar with advanced streaming formats</bold>. Try different sources for different formats.",
+        "hlsDisclaimer": "Downloads are taken directly from the provider. movie-web does not have control over how the downloads are provided.<br /><br />Please note that you are downloading an HLS playlist, <bold>it is not recommended to download if you are not familiar with advanced streaming formats</bold>. Try different sources for different formats.",
         "onAndroid": {
           "1": "To download on Android, click the download button then, on the new page, <bold>tap and hold</bold> on the video, then select <bold>save</bold>.",
           "shortTitle": "Download / Android",
@@ -250,6 +270,15 @@
         },
         "title": "Download"
       },
+      "episodes": {
+        "button": "Episodes",
+        "emptyState": "There are no episodes in this season, check back later!",
+        "episodeBadge": "E{{episode}}",
+        "loadingError": "Error loading season",
+        "loadingList": "Loading...",
+        "loadingTitle": "Loading...",
+        "unairedEpisodes": "One or more episodes in this season have been disabled because they haven't been aired yet."
+      },
       "playback": {
         "speedLabel": "Playback speed",
         "title": "Playback settings"
@@ -259,35 +288,73 @@
         "hint": "You can try <0>switching source</0> to get different quality options.",
         "iosNoQuality": "Due to Apple-defined limitations, quality selection is not available on iOS for this source. You can try <0>switching to another source</0> to get different quality options.",
         "title": "Quality"
+      },
+      "settings": {
+        "downloadItem": "Download",
+        "enableSubtitles": "Enable Subtitles",
+        "experienceSection": "Viewing experience",
+        "playbackItem": "Playback settings",
+        "qualityItem": "Quality",
+        "sourceItem": "Video sources",
+        "subtitleItem": "Subtitle settings",
+        "videoSection": "Video settings"
+      },
+      "sources": {
+        "failed": {
+          "text": "There was an error while trying to find any videos, please try a different source.",
+          "title": "Failed to scrape"
+        },
+        "noEmbeds": {
+          "text": "We were unable to find any embeds, please try a different source.",
+          "title": "No embeds found"
+        },
+        "noStream": {
+          "text": "This source has no streams for this movie or show.",
+          "title": "No stream"
+        },
+        "title": "Sources",
+        "unknownOption": "Unknown"
+      },
+      "subtitles": {
+        "customChoice": "Select subtitle from file",
+        "customizeLabel": "Customize",
+        "offChoice": "Off",
+        "settings": {
+          "backlink": "Custom subtitles",
+          "delay": "Subtitle delay",
+          "fixCapitals": "Fix capitalization"
+        },
+        "title": "Subtitles",
+        "unknownLanguage": "Unknown"
       }
     },
     "metadata": {
+      "api": {
+        "text": "Could not load API metadata, please check your internet connection.",
+        "title": "Failed to load API metadata"
+      },
+      "dmca": {
+        "badge": "Removed",
+        "text": "This media is no longer available due to a takedown notice or copyright claim.",
+        "title": "Media has been removed"
+      },
+      "extensionPermission": {
+        "badge": "Permission Missing",
+        "button": "Use extension",
+        "text": "You have the browser extension, but we need your permission to get started using the extension.",
+        "title": "Configure the extension"
+      },
       "failed": {
         "badge": "Failed",
         "homeButton": "Go home",
         "text": "Could not load the media's metadata from TMDB. Please check whether TMDB is down or blocked on your internet connection.",
         "title": "Failed to load metadata"
       },
-      "api": {
-        "text": "Could not load API metadata, please check your internet connection.",
-        "title": "Failed to load API metadata"
-      },
       "notFound": {
         "badge": "Not found",
         "homeButton": "Back to home",
         "text": "We couldn't find the media you requested. Either it's been removed or you tampered with the URL.",
         "title": "Couldn't find that media."
-      },
-      "extensionPermission": {
-        "badge": "Permission Missing",
-        "title": "Configure the extension",
-        "text": "You have the browser extension, but we need your permission to get started using the extension.",
-        "button": "Use extension"
-      },
-      "dmca": {
-        "badge": "Removed",
-        "title": "Media has been removed",
-        "text": "This media is no longer available due to a takedown notice or copyright claim."
       }
     },
     "nextEpisode": {
@@ -326,11 +393,17 @@
       "remaining": "{{timeLeft}} left • Finish at {{timeFinished, datetime}}",
       "shortRegular": "{{timeWatched}}",
       "shortRemaining": "-{{timeLeft}}"
+    },
+    "turnstile": {
+      "description": "Please verify that you are human by completing the Captcha on the right. This is to keep movie-web safe!",
+      "error": "Failed to verify your humanity. Please try again.",
+      "title": "We need to verify that you're human.",
+      "verifyingHumanity": "Verifying your humanity..."
     }
   },
   "screens": {
     "dmca": {
-      "text": "Welcome to sudo-flix's DMCA contact page! We respect intellectual property rights and want to address any copyright concerns swiftly. If you believe your copyrighted work has been improperly used on our platform, please send a detailed DMCA notice to the email below. Please include a description of the copyrighted material, your contact details, and a statement of good faith belief. We're committed to resolving these matters promptly and appreciate your cooperation in keeping sudo-flix a place that respects creativity and copyrights.",
+      "text": "Welcome to movie-web's DMCA contact page! We respect intellectual property rights and want to address any copyright concerns swiftly. If you believe your copyrighted work has been improperly used on our platform, please send a detailed DMCA notice to the email below. Please include a description of the copyrighted material, your contact details, and a statement of good faith belief. We're committed to resolving these matters promptly and appreciate your cooperation in keeping movie-web a place that respects creativity and copyrights.",
       "title": "DMCA"
     },
     "loadingApp": "Loading application",
@@ -396,40 +469,33 @@
       },
       "title": "Appearance"
     },
-    "subtitles": {
-      "title": "Subtitles",
-      "previewQuote": "I must not fear. Fear is the mind-killer.",
-      "textSizeLabel": "Text size",
-      "backgroundLabel": "Background opacity",
-      "colorLabel": "Color"
-    },
     "connections": {
-      "setup": {
-        "errorStatus": {
-          "title": "Something needs your attention",
-          "description": "It seems that one or more items in this setup need your attention."
-        },
-        "unsetStatus": {
-          "title": "You haven't gone through setup",
-          "description": "Please click the button to the right to start the setup process."
-        },
-        "successStatus": {
-          "title": "Everything is set up!",
-          "description": "All things are in place for you to start watching your favourite media."
-        },
-        "redoSetup": "Redo setup",
-        "doSetup": "Do setup",
-        "itemError": "There is something wrong with this setting. Go through setup again to fix it.",
-        "items": {
-          "extension": "Extension",
-          "proxy": "Custom proxy",
-          "default": "Default setup"
-        }
-      },
       "server": {
         "description": "If you would like to connect to a custom backend to store your data, enable this and provide the URL. <0>Instructions.</0>",
         "label": "Custom server",
         "urlLabel": "Custom server URL"
+      },
+      "setup": {
+        "doSetup": "Do setup",
+        "errorStatus": {
+          "description": "It seems that one or more items in this setup need your attention.",
+          "title": "Something needs your attention"
+        },
+        "itemError": "There is something wrong with this setting. Go through setup again to fix it.",
+        "items": {
+          "default": "Default setup",
+          "extension": "Extension",
+          "proxy": "Custom proxy"
+        },
+        "redoSetup": "Redo setup",
+        "successStatus": {
+          "description": "All things are in place for you to start watching your favourite media.",
+          "title": "Everything is set up!"
+        },
+        "unsetStatus": {
+          "description": "Please click the button to the right to start the setup process.",
+          "title": "You haven't gone through setup"
+        }
       },
       "title": "Connections",
       "workers": {
@@ -444,10 +510,10 @@
     "preferences": {
       "language": "Application language",
       "languageDescription": "Language applied to the entire application.",
-      "title": "Preferences",
       "thumbnail": "Generate thumbnails",
       "thumbnailDescription": "Most of the time, videos don't have thumbnails. You can enable this setting to generate them on the fly but they can make your video slower.",
-      "thumbnailLabel": "Generate thumbnails"
+      "thumbnailLabel": "Generate thumbnails",
+      "title": "Preferences"
     },
     "reset": "Reset",
     "save": "Save",
@@ -465,69 +531,13 @@
         "userId": "User ID"
       }
     },
+    "subtitles": {
+      "backgroundLabel": "Background opacity",
+      "colorLabel": "Color",
+      "previewQuote": "I must not fear. Fear is the mind-killer.",
+      "textSizeLabel": "Text size",
+      "title": "Subtitles"
+    },
     "unsaved": "You have unsaved changes"
-  },
-  "onboarding": {
-    "start": {
-      "title": "Let's get you setup with sudo-flix",
-      "explainer": "To get the best streams possible. You will need to choose which streaming method you want to use.",
-      "options": {
-        "proxy": {
-          "quality": "Good quality",
-          "title": "Custom proxy",
-          "description": "Setup a proxy in just 5 minutes and gain access to great sources.",
-          "action": "Setup proxy"
-        },
-        "extension": {
-          "quality": "Best quality",
-          "title": "Browser extension",
-          "description": "Install browser extension and gain access to the best sources.",
-          "action": "Install extension"
-        },
-        "default": {
-          "text": "I don't want good quality streams,<0 /> <1>use the default setup</1>"
-        }
-      }
-    },
-    "proxy": {
-      "title": "Let's make a new proxy",
-      "explainer": "With the proxy method, you can get great quality streams by making a self-service proxy.",
-      "link": "Learn how to make a proxy",
-      "input": {
-        "label": "Proxy URL",
-        "placeholder": "https://",
-        "errorInvalidUrl": "Not a valid URL",
-        "errorConnection": "Could not connect to proxy",
-        "errorNotProxy": "Expected a proxy but got a website"
-      },
-      "back": "Go back",
-      "submit": "Submit proxy"
-    },
-    "extension": {
-      "title": "Let's start with an extension",
-      "explainer": "Using the browser extension, you can get the best streams we have to offer. With just a simple install.",
-      "explainerIos": "Unfortunately, the browser extension is not supported on IOS, Press <bold>Go back</bold> to choose another option.",
-      "extensionHelp": "If you've installed the extension but it's not detected. <bold>Open the extension through your browsers extension menu</bold> and follow the steps on screen.",
-      "notDetecting": "Installed on chrome but not showing up? Try reloading the page!",
-      "notDetectingAction": "Reload page",
-      "linkChrome": "Install Chrome extension",
-      "linkFirefox": "Install Firefox extension",
-      "back": "Go back",
-      "status": {
-        "loading": "Waiting for you to install the extension",
-        "disallowed": "Extension is not enabled for this page",
-        "disallowedAction": "Enable extension",
-        "failed": "Failed to request status",
-        "outdated": "Extension version too old",
-        "success": "Extension is working as expected!"
-      },
-      "submit": "Continue"
-    },
-    "defaultConfirm": {
-      "title": "Are you sure?",
-      "description": "The default setup does not have the best streams and can be unbearably slow.",
-      "cancel": "Cancel",
-      "confirm": "Use default setup"
-    }
   }
 }

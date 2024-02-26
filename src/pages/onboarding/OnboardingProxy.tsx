@@ -43,7 +43,7 @@ export function OnboardingProxyPage() {
         throw new Error("onboarding.proxy.input.errorNotProxy");
       setProxySet([url]);
 
-      if (account) {
+      if (account && backendUrl) {
         await updateSettings(backendUrl, account, {
           proxyUrls: [url],
         });

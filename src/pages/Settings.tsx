@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { useCallback, useEffect, useMemo } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useAsyncFn } from "react-use";
 
@@ -33,7 +33,7 @@ import { AccountWithToken, useAuthStore } from "@/stores/auth";
 import { useLanguageStore } from "@/stores/language";
 import { usePreferencesStore } from "@/stores/preferences";
 import { useSubtitleStore } from "@/stores/subtitles";
-import { useThemeStore } from "@/stores/theme";
+import { usePreviewThemeStore, useThemeStore } from "@/stores/theme";
 
 import { SubPageLayout } from "./layouts/SubPageLayout";
 import { PreferencesPart } from "./parts/settings/PreferencesPart";
@@ -70,6 +70,7 @@ export function AccountSettings(props: {
   const url = useBackendUrl();
   const { account } = props;
   const [sessionsResult, execSessions] = useAsyncFn(() => {
+    if (!url) return Promise.resolve([]);
     return getSessions(url, account);
   }, [account, url]);
   useEffect(() => {
@@ -103,6 +104,8 @@ export function SettingsPage() {
   const { t } = useTranslation();
   const activeTheme = useThemeStore((s) => s.theme);
   const setTheme = useThemeStore((s) => s.setTheme);
+  const previewTheme = usePreviewThemeStore((s) => s.previewTheme);
+  const setPreviewTheme = usePreviewThemeStore((s) => s.setPreviewTheme);
 
   const appLanguage = useLanguageStore((s) => s.language);
   const setAppLanguage = useLanguageStore((s) => s.setLanguage);
@@ -143,8 +146,27 @@ export function SettingsPage() {
     enableThumbnails,
   );
 
+  useEffect(() => {
+    setPreviewTheme(activeTheme ?? "default");
+  }, [setPreviewTheme, activeTheme]);
+
+  useEffect(() => {
+    // Clear preview theme on unmount
+    return () => {
+      setPreviewTheme(null);
+    };
+  }, [setPreviewTheme]);
+
+  const setThemeWithPreview = useCallback(
+    (theme: string) => {
+      state.theme.set(theme === "default" ? null : theme);
+      setPreviewTheme(theme);
+    },
+    [state.theme, setPreviewTheme],
+  );
+
   const saveChanges = useCallback(async () => {
-    if (account) {
+    if (account && backendUrl) {
       if (
         state.appLanguage.changed ||
         state.theme.changed ||
@@ -241,7 +263,11 @@ export function SettingsPage() {
           />
         </div>
         <div id="settings-appearance" className="mt-48">
-          <ThemePart active={state.theme.state} setTheme={state.theme.set} />
+          <ThemePart
+            active={previewTheme ?? "default"}
+            inUse={activeTheme ?? "default"}
+            setTheme={setThemeWithPreview}
+          />
         </div>
         <div id="settings-captions" className="mt-48">
           <CaptionsPart

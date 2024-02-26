@@ -1,19 +1,21 @@
 # Contributing Guidelines for movie-web
 
-Thank you for investing your time in contributing to our project! Your contribution will be reflected on [movie-web.app](https://movie-web.app).
+Thank you for investing your time in contributing to our project! Your contribution will be reflected on all of the community hosted instances that are on the latest version.
 
 Please read our [Code of Conduct](./CODE_OF_CONDUCT.md) to keep our community approachable and respectable.
 
 ## Contents
- - [New Contributor Guide](#new-contributor-guide)
- - [Requesting a feature or reporting a bug](#requesting-a-feature-or-reporting-a-bug)
-   - [Discord Server](#discord-server)
-   - [GitHub Issues](#github-issues)
- - [Before you start](#before-you-start)
- - [Contributing](#before-you-start)
-   - [Recommended Development Environment](#recommended-development-environment)
-   - [Tips](#tips)
-   - [Language Contributions](#language-contributions)
+- [Contributing Guidelines for movie-web](#contributing-guidelines-for-movie-web)
+  - [Contents](#contents)
+  - [New contributor guide](#new-contributor-guide)
+  - [Requesting a feature or reporting a bug](#requesting-a-feature-or-reporting-a-bug)
+    - [Discord Server](#discord-server)
+    - [GitHub Issues](#github-issues)
+  - [Before you start!](#before-you-start)
+  - [Contributing](#contributing)
+    - [Recommended Development Environment](#recommended-development-environment)
+    - [Tips](#tips)
+    - [Language Contributions](#language-contributions)
 
 ## New contributor guide
 
@@ -33,7 +35,7 @@ There are two places where to request features or report bugs:
 ### Discord Server
 If you do not have a GitHub account or want to discuss a feature or bug with us before making an issue, you can join our Discord server.
 
-<a href="https://discord.movie-web.app"><img src="https://discord.com/api/guilds/871713465100816424/widget.png?style=banner2" alt="Discord Server"></a>
+<a href="https://movie-web.github.io/links/discord"><img src="https://discord.com/api/guilds/871713465100816424/widget.png?style=banner2" alt="Discord Server"></a>
 
 ### GitHub Issues
 To make a GitHub issue for movie-web, please visit the [new issue page](https://github.com/movie-web/movie-web/issues/new/choose) where you can pick either the "Bug Report" or "Feature Request" template.
@@ -85,7 +87,8 @@ Here are some tips to make sure that your pull requests are :pinched_fingers: fi
 ### Language Contributions
 Language contributions help movie-web massively, allowing people worldwide to use our app!
 
-We use weblate for crowdsourcing our translations. [Click here to go to our translation tool.](https://weblate.movie-web.app/projects/movie-web/website/)
+We use Weblate for crowdsourcing our translations. [Click here to go to our translation tool.](https://movie-web.github.io/links/weblate)
+
 
 1. First make sure you make an account. (click the link above)
 2. Click the language you want to help translate, if it's not listed you can click the plus top left to add a new language.

@@ -1,20 +1,20 @@
 {
   "about": {
-    "description": "sudo-flix è un'applicazione web che cerca per gli stream sull'internet. Il team cerca di usare un approccio per lo più minimalista per usufruire del contenuto.",
+    "description": "movie-web è un'applicazione web che cerca per gli stream sull'internet. Il team cerca di usare un approccio per lo più minimalista per usufruire del contenuto.",
     "faqTitle": "Domande comuni",
     "q1": {
-      "body": "sudo-flix non ospita alcun contento. Quando clicci su qualcosa da guardare, sudo-flix cerca l'internet per media di vostra scelta (Sull schermata di caricamento e nell tab 'sorgenti video' si può vedere quale sorgente si sta utilizzando). I media non sono mai caricati da sudo-flix, tutto è attraverso questo meccanismo di ricerca.",
+      "body": "movie-web non ospita alcun contento. Quando clicci su qualcosa da guardare, movie-web cerca l'internet per media di vostra scelta (Sull schermata di caricamento e nell tab 'sorgenti video' si può vedere quale sorgente si sta utilizzando). I media non sono mai caricati da movie-web, tutto è attraverso questo meccanismo di ricerca.",
       "title": "Da dove arriva il contenuto?"
     },
     "q2": {
-      "body": "Non è possibile richiedere uno show o un film, sudo-flix non gestisce alcun contenuto. Tutti i contenuti sono visualizzati da sorgenti online.",
+      "body": "Non è possibile richiedere uno show o un film, movie-web non gestisce alcun contenuto. Tutti i contenuti sono visualizzati da sorgenti online.",
       "title": "Dove posso richiedere una serie o un film?"
     },
     "q3": {
       "body": "Nostri risultati sono alimentati da «The Movie Database (TMDB)» e visualizzare indipendentemente dal fatto che nostri sorgenti hanno effettivamente il contenuto.",
       "title": "I risultati di ricerca mostrano la serie o il film, perché non posso riprodurlo?"
     },
-    "title": "Su di sudo-flix"
+    "title": "Su di movie-web"
   },
   "actions": {
     "copied": "Copiato",
@@ -80,7 +80,7 @@
   "footer": {
     "legal": {
       "disclaimer": "Disclaimer",
-      "disclaimerText": "sudo-flix non ospita qualsiasi file, si collega solo a fonti di terze parti. Se avete problemi legali, rivolgetevi ai file host e ai provider. sudo-flix non è responsabile per i file multimediali mostrati dai video provider."
+      "disclaimerText": "movie-web non ospita qualsiasi file, si collega solo a fonti di terze parti. Se avete problemi legali, rivolgetevi ai file host e ai provider. movie-web non è responsabile per i file multimediali mostrati dai video provider."
     },
     "links": {
       "discord": "Discord",
@@ -90,13 +90,13 @@
     "tagline": "Guardate i vostri preferiti programmi televisivi e film con questo app di streaming open source."
   },
   "global": {
-    "name": "sudo-flix",
+    "name": "movie-web",
     "pages": {
-      "about": "Su di sudo-flix",
+      "about": "Su di movie-web",
       "dmca": "DMCA",
       "login": "Accedi",
       "onboarding": "Setup",
-      "pagetitle": "{{title}} - sudo-flix",
+      "pagetitle": "{{title}} - movie-web",
       "register": "Registrarsi",
       "settings": "Impostazioni"
     }
@@ -116,7 +116,10 @@
       "failed": "Impossibile trovare i media, riprova!",
       "loading": "Caricamento...",
       "noResults": "Non abbiamo trovato nulla!",
-      "placeholder": "Cosa vuoi guardare?",
+      "placeholder": {
+        "default": "Cosa vuoi guardare?",
+        "extra": []
+      },
       "sectionTitle": "Risultati della ricerca"
     },
     "titles": {
@@ -148,7 +151,7 @@
       "offline": "Controlla la tua connessione internet"
     },
     "menu": {
-      "about": "Su di sudo-flix",
+      "about": "Su di movie-web",
       "donation": "Donare",
       "logout": "Esci",
       "register": "Sincronizzare con il cloud",
@@ -172,11 +175,11 @@
     "extension": {
       "back": "Torna indietro",
       "explainer": "Utilizzando l'estensione del browser, è possibile ottenere i stream ottimi che abbiamo da offrire. Basta una semplice installazione.",
-      "explainerIos": "Purtroppo, l'estensione del browser non è supportato su IOS, premere <bold>Torna indietro</bold> per scegliere un'altra opzione.",
-      "extensionHelp": "Se avete installato l'estensione ma non viene rilevata. <bold>Aprire l'estensione attraverso il menu delle estensioni del browser</bold> e seguire i passaggi sullo schermo.",
+      "explainerIos": "Purtroppo, l'estensione del browser non è supportato su iOS, premere <bold>Torna indietro</bold> per scegliere un'altra opzione.",
+      "extensionHelp": "Se avete installato l'estensione ma non viene rilevata. <bold>Apri l'estensione attraverso il menu delle estensioni del browser</bold> e seguire i passaggi sullo schermo.",
       "linkChrome": "Installa l'estensione su Chrome",
       "linkFirefox": "Installa l'estensione su Firefox",
-      "notDetecting": "Installato su Chrome ma non viene visualizzato? Prova a ricaricare la pagina!",
+      "notDetecting": "Installato su Chrome ma il sito non lo rileva? Prova a ricaricare la pagina!",
       "notDetectingAction": "Ricarica pagina",
       "status": {
         "disallowed": "L'estensione non è attivato per questa pagina",
@@ -204,7 +207,7 @@
       "title": "Creiamo un nuovo proxy"
     },
     "start": {
-      "explainer": "Per ottenere i migliori streaming possibili. È necessario scegliere il metodo di streaming da utilizzare.",
+      "explainer": "Per ottenere i migliori streaming possibili, è necessario scegliere il metodo di streaming da utilizzare.",
       "options": {
         "default": {
           "text": "Non voglio stream di buona qualità, <0 /> <1>usa setup predefinita</1>"
@@ -222,7 +225,7 @@
           "title": "Proxy personalizzato"
         }
       },
-      "title": "Configuriamo sudo-flix"
+      "title": "Configuriamo movie-web"
     }
   },
   "overlays": {
@@ -238,11 +241,10 @@
     },
     "menus": {
       "downloads": {
-        "disclaimer": "I download vengono effettuati direttamente dal provider. sudo-flix non ha il controllo sulle modalità di fornitura dei download.",
-        "downloadPlaylist": "Scarica playlist",
+        "disclaimer": "I download vengono effettuati direttamente dal provider. movie-web non ha il controllo sulle modalità di fornitura dei download.",
         "downloadSubtitle": "Scarica sottotitolo attuale",
         "downloadVideo": "Scarica video",
-        "hlsDisclaimer": "I download vengono effettuati direttamente dal provider. sudo-flix non ha il controllo sul modo in cui i download vengono forniti.<br /><br />Nota che se state scaricando un playlist HLS, <bold>non è raccomandato di scaricare se non si ha familiarità con i formati di streaming avanzati</bold>. Prova altri sorgenti per diversi formati.",
+        "hlsDisclaimer": "I download vengono effettuati direttamente dal provider. movie-web non ha il controllo sul modo in cui i download vengono forniti.<br /><br />Nota che se state scaricando un playlist HLS, <bold>non è raccomandato di scaricare se non si ha familiarità con i formati di streaming avanzati</bold>. Prova altri sorgenti per diversi formati.",
         "onAndroid": {
           "1": "Per scaricare su Android, fai clic sul pulsante di scaricare, e poi nella nuova paggina, <bold>toccare e tenere premuto</bold> sul video, e selezionare <bold>salva</bold>.",
           "shortTitle": "Scarica / Android",
@@ -385,7 +387,7 @@
       "shortRemaining": "-{{timeLeft}}"
     },
     "turnstile": {
-      "description": "Verifica che siate umani completando il Captcha sulla destra. Questo serve a mantenere sudo-flix sicuro!",
+      "description": "Verifica che siate umani completando il Captcha sulla destra. Questo serve a mantenere movie-web sicuro!",
       "error": "Impossibile verificare il proprio umanità. Riprova.",
       "title": "Dobbiamo verificare che lei sia umano.",
       "verifyingHumanity": "verificare il proprio umanità..."
@@ -393,7 +395,7 @@
   },
   "screens": {
     "dmca": {
-      "text": "Benvenuti nella pagina di contatto DMCA di sudo-flix! Rispettiamo i diritti di proprietà intellettuale e vogliamo risolvere rapidamente qualsiasi problema di copyright. Se ritenete che il vostro lavoro protetto da copyright sia stato utilizzato in modo improprio sulla nostra piattaforma, inviate una notizia DMCA all'indirizzo e-mail indicato di seguito. Dovresti includere una descrizione del materiale protetto da copyright, i propri dati di contatto e una dichiarazione di buona fede. Ci impegniamo a risolvere tempestivamente questi problemi e apprezziamo la vostra collaborazione per mantenere sudo-flix un luogo che rispetta la creatività e i diritti d'autore.",
+      "text": "Benvenuti nella pagina di contatto DMCA di movie-web! Rispettiamo i diritti di proprietà intellettuale e vogliamo risolvere rapidamente qualsiasi problema di copyright. Se ritenete che il vostro lavoro protetto da copyright sia stato utilizzato in modo improprio sulla nostra piattaforma, inviate una notizia DMCA all'indirizzo e-mail indicato di seguito. Dovresti includere una descrizione del materiale protetto da copyright, i propri dati di contatto e una dichiarazione di buona fede. Ci impegniamo a risolvere tempestivamente questi problemi e apprezziamo la vostra collaborazione per mantenere movie-web un luogo che rispetta la creatività e i diritti d'autore.",
       "title": "DMCA"
     },
     "loadingApp": "Caricamento dell'applicazione",

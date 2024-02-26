@@ -24,6 +24,7 @@ export function Device(props: {
   const token = useAuthStore((s) => s.account?.token);
   const [result, exec] = useAsyncFn(async () => {
     if (!token) throw new Error("No token present");
+    if (!url) throw new Error("No backend set");
     await removeSession(url, token, props.id);
     props.onRemove?.();
   }, [url, token, props.id]);
