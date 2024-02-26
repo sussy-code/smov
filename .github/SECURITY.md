@@ -7,4 +7,4 @@ The latest version of movie-web is the only version that is supported, as it is 
 ## Reporting a Vulnerability
 
 You can contact the movie-web maintainers to report a vulnerability:
- - Report the vulnerability in the [movie-web Discord server](https://discord.gg/gQYB6fGArX)
+ - Report the vulnerability in the [movie-web Discord server](https://movie-web.github.io/links/discord)

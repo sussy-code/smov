@@ -33,7 +33,7 @@ There are two places where to request features or report bugs:
 ### Discord Server
 If you do not have a GitHub account or want to discuss a feature or bug with us before making an issue, you can join our Discord server.
 
-<a href="https://discord.gg/gQYB6fGArX"><img src="https://discord.com/api/guilds/871713465100816424/widget.png?style=banner2" alt="Discord Server"></a>
+<a href="https://movie-web.github.io/links/discord"><img src="https://discord.com/api/guilds/871713465100816424/widget.png?style=banner2" alt="Discord Server"></a>
 
 ### GitHub Issues
 To make a GitHub issue for movie-web, please visit the [new issue page](https://github.com/movie-web/movie-web/issues/new/choose) where you can pick either the "Bug Report" or "Feature Request" template.
@@ -85,7 +85,8 @@ Here are some tips to make sure that your pull requests are :pinched_fingers: fi
 ### Language Contributions
 Language contributions help movie-web massively, allowing people worldwide to use our app!
 
-We use weblate for crowdsourcing our translations.
+We use Weblate for crowdsourcing our translations. [Click here to go to our translation tool.](https://movie-web.github.io/links/weblate)
+
 
 1. First make sure you make an account. (click the link above)
 2. Click the language you want to help translate, if it's not listed you can click the plus top left to add a new language.
