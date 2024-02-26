@@ -132,17 +132,15 @@
     "titles": {
       "day": {
         "default": "What would you like to watch this afternoon?",
-        "extra": [
-          "Feeling adventurous? Jurassic Park might be the perfect choice."
-        ]
+        "extra": ["Have you seen Blazing Saddles?"]
       },
       "morning": {
         "default": "What would you like to watch this morning?",
-        "extra": ["I hear Before Sunrise is good"]
+        "extra": ["I hear The Expanse is popular"]
       },
       "night": {
         "default": "What would you like to watch tonight?",
-        "extra": ["Tired? I hear The Exorcist is good."]
+        "extra": ["Go smoke and watch The Simpsons!"]
       }
     }
   },
