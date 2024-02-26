@@ -12,7 +12,7 @@ window.__CONFIG__ = {
   VITE_NORMAL_ROUTER: false,
 
   // The backend URL to communicate with, defaults to the movie-web hosted one at backend.movie-web.app
-  VITE_BACKEND_URL: null,
+  VITE_BACKEND_URL: "sudo-flix-backend.up.railway.app",
 
   // A comma separated list of disallowed IDs in the case of a DMCA claim - in the format "series-<id>" and "movie-<id>"
   VITE_DISALLOWED_IDS: ""
