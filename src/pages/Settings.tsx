@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { useCallback, useEffect, useMemo } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useAsyncFn } from "react-use";
 
@@ -33,7 +33,7 @@ import { AccountWithToken, useAuthStore } from "@/stores/auth";
 import { useLanguageStore } from "@/stores/language";
 import { usePreferencesStore } from "@/stores/preferences";
 import { useSubtitleStore } from "@/stores/subtitles";
-import { useThemeStore } from "@/stores/theme";
+import { usePreviewThemeStore, useThemeStore } from "@/stores/theme";
 
 import { SubPageLayout } from "./layouts/SubPageLayout";
 import { PreferencesPart } from "./parts/settings/PreferencesPart";
@@ -102,8 +102,10 @@ export function AccountSettings(props: {
 
 export function SettingsPage() {
   const { t } = useTranslation();
-  const activeTheme = useThemeStore((s) => s.theme);
+  const activeTheme = useThemeStore((s) => s.theme) ?? "default";
   const setTheme = useThemeStore((s) => s.setTheme);
+  const previewTheme = usePreviewThemeStore((s) => s.previewTheme) ?? "default";
+  const setPreviewTheme = usePreviewThemeStore((s) => s.setPreviewTheme);
 
   const appLanguage = useLanguageStore((s) => s.language);
   const setAppLanguage = useLanguageStore((s) => s.setLanguage);
@@ -142,6 +144,22 @@ export function SettingsPage() {
     backendUrlSetting,
     account?.profile,
     enableThumbnails,
+  );
+
+  // Reset the preview theme when the settings page is unmounted
+  useEffect(
+    () => () => {
+      setPreviewTheme(null);
+    },
+    [setPreviewTheme],
+  );
+
+  const setThemeWithPreview = useCallback(
+    (v: string | null) => {
+      state.theme.set(v === "default" ? null : v);
+      setPreviewTheme(v);
+    },
+    [state.theme, setPreviewTheme],
   );
 
   const saveChanges = useCallback(async () => {
@@ -242,7 +260,11 @@ export function SettingsPage() {
           />
         </div>
         <div id="settings-appearance" className="mt-48">
-          <ThemePart active={state.theme.state} setTheme={state.theme.set} />
+          <ThemePart
+            active={previewTheme}
+            inUse={activeTheme}
+            setTheme={setThemeWithPreview}
+          />
         </div>
         <div id="settings-captions" className="mt-48">
           <CaptionsPart
