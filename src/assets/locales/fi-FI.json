@@ -1,20 +1,20 @@
 {
   "about": {
-    "description": "movie-web on verkkosovellus, joka etsii suoratoistoja internetistä. Tiimi pyrkii enimmäkseen minimalistiseen lähestymistapaan sisällön kuluttamiseen.",
+    "description": "sudo-flix on verkkosovellus, joka etsii suoratoistoja internetistä. Tiimi pyrkii enimmäkseen minimalistiseen lähestymistapaan sisällön kuluttamiseen.",
     "faqTitle": "Yleisiä kysymyksiä",
     "q1": {
-      "body": "movie-web ei isännöi mitään sisältöä. Kun klikkaat jotain katsottavaa, valittua mediaa etsitään internetistä (latausnäytössä ja 'videolähteet'-välilehdellä näet, mitä lähdettä käytät). movie-web ei koskaan lataa mediaa, kaikki tapahtuu tämän hakumekanismin kautta.",
+      "body": "sudo-flix ei isännöi mitään sisältöä. Kun klikkaat jotain katsottavaa, valittua mediaa etsitään internetistä (latausnäytössä ja 'videolähteet'-välilehdellä näet, mitä lähdettä käytät). sudo-flix ei koskaan lataa mediaa, kaikki tapahtuu tämän hakumekanismin kautta.",
       "title": "Mistä sisältö tulee?"
     },
     "q2": {
-      "body": "Ohjelmaa tai elokuvaa ei voi pyytää, movie-web ei hallinnoi sisältöä. Kaikki sisältö katsotaan internetin lähteistä.",
+      "body": "Ohjelmaa tai elokuvaa ei voi pyytää, sudo-flix ei hallinnoi sisältöä. Kaikki sisältö katsotaan internetin lähteistä.",
       "title": "Missä voin pyytää sarjaa tai elokuvaa?"
     },
     "q3": {
       "body": "Hakutuloksemme perustuvat The Movie Database (TMDB) -tietokantaan, ja ne näkyvät riippumatta siitä, onko sisältöä oikeasti lähteissämme.",
       "title": "Hakutuloksissa näytetään ohjelma tai elokuva. Miksi en voi toistaa sitä?"
     },
-    "title": "Tietoja movie-webistä"
+    "title": "Tietoja sudo-flixistä"
   },
   "actions": {
     "copied": "Kopioitu",
@@ -80,7 +80,7 @@
   "footer": {
     "legal": {
       "disclaimer": "Vastuuvapauslauseke",
-      "disclaimerText": "movie-web ei isännöi tiedostoja, se vain linkittää kolmannen osapuolen palveluihin. Lakiasioista tulee ottaa yhteyttä tiedostoisäntään ja palveluntarjoajiin. movie-web ei ole vastuussa videontarjoajien näyttämistä mediatiedostoista."
+      "disclaimerText": "sudo-flix ei isännöi tiedostoja, se vain linkittää kolmannen osapuolen palveluihin. Lakiasioista tulee ottaa yhteyttä tiedostoisäntään ja palveluntarjoajiin. sudo-flix ei ole vastuussa videontarjoajien näyttämistä mediatiedostoista."
     },
     "links": {
       "discord": "Discord",
@@ -90,13 +90,13 @@
     "tagline": "Katso suosikkiohjelmiasi ja elokuviasi tällä avoimen lähdekoodin suoratoistosovelluksella."
   },
   "global": {
-    "name": "movie-web",
+    "name": "sudo-flix",
     "pages": {
       "about": "Meistä",
       "dmca": "DMCA",
       "login": "Kirjaudu sisään",
       "onboarding": "asetus",
-      "pagetitle": "{{title}} - movie-web",
+      "pagetitle": "{{title}} - sudo-flix",
       "register": "Rekisteröidy",
       "settings": "Asetukset"
     }
