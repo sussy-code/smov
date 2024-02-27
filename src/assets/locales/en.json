@@ -1,6 +1,6 @@
 {
   "about": {
-    "description": "sudo-flix is a web application that searches the internet for streams. The team aims for a mostly minimalistic approach to consuming content.",
+    "description": "sudo-flix is a web application that searches the internet for streams. Which aims for a mostly minimalistic approach to consuming media.",
     "faqTitle": "Common questions",
     "q1": {
       "body": "sudo-flix does not host any content. When you click on something to watch, the internet is searched for the selected media (On the loading screen and in the 'video sources' tab you can see which source you're using). Media never gets uploaded by sudo-flix, everything is through this searching mechanism.",
@@ -14,7 +14,7 @@
       "body": "Our search results are powered by The Movie Database (TMDB) and display regardless of whether our sources actually have the content.",
       "title": "The search results display the show or movie, why can't I play it?"
     },
-    "title": "About sudo-flix"
+    "title": "About sudo-flix (^▽^)👍"
   },
   "actions": {
     "copied": "Copied",
@@ -65,7 +65,7 @@
     "verify": {
       "description": "Please enter your passphrase from earlier to confirm you have saved it and to create your account",
       "invalidData": "Data is not valid",
-      "noMatch": "Passphrase doesn't match",
+      "noMatch": "Passphrase doesn't match 😭",
       "passphraseLabel": "Your 12-word passphrase",
       "recaptchaFailed": "ReCaptcha validation failed",
       "register": "Create account",
@@ -108,7 +108,7 @@
       "sectionTitle": "Bookmarks"
     },
     "continueWatching": {
-      "sectionTitle": "Continue Watching"
+      "sectionTitle": "Continue Watching..."
     },
     "mediaList": {
       "stopEditing": "Stop editing"
@@ -477,9 +477,9 @@
         "doSetup": "Do setup",
         "errorStatus": {
           "description": "It seems that one or more items in this setup need your attention.",
-          "title": "Something needs your attention"
+          "title": "Something needs your attention 😱"
         },
-        "itemError": "There is something wrong with this setting. Go through setup again to fix it.",
+        "itemError": "There is something wrong with this setting. Go through setup again to fix it. (ᴗ_ ᴗ。)",
         "items": {
           "default": "Default setup",
           "extension": "Extension",
@@ -507,7 +507,7 @@
     },
     "preferences": {
       "language": "Application language",
-      "languageDescription": "Language applied to the entire application.",
+      "languageDescription": "Language applied to the entire application, only some languages have silly stuff 🙁.",
       "thumbnail": "Generate thumbnails",
       "thumbnailDescription": "Most of the time, videos don't have thumbnails. You can enable this setting to generate them on the fly but they can make your video slower.",
       "thumbnailLabel": "Generate thumbnails",
@@ -524,7 +524,7 @@
         "insecure": "Insecure",
         "notLoggedIn": "You are not logged in",
         "secure": "Secure",
-        "title": "App information",
+        "title": "App information (for nerds) 🤓",
         "unknownVersion": "Unknown",
         "userId": "User ID"
       }
