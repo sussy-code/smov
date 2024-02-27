@@ -89,7 +89,7 @@
       "dmca": "DMCA",
       "github": "GitHub"
     },
-    "tagline": "Watch your favourite shows and movies with this open source streaming app."
+    "tagline": "Watch your favorite shows and movies with this silly 😛 open source streaming app."
   },
   "global": {
     "name": "sudo-flix",
@@ -145,7 +145,7 @@
     }
   },
   "media": {
-    "episodeDisplay": "S{{season}} E{{episode}}",
+    "episodeDisplay": "S{{season}} - E{{episode}}",
     "types": {
       "movie": "Movie",
       "show": "Show"
@@ -159,7 +159,7 @@
       "about": "About us",
       "donation": "Donate",
       "logout": "Log out",
-      "register": "Sync to cloud",
+      "register": "Sync to sudo-cloud",
       "settings": "Settings",
       "support": "Support"
     }
@@ -174,8 +174,8 @@
     "defaultConfirm": {
       "cancel": "Cancel",
       "confirm": "Use default setup",
-      "description": "The default setup does not have the best streams and can be unbearably slow.",
-      "title": "Are you sure? ૮ • ﻌ - ა"
+      "description": "The default setup does not have the best streams and can be unbearably slow. ( ͠° ͟ʖ ͡°)",
+      "title": "Are you sure?"
     },
     "extension": {
       "back": "Go back",
@@ -187,7 +187,7 @@
       "notDetecting": "Installed on Chrome, but the site isn't detecting it? Try reloading the page!",
       "notDetectingAction": "Reload page",
       "status": {
-        "disallowed": "Extension is not enabled for this page",
+        "disallowed": "Extension is not enabled for this page (,,>﹏<,,)",
         "disallowedAction": "Enable extension",
         "failed": "Failed to request status",
         "loading": "Waiting for you to install the extension",
@@ -307,8 +307,8 @@
           "title": "No embeds found"
         },
         "noStream": {
-          "text": "This source has no streams for this movie or show.",
-          "title": "No stream"
+          "text": "This source has no streams for this movie or show. /ᐠ - ˕ -マ Ⳋ",
+          "title": "No stream :("
         },
         "title": "Sources",
         "unknownOption": "Unknown"
@@ -339,7 +339,7 @@
       "extensionPermission": {
         "badge": "Permission Missing",
         "button": "Use extension",
-        "text": "You have the browser extension, but we need your permission to get started using the extension.",
+        "text": "You have the browser extension, but we need your permission to get started using the extension. (¬_¬)",
         "title": "Configure the extension"
       },
       "failed": {
