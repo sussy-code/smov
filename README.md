@@ -14,6 +14,7 @@ Sudo-Flix is a mirror of [Movie-Web](https://github.com/movie-web/movie-web) wit
 ## Referrers
 - [Priacy Subreddit Megathread](https://www.reddit.com/r/Piracy/s/iymSloEpXn)
 - [Movie-Web Docs](https://movie-web.github.io/docs/instances)
+- [Movie-Web Discord](https://movie-web.github.io/links/discord)
 - Search Engines: DuckDuckGo, Bing, Google
 - Rentry.co? (This ones a mystery)
 
