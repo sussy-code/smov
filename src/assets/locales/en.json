@@ -21,7 +21,7 @@
     "copy": "Copy"
   },
   "auth": {
-    "createAccount": "Don't have an account yet? <0>Create an account.</0>",
+    "createAccount": "Don't have an account yet 😬 <0>Create an account.</0>",
     "deviceNameLabel": "Device name",
     "deviceNamePlaceholder": "Personal phone",
     "generate": {
@@ -60,7 +60,7 @@
       "host": "You are connecting to <0>{{hostname}}</0> - please confirm you trust it before making an account",
       "no": "Go back",
       "title": "Do you trust this server?",
-      "yes": "I trust this server"
+      "yes": "I trust this server 🤞"
     },
     "verify": {
       "description": "Please enter your passphrase from earlier to confirm you have saved it and to create your account",
@@ -73,7 +73,7 @@
     }
   },
   "errors": {
-    "badge": "It broke",
+    "badge": "It broke 💀",
     "details": "Error details",
     "reloadPage": "Reload the page",
     "showError": "Show error details",
@@ -81,8 +81,8 @@
   },
   "footer": {
     "legal": {
-      "disclaimer": "Disclaimer",
-      "disclaimerText": "sudo-flix does not host any files, it merely links to 3rd party services. Legal issues should be taken up with the file hosts and providers. sudo-flix is not responsible for any media files shown by the video providers."
+      "disclaimer": "Disclaimer ◝(ᵔᵕᵔ)◜",
+      "disclaimerText": "Please note, sudo-flix does not host any files itself but instead only display's content from 3rd party providers. Legal issues should be taken up with them."
     },
     "links": {
       "discord": "Discord",
@@ -153,7 +153,7 @@
   },
   "navigation": {
     "banner": {
-      "offline": "Check your internet connection"
+      "offline": "Check your internet connection, silly goose! 🦢"
     },
     "menu": {
       "about": "About us",
@@ -167,7 +167,7 @@
   "notFound": {
     "badge": "Not found",
     "goHome": "Back to home",
-    "message": "We looked everywhere: under the bins, in the closet, behind the proxy but ultimately couldn't find the page you are looking for.",
+    "message": "We looked everywhere: under the bins, in the closet, behind the proxy but ultimately couldn't find the page you are looking for. (ಥ﹏ಥ)",
     "title": "Couldn't find that page"
   },
   "onboarding": {
@@ -175,11 +175,11 @@
       "cancel": "Cancel",
       "confirm": "Use default setup",
       "description": "The default setup does not have the best streams and can be unbearably slow.",
-      "title": "Are you sure?"
+      "title": "Are you sure? ૮ • ﻌ - ა"
     },
     "extension": {
       "back": "Go back",
-      "explainer": "Using the browser extension, you can get the best streams we have to offer. With just a simple install.",
+      "explainer": "Using the browser extension, you can get the best streams we have to offer. With just a simple install. 👌",
       "explainerIos": "Unfortunately, the browser extension is not supported on iOS, Press <bold>Go back</bold> to choose another option.",
       "extensionHelp": "If you've installed the extension but it's not detected, <bold>open the extension through your browsers extension menu</bold> and follow the steps on screen.",
       "linkChrome": "Install Chrome extension",
@@ -215,22 +215,22 @@
       "explainer": "To get the best streams possible, you will need to choose which streaming method you want to use.",
       "options": {
         "default": {
-          "text": "I don't want good quality streams,<0 /> <1>use the default setup</1>"
+          "text": "I don't want good quality streams,<0 /> <1>use the default setup ▄︻デ══━一 ʕ•͡-•ʔ</1>"
         },
         "extension": {
           "action": "Install extension",
-          "description": "Install browser extension and gain access to the best sources.",
+          "description": "Install browser extension and gain access to the best sources, but remember to enable it for this site.",
           "quality": "Best quality",
           "title": "Browser extension"
         },
         "proxy": {
           "action": "Setup proxy",
-          "description": "Setup a proxy in just 5 minutes and gain access to great sources.",
+          "description": "Setup a free proxy in just 5 minutes and gain access to great sources...",
           "quality": "Good quality",
           "title": "Custom proxy"
         }
       },
-      "title": "Let's get you setup with sudo-flix"
+      "title": "Let's get you setup with sudo-flix 🥳"
     }
   },
   "overlays": {
@@ -242,7 +242,7 @@
       "short": "Back"
     },
     "casting": {
-      "enabled": "Casting to device..."
+      "enabled": "Casting to device 🎬"
     },
     "menus": {
       "downloads": {
@@ -275,7 +275,7 @@
         "loadingError": "Error loading season",
         "loadingList": "Loading...",
         "loadingTitle": "Loading...",
-        "unairedEpisodes": "One or more episodes in this season have been disabled because they haven't been aired yet."
+        "unairedEpisodes": "One or more episodes in this season have been disabled because they haven't been aired yet... Whomp Whomp!"
       },
       "playback": {
         "speedLabel": "Playback speed",
@@ -284,7 +284,7 @@
       "quality": {
         "automaticLabel": "Automatic quality",
         "hint": "You can try <0>switching source</0> to get different quality options.",
-        "iosNoQuality": "Due to Apple-defined limitations, quality selection is not available on iOS for this source. You can try <0>switching to another source</0> to get different quality options.",
+        "iosNoQuality": "Due to Apple-defined (common IOS L) limitations, quality selection is not available on iOS for this source. You can try <0>switching to another source</0> to get different quality options.",
         "title": "Quality"
       },
       "settings": {
@@ -333,7 +333,7 @@
       },
       "dmca": {
         "badge": "Removed",
-        "text": "This media is no longer available due to a takedown notice or copyright claim.",
+        "text": "This media is no longer available due to a takedown notice or copyright claim. 😨",
         "title": "Media has been removed"
       },
       "extensionPermission": {
@@ -351,13 +351,13 @@
       "notFound": {
         "badge": "Not found",
         "homeButton": "Back to home",
-        "text": "We couldn't find the media you requested. Either it's been removed or you tampered with the URL.",
+        "text": "We couldn't find the media you requested. Either it's been removed or you tampered with the URL (naughty).",
         "title": "Couldn't find that media."
       }
     },
     "nextEpisode": {
       "cancel": "Cancel",
-      "next": "Next episode"
+      "next": "Next episode ⛱"
     },
     "playbackError": {
       "badge": "Playback error",
@@ -369,20 +369,20 @@
         "errorNotSupported": "The media or media provider object is not supported."
       },
       "homeButton": "Go home",
-      "text": "There was an error trying to play the media. Please try again.",
+      "text": "There was an error trying to play the media 😖. Please try again.",
       "title": "Failed to play video!"
     },
     "scraping": {
       "items": {
         "failure": "Error occurred",
-        "notFound": "Doesn't have the video",
+        "notFound": "Doesn't have the video (╥﹏╥)",
         "pending": "Checking for videos..."
       },
       "notFound": {
         "badge": "Not found",
         "detailsButton": "Show details",
         "homeButton": "Go home",
-        "text": "We have searched through our providers and cannot find the media you are looking for! We do not host the media and have no control over what is available. Please click 'Show details' below for more details.",
+        "text": "We can not find the media you are looking for or no one provides it... Did you enable the extension for this site?",
         "title": "We couldn't find that"
       }
     },
@@ -396,12 +396,12 @@
       "description": "Please verify that you are human by completing the Captcha on the right. This is to keep sudo-flix safe!",
       "error": "Failed to verify your humanity. Please try again.",
       "title": "We need to verify that you're human.",
-      "verifyingHumanity": "Verifying your humanity..."
+      "verifyingHumanity": "Verifying your humanity... (^▽^)👍"
     }
   },
   "screens": {
     "dmca": {
-      "text": "Welcome to sudo-flix's DMCA contact page! We respect intellectual property rights and want to address any copyright concerns swiftly. If you believe your copyrighted work has been improperly used on our platform, please send a detailed DMCA notice to the email below. Please include a description of the copyrighted material, your contact details, and a statement of good faith belief. We're committed to resolving these matters promptly and appreciate your cooperation in keeping sudo-flix a place that respects creativity and copyrights.",
+      "text": "Welcome to sudo-flix's DMCA contact page! We respect intellectual property rights and want to address any copyright concerns swiftly. If you believe your copyrighted work has been improperly used on our platform (😢), please send a detailed DMCA notice to the email below. Please include a description of the copyrighted material, your contact details, and a statement of good faith belief. We're committed to resolving these matters promptly and appreciate your cooperation in keeping sudo-flix a place that respects creativity and copyrights.",
       "title": "DMCA"
     },
     "loadingApp": "Loading application",
@@ -413,7 +413,7 @@
       "textWithReset": "Failed to load your profile from your custom server, want to reset back to the default server?"
     },
     "migration": {
-      "failed": "Failed to migrate your data.",
+      "failed": "Failed to migrate your data. ૮₍˶Ó﹏Ò ⑅₎ა",
       "inProgress": "Please hold, we are migrating your data. This shouldn't take long."
     }
   },
@@ -429,7 +429,7 @@
         "delete": {
           "button": "Delete account",
           "confirmButton": "Delete account",
-          "confirmDescription": "Are you sure you want to delete your account? All your data will be lost!",
+          "confirmDescription": "Are you sure you want to delete your account? All your data will be lost! 😿",
           "confirmTitle": "Are you sure?",
           "text": "This action is irreversible. All data will be deleted and nothing can be recovered.",
           "title": "Delete account"
@@ -451,7 +451,7 @@
       },
       "register": {
         "cta": "Get started",
-        "text": "Share your watch progress between devices and keep them synced.",
+        "text": "Share your watch progress between devices and keep them synced. ( ̧⸝⸝⍢⸝⸝)ෆ",
         "title": "Sync to the cloud"
       },
       "title": "Account"
@@ -487,7 +487,7 @@
         },
         "redoSetup": "Redo setup",
         "successStatus": {
-          "description": "All things are in place for you to start watching your favourite media.",
+          "description": "All things are in place for you to start watching your favorite media. (๑>◡<๑)",
           "title": "Everything is set up!"
         },
         "unsetStatus": {
@@ -499,7 +499,7 @@
       "workers": {
         "addButton": "Add new worker",
         "description": "To make the application function, all traffic is routed through proxies. Enable this if you want to bring your own workers. <0>Instructions.</0>",
-        "emptyState": "No workers yet, add one below",
+        "emptyState": "No workers yet (｡•́︿•̀｡), add one below",
         "label": "Use custom proxy workers",
         "urlLabel": "Worker URLs",
         "urlPlaceholder": "https://"
@@ -532,10 +532,10 @@
     "subtitles": {
       "backgroundLabel": "Background opacity",
       "colorLabel": "Color",
-      "previewQuote": "I must not fear. Fear is the mind-killer.",
+      "previewQuote": "Would you rather have a thot daughter or a gay son? 🤔",
       "textSizeLabel": "Text size",
       "title": "Subtitles"
     },
-    "unsaved": "You have unsaved changes"
+    "unsaved": "You have unsaved changes... ฅ^•ﻌ•^ฅ"
   }
 }
