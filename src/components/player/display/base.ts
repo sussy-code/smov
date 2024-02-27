@@ -152,10 +152,9 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
 
           if (isExtensionActiveCached()) {
             hls.on(Hls.Events.LEVEL_LOADED, async (_, data) => {
-              console.log(data);
-              const chunkUrlsDomains = data.details.fragments
-                .map((v) => v.url)
-                .map((v) => new URL(v).hostname);
+              const chunkUrlsDomains = data.details.fragments.map(
+                (v) => new URL(v.url).hostname,
+              );
               const chunkUrls = [...new Set(chunkUrlsDomains)];
 
               await setDomainRule({
