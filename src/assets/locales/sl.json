@@ -95,6 +95,7 @@
       "about": "O projektu",
       "dmca": "DMCA",
       "login": "Prijava",
+      "onboarding": "Nastavitev",
       "pagetitle": "{{title}} - movie-web",
       "register": "Registriraj se",
       "settings": "Nastavitve"
@@ -117,7 +118,12 @@
       "noResults": "Vsebin nismo našli!",
       "placeholder": {
         "default": "Kaj si želite gledati?",
-        "extra": []
+        "extra": [
+          "Kaj želiš raziskati danes?",
+          "Kateri fdilm/serijo si boš ogledal/a naslednje?",
+          "Kateri film ti je najljubši?",
+          "Katera je tvoja najljubša serija?"
+        ]
       },
       "sectionTitle": "Rezultati iskanja"
     },
@@ -130,7 +136,9 @@
       },
       "morning": {
         "default": "Kateri film ali serijo bi si želeli ogledati ob tem jutru?",
-        "extra": ["Slišala sem, da je film \"Pred sončnim vzhodom\" odličen"]
+        "extra": [
+          "Slišala sem, da je film \"Pred sončnim vzhodom\" odličen"
+        ]
       },
       "night": {
         "default": "Kateri film ali serijo bi si želeli ogledati nocoj?",
@@ -165,6 +173,43 @@
     "goHome": "Nazaj domov",
     "message": "Iskali smo povsod: pod preprogo, v omari, za \"proxyjem\", vendar na koncu nismo našli strani, ki jo iščete.",
     "title": "Ni bilo mogoče najti te strani"
+  },
+  "onboarding": {
+    "defaultConfirm": {
+      "cancel": "Prekliči",
+      "confirm": "Upoeabi privzete nastavitve",
+      "description": "Privzeta nastavitev nima najboljših pretokov in je lahko neznosno počasna.",
+      "title": "Si prepričan?"
+    },
+    "extension": {
+      "back": "Nazaj",
+      "explainer": "Z razširitvijo brskalnika lahko dobite najboljše tokove, ki jih ponujamo. Namestitev je zelo preprosta!",
+      "explainerIos": "Na žalost razširitev brskalnika ni podprta v sistemu iOS, Pritisnite <bold>Najdi nazaj</bold> in izberite drugo možnost.",
+      "extensionHelp": "Če ste namestili razširitev, vendar ni zaznana, <bold>odprite razširitev v meniju razširitev brskalnika</bold> in sledite navodilom na zaslonu.",
+      "linkChrome": "Naloži Chrome razširitev",
+      "linkFirefox": "Naloži Firefox razširitev",
+      "notDetecting": "Nameščen v brskalniku Chrome, vendar ga spletno mesto ne zazna? Poskusite znova naložiti stran!",
+      "notDetectingAction": "Osveži stran",
+      "status": {
+        "disallowed": "Razširitev ni omogočena na tej strani",
+        "disallowedAction": "Omogoči razširitev",
+        "failed": "Ni uspelo zahtevati statusa",
+        "loading": "Čakamo, da namestite razširitev",
+        "outdated": "Verzija razširitve je prestara",
+        "success": "Razširitev deluje pravilno!"
+      },
+      "submit": "Nadaljuj",
+      "title": "Začnimo z razširitvijo"
+    },
+    "proxy": {
+      "back": "Nazaj",
+      "explainer": "Z metodo proxy lahko s samopostrežnim proxyjem pridobite zelo kakovostne prenose.",
+      "input": {
+        "errorConnection": "Povezava s proxyjem ni uspela",
+        "errorInvalidUrl": "Ni validen URL",
+        "errorNotProxy": "Pričakoval proxy, a dobil spletno stran"
+      }
+    }
   },
   "overlays": {
     "close": "Zapri"
