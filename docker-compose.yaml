@@ -23,4 +23,4 @@ services:
       #   TURNSTILE_KEY: ""
     ports:
       - "80:80"
-    restart: always
+    restart: unless-stopped
