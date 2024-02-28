@@ -1,20 +1,20 @@
 {
   "about": {
-    "description": "kitty-web is a meow application that searches the meow for meows. The meow aims for a mostly meow approach to consuming meow.",
+    "description": "kitty-flix is a meow application that searches the meow for meows. The meow aims for a mostly meow approach to consuming meow.",
     "faqTitle": "Meow questions",
     "q1": {
-      "body": "kitty-web does not meow any meow. When you meow on something to meow, the meow is searched for the selected meow (On the loading meow and in the 'meow sources' meow you can meow which meow you're meow). Meow never gets meow by kitty-web, everything is meow this meow mechanism.",
+      "body": "kitty-flix does not meow any meow. When you meow on something to meow, the meow is searched for the selected meow (On the loading meow and in the 'meow sources' meow you can meow which meow you're meow). Meow never gets meow by kitty-flix, everything is meow this meow mechanism.",
       "title": "Where does the meow come from?"
     },
     "q2": {
-      "body": "It's not meow to meow a meow or meow, kitty-web does not meow any meow. All meow is meow through meows on the meow.",
+      "body": "It's not meow to meow a meow or meow, kitty-flix does not meow any meow. All meow is meow through meows on the meow.",
       "title": "Meow can I meow a meow or meow?"
     },
     "q3": {
       "body": "Our meow results are meow by The Meow Meow (TBMB) and meow regardless of whether our meows actually have the meow.",
       "title": "The meow results meow the meow or meow, meow can't I meow it?"
     },
-    "title": "About kitty-web"
+    "title": "About kitty-flix"
   },
   "actions": {
     "copied": "Meow",
@@ -80,7 +80,7 @@
   "footer": {
     "legal": {
       "disclaimer": "Meow",
-      "disclaimerText": "kitty-web does not meow any meows, it merely meow to 3rd meow meows. Meow issues should be meow up with the meow meows and meows. kitty-web is not meow for any meow meows shown by the meow meows."
+      "disclaimerText": "kitty-flix does not meow any meows, it merely meow to 3rd meow meows. Meow issues should be meow up with the meow meows and meows. kitty-flix is not meow for any meow meows shown by the meow meows."
     },
     "links": {
       "discord": "Meow",
@@ -90,12 +90,12 @@
     "tagline": "Meow your favorite meows and meows with this open source meow app."
   },
   "global": {
-    "name": "meow-web",
+    "name": "meow-flix",
     "pages": {
       "about": "About meow",
       "dmca": "DMCA",
       "login": "Meow Login",
-      "pagetitle": "{{title}} - meow-web",
+      "pagetitle": "{{title}} - meow-flix",
       "register": "Meow Register",
       "settings": "Meow Settings"
     }
@@ -177,10 +177,10 @@
     },
     "menus": {
       "downloads": {
-        "disclaimer": "Downloads are taken directly from the meow. meow-web does not have meow over how the meow are meow.",
+        "disclaimer": "Downloads are taken directly from the meow. meow-flix does not have meow over how the meow are meow.",
         "downloadSubtitle": "Download current meow",
         "downloadVideo": "Meow",
-        "hlsDisclaimer": "Downloads are taken directly from the meow. Meow-web does not have control over how the downloads are meow. please note that you are downloading Meow playlist, this is intended for minions familiar with advanced multimedia meow.",
+        "hlsDisclaimer": "Downloads are taken directly from the meow. Meow-flix does not have control over how the downloads are meow. please note that you are downloading Meow playlist, this is intended for minions familiar with advanced multimedia meow.",
         "onAndroid": {
           "1": "To meow on Meow, click the meow meow then, on the new meow, <bold>tap and hold</bold> on the meow, then select <bold>meow</bold>.",
           "shortTitle": "Meow / Meow",
@@ -312,7 +312,7 @@
       "shortRemaining": "-{{timeLeft}}"
     },
     "turnstile": {
-      "description": "Please verify that you are meow by completing the meow on the right. This is to keep meow-web meow!",
+      "description": "Please verify that you are meow by completing the meow on the right. This is to keep meow-flix meow!",
       "error": "Failed to verify your meowness. Please try meow.",
       "title": "We meow to verify that you're meow",
       "verifyingHumanity": "Verifying your meow..."
