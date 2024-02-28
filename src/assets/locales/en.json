@@ -1,6 +1,6 @@
 {
   "about": {
-    "description": "sudo-flix is a web application that searches the internet for streams. Which aims for a mostly minimalistic approach to consuming media.",
+    "description": "sudo-flix is a fork of movie-web that is ensured to stay up even after the shutdown of movie-web.app, sudo-flix.lol will soon (if not already) use a offshore .ru domain to ensure we do not get suspended. sudo-flix.lol is a namecheap domain that simply points to sudo-flix.ru.",
     "faqTitle": "Common questions",
     "q1": {
       "body": "sudo-flix does not host any content. When you click on something to watch, the internet is searched for the selected media (On the loading screen and in the 'video sources' tab you can see which source you're using). Media never gets uploaded by sudo-flix, everything is through this searching mechanism.",
@@ -132,15 +132,21 @@
     "titles": {
       "day": {
         "default": "What would you like to watch this afternoon?",
-        "extra": ["Have you seen Blazing Saddles?"]
+        "extra": ["Have you seen Blazing Saddles?"],
+        "extra": ["Welcome to Sudo-Flix!"],
+        "extra": [" /ᐠ>ヮ<ᐟ\\ฅ"]
       },
       "morning": {
         "default": "What would you like to watch this morning?",
-        "extra": ["I hear The Expanse is popular"]
+        "extra": ["Can't go wrong with Friends"],
+        "extra": ["I hear The Expanse is popular"],
+        "extra": ["\"૮₍  ˶•⤙•˶ ₎ა"]
       },
       "night": {
         "default": "What would you like to watch tonight?",
-        "extra": ["Go smoke and watch The Simpsons!"]
+        "extra": ["Rick & Morty is great with friends!"],
+        "extra": ["Go smoke and watch The Simpsons!"],
+        "extra": ["(づ ᴗ _ᴗ)づ♡"]
       },
       "420": {
         "default": "What would you like to watch this 4/20?",
@@ -528,7 +534,7 @@
         "insecure": "Insecure",
         "notLoggedIn": "You are not logged in",
         "secure": "Secure",
-        "title": "App information (for nerds) 🤓",
+        "title": "App stats (for nerds) 🤓",
         "unknownVersion": "Unknown",
         "userId": "User ID"
       }

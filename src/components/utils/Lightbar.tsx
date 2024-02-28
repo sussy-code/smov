@@ -185,7 +185,7 @@ function ParticlesCanvas() {
     const month2 = date.getMonth() + 1;
     const day2 = date.getDate();
     const shouldShowZa =
-      (month2 === 4 && day2 === 20) || Math.floor(Math.random() * 425) > 420;
+      (month2 === 4 && day2 === 20) || Math.floor(Math.random() * 435) > 420;
     if (shouldShowZa) {
       imageOverride = [
         {
@@ -197,7 +197,7 @@ function ParticlesCanvas() {
     }
 
     // Kitty easter egg
-    const shouldShowCat = Math.floor(Math.random() * 50) > 45;
+    const shouldShowCat = Math.floor(Math.random() * 52) > 45;
     if (shouldShowCat) {
       imageOverride = [
         {
