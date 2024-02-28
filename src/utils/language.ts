@@ -63,6 +63,11 @@ const extraLanguages: Record<string, LocaleInfo> = {
     name: "Pirate",
     nativeName: "Pirate Tongue",
   },
+  cat: {
+    code: "cat",
+    name: "Cat",
+    nativeName: "Kitty Speak",
+  },
   minion: {
     code: "minion",
     name: "Minion",

@@ -160,12 +160,36 @@ function ParticlesCanvas() {
     }
 
     // Fish easter egg
-    const shouldShowFishie = Math.floor(Math.random() * 130) > 69;
+    const shouldShowFishie = Math.floor(Math.random() * 80) > 69;
     if (shouldShowFishie) {
       imageOverride = [
         {
           image: "/lightbar-images/fishie.png",
           sizeRange: [10, 13] as [number, number],
+        },
+      ];
+      imageParticleCount = particleCount / 2;
+    }
+
+    // Weed easter egg
+    const shouldShowZa = Math.floor(Math.random() * 5060) > 420;
+    if (shouldShowZa) {
+      imageOverride = [
+        {
+          image: "/lightbar-images/weed.png",
+          sizeRange: [23, 28] as [number, number],
+        },
+      ];
+      imageParticleCount = particleCount / 2;
+    }
+
+    // Kitty easter egg
+    const shouldShowCat = Math.floor(Math.random() * 100) > 50;
+    if (shouldShowCat) {
+      imageOverride = [
+        {
+          image: "/lightbar-images/cat.png",
+          sizeRange: [26, 30] as [number, number],
         },
       ];
       imageParticleCount = particleCount / 2;

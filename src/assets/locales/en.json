@@ -141,6 +141,10 @@
       "night": {
         "default": "What would you like to watch tonight?",
         "extra": ["Go smoke and watch The Simpsons!"]
+      },
+      "420": {
+        "default": "What would you like to watch this 4/20?",
+        "extra": ["Happy 4/20 🥳!"]
       }
     }
   },
@@ -539,3 +543,4 @@
     "unsaved": "You have unsaved changes... ฅ^•ﻌ•^ฅ"
   }
 }
+

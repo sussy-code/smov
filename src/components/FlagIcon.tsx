@@ -26,6 +26,13 @@ export function FlagIcon(props: FlagIconProps) {
       </div>
     );
 
+  if (props.langCode === "cat")
+    return (
+      <div className="w-8 h-6 rounded bg-[#505050] flex justify-center items-center">
+        <img src="/flags/cat.png" className="w-4 h-4" />
+      </div>
+    );
+
   if (props.langCode === "minion")
     return (
       <div className="w-8 h-6 rounded bg-[#ffff1a] flex justify-center items-center">
