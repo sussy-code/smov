@@ -172,7 +172,7 @@ function ParticlesCanvas() {
     }
 
     // Weed easter egg
-    const shouldShowZa = Math.floor(Math.random() * 5060) > 420;
+    const shouldShowZa = Math.floor(Math.random() * 560) > 420;
     if (shouldShowZa) {
       imageOverride = [
         {
