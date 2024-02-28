@@ -138,7 +138,7 @@ function ParticlesCanvas() {
     canvas.height = canvas.scrollHeight;
 
     // Basic particle config
-    const particleCount = 20;
+    const particleCount = 25;
     let imageParticleCount = particleCount;
 
     // Holiday overrides
@@ -160,12 +160,12 @@ function ParticlesCanvas() {
     }
 
     // Fish easter egg
-    const shouldShowFishie = Math.floor(Math.random() * 600) === 69;
+    const shouldShowFishie = Math.floor(Math.random() * 130) > 69;
     if (shouldShowFishie) {
       imageOverride = [
         {
           image: "/lightbar-images/fishie.png",
-          sizeRange: [10, 11] as [number, number],
+          sizeRange: [10, 13] as [number, number],
         },
       ];
       imageParticleCount = particleCount / 2;
