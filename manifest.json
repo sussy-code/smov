@@ -18,7 +18,7 @@
     },
     {
       "src": "/public/apple-touch-icon.png",
-      "sizes": "192x192",
+      "sizes": "180x180",
       "type": "image/png"
     },
     {
@@ -33,12 +33,167 @@
     },
     {
       "src": "/public/favicon.ico",
-      "sizes": "192x192",
+      "sizes": "32x32",
       "type": "image/png"
     },
     {
       "src": "/public/mstile-150x150.png",
       "sizes": "150x150",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/splash_screens/icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/splash_screens/4__iPhone_SE__iPod_touch_5th_generation_and_later_landscape.png",
+      "sizes": "1136x640",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/splash_screens/4__iPhone_SE__iPod_touch_5th_generation_and_later_portrait.png",
+      "sizes": "640x1136",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/splash_screens/8.3__iPad_Mini_landscape.png",
+      "sizes": "2266x1488",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/splash_screens/9.7__iPad_Pro__7.9__iPad_mini__9.7__iPad_Air__9.7__iPad_landscape.png",
+      "sizes": "1536x2048",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/splash_screens/9.7__iPad_Pro__7.9__iPad_mini__9.7__iPad_Air__9.7__iPad_portrait.png",
+      "sizes": "2048x1536",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/splash_screens8/10.2__iPad_landscape.png",
+      "sizes": "2160x1620",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/splash_screens8/10.5__iPad_Air_landscape.png",
+      "sizes": "2224x1668",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/splash_screens8/10.5__iPad_Air_portrait.png",
+      "sizes": "1668x2224",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/splash_screens8/10.9__iPad_Air_landscape.png",
+      "sizes": "2360x1640",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/splash_screens8/11__iPad_Pro__10.5__iPad_Pro_landscape.png",
+      "sizes": "2388x1668",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/splash_screens8/12.9__iPad_Pro_landscape.png",
+      "sizes": "2732x2048",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/splash_screens8/12.9__iPad_Pro_portrait.png",
+      "sizes": "2048x2732",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/splash_screens8/12.iPhone_8__iPhone_7__iPhone_6s__iPhone_6__4.7__iPhone_SE_landscape.png",
+      "sizes": "1334x750",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/splash_screens/8iPhone_8__iPhone_7__iPhone_6s__iPhone_6__4.7__iPhone_SE_portrait.png",
+      "sizes": "750x1334",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/splash_screens/8iPhone_8_Plus__iPhone_7_Plus__iPhone_6s_Plus__iPhone_6_Plus_landscape.png",
+      "sizes": "2208x1242",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/splash_screens/8iPhone_8_Plus__iPhone_7_Plus__iPhone_6s_Plus__iPhone_6_Plus_portrait.png",
+      "sizes": "1242x2208",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/splash_screens/iPhone_11__iPhone_XR_landscape.png",
+      "sizes": "1792x828",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/splash_screens/iPhone_11__iPhone_XR_portrait.png",
+      "sizes": "828x1792",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/splash_screens/iPhone_11_Pro_Max__iPhone_XS_Max_landscape.png",
+      "sizes": "2688x1242",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/splash_screens/iPhone_11_Pro_Max__iPhone_XS_Max_portrait.png",
+      "sizes": "1242x2688",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/splash_screens/iPhone_13_mini__iPhone_12_mini__iPhone_11_Pro__iPhone_XS__iPhone_X_landscape.png",
+      "sizes": "2436x1125",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/splash_screens/iPhone_13_mini__iPhone_12_mini__iPhone_11_Pro__iPhone_XS__iPhone_X_portrait.png",
+      "sizes": "1125x2436",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/splash_screens/iPhone_14__iPhone_13_Pro__iPhone_13__iPhone_12_Pro__iPhone_12_landscape.png",
+      "sizes": "2532x1170",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/splash_screens/iPhone_14__iPhone_13_Pro__iPhone_13__iPhone_12_Pro__iPhone_12_portrait.png",
+      "sizes": "1170x2532",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/splash_screens/iPhone_14_Plus__iPhone_13_Pro_Max__iPhone_12_Pro_Max_landscape.png",
+      "sizes": "2778x1284",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/splash_screens/iPhone_14_Plus__iPhone_13_Pro_Max__iPhone_12_Pro_Max_portrait.png",
+      "sizes": "1284x2778",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/splash_screens/iPhone_15_Pro__iPhone_15__iPhone_14_Pro_landscape.png",
+      "sizes": "2556x1179",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/splash_screens/iPhone_15_Pro__iPhone_15__iPhone_14_Pro_portrait.png",
+      "sizes": "1179x2556",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/splash_screens/iPhone_15_Pro_Max__iPhone_15_Plus__iPhone_14_Pro_Max_landscape.png",
+      "sizes": "2796x1290",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/splash_screens/iPhone_15_Pro_Max__iPhone_15_Plus__iPhone_14_Pro_Max_portrait.png",
+      "sizes": "1290x2796",
       "type": "image/png"
     }
   ]
