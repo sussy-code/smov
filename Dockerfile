@@ -8,7 +8,7 @@ COPY package.json ./
 COPY pnpm-lock.yaml ./
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 
-ARG PWA_ENABLED="false"
+ARG PWA_ENABLED="true"
 ARG GA_ID
 ARG APP_DOMAIN
 ARG OPENSEARCH_ENABLED="false"
