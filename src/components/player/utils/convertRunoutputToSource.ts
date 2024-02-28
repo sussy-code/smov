@@ -28,6 +28,7 @@ export function convertRunoutputToSource(out: {
     return {
       type: "hls",
       url: out.stream.playlist,
+      headers: out.stream.headers,
       preferredHeaders: out.stream.preferredHeaders,
     };
   }
@@ -50,6 +51,7 @@ export function convertRunoutputToSource(out: {
     return {
       type: "file",
       qualities,
+      headers: out.stream.headers,
       preferredHeaders: out.stream.preferredHeaders,
     };
   }
