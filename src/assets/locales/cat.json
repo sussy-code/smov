@@ -139,7 +139,7 @@
     }
   },
   "media": {
-    "episodeDisplay": "S{{season}} E{{episode}}",
+    "episodeDisplay": "S{{season}} - E{{episode}}",
     "types": {
       "movie": "Meow Movie",
       "show": "Meow Show"

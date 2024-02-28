@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
 
 import { Button } from "@/components/buttons/Button";
@@ -49,7 +49,19 @@ export function ScrapeErrorPart(props: ScrapeErrorPartProps) {
           {t("player.scraping.notFound.badge")}
         </IconPill>
         <Title>{t("player.scraping.notFound.title")}</Title>
-        <Paragraph>{t("player.scraping.notFound.text")}</Paragraph>
+        <Paragraph>
+          <Trans
+            i18nKey="player.scraping.notFound.text"
+            components={{
+              bold: (
+                <span
+                  className="text-white·font-bold"
+                  style={{ color: "#DADADA" }}
+                />
+              ),
+            }}
+          />
+        </Paragraph>
         <div className="flex gap-3">
           <Button
             href="/"

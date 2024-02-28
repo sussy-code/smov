@@ -386,7 +386,7 @@
         "badge": "Not found",
         "detailsButton": "Show details",
         "homeButton": "Go home",
-        "text": "We can not find the media you are looking for or no one provides it... Did you enable the extension for this site?",
+        "text": "We can not find the media you are looking for or no one provides it... <bold>Did you enable the extension for this site?</bold>",
         "title": "We couldn't find that"
       }
     },

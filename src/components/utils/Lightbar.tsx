@@ -52,7 +52,7 @@ class Particle {
 
     this.radius = 1 + Math.floor(Math.random() * 0.5);
     this.direction = (Math.random() * Math.PI) / 2 + Math.PI / 4;
-    this.speed = 0.02 + Math.random() * 0.08;
+    this.speed = 0.02 + Math.random() * 0.085;
 
     const second = 60;
     this.lifetime = second * 3 + Math.random() * (second * 30);
@@ -107,8 +107,14 @@ class Particle {
       ctx.translate(this.x, this.y);
       const w = this.size;
       const h = (this.image.naturalWidth / this.image.naturalHeight) * w;
-      ctx.rotate(this.direction - Math.PI);
-      ctx.drawImage(this.image, -w / 2, h, h, w);
+      if (this.image.src.includes("shark")) {
+        const flip = this.direction === Math.PI ? 1 : -1;
+        ctx.scale(flip, 1);
+        ctx.drawImage(this.image, (-w / 2) * flip, -h / 2, w, h);
+      } else {
+        ctx.rotate(this.direction - Math.PI);
+        ctx.drawImage(this.image, -w / 2, h, h, w);
+      }
     } else {
       ctx.ellipse(
         this.x,
@@ -138,7 +144,7 @@ function ParticlesCanvas() {
     canvas.height = canvas.scrollHeight;
 
     // Basic particle config
-    const particleCount = 25;
+    const particleCount = Math.floor(Math.random() * (30 - 25 + 1)) + 25;
     let imageParticleCount = particleCount;
 
     // Holiday overrides
@@ -160,36 +166,43 @@ function ParticlesCanvas() {
     }
 
     // Fish easter egg
-    const shouldShowFishie = Math.floor(Math.random() * 75) > 69;
+    const shouldShowFishie = Math.floor(Math.random() * 73) > 69;
     if (shouldShowFishie) {
       imageOverride = [
         {
           image: "/lightbar-images/fishie.png",
           sizeRange: [10, 13] as [number, number],
         },
+        {
+          image: "/lightbar-images/shark.png",
+          sizeRange: [48, 56] as [number, number],
+        },
       ];
-      imageParticleCount = particleCount / 2;
+      imageParticleCount = particleCount * 0.9; // Adjusting the count to display significantly more fish than sharks
     }
 
     // Weed easter egg
-    const shouldShowZa = Math.floor(Math.random() * 435) > 420;
+    const month2 = date.getMonth() + 1;
+    const day2 = date.getDate();
+    const shouldShowZa =
+      (month2 === 4 && day2 === 20) || Math.floor(Math.random() * 425) > 420;
     if (shouldShowZa) {
       imageOverride = [
         {
           image: "/lightbar-images/weed.png",
-          sizeRange: [23, 28] as [number, number],
+          sizeRange: [25, 28] as [number, number],
         },
       ];
       imageParticleCount = particleCount / 2;
     }
 
     // Kitty easter egg
-    const shouldShowCat = Math.floor(Math.random() * 83) > 50;
+    const shouldShowCat = Math.floor(Math.random() * 50) > 45;
     if (shouldShowCat) {
       imageOverride = [
         {
           image: "/lightbar-images/cat.png",
-          sizeRange: [26, 30] as [number, number],
+          sizeRange: [27, 32] as [number, number],
         },
       ];
       imageParticleCount = particleCount / 2;
@@ -203,7 +216,7 @@ function ParticlesCanvas() {
       const src = imageOverride[randomImageIndex]?.image;
       const particle = new Particle(canvas, {
         imgSrc: isImageParticle ? src : undefined,
-        horizontalMotion: src?.includes("fishie"),
+        horizontalMotion: src?.includes("fishie") || src?.includes("shark"),
         sizeRange,
       });
       particles.push(particle);
