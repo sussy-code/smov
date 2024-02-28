@@ -190,7 +190,7 @@ function ParticlesCanvas() {
       imageOverride = [
         {
           image: "/lightbar-images/weed.png",
-          sizeRange: [25, 28] as [number, number],
+          sizeRange: [26, 29] as [number, number],
         },
       ];
       imageParticleCount = particleCount / 2;
@@ -202,7 +202,7 @@ function ParticlesCanvas() {
       imageOverride = [
         {
           image: "/lightbar-images/cat.png",
-          sizeRange: [27, 32] as [number, number],
+          sizeRange: [28, 32] as [number, number],
         },
       ];
       imageParticleCount = particleCount / 2;
