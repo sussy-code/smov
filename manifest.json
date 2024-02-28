@@ -44,7 +44,8 @@
     {
       "src": "/public/splash_screens/icon.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "maskable"
     },
     {
       "src": "/public/splash_screens/4__iPhone_SE__iPod_touch_5th_generation_and_later_landscape.png",
