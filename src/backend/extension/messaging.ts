@@ -6,6 +6,11 @@ import {
 import { isAllowedExtensionVersion } from "@/backend/extension/compatibility";
 import { ExtensionMakeRequestResponse } from "@/backend/extension/plasmo";
 
+export const RULE_IDS = {
+  PREPARE_STREAM: 1,
+  SET_DOMAINS_HLS: 2,
+};
+
 // for some reason, about 500 ms is needed after
 // page load before the extension starts responding properly
 const isExtensionReady = new Promise<void>((resolve) => {
