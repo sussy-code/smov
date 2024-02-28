@@ -160,7 +160,7 @@ function ParticlesCanvas() {
     }
 
     // Fish easter egg
-    const shouldShowFishie = Math.floor(Math.random() * 80) > 69;
+    const shouldShowFishie = Math.floor(Math.random() * 75) > 69;
     if (shouldShowFishie) {
       imageOverride = [
         {
@@ -172,7 +172,7 @@ function ParticlesCanvas() {
     }
 
     // Weed easter egg
-    const shouldShowZa = Math.floor(Math.random() * 560) > 420;
+    const shouldShowZa = Math.floor(Math.random() * 435) > 420;
     if (shouldShowZa) {
       imageOverride = [
         {
@@ -184,7 +184,7 @@ function ParticlesCanvas() {
     }
 
     // Kitty easter egg
-    const shouldShowCat = Math.floor(Math.random() * 100) > 50;
+    const shouldShowCat = Math.floor(Math.random() * 83) > 50;
     if (shouldShowCat) {
       imageOverride = [
         {
