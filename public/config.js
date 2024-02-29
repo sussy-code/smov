@@ -1,6 +1,6 @@
 window.__CONFIG__ = {
   // The URL for the CORS proxy, the URL must NOT end with a slash!
-  VITE_CORS_PROXY_URL: "https://sudo-proxy.netlify.app", // https://mweb-proxy.up.railway.app
+  VITE_CORS_PROXY_URL: ["https://sudo-proxy.netlify.app", "https://mweb-proxy.up.railway.app"],
 
   // The READ API key to access TMDB
   VITE_TMDB_READ_API_KEY: "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiZmU0OGY4NjFkY2NmMjczMzUyMDdmMWVjYmVkNjNjNiIsInN1YiI6IjY1YjNmMWI0NTk0Yzk0MDE2MzNkZDBjNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.GiCKswc2u9NraBbujm0ykI5G3p-K9WJoHg40jYbFv4o",
