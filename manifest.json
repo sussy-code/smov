@@ -56,7 +56,7 @@
       "purpose": "any"
     },
     {
-      "src": "public/splash_screens/icon144x144.png",
+      "src": "/splash_screens/icon144x144.png",
       "sizes": "144x144",
       "type": "image/png",
       "purpose": "any"
