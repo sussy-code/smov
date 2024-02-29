@@ -154,7 +154,7 @@ function ParticlesCanvas() {
     const day = date.getDate();
     if (
       (month === 11 && day >= 24 && day <= 26) ||
-      Math.floor(Math.random() * 380) > 40
+      Math.floor(Math.random() * 38) > 40
     ) {
       imageOverride = [
         {
