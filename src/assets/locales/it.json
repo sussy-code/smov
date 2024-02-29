@@ -118,7 +118,12 @@
       "noResults": "Non abbiamo trovato nulla!",
       "placeholder": {
         "default": "Cosa vuoi guardare?",
-        "extra": []
+        "extra": [
+          "Cosa vorresti esplorare?",
+          "Cosa c’è nella tua lista di guardare?",
+          "Cos’è il vostro preferito film?",
+          "Cos’è il vostro preferito serie?"
+        ]
       },
       "sectionTitle": "Risultati della ricerca"
     },
@@ -131,11 +136,15 @@
       },
       "morning": {
         "default": "Cosa vorresti guardare questa mattina?",
-        "extra": ["Ho sentito che «Prima Dell'alba» è buono"]
+        "extra": [
+          "Ho sentito che «Prima Dell'alba» è buono"
+        ]
       },
       "night": {
         "default": "Cosa vorresti guardare questa sera?",
-        "extra": ["Stanco? Ho sentito che L'esorciccio è buono."]
+        "extra": [
+          "Stanco? Ho sentito che L'esorciccio è buono."
+        ]
       }
     }
   },
