@@ -59,6 +59,14 @@ export function ScrapeErrorPart(props: ScrapeErrorPartProps) {
         </Paragraph>
         <div className="flex gap-3">
           <Button
+            onClick={() => window.location.reload()}
+            theme="secondary"
+            padding="md:px-12 p-2.5"
+            className="mt-6"
+          >
+            {t("player.scraping.notFound.reloadButton")}
+          </Button>
+          <Button
             href="/"
             theme="secondary"
             padding="md:px-12 p-2.5"
@@ -66,15 +74,15 @@ export function ScrapeErrorPart(props: ScrapeErrorPartProps) {
           >
             {t("player.scraping.notFound.homeButton")}
           </Button>
-          <Button
-            onClick={() => modal.show()}
-            theme="purple"
-            padding="md:px-12 p-2.5"
-            className="mt-6"
-          >
-            {t("player.scraping.notFound.detailsButton")}
-          </Button>
         </div>
+        <Button
+          onClick={() => modal.show()}
+          theme="purple"
+          padding="md:px-12 p-2.5"
+          className="mt-6"
+        >
+          {t("player.scraping.notFound.detailsButton")}
+        </Button>
       </ErrorContainer>
       {error ? (
         <ErrorCardInModal
