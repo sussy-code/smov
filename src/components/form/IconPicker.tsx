@@ -3,6 +3,8 @@ import classNames from "classnames";
 import { UserIcon, UserIcons } from "../UserIcon";
 
 const icons = [
+  UserIcons.CAT,
+  UserIcons.ATOM,
   UserIcons.USER_GROUP,
   UserIcons.COUCH,
   UserIcons.MOBILE,

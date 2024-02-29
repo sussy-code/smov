@@ -50,8 +50,8 @@ const env: Record<keyof Config, undefined | string> = {
   GITHUB_LINK: undefined,
   DONATION_LINK: undefined,
   DISCORD_LINK: undefined,
-  ONBOARDING_CHROME_EXTENSION_INSTALL_LINK: import.meta.env
-    .VITE_ONBOARDING_CHROME_EXTENSION_INSTALL_LINK,
+  ONBOARDING_CHROME_EXTENSION_INSTALL_LINK:
+    "https://chrome.google.com/webstore/detail/movie-web-extension/hoffoikpiofojilgpofjhnkkamfnnhmm?hl=en-GB",
   ONBOARDING_FIREFOX_EXTENSION_INSTALL_LINK: import.meta.env
     .VITE_ONBOARDING_FIREFOX_EXTENSION_INSTALL_LINK,
   ONBOARDING_PROXY_INSTALL_LINK: import.meta.env
