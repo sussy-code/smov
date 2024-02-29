@@ -25,7 +25,7 @@
     "deviceNameLabel": "Device name",
     "deviceNamePlaceholder": "Personal phone",
     "generate": {
-      "description": "Your passphrase acts as your username and password. Make sure to keep it safe as you will need to enter it to login to your account",
+      "description": "Your passphrase acts as your username and password. Make sure to keep it safe as you will need to enter it to login to your account. <bold>Do NOT lose your passphrase!</bold>",
       "next": "I have saved my passphrase",
       "passphraseFrameLabel": "Passphrase",
       "title": "Your passphrase"
@@ -44,7 +44,7 @@
       "information": {
         "color1": "Profile color one",
         "color2": "Profile color two",
-        "header": "Enter a name for your device and pick colours and a user icon of your choosing",
+        "header": "Enter a name for your device then pick colors and a user icon of your choosing!",
         "icon": "User icon",
         "next": "Next",
         "title": "Account information"
@@ -57,7 +57,7 @@
       },
       "noHostTitle": "Server not configured!",
       "noHost": "The server has not been configured, therefore you cannot create an account",
-      "host": "You are connecting to <0>{{hostname}}</0> - please confirm you trust it before making an account",
+      "host": "You are connecting to <0>{{hostname}}</0> - please confirm you trust it before making an account...",
       "no": "Go back",
       "title": "Do you trust this server?",
       "yes": "I trust this server 🤞"

@@ -4,12 +4,13 @@ import { UserIcon, UserIcons } from "../UserIcon";
 
 const icons = [
   UserIcons.CAT,
+  UserIcons.DESKTOP,
+  UserIcons.WEED,
   UserIcons.STORM,
   UserIcons.USER_GROUP,
   UserIcons.COUCH,
   UserIcons.MOBILE,
   UserIcons.TICKET,
-  UserIcons.HANDCUFFS,
 ];
 export const initialIcon = icons[0];
 

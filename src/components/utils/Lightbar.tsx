@@ -144,7 +144,7 @@ function ParticlesCanvas() {
     canvas.height = canvas.scrollHeight;
 
     // Basic particle config
-    const particleCount = 250;
+    const particleCount = 260;
     let imageParticleCount = particleCount;
 
     // Holiday overrides
@@ -190,7 +190,7 @@ function ParticlesCanvas() {
     }
 
     // Fish easter egg
-    const shouldShowFishie = Math.floor(Math.random() * 73) > 69;
+    const shouldShowFishie = Math.floor(Math.random() * 75) > 69;
     if (shouldShowFishie) {
       imageOverride = [
         {
@@ -202,14 +202,14 @@ function ParticlesCanvas() {
           sizeRange: [48, 56] as [number, number],
         },
       ];
-      imageParticleCount = particleCount * 0.09;
+      imageParticleCount = particleCount * 0.085;
     }
 
     // Weed easter egg
     const month3 = date.getMonth() + 1;
     const day3 = date.getDate();
     const shouldShowZa =
-      (month3 === 4 && day3 === 20) || Math.floor(Math.random() * 435) > 420;
+      (month3 === 4 && day3 === 20) || Math.floor(Math.random() * 433) > 420;
     if (shouldShowZa) {
       imageOverride = [
         {
@@ -217,19 +217,19 @@ function ParticlesCanvas() {
           sizeRange: [29, 33] as [number, number],
         },
       ];
-      imageParticleCount = particleCount / 6.345;
+      imageParticleCount = particleCount / 6.34;
     }
 
     // Kitty easter egg
-    const shouldShowCat = Math.floor(Math.random() * 50) > 45;
+    const shouldShowCat = Math.floor(Math.random() * 100) < 18;
     if (shouldShowCat) {
       imageOverride = [
         {
           image: "/lightbar-images/cat.png",
-          sizeRange: [28, 34] as [number, number],
+          sizeRange: [30, 36] as [number, number],
         },
       ];
-      imageParticleCount = particleCount / 6.5;
+      imageParticleCount = particleCount / 6.7;
     }
 
     // HOIST THE SAIL (of particles)!
