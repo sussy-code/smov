@@ -144,7 +144,7 @@ function ParticlesCanvas() {
     canvas.height = canvas.scrollHeight;
 
     // Basic particle config
-    const particleCount = Math.floor(Math.random() * (30 - 25 + 1)) + 25;
+    const particleCount = 250;
     let imageParticleCount = particleCount;
 
     // Holiday overrides
@@ -163,6 +163,7 @@ function ParticlesCanvas() {
           sizeRange: [15, 30] as [number, number],
         },
       ];
+      imageParticleCount = particleCount * 0.123;
     }
 
     // Fish easter egg
@@ -178,7 +179,7 @@ function ParticlesCanvas() {
           sizeRange: [48, 56] as [number, number],
         },
       ];
-      imageParticleCount = particleCount * 0.9; // Adjusting the count to display significantly more fish than sharks
+      imageParticleCount = particleCount * 0.121;
     }
 
     // Weed easter egg
@@ -193,7 +194,7 @@ function ParticlesCanvas() {
           sizeRange: [28, 31] as [number, number],
         },
       ];
-      imageParticleCount = particleCount / 2;
+      imageParticleCount = particleCount / 5.8;
     }
 
     // Kitty easter egg
@@ -205,7 +206,7 @@ function ParticlesCanvas() {
           sizeRange: [28, 34] as [number, number],
         },
       ];
-      imageParticleCount = particleCount / 2;
+      imageParticleCount = particleCount / 4.5;
     }
 
     // HOIST THE SAIL (of particles)!
