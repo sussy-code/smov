@@ -4,7 +4,7 @@ import { UserIcon, UserIcons } from "../UserIcon";
 
 const icons = [
   UserIcons.CAT,
-  UserIcons.ATOM,
+  UserIcons.STORM,
   UserIcons.USER_GROUP,
   UserIcons.COUCH,
   UserIcons.MOBILE,
