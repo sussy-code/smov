@@ -241,7 +241,8 @@
     },
     "menus": {
       "downloads": {
-        "disclaimer": "Las descargas se realizan directamente desde el proveedor. sudo-flix no tiene control sobre cómo se proporcionan las descargas.",
+        "copyHlsPlaylist": "Copiar enlace de reproducción HLS",
+        "disclaimer": "Las descargas se realizan directamente desde el proveedor. movie-web no tiene control sobre cómo se proporcionan las descargas.",
         "downloadSubtitle": "Descargar subtítulo actual",
         "downloadVideo": "Descargar vídeo",
         "hlsDisclaimer": "Las descargas se realizan directamente del proveedor. sudo-flix no tiene control sobre cómo se proporcionan las descargas. <br /><br />Tenga en cuenta que está descargando una lista de reproducción HLS, <bold>dirigida a usuarios familiarizados con la transmisión multimedia avanzada.</bold> Prueba con diferentes fuentes para diferentes formatos.",
