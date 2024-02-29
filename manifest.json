@@ -5,6 +5,7 @@
   "display": "fullscreen",
   "background_color": "#fff",
   "theme_color": "#000",
+  "prefer_related_applications": null,
   "icons": [
     {
       "src": "/public/android-chrome-192x192.png",
@@ -46,12 +47,13 @@
       "src": "/public/splash_screens/icon.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "maskable"
+      "purpose": "any"
     },
     {
       "src": "/public/splash_screens/icon144x144.png",
       "sizes": "144x144",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "/public/splash_screens/4__iPhone_SE__iPod_touch_5th_generation_and_later_landscape.png",
