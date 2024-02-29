@@ -123,8 +123,23 @@
       "sectionTitle": "Kết quả tìm kiếm"
     },
     "titles": {
+      "day": {
+        "default": "Chiều nay bạn muốn coi gì?",
+        "extra": [
+          "Cảm thấy muốn phiêu lưu? Phim Công viên kỷ Jura có thể là sự lựa chọn hoàn hảo cho bạn."
+        ]
+      },
+      "morning": {
+        "default": "Sáng nay bạn muốn coi gì?",
+        "extra": [
+          "Tôi nghe nói rằng bộ phim Before Sunrise hay đấy"
+        ]
+      },
       "night": {
-        "default": "Đêm nay bạn muốn coi gì?"
+        "default": "Đêm nay bạn muốn coi gì?",
+        "extra": [
+          "Cảm thấy mệt? Tôi nghe nói phim The Exorcist hay đấy."
+        ]
       }
     }
   },
@@ -143,6 +158,7 @@
       "about": "Về chúng tôi",
       "donation": "Ủng hộ",
       "logout": "Đăng xuất",
+      "register": "Đồng bộ hóa với đám mây",
       "settings": "Cài đặt",
       "support": "Hỗ trợ"
     }
@@ -161,7 +177,8 @@
       "title": "Bạn có chắc không?"
     },
     "extension": {
-      "back": "Trở lại"
+      "back": "Trở lại",
+      "explainer": "Bạn có thể sử dụng các nguồn tốt nhất mà chúng tôi cung cấp bằng cách sử dụng tiện ích mở rộng trình duyệt. Đơn giản chỉ cần cài đặt."
     }
   },
   "player": {
