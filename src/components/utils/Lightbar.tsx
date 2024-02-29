@@ -152,18 +152,41 @@ function ParticlesCanvas() {
     const date = new Date();
     const month = date.getMonth();
     const day = date.getDate();
-    if (month === 11 && day >= 24 && day <= 26) {
+    if (
+      (month === 11 && day >= 24 && day <= 26) ||
+      Math.floor(Math.random() * 380) > 40
+    ) {
       imageOverride = [
         {
           image: "/lightbar-images/snowflake.svg",
-          sizeRange: [4, 15] as [number, number],
+          sizeRange: [12, 20] as [number, number],
         },
         {
           image: "/lightbar-images/santa.png",
-          sizeRange: [15, 30] as [number, number],
+          sizeRange: [25, 35] as [number, number],
         },
       ];
       imageParticleCount = particleCount * 0.1;
+    }
+
+    // Halloween overrides
+    const month2 = date.getMonth();
+    const day2 = date.getDate();
+    if (
+      (month2 === 9 && day2 >= 29 && day2 <= 31) ||
+      Math.floor(Math.random() * 50) > 48
+    ) {
+      imageOverride = [
+        {
+          image: "/lightbar-images/ghost.png",
+          sizeRange: [28, 31] as [number, number],
+        },
+        {
+          image: "/lightbar-images/pumpkin.png",
+          sizeRange: [28, 31] as [number, number],
+        },
+      ];
+      imageParticleCount = particleCount * 0.09;
     }
 
     // Fish easter egg
@@ -183,10 +206,10 @@ function ParticlesCanvas() {
     }
 
     // Weed easter egg
-    const month2 = date.getMonth() + 1;
-    const day2 = date.getDate();
+    const month3 = date.getMonth() + 1;
+    const day3 = date.getDate();
     const shouldShowZa =
-      (month2 === 4 && day2 === 20) || Math.floor(Math.random() * 435) > 420;
+      (month3 === 4 && day3 === 20) || Math.floor(Math.random() * 435) > 420;
     if (shouldShowZa) {
       imageOverride = [
         {
