@@ -14,6 +14,7 @@ export type SourceFileStream = {
 export type LoadableSource = {
   type: StreamType;
   url: string;
+  headers?: Stream["headers"];
   preferredHeaders?: Stream["preferredHeaders"];
 };
 
@@ -21,11 +22,13 @@ export type SourceSliceSource =
   | {
       type: "file";
       qualities: Partial<Record<SourceQuality, SourceFileStream>>;
+      headers?: Stream["headers"];
       preferredHeaders?: Stream["preferredHeaders"];
     }
   | {
       type: "hls";
       url: string;
+      headers?: Stream["headers"];
       preferredHeaders?: Stream["preferredHeaders"];
     };
 

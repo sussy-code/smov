@@ -95,6 +95,7 @@
       "about": "O projektu",
       "dmca": "DMCA",
       "login": "Prijava",
+      "onboarding": "Nastavitev",
       "pagetitle": "{{title}} - movie-web",
       "register": "Registriraj se",
       "settings": "Nastavitve"
@@ -117,7 +118,12 @@
       "noResults": "Vsebin nismo našli!",
       "placeholder": {
         "default": "Kaj si želite gledati?",
-        "extra": []
+        "extra": [
+          "Kaj želiš raziskati danes?",
+          "Kateri fdilm/serijo si boš ogledal/a naslednje?",
+          "Kateri film ti je najljubši?",
+          "Katera je tvoja najljubša serija?"
+        ]
       },
       "sectionTitle": "Rezultati iskanja"
     },
@@ -130,7 +136,9 @@
       },
       "morning": {
         "default": "Kateri film ali serijo bi si želeli ogledati ob tem jutru?",
-        "extra": ["Slišala sem, da je film \"Pred sončnim vzhodom\" odličen"]
+        "extra": [
+          "Slišala sem, da je film \"Pred sončnim vzhodom\" odličen"
+        ]
       },
       "night": {
         "default": "Kateri film ali serijo bi si želeli ogledati nocoj?",
@@ -166,6 +174,69 @@
     "message": "Iskali smo povsod: pod preprogo, v omari, za \"proxyjem\", vendar na koncu nismo našli strani, ki jo iščete.",
     "title": "Ni bilo mogoče najti te strani"
   },
+  "onboarding": {
+    "defaultConfirm": {
+      "cancel": "Prekliči",
+      "confirm": "Upoeabi privzete nastavitve",
+      "description": "Privzeta nastavitev nima najboljših pretokov in je lahko neznosno počasna.",
+      "title": "Si prepričan?"
+    },
+    "extension": {
+      "back": "Nazaj",
+      "explainer": "Z razširitvijo brskalnika lahko dobite najboljše tokove, ki jih ponujamo. Namestitev je zelo preprosta!",
+      "explainerIos": "Na žalost razširitev brskalnika ni podprta v sistemu iOS, Pritisnite <bold>Najdi nazaj</bold> in izberite drugo možnost.",
+      "extensionHelp": "Če ste namestili razširitev, vendar ni zaznana, <bold>odprite razširitev v meniju razširitev brskalnika</bold> in sledite navodilom na zaslonu.",
+      "linkChrome": "Naloži Chrome razširitev",
+      "linkFirefox": "Naloži Firefox razširitev",
+      "notDetecting": "Nameščen v brskalniku Chrome, vendar ga spletno mesto ne zazna? Poskusite znova naložiti stran!",
+      "notDetectingAction": "Osveži stran",
+      "status": {
+        "disallowed": "Razširitev ni omogočena na tej strani",
+        "disallowedAction": "Omogoči razširitev",
+        "failed": "Ni uspelo zahtevati statusa",
+        "loading": "Čakamo, da namestite razširitev",
+        "outdated": "Verzija razširitve je prestara",
+        "success": "Razširitev deluje pravilno!"
+      },
+      "submit": "Nadaljuj",
+      "title": "Začnimo z razširitvijo"
+    },
+    "proxy": {
+      "back": "Nazaj",
+      "explainer": "Z metodo proxy lahko s samopostrežnim proxyjem pridobite zelo kakovostne prenose.",
+      "input": {
+        "errorConnection": "Povezava s proxyjem ni uspela",
+        "errorInvalidUrl": "Ni validen URL",
+        "errorNotProxy": "Pričakoval proxy, a dobil spletno stran",
+        "label": "URL proxyja",
+        "placeholder": "https://"
+      },
+      "link": "Kako postavim proxy",
+      "submit": "Oddaj proxy",
+      "title": "Naredimo nov proxy"
+    },
+    "start": {
+      "explainer": "Da bi dobili najboljše možne prenose, morate izbrati metodo pretakanja, ki jo želite uporabiti.",
+      "options": {
+        "default": {
+          "text": "Ne želim dobre kakovosti tokov,<0 /> <1>uporabite privzeto nastavitev</1>"
+        },
+        "extension": {
+          "action": "Naloži razširitev",
+          "description": "Namestite razširitev brskalnika in pridobite dostop do najboljših virov.",
+          "quality": "Najboljša kvaliteta",
+          "title": "Razširitev brskalnika"
+        },
+        "proxy": {
+          "action": "Nastavi proxy",
+          "description": "V samo 5 minutah nastavite proxy in pridobite dostop do odličnih virov.",
+          "quality": "Dobra kvaliteta",
+          "title": "Proxy po meri"
+        }
+      },
+      "title": "Pripravimo vas na namestitev s filmskim spletom"
+    }
+  },
   "overlays": {
     "close": "Zapri"
   },
@@ -179,10 +250,11 @@
     },
     "menus": {
       "downloads": {
+        "copyHlsPlaylist": "Kopiranje povezave do seznama predvajanja HLS",
         "disclaimer": "Prenosi se opravijo neposredno pri ponudniku vsebin. movie-web nima nadzora nad načinom zagotavljanja prenosov.",
         "downloadSubtitle": "Prenesi trenutne podnapise",
         "downloadVideo": "Prenesi video",
-        "hlsDisclaimer": "Prenosi se opravijo neposredno pri ponudniku vsebin. movie-web nima nadzora nad načinom zagotavljanja prenosov. Upoštevajte, da prenašate seznam predvajanja tipa \"HLS\"; ta je namenjen uporabnikom, ki poznajo napredno pretakanje večpredstavnostnih vsebin.",
+        "hlsDisclaimer": "Prenosi se opravijo neposredno pri ponudniku vsebin. movie-web nima nadzora nad načinom zagotavljanja prenosov. Upoštevajte, da prenašate seznam predvajanja tipa \"HLS\" namenjen uporabnikom, ki poznajo napredno pretakanje večpredstavnostnih vsebin.",
         "onAndroid": {
           "1": "Če želite prenesti v sistemu Android, kliknite gumb za prenos, nato na novi strani <bold>tipnite in držite</bold> videoposnetek ter izberite <bold>shrani</bold>.",
           "shortTitle": "Prenesi / Android",
@@ -206,7 +278,8 @@
         "episodeBadge": "E{{episode}}",
         "loadingError": "Napaka pri nalaganju sezone",
         "loadingList": "Nalaganje...",
-        "loadingTitle": "Nalaganje..."
+        "loadingTitle": "Nalaganje...",
+        "unairedEpisodes": "Ena ali več epizod v tej sezoni so onemogočene, ker še niso bile predvajane."
       },
       "playback": {
         "speedLabel": "Hitrost predvajanja",
@@ -258,6 +331,21 @@
       }
     },
     "metadata": {
+      "api": {
+        "text": "Metapodatkov API ni bilo mogoče naložiti, preverite internetno povezavo.",
+        "title": "Ni uspelo naložiti metapodatkov API"
+      },
+      "dmca": {
+        "badge": "Odstranjeno",
+        "text": "Ta medij ni več na voljo zaradi obvestila o odstranitvi ali zahtevka za avtorske pravice.",
+        "title": "Medij je bil odstranjen"
+      },
+      "extensionPermission": {
+        "badge": "Neveljavne pravice dostopa",
+        "button": "Uporabi razširitev",
+        "text": "Imate razširitev brskalnika, vendar potrebujemo vaše dovoljenje, da lahko začnemo uporabljati razširitev.",
+        "title": "Nastavi razširitev brskalnika"
+      },
       "failed": {
         "badge": "Neuspešno",
         "homeButton": "Domov",
@@ -307,6 +395,12 @@
       "remaining": "{{timeLeft}} do konca • Konča ob {{timeFinished, datetime}}",
       "shortRegular": "{{timeWatched}}",
       "shortRemaining": "-{{timeLeft}}"
+    },
+    "turnstile": {
+      "description": "Preverite, ali ste človek, tako da izpolnite Captcha na desni strani. S tem zagotavljamo varnost filmskega spleta!",
+      "error": "Ni uspelo preveriti vaše človeškosti. Poskusite znova.",
+      "title": "Preveriti moramo, ali ste človek.",
+      "verifyingHumanity": "Preverjanje vaše človeškosti..."
     }
   },
   "screens": {
@@ -379,19 +473,49 @@
     },
     "connections": {
       "server": {
-        "description": "Če se želite povezati z zaledjem po meri za hrambo podatkov, to omogočite in navedite URL naslov.",
+        "description": "Če se želite povezati z zaledjem po meri za hrambo podatkov, to omogočite in navedite URL naslov. <0>Navodila.</0>",
         "label": "Strežnik po meri",
         "urlLabel": "Naslov strežnika po meri (URL)"
+      },
+      "setup": {
+        "doSetup": "Naredi nastavitev",
+        "errorStatus": {
+          "description": "Zdi se, da je treba posvetiti pozornost enemu ali več elementom v tej nastavitvi.",
+          "title": "Nekaj potrebuje vašo pozornost"
+        },
+        "itemError": "S to nastavitvijo je nekaj narobe. Ponovno opravite nastavitev in jo popravite.",
+        "items": {
+          "default": "Privzet način",
+          "extension": "Razširitev",
+          "proxy": "Proxy po meri"
+        },
+        "redoSetup": "Ponovnio izvedi nastavljanje",
+        "successStatus": {
+          "description": "Vse stvari so pripravljene, da lahko začnete gledati svoje najljubše medije.",
+          "title": "Vse je nastavljeno!"
+        },
+        "unsetStatus": {
+          "description": "Kliknite gumb na desni strani, da začnete postopek namestitve.",
+          "title": "Niste opravili nastavitev"
+        }
       },
       "title": "Povezave",
       "workers": {
         "addButton": "Dodaj novega \"workerja\"",
-        "description": "Za delovanje aplikacije je ves promet usmerjen prek posredniških strežnikov. To nastavitev omogočite, če želite pripeljati lastne delavce.",
+        "description": "Za delovanje aplikacije je ves promet usmerjen prek posredniških strežnikov. To nastavitev omogočite, če želite pripeljati lastne delavce. <0>Navodila</0>",
         "emptyState": "Niste dodali \"workerja\", dodajte ga spodaj",
         "label": "Uporaba posrednikov po meri",
         "urlLabel": "Naslov Workerja (URL)",
         "urlPlaceholder": "https://"
       }
+    },
+    "preferences": {
+      "language": "Jezik",
+      "languageDescription": "Jezik, ki se uporablja za celotno aplikacijo.",
+      "thumbnail": "Naloži predoglede",
+      "thumbnailDescription": "Videoposnetki večinoma nimajo predogledov. To nastavitev lahko omogočite in jih ustvarite sproti, vendar lahko zaradi tega videoposnetek postane počasnejši.",
+      "thumbnailLabel": "Naloži predoglede",
+      "title": "Nastavitve"
     },
     "reset": "Ponastavi",
     "save": "Shrani",

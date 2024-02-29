@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { useCallback, useEffect, useMemo, useRef } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { useAsyncFn } from "react-use";
 
@@ -208,7 +208,13 @@ export function SettingsPage() {
     // when backend url gets changed, log the user out first
     if (state.backendUrl.changed) {
       await logout();
-      setBackendUrl(state.backendUrl.state);
+
+      let url = state.backendUrl.state;
+      if (url && !url.startsWith("http://") && !url.startsWith("https://")) {
+        url = `https://${url}`;
+      }
+
+      setBackendUrl(url);
     }
   }, [
     state,

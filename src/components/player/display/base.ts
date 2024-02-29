@@ -2,6 +2,11 @@ import fscreen from "fscreen";
 import Hls, { Level } from "hls.js";
 
 import {
+  RULE_IDS,
+  isExtensionActiveCached,
+  setDomainRule,
+} from "@/backend/extension/messaging";
+import {
   DisplayInterface,
   DisplayInterfaceEvents,
 } from "@/components/player/display/displayInterface";
@@ -31,8 +36,8 @@ const levelConversionMap: Record<number, SourceQuality> = {
   480: "480",
 };
 
-function hlsLevelToQuality(level: Level): SourceQuality | null {
-  return levelConversionMap[level.height] ?? null;
+function hlsLevelToQuality(level?: Level): SourceQuality | null {
+  return levelConversionMap[level?.height ?? 0] ?? null;
 }
 
 function qualityToHlsLevel(quality: SourceQuality): number | null {
@@ -144,6 +149,24 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
           if (!hls) return;
           reportLevels();
           setupQualityForHls();
+
+          if (isExtensionActiveCached()) {
+            hls.on(Hls.Events.LEVEL_LOADED, async (_, data) => {
+              const chunkUrlsDomains = data.details.fragments.map(
+                (v) => new URL(v.url).hostname,
+              );
+              const chunkUrls = [...new Set(chunkUrlsDomains)];
+
+              await setDomainRule({
+                ruleId: RULE_IDS.SET_DOMAINS_HLS,
+                targetDomains: chunkUrls,
+                requestHeaders: {
+                  ...src.preferredHeaders,
+                  ...src.headers,
+                },
+              });
+            });
+          }
         });
         hls.on(Hls.Events.LEVEL_SWITCHED, () => {
           if (!hls) return;

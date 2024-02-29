@@ -71,11 +71,11 @@
     }
   },
   "errors": {
-    "badge": "它已损坏",
+    "badge": "坏了",
     "details": "错误细节",
     "reloadPage": "刷新页面",
     "showError": "显示错误细节",
-    "title": "我们遭遇到错误！"
+    "title": "我们遇到了错误！"
   },
   "footer": {
     "legal": {
@@ -118,22 +118,33 @@
       "noResults": "我们找不到任何结果！",
       "placeholder": {
         "default": "您想看些什么？",
-        "extra": []
+        "extra": [
+          "您想探索些什么？",
+          "您的片单上都有啥？",
+          "您最喜欢的影片是什么？",
+          "您最喜欢的剧目是什么？"
+        ]
       },
       "sectionTitle": "搜索结果"
     },
     "titles": {
       "day": {
         "default": "您今天下午想看什么？",
-        "extra": ["想要来场冒险？《侏罗纪公园》可能是最佳选项。"]
+        "extra": [
+          "想要来场冒险？《侏罗纪公园》可能是最佳选项。"
+        ]
       },
       "morning": {
         "default": "您今早想看什么？",
-        "extra": ["我听说《爱在黎明破晓前》不错"]
+        "extra": [
+          "我听说《爱在黎明破晓前》不错"
+        ]
       },
       "night": {
         "default": "您今晚想看什么？",
-        "extra": ["累了？我听说《驱魔人》不错。"]
+        "extra": [
+          "累了？我听说《驱魔人》不错。"
+        ]
       }
     }
   },
@@ -239,6 +250,7 @@
     },
     "menus": {
       "downloads": {
+        "copyHlsPlaylist": "复制 HLS 播放列表链接",
         "disclaimer": "下载内容是直接从内容提供者获取的。movie-web 无法控制下载内容如何被提供。",
         "downloadSubtitle": "下载当前字幕",
         "downloadVideo": "下载视频",
