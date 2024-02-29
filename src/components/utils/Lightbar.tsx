@@ -194,7 +194,7 @@ function ParticlesCanvas() {
           sizeRange: [28, 31] as [number, number],
         },
       ];
-      imageParticleCount = particleCount / 6;
+      imageParticleCount = particleCount / 6.35;
     }
 
     // Kitty easter egg
