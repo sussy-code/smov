@@ -163,7 +163,7 @@ function ParticlesCanvas() {
           sizeRange: [15, 30] as [number, number],
         },
       ];
-      imageParticleCount = particleCount * 0.123;
+      imageParticleCount = particleCount * 0.1;
     }
 
     // Fish easter egg
@@ -179,7 +179,7 @@ function ParticlesCanvas() {
           sizeRange: [48, 56] as [number, number],
         },
       ];
-      imageParticleCount = particleCount * 0.121;
+      imageParticleCount = particleCount * 0.09;
     }
 
     // Weed easter egg
@@ -198,7 +198,7 @@ function ParticlesCanvas() {
     }
 
     // Kitty easter egg
-    const shouldShowCat = Math.floor(Math.random() * 51) > 45;
+    const shouldShowCat = Math.floor(Math.random() * 50) > 45;
     if (shouldShowCat) {
       imageOverride = [
         {
@@ -206,7 +206,7 @@ function ParticlesCanvas() {
           sizeRange: [28, 34] as [number, number],
         },
       ];
-      imageParticleCount = particleCount / 5.8;
+      imageParticleCount = particleCount / 6.5;
     }
 
     // HOIST THE SAIL (of particles)!
