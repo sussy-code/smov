@@ -48,6 +48,11 @@
       "purpose": "maskable"
     },
     {
+      "src": "/public/splash_screens/icon144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
       "src": "/public/splash_screens/4__iPhone_SE__iPod_touch_5th_generation_and_later_landscape.png",
       "sizes": "1136x640",
       "type": "image/png"
