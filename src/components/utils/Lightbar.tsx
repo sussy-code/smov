@@ -206,7 +206,7 @@ function ParticlesCanvas() {
           sizeRange: [28, 34] as [number, number],
         },
       ];
-      imageParticleCount = particleCount / 4.5;
+      imageParticleCount = particleCount / 5;
     }
 
     // HOIST THE SAIL (of particles)!
