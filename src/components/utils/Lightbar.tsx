@@ -198,7 +198,7 @@ function ParticlesCanvas() {
     }
 
     // Kitty easter egg
-    const shouldShowCat = Math.floor(Math.random() * 52) > 45;
+    const shouldShowCat = Math.floor(Math.random() * 51) > 45;
     if (shouldShowCat) {
       imageOverride = [
         {
