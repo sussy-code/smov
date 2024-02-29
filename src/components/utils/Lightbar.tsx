@@ -214,10 +214,10 @@ function ParticlesCanvas() {
       imageOverride = [
         {
           image: "/lightbar-images/weed.png",
-          sizeRange: [28, 31] as [number, number],
+          sizeRange: [29, 33] as [number, number],
         },
       ];
-      imageParticleCount = particleCount / 6.35;
+      imageParticleCount = particleCount / 6.345;
     }
 
     // Kitty easter egg

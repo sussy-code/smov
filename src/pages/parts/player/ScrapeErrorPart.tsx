@@ -53,12 +53,7 @@ export function ScrapeErrorPart(props: ScrapeErrorPartProps) {
           <Trans
             i18nKey="player.scraping.notFound.text"
             components={{
-              bold: (
-                <span
-                  className="text-white·font-bold"
-                  style={{ color: "#DADADA" }}
-                />
-              ),
+              bold: <span className="font-bold" style={{ color: "#cfcfcf" }} />,
             }}
           />
         </Paragraph>
