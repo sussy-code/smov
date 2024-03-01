@@ -208,8 +208,7 @@ function ParticlesCanvas() {
     // Weed easter egg
     const month3 = date.getMonth() + 1;
     const day3 = date.getDate();
-    const shouldShowZa =
-      (month3 === 4 && day3 === 20) || Math.random() < 0.38; // 38%
+    const shouldShowZa = (month3 === 4 && day3 === 20) || Math.random() < 0.35; // 35%
     if (shouldShowZa) {
       imageOverride = [
         {
@@ -221,7 +220,7 @@ function ParticlesCanvas() {
     }
 
     // Kitty easter egg
-    const shouldShowCat = Math.random() < 0.33; // 33%
+    const shouldShowCat = Math.random() < 0.3; // 30%
     if (shouldShowCat) {
       imageOverride = [
         {
@@ -233,7 +232,7 @@ function ParticlesCanvas() {
     }
 
     // Movie & popcorn easter egg
-    const shouldShowParaphernalia = Math.random() < 0.23; // 23%
+    const shouldShowParaphernalia = Math.random() < 0.2; // 20%
     if (shouldShowParaphernalia) {
       imageOverride = [
         {
@@ -249,7 +248,7 @@ function ParticlesCanvas() {
     }
 
     // Chicken easter egg
-    const shouldShow4thDecor = Math.random() < 0.12; // 12%
+    const shouldShow4thDecor = Math.random() < 0.1; // 10%
     if (shouldShow4thDecor) {
       imageOverride = [
         {
