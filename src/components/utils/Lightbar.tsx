@@ -144,7 +144,7 @@ function ParticlesCanvas() {
     canvas.height = canvas.scrollHeight;
 
     // Basic particle config
-    const particleCount = 260;
+    const particleCount = 265;
     let imageParticleCount = particleCount;
 
     // Holiday overrides
@@ -179,14 +179,14 @@ function ParticlesCanvas() {
       imageOverride = [
         {
           image: "/lightbar-images/ghost.png",
-          sizeRange: [28, 31] as [number, number],
+          sizeRange: [20, 33] as [number, number],
         },
         {
           image: "/lightbar-images/pumpkin.png",
-          sizeRange: [28, 31] as [number, number],
+          sizeRange: [25, 35] as [number, number],
         },
       ];
-      imageParticleCount = particleCount * 0.09;
+      imageParticleCount = particleCount * 0.0879;
     }
 
     // Fish easter egg
@@ -214,22 +214,58 @@ function ParticlesCanvas() {
       imageOverride = [
         {
           image: "/lightbar-images/weed.png",
-          sizeRange: [29, 33] as [number, number],
+          sizeRange: [32, 40] as [number, number],
         },
       ];
-      imageParticleCount = particleCount / 6.34;
+      imageParticleCount = particleCount / 6.25;
     }
 
     // Kitty easter egg
-    const shouldShowCat = Math.floor(Math.random() * 75) < 18;
+    const shouldShowCat = Math.floor(Math.random() * 45) > 224;
     if (shouldShowCat) {
       imageOverride = [
         {
           image: "/lightbar-images/cat.png",
-          sizeRange: [30, 36] as [number, number],
+          sizeRange: [30, 38] as [number, number],
         },
       ];
-      imageParticleCount = particleCount / 6.7;
+      imageParticleCount = particleCount / 6.6;
+    }
+
+    // Movie & popcorn easter egg
+    const shouldShowParaphernalia = Math.floor(Math.random() * 75) > 130;
+    if (shouldShowParaphernalia) {
+      imageOverride = [
+        {
+          image: "/lightbar-images/camera.png",
+          sizeRange: [24, 32] as [number, number],
+        },
+        {
+          image: "/lightbar-images/popcorn.png",
+          sizeRange: [18, 27] as [number, number],
+        },
+      ];
+      imageParticleCount = particleCount / 7.5;
+    }
+
+    // Chicken easter egg
+    const shouldShow4thDecor = Math.floor(Math.random() * 750) > 130;
+    if (shouldShow4thDecor) {
+      imageOverride = [
+        {
+          image: "/lightbar-images/cock.png",
+          sizeRange: [25, 32] as [number, number],
+        },
+        {
+          image: "/lightbar-images/egg.png",
+          sizeRange: [18, 24] as [number, number],
+        },
+        {
+          image: "/lightbar-images/barn.png",
+          sizeRange: [32, 38] as [number, number],
+        },
+      ];
+      imageParticleCount = particleCount / 9;
     }
 
     // HOIST THE SAIL (of particles)!
