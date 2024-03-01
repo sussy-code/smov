@@ -1,4 +1,5 @@
-import { useTranslation } from "react-i18next";
+import React, { useState } from "react";
+import { Trans, useTranslation } from "react-i18next";
 
 import { Icon, Icons } from "@/components/Icon";
 import { ThinContainer } from "@/components/layout/ThinContainer";
@@ -14,16 +15,34 @@ export function shouldHaveDmcaPage() {
 
 export function DmcaPage() {
   const { t } = useTranslation();
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <SubPageLayout>
       <PageTitle subpage k="global.pages.dmca" />
       <ThinContainer>
         <Heading1>{t("screens.dmca.title")}</Heading1>
-        <Paragraph>{t("screens.dmca.text")}</Paragraph>
+        <Paragraph>
+          <Trans
+            i18nKey="screens.dmca.text"
+            components={{
+              bold: <span className="font-bold" style={{ color: "#cfcfcf" }} />,
+            }}
+          />
+        </Paragraph>
         <Paragraph className="flex space-x-3 items-center">
           <Icon icon={Icons.MAIL} />
-          <span>{conf().DMCA_EMAIL ?? ""}</span>
+          <a
+            href={`mailto:${conf().DMCA_EMAIL}`}
+            style={{
+              transition: "color 0.3s ease",
+              color: isHovered ? "#cfcfcf" : "inherit",
+            }}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            {conf().DMCA_EMAIL ?? ""}
+          </a>
         </Paragraph>
       </ThinContainer>
     </SubPageLayout>

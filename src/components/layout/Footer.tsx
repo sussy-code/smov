@@ -47,6 +47,7 @@ function Dmca() {
   const { t } = useTranslation();
 
   if (!shouldHaveDmcaPage()) return null;
+  if (window.location.hash === "#/dmca") return null;
 
   return (
     <FooterLink to="/dmca" icon={Icons.DRAGON}>
