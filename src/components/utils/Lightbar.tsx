@@ -154,7 +154,7 @@ function ParticlesCanvas() {
     const day = date.getDate();
     if (
       (month === 11 && day >= 24 && day <= 26) ||
-      Math.floor(Math.random() * 38) > 40
+      Math.random() < 0.091 // 9.1%
     ) {
       imageOverride = [
         {
@@ -174,7 +174,7 @@ function ParticlesCanvas() {
     const day2 = date.getDate();
     if (
       (month2 === 9 && day2 >= 29 && day2 <= 31) ||
-      Math.floor(Math.random() * 50) > 48
+      Math.random() < 0.09 // 9%
     ) {
       imageOverride = [
         {
@@ -190,7 +190,7 @@ function ParticlesCanvas() {
     }
 
     // Fish easter egg
-    const shouldShowFishie = Math.floor(Math.random() * 75) > 69;
+    const shouldShowFishie = Math.random() < 0.4; // 40%
     if (shouldShowFishie) {
       imageOverride = [
         {
@@ -209,7 +209,7 @@ function ParticlesCanvas() {
     const month3 = date.getMonth() + 1;
     const day3 = date.getDate();
     const shouldShowZa =
-      (month3 === 4 && day3 === 20) || Math.floor(Math.random() * 433) > 420;
+      (month3 === 4 && day3 === 20) || Math.random() < 0.38; // 38%
     if (shouldShowZa) {
       imageOverride = [
         {
@@ -221,7 +221,7 @@ function ParticlesCanvas() {
     }
 
     // Kitty easter egg
-    const shouldShowCat = Math.floor(Math.random() * 45) > 224;
+    const shouldShowCat = Math.random() < 0.33; // 33%
     if (shouldShowCat) {
       imageOverride = [
         {
@@ -233,7 +233,7 @@ function ParticlesCanvas() {
     }
 
     // Movie & popcorn easter egg
-    const shouldShowParaphernalia = Math.floor(Math.random() * 75) > 130;
+    const shouldShowParaphernalia = Math.random() < 0.23; // 23%
     if (shouldShowParaphernalia) {
       imageOverride = [
         {
@@ -249,7 +249,7 @@ function ParticlesCanvas() {
     }
 
     // Chicken easter egg
-    const shouldShow4thDecor = Math.floor(Math.random() * 750) > 130;
+    const shouldShow4thDecor = Math.random() < 0.12; // 12%
     if (shouldShow4thDecor) {
       imageOverride = [
         {
