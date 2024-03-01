@@ -412,7 +412,7 @@
   },
   "screens": {
     "dmca": {
-      "text": "Welcome to sudo-flix's DMCA contact page. If you believe your copyrighted work has been improperly used on our platform (😢), please send a detailed DMCA notice to: <bold>dreadpiratecozi@onionmail.org</bold> below. Please include a description of the copyrighted material, your contact details, and a statement of good faith belief. We're committed to resolving these matters promptly and appreciate your cooperation.",
+      "text": "Welcome to sudo-flix's DMCA contact page. If you believe your copyrighted work has been improperly used on our platform (😢), please send a detailed DMCA notice to: <bold>sudo-flix@proton.me</bold> below. Please include a description of the copyrighted material, your contact details, and a statement of good faith belief. We're committed to resolving these matters promptly and appreciate your cooperation.",
       "title": "DMCA :("
     },
     "loadingApp": "Loading application",

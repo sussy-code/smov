@@ -31,4 +31,4 @@ pnpm run dev
 
 ## Contact Me
 **Discord:** *.baddeveloper*  
-**Email:** *dreadpiratecozi@onionmail.org*
+**Email:** *sudo-flix@proton.me*
