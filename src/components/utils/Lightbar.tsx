@@ -32,7 +32,7 @@ class Particle {
     canvas: HTMLCanvasElement,
     options: LightbarOptions = {
       horizontalMotion: false,
-      sizeRange: [10, 10],
+      sizeRange: [10, 15],
     },
   ) {
     if (options.imgSrc) {
@@ -54,7 +54,7 @@ class Particle {
     this.direction = (Math.random() * Math.PI) / 2 + Math.PI / 4;
     this.speed = 0.02 + Math.random() * 0.085;
 
-    const second = 60;
+    const second = 75;
     this.lifetime = second * 3 + Math.random() * (second * 30);
 
     this.size = this.options.sizeRange
@@ -220,7 +220,7 @@ function ParticlesCanvas() {
     }
 
     // Kitty easter egg
-    const shouldShowCat = Math.random() < 0.3; // 30%
+    const shouldShowCat = Math.random() < 0.25; // 25%
     if (shouldShowCat) {
       imageOverride = [
         {
@@ -244,7 +244,7 @@ function ParticlesCanvas() {
           sizeRange: [18, 27] as [number, number],
         },
       ];
-      imageParticleCount = particleCount / 7.5;
+      imageParticleCount = particleCount / 7.85;
     }
 
     // Chicken easter egg
@@ -262,6 +262,22 @@ function ParticlesCanvas() {
         {
           image: "/lightbar-images/barn.png",
           sizeRange: [32, 38] as [number, number],
+        },
+      ];
+      imageParticleCount = particleCount / 9;
+    }
+
+    // Dev easter egg
+    const shouldShowCode = Math.random() < 0.9; // 25%
+    if (shouldShowCode) {
+      imageOverride = [
+        {
+          image: "/lightbar-images/ts.png",
+          sizeRange: [20, 32] as [number, number],
+        },
+        {
+          image: "/lightbar-images/git.png",
+          sizeRange: [20, 28] as [number, number],
         },
       ];
       imageParticleCount = particleCount / 9;

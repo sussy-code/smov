@@ -24,14 +24,24 @@ export function NotFoundPart() {
             <IconPill icon={Icons.EYE_SLASH}>{t("notFound.badge")}</IconPill>
             <Title>{t("notFound.title")}</Title>
             <Paragraph>{t("notFound.message")}</Paragraph>
-            <Button
-              href="/"
-              theme="purple"
-              padding="md:px-12 p-2.5"
-              className="mt-6"
-            >
-              {t("notFound.goHome")}
-            </Button>
+            <div className="flex gap-3">
+              <Button
+                href="/"
+                theme="secondary"
+                padding="md:px-12 p-2.5"
+                className="mt-6"
+              >
+                {t("notFound.goHome")}
+              </Button>
+              <Button
+                onClick={() => window.location.reload()}
+                theme="purple"
+                padding="md:px-12 p-2.5"
+                className="mt-6"
+              >
+                {t("notFound.reloadButton")}
+              </Button>
+            </div>
           </ErrorContainer>
         </ErrorLayout>
       </div>

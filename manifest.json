@@ -10,7 +10,7 @@
   "theme_color": "#120f1d",
   "icons": [
     {
-      "src": "public/android-chrome-192x192.png",
+      "src": "/android-chrome-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
@@ -22,7 +22,7 @@
       "purpose": "any"
     },
     {
-      "src": "public/android-chrome-192x192.png",
+      "src": "/android-chrome-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable"
