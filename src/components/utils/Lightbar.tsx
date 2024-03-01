@@ -54,7 +54,7 @@ class Particle {
     this.direction = (Math.random() * Math.PI) / 2 + Math.PI / 4;
     this.speed = 0.02 + Math.random() * 0.085;
 
-    const second = 75;
+    const second = 65;
     this.lifetime = second * 3 + Math.random() * (second * 30);
 
     this.size = this.options.sizeRange
