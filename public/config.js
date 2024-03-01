@@ -6,7 +6,7 @@ window.__CONFIG__ = {
   VITE_TMDB_READ_API_KEY: "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiZmU0OGY4NjFkY2NmMjczMzUyMDdmMWVjYmVkNjNjNiIsInN1YiI6IjY1YjNmMWI0NTk0Yzk0MDE2MzNkZDBjNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.GiCKswc2u9NraBbujm0ykI5G3p-K9WJoHg40jYbFv4o",
 
   // The DMCA email displayed in the footer, null to hide the DMCA link
-  VITE_DMCA_EMAIL: "dreadpiratecozi@onionmail.org",
+  VITE_DMCA_EMAIL: "sudo-flix@proton.me",
 
   // Whether to disable hash-based routing, leave this as false if you don't know what this is
   VITE_NORMAL_ROUTER: false,
