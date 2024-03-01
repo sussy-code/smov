@@ -309,7 +309,7 @@
       },
       "sources": {
         "failed": {
-          "text": "There was an error while trying to find any videos, please try a different source.",
+          "text": "There was an error while trying to find any videos... Try a different source?",
           "title": "Failed to scrape"
         },
         "noEmbeds": {
