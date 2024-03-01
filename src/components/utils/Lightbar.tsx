@@ -268,7 +268,7 @@ function ParticlesCanvas() {
     }
 
     // Dev easter egg
-    const shouldShowCode = Math.random() < 0.9; // 25%
+    const shouldShowCode = Math.random() < 0.05; // 5%
     if (shouldShowCode) {
       imageOverride = [
         {
