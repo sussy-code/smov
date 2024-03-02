@@ -3,7 +3,7 @@
     "description": "movie-web és una aplicació web que cerca fluxos a internet. L'equip té com a objectiu un enfocament majoritàriament minimalista del consum de contingut.",
     "faqTitle": "Preguntes freqüents",
     "q1": {
-      "body": "movie-web no allotja cap contingut. Quan feu clic a alguna cosa per a mirar-la, es busca a Internet el contingut seleccionat (a la pantalla de càrrega i a la pestanya «Fonts de vídeo» podeu veure quina font utilitzeu). movie-web mai hi puja contingut, tot és a través d'aquest mecanisme de cerca.",
+      "body": "movie-web no allotja cap contingut. Quan feu clic a un contingut per a mirar-lo, es busca a Internet (a la pantalla de càrrega i a la pestanya «Fonts de vídeo» podeu veure quina font utilitzeu). movie-web mai hi puja contingut, tot és a través d'aquest mecanisme de cerca.",
       "title": "D'on prové el contingut?"
     },
     "q2": {
@@ -503,7 +503,7 @@
       },
       "title": "Connexions",
       "workers": {
-        "addButton": "Afig un «worker»",
+        "addButton": "Afegeix un «worker»",
         "description": "Per fer funcionar l'aplicació, tot el trànsit s'encamina a través de servidors intermediaris. Activeu-ho si voleu portar els vostres propis «workers». <0>Instruccions.</0>",
         "emptyState": "Encara no hi ha «workers», afegiu-ne un a continuació",
         "label": "Utilitza «workers» intermediaris personalitzats",
