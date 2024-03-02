@@ -57,6 +57,8 @@
       },
       "host": "Us esteu connectant a <0>{{hostname}}</0>. Confirmeu que hi confieu abans de crear un compte",
       "no": "Torna",
+      "noHost": "El servidor no s'ha configurat, per tant, no es pot crear un compte",
+      "noHostTitle": "El servidor no està configurat!",
       "title": "Confieu en aquest servidor?",
       "yes": "Confie en aquest servidor"
     },
@@ -95,6 +97,7 @@
       "about": "Quant a",
       "dmca": "DMCA",
       "login": "Inicia sessió",
+      "onboarding": "Configura",
       "pagetitle": "{{title}} - movie-web",
       "register": "Registra",
       "settings": "Configuració"
@@ -117,7 +120,12 @@
       "noResults": "No hem pogut trobar res!",
       "placeholder": {
         "default": "Què voleu mirar?",
-        "extra": []
+        "extra": [
+          "Què voleu explorar?",
+          "Què hi ha a la vostra llista de seguiment?",
+          "Quina és la vostra pel·lícula preferida?",
+          "Quina és la vostra sèrie preferida?"
+        ]
       },
       "sectionTitle": "Resultats de la cerca"
     },
@@ -130,11 +138,15 @@
       },
       "morning": {
         "default": "Què us agradaria mirar aquest matí?",
-        "extra": ["He sentit que «Abans de l'alba» és bona"]
+        "extra": [
+          "He sentit que «Abans de l'alba» és bona"
+        ]
       },
       "night": {
         "default": "Què us agradaria mirar aquesta nit?",
-        "extra": ["Esteu cansat? He sentit que «L'exorcista» és bona."]
+        "extra": [
+          "Esteu cansat? He sentit que «L'exorcista» és bona."
+        ]
       }
     }
   },
@@ -167,22 +179,37 @@
   "onboarding": {
     "defaultConfirm": {
       "cancel": "Cancel·la",
+      "confirm": "Usa la configuració per defecte",
+      "description": "La configuració per defecte no té els millors fluxos i pot ser insuportablement lenta.",
       "title": "Segur?"
     },
     "extension": {
       "back": "Torna",
+      "explainer": "Mitjançant l'extensió del navegador, podeu obtenir els millors fluxos que oferim. Amb només una simple instal·lació.",
+      "explainerIos": "Lamentablement, l'extensió del navegador no és compatible amb iOS, premeu <bold>Torna</bold> per a triar una altra opció.",
+      "extensionHelp": "Si heu instal·lat l'extensió, però no es detecta, <bold>obriu l'extensió al menú d'extensions del navegador</bold> i seguiu els passos en pantalla.",
       "linkChrome": "Instal·la l'extensió de Chrome",
       "linkFirefox": "Instal·la l'extensió de Firefox",
+      "notDetecting": "S'ha instal·lat a Chrome, però el lloc no el detecta? Proveu de recarregar la pàgina.",
       "notDetectingAction": "Recarrega la pàgina",
       "status": {
-        "disallowedAction": "Activa l'extensió"
+        "disallowed": "L'extensió no està activada per a aquesta pàgina",
+        "disallowedAction": "Activa l'extensió",
+        "failed": "No s'ha pogut sol·licitar l'estat",
+        "loading": "Esperant que instal·leu l'extensió",
+        "outdated": "La versió de l'extensió és massa antiga",
+        "success": "L'extensió funciona com s'esperava!"
       },
-      "submit": "Continua"
+      "submit": "Continua",
+      "title": "Comencem amb una extensió"
     },
     "proxy": {
       "back": "Torna",
+      "explainer": "Amb el mètode del servidor intermediari, podeu obtenir fluxos d'alta qualitat fent un servidor intermediari propi.",
       "input": {
+        "errorConnection": "No s'ha pogut connectar al servidor intermediari",
         "errorInvalidUrl": "URL no vàlid",
+        "errorNotProxy": "S'esperava un servidor intermediari, però és un lloc web",
         "label": "URL del servidor intermediari",
         "placeholder": "https://"
       },
@@ -191,15 +218,25 @@
       "title": "Fem un nou servidor intermediari"
     },
     "start": {
+      "explainer": "Per a obtenir els millors fluxos possibles, haureu de triar quin mètode de transmissió voleu utilitzar.",
       "options": {
+        "default": {
+          "text": "No vull fluxos de bona qualitat,<0 /> <1>utilitza la configuració per defecte</1>"
+        },
         "extension": {
           "action": "Instal·la l'extensió",
-          "quality": "Millor qualitat"
+          "description": "Instal·leu l'extensió del navegador i accediu a les millors fonts.",
+          "quality": "Millor qualitat",
+          "title": "Extensió del navegador"
         },
         "proxy": {
-          "action": "Configura el servidor intermediari"
+          "action": "Configura el servidor intermediari",
+          "description": "Configureu un servidor intermediari en només 5 minuts i accediu a bones fonts.",
+          "quality": "Bona qualitat",
+          "title": "Servidor intermediari personalitzat"
         }
-      }
+      },
+      "title": "Configurem el movie-web"
     }
   },
   "overlays": {
@@ -215,10 +252,11 @@
     },
     "menus": {
       "downloads": {
+        "copyHlsPlaylist": "Copia l'enllaç de la llista HLS",
         "disclaimer": "Les baixades s'obtenen directament del proveïdor. movie-web no té control sobre com es proporcionen les baixades.",
         "downloadSubtitle": "Baixa els subtítols actuals",
         "downloadVideo": "Baixa el vídeo",
-        "hlsDisclaimer": "Les baixades s'obtenen directament del proveïdor. movie-web no té control sobre com es proporcionen les baixades. Tingueu en compte que esteu baixant una llista de reproducció HLS, destinada als usuaris familiaritzats amb la transmissió multimèdia avançada.",
+        "hlsDisclaimer": "Les baixades s'obtenen directament del proveïdor. movie-web no té control sobre com es proporcionen les baixades. <br /><br />Tingueu en compte que esteu baixant una llista de reproducció HLS, <bold>no es recomana baixar-la si no esteu familiaritzat amb formats de transmissió avançats</bold>. Proveu diferents fonts per a diferents formats.",
         "onAndroid": {
           "1": "Per a baixar-lo a Android, feu clic al botó de baixada i, a la pàgina nova, <bold>manteniu premut</bold> el vídeo i, a continuació, seleccioneu <bold>Desa</bold>.",
           "shortTitle": "Baixa / Android",
@@ -301,7 +339,14 @@
       },
       "dmca": {
         "badge": "Eliminat",
+        "text": "Aquest contingut ja no està disponible a causa d'un avís de retirada o d'una reclamació de drets d'autor.",
         "title": "El contingut s'ha eliminat"
+      },
+      "extensionPermission": {
+        "badge": "Falta el permís",
+        "button": "Utilitza l'extensió",
+        "text": "Teniu l'extensió del navegador, però necessitem el vostre permís per a començar a utilitzar l'extensió.",
+        "title": "Configureu l'extensió"
       },
       "failed": {
         "badge": "Ha fallat",
@@ -436,11 +481,25 @@
       },
       "setup": {
         "doSetup": "Configura",
+        "errorStatus": {
+          "description": "Sembla que heu de revisar un o més elements de la configuració.",
+          "title": "S'ha de revisar algun element"
+        },
+        "itemError": "Hi ha alguna cosa malament en la configuració. Torneu a fer la configuració per a solucionar-ho.",
         "items": {
           "default": "Configuració per defecte",
-          "extension": "Extensió"
+          "extension": "Extensió",
+          "proxy": "Servidor personalitzat"
         },
-        "redoSetup": "Reconfigura"
+        "redoSetup": "Reconfigura",
+        "successStatus": {
+          "description": "Tot està preparat perquè comenceu a mirar el vostre contingut preferit.",
+          "title": "Tot està configurat!"
+        },
+        "unsetStatus": {
+          "description": "Feu clic al botó de la dreta per a iniciar el procés de configuració.",
+          "title": "No heu fet la configuració"
+        }
       },
       "title": "Connexions",
       "workers": {
@@ -456,6 +515,7 @@
       "language": "Llengua de l'aplicació",
       "languageDescription": "La llengua s'aplica a tota l'aplicació.",
       "thumbnail": "Genera miniatures",
+      "thumbnailDescription": "Majoritàriament, els vídeos no tenen miniatures. Podeu activar aquesta opció per a generar-les sobre la marxa, però poden alentir el vídeo.",
       "thumbnailLabel": "Genera miniatures",
       "title": "Configuració"
     },
