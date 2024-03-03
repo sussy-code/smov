@@ -1,5 +1,6 @@
 import { Analytics } from "@vercel/analytics/react";
-import { ReactElement, Suspense, lazy, useEffect } from "react";
+import { ReactElement, Suspense, lazy, useEffect, useState } from "react";
+import { Trans, useTranslation } from "react-i18next";
 import { lazyWithPreload } from "react-lazy-with-preload";
 import {
   Navigate,
@@ -12,6 +13,10 @@ import {
 
 import { convertLegacyUrl, isLegacyUrl } from "@/backend/metadata/getmeta";
 import { generateQuickSearchMediaUrl } from "@/backend/metadata/tmdb";
+import { Button } from "@/components/buttons/Button";
+import { Navigation } from "@/components/layout/Navigation";
+import { Title } from "@/components/text/Title";
+import { Paragraph } from "@/components/utils/Text";
 import { useOnlineListener } from "@/hooks/usePing";
 import { AboutPage } from "@/pages/About";
 import { AdminPage } from "@/pages/admin/AdminPage";
@@ -19,6 +24,7 @@ import VideoTesterView from "@/pages/developer/VideoTesterView";
 import { DmcaPage, shouldHaveDmcaPage } from "@/pages/Dmca";
 import { NotFoundPage } from "@/pages/errors/NotFoundPage";
 import { HomePage } from "@/pages/HomePage";
+import { ErrorContainer, ErrorLayout } from "@/pages/layouts/ErrorLayout";
 import { LoginPage } from "@/pages/Login";
 import { OnboardingPage } from "@/pages/onboarding/Onboarding";
 import { OnboardingExtensionPage } from "@/pages/onboarding/OnboardingExtension";
@@ -27,6 +33,16 @@ import { RegisterPage } from "@/pages/Register";
 import { Layout } from "@/setup/Layout";
 import { useHistoryListener } from "@/stores/history";
 import { LanguageProvider } from "@/stores/language";
+
+const isDowntime = true;
+
+function checkDowntime() {
+  const now = new Date();
+  const hour = now.getHours();
+  // Downtime between 12 AM - 1 PM
+  // return isDowntime && hour >= 0 && hour < 1;
+  return true;
+}
 
 const DeveloperPage = lazy(() => import("@/pages/DeveloperPage"));
 const TestView = lazy(() => import("@/pages/developer/TestView"));
@@ -87,75 +103,113 @@ function QueryView() {
 function App() {
   useHistoryListener();
   useOnlineListener();
+  const { t } = useTranslation();
+  const [showDowntime, setShowDowntime] = useState(true);
+
+  const handleButtonClick = () => {
+    setShowDowntime(false);
+  };
+
+  useEffect(() => {
+    const token = localStorage.getItem("downtimeToken");
+    if (token) {
+      setShowDowntime(true);
+    } else {
+      localStorage.setItem("downtimeToken", "true");
+    }
+  }, []);
 
   return (
     <Layout>
       <LanguageProvider />
-      <Routes>
-        {/* functional routes */}
-        <Route path="/s/:query" element={<QuickSearch />} />
-        <Route path="/search/:type" element={<Navigate to="/browse" />} />
-        <Route path="/search/:type/:query?" element={<QueryView />} />
-
-        {/* pages */}
-        <Route
-          path="/media/:media"
-          element={
-            <LegacyUrlView>
+      {!showDowntime && (
+        <Routes>
+          {/* functional routes */}
+          <Route path="/s/:query" element={<QuickSearch />} />
+          <Route path="/search/:type" element={<Navigate to="/browse" />} />
+          <Route path="/search/:type/:query?" element={<QueryView />} />
+          {/* pages */}
+          <Route
+            path="/media/:media"
+            element={
+              <LegacyUrlView>
+                <Suspense fallback={null}>
+                  <PlayerView />
+                </Suspense>
+              </LegacyUrlView>
+            }
+          />
+          <Route
+            path="/media/:media/:season/:episode"
+            element={
+              <LegacyUrlView>
+                <Suspense fallback={null}>
+                  <PlayerView />
+                </Suspense>
+              </LegacyUrlView>
+            }
+          />
+          <Route path="/browse/:query?" element={<HomePage />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/onboarding" element={<OnboardingPage />} />
+          <Route
+            path="/onboarding/extension"
+            element={<OnboardingExtensionPage />}
+          />
+          <Route path="/onboarding/proxy" element={<OnboardingProxyPage />} />
+          {shouldHaveDmcaPage() ? (
+            <Route path="/dmca" element={<DmcaPage />} />
+          ) : null}
+          {/* Settings page */}
+          <Route
+            path="/settings"
+            element={
               <Suspense fallback={null}>
-                <PlayerView />
+                <SettingsPage />
               </Suspense>
-            </LegacyUrlView>
-          }
-        />
-        <Route
-          path="/media/:media/:season/:episode"
-          element={
-            <LegacyUrlView>
-              <Suspense fallback={null}>
-                <PlayerView />
-              </Suspense>
-            </LegacyUrlView>
-          }
-        />
-        <Route path="/browse/:query?" element={<HomePage />} />
-        <Route path="/" element={<HomePage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/onboarding" element={<OnboardingPage />} />
-        <Route
-          path="/onboarding/extension"
-          element={<OnboardingExtensionPage />}
-        />
-        <Route path="/onboarding/proxy" element={<OnboardingProxyPage />} />
-
-        {shouldHaveDmcaPage() ? (
-          <Route path="/dmca" element={<DmcaPage />} />
-        ) : null}
-
-        {/* Settings page */}
-        <Route
-          path="/settings"
-          element={
-            <Suspense fallback={null}>
-              <SettingsPage />
-            </Suspense>
-          }
-        />
-
-        {/* admin routes */}
-        <Route path="/admin" element={<AdminPage />} />
-
-        {/* other */}
-        <Route path="/dev" element={<DeveloperPage />} />
-        <Route path="/dev/video" element={<VideoTesterView />} />
-        {/* developer routes that can abuse workers are disabled in production */}
-        {process.env.NODE_ENV === "development" ? (
-          <Route path="/dev/test" element={<TestView />} />
-        ) : null}
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
+            }
+          />
+          {/* admin routes */}
+          <Route path="/admin" element={<AdminPage />} />
+          {/* other */}
+          <Route path="/dev" element={<DeveloperPage />} />
+          <Route path="/dev/video" element={<VideoTesterView />} />
+          {/* developer routes that can abuse workers are disabled in production */}
+          {process.env.NODE_ENV === "development" ? (
+            <Route path="/dev/test" element={<TestView />} />
+          ) : null}
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      )}
+      {showDowntime && (
+        <div className="relative flex flex-1 flex-col">
+          <Navigation />
+          <div className="flex h-full flex-1 flex-col items-center justify-center p-5 text-center">
+            <ErrorLayout>
+              <ErrorContainer>
+                <Title>{t("downtimeNotice.title")}</Title>
+                <Paragraph>{t("downtimeNotice.message")}</Paragraph>
+                <Trans
+                  i18nKey="downtimeNotice.timeFrame"
+                  components={{
+                    bold: <span className="text-white font-bold" />,
+                  }}
+                />
+                <Button
+                  onClick={handleButtonClick}
+                  theme="purple"
+                  className="mt-6"
+                >
+                  {t("downtimeNotice.goHome")}
+                </Button>
+              </ErrorContainer>
+            </ErrorLayout>
+          </div>
+        </div>
+      )}
       <Analytics />
     </Layout>
   );

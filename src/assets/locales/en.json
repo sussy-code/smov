@@ -181,6 +181,12 @@
     "message": "We looked everywhere: under the bins, in the closet, behind the proxy but ultimately couldn't find the page you are looking for. (ಥ﹏ಥ)",
     "title": "Couldn't find that page"
   },
+  "downtimeNotice": {
+    "goHome": "Go home!",
+    "message": "sudo-flix.lol is dedicated to providing its users with the most up-to-date and stable experience in order to do this we must switch hosting providers. Expect downtime between the below times.",
+    "timeFrame": "<bold>12:00 AM - 1:00 AM</bold>",
+    "title": "Maintenance expected"
+  },
   "onboarding": {
     "defaultConfirm": {
       "cancel": "Cancel",
