@@ -104,7 +104,8 @@ function App() {
   useHistoryListener();
   useOnlineListener();
   const { t } = useTranslation();
-  const [showDowntime, setShowDowntime] = useState(false);
+  const maintenance = false;
+  const [showDowntime, setShowDowntime] = useState(maintenance);
 
   const handleButtonClick = () => {
     setShowDowntime(false);
@@ -116,7 +117,7 @@ function App() {
       setShowDowntime(true);
       sessionStorage.setItem("downtimeToken", "true");
     }
-  }, []);
+  }, [setShowDowntime]);
 
   return (
     <Layout>
