@@ -1,5 +1,6 @@
 import { Analytics } from "@vercel/analytics/react";
 import { ReactElement, Suspense, lazy, useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { Trans, useTranslation } from "react-i18next";
 import { lazyWithPreload } from "react-lazy-with-preload";
 import {
@@ -186,6 +187,9 @@ function App() {
       )}
       {showDowntime && (
         <div className="relative flex flex-1 flex-col">
+          <Helmet>
+            <title>{t("downtimeNotice.title")}</title>
+          </Helmet>
           <Navigation />
           <div className="flex h-full flex-1 flex-col items-center justify-center p-5 text-center">
             <ErrorLayout>
