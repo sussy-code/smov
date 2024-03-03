@@ -114,17 +114,17 @@
       "stopEditing": "Stop editing"
     },
     "search": {
-      "allResults": "That's all we have!",
+      "allResults": "That's all we have...",
       "failed": "Failed to find media, try again!",
       "loading": "Loading...",
-      "noResults": "We couldn't find anything!",
+      "noResults": "We couldn't find anything :(",
       "placeholder": {
         "default": "What do you want to watch?",
         "extra": [
-          "What do you want to explore?",
-          "What's on your watchlist?",
-          "What's your favorite movie?",
-          "What's your favorite series?"
+          "What do you want to stream?",
+          "Sudo-Flix is the best site ever!",
+          "What's on your watchlist today?",
+          "How was your day?"
         ]
       },
       "sectionTitle": "Search results"
