@@ -104,18 +104,17 @@ function App() {
   useHistoryListener();
   useOnlineListener();
   const { t } = useTranslation();
-  const [showDowntime, setShowDowntime] = useState(true);
+  const [showDowntime, setShowDowntime] = useState(false);
 
   const handleButtonClick = () => {
     setShowDowntime(false);
   };
 
   useEffect(() => {
-    const token = localStorage.getItem("downtimeToken");
-    if (token) {
+    const sessionToken = sessionStorage.getItem("downtimeToken");
+    if (!sessionToken) {
       setShowDowntime(true);
-    } else {
-      localStorage.setItem("downtimeToken", "true");
+      sessionStorage.setItem("downtimeToken", "true");
     }
   }, []);
 
