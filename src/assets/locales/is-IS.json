@@ -1,9 +1,9 @@
 {
   "about": {
-    "description": "movie-web er vefforrit sem leitar á netinu að straumum. Markmið liðsins er naumhyggju nálgun á að horfa á efni.",
+    "description": "movie-web er vefforrit sem leitar á netinu að streymum. Markmið liðsins er naumhyggju nálgun á að horfa á efni.",
     "faqTitle": "Algengar spurningar",
     "q1": {
-      "body": "movie-web hýsir ekki neitt efni. Þegar þú ýtir á eitthvað til að horfa á, leitað er á netinu fyrir það efni (Þú getur séð hvaða heimild við erum að nota á hleðslu skjánum og í 'myndbands heimildir' flipanum). Skrár eru aldrei settar in af movie-web, allt er í gegnum leitarvél.",
+      "body": "movie-web hýsir ekki neitt efni. Þegar þú ýtir á eitthvað til að horfa á, er leitað á netinu fyrir það efni (Þú getur séð hvaða heimild við erum að nota á hleðslu skjánum og í 'myndbands heimildir' flipanum). Skrár eru aldrei settar inn af movie-web, allt er í gegnum leitarvél.",
       "title": "Hvaðan kemur efnið?"
     },
     "q2": {
@@ -11,7 +11,7 @@
       "title": "Hvar get ég beðið um þætti eða myndir?"
     },
     "q3": {
-      "body": "Okkar leitar niðurstöður eru knúnar af The Movie Database (TMDB) og eru sýndar þótt að okkar heimildir hafa ekki efnið.",
+      "body": "Leitarniðurstöður okkar eru knúnar af The Movie Database (TMDB) og eru sýndar þótt að heimildir okkar hafa ekki efnið.",
       "title": "Leitarniðurstöðurnar sýna þættina eða myndina, af hverju get ég ekki spilað það?"
     },
     "title": "Um movie-web"
@@ -57,6 +57,8 @@
       },
       "host": "Þú ert að tengjast við <0>{{hostname}}</0> - vinsamlegast staðfestu að þú treystir því áður en þú býrð til reikning",
       "no": "Fara til baka",
+      "noHost": "Netjónninn hefur ekki verið stilltur, þess vegna getur þú ekki búið til reikning",
+      "noHostTitle": "Netþjónn ekki stilltur!",
       "title": "Treystir þú þessum netþjóni?",
       "yes": "Ég treysti þessum netþjóni"
     },
@@ -82,13 +84,21 @@
       "disclaimer": "Fyrirvari",
       "disclaimerText": "movie-web hýsir engar skrár, það tengist eingöngu þjónustu þriðja aðila. Lagleg atriði ættu að vera rædd við skráarhýsinga og veitanda. movie-web er ekki ábyrg fyrir neinum skrám sýndar af myndbands veitöndum."
     },
+    "links": {
+      "discord": "Discord",
+      "dmca": "DMCA",
+      "github": "GitHub"
+    },
     "tagline": "Horfðu á uppáhalds þætti og myndirnar þínar með þessu opna hugbúnaða forriti."
   },
   "global": {
+    "name": "movie-web",
     "pages": {
       "about": "Um",
+      "dmca": "DMCA",
       "login": "Skrá inn",
       "onboarding": "Setja upp",
+      "pagetitle": "{{title}} - movie-web",
       "register": "Skrá",
       "settings": "Stillingar"
     }
@@ -110,7 +120,12 @@
       "noResults": "Við gátum ekki fundið neitt!",
       "placeholder": {
         "default": "Hvað viltu horfa á?",
-        "extra": []
+        "extra": [
+          "Hvað viltu kanna?",
+          "Hvað er á áhorfslistanum þínum?",
+          "Hvað er uppáhalds bíómyndin þín?",
+          "Hvað er uppáhalds þáttaröðin þín?"
+        ]
       },
       "sectionTitle": "Leitar niðurstöður"
     },
@@ -123,11 +138,15 @@
       },
       "morning": {
         "default": "Hvað myndirðu vilja horfa á þessum morgni?",
-        "extra": ["Ég heyrði að Before Sunrise sé góð"]
+        "extra": [
+          "Ég heyrði að Before Sunrise sé góð"
+        ]
       },
       "night": {
         "default": "Hvað myndirðu vilja horfa á í nótt?",
-        "extra": ["Þreytt? Ég heyrði að The Exorcist sé góð."]
+        "extra": [
+          "Þreytt? Ég heyrði að The Exorcist sé góð."
+        ]
       }
     }
   },
@@ -191,7 +210,8 @@
         "errorConnection": "Gat ekki tengst umboð",
         "errorInvalidUrl": "Ekki gildur hlekkur",
         "errorNotProxy": "Bjóst við umboði en fékk heimasíðu",
-        "label": "Umboðs hlekkur"
+        "label": "Umboðs hlekkur",
+        "placeholder": "https://"
       },
       "link": "Lærðu hvernig þú býrð til umboð",
       "submit": "Staðfesta umboð",
@@ -232,6 +252,7 @@
     },
     "menus": {
       "downloads": {
+        "copyHlsPlaylist": "Afrita HLS spilalista hlekk",
         "disclaimer": "Niðurhalningar eru teknar beint frá heimildini. movie-web hefur engan kraft yfir hvernig niðurhalningarnar eru gefnar.",
         "downloadSubtitle": "Hlaða niður nú verandi texta",
         "downloadVideo": "Hlaða niður myndbandi",
@@ -372,7 +393,10 @@
       }
     },
     "time": {
-      "remaining": "{{timeLeft}} er eftir • Þú klárar {{timeFinished, datetime}}"
+      "regular": "{{timeWatched}} / {{duration}}",
+      "remaining": "{{timeLeft}} er eftir • Þú klárar {{timeFinished, datetime}}",
+      "shortRegular": "{{timeWatched}}",
+      "shortRemaining": "-{{timeLeft}}"
     },
     "turnstile": {
       "description": "Vinsamlegast sannreyndu að þú sért manneskja með því að klára Captcha-ið til hægri. Þetta er til þess að halda movie-web öruggu!",
@@ -383,7 +407,8 @@
   },
   "screens": {
     "dmca": {
-      "text": "Velkomin á sambands síðu movie-web! Við virðum hugverkarétt og viljum ræða einhver höfundarréttar áhyggjur fljótt. Ef að þú trúir að höfundarréttur þíns verks hefur verið misnotaður á okkar síðu, vinsamlegast sentu ítarlega DMCA tilkynningu til netfangsing fyrir neðan þennan texta. Vinsamlegast láttu fylgja með lýsingu af höfundaréttavarna efninu, tengiliða upplýsingat þínar, og yfirlýsingu um góða trú. Við erum staðráðin í að leysa þessi mál tafarlaust og þökkum samstarf þitt við að halda movie-web stað sem virðir sköpunargáfu og höfundarrétt."
+      "text": "Velkomin á sambands síðu movie-web! Við virðum hugverkarétt og viljum ræða einhver höfundarréttar áhyggjur fljótt. Ef að þú trúir að höfundarréttur þíns verks hefur verið misnotaður á okkar síðu, vinsamlegast sentu ítarlega DMCA tilkynningu til netfangsing fyrir neðan þennan texta. Vinsamlegast láttu fylgja með lýsingu af höfundaréttavarna efninu, tengiliða upplýsingat þínar, og yfirlýsingu um góða trú. Við erum staðráðin í að leysa þessi mál tafarlaust og þökkum samstarf þitt við að halda movie-web stað sem virðir sköpunargáfu og höfundarrétt.",
+      "title": "DMCA"
     },
     "loadingApp": "Hlaðandi forriti",
     "loadingUser": "Hlaðandi þínum reikningi",
@@ -482,7 +507,8 @@
         "description": "Til að láta forritið virka, allri umboð er beint í gegnum umboð. Virktu þetta ef þú villt koma með þína eigin starfsmenn. <0>Leiðbeiningar.</0>",
         "emptyState": "Engir starfsmenn komnir, bættu við einum fyir neðan þennan texta",
         "label": "Notaðu sérsniðaða umboðs starfsmenn",
-        "urlLabel": "Starfsmanna hlekkir"
+        "urlLabel": "Starfsmanna hlekkir",
+        "urlPlaceholder": "https://"
       }
     },
     "preferences": {

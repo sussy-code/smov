@@ -3,7 +3,7 @@
     "description": "movie-web és una aplicació web que cerca fluxos a internet. L'equip té com a objectiu un enfocament majoritàriament minimalista del consum de contingut.",
     "faqTitle": "Preguntes freqüents",
     "q1": {
-      "body": "movie-web no allotja cap contingut. Quan feu clic a un contingut per a mirar-lo, es busca a Internet (a la pantalla de càrrega i a la pestanya «Fonts de vídeo» podeu veure quina font utilitzeu). movie-web mai hi puja contingut, tot és a través d'aquest mecanisme de cerca.",
+      "body": "movie-web no allotja cap contingut. Quan feu clic en un contingut per a mirar-lo, es busca a Internet (a la pantalla de càrrega i a la pestanya «Fonts de vídeo» podeu mirar quina font utilitzeu). movie-web mai puja contingut, tot és a través del mecanisme de cerca.",
       "title": "D'on prové el contingut?"
     },
     "q2": {
@@ -25,12 +25,12 @@
     "deviceNameLabel": "Nom del dispositiu",
     "deviceNamePlaceholder": "Telèfon personal",
     "generate": {
-      "description": "La frase de contrasenya actua com a nom d'usuari i contrasenya. Assegureu-vos de mantenir-la segura, ja que haureu d'introduir-la per a iniciar la sessió al vostre compte",
+      "description": "La frase de contrasenya actua com a nom d'usuari i contrasenya. Assegureu-vos de mantindre-la segura, ja que haureu d'introduir-la per a iniciar la sessió al vostre compte",
       "next": "He desat la frase de contrasenya",
       "passphraseFrameLabel": "Frase de contrasenya",
       "title": "La vostra frase de contrasenya"
     },
-    "hasAccount": "Ja teniu un compte? <0>Inicieu sessió aquí.</0>",
+    "hasAccount": "Ja teniu un compte? <0>Inicieu sessió ací.</0>",
     "login": {
       "description": "Introduïu la vostra frase de contrasenya per a iniciar sessió al vostre compte",
       "deviceLengthError": "Introduïu un nom per al dispositiu",
@@ -55,12 +55,12 @@
         "text": "L'heu configurada correctament?",
         "title": "No s'ha pogut accedir al servidor"
       },
-      "host": "Us esteu connectant a <0>{{hostname}}</0>. Confirmeu que hi confieu abans de crear un compte",
+      "host": "Esteu connectant-vos a <0>{{hostname}}</0>. Confirmeu que hi confieu abans de crear un compte",
       "no": "Torna",
       "noHost": "El servidor no s'ha configurat, per tant, no es pot crear un compte",
       "noHostTitle": "El servidor no està configurat!",
-      "title": "Confieu en aquest servidor?",
-      "yes": "Confie en aquest servidor"
+      "title": "Confieu en este servidor?",
+      "yes": "Confie en este servidor"
     },
     "verify": {
       "description": "Introduïu la vostra frase de contrasenya anterior per a confirmar que l'heu desat, i crear el compte",
@@ -89,7 +89,7 @@
       "dmca": "DMCA",
       "github": "GitHub"
     },
-    "tagline": "Mireu els vostres programes i pel·lícules preferits amb aquesta aplicació de codi obert de reproducció en temps real."
+    "tagline": "Mireu els vostres programes i pel·lícules preferits amb esta aplicació de codi obert de reproducció en temps real."
   },
   "global": {
     "name": "movie-web",
@@ -131,19 +131,19 @@
     },
     "titles": {
       "day": {
-        "default": "Què us agradaria mirar aquesta vesprada/tarda?",
+        "default": "Què vos agradaria mirar esta vesprada?",
         "extra": [
           "Voleu aventura? Jurassic Park podria ser l'elecció perfecta."
         ]
       },
       "morning": {
-        "default": "Què us agradaria mirar aquest matí?",
+        "default": "Què vos agradaria mirar este matí?",
         "extra": [
           "He sentit que «Abans de l'alba» és bona"
         ]
       },
       "night": {
-        "default": "Què us agradaria mirar aquesta nit?",
+        "default": "Què vos agradaria mirar esta nit?",
         "extra": [
           "Esteu cansat? He sentit que «L'exorcista» és bona."
         ]
@@ -185,7 +185,7 @@
     },
     "extension": {
       "back": "Torna",
-      "explainer": "Mitjançant l'extensió del navegador, podeu obtenir els millors fluxos que oferim. Amb només una simple instal·lació.",
+      "explainer": "Mitjançant l'extensió del navegador, podeu obtindre els millors fluxos que oferim. Amb només una simple instal·lació.",
       "explainerIos": "Lamentablement, l'extensió del navegador no és compatible amb iOS, premeu <bold>Torna</bold> per a triar una altra opció.",
       "extensionHelp": "Si heu instal·lat l'extensió, però no es detecta, <bold>obriu l'extensió al menú d'extensions del navegador</bold> i seguiu els passos en pantalla.",
       "linkChrome": "Instal·la l'extensió de Chrome",
@@ -193,7 +193,7 @@
       "notDetecting": "S'ha instal·lat a Chrome, però el lloc no el detecta? Proveu de recarregar la pàgina.",
       "notDetectingAction": "Recarrega la pàgina",
       "status": {
-        "disallowed": "L'extensió no està activada per a aquesta pàgina",
+        "disallowed": "L'extensió no està activada per a esta pàgina",
         "disallowedAction": "Activa l'extensió",
         "failed": "No s'ha pogut sol·licitar l'estat",
         "loading": "Esperant que instal·leu l'extensió",
@@ -205,7 +205,7 @@
     },
     "proxy": {
       "back": "Torna",
-      "explainer": "Amb el mètode del servidor intermediari, podeu obtenir fluxos d'alta qualitat fent un servidor intermediari propi.",
+      "explainer": "Amb el mètode del servidor intermediari, podeu obtindre fluxos d'alta qualitat fent un servidor intermediari propi.",
       "input": {
         "errorConnection": "No s'ha pogut connectar al servidor intermediari",
         "errorInvalidUrl": "URL no vàlid",
@@ -218,7 +218,7 @@
       "title": "Fem un nou servidor intermediari"
     },
     "start": {
-      "explainer": "Per a obtenir els millors fluxos possibles, haureu de triar quin mètode de transmissió voleu utilitzar.",
+      "explainer": "Per a obtindre els millors fluxos possibles, haureu de triar quin mètode de transmissió voleu utilitzar.",
       "options": {
         "default": {
           "text": "No vull fluxos de bona qualitat,<0 /> <1>utilitza la configuració per defecte</1>"
@@ -276,12 +276,12 @@
       },
       "episodes": {
         "button": "Episodi",
-        "emptyState": "No hi ha episodis en aquesta temporada, torneu-ho a comprovar més tard!",
+        "emptyState": "No hi ha episodis en esta temporada, torneu-ho a comprovar més tard!",
         "episodeBadge": "E{{episode}}",
         "loadingError": "Error en carregar la temporada",
         "loadingList": "S'està carregant…",
         "loadingTitle": "S'està carregant…",
-        "unairedEpisodes": "Un o més episodis d'aquesta temporada s'han desactivat perquè encara no s'han emés."
+        "unairedEpisodes": "Un o més episodis d'esta temporada s'han desactivat perquè encara no s'han emés."
       },
       "playback": {
         "speedLabel": "Velocitat de la reproducció",
@@ -289,8 +289,8 @@
       },
       "quality": {
         "automaticLabel": "Qualitat automàtica",
-        "hint": "Podeu provar a <0>canviar la font</0> per a obtenir diferents opcions de qualitat.",
-        "iosNoQuality": "A causa de les limitacions definides per Apple, la selecció de qualitat no està disponible a iOS per a aquesta font. Podeu provar a <0>canviar a una altra font</0> per a obtenir diferents opcions de qualitat.",
+        "hint": "Podeu provar a <0>canviar la font</0> per a obtindre diferents opcions de qualitat.",
+        "iosNoQuality": "A causa de les limitacions definides per Apple, la selecció de qualitat no està disponible a iOS per a esta font. Podeu provar a <0>canviar a una altra font</0> per a obtindre diferents opcions de qualitat.",
         "title": "Qualitat"
       },
       "settings": {
@@ -306,14 +306,14 @@
       "sources": {
         "failed": {
           "text": "S'ha produït un error en intentar trobar vídeos, proveu una font diferent.",
-          "title": "No s'ha pogut obtenir"
+          "title": "No s'ha pogut obtindre"
         },
         "noEmbeds": {
           "text": "No hem pogut trobar cap incrustat, proveu una font diferent.",
           "title": "No s'ha trobat cap incrustació"
         },
         "noStream": {
-          "text": "Aquesta font no té fluxos per a aquesta pel·lícula o programa.",
+          "text": "esta font no té fluxos per a esta pel·lícula o programa.",
           "title": "Cap flux"
         },
         "title": "Fonts",
@@ -339,7 +339,7 @@
       },
       "dmca": {
         "badge": "Eliminat",
-        "text": "Aquest contingut ja no està disponible a causa d'un avís de retirada o d'una reclamació de drets d'autor.",
+        "text": "este contingut ja no està disponible a causa d'un avís de retirada o d'una reclamació de drets d'autor.",
         "title": "El contingut s'ha eliminat"
       },
       "extensionPermission": {
@@ -399,7 +399,7 @@
       "shortRemaining": "-{{timeLeft}}"
     },
     "turnstile": {
-      "description": "Verifiqueu que sou humà completant el Captcha de la dreta. Ho fem per a mantenir segura movie-web!",
+      "description": "Verifiqueu que sou humà completant el Captcha de la dreta. Ho fem per a mantindre segura movie-web!",
       "error": "No s'ha pogut verificar la humanitat. Torneu-ho a provar.",
       "title": "Necessitem verificar que sou humà.",
       "verifyingHumanity": "Verificant la vostra humanitat…"
@@ -407,7 +407,7 @@
   },
   "screens": {
     "dmca": {
-      "text": "Us donem la benvinguda a la pàgina de contacte DMCA de movie-web! Respectem els drets de propietat intel·lectual i volem resoldre qualsevol problema de drets d'autor ràpidament. Si creieu que la vostra obra protegida per drets d'autor s'ha utilitzat incorrectament a la nostra plataforma, envieu un avís detallat de la DMCA al correu electrònic següent. Incloeu una descripció del material protegit per drets d'autor, les vostres dades de contacte i una declaració de creença de bona fe. Ens comprometem a resoldre aquests assumptes amb agilitat i agraïm la vostra col·laboració per a mantenir movie-web en un lloc que respecta la creativitat i els drets d'autor.",
+      "text": "Vos donem la benvinguda a la pàgina de contacte DMCA de movie-web! Respectem els drets de propietat intel·lectual i volem resoldre qualsevol problema de drets d'autor ràpidament. Si creieu que la vostra obra protegida per drets d'autor s'ha utilitzat incorrectament a la nostra plataforma, envieu un avís detallat de la DMCA al correu electrònic següent. Incloeu una descripció del material protegit per drets d'autor, les vostres dades de contacte i una declaració de creença de bona fe. Ens comprometem a resoldre estes assumptes amb agilitat i agraïm la vostra col·laboració per a mantindre movie-web en un lloc que respecta la creativitat i els drets d'autor.",
       "title": "DMCA"
     },
     "loadingApp": "S'està carregant l'aplicació",
@@ -437,7 +437,7 @@
           "confirmButton": "Elimina el compte",
           "confirmDescription": "Segur que voleu eliminar el compte? Es perdran totes les dades!",
           "confirmTitle": "Segur?",
-          "text": "Aquesta acció és irreversible. Totes les dades s'eliminaran i no es podrà recuperar res.",
+          "text": "esta acció és irreversible. Totes les dades s'eliminaran i no es podrà recuperar res.",
           "title": "Elimina el compte"
         },
         "title": "Accions"
@@ -503,7 +503,7 @@
       },
       "title": "Connexions",
       "workers": {
-        "addButton": "Afegeix un «worker»",
+        "addButton": "Afig un «worker»",
         "description": "Per fer funcionar l'aplicació, tot el trànsit s'encamina a través de servidors intermediaris. Activeu-ho si voleu portar els vostres propis «workers». <0>Instruccions.</0>",
         "emptyState": "Encara no hi ha «workers», afegiu-ne un a continuació",
         "label": "Utilitza «workers» intermediaris personalitzats",
@@ -515,7 +515,7 @@
       "language": "Llengua de l'aplicació",
       "languageDescription": "La llengua s'aplica a tota l'aplicació.",
       "thumbnail": "Genera miniatures",
-      "thumbnailDescription": "Majoritàriament, els vídeos no tenen miniatures. Podeu activar aquesta opció per a generar-les sobre la marxa, però poden alentir el vídeo.",
+      "thumbnailDescription": "Majoritàriament, els vídeos no tenen miniatures. Podeu activar esta opció per a generar-les sobre la marxa, però poden alentir el vídeo.",
       "thumbnailLabel": "Genera miniatures",
       "title": "Configuració"
     },
@@ -538,7 +538,7 @@
     "subtitles": {
       "backgroundLabel": "Opacitat del fons",
       "colorLabel": "Color",
-      "previewQuote": "No he de tenir por. La por és l'assassina de la ment.",
+      "previewQuote": "No he de tindre por. La por és l'assassina de la ment.",
       "textSizeLabel": "Grandària del text",
       "title": "Subtítols"
     },
