@@ -154,7 +154,7 @@ function ParticlesCanvas() {
     const day = date.getDate();
     if (
       (month === 11 && day >= 24 && day <= 26) ||
-      Math.random() < 0.091 // 9.1%
+      Math.random() < 0.051 // 5.1%
     ) {
       imageOverride = [
         {
@@ -174,7 +174,7 @@ function ParticlesCanvas() {
     const day2 = date.getDate();
     if (
       (month2 === 9 && day2 >= 29 && day2 <= 31) ||
-      Math.random() < 0.09 // 9%
+      Math.random() < 0.05 // 5%
     ) {
       imageOverride = [
         {
@@ -190,7 +190,7 @@ function ParticlesCanvas() {
     }
 
     // Fish easter egg
-    const shouldShowFishie = Math.random() < 0.4; // 40%
+    const shouldShowFishie = Math.random() < 0.1; // 10%
     if (shouldShowFishie) {
       imageOverride = [
         {
@@ -208,7 +208,7 @@ function ParticlesCanvas() {
     // Weed easter egg
     const month3 = date.getMonth() + 1;
     const day3 = date.getDate();
-    const shouldShowZa = (month3 === 4 && day3 === 20) || Math.random() < 0.35; // 35%
+    const shouldShowZa = (month3 === 4 && day3 === 20) || Math.random() < 0.25; // 25%
     if (shouldShowZa) {
       imageOverride = [
         {
@@ -220,7 +220,7 @@ function ParticlesCanvas() {
     }
 
     // Kitty easter egg
-    const shouldShowCat = Math.random() < 0.25; // 25%
+    const shouldShowCat = Math.random() < 0.2; // 20%
     if (shouldShowCat) {
       imageOverride = [
         {
@@ -232,7 +232,7 @@ function ParticlesCanvas() {
     }
 
     // Movie & popcorn easter egg
-    const shouldShowParaphernalia = Math.random() < 0.2; // 20%
+    const shouldShowParaphernalia = Math.random() < 0.3; // 30%
     if (shouldShowParaphernalia) {
       imageOverride = [
         {
@@ -248,7 +248,7 @@ function ParticlesCanvas() {
     }
 
     // Chicken easter egg
-    const shouldShow4thDecor = Math.random() < 0.1; // 10%
+    const shouldShow4thDecor = Math.random() < 0.06; // 6%
     if (shouldShow4thDecor) {
       imageOverride = [
         {
@@ -268,7 +268,7 @@ function ParticlesCanvas() {
     }
 
     // Dev easter egg
-    const shouldShowCode = Math.random() < 0.05; // 5%
+    const shouldShowCode = Math.random() < 0.03; // 3%
     if (shouldShowCode) {
       imageOverride = [
         {
