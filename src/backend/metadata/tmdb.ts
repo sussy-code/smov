@@ -144,12 +144,16 @@ export function decodeTMDBId(
 
 const baseURL = "https://api.themoviedb.org/3";
 
+const apiKey = conf().TMDB_READ_API_KEY;
+
 const headers = {
   accept: "application/json",
-  Authorization: `Bearer ${conf().TMDB_READ_API_KEY}`,
+  Authorization: `Bearer ${apiKey}`,
 };
 
 async function get<T>(url: string, params?: object): Promise<T> {
+  if (!apiKey) throw new Error("TMDB API key not set");
+
   const res = await mwFetch<any>(encodeURI(url), {
     headers,
     baseURL,

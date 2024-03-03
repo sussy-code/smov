@@ -25,7 +25,7 @@ export function TMDBTestPart() {
       errorText: "",
     });
 
-    if (tmdbApiKey.length === 0) {
+    if (!tmdbApiKey || tmdbApiKey.length === 0) {
       return setStatus({
         hasTested: true,
         success: false,
