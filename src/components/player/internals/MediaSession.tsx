@@ -104,9 +104,15 @@ export function MediaSession() {
     )
       return;
 
-    const title = data.meta?.episode?.title ?? data.meta?.title ?? "";
-    const artist =
-      data.meta?.type === "movie" ? undefined : data.meta?.title ?? "";
+    let title: string | undefined;
+    let artist: string | undefined;
+
+    if (data.meta?.type === "movie") {
+      title = data.meta?.title;
+    } else if (data.meta?.type === "show") {
+      artist = data.meta?.title;
+      title = `S${data.meta?.season?.number} E${data.meta?.episode?.number}: ${data.meta?.episode?.title}`;
+    }
 
     navigator.mediaSession.metadata = new MediaMetadata({
       title,
@@ -170,6 +176,7 @@ export function MediaSession() {
     data.meta?.title,
     data.meta?.type,
     data.meta?.poster,
+    data.meta?.season?.number,
   ]);
   return null;
 }
