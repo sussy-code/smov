@@ -15,5 +15,5 @@ window.__CONFIG__ = {
   VITE_BACKEND_URL: "https://sudo-flix-backend.lol", // "https://mw-backend.lonelil.com",
 
   // A comma separated list of disallowed IDs in the case of a DMCA claim - in the format "series-<id>" and "movie-<id>"
-  VITE_DISALLOWED_IDS: ""
+  VITE_DISALLOWED_IDS: "",
 };

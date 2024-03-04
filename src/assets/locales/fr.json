@@ -118,8 +118,7 @@
       "loading": "Chargement...",
       "noResults": "Nous n'avons rien trouvé !",
       "placeholder": {
-        "default": "Que voulez-vous voir ?",
-        "extra": []
+        "default": "Que voulez-vous voir ?"
       },
       "sectionTitle": "Résultats de la recherche"
     },
@@ -132,7 +131,9 @@
       },
       "morning": {
         "default": "Que voulez-vous regarder ce matin ?",
-        "extra": ["Les films, c'est comme les voyages : ça nous ouvre l'esprit"]
+        "extra": [
+          "Les films, c'est comme les voyages : ça nous ouvre l'esprit"
+        ]
       },
       "night": {
         "default": "Que voulez-vous regarder ce soir ?",
@@ -164,7 +165,7 @@
   },
   "notFound": {
     "badge": "Introuvable",
-    "goHome": "Retourer à l'accueil",
+    "goHome": "Retourner à l'accueil",
     "message": "Nous avons cherché partout : sous les poubelles, dans le placard, derrière le proxy, mais nous n'avons finalement pas trouvé la page que vous cherchez.",
     "title": "Impossible de trouver cette page"
   },

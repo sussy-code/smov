@@ -14,7 +14,7 @@ import { useAuthStore } from "@/stores/auth";
 
 const rem = 16;
 
-function SecureBadge(props: { url: string | undefined }) {
+function SecureBadge(props: { url: string | null }) {
   const { t } = useTranslation();
   const secure = props.url ? props.url.startsWith("https://") : false;
   return (

@@ -57,6 +57,8 @@
       },
       "host": "Te estás conectando a <0>{{hostname}}</0> - por favor, confirma si confías en este antes de crear una cuenta",
       "no": "Regresar",
+      "noHost": "El servidor no se ha configurado, por lo tanto, no puede crear una cuenta",
+      "noHostTitle": "¡El servidor no está configurado!",
       "title": "¿Confías en este servidor?",
       "yes": "Confío en este servidor"
     },
@@ -118,7 +120,12 @@
       "noResults": "¡No pudimos encontrar nada!",
       "placeholder": {
         "default": "¿Qué te gustaría ver?",
-        "extra": []
+        "extra": [
+          "¿Qué quieres explorar?",
+          "¿Qué hay en tu lista de reproducción?",
+          "¿Cuál es tu película favorita?",
+          "¿Cuál es tu serie favorita?"
+        ]
       },
       "sectionTitle": "Resultados de búsqueda"
     },
@@ -131,11 +138,15 @@
       },
       "morning": {
         "default": "¿Qué te gustaría ver esta mañana?",
-        "extra": ["Escuché que “Antes del amanecer” es buena"]
+        "extra": [
+          "Escuché que “Antes del amanecer” es buena"
+        ]
       },
       "night": {
         "default": "¿Qué te gustaría ver esta noche?",
-        "extra": ["¿Cansado? Escuché que “El Exorcista” es buena."]
+        "extra": [
+          "¿Cansado? Escuché que “El Exorcista” es buena."
+        ]
       }
     }
   },
