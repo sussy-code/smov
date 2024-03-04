@@ -179,32 +179,27 @@ function App() {
       )}
       {showDowntime && (
         <div className="relative flex flex-1 flex-col">
+          <Navigation />
           <Helmet>
             <title>{t("downtimeNotice.title")}</title>
           </Helmet>
-          <Navigation />
           <div className="flex h-full flex-1 flex-col items-center justify-center p-5 text-center">
             <ErrorLayout>
               <ErrorContainer>
                 <IconPill icon={Icons.WARNING}>
                   {t("downtimeNotice.badge")}
                 </IconPill>
-
                 <Title>{t("downtimeNotice.title")}</Title>
                 <Paragraph>{t("downtimeNotice.message")}</Paragraph>
-                <Trans
-                  i18nKey="downtimeNotice.timeFrame"
-                  components={{
-                    bold: <span className="text-white font-bold" />,
-                  }}
-                />
-                <Button
-                  onClick={handleButtonClick}
-                  theme="purple"
-                  className="mt-6"
-                >
-                  {t("downtimeNotice.goHome")}
-                </Button>
+                <div className="flex gap-3">
+                  <Button
+                    onClick={handleButtonClick}
+                    theme="purple"
+                    className="mt-6"
+                  >
+                    {t("downtimeNotice.goHome")}
+                  </Button>
+                </div>
               </ErrorContainer>
             </ErrorLayout>
           </div>

@@ -1,6 +1,6 @@
 {
   "about": {
-    "description": "sudo-flix is a fork of movie-web that is ensured to stay up even after the shutdown of movie-web.app, sudo-flix.lol will soon (if not already) use a offshore .ru domain to ensure we do not get suspended. sudo-flix.lol is a namecheap domain that simply points to sudo-flix.ru.",
+    "description": "sudo-flix is a fork of movie-web that is ensured to stay up even after the shutdown of movie-web.app, sudo-flix.lol will soon (if not already) use a offshore .ru domain to ensure we do not get suspended. sudo-flix.lol is a namecheap domain that simply points to sudo-flix.ru. In addition sudo-flix.lol runs on a private self hosted VPS.",
     "faqTitle": "Common questions",
     "q1": {
       "body": "sudo-flix does not host any content. When you click on something to watch, the internet is searched for the selected media (On the loading screen and in the 'video sources' tab you can see which source you're using). Media never gets uploaded by sudo-flix, everything is through this searching mechanism.",
@@ -38,7 +38,7 @@
       "passphrasePlaceholder": "Passphrase",
       "submit": "Login",
       "title": "Login to your account",
-      "validationError": "Incorrect or incomplete passphrase"
+      "validationError": "Incorrect or incomplete passphrase /ᐠ. .ᐟ\\"
     },
     "register": {
       "information": {
@@ -89,7 +89,7 @@
       "dmca": "DMCA",
       "github": "GitHub"
     },
-    "tagline": "Watch your favorite shows and movies with this silly 😛 open source streaming app."
+    "tagline": "Watch your favorite shows and movies for free with no ads ever! (っ'ヮ'c)"
   },
   "global": {
     "name": "sudo-flix",
