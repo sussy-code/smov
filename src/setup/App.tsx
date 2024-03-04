@@ -15,6 +15,8 @@ import {
 import { convertLegacyUrl, isLegacyUrl } from "@/backend/metadata/getmeta";
 import { generateQuickSearchMediaUrl } from "@/backend/metadata/tmdb";
 import { Button } from "@/components/buttons/Button";
+import { Icons } from "@/components/Icon";
+import { IconPill } from "@/components/layout/IconPill";
 import { Navigation } from "@/components/layout/Navigation";
 import { Title } from "@/components/text/Title";
 import { Paragraph } from "@/components/utils/Text";
@@ -184,6 +186,10 @@ function App() {
           <div className="flex h-full flex-1 flex-col items-center justify-center p-5 text-center">
             <ErrorLayout>
               <ErrorContainer>
+                <IconPill icon={Icons.WARNING}>
+                  {t("downtimeNotice.badge")}
+                </IconPill>
+
                 <Title>{t("downtimeNotice.title")}</Title>
                 <Paragraph>{t("downtimeNotice.message")}</Paragraph>
                 <Trans

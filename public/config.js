@@ -9,7 +9,7 @@ window.__CONFIG__ = {
   VITE_DMCA_EMAIL: "sudo-flix@proton.me",
 
   // Whether to disable hash-based routing, leave this as false if you don't know what this is
-  VITE_NORMAL_ROUTER: false,
+  VITE_NORMAL_ROUTER: true,
 
   // The backend URL to communicate with, defaults to the movie-web hosted one at backend.movie-web.app
   VITE_BACKEND_URL: "https://sudo-flix-backend.lol", // "https://mw-backend.lonelil.com",
