@@ -288,7 +288,7 @@ function ParticlesCanvas() {
     }
 
     // Pirate easter egg
-    const shouldShowPirate = Math.random() < 0.9; // 3%
+    const shouldShowPirate = Math.random() < 0.075; // 7.5%
     if (shouldShowPirate) {
       imageOverride = [
         {
