@@ -185,9 +185,9 @@
     "title": "Couldn't find that page"
   },
   "downtimeNotice": {
-    "goHome": "Go home!",
-    "message": "sudo-flix.lol is dedicated to providing its users with the most up-to-date and stable experience in order to do this we must maintain our servers. Expect downtime between the below times.",
-    "timeFrame": "<bold>12:00 AM - 1:00 AM</bold>",
+    "goHome": "Go home",
+    "message": "sudo-flix.lol is dedicated to providing its users with the most up-to-date and stable experience in order to do this we must maintain and update our servers. Expect downtime between the below times.",
+    "timeFrame": "<bold>March 4th 3:00 PM - 3:30 AM</bold>",
     "title": "Maintenance expected"
   },
   "onboarding": {

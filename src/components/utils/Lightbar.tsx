@@ -248,7 +248,7 @@ function ParticlesCanvas() {
     }
 
     // Chicken easter egg
-    const shouldShow4thDecor = Math.random() < 0.06; // 6%
+    const shouldShow4thDecor = Math.random() < 0.08; // 8%
     if (shouldShow4thDecor) {
       imageOverride = [
         {

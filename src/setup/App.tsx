@@ -35,16 +35,6 @@ import { Layout } from "@/setup/Layout";
 import { useHistoryListener } from "@/stores/history";
 import { LanguageProvider } from "@/stores/language";
 
-const isDowntime = true;
-
-function checkDowntime() {
-  const now = new Date();
-  const hour = now.getHours();
-  // Downtime between 12 AM - 1 PM
-  // return isDowntime && hour >= 0 && hour < 1;
-  return true;
-}
-
 const DeveloperPage = lazy(() => import("@/pages/DeveloperPage"));
 const TestView = lazy(() => import("@/pages/developer/TestView"));
 const PlayerView = lazyWithPreload(() => import("@/pages/PlayerView"));
@@ -105,7 +95,7 @@ function App() {
   useHistoryListener();
   useOnlineListener();
   const { t } = useTranslation();
-  const maintenance = false;
+  const maintenance = true;
   const [showDowntime, setShowDowntime] = useState(maintenance);
 
   const handleButtonClick = () => {
