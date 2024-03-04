@@ -437,7 +437,7 @@
           "confirmButton": "Elimina el compte",
           "confirmDescription": "Segur que voleu eliminar el compte? Es perdran totes les dades!",
           "confirmTitle": "Segur?",
-          "text": "esta acció és irreversible. Totes les dades s'eliminaran i no es podrà recuperar res.",
+          "text": "Esta acció és irreversible. Totes les dades s'eliminaran i no es podrà recuperar res.",
           "title": "Elimina el compte"
         },
         "title": "Accions"
