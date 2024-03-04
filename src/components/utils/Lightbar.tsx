@@ -267,6 +267,42 @@ function ParticlesCanvas() {
       imageParticleCount = particleCount / 9;
     }
 
+    // Money easter egg
+    const shouldShowMoney = Math.random() < 0.06; // 6%
+    if (shouldShowMoney) {
+      imageOverride = [
+        {
+          image: "/lightbar-images/money-sack.png",
+          sizeRange: [24, 32] as [number, number],
+        },
+        {
+          image: "/lightbar-images/money.png",
+          sizeRange: [13, 23] as [number, number],
+        },
+        {
+          image: "/lightbar-images/coin.png",
+          sizeRange: [8, 20] as [number, number],
+        },
+      ];
+      imageParticleCount = particleCount / 8.45;
+    }
+
+    // Pirate easter egg
+    const shouldShowPirate = Math.random() < 0.9; // 3%
+    if (shouldShowPirate) {
+      imageOverride = [
+        {
+          image: "/lightbar-images/skull.png",
+          sizeRange: [20, 28] as [number, number],
+        },
+        {
+          image: "/lightbar-images/ship.png",
+          sizeRange: [23, 27] as [number, number],
+        },
+      ];
+      imageParticleCount = particleCount / 10;
+    }
+
     // Dev easter egg
     const shouldShowCode = Math.random() < 0.03; // 3%
     if (shouldShowCode) {
