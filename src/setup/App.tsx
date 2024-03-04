@@ -191,6 +191,17 @@ function App() {
                 </IconPill>
                 <Title>{t("downtimeNotice.title")}</Title>
                 <Paragraph>{t("downtimeNotice.message")}</Paragraph>
+                <Trans
+                  i18nKey="downtimeNotice.timeFrame"
+                  components={{
+                    bold: (
+                      <span
+                        className="font-bold"
+                        style={{ color: "#cfcfcf" }}
+                      />
+                    ),
+                  }}
+                />
                 <div className="flex gap-3">
                   <Button
                     onClick={handleButtonClick}
