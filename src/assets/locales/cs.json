@@ -116,27 +116,24 @@
       "failed": "Nepodařilo se najít média, zkuste to znovu!",
       "loading": "Načítání...",
       "noResults": "Nemohli jsme nic najít!",
-      "placeholder": "Co si přejete sledovat?",
+      "placeholder": {
+        "default": "Co si přejete sledovat?",
+        "extra": []
+      },
       "sectionTitle": "Výsledky vyhledávání"
     },
     "titles": {
       "day": {
         "default": "Na co byste se chtěli dnes odpoledne dívat?",
-        "extra": [
-          "Chceš zažít dobrodružství? Jurský Park je pro tebe."
-        ]
+        "extra": ["Chceš zažít dobrodružství? Jurský Park je pro tebe."]
       },
       "morning": {
         "default": "Na co byste se chtěli dnes ráno dívat?",
-        "extra": [
-          "Slyšel jsem, že Před úsvitem je super."
-        ]
+        "extra": ["Slyšel jsem, že Před úsvitem je super."]
       },
       "night": {
         "default": "Na co byste se chtěli dnes večer dívat?",
-        "extra": [
-          "Unaven? Slyšel jsem, že Vymítač ďábla je super."
-        ]
+        "extra": ["Unaven? Slyšel jsem, že Vymítač ďábla je super."]
       }
     }
   },
@@ -177,6 +174,8 @@
       "back": "Zpět",
       "explainer": "Pomocí rozšíření prohlížeče můžete získat nejlepší streamy, které nabízíme. S pouhou instalací.",
       "extensionHelp": "Pokud jste rozšíření nainstalovali, ale nebylo zjištěno. <bold>Otevřete rozšíření pomocí nabídky rozšíření ve vašem prohlížeči</bold> a postupujte podle pokynů na obrazovce.",
+      "linkChrome": "Instalovat rozšíření pro Chrome",
+      "linkFirefox": "Instalovat rozšíření pro Firefox",
       "status": {
         "disallowed": "Rozšíření není pro tuto stránku povoleno",
         "disallowedAction": "Povolit rozšíření",
@@ -238,7 +237,6 @@
     "menus": {
       "downloads": {
         "disclaimer": "Stahování probíhá přímo u poskytovatele. movie-web nemá kontrolu nad tím, jak jsou stahování poskytovány.",
-        "downloadPlaylist": "Stáhnout playlist",
         "downloadSubtitle": "Stáhnout aktuální titulky",
         "downloadVideo": "Stáhnout video",
         "hlsDisclaimer": "Stahování probíhá přímo u poskytovatele. movie-web nemá kontrolu nad tím, jak jsou stahování poskytovány.<br /><br />Vezměte prosím na vědomí, že stahujete HLS playlist,<bold> který není doporučen stahovat pokud nejste obeznámeni s pokročilým streamováním médií</bold>. Raději skuste jiný zdroj pro jiný formát.",

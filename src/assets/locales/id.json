@@ -115,7 +115,10 @@
       "failed": "Gagal menemukan media, coba lagi!",
       "loading": "Memuat...",
       "noResults": "Kami tidak dapat menemukan apapun!",
-      "placeholder": "Apa yang ingin anda tonton?",
+      "placeholder": {
+        "default": "Apa yang ingin anda tonton?",
+        "extra": []
+      },
       "sectionTitle": "Hasil pencarian"
     },
     "titles": {
@@ -127,15 +130,11 @@
       },
       "morning": {
         "default": "Apa yang ingin anda tonton pagi ini?",
-        "extra": [
-          "Kayaknya film Before Sunrise bagus deh"
-        ]
+        "extra": ["Kayaknya film Before Sunrise bagus deh"]
       },
       "night": {
         "default": "Apa yang ingin anda tonton malam ini?",
-        "extra": [
-          "Capek? Katanya The Exocist rekomended."
-        ]
+        "extra": ["Capek? Katanya The Exocist rekomended."]
       }
     }
   },
@@ -179,7 +178,6 @@
     "menus": {
       "downloads": {
         "disclaimer": "Tautan unduhan diambil langsung dari penyedia pihak ketiga. Aplikasi ini tidak memiliki kendali bagaimana unduhan disediakan.",
-        "downloadPlaylist": "Unduh playlist",
         "downloadSubtitle": "Unduh subtitle",
         "downloadVideo": "Unduh media",
         "hlsDisclaimer": "Tautan unduhan diambil langsung dari penyedia pihak ketiga. Aplikasi ini tidak memiliki kendali bagaimana unduhan disediakan. Harap diperhatikan, anda akan mengunduh HLS playlist, media ini hanya ditunjukan bagi pengguna tingkat lanjut.",

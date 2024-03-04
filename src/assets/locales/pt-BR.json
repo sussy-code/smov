@@ -116,7 +116,10 @@
       "failed": "Falha ao encontrar mídia, tente novamente!",
       "loading": "Carregando...",
       "noResults": "Não conseguimos encontrar nada!",
-      "placeholder": "O que você quer assistir?",
+      "placeholder": {
+        "default": "O que você quer assistir?",
+        "extra": []
+      },
       "sectionTitle": "Resultados da pesquisa"
     },
     "titles": {
@@ -128,15 +131,11 @@
       },
       "morning": {
         "default": "O que você gostaria de assistir esta manhã?",
-        "extra": [
-          "Ouvi dizer que Antes do Amanhecer é bom"
-        ]
+        "extra": ["Ouvi dizer que Antes do Amanhecer é bom"]
       },
       "night": {
         "default": "O que você gostaria de assistir esta noite?",
-        "extra": [
-          "Cansado? Ouvi dizer que O Exorcista é bom."
-        ]
+        "extra": ["Cansado? Ouvi dizer que O Exorcista é bom."]
       }
     }
   },
@@ -242,8 +241,8 @@
     },
     "menus": {
       "downloads": {
+        "copyHlsPlaylist": "Copiar link da playlist HLS",
         "disclaimer": "Os downloads são feitos diretamente do provedor. movie-web não tem controle sobre como os downloads são fornecidos.",
-        "downloadPlaylist": "Baixar playlist",
         "downloadSubtitle": "Baixar legenda atual",
         "downloadVideo": "Baixar vídeo",
         "hlsDisclaimer": "Os downloads são feitos diretamente do provedor. movie-web não tem controle sobre como os downloads são fornecidos.<br /><br />Por favor, note que você está baixando uma playlist HLS, <bold>isso é destinado para usuários familiarizados com streaming multimídia avançado.</bold>. Experimente outras fontes para formatos diferentes.",

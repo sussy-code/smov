@@ -95,6 +95,7 @@
       "about": "Hakkında",
       "dmca": "DMCA",
       "login": "Giriş yap",
+      "onboarding": "Kur",
       "pagetitle": "{{title}} - movie-web",
       "register": "Kayıt ol",
       "settings": "Ayarlar"
@@ -115,7 +116,10 @@
       "failed": "Medya bulunamadı, tekrar deneyin!",
       "loading": "Yükleniyor...",
       "noResults": "Hiçbir şey bulamadık!",
-      "placeholder": "Ne izlemek istersiniz?",
+      "placeholder": {
+        "default": "Ne izlemek istersiniz?",
+        "extra": []
+      },
       "sectionTitle": "Arama sonuçları"
     },
     "titles": {
@@ -127,15 +131,11 @@
       },
       "morning": {
         "default": "Bu sabah ne izlemek istersiniz?",
-        "extra": [
-          "Before Sunrise'a iyi diyorlar"
-        ]
+        "extra": ["Before Sunrise'a iyi diyorlar"]
       },
       "night": {
         "default": "Bu akşam ne izlemek istersiniz?",
-        "extra": [
-          "Yoruldun mu? The Exorcist'e iyi diyorlar."
-        ]
+        "extra": ["Yoruldun mu? The Exorcist'e iyi diyorlar."]
       }
     }
   },
@@ -179,7 +179,6 @@
     "menus": {
       "downloads": {
         "disclaimer": "İndirme bağlantıları doğrudan sağlayıcının kendisinden alınır. movie-web'in sağlanan indirme bağlantıları üzerinde hiçbir konrolü yoktur.",
-        "downloadPlaylist": "Oynatma listesini indir",
         "downloadSubtitle": "Geçerli altyazıyı indir",
         "downloadVideo": "Videoyu indir",
         "hlsDisclaimer": "İndirme bağlantıları doğrudan sağlayıcının kendisinden alınır. movie-web'in sağlanan indirme bağlantıları üzerinde hiçbir konrolü yoktur. Lütfen bir HLS oynatma listesi indirdiğinizi unutmayın; bu, gelişmiş multimedya akışına aşina olan kullanıcılara yöneliktir.",

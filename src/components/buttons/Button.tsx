@@ -31,10 +31,16 @@ export function Button(props: Props) {
       >,
     ) => {
       if (loading) return;
-      if (href && !onClick) navigate(href);
-      else onClick?.(event);
+      if (href && !onClick) {
+        event.preventDefault();
+        if (!href.includes("http")) {
+          navigate(href);
+        } else {
+          window.open(href, "_blank", "noreferrer");
+        }
+      } else onClick?.(event);
     },
-    [onClick, href, navigate, loading],
+    [loading, href, onClick, navigate],
   );
 
   let colorClasses = "bg-white hover:bg-gray-200 text-black";

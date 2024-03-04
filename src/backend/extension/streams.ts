@@ -1,6 +1,6 @@
 import { Stream } from "@movie-web/providers";
 
-import { setDomainRule } from "@/backend/extension/messaging";
+import { RULE_IDS, setDomainRule } from "@/backend/extension/messaging";
 
 function extractDomain(url: string): string | null {
   try {
@@ -36,7 +36,7 @@ function buildHeadersFromStream(stream: Stream): Record<string, string> {
 
 export async function prepareStream(stream: Stream) {
   await setDomainRule({
-    ruleId: 1,
+    ruleId: RULE_IDS.PREPARE_STREAM,
     targetDomains: extractDomainsFromStream(stream),
     requestHeaders: buildHeadersFromStream(stream),
   });

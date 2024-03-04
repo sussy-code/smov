@@ -16,6 +16,7 @@ export function SettingsSyncer() {
   useEffect(() => {
     const interval = setInterval(() => {
       (async () => {
+        if (!url) return;
         const state = useSubtitleStore.getState();
         const user = useAuthStore.getState();
         if (state.lastSync.lastSelectedLanguage === state.lastSelectedLanguage)

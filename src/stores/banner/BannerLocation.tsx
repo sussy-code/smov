@@ -10,6 +10,7 @@ export function Banner(props: {
   id: string;
 }) {
   const [ref] = useRegisterBanner<HTMLDivElement>(props.id);
+  const hideBanner = useBannerStore((s) => s.hideBanner);
   const styles = {
     error: "bg-[#C93957] text-white",
   };
@@ -29,6 +30,12 @@ export function Banner(props: {
           <Icon icon={icons[props.type]} />
           <div>{props.children}</div>
         </div>
+        <span
+          className="absolute right-4 hover:cursor-pointer"
+          onClick={() => hideBanner(props.id, true)}
+        >
+          <Icon icon={Icons.X} />
+        </span>
       </div>
     </div>
   );
@@ -38,6 +45,7 @@ export function BannerLocation(props: { location?: string }) {
   const { t } = useTranslation();
   const isOnline = useBannerStore((s) => s.isOnline);
   const setLocation = useBannerStore((s) => s.setLocation);
+  const ignoredBannerIds = useBannerStore((s) => s.ignoredBannerIds);
   const currentLocation = useBannerStore((s) => s.location);
   const loc = props.location ?? null;
 
@@ -53,7 +61,7 @@ export function BannerLocation(props: { location?: string }) {
 
   return (
     <div>
-      {!isOnline ? (
+      {!isOnline && !ignoredBannerIds.includes("offline") ? (
         <Banner id="offline" type="error">
           {t("navigation.banner.offline")}
         </Banner>

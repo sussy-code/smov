@@ -57,6 +57,8 @@
       },
       "host": "Je gaat zo verbinden met <0>{{hostname}}</0>, check even of je deze link vertrouwt",
       "no": "Vorige pagina",
+      "noHost": "De server is nog niet geconfigureerd, daarom kunt u geen account aanmaken",
+      "noHostTitle": "Server niet geconfigureerd!",
       "title": "Vertrouw je deze server?",
       "yes": "Ik vertrouw deze server"
     },
@@ -116,7 +118,15 @@
       "failed": "Het is niet gelukt de media te laden, probeer het nog eens!",
       "loading": "Aan het zoeken...",
       "noResults": "We konden helaas niets vinden!",
-      "placeholder": "Wat wil je graag kijken?",
+      "placeholder": {
+        "default": "Wat wil je graag kijken?",
+        "extra": [
+          "Wat wil je verkennen?",
+          "Wat staat er op jouw kijklijst?",
+          "Wat is jouw favoriete film?",
+          "Wat is jouw favoriete serie?"
+        ]
+      },
       "sectionTitle": "Zoekresultaten"
     },
     "titles": {
@@ -177,10 +187,10 @@
       "back": "Terug",
       "explainer": "Door gebruik te maken van de browserextensie kun je de beste streams krijgen. Met slechts een eenvoudige installatie.",
       "explainerIos": "Helaas, de browserextensie is niet ondersteund op iOS. Druk op <bold>Terug</bold> om een andere optie te kiezen.",
-      "extensionHelp": "Als je de extensie hebt geïnstalleerd maar niet wordt gedetecteerd, <bold>Open dan de extensie via het extensies menu in je browser</bold> en volg de stappen op het scherm.",
+      "extensionHelp": "Als je de extensie hebt geïnstalleerd maar niet wordt gedetecteerd, <bold>open dan de extensie via het extensies menu in je browser</bold> en volg de stappen op het scherm.",
       "linkChrome": "Installeer de Chrome-extensie",
       "linkFirefox": "Installeer de Firefox-extensie",
-      "notDetecting": "Geïnstalleerd op Chrome maar wordt niet weergegeven? Probeer de pagina opnieuw te laden!",
+      "notDetecting": "Geïnstalleerd op Chrome, maar de site detecteert het niet? Probeer de pagina opnieuw te laden!",
       "notDetectingAction": "Pagina opnieuw laden",
       "status": {
         "disallowed": "Extensie is niet ingeschakeld voor deze pagina",
@@ -208,7 +218,7 @@
       "title": "Laten we een nieuwe proxy instellen"
     },
     "start": {
-      "explainer": "Om de beste mogelijke streams te krijgen, moet je kiezen welke streamingmethode je wilt gebruiken.",
+      "explainer": "Om de beste streams mogelijk te krijgen, moet je kiezen welke streammethode je wilt gebruiken.",
       "options": {
         "default": {
           "text": "Ik wil geen streams van goede kwaliteit, <0 /> <1>Gebruik de standaardinstellingen.</1>"
@@ -242,8 +252,8 @@
     },
     "menus": {
       "downloads": {
+        "copyHlsPlaylist": "HLS-afspeellijstlink kopiëren",
         "disclaimer": "Downloads worden direct bij de bron opgehaald. movie-web heeft geen controle over het bestand dat je ontvangt.",
-        "downloadPlaylist": "Afspeellijst downloaden",
         "downloadSubtitle": "Download huidige ondertiteling",
         "downloadVideo": "Download filmpje",
         "hlsDisclaimer": "Downloads worden rechtstreeks van de aanbieder gehaald. movie-web heeft geen controle over de manier waarop de downloads worden aangeboden.<br /><br />Houd er rekening mee dat u nu een HLS-afspeellijst downloadt, het wordt <bold>afgeraden deze te downloaden als u niet bekend bent met geavanceerde streamingbestandstypen</bold>. Probeer verschillende bronnen voor verschillende streamingbestandstypen.",

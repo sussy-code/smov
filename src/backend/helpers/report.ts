@@ -5,13 +5,14 @@ import { useCallback } from "react";
 
 import { isExtensionActiveCached } from "@/backend/extension/messaging";
 import { ScrapingItems, ScrapingSegment } from "@/hooks/useProviderScrape";
+import { BACKEND_URL } from "@/setup/constants";
 import { useAuthStore } from "@/stores/auth";
 import { PlayerMeta } from "@/stores/player/slices/source";
 
 // for anybody who cares - these are anonymous metrics.
 // They are just used for figuring out if providers are broken or not
-const metricsEndpoint = "https://backend.movie-web.app/metrics/providers";
-const captchaMetricsEndpoint = "https://backend.movie-web.app/metrics/captcha";
+const metricsEndpoint = `${BACKEND_URL}/metrics/providers`;
+const captchaMetricsEndpoint = `${BACKEND_URL}/metrics/captcha`;
 const batchId = () => nanoid(32);
 
 export type ProviderMetric = {
@@ -44,6 +45,7 @@ function getStackTrace(error: Error, lines: number) {
 }
 
 export async function reportProviders(items: ProviderMetric[]): Promise<void> {
+  if (!BACKEND_URL) return;
   return ofetch(metricsEndpoint, {
     method: "POST",
     body: {
@@ -156,6 +158,7 @@ export function useReportProviders() {
 }
 
 export function reportCaptchaSolve(success: boolean) {
+  if (!BACKEND_URL) return;
   ofetch(captchaMetricsEndpoint, {
     method: "POST",
     body: {

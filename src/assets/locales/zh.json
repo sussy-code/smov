@@ -42,8 +42,8 @@
     },
     "register": {
       "information": {
-        "color1": "头像配色 1",
-        "color2": "头像配色 2",
+        "color1": "头像配色一",
+        "color2": "头像配色二",
         "header": "为您的设备输入名称，并选取一组代表色和一个用户图标",
         "icon": "用户图标",
         "next": "下一步",
@@ -57,6 +57,8 @@
       },
       "host": "您正在连接到 <0>{{hostname}}</0> - 在创建账户前，确保您信任它",
       "no": "返回",
+      "noHost": "服务器尚未进行配置，因此您无法创建账户",
+      "noHostTitle": "未配置服务器！",
       "title": "您是否信任这个服务器？",
       "yes": "我信任这个服务器"
     },
@@ -71,11 +73,11 @@
     }
   },
   "errors": {
-    "badge": "它已损坏",
+    "badge": "坏了",
     "details": "错误细节",
     "reloadPage": "刷新页面",
     "showError": "显示错误细节",
-    "title": "我们遭遇到错误！"
+    "title": "我们遇到了错误！"
   },
   "footer": {
     "legal": {
@@ -116,7 +118,15 @@
       "failed": "查找媒体失败，请重试！",
       "loading": "载入中……",
       "noResults": "我们找不到任何结果！",
-      "placeholder": "您想看些什么？",
+      "placeholder": {
+        "default": "您想看些什么？",
+        "extra": [
+          "您想探索些什么？",
+          "您的片单上都有啥？",
+          "您最喜欢的影片是什么？",
+          "您最喜欢的剧目是什么？"
+        ]
+      },
       "sectionTitle": "搜索结果"
     },
     "titles": {
@@ -242,8 +252,8 @@
     },
     "menus": {
       "downloads": {
+        "copyHlsPlaylist": "复制 HLS 播放列表链接",
         "disclaimer": "下载内容是直接从内容提供者获取的。movie-web 无法控制下载内容如何被提供。",
-        "downloadPlaylist": "下载播放列表",
         "downloadSubtitle": "下载当前字幕",
         "downloadVideo": "下载视频",
         "hlsDisclaimer": "下载内容是直接从内容提供者获取的。movie-web 无法控制下载内容如何被提供。<br /><br />请注意，您正在下载 HLS 播放列表，<bold>如您不熟悉高级流媒体格式，我们不推荐此操作</bold>。如需下载其他格式，请尝试切换视频源。",
