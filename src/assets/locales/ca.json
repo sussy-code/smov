@@ -98,7 +98,7 @@
       "dmca": "DMCA",
       "login": "Inicia sessió",
       "onboarding": "Configura",
-      "pagetitle": "{{title}} - movie-web",
+      "pagetitle": "{{title}} - sudo-flix",
       "register": "Registra",
       "settings": "Configuració"
     }
@@ -138,15 +138,11 @@
       },
       "morning": {
         "default": "Què us agradaria mirar aquest matí?",
-        "extra": [
-          "He sentit que «Abans de l'alba» és bona"
-        ]
+        "extra": ["He sentit que «Abans de l'alba» és bona"]
       },
       "night": {
         "default": "Què us agradaria mirar aquesta nit?",
-        "extra": [
-          "Esteu cansat? He sentit que «L'exorcista» és bona."
-        ]
+        "extra": ["Esteu cansat? He sentit que «L'exorcista» és bona."]
       }
     }
   },
@@ -236,7 +232,7 @@
           "title": "Servidor intermediari personalitzat"
         }
       },
-      "title": "Configurem el movie-web"
+      "title": "Configurem el sudo-flix"
     }
   },
   "overlays": {
@@ -253,10 +249,10 @@
     "menus": {
       "downloads": {
         "copyHlsPlaylist": "Copia l'enllaç de la llista HLS",
-        "disclaimer": "Les baixades s'obtenen directament del proveïdor. movie-web no té control sobre com es proporcionen les baixades.",
+        "disclaimer": "Les baixades s'obtenen directament del proveïdor. sudo-flix no té control sobre com es proporcionen les baixades.",
         "downloadSubtitle": "Baixa els subtítols actuals",
         "downloadVideo": "Baixa el vídeo",
-        "hlsDisclaimer": "Les baixades s'obtenen directament del proveïdor. movie-web no té control sobre com es proporcionen les baixades. <br /><br />Tingueu en compte que esteu baixant una llista de reproducció HLS, <bold>no es recomana baixar-la si no esteu familiaritzat amb formats de transmissió avançats</bold>. Proveu diferents fonts per a diferents formats.",
+        "hlsDisclaimer": "Les baixades s'obtenen directament del proveïdor. sudo-flix no té control sobre com es proporcionen les baixades. <br /><br />Tingueu en compte que esteu baixant una llista de reproducció HLS, <bold>no es recomana baixar-la si no esteu familiaritzat amb formats de transmissió avançats</bold>. Proveu diferents fonts per a diferents formats.",
         "onAndroid": {
           "1": "Per a baixar-lo a Android, feu clic al botó de baixada i, a la pàgina nova, <bold>manteniu premut</bold> el vídeo i, a continuació, seleccioneu <bold>Desa</bold>.",
           "shortTitle": "Baixa / Android",
