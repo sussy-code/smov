@@ -97,7 +97,7 @@ function App() {
   useHistoryListener();
   useOnlineListener();
   const { t } = useTranslation();
-  const maintenance = true;
+  const maintenance = false;
   const [showDowntime, setShowDowntime] = useState(maintenance);
 
   const handleButtonClick = () => {
