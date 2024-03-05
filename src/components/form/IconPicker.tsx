@@ -3,9 +3,7 @@ import classNames from "classnames";
 import { UserIcon, UserIcons } from "../UserIcon";
 
 const icons = [
-  // UserIcons.CAT,
-  // UserIcons.DESKTOP,
-  // UserIcons.STORM,
+  UserIcons.CAT,
   UserIcons.WEED,
   UserIcons.USER_GROUP,
   UserIcons.COUCH,
