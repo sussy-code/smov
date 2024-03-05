@@ -12,7 +12,7 @@
     },
     "q3": {
       "body": "Nuestros resultados de búsqueda están alimentados por The Movie Database (TMDB) y se muestran independientemente de si nuestras fuentes realmente tienen el contenido.",
-      "title": "Los resultados de búsqueda muestran la serie o película, ¿por qué no puedo reproducirla?"
+      "title": "Los resultados de búsqueda muestran la serie o película, ¿Por qué no puedo reproducirla?"
     },
     "title": "Acerca de movie-web"
   },
@@ -181,7 +181,7 @@
       "cancel": "Cancelar",
       "confirm": "Usar configuración por defecto",
       "description": "La configuración predeterminada no tiene las mejores transmisiones y puede ser insoportablemente lenta.",
-      "title": "Estás seguro?"
+      "title": "¿Estás seguro?"
     },
     "extension": {
       "back": "Volver atrás",
@@ -399,7 +399,7 @@
       "shortRemaining": "-{{timeLeft}}"
     },
     "turnstile": {
-      "description": "Por favor, confirma que eres humano completando el Captcha. Esto es para mantener movie-web seguro!",
+      "description": "Por favor, confirma que eres humano completando el Captcha. ¡Esto es para mantener movie-web seguro!",
       "error": "Ha habido un error al verificar tu humanidad. Por favor, prueba de nuevo.",
       "title": "Necesitamos verificar que eres humano.",
       "verifyingHumanity": "Verificando tu hunanidad…"
@@ -494,7 +494,7 @@
         "redoSetup": "Rehacer configuración",
         "successStatus": {
           "description": "Todo lo necesario está en su sitio para que empieces a ver tu contenido favorito.",
-          "title": "Todo está configurado!"
+          "title": "¡Todo está configurado!"
         },
         "unsetStatus": {
           "description": "Haga clic en el botón a la derecha para iniciar el proceso de configuración.",
