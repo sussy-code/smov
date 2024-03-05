@@ -106,11 +106,11 @@ function App() {
 
   useEffect(() => {
     const sessionToken = sessionStorage.getItem("downtimeToken");
-    if (!sessionToken) {
+    if (!sessionToken && maintenance) {
       setShowDowntime(true);
       sessionStorage.setItem("downtimeToken", "true");
     }
-  }, [setShowDowntime]);
+  }, [setShowDowntime, maintenance]);
 
   return (
     <Layout>
