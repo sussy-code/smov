@@ -4,6 +4,7 @@ import {
   DISCORD_LINK,
   DONATION_LINK,
   GITHUB_LINK,
+  TWITTER_LINK,
 } from "./constants";
 
 interface Config {
@@ -12,6 +13,7 @@ interface Config {
   DONATION_LINK: string;
   DISCORD_LINK: string;
   DMCA_EMAIL: string;
+  TWITTER_LINK: string;
   TMDB_READ_API_KEY: string;
   CORS_PROXY_URL: string;
   NORMAL_ROUTER: boolean;
@@ -31,6 +33,7 @@ export interface RuntimeConfig {
   DONATION_LINK: string;
   DISCORD_LINK: string;
   DMCA_EMAIL: string | null;
+  TWITTER_LINK: string;
   TMDB_READ_API_KEY: string | null;
   NORMAL_ROUTER: boolean;
   PROXY_URLS: string[];
@@ -50,6 +53,7 @@ const env: Record<keyof Config, undefined | string> = {
   GITHUB_LINK: undefined,
   DONATION_LINK: undefined,
   DISCORD_LINK: undefined,
+  TWITTER_LINK: undefined,
   ONBOARDING_CHROME_EXTENSION_INSTALL_LINK:
     "https://chrome.google.com/webstore/detail/movie-web-extension/hoffoikpiofojilgpofjhnkkamfnnhmm?hl=en-GB",
   ONBOARDING_FIREFOX_EXTENSION_INSTALL_LINK: import.meta.env
@@ -91,6 +95,7 @@ export function conf(): RuntimeConfig {
     GITHUB_LINK,
     DONATION_LINK,
     DISCORD_LINK,
+    TWITTER_LINK,
     DMCA_EMAIL: getKey("DMCA_EMAIL"),
     ONBOARDING_CHROME_EXTENSION_INSTALL_LINK: getKey(
       "ONBOARDING_CHROME_EXTENSION_INSTALL_LINK",

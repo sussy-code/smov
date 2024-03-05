@@ -1,7 +1,5 @@
 import { Analytics } from "@vercel/analytics/react";
 import { ReactElement, Suspense, lazy, useEffect, useState } from "react";
-import { Helmet } from "react-helmet-async";
-import { Trans, useTranslation } from "react-i18next";
 import { lazyWithPreload } from "react-lazy-with-preload";
 import {
   Navigate,
@@ -14,20 +12,14 @@ import {
 
 import { convertLegacyUrl, isLegacyUrl } from "@/backend/metadata/getmeta";
 import { generateQuickSearchMediaUrl } from "@/backend/metadata/tmdb";
-import { Button } from "@/components/buttons/Button";
-import { Icons } from "@/components/Icon";
-import { IconPill } from "@/components/layout/IconPill";
-import { Navigation } from "@/components/layout/Navigation";
-import { Title } from "@/components/text/Title";
-import { Paragraph } from "@/components/utils/Text";
 import { useOnlineListener } from "@/hooks/usePing";
 import { AboutPage } from "@/pages/About";
 import { AdminPage } from "@/pages/admin/AdminPage";
 import VideoTesterView from "@/pages/developer/VideoTesterView";
 import { DmcaPage, shouldHaveDmcaPage } from "@/pages/Dmca";
+import MaintenancePage from "@/pages/errors/MaintenancePage";
 import { NotFoundPage } from "@/pages/errors/NotFoundPage";
 import { HomePage } from "@/pages/HomePage";
-import { ErrorContainer, ErrorLayout } from "@/pages/layouts/ErrorLayout";
 import { LoginPage } from "@/pages/Login";
 import { OnboardingPage } from "@/pages/onboarding/Onboarding";
 import { OnboardingExtensionPage } from "@/pages/onboarding/OnboardingExtension";
@@ -96,8 +88,7 @@ function QueryView() {
 function App() {
   useHistoryListener();
   useOnlineListener();
-  const { t } = useTranslation();
-  const maintenance = false;
+  const maintenance = false; // Changing to true shows maintenance page
   const [showDowntime, setShowDowntime] = useState(maintenance);
 
   const handleButtonClick = () => {
@@ -178,43 +169,7 @@ function App() {
         </Routes>
       )}
       {showDowntime && (
-        <div className="relative flex flex-1 flex-col">
-          <Navigation />
-          <Helmet>
-            <title>{t("downtimeNotice.title")}</title>
-          </Helmet>
-          <div className="flex h-full flex-1 flex-col items-center justify-center p-5 text-center">
-            <ErrorLayout>
-              <ErrorContainer>
-                <IconPill icon={Icons.WARNING}>
-                  {t("downtimeNotice.badge")}
-                </IconPill>
-                <Title>{t("downtimeNotice.title")}</Title>
-                <Paragraph>{t("downtimeNotice.message")}</Paragraph>
-                <Trans
-                  i18nKey="downtimeNotice.timeFrame"
-                  components={{
-                    bold: (
-                      <span
-                        className="font-bold"
-                        style={{ color: "#cfcfcf" }}
-                      />
-                    ),
-                  }}
-                />
-                <div className="flex gap-3">
-                  <Button
-                    onClick={handleButtonClick}
-                    theme="purple"
-                    className="mt-6"
-                  >
-                    {t("downtimeNotice.goHome")}
-                  </Button>
-                </div>
-              </ErrorContainer>
-            </ErrorLayout>
-          </div>
-        </div>
+        <MaintenancePage onHomeButtonClick={handleButtonClick} />
       )}
       <Analytics />
     </Layout>

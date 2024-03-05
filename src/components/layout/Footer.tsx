@@ -58,6 +58,7 @@ function Dmca() {
 
 export function Footer() {
   const { t } = useTranslation();
+  const TWITTER_LINK = "https://twitter.com/SudoFlix";
 
   return (
     <footer className="mt-16 border-t border-type-divider py-16 md:py-8">
@@ -80,6 +81,9 @@ export function Footer() {
           </FooterLink>
           <FooterLink icon={Icons.DISCORD} href={conf().DISCORD_LINK}>
             {t("footer.links.discord")}
+          </FooterLink>
+          <FooterLink icon={Icons.TWITTER} href={conf().TWITTER_LINK}>
+            {t("footer.links.twitter")}
           </FooterLink>
           <div className="inline md:hidden">
             <Dmca />
