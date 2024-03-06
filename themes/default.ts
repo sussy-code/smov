@@ -105,6 +105,11 @@ export const defaultTheme = {
         accentB: tokens.blue.c300,
       },
 
+      // Modals
+      modal: {
+        background: tokens.shade.c800,
+      },
+
       // light bar
       lightBar: {
         light: tokens.blue.c400,
@@ -244,10 +249,6 @@ export const defaultTheme = {
         good: tokens.purple.c100,
         best: tokens.semantic.yellow.c100,
         link: tokens.purple.c100,
-      },
-
-      utils: {
-        divider: tokens.ash.c300,
       },
 
       // Error page
