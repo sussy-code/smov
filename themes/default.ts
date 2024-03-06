@@ -77,7 +77,7 @@ const tokens = {
     c400: "#272741",
     c500: "#1E1E32",
     c600: "#171728",
-    c700: "#000000",
+    c700: "#131322",
     c800: "#0F0F1B",
     c900: "#0A0A12",
   },
@@ -94,20 +94,17 @@ export const defaultTheme = {
 
       // Branding
       pill: {
-        background: tokens.shade.c400,
-        backgroundHover: tokens.shade.c500,
+        background: tokens.shade.c300,
+        backgroundHover: tokens.shade.c200,
         highlight: tokens.blue.c200,
+
+        activeBackground: tokens.shade.c300,
       },
 
       // meta data for the theme itself
       global: {
         accentA: tokens.blue.c200,
         accentB: tokens.blue.c300,
-      },
-
-      // Modals
-      modal: {
-        background: tokens.shade.c800,
       },
 
       // light bar
@@ -143,6 +140,11 @@ export const defaultTheme = {
         accentB: tokens.blue.c500,
       },
 
+      // Modals
+      modal: {
+        background: tokens.shade.c800,
+      },
+
       // typography
       type: {
         logo: tokens.purple.c100,
@@ -152,6 +154,7 @@ export const defaultTheme = {
         divider: tokens.ash.c500,
         secondary: tokens.ash.c100,
         danger: tokens.semantic.red.c100,
+        success: tokens.semantic.green.c100,
         link: tokens.purple.c100,
         linkHover: tokens.purple.c50,
       },
@@ -159,6 +162,7 @@ export const defaultTheme = {
       // search bar
       search: {
         background: tokens.shade.c500,
+        hoverBackground: tokens.shade.c600,
         focused: tokens.shade.c400,
         placeholder: tokens.shade.c100,
         icon: tokens.shade.c100,
