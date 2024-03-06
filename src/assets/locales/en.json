@@ -379,7 +379,7 @@
     },
     "nextEpisode": {
       "cancel": "Cancel",
-      "next": "Next episode ⛱"
+      "next": "Next episode!"
     },
     "playbackError": {
       "badge": "Playback error",
@@ -530,7 +530,7 @@
     },
     "preferences": {
       "language": "Application language",
-      "languageDescription": "Language applied to the entire application, only some languages have silly stuff 🙁.",
+      "languageDescription": "Language applied to the entire application, only English has silly stuff 🙁.",
       "thumbnail": "Generate thumbnails",
       "thumbnailDescription": "Most of the time, videos don't have thumbnails. You can enable this setting to generate them on the fly but they can make your video slower.",
       "thumbnailLabel": "Generate thumbnails",
