@@ -1,6 +1,6 @@
 {
   "about": {
-    "description": "sudo-flix is a fork of movie-web that is ensured to stay up even after the shutdown of movie-web.app, sudo-flix.lol will soon (if not already) use a offshore .ru domain to ensure we do not get suspended. sudo-flix.lol is a namecheap domain that simply points to sudo-flix.ru. In addition sudo-flix.lol runs on a private self hosted VPS.",
+    "description": "sudo-flix is a fork of movie-web that is ensured to stay up even after the shutdown of movie-web.app. sudo-flix.lol runs on a private, self-hosted VPS. I run this site at a loss; there are no ads due to my beliefs in free media.",
     "faqTitle": "Common questions",
     "q1": {
       "body": "sudo-flix does not host any content. When you click on something to watch, the internet is searched for the selected media (On the loading screen and in the 'video sources' tab you can see which source you're using). Media never gets uploaded by sudo-flix, everything is through this searching mechanism.",
@@ -13,6 +13,14 @@
     "q3": {
       "body": "Our search results are powered by The Movie Database (TMDB) and display regardless of whether our sources actually have the content.",
       "title": "The search results display the show or movie, why can't I play it?"
+    },
+    "q4": {
+      "body": "All data is synced to the sudo-backend which is different than the community backend and is independently hosted by me, anyone is free to use this as well.",
+      "title": "What about my data and stuff?"
+    },
+    "q5": {
+      "body": "Well sudo-flix has a twitter account that can be found in the footer of this page as well as a link to the source code on Github.",
+      "title": "How can I find out more?"
     },
     "title": "About sudo-flix (^▽^)👍"
   },
@@ -125,7 +133,8 @@
           "What do you want to stream?",
           "Sudo-Flix is the best site ever!",
           "What's on your watchlist today?",
-          "How was your day?"
+          "How was your day?",
+          "Isn't sudo-flix just the best?"
         ]
       },
       "sectionTitle": "Search results"
@@ -292,7 +301,7 @@
       },
       "episodes": {
         "button": "Episodes",
-        "emptyState": "There are no episodes in this season, check back later!",
+        "emptyState": "There are no episodes in this season, check back later (sorry)!",
         "episodeBadge": "E{{episode}}",
         "loadingError": "Error loading season",
         "loadingList": "Loading...",
@@ -436,8 +445,8 @@
       "textWithReset": "Failed to load your profile from your custom server, want to reset back to the default server?"
     },
     "migration": {
-      "failed": "Failed to migrate your data. ૮₍˶Ó﹏Ò ⑅₎ა",
-      "inProgress": "Please hold, we are migrating your data. This shouldn't take long."
+      "failed": "Failed to migrate your data. 😿",
+      "inProgress": "Please hold, we are migrating your data. This shouldn't take long..."
     }
   },
   "settings": {
@@ -452,7 +461,7 @@
         "delete": {
           "button": "Delete account",
           "confirmButton": "Delete account",
-          "confirmDescription": "Are you sure you want to delete your account? All your data will be lost! 😿",
+          "confirmDescription": "Are you sure you want to delete your account? All your data will be lost! ૮₍˶Ó﹏Ò ⑅₎ა",
           "confirmTitle": "Are you sure?",
           "text": "This action is irreversible. All data will be deleted and nothing can be recovered.",
           "title": "Delete account"
