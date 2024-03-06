@@ -161,6 +161,7 @@ export function LinksDropdown(props: { children: React.ReactNode }) {
               icon={Icons.DISCORD}
             />
             <CircleDropdownLink href={conf().GITHUB_LINK} icon={Icons.GITHUB} />
+            <CircleDropdownLink href="/support" icon={Icons.MAIL} />
             <CircleDropdownLink
               href={conf().DONATION_LINK}
               icon={Icons.DONATION}

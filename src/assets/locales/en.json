@@ -22,7 +22,7 @@
       "body": "Well sudo-flix has a twitter account that can be found in the footer of this page as well as a link to the source code on Github.",
       "title": "How can I find out more?"
     },
-    "title": "About sudo-flix (^▽^)👍"
+    "title": "About sudo-flix (^▽^)"
   },
   "actions": {
     "copied": "Copied",
@@ -105,6 +105,7 @@
     "pages": {
       "about": "About",
       "dmca": "DMCA",
+      "support": "Support",
       "login": "Login",
       "onboarding": "Setup",
       "pagetitle": "{{title}} - sudo-flix",
@@ -429,6 +430,18 @@
       "error": "Failed to verify your humanity. Please try again.",
       "title": "We need to verify that you're human.",
       "verifyingHumanity": "Verifying your humanity... (^▽^)👍"
+    }
+  },
+  "support": {
+    "title": "Support",
+    "text": "sudo-flix is designed to be as user-friendly as possible. However, people still have questions and issues. This page is here to help resolve these shortcomings",
+    "q1": {
+      "body": "Well, you can join the official <0>movie-web discord</0> and ask questions there or you can email the one provided at the bottom of this page.",
+      "title": "Where can I get help?"
+    },
+    "q2": {
+      "body": "We have a <0>GitHub</0> where you can create a detailed issue in our repository. Additionally, if you wish, you can create a pull request to fix the issue yourself.",
+      "title": "How can I report a bug or issue?"
     }
   },
   "screens": {
