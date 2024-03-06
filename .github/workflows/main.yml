@@ -19,4 +19,4 @@ jobs:
         # Such as wangchucheng
         target-username: itzCozi
           # You can store token in your project's 'Setting > Secrets' and reference the name here. Such as ${{ secrets.ACCESS\_TOKEN }}
-        target-token: glpat-y24SW9CqLWRtmkWGFAez
+        target-token: glpat-xs8fvu6iArH2xNxQUtKz
