@@ -25,9 +25,9 @@ function TurnstileInteractive() {
   return (
     <div
       className={classNames(
-        "absolute w-10/12 max-w-[800px] max-h-[375px] p-20 rounded-lg select-none z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform",
+        "absolute w-10/12 max-w-[800px] max-h-[325px] p-20 rounded-lg select-none z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform",
         show ? "" : "hidden",
-        "bg-[#1b1b1b]",
+        "bg-[#222222]",
       )}
     >
       <div className="w-full grid lg:grid-cols-[1fr,auto] gap-8 items-center">
