@@ -31,7 +31,7 @@ const tokens = {
       c200: "#8A293B",
       c300: "#812435",
       c400: "#701B2B",
-    }
+    },
   },
   blue: {
     c50: "#ADADF5",
@@ -43,7 +43,7 @@ const tokens = {
     c600: "#1B1B41",
     c700: "#171736",
     c800: "#101020",
-    c900: "#0B0B13"
+    c900: "#0B0B13",
   },
   purple: {
     c50: "#D5AAFF",
@@ -55,7 +55,7 @@ const tokens = {
     c600: "#411F64",
     c700: "#31184A",
     c800: "#221134",
-    c900: "#160B22"
+    c900: "#160B22",
   },
   ash: {
     c50: "#7F8D9B",
@@ -67,7 +67,7 @@ const tokens = {
     c600: "#172532",
     c700: "#131E29",
     c800: "#101820",
-    c900: "#0C1216"
+    c900: "#0C1216",
   },
   shade: {
     c50: "#676790",
@@ -79,9 +79,9 @@ const tokens = {
     c600: "#171728",
     c700: "#131322",
     c800: "#0F0F1B",
-    c900: "#0A0A12"
-  }
-}
+    c900: "#0A0A12",
+  },
+};
 
 export const defaultTheme = {
   extend: {
@@ -100,25 +100,25 @@ export const defaultTheme = {
 
         activeBackground: tokens.shade.c300,
       },
-      
+
       // meta data for the theme itself
       global: {
         accentA: tokens.blue.c200,
         accentB: tokens.blue.c300,
       },
-      
+
       // light bar
       lightBar: {
         light: tokens.blue.c400,
       },
-      
+
       // Buttons
       buttons: {
         toggle: tokens.purple.c300,
         toggleDisabled: tokens.ash.c500,
         danger: tokens.semantic.rose.c300,
         dangerHover: tokens.semantic.rose.c200,
-        
+
         secondary: tokens.ash.c700,
         secondaryText: tokens.semantic.silver.c300,
         secondaryHover: tokens.ash.c700,
@@ -130,7 +130,7 @@ export const defaultTheme = {
         cancel: tokens.ash.c500,
         cancelHover: tokens.ash.c300,
       },
-      
+
       // only used for body colors/textures
       background: {
         main: tokens.shade.c900,
@@ -144,7 +144,7 @@ export const defaultTheme = {
       modal: {
         background: tokens.shade.c800,
       },
-      
+
       // typography
       type: {
         logo: tokens.purple.c100,
@@ -233,8 +233,8 @@ export const defaultTheme = {
         },
 
         saveBar: {
-          background: tokens.shade.c800
-        }
+          background: tokens.shade.c800,
+        },
       },
 
       // Utilities
@@ -290,7 +290,7 @@ export const defaultTheme = {
 
         autoPlay: {
           background: tokens.ash.c700,
-          hover: tokens.ash.c500
+          hover: tokens.ash.c500,
         },
 
         scraping: {
