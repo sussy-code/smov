@@ -428,7 +428,7 @@
     "turnstile": {
       "description": "Please prove your humanity by completing the Captcha on the right. This is to keep sudo-flix.lol safe!",
       "error": "Failed to verify your humanity! Please try again.",
-      "title": "We need to verify you're not a robot 🤖",
+      "title": "Are You a Robot 🤖?",
       "verifyingHumanity": "Verifying your humanity... (^▽^)👍"
     }
   },

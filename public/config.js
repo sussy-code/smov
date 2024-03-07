@@ -14,7 +14,7 @@ window.__CONFIG__ = {
   // The backend URL to communicate with, defaults to the movie-web hosted one at backend.movie-web.app
   VITE_BACKEND_URL: "https://sudo-flix-backend.lol", // "https://mw-backend.lonelil.com",
 
-  VITE_TURNSTILE_KEY: "0x4AAAAAAATd-oefbvXlJvmj",
+  VITE_TURNSTILE_KEY: "0x4AAAAAAATd-oefbvXlJvmj", // "3x00000000000000000000FF",
 
   // A comma separated list of disallowed IDs in the case of a DMCA claim - in the format "series-<id>" and "movie-<id>"
   VITE_DISALLOWED_IDS: "",
