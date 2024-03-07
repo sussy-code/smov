@@ -426,9 +426,9 @@
       "shortRemaining": "-{{timeLeft}}"
     },
     "turnstile": {
-      "description": "Please verify that you are human by completing the Captcha on the right. This is to keep sudo-flix safe!",
-      "error": "Failed to verify your humanity. Please try again.",
-      "title": "We need to verify that you're human.",
+      "description": "Please prove your humanity by completing the Captcha on the right. This is to keep sudo-flix.lol safe!",
+      "error": "Failed to verify your humanity! Please try again.",
+      "title": "We need to verify you're not a robot 🤖",
       "verifyingHumanity": "Verifying your humanity... (^▽^)👍"
     }
   },
