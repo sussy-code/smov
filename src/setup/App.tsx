@@ -1,4 +1,3 @@
-import { Analytics } from "@vercel/analytics/react";
 import { ReactElement, Suspense, lazy, useEffect, useState } from "react";
 import { lazyWithPreload } from "react-lazy-with-preload";
 import {
@@ -174,7 +173,6 @@ function App() {
       {showDowntime && (
         <MaintenancePage onHomeButtonClick={handleButtonClick} />
       )}
-      <Analytics />
     </Layout>
   );
 }
