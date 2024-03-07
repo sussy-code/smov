@@ -9,6 +9,7 @@ import {
   scrapePartsToProviderMetric,
   useReportProviders,
 } from "@/backend/helpers/report";
+import { Button } from "@/components/buttons/Button";
 import { Loading } from "@/components/layout/Loading";
 import {
   ScrapeCard,
@@ -150,6 +151,25 @@ export function ScrapingPart(props: ScrapingProps) {
             </div>
           );
         })}
+        {/* IDK to keep this or remove it */}
+        <div className="flex gap-3">
+          <Button
+            href="/"
+            theme="secondary"
+            padding="md:px-17 p-3"
+            className="mt-6"
+          >
+            {t("notFound.goHome")}
+          </Button>
+          <Button
+            onClick={() => window.location.reload()}
+            theme="purple"
+            padding="md:px-17 p-3"
+            className="mt-6"
+          >
+            {t("notFound.reloadButton")}
+          </Button>
+        </div>
       </div>
     </div>
   );
