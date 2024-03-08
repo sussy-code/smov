@@ -15,7 +15,7 @@ window.__CONFIG__ = {
   VITE_BACKEND_URL: "https://sudo-flix-backend.lol", // "https://mw-backend.lonelil.com",
 
   // Maybe do this at a later date
-  //VITE_TURNSTILE_KEY: "3x00000000000000000000FF",
+  //VITE_TURNSTILE_KEY: "3x00000000000000000000FF", // https://movie-web.github.io/docs/proxy/configuration
 
   // A comma separated list of disallowed IDs in the case of a DMCA claim - in the format "series-<id>" and "movie-<id>"
   VITE_DISALLOWED_IDS: "",

@@ -151,7 +151,6 @@ export function ScrapingPart(props: ScrapingProps) {
             </div>
           );
         })}
-        {/* IDK to keep this or remove it
         <div className="flex gap-3">
           <Button
             href="/"
@@ -170,7 +169,6 @@ export function ScrapingPart(props: ScrapingProps) {
             {t("notFound.reloadButton")}
           </Button>
         </div>
-        */}
       </div>
     </div>
   );
