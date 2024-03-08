@@ -47,7 +47,6 @@ export function NextEpisodeButton(props: {
   const isHidden = usePlayerStore((s) => s.interface.hideNextEpisodeBtn);
   const meta = usePlayerStore((s) => s.meta);
   const { setDirectMeta } = usePlayerMeta();
-  const hideNextEpisodeButton = usePlayerStore((s) => s.hideNextEpisodeButton);
   const metaType = usePlayerStore((s) => s.meta?.type);
   const time = usePlayerStore((s) => s.progress.time);
   const showingState = shouldShowNextEpisodeButton(time, duration);

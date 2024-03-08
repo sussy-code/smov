@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useAsyncFn } from "react-use";
 
 import { singularProxiedFetch } from "@/backend/helpers/fetch";
@@ -52,7 +52,9 @@ export function WorkerTestPart() {
     { id: string; status: "error" | "success"; error?: Error }[]
   >([]);
 
+  const [buttonClicked, setButtonClicked] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(false);
+  const [allWorkersPassed, setAllWorkersPassed] = useState(false);
 
   const [testState, runTests] = useAsyncFn(async () => {
     setButtonDisabled(true);
@@ -88,12 +90,19 @@ export function WorkerTestPart() {
           status: "error",
           error: err as Error,
         });
+        setAllWorkersPassed(false); // Set allWorkersPassed to false if a worker fails
       }
     });
 
     await Promise.all(workerPromises);
     setTimeout(() => setButtonDisabled(false), 5000);
   }, [workerList, setWorkerState]);
+
+  useEffect(() => {
+    setAllWorkersPassed(
+      workerState.every((worker) => worker.status === "success"),
+    );
+  }, [workerState]);
 
   return (
     <>
@@ -119,14 +128,24 @@ export function WorkerTestPart() {
         })}
         <Divider />
         <div className="flex justify-end">
-          <Button
-            theme="purple"
-            loading={testState.loading}
-            onClick={buttonDisabled ? undefined : runTests}
-            disabled={buttonDisabled}
-          >
-            Test workers
-          </Button>
+          {allWorkersPassed && buttonClicked ? (
+            <div>
+              <p>All workers have passed the test! ٩(ˊᗜˋ*)و ♡</p>
+            </div>
+          ) : (
+            <Button
+              theme="purple"
+              loading={testState.loading}
+              onClick={(event) => {
+                event.preventDefault();
+                setButtonClicked(true);
+                if (!buttonDisabled) runTests();
+              }}
+              disabled={buttonDisabled}
+            >
+              Test workers
+            </Button>
+          )}
         </div>
       </Box>
     </>
