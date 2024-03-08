@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { useCallback } from "react";
+import React, { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 
 import { Icon, Icons } from "@/components/Icon";
@@ -15,7 +15,7 @@ function shouldShowNextEpisodeButton(
   const percentage = time / duration;
   const secondsFromEnd = duration - time;
   if (secondsFromEnd <= 30) return "always";
-  if (percentage >= 0.9) return "hover";
+  if (percentage >= 0.93) return "hover";
   return "none";
 }
 
@@ -81,6 +81,15 @@ export function NextEpisodeButton(props: {
     props.onChange?.(metaCopy);
   }, [setDirectMeta, nextEp, meta, props, setShouldStartFromBeginning]);
 
+  const startCurrentEpisodeFromBeginning = useCallback(() => {
+    if (!meta || !meta.episode) return;
+    const metaCopy = { ...meta };
+    // No need to change the episode, as we're restarting the current one
+    setShouldStartFromBeginning(true);
+    setDirectMeta(metaCopy);
+    props.onChange?.(metaCopy);
+  }, [setDirectMeta, meta, props, setShouldStartFromBeginning]);
+
   if (!meta?.episode || !nextEp) return null;
   if (metaType !== "show") return null;
 
@@ -97,10 +106,10 @@ export function NextEpisodeButton(props: {
         ])}
       >
         <Button
-          className="py-px box-content bg-buttons-secondary hover:bg-buttons-secondaryHover bg-opacity-90 text-buttons-secondaryText"
-          onClick={hideNextEpisodeButton}
+          className="py-px box-content bg-buttons-secondary hover:bg-buttons-secondaryHover bg-opacity-90 text-buttons-secondaryText justify-center items-center"
+          onClick={() => startCurrentEpisodeFromBeginning()}
         >
-          {t("player.nextEpisode.cancel")}
+          {t("player.nextEpisode.replay")}
         </Button>
         <Button
           onClick={() => loadNextEpisode()}

@@ -388,8 +388,8 @@
       }
     },
     "nextEpisode": {
-      "cancel": "Cancel",
-      "next": "Next episode!"
+      "replay": "Replay",
+      "next": "Next episode"
     },
     "playbackError": {
       "badge": "Playback error",
