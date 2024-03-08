@@ -57,6 +57,8 @@
       },
       "host": "<0>{{hostname}}</0>에 연결 중입니다 - 계정을 만들기 전에 신뢰하는지 확인해 주세요",
       "no": "뒤로 가기",
+      "noHost": "서버가 구성되어 있지 않기 때문에 계정을 만들 수 없습니다",
+      "noHostTitle": "서버가 구성되지 않았습니다!",
       "title": "이 서버를 신뢰하십니까?",
       "yes": "네, 신뢰합니다"
     },
@@ -118,7 +120,12 @@
       "noResults": "검색결과가 없습니다!",
       "placeholder": {
         "default": "무엇을 보고 싶으신가요?",
-        "extra": []
+        "extra": [
+          "무엇을 탐험하고 싶으신가요?",
+          null,
+          "당신이 가장 좋아하는 영화는?",
+          "당신이 가장 좋아하는 시리즈는?"
+        ]
       },
       "sectionTitle": "검색 결과"
     },
@@ -131,11 +138,15 @@
       },
       "morning": {
         "default": "오늘 아침에 무엇을 보고 싶으신가요?",
-        "extra": ["Before Sunrise가 좋다고 들었어요"]
+        "extra": [
+          "Before Sunrise가 좋다고 들었어요"
+        ]
       },
       "night": {
         "default": "오늘 밤에 무엇을 보고 싶으신가요?",
-        "extra": ["피곤하신가요? The Exorcist가 좋다고 들었어요."]
+        "extra": [
+          "피곤하신가요? The Exorcist가 좋다고 들었어요."
+        ]
       }
     }
   },
@@ -241,6 +252,7 @@
     },
     "menus": {
       "downloads": {
+        "copyHlsPlaylist": "HLS 플레이리스트 링크 복사하기",
         "disclaimer": "다운로드는 제공업체에서 직접 가져옵니다. movie-web은 다운로드 제공 방식을 통제할 수 없습니다.",
         "downloadSubtitle": "현재 자막 다운로드",
         "downloadVideo": "영상 다운로드",
