@@ -320,7 +320,7 @@ function ParticlesCanvas() {
     }
 
     // DUI easter egg
-    const shouldShowFlix = Math.random() < 0.98; // 3%
+    const shouldShowFlix = Math.random() < 0.08; // 8%
     if (shouldShowFlix) {
       imageOverride = [
         {
