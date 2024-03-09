@@ -83,7 +83,6 @@ export function NextEpisodeButton(props: {
   const startCurrentEpisodeFromBeginning = useCallback(() => {
     if (!meta || !meta.episode) return;
     const metaCopy = { ...meta };
-    // No need to change the episode, as we're restarting the current one
     setShouldStartFromBeginning(true);
     setDirectMeta(metaCopy);
     props.onChange?.(metaCopy);
