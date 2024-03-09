@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { useAsyncFn } from "react-use";
 
 import { singularProxiedFetch } from "@/backend/helpers/fetch";
@@ -54,7 +54,6 @@ export function WorkerTestPart() {
 
   const [buttonClicked, setButtonClicked] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(false);
-  const [allWorkersPassed, setAllWorkersPassed] = useState(false);
 
   const [testState, runTests] = useAsyncFn(async () => {
     setButtonDisabled(true);
@@ -90,19 +89,12 @@ export function WorkerTestPart() {
           status: "error",
           error: err as Error,
         });
-        setAllWorkersPassed(false); // Set allWorkersPassed to false if a worker fails
       }
     });
 
     await Promise.all(workerPromises);
     setTimeout(() => setButtonDisabled(false), 5000);
   }, [workerList, setWorkerState]);
-
-  useEffect(() => {
-    setAllWorkersPassed(
-      workerState.every((worker) => worker.status === "success"),
-    );
-  }, [workerState]);
 
   return (
     <>
@@ -128,18 +120,28 @@ export function WorkerTestPart() {
         })}
         <Divider />
         <div className="flex justify-end">
-          {allWorkersPassed && buttonClicked ? (
-            <div>
-              <p>All workers have passed the test! ٩(ˊᗜˋ*)و ♡</p>
-            </div>
+          {buttonClicked ? (
+            workerState.every((worker) => worker.status === "success") ? (
+              <p>
+                All workers have passed the test!{" "}
+                <span className="font-bold">٩(ˊᗜˋ*)و♡</span>
+              </p>
+            ) : (
+              <p>
+                Some workers have failed the test...{" "}
+                <span className="font-bold">(•᷄∩•᷅ )</span>
+              </p>
+            )
           ) : (
             <Button
               theme="purple"
               loading={testState.loading}
-              onClick={(event) => {
+              onClick={async (event) => {
                 event.preventDefault();
-                setButtonClicked(true);
-                if (!buttonDisabled) runTests();
+                setButtonDisabled(true); // Disable button to prevent multiple clicks
+                await runTests(); // Wait for tests
+                setButtonClicked(true); // buttonClicked equals true after tests are done!
+                setTimeout(() => setButtonDisabled(false), 5000); // Turn the button back on
               }}
               disabled={buttonDisabled}
             >
