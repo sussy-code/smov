@@ -319,6 +319,34 @@ function ParticlesCanvas() {
       imageParticleCount = particleCount / 9;
     }
 
+    // DUI easter egg
+    const shouldShowFlix = Math.random() < 0.98; // 3%
+    if (shouldShowFlix) {
+      imageOverride = [
+        {
+          image: "/lightbar-images/beer.png",
+          sizeRange: [15, 35] as [number, number],
+        },
+        {
+          image: "/lightbar-images/beer-bottle.png",
+          sizeRange: [10, 38] as [number, number],
+        },
+        {
+          image: "/lightbar-images/wine.png",
+          sizeRange: [15, 35] as [number, number],
+        },
+        {
+          image: "/lightbar-images/cigarette.png",
+          sizeRange: [10, 38] as [number, number],
+        },
+        {
+          image: "/lightbar-images/cigarette2.png",
+          sizeRange: [15, 35] as [number, number],
+        },
+      ];
+      imageParticleCount = particleCount / 11;
+    }
+
     // HOIST THE SAIL (of particles)!
     for (let i = 0; i < particleCount; i += 1) {
       const isImageParticle = imageOverride && i <= imageParticleCount;
