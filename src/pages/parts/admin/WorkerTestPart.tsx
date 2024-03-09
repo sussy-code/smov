@@ -127,10 +127,31 @@ export function WorkerTestPart() {
                 <span className="font-bold">٩(ˊᗜˋ*)و♡</span>
               </p>
             ) : (
-              <p>
-                Some workers have failed the test...{" "}
-                <span className="font-bold">(•᷄∩•᷅ )</span>
-              </p>
+              <div>
+                <div className="text-right">
+                  <p>
+                    Some workers have failed the test...{" "}
+                    <span className="font-bold">(•᷄∩•᷅ )</span>
+                  </p>
+                  {/* Show button if tests fail */}
+                  <div className="flex justify-end">
+                    <Button
+                      theme="purple"
+                      loading={testState.loading}
+                      onClick={async (event) => {
+                        event.preventDefault();
+                        setButtonDisabled(true);
+                        await runTests();
+                        setButtonClicked(true);
+                        setTimeout(() => setButtonDisabled(false), 250);
+                      }}
+                      disabled={buttonDisabled}
+                    >
+                      Test workers
+                    </Button>
+                  </div>
+                </div>
+              </div>
             )
           ) : (
             <Button
