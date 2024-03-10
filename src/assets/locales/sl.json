@@ -57,6 +57,8 @@
       },
       "host": "Povezujete se z <0>{{hostname}}</0> - pred ustvarjanjem računa potrdite, da mu zaupate",
       "no": "Nazaj",
+      "noHost": "Strežnik ni nastavljen, zato ustvarjanje profila ni mogoče",
+      "noHostTitle": "Strežnik ni nastavljen!",
       "title": "Ali zaupate temu strežniku?",
       "yes": "Zaupam strežniku"
     },

@@ -4,6 +4,7 @@ import { OverlayDisplay } from "@/components/overlays/OverlayDisplay";
 import { CastingInternal } from "@/components/player/internals/CastingInternal";
 import { HeadUpdater } from "@/components/player/internals/HeadUpdater";
 import { KeyboardEvents } from "@/components/player/internals/KeyboardEvents";
+import { MediaSession } from "@/components/player/internals/MediaSession";
 import { MetaReporter } from "@/components/player/internals/MetaReporter";
 import { ProgressSaver } from "@/components/player/internals/ProgressSaver";
 import { ThumbnailScraper } from "@/components/player/internals/ThumbnailScraper";
@@ -91,6 +92,7 @@ export function Container(props: PlayerProps) {
         <VideoContainer />
         <ProgressSaver />
         <KeyboardEvents />
+        <MediaSession />
         <div className="relative h-screen overflow-hidden">
           <VideoClickTarget showingControls={props.showingControls} />
           <HeadUpdater />

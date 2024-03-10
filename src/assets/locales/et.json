@@ -57,6 +57,8 @@
       },
       "host": "Ühendate <0>{{hostname}}</0> - enne konto tegemist kinnitage, et usaldate seda",
       "no": "Tagasi",
+      "noHost": "Server ei ole konfigureeritud, seega ei saa kontot luua",
+      "noHostTitle": "Server ei ole konfigureeritud!",
       "title": "Kas usaldate seda serverit?",
       "yes": "Usaldan seda serverit"
     },
@@ -118,7 +120,12 @@
       "noResults": "Me ei leidnud midagi!",
       "placeholder": {
         "default": "Mida tahate vaadata?",
-        "extra": []
+        "extra": [
+          "Mida soovite uurida?",
+          "Mis on teie nimekirjas?",
+          "Milline on teie lemmikfilm?",
+          "Milline on teie lemmiksari?"
+        ]
       },
       "sectionTitle": "Otsingutulemused"
     },
@@ -131,11 +138,15 @@
       },
       "morning": {
         "default": "Mida te soovite täna hommikul vaadata?",
-        "extra": ["Ma kuulsin, et Before Sunrise on hea"]
+        "extra": [
+          "Ma kuulsin, et Before Sunrise on hea"
+        ]
       },
       "night": {
         "default": "Mida te soovite täna õhtul vaadata?",
-        "extra": ["Väsinud? Olen kuulnud, et The Exorcist on hea."]
+        "extra": [
+          "Väsinud? Olen kuulnud, et The Exorcist on hea."
+        ]
       }
     }
   },
@@ -241,6 +252,7 @@
     },
     "menus": {
       "downloads": {
+        "copyHlsPlaylist": "Kopeeri HLS esitusloendi link",
         "disclaimer": "Allalaadimine toimub otse teenusepakkujalt. movie-web ei saa kontrollida, kuidas allalaadimine toimub.",
         "downloadSubtitle": "Laadige alla praegune subtiiter",
         "downloadVideo": "Lae alla video",
@@ -524,6 +536,7 @@
       }
     },
     "subtitles": {
+      "backgroundBlurLabel": "Tausta hägusus",
       "backgroundLabel": "Tausta läbipaistmatus",
       "colorLabel": "Värv",
       "previewQuote": "Ma ei tohi karta. Hirm on meelemõrvar.",

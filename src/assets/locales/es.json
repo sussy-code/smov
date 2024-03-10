@@ -12,7 +12,7 @@
     },
     "q3": {
       "body": "Nuestros resultados de búsqueda están alimentados por The Movie Database (TMDB) y se muestran independientemente de si nuestras fuentes realmente tienen el contenido.",
-      "title": "Los resultados de búsqueda muestran la serie o película, ¿por qué no puedo reproducirla?"
+      "title": "Los resultados de búsqueda muestran la serie o película, ¿Por qué no puedo reproducirla?"
     },
     "title": "Acerca de movie-web"
   },
@@ -57,6 +57,8 @@
       },
       "host": "Te estás conectando a <0>{{hostname}}</0> - por favor, confirma si confías en este antes de crear una cuenta",
       "no": "Regresar",
+      "noHost": "El servidor no se ha configurado, por lo tanto, no puede crear una cuenta",
+      "noHostTitle": "¡El servidor no está configurado!",
       "title": "¿Confías en este servidor?",
       "yes": "Confío en este servidor"
     },
@@ -118,7 +120,12 @@
       "noResults": "¡No pudimos encontrar nada!",
       "placeholder": {
         "default": "¿Qué te gustaría ver?",
-        "extra": []
+        "extra": [
+          "¿Qué quieres explorar?",
+          "¿Qué hay en tu lista de reproducción?",
+          "¿Cuál es tu película favorita?",
+          "¿Cuál es tu serie favorita?"
+        ]
       },
       "sectionTitle": "Resultados de búsqueda"
     },
@@ -131,11 +138,15 @@
       },
       "morning": {
         "default": "¿Qué te gustaría ver esta mañana?",
-        "extra": ["Escuché que “Antes del amanecer” es buena"]
+        "extra": [
+          "Escuché que “Antes del amanecer” es buena"
+        ]
       },
       "night": {
         "default": "¿Qué te gustaría ver esta noche?",
-        "extra": ["¿Cansado? Escuché que “El Exorcista” es buena."]
+        "extra": [
+          "¿Cansado? Escuché que “El Exorcista” es buena."
+        ]
       }
     }
   },
@@ -170,7 +181,7 @@
       "cancel": "Cancelar",
       "confirm": "Usar configuración por defecto",
       "description": "La configuración predeterminada no tiene las mejores transmisiones y puede ser insoportablemente lenta.",
-      "title": "Estás seguro?"
+      "title": "¿Estás seguro?"
     },
     "extension": {
       "back": "Volver atrás",
@@ -388,7 +399,7 @@
       "shortRemaining": "-{{timeLeft}}"
     },
     "turnstile": {
-      "description": "Por favor, confirma que eres humano completando el Captcha. Esto es para mantener movie-web seguro!",
+      "description": "Por favor, confirma que eres humano completando el Captcha. ¡Esto es para mantener movie-web seguro!",
       "error": "Ha habido un error al verificar tu humanidad. Por favor, prueba de nuevo.",
       "title": "Necesitamos verificar que eres humano.",
       "verifyingHumanity": "Verificando tu hunanidad…"
@@ -483,7 +494,7 @@
         "redoSetup": "Rehacer configuración",
         "successStatus": {
           "description": "Todo lo necesario está en su sitio para que empieces a ver tu contenido favorito.",
-          "title": "Todo está configurado!"
+          "title": "¡Todo está configurado!"
         },
         "unsetStatus": {
           "description": "Haga clic en el botón a la derecha para iniciar el proceso de configuración.",
