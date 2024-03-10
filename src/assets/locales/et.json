@@ -536,6 +536,7 @@
       }
     },
     "subtitles": {
+      "backgroundBlurLabel": "Tausta hägusus",
       "backgroundLabel": "Tausta läbipaistmatus",
       "colorLabel": "Värv",
       "previewQuote": "Ma ei tohi karta. Hirm on meelemõrvar.",
