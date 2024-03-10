@@ -263,6 +263,18 @@ export function CaptionSettingsView({ id }: { id: string }) {
           textTransformer={(s) => `${s}%`}
         />
         <CaptionSetting
+          label={t("settings.subtitles.backgroundBlurLabel")}
+          max={64}
+          min={0}
+          onChange={(v) =>
+            updateStyling({
+              backgroundBlur: Math.round(v / 4) * 4,
+            })
+          }
+          value={styling.backgroundBlur}
+          textTransformer={(s) => `${s}px`}
+        />
+        <CaptionSetting
           label={t("settings.subtitles.textSizeLabel")}
           max={200}
           min={1}

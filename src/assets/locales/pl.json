@@ -525,6 +525,7 @@
     },
     "subtitles": {
       "backgroundLabel": "Krycie tła",
+      "backgroundBlurLabel": "Rozmycie tła",
       "colorLabel": "Kolor",
       "previewQuote": "Nie wolno mi się bać. Strach zabija myślenie.",
       "textSizeLabel": "Rozmiar czcionki",

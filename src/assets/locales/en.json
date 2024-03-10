@@ -533,6 +533,7 @@
     },
     "subtitles": {
       "backgroundLabel": "Background opacity",
+      "backgroundBlurLabel": "Background blur",
       "colorLabel": "Color",
       "previewQuote": "I must not fear. Fear is the mind-killer.",
       "textSizeLabel": "Text size",
