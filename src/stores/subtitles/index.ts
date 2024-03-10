@@ -56,7 +56,7 @@ export const useSubtitleStore = create(
         color: "#ffffff",
         backgroundOpacity: 0.5,
         size: 1,
-        backgroundBlur: 0,
+        backgroundBlur: 0.5,
       },
       resetSubtitleSpecificSettings() {
         set((s) => {
