@@ -416,6 +416,7 @@
         "reloadButton": "Try again",
         "homeButton": "Go home",
         "text": "We can not find the media you are looking for or no one provides it... <bold>Did you enable the extension for this site?</bold>",
+        "text2": "We can not find the media you are looking for or no one provides it...",
         "title": "We couldn't find that"
       }
     },

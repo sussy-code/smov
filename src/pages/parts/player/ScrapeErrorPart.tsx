@@ -1,7 +1,9 @@
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
 
+import { isAllowedExtensionVersion } from "@/backend/extension/compatibility";
+import { extensionInfo } from "@/backend/extension/messaging";
 import { Button } from "@/components/buttons/Button";
 import { Icons } from "@/components/Icon";
 import { IconPill } from "@/components/layout/IconPill";
@@ -14,6 +16,14 @@ import { getProviderApiUrls } from "@/utils/proxyUrls";
 
 import { ErrorCardInModal } from "../errors/ErrorCard";
 
+type ExtensionStatus =
+  | "unknown"
+  | "failed"
+  | "disallowed"
+  | "noperms"
+  | "outdated"
+  | "success";
+
 export interface ScrapeErrorPartProps {
   data: {
     sources: Record<string, ScrapingSegment>;
@@ -21,10 +31,22 @@ export interface ScrapeErrorPartProps {
   };
 }
 
+async function getExtensionState(): Promise<ExtensionStatus> {
+  const info = await extensionInfo();
+  if (!info) return "unknown"; // cant talk to extension
+  if (!info.success) return "failed"; // extension failed to respond
+  if (!info.allowed) return "disallowed"; // extension is not enabled on this page
+  if (!info.hasPermission) return "noperms"; // extension has no perms to do it's tasks
+  if (!isAllowedExtensionVersion(info.version)) return "outdated"; // extension is too old
+  return "success"; // no problems
+}
+
 export function ScrapeErrorPart(props: ScrapeErrorPartProps) {
   const { t } = useTranslation();
   const modal = useModal("error");
   const location = useLocation();
+  const [extensionState, setExtensionState] =
+    useState<ExtensionStatus>("unknown");
 
   const error = useMemo(() => {
     const data = props.data;
@@ -42,6 +64,10 @@ export function ScrapeErrorPart(props: ScrapeErrorPartProps) {
     return str;
   }, [props, location]);
 
+  useEffect(() => {
+    getExtensionState().then(setExtensionState);
+  }, []);
+
   return (
     <ErrorLayout>
       <ErrorContainer>
@@ -50,12 +76,25 @@ export function ScrapeErrorPart(props: ScrapeErrorPartProps) {
         </IconPill>
         <Title>{t("player.scraping.notFound.title")}</Title>
         <Paragraph>
-          <Trans
-            i18nKey="player.scraping.notFound.text"
-            components={{
-              bold: <span className="font-bold" style={{ color: "#cfcfcf" }} />,
-            }}
-          />
+          {extensionState === "disallowed" ? (
+            <Trans
+              i18nKey="player.scraping.notFound.text"
+              components={{
+                bold: (
+                  <span className="font-bold" style={{ color: "#cfcfcf" }} />
+                ),
+              }}
+            />
+          ) : (
+            <Trans
+              i18nKey="player.scraping.notFound.text2"
+              components={{
+                bold: (
+                  <span className="font-bold" style={{ color: "#cfcfcf" }} />
+                ),
+              }}
+            />
+          )}
         </Paragraph>
         <div className="flex gap-3">
           <Button
