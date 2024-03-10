@@ -19,7 +19,7 @@ export interface SubtitleStyling {
   backgroundOpacity: number;
 
   /**
-   * background blur, ranges between 0 and 64
+   * background blur, ranges between 0 and 1
    */
   backgroundBlur: number;
 }

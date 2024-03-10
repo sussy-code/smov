@@ -57,7 +57,7 @@ export function CaptionCue({
         backgroundColor: `rgba(0,0,0,${styling.backgroundOpacity.toFixed(2)})`,
         backdropFilter:
           styling.backgroundBlur !== 0
-            ? `blur(${styling.backgroundBlur}px)`
+            ? `blur(${Math.floor(styling.backgroundBlur * 64)}px)`
             : "none",
       }}
     >
