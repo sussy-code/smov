@@ -1,11 +1,12 @@
 # Sudo-Flix
 Sudo-Flix is a mirror of [Movie-Web](https://github.com/movie-web/movie-web) with some changes...
 
+**I *do not* endorse piracy of any kind I simply enjoy programming and large user counts.**
+
 ## Links And Resources
 | Service        | Link                                               | Source Code                                          |
 |----------------|----------------------------------------------------|------------------------------------------------------|
 | Movie-Web Docs | [movie-web-docs](https://movie-web.github.io/)     | [Source Code](https://github.com/movie-web/docs)     |
-| Sudo-Flix      | [Sudo-Flix](https://sudo-flix.lol)                 | [Source Code](https://github.com/sudo-flix/sudo-source)  |
 | Proxy #1       | [sudo-proxy](https://sudo-proxy.netlify.app)       | [Source Code](https://gitlab.com/itzCozi/sudo-proxy) |
 | Proxy #2       | [mweb-proxy](https://mweb-proxy.up.railway.app)    | [Source Code](https://gitlab.com/itzCozi/sudo-proxy) |
 | Proxy #3       | [sudo-proxy2](sudo-proxy.up.railway.app)
