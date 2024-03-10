@@ -159,9 +159,9 @@ export function WorkerTestPart() {
               loading={testState.loading}
               onClick={async (event) => {
                 event.preventDefault();
-                setButtonDisabled(true); // Disable button to prevent multiple clicks
-                await runTests(); // Wait for tests
-                setButtonClicked(true); // buttonClicked equals true after tests are done!
+                setButtonDisabled(true);
+                await runTests();
+                setButtonClicked(true);
                 setTimeout(() => setButtonDisabled(false), 5000); // Turn the button back on
               }}
               disabled={buttonDisabled}
