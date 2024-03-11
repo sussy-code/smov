@@ -112,6 +112,7 @@
       "pagetitle": "{{title}} - sudo-flix",
       "register": "Register",
       "settings": "Settings",
+      "migration": "Migration",
       "jip": "Jip"
     }
   },
@@ -195,6 +196,27 @@
     "types": {
       "movie": "Movie",
       "show": "Show"
+    }
+  },
+  "migration": {
+    "start": {
+      "title": "Migrate your data",
+      "explainer": "If you wish to migrate or backup your data, you can do so using the options below. This will allow you to keep your data when you switch backend servers.",
+      "options": {
+        "or": "or",
+        "direct": {
+          "description": "This will directly migrate your data to the new server. This is the fastest option. <br /><br />This option allows you to keep your passphrase the same!",
+          "title": "Direct migration",
+          "quality": "Easiest and fastest",
+          "action": "Transfer data"
+        },
+        "download": {
+          "description": "This will download your data to your device. You can then upload it to the new server or just keep it for safekeeping.",
+          "title": "Download data",
+          "quality": "More technical",
+          "action": "Download data"
+        }
+      }
     }
   },
   "navigation": {
