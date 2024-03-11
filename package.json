@@ -1,6 +1,6 @@
 {
   "name": "movie-web",
-  "version": "4.6.0",
+  "version": "4.6.1",
   "private": true,
   "homepage": "https://github.com/movie-web/movie-web",
   "scripts": {
@@ -49,6 +49,7 @@
     "immer": "^10.0.3",
     "jwt-decode": "^4.0.0",
     "lodash.isequal": "^4.5.0",
+    "lodash.merge": "^4.6.2",
     "million": "^2.6.4",
     "nanoid": "^5.0.4",
     "node-forge": "^1.3.1",
@@ -79,6 +80,7 @@
     "@types/dompurify": "^3.0.5",
     "@types/fscreen": "^1.0.4",
     "@types/lodash.isequal": "^4.5.8",
+    "@types/lodash.merge": "^4.6.9",
     "@types/lodash.throttle": "^4.1.9",
     "@types/node": "^20.10.5",
     "@types/pako": "^2.0.3",

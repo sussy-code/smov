@@ -231,7 +231,7 @@ export function CaptionSettingsView({ id }: { id: string }) {
       <Menu.BackLink onClick={() => router.navigate("/captions")}>
         {t("player.menus.subtitles.settings.backlink")}
       </Menu.BackLink>
-      <Menu.Section className="space-y-6">
+      <Menu.Section className="space-y-6 pb-5">
         <CaptionSetting
           label={t("player.menus.subtitles.settings.delay")}
           max={10}

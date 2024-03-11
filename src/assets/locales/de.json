@@ -57,6 +57,8 @@
       },
       "host": "Du verbindest dich mit <0>{{hostname}}</0> - stelle sicher das du dem Server vertraust, bevor du ein Konto erstellst",
       "no": "Zurück",
+      "noHost": "Da der Server nicht eingerichtet wurde, kannst du keinen Account erstellen",
+      "noHostTitle": "Server nicht eingerichtet!",
       "title": "Vertraust du diesem Server?",
       "yes": "Ich vertraue diesem Server"
     },
@@ -118,7 +120,12 @@
       "noResults": "Wir haben nichts gefunden!",
       "placeholder": {
         "default": "Was möchtest du schauen?",
-        "extra": []
+        "extra": [
+          "Was möchtest du entdecken?",
+          "Was ist auf deiner Merkliste?",
+          "Was ist dein Lieblingsfilm?",
+          "Was ist deine Lieblingsserie?"
+        ]
       },
       "sectionTitle": "Suchergebnisse"
     },
@@ -131,11 +138,15 @@
       },
       "morning": {
         "default": "Was würdest du diesen Morgen gerne schauen?",
-        "extra": ["Before Sunrise soll gut sein"]
+        "extra": [
+          "Before Sunrise soll gut sein"
+        ]
       },
       "night": {
         "default": "Was möchtest du diesen Abend gerne schauen?",
-        "extra": ["Müde? Ich hab gehört The Exorcist soll gut sein."]
+        "extra": [
+          "Müde? Ich hab gehört The Exorcist soll gut sein."
+        ]
       }
     }
   },
@@ -241,6 +252,7 @@
     },
     "menus": {
       "downloads": {
+        "copyHlsPlaylist": "HLS-Playlist Link kopieren",
         "disclaimer": "Videos werden direkt vom Provider heruntergeladen. movie-web hat keinen Einfluss darauf, wie Downloads bereitgestellt werden.",
         "downloadSubtitle": "Aktuelle Untertitel herunterladen",
         "downloadVideo": "Video herunterladen",
@@ -524,6 +536,7 @@
       }
     },
     "subtitles": {
+      "backgroundBlurLabel": "Hintergrundunschärfe",
       "backgroundLabel": "Hintergrunddeckkraft",
       "colorLabel": "Farbe",
       "previewQuote": "Das Gras wächst nicht schneller, wenn man daran zieht.",
