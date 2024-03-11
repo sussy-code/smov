@@ -65,7 +65,9 @@ export function OnboardingPage() {
           </Card>
           <div className="hidden md:grid grid-rows-[1fr,auto,1fr] justify-center gap-4">
             <VerticalLine className="items-end" />
-            <span className="text-xs uppercase font-bold">or</span>
+            <span className="text-xs uppercase font-bold">
+              {t("onboarding.start.options.or")}
+            </span>
             <VerticalLine />
           </div>
           <Card onClick={() => navigate("/onboarding/proxy")}>
