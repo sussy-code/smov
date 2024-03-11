@@ -536,6 +536,7 @@
       }
     },
     "subtitles": {
+      "backgroundBlurLabel": "Zameglitev ozadja",
       "backgroundLabel": "Motnost ozadja",
       "colorLabel": "Barva",
       "previewQuote": "Ne smem se bati. Strah je ubijalec misli.",
