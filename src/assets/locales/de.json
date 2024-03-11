@@ -118,7 +118,10 @@
       "noResults": "Wir haben nichts gefunden!",
       "placeholder": {
         "default": "Was möchtest du schauen?",
-        "extra": []
+        "extra": [
+          "Was möchtest du entdecken?",
+          "Was ist auf deiner Merkliste?"
+        ]
       },
       "sectionTitle": "Suchergebnisse"
     },
@@ -131,11 +134,15 @@
       },
       "morning": {
         "default": "Was würdest du diesen Morgen gerne schauen?",
-        "extra": ["Before Sunrise soll gut sein"]
+        "extra": [
+          "Before Sunrise soll gut sein"
+        ]
       },
       "night": {
         "default": "Was möchtest du diesen Abend gerne schauen?",
-        "extra": ["Müde? Ich hab gehört The Exorcist soll gut sein."]
+        "extra": [
+          "Müde? Ich hab gehört The Exorcist soll gut sein."
+        ]
       }
     }
   },
@@ -524,6 +531,7 @@
       }
     },
     "subtitles": {
+      "backgroundBlurLabel": "Hintergrundunschärfe",
       "backgroundLabel": "Hintergrunddeckkraft",
       "colorLabel": "Farbe",
       "previewQuote": "Das Gras wächst nicht schneller, wenn man daran zieht.",
