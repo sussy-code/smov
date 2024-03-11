@@ -108,7 +108,7 @@ export function conf(): RuntimeConfig {
       .map((v) => v.trim())
       .filter((v) => v.length > 0),
     NORMAL_ROUTER: getKey("NORMAL_ROUTER", "false") === "true",
-    HAS_ONBOARDING: getKey("HAS_ONBOARDING", "false") === "true",
+    HAS_ONBOARDING: getKey("HAS_ONBOARDING", "true") === "true",
     TURNSTILE_KEY: getKey("TURNSTILE_KEY"),
     DISALLOWED_IDS: getKey("DISALLOWED_IDS", "")
       .split(",")
