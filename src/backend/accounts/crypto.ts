@@ -21,9 +21,7 @@ export function verifyValidMnemonic(mnemonic: string) {
   return validateMnemonic(mnemonic, wordlist);
 }
 
-export async function keysFromMnemonic(mnemonic: string): Promise<Keys> {
-  const seed = await seedFromMnemonic(mnemonic);
-
+export async function keysFromSeed(seed: Uint8Array): Promise<Keys> {
   const { privateKey, publicKey } = forge.pki.ed25519.generateKeyPair({
     seed,
   });
@@ -33,6 +31,12 @@ export async function keysFromMnemonic(mnemonic: string): Promise<Keys> {
     publicKey,
     seed,
   };
+}
+
+export async function keysFromMnemonic(mnemonic: string): Promise<Keys> {
+  const seed = await seedFromMnemonic(mnemonic);
+
+  return keysFromSeed(seed);
 }
 
 export function genMnemonic(): string {
