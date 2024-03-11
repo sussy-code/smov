@@ -536,6 +536,7 @@
       }
     },
     "subtitles": {
+      "backgroundBlurLabel": "背景模糊",
       "backgroundLabel": "背景不透明度",
       "colorLabel": "颜色",
       "previewQuote": "我不能害怕。恐惧是心灵的杀手。",

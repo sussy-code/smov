@@ -536,6 +536,7 @@
       }
     },
     "subtitles": {
+      "backgroundBlurLabel": "Achtergrondvervaging",
       "backgroundLabel": "Achtergrond dekking",
       "colorLabel": "Kleur",
       "previewQuote": "Ik mag niet bang zijn. Angst doodt de geest.",

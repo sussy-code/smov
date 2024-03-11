@@ -536,6 +536,7 @@
       }
     },
     "subtitles": {
+      "backgroundBlurLabel": "Размытие фона",
       "backgroundLabel": "Прозрачность фона",
       "colorLabel": "Цвет",
       "previewQuote": "Я не должен бояться. Страх убивает разум.",

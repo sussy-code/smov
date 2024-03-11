@@ -536,6 +536,7 @@
       }
     },
     "subtitles": {
+      "backgroundBlurLabel": "Sfocatura di sfondo",
       "backgroundLabel": "Opacità di sfondo",
       "colorLabel": "Colore",
       "previewQuote": "Cantami o Diva del pelide Achille l'ira funesta.",

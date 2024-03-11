@@ -536,6 +536,7 @@
       }
     },
     "subtitles": {
+      "backgroundBlurLabel": "تاری پس زمینه",
       "backgroundLabel": "شفافیت پس‌زمینه",
       "colorLabel": "رنگ",
       "previewQuote": "نباید بترسم، ترس قاتل ذهن است.",

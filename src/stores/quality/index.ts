@@ -1,3 +1,4 @@
+import merge from "lodash.merge";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";
@@ -33,6 +34,7 @@ export const useQualityStore = create(
     })),
     {
       name: "__MW::quality",
+      merge: (persisted, current) => merge({}, current, persisted),
     },
   ),
 );
