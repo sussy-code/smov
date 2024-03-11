@@ -577,6 +577,7 @@
     },
     "subtitles": {
       "backgroundLabel": "Background opacity",
+      "backgroundBlurLabel": "Background blur",
       "colorLabel": "Color",
       "previewQuote": "Would you rather have a thot daughter or a gay son? 🤔",
       "textSizeLabel": "Text size",

@@ -93,6 +93,16 @@ export function CaptionsPart(props: {
             textTransformer={(s) => `${s}%`}
           />
           <CaptionSetting
+            label={t("settings.subtitles.backgroundBlurLabel")}
+            max={100}
+            min={0}
+            onChange={(v) =>
+              props.setStyling({ ...props.styling, backgroundBlur: v / 100 })
+            }
+            value={props.styling.backgroundBlur * 100}
+            textTransformer={(s) => `${s}%`}
+          />
+          <CaptionSetting
             label={t("settings.subtitles.textSizeLabel")}
             max={200}
             min={1}

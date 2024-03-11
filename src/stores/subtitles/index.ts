@@ -17,6 +17,11 @@ export interface SubtitleStyling {
    * background opacity, ranges between 0 and 1
    */
   backgroundOpacity: number;
+
+  /**
+   * background blur, ranges between 0 and 1
+   */
+  backgroundBlur: number;
 }
 
 export interface SubtitleStore {
@@ -51,6 +56,7 @@ export const useSubtitleStore = create(
         color: "#ffffff",
         backgroundOpacity: 0.5,
         size: 1,
+        backgroundBlur: 0.5,
       },
       resetSubtitleSpecificSettings() {
         set((s) => {
@@ -62,6 +68,8 @@ export const useSubtitleStore = create(
         set((s) => {
           if (newStyling.backgroundOpacity !== undefined)
             s.styling.backgroundOpacity = newStyling.backgroundOpacity;
+          if (newStyling.backgroundBlur !== undefined)
+            s.styling.backgroundBlur = newStyling.backgroundBlur;
           if (newStyling.color !== undefined)
             s.styling.color = newStyling.color.toLowerCase();
           if (newStyling.size !== undefined)
