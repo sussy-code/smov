@@ -69,11 +69,11 @@ export const useSubtitleStore = create(
           if (newStyling.backgroundOpacity !== undefined)
             s.styling.backgroundOpacity = newStyling.backgroundOpacity;
           if (newStyling.backgroundBlur !== undefined)
-            s.styling.backgroundBlur = newStyling.backgroundBlur;
+            s.styling.backgroundBlur = Math.min(1, newStyling.backgroundBlur);
           if (newStyling.color !== undefined)
             s.styling.color = newStyling.color.toLowerCase();
           if (newStyling.size !== undefined)
-            s.styling.size = Math.min(2, Math.max(0.01, newStyling.size));
+            s.styling.size = Math.min(10, Math.max(0.01, newStyling.size));
         });
       },
       setLanguage(lang) {
