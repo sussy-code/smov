@@ -348,7 +348,7 @@ function ParticlesCanvas() {
     }
 
     // Gangster easter egg
-    const shouldShowCowboy = Math.random() < 0.98; // 3%
+    const shouldShowCowboy = Math.random() < 0.5; // 5%
     if (shouldShowCowboy) {
       imageOverride = [
         {
