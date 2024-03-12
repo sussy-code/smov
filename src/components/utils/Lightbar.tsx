@@ -347,6 +347,22 @@ function ParticlesCanvas() {
       imageParticleCount = particleCount / 11;
     }
 
+    // Gangster easter egg
+    const shouldShowCowboy = Math.random() < 0.98; // 3%
+    if (shouldShowCowboy) {
+      imageOverride = [
+        {
+          image: "/lightbar-images/auto-gun.png",
+          sizeRange: [28, 36] as [number, number],
+        },
+        {
+          image: "/lightbar-images/gun.png",
+          sizeRange: [23, 30] as [number, number],
+        },
+      ];
+      imageParticleCount = particleCount / 11.6;
+    }
+
     // HOIST THE SAIL (of particles)!
     for (let i = 0; i < particleCount; i += 1) {
       const isImageParticle = imageOverride && i <= imageParticleCount;
