@@ -18,6 +18,7 @@ Sudo-Flix is a mirror of [Movie-Web](https://github.com/movie-web/movie-web) wit
 
 ## Referrers
 - [Priacy Subreddit Megathread](https://www.reddit.com/r/Piracy/s/iymSloEpXn)
+- [Toon's Instances](https://erynith.github.io/movie-web-instances)
 - [Movie-Web Docs](https://movie-web.github.io/docs/instances)
 - [Movie-Web Discord](https://movie-web.github.io/links/discord)
 - Search Engines: DuckDuckGo, Bing, Google
@@ -67,12 +68,6 @@ git add .  # Add all changes made during merge and conflict fixing
 git commit -m "Update movie-web instance (merge movie-web/master)"
 git push  # Push to YOUR repository
 ```
-
-
-## Screenshots
-![search example](https://github.com/sudo-flix/sudo-source/assets/161381289/ba4cd772-7cce-4ab9-964c-4242298b2f42)
-![worker swarm](https://github.com/sudo-flix/sudo-source/assets/161381289/1ed71dab-8943-4444-8b57-7b795df9d45e)
-![312547204-b80dc1d4-4485-4a14-a6b7-423727b1f929 (1)](https://github.com/sudo-flix/sudo-source/assets/161381289/843bc9b1-dd72-41ca-9287-3e615b34ef17)
 
 
 ## Contact Me
