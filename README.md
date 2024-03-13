@@ -69,6 +69,12 @@ git push  # Push to YOUR repository
 ```
 
 
+## Screenshots
+![search example](https://github.com/sudo-flix/sudo-source/assets/161381289/ba4cd772-7cce-4ab9-964c-4242298b2f42)
+![worker swarm](https://github.com/sudo-flix/sudo-source/assets/161381289/1ed71dab-8943-4444-8b57-7b795df9d45e)
+![312547204-b80dc1d4-4485-4a14-a6b7-423727b1f929 (1)](https://github.com/sudo-flix/sudo-source/assets/161381289/843bc9b1-dd72-41ca-9287-3e615b34ef17)
+
+
 ## Contact Me
 **Discord:** *.baddeveloper*  
 **Email:** *[sudo-flix@proton.me](mailto:sudo-flix@proton.me)*
