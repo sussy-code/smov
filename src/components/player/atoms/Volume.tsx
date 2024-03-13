@@ -63,7 +63,7 @@ export function Volume(props: Props) {
       onMouseEnter={handleMouseEnter}
       onWheel={handleWheel}
     >
-      <div className="pointer-events-auto flex cursor-pointer items-center py-0">
+      <div className="pointer-events-auto flex cursor-pointer items-center py-0 touch-none">
         <div className="px-4 text-2xl text-white" onClick={handleClick}>
           <Icon icon={percentage > 0 ? Icons.VOLUME : Icons.VOLUME_X} />
         </div>
