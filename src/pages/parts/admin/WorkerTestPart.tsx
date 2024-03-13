@@ -15,7 +15,10 @@ export function WorkerItem(props: {
   errored?: boolean;
   success?: boolean;
   errorText?: string;
+  url?: string;
 }) {
+  const urlWithoutProtocol = props.url ? new URL(props.url).host : null;
+
   return (
     <div className="flex mb-2">
       <Icon
@@ -36,6 +39,7 @@ export function WorkerItem(props: {
       <div className="flex-1">
         <p className="text-white font-bold">{props.name}</p>
         {props.errorText ? <p>{props.errorText}</p> : null}
+        {urlWithoutProtocol ? <p>{urlWithoutProtocol}</p> : null}
       </div>
     </div>
   );
@@ -115,7 +119,7 @@ export function WorkerTestPart() {
               />
             );
           if (s.status === "success")
-            return <WorkerItem name={name} success key={v.id} />;
+            return <WorkerItem name={name} url={v.url} success key={v.id} />;
           return <WorkerItem name={name} key={v.id} />;
         })}
         <Divider />
