@@ -188,7 +188,6 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
               break;
             }
           }
-          console.log("Subtitle tracks loaded", hls?.subtitleTracks);
         });
       }
 

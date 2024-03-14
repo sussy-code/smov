@@ -60,7 +60,6 @@ export async function downloadWebVTT(url: string): Promise<string> {
   const cached = downloadCache.get(url);
   if (cached) return cached;
 
-  // Q: should this use proxiedFetch or sendExtensionRequest?
   const data = await fetch(url).then((v) => v.text());
   return data;
 }

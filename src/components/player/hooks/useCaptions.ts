@@ -3,8 +3,24 @@ import subsrt from "subsrt-ts";
 import { ContentCaption } from "subsrt-ts/dist/types/handler";
 
 import { downloadCaption, downloadWebVTT } from "@/backend/helpers/subs";
+import { Caption } from "@/stores/player/slices/source";
 import { usePlayerStore } from "@/stores/player/store";
 import { useSubtitleStore } from "@/stores/subtitles";
+
+import { parseVttSubtitles } from "../utils/captions";
+
+const filterDuplicateCaptionCues = (cues: ContentCaption[]) =>
+  cues.reduce((acc: ContentCaption[], cap: ContentCaption) => {
+    const lastCap = acc[acc.length - 1];
+    const isSameAsLast =
+      lastCap?.start === cap.start &&
+      lastCap?.end === cap.end &&
+      lastCap?.content === cap.content;
+    if (lastCap === undefined || !isSameAsLast) {
+      acc.push(cap);
+    }
+    return acc;
+  }, []);
 
 export function useCaptions() {
   const setLanguage = useSubtitleStore((s) => s.setLanguage);
@@ -33,16 +49,17 @@ export function useCaptions() {
     async (captionId: string) => {
       const caption = captions.find((v) => v.id === captionId);
       if (!caption) return;
+
+      const captionToSet: Caption = {
+        id: caption.id,
+        language: caption.language,
+        url: caption.url,
+        srtData: "",
+      };
+
       if (!caption.hls) {
         const srtData = await downloadCaption(caption);
-        setCaption({
-          id: caption.id,
-          language: caption.language,
-          srtData,
-          url: caption.url,
-        });
-        resetSubtitleSpecificSettings();
-        setLanguage(caption.language);
+        captionToSet.srtData = srtData;
       } else {
         // request a language change to hls, so it can load the subtitles
         await setSubtitlePreference?.(caption.language);
@@ -60,42 +77,20 @@ export function useCaptions() {
           await Promise.all(
             fragments.map(async (frag) => {
               const vtt = await downloadWebVTT(frag.url);
-              const parsed = subsrt.parse(vtt);
-              return parsed.filter(
-                (c) => c.type === "caption",
-              ) as ContentCaption[];
+              return parseVttSubtitles(vtt);
             }),
           )
         ).flat();
 
-        // for some reason, in some cases there will be captions
-        // with the same start/end times, the same text duplicated
-        const filtered = vttCaptions.reduce(
-          (acc: ContentCaption[], cap: ContentCaption) => {
-            const lastCap = acc[acc.length - 1];
-            const isSameAsLast =
-              lastCap?.start === cap.start &&
-              lastCap?.end === cap.end &&
-              lastCap?.content === cap.content;
-            if (lastCap === undefined || !isSameAsLast) {
-              acc.push(cap);
-            }
-            return acc;
-          },
-          [],
-        );
+        const filtered = filterDuplicateCaptionCues(vttCaptions);
 
         const srtData = subsrt.build(filtered, { format: "srt" });
-
-        setCaption({
-          id: caption.id,
-          language: caption.language,
-          srtData,
-          url: caption.url,
-        });
-        resetSubtitleSpecificSettings();
-        setLanguage(caption.language);
+        captionToSet.srtData = srtData;
       }
+
+      setCaption(captionToSet);
+      resetSubtitleSpecificSettings();
+      setLanguage(caption.language);
     },
     [
       setLanguage,
