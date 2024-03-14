@@ -94,9 +94,11 @@ export function conf(): RuntimeConfig {
     DMCA_EMAIL: getKey("DMCA_EMAIL"),
     ONBOARDING_CHROME_EXTENSION_INSTALL_LINK: getKey(
       "ONBOARDING_CHROME_EXTENSION_INSTALL_LINK",
+      "https://chromewebstore.google.com/detail/movie-web-extension/hoffoikpiofojilgpofjhnkkamfnnhmm",
     ),
     ONBOARDING_FIREFOX_EXTENSION_INSTALL_LINK: getKey(
       "ONBOARDING_FIREFOX_EXTENSION_INSTALL_LINK",
+      "https://addons.mozilla.org/en-GB/firefox/addon/movie-web-extension",
     ),
     ONBOARDING_PROXY_INSTALL_LINK: getKey("ONBOARDING_PROXY_INSTALL_LINK"),
     BACKEND_URL: getKey("BACKEND_URL", BACKEND_URL),
@@ -106,7 +108,7 @@ export function conf(): RuntimeConfig {
       .map((v) => v.trim())
       .filter((v) => v.length > 0),
     NORMAL_ROUTER: getKey("NORMAL_ROUTER", "false") === "true",
-    HAS_ONBOARDING: getKey("HAS_ONBOARDING", "false") === "true",
+    HAS_ONBOARDING: getKey("HAS_ONBOARDING", "true") === "true",
     TURNSTILE_KEY: getKey("TURNSTILE_KEY"),
     DISALLOWED_IDS: getKey("DISALLOWED_IDS", "")
       .split(",")

@@ -1,4 +1,7 @@
+import { MediaPlaylist } from "hls.js";
+
 import { MWMediaType } from "@/backend/metadata/types/mw";
+import { CaptionListItem } from "@/stores/player/slices/source";
 import { LoadableSource, SourceQuality } from "@/stores/player/utils/qualities";
 import { Listener } from "@/utils/events";
 
@@ -70,4 +73,7 @@ export interface DisplayInterface extends Listener<DisplayInterfaceEvents> {
   setMeta(meta: DisplayMeta): void;
   setCaption(caption: DisplayCaption | null): void;
   getType(): DisplayType;
+  getCaptionList(): CaptionListItem[];
+  getSubtitleTracks(): MediaPlaylist[];
+  setSubtitlePreference(lang: string): Promise<void>;
 }

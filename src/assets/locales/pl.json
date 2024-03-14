@@ -117,8 +117,7 @@
       "loading": "Wczytywanie...",
       "noResults": "Nie mogliśmy niczego znaleźć!",
       "placeholder": {
-        "default": "Co chciałbyś obejrzeć?",
-        "extra": []
+        "default": "Co chciałbyś obejrzeć?"
       },
       "sectionTitle": "Wyniki wyszukiwania"
     },
@@ -131,11 +130,15 @@
       },
       "morning": {
         "default": "Co chciałbyś obejrzeć dziś rano?",
-        "extra": ["Słyszałem że „Przed wschodem słońca” jest dobre"]
+        "extra": [
+          "Słyszałem że „Przed wschodem słońca” jest dobre"
+        ]
       },
       "night": {
         "default": "Co chciałbyś obejrzeć dziś wieczorem?",
-        "extra": ["Zmęczony? Słyszałem że „Egzorcysta” jest dobry."]
+        "extra": [
+          "Zmęczony? Słyszałem że „Egzorcysta” jest dobry."
+        ]
       }
     }
   },
@@ -176,7 +179,7 @@
       "back": "Wstecz",
       "explainer": "Korzystając z rozszerzenia przeglądarki, możesz uzyskać najlepsze strumienie. Wystarczy prosta instalacja.",
       "explainerIos": "Niestety, rozszerzenie przeglądarki nie jest obsługiwane w systemie iOS, naciśnij <bold>Wstecz</bold>, aby wybrać inną opcję.",
-      "extensionHelp": "Jeżeli zainstalowałeś rozszerzenie, ale nie zostało ono wykryte. <bold>Otwórz rozszerzenie za pomocą menu rozszerzeń przeglądarki</bold> i postępuj zgodnie z instrukcjami wyświetlanymi na ekranie.",
+      "extensionHelp": "Jeżeli zainstalowałeś rozszerzenie, ale nie zostało ono wykryte, <bold>otwórz rozszerzenie za pomocą menu rozszerzeń przeglądarki</bold> i postępuj zgodnie z instrukcjami wyświetlanymi na ekranie.",
       "linkChrome": "Zainstaluj rozszerzenie na Chrome",
       "linkFirefox": "Zainstaluj rozszerzenie na Firefox",
       "notDetecting": "Zainstalowano na Chrome, ale się nie wyświetla? Spróbuj odświeżyć stronę!",
@@ -207,7 +210,7 @@
       "title": "Stwórzmy nowe proxy"
     },
     "start": {
-      "explainer": "Aby uzyskać najlepsze transmisje strumieniowe. Będziesz musiał wybrać metodę strumieniowania, której chcesz użyć.",
+      "explainer": "Aby uzyskać najlepsze transmisje strumieniowe, będziesz musiał wybrać metodę strumieniowania której chcesz użyć.",
       "options": {
         "default": {
           "text": "Nie chcę dobrej jakości strumieni, <0 /> <1>użyj domyślnej konfiguracji</1>"
@@ -524,8 +527,8 @@
       }
     },
     "subtitles": {
-      "backgroundLabel": "Krycie tła",
       "backgroundBlurLabel": "Rozmycie tła",
+      "backgroundLabel": "Krycie tła",
       "colorLabel": "Kolor",
       "previewQuote": "Nie wolno mi się bać. Strach zabija myślenie.",
       "textSizeLabel": "Rozmiar czcionki",

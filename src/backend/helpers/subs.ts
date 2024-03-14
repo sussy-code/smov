@@ -51,3 +51,15 @@ export async function downloadCaption(
   downloadCache.set(caption.url, output, expirySeconds);
   return output;
 }
+
+/**
+ * Downloads the WebVTT content. No different than a simple
+ * get request with a cache.
+ */
+export async function downloadWebVTT(url: string): Promise<string> {
+  const cached = downloadCache.get(url);
+  if (cached) return cached;
+
+  const data = await fetch(url).then((v) => v.text());
+  return data;
+}
