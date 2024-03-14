@@ -50,6 +50,20 @@ export function convertSubtitlesToSrt(text: string): string {
   return srt;
 }
 
+export function filterDuplicateCaptionCues(cues: ContentCaption[]) {
+  return cues.reduce((acc: ContentCaption[], cap: ContentCaption) => {
+    const lastCap = acc[acc.length - 1];
+    const isSameAsLast =
+      lastCap?.start === cap.start &&
+      lastCap?.end === cap.end &&
+      lastCap?.content === cap.content;
+    if (lastCap === undefined || !isSameAsLast) {
+      acc.push(cap);
+    }
+    return acc;
+  }, []);
+}
+
 export function parseVttSubtitles(vtt: string) {
   return parse(vtt).filter((cue) => cue.type === "caption") as CaptionCueType[];
 }

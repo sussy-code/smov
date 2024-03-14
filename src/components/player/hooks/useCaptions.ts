@@ -1,26 +1,15 @@
 import { useCallback, useMemo } from "react";
 import subsrt from "subsrt-ts";
-import { ContentCaption } from "subsrt-ts/dist/types/handler";
 
 import { downloadCaption, downloadWebVTT } from "@/backend/helpers/subs";
 import { Caption } from "@/stores/player/slices/source";
 import { usePlayerStore } from "@/stores/player/store";
 import { useSubtitleStore } from "@/stores/subtitles";
 
-import { parseVttSubtitles } from "../utils/captions";
-
-const filterDuplicateCaptionCues = (cues: ContentCaption[]) =>
-  cues.reduce((acc: ContentCaption[], cap: ContentCaption) => {
-    const lastCap = acc[acc.length - 1];
-    const isSameAsLast =
-      lastCap?.start === cap.start &&
-      lastCap?.end === cap.end &&
-      lastCap?.content === cap.content;
-    if (lastCap === undefined || !isSameAsLast) {
-      acc.push(cap);
-    }
-    return acc;
-  }, []);
+import {
+  filterDuplicateCaptionCues,
+  parseVttSubtitles,
+} from "../utils/captions";
 
 export function useCaptions() {
   const setLanguage = useSubtitleStore((s) => s.setLanguage);
