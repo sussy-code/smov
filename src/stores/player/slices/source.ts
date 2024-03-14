@@ -53,6 +53,7 @@ export interface CaptionListItem {
   language: string;
   url: string;
   needsProxy: boolean;
+  hls?: boolean;
 }
 
 export interface SourceSlice {

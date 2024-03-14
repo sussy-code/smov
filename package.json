@@ -44,7 +44,7 @@
     "focus-trap-react": "^10.2.3",
     "fscreen": "^1.2.0",
     "fuse.js": "^7.0.0",
-    "hls.js": "^1.4.14",
+    "hls.js": "^1.5.7",
     "i18next": "^23.7.11",
     "immer": "^10.0.3",
     "jwt-decode": "^4.0.0",
