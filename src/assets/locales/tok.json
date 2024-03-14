@@ -57,6 +57,8 @@
       },
       "host": "lawa ilo sina li <0>{{hostname}}</0> - ona li pona tawa sina la sina ken pali e lipu open",
       "no": "o weka",
+      "noHost": "lawa ilo ni li open ala li nasin ala la, sina ken ala pali e lipu open",
+      "noHostTitle": "lawa ilo li open ala a!",
       "title": "lawa ilo ni li pona tawa sina anu seme?",
       "yes": "lawa ilo ni li pona"
     },
@@ -79,7 +81,8 @@
   },
   "footer": {
     "legal": {
-      "disclaimer": "o sona e ni:"
+      "disclaimer": "o sona e ni:",
+      "disclaimerText": "ilo Muwi-We li mama ala e ijo sitelen. ona li toki taso tawa ilo ante. utala nasin li lon la o toki tawa ona pi ilo ante. sitelen ale li tan ala ilo Muwi-We"
     },
     "links": {
       "discord": "kulupu Siko",
@@ -117,22 +120,33 @@
       "noResults": "ijo li lon ala a!",
       "placeholder": {
         "default": "sina wile lukin e seme?",
-        "extra": []
+        "extra": [
+          "sina wile alasa e seme?",
+          "sina wile lukin e seme?",
+          "sitelen nanpa wan sina li seme?",
+          "sitelen nanpa wan sina li seme?"
+        ]
       },
       "sectionTitle": "mi lukin e ni:"
     },
     "titles": {
       "day": {
         "default": "tenpo suno ni la sina wile lukin e seme?",
-        "extra": ["sina pilin alasa la o lukin e sitelen Jurassic Park"]
+        "extra": [
+          "sina pilin alasa la o lukin e sitelen Jurassic Park"
+        ]
       },
       "morning": {
         "default": "tenpo sin ni la sina wile lukin e seme?",
-        "extra": ["ken la sitelen Before Sunrise li pona"]
+        "extra": [
+          "ken la sitelen Before Sunrise li pona"
+        ]
       },
       "night": {
         "default": "tenpo pimeja ni la sina wile lukin e seme?",
-        "extra": ["sina pilin lape anu seme? o alasa lukin e sitelen Exorcist"]
+        "extra": [
+          "sina pilin lape anu seme? o alasa lukin e sitelen Exorcist"
+        ]
       }
     }
   },
@@ -163,6 +177,9 @@
     "title": "mi ken ala lukin e lipu ona"
   },
   "onboarding": {
+    "defaultConfirm": {
+      "cancel": "ala"
+    },
     "start": {
       "title": "o open e ilo Muwi-We"
     }
