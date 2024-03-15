@@ -102,6 +102,13 @@ export function Navigation(props: NavigationProps) {
               >
                 <IconPatch icon={Icons.GITHUB} clickable downsized />
               </a>
+              <a
+                href="/flix"
+                rel="noreferrer"
+                className="text-xl text-white tabbable rounded-full"
+              >
+                <IconPatch icon={Icons.RISING_STAR} clickable downsized />
+              </a>
             </div>
             <div className="relative pointer-events-auto">
               <LinksDropdown>
