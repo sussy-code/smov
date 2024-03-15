@@ -8,6 +8,8 @@ import { Divider } from "@/components/utils/Divider";
 import { Heading1, Paragraph } from "@/components/utils/Text";
 
 import { SubPageLayout } from "./layouts/SubPageLayout";
+// import { MediaGrid } from "@/components/media/MediaGrid"
+// import { TopFlixCard } from "@/components/media/FlixCard";
 
 function Button(props: {
   className: string;
@@ -83,27 +85,61 @@ async function getRecentPlayedItems() {
   throw new Error("RECENT_PLAYED_ITEMS not found");
 }
 
+async function getTotalViews() {
+  const response = await fetch("https://backend.sudo-flix.lol/metrics");
+  const text = await response.text();
+
+  // Regex to match the view counts of all shows/movies with success="true"
+  const regex = /mw_media_watch_count{[^}]*,success="true"} (\d+)/g;
+  let totalViews = 0;
+  let match = regex.exec(text);
+
+  while (match !== null) {
+    totalViews += parseInt(match[1], 10);
+    match = regex.exec(text);
+  }
+
+  if (totalViews > 0) {
+    return totalViews.toString();
+  }
+  throw new Error("TOTAL_VIEWS not found");
+}
+
 export function TopFlix() {
   const [recentPlayedItems, setRecentPlayedItems] = useState<any[]>([]);
+  const [totalViews, setTotalViews] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
+  const maxItemsToShow = 100; // Maximum items to show
+  const maxPageCount = Math.ceil(maxItemsToShow / itemsPerPage); // Calculate max page count based on maxItemsToShow
 
   useEffect(() => {
     getRecentPlayedItems()
       .then((items) => {
-        const uniqueItems = items.filter(
-          (item, index, self) =>
-            index === self.findIndex((t2) => t2.tmdbFullId === item.tmdbFullId),
-        );
+        // Limit the items to the first 100 to ensure we don't exceed the max page count
+        const limitedItems = items
+          .slice(0, maxItemsToShow)
+          .filter(
+            (item, index, self) =>
+              index ===
+              self.findIndex((t2) => t2.tmdbFullId === item.tmdbFullId),
+          );
 
-        setRecentPlayedItems(uniqueItems);
+        setRecentPlayedItems(limitedItems);
       })
       .catch((error) => {
         console.error("Error fetching recent played items:", error);
       })
       .finally(() => {
         setLoading(false);
+      });
+    getTotalViews()
+      .then((views) => {
+        setTotalViews(views);
+      })
+      .catch((error) => {
+        console.error("Error fetching total views:", error);
       });
   }, []);
 
@@ -122,12 +158,17 @@ export function TopFlix() {
 
   return (
     <SubPageLayout>
-      <ThiccContainer>
+      <ThiccContainer classNames="px-4">
         <Heading1>Top flix</Heading1>
         <Paragraph className="mb-18">
           The most popular movies on sudo-flix.lol, this data is fetched from
           the current backend deployment.
         </Paragraph>
+        <div className="mt-8 w-auto">
+          <div className="bg-video-scraping-card rounded-xl py-5 px-7 inline-block">
+            <p className="font-bold">Overall Views: {totalViews}</p>
+          </div>
+        </div>
 
         <div className="mt-8 w-full max-w-none">
           <Divider marginClass="my-3" />
@@ -137,11 +178,13 @@ export function TopFlix() {
               <ConfigValue key={item.tmdbFullId} name={item.title}>
                 {`${item.providerId} - Views: `}
                 <strong>{item.count}</strong>
-                {/* <img src={coverUrl} alt={item.title} /> */}
               </ConfigValue>
             );
           })}
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <div
+            style={{ display: "flex", justifyContent: "space-between" }}
+            className="mt-6"
+          >
             <Button
               className="py-px box-content bg-buttons-secondary hover:bg-buttons-secondaryHover bg-opacity-90 text-buttons-secondaryText justify-center items-center"
               onClick={() => setCurrentPage(currentPage - 1)}
@@ -150,16 +193,12 @@ export function TopFlix() {
               Previous page
             </Button>
             <div>
-              {currentPage} /{" "}
-              {Math.ceil(recentPlayedItems.length / itemsPerPage)}
+              {currentPage} / {maxPageCount}
             </div>
             <Button
               className="py-px box-content bg-buttons-secondary hover:bg-buttons-secondaryHover bg-opacity-90 text-buttons-secondaryText justify-center items-center"
               onClick={() => setCurrentPage(currentPage + 1)}
-              disabled={
-                currentPage ===
-                Math.ceil(recentPlayedItems.length / itemsPerPage)
-              }
+              disabled={currentPage === maxPageCount}
             >
               Next page
             </Button>
