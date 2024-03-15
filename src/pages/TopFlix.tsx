@@ -132,7 +132,6 @@ export function TopFlix() {
         <div className="mt-8 w-full max-w-none">
           <Divider marginClass="my-3" />
           {getItemsForCurrentPage().map((item) => {
-            const successText = item.success ? "Yes" : "No"; // Convert bool to "Yes" or "No"
             const coverUrl = getMediaPoster(item.tmdbFullId);
             return (
               <ConfigValue key={item.tmdbFullId} name={item.title}>

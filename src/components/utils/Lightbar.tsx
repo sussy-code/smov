@@ -363,6 +363,18 @@ function ParticlesCanvas() {
       imageParticleCount = particleCount / 11.6;
     }
 
+    // Star easter egg
+    const shouldShowStars = Math.random() < 0.9; // 20%
+    if (shouldShowStars) {
+      imageOverride = [
+        {
+          image: "/lightbar-images/star.png",
+          sizeRange: [18, 28] as [number, number],
+        },
+      ];
+      imageParticleCount = particleCount / 6.6;
+    }
+
     // HOIST THE SAIL (of particles)!
     for (let i = 0; i < particleCount; i += 1) {
       const isImageParticle = imageOverride && i <= imageParticleCount;
