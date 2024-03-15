@@ -165,8 +165,10 @@ export function TopFlix() {
           the current backend deployment.
         </Paragraph>
         <div className="mt-8 w-auto">
-          <div className="bg-video-scraping-card rounded-xl py-5 px-7 inline-block">
-            <p className="font-bold">Overall Views: {totalViews}</p>
+          <div className="bg-buttons-secondary rounded-xl py-5 px-7 inline-block">
+            <p className="font-bold bg-opacity-90 text-buttons-secondaryText">
+              Overall Views: {totalViews}
+            </p>
           </div>
         </div>
 
