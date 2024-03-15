@@ -274,5 +274,14 @@ export function makeChromecastDisplayInterface(
       playbackRate = rate;
       setSource();
     },
+    getCaptionList() {
+      return [];
+    },
+    getSubtitleTracks() {
+      return [];
+    },
+    async setSubtitlePreference() {
+      return Promise.resolve();
+    },
   };
 }

@@ -122,9 +122,16 @@ export function CaptionsView({ id }: { id: string }) {
   >(null);
   const { selectCaptionById, disable } = useCaptions();
   const captionList = usePlayerStore((s) => s.captionList);
+  const getHlsCaptionList = usePlayerStore((s) => s.display?.getCaptionList);
+
+  const captions = useMemo(
+    () =>
+      captionList.length !== 0 ? captionList : getHlsCaptionList?.() ?? [],
+    [captionList, getHlsCaptionList],
+  );
 
   const [searchQuery, setSearchQuery] = useState("");
-  const subtitleList = useSubtitleList(captionList, searchQuery);
+  const subtitleList = useSubtitleList(captions, searchQuery);
 
   const [downloadReq, startDownload] = useAsyncFn(
     async (captionId: string) => {
