@@ -21,7 +21,7 @@ export function ThinContainer(props: ThinContainerProps) {
 export function ThiccContainer(props: ThinContainerProps) {
   return (
     <div
-      className={`mx-auto w-[1250px] max-w-full px-8 sm:px-0 ${
+      className={`mx-auto w-[1000px] max-w-full sm:px-0 ${
         props.classNames || ""
       }`}
     >

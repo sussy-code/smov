@@ -20,7 +20,7 @@ function Button(props: {
   return (
     <button
       className={classNames(
-        "font-bold rounded h-10 w-40 scale-95 hover:scale-100 transition-all duration-200",
+        "font-bold rounded h-10 w-40 scale-90 hover:scale-95 transition-all duration-200",
         props.className,
       )}
       type="button"
@@ -89,8 +89,8 @@ async function getTotalViews() {
   const response = await fetch("https://backend.sudo-flix.lol/metrics");
   const text = await response.text();
 
-  // Regex to match the view counts of all shows/movies with success="true"
-  const regex = /mw_media_watch_count{[^}]*,success="true"} (\d+)/g;
+  // Add up all mw_media_watch_count entries
+  const regex = /mw_media_watch_count{[^}]*} (\d+)/g;
   let totalViews = 0;
   let match = regex.exec(text);
 
@@ -158,21 +158,21 @@ export function TopFlix() {
 
   return (
     <SubPageLayout>
-      <ThiccContainer classNames="px-4">
-        <Heading1>Top flix</Heading1>
-        <Paragraph className="mb-18">
-          The most popular movies on sudo-flix.lol, this data is fetched from
-          the current backend deployment.
-        </Paragraph>
-        <div className="mt-8 w-auto">
-          <div className="bg-buttons-secondary rounded-xl py-5 px-7 inline-block">
-            <p className="font-bold bg-opacity-90 text-buttons-secondaryText">
-              Overall Views: {totalViews}
-            </p>
+      <ThiccContainer>
+        <div className="mt-8 w-full px-8">
+          <Heading1>Top flix</Heading1>
+          <Paragraph className="mb-18">
+            The most popular movies on sudo-flix.lol, this data is fetched from
+            the current backend deployment.
+          </Paragraph>
+          <div className="mt-8 w-auto">
+            <div className="bg-buttons-secondary rounded-xl scale-95 py-3 px-5 mb-2 inline-block">
+              <p className="font-bold bg-opacity-90 text-buttons-secondaryText">
+                Overall Views: {totalViews}
+              </p>
+            </div>
           </div>
-        </div>
 
-        <div className="mt-8 w-full max-w-none">
           <Divider marginClass="my-3" />
           {getItemsForCurrentPage().map((item) => {
             const coverUrl = getMediaPoster(item.tmdbFullId);
@@ -183,28 +183,28 @@ export function TopFlix() {
               </ConfigValue>
             );
           })}
-          <div
-            style={{ display: "flex", justifyContent: "space-between" }}
-            className="mt-6"
+        </div>
+        <div
+          style={{ display: "flex", justifyContent: "space-between" }}
+          className="mt-5 w-full px-8"
+        >
+          <Button
+            className="py-px box-content bg-buttons-secondary hover:bg-buttons-secondaryHover bg-opacity-90 text-buttons-secondaryText justify-center items-center"
+            onClick={() => setCurrentPage(currentPage - 1)}
+            disabled={currentPage === 1}
           >
-            <Button
-              className="py-px box-content bg-buttons-secondary hover:bg-buttons-secondaryHover bg-opacity-90 text-buttons-secondaryText justify-center items-center"
-              onClick={() => setCurrentPage(currentPage - 1)}
-              disabled={currentPage === 1}
-            >
-              Previous page
-            </Button>
-            <div>
-              {currentPage} / {maxPageCount}
-            </div>
-            <Button
-              className="py-px box-content bg-buttons-secondary hover:bg-buttons-secondaryHover bg-opacity-90 text-buttons-secondaryText justify-center items-center"
-              onClick={() => setCurrentPage(currentPage + 1)}
-              disabled={currentPage === maxPageCount}
-            >
-              Next page
-            </Button>
+            Previous page
+          </Button>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            {currentPage} / {maxPageCount}
           </div>
+          <Button
+            className="py-px box-content bg-buttons-secondary hover:bg-buttons-secondaryHover bg-opacity-90 text-buttons-secondaryText justify-center items-center"
+            onClick={() => setCurrentPage(currentPage + 1)}
+            disabled={currentPage === maxPageCount}
+          >
+            Next page
+          </Button>
         </div>
       </ThiccContainer>
     </SubPageLayout>
