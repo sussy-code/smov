@@ -364,7 +364,7 @@ function ParticlesCanvas() {
     }
 
     // Star easter egg
-    const shouldShowStars = Math.random() < 0.9; // 20%
+    const shouldShowStars = Math.random() < 0.15; // 15%
     if (shouldShowStars) {
       imageOverride = [
         {
