@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import { ReactNode, useEffect, useState } from "react";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 
 import { getMediaPoster } from "@/backend/metadata/tmdb";
 import { ThiccContainer } from "@/components/layout/ThinContainer";
@@ -33,7 +34,14 @@ function ConfigValue(props: { name: string; children?: ReactNode }) {
   return (
     <>
       <div className="flex">
-        <p className="flex-1 font-bold text-white pr-5">{props.name}</p>
+        <p className="flex-1 font-bold text-white pr-5">
+          <Link
+            to={`https://sudo-flix.lol/browse/${props.name}`}
+            className="hover:underline"
+          >
+            {props.name}
+          </Link>
+        </p>
         <p>{props.children}</p>
       </div>
       <Divider marginClass="my-3" />
@@ -129,7 +137,7 @@ export function TopFlix() {
             return (
               <ConfigValue key={item.tmdbFullId} name={item.title}>
                 {`${item.providerId} - Provided: ${successText}, Views: ${item.count}`}
-                <img src={coverUrl} alt={item.title} />
+                {/*<img src={coverUrl} alt={item.title} />*/}
               </ConfigValue>
             );
           })}
@@ -142,7 +150,7 @@ export function TopFlix() {
               Previous page
             </Button>
             <div>
-              Page {currentPage} of{" "}
+              {currentPage} /{" "}
               {Math.ceil(recentPlayedItems.length / itemsPerPage)}
             </div>
             <Button
