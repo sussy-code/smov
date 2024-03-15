@@ -137,7 +137,7 @@ export function TopFlix() {
             return (
               <ConfigValue key={item.tmdbFullId} name={item.title}>
                 {`${item.providerId} - Provided: ${successText}, Views: ${item.count}`}
-                {/*<img src={coverUrl} alt={item.title} />*/}
+                {/* <img src={coverUrl} alt={item.title} /> */}
               </ConfigValue>
             );
           })}
