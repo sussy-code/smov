@@ -25,6 +25,7 @@ import { OnboardingExtensionPage } from "@/pages/onboarding/OnboardingExtension"
 import { OnboardingProxyPage } from "@/pages/onboarding/OnboardingProxy";
 import { RegisterPage } from "@/pages/Register";
 import { SupportPage } from "@/pages/Support";
+import { TopFlix } from "@/pages/TopFlix";
 import { Layout } from "@/setup/Layout";
 import { useHistoryListener } from "@/stores/history";
 import { LanguageProvider } from "@/stores/language";
@@ -149,6 +150,8 @@ function App() {
           ) : null}
           {/* Support page */}
           <Route path="/support" element={<SupportPage />} />
+          {/* Top flix page */}
+          <Route path="/flix" element={<TopFlix />} />
           {/* Settings page */}
           <Route
             path="/settings"
