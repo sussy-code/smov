@@ -1,15 +1,10 @@
 import classNames from "classnames";
 import { ReactNode, useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
 
 import { getMediaPoster } from "@/backend/metadata/tmdb";
-import { Icon, Icons } from "@/components/Icon";
 import { ThiccContainer } from "@/components/layout/ThinContainer";
 import { Divider } from "@/components/utils/Divider";
-import { Heading1, Heading2, Paragraph } from "@/components/utils/Text";
-import { ConfigValuesPart } from "@/pages/parts/admin/ConfigValuesPart";
-import { TMDBTestPart } from "@/pages/parts/admin/TMDBTestPart";
-import { WorkerTestPart } from "@/pages/parts/admin/WorkerTestPart";
+import { Heading1, Paragraph } from "@/components/utils/Text";
 
 import { SubPageLayout } from "./layouts/SubPageLayout";
 
@@ -84,7 +79,6 @@ export function TopFlix() {
   const [recentPlayedItems, setRecentPlayedItems] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const { t } = useTranslation();
   const itemsPerPage = 10;
 
   useEffect(() => {

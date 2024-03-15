@@ -1,5 +1,5 @@
 import { ThinContainer } from "@/components/layout/ThinContainer";
-import { Heading1, Heading2, Paragraph } from "@/components/utils/Text";
+import { Heading1, Paragraph } from "@/components/utils/Text";
 import { SubPageLayout } from "@/pages/layouts/SubPageLayout";
 import { ConfigValuesPart } from "@/pages/parts/admin/ConfigValuesPart";
 import { TMDBTestPart } from "@/pages/parts/admin/TMDBTestPart";
