@@ -136,7 +136,9 @@ export function TopFlix() {
             const coverUrl = getMediaPoster(item.tmdbFullId);
             return (
               <ConfigValue key={item.tmdbFullId} name={item.title}>
-                {`${item.providerId} - Provided: ${successText}, Views: ${item.count}`}
+                {`${item.providerId} - Views: `}
+                <strong>{item.count}</strong>
+                {`, Provided: ${successText}`}
                 {/* <img src={coverUrl} alt={item.title} /> */}
               </ConfigValue>
             );
