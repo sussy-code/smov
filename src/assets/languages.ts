@@ -84,7 +84,7 @@ export const locales = {
   ko,
   sl,
   ta,
-  "zh-HANT": zhhant,
+  "zh-Hant": zhhant,
   is,
   ru,
   gl,
