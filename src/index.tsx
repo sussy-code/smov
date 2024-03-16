@@ -117,6 +117,7 @@ function AuthWrapper() {
       <ErrorScreen
         showResetButton={isCustomUrl}
         showLogoutButton={!isCustomUrl}
+        showReloadButton={!isCustomUrl}
       >
         {t(
           isCustomUrl
