@@ -5,6 +5,7 @@ import { useAsyncFn } from "react-use";
 import { convert } from "subsrt-ts";
 
 import { subtitleTypeList } from "@/backend/helpers/subs";
+import { FileDropHandler } from "@/components/DropFile";
 import { FlagIcon } from "@/components/FlagIcon";
 import { useCaptions } from "@/components/player/hooks/useCaptions";
 import { Menu } from "@/components/player/internals/ContextMenu";
@@ -123,6 +124,8 @@ export function CaptionsView({ id }: { id: string }) {
   const { selectCaptionById, disable } = useCaptions();
   const captionList = usePlayerStore((s) => s.captionList);
   const getHlsCaptionList = usePlayerStore((s) => s.display?.getCaptionList);
+  const [dragging, setDragging] = useState(false);
+  const setCaption = usePlayerStore((s) => s.setCaption);
 
   const captions = useMemo(
     () =>
@@ -162,7 +165,31 @@ export function CaptionsView({ id }: { id: string }) {
   });
 
   return (
-    <>
+    <FileDropHandler
+      className={`transition duration-300 ${dragging ? "brightness-50" : ""}`}
+      onDraggingChange={(isDragging) => {
+        setDragging(isDragging);
+      }}
+      onDrop={(event) => {
+        const files = event.dataTransfer.files;
+        if (!files || files.length === 0) return;
+
+        const reader = new FileReader();
+        reader.addEventListener("load", (e) => {
+          if (!e.target || typeof e.target.result !== "string") return;
+
+          const converted = convert(e.target.result, "srt");
+
+          setCaption({
+            language: "custom",
+            srtData: converted,
+            id: "custom-caption",
+          });
+        });
+
+        reader.readAsText(files[0]);
+      }}
+    >
       <div>
         <Menu.BackLink
           onClick={() => router.navigate("/")}
@@ -182,6 +209,7 @@ export function CaptionsView({ id }: { id: string }) {
           <Input value={searchQuery} onInput={setSearchQuery} />
         </div>
       </div>
+
       <Menu.ScrollToActiveSection className="!pt-1 mt-2 pb-3">
         <CaptionOption onClick={() => disable()} selected={!selectedCaptionId}>
           {t("player.menus.subtitles.offChoice")}
@@ -189,7 +217,7 @@ export function CaptionsView({ id }: { id: string }) {
         <CustomCaptionOption />
         {content}
       </Menu.ScrollToActiveSection>
-    </>
+    </FileDropHandler>
   );
 }
 
