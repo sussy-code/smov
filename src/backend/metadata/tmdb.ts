@@ -17,7 +17,7 @@ import {
   TMDBShowData,
   TMDBShowSearchResult,
 } from "./types/tmdb";
-import { mwFetch } from "../helpers/fetch";
+import { proxiedFetch } from "../helpers/fetch";
 
 export function mediaTypeToTMDB(type: MWMediaType): TMDBContentTypes {
   if (type === MWMediaType.MOVIE) return TMDBContentTypes.MOVIE;
@@ -154,7 +154,7 @@ const headers = {
 async function get<T>(url: string, params?: object): Promise<T> {
   if (!apiKey) throw new Error("TMDB API key not set");
 
-  const res = await mwFetch<any>(encodeURI(url), {
+  const res = await proxiedFetch<any>(encodeURI(url), {
     headers,
     baseURL,
     params: {
