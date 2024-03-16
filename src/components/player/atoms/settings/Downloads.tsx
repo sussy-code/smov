@@ -10,7 +10,7 @@ import { convertSubtitlesToSrtDataurl } from "@/components/player/utils/captions
 import { useOverlayRouter } from "@/hooks/useOverlayRouter";
 import { usePlayerStore } from "@/stores/player/store";
 
-function useDownloadLink() {
+export function useDownloadLink() {
   const source = usePlayerStore((s) => s.source);
   const currentQuality = usePlayerStore((s) => s.currentQuality);
   const url = useMemo(() => {
