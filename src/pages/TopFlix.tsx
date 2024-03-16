@@ -44,10 +44,10 @@ function isShowOrMovie(tmdbFullId: string): "show" | "movie" | "unknown" {
 function directLinkToContent(tmdbFullId: string) {
   const currentDomain = window.location.href.split("#")[0];
   if (isShowOrMovie(tmdbFullId) === "show") {
-    return `${currentDomain}media/tmdb-movie-${tmdbFullId.split("-")[1]}`;
+    return `${currentDomain}/media/tmdb-movie-${tmdbFullId.split("-")[1]}`;
   }
   if (isShowOrMovie(tmdbFullId) === "movie") {
-    return `${currentDomain}media/tmdb-tv-${tmdbFullId.split("-")[1]}`;
+    return `${currentDomain}/media/tmdb-tv-${tmdbFullId.split("-")[1]}`;
   }
   return null;
 }
