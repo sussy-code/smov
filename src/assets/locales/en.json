@@ -131,6 +131,8 @@
       "placeholder": {
         "default": "What do you want to watch?",
         "extra": [
+          "What are you in the mood for?",
+          "Should we delete your browser history?",
           "What do you want to stream?",
           "Sudo-Flix is the best site ever!",
           "What's on your watchlist today?",
