@@ -54,6 +54,7 @@ function ErrorScreen(props: {
   children: ReactNode;
   showResetButton?: boolean;
   showLogoutButton?: boolean;
+  showReloadButton?: boolean;
 }) {
   const { t } = useTranslation();
   const { logout } = useAuth();
@@ -88,6 +89,13 @@ function ErrorScreen(props: {
         <div className="mt-6">
           <Button theme="secondary" onClick={logoutFromBackend}>
             {t("screens.loadingUserError.logout")}
+          </Button>
+        </div>
+      ) : null}
+      {props.showReloadButton ? (
+        <div className="mt-6">
+          <Button theme="secondary" onClick={() => window.location.reload()}>
+            {t("screens.loadingUserError.reload")}
           </Button>
         </div>
       ) : null}

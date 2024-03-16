@@ -458,6 +458,7 @@
       "logout": "Logout",
       "reset": "Reset custom server",
       "text": "Failed to load your profile",
+      "reload": "Reload",
       "textWithReset": "Failed to load your profile from your custom server, want to reset back to the default server?"
     },
     "migration": {
