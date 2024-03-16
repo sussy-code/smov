@@ -43,16 +43,12 @@ function isShowOrMovie(tmdbFullId: string): "series" | "movie" | "unknown" {
 
 function directLinkToContent(tmdbFullId: string) {
   if (isShowOrMovie(tmdbFullId) === "series") {
-    return `/media/tmdb-tv-${
-      tmdbFullId.split("-")[1]
-    }#/media/tmdb-tv-${
+    return `/media/tmdb-tv-${tmdbFullId.split("-")[1]}#/media/tmdb-tv-${
       tmdbFullId.split("-")[1]
     }`;
   }
   if (isShowOrMovie(tmdbFullId) === "movie") {
-    return `/media/tmdb-movie-${
-      tmdbFullId.split("-")[1]
-    }#/media/tmdb-movie-${
+    return `/media/tmdb-movie-${tmdbFullId.split("-")[1]}#/media/tmdb-movie-${
       tmdbFullId.split("-")[1]
     }`;
   }
