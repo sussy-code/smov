@@ -31,9 +31,9 @@ function Button(props: {
   );
 }
 
-function isShowOrMovie(tmdbFullId: string): "show" | "movie" | "unknown" {
+function isShowOrMovie(tmdbFullId: string): "series" | "movie" | "unknown" {
   if (tmdbFullId.includes("show-")) {
-    return "show";
+    return "series";
   }
   if (tmdbFullId.includes("movie-")) {
     return "movie";
@@ -42,12 +42,15 @@ function isShowOrMovie(tmdbFullId: string): "show" | "movie" | "unknown" {
 }
 
 function directLinkToContent(tmdbFullId: string) {
-  const currentDomain = window.location.href.split("#")[0];
-  if (isShowOrMovie(tmdbFullId) === "show") {
-    return `${currentDomain}/media/tmdb-movie-${tmdbFullId.split("-")[1]}`;
+  if (isShowOrMovie(tmdbFullId) === "series") {
+    return `${window.location.pathname}#/media/tmdb-movie-${
+      tmdbFullId.split("-")[1]
+    }`;
   }
   if (isShowOrMovie(tmdbFullId) === "movie") {
-    return `${currentDomain}/media/tmdb-tv-${tmdbFullId.split("-")[1]}`;
+    return `${window.location.pathname}#/media/tmdb-tv-${
+      tmdbFullId.split("-")[1]
+    }`;
   }
   return null;
 }
@@ -61,7 +64,7 @@ function ConfigValue(props: {
   return (
     <>
       <div className="flex">
-        <p className="flex-1 font-bold text-white pr-5">
+        <p className="flex-1 font-bold text-white pr-5 pl-3">
           {link ? (
             <Link to={link} className="hover:underline">
               {props.name}
@@ -70,7 +73,7 @@ function ConfigValue(props: {
             <p>{props.name}</p>
           )}
         </p>
-        <p>{props.children}</p>
+        <p className="pr-3">{props.children}</p>
       </div>
       <Divider marginClass="my-3" />
     </>
@@ -207,7 +210,9 @@ export function TopFlix() {
                 id={item.tmdbFullId}
                 name={item.title}
               >
-                {`${item.providerId} - Views: `}
+                {`${item.providerId}, ${isShowOrMovie(
+                  item.tmdbFullId,
+                )} - Views: `}
                 <strong>{item.count}</strong>
               </ConfigValue>
             );

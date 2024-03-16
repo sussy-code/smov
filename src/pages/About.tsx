@@ -1,4 +1,6 @@
+import classNames from "classnames";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 import { ThinContainer } from "@/components/layout/ThinContainer";
 import { Ol } from "@/components/utils/Ol";
@@ -13,6 +15,27 @@ function Question(props: { title: string; children: React.ReactNode }) {
       <p className="text-white mb-2 font-medium">{props.title}</p>
       <div className="text-type-text">{props.children}</div>
     </>
+  );
+}
+
+function Button(props: {
+  className: string;
+  onClick?: () => void;
+  children: React.ReactNode;
+  disabled?: boolean;
+}) {
+  return (
+    <button
+      className={classNames(
+        "font-bold rounded h-10 w-40 scale-90 hover:scale-95 transition-all duration-200",
+        props.className,
+      )}
+      type="button"
+      onClick={props.onClick}
+      disabled={props.disabled}
+    >
+      {props.children}
+    </button>
   );
 }
 
@@ -44,6 +67,21 @@ export function AboutPage() {
             </Question>,
           ]}
         />
+        <div
+          style={{ display: "flex", justifyContent: "space-between" }}
+          className="w-full"
+        >
+          <Link to="/flix">
+            <Button className="py-px mt-8 box-content bg-buttons-secondary hover:bg-buttons-secondaryHover bg-opacity-90 text-buttons-secondaryText justify-center items-center">
+              Top Flix
+            </Button>
+          </Link>
+          <Link to="/support">
+            <Button className="py-px mt-8 box-content bg-buttons-secondary hover:bg-buttons-secondaryHover bg-opacity-90 text-buttons-secondaryText justify-center items-center">
+              Support
+            </Button>
+          </Link>
+        </div>
       </ThinContainer>
     </SubPageLayout>
   );

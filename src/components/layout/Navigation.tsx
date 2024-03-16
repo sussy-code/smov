@@ -103,7 +103,7 @@ export function Navigation(props: NavigationProps) {
                 <IconPatch icon={Icons.GITHUB} clickable downsized />
               </a>
               <a
-                href="/flix"
+                href={`${window.location.pathname}#flix`}
                 rel="noreferrer"
                 className="text-xl text-white tabbable rounded-full"
               >
