@@ -2,7 +2,6 @@ import classNames from "classnames";
 import { ReactNode, useEffect, useState } from "react";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
 
-import { getMediaPoster } from "@/backend/metadata/tmdb";
 import { ThiccContainer } from "@/components/layout/ThinContainer";
 import { Divider } from "@/components/utils/Divider";
 import { Heading1, Paragraph } from "@/components/utils/Text";
@@ -32,17 +31,44 @@ function Button(props: {
   );
 }
 
-function ConfigValue(props: { name: string; children?: ReactNode }) {
+function isShowOrMovie(tmdbFullId: string): "show" | "movie" | "unknown" {
+  if (tmdbFullId.includes("show-")) {
+    return "show";
+  }
+  if (tmdbFullId.includes("movie-")) {
+    return "movie";
+  }
+  return "unknown";
+}
+
+function directLinkToContent(tmdbFullId: string) {
+  const currentDomain = window.location.href.split("#")[0];
+  if (isShowOrMovie(tmdbFullId) === "show") {
+    return `${currentDomain}media/tmdb-movie-${tmdbFullId.split("-")[1]}`;
+  }
+  if (isShowOrMovie(tmdbFullId) === "movie") {
+    return `${currentDomain}media/tmdb-tv-${tmdbFullId.split("-")[1]}`;
+  }
+  return null;
+}
+
+function ConfigValue(props: {
+  name: string;
+  id: string;
+  children?: ReactNode;
+}) {
+  const link = directLinkToContent(props.id);
   return (
     <>
       <div className="flex">
         <p className="flex-1 font-bold text-white pr-5">
-          <Link
-            to={`https://sudo-flix.lol/browse/${props.name}`}
-            className="hover:underline"
-          >
-            {props.name}
-          </Link>
+          {link ? (
+            <Link to={link} className="hover:underline">
+              {props.name}
+            </Link>
+          ) : (
+            <p>{props.name}</p>
+          )}
         </p>
         <p>{props.children}</p>
       </div>
@@ -175,9 +201,12 @@ export function TopFlix() {
 
           <Divider marginClass="my-3" />
           {getItemsForCurrentPage().map((item) => {
-            const coverUrl = getMediaPoster(item.tmdbFullId);
             return (
-              <ConfigValue key={item.tmdbFullId} name={item.title}>
+              <ConfigValue
+                key={item.tmdbFullId}
+                id={item.tmdbFullId}
+                name={item.title}
+              >
                 {`${item.providerId} - Views: `}
                 <strong>{item.count}</strong>
               </ConfigValue>
