@@ -6,7 +6,6 @@ import { TMDBContentTypes } from "@/backend/metadata/types/tmdb";
 import { ThiccContainer } from "@/components/layout/ThinContainer";
 import { MediaCard } from "@/components/media/MediaCard";
 import { MediaGrid } from "@/components/media/MediaGrid";
-import { Divider } from "@/components/utils/Divider";
 import { Heading1, Paragraph } from "@/components/utils/Text";
 import { MediaItem } from "@/utils/mediaTypes";
 

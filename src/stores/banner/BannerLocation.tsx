@@ -2,20 +2,23 @@ import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 import { Icon, Icons } from "@/components/Icon";
+import { ExtensionStatus } from "@/setup/Layout";
 import { useBannerStore, useRegisterBanner } from "@/stores/banner";
 
 export function Banner(props: {
   children: React.ReactNode;
-  type: "error";
+  type: "error" | "info"; // Add "info" type
   id: string;
 }) {
   const [ref] = useRegisterBanner<HTMLDivElement>(props.id);
   const hideBanner = useBannerStore((s) => s.hideBanner);
   const styles = {
     error: "bg-[#C93957] text-white",
+    info: "bg-[#126FD3] text-white", // Add "info" style
   };
   const icons = {
     error: Icons.CIRCLE_EXCLAMATION,
+    info: Icons.CIRCLE_EXCLAMATION,
   };
 
   return (
@@ -39,6 +42,61 @@ export function Banner(props: {
       </div>
     </div>
   );
+}
+
+// This jawn is for advertising the extension for le
+export function ExtensionBanner(props: {
+  location?: string;
+  extensionState: ExtensionStatus;
+}) {
+  const setLocation = useBannerStore((s) => s.setLocation);
+  const currentLocation = useBannerStore((s) => s.location);
+  const extensionPage =
+    "https://chromewebstore.google.com/detail/movie-web-extension/hoffoikpiofojilgpofjhnkkamfnnhmm";
+  const loc = props.location ?? null;
+
+  useEffect(() => {
+    if (!loc) return;
+    setLocation(loc);
+    return () => {
+      setLocation(null);
+    };
+  }, [setLocation, loc]);
+
+  if (currentLocation !== loc) return null;
+
+  // Show the banner with a 40% chance
+  if (Math.random() < 0.4) {
+    let bannerText = "";
+    switch (props.extensionState) {
+      case "noperms":
+        bannerText =
+          "You don't have the necessary permissions to use the extension.";
+        break;
+      case "outdated":
+        bannerText =
+          "Your extension is outdated. Please update it for better performance.";
+        break;
+      case "disallowed":
+        bannerText = "The extension is not enabled on this page.";
+        break;
+      default:
+        bannerText =
+          "You don't have the extension! Download it here for better quality.";
+    }
+
+    return (
+      <div
+        onClick={() => window.open(extensionPage, "_blank")}
+        style={{ cursor: "pointer" }}
+      >
+        <Banner id="extension" type="info">
+          {bannerText}
+        </Banner>
+      </div>
+    );
+  }
+  return null;
 }
 
 export function BannerLocation(props: { location?: string }) {
