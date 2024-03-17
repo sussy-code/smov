@@ -114,8 +114,7 @@ export function TopFlix() {
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 12;
-  const maxItemsToShow = 120; // Maximum items to show
-  const maxPageCount = Math.ceil(maxItemsToShow / itemsPerPage); // Calculate max page count based on maxItemsToShow
+  const maxItemsToShow = 12; // Maximum items to show
 
   useEffect(() => {
     getRecentPlayedItems()
@@ -171,14 +170,13 @@ export function TopFlix() {
             the current backend deployment.
           </Paragraph>
           <div className="mt-8 w-auto">
-            <div className="bg-buttons-secondary rounded-xl scale-95 py-3 px-5 mb-2 inline-block">
+            <div className="bg-buttons-secondary rounded-xl scale-95 py-3 px-5 mb-14 inline-block">
               <p className="font-bold bg-opacity-90 text-buttons-secondaryText">
                 Overall Views: {totalViews}
               </p>
             </div>
           </div>
 
-          <Divider marginClass="my-3" />
           <MediaGrid>
             {getItemsForCurrentPage().map((item) => {
               const tmdbId = item.tmdbFullId.split("-")[1];
@@ -190,34 +188,12 @@ export function TopFlix() {
                 title: item.title,
                 type,
                 poster,
-                year: 2009,
+                // year: 420,
               };
 
               return <MediaCard linkable media={media} />;
             })}
           </MediaGrid>
-        </div>
-        <div
-          style={{ display: "flex", justifyContent: "space-between" }}
-          className="mt-5 w-full px-8"
-        >
-          <Button
-            className="py-px box-content bg-buttons-secondary hover:bg-buttons-secondaryHover bg-opacity-90 text-buttons-secondaryText justify-center items-center"
-            onClick={() => setCurrentPage(currentPage - 1)}
-            disabled={currentPage === 1}
-          >
-            Previous page
-          </Button>
-          <div style={{ display: "flex", alignItems: "center" }}>
-            {currentPage} / {maxPageCount}
-          </div>
-          <Button
-            className="py-px box-content bg-buttons-secondary hover:bg-buttons-secondaryHover bg-opacity-90 text-buttons-secondaryText justify-center items-center"
-            onClick={() => setCurrentPage(currentPage + 1)}
-            disabled={currentPage === maxPageCount}
-          >
-            Next page
-          </Button>
         </div>
       </ThiccContainer>
     </SubPageLayout>
