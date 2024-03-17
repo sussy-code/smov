@@ -1,15 +1,14 @@
 import classNames from "classnames";
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 
-import { getMediaDetails, getMediaPoster } from "@/backend/metadata/tmdb";
-import { TMDBContentTypes } from "@/backend/metadata/types/tmdb";
 import { ThiccContainer } from "@/components/layout/ThinContainer";
-import { MediaCard } from "@/components/media/MediaCard";
-import { MediaGrid } from "@/components/media/MediaGrid";
+import { Divider } from "@/components/utils/Divider";
 import { Heading1, Paragraph } from "@/components/utils/Text";
-import { MediaItem } from "@/utils/mediaTypes";
 
 import { SubPageLayout } from "./layouts/SubPageLayout";
+// import { MediaGrid } from "@/components/media/MediaGrid"
+// import { TopFlixCard } from "@/components/media/FlixCard";
 
 function Button(props: {
   className: string;
@@ -32,25 +31,53 @@ function Button(props: {
   );
 }
 
-function isShowOrMovie(tmdbFullId: string): "show" | "movie" {
+function isShowOrMovie(tmdbFullId: string): "series" | "movie" | "unknown" {
   if (tmdbFullId.includes("show-")) {
-    return "show";
+    return "series";
   }
   if (tmdbFullId.includes("movie-")) {
     return "movie";
   }
-  throw new Error("Invalid tmdbFullId");
+  return "unknown";
 }
 
-async function getPoster(
-  tmdbId: string,
-  type: TMDBContentTypes.MOVIE | TMDBContentTypes.TV,
-): Promise<string> {
-  const details = await getMediaDetails(tmdbId, type);
+function directLinkToContent(tmdbFullId: string) {
+  if (isShowOrMovie(tmdbFullId) === "series") {
+    return `${window.location.pathname}#/media/tmdb-movie-${
+      tmdbFullId.split("-")[1]
+    }`;
+  }
+  if (isShowOrMovie(tmdbFullId) === "movie") {
+    return `${window.location.pathname}#/media/tmdb-tv-${
+      tmdbFullId.split("-")[1]
+    }`;
+  }
+  return null;
+}
 
-  const posterPath = getMediaPoster(details.poster_path);
-
-  return posterPath || "";
+function ConfigValue(props: {
+  name: string;
+  id: string;
+  children?: ReactNode;
+}) {
+  const link = directLinkToContent(props.id);
+  return (
+    <>
+      <div className="flex">
+        <p className="flex-1 font-bold text-white pr-5 pl-3">
+          {link ? (
+            <Link to={link} className="hover:underline">
+              {props.name}
+            </Link>
+          ) : (
+            <p>{props.name}</p>
+          )}
+        </p>
+        <p className="pr-3">{props.children}</p>
+      </div>
+      <Divider marginClass="my-3" />
+    </>
+  );
 }
 
 async function getRecentPlayedItems() {
@@ -112,8 +139,9 @@ export function TopFlix() {
   const [totalViews, setTotalViews] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12;
-  const maxItemsToShow = 12; // Maximum items to show
+  const itemsPerPage = 10;
+  const maxItemsToShow = 100; // Maximum items to show
+  const maxPageCount = Math.ceil(maxItemsToShow / itemsPerPage); // Calculate max page count based on maxItemsToShow
 
   useEffect(() => {
     getRecentPlayedItems()
@@ -157,8 +185,6 @@ export function TopFlix() {
     );
   }
 
-  // make a object named media and it should be of type MediaItem
-
   return (
     <SubPageLayout>
       <ThiccContainer>
@@ -169,30 +195,50 @@ export function TopFlix() {
             the current backend deployment.
           </Paragraph>
           <div className="mt-8 w-auto">
-            <div className="bg-buttons-secondary rounded-xl scale-95 py-3 px-5 mb-14 inline-block">
+            <div className="bg-buttons-secondary rounded-xl scale-95 py-3 px-5 mb-2 inline-block">
               <p className="font-bold bg-opacity-90 text-buttons-secondaryText">
                 Overall Views: {totalViews}
               </p>
             </div>
           </div>
 
-          <MediaGrid>
-            {getItemsForCurrentPage().map((item) => {
-              const tmdbId = item.tmdbFullId.split("-")[1];
-              const type = isShowOrMovie(item.tmdbFullId);
-              const poster = getPoster(tmdbId, type === "movie" ? TMDBContentTypes.MOVIE : TMDBContentTypes.TV);
-              console.log(poster);
-              const media: MediaItem = {
-                id: tmdbId,
-                title: item.title,
-                type,
-                poster,
-                // year: 420,
-              };
-
-              return <MediaCard linkable media={media} />;
-            })}
-          </MediaGrid>
+          <Divider marginClass="my-3" />
+          {getItemsForCurrentPage().map((item) => {
+            return (
+              <ConfigValue
+                key={item.tmdbFullId}
+                id={item.tmdbFullId}
+                name={item.title}
+              >
+                {`${item.providerId}, ${isShowOrMovie(
+                  item.tmdbFullId,
+                )} - Views: `}
+                <strong>{item.count}</strong>
+              </ConfigValue>
+            );
+          })}
+        </div>
+        <div
+          style={{ display: "flex", justifyContent: "space-between" }}
+          className="mt-5 w-full px-8"
+        >
+          <Button
+            className="py-px box-content bg-buttons-secondary hover:bg-buttons-secondaryHover bg-opacity-90 text-buttons-secondaryText justify-center items-center"
+            onClick={() => setCurrentPage(currentPage - 1)}
+            disabled={currentPage === 1}
+          >
+            Previous page
+          </Button>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            {currentPage} / {maxPageCount}
+          </div>
+          <Button
+            className="py-px box-content bg-buttons-secondary hover:bg-buttons-secondaryHover bg-opacity-90 text-buttons-secondaryText justify-center items-center"
+            onClick={() => setCurrentPage(currentPage + 1)}
+            disabled={currentPage === maxPageCount}
+          >
+            Next page
+          </Button>
         </div>
       </ThiccContainer>
     </SubPageLayout>
