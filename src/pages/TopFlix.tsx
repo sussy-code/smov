@@ -180,8 +180,7 @@ export function TopFlix() {
             {getItemsForCurrentPage().map((item) => {
               const tmdbId = item.tmdbFullId.split("-")[1];
               const type = isShowOrMovie(item.tmdbFullId);
-              // const poster = await getPoster(tmdbId, type === "movie" ? TMDBContentTypes.MOVIE : TMDBContentTypes.TV);
-              const poster = "";
+              const poster = getPoster(tmdbId, type === "movie" ? TMDBContentTypes.MOVIE : TMDBContentTypes.TV);
               console.log(poster);
               const media: MediaItem = {
                 id: tmdbId,
