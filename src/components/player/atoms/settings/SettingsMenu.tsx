@@ -16,6 +16,7 @@ export function SettingsMenu({ id }: { id: string }) {
   const { t } = useTranslation();
   const router = useOverlayRouter(id);
   const currentQuality = usePlayerStore((s) => s.currentQuality);
+  const currentAudioTrack = usePlayerStore((s) => s.currentAudioTrack);
   const selectedCaptionLanguage = usePlayerStore(
     (s) => s.caption.selected?.language,
   );
@@ -50,6 +51,13 @@ export function SettingsMenu({ id }: { id: string }) {
           rightText={currentQuality ? qualityToString(currentQuality) : ""}
         >
           {t("player.menus.settings.qualityItem")}
+        </Menu.ChevronLink>
+        <Menu.ChevronLink
+          onClick={() => router.navigate("/audio")}
+          rightText={currentAudioTrack ? currentAudioTrack.label : ""}
+        >
+          {/* {t("player.menus.settings.qualityItem")} */}
+          Audio
         </Menu.ChevronLink>
         <Menu.ChevronLink
           onClick={() => router.navigate("/source")}
