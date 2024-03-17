@@ -182,6 +182,7 @@ export function TopFlix() {
               const type = isShowOrMovie(item.tmdbFullId);
               // const poster = await getPoster(tmdbId, type === "movie" ? TMDBContentTypes.MOVIE : TMDBContentTypes.TV);
               const poster = "";
+              console.log(poster);
               const media: MediaItem = {
                 id: tmdbId,
                 title: item.title,

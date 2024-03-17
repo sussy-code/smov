@@ -29,6 +29,7 @@ export function Layout(props: { children: ReactNode }) {
   const [extensionState, setExtensionState] =
     useState<ExtensionStatus>("unknown");
   const [loading, setLoading] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
@@ -40,8 +41,18 @@ export function Layout(props: { children: ReactNode }) {
       }
     });
 
+    const mediaQuery = window.matchMedia("(max-width: 768px)"); // Adjust the max-width as per your needs
+    setIsMobile(mediaQuery.matches);
+
+    const handleResize = () => {
+      setIsMobile(mediaQuery.matches);
+    };
+
+    mediaQuery.addListener(handleResize);
+
     return () => {
       isMounted = false;
+      mediaQuery.removeListener(handleResize);
     };
   }, []);
 
@@ -53,9 +64,11 @@ export function Layout(props: { children: ReactNode }) {
 
   return (
     <div>
-      <div className="fixed inset-x-0 z-[1000]">
-        <ExtensionBanner extensionState={extensionState} />
-      </div>
+      {!isMobile && (
+        <div className="fixed inset-x-0 z-[1000]">
+          <ExtensionBanner extensionState={extensionState} />
+        </div>
+      )}
       <div
         style={{
           paddingTop: location === null ? `${bannerSize}px` : "0px",
