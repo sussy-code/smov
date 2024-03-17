@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import { Icon, Icons } from "@/components/Icon";
 import { ExtensionStatus } from "@/setup/Layout";
@@ -49,11 +50,11 @@ export function ExtensionBanner(props: {
   location?: string;
   extensionState: ExtensionStatus;
 }) {
+  const navigate = useNavigate();
   const setLocation = useBannerStore((s) => s.setLocation);
   const currentLocation = useBannerStore((s) => s.location);
-  const extensionPage =
-    "https://chromewebstore.google.com/detail/movie-web-extension/hoffoikpiofojilgpofjhnkkamfnnhmm";
   const loc = props.location ?? null;
+  const { pathname } = useLocation();
 
   useEffect(() => {
     if (!loc) return;
@@ -63,7 +64,8 @@ export function ExtensionBanner(props: {
     };
   }, [setLocation, loc]);
 
-  if (currentLocation !== loc) return null;
+  if (currentLocation !== loc || pathname === "/onboarding/extension")
+    return null;
 
   // Show the banner with a 40% chance
   if (Math.random() < 0.4) {
@@ -87,7 +89,7 @@ export function ExtensionBanner(props: {
 
     return (
       <div
-        onClick={() => window.open(extensionPage, "_blank")}
+        onClick={() => navigate("/onboarding/extension")}
         style={{ cursor: "pointer" }}
       >
         <Banner id="extension" type="info">
