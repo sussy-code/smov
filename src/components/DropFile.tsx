@@ -38,7 +38,7 @@ export function FileDropHandler(props: FileDropHandlerProps) {
   }, [dragging, props]);
 
   return (
-    <section
+    <div
       onDragEnter={handleDragEnter}
       onDragLeave={handleDragLeave}
       onDragOver={handleDragOver}
@@ -46,6 +46,6 @@ export function FileDropHandler(props: FileDropHandlerProps) {
       className={props.className}
     >
       {props.children}
-    </section>
+    </div>
   );
 }

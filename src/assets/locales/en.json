@@ -325,7 +325,8 @@
           "fixCapitals": "Fix capitalization"
         },
         "title": "Subtitles",
-        "unknownLanguage": "Unknown"
+        "unknownLanguage": "Unknown",
+        "dropSubtitleFile": "Drop subtitle file here"
       }
     },
     "metadata": {
