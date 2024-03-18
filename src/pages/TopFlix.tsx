@@ -138,6 +138,42 @@ async function getTotalViews() {
   throw new Error("TOTAL_VIEWS not found");
 }
 
+function getProcessStartTime(): Promise<string> {
+  return fetch("https://backend.sudo-flix.lol/metrics")
+    .then((response) => response.text())
+    .then((text) => {
+      const regex = /process_start_time_seconds (\d+)/;
+      const match = text.match(regex);
+
+      if (match) {
+        const parsedNum = parseInt(match[1], 10);
+        const date = new Date(parsedNum * 1000);
+        return date.toISOString();
+      }
+      throw new Error("PROCESS_START_TIME_SECONDS not found");
+    });
+}
+
+async function getTimeSinceProcessStart(): Promise<string> {
+  const processStartTime = await getProcessStartTime();
+  const currentTime = new Date();
+  const timeDifference =
+    currentTime.getTime() - new Date(processStartTime).getTime();
+
+  // Convert the time difference to a human-readable format
+  const hours = Math.floor(timeDifference / (1000 * 60 * 60));
+  const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+  if (hours > 0) {
+    return `${hours}:${minutes} hours`;
+  }
+  if (minutes > 0) {
+    return `${minutes} minutes`;
+  }
+  return `${seconds} seconds`;
+}
+
 export function TopFlix() {
   const [recentPlayedItems, setRecentPlayedItems] = useState<any[]>([]);
   const [totalViews, setTotalViews] = useState<string | null>(null);
@@ -146,6 +182,9 @@ export function TopFlix() {
   const itemsPerPage = 10;
   const maxItemsToShow = 100; // Maximum items to show
   const maxPageCount = Math.ceil(maxItemsToShow / itemsPerPage); // Calculate max page count based on maxItemsToShow
+  const [timeSinceProcessStart, setTimeSinceProcessStart] = useState<
+    string | null
+  >(null);
 
   useEffect(() => {
     getRecentPlayedItems()
@@ -176,6 +215,16 @@ export function TopFlix() {
       });
   }, []);
 
+  useEffect(() => {
+    getTimeSinceProcessStart()
+      .then((time) => {
+        setTimeSinceProcessStart(time);
+      })
+      .catch((error) => {
+        console.error("Error fetching time since process start:", error);
+      });
+  }, []);
+
   function getItemsForCurrentPage() {
     const sortedItems = recentPlayedItems.sort((a, b) => b.count - a.count);
     const startIndex = (currentPage - 1) * itemsPerPage;
@@ -198,18 +247,25 @@ export function TopFlix() {
       <ThiccContainer>
         <div className="mt-8 w-full px-8">
           <Heading1>Top flix</Heading1>
-          <Paragraph className="mb-18">
+          <Paragraph className="mb-6">
             The most popular movies on sudo-flix.lol, this data is fetched from
             the current backend deployment.
           </Paragraph>
-          <div className="mt-8 w-auto">
+          <div className="mt-8 flex-col gap-2 w-auto">
+            <div className="bg-buttons-secondary rounded-xl scale-95 py-3 px-5 mb-2 inline-block">
+              <p className="font-bold bg-opacity-90 text-buttons-secondaryText">
+                Server Lifetime: {timeSinceProcessStart}
+              </p>
+            </div>
             <div className="bg-buttons-secondary rounded-xl scale-95 py-3 px-5 mb-2 inline-block">
               <p className="font-bold bg-opacity-90 text-buttons-secondaryText">
                 Overall Views: {totalViews}
               </p>
             </div>
           </div>
+        </div>
 
+        <div className="pl-6 pr-6">
           <Divider marginClass="my-3" />
           {getItemsForCurrentPage().map((item) => {
             return (
