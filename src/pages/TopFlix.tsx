@@ -57,6 +57,7 @@ function directLinkToContent(tmdbFullId: string) {
 
 function ConfigValue(props: {
   name: string;
+  type: string;
   id: string;
   children?: ReactNode;
 }) {
@@ -75,6 +76,9 @@ function ConfigValue(props: {
         </p>
         <p className="pr-3">{props.children}</p>
       </div>
+      <p className="pr-5 pl-3">
+        {props.type.charAt(0).toUpperCase() + props.type.slice(1)}
+      </p>
       <Divider marginClass="my-3" />
     </>
   );
@@ -176,7 +180,11 @@ export function TopFlix() {
     const sortedItems = recentPlayedItems.sort((a, b) => b.count - a.count);
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
-    return sortedItems.slice(startIndex, endIndex);
+
+    return sortedItems.slice(startIndex, endIndex).map((item, index) => ({
+      ...item,
+      rank: startIndex + index + 1,
+    }));
   }
 
   if (loading) {
@@ -207,12 +215,15 @@ export function TopFlix() {
             return (
               <ConfigValue
                 key={item.tmdbFullId}
+                type={isShowOrMovie(item.tmdbFullId)}
                 id={item.tmdbFullId}
                 name={item.title}
               >
-                {`${item.providerId}, ${isShowOrMovie(
-                  item.tmdbFullId,
-                )} - Views: `}
+                {`${
+                  item.providerId.charAt(0).toUpperCase() +
+                  item.providerId.slice(1)
+                }`}{" "}
+                <strong>-</strong> {`Views: `}
                 <strong>{item.count}</strong>
               </ConfigValue>
             );
@@ -230,7 +241,7 @@ export function TopFlix() {
             Previous page
           </Button>
           <div style={{ display: "flex", alignItems: "center" }}>
-            {currentPage} / {maxPageCount}
+            {currentPage}/{maxPageCount}
           </div>
           <Button
             className="py-px box-content bg-buttons-secondary hover:bg-buttons-secondaryHover bg-opacity-90 text-buttons-secondaryText justify-center items-center"

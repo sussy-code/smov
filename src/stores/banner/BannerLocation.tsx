@@ -67,8 +67,8 @@ export function ExtensionBanner(props: {
   if (currentLocation !== loc || pathname === "/onboarding/extension")
     return null;
 
-  // Show the banner with a 40% chance
-  if (Math.random() < 0.4) {
+  // Show the banner with a 45% chance
+  if (Math.random() < 0.45) {
     let bannerText = "";
     switch (props.extensionState) {
       case "noperms":
