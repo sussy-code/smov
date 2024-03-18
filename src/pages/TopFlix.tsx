@@ -164,9 +164,10 @@ async function getTimeSinceProcessStart(): Promise<string> {
   const hours = Math.floor(timeDifference / (1000 * 60 * 60));
   const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+  const percentageOfHour = Math.ceil(minutes / 60);
 
   if (hours > 0) {
-    return `${hours}:${minutes} hours`;
+    return `${hours}.${percentageOfHour} hours`;
   }
   if (minutes > 0) {
     return `${minutes} minutes`;
