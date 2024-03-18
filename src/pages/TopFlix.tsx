@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { ReactNode, useEffect, useState } from "react";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import { useNavigate } from "react-router-dom"; // Import Link from react-router-dom
 
 import { ThiccContainer } from "@/components/layout/ThinContainer";
 import { Divider } from "@/components/utils/Divider";
@@ -43,14 +43,10 @@ function isShowOrMovie(tmdbFullId: string): "series" | "movie" | "unknown" {
 
 function directLinkToContent(tmdbFullId: string) {
   if (isShowOrMovie(tmdbFullId) === "series") {
-    return `/media/tmdb-tv-${tmdbFullId.split("-")[1]}#/media/tmdb-tv-${
-      tmdbFullId.split("-")[1]
-    }`;
+    return `/media/tmdb-tv-${tmdbFullId.split("-")[1]}`;
   }
   if (isShowOrMovie(tmdbFullId) === "movie") {
-    return `/media/tmdb-movie-${tmdbFullId.split("-")[1]}#/media/tmdb-movie-${
-      tmdbFullId.split("-")[1]
-    }`;
+    return `/media/tmdb-movie-${tmdbFullId.split("-")[1]}`;
   }
   return null;
 }
@@ -61,15 +57,16 @@ function ConfigValue(props: {
   id: string;
   children?: ReactNode;
 }) {
+  const navigate = useNavigate();
   const link = directLinkToContent(props.id);
   return (
     <>
       <div className="flex">
         <p className="flex-1 font-bold text-white pr-5 pl-3">
           {link ? (
-            <Link to={link} className="hover:underline">
+            <p onClick={() => navigate(link)} className="hover:underline">
               {props.name}
-            </Link>
+            </p>
           ) : (
             <p>{props.name}</p>
           )}
@@ -160,14 +157,12 @@ async function getTimeSinceProcessStart(): Promise<string> {
   const timeDifference =
     currentTime.getTime() - new Date(processStartTime).getTime();
 
-  // Convert the time difference to a human-readable format
   const hours = Math.floor(timeDifference / (1000 * 60 * 60));
   const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-  const percentageOfHour = Math.ceil(minutes / 60);
 
   if (hours > 0) {
-    return `${hours}.${percentageOfHour} hours`;
+    return `${hours} hours`;
   }
   if (minutes > 0) {
     return `${minutes} minutes`;
@@ -178,7 +173,6 @@ async function getTimeSinceProcessStart(): Promise<string> {
 export function TopFlix() {
   const [recentPlayedItems, setRecentPlayedItems] = useState<any[]>([]);
   const [totalViews, setTotalViews] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
   const maxItemsToShow = 100; // Maximum items to show
@@ -203,9 +197,6 @@ export function TopFlix() {
       })
       .catch((error) => {
         console.error("Error fetching recent played items:", error);
-      })
-      .finally(() => {
-        setLoading(false);
       });
     getTotalViews()
       .then((views) => {
@@ -235,12 +226,6 @@ export function TopFlix() {
       ...item,
       rank: startIndex + index + 1,
     }));
-  }
-
-  if (loading) {
-    return (
-      <p className="flex items-center justify-center h-screen">Loading...</p>
-    );
   }
 
   return (

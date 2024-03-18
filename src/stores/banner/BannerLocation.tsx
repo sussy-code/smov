@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { Icon, Icons } from "@/components/Icon";
@@ -22,6 +22,13 @@ export function Banner(props: {
     info: Icons.CIRCLE_EXCLAMATION,
   };
 
+  useEffect(() => {
+    const hideBannerFlag = sessionStorage.getItem("hideBanner");
+    if (hideBannerFlag) {
+      hideBanner(props.id, true);
+    }
+  }, [hideBanner, props.id]);
+
   return (
     <div ref={ref}>
       <div
@@ -36,7 +43,10 @@ export function Banner(props: {
         </div>
         <span
           className="absolute right-4 hover:cursor-pointer"
-          onClick={() => hideBanner(props.id, true)}
+          onClick={() => {
+            hideBanner(props.id, true);
+            sessionStorage.setItem("hideBanner", "true");
+          }}
         >
           <Icon icon={Icons.X} />
         </span>
@@ -57,45 +67,60 @@ export function ExtensionBanner(props: {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    if (!loc) return;
-    setLocation(loc);
-    return () => {
-      setLocation(null);
-    };
+    if (loc) {
+      setLocation(loc);
+      return () => {
+        setLocation(null);
+      };
+    }
   }, [setLocation, loc]);
+
+  const hideBannerFlag = sessionStorage.getItem("hideBanner");
+  if (hideBannerFlag) {
+    return null;
+  }
 
   if (currentLocation !== loc || pathname === "/onboarding/extension")
     return null;
 
-  // Show the banner with a 45% chance
-  if (Math.random() < 0.45) {
+  // Show the banner with a 40% chance
+  if (Math.random() < 0.4) {
     let bannerText = "";
     switch (props.extensionState) {
       case "noperms":
-        bannerText =
-          "You don't have the necessary permissions to use the extension.";
+        bannerText = "The extension does'nt have the necessary permissions.";
         break;
       case "outdated":
-        bannerText =
-          "Your extension is outdated. Please update it for better performance.";
+        bannerText = "Your extension is outdated. Please update it here.";
         break;
       case "disallowed":
-        bannerText = "The extension is not enabled on this page.";
+        bannerText =
+          "The extension is not enabled, click <bold>here</bold> to fix it.";
+        break;
+      case "failed":
+        bannerText =
+          "The extension is broken... Please click <bold>here</bold>.";
         break;
       default:
         bannerText =
-          "You don't have the extension! Download it here for better quality.";
+          "You don't have the extension! Download it <bold>here</bold> for better quality.";
+        break;
     }
 
     return (
-      <div
-        onClick={() => navigate("/onboarding/extension")}
-        style={{ cursor: "pointer" }}
-      >
-        <Banner id="extension" type="info">
-          {bannerText}
-        </Banner>
-      </div>
+      <Banner id="extension" type="info">
+        <div
+          onClick={() => navigate("/onboarding/extension")}
+          style={{ cursor: "pointer" }}
+        >
+          <Trans
+            i18nKey={bannerText}
+            components={{
+              bold: <span className="font-bold" />,
+            }}
+          />
+        </div>
+      </Banner>
     );
   }
   return null;
@@ -118,6 +143,9 @@ export function BannerLocation(props: { location?: string }) {
   }, [setLocation, loc]);
 
   if (currentLocation !== loc) return null;
+
+  const hideBannerFlag = sessionStorage.getItem("hideBanner");
+  if (hideBannerFlag) return null;
 
   return (
     <div>

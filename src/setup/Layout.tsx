@@ -28,7 +28,6 @@ export function Layout(props: { children: ReactNode }) {
   const location = useBannerStore((s) => s.location);
   const [extensionState, setExtensionState] =
     useState<ExtensionStatus>("unknown");
-  const [loading, setLoading] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -37,7 +36,6 @@ export function Layout(props: { children: ReactNode }) {
     getExtensionState().then((state) => {
       if (isMounted) {
         setExtensionState(state);
-        setLoading(false);
       }
     });
 
@@ -55,12 +53,6 @@ export function Layout(props: { children: ReactNode }) {
       mediaQuery.removeListener(handleResize);
     };
   }, []);
-
-  if (loading) {
-    return (
-      <p className="flex items-center justify-center h-screen">Loading...</p>
-    );
-  }
 
   return (
     <div>
