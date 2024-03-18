@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import Fuse from "fuse.js";
 import { type DragEvent, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -194,16 +195,19 @@ export function CaptionsView({ id }: { id: string }) {
   return (
     <>
       <div>
-        {dragging && (
-          <div className="absolute inset-0 flex items-center justify-center text-white z-10 pointer-events-none">
-            <div className="flex flex-col items-center">
-              <Icon className="text-5xl mb-8" icon={Icons.FILE} />
-              <span className="text-xl weight font-medium">
-                {t("player.menus.subtitles.dropSubtitleFile")}
-              </span>
-            </div>
+        <div
+          className={classNames(
+            "absolute inset-0 flex items-center justify-center text-white z-10 pointer-events-none transition-opacity duration-300",
+            dragging ? "opacity-100" : "opacity-0",
+          )}
+        >
+          <div className="flex flex-col items-center">
+            <Icon className="text-5xl mb-4" icon={Icons.FILE} />
+            <span className="text-xl weight font-medium">
+              {t("player.menus.subtitles.dropSubtitleFile")}
+            </span>
           </div>
-        )}
+        </div>
 
         <Menu.BackLink
           onClick={() => router.navigate("/")}
