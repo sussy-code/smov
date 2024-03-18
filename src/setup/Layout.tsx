@@ -64,7 +64,7 @@ export function Layout(props: { children: ReactNode }) {
 
   return (
     <div>
-      {!isMobile && (
+      {extensionState !== "success" && !isMobile && (
         <div className="fixed inset-x-0 z-[1000]">
           <ExtensionBanner extensionState={extensionState} />
         </div>
