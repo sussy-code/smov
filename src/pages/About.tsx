@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { ThinContainer } from "@/components/layout/ThinContainer";
 import { Ol } from "@/components/utils/Ol";
@@ -41,6 +41,8 @@ function Button(props: {
 
 export function AboutPage() {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+
   return (
     <SubPageLayout>
       <PageTitle subpage k="global.pages.about" />
@@ -71,16 +73,18 @@ export function AboutPage() {
           style={{ display: "flex", justifyContent: "space-between" }}
           className="w-full"
         >
-          <Link to="/flix">
-            <Button className="py-px mt-8 box-content bg-buttons-secondary hover:bg-buttons-secondaryHover bg-opacity-90 text-buttons-secondaryText justify-center items-center">
-              Top Flix
-            </Button>
-          </Link>
-          <Link to="/support">
-            <Button className="py-px mt-8 box-content bg-buttons-secondary hover:bg-buttons-secondaryHover bg-opacity-90 text-buttons-secondaryText justify-center items-center">
-              Support
-            </Button>
-          </Link>
+          <Button
+            className="py-px mt-8 box-content bg-buttons-secondary hover:bg-buttons-secondaryHover bg-opacity-90 text-buttons-secondaryText justify-center items-center"
+            onClick={() => navigate("/flix")}
+          >
+            Top Flix
+          </Button>
+          <Button
+            className="py-px mt-8 box-content bg-buttons-secondary hover:bg-buttons-secondaryHover bg-opacity-90 text-buttons-secondaryText justify-center items-center"
+            onClick={() => navigate("/support")}
+          >
+            Support
+          </Button>
         </div>
       </ThinContainer>
     </SubPageLayout>

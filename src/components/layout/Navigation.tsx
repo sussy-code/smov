@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { NoUserAvatar, UserAvatar } from "@/components/Avatar";
 import { IconPatch } from "@/components/buttons/IconPatch";
@@ -21,6 +21,7 @@ export interface NavigationProps {
 
 export function Navigation(props: NavigationProps) {
   const bannerHeight = useBannerSize();
+  const navigate = useNavigate();
   const { loggedIn } = useAuth();
 
   return (
@@ -103,7 +104,7 @@ export function Navigation(props: NavigationProps) {
                 <IconPatch icon={Icons.GITHUB} clickable downsized />
               </a>
               <a
-                href="/flix#flix"
+                onClick={() => navigate("/flix")}
                 rel="noreferrer"
                 className="text-xl text-white tabbable rounded-full"
               >
