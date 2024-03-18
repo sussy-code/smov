@@ -197,8 +197,8 @@ export function CaptionsView({ id }: { id: string }) {
         {dragging && (
           <div className="absolute inset-0 flex items-center justify-center text-white z-10 pointer-events-none">
             <div className="flex flex-col items-center">
-              <Icon className="text-4xl mb-8" icon={Icons.FILE} />
-              <span className="text-xl">
+              <Icon className="text-5xl mb-8" icon={Icons.FILE} />
+              <span className="text-xl weight font-medium">
                 {t("player.menus.subtitles.dropSubtitleFile")}
               </span>
             </div>
