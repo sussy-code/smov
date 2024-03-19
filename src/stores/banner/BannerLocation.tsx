@@ -55,7 +55,7 @@ export function Banner(props: {
   );
 }
 
-// This jawn is for advertising the extension for le
+// This jawn is for advertising the extension for le skids
 export function ExtensionBanner(props: {
   location?: string;
   extensionState: ExtensionStatus;
@@ -65,6 +65,10 @@ export function ExtensionBanner(props: {
   const currentLocation = useBannerStore((s) => s.location);
   const loc = props.location ?? null;
   const { pathname } = useLocation();
+  const isEligible =
+    /CrOS/.test(navigator.userAgent) ||
+    /TV/.test(navigator.userAgent) ||
+    /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
   useEffect(() => {
     if (loc) {
@@ -83,8 +87,8 @@ export function ExtensionBanner(props: {
   if (currentLocation !== loc || pathname === "/onboarding/extension")
     return null;
 
-  // Show the banner with a 40% chance
-  if (Math.random() < 0.4) {
+  // Show the banner with a 50% chance or not if users dont meet requirements
+  if (!isEligible && Math.random() < 0.5) {
     let bannerText = "";
     switch (props.extensionState) {
       case "noperms":

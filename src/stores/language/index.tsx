@@ -15,7 +15,7 @@ export interface LanguageStore {
 export const useLanguageStore = create(
   persist(
     immer<LanguageStore>((set) => ({
-      language: "en",
+      language: navigator.language.split("-")[0],
       setLanguage(v) {
         set((s) => {
           s.language = v;

@@ -64,16 +64,19 @@ function ConfigValue(props: {
       <div className="flex">
         <p className="flex-1 font-bold text-white pr-5 pl-3">
           {link ? (
-            <p onClick={() => navigate(link)} className="hover:underline">
+            <p
+              onClick={() => navigate(link)}
+              className="cursor-pointer hover:underline"
+            >
               {props.name}
             </p>
           ) : (
             <p>{props.name}</p>
           )}
         </p>
-        <p className="pr-3">{props.children}</p>
+        <p className="pr-3 cursor-default">{props.children}</p>
       </div>
-      <p className="pr-5 pl-3">
+      <p className="pr-5 pl-3 cursor-default">
         {props.type.charAt(0).toUpperCase() + props.type.slice(1)}
       </p>
       <Divider marginClass="my-3" />
@@ -237,13 +240,13 @@ export function TopFlix() {
             The most popular movies on sudo-flix.lol, this data is fetched from
             the current backend deployment.
           </Paragraph>
-          <div className="mt-8 flex-col gap-2 w-auto">
-            <div className="bg-buttons-secondary rounded-xl scale-95 py-3 px-5 mb-2 inline-block">
+          <div className="mt-8 flex gap-2 w-auto">
+            <div className="bg-buttons-secondary rounded-xl scale-95 py-3 px-5 mb-2">
               <p className="font-bold bg-opacity-90 text-buttons-secondaryText">
                 Server Lifetime: {timeSinceProcessStart}
               </p>
             </div>
-            <div className="bg-buttons-secondary rounded-xl scale-95 py-3 px-5 mb-2 inline-block">
+            <div className="bg-buttons-secondary rounded-xl scale-95 py-3 px-5 mb-2">
               <p className="font-bold bg-opacity-90 text-buttons-secondaryText">
                 Overall Views: {totalViews}
               </p>
@@ -282,7 +285,9 @@ export function TopFlix() {
           >
             Previous page
           </Button>
-          <div style={{ display: "flex", alignItems: "center" }}>
+          <div
+            style={{ display: "flex", alignItems: "center", cursor: "default" }}
+          >
             {currentPage}/{maxPageCount}
           </div>
           <Button
