@@ -241,12 +241,12 @@ export function TopFlix() {
             the current backend deployment.
           </Paragraph>
           <div className="mt-8 flex gap-2 w-auto">
-            <div className="bg-buttons-secondary rounded-xl scale-95 py-3 px-5 mb-2">
+            <div className="bg-buttons-secondary rounded-xl scale-95 py-3 px-5 mb-2 inline-block">
               <p className="font-bold bg-opacity-90 text-buttons-secondaryText">
                 Server Lifetime: {timeSinceProcessStart}
               </p>
             </div>
-            <div className="bg-buttons-secondary rounded-xl scale-95 py-3 px-5 mb-2">
+            <div className="bg-buttons-secondary rounded-xl scale-95 py-3 px-5 mb-2 inline-block">
               <p className="font-bold bg-opacity-90 text-buttons-secondaryText">
                 Overall Views: {totalViews}
               </p>
