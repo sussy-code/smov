@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { ReactNode, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import Link from react-router-dom
+import { Link, useNavigate } from "react-router-dom"; // Import Link from react-router-dom
 
 import { ThiccContainer } from "@/components/layout/ThinContainer";
 import { Divider } from "@/components/utils/Divider";
@@ -183,6 +183,7 @@ export function TopFlix() {
   const [timeSinceProcessStart, setTimeSinceProcessStart] = useState<
     string | null
   >(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getRecentPlayedItems()
@@ -252,6 +253,12 @@ export function TopFlix() {
               </p>
             </div>
           </div>
+          {/* <Button
+            className="py-px w-60 box-content bg-buttons-secondary hover:bg-buttons-secondaryHover bg-opacity-90 text-buttons-secondaryText justify-center items-center"
+            onClick={() => navigate("/sources")}
+          >
+            Most used providers
+          </Button> */}
         </div>
 
         <div className="pl-6 pr-6">
