@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { ReactNode, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom"; // Import Link from react-router-dom
+import { useNavigate } from "react-router-dom"; // Import Link from react-router-dom
 
 import { ThiccContainer } from "@/components/layout/ThinContainer";
 import { Divider } from "@/components/utils/Divider";
@@ -10,7 +10,7 @@ import { SubPageLayout } from "./layouts/SubPageLayout";
 // import { MediaGrid } from "@/components/media/MediaGrid"
 // import { TopFlixCard } from "@/components/media/FlixCard";
 
-function Button(props: {
+export function Button(props: {
   className: string;
   onClick?: () => void;
   children: React.ReactNode;
@@ -66,7 +66,7 @@ function ConfigValue(props: {
           {link ? (
             <p
               onClick={() => navigate(link)}
-              className="cursor-pointer hover:underline"
+              className="transition duration-200 hover:underline cursor-pointer"
             >
               {props.name}
             </p>
@@ -204,7 +204,7 @@ export function TopFlix() {
       });
     getTotalViews()
       .then((views) => {
-        setTotalViews(views);
+        setTotalViews(parseInt(views, 10).toLocaleString());
       })
       .catch((error) => {
         console.error("Error fetching total views:", error);
@@ -241,24 +241,28 @@ export function TopFlix() {
             The most popular movies on sudo-flix.lol, this data is fetched from
             the current backend deployment.
           </Paragraph>
-          <div className="mt-8 flex gap-2 w-auto">
-            <div className="bg-buttons-secondary rounded-xl scale-95 py-3 px-5 mb-2 inline-block">
-              <p className="font-bold bg-opacity-90 text-buttons-secondaryText">
-                Server Lifetime: {timeSinceProcessStart}
-              </p>
+          <div className="mt-2 w-full">
+            <div className="flex justify-center">
+              <div className="bg-buttons-secondary rounded-xl scale-95 py-3 px-5 mb-2">
+                <p className="font-bold text-buttons-secondaryText">
+                  Server Lifetime: {timeSinceProcessStart}
+                </p>
+              </div>
+              <div className="bg-buttons-secondary rounded-xl scale-95 py-3 px-5 mb-2">
+                <p className="font-bold text-buttons-secondaryText">
+                  Overall Views: {totalViews}
+                </p>
+              </div>
             </div>
-            <div className="bg-buttons-secondary rounded-xl scale-95 py-3 px-5 mb-2 inline-block">
-              <p className="font-bold bg-opacity-90 text-buttons-secondaryText">
-                Overall Views: {totalViews}
-              </p>
+            <div className="flex justify-center">
+              <Button
+                className="py-px w-60 box-content bg-buttons-secondary hover:bg-buttons-secondaryHover bg-opacity-90 text-buttons-secondaryText justify-center items-center inline-block"
+                onClick={() => navigate("/flix/sources")}
+              >
+                Most used providers
+              </Button>
             </div>
           </div>
-          {/* <Button
-            className="py-px w-60 box-content bg-buttons-secondary hover:bg-buttons-secondaryHover bg-opacity-90 text-buttons-secondaryText justify-center items-center"
-            onClick={() => navigate("/sources")}
-          >
-            Most used providers
-          </Button> */}
         </div>
 
         <div className="pl-6 pr-6">
@@ -276,7 +280,7 @@ export function TopFlix() {
                   item.providerId.slice(1)
                 }`}{" "}
                 <strong>-</strong> {`Views: `}
-                <strong>{item.count}</strong>
+                <strong>{parseInt(item.count, 10).toLocaleString()}</strong>
               </ConfigValue>
             );
           })}

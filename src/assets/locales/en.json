@@ -7,18 +7,22 @@
       "title": "Where does the content come from?"
     },
     "q2": {
+      "body": "I do not collect donations for sudo-flix. All donations go directly to the movie-web team's kofi",
+      "title": "Where do my donations go?"
+    },
+    "q3": {
       "body": "It's not possible to request a show or movie, sudo-flix does not manage any content. All content is viewed through sources on the internet.",
       "title": "Where can I request a show or movie?"
     },
-    "q3": {
+    "q4": {
       "body": "Our search results are powered by The Movie Database (TMDB) and display regardless of whether our sources actually have the content.",
       "title": "The search results display the show or movie, why can't I play it?"
     },
-    "q4": {
+    "q5": {
       "body": "All data is synced to the sudo-backend which is different than the community backend and is independently hosted by me, anyone is free to use this as well.",
       "title": "What about my data and stuff?"
     },
-    "q5": {
+    "q6": {
       "body": "Well sudo-flix has a twitter account that can be found in the footer of this page as well as a link to the source code on Github.",
       "title": "How can I find out more?"
     },

@@ -7,6 +7,7 @@ import { ThinContainer } from "@/components/layout/ThinContainer";
 import { MwLink } from "@/components/text/Link";
 import { Heading1, Paragraph } from "@/components/utils/Text";
 import { PageTitle } from "@/pages/parts/util/PageTitle";
+import { Button } from "@/pages/TopFlix";
 import { conf } from "@/setup/config";
 
 import { SubPageLayout } from "./layouts/SubPageLayout";
@@ -70,6 +71,16 @@ export function SupportPage() {
               bold: <span className="font-bold" style={{ color: "#cfcfcf" }} />,
             }}
           />
+          <div className="pt-6">
+            <Button
+              className="py px-4 box-content bg-buttons-secondary hover:bg-buttons-secondaryHover bg-opacity-90 text-buttons-secondaryText justify-center items-center inline-block"
+              onClick={() =>
+                window.open("https://movie-web.github.io/docs", "_blank")
+              }
+            >
+              Movie-Web Docs
+            </Button>
+          </div>
         </Paragraph>
         <Ol
           items={[

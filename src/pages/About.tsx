@@ -67,11 +67,14 @@ export function AboutPage() {
             <Question title={t("about.q5.title")}>
               {t("about.q5.body")}
             </Question>,
+            <Question title={t("about.q6.title")}>
+              {t("about.q6.body")}
+            </Question>,
           ]}
         />
         <div
           style={{ display: "flex", justifyContent: "space-between" }}
-          className="w-full"
+          className="pt-2 w-full"
         >
           <Button
             className="py-px mt-8 box-content bg-buttons-secondary hover:bg-buttons-secondaryHover bg-opacity-90 text-buttons-secondaryText justify-center items-center"
