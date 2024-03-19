@@ -225,7 +225,7 @@ export function CaptionsView({ id }: { id: string }) {
         </Menu.BackLink>
       </div>
       <FileDropHandler
-        className={`transition duration-300 ${dragging ? "brightness-50" : ""}`}
+        className={`transition duration-300 ${dragging ? "opacity-20" : ""}`}
         onDraggingChange={(isDragging) => {
           setDragging(isDragging);
         }}
