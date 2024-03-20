@@ -95,7 +95,7 @@ export function ExtensionBanner(props: {
         bannerText = "The extension does'nt have the necessary permissions.";
         break;
       case "outdated":
-        bannerText = "Your extension is outdated. Please update it here.";
+        bannerText = "Your extension is outdated. Please update it <bold>here</bold>.";
         break;
       case "disallowed":
         bannerText =
