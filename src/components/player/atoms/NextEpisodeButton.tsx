@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 
 import { Icon, Icons } from "@/components/Icon";
@@ -54,29 +54,11 @@ export function NextEpisodeButton(props: {
   const setShouldStartFromBeginning = usePlayerStore(
     (s) => s.setShouldStartFromBeginning,
   );
-  const [countdown, setCountdown] = useState(15);
 
   let show = false;
   if (showingState === "always") show = true;
   else if (showingState === "hover" && props.controlsShowing) show = true;
   if (isHidden || status !== "playing" || duration === 0) show = false;
-
-  useEffect(() => {
-    // Initialize intervalId with 0, which is a safe value to clear if not reassigned.
-    let intervalId: number = 0;
-    if (show && countdown > 0) {
-      intervalId = window.setInterval(() => {
-        setCountdown((currentCountdown) => currentCountdown - 1);
-      }, 1000);
-    } else {
-      window.clearInterval(intervalId); // No need for casting here.
-      if (!show) {
-        setCountdown(15); // Reset countdown when not showing.
-      }
-    }
-    // Cleanup function to clear the interval when the component unmounts or the dependencies change.
-    return () => window.clearInterval(intervalId);
-  }, [show, countdown]);
 
   const animation = showingState === "hover" ? "slide-up" : "fade";
   let bottom = "bottom-[calc(6rem+env(safe-area-inset-bottom))]";
@@ -117,30 +99,23 @@ export function NextEpisodeButton(props: {
     >
       <div
         className={classNames([
-          "absolute bottom-0 right-0 transition-[bottom] duration-200 flex flex-col items-center space-y-3",
+          "absolute bottom-0 right-0 transition-[bottom] duration-200 flex items-center space-x-3",
           bottom,
         ])}
       >
-        {countdown > 0 && show && (
-          <div className="text-white mb-2">
-            {t("player.nextEpisode.nextIn", { seconds: countdown })}
-          </div>
-        )}
-        <div className="flex items-center space-x-3">
-          <Button
-            className="py-px box-content bg-buttons-secondary hover:bg-buttons-secondaryHover bg-opacity-90 text-buttons-secondaryText justify-center items-center"
-            onClick={() => startCurrentEpisodeFromBeginning()}
-          >
-            {t("player.nextEpisode.replay")}
-          </Button>
-          <Button
-            onClick={() => loadNextEpisode()}
-            className="bg-buttons-primary hover:bg-buttons-primaryHover text-buttons-primaryText flex justify-center items-center"
-          >
-            <Icon className="text-xl mr-1" icon={Icons.SKIP_EPISODE} />
-            {t("player.nextEpisode.next")}
-          </Button>
-        </div>
+        <Button
+          className="py-px box-content bg-buttons-secondary hover:bg-buttons-secondaryHover bg-opacity-90 text-buttons-secondaryText justify-center items-center"
+          onClick={() => startCurrentEpisodeFromBeginning()}
+        >
+          {t("player.nextEpisode.replay")}
+        </Button>
+        <Button
+          onClick={() => loadNextEpisode()}
+          className="bg-buttons-primary hover:bg-buttons-primaryHover text-buttons-primaryText flex justify-center items-center"
+        >
+          <Icon className="text-xl mr-1" icon={Icons.SKIP_EPISODE} />
+          {t("player.nextEpisode.next")}
+        </Button>
       </div>
     </Transition>
   );
