@@ -7,8 +7,6 @@ import { Divider } from "@/components/utils/Divider";
 import { Heading1, Paragraph } from "@/components/utils/Text";
 
 import { SubPageLayout } from "./layouts/SubPageLayout";
-// import { MediaGrid } from "@/components/media/MediaGrid"
-// import { TopFlixCard } from "@/components/media/FlixCard";
 
 export function Button(props: {
   className: string;
@@ -163,7 +161,14 @@ async function getTimeSinceProcessStart(): Promise<string> {
   const hours = Math.floor(timeDifference / (1000 * 60 * 60));
   const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+  const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
 
+  if (days > 0) {
+    if (days === 1) {
+      return `${days} day`;
+    }
+    return `${days} days`;
+  }
   if (hours > 0) {
     return `${hours} hours`;
   }
@@ -235,11 +240,13 @@ export function TopFlix() {
   return (
     <SubPageLayout>
       <ThiccContainer>
-        <div className="mt-8 w-full px-8">
+        <div className="mt-8 w-full px-8 cursor-default">
           <Heading1>Top flix</Heading1>
           <Paragraph className="mb-6">
-            The most popular movies on sudo-flix.lol, this data is fetched from
-            the current backend deployment.
+            The top 100 most-watched movies on sudo-flix.lol, sourced directly
+            from the most recent sudo-backend deployment. The backend is
+            redeployed frequently which may result in low numbers being shown
+            here.
           </Paragraph>
           <div className="mt-2 w-full">
             <div className="flex justify-center">
@@ -291,8 +298,9 @@ export function TopFlix() {
         >
           <Button
             className="py-px box-content bg-buttons-secondary hover:bg-buttons-secondaryHover bg-opacity-90 text-buttons-secondaryText justify-center items-center"
-            onClick={() => setCurrentPage(currentPage - 1)}
-            disabled={currentPage === 1}
+            onClick={() =>
+              setCurrentPage(currentPage === 1 ? maxPageCount : currentPage - 1)
+            }
           >
             Previous page
           </Button>
@@ -303,8 +311,9 @@ export function TopFlix() {
           </div>
           <Button
             className="py-px box-content bg-buttons-secondary hover:bg-buttons-secondaryHover bg-opacity-90 text-buttons-secondaryText justify-center items-center"
-            onClick={() => setCurrentPage(currentPage + 1)}
-            disabled={currentPage === maxPageCount}
+            onClick={() =>
+              setCurrentPage(currentPage === maxPageCount ? 1 : currentPage + 1)
+            }
           >
             Next page
           </Button>
