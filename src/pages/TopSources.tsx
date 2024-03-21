@@ -99,7 +99,7 @@ export function TopSources() {
   return (
     <SubPageLayout>
       <ThiccContainer>
-        <div className="mt-8 w-full px-8">
+        <div className="mt-8 w-full px-8 cursor-default">
           <Heading1>Top sources</Heading1>
           <Paragraph className="mb-6">
             The most used providers on sudo-flix.lol, this data is fetched from
