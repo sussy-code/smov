@@ -88,22 +88,21 @@ export function NextEpisodeButton(props: {
     props.onChange?.(metaCopy);
   }, [setDirectMeta, meta, props, setShouldStartFromBeginning]);
 
-  const [seconds, setSeconds] = useState(15);
+  const [countdown, setCountdown] = useState(15);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setSeconds((prevSeconds) => prevSeconds - 1);
+    const timer = setInterval(() => {
+      setCountdown((prev) => (prev > 0 ? prev - 1 : 0));
     }, 1000);
 
-    return () => clearInterval(interval);
+    return () => clearInterval(timer);
   }, []);
 
   useEffect(() => {
-    if (seconds === 0) {
+    if (countdown === 0) {
       loadNextEpisode();
-      setSeconds(15);
     }
-  }, [seconds, loadNextEpisode]);
+  }, [countdown]);
 
   if (!meta?.episode || !nextEp) return null;
   if (metaType !== "show") return null;
@@ -131,7 +130,7 @@ export function NextEpisodeButton(props: {
           className="bg-buttons-primary hover:bg-buttons-primaryHover text-buttons-primaryText flex justify-center items-center"
         >
           <Icon className="text-xl mr-1" icon={Icons.SKIP_EPISODE} />
-          {`Next episode ${seconds > 0 ? ` in ${seconds}` : ""}`}
+          {countdown > 0 ? `Next episode in ${countdown} seconds` : t("player.nextEpisode.next")}
         </Button>
       </div>
     </Transition>
