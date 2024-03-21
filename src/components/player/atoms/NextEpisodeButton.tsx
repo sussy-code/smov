@@ -61,23 +61,6 @@ export function NextEpisodeButton(props: {
   else if (showingState === "hover" && props.controlsShowing) show = true;
   if (isHidden || status !== "playing" || duration === 0) show = false;
 
-  useEffect(() => {
-    // Initialize intervalId with 0, which is a safe value to clear if not reassigned.
-    let intervalId: number = 0;
-    if (show && countdown > 0) {
-      intervalId = window.setInterval(() => {
-        setCountdown((currentCountdown) => currentCountdown - 1);
-      }, 1000);
-    } else {
-      window.clearInterval(intervalId); // No need for casting here.
-      if (!show) {
-        setCountdown(15); // Reset countdown when not showing.
-      }
-    }
-    // Cleanup function to clear the interval when the component unmounts or the dependencies change.
-    return () => window.clearInterval(intervalId);
-  }, [show, countdown]);
-
   const animation = showingState === "hover" ? "slide-up" : "fade";
   let bottom = "bottom-[calc(6rem+env(safe-area-inset-bottom))]";
   if (showingState === "always")
@@ -105,6 +88,29 @@ export function NextEpisodeButton(props: {
     setDirectMeta(metaCopy);
     props.onChange?.(metaCopy);
   }, [setDirectMeta, meta, props, setShouldStartFromBeginning]);
+
+  useEffect(() => {
+    let intervalId: number = 0;
+    if (show && countdown > 0) {
+      intervalId = window.setInterval(() => {
+        setCountdown((currentCountdown) => {
+          // When countdown reaches 1, load the next episode on the next tick
+          if (currentCountdown === 1) {
+            // Ensure this runs only once by setting countdown to a non-positive number
+            setCountdown(-1);
+            loadNextEpisode();
+          }
+          return currentCountdown - 1;
+        });
+      }, 1000);
+    } else {
+      window.clearInterval(intervalId);
+      if (!show) {
+        setCountdown(15); // Reset countdown when not showing.
+      }
+    }
+    return () => window.clearInterval(intervalId);
+  }, [show, countdown, loadNextEpisode]);
 
   if (!meta?.episode || !nextEp) return null;
   if (metaType !== "show") return null;
@@ -138,7 +144,9 @@ export function NextEpisodeButton(props: {
             className="bg-buttons-primary hover:bg-buttons-primaryHover text-buttons-primaryText flex justify-center items-center"
           >
             <Icon className="text-xl mr-1" icon={Icons.SKIP_EPISODE} />
-            {t("player.nextEpisode.next")}
+            {countdown > 0 && show
+              ? `${t("player.nextEpisode.nextIn", { seconds: countdown })}`
+              : t("player.nextEpisode.next")}
           </Button>
         </div>
       </div>
