@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { Icon, Icons } from "@/components/Icon";
@@ -17,11 +17,6 @@ function shouldShowNextEpisodeButton(
   if (secondsFromEnd <= 30) return "always";
   if (percentage >= 0.93) return "hover";
   return "none";
-}
-
-function shouldStartCountdown(time: number, duration: number): boolean {
-  const secondsFromEnd = duration - time;
-  return secondsFromEnd <= 30 || time / duration >= 0.93;
 }
 
 function Button(props: {
@@ -112,23 +107,6 @@ export function NextEpisodeButton(props: {
 
   if (!meta?.episode || !nextEp) return null;
   if (metaType !== "show") return null;
-
-  const [seconds, setSeconds] = useState(15);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setSeconds((prevSeconds) => prevSeconds - 1);
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
-    if (seconds === 0) {
-      loadNextEpisode();
-      setSeconds(15);
-    }
-  }, [seconds, loadNextEpisode]);
 
   return (
     <Transition
