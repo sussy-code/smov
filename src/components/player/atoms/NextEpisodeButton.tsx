@@ -1,5 +1,9 @@
 import classNames from "classnames";
+<<<<<<< HEAD
 import React, { useState, useEffect, useCallback } from "react";
+=======
+import React, { useCallback, useEffect, useState } from "react";
+>>>>>>> a945fcc4c5cabb28279db4a7d23bf052d97ed057
 import { useTranslation } from "react-i18next";
 
 import { Icon, Icons } from "@/components/Icon";
@@ -17,6 +21,11 @@ function shouldShowNextEpisodeButton(
   if (secondsFromEnd <= 30) return "always";
   if (percentage >= 0.93) return "hover";
   return "none";
+}
+
+function shouldStartCountdown(time: number, duration: number): boolean {
+  const secondsFromEnd = duration - time;
+  return secondsFromEnd <= 30 || time / duration >= 0.93;
 }
 
 function Button(props: {
@@ -54,6 +63,7 @@ export function NextEpisodeButton(props: {
   const setShouldStartFromBeginning = usePlayerStore(
     (s) => s.setShouldStartFromBeginning,
   );
+  const [countdown, setCountdown] = useState(15);
 
   let show = false;
   if (showingState === "always") show = true;
@@ -116,7 +126,7 @@ export function NextEpisodeButton(props: {
     >
       <div
         className={classNames([
-          "absolute bottom-0 right-0 transition-[bottom] duration-200 flex items-center space-x-3",
+          "absolute bottom-0 right-0 transition-[bottom] duration-200 flex flex-col items-center space-y-3",
           bottom,
         ])}
       >
