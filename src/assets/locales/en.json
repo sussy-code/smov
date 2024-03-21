@@ -395,8 +395,8 @@
     },
     "nextEpisode": {
       "replay": "Replay",
-      "next": "Next episode",
-      "nextIn": "Next episode in {{seconds}}"
+      "nextIn": "Next episode in {{seconds}}",
+      "next": "Next Episode"
     },
     "playbackError": {
       "badge": "Playback error",

@@ -95,30 +95,41 @@ export function NextEpisodeButton(props: {
   }, [setDirectMeta, meta, props, setShouldStartFromBeginning]);
 
   useEffect(() => {
-    // Check if we should start the countdown to automatically go to the next episode.
-    const startCountdown = shouldStartCountdown(time, duration);
+    // Function to calculate the initial countdown value based on current time and duration.
+    const calculateCountdown = () => {
+      const secondsFromEnd = duration - time;
+      if (secondsFromEnd <= 30) {
+        return Math.max(secondsFromEnd, 0); // Ensure countdown doesn't go below 0.
+      }
+      return 15; // Default countdown start value if within the last 30 seconds.
+    };
 
-    if (startCountdown && countdown === 15) {
-      const intervalId = window.setInterval(() => {
-        setCountdown((currentCountdown) => {
-          if (currentCountdown <= 1) {
-            loadNextEpisode(); // Load next episode when countdown reaches 0.
-            window.clearInterval(intervalId); // Clear the interval.
-            return 0;
-          }
-          return currentCountdown - 1;
-        });
+    // Update countdown based on current playback time.
+    const updateCountdown = () => {
+      if (status === "playing") {
+        const newCountdown = calculateCountdown();
+        setCountdown(newCountdown);
+      }
+    };
+
+    // Call updateCountdown initially and whenever relevant dependencies change.
+    updateCountdown();
+
+    // Set up an interval to update the countdown every second if the video is playing.
+    let intervalId: number | null = null;
+    if (status === "playing") {
+      intervalId = window.setInterval(() => {
+        updateCountdown();
       }, 1000);
+    }
 
-      // Cleanup function to clear the interval when the component unmounts or the dependencies change.
-      return () => window.clearInterval(intervalId);
-    }
-    if (!startCountdown) {
-      // Reset countdown when conditions are not met.
-      setCountdown(15);
-    }
-    // Removed countdown from the dependencies to prevent resetting it unnecessarily.
-  }, [time, duration, countdown, loadNextEpisode]);
+    // Cleanup function to clear the interval when the component unmounts or dependencies change.
+    return () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+      }
+    };
+  }, [time, duration, status]); // Depend on time, duration, and status to re-evaluate when they change.
 
   if (!meta?.episode || !nextEp) return null;
   if (metaType !== "show") return null;
