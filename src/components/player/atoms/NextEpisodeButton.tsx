@@ -96,7 +96,7 @@ export function NextEpisodeButton(props: {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [time, duration]);
 
   useEffect(() => {
     if (seconds === 0) {
@@ -131,7 +131,7 @@ export function NextEpisodeButton(props: {
           className="bg-buttons-primary hover:bg-buttons-primaryHover text-buttons-primaryText flex justify-center items-center"
         >
           <Icon className="text-xl mr-1" icon={Icons.SKIP_EPISODE} />
-          {t(`player.nextEpisode.next${seconds > 0 ? ` in ${seconds}` : ""}`)}
+          {t(`player.nextEpisode.next ${seconds > 0 ? ` in ${seconds}` : ""}`)}
         </Button>
       </div>
     </Transition>
