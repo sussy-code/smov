@@ -19,6 +19,11 @@ function shouldShowNextEpisodeButton(
   return "none";
 }
 
+function shouldStartCountdown(time: number, duration: number): boolean {
+  const secondsFromEnd = duration - time;
+  return secondsFromEnd <= 30 || time / duration >= 0.93;
+}
+
 function Button(props: {
   className: string;
   onClick?: () => void;
@@ -90,31 +95,30 @@ export function NextEpisodeButton(props: {
   }, [setDirectMeta, meta, props, setShouldStartFromBeginning]);
 
   useEffect(() => {
-    // Only start the countdown if the button is supposed to show.
-    if (!show) {
-      return;
+    // Check if we should start the countdown to automatically go to the next episode.
+    const startCountdown = shouldStartCountdown(time, duration);
+
+    if (startCountdown && countdown === 15) {
+      const intervalId = window.setInterval(() => {
+        setCountdown((currentCountdown) => {
+          if (currentCountdown <= 1) {
+            loadNextEpisode(); // Load next episode when countdown reaches 0.
+            window.clearInterval(intervalId); // Clear the interval.
+            return 0;
+          }
+          return currentCountdown - 1;
+        });
+      }, 1000);
+
+      // Cleanup function to clear the interval when the component unmounts or the dependencies change.
+      return () => window.clearInterval(intervalId);
     }
-
-    // Initialize the countdown only once when the condition to show the button is met.
-    setCountdown(15); // Reset to 15 seconds whenever the conditions to show the button are met.
-
-    const intervalId = window.setInterval(() => {
-      setCountdown((currentCountdown) => {
-        const newCountdown = currentCountdown - 1;
-        // When countdown reaches 0, load the next episode.
-        if (newCountdown <= 0) {
-          loadNextEpisode();
-          // Stop the countdown by clearing the interval.
-          window.clearInterval(intervalId);
-          return 0; // Optionally reset the countdown or keep it at 0.
-        }
-        return newCountdown;
-      });
-    }, 1000);
-
-    // Cleanup function to clear the interval when the component unmounts or the dependencies change.
-    return () => window.clearInterval(intervalId);
-  }, [show, loadNextEpisode]); // Removed countdown from dependencies to prevent resetting it unnecessarily.
+    if (!startCountdown) {
+      // Reset countdown when conditions are not met.
+      setCountdown(15);
+    }
+    // Removed countdown from the dependencies to prevent resetting it unnecessarily.
+  }, [time, duration, countdown, loadNextEpisode]);
 
   if (!meta?.episode || !nextEp) return null;
   if (metaType !== "show") return null;
@@ -149,7 +153,7 @@ export function NextEpisodeButton(props: {
           >
             <Icon className="text-xl mr-1" icon={Icons.SKIP_EPISODE} />
             {countdown > 0 && show
-              ? `${t("player.nextEpisode.nextIn", { seconds: countdown })}`
+              ? t("player.nextEpisode.nextIn", { seconds: countdown })
               : t("player.nextEpisode.next")}
           </Button>
         </div>
