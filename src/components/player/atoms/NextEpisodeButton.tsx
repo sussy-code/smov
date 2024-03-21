@@ -96,7 +96,7 @@ export function NextEpisodeButton(props: {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [time, duration]);
 
   useEffect(() => {
     if (seconds === 0) {
@@ -104,10 +104,6 @@ export function NextEpisodeButton(props: {
       setSeconds(15);
     }
   }, [seconds, loadNextEpisode]);
-
-  useEffect(() => {
-    setSeconds(15);
-  }, [time, duration]);
 
   if (!meta?.episode || !nextEp) return null;
   if (metaType !== "show") return null;
