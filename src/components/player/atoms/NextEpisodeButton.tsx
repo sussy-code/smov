@@ -90,27 +90,31 @@ export function NextEpisodeButton(props: {
   }, [setDirectMeta, meta, props, setShouldStartFromBeginning]);
 
   useEffect(() => {
-    let intervalId: number = 0;
-    if (show && countdown > 0) {
-      intervalId = window.setInterval(() => {
-        setCountdown((currentCountdown) => {
-          // When countdown reaches 1, load the next episode on the next tick
-          if (currentCountdown === 1) {
-            // Ensure this runs only once by setting countdown to a non-positive number
-            setCountdown(-1);
-            loadNextEpisode();
-          }
-          return currentCountdown - 1;
-        });
-      }, 1000);
-    } else {
-      window.clearInterval(intervalId);
-      if (!show) {
-        setCountdown(15); // Reset countdown when not showing.
-      }
+    // Only start the countdown if the button is supposed to show.
+    if (!show) {
+      return;
     }
+
+    // Initialize the countdown only once when the condition to show the button is met.
+    setCountdown(15); // Reset to 15 seconds whenever the conditions to show the button are met.
+
+    const intervalId = window.setInterval(() => {
+      setCountdown((currentCountdown) => {
+        const newCountdown = currentCountdown - 1;
+        // When countdown reaches 0, load the next episode.
+        if (newCountdown <= 0) {
+          loadNextEpisode();
+          // Stop the countdown by clearing the interval.
+          window.clearInterval(intervalId);
+          return 0; // Optionally reset the countdown or keep it at 0.
+        }
+        return newCountdown;
+      });
+    }, 1000);
+
+    // Cleanup function to clear the interval when the component unmounts or the dependencies change.
     return () => window.clearInterval(intervalId);
-  }, [show, countdown, loadNextEpisode]);
+  }, [show, loadNextEpisode]); // Removed countdown from dependencies to prevent resetting it unnecessarily.
 
   if (!meta?.episode || !nextEp) return null;
   if (metaType !== "show") return null;
