@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import React, { useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 
 import { Icon, Icons } from "@/components/Icon";
@@ -88,6 +88,23 @@ export function NextEpisodeButton(props: {
     props.onChange?.(metaCopy);
   }, [setDirectMeta, meta, props, setShouldStartFromBeginning]);
 
+  const [seconds, setSeconds] = useState(15);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSeconds((prevSeconds) => prevSeconds - 1);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    if (seconds === 0) {
+      loadNextEpisode();
+      setSeconds(15);
+    }
+  }, [seconds, loadNextEpisode]);
+
   if (!meta?.episode || !nextEp) return null;
   if (metaType !== "show") return null;
 
@@ -114,7 +131,7 @@ export function NextEpisodeButton(props: {
           className="bg-buttons-primary hover:bg-buttons-primaryHover text-buttons-primaryText flex justify-center items-center"
         >
           <Icon className="text-xl mr-1" icon={Icons.SKIP_EPISODE} />
-          {t("player.nextEpisode.next")}
+          {t(`player.nextEpisode.next${seconds > 0 ? ` in ${seconds}` : ""}`)}
         </Button>
       </div>
     </Transition>
