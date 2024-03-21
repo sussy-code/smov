@@ -19,6 +19,11 @@ function shouldShowNextEpisodeButton(
   return "none";
 }
 
+function shouldStartCountdown(time: number, duration: number): boolean {
+  const secondsFromEnd = duration - time;
+  return secondsFromEnd <= 30 || time / duration >= 0.93;
+}
+
 function Button(props: {
   className: string;
   onClick?: () => void;
@@ -87,6 +92,23 @@ export function NextEpisodeButton(props: {
     setDirectMeta(metaCopy);
     props.onChange?.(metaCopy);
   }, [setDirectMeta, meta, props, setShouldStartFromBeginning]);
+
+  const [seconds, setSeconds] = useState(15);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSeconds((prevSeconds) => prevSeconds - 1);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    if (seconds === 0) {
+      loadNextEpisode();
+      setSeconds(15);
+    }
+  }, [seconds, loadNextEpisode]);
 
   if (!meta?.episode || !nextEp) return null;
   if (metaType !== "show") return null;
