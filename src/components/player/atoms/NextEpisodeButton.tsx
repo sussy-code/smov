@@ -102,7 +102,7 @@ export function NextEpisodeButton(props: {
     if (countdown === 0) {
       loadNextEpisode();
     }
-  }, [countdown]);
+  }, [countdown, loadNextEpisode]);
 
   if (!meta?.episode || !nextEp) return null;
   if (metaType !== "show") return null;
@@ -130,7 +130,9 @@ export function NextEpisodeButton(props: {
           className="bg-buttons-primary hover:bg-buttons-primaryHover text-buttons-primaryText flex justify-center items-center"
         >
           <Icon className="text-xl mr-1" icon={Icons.SKIP_EPISODE} />
-          {countdown > 0 ? `Next episode in ${countdown} seconds` : t("player.nextEpisode.next")}
+          {countdown > 0
+            ? `Next episode in ${countdown} seconds`
+            : t("player.nextEpisode.next")}
         </Button>
       </div>
     </Transition>
