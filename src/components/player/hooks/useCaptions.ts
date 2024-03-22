@@ -1,8 +1,15 @@
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
+import subsrt from "subsrt-ts";
 
-import { downloadCaption } from "@/backend/helpers/subs";
+import { downloadCaption, downloadWebVTT } from "@/backend/helpers/subs";
+import { Caption } from "@/stores/player/slices/source";
 import { usePlayerStore } from "@/stores/player/store";
 import { useSubtitleStore } from "@/stores/subtitles";
+
+import {
+  filterDuplicateCaptionCues,
+  parseVttSubtitles,
+} from "../utils/captions";
 
 export function useCaptions() {
   const setLanguage = useSubtitleStore((s) => s.setLanguage);
@@ -12,32 +19,85 @@ export function useCaptions() {
   );
   const setCaption = usePlayerStore((s) => s.setCaption);
   const lastSelectedLanguage = useSubtitleStore((s) => s.lastSelectedLanguage);
+
   const captionList = usePlayerStore((s) => s.captionList);
+  const getHlsCaptionList = usePlayerStore((s) => s.display?.getCaptionList);
+
+  const getSubtitleTracks = usePlayerStore((s) => s.display?.getSubtitleTracks);
+  const setSubtitlePreference = usePlayerStore(
+    (s) => s.display?.setSubtitlePreference,
+  );
+
+  const captions = useMemo(
+    () =>
+      captionList.length !== 0 ? captionList : getHlsCaptionList?.() ?? [],
+    [captionList, getHlsCaptionList],
+  );
 
   const selectCaptionById = useCallback(
     async (captionId: string) => {
-      const caption = captionList.find((v) => v.id === captionId);
+      const caption = captions.find((v) => v.id === captionId);
       if (!caption) return;
-      const srtData = await downloadCaption(caption);
-      setCaption({
+
+      const captionToSet: Caption = {
         id: caption.id,
         language: caption.language,
-        srtData,
         url: caption.url,
-      });
+        srtData: "",
+      };
+
+      if (!caption.hls) {
+        const srtData = await downloadCaption(caption);
+        captionToSet.srtData = srtData;
+      } else {
+        // request a language change to hls, so it can load the subtitles
+        await setSubtitlePreference?.(caption.language);
+        const track = getSubtitleTracks?.().find(
+          (t) => t.id.toString() === caption.id && t.details !== undefined,
+        );
+        if (!track) return;
+
+        const fragments =
+          track.details?.fragments?.filter(
+            (frag) => frag !== null && frag.url !== null,
+          ) ?? [];
+
+        const vttCaptions = (
+          await Promise.all(
+            fragments.map(async (frag) => {
+              const vtt = await downloadWebVTT(frag.url);
+              return parseVttSubtitles(vtt);
+            }),
+          )
+        ).flat();
+
+        const filtered = filterDuplicateCaptionCues(vttCaptions);
+
+        const srtData = subsrt.build(filtered, { format: "srt" });
+        captionToSet.srtData = srtData;
+      }
+
+      setCaption(captionToSet);
       resetSubtitleSpecificSettings();
       setLanguage(caption.language);
     },
-    [setLanguage, captionList, setCaption, resetSubtitleSpecificSettings],
+    [
+      setLanguage,
+      captions,
+      setCaption,
+      resetSubtitleSpecificSettings,
+      getSubtitleTracks,
+      setSubtitlePreference,
+    ],
   );
 
   const selectLanguage = useCallback(
     async (language: string) => {
-      const caption = captionList.find((v) => v.language === language);
+      const caption = captions.find((v) => v.language === language);
       if (!caption) return;
       return selectCaptionById(caption.id);
     },
-    [captionList, selectCaptionById],
+    [captions, selectCaptionById],
   );
 
   const disable = useCallback(async () => {
