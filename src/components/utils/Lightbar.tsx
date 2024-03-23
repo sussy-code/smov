@@ -202,7 +202,7 @@ function ParticlesCanvas() {
           sizeRange: [48, 56] as [number, number],
         },
       ];
-      imageParticleCount = particleCount * 0.085;
+      imageParticleCount = particleCount * 0.075;
     }
 
     // Weed easter egg
