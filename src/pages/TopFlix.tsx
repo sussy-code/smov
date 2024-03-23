@@ -7,6 +7,7 @@ import { Divider } from "@/components/utils/Divider";
 import { Heading1, Paragraph } from "@/components/utils/Text";
 
 import { SubPageLayout } from "./layouts/SubPageLayout";
+import { PageTitle } from "./parts/util/PageTitle";
 
 export function Button(props: {
   className: string;
@@ -240,6 +241,7 @@ export function TopFlix() {
   return (
     <SubPageLayout>
       <ThiccContainer>
+        <PageTitle subpage k="global.pages.topFlix" />
         <div className="mt-8 w-full px-8 cursor-default">
           <Heading1>Top flix</Heading1>
           <Paragraph className="mb-6">

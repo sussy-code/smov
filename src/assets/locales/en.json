@@ -109,6 +109,8 @@
     "pages": {
       "about": "About",
       "dmca": "DMCA",
+      "topSources": "Top Sources",
+      "topFlix": "Top Flix",
       "support": "Support",
       "login": "Login",
       "onboarding": "Setup",

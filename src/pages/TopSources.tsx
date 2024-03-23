@@ -6,6 +6,7 @@ import { Divider } from "@/components/utils/Divider";
 import { Heading1, Paragraph } from "@/components/utils/Text";
 
 import { SubPageLayout } from "./layouts/SubPageLayout";
+import { PageTitle } from "./parts/util/PageTitle";
 import { Button } from "./TopFlix";
 
 function ConfigValue(props: { name: string; children?: ReactNode }) {
@@ -99,6 +100,7 @@ export function TopSources() {
   return (
     <SubPageLayout>
       <ThiccContainer>
+        <PageTitle subpage k="global.pages.topSources" />
         <div className="mt-8 w-full px-8 cursor-default">
           <Heading1>Top sources</Heading1>
           <Paragraph className="mb-6">
