@@ -145,234 +145,207 @@ function ParticlesCanvas() {
 
     // Basic particle config
     const particleCount = 265;
-    let imageParticleCount = particleCount;
 
-    // Holiday overrides
     let imageOverride: { image: string; sizeRange?: [number, number] }[] = [];
     const date = new Date();
     const month = date.getMonth();
     const day = date.getDate();
-    if (
-      (month === 11 && day >= 24 && day <= 26) ||
-      Math.random() < 0.051 // 5.1%
-    ) {
-      imageOverride = [
-        {
-          image: "/lightbar-images/snowflake.svg",
-          sizeRange: [12, 20] as [number, number],
-        },
-        {
-          image: "/lightbar-images/santa.png",
-          sizeRange: [25, 35] as [number, number],
-        },
-      ];
-      imageParticleCount = particleCount * 0.1;
-    }
+    let imageParticleCount = particleCount;
 
-    // Halloween overrides
-    const month2 = date.getMonth();
-    const day2 = date.getDate();
-    if (
-      (month2 === 9 && day2 >= 29 && day2 <= 31) ||
-      Math.random() < 0.05 // 5%
-    ) {
-      imageOverride = [
-        {
-          image: "/lightbar-images/ghost.png",
-          sizeRange: [20, 33] as [number, number],
-        },
-        {
-          image: "/lightbar-images/pumpkin.png",
-          sizeRange: [25, 35] as [number, number],
-        },
-      ];
-      imageParticleCount = particleCount * 0.0879;
-    }
+    switch (true) {
+      case (month === 11 && day >= 24 && day <= 26) || Math.random() < 0.051:
+        imageOverride = [
+          {
+            image: "/lightbar-images/snowflake.svg",
+            sizeRange: [12, 20] as [number, number],
+          },
+          {
+            image: "/lightbar-images/santa.png",
+            sizeRange: [25, 35] as [number, number],
+          },
+        ];
+        imageParticleCount = particleCount * 0.1;
+        break;
 
-    // Fish easter egg
-    const shouldShowFishie = Math.random() < 0.1; // 10%
-    if (shouldShowFishie) {
-      imageOverride = [
-        {
-          image: "/lightbar-images/fishie.png",
-          sizeRange: [10, 13] as [number, number],
-        },
-        {
-          image: "/lightbar-images/shark.png",
-          sizeRange: [48, 56] as [number, number],
-        },
-      ];
-      imageParticleCount = particleCount * 0.075;
-    }
+      case (month === 9 && day >= 29 && day <= 31) || Math.random() < 0.05:
+        imageOverride = [
+          {
+            image: "/lightbar-images/ghost.png",
+            sizeRange: [20, 33] as [number, number],
+          },
+          {
+            image: "/lightbar-images/pumpkin.png",
+            sizeRange: [25, 35] as [number, number],
+          },
+        ];
+        imageParticleCount = particleCount * 0.0879;
+        break;
 
-    // Weed easter egg
-    const month3 = date.getMonth() + 1;
-    const day3 = date.getDate();
-    const shouldShowZa = (month3 === 4 && day3 === 20) || Math.random() < 0.25; // 25%
-    if (shouldShowZa) {
-      imageOverride = [
-        {
-          image: "/lightbar-images/weed.png",
-          sizeRange: [32, 40] as [number, number],
-        },
-      ];
-      imageParticleCount = particleCount / 6.25;
-    }
+      case Math.random() < 0.1:
+        imageOverride = [
+          {
+            image: "/lightbar-images/fishie.png",
+            sizeRange: [10, 13] as [number, number],
+          },
+          {
+            image: "/lightbar-images/shark.png",
+            sizeRange: [48, 56] as [number, number],
+          },
+        ];
+        imageParticleCount = particleCount * 0.075;
+        break;
 
-    // Kitty easter egg
-    const shouldShowCat = Math.random() < 0.2; // 20%
-    if (shouldShowCat) {
-      imageOverride = [
-        {
-          image: "/lightbar-images/cat.png",
-          sizeRange: [30, 38] as [number, number],
-        },
-      ];
-      imageParticleCount = particleCount / 6.6;
-    }
+      case (month === 4 && day === 20) || Math.random() < 0.25:
+        imageOverride = [
+          {
+            image: "/lightbar-images/weed.png",
+            sizeRange: [32, 40] as [number, number],
+          },
+        ];
+        imageParticleCount = particleCount / 6.25;
+        break;
 
-    // Movie & popcorn easter egg
-    const shouldShowParaphernalia = Math.random() < 0.3; // 30%
-    if (shouldShowParaphernalia) {
-      imageOverride = [
-        {
-          image: "/lightbar-images/camera.png",
-          sizeRange: [24, 32] as [number, number],
-        },
-        {
-          image: "/lightbar-images/popcorn.png",
-          sizeRange: [18, 27] as [number, number],
-        },
-      ];
-      imageParticleCount = particleCount / 7.85;
-    }
+      case Math.random() < 0.2:
+        imageOverride = [
+          {
+            image: "/lightbar-images/cat.png",
+            sizeRange: [30, 38] as [number, number],
+          },
+        ];
+        imageParticleCount = particleCount / 6.6;
+        break;
 
-    // Chicken easter egg
-    const shouldShow4thDecor = Math.random() < 0.08; // 8%
-    if (shouldShow4thDecor) {
-      imageOverride = [
-        {
-          image: "/lightbar-images/cock.png",
-          sizeRange: [25, 32] as [number, number],
-        },
-        {
-          image: "/lightbar-images/egg.png",
-          sizeRange: [18, 24] as [number, number],
-        },
-        {
-          image: "/lightbar-images/barn.png",
-          sizeRange: [32, 38] as [number, number],
-        },
-      ];
-      imageParticleCount = particleCount / 9;
-    }
+      case Math.random() < 0.3:
+        imageOverride = [
+          {
+            image: "/lightbar-images/camera.png",
+            sizeRange: [24, 32] as [number, number],
+          },
+          {
+            image: "/lightbar-images/popcorn.png",
+            sizeRange: [18, 27] as [number, number],
+          },
+        ];
+        imageParticleCount = particleCount / 7.85;
+        break;
 
-    // Money easter egg
-    const shouldShowMoney = Math.random() < 0.06; // 6%
-    if (shouldShowMoney) {
-      imageOverride = [
-        {
-          image: "/lightbar-images/money-sack.png",
-          sizeRange: [24, 32] as [number, number],
-        },
-        {
-          image: "/lightbar-images/money.png",
-          sizeRange: [13, 23] as [number, number],
-        },
-        {
-          image: "/lightbar-images/coin.png",
-          sizeRange: [8, 20] as [number, number],
-        },
-      ];
-      imageParticleCount = particleCount / 8.45;
-    }
+      case Math.random() < 0.08:
+        imageOverride = [
+          {
+            image: "/lightbar-images/cock.png",
+            sizeRange: [25, 32] as [number, number],
+          },
+          {
+            image: "/lightbar-images/egg.png",
+            sizeRange: [18, 24] as [number, number],
+          },
+          {
+            image: "/lightbar-images/barn.png",
+            sizeRange: [32, 38] as [number, number],
+          },
+        ];
+        imageParticleCount = particleCount / 9;
+        break;
 
-    // Pirate easter egg
-    const shouldShowPirate = Math.random() < 0.075; // 7.5%
-    if (shouldShowPirate) {
-      imageOverride = [
-        {
-          image: "/lightbar-images/skull.png",
-          sizeRange: [20, 28] as [number, number],
-        },
-        {
-          image: "/lightbar-images/ship.png",
-          sizeRange: [23, 27] as [number, number],
-        },
-      ];
-      imageParticleCount = particleCount / 10;
-    }
+      case Math.random() < 0.06:
+        imageOverride = [
+          {
+            image: "/lightbar-images/money-sack.png",
+            sizeRange: [24, 32] as [number, number],
+          },
+          {
+            image: "/lightbar-images/money.png",
+            sizeRange: [13, 23] as [number, number],
+          },
+          {
+            image: "/lightbar-images/coin.png",
+            sizeRange: [8, 20] as [number, number],
+          },
+        ];
+        imageParticleCount = particleCount / 8.45;
+        break;
 
-    // Dev easter egg
-    const shouldShowCode = Math.random() < 0.03; // 3%
-    if (shouldShowCode) {
-      imageOverride = [
-        {
-          image: "/lightbar-images/ts.png",
-          sizeRange: [20, 32] as [number, number],
-        },
-        {
-          image: "/lightbar-images/git.png",
-          sizeRange: [20, 28] as [number, number],
-        },
-      ];
-      imageParticleCount = particleCount / 9;
-    }
+      case Math.random() < 0.075:
+        imageOverride = [
+          {
+            image: "/lightbar-images/skull.png",
+            sizeRange: [20, 28] as [number, number],
+          },
+          {
+            image: "/lightbar-images/ship.png",
+            sizeRange: [23, 27] as [number, number],
+          },
+        ];
+        imageParticleCount = particleCount / 10;
+        break;
 
-    // DUI easter egg
-    const shouldShowFlix = Math.random() < 0.08; // 8%
-    if (shouldShowFlix) {
-      imageOverride = [
-        {
-          image: "/lightbar-images/beer.png",
-          sizeRange: [15, 35] as [number, number],
-        },
-        {
-          image: "/lightbar-images/beer-bottle.png",
-          sizeRange: [10, 38] as [number, number],
-        },
-        {
-          image: "/lightbar-images/wine.png",
-          sizeRange: [15, 35] as [number, number],
-        },
-        {
-          image: "/lightbar-images/cigarette.png",
-          sizeRange: [10, 38] as [number, number],
-        },
-        {
-          image: "/lightbar-images/cigarette2.png",
-          sizeRange: [15, 35] as [number, number],
-        },
-      ];
-      imageParticleCount = particleCount / 11;
-    }
+      case Math.random() < 0.03:
+        imageOverride = [
+          {
+            image: "/lightbar-images/ts.png",
+            sizeRange: [20, 32] as [number, number],
+          },
+          {
+            image: "/lightbar-images/git.png",
+            sizeRange: [20, 28] as [number, number],
+          },
+        ];
+        imageParticleCount = particleCount / 9;
+        break;
 
-    // Gangster easter egg
-    const shouldShowCowboy = Math.random() < 0.05; // 5%
-    if (shouldShowCowboy) {
-      imageOverride = [
-        {
-          image: "/lightbar-images/auto-gun.png",
-          sizeRange: [28, 36] as [number, number],
-        },
-        {
-          image: "/lightbar-images/gun.png",
-          sizeRange: [23, 30] as [number, number],
-        },
-      ];
-      imageParticleCount = particleCount / 11.6;
-    }
+      case Math.random() < 0.7:
+        imageOverride = [
+          {
+            image: "/lightbar-images/beer.png",
+            sizeRange: [15, 35] as [number, number],
+          },
+          {
+            image: "/lightbar-images/beer-bottle.png",
+            sizeRange: [10, 38] as [number, number],
+          },
+          {
+            image: "/lightbar-images/wine.png",
+            sizeRange: [15, 35] as [number, number],
+          },
+          {
+            image: "/lightbar-images/cigarette.png",
+            sizeRange: [10, 38] as [number, number],
+          },
+          {
+            image: "/lightbar-images/cigarette2.png",
+            sizeRange: [15, 35] as [number, number],
+          },
+        ];
+        imageParticleCount = particleCount / 11;
+        break;
 
-    // Star easter egg
-    const shouldShowStars = Math.random() < 0.15; // 15%
-    if (shouldShowStars) {
-      imageOverride = [
-        {
-          image: "/lightbar-images/star.png",
-          sizeRange: [18, 28] as [number, number],
-        },
-      ];
-      imageParticleCount = particleCount / 6.6;
+      case Math.random() < 0.05:
+        imageOverride = [
+          {
+            image: "/lightbar-images/auto-gun.png",
+            sizeRange: [28, 36] as [number, number],
+          },
+          {
+            image: "/lightbar-images/gun.png",
+            sizeRange: [23, 30] as [number, number],
+          },
+        ];
+        imageParticleCount = particleCount / 11.6;
+        break;
+
+      case Math.random() < 0.15:
+        imageOverride = [
+          {
+            image: "/lightbar-images/star.png",
+            sizeRange: [18, 28] as [number, number],
+          },
+        ];
+        imageParticleCount = particleCount / 6.6;
+        break;
+
+      default:
+        // Default case
+        break;
     }
 
     // HOIST THE SAIL (of particles)!
