@@ -26,7 +26,7 @@ export function DmcaPage() {
           <Trans
             i18nKey="screens.dmca.text"
             components={{
-              bold: <span className="font-bold" style={{ color: "#cfcfcf" }} />,
+              bold: <span className="font-bold text-white" />,
             }}
           />
         </Paragraph>
@@ -36,7 +36,7 @@ export function DmcaPage() {
             href={`mailto:${conf().DMCA_EMAIL}`}
             style={{
               transition: "color 0.3s ease",
-              color: isHovered ? "#cfcfcf" : "inherit",
+              color: isHovered ? "#ffffff" : "inherit",
             }}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}

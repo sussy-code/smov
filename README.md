@@ -72,4 +72,4 @@ git push  # Push to YOUR repository
 
 ## Contact Me
 **Discord:** *.baddeveloper*  
-**Email:** *[sudo-flix@proton.me](mailto:sudo-flix@proton.me)*
+**Email:** *[dev@sudo-flix.lol](mailto:dev@sudo-flix.lol)*
