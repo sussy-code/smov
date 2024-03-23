@@ -34,7 +34,10 @@ export function DmcaPage() {
           <Icon icon={Icons.MAIL} />
           <a
             href={`mailto:${conf().DMCA_EMAIL}`}
-            className={isHovered ? "white-text" : ""}
+            style={{
+              transition: "color 0.3s ease",
+              color: isHovered ? "#ffffff" : "inherit",
+            }}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
