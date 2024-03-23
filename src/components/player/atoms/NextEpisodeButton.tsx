@@ -15,7 +15,7 @@ function shouldShowNextEpisodeButton(
   const percentage = time / duration;
   const secondsFromEnd = duration - time;
   if (secondsFromEnd <= 30) return "always";
-  if (percentage >= 0.94) return "hover";
+  if (percentage >= 0.93) return "hover";
   return "none";
 }
 
