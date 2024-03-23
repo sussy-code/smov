@@ -91,7 +91,7 @@ export function SupportPage() {
             </Item>,
             <Item title={t("support.q2.title")}>
               <Trans i18nKey="support.q2.body">
-                <MwLink to="https://github.com/sudo-flix/sudo-source" />
+                <MwLink to="https://github.com/sussy-code/smov" />
               </Trans>
             </Item>,
           ]}
