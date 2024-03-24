@@ -81,10 +81,10 @@ export function NextEpisodeButton(props: {
   }, [setDirectMeta, nextEp, meta, props, setShouldStartFromBeginning]);
 
   useEffect(() => {
-    if (time === duration && meta && nextEp) {
+    if (time === duration && showingState === "always") {
       loadNextEpisode();
     }
-  }, [time, duration, meta, nextEp, loadNextEpisode]);
+  }, [time, duration, showingState, loadNextEpisode]);
 
   const startCurrentEpisodeFromBeginning = useCallback(() => {
     if (!meta || !meta.episode) return;
