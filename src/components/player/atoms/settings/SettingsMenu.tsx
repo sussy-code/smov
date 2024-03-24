@@ -52,13 +52,15 @@ export function SettingsMenu({ id }: { id: string }) {
         >
           {t("player.menus.settings.qualityItem")}
         </Menu.ChevronLink>
-        <Menu.ChevronLink
-          onClick={() => router.navigate("/audio")}
-          rightText={currentAudioTrack ? currentAudioTrack.label : ""}
-        >
-          {/* {t("player.menus.settings.qualityItem")} */}
-          Audio
-        </Menu.ChevronLink>
+        {currentAudioTrack && (
+          <Menu.ChevronLink
+            onClick={() => router.navigate("/audio")}
+            rightText={currentAudioTrack ? currentAudioTrack.label : ""}
+          >
+            {t("player.menus.settings.audioItem")}
+          </Menu.ChevronLink>
+        )}
+
         <Menu.ChevronLink
           onClick={() => router.navigate("/source")}
           rightText={sourceName}
