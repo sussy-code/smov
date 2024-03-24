@@ -80,12 +80,6 @@ export function NextEpisodeButton(props: {
     props.onChange?.(metaCopy);
   }, [setDirectMeta, nextEp, meta, props, setShouldStartFromBeginning]);
 
-  useEffect(() => {
-    if (time === duration && showingState === "always") {
-      loadNextEpisode();
-    }
-  }, [time, duration, showingState, loadNextEpisode]);
-
   const startCurrentEpisodeFromBeginning = useCallback(() => {
     if (!meta || !meta.episode) return;
     const metaCopy = { ...meta };
