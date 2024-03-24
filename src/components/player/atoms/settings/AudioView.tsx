@@ -1,4 +1,3 @@
-import { t } from "i18next";
 import { useCallback } from "react";
 
 import { Menu } from "@/components/player/internals/ContextMenu";
