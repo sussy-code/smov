@@ -36,6 +36,11 @@ export function SettingsMenu({ id }: { id: string }) {
       t("player.menus.subtitles.unknownLanguage")
     : undefined;
 
+  const selectedAudioLanguagePretty = currentAudioTrack
+    ? getPrettyLanguageNameFromLocale(currentAudioTrack.language) ??
+      t("player.menus.subtitles.unknownLanguage")
+    : undefined;
+
   const source = usePlayerStore((s) => s.source);
 
   const downloadable = source?.type === "file" || source?.type === "hls";
@@ -55,7 +60,7 @@ export function SettingsMenu({ id }: { id: string }) {
         {currentAudioTrack && (
           <Menu.ChevronLink
             onClick={() => router.navigate("/audio")}
-            rightText={currentAudioTrack ? currentAudioTrack.label : ""}
+            rightText={selectedAudioLanguagePretty ?? undefined}
           >
             {t("player.menus.settings.audioItem")}
           </Menu.ChevronLink>
