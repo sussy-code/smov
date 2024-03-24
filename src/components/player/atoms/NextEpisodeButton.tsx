@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 import { Icon, Icons } from "@/components/Icon";
@@ -79,6 +79,12 @@ export function NextEpisodeButton(props: {
     setDirectMeta(metaCopy);
     props.onChange?.(metaCopy);
   }, [setDirectMeta, nextEp, meta, props, setShouldStartFromBeginning]);
+
+  useEffect(() => {
+    if (time >= duration && meta && nextEp) {
+      loadNextEpisode();
+    }
+  }, [time, duration, meta, nextEp, loadNextEpisode]);
 
   const startCurrentEpisodeFromBeginning = useCallback(() => {
     if (!meta || !meta.episode) return;
