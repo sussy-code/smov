@@ -81,7 +81,7 @@ export function NextEpisodeButton(props: {
   }, [setDirectMeta, nextEp, meta, props, setShouldStartFromBeginning]);
 
   useEffect(() => {
-    if (time >= duration && meta && nextEp) {
+    if (time === duration && meta && nextEp) {
       loadNextEpisode();
     }
   }, [time, duration, meta, nextEp, loadNextEpisode]);
