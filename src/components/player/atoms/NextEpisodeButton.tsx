@@ -7,6 +7,7 @@ import { usePlayerMeta } from "@/components/player/hooks/usePlayerMeta";
 import { Transition } from "@/components/utils/Transition";
 import { PlayerMeta } from "@/stores/player/slices/source";
 import { usePlayerStore } from "@/stores/player/store";
+import { useProgressStore } from "@/stores/progress";
 
 function shouldShowNextEpisodeButton(
   time: number,
@@ -55,6 +56,7 @@ export function NextEpisodeButton(props: {
   const setShouldStartFromBeginning = usePlayerStore(
     (s) => s.setShouldStartFromBeginning,
   );
+  const updateItem = useProgressStore((s) => s.updateItem);
 
   let show = false;
   if (showingState === "always") show = true;
@@ -79,7 +81,19 @@ export function NextEpisodeButton(props: {
     setShouldStartFromBeginning(true);
     setDirectMeta(metaCopy);
     props.onChange?.(metaCopy);
-  }, [setDirectMeta, nextEp, meta, props, setShouldStartFromBeginning]);
+    const defaultProgress = { duration: 0, watched: 0 };
+    updateItem({
+      meta: metaCopy,
+      progress: defaultProgress,
+    });
+  }, [
+    setDirectMeta,
+    nextEp,
+    meta,
+    props,
+    setShouldStartFromBeginning,
+    updateItem,
+  ]);
 
   if (!meta?.episode || !nextEp) return null;
   if (metaType !== "show") return null;
