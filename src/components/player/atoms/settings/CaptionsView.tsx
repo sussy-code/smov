@@ -202,7 +202,7 @@ export function CaptionsView({ id }: { id: string }) {
           )}
         >
           <div className="flex flex-col items-center">
-            <Icon className="text-5xl mb-4" icon={Icons.FILE} />
+            <Icon className="text-5xl mb-4" icon={Icons.UPLOAD} />
             <span className="text-xl weight font-medium">
               {t("player.menus.subtitles.dropSubtitleFile")}
             </span>
