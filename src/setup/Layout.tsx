@@ -39,6 +39,7 @@ export function Layout(props: { children: ReactNode }) {
       }
     });
 
+    // Instead use isMobile like this `const { isMobile } = useIsMobile();`
     const mediaQuery = window.matchMedia("(max-width: 768px)"); // Adjust the max-width as per your needs
     setIsMobile(mediaQuery.matches);
 
