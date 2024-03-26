@@ -2,6 +2,7 @@ import { ReactNode, useEffect, useState } from "react";
 
 import { isAllowedExtensionVersion } from "@/backend/extension/compatibility";
 import { extensionInfo } from "@/backend/extension/messaging";
+import { useIsMobile } from "@/hooks/useIsMobile";
 import { useBannerSize, useBannerStore } from "@/stores/banner";
 import { ExtensionBanner } from "@/stores/banner/BannerLocation";
 
@@ -28,7 +29,7 @@ export function Layout(props: { children: ReactNode }) {
   const location = useBannerStore((s) => s.location);
   const [extensionState, setExtensionState] =
     useState<ExtensionStatus>("unknown");
-  const [isMobile, setIsMobile] = useState(false);
+  const { isMobile } = useIsMobile();
 
   useEffect(() => {
     let isMounted = true;
@@ -39,19 +40,8 @@ export function Layout(props: { children: ReactNode }) {
       }
     });
 
-    // Instead use isMobile like this `const { isMobile } = useIsMobile();`
-    const mediaQuery = window.matchMedia("(max-width: 768px)"); // Adjust the max-width as per your needs
-    setIsMobile(mediaQuery.matches);
-
-    const handleResize = () => {
-      setIsMobile(mediaQuery.matches);
-    };
-
-    mediaQuery.addListener(handleResize);
-
     return () => {
       isMounted = false;
-      mediaQuery.removeListener(handleResize);
     };
   }, []);
 
