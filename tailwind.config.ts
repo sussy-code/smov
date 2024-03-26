@@ -16,7 +16,7 @@ const config: Config = {
 
       /* fonts */
       fontFamily: {
-        "open-sans": "'Open Sans'",
+        "hack": "'Hack'",
       },
 
       /* animations */
