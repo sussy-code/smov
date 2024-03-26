@@ -4,12 +4,10 @@
 
 html,
 body {
-  @apply bg-background-main font-hack text-type-text;
+  @apply bg-background-main font-main text-type-text;
   min-height: 100vh;
   min-height: 100dvh;
-  font-size: 0.97em;
-  letter-spacing: 0.01em;
-  word-spacing: -0.12em;
+  font-size: 1.0235em; 
 }
 
 html[data-full],

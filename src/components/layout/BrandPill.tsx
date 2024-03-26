@@ -5,7 +5,7 @@ import { Icon, Icons } from "@/components/Icon";
 
 export function BrandPill(props: {
   clickable?: boolean;
-  hideTextOnMobile?: boolean;
+  // hideTextOnMobile?: boolean;
   backgroundClass?: string;
 }) {
   const { t } = useTranslation();
@@ -20,15 +20,7 @@ export function BrandPill(props: {
           : "",
       )}
     >
-      <Icon className="text-xl" icon={Icons.MOVIE_WEB} />
-      <span
-        className={[
-          "font-semibold text-white",
-          props.hideTextOnMobile ? "hidden sm:block" : "",
-        ].join(" ")}
-      >
-        {t("global.name")}
-      </span>
+      <Icon className="text-2xl" icon={Icons.MOVIE_WEB} />
     </div>
   );
 }

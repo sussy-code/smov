@@ -16,7 +16,7 @@ const config: Config = {
 
       /* fonts */
       fontFamily: {
-        "hack": "'Hack'",
+        "main": "'DM Sans'",
       },
 
       /* animations */
