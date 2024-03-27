@@ -1,28 +1,9 @@
 import { ReactNode, useEffect, useState } from "react";
 
-import { isAllowedExtensionVersion } from "@/backend/extension/compatibility";
-import { extensionInfo } from "@/backend/extension/messaging";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { useBannerSize, useBannerStore } from "@/stores/banner";
 import { ExtensionBanner } from "@/stores/banner/BannerLocation";
-
-export type ExtensionStatus =
-  | "unknown"
-  | "failed"
-  | "disallowed"
-  | "noperms"
-  | "outdated"
-  | "success";
-
-async function getExtensionState(): Promise<ExtensionStatus> {
-  const info = await extensionInfo();
-  if (!info) return "unknown"; // cant talk to extension
-  if (!info.success) return "failed"; // extension failed to respond
-  if (!info.allowed) return "disallowed"; // extension is not enabled on this page
-  if (!info.hasPermission) return "noperms"; // extension has no perms to do it's tasks
-  if (!isAllowedExtensionVersion(info.version)) return "outdated"; // extension is too old
-  return "success"; // no problems
-}
+import { ExtensionStatus, getExtensionState } from "@/utils/onboarding";
 
 export function Layout(props: { children: ReactNode }) {
   const bannerSize = useBannerSize();
