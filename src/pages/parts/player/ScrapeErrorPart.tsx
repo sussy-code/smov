@@ -11,7 +11,8 @@ import { Paragraph } from "@/components/text/Paragraph";
 import { Title } from "@/components/text/Title";
 import { ScrapingItems, ScrapingSegment } from "@/hooks/useProviderScrape";
 import { ErrorContainer, ErrorLayout } from "@/pages/layouts/ErrorLayout";
-import { ExtensionStatus, getExtensionState } from "@/utils/onboarding";
+import { getExtensionState } from "@/utils/extension";
+import type { ExtensionStatus } from "@/utils/extension";
 import { getProviderApiUrls } from "@/utils/proxyUrls";
 
 import { ErrorCardInModal } from "../errors/ErrorCard";
@@ -29,8 +30,6 @@ export function ScrapeErrorPart(props: ScrapeErrorPartProps) {
   const location = useLocation();
   const [extensionState, setExtensionState] =
     useState<ExtensionStatus>("unknown");
-  const [title, setTitle] = useState(t("player.scraping.notFound.title"));
-  const [icon, setIcon] = useState(Icons.WAND);
 
   const error = useMemo(() => {
     const data = props.data;
@@ -51,10 +50,6 @@ export function ScrapeErrorPart(props: ScrapeErrorPartProps) {
   useEffect(() => {
     getExtensionState().then((state: ExtensionStatus) => {
       setExtensionState(state);
-      if (state === "disallowed") {
-        setTitle(t("player.scraping.extensionFailure.disabledTitle"));
-        setIcon(Icons.LOCK);
-      }
     });
   }, [t]);
 
@@ -62,8 +57,10 @@ export function ScrapeErrorPart(props: ScrapeErrorPartProps) {
     return (
       <ErrorLayout>
         <ErrorContainer>
-          <IconPill icon={icon}>{t("player.scraping.notFound.badge")}</IconPill>
-          <Title>{title}</Title>
+          <IconPill icon={Icons.LOCK}>
+            {t("player.scraping.notFound.badge")}
+          </IconPill>
+          <Title>{t("player.scraping.extensionFailure.disabledTitle")}</Title>
           <Paragraph>
             <Trans
               i18nKey="player.scraping.extensionFailure.text"
@@ -81,7 +78,7 @@ export function ScrapeErrorPart(props: ScrapeErrorPartProps) {
               padding="md:px-12 p-2.5"
               className="mt-6"
             >
-              {t("player.scraping.notFound.homeButton")}
+              {t("player.scraping.extensionFailure.homeButton")}
             </Button>
             <Button
               onClick={() => {
@@ -98,13 +95,6 @@ export function ScrapeErrorPart(props: ScrapeErrorPartProps) {
             </Button>
           </div>
         </ErrorContainer>
-        {error ? (
-          <ErrorCardInModal
-            id={modal.id}
-            onClose={() => modal.hide()}
-            error={error}
-          />
-        ) : null}
       </ErrorLayout>
     );
   }
@@ -112,16 +102,11 @@ export function ScrapeErrorPart(props: ScrapeErrorPartProps) {
   return (
     <ErrorLayout>
       <ErrorContainer>
-        <IconPill icon={icon}>{t("player.scraping.notFound.badge")}</IconPill>
-        <Title>{title}</Title>
-        <Paragraph>
-          <Trans
-            i18nKey="player.scraping.notFound.text"
-            components={{
-              bold: <span className="font-bold" style={{ color: "#cfcfcf" }} />,
-            }}
-          />
-        </Paragraph>
+        <IconPill icon={Icons.WAND}>
+          {t("player.scraping.notFound.badge")}
+        </IconPill>
+        <Title>{t("player.scraping.notFound.title")}</Title>
+        <Paragraph>{t("player.scraping.notFound.text")}</Paragraph>
         <div className="flex gap-3">
           <Button
             href="/"
@@ -132,12 +117,7 @@ export function ScrapeErrorPart(props: ScrapeErrorPartProps) {
             {t("player.scraping.notFound.homeButton")}
           </Button>
           <Button
-            onClick={() => {
-              sendPage({
-                page: "PermissionGrant",
-                redirectUrl: window.location.href,
-              });
-            }}
+            onClick={() => modal.show()}
             theme="purple"
             padding="md:px-12 p-2.5"
             className="mt-6"

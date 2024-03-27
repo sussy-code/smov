@@ -21,8 +21,8 @@ import {
   ExtensionDetectionResult,
   detectExtensionInstall,
 } from "@/utils/detectFeatures";
-import { getExtensionState } from "@/utils/onboarding";
-import type { ExtensionStatus } from "@/utils/onboarding";
+import { getExtensionState } from "@/utils/extension";
+import type { ExtensionStatus } from "@/utils/extension";
 
 function RefreshBar() {
   const { t } = useTranslation();
