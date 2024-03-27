@@ -26,7 +26,7 @@ export function BrandPill(props: {
       <span
         className={[
           "font-semibold text-white",
-          isMobile || props.header ? "hidden sm:block" : "",
+          isMobile && props.header ? "hidden sm:block" : "",
         ].join(" ")}
       >
         {t("global.name")}
