@@ -6,6 +6,7 @@ import { Icon, Icons } from "@/components/Icon";
 export function BrandPill(props: {
   clickable?: boolean;
   hideTextOnMobile?: boolean;
+  header?: boolean;
   backgroundClass?: string;
 }) {
   const { t } = useTranslation();
@@ -24,7 +25,7 @@ export function BrandPill(props: {
       <span
         className={[
           "font-semibold text-white",
-          props.hideTextOnMobile ? "hidden sm:block" : "",
+          props.hideTextOnMobile || props.header ? "hidden sm:block" : "",
         ].join(" ")}
       >
         {t("global.name")}

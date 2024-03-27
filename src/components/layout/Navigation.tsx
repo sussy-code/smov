@@ -85,7 +85,7 @@ export function Navigation(props: NavigationProps) {
                 className="block tabbable rounded-full text-xs ssm:text-base"
                 to="/"
               >
-                <BrandPill clickable />
+                <BrandPill clickable header />
               </Link>
               <a
                 href={conf().DISCORD_LINK}
