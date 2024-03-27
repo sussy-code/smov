@@ -173,12 +173,17 @@ export async function multiSearch(
     language: "en-US",
     page: 1,
   });
-  // filter out results that aren't movies or shows
-  const results = data.results.filter(
-    (r) =>
-      r.media_type === TMDBContentTypes.MOVIE ||
-      r.media_type === TMDBContentTypes.TV,
-  );
+  const currentDate = new Date();
+  // filter out results that aren't movies or shows or are unreleased
+  const results = data.results.filter((r) => {
+    if (r.media_type === TMDBContentTypes.MOVIE) {
+      return new Date(r.release_date) <= currentDate;
+    }
+    if (r.media_type === TMDBContentTypes.TV) {
+      return new Date(r.first_air_date) <= currentDate;
+    }
+    return false;
+  });
   return results;
 }
 
