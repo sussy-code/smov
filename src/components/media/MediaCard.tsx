@@ -35,10 +35,14 @@ function MediaCardContent({
   const { t } = useTranslation();
   const percentageString = `${Math.round(percentage ?? 0).toFixed(0)}%`;
 
-  const canLink = linkable && !closable;
+  const canLink = linkable && !closable && !!media.year;
 
   const dotListContent = [t(`media.types.${media.type}`)];
-  if (media.year) dotListContent.push(media.year.toFixed());
+  if (media.year) {
+    dotListContent.push(media.year.toFixed());
+  } else {
+    dotListContent.push(t("Unreleased"));
+  }
 
   return (
     <Flare.Base
@@ -58,14 +62,14 @@ function MediaCardContent({
       />
       <Flare.Child
         className={`pointer-events-auto relative mb-2 p-3 transition-transform duration-100 ${
-          canLink ? "group-hover:scale-95" : ""
+          canLink ? "group-hover:scale-95" : "opacity-60"
         }`}
       >
         <div
           className={classNames(
             "relative mb-4 pb-[150%] w-full overflow-hidden rounded-xl bg-mediaCard-hoverBackground bg-cover bg-center transition-[border-radius] duration-100",
             {
-              "group-hover:rounded-lg": !closable,
+              "group-hover:rounded-lg": canLink,
             },
           )}
           style={{
@@ -157,7 +161,7 @@ export function MediaCard(props: MediaCardProps) {
     }
   }
 
-  if (!props.linkable) return <span>{content}</span>;
+  if (!props.linkable || !props.media.year) return <span>{content}</span>;
   return (
     <Link
       to={link}
