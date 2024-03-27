@@ -355,7 +355,7 @@
         "unknownOption": "Unknown"
       },
       "subtitles": {
-        "customChoice": "Select subtitle from file",
+        "customChoice": "Drop or upload file",
         "customizeLabel": "Customize",
         "offChoice": "Off",
         "settings": {
@@ -364,7 +364,8 @@
           "fixCapitals": "Fix capitalization"
         },
         "title": "Subtitles",
-        "unknownLanguage": "Unknown"
+        "unknownLanguage": "Unknown",
+        "dropSubtitleFile": "Drop subtitle file here"
       }
     },
     "metadata": {
@@ -423,11 +424,17 @@
       "notFound": {
         "badge": "Not found",
         "detailsButton": "Show details",
-        "reloadButton": "Try again",
         "homeButton": "Go home",
-        "text": "We can not find the media you are looking for or no one provides it... <bold>Did you enable the extension for this site?</bold>",
-        "text2": "We can not find the media you are looking for or no one provides it...",
+        "text": "We have searched through our providers and cannot find the media you are looking for! We do not host the media and have no control over what is available. Please click 'Show details' below for more details.",
         "title": "We couldn't find that"
+      },
+      "extensionFailure": {
+        "badge": "Not found",
+        "homeButton": "Go home",
+        "enableExtension": "Enable extension",
+        "disabledTitle": "Extension disabled",
+        "text": "You've installed the movie-web extension. To start using it, complete a few preliminary steps. Have you enabled the extension for this site?",
+        "title": "Extension Disabled"
       }
     },
     "time": {
