@@ -2,14 +2,15 @@ import classNames from "classnames";
 import { useTranslation } from "react-i18next";
 
 import { Icon, Icons } from "@/components/Icon";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 export function BrandPill(props: {
   clickable?: boolean;
-  hideTextOnMobile?: boolean;
   header?: boolean;
   backgroundClass?: string;
 }) {
   const { t } = useTranslation();
+  const isMobile = useIsMobile();
 
   return (
     <div
@@ -21,11 +22,11 @@ export function BrandPill(props: {
           : "",
       )}
     >
-      <Icon className="text-xl" icon={Icons.MOVIE_WEB} />
+      <Icon className="text-2xl" icon={Icons.MOVIE_WEB} />
       <span
         className={[
           "font-semibold text-white",
-          props.hideTextOnMobile || props.header ? "hidden sm:block" : "",
+          isMobile || props.header ? "hidden sm:block" : "",
         ].join(" ")}
       >
         {t("global.name")}

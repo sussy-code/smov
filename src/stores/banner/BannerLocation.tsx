@@ -3,8 +3,8 @@ import { Trans, useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { Icon, Icons } from "@/components/Icon";
-import { ExtensionStatus } from "@/setup/Layout";
 import { useBannerStore, useRegisterBanner } from "@/stores/banner";
+import type { ExtensionStatus } from "@/utils/onboarding";
 
 export function Banner(props: {
   children: React.ReactNode;

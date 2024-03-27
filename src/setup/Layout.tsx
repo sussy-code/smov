@@ -1,34 +1,16 @@
 import { ReactNode, useEffect, useState } from "react";
 
-import { isAllowedExtensionVersion } from "@/backend/extension/compatibility";
-import { extensionInfo } from "@/backend/extension/messaging";
+import { useIsMobile } from "@/hooks/useIsMobile";
 import { useBannerSize, useBannerStore } from "@/stores/banner";
 import { ExtensionBanner } from "@/stores/banner/BannerLocation";
-
-export type ExtensionStatus =
-  | "unknown"
-  | "failed"
-  | "disallowed"
-  | "noperms"
-  | "outdated"
-  | "success";
-
-async function getExtensionState(): Promise<ExtensionStatus> {
-  const info = await extensionInfo();
-  if (!info) return "unknown"; // cant talk to extension
-  if (!info.success) return "failed"; // extension failed to respond
-  if (!info.allowed) return "disallowed"; // extension is not enabled on this page
-  if (!info.hasPermission) return "noperms"; // extension has no perms to do it's tasks
-  if (!isAllowedExtensionVersion(info.version)) return "outdated"; // extension is too old
-  return "success"; // no problems
-}
+import { ExtensionStatus, getExtensionState } from "@/utils/onboarding";
 
 export function Layout(props: { children: ReactNode }) {
   const bannerSize = useBannerSize();
   const location = useBannerStore((s) => s.location);
   const [extensionState, setExtensionState] =
     useState<ExtensionStatus>("unknown");
-  const [isMobile, setIsMobile] = useState(false);
+  const { isMobile } = useIsMobile();
 
   useEffect(() => {
     let isMounted = true;
@@ -39,19 +21,8 @@ export function Layout(props: { children: ReactNode }) {
       }
     });
 
-    // Instead use isMobile like this `const { isMobile } = useIsMobile();`
-    const mediaQuery = window.matchMedia("(max-width: 768px)"); // Adjust the max-width as per your needs
-    setIsMobile(mediaQuery.matches);
-
-    const handleResize = () => {
-      setIsMobile(mediaQuery.matches);
-    };
-
-    mediaQuery.addListener(handleResize);
-
     return () => {
       isMounted = false;
-      mediaQuery.removeListener(handleResize);
     };
   }, []);
 

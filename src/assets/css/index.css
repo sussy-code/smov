@@ -4,9 +4,10 @@
 
 html,
 body {
-  @apply bg-background-main font-open-sans text-type-text;
+  @apply bg-background-main font-main text-type-text;
   min-height: 100vh;
   min-height: 100dvh;
+  font-size: 1.0235em; 
 }
 
 html[data-full],
