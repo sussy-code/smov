@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import { Icon, Icons } from "@/components/Icon";
 import { useBannerStore, useRegisterBanner } from "@/stores/banner";
-import type { ExtensionStatus } from "@/utils/onboarding";
+import type { ExtensionStatus } from "@/utils/extension";
 
 export function Banner(props: {
   children: React.ReactNode;

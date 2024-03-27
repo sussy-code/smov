@@ -3,7 +3,8 @@ import { ReactNode, useEffect, useState } from "react";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { useBannerSize, useBannerStore } from "@/stores/banner";
 import { ExtensionBanner } from "@/stores/banner/BannerLocation";
-import { ExtensionStatus, getExtensionState } from "@/utils/onboarding";
+import { getExtensionState } from "@/utils/extension";
+import type { ExtensionStatus } from "@/utils/extension";
 
 export function Layout(props: { children: ReactNode }) {
   const bannerSize = useBannerSize();
