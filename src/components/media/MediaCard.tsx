@@ -35,10 +35,18 @@ function MediaCardContent({
   const { t } = useTranslation();
   const percentageString = `${Math.round(percentage ?? 0).toFixed(0)}%`;
 
-  const canLink = linkable && !closable;
+  const currentYear = new Date().getFullYear();
+  const canLink =
+    linkable && !closable && media.year && media.year <= currentYear;
 
   const dotListContent = [t(`media.types.${media.type}`)];
-  if (media.year) dotListContent.push(media.year.toFixed());
+  if (media.year && media.year > currentYear) {
+    dotListContent.push(`${media.year}`, t("media.unreleased"));
+  } else if (media.year) {
+    dotListContent.push(media.year.toFixed());
+  } else {
+    dotListContent.push(t("media.unreleased"));
+  }
 
   return (
     <Flare.Base
@@ -58,14 +66,14 @@ function MediaCardContent({
       />
       <Flare.Child
         className={`pointer-events-auto relative mb-2 p-3 transition-transform duration-100 ${
-          canLink ? "group-hover:scale-95" : ""
+          canLink ? "group-hover:scale-95" : "opacity-60"
         }`}
       >
         <div
           className={classNames(
             "relative mb-4 pb-[150%] w-full overflow-hidden rounded-xl bg-mediaCard-hoverBackground bg-cover bg-center transition-[border-radius] duration-100",
             {
-              "group-hover:rounded-lg": !closable,
+              "group-hover:rounded-lg": canLink,
             },
           )}
           style={{
@@ -142,7 +150,12 @@ function MediaCardContent({
 export function MediaCard(props: MediaCardProps) {
   const content = <MediaCardContent {...props} />;
 
-  const canLink = props.linkable && !props.closable;
+  const currentYear = new Date().getFullYear();
+  const canLink =
+    props.linkable &&
+    !props.closable &&
+    props.media.year &&
+    props.media.year <= currentYear;
 
   let link = canLink
     ? `/media/${encodeURIComponent(mediaItemToId(props.media))}`
@@ -157,7 +170,7 @@ export function MediaCard(props: MediaCardProps) {
     }
   }
 
-  if (!props.linkable) return <span>{content}</span>;
+  if (!canLink) return <span>{content}</span>;
   return (
     <Link
       to={link}
