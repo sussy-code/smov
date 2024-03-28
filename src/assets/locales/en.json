@@ -177,6 +177,8 @@
     }
   },
   "media": {
+    "episodeDisplay": "S{{season}} E{{episode}}",
+    "unreleased": "Unreleased",
     "episodeDisplay": "S{{season}} - E{{episode}}",
     "types": {
       "movie": "Movie",
