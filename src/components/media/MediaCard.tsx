@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
@@ -24,6 +25,20 @@ export interface MediaCardProps {
   onClose?: () => void;
 }
 
+function checkReleased(media: MediaItem): boolean {
+  const isReleasedYear = Boolean(
+    media.year && media.year <= new Date().getFullYear(),
+  );
+  const isReleasedDate = Boolean(
+    media.release_date && media.release_date <= new Date(),
+  );
+
+  // If the media has a release date, use that, otherwise use the year
+  const isReleased = media.release_date ? isReleasedDate : isReleasedYear;
+
+  return isReleased;
+}
+
 function MediaCardContent({
   media,
   linkable,
@@ -35,16 +50,17 @@ function MediaCardContent({
   const { t } = useTranslation();
   const percentageString = `${Math.round(percentage ?? 0).toFixed(0)}%`;
 
-  const currentYear = new Date().getFullYear();
-  const canLink =
-    linkable && !closable && media.year && media.year <= currentYear;
+  const isReleased = useCallback(() => checkReleased(media), [media]);
+
+  const canLink = linkable && !closable && isReleased();
 
   const dotListContent = [t(`media.types.${media.type}`)];
-  if (media.year && media.year > currentYear) {
-    dotListContent.push(`${media.year}`, t("media.unreleased"));
-  } else if (media.year) {
+
+  if (media.year) {
     dotListContent.push(media.year.toFixed());
-  } else {
+  }
+
+  if (!isReleased()) {
     dotListContent.push(t("media.unreleased"));
   }
 
@@ -150,12 +166,12 @@ function MediaCardContent({
 export function MediaCard(props: MediaCardProps) {
   const content = <MediaCardContent {...props} />;
 
-  const currentYear = new Date().getFullYear();
-  const canLink =
-    props.linkable &&
-    !props.closable &&
-    props.media.year &&
-    props.media.year <= currentYear;
+  const isReleased = useCallback(
+    () => checkReleased(props.media),
+    [props.media],
+  );
+
+  const canLink = props.linkable && !props.closable && isReleased();
 
   let link = canLink
     ? `/media/${encodeURIComponent(mediaItemToId(props.media))}`

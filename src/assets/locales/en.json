@@ -148,6 +148,7 @@
   },
   "media": {
     "episodeDisplay": "S{{season}} E{{episode}}",
+    "unreleased": "Unreleased",
     "types": {
       "movie": "Movie",
       "show": "Show"
