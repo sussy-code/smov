@@ -37,10 +37,12 @@ function MediaCardContent({
 
   const currentYear = new Date().getFullYear();
   const canLink =
-    linkable && !closable && media.year && media.year < currentYear;
+    linkable && !closable && media.year && media.year <= currentYear;
 
   const dotListContent = [t(`media.types.${media.type}`)];
-  if (media.year && media.year < currentYear) {
+  if (media.year && media.year > currentYear) {
+    dotListContent.push(`${media.year}`, t("media.unreleased"));
+  } else if (media.year) {
     dotListContent.push(media.year.toFixed());
   } else {
     dotListContent.push(t("media.unreleased"));
@@ -153,7 +155,7 @@ export function MediaCard(props: MediaCardProps) {
     props.linkable &&
     !props.closable &&
     props.media.year &&
-    props.media.year < currentYear;
+    props.media.year <= currentYear;
 
   let link = canLink
     ? `/media/${encodeURIComponent(mediaItemToId(props.media))}`
