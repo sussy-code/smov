@@ -58,9 +58,9 @@ export function ScrapeErrorPart(props: ScrapeErrorPartProps) {
       <ErrorLayout>
         <ErrorContainer>
           <IconPill icon={Icons.LOCK}>
-            {t("player.scraping.notFound.badge")}
+            {t("player.scraping.extensionFailure.badge")}
           </IconPill>
-          <Title>{t("player.scraping.extensionFailure.disabledTitle")}</Title>
+          <Title>{t("player.scraping.extensionFailure.title")}</Title>
           <Paragraph>
             <Trans
               i18nKey="player.scraping.extensionFailure.text"

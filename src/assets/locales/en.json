@@ -429,12 +429,11 @@
         "title": "We couldn't find that"
       },
       "extensionFailure": {
-        "badge": "Not found",
+        "badge": "Extension disabled",
         "homeButton": "Go home",
         "enableExtension": "Enable extension",
-        "disabledTitle": "Extension disabled",
-        "text": "You've installed the movie-web extension. To start using it, complete a few preliminary steps. Have you enabled the extension for this site?",
-        "title": "Extension Disabled"
+        "title": "Please enable the extension",
+        "text": "You've installed the movie-web extension. To start using it, you need to enable the extension for this site."
       }
     },
     "time": {
