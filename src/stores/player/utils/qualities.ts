@@ -38,7 +38,7 @@ const qualitySorting: Record<SourceQuality, number> = {
   "480": 20,
   "720": 30,
   "1080": 40,
-  "4k": 25, // 4k has lower priority, you need faster internet for it
+  "4k": 35, // 4k has lower priority, you need faster internet for it
 };
 const sortedQualities: SourceQuality[] = Object.entries(qualitySorting)
   .sort((a, b) => b[1] - a[1])
