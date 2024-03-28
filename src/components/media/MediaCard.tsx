@@ -36,11 +36,11 @@ function MediaCardContent({
   const percentageString = `${Math.round(percentage ?? 0).toFixed(0)}%`;
 
   const currentYear = new Date().getFullYear();
-  const isReleased = media.year && media.year < currentYear;
-  const canLink = linkable && !closable && isReleased;
+  const canLink =
+    linkable && !closable && media.year && media.year < currentYear;
 
   const dotListContent = [t(`media.types.${media.type}`)];
-  if (isReleased) {
+  if (media.year && media.year < currentYear) {
     dotListContent.push(media.year.toFixed());
   } else {
     dotListContent.push(t("media.unreleased"));
@@ -149,8 +149,11 @@ export function MediaCard(props: MediaCardProps) {
   const content = <MediaCardContent {...props} />;
 
   const currentYear = new Date().getFullYear();
-  const isReleased = props.media.year && props.media.year < currentYear;
-  const canLink = props.linkable && !props.closable && isReleased;
+  const canLink =
+    props.linkable &&
+    !props.closable &&
+    props.media.year &&
+    props.media.year < currentYear;
 
   let link = canLink
     ? `/media/${encodeURIComponent(mediaItemToId(props.media))}`
