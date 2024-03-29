@@ -508,7 +508,7 @@
         },
         "unsetStatus": {
           "description": "Kurulum sürecini başlatmak için lütfen sağdaki düğmeye tıklayın.",
-          "title": "Başlamak için kurulumu tamamlamanız gerekiyor."
+          "title": "Kurulumu tamamlamadınız"
         }
       },
       "title": "Bağlantılar",
