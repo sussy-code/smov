@@ -526,7 +526,7 @@
       "languageDescription": "Uygulamanın tamamı için seçili dil",
       "thumbnail": "Küçük resimler oluştur",
       "thumbnailDescription": "Çoğu video için ön izleme görseli bulunmaz. Bu ayarı etkinleştirerek anında oluşturulmasını sağlayabilirsiniz, ancak bu videonuzu yavaşlatabilir.",
-      "thumbnailLabel": "Küçük resimler oluştur",
+      "thumbnailLabel": "Küçük resim oluştur",
       "title": "Ayarlar"
     },
     "reset": "Sıfırla",
