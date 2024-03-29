@@ -155,7 +155,8 @@
     "types": {
       "movie": "Film",
       "show": "Saade"
-    }
+    },
+    "unreleased": "Avaldamata"
   },
   "navigation": {
     "banner": {
@@ -294,6 +295,7 @@
         "title": "Kvaliteet"
       },
       "settings": {
+        "audioItem": "Audio",
         "downloadItem": "Lae alla",
         "enableSubtitles": "Luba Subtiitrid",
         "experienceSection": "Vaatamise kogemus",
@@ -320,8 +322,9 @@
         "unknownOption": "Teadmata"
       },
       "subtitles": {
-        "customChoice": "Vali subtiitrid failist",
+        "customChoice": "Kukuta või vali subtiitri fail",
         "customizeLabel": "Kohanda",
+        "dropSubtitleFile": "Kukuta subtiitri fail siia",
         "offChoice": "Välja",
         "settings": {
           "backlink": "Kohandatud subtiitrid",
@@ -379,6 +382,13 @@
       "title": "Video mängimine ebaōnnestus!"
     },
     "scraping": {
+      "extensionFailure": {
+        "badge": "Brauserilaiendus väljalülitatud",
+        "enableExtension": "Lülita brauserilaiendus sisse",
+        "homeButton": "Tagasi",
+        "text": "Olete allalaadinud movie-web'i brauserilaiendue. Selle kasutamiseks peate vajutama brauserilaienduse peale ning andma ligipääsu praegusele saidile.",
+        "title": "Palun lülita brauserilaiendus sisse"
+      },
       "items": {
         "failure": "Tekkis viga",
         "notFound": "Ei ole videot",
