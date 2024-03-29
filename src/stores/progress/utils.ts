@@ -46,6 +46,15 @@ function progressIsAcceptableRange(duration: number, watched: number): boolean {
   return true;
 }
 
+function isFirstEpisodeOfShow(
+  item: ProgressMediaItem,
+  episode: ProgressEpisodeItem,
+): boolean {
+  const seasonId = episode.seasonId;
+  const season = item.seasons[seasonId];
+  return season.number === 1 && episode.number === 1;
+}
+
 export function shouldShowProgress(
   item: ProgressMediaItem,
 ): ShowProgressResult {
@@ -66,8 +75,10 @@ export function shouldShowProgress(
     .sort((a, b) => b.updatedAt - a.updatedAt)
     .filter(
       (epi) =>
-        !progressIsNotStarted(epi.progress.duration, epi.progress.watched),
+        !progressIsNotStarted(epi.progress.duration, epi.progress.watched) ||
+        !isFirstEpisodeOfShow(item, epi),
     )[0];
+
   const season = item.seasons[ep?.seasonId];
   if (!ep || !season)
     return {
