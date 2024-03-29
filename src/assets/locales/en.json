@@ -205,11 +205,11 @@
     "title": "Couldn't find that page"
   },
   "downtimeNotice": {
-    "badge": "Maintenance",
+    "badge": "Downtime",
     "goHome": "Go home",
-    "message": "sudo-flix.lol is dedicated to providing its users with the most up-to-date and stable experience in order to do this we are switching to a new DNS. Expect downtime between the below times.",
-    "timeFrame": "<bold>March 10th 7:00 PM - 7:30 AM</bold>",
-    "title": "Maintenance expected"
+    "message": "sudo-flix.lol is experiencing issues with some providers, if you cant find or play a show please change the source. Expect this error to persist throughout the below times..",
+    "timeFrame": "<bold>April 3th 11:00 PM - 2:00 AM EST</bold>",
+    "title": "Provider issues"
   },
   "onboarding": {
     "defaultConfirm": {
