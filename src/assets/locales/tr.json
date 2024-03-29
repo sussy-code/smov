@@ -155,7 +155,8 @@
     "types": {
       "movie": "Film",
       "show": "Dizi"
-    }
+    },
+    "unreleased": "Yayınlanmamış"
   },
   "navigation": {
     "banner": {
@@ -294,6 +295,7 @@
         "title": "Kalite"
       },
       "settings": {
+        "audioItem": "Ses",
         "downloadItem": "İndir",
         "enableSubtitles": "Altyazıları Etkinleştir",
         "experienceSection": "İzleme deneyimi",
@@ -320,8 +322,9 @@
         "unknownOption": "Bilinmeyen"
       },
       "subtitles": {
-        "customChoice": "Altyazı dosyası yükle",
+        "customChoice": "Dosya sürükleyin veya yükleyin",
         "customizeLabel": "Seçenekler",
+        "dropSubtitleFile": "Altyazı dosyasını buraya sürükleyin",
         "offChoice": "Kapat",
         "settings": {
           "backlink": "Kişisel altyazılar",
@@ -379,6 +382,13 @@
       "title": "Video oynatılamadı!"
     },
     "scraping": {
+      "extensionFailure": {
+        "badge": "Eklenti devre dışı",
+        "enableExtension": "Eklentiyi etkinleştir",
+        "homeButton": "Eve git",
+        "text": "movie-web uzantısını kurdunuz. Kullanmaya başlamak için, uzantıyı bu site için etkinleştirmeniz gerekiyor.",
+        "title": "Lütfen eklentiyi etkinleştirin"
+      },
       "items": {
         "failure": "Hata oluştu",
         "notFound": "Video mevcut değil",
