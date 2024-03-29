@@ -205,9 +205,9 @@
     "title": "Couldn't find that page"
   },
   "downtimeNotice": {
-    "badge": "Downtime",
+    "badge": "Issues",
     "goHome": "Go home",
-    "message": "sudo-flix.lol is experiencing issues with some providers, if you cant find or play a show please change the source. Expect this error to persist throughout the below times..",
+    "message": "sudo-flix.lol is experiencing issues with some providers, if you cant find or play a show please change the source. Expect this error to persist throughout the below times.",
     "timeFrame": "<bold>April 3th 11:00 PM - 2:00 AM EST</bold>",
     "title": "Provider issues"
   },
