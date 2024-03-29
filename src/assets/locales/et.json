@@ -384,8 +384,10 @@
     "scraping": {
       "extensionFailure": {
         "badge": "Brauserilaiendus väljalülitatud",
+        "enableExtension": "Lülita brauserilaiendus sisse",
         "homeButton": "Tagasi",
-        "text": "Olete allalaadinud movie-web'i brauserilaiendue. Selle kasutamiseks peate vajutama brauserilaienduse peale ning andma ligipääsu praegusele saidile."
+        "text": "Olete allalaadinud movie-web'i brauserilaiendue. Selle kasutamiseks peate vajutama brauserilaienduse peale ning andma ligipääsu praegusele saidile.",
+        "title": "Palun lülita brauserilaiendus sisse"
       },
       "items": {
         "failure": "Tekkis viga",
