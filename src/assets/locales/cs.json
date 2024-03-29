@@ -122,7 +122,7 @@
         "default": "Co si přejete sledovat?",
         "extra": [
           "Co chcete objevit?",
-          null,
+          "Co je na vašem seznamu sledovaných filmů?",
           "Jaký je váš oblíbený film?",
           "Jaký je tvůj oblíbený seriál?"
         ]
@@ -132,21 +132,15 @@
     "titles": {
       "day": {
         "default": "Na co byste se chtěli dnes odpoledne dívat?",
-        "extra": [
-          "Chceš zažít dobrodružství? Jurský Park je pro tebe."
-        ]
+        "extra": ["Chceš zažít dobrodružství? Jurský Park je pro tebe."]
       },
       "morning": {
         "default": "Na co byste se chtěli dnes ráno dívat?",
-        "extra": [
-          "Slyšel jsem, že Před úsvitem je super."
-        ]
+        "extra": ["Slyšel jsem, že Před úsvitem je super"]
       },
       "night": {
         "default": "Na co byste se chtěli dnes večer dívat?",
-        "extra": [
-          "Unaven? Slyšel jsem, že Vymítač ďábla je super."
-        ]
+        "extra": ["Unaven? Slyšel jsem, že Vymítač ďábla je super."]
       }
     }
   },
@@ -187,9 +181,10 @@
       "back": "Zpět",
       "explainer": "Pomocí rozšíření prohlížeče můžete získat nejlepší streamy, které nabízíme. S pouhou instalací.",
       "explainerIos": "Bohužel rozšíření není podporováno na iOS. Stiskněte <bold>Zpět</bold> pro výběr jiné možnosti.",
-      "extensionHelp": "Pokud jste rozšíření nainstalovali, ale nebylo zjištěno. <bold>Otevřete rozšíření pomocí nabídky rozšíření ve vašem prohlížeči</bold> a postupujte podle pokynů na obrazovce.",
+      "extensionHelp": "Pokud jste rozšíření nainstalovali, ale nebylo zjištěno, <bold>otevřete rozšíření pomocí nabídky rozšíření ve vašem prohlížeči</bold> a postupujte podle pokynů na obrazovce.",
       "linkChrome": "Instalovat rozšíření pro Chrome",
       "linkFirefox": "Instalovat rozšíření pro Firefox",
+      "notDetecting": "Nainstalováno na Chromu, ale stránka to nezaznamenala? Skuste přenačíst stránku!",
       "notDetectingAction": "Obnovit stránku",
       "status": {
         "disallowed": "Rozšíření není pro tuto stránku povoleno",
@@ -534,6 +529,7 @@
       }
     },
     "subtitles": {
+      "backgroundBlurLabel": "Rozostření pozadí",
       "backgroundLabel": "Neprůhlednost pozadí",
       "colorLabel": "Barva",
       "previewQuote": "Nesmím se bát. Strach zabíjí myšlení.",

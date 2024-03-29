@@ -138,15 +138,11 @@
       },
       "morning": {
         "default": "Cosa vorresti guardare questa mattina?",
-        "extra": [
-          "Ho sentito che «Prima Dell'alba» è buono"
-        ]
+        "extra": ["Ho sentito che «Prima Dell'alba» è buono"]
       },
       "night": {
         "default": "Cosa vorresti guardare questa sera?",
-        "extra": [
-          "Stanco? Ho sentito che L'esorciccio è buono."
-        ]
+        "extra": ["Stanco? Ho sentito che L'esorciccio è buono."]
       }
     }
   },
@@ -155,7 +151,8 @@
     "types": {
       "movie": "Film",
       "show": "Serie"
-    }
+    },
+    "unreleased": "Inedito"
   },
   "navigation": {
     "banner": {
@@ -294,6 +291,7 @@
         "title": "Qualità"
       },
       "settings": {
+        "audioItem": "Audio",
         "downloadItem": "Scarica",
         "enableSubtitles": "Abilita i sottotitoli",
         "experienceSection": "Esperienza di visione",
@@ -320,8 +318,9 @@
         "unknownOption": "Sconosciuto"
       },
       "subtitles": {
-        "customChoice": "Selezionare i sottotitoli dal file",
+        "customChoice": "Trascina o carica il file",
         "customizeLabel": "Personalizzare",
+        "dropSubtitleFile": "Trascina il file dei sottotitoli qui",
         "offChoice": "Spento",
         "settings": {
           "backlink": "Sottotitoli personalizzati",
@@ -379,6 +378,13 @@
       "title": "Impossibile riprodurre il video!"
     },
     "scraping": {
+      "extensionFailure": {
+        "badge": "L'estensione è disabilitata",
+        "enableExtension": "Abilita l'estensione",
+        "homeButton": "Torna alla pagina iniziale",
+        "text": "Avete installato l'estensione sudo-flix. Per iniziare a usarla, è necessario abilitare l'estensione per questo sito.",
+        "title": "Abilita l'estensione"
+      },
       "items": {
         "failure": "Si è verificato un errore",
         "notFound": "Non ha il video",
