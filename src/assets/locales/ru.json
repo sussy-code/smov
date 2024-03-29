@@ -155,7 +155,8 @@
     "types": {
       "movie": "Фильм",
       "show": "Сериал"
-    }
+    },
+    "unreleased": "Ожидается"
   },
   "navigation": {
     "banner": {
@@ -294,6 +295,7 @@
         "title": "Качество"
       },
       "settings": {
+        "audioItem": "Аудио",
         "downloadItem": "Скачать",
         "enableSubtitles": "Включить субтитры",
         "experienceSection": "Впечатления от просмотра",
@@ -320,8 +322,9 @@
         "unknownOption": "Неизвестный"
       },
       "subtitles": {
-        "customChoice": "Выбрать субтитры из файла",
+        "customChoice": "Перетащите или загрузите файл",
         "customizeLabel": "Настроить",
+        "dropSubtitleFile": "Перетащите файл субтитров",
         "offChoice": "Выключить",
         "settings": {
           "backlink": "Пользовательские субтитры",
@@ -379,6 +382,13 @@
       "title": "Не удалось воспроизвести видео!"
     },
     "scraping": {
+      "extensionFailure": {
+        "badge": "Расширение отключено",
+        "enableExtension": "Включить расширение",
+        "homeButton": "Вернуться на главную",
+        "text": "Вы установили расширение movie-web. Чтобы начать его использовать, необходимо включить расширение для этого сайта.",
+        "title": "Пожалуйста, включите расширение"
+      },
       "items": {
         "failure": "Возникла ошибка",
         "notFound": "Такого видео нет",
