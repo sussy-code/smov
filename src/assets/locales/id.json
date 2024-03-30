@@ -57,6 +57,7 @@
       },
       "host": "Anda ingin terhubung ke <0>{{hostname}}</0> - mohon konfirmasi anda mempercayai server ini sebelum anda membuat akun",
       "no": "Kembali",
+      "noHostTitle": "Server belum dikonfigurasi!",
       "title": "Apakah anda mempercayai server ini?",
       "yes": "Saya percaya"
     },
@@ -181,7 +182,13 @@
     },
     "extension": {
       "back": "Kembali",
-      "explainerIos": "Sayangnya, ekstensi browser tidak didukung di iOS, Tekan <bold>Kembali<bold> untuk memilih opsi lain."
+      "explainerIos": "Sayangnya, ekstensi browser tidak didukung di iOS, Tekan <bold>Kembali<bold> untuk memilih opsi lain.",
+      "notDetectingAction": "Muat ulang halaman",
+      "status": {
+        "disallowed": "Ekstensi tidak diaktifkan untuk halaman ini",
+        "disallowedAction": "Aktifkan ekstensi",
+        "outdated": "Versi ekstensi terlalu tua"
+      }
     }
   },
   "overlays": {
