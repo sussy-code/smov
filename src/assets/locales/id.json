@@ -187,7 +187,26 @@
       "status": {
         "disallowed": "Ekstensi tidak diaktifkan untuk halaman ini",
         "disallowedAction": "Aktifkan ekstensi",
-        "outdated": "Versi ekstensi terlalu tua"
+        "outdated": "Versi ekstensi terlalu tua",
+        "success": "Ekstensi bekerja sesuai harapan!"
+      },
+      "submit": "Lanjutkan",
+      "title": "Mari mulai dengan ekstensi"
+    },
+    "proxy": {
+      "back": "Kembali",
+      "input": {
+        "errorInvalidUrl": "URL tidak valid",
+        "placeholder": "https://"
+      },
+      "link": "Belajar cara membuat proxy",
+      "title": "Mari buat proxy baru"
+    },
+    "start": {
+      "options": {
+        "extension": {
+          "action": "Instal ekstensi"
+        }
       }
     }
   },
