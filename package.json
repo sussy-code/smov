@@ -31,6 +31,7 @@
     "@ladjs/country-language": "^1.0.3",
     "@movie-web/providers": "^2.2.5",
     "@noble/hashes": "^1.3.3",
+    "@nuxt/eslint-config": "^0.2.0",
     "@plasmohq/messaging": "^0.6.1",
     "@react-spring/web": "^9.7.3",
     "@scure/bip39": "^1.2.2",
