@@ -122,6 +122,9 @@ export function SettingsPage() {
   const enableThumbnails = usePreferencesStore((s) => s.enableThumbnails);
   const setEnableThumbnails = usePreferencesStore((s) => s.setEnableThumbnails);
 
+  const enableAutoplay = usePreferencesStore((s) => s.enableAutoplay);
+  const setEnableAutoplay = usePreferencesStore((s) => s.setEnableAutoplay);
+
   const account = useAuthStore((s) => s.account);
   const updateProfile = useAuthStore((s) => s.setAccountProfile);
   const updateDeviceName = useAuthStore((s) => s.updateDeviceName);
@@ -144,6 +147,7 @@ export function SettingsPage() {
     backendUrlSetting,
     account?.profile,
     enableThumbnails,
+    enableAutoplay,
   );
 
   useEffect(() => {
@@ -196,6 +200,7 @@ export function SettingsPage() {
     }
 
     setEnableThumbnails(state.enableThumbnails.state);
+    setEnableAutoplay(state.enableAutoplay.state);
     setAppLanguage(state.appLanguage.state);
     setTheme(state.theme.state);
     setSubStyling(state.subtitleStyling.state);
@@ -217,18 +222,33 @@ export function SettingsPage() {
       setBackendUrl(url);
     }
   }, [
-    state,
     account,
     backendUrl,
     setEnableThumbnails,
+    state.enableThumbnails.state,
+    state.enableAutoplay.state,
+    state.appLanguage.state,
+    state.appLanguage.changed,
+    state.theme.state,
+    state.theme.changed,
+    state.subtitleStyling.state,
+    state.proxyUrls.state,
+    state.proxyUrls.changed,
+    state.profile.state,
+    state.profile.changed,
+    state.backendUrl.changed,
+    state.backendUrl.state,
+    state.deviceName.changed,
+    state.deviceName.state,
+    setEnableAutoplay,
     setAppLanguage,
     setTheme,
     setSubStyling,
+    setProxySet,
     updateDeviceName,
     updateProfile,
-    setProxySet,
-    setBackendUrl,
     logout,
+    setBackendUrl,
   ]);
   return (
     <SubPageLayout>
@@ -266,6 +286,8 @@ export function SettingsPage() {
             setLanguage={state.appLanguage.set}
             enableThumbnails={state.enableThumbnails.state}
             setEnableThumbnails={state.enableThumbnails.set}
+            enableAutoplay={state.enableAutoplay.state}
+            setEnableAutoplay={state.enableAutoplay.set}
           />
         </div>
         <div id="settings-appearance" className="mt-48">

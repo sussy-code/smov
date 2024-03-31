@@ -1,12 +1,15 @@
 import classNames from "classnames";
-import { useCallback } from "react";
+import { debounce, throttle } from "lodash";
+import { useCallback, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
+import { isExtensionActiveCached } from "@/backend/extension/messaging";
 import { Icon, Icons } from "@/components/Icon";
 import { usePlayerMeta } from "@/components/player/hooks/usePlayerMeta";
 import { Transition } from "@/components/utils/Transition";
 import { PlayerMeta } from "@/stores/player/slices/source";
 import { usePlayerStore } from "@/stores/player/store";
+import { usePreferencesStore } from "@/stores/preferences";
 import { useProgressStore } from "@/stores/progress";
 
 function shouldShowNextEpisodeButton(
@@ -57,6 +60,7 @@ export function NextEpisodeButton(props: {
     (s) => s.setShouldStartFromBeginning,
   );
   const updateItem = useProgressStore((s) => s.updateItem);
+  const enableAutoplay = usePreferencesStore((s) => s.enableAutoplay);
 
   let show = false;
   if (showingState === "always") show = true;
@@ -94,6 +98,19 @@ export function NextEpisodeButton(props: {
     setShouldStartFromBeginning,
     updateItem,
   ]);
+
+  useEffect(() => {
+    if (!enableAutoplay || !meta || !nextEp || metaType !== "show") return;
+    const halfPercent = duration / 100;
+    const isEnding = time >= duration - halfPercent && duration !== 0;
+
+    const debouncedLoadNextEpisode = throttle(debounce(loadNextEpisode), 300);
+    if (isEnding && isExtensionActiveCached()) debouncedLoadNextEpisode();
+
+    return () => {
+      debouncedLoadNextEpisode.cancel();
+    };
+  }, [duration, enableAutoplay, loadNextEpisode, meta, metaType, nextEp, time]);
 
   if (!meta?.episode || !nextEp) return null;
   if (metaType !== "show") return null;
