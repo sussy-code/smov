@@ -16,7 +16,7 @@ import { AboutPage } from "@/pages/About";
 import { AdminPage } from "@/pages/admin/AdminPage";
 import VideoTesterView from "@/pages/developer/VideoTesterView";
 import { DmcaPage, shouldHaveDmcaPage } from "@/pages/Dmca";
-import MaintenancePage from "@/pages/errors/MaintenancePage";
+// import MaintenancePage from "@/pages/errors/MaintenancePage";
 import { NotFoundPage } from "@/pages/errors/NotFoundPage";
 import { HomePage } from "@/pages/HomePage";
 import { LoginPage } from "@/pages/Login";
@@ -90,25 +90,25 @@ function QueryView() {
 function App() {
   useHistoryListener();
   useOnlineListener();
-  const maintenance = false; // Shows maintance page
-  const [showDowntime, setShowDowntime] = useState(maintenance);
+  // const maintenance = false; // Shows maintance page
+  // const [showDowntime, setShowDowntime] = useState(maintenance);
 
-  const handleButtonClick = () => {
-    setShowDowntime(false);
-  };
+  // const handleButtonClick = () => {
+  //   setShowDowntime(false);
+  // };
 
-  useEffect(() => {
-    const sessionToken = sessionStorage.getItem("downtimeToken");
-    if (!sessionToken && maintenance) {
-      setShowDowntime(true);
-      sessionStorage.setItem("downtimeToken", "true");
-    }
-  }, [setShowDowntime, maintenance]);
+  // useEffect(() => {
+  //   const sessionToken = sessionStorage.getItem("downtimeToken");
+  //   if (!sessionToken && maintenance) {
+  //     setShowDowntime(true);
+  //     sessionStorage.setItem("downtimeToken", "true");
+  //   }
+  // }, [setShowDowntime, maintenance]);
 
   return (
     <Layout>
       <LanguageProvider />
-      {!showDowntime && (
+      {/*!showDowntime && (*/}
         <Routes>
           {/* functional routes */}
           <Route path="/s/:query" element={<QuickSearch />} />
@@ -174,7 +174,7 @@ function App() {
           ) : null}
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
-      )}
+      {/*)}*/}
       {/*showDowntime && (
         <MaintenancePage onHomeButtonClick={handleButtonClick} />
       )*/}
