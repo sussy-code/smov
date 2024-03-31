@@ -9,6 +9,7 @@ import { ExtensionMakeRequestResponse } from "@/backend/extension/plasmo";
 export const RULE_IDS = {
   PREPARE_STREAM: 1,
   SET_DOMAINS_HLS: 2,
+  SET_DOMAINS_HLS_AUDIO: 3,
 };
 
 // for some reason, about 500 ms is needed after
