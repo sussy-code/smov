@@ -22,8 +22,8 @@ dependencies:
     specifier: ^1.0.3
     version: 1.0.3
   '@movie-web/providers':
-    specifier: ^2.2.6
-    version: 2.2.6
+    specifier: ^2.2.7
+    version: 2.2.7
   '@noble/hashes':
     specifier: ^1.3.3
     version: 1.3.3
@@ -1942,8 +1942,8 @@ packages:
     engines: {node: '>= 14'}
     dev: false
 
-  /@movie-web/providers@2.2.6:
-    resolution: {integrity: sha512-wBsg4oa1HoPal498oGfBr9pJbFO7bPr73WXGfbTdhuFfCTYxF0mK91DORr4CfxMxmNp19Bnt6FR6ss7mzsVGlA==}
+  /@movie-web/providers@2.2.7:
+    resolution: {integrity: sha512-XwU1IkXrF7e99JtC5Tna00/yuRECqEyBo8bhTtVE6ZFLYj3YQXVm2sdHjcyerjbyAsXvKGeikWEkrvHofTUjDA==}
     requiresBuild: true
     dependencies:
       cheerio: 1.0.0-rc.12
