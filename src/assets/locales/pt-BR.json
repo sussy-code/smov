@@ -138,15 +138,11 @@
       },
       "morning": {
         "default": "O que você gostaria de assistir esta manhã?",
-        "extra": [
-          "Ouvi dizer que Antes do Amanhecer é bom"
-        ]
+        "extra": ["Ouvi dizer que Antes do Amanhecer é bom"]
       },
       "night": {
         "default": "O que você gostaria de assistir esta noite?",
-        "extra": [
-          "Cansado? Ouvi dizer que O Exorcista é bom."
-        ]
+        "extra": ["Cansado? Ouvi dizer que O Exorcista é bom."]
       }
     }
   },
@@ -155,7 +151,8 @@
     "types": {
       "movie": "Filme",
       "show": "Série"
-    }
+    },
+    "unreleased": "Não lançado"
   },
   "navigation": {
     "banner": {
@@ -381,6 +378,13 @@
       "title": "Falha ao reproduzir o vídeo!"
     },
     "scraping": {
+      "extensionFailure": {
+        "badge": "Extensão desativada",
+        "enableExtension": "Ativar extensão",
+        "homeButton": "Ir para o início",
+        "text": "Você instalou a extensão sudo-flix. Para começar a usá-la, você precisa ativar a extensão neste site.",
+        "title": "Por favor, ative a extensão"
+      },
       "items": {
         "failure": "Ocorreu um erro",
         "notFound": "Não tem o vídeo",
