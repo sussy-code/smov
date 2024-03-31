@@ -90,7 +90,7 @@ function QueryView() {
 function App() {
   useHistoryListener();
   useOnlineListener();
-  const maintenance = true; // Shows maintance page
+  const maintenance = false; // Shows maintance page
   const [showDowntime, setShowDowntime] = useState(maintenance);
 
   const handleButtonClick = () => {
@@ -175,9 +175,9 @@ function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       )}
-      {showDowntime && (
+      {/*showDowntime && (
         <MaintenancePage onHomeButtonClick={handleButtonClick} />
-      )}
+      )*/}
     </Layout>
   );
 }
