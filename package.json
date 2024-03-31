@@ -134,7 +134,6 @@
       "postcss@<8.4.31": ">=8.4.31",
       "@babel/traverse@<7.23.2": ">=7.23.2",
       "crypto-js@<4.2.0": ">=4.2.0",
-      "@movie-web/providers": "github:movie-web/providers",
       "rollup": "npm:@rollup/wasm-node"
     }
   }
