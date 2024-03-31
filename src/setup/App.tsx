@@ -90,7 +90,7 @@ function QueryView() {
 function App() {
   useHistoryListener();
   useOnlineListener();
-  const maintenance = false; // Shows maintance page
+  const maintenance = true; // Shows maintance page
   const [showDowntime, setShowDowntime] = useState(maintenance);
 
   const handleButtonClick = () => {
