@@ -4,7 +4,7 @@
     "faqTitle": "Pertanyaan umum",
     "q1": {
       "body": "movie-web tidak menyimpan berkas media apapun. Ketika anda mengklik sesuatu untuk ditonton, aplikasi akan mencari berkas media di internet (saat media dimuat dan pada tab 'sumber media' anda dapat melihat sumber mana yang digunakan). movie-web tidak pernah mengunggah media apapun, semua media didapat melalui mekanisme pencarian di internet.",
-      "title": "Dari mana konten media di sini berasal?"
+      "title": "Dari mana konten berasal?"
     },
     "q2": {
       "body": "Kami tidak menerima permintaan penambahan serial televisi atau film, movie-web tidak mengelola konten apapun. Semua konten ditonton melalui sumber-sumber dari internet.",
@@ -26,24 +26,24 @@
     "deviceNamePlaceholder": "Perangkat personal",
     "generate": {
       "description": "Kombinasi kata ini berfungsi sebagai nama pengguna sekaligus kata sandi anda. Pastikan untuk menyimpannya dengan aman karena anda memerlukannya untuk masuk ke akun anda",
-      "next": "Saya sudah menyimpan kombinasi kata di atas",
+      "next": "Saya sudah menyimpan kombinasi kata",
       "passphraseFrameLabel": "Kombinasi kata",
-      "title": "Kombinasi kata anda"
+      "title": "Kombinasi kata Anda"
     },
     "hasAccount": "Sudah memiliki akun? <0>Masuk disini.</0>",
     "login": {
-      "description": "Mohon masukkan kombinasi kata anda untuk masuk ke akun anda",
+      "description": "Mohon masukkan kombinasi kata anda untuk masuk ke akun Anda",
       "deviceLengthError": "Mohon masukkan nama perangkat",
       "passphraseLabel": "12 kombinasi kata unik",
       "passphrasePlaceholder": "Kombinasi kata",
       "submit": "Masuk",
-      "title": "Masuk ke akun anda",
-      "validationError": "Kombinasi kata unik salah"
+      "title": "Masuk ke akun Anda",
+      "validationError": "Kombinasi kata salah atau tidak lengkap"
     },
     "register": {
       "information": {
-        "color1": "Gradasi warna profil pertama",
-        "color2": "Gradasi warna profil kedua",
+        "color1": "Warna profil pertama",
+        "color2": "Warna profil kedua",
         "header": "Masukkan nama perangkat anda lalu pilih warna latar belakang dan ikon pengguna yang ingin anda gunakan",
         "icon": "Ikon pengguna",
         "next": "Berikutnya",
@@ -52,29 +52,31 @@
     },
     "trust": {
       "failed": {
-        "text": "Apakah anda mengkonfigurasi server dengan benar?",
+        "text": "Apakah Anda mengkonfigurasi server dengan benar?",
         "title": "Gagal terhubung dengan server"
       },
-      "host": "Anda ingin terhubung ke <0>{{hostname}}</0> - mohon konfirmasi anda mempercayai server ini sebelum anda membuat akun",
+      "host": "Anda ingin terhubung ke <0>{{hostname}}</0> - mohon konfirmasi Anda mempercayai server ini sebelum Anda membuat akun",
       "no": "Kembali",
-      "title": "Apakah anda mempercayai server ini?",
-      "yes": "Saya percaya"
+      "noHost": "Server belum dikonfigurasi, maka dari itu Anda tidak dapat membuat akun",
+      "noHostTitle": "Server belum dikonfigurasi!",
+      "title": "Apakah Anda mempercayai server ini?",
+      "yes": "Saya percaya server ini"
     },
     "verify": {
-      "description": "Mohon masukkan kombinasi kata pribadi anda sebelumnya untuk mengonfirmasi bahwa anda telah menyimpannya untuk melanjutkan proses pembuatan akun",
+      "description": "Mohon masukkan kombinasi kata pribadi Anda sebelumnya untuk mengonfirmasi bahwa Anda telah menyimpannya untuk melanjutkan proses pembuatan akun",
       "invalidData": "Data tidak valid",
       "noMatch": "Kombinasi kata tidak cocok",
-      "passphraseLabel": "12 kombinasi kata pribadi anda",
+      "passphraseLabel": "12 kombinasi kata Anda",
       "recaptchaFailed": "Validasi reCaptcha gagal",
       "register": "Buat akun",
-      "title": "Konfirmasi kombinasi kata pribadi anda"
+      "title": "Konfirmasi kombinasi kata Anda"
     }
   },
   "errors": {
     "badge": "Terjadi masalah",
-    "details": "Detail eror",
+    "details": "Rincian kesalahan",
     "reloadPage": "Muat ulang halaman",
-    "showError": "Lihat detail eror",
+    "showError": "Lihat rincian kesalahan",
     "title": "Kami mengalami galat!"
   },
   "footer": {
@@ -87,7 +89,7 @@
       "dmca": "DMCA",
       "github": "GitHub"
     },
-    "tagline": "Tonton serial televisi dan film favorit anda dengan aplikasi streaming open source ini."
+    "tagline": "Tonton serial televisi dan film favorit anda dengan aplikasi streaming sumber terbuka ini."
   },
   "global": {
     "name": "movie-web",
@@ -109,7 +111,7 @@
       "sectionTitle": "Lanjut menonton"
     },
     "mediaList": {
-      "stopEditing": "Berhenti mengubah"
+      "stopEditing": "Berhenti menyunting"
     },
     "search": {
       "allResults": "Hanya itu yang kami punya!",
@@ -131,19 +133,19 @@
       "day": {
         "default": "Apa yang ingin anda tonton sore ini?",
         "extra": [
-          "Lagi pengen nonton genre Adventure? Jurassic Park mungkin cocok buat anda."
+          "Merasa suka bertualang? Jurassic Park mungkin pilihan cocok untuk Anda."
         ]
       },
       "morning": {
-        "default": "Apa yang ingin anda tonton pagi ini?",
+        "default": "Apa yang ingin Anda tonton pagi ini?",
         "extra": [
-          "Kayaknya film Before Sunrise bagus deh"
+          "Saya dengar film Before Sunrise bagus"
         ]
       },
       "night": {
-        "default": "Apa yang ingin anda tonton malam ini?",
+        "default": "Apa yang ingin Anda tonton malam ini?",
         "extra": [
-          "Capek? Katanya The Exocist rekomended."
+          "Capek? Saya dengar The Exocist bagus."
         ]
       }
     }
@@ -153,11 +155,12 @@
     "types": {
       "movie": "Film",
       "show": "Serial TV"
-    }
+    },
+    "unreleased": "Belum dirilis"
   },
   "navigation": {
     "banner": {
-      "offline": "Periksa koneksi internet anda"
+      "offline": "Periksa koneksi internet Anda"
     },
     "menu": {
       "about": "Tentang kami",
@@ -171,17 +174,67 @@
   "notFound": {
     "badge": "Tidak ditemukan",
     "goHome": "Kembali",
-    "message": "Kami sudah mencari dimana-mana: di bawah tempat sampah, di lemari, di belakang server proxy, tapi tetap gagal menemukan halaman yang anda cari.",
+    "message": "Kami sudah mencari dimana-mana: di bawah tempat sampah, di lemari, di belakang server proxy, tetapi tidak dapat menemukan halaman yang Anda cari.",
     "title": "Gagal menemukan halaman"
   },
   "onboarding": {
     "defaultConfirm": {
       "cancel": "Batal",
-      "title": "Apa kamu yakin?"
+      "confirm": "Gunakan pengaturan bawaan",
+      "description": "Pengaturan bawaan tidak memiliki streaming terbaik dan bisa menjadi sangat lambat.",
+      "title": "Apa Anda yakin?"
     },
     "extension": {
       "back": "Kembali",
-      "explainerIos": "Sayangnya, ekstensi browser tidak didukung di iOS, Tekan <bold>Kembali<bold> untuk memilih opsi lain."
+      "explainer": "Menggunakan ekstensi browser, Anda dapat mendapatkan streaming terbaik yang kami tawarkan. Dengan instalasi sederhana.",
+      "explainerIos": "Sayangnya, ekstensi browser tidak didukung di iOS, Tekan <bold>Kembali<bold> untuk memilih opsi lain.",
+      "extensionHelp": "Jika Anda telah menginstal ekstensi tetapi tidak terdeteksi, <bold>buka ekstensi melalui menu ekstensi browser Anda</bold> dan ikuti instruksi di layar.",
+      "linkChrome": "Instal ekstensi Chrome",
+      "linkFirefox": "Instal ekstensi Firefox",
+      "notDetecting": "Terinstal di Chrome tetapi situs tidak mendeteksinya? Coba muat ulang halaman!",
+      "notDetectingAction": "Muat ulang halaman",
+      "status": {
+        "disallowed": "Ekstensi tidak diaktifkan untuk halaman ini",
+        "disallowedAction": "Aktifkan ekstensi",
+        "failed": "Gagal meminta status",
+        "loading": "Menunggu Anda menginstal ekstensi",
+        "outdated": "Versi ekstensi terlalu tua",
+        "success": "Ekstensi berkerja sesuai harapan!"
+      },
+      "submit": "Lanjutkan",
+      "title": "Mari mulai dengan ekstensi"
+    },
+    "proxy": {
+      "back": "Kembali",
+      "explainer": "Menggunakan metode proxy, Anda dapat mendapatkan streaming berkualitas baik dengan membuat layanan proxy mandiri.",
+      "input": {
+        "errorConnection": "Tidak dapat terhubung ke proxy",
+        "errorInvalidUrl": "URL tidak valid",
+        "errorNotProxy": "Mengharapkan proxy tapi menerima situs",
+        "label": "URL proxy",
+        "placeholder": "https://"
+      },
+      "link": "Belajar cara membuat proxy",
+      "title": "Mari buat proxy baru"
+    },
+    "start": {
+      "explainer": "Untuk mendapatkan streaming terbaik, Anda perlu memilih metode streaming yang Anda ingin gunakan.",
+      "options": {
+        "default": {
+          "text": "Saya tidak menginginkan streaming kualitas baik, <0 /> <1>gunakan pengaturan bawaan</1>"
+        },
+        "extension": {
+          "action": "Instal ekstensi",
+          "description": "Instal ekstensi browser dan dapatkan akses ke sumber terbaik.",
+          "quality": "Kualitas terbaik",
+          "title": "Ekstensi browser"
+        },
+        "proxy": {
+          "action": "Atur proxy",
+          "description": "Atur proxy dalam hanya 5 menit dan dapatkan akses ke sumber terbaik.",
+          "quality": "Kualitas baik"
+        }
+      }
     }
   },
   "overlays": {
@@ -197,12 +250,13 @@
     },
     "menus": {
       "downloads": {
+        "copyHlsPlaylist": "Salin tautan daftar putar HLS",
         "disclaimer": "Tautan unduhan diambil langsung dari penyedia pihak ketiga. Aplikasi ini tidak memiliki kendali bagaimana unduhan disediakan.",
-        "downloadSubtitle": "Unduh subtitle",
+        "downloadSubtitle": "Unduh subtitle saat ini",
         "downloadVideo": "Unduh media",
-        "hlsDisclaimer": "Tautan unduhan diambil langsung dari penyedia pihak ketiga. Aplikasi ini tidak memiliki kendali bagaimana unduhan disediakan. Harap diperhatikan, anda akan mengunduh HLS playlist, media ini hanya ditunjukan bagi pengguna tingkat lanjut.",
+        "hlsDisclaimer": "Unduhan didapatkan langsung dari penyedia. movie-web tidak memiliki kendali bagaimana unduan disediakan.<br /><br />Harap diperhatikan bahwa Anda mengunduh daftar putar HLS, <bold>ini tidak direkomendasikan untuk diunduh jika Anda tidak terbiasa dengan format streaming tingkat lanjut</bold>Coba sumber berbeda untuk format berbeda.",
         "onAndroid": {
-          "1": "Untuk mengunduh di Android, klik tombol unduh, lalu di halaman baru <bold>klik dan tahan</bold> pada video, lalu pilih <bold>save</bold>.",
+          "1": "Untuk mengunduh di Android, klik tombol unduh, lalu di halaman baru <bold>klik dan tahan</bold> pada video, lalu pilih <bold>simpan</bold>.",
           "shortTitle": "Unduh / Android",
           "title": "Unduh di Android"
         },
@@ -220,11 +274,12 @@
       },
       "episodes": {
         "button": "Episode",
-        "emptyState": "Tidak ada episode di season ini, check lagi nanti!",
+        "emptyState": "Tidak ada episode di season ini, periksa kembali nanti!",
         "episodeBadge": "E{{episode}}",
-        "loadingError": "Eror memuat season",
+        "loadingError": "Gagal memuat season",
         "loadingList": "Memuat...",
-        "loadingTitle": "Memuat..."
+        "loadingTitle": "Memuat...",
+        "unairedEpisodes": "Satu atau lebih episode dalam season ini telah dinonaktifkan karena mereka belum ditayangkan."
       },
       "playback": {
         "speedLabel": "Kecepatan pemutar",
@@ -232,13 +287,13 @@
       },
       "quality": {
         "automaticLabel": "Otomatis",
-        "hint": "Anda dapat mencoba <0>mengganti sumber media</0> untuk mendapatkan opsi kualitas yang berbeda.",
-        "iosNoQuality": "Karena keterbatasan dari Apple, opsi kualitas pada sumber ini tidak tersedia untuk iOS. Anda dapat mencoba <0>mengganti sumber media</0> untuk mendapatkan opsi kualitas yang berbeda.",
+        "hint": "Anda dapat mencoba <0>mengganti sumber</0> untuk mendapatkan opsi kualitas yang berbeda.",
+        "iosNoQuality": "Karena keterbatasan dari Apple, opsi kualitas pada sumber ini tidak tersedia untuk iOS. Anda dapat mencoba <0>mengganti sumber</0> untuk mendapatkan opsi kualitas yang berbeda.",
         "title": "Kualitas"
       },
       "settings": {
         "downloadItem": "Unduh",
-        "enableSubtitles": "Hidupkan subtitle",
+        "enableSubtitles": "Aktifkan subtitle",
         "experienceSection": "Pengaturan tambahan",
         "playbackItem": "Pengaturan pemutar",
         "qualityItem": "Kualitas",
@@ -248,22 +303,22 @@
       },
       "sources": {
         "failed": {
-          "text": "Terjadi galat saat mencoba mencari media, mohon pilih sumber yang lain.",
+          "text": "Terjadi galat saat mencoba mencari media, mohon pilih sumber lain.",
           "title": "Gagal memuat data"
         },
         "noEmbeds": {
-          "text": "Kami tidak dapat menemukan tautan, mohon pilih sumber yang lain.",
+          "text": "Kami tidak dapat menemukan tautan, mohon pilih sumber lain.",
           "title": "Tautan tidak ditemukan"
         },
         "noStream": {
-          "text": "Sumber ini tidak memiliki media untuk film atau seri yang anda cari.",
+          "text": "Sumber ini tidak memiliki media untuk film atau seri yang Anda cari.",
           "title": "Tidak ada media"
         },
         "title": "Sumber",
         "unknownOption": "Tidak diketahui"
       },
       "subtitles": {
-        "customChoice": "Pilih subtitle dari file",
+        "customChoice": "Jatuhkan atau unggah berkas",
         "customizeLabel": "Sesuaikan",
         "offChoice": "Matikan",
         "settings": {
