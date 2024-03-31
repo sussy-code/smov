@@ -7,6 +7,8 @@ import { isExtensionActiveCached } from "@/backend/extension/messaging";
 import { Icon, Icons } from "@/components/Icon";
 import { usePlayerMeta } from "@/components/player/hooks/usePlayerMeta";
 import { Transition } from "@/components/utils/Transition";
+import { conf } from "@/setup/config";
+import { useAuthStore } from "@/stores/auth";
 import { PlayerMeta } from "@/stores/player/slices/source";
 import { usePlayerStore } from "@/stores/player/store";
 import { usePreferencesStore } from "@/stores/preferences";
@@ -105,7 +107,13 @@ export function NextEpisodeButton(props: {
     const isEnding = time >= duration - halfPercent && duration !== 0;
 
     const debouncedLoadNextEpisode = throttle(debounce(loadNextEpisode), 300);
-    if (isEnding && isExtensionActiveCached()) debouncedLoadNextEpisode();
+    const allowAutoplay = Boolean(
+      conf().ALLOW_AUTOPLAY ||
+        isExtensionActiveCached() ||
+        useAuthStore.getState().proxySet,
+    );
+
+    if (isEnding && allowAutoplay) debouncedLoadNextEpisode();
 
     return () => {
       debouncedLoadNextEpisode.cancel();

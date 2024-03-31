@@ -23,6 +23,7 @@ interface Config {
   ONBOARDING_CHROME_EXTENSION_INSTALL_LINK: string;
   ONBOARDING_FIREFOX_EXTENSION_INSTALL_LINK: string;
   ONBOARDING_PROXY_INSTALL_LINK: string;
+  ALLOW_AUTOPLAY: boolean;
 }
 
 export interface RuntimeConfig {
@@ -39,6 +40,7 @@ export interface RuntimeConfig {
   TURNSTILE_KEY: string | null;
   CDN_REPLACEMENTS: Array<string[]>;
   HAS_ONBOARDING: boolean;
+  ALLOW_AUTOPLAY: boolean;
   ONBOARDING_CHROME_EXTENSION_INSTALL_LINK: string | null;
   ONBOARDING_FIREFOX_EXTENSION_INSTALL_LINK: string | null;
   ONBOARDING_PROXY_INSTALL_LINK: string | null;
@@ -64,6 +66,7 @@ const env: Record<keyof Config, undefined | string> = {
   TURNSTILE_KEY: import.meta.env.VITE_TURNSTILE_KEY,
   CDN_REPLACEMENTS: import.meta.env.VITE_CDN_REPLACEMENTS,
   HAS_ONBOARDING: import.meta.env.VITE_HAS_ONBOARDING,
+  ALLOW_AUTOPLAY: import.meta.env.VITE_ALLOW_AUTOPLAY,
 };
 
 function coerceUndefined(value: string | null | undefined): string | undefined {
@@ -109,6 +112,7 @@ export function conf(): RuntimeConfig {
       .filter((v) => v.length > 0),
     NORMAL_ROUTER: getKey("NORMAL_ROUTER", "false") === "true",
     HAS_ONBOARDING: getKey("HAS_ONBOARDING", "true") === "true",
+    ALLOW_AUTOPLAY: getKey("ALLOW_AUTOPLAY", "false") === "true",
     TURNSTILE_KEY: getKey("TURNSTILE_KEY"),
     DISALLOWED_IDS: getKey("DISALLOWED_IDS", "")
       .split(",")
