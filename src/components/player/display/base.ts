@@ -191,6 +191,21 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
                 },
               });
             });
+            hls.on(Hls.Events.AUDIO_TRACK_LOADED, async (_, data) => {
+              const chunkUrlsDomains = data.details.fragments.map(
+                (v) => new URL(v.url).hostname,
+              );
+              const chunkUrls = [...new Set(chunkUrlsDomains)];
+
+              await setDomainRule({
+                ruleId: RULE_IDS.SET_DOMAINS_HLS_AUDIO,
+                targetDomains: chunkUrls,
+                requestHeaders: {
+                  ...src.preferredHeaders,
+                  ...src.headers,
+                },
+              });
+            });
           }
         });
         hls.on(Hls.Events.LEVEL_SWITCHED, () => {

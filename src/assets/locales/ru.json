@@ -322,7 +322,7 @@
         "unknownOption": "Неизвестный"
       },
       "subtitles": {
-        "customChoice": "Перетащите или загрузите файл",
+        "customChoice": "Перетащите файл или нажмите для загрузки",
         "customizeLabel": "Настроить",
         "dropSubtitleFile": "Перетащите файл субтитров",
         "offChoice": "Выключить",
