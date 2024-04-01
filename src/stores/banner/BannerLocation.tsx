@@ -88,7 +88,7 @@ export function ExtensionBanner(props: {
     return null;
 
   // Show the banner with a 42% chance or not if users dont meet requirements
-  if (!isEligible && Math.random() < 0.42) {
+  if (!isEligible && Math.random() < 0.365) {
     let bannerText = "";
     switch (props.extensionState) {
       case "noperms":
