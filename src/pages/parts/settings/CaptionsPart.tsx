@@ -99,7 +99,7 @@ export function CaptionsPart(props: {
             onChange={(v) =>
               props.setStyling({ ...props.styling, backgroundBlur: v / 100 })
             }
-            value={props.styling.backgroundBlur * 100}
+            value={props.styling.backgroundBlur * 1}
             textTransformer={(s) => `${s}%`}
           />
           <CaptionSetting
