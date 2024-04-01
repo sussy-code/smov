@@ -3,9 +3,10 @@ import { ReactNode, useEffect, useState } from "react";
 import { Divider } from "@/components/utils/Divider";
 import { Heading2 } from "@/components/utils/Text";
 import { conf } from "@/setup/config";
+import { BACKEND_URL } from "@/setup/constants";
 
 async function getAccountNumber() {
-  const response = await fetch("https://backend.sudo-flix.lol/metrics");
+  const response = await fetch(BACKEND_URL);
   const text = await response.text();
 
   // Adjusted regex to match any hostname
@@ -26,7 +27,7 @@ async function getAccountNumber() {
 }
 
 async function getAllAccounts() {
-  const response = await fetch("https://backend.sudo-flix.lol/metrics");
+  const response = await fetch(BACKEND_URL);
   const text = await response.text();
 
   const regex = /mw_user_count{namespace="movie-web"} (\d+)/;

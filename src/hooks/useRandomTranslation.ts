@@ -1,8 +1,8 @@
 import { useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
-// 10% chance of getting a joke title
-const shouldGiveJokeTitle = () => Math.floor(Math.random() * 10) === 0;
+// 35% chance of getting a joke title (Cooper done changed this code!)
+const shouldGiveJokeTitle = () => Math.random() < 0.35;
 
 export function useRandomTranslation() {
   const { t } = useTranslation();

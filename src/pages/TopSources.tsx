@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { ThiccContainer } from "@/components/layout/ThinContainer";
 import { Divider } from "@/components/utils/Divider";
 import { Heading1, Paragraph } from "@/components/utils/Text";
+import { BACKEND_URL } from "@/setup/constants";
 
 import { SubPageLayout } from "./layouts/SubPageLayout";
 import { PageTitle } from "./parts/util/PageTitle";
@@ -24,7 +25,7 @@ function ConfigValue(props: { name: string; children?: ReactNode }) {
 }
 
 async function getTopSources() {
-  const response = await fetch("https://backend.sudo-flix.lol/metrics");
+  const response = await fetch(BACKEND_URL);
   const text = await response.text();
 
   const regex =

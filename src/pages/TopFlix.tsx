@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom"; // Import Link from react-router
 import { ThiccContainer } from "@/components/layout/ThinContainer";
 import { Divider } from "@/components/utils/Divider";
 import { Heading1, Paragraph } from "@/components/utils/Text";
+import { BACKEND_URL } from "@/setup/constants";
 
 import { SubPageLayout } from "./layouts/SubPageLayout";
 import { PageTitle } from "./parts/util/PageTitle";
@@ -84,7 +85,7 @@ function ConfigValue(props: {
 }
 
 async function getRecentPlayedItems() {
-  const response = await fetch("https://backend.sudo-flix.lol/metrics");
+  const response = await fetch(BACKEND_URL);
   const text = await response.text();
 
   const regex =
@@ -118,7 +119,7 @@ async function getRecentPlayedItems() {
 }
 
 async function getTotalViews() {
-  const response = await fetch("https://backend.sudo-flix.lol/metrics");
+  const response = await fetch(BACKEND_URL);
   const text = await response.text();
 
   // Add up all mw_media_watch_count entries
@@ -138,7 +139,7 @@ async function getTotalViews() {
 }
 
 function getProcessStartTime(): Promise<string> {
-  return fetch("https://backend.sudo-flix.lol/metrics")
+  return fetch(BACKEND_URL)
     .then((response) => response.text())
     .then((text) => {
       const regex = /process_start_time_seconds (\d+)/;
