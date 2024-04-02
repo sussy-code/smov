@@ -492,7 +492,7 @@
       },
       "admin": {
         "title": "Admin panel",
-        "text": "See and use tools used to test sudo-flix's condition.",
+        "text": "Utilize tools made for testing sudo-flix's condition.",
         "button": "Check it out"
       },
       "actions": {
