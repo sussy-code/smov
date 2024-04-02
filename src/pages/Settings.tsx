@@ -240,28 +240,33 @@ export function SettingsPage() {
             {t("settings.account.title")}
           </Heading1>
           {user.account && state.profile.state ? (
-            <AccountSettings
-              account={user.account}
-              deviceName={state.deviceName.state}
-              setDeviceName={state.deviceName.set}
-              colorA={state.profile.state.colorA}
-              setColorA={(v) => {
-                state.profile.set((s) => (s ? { ...s, colorA: v } : undefined));
-              }}
-              colorB={state.profile.state.colorB}
-              setColorB={(v) =>
-                state.profile.set((s) => (s ? { ...s, colorB: v } : undefined))
-              }
-              userIcon={state.profile.state.icon as any}
-              setUserIcon={(v) =>
-                state.profile.set((s) => (s ? { ...s, icon: v } : undefined))
-              }
-            />
+            <div>
+              <AccountSettings
+                account={user.account}
+                deviceName={state.deviceName.state}
+                setDeviceName={state.deviceName.set}
+                colorA={state.profile.state.colorA}
+                setColorA={(v) => {
+                  state.profile.set((s) => (s ? { ...s, colorA: v } : undefined));
+                }}
+                colorB={state.profile.state.colorB}
+                setColorB={(v) =>
+                  state.profile.set((s) => (s ? { ...s, colorB: v } : undefined))
+                }
+                userIcon={state.profile.state.icon as any}
+                setUserIcon={(v) =>
+                  state.profile.set((s) => (s ? { ...s, icon: v } : undefined))
+                }
+              />
+              <AdminPanelPart />
+            </div>
           ) : (
-            <RegisterCalloutPart />
+            <div>
+              <RegisterCalloutPart />
+              <AdminPanelPart />
+            </div>
           )}
         </div>
-        <AdminPanelPart />
         <div id="settings-preferences" className="mt-48">
           <PreferencesPart
             language={state.appLanguage.state}
