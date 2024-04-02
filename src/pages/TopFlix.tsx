@@ -290,6 +290,7 @@ export function TopFlix() {
         <div className="absolute top-10 bottom-10 right-0 w-10 bg-gradient-to-l from-black to-transparent" />
         <button
           type="button" // Added type attribute with value "button"
+          title="button1"
           className="absolute top-1/2 left-2 transform -translate-y-1/2 z-10"
           onClick={() => scrollCarousel(categorySlug, "left")}
         >
@@ -297,6 +298,7 @@ export function TopFlix() {
         </button>
         <button
           type="button" // Added type attribute with value "button"
+          title="button2"
           className="absolute top-1/2 right-2 transform -translate-y-1/2 z-10"
           onClick={() => scrollCarousel(categorySlug, "right")}
         >
