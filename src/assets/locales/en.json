@@ -490,6 +490,11 @@
         "editProfile": "Edit",
         "logoutButton": "Log out"
       },
+      "admin": {
+        "title": "Admin panel",
+        "text": "See and use tools used to test sudo-flix's condition.",
+        "button": "Check it out"
+      },
       "actions": {
         "delete": {
           "button": "Delete account",
