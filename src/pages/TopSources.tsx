@@ -25,7 +25,7 @@ function ConfigValue(props: { name: string; children?: ReactNode }) {
 }
 
 async function getTopSources() {
-  const response = await fetch(BACKEND_URL);
+  const response = await fetch(`${BACKEND_URL}/metrics`);
   const text = await response.text();
 
   const regex =

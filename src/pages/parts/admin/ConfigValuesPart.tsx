@@ -6,7 +6,7 @@ import { conf } from "@/setup/config";
 import { BACKEND_URL } from "@/setup/constants";
 
 async function getAccountNumber() {
-  const response = await fetch(BACKEND_URL);
+  const response = await fetch(`${BACKEND_URL}/metrics`);
   const text = await response.text();
 
   // Adjusted regex to match any hostname
@@ -27,7 +27,7 @@ async function getAccountNumber() {
 }
 
 async function getAllAccounts() {
-  const response = await fetch(BACKEND_URL);
+  const response = await fetch(`${BACKEND_URL}/metrics`);
   const text = await response.text();
 
   const regex = /mw_user_count{namespace="movie-web"} (\d+)/;

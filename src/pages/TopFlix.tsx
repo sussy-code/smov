@@ -85,7 +85,7 @@ function ConfigValue(props: {
 }
 
 async function getRecentPlayedItems() {
-  const response = await fetch(BACKEND_URL);
+  const response = await fetch(`${BACKEND_URL}/metrics`);
   const text = await response.text();
 
   const regex =
@@ -119,7 +119,7 @@ async function getRecentPlayedItems() {
 }
 
 async function getTotalViews() {
-  const response = await fetch(BACKEND_URL);
+  const response = await fetch(`${BACKEND_URL}/metrics`);
   const text = await response.text();
 
   // Add up all mw_media_watch_count entries
@@ -139,7 +139,7 @@ async function getTotalViews() {
 }
 
 function getProcessStartTime(): Promise<string> {
-  return fetch(BACKEND_URL)
+  return fetch(`${BACKEND_URL}/metrics`)
     .then((response) => response.text())
     .then((text) => {
       const regex = /process_start_time_seconds (\d+)/;
