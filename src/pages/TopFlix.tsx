@@ -274,7 +274,7 @@ export function TopFlix() {
                 style={{
                   backdropFilter: "blur(0px)",
                   transition: "opacity 0.5s",
-                  backgroundColor: "rgba(0, 0, 0, 0.8)", // Darkening effect
+                  backgroundColor: "rgba(0, 0, 0, 0.5)", // Darkening effect
                   whiteSpace: "normal", // Allow the text to wrap to the next line
                   wordWrap: "break-word", // Break words to prevent overflow
                 }}
@@ -310,17 +310,22 @@ export function TopFlix() {
 
   const handleRandomMovieClick = () => {
     const allMovies = Object.values(genreMovies).flat(); // Flatten all movie arrays
-    const randomIndex = Math.floor(Math.random() * allMovies.length);
-    const selectedMovie = allMovies[randomIndex];
-    setRandomMovie(selectedMovie);
-
-    // Start a 5-second countdown
-    setCountdown(5);
-
-    // Schedule navigation after 5 seconds
-    setTimeout(() => {
-      navigate(`/media/tmdb-movie-${selectedMovie.id}-${selectedMovie.title}`);
-    }, 5000);
+    const uniqueTitles = new Set<string>(); // Use a Set to store unique titles
+    allMovies.forEach((movie) => uniqueTitles.add(movie.title)); // Add each title to the Set
+    const uniqueTitlesArray = Array.from(uniqueTitles); // Convert the Set back to an array
+    const randomIndex = Math.floor(Math.random() * uniqueTitlesArray.length);
+    const selectedMovie = allMovies.find((movie) => movie.title === uniqueTitlesArray[randomIndex]);
+  
+    if (selectedMovie) {
+      setRandomMovie(selectedMovie);
+  
+      setCountdown(5);
+  
+      // Schedule navigation after 5 seconds
+      setTimeout(() => {
+        navigate(`/media/tmdb-movie-${selectedMovie.id}-${selectedMovie.title}`);
+      }, 5000);
+    }
   };
 
   // Fetch Movie genres
