@@ -155,7 +155,8 @@
     "types": {
       "movie": "電影",
       "show": "節目"
-    }
+    },
+    "unreleased": "尚未上映"
   },
   "navigation": {
     "banner": {
@@ -294,6 +295,7 @@
         "title": "品質"
       },
       "settings": {
+        "audioItem": "音頻",
         "downloadItem": "下載",
         "enableSubtitles": "啟用字幕",
         "experienceSection": "觀看體驗",
@@ -320,8 +322,9 @@
         "unknownOption": "未知"
       },
       "subtitles": {
-        "customChoice": "從檔案中選擇字幕",
+        "customChoice": "把字幕檔案拖入或上傳",
         "customizeLabel": "自訂",
+        "dropSubtitleFile": "將字幕檔案拖曳到這裡",
         "offChoice": "關閉",
         "settings": {
           "backlink": "自訂字幕",
@@ -379,6 +382,13 @@
       "title": "無法播放視頻！"
     },
     "scraping": {
+      "extensionFailure": {
+        "badge": "擴充功能已被禁用",
+        "enableExtension": "啟用擴充功能",
+        "homeButton": "回到首頁",
+        "text": "您已安裝該擴充功能， 你要啟用擴充程式去用它。",
+        "title": "請啟用擴充功能"
+      },
       "items": {
         "failure": "發生錯誤",
         "notFound": "沒有視頻",
