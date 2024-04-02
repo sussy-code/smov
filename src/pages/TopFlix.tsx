@@ -247,7 +247,7 @@ export function TopFlix() {
             carouselRefs.current[categorySlug] = el;
           }}
         >
-          {medias.slice(0, 100).map((media) => (
+          {medias.slice(0, 5).map((media) => (
             <a
               key={media.id}
               href={`media/tmdb-${isTVShow ? "tv" : "movie"}-${media.id}-${
@@ -286,23 +286,25 @@ export function TopFlix() {
             </a>
           ))}
         </div>
-        <div className="absolute top-10 bottom-10 left-0 w-10 bg-gradient-to-r from-black to-transparent" />
-        <div className="absolute top-10 bottom-10 right-0 w-10 bg-gradient-to-l from-black to-transparent" />
         <button
           type="button" // Added type attribute with value "button"
-          title="button1"
-          className="absolute top-1/2 left-2 transform -translate-y-1/2 z-10"
+          title="Back"
+          className="absolute top-1/2 transform -translate-y-1/2 z-10"
           onClick={() => scrollCarousel(categorySlug, "left")}
         >
-          <Icon icon={Icons.ARROW_LEFT} />
+          <div className="cursor-pointer hover:text-white flex justify-center items-center h-10 w-10 rounded-full hover:bg-search-hoverBackground active:scale-110 transition-[transform,background-color] duration-200">
+            <Icon icon={Icons.ARROW_LEFT} />
+          </div>
         </button>
         <button
           type="button" // Added type attribute with value "button"
-          title="button2"
-          className="absolute top-1/2 right-2 transform -translate-y-1/2 z-10"
+          title="Next"
+          className="absolute top-1/2 right-4 transform -translate-y-1/2 z-10"
           onClick={() => scrollCarousel(categorySlug, "right")}
         >
-          <Icon icon={Icons.ARROW_RIGHT} />
+          <div className="cursor-pointer hover:text-white flex justify-center items-center h-10 w-10 rounded-full hover:bg-search-hoverBackground active:scale-110 transition-[transform,background-color] duration-200">
+            <Icon icon={Icons.ARROW_RIGHT} />
+          </div>
         </button>
       </div>
     );
@@ -397,38 +399,12 @@ export function TopFlix() {
         <Helmet>
           <title>{t("global.name")}</title>
         </Helmet>
-        {/* Removed HeroPart component */}
         <ThinContainer>
           <div className="mt-44 space-y-16 text-center">
             <div className="relative z-10 mb-16">
-              <h1 className="text-4xl font-bold text-white">Explore</h1>
-              <p className="mb-6">
-                Credits to{" "}
-                <a
-                  href="https://github.com/TecEash1/movie-web/tree/master"
-                  className="text-white"
-                  style={{
-                    color: "#a470dc",
-                    textShadow: "0 0 5px #76519f",
-                    fontWeight: "bold",
-                  }}
-                >
-                  TecEash1
-                </a>{" "}
-                and{" "}
-                <a
-                  href="https://github.com/pranavsatav"
-                  className="text-white"
-                  style={{
-                    color: "#a470dc",
-                    textShadow: "0 0 5px #76519f",
-                    fontWeight: "bold",
-                  }}
-                >
-                  Aqua Rose
-                </a>{" "}
-                for making this page possible.
-              </p>
+              <h1 className="text-4xl font-bold text-white">
+                {t("global.pages.discover")}
+              </h1>
             </div>
           </div>
         </ThinContainer>
