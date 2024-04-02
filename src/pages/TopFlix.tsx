@@ -314,16 +314,20 @@ export function TopFlix() {
     allMovies.forEach((movie) => uniqueTitles.add(movie.title)); // Add each title to the Set
     const uniqueTitlesArray = Array.from(uniqueTitles); // Convert the Set back to an array
     const randomIndex = Math.floor(Math.random() * uniqueTitlesArray.length);
-    const selectedMovie = allMovies.find((movie) => movie.title === uniqueTitlesArray[randomIndex]);
-  
+    const selectedMovie = allMovies.find(
+      (movie) => movie.title === uniqueTitlesArray[randomIndex],
+    );
+
     if (selectedMovie) {
       setRandomMovie(selectedMovie);
-  
+
       setCountdown(5);
-  
+
       // Schedule navigation after 5 seconds
       setTimeout(() => {
-        navigate(`/media/tmdb-movie-${selectedMovie.id}-${selectedMovie.title}`);
+        navigate(
+          `/media/tmdb-movie-${selectedMovie.id}-${selectedMovie.title}`,
+        );
       }, 5000);
     }
   };
