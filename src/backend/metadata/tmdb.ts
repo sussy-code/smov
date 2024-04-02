@@ -151,7 +151,7 @@ const headers = {
   Authorization: `Bearer ${apiKey}`,
 };
 
-async function get<T>(url: string, params?: object): Promise<T> {
+export async function get<T>(url: string, params?: object): Promise<T> {
   if (!apiKey) throw new Error("TMDB API key not set");
 
   const res = await proxiedFetch<any>(encodeURI(url), {
