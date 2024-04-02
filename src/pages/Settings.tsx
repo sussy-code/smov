@@ -247,11 +247,15 @@ export function SettingsPage() {
                 setDeviceName={state.deviceName.set}
                 colorA={state.profile.state.colorA}
                 setColorA={(v) => {
-                  state.profile.set((s) => (s ? { ...s, colorA: v } : undefined));
+                  state.profile.set((s) =>
+                    s ? { ...s, colorA: v } : undefined,
+                  );
                 }}
                 colorB={state.profile.state.colorB}
                 setColorB={(v) =>
-                  state.profile.set((s) => (s ? { ...s, colorB: v } : undefined))
+                  state.profile.set((s) =>
+                    s ? { ...s, colorB: v } : undefined,
+                  )
                 }
                 userIcon={state.profile.state.icon as any}
                 setUserIcon={(v) =>
