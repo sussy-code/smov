@@ -240,36 +240,29 @@ export function SettingsPage() {
             {t("settings.account.title")}
           </Heading1>
           {user.account && state.profile.state ? (
-            <div>
-              <AccountSettings
-                account={user.account}
-                deviceName={state.deviceName.state}
-                setDeviceName={state.deviceName.set}
-                colorA={state.profile.state.colorA}
-                setColorA={(v) => {
-                  state.profile.set((s) =>
-                    s ? { ...s, colorA: v } : undefined,
-                  );
-                }}
-                colorB={state.profile.state.colorB}
-                setColorB={(v) =>
-                  state.profile.set((s) =>
-                    s ? { ...s, colorB: v } : undefined,
-                  )
-                }
-                userIcon={state.profile.state.icon as any}
-                setUserIcon={(v) =>
-                  state.profile.set((s) => (s ? { ...s, icon: v } : undefined))
-                }
-              />
-              <AdminPanelPart />
-            </div>
+            <AccountSettings
+              account={user.account}
+              deviceName={state.deviceName.state}
+              setDeviceName={state.deviceName.set}
+              colorA={state.profile.state.colorA}
+              setColorA={(v) => {
+                state.profile.set((s) => (s ? { ...s, colorA: v } : undefined));
+              }}
+              colorB={state.profile.state.colorB}
+              setColorB={(v) =>
+                state.profile.set((s) => (s ? { ...s, colorB: v } : undefined))
+              }
+              userIcon={state.profile.state.icon as any}
+              setUserIcon={(v) =>
+                state.profile.set((s) => (s ? { ...s, icon: v } : undefined))
+              }
+            />
           ) : (
-            <div>
-              <RegisterCalloutPart />
-              <AdminPanelPart />
-            </div>
+            <RegisterCalloutPart />
           )}
+        </div>
+        <div className="mt-10">
+          <AdminPanelPart />
         </div>
         <div id="settings-preferences" className="mt-48">
           <PreferencesPart
