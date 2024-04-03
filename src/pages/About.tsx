@@ -78,7 +78,7 @@ export function AboutPage() {
         >
           <Button
             className="py-px mt-8 box-content bg-buttons-secondary hover:bg-buttons-secondaryHover bg-opacity-90 text-buttons-secondaryText justify-center items-center"
-            onClick={() => navigate("/flix")}
+            onClick={() => navigate("/discover")}
           >
             Discover
           </Button>

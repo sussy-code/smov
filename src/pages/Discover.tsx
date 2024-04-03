@@ -52,37 +52,12 @@ const categories: Category[] = [
     endpoint: "/movie/now_playing?language=en-US",
   },
   {
-    name: "Popular",
-    endpoint: "/movie/popular?language=en-US",
-  },
-  {
     name: "Top Rated",
     endpoint: "/movie/top_rated?language=en-US",
   },
 ];
 
-export function Button(props: {
-  className: string;
-  onClick?: () => void;
-  children: React.ReactNode;
-  disabled?: boolean;
-}) {
-  return (
-    <button
-      className={classNames(
-        "font-bold rounded h-10 w-40 scale-90 hover:scale-95 transition-all duration-200",
-        props.className,
-      )}
-      type="button"
-      onClick={props.onClick}
-      disabled={props.disabled}
-    >
-      {props.children}
-    </button>
-  );
-}
-
-export function TopFlix() {
+export function Discover() {
   const { t } = useTranslation();
   const [showBg] = useState<boolean>(false);
   const [genres, setGenres] = useState<Genre[]>([]);
@@ -281,7 +256,7 @@ export function TopFlix() {
           ))}
         </div>
         <button
-          type="button" // Added type attribute with value "button"
+          type="button"
           title="Back"
           className="absolute top-1/2 transform -translate-y-1/2 z-10 left-2"
           onClick={() => scrollCarousel(categorySlug, "left")}
@@ -291,7 +266,7 @@ export function TopFlix() {
           </div>
         </button>
         <button
-          type="button" // Added type attribute with value "button"
+          type="button"
           title="Next"
           className="absolute top-1/2 right-2 transform -translate-y-1/2 z-10"
           onClick={() => scrollCarousel(categorySlug, "right")}

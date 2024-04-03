@@ -15,6 +15,7 @@ import { useOnlineListener } from "@/hooks/usePing";
 import { AboutPage } from "@/pages/About";
 import { AdminPage } from "@/pages/admin/AdminPage";
 import VideoTesterView from "@/pages/developer/VideoTesterView";
+import { Discover } from "@/pages/Discover";
 import { DmcaPage, shouldHaveDmcaPage } from "@/pages/Dmca";
 import MaintenancePage from "@/pages/errors/MaintenancePage";
 import { NotFoundPage } from "@/pages/errors/NotFoundPage";
@@ -25,7 +26,6 @@ import { OnboardingExtensionPage } from "@/pages/onboarding/OnboardingExtension"
 import { OnboardingProxyPage } from "@/pages/onboarding/OnboardingProxy";
 import { RegisterPage } from "@/pages/Register";
 import { SupportPage } from "@/pages/Support";
-import { TopFlix } from "@/pages/TopFlix";
 import { Layout } from "@/setup/Layout";
 import { useHistoryListener } from "@/stores/history";
 import { LanguageProvider } from "@/stores/language";
@@ -150,8 +150,8 @@ function App() {
           ) : null}
           {/* Support page */}
           <Route path="/support" element={<SupportPage />} />
-          {/* Top flix page */}
-          <Route path="/flix" element={<TopFlix />} />
+          {/* Discover page */}
+          <Route path="/discover" element={<Discover />} />
           {/* Settings page */}
           <Route
             path="/settings"
