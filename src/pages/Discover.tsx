@@ -8,8 +8,10 @@ import { ThinContainer } from "@/components/layout/ThinContainer";
 import { WideContainer } from "@/components/layout/WideContainer";
 import { HomeLayout } from "@/pages/layouts/HomeLayout";
 import { conf } from "@/setup/config";
+import { useThemeStore } from "@/stores/theme";
 
 import { PageTitle } from "./parts/util/PageTitle";
+import { allThemes } from "../../themes/all";
 import { get } from "../backend/metadata/tmdb";
 import { Icon, Icons } from "../components/Icon";
 
@@ -65,6 +67,10 @@ export function Discover() {
     [genreId: number]: Movie[];
   }>({});
   const [countdown, setCountdown] = useState<number | null>(null);
+  const themeName = useThemeStore((s) => s.theme);
+  const currentTheme = allThemes.find((y) => y.name === themeName);
+  const bgColor =
+    currentTheme?.extend?.colors?.background?.accentA ?? "#7831BF";
   const navigate = useNavigate();
 
   // Add a new state variable for the category movies
@@ -238,7 +244,7 @@ export function Discover() {
 
   useEffect(() => {
     return () => {
-      document.documentElement.style.scrollbarWidth = "none"; // Hide page scroll bar
+      document.documentElement.style.scrollbarWidth = "none";
     };
   }, []);
 
@@ -267,7 +273,7 @@ export function Discover() {
           className="flex whitespace-nowrap overflow-auto scrollbar pb-6 mb-4 mt-4"
           style={{
             scrollbarWidth: "thin",
-            scrollbarColor: "#fff transparent",
+            scrollbarColor: `${bgColor} transparent`,
           }}
           ref={(el) => {
             carouselRefs.current[categorySlug] = el;
