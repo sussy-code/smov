@@ -155,7 +155,8 @@
     "types": {
       "movie": "चलचित्र",
       "show": "कार्यक्रम"
-    }
+    },
+    "unreleased": "रिलीज नभएको"
   },
   "navigation": {
     "banner": {
@@ -294,6 +295,7 @@
         "title": "क्वालिटी"
       },
       "settings": {
+        "audioItem": "आवाज",
         "downloadItem": "डाउनलोड",
         "enableSubtitles": "उपशीर्षकहरू सक्षम गर्नुहोस्",
         "experienceSection": "हेर्ने अनुभव",
@@ -320,8 +322,9 @@
         "unknownOption": "अज्ञात"
       },
       "subtitles": {
-        "customChoice": "फाइलबाट उपशीर्षक चयन गर्नुहोस्",
+        "customChoice": "ड्रप वा फाइल अपलोड गर्नुहोस्",
         "customizeLabel": "अनुकूलन गर्नुहोस्",
+        "dropSubtitleFile": "सबटाइटल फाइल यहाँ छोड्नुहोस्",
         "offChoice": "बन्द",
         "settings": {
           "backlink": "अनुकूलन उपशीर्षकहरू",
@@ -379,6 +382,13 @@
       "title": "भिडियो प्ले गर्न असफल भयो!"
     },
     "scraping": {
+      "extensionFailure": {
+        "badge": "एक्स्टेन्सन बन्द छ",
+        "enableExtension": "एक्स्टेन्सन सक्षम गर्नुहोस्",
+        "homeButton": "होम् जाउँ",
+        "text": "तपाईंले चलचित्र-वेब एक्स्टेन्सन स्थापना गर्नुभएको छ। यसलाई प्रयोग गर्न सुरु गर्न, तपाईंले यो साइटको लागिएक्स्टेन्सन सक्षम गर्न आवश्यक छ।",
+        "title": "कृपया एक्स्टेन्सन सक्षम गर्नुहोस्"
+      },
       "items": {
         "failure": "त्रुटि भयो",
         "notFound": "भिडियो छैन",
@@ -536,6 +546,7 @@
       }
     },
     "subtitles": {
+      "backgroundBlurLabel": "पृष्ठभूमि धमिलो",
       "backgroundLabel": "पृष्ठभूमि अस्पष्टता",
       "colorLabel": "रङ",
       "previewQuote": "म डराउनु हुँदैन। डर दिमागको हत्यारा हो।",
