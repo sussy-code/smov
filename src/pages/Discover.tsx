@@ -207,6 +207,41 @@ export function Discover() {
     }
   }, [movieWidth]); // Added movieWidth to the dependency array
 
+  function handleWheel(e: React.WheelEvent, categorySlug: string) {
+    const carousel = carouselRefs.current[categorySlug];
+    if (carousel) {
+      const movieElements = carousel.getElementsByTagName("a");
+      if (movieElements.length > 0) {
+        const posterWidth = movieElements[0].offsetWidth;
+        const visibleMovies = Math.floor(carousel.offsetWidth / posterWidth);
+        const scrollAmount = posterWidth * visibleMovies * 0.625;
+        if (e.deltaY < 5) {
+          carousel.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+        } else {
+          carousel.scrollBy({ left: scrollAmount, behavior: "smooth" });
+        }
+      }
+    }
+  }
+
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseEnter = () => {
+    document.body.style.overflow = "hidden";
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    document.body.style.overflow = "auto";
+    setIsHovered(false);
+  };
+
+  useEffect(() => {
+    return () => {
+      document.documentElement.style.scrollbarWidth = "none"; // Hide page scroll bar
+    };
+  }, []);
+
   function renderMovies(medias: Media[], category: string, isTVShow = false) {
     const categorySlug = category.toLowerCase().replace(/ /g, "-"); // Convert the category to a slug
     const displayCategory =
@@ -215,20 +250,28 @@ export function Discover() {
         : category.includes("Movie")
           ? `${category}s`
           : isTVShow
-            ? `${category} Show`
+            ? `${category} Shows`
             : `${category} Movies`;
     return (
-      <div className="relative overflow-hidden mt-4 rounded-xl">
+      <div
+        className="relative overflow-hidden mt-4 rounded-xl"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        onWheel={(e) => handleWheel(e, categorySlug)}
+      >
         <h2 className="text-2xl font-bold text-white sm:text-3xl md:text-2xl mx-auto pl-2">
           {displayCategory}
         </h2>
         <div
           id={`carousel-${categorySlug}`}
-          className="flex whitespace-nowrap overflow-auto scroll-snap-x-mandatory mb-4 mt-4"
+          className="flex whitespace-nowrap overflow-auto scrollbar pb-6 mb-4 mt-4"
+          style={{
+            scrollbarWidth: "thin",
+            scrollbarColor: "#fff transparent",
+          }}
           ref={(el) => {
             carouselRefs.current[categorySlug] = el;
           }}
-          style={{ overflowX: "hidden" }}
         >
           {medias.slice(0, 20).map((media) => (
             <a
