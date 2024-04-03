@@ -1,4 +1,3 @@
-import classNames from "classnames";
 import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -278,6 +277,8 @@ export function Discover() {
       </div>
     );
   }
+  const [countdownTimeout, setCountdownTimeout] =
+    useState<NodeJS.Timeout | null>(null);
 
   const handleRandomMovieClick = () => {
     const allMovies = Object.values(genreMovies).flat(); // Flatten all movie arrays
@@ -292,14 +293,25 @@ export function Discover() {
     if (selectedMovie) {
       setRandomMovie(selectedMovie);
 
-      setCountdown(5);
+      if (countdown !== null && countdown > 0) {
+        // Clear the countdown interval
+        setCountdown(null);
+        if (countdownTimeout) {
+          clearTimeout(countdownTimeout);
+          setCountdownTimeout(null);
+          setRandomMovie(null);
+        }
+      } else {
+        setCountdown(5);
 
-      // Schedule navigation after 5 seconds
-      setTimeout(() => {
-        navigate(
-          `/media/tmdb-movie-${selectedMovie.id}-${selectedMovie.title}`,
-        );
-      }, 5000);
+        // Schedule navigation after 5 seconds
+        const timeoutId = setTimeout(() => {
+          navigate(
+            `/media/tmdb-movie-${selectedMovie.id}-${selectedMovie.title}`,
+          );
+        }, 5000);
+        setCountdownTimeout(timeoutId);
+      }
     }
   };
 
@@ -392,28 +404,34 @@ export function Discover() {
               type="button"
               className="flex items-center space-x-2 rounded-full px-4 text-white py-2 bg-pill-background bg-opacity-50 hover:bg-pill-backgroundHover transition-[background,transform] duration-100 hover:scale-105"
               onClick={handleRandomMovieClick}
-              disabled={countdown !== null && countdown > 0} // Disable the button during the countdown
             >
-              <span className="flex items-center space-x-2">
-                {countdown !== null && countdown > 0
-                  ? `Playing in ${countdown} seconds`
-                  : "Watch Something New"}
-                <img
-                  src="/lightbar-images/dice.svg"
-                  alt="Small Image"
-                  style={{
-                    width: "20px", // Adjust the width as needed
-                    height: "20px", // Adjust the height as needed
-                    marginLeft: "10px", // Add margin-right
-                  }}
-                />
+              <span className="flex items-center">
+                {countdown !== null && countdown > 0 ? (
+                  <div className="flex items-center inline-block">
+                    <span>Cancel Countdown</span>
+                    <Icon
+                      icon={Icons.X}
+                      className="text-2xl ml-[4.5px] mb-[-0.7px]"
+                    />
+                  </div>
+                ) : (
+                  <div className="flex items-center inline-block">
+                    <span>Watch Something New</span>
+                    <img
+                      src="/lightbar-images/dice.svg"
+                      alt="Small Image"
+                      style={{
+                        marginLeft: "8px",
+                      }}
+                    />
+                  </div>
+                )}
               </span>
             </button>
           </div>
           {randomMovie && (
             <div className="mt-4 mb-4 text-center">
               <p>Now Playing {randomMovie.title}</p>
-              {/* You can add additional details or play functionality here */}
             </div>
           )}
           <div className="flex flex-col">
