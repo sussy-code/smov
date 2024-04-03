@@ -13,7 +13,7 @@ import { PageTitle } from "./parts/util/PageTitle";
 import { get } from "../backend/metadata/tmdb";
 import { Icon, Icons } from "../components/Icon";
 
-const pagesToFetch = 8;
+const pagesToFetch = 3;
 
 // Define the Media type
 interface Media {
