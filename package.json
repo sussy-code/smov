@@ -120,7 +120,7 @@
     "tailwindcss-themer": "^4.0.0",
     "type-fest": "^4.8.3",
     "typescript": "^5.3.3",
-    "vite": "^5.0.12",
+    "vite": "^5.0.13",
     "vite-plugin-checker": "^0.6.2",
     "vite-plugin-package-version": "^1.1.0",
     "vite-plugin-pwa": "^0.17.4",
