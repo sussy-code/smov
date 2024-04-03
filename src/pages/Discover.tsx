@@ -14,7 +14,7 @@ import { PageTitle } from "./parts/util/PageTitle";
 import { get } from "../backend/metadata/tmdb";
 import { Icon, Icons } from "../components/Icon";
 
-const pagesToFetch = 5;
+const pagesToFetch = 8;
 
 // Define the Media type
 interface Media {
@@ -123,8 +123,8 @@ export function Discover() {
           [data.genres[i], data.genres[j]] = [data.genres[j], data.genres[i]];
         }
 
-        // Fetch only the first 5 TV show genres
-        setTVGenres(data.genres.slice(0, 5));
+        // Fetch only the first 4 TV show genres
+        setTVGenres(data.genres.slice(0, 4));
       } catch (error) {
         console.error("Error fetching TV show genres:", error);
       }
@@ -138,8 +138,8 @@ export function Discover() {
     const fetchTVShowsForGenre = async (genreId: number) => {
       try {
         const tvShows: any[] = [];
-        for (let page = 1; page <= 5; page += 1) {
-          // Fetch only 5 pages
+        for (let page = 1; page <= 4; page += 1) {
+          // Fetch only 4 pages
           const data = await get<any>("/discover/tv", {
             api_key: conf().TMDB_READ_API_KEY,
             with_genres: genreId.toString(),
@@ -318,8 +318,8 @@ export function Discover() {
           [data.genres[i], data.genres[j]] = [data.genres[j], data.genres[i]];
         }
 
-        // Fetch only the first 5 genres
-        setGenres(data.genres.slice(0, 5));
+        // Fetch only the first 4 genres
+        setGenres(data.genres.slice(0, 4));
       } catch (error) {
         console.error("Error fetching genres:", error);
       }
@@ -333,8 +333,8 @@ export function Discover() {
     const fetchMoviesForGenre = async (genreId: number) => {
       try {
         const movies: any[] = [];
-        for (let page = 1; page <= 5; page += 1) {
-          // Fetch only 5 pages
+        for (let page = 1; page <= 4; page += 1) {
+          // Fetch only 4 pages
           const data = await get<any>("/discover/movie", {
             api_key: conf().TMDB_READ_API_KEY,
             with_genres: genreId.toString(),
