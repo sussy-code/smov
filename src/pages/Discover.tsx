@@ -215,7 +215,7 @@ export function Discover() {
         : category.includes("Movie")
           ? `${category}s`
           : isTVShow
-            ? `${category} Programmes`
+            ? `${category} Show`
             : `${category} Movies`;
     return (
       <div className="relative overflow-hidden mt-4 rounded-xl">
