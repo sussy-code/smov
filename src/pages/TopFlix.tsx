@@ -1,6 +1,5 @@
 import classNames from "classnames";
 import React, { useEffect, useRef, useState } from "react";
-import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useNavigate } from "react-router-dom";
@@ -11,6 +10,7 @@ import { WideContainer } from "@/components/layout/WideContainer";
 import { HomeLayout } from "@/pages/layouts/HomeLayout";
 import { conf } from "@/setup/config";
 
+import { PageTitle } from "./parts/util/PageTitle";
 import { get } from "../backend/metadata/tmdb";
 import { Icon, Icons } from "../components/Icon";
 
@@ -142,7 +142,14 @@ export function TopFlix() {
           language: "en-US",
         });
 
-        setTVGenres(data.genres);
+        // Shuffle the array of genres
+        for (let i = data.genres.length - 1; i > 0; i -= 1) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [data.genres[i], data.genres[j]] = [data.genres[j], data.genres[i]];
+        }
+
+        // Fetch only the first 5 TV show genres
+        setTVGenres(data.genres.slice(0, 5));
       } catch (error) {
         console.error("Error fetching TV show genres:", error);
       }
@@ -156,7 +163,8 @@ export function TopFlix() {
     const fetchTVShowsForGenre = async (genreId: number) => {
       try {
         const tvShows: any[] = [];
-        for (let page = 1; page <= pagesToFetch; page += 1) {
+        for (let page = 1; page <= 5; page += 1) {
+          // Fetch only 5 pages
           const data = await get<any>("/discover/tv", {
             api_key: conf().TMDB_READ_API_KEY,
             with_genres: genreId.toString(),
@@ -236,73 +244,59 @@ export function TopFlix() {
             ? `${category} Programmes`
             : `${category} Movies`;
     return (
-      <div className="relative overflow-hidden mt-4">
-        <h2 className="text-2xl font-bold text-white sm:text-3xl md:text-2xl mx-auto pl-10">
+      <div className="relative overflow-hidden mt-4 rounded-xl">
+        <h2 className="text-2xl font-bold text-white sm:text-3xl md:text-2xl mx-auto pl-2">
           {displayCategory}
         </h2>
         <div
           id={`carousel-${categorySlug}`}
-          className="flex whitespace-nowrap overflow-auto scroll-snap-x-mandatory pb-4 mt-4 pl-10"
+          className="flex whitespace-nowrap overflow-auto scroll-snap-x-mandatory mb-4 mt-4"
           ref={(el) => {
             carouselRefs.current[categorySlug] = el;
           }}
+          style={{ overflowX: "hidden" }}
         >
-          {medias.slice(0, 5).map((media) => (
+          {medias.slice(0, 20).map((media) => (
             <a
               key={media.id}
               href={`media/tmdb-${isTVShow ? "tv" : "movie"}-${media.id}-${
                 isTVShow ? media.name : media.title
               }`}
               rel="noopener noreferrer"
-              className="block text-center relative overflow-hidden transition-transform transform hover:scale-105 mr-4"
-              style={{ flex: "0 0 auto", width: movieWidth }} // Set a fixed width for each movie
+              className="block text-center relative overflow-hidden transition-transform transform hover:scale-95 mr-4"
+              style={{ flex: `0 0 ${movieWidth}` }} // Set a fixed width for each movie
             >
               <LazyLoadImage
                 src={`https://image.tmdb.org/t/p/w500${media.poster_path}`}
                 alt={isTVShow ? media.name : media.title}
-                className="rounded-xl mb-2"
+                className="rounded-xl"
                 effect="blur"
                 style={{
                   width: "100%",
-                  height: "auto",
-                  transform: "scale(1)",
+                  height: "100%",
                   transition: "opacity 0.3s, transform 0.3s",
                 }}
               />
-              <div
-                className="absolute inset-0 rounded-xl flex items-center justify-center text-white font-bold opacity-0 hover:opacity-100 transition-opacity"
-                style={{
-                  backdropFilter: "blur(0px)",
-                  transition: "opacity 0.5s",
-                  backgroundColor: "rgba(0, 0, 0, 0.5)", // Darkening effect
-                  whiteSpace: "normal", // Allow the text to wrap to the next line
-                  wordWrap: "break-word", // Break words to prevent overflow
-                }}
-              >
-                <p className="text-sm m-4">
-                  {isTVShow ? media.name : media.title}
-                </p>
-              </div>
             </a>
           ))}
         </div>
         <button
           type="button" // Added type attribute with value "button"
           title="Back"
-          className="absolute top-1/2 transform -translate-y-1/2 z-10"
+          className="absolute top-1/2 transform -translate-y-1/2 z-10 left-2"
           onClick={() => scrollCarousel(categorySlug, "left")}
         >
-          <div className="cursor-pointer hover:text-white flex justify-center items-center h-10 w-10 rounded-full hover:bg-search-hoverBackground active:scale-110 transition-[transform,background-color] duration-200">
+          <div className="cursor-pointer text-white flex justify-center items-center h-10 w-10 rounded-full bg-search-hoverBackground active:scale-110 transition-[transform,background-color] duration-200">
             <Icon icon={Icons.ARROW_LEFT} />
           </div>
         </button>
         <button
           type="button" // Added type attribute with value "button"
           title="Next"
-          className="absolute top-1/2 right-4 transform -translate-y-1/2 z-10"
+          className="absolute top-1/2 right-2 transform -translate-y-1/2 z-10"
           onClick={() => scrollCarousel(categorySlug, "right")}
         >
-          <div className="cursor-pointer hover:text-white flex justify-center items-center h-10 w-10 rounded-full hover:bg-search-hoverBackground active:scale-110 transition-[transform,background-color] duration-200">
+          <div className="cursor-pointer text-white flex justify-center items-center h-10 w-10 rounded-full bg-search-hoverBackground active:scale-110 transition-[transform,background-color] duration-200">
             <Icon icon={Icons.ARROW_RIGHT} />
           </div>
         </button>
@@ -343,7 +337,14 @@ export function TopFlix() {
           language: "en-US",
         });
 
-        setGenres(data.genres);
+        // Shuffle the array of genres
+        for (let i = data.genres.length - 1; i > 0; i -= 1) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [data.genres[i], data.genres[j]] = [data.genres[j], data.genres[i]];
+        }
+
+        // Fetch only the first 5 genres
+        setGenres(data.genres.slice(0, 5));
       } catch (error) {
         console.error("Error fetching genres:", error);
       }
@@ -357,7 +358,8 @@ export function TopFlix() {
     const fetchMoviesForGenre = async (genreId: number) => {
       try {
         const movies: any[] = [];
-        for (let page = 1; page <= pagesToFetch; page += 1) {
+        for (let page = 1; page <= 5; page += 1) {
+          // Fetch only 5 pages
           const data = await get<any>("/discover/movie", {
             api_key: conf().TMDB_READ_API_KEY,
             with_genres: genreId.toString(),
@@ -378,6 +380,7 @@ export function TopFlix() {
 
     genres.forEach((genre) => fetchMoviesForGenre(genre.id));
   }, [genres]);
+
   useEffect(() => {
     let countdownInterval: NodeJS.Timeout;
     if (countdown !== null && countdown > 0) {
@@ -395,10 +398,8 @@ export function TopFlix() {
 
   return (
     <HomeLayout showBg={showBg}>
-      <div className="mb-16 sm:mb-24">
-        <Helmet>
-          <title>{t("global.name")}</title>
-        </Helmet>
+      <div className="mb-16 sm:mb-2">
+        <PageTitle subpage k="global.pages.discover" />
         <ThinContainer>
           <div className="mt-44 space-y-16 text-center">
             <div className="relative z-10 mb-16">
@@ -411,25 +412,27 @@ export function TopFlix() {
       </div>
       <WideContainer>
         <>
-          <div className="flex items-center justify-center mt-6 mb-6">
+          <div className="flex items-center justify-center mb-6">
             <button
               type="button"
               className="flex items-center space-x-2 rounded-full px-4 text-white py-2 bg-pill-background bg-opacity-50 hover:bg-pill-backgroundHover transition-[background,transform] duration-100 hover:scale-105"
               onClick={handleRandomMovieClick}
               disabled={countdown !== null && countdown > 0} // Disable the button during the countdown
             >
-              <img
-                src="https://cdn-icons-png.flaticon.com/512/4058/4058790.png"
-                alt="Small Image"
-                style={{
-                  width: "20px", // Adjust the width as needed
-                  height: "20px", // Adjust the height as needed
-                  marginRight: "10px", // Add margin-right
-                }}
-              />
-              {countdown !== null && countdown > 0
-                ? `Playing in ${countdown} seconds`
-                : "Watch a Random Movie"}
+              <span className="flex items-center space-x-2">
+                {countdown !== null && countdown > 0
+                  ? `Playing in ${countdown} seconds`
+                  : "Watch Something New"}
+                <img
+                  src="/lightbar-images/dice.svg"
+                  alt="Small Image"
+                  style={{
+                    width: "20px", // Adjust the width as needed
+                    height: "20px", // Adjust the height as needed
+                    marginLeft: "10px", // Add margin-right
+                  }}
+                />
+              </span>
             </button>
           </div>
           {randomMovie && (

@@ -26,7 +26,6 @@ import { OnboardingProxyPage } from "@/pages/onboarding/OnboardingProxy";
 import { RegisterPage } from "@/pages/Register";
 import { SupportPage } from "@/pages/Support";
 import { TopFlix } from "@/pages/TopFlix";
-import { TopSources } from "@/pages/TopSources";
 import { Layout } from "@/setup/Layout";
 import { useHistoryListener } from "@/stores/history";
 import { LanguageProvider } from "@/stores/language";
@@ -87,7 +86,6 @@ function QueryView() {
   return null;
 }
 
-// Duplicate of @/src/setup/App.tsx
 function App() {
   useHistoryListener();
   useOnlineListener();
@@ -154,7 +152,6 @@ function App() {
           <Route path="/support" element={<SupportPage />} />
           {/* Top flix page */}
           <Route path="/flix" element={<TopFlix />} />
-          <Route path="/flix/sources" element={<TopSources />} />
           {/* Settings page */}
           <Route
             path="/settings"
@@ -182,3 +179,5 @@ function App() {
     </Layout>
   );
 }
+
+export default App;
