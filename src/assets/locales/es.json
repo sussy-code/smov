@@ -290,6 +290,7 @@
         "title": "Calidad"
       },
       "settings": {
+        "audioItem": "Audio",
         "downloadItem": "Descargar",
         "enableSubtitles": "Habilitar subtítulos",
         "experienceSection": "Experiencia de visualización",
@@ -316,8 +317,9 @@
         "unknownOption": "Desconocida"
       },
       "subtitles": {
-        "customChoice": "Seleccionar subtítulo del archivo",
+        "customChoice": "Sube o arrastra un archivo",
         "customizeLabel": "Personalizar",
+        "dropSubtitleFile": "Suelta el archivo de subtítulos aquí",
         "offChoice": "Apagado",
         "settings": {
           "backlink": "Subtítulos personalizados",
@@ -532,6 +534,7 @@
       }
     },
     "subtitles": {
+      "backgroundBlurLabel": "Desefoque de fondo",
       "backgroundLabel": "Opacidad del fondo",
       "colorLabel": "Color",
       "previewQuote": "No debo temer. El miedo es el asesino de la mente.",

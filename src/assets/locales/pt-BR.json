@@ -57,6 +57,8 @@
       },
       "host": "Você está se conectando a <0>{{hostname}}</0> - por favor, confirme se confia nele antes de criar uma conta",
       "no": "Voltar",
+      "noHost": "O servidor não foi configurado, portanto você não pode criar uma conta",
+      "noHostTitle": "Servidor não configurado!",
       "title": "Você confia neste servidor?",
       "yes": "Eu confio neste servidor"
     },
@@ -118,7 +120,12 @@
       "noResults": "Não conseguimos encontrar nada!",
       "placeholder": {
         "default": "O que você quer assistir?",
-        "extra": []
+        "extra": [
+          "O que você gostaria de explorar?",
+          "O que está na sua lista para assistir?",
+          "Qual o seu filme favorito?",
+          "Qual a sua série favorita?"
+        ]
       },
       "sectionTitle": "Resultados da pesquisa"
     },
@@ -144,7 +151,8 @@
     "types": {
       "movie": "Filme",
       "show": "Série"
-    }
+    },
+    "unreleased": "Não lançado"
   },
   "navigation": {
     "banner": {
@@ -283,6 +291,7 @@
         "title": "Qualidade"
       },
       "settings": {
+        "audioItem": "Áudio",
         "downloadItem": "Baixar",
         "enableSubtitles": "Ativar Legendas",
         "experienceSection": "Experiência de visualização",
@@ -309,8 +318,9 @@
         "unknownOption": "Desconhecido"
       },
       "subtitles": {
-        "customChoice": "Selecione arquivo de legenda",
+        "customChoice": "Solte ou faça upload do arquivo",
         "customizeLabel": "Personalizar",
+        "dropSubtitleFile": "Solte o arquivo da legenda aqui",
         "offChoice": "Desativadas",
         "settings": {
           "backlink": "Legendas personalizadas",
@@ -368,6 +378,13 @@
       "title": "Falha ao reproduzir o vídeo!"
     },
     "scraping": {
+      "extensionFailure": {
+        "badge": "Extensão desativada",
+        "enableExtension": "Ativar extensão",
+        "homeButton": "Ir para o início",
+        "text": "Você instalou a extensão sudo-flix. Para começar a usá-la, você precisa ativar a extensão neste site.",
+        "title": "Por favor, ative a extensão"
+      },
       "items": {
         "failure": "Ocorreu um erro",
         "notFound": "Não tem o vídeo",
@@ -525,6 +542,7 @@
       }
     },
     "subtitles": {
+      "backgroundBlurLabel": "Desfoque de fundo",
       "backgroundLabel": "Opacidade do fundo",
       "colorLabel": "Cor",
       "previewQuote": "Eu não devo ter medo. Medo é o assassino da mente.",

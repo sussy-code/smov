@@ -142,6 +142,7 @@
           "Sudo-Flix is the best site ever!",
           "What's on your watchlist today?",
           "How was your day?",
+          "My bad the site never works...",
           "Isn't sudo-flix just the best?"
         ]
       },
@@ -177,6 +178,7 @@
   },
   "media": {
     "episodeDisplay": "S{{season}} - E{{episode}}",
+    "unreleased": "Unreleased",
     "types": {
       "movie": "Movie",
       "show": "Show"
@@ -203,11 +205,11 @@
     "title": "Couldn't find that page"
   },
   "downtimeNotice": {
-    "badge": "Maintenance",
+    "badge": "Issues",
     "goHome": "Go home",
-    "message": "sudo-flix.lol is dedicated to providing its users with the most up-to-date and stable experience in order to do this we are switching to a new DNS. Expect downtime between the below times.",
-    "timeFrame": "<bold>March 10th 7:00 PM - 7:30 AM</bold>",
-    "title": "Maintenance expected"
+    "message": "sudo-flix.lol is experiencing issues with some providers again, if you cant find or play a show please change the source. Expect this error to persist throughout the below times.",
+    "timeFrame": "<bold>March 31th 11:00 PM - 5:00 AM EST</bold>",
+    "title": "Provider issues"
   },
   "onboarding": {
     "defaultConfirm": {
@@ -486,6 +488,11 @@
         "deviceNamePlaceholder": "Personal phone",
         "editProfile": "Edit",
         "logoutButton": "Log out"
+      },
+      "admin": {
+        "title": "Admin panel",
+        "text": "Utilize tools made for testing sudo-flix's condition.",
+        "button": "Check it out"
       },
       "actions": {
         "delete": {

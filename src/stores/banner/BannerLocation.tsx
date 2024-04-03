@@ -87,8 +87,8 @@ export function ExtensionBanner(props: {
   if (currentLocation !== loc || pathname === "/onboarding/extension")
     return null;
 
-  // Show the banner with a 35% chance or not if users dont meet requirements
-  if (!isEligible && Math.random() < 0.35) {
+  // Show the banner with a 36.5% chance or not if users dont meet requirements
+  if (!isEligible && Math.random() < 0.365) {
     let bannerText = "";
     switch (props.extensionState) {
       case "noperms":
