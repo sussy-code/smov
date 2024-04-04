@@ -280,7 +280,7 @@ export function Discover() {
                 isTVShow ? media.name : media.title
               }`}
               rel="noopener noreferrer"
-              className="block text-center relative overflow-hidden transition-transform transform hover:scale-90 mr-4"
+              className="block text-center relative overflow-hidden transition-transform transform hover:scale-95 mr-4"
               style={{ flex: `0 0 ${movieWidth}` }} // Set a fixed width for each movie
             >
               <LazyLoadImage
