@@ -165,7 +165,22 @@ export function Discover() {
         const visibleMovies = Math.floor(carousel.offsetWidth / movieWidth);
         const scrollAmount = movieWidth * visibleMovies;
         if (direction === "left") {
-          carousel.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+          if (carousel.scrollLeft <= 5) {
+            carousel.scrollBy({
+              left: carousel.scrollWidth,
+              behavior: "smooth",
+            }); // Scroll to the end
+          } else {
+            carousel.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+          }
+        } else if (
+          carousel.scrollLeft + carousel.offsetWidth + 5 >=
+          carousel.scrollWidth
+        ) {
+          carousel.scrollBy({
+            left: -carousel.scrollWidth,
+            behavior: "smooth",
+          }); // Scroll to the beginning
         } else {
           carousel.scrollBy({ left: scrollAmount, behavior: "smooth" });
         }
