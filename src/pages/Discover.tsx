@@ -1,9 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useNavigate } from "react-router-dom";
 
-import "react-lazy-load-image-component/src/effects/blur.css";
 import { ThinContainer } from "@/components/layout/ThinContainer";
 import { WideContainer } from "@/components/layout/WideContainer";
 import { HomeLayout } from "@/pages/layouts/HomeLayout";
@@ -81,19 +79,14 @@ export function Discover() {
   useEffect(() => {
     const fetchMoviesForCategory = async (category: Category) => {
       try {
-        const movies: any[] = [];
-        for (let page = 1; page <= pagesToFetch; page += 1) {
-          const data = await get<any>(category.endpoint, {
-            api_key: conf().TMDB_READ_API_KEY,
-            language: "en-US",
-            page: page.toString(),
-          });
+        const data = await get<any>(category.endpoint, {
+          api_key: conf().TMDB_READ_API_KEY,
+          language: "en-US",
+        });
 
-          movies.push(...data.results);
-        }
         setCategoryMovies((prevCategoryMovies) => ({
           ...prevCategoryMovies,
-          [category.name]: movies,
+          [category.name]: data.results,
         }));
       } catch (error) {
         console.error(
@@ -142,21 +135,14 @@ export function Discover() {
   useEffect(() => {
     const fetchTVShowsForGenre = async (genreId: number) => {
       try {
-        const tvShows: any[] = [];
-        for (let page = 1; page <= 4; page += 1) {
-          // Fetch only 4 pages
-          const data = await get<any>("/discover/tv", {
-            api_key: conf().TMDB_READ_API_KEY,
-            with_genres: genreId.toString(),
-            language: "en-US",
-            page: page.toString(),
-          });
-
-          tvShows.push(...data.results);
-        }
+        const data = await get<any>("/discover/tv", {
+          api_key: conf().TMDB_READ_API_KEY,
+          with_genres: genreId.toString(),
+          language: "en-US",
+        });
         setTVShowGenres((prevTVShowGenres) => ({
           ...prevTVShowGenres,
-          [genreId]: tvShows,
+          [genreId]: data.results,
         }));
       } catch (error) {
         console.error(`Error fetching TV shows for genre ${genreId}:`, error);
@@ -283,11 +269,11 @@ export function Discover() {
               className="block text-center relative overflow-hidden transition-transform transform hover:scale-95 mr-5"
               style={{ flex: `0 0 ${movieWidth}` }} // Set a fixed width for each movie
             >
-              <LazyLoadImage
+              <img
                 src={`https://image.tmdb.org/t/p/w500${media.poster_path}`}
                 alt={isTVShow ? media.name : media.title}
                 className="rounded-xl"
-                effect="blur"
+                loading="lazy"
                 style={{
                   width: "100%",
                   height: "100%",
