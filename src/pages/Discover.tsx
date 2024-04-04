@@ -197,14 +197,22 @@ export function Discover() {
     }
   }, [movieWidth]); // Added movieWidth to the dependency array
 
+  let isScrolling = false;
+
   function handleWheel(e: React.WheelEvent, categorySlug: string) {
+    if (isScrolling) {
+      return;
+    }
+
+    isScrolling = true;
+
     const carousel = carouselRefs.current[categorySlug];
     if (carousel) {
       const movieElements = carousel.getElementsByTagName("a");
       if (movieElements.length > 0) {
         const posterWidth = movieElements[0].offsetWidth;
         const visibleMovies = Math.floor(carousel.offsetWidth / posterWidth);
-        const scrollAmount = posterWidth * visibleMovies * 0.625;
+        const scrollAmount = posterWidth * visibleMovies * 0.6;
         if (e.deltaY < 5) {
           carousel.scrollBy({ left: -scrollAmount, behavior: "smooth" });
         } else {
@@ -212,6 +220,10 @@ export function Discover() {
         }
       }
     }
+
+    setTimeout(() => {
+      isScrolling = false;
+    }, 345); // Disable scrolling every 3 milliseconds after interaction (only for mouse wheel doe)
   }
 
   const [isHovered, setIsHovered] = useState(false);
