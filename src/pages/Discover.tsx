@@ -163,7 +163,7 @@ export function Discover() {
       if (movieElements.length > 0) {
         const movieWidth = movieElements[0].offsetWidth;
         const visibleMovies = Math.floor(carousel.offsetWidth / movieWidth);
-        const scrollAmount = movieWidth * visibleMovies;
+        const scrollAmount = movieWidth * visibleMovies * 0.69; // Silly number :3
         if (direction === "left") {
           if (carousel.scrollLeft <= 5) {
             carousel.scrollBy({
