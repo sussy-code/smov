@@ -7,7 +7,9 @@ body {
   @apply bg-background-main font-main text-type-text;
   min-height: 100vh;
   min-height: 100dvh;
-  font-size: 1.0235em; 
+  font-size: 1.0235em;
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+  -ms-overflow-style: none; /* Hide scrollbar for Internet Explorer and Edge */
 }
 
 html[data-full],

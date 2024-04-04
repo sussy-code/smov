@@ -242,12 +242,6 @@ export function Discover() {
     setIsHovered(false);
   };
 
-  useEffect(() => {
-    return () => {
-      document.documentElement.style.scrollbarWidth = "none";
-    };
-  }, []);
-
   function renderMovies(medias: Media[], category: string, isTVShow = false) {
     const categorySlug = category.toLowerCase().replace(/ /g, "-"); // Convert the category to a slug
     const displayCategory =
