@@ -295,7 +295,7 @@ export function Discover() {
                 // Navigate instead of href!
               }
               rel="noopener noreferrer"
-              className="block rounded-xl text-center relative overflow-hidden transition-transform transform hover:scale-90 duration-500 mr-5"
+              className="block rounded-xl text-center relative overflow-hidden transition-transform transform hover:scale-95 duration-500 mr-5"
               style={{ flex: `0 0 ${movieWidth}` }} // Set a fixed width for each movie
             >
               <img
