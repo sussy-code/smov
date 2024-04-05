@@ -52,6 +52,10 @@ const categories: Category[] = [
     name: "Top Rated",
     endpoint: "/movie/top_rated?language=en-US",
   },
+  {
+    name: "Most Popular",
+    endpoint: "/movie/popular?language=en-US",
+  },
 ];
 
 export function Discover() {
@@ -119,8 +123,8 @@ export function Discover() {
           [data.genres[i], data.genres[j]] = [data.genres[j], data.genres[i]];
         }
 
-        // Fetch only the first 5 TV show genres
-        setTVGenres(data.genres.slice(0, 5));
+        // Fetch only the first 6 TV show genres
+        setTVGenres(data.genres.slice(0, 6));
       } catch (error) {
         console.error("Error fetching TV show genres:", error);
       }
@@ -384,8 +388,8 @@ export function Discover() {
           [data.genres[i], data.genres[j]] = [data.genres[j], data.genres[i]];
         }
 
-        // Fetch only the first 5 genres
-        setGenres(data.genres.slice(0, 5));
+        // Fetch only the first 6 genres
+        setGenres(data.genres.slice(0, 6));
       } catch (error) {
         console.error("Error fetching genres:", error);
       }
