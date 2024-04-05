@@ -72,11 +72,18 @@ export function Discover() {
   const bgColor =
     currentTheme?.extend?.colors?.background?.accentA ?? "#7831BF";
   const navigate = useNavigate();
-
-  // Add a new state variable for the category movies
   const [categoryMovies, setCategoryMovies] = useState<{
     [categoryName: string]: Movie[];
   }>({});
+  const [tvGenres, setTVGenres] = useState<Genre[]>([]);
+  const [tvShowGenres, setTVShowGenres] = useState<{
+    [genreId: number]: TVShow[];
+  }>({});
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const carouselRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+  const gradientRef = useRef<HTMLDivElement>(null);
+  const [countdownTimeout, setCountdownTimeout] =
+    useState<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const fetchMoviesForCategory = async (category: Category) => {
@@ -99,14 +106,6 @@ export function Discover() {
     };
     categories.forEach(fetchMoviesForCategory);
   }, []);
-
-  // Add a new state variable for the TV show genres
-  const [tvGenres, setTVGenres] = useState<Genre[]>([]);
-
-  // Add a new state variable for the TV shows
-  const [tvShowGenres, setTVShowGenres] = useState<{
-    [genreId: number]: TVShow[];
-  }>({});
 
   // Fetch TV show genres
   useEffect(() => {
@@ -153,11 +152,6 @@ export function Discover() {
 
     tvGenres.forEach((genre) => fetchTVShowsForGenre(genre.id));
   }, [tvGenres]);
-
-  // Move the hooks outside of the renderMovies function
-  const carouselRef = useRef<HTMLDivElement>(null);
-  const carouselRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
-  const gradientRef = useRef<HTMLDivElement>(null);
 
   // Update the scrollCarousel function to use the new ref map
   function scrollCarousel(categorySlug: string, direction: string) {
@@ -214,7 +208,7 @@ export function Discover() {
       gradientRef.current.style.top = `${carouselHeight}px`;
       gradientRef.current.style.bottom = `${carouselHeight}px`;
     }
-  }, [movieWidth]); // Added movieWidth to the dependency array
+  }, [movieWidth]);
 
   let isScrolling = false;
 
@@ -279,7 +273,7 @@ export function Discover() {
         </h2>
         <div
           id={`carousel-${categorySlug}`}
-          className="flex whitespace-nowrap overflow-auto scrollbar pb-6 mb-4 mt-4"
+          className="flex whitespace-nowrap overflow-auto scrollbar pb-6 mb-4 mt-4 rounded-xl"
           style={{
             scrollbarWidth: "thin",
             scrollbarColor: `${bgColor} transparent`,
@@ -291,23 +285,24 @@ export function Discover() {
           {medias.slice(0, 20).map((media) => (
             <a
               key={media.id}
-              href={`media/tmdb-${isTVShow ? "tv" : "movie"}-${media.id}-${
-                isTVShow ? media.name : media.title
-              }`}
+              onClick={
+                () =>
+                  navigate(
+                    `/media/tmdb-${isTVShow ? "tv" : "movie"}-${media.id}-${
+                      isTVShow ? media.name : media.title
+                    }`,
+                  )
+                // Navigate instead of href!
+              }
               rel="noopener noreferrer"
-              className="block text-center relative overflow-hidden transition-transform transform hover:scale-95 mr-5"
+              className="block rounded-xl text-center relative overflow-hidden transition-transform transform hover:scale-90 duration-500 mr-5"
               style={{ flex: `0 0 ${movieWidth}` }} // Set a fixed width for each movie
             >
               <img
-                src={`https://image.tmdb.org/t/p/w500${media.poster_path}`}
+                src={`https://image.tmdb.org/t/p/w500${media.poster_path}`} // Dont change this fucking line!
                 alt={isTVShow ? media.name : media.title}
-                className="rounded-xl"
                 loading="lazy"
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  transition: "opacity 0.3s, transform 0.3s",
-                }}
+                className="rounded-xl"
               />
             </a>
           ))}
@@ -335,8 +330,6 @@ export function Discover() {
       </div>
     );
   }
-  const [countdownTimeout, setCountdownTimeout] =
-    useState<NodeJS.Timeout | null>(null);
 
   const handleRandomMovieClick = () => {
     const allMovies = Object.values(genreMovies).flat(); // Flatten all movie arrays
@@ -352,7 +345,7 @@ export function Discover() {
       setRandomMovie(selectedMovie);
 
       if (countdown !== null && countdown > 0) {
-        // Clear the countdown interval
+        // Clear the countdown
         setCountdown(null);
         if (countdownTimeout) {
           clearTimeout(countdownTimeout);
