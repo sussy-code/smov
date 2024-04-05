@@ -155,7 +155,8 @@
     "types": {
       "movie": "Film",
       "show": "Serie"
-    }
+    },
+    "unreleased": "Niet uitgebracht"
   },
   "navigation": {
     "banner": {
