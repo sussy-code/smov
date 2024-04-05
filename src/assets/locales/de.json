@@ -151,7 +151,8 @@
     "types": {
       "movie": "Film",
       "show": "Serie"
-    }
+    },
+    "unreleased": "Unveröffentlicht"
   },
   "navigation": {
     "banner": {

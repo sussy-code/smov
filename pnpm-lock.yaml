@@ -22,8 +22,8 @@ dependencies:
     specifier: ^1.0.3
     version: 1.0.3
   '@movie-web/providers':
-    specifier: ^2.2.8
-    version: 2.2.8
+    specifier: ^2.2.9
+    version: 2.2.9
   '@noble/hashes':
     specifier: ^1.4.0
     version: 1.4.0
@@ -1910,8 +1910,8 @@ packages:
     engines: {node: '>= 14'}
     dev: false
 
-  /@movie-web/providers@2.2.8:
-    resolution: {integrity: sha512-fsksIYuRn39TLC1PLMZrM6AW5kRQCWFmK0aK/p9bTui0ojs6aXLIZbvIwK0svzKLP2pmH6xJEhALxF8SYPE72Q==}
+  /@movie-web/providers@2.2.9:
+    resolution: {integrity: sha512-NHsyplM9Oe4DK3lIkNaEk0CqoQ6IqlaWXeDh01jj+DH4I4EJjSD4ow7OTeAC+BLz3Gwj6fh/vaE2WBGevPTDkQ==}
     requiresBuild: true
     dependencies:
       cheerio: 1.0.0-rc.12
@@ -2855,7 +2855,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001606
-      electron-to-chromium: 1.4.728
+      electron-to-chromium: 1.4.729
       node-releases: 2.0.14
       update-browserslist-db: 1.0.13(browserslist@4.23.0)
 
@@ -3361,8 +3361,8 @@ packages:
       jake: 10.8.7
     dev: true
 
-  /electron-to-chromium@1.4.728:
-    resolution: {integrity: sha512-Ud1v7hJJYIqehlUJGqR6PF1Ek8l80zWwxA6nGxigBsGJ9f9M2fciHyrIiNMerSHSH3p+0/Ia7jIlnDkt41h5cw==}
+  /electron-to-chromium@1.4.729:
+    resolution: {integrity: sha512-bx7+5Saea/qu14kmPTDHQxkp2UnziG3iajUQu3BxFvCOnpAJdDbMV4rSl+EqFDkkpNNVUFlR1kDfpL59xfy1HA==}
 
   /emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
