@@ -485,7 +485,11 @@ export function Discover() {
           </div>
           {randomMovie && (
             <div className="mt-4 mb-4 text-center">
-              <p>Now Playing {randomMovie.title}</p>
+              <p>
+                Now Playing{" "}
+                <span className="font-bold">{randomMovie.title}</span> in{" "}
+                {countdown}
+              </p>
             </div>
           )}
           <div className="flex flex-col">
