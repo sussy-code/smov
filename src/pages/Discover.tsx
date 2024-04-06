@@ -7,56 +7,19 @@ import { WideContainer } from "@/components/layout/WideContainer";
 import { HomeLayout } from "@/pages/layouts/HomeLayout";
 import { conf } from "@/setup/config";
 import { useThemeStore } from "@/stores/theme";
+import {
+  Category,
+  Genre,
+  Media,
+  Movie,
+  TVShow,
+  categories,
+} from "@/utils/discover";
 
 import { PageTitle } from "./parts/util/PageTitle";
 import { allThemes } from "../../themes/all";
 import { get } from "../backend/metadata/tmdb";
 import { Icon, Icons } from "../components/Icon";
-
-// Define the Media type
-interface Media {
-  id: number;
-  poster_path: string;
-  title?: string;
-  name?: string;
-}
-
-// Update the Movie and TVShow interfaces to extend the Media interface
-interface Movie extends Media {
-  title: string;
-}
-
-interface TVShow extends Media {
-  name: string;
-}
-
-// Define the Genre type
-interface Genre {
-  id: number;
-  name: string;
-}
-
-// Define the Category type
-interface Category {
-  name: string;
-  endpoint: string;
-}
-
-// Define the categories
-const categories: Category[] = [
-  {
-    name: "Now Playing",
-    endpoint: "/movie/now_playing?language=en-US",
-  },
-  {
-    name: "Top Rated",
-    endpoint: "/movie/top_rated?language=en-US",
-  },
-  {
-    name: "Most Popular",
-    endpoint: "/movie/popular?language=en-US",
-  },
-];
 
 export function Discover() {
   const { t } = useTranslation();
