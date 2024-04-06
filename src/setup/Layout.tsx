@@ -1,6 +1,5 @@
 import { ReactNode, useEffect, useState } from "react";
 
-import { useIsMobile } from "@/hooks/useIsMobile";
 import { useBannerSize, useBannerStore } from "@/stores/banner";
 import { ExtensionBanner } from "@/stores/banner/BannerLocation";
 import { getExtensionState } from "@/utils/extension";
@@ -11,7 +10,7 @@ export function Layout(props: { children: ReactNode }) {
   const location = useBannerStore((s) => s.location);
   const [extensionState, setExtensionState] =
     useState<ExtensionStatus>("unknown");
-  const { isMobile } = useIsMobile();
+  const [storeLoaded, setStoreLoaded] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
@@ -19,6 +18,7 @@ export function Layout(props: { children: ReactNode }) {
     getExtensionState().then((state) => {
       if (isMounted) {
         setExtensionState(state);
+        setStoreLoaded(true);
       }
     });
 
@@ -29,7 +29,7 @@ export function Layout(props: { children: ReactNode }) {
 
   return (
     <div>
-      {extensionState !== "success" ? (
+      {storeLoaded && extensionState !== "success" ? (
         <div className="fixed inset-x-0 z-[1000]">
           <ExtensionBanner extensionState={extensionState} />
         </div>
