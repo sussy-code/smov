@@ -3,6 +3,7 @@ import { Trans, useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { Icon, Icons } from "@/components/Icon";
+import { useIsMobile } from "@/hooks/useIsMobile";
 import { useBannerStore, useRegisterBanner } from "@/stores/banner";
 import type { ExtensionStatus } from "@/utils/extension";
 
@@ -69,6 +70,7 @@ export function ExtensionBanner(props: {
     /CrOS/.test(navigator.userAgent) ||
     /TV/.test(navigator.userAgent) ||
     /iPhone|iPad|iPod/i.test(navigator.userAgent);
+  const { isMobile } = useIsMobile();
 
   useEffect(() => {
     if (loc) {
@@ -88,7 +90,7 @@ export function ExtensionBanner(props: {
     return null;
 
   // Show the banner with a 36.5% chance or not if users dont meet requirements
-  if (!isEligible && Math.random() < 0.365) {
+  if (!isEligible && !isMobile && Math.random() < 0.365) {
     let bannerText = "";
     switch (props.extensionState) {
       case "noperms":

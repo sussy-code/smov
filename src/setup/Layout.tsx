@@ -29,11 +29,11 @@ export function Layout(props: { children: ReactNode }) {
 
   return (
     <div>
-      {extensionState !== "success" && !isMobile && (
+      {extensionState !== "success" ? (
         <div className="fixed inset-x-0 z-[1000]">
           <ExtensionBanner extensionState={extensionState} />
         </div>
-      )}
+      ) : null}
       <div
         style={{
           paddingTop: location === null ? `${bannerSize}px` : "0px",
