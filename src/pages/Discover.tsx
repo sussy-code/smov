@@ -211,7 +211,6 @@ export function Discover() {
   }, [movieWidth]);
 
   let isScrolling = false;
-
   function handleWheel(e: React.WheelEvent, categorySlug: string) {
     if (isScrolling) {
       return;
@@ -262,12 +261,7 @@ export function Discover() {
             ? `${category} Shows`
             : `${category} Movies`;
     return (
-      <div
-        className="relative overflow-hidden mt-4 rounded-xl"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        onWheel={(e) => handleWheel(e, categorySlug)}
-      >
+      <div className="relative overflow-hidden mt-4 rounded-xl">
         <h2 className="text-2xl font-bold text-white sm:text-3xl md:text-2xl mx-auto pl-2">
           {displayCategory}
         </h2>
@@ -281,6 +275,9 @@ export function Discover() {
           ref={(el) => {
             carouselRefs.current[categorySlug] = el;
           }}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          onWheel={(e) => handleWheel(e, categorySlug)}
         >
           {medias.slice(0, 20).map((media) => (
             <a
