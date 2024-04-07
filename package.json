@@ -82,7 +82,7 @@
     "@types/lodash.isequal": "^4.5.8",
     "@types/lodash.merge": "^4.6.9",
     "@types/lodash.throttle": "^4.1.9",
-    "@types/node": "^20.12.4",
+    "@types/node": "^20.12.5",
     "@types/pako": "^2.0.3",
     "@types/react": "^18.2.74",
     "@types/react-dom": "^18.2.24",
