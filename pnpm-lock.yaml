@@ -52,8 +52,8 @@ dependencies:
     specifier: ^5.3.0
     version: 5.3.0
   dompurify:
-    specifier: ^3.0.11
-    version: 3.0.11
+    specifier: ^3.1.0
+    version: 3.1.0
   flag-icons:
     specifier: ^7.2.1
     version: 7.2.1
@@ -88,8 +88,8 @@ dependencies:
     specifier: ^2.6.4
     version: 2.6.4
   nanoid:
-    specifier: ^5.0.6
-    version: 5.0.6
+    specifier: ^5.0.7
+    version: 5.0.7
   node-forge:
     specifier: ^1.3.1
     version: 1.3.1
@@ -153,8 +153,8 @@ devDependencies:
     specifier: ^7.24.1
     version: 7.24.1(@babel/core@7.24.4)
   '@rollup/wasm-node':
-    specifier: ^4.14.0
-    version: 4.14.0
+    specifier: ^4.14.1
+    version: 4.14.1
   '@types/chromecast-caf-sender':
     specifier: ^1.0.9
     version: 1.0.9
@@ -277,7 +277,7 @@ devDependencies:
     version: 0.5.13(prettier@3.2.5)
   rollup-plugin-visualizer:
     specifier: ^5.12.0
-    version: 5.12.0(@rollup/wasm-node@4.14.0)
+    version: 5.12.0(@rollup/wasm-node@4.14.1)
   tailwind-scrollbar:
     specifier: ^3.1.0
     version: 3.1.0(tailwindcss@3.4.3)
@@ -2028,7 +2028,7 @@ packages:
     engines: {node: '>=14.0.0'}
     dev: false
 
-  /@rollup/plugin-babel@5.3.1(@babel/core@7.24.4)(@rollup/wasm-node@4.14.0):
+  /@rollup/plugin-babel@5.3.1(@babel/core@7.24.4)(@rollup/wasm-node@4.14.1):
     resolution: {integrity: sha512-WFfdLWU/xVWKeRQnKmIAQULUI7Il0gZnBIH/ZFO069wYIfPu+8zrfp/KMW0atmELoRDq8FbiP3VCss9MhCut7Q==}
     engines: {node: '>= 10.0.0'}
     peerDependencies:
@@ -2041,36 +2041,36 @@ packages:
     dependencies:
       '@babel/core': 7.24.4
       '@babel/helper-module-imports': 7.24.3
-      '@rollup/pluginutils': 3.1.0(@rollup/wasm-node@4.14.0)
-      rollup: /@rollup/wasm-node@4.14.0
+      '@rollup/pluginutils': 3.1.0(@rollup/wasm-node@4.14.1)
+      rollup: /@rollup/wasm-node@4.14.1
     dev: true
 
-  /@rollup/plugin-node-resolve@11.2.1(@rollup/wasm-node@4.14.0):
+  /@rollup/plugin-node-resolve@11.2.1(@rollup/wasm-node@4.14.1):
     resolution: {integrity: sha512-yc2n43jcqVyGE2sqV5/YCmocy9ArjVAP/BeXyTtADTBBX6V0e5UMqwO8CdQ0kzjb6zu5P1qMzsScCMRvE9OlVg==}
     engines: {node: '>= 10.0.0'}
     peerDependencies:
       rollup: npm:@rollup/wasm-node
     dependencies:
-      '@rollup/pluginutils': 3.1.0(@rollup/wasm-node@4.14.0)
+      '@rollup/pluginutils': 3.1.0(@rollup/wasm-node@4.14.1)
       '@types/resolve': 1.17.1
       builtin-modules: 3.3.0
       deepmerge: 4.3.1
       is-module: 1.0.0
       resolve: 1.22.8
-      rollup: /@rollup/wasm-node@4.14.0
+      rollup: /@rollup/wasm-node@4.14.1
     dev: true
 
-  /@rollup/plugin-replace@2.4.2(@rollup/wasm-node@4.14.0):
+  /@rollup/plugin-replace@2.4.2(@rollup/wasm-node@4.14.1):
     resolution: {integrity: sha512-IGcu+cydlUMZ5En85jxHH4qj2hta/11BHq95iHEyb2sbgiN0eCdzvUcHw5gt9pBL5lTi4JDYJ1acCoMGpTvEZg==}
     peerDependencies:
       rollup: npm:@rollup/wasm-node
     dependencies:
-      '@rollup/pluginutils': 3.1.0(@rollup/wasm-node@4.14.0)
+      '@rollup/pluginutils': 3.1.0(@rollup/wasm-node@4.14.1)
       magic-string: 0.25.9
-      rollup: /@rollup/wasm-node@4.14.0
+      rollup: /@rollup/wasm-node@4.14.1
     dev: true
 
-  /@rollup/pluginutils@3.1.0(@rollup/wasm-node@4.14.0):
+  /@rollup/pluginutils@3.1.0(@rollup/wasm-node@4.14.1):
     resolution: {integrity: sha512-GksZ6pr6TpIjHm8h9lSQ8pi8BE9VeubNT0OMJ3B5uZJ8pz73NPiqOtCog/x2/QzM1ENChPKxMDhiQuRHsqc+lg==}
     engines: {node: '>= 8.0.0'}
     peerDependencies:
@@ -2079,11 +2079,11 @@ packages:
       '@types/estree': 0.0.39
       estree-walker: 1.0.1
       picomatch: 2.3.1
-      rollup: /@rollup/wasm-node@4.14.0
+      rollup: /@rollup/wasm-node@4.14.1
     dev: true
 
-  /@rollup/wasm-node@4.14.0:
-    resolution: {integrity: sha512-efST/LGEoabKrDzCgA26GJFSJ6B7y9qA6DY1lGUDamfObWtEjrsybaD0CoUZetpHaSFf/rv4ulYg80iWLyYrcQ==}
+  /@rollup/wasm-node@4.14.1:
+    resolution: {integrity: sha512-w5GZ2p1F7tOop6WJxa5x0Ot1s6eVPKOlEo5hmWT3KGxv0naGqiGJa/fz7S/it06nzgS3fmkDbtDfpAYwqOMKRQ==}
     engines: {node: '>=18.0.0', npm: '>=8.0.0'}
     hasBin: true
     dependencies:
@@ -2166,8 +2166,8 @@ packages:
       '@babel/types': 7.24.0
     dev: true
 
-  /@types/chrome@0.0.265:
-    resolution: {integrity: sha512-wusn3sa1C0UOGs7B07EHgCin/G8TQQXWFJhI8F5uwJ0dNGYBj5/+JPmP/l+x+E2ntXXyX/eeN2Bj6Sk6dzMEtA==}
+  /@types/chrome@0.0.266:
+    resolution: {integrity: sha512-QSQWJTL7NjZElvq/6/E5C1+pHgEP8UAJzwoz7M4vSJ7AECt6NNehJ+tU6snnvuTqZOBjFCivvitYo5+8tNPmhg==}
     dependencies:
       '@types/filesystem': 0.0.36
       '@types/har-format': 1.2.15
@@ -2176,7 +2176,7 @@ packages:
   /@types/chromecast-caf-sender@1.0.9:
     resolution: {integrity: sha512-+u4Y5O4OkkNjG+V2l2Cnsw6pSYS+lg4Jlnxh+FVVqdnXp+M8R4Umor1C3JA6u/iXCpTmIndOaBvZa3bMhGZgnw==}
     dependencies:
-      '@types/chrome': 0.0.265
+      '@types/chrome': 0.0.266
     dev: true
 
   /@types/crypto-js@4.2.2:
@@ -3337,8 +3337,8 @@ packages:
       domelementtype: 2.3.0
     dev: false
 
-  /dompurify@3.0.11:
-    resolution: {integrity: sha512-Fan4uMuyB26gFV3ovPoEoQbxRRPfTu3CvImyZnhGq5fsIEO+gEFLp45ISFt+kQBWsK5ulDdT0oV28jS1UrwQLg==}
+  /dompurify@3.1.0:
+    resolution: {integrity: sha512-yoU4rhgPKCo+p5UrWWWNKiIq+ToGqmVVhk0PmMYBK4kRsR3/qhemNFL8f6CFmBd4gMwm3F4T7HBoydP5uY07fA==}
     dev: false
 
   /domutils@3.1.0:
@@ -4987,7 +4987,7 @@ packages:
       '@babel/plugin-syntax-typescript': 7.24.1(@babel/core@7.24.4)
       '@babel/types': 7.24.0
       kleur: 4.1.5
-      rollup: /@rollup/wasm-node@4.14.0
+      rollup: /@rollup/wasm-node@4.14.1
       unplugin: 1.10.1
     transitivePeerDependencies:
       - supports-color
@@ -5097,8 +5097,8 @@ packages:
     hasBin: true
     dev: false
 
-  /nanoid@5.0.6:
-    resolution: {integrity: sha512-rRq0eMHoGZxlvaFOUdK1Ev83Bd1IgzzR+WJ3IbDJ7QOSdAxYjlurSPqFs9s4lJg29RT6nPwizFtJhQS6V5xgiA==}
+  /nanoid@5.0.7:
+    resolution: {integrity: sha512-oLxFY2gd2IqnjcYyOXD8XGCftpGtZP2AbHbOkthDkvRywH5ayNtPVy9YlOPcHckXzbLTCHpkb7FB+yuxKV13pQ==}
     engines: {node: ^18 || >=20}
     hasBin: true
     dev: false
@@ -5902,7 +5902,7 @@ packages:
       glob: 7.2.3
     dev: true
 
-  /rollup-plugin-terser@7.0.2(@rollup/wasm-node@4.14.0):
+  /rollup-plugin-terser@7.0.2(@rollup/wasm-node@4.14.1):
     resolution: {integrity: sha512-w3iIaU4OxcF52UUXiZNsNeuXIMDvFrr+ZXK6bFZ0Q60qyVfq4uLptoS4bbq3paG3x216eQllFZX7zt6TIImguQ==}
     deprecated: This package has been deprecated and is no longer maintained. Please use @rollup/plugin-terser
     peerDependencies:
@@ -5910,12 +5910,12 @@ packages:
     dependencies:
       '@babel/code-frame': 7.24.2
       jest-worker: 26.6.2
-      rollup: /@rollup/wasm-node@4.14.0
+      rollup: /@rollup/wasm-node@4.14.1
       serialize-javascript: 4.0.0
       terser: 5.30.3
     dev: true
 
-  /rollup-plugin-visualizer@5.12.0(@rollup/wasm-node@4.14.0):
+  /rollup-plugin-visualizer@5.12.0(@rollup/wasm-node@4.14.1):
     resolution: {integrity: sha512-8/NU9jXcHRs7Nnj07PF2o4gjxmm9lXIrZ8r175bT9dK8qoLlvKTwRMArRCMgpMGlq8CTLugRvEmyMeMXIU2pNQ==}
     engines: {node: '>=14'}
     hasBin: true
@@ -5927,7 +5927,7 @@ packages:
     dependencies:
       open: 8.4.2
       picomatch: 2.3.1
-      rollup: /@rollup/wasm-node@4.14.0
+      rollup: /@rollup/wasm-node@4.14.1
       source-map: 0.7.4
       yargs: 17.7.2
     dev: true
@@ -6890,7 +6890,7 @@ packages:
       '@types/node': 20.12.5
       esbuild: 0.20.2
       postcss: 8.4.38
-      rollup: /@rollup/wasm-node@4.14.0
+      rollup: /@rollup/wasm-node@4.14.1
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
@@ -7146,9 +7146,9 @@ packages:
       '@babel/core': 7.24.4
       '@babel/preset-env': 7.24.4(@babel/core@7.24.4)
       '@babel/runtime': 7.24.4
-      '@rollup/plugin-babel': 5.3.1(@babel/core@7.24.4)(@rollup/wasm-node@4.14.0)
-      '@rollup/plugin-node-resolve': 11.2.1(@rollup/wasm-node@4.14.0)
-      '@rollup/plugin-replace': 2.4.2(@rollup/wasm-node@4.14.0)
+      '@rollup/plugin-babel': 5.3.1(@babel/core@7.24.4)(@rollup/wasm-node@4.14.1)
+      '@rollup/plugin-node-resolve': 11.2.1(@rollup/wasm-node@4.14.1)
+      '@rollup/plugin-replace': 2.4.2(@rollup/wasm-node@4.14.1)
       '@surma/rollup-plugin-off-main-thread': 2.2.3
       ajv: 8.12.0
       common-tags: 1.8.2
@@ -7157,8 +7157,8 @@ packages:
       glob: 7.2.3
       lodash: 4.17.21
       pretty-bytes: 5.6.0
-      rollup: /@rollup/wasm-node@4.14.0
-      rollup-plugin-terser: 7.0.2(@rollup/wasm-node@4.14.0)
+      rollup: /@rollup/wasm-node@4.14.1
+      rollup-plugin-terser: 7.0.2(@rollup/wasm-node@4.14.1)
       source-map: 0.8.0-beta.0
       stringify-object: 3.3.0
       strip-comments: 2.0.1
