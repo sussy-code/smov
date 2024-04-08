@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import { ThinContainer } from "@/components/layout/ThinContainer";
 import { WideContainer } from "@/components/layout/WideContainer";
+import { Divider } from "@/components/utils/Divider";
 import { HomeLayout } from "@/pages/layouts/HomeLayout";
 import { conf } from "@/setup/config";
 import { useThemeStore } from "@/stores/theme";
@@ -473,6 +474,11 @@ export function Discover() {
                 {renderMovies(genreMovies[genre.id] || [], genre.name)}
               </div>
             ))}
+            <div className="flex inline-block mt-6">
+              <Divider marginClass="mr-5 my-5" />
+              <h1 className="text-4xl font-bold text-white mx-auto">Shows</h1>
+              <Divider marginClass="ml-5 my-5" />
+            </div>
             {tvGenres.map((genre) => (
               <div
                 key={genre.id}

@@ -108,7 +108,7 @@ export function NextEpisodeButton(props: {
   if (metaType !== "show") return null;
 
   // Use rounded numbers for auto-next!
-  console.log(Math.round(time), Math.round(duration));
+  console.log(`Episode duration: ${Math.round(time)}:${Math.round(duration)}`);
 
   return (
     <Transition
