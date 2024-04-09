@@ -269,7 +269,7 @@ export function Discover() {
           onMouseLeave={handleMouseLeave}
           onWheel={(e) => handleWheel(e, categorySlug)}
         >
-          {medias.slice(0, 25).map((media) => (
+          {medias.slice(0, 20).map((media) => (
             <a
               key={media.id}
               onClick={
@@ -500,10 +500,10 @@ export function Discover() {
                 {renderMovies(genreMovies[genre.id] || [], genre.name)}
               </div>
             ))}
-            <div className="flex inline-block mt-6">
-              <Divider marginClass="mr-5 my-5" />
+            <div className="flex items-center mt-6">
+              <Divider marginClass="mr-5" />
               <h1 className="text-4xl font-bold text-white mx-auto">Shows</h1>
-              <Divider marginClass="ml-5 my-5" />
+              <Divider marginClass="ml-5" />
             </div>
             {tvCategories.map((category) => (
               <div
