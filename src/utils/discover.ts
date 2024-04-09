@@ -44,3 +44,14 @@ export const categories: Category[] = [
     endpoint: "/movie/popular?language=en-US",
   },
 ];
+
+export const tvCategories: Category[] = [
+  {
+    name: "Top Rated",
+    endpoint: "/tv/top_rated?language=en-US",
+  },
+  {
+    name: "Most Popular",
+    endpoint: "/tv/popular?language=en-US",
+  },
+];

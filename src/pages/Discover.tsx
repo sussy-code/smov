@@ -15,6 +15,7 @@ import {
   Movie,
   TVShow,
   categories,
+  tvCategories,
 } from "@/utils/discover";
 
 import { PageTitle } from "./parts/util/PageTitle";
@@ -26,7 +27,7 @@ export function Discover() {
   const { t } = useTranslation();
   const [showBg] = useState<boolean>(false);
   const [genres, setGenres] = useState<Genre[]>([]);
-  const [randomMovie, setRandomMovie] = useState<Movie | null>(null); // Add this line
+  const [randomMovie, setRandomMovie] = useState<Movie | null>(null);
   const [genreMovies, setGenreMovies] = useState<{
     [genreId: number]: Movie[];
   }>({});
@@ -36,6 +37,9 @@ export function Discover() {
   const bgColor =
     currentTheme?.extend?.colors?.background?.accentA ?? "#7831BF";
   const navigate = useNavigate();
+  const [categoryShows, setCategoryShows] = useState<{
+    [categoryName: string]: Movie[];
+  }>({});
   const [categoryMovies, setCategoryMovies] = useState<{
     [categoryName: string]: Movie[];
   }>({});
@@ -69,6 +73,28 @@ export function Discover() {
       }
     };
     categories.forEach(fetchMoviesForCategory);
+  }, []);
+
+  useEffect(() => {
+    const fetchShowsForCategory = async (category: Category) => {
+      try {
+        const data = await get<any>(category.endpoint, {
+          api_key: conf().TMDB_READ_API_KEY,
+          language: "en-US",
+        });
+
+        setCategoryShows((prevCategoryShows) => ({
+          ...prevCategoryShows,
+          [category.name]: data.results,
+        }));
+      } catch (error) {
+        console.error(
+          `Error fetching movies for category ${category.name}:`,
+          error,
+        );
+      }
+    };
+    tvCategories.forEach(fetchShowsForCategory);
   }, []);
 
   // Fetch TV show genres
@@ -215,7 +241,7 @@ export function Discover() {
   };
 
   function renderMovies(medias: Media[], category: string, isTVShow = false) {
-    const categorySlug = category.toLowerCase().replace(/ /g, "-"); // Convert the category to a slug
+    const categorySlug = `${category.toLowerCase().replace(/ /g, "-")}${Math.random()}`; // Convert the category to a slug
     const displayCategory =
       category === "Now Playing"
         ? "In Cinemas"
@@ -342,8 +368,8 @@ export function Discover() {
           [data.genres[i], data.genres[j]] = [data.genres[j], data.genres[i]];
         }
 
-        // Fetch only the first 6 genres
-        setGenres(data.genres.slice(0, 6));
+        // Fetch only the first 5 genres
+        setGenres(data.genres.slice(0, 5));
       } catch (error) {
         console.error("Error fetching genres:", error);
       }
@@ -479,6 +505,21 @@ export function Discover() {
               <h1 className="text-4xl font-bold text-white mx-auto">Shows</h1>
               <Divider marginClass="ml-5 my-5" />
             </div>
+            {tvCategories.map((category) => (
+              <div
+                key={category.name}
+                id={`carousel-${category.name
+                  .toLowerCase()
+                  .replace(/ /g, "-")}`}
+                className="mt-8"
+              >
+                {renderMovies(
+                  categoryShows[category.name] || [],
+                  category.name,
+                  true,
+                )}
+              </div>
+            ))}
             {tvGenres.map((genre) => (
               <div
                 key={genre.id}
