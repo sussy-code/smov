@@ -14,6 +14,7 @@ const tokens = {
     c900: "#0b0d22"
   },
   shade: {
+    c25: "#9c9c9c",
     c50: "#7c7c7c",
     c100: "#666666",
     c200: "#4f4f4f",
@@ -121,7 +122,7 @@ export default createTheme({
 
       mediaCard: {
         hoverBackground: tokens.shade.c600,
-        hoverAccent: tokens.shade.c50,
+        hoverAccent: tokens.shade.c25,
         hoverShadow: tokens.shade.c900,
         shadow: tokens.shade.c700,
         barColor: tokens.ash.c200,

@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { ThinContainer } from "@/components/layout/ThinContainer";
 import { WideContainer } from "@/components/layout/WideContainer";
 import { Divider } from "@/components/utils/Divider";
+import { Flare } from "@/components/utils/Flare";
 import { HomeLayout } from "@/pages/layouts/HomeLayout";
 import { conf } from "@/setup/config";
 import { useThemeStore } from "@/stores/theme";
@@ -270,30 +271,51 @@ export function Discover() {
           onWheel={(e) => handleWheel(e, categorySlug)}
         >
           {medias.slice(0, 20).map((media) => (
-            <a
-              key={media.id}
-              onClick={
-                () =>
+            <Flare.Base
+              className="group -m-[0.705em] p-[0.2em] rounded-xl bg-background-main transition-colors duration-300 focus:relative focus:z-10 hover:bg-mediaCard-hoverBackground tabbable"
+              tabIndex={0} // Assuming all items are linkable for simplicity; adjust as needed
+              onKeyUp={(e) => {
+                if (e.key === "Enter") {
                   navigate(
                     `/media/tmdb-${isTVShow ? "tv" : "movie"}-${media.id}-${
                       isTVShow ? media.name : media.title
                     }`,
-                  )
-                // Navigate instead of href!
-              }
-              rel="noopener noreferrer"
-              className="block rounded-xl text-center relative overflow-hidden transition-transform transform hover:scale-95 duration-500 mr-5"
-              style={{ flex: `0 0 ${movieWidth}` }} // Set a fixed width for each movie
+                  );
+                }
+              }}
             >
-              <img
-                src={`https://image.tmdb.org/t/p/w500${media.poster_path}`} // Dont change this fucking line!
-                alt={isTVShow ? media.name : media.title}
-                loading="lazy"
-                className="rounded-xl"
+              <Flare.Light
+                flareSize={300}
+                cssColorVar="--colors-mediaCard-hoverAccent"
+                backgroundClass="bg-mediaCard-hoverBackground duration-100"
+                className="rounded-xl bg-background-main group-hover:opacity-100"
               />
-            </a>
+              <Flare.Child className="pointer-events-auto relative mb-2 p-3 transition-transform duration-300 group-hover:scale-95">
+                <a
+                  key={media.id}
+                  onClick={() =>
+                    navigate(
+                      `/media/tmdb-${isTVShow ? "tv" : "movie"}-${media.id}-${
+                        isTVShow ? media.name : media.title
+                      }`,
+                    )
+                  }
+                  rel="noopener noreferrer"
+                  className="block rounded-xl text-center relative overflow-hidden transition-transform transform hover:scale-95 duration-500 mr-5"
+                  style={{ flex: `0 0 ${movieWidth}` }} // Set a fixed width for each movie
+                >
+                  <img
+                    src={`https://image.tmdb.org/t/p/w500${media.poster_path}`}
+                    alt={isTVShow ? media.name : media.title}
+                    loading="lazy"
+                    className="rounded-xl"
+                  />
+                </a>
+              </Flare.Child>
+            </Flare.Base>
           ))}
         </div>
+
         <button
           type="button"
           title="Back"
