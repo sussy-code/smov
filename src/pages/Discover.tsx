@@ -252,7 +252,7 @@ export function Discover() {
             ? `${category} Shows`
             : `${category} Movies`;
     return (
-      <div className="relative overflow-hidden mt-2 rounded-xl">
+      <div className="relative overflow-hidden mt-2">
         <h2 className="text-2xl font-bold text-white sm:text-3xl md:text-2xl mx-auto pl-5">
           {displayCategory}
         </h2>
