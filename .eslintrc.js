@@ -103,7 +103,6 @@ module.exports = {
         allowSeparatedGroups: true
       }
     ],
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
     ...a11yOff
   }
 };

@@ -1,5 +1,4 @@
 import classNames from "classnames";
-import { debounce, throttle } from "lodash";
 import { useCallback, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -102,23 +101,23 @@ export function NextEpisodeButton(props: {
   ]);
 
   useEffect(() => {
-    if (!enableAutoplay || !meta || !nextEp || metaType !== "show") return;
-    const halfPercent = duration / 100;
-    const isEnding = time >= duration - halfPercent && duration !== 0;
+    if (!enableAutoplay || metaType !== "show") return;
 
-    const debouncedLoadNextEpisode = throttle(debounce(loadNextEpisode), 300);
-    const allowAutoplay = Boolean(
-      conf().ALLOW_AUTOPLAY ||
-        isExtensionActiveCached() ||
-        useAuthStore.getState().proxySet,
-    );
+    const interval = setInterval(() => {
+      const onePercent = duration / 100;
+      const isEnding = time >= duration - onePercent && duration !== 0;
 
-    if (isEnding && allowAutoplay) debouncedLoadNextEpisode();
+      const allowAutoplay = Boolean(
+        conf().ALLOW_AUTOPLAY ||
+          isExtensionActiveCached() ||
+          useAuthStore.getState().proxySet,
+      );
 
-    return () => {
-      debouncedLoadNextEpisode.cancel();
-    };
-  }, [duration, enableAutoplay, loadNextEpisode, meta, metaType, nextEp, time]);
+      if (isEnding && allowAutoplay) loadNextEpisode();
+    }, 250);
+
+    return () => clearInterval(interval);
+  }, [duration, enableAutoplay, loadNextEpisode, metaType, time]);
 
   if (!meta?.episode || !nextEp) return null;
   if (metaType !== "show") return null;
