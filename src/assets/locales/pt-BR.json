@@ -155,7 +155,8 @@
     "types": {
       "movie": "Filme",
       "show": "Série"
-    }
+    },
+    "unreleased": "Não lançado"
   },
   "navigation": {
     "banner": {
@@ -381,6 +382,13 @@
       "title": "Falha ao reproduzir o vídeo!"
     },
     "scraping": {
+      "extensionFailure": {
+        "badge": "Extensão desativada",
+        "enableExtension": "Ativar extensão",
+        "homeButton": "Ir para o início",
+        "text": "Você instalou a extensão movie-web. Para começar a usá-la, você precisa ativar a extensão neste site.",
+        "title": "Por favor, ative a extensão"
+      },
       "items": {
         "failure": "Ocorreu um erro",
         "notFound": "Não tem o vídeo",

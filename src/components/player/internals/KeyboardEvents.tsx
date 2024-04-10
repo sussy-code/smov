@@ -71,9 +71,10 @@ export function KeyboardEvents() {
         return;
 
       const k = evt.key;
+      const keyL = evt.key.toLowerCase();
 
       // Volume
-      if (["ArrowUp", "ArrowDown", "m"].includes(k)) {
+      if (["ArrowUp", "ArrowDown", "m", "M"].includes(k)) {
         dataRef.current.setShowVolume(true);
 
         if (volumeDebounce.current) clearTimeout(volumeDebounce.current);
@@ -89,7 +90,7 @@ export function KeyboardEvents() {
         dataRef.current.setVolume(
           (dataRef.current.mediaPlaying?.volume || 0) - 0.15,
         );
-      if (k === "m") dataRef.current.toggleMute();
+      if (keyL === "m") dataRef.current.toggleMute();
 
       // Video playback speed
       if (k === ">" || k === "<") {
@@ -106,9 +107,9 @@ export function KeyboardEvents() {
         dataRef.current.display?.setTime(dataRef.current.time + 5);
       if (k === "ArrowLeft")
         dataRef.current.display?.setTime(dataRef.current.time - 5);
-      if (k === "j")
+      if (keyL === "j")
         dataRef.current.display?.setTime(dataRef.current.time - 10);
-      if (k === "l")
+      if (keyL === "l")
         dataRef.current.display?.setTime(dataRef.current.time + 10);
       if (k === "." && dataRef.current.mediaPlaying?.isPaused)
         dataRef.current.display?.setTime(dataRef.current.time + 1);
@@ -116,18 +117,18 @@ export function KeyboardEvents() {
         dataRef.current.display?.setTime(dataRef.current.time - 1);
 
       // Utils
-      if (k === "f") dataRef.current.display?.toggleFullscreen();
-      if (k === " ")
+      if (keyL === "f") dataRef.current.display?.toggleFullscreen();
+      if (k === " " || keyL === "k")
         dataRef.current.display?.[
           dataRef.current.mediaPlaying.isPaused ? "play" : "pause"
         ]();
       if (k === "Escape") dataRef.current.router.close();
 
       // captions
-      if (k === "c") dataRef.current.toggleLastUsed().catch(() => {}); // ignore errors
+      if (keyL === "c") dataRef.current.toggleLastUsed().catch(() => {}); // ignore errors
 
       // Do a barrell roll!
-      if (k === "r") {
+      if (keyL === "r") {
         if (dataRef.current.isRolling || evt.ctrlKey || evt.metaKey) return;
 
         dataRef.current.setIsRolling(true);
