@@ -258,7 +258,7 @@ export function Discover() {
         </h2>
         <div
           id={`carousel-${categorySlug}`}
-          className="flex whitespace-nowrap overflow-auto scrollbar pb-2 rounded-xl"
+          className="flex whitespace-nowrap overflow-auto pb-2 scrollbar rounded-xl"
           style={{
             scrollbarWidth: "thin",
             scrollbarColor: `${bgColor} transparent`,
@@ -284,7 +284,7 @@ export function Discover() {
               style={{ flex: `0 0 ${movieWidth}` }} // Set a fixed width for each movie
             >
               <div className="relative transition-transform hover:scale-105 duration-[0.45s]">
-                <Flare.Base className="group cursor-pointer rounded-xl relative p-[0.6em] bg-background-main transition-colors duration-300">
+                <Flare.Base className="group cursor-pointer rounded-xl relative p-[0.65em] bg-background-main transition-colors duration-300">
                   <Flare.Light
                     flareSize={225}
                     cssColorVar="--colors-mediaCard-hoverAccent"
@@ -298,7 +298,7 @@ export function Discover() {
                     className="rounded-xl relative"
                     style={{ width: "200px", height: "auto" }}
                   />
-                  <h1 className="relative pt-2 whitespace-normal break-words font-semibold text-white">
+                  <h1 className="relative pt-2 text-[14.75px] whitespace-normal break-words font-semibold text-white">
                     {isTVShow ? media.name : media.title}
                   </h1>
                 </Flare.Base>
@@ -307,26 +307,28 @@ export function Discover() {
           ))}
         </div>
 
-        <button
-          type="button"
-          title="Back"
-          className="absolute top-1/2 pb-12 transform -translate-y-1/2 z-10 left-5"
-          onClick={() => scrollCarousel(categorySlug, "left")}
-        >
-          <div className="cursor-pointer text-white flex justify-center items-center h-10 w-10 rounded-full bg-search-hoverBackground active:scale-110 transition-[transform,background-color] duration-200">
-            <Icon icon={Icons.ARROW_LEFT} />
-          </div>
-        </button>
-        <button
-          type="button"
-          title="Next"
-          className="absolute top-1/2 pb-12 right-5 transform -translate-y-1/2 z-10"
-          onClick={() => scrollCarousel(categorySlug, "right")}
-        >
-          <div className="cursor-pointer text-white flex justify-center items-center h-10 w-10 rounded-full bg-search-hoverBackground active:scale-110 transition-[transform,background-color] duration-200">
-            <Icon icon={Icons.ARROW_RIGHT} />
-          </div>
-        </button>
+        <div className="flex items-center justify-center">
+          <button
+            type="button"
+            title="Back"
+            className="absolute top-1/2 transform -translate-y-1/2 z-10 left-5"
+            onClick={() => scrollCarousel(categorySlug, "left")}
+          >
+            <div className="cursor-pointer text-white flex justify-center items-center h-10 w-10 rounded-full bg-search-hoverBackground active:scale-110 transition-[transform,background-color] duration-200">
+              <Icon icon={Icons.ARROW_LEFT} />
+            </div>
+          </button>
+          <button
+            type="button"
+            title="Next"
+            className="absolute top-1/2 right-5 transform -translate-y-1/2 z-10"
+            onClick={() => scrollCarousel(categorySlug, "right")}
+          >
+            <div className="cursor-pointer text-white flex justify-center items-center h-10 w-10 rounded-full bg-search-hoverBackground active:scale-110 transition-[transform,background-color] duration-200">
+              <Icon icon={Icons.ARROW_RIGHT} />
+            </div>
+          </button>
+        </div>
       </div>
     );
   }
