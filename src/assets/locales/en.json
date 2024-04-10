@@ -94,7 +94,7 @@
   "footer": {
     "legal": {
       "disclaimer": "Disclaimer ◝(ᵔᵕᵔ)◜",
-      "disclaimerText": "Please note, sudo-flix does not host any files itself but instead only display's content from 3rd party providers. Legal issues should be taken up with them."
+      "disclaimerText": "Please note: sudo-flix does not host any files itself but instead only display's content from 3rd party providers. Legal issues should be taken up with them."
     },
     "links": {
       "discord": "Discord",
@@ -292,7 +292,7 @@
         "copyHlsPlaylist": "Copy HLS playlist link",
         "downloadSubtitle": "Download current subtitle",
         "downloadVideo": "Download video",
-        "hlsDisclaimer": "Downloads are taken directly from the provider. sudo-flix does not have control over how the downloads are provided.<br /><br />Please note that you are downloading an HLS playlist, <bold>it is not recommended to download if you are not familiar with advanced streaming formats</bold>. Try different sources for different formats.",
+        "hlsDisclaimer": "Downloads are taken directly from the provider. sudo-flix does not have control over how the downloads are provided.<br /><br />Please note you are downloading an HLS playlist, <bold>it is not recommended to download if you are not familiar with advanced streaming formats</bold>. Try different sources for different formats.",
         "onAndroid": {
           "1": "To download on Android, click the download button then, on the new page, <bold>tap and hold</bold> on the video, then select <bold>save</bold>.",
           "shortTitle": "Download / Android",

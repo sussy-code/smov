@@ -18,7 +18,7 @@ function Question(props: { title: string; children: React.ReactNode }) {
   );
 }
 
-function Button(props: {
+export function Button(props: {
   className: string;
   onClick?: () => void;
   children: React.ReactNode;

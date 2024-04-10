@@ -113,8 +113,8 @@ export function Discover() {
           [data.genres[i], data.genres[j]] = [data.genres[j], data.genres[i]];
         }
 
-        // Fetch only the first 6 TV show genres
-        setTVGenres(data.genres.slice(0, 6));
+        // Fetch only the first 5 TV show genres
+        setTVGenres(data.genres.slice(0, 5));
       } catch (error) {
         console.error("Error fetching TV show genres:", error);
       }
@@ -252,7 +252,7 @@ export function Discover() {
             ? `${category} Shows`
             : `${category} Movies`;
     return (
-      <div className="relative overflow-hidden mt-2">
+      <div className="relative overflow-hidden rounded-xl mt-2">
         <h2 className="text-2xl font-bold text-white sm:text-3xl md:text-2xl mx-auto pl-5">
           {displayCategory}
         </h2>
@@ -286,7 +286,7 @@ export function Discover() {
               <div className="relative transition-transform hover:scale-105 duration-[0.45s]">
                 <Flare.Base className="group cursor-pointer rounded-xl relative p-[0.6em] bg-background-main transition-colors duration-300">
                   <Flare.Light
-                    flareSize={250}
+                    flareSize={225}
                     cssColorVar="--colors-mediaCard-hoverAccent"
                     backgroundClass="bg-mediaCard-hoverBackground duration-200"
                     className="rounded-xl bg-background-main group-hover:opacity-100"
@@ -381,8 +381,8 @@ export function Discover() {
           [data.genres[i], data.genres[j]] = [data.genres[j], data.genres[i]];
         }
 
-        // Fetch only the first 5 genres
-        setGenres(data.genres.slice(0, 5));
+        // Fetch only the first 4 genres
+        setGenres(data.genres.slice(0, 4));
       } catch (error) {
         console.error("Error fetching genres:", error);
       }
@@ -396,8 +396,8 @@ export function Discover() {
     const fetchMoviesForGenre = async (genreId: number) => {
       try {
         const movies: any[] = [];
-        for (let page = 1; page <= 6; page += 1) {
-          // Fetch only 6 pages
+        for (let page = 1; page <= 5; page += 1) {
+          // Fetch only 5 pages
           const data = await get<any>("/discover/movie", {
             api_key: conf().TMDB_READ_API_KEY,
             with_genres: genreId.toString(),
