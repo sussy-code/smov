@@ -252,7 +252,7 @@ export function Discover() {
             ? `${category} Shows`
             : `${category} Movies`;
     return (
-      <div className="relative overflow-hidden rounded-xl mt-2">
+      <div className="relative overflow-hidden mt-2">
         <h2 className="text-2xl font-bold text-white sm:text-3xl md:text-2xl mx-auto pl-5">
           {displayCategory}
         </h2>
@@ -296,9 +296,8 @@ export function Discover() {
                     alt="failed to fetch :("
                     loading="lazy"
                     className="rounded-xl relative"
-                    style={{ width: "200px", height: "auto" }}
                   />
-                  <h1 className="relative pt-2 text-[14.75px] whitespace-normal break-words font-semibold text-white">
+                  <h1 className="group relative pt-2 text-[13.5px] whitespace-normal duration-[0.35s] break-words font-semibold text-white opacity-0 group-hover:opacity-100">
                     {isTVShow ? media.name : media.title}
                   </h1>
                 </Flare.Base>
