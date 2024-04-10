@@ -284,7 +284,7 @@ export function Discover() {
               style={{ flex: `0 0 ${movieWidth}` }} // Set a fixed width for each movie
             >
               <div className="relative transition-transform hover:scale-105 duration-[0.45s]">
-                <Flare.Base className="group rounded-xl relative p-[0.6em] bg-background-main transition-colors duration-300">
+                <Flare.Base className="group cursor-pointer rounded-xl relative p-[0.6em] bg-background-main transition-colors duration-300">
                   <Flare.Light
                     flareSize={250}
                     cssColorVar="--colors-mediaCard-hoverAccent"
