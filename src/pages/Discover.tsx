@@ -310,7 +310,7 @@ export function Discover() {
         <button
           type="button"
           title="Back"
-          className="absolute top-1/2 transform -translate-y-1/2 z-10 left-5"
+          className="absolute top-1/2 pb-12 transform -translate-y-1/2 z-10 left-5"
           onClick={() => scrollCarousel(categorySlug, "left")}
         >
           <div className="cursor-pointer text-white flex justify-center items-center h-10 w-10 rounded-full bg-search-hoverBackground active:scale-110 transition-[transform,background-color] duration-200">
@@ -320,7 +320,7 @@ export function Discover() {
         <button
           type="button"
           title="Next"
-          className="absolute top-1/2 right-5 transform -translate-y-1/2 z-10"
+          className="absolute top-1/2 pb-12 right-5 transform -translate-y-1/2 z-10"
           onClick={() => scrollCarousel(categorySlug, "right")}
         >
           <div className="cursor-pointer text-white flex justify-center items-center h-10 w-10 rounded-full bg-search-hoverBackground active:scale-110 transition-[transform,background-color] duration-200">
