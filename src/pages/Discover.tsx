@@ -270,7 +270,7 @@ export function Discover() {
           onMouseLeave={handleMouseLeave}
           onWheel={(e) => handleWheel(e, categorySlug)}
         >
-          {medias.slice(0, 25).map((media) => (
+          {medias.slice(0, 20).map((media) => (
             <a
               key={media.id}
               onClick={() =>
