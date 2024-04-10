@@ -66,7 +66,7 @@ function MediaCardContent({
 
   return (
     <Flare.Base
-      className={`group -m-[0.705em] p-[0.2em] rounded-xl bg-background-main transition-colors duration-300 focus:relative focus:z-10 ${
+      className={`group -m-[0.705em] rounded-xl bg-background-main transition-colors duration-300 focus:relative focus:z-10 ${
         canLink ? "hover:bg-mediaCard-hoverBackground tabbable" : ""
       }`}
       tabIndex={canLink ? 0 : -1}
