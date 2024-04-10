@@ -252,13 +252,13 @@ export function Discover() {
             ? `${category} Shows`
             : `${category} Movies`;
     return (
-      <div className="relative overflow-hidden mt-4 rounded-xl">
-        <h2 className="text-2xl font-bold text-white sm:text-3xl md:text-2xl mx-auto pl-2">
+      <div className="relative overflow-hidden mt-2 rounded-xl">
+        <h2 className="text-2xl font-bold text-white sm:text-3xl md:text-2xl mx-auto pl-5">
           {displayCategory}
         </h2>
         <div
           id={`carousel-${categorySlug}`}
-          className="flex whitespace-nowrap overflow-auto scrollbar pb-6 mb-4 mt-4 rounded-xl"
+          className="flex whitespace-nowrap overflow-auto scrollbar pb-3 mb-2 rounded-xl"
           style={{
             scrollbarWidth: "thin",
             scrollbarColor: `${bgColor} transparent`,
@@ -270,56 +270,47 @@ export function Discover() {
           onMouseLeave={handleMouseLeave}
           onWheel={(e) => handleWheel(e, categorySlug)}
         >
-          {medias.slice(0, 20).map((media) => (
-            <Flare.Base
-              className="group -m-[0.705em] p-[0.2em] rounded-xl bg-background-main transition-colors duration-300 focus:relative focus:z-10 hover:bg-mediaCard-hoverBackground tabbable"
-              tabIndex={0} // Assuming all items are linkable for simplicity; adjust as needed
-              onKeyUp={(e) => {
-                if (e.key === "Enter") {
-                  navigate(
-                    `/media/tmdb-${isTVShow ? "tv" : "movie"}-${media.id}-${
-                      isTVShow ? media.name : media.title
-                    }`,
-                  );
-                }
-              }}
+          {medias.slice(0, 25).map((media) => (
+            <a
+              key={media.id}
+              onClick={() =>
+                navigate(
+                  `/media/tmdb-${isTVShow ? "tv" : "movie"}-${media.id}-${
+                    isTVShow ? media.name : media.title
+                  }`,
+                )
+              }
+              className="text-center relative mt-4 mb-4 ml-[0.4em] mr-[0.2em]"
+              style={{ flex: `0 0 ${movieWidth}` }} // Set a fixed width for each movie
             >
-              <Flare.Light
-                flareSize={300}
-                cssColorVar="--colors-mediaCard-hoverAccent"
-                backgroundClass="bg-mediaCard-hoverBackground duration-100"
-                className="rounded-xl bg-background-main group-hover:opacity-100"
-              />
-              <Flare.Child className="pointer-events-auto relative mb-2 p-3 transition-transform duration-300 group-hover:scale-95">
-                <a
-                  key={media.id}
-                  onClick={() =>
-                    navigate(
-                      `/media/tmdb-${isTVShow ? "tv" : "movie"}-${media.id}-${
-                        isTVShow ? media.name : media.title
-                      }`,
-                    )
-                  }
-                  rel="noopener noreferrer"
-                  className="block rounded-xl text-center relative overflow-hidden transition-transform transform hover:scale-95 duration-500 mr-5"
-                  style={{ flex: `0 0 ${movieWidth}` }} // Set a fixed width for each movie
-                >
+              <div className="relative transition-transform hover:scale-105 duration-[0.45s]">
+                <Flare.Base className="group rounded-xl relative p-[0.6em] bg-background-main transition-colors duration-300">
+                  <Flare.Light
+                    flareSize={250}
+                    cssColorVar="--colors-mediaCard-hoverAccent"
+                    backgroundClass="bg-mediaCard-hoverBackground duration-200"
+                    className="rounded-xl bg-background-main group-hover:opacity-100"
+                  />
                   <img
                     src={`https://image.tmdb.org/t/p/w500${media.poster_path}`}
-                    alt={isTVShow ? media.name : media.title}
+                    alt="failed to fetch :("
                     loading="lazy"
-                    className="rounded-xl"
+                    className="rounded-xl relative"
+                    style={{ width: "200px", height: "auto" }}
                   />
-                </a>
-              </Flare.Child>
-            </Flare.Base>
+                  <span className="relative items-center justify-center pt-[0.35em] whitespace-normal break-words font-semibold text-white">
+                    {isTVShow ? media.name : media.title}
+                  </span>
+                </Flare.Base>
+              </div>
+            </a>
           ))}
         </div>
 
         <button
           type="button"
           title="Back"
-          className="absolute top-1/2 transform -translate-y-1/2 z-10 left-2"
+          className="absolute top-1/2 transform -translate-y-1/2 z-10 left-5"
           onClick={() => scrollCarousel(categorySlug, "left")}
         >
           <div className="cursor-pointer text-white flex justify-center items-center h-10 w-10 rounded-full bg-search-hoverBackground active:scale-110 transition-[transform,background-color] duration-200">
@@ -329,7 +320,7 @@ export function Discover() {
         <button
           type="button"
           title="Next"
-          className="absolute top-1/2 right-2 transform -translate-y-1/2 z-10"
+          className="absolute top-1/2 right-5 transform -translate-y-1/2 z-10"
           onClick={() => scrollCarousel(categorySlug, "right")}
         >
           <div className="cursor-pointer text-white flex justify-center items-center h-10 w-10 rounded-full bg-search-hoverBackground active:scale-110 transition-[transform,background-color] duration-200">
