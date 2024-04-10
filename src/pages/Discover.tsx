@@ -298,7 +298,7 @@ export function Discover() {
                     className="rounded-xl relative"
                     style={{ width: "200px", height: "auto" }}
                   />
-                  <span className="relative items-center justify-center pt-[0.35em] whitespace-normal break-words font-semibold text-white">
+                  <span className="relative items-center justify-center pt-2 whitespace-normal break-words font-semibold text-white">
                     {isTVShow ? media.name : media.title}
                   </span>
                 </Flare.Base>
