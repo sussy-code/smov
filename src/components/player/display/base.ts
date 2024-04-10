@@ -12,6 +12,7 @@ import {
 } from "@/components/player/display/displayInterface";
 import { handleBuffered } from "@/components/player/utils/handleBuffered";
 import { getMediaErrorDetails } from "@/components/player/utils/mediaErrorDetails";
+import { useLanguageStore } from "@/stores/language";
 import {
   LoadableSource,
   SourceQuality,
@@ -83,7 +84,13 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
 
   function reportAudioTracks() {
     if (!hls) return;
-    const currentTrack = hls.audioTracks?.[hls.audioTrack ?? 0];
+    const currentLanguage = useLanguageStore.getState().language;
+    const audioTracks = hls.audioTracks;
+    const languageTrack = audioTracks.find((v) => v.lang === currentLanguage);
+    if (languageTrack) {
+      hls.audioTrack = audioTracks.indexOf(languageTrack);
+    }
+    const currentTrack = audioTracks?.[hls.audioTrack ?? 0];
     if (!currentTrack) return;
     emit("changedaudiotrack", {
       id: currentTrack.id.toString(),
