@@ -258,7 +258,7 @@ export function Discover() {
         </h2>
         <div
           id={`carousel-${categorySlug}`}
-          className="flex whitespace-nowrap pt-3 overflow-auto rounded-xl"
+          className="flex whitespace-nowrap pt-3 overflow-auto rounded-xl overflow-x-hidden"
           style={{
             scrollbarWidth: "thin",
             // scrollbarColor: `${bgColor} transparent`,
@@ -311,7 +311,7 @@ export function Discover() {
           <button
             type="button"
             title="Back"
-            className="absolute pb-12 left-5 top-1/2 transform -translate-y-1/2 z-10"
+            className="absolute pb-8 left-5 top-1/2 transform -translate-y-1/2 z-10"
             onClick={() => scrollCarousel(categorySlug, "left")}
           >
             <div className="cursor-pointer text-white flex justify-center items-center h-10 w-10 rounded-full bg-search-hoverBackground active:scale-110 transition-[transform,background-color] duration-200">
@@ -321,7 +321,7 @@ export function Discover() {
           <button
             type="button"
             title="Next"
-            className="absolute pb-12 right-5 top-1/2 transform -translate-y-1/2 z-10"
+            className="absolute pb-8 right-5 top-1/2 transform -translate-y-1/2 z-10"
             onClick={() => scrollCarousel(categorySlug, "right")}
           >
             <div className="cursor-pointer text-white flex justify-center items-center h-10 w-10 rounded-full bg-search-hoverBackground active:scale-110 transition-[transform,background-color] duration-200">
