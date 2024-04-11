@@ -83,9 +83,9 @@ export function PreferencesPart(props: {
           }
           className={classNames(
             "bg-dropdown-background hover:bg-dropdown-hoverBackground select-none my-4 cursor-pointer space-x-3 flex items-center max-w-[25rem] py-3 px-4 rounded-lg",
-            allowAutoplay ? "cursor-pointer" : "cursor-not-allowed",
-            allowAutoplay ? "opacity-100" : "opacity-50",
-            allowAutoplay ? "pointer-events-auto" : "pointer-events-none",
+            allowAutoplay
+              ? "cursor-pointer opacity-100 pointer-events-auto"
+              : "cursor-not-allowed opacity-50 pointer-events-none",
           )}
         >
           <Toggle enabled={props.enableAutoplay && allowAutoplay} />
