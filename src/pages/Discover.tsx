@@ -8,7 +8,6 @@ import { Divider } from "@/components/utils/Divider";
 import { Flare } from "@/components/utils/Flare";
 import { HomeLayout } from "@/pages/layouts/HomeLayout";
 import { conf } from "@/setup/config";
-import { useThemeStore } from "@/stores/theme";
 import {
   Category,
   Genre,
@@ -20,7 +19,6 @@ import {
 } from "@/utils/discover";
 
 import { PageTitle } from "./parts/util/PageTitle";
-import { allThemes } from "../../themes/all";
 import { get } from "../backend/metadata/tmdb";
 import { Icon, Icons } from "../components/Icon";
 
@@ -33,10 +31,6 @@ export function Discover() {
     [genreId: number]: Movie[];
   }>({});
   const [countdown, setCountdown] = useState<number | null>(null);
-  const themeName = useThemeStore((s) => s.theme);
-  const currentTheme = allThemes.find((y) => y.name === themeName);
-  const bgColor =
-    currentTheme?.extend?.colors?.background?.accentA ?? "#7831BF";
   const navigate = useNavigate();
   const [categoryShows, setCategoryShows] = useState<{
     [categoryName: string]: Movie[];
@@ -253,7 +247,7 @@ export function Discover() {
             : `${category} Movies`;
     return (
       <div className="relative overflow-hidden mt-2">
-        <h2 className="text-2xl font-bold text-white sm:text-3xl md:text-2xl mx-auto pl-6">
+        <h2 className="text-2xl cursor-default font-bold text-white sm:text-3xl md:text-2xl mx-auto pl-6">
           {displayCategory}
         </h2>
         <div
@@ -287,7 +281,7 @@ export function Discover() {
               <div className="relative transition-transform hover:scale-105 duration-[0.45s]">
                 <Flare.Base className="group cursor-pointer rounded-xl relative p-[0.65em] bg-background-main transition-colors duration-300">
                   <Flare.Light
-                    flareSize={225}
+                    flareSize={300}
                     cssColorVar="--colors-mediaCard-hoverAccent"
                     backgroundClass="bg-mediaCard-hoverBackground duration-200"
                     className="rounded-xl bg-background-main group-hover:opacity-100"
@@ -299,7 +293,13 @@ export function Discover() {
                     className="rounded-xl relative"
                   />
                   <h1 className="group relative pt-2 text-[13.5px] whitespace-normal duration-[0.35s] break-words font-semibold text-white opacity-0 group-hover:opacity-100">
-                    {isTVShow ? media.name : media.title}
+                    {isTVShow
+                      ? (media.name?.length ?? 0) > 36
+                        ? `${media.name?.slice(0, 36)}...`
+                        : media.name
+                      : (media.title?.length ?? 0) > 36
+                        ? `${media.title?.slice(0, 36)}...`
+                        : media.title}
                   </h1>
                 </Flare.Base>
               </div>
@@ -311,7 +311,7 @@ export function Discover() {
           <button
             type="button"
             title="Back"
-            className="absolute pb-5 left-5 top-1/2 transform -translate-y-1/2 z-10"
+            className="absolute pb-2 left-5 top-1/2 transform -translate-y-3/4 z-10"
             onClick={() => scrollCarousel(categorySlug, "left")}
           >
             <div className="cursor-pointer text-white flex justify-center items-center h-10 w-10 rounded-full bg-search-hoverBackground active:scale-110 transition-[transform,background-color] duration-200">
@@ -321,7 +321,7 @@ export function Discover() {
           <button
             type="button"
             title="Next"
-            className="absolute pb-5 right-5 top-1/2 transform -translate-y-1/2 z-10"
+            className="absolute pb-2 right-5 top-1/2 transform -translate-y-3/4 z-10"
             onClick={() => scrollCarousel(categorySlug, "right")}
           >
             <div className="cursor-pointer text-white flex justify-center items-center h-10 w-10 rounded-full bg-search-hoverBackground active:scale-110 transition-[transform,background-color] duration-200">
@@ -443,7 +443,7 @@ export function Discover() {
         <ThinContainer>
           <div className="mt-44 space-y-16 text-center">
             <div className="relative z-10 mb-16">
-              <h1 className="text-4xl font-bold text-white">
+              <h1 className="text-4xl cursor-default font-bold text-white">
                 {t("global.pages.discover")}
               </h1>
             </div>
