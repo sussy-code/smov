@@ -281,7 +281,7 @@ export function Discover() {
                   }`,
                 )
               }
-              className="text-center relative mt-3 ml-[0.285em] mr-[0.2em]"
+              className="text-center relative mt-3 ml-[0.285em] mb-3 mr-[0.2em]"
               style={{ flex: `0 0 ${movieWidth}` }} // Set a fixed width for each movie
             >
               <div className="relative transition-transform hover:scale-105 duration-[0.45s]">
@@ -311,7 +311,7 @@ export function Discover() {
           <button
             type="button"
             title="Back"
-            className="absolute pb-8 left-5 top-1/2 transform -translate-y-1/2 z-10"
+            className="absolute pb-5 left-5 top-1/2 transform -translate-y-1/2 z-10"
             onClick={() => scrollCarousel(categorySlug, "left")}
           >
             <div className="cursor-pointer text-white flex justify-center items-center h-10 w-10 rounded-full bg-search-hoverBackground active:scale-110 transition-[transform,background-color] duration-200">
@@ -321,7 +321,7 @@ export function Discover() {
           <button
             type="button"
             title="Next"
-            className="absolute pb-8 right-5 top-1/2 transform -translate-y-1/2 z-10"
+            className="absolute pb-5 right-5 top-1/2 transform -translate-y-1/2 z-10"
             onClick={() => scrollCarousel(categorySlug, "right")}
           >
             <div className="cursor-pointer text-white flex justify-center items-center h-10 w-10 rounded-full bg-search-hoverBackground active:scale-110 transition-[transform,background-color] duration-200">
