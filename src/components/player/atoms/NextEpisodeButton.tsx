@@ -1,17 +1,15 @@
 import classNames from "classnames";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 
-import { isExtensionActiveCached } from "@/backend/extension/messaging";
 import { Icon, Icons } from "@/components/Icon";
 import { usePlayerMeta } from "@/components/player/hooks/usePlayerMeta";
 import { Transition } from "@/components/utils/Transition";
-import { conf } from "@/setup/config";
-import { useAuthStore } from "@/stores/auth";
 import { PlayerMeta } from "@/stores/player/slices/source";
 import { usePlayerStore } from "@/stores/player/store";
 import { usePreferencesStore } from "@/stores/preferences";
 import { useProgressStore } from "@/stores/progress";
+import { isAutoplayAllowed } from "@/utils/autoplay";
 
 function shouldShowNextEpisodeButton(
   time: number,
@@ -64,6 +62,7 @@ export function NextEpisodeButton(props: {
   const enableAutoplay = usePreferencesStore((s) => s.enableAutoplay);
 
   let show = false;
+  const hasAutoplayed = useRef(false);
   if (showingState === "always") show = true;
   else if (showingState === "hover" && props.controlsShowing) show = true;
   if (isHidden || status !== "playing" || duration === 0) show = false;
@@ -102,21 +101,14 @@ export function NextEpisodeButton(props: {
 
   useEffect(() => {
     if (!enableAutoplay || metaType !== "show") return;
+    const onePercent = duration / 100;
+    const isEnding = time >= duration - onePercent && duration !== 0;
 
-    const interval = setInterval(() => {
-      const onePercent = duration / 100;
-      const isEnding = time >= duration - onePercent && duration !== 0;
-
-      const allowAutoplay = Boolean(
-        conf().ALLOW_AUTOPLAY ||
-          isExtensionActiveCached() ||
-          useAuthStore.getState().proxySet,
-      );
-
-      if (isEnding && allowAutoplay) loadNextEpisode();
-    }, 250);
-
-    return () => clearInterval(interval);
+    if (duration === 0) hasAutoplayed.current = false;
+    if (isEnding && isAutoplayAllowed() && !hasAutoplayed.current) {
+      hasAutoplayed.current = true;
+      loadNextEpisode();
+    }
   }, [duration, enableAutoplay, loadNextEpisode, metaType, time]);
 
   if (!meta?.episode || !nextEp) return null;

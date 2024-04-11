@@ -1,27 +1,13 @@
+import classNames from "classnames";
 import { useTranslation } from "react-i18next";
-import { useAsync } from "react-use";
 
-import { isExtensionActive } from "@/backend/extension/messaging";
 import { Toggle } from "@/components/buttons/Toggle";
 import { FlagIcon } from "@/components/FlagIcon";
 import { Dropdown } from "@/components/form/Dropdown";
 import { Heading1 } from "@/components/utils/Text";
-import { conf } from "@/setup/config";
 import { appLanguageOptions } from "@/setup/i18n";
-import { useAuthStore } from "@/stores/auth";
+import { isAutoplayAllowed } from "@/utils/autoplay";
 import { getLocaleInfo, sortLangCodes } from "@/utils/language";
-
-function useIsExtensionActive() {
-  const { loading, value } = useAsync(async () => {
-    const extensionStatus = (await isExtensionActive()) ? "success" : "unset";
-    return extensionStatus === "success";
-  }, []);
-
-  return {
-    loading,
-    active: value,
-  };
-}
 
 export function PreferencesPart(props: {
   language: string;
@@ -33,14 +19,8 @@ export function PreferencesPart(props: {
 }) {
   const { t } = useTranslation();
   const sorted = sortLangCodes(appLanguageOptions.map((item) => item.code));
-  const { loading, active } = useIsExtensionActive();
 
-  const extensionActive = active && !loading;
-  const allowAutoplay = Boolean(
-    conf().ALLOW_AUTOPLAY ||
-      extensionActive ||
-      useAuthStore.getState().proxySet,
-  );
+  const allowAutoplay = isAutoplayAllowed();
 
   const options = appLanguageOptions
     .sort((a, b) => sorted.indexOf(a.code) - sorted.indexOf(b.code))
@@ -101,12 +81,12 @@ export function PreferencesPart(props: {
               ? props.setEnableAutoplay(!props.enableAutoplay)
               : null
           }
-          className="bg-dropdown-background hover:bg-dropdown-hoverBackground select-none my-4 cursor-pointer space-x-3 flex items-center max-w-[25rem] py-3 px-4 rounded-lg"
-          style={{
-            pointerEvents: allowAutoplay ? "auto" : "none",
-            opacity: allowAutoplay ? 1 : 0.5,
-            cursor: allowAutoplay ? "pointer" : "not-allowed",
-          }}
+          className={classNames(
+            "bg-dropdown-background hover:bg-dropdown-hoverBackground select-none my-4 cursor-pointer space-x-3 flex items-center max-w-[25rem] py-3 px-4 rounded-lg",
+            allowAutoplay ? "cursor-pointer" : "cursor-not-allowed",
+            allowAutoplay ? "opacity-100" : "opacity-50",
+            allowAutoplay ? "pointer-events-auto" : "pointer-events-none",
+          )}
         >
           <Toggle enabled={props.enableAutoplay && allowAutoplay} />
           <p className="flex-1 text-white font-bold">
