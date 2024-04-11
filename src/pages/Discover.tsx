@@ -253,7 +253,7 @@ export function Discover() {
             : `${category} Movies`;
     return (
       <div className="relative overflow-hidden mt-2">
-        <h2 className="text-2xl font-bold text-white sm:text-3xl md:text-2xl mx-auto pl-5">
+        <h2 className="text-2xl font-bold text-white sm:text-3xl md:text-2xl mx-auto pl-6">
           {displayCategory}
         </h2>
         <div
@@ -281,7 +281,7 @@ export function Discover() {
                   }`,
                 )
               }
-              className="text-center relative mt-2 ml-[0.285em] mr-[0.2em]"
+              className="text-center relative mt-3 ml-[0.285em] mr-[0.2em]"
               style={{ flex: `0 0 ${movieWidth}` }} // Set a fixed width for each movie
             >
               <div className="relative transition-transform hover:scale-105 duration-[0.45s]">
