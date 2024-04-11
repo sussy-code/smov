@@ -22,8 +22,8 @@ dependencies:
     specifier: ^1.0.3
     version: 1.0.3
   '@movie-web/providers':
-    specifier: ^2.2.9
-    version: 2.2.9
+    specifier: github:sussy-code/sudo-providers
+    version: github.com/sussy-code/sudo-providers/b14fb15438b016859c55429904daaa3de9964750
   '@noble/hashes':
     specifier: ^1.4.0
     version: 1.4.0
@@ -1908,21 +1908,6 @@ packages:
   /@ladjs/country-language@1.0.3:
     resolution: {integrity: sha512-FJROu9/hh4eqVAGDyfL8vpv6Vb0qKHX1ozYLRZ+beUzD5xFf+3r0J+SVIWKviEa7W524Qvqou+ta1WrsRgzxGw==}
     engines: {node: '>= 14'}
-    dev: false
-
-  /@movie-web/providers@2.2.9:
-    resolution: {integrity: sha512-NHsyplM9Oe4DK3lIkNaEk0CqoQ6IqlaWXeDh01jj+DH4I4EJjSD4ow7OTeAC+BLz3Gwj6fh/vaE2WBGevPTDkQ==}
-    requiresBuild: true
-    dependencies:
-      cheerio: 1.0.0-rc.12
-      cookie: 0.6.0
-      crypto-js: 4.2.0
-      form-data: 4.0.0
-      iso-639-1: 3.1.2
-      nanoid: 3.3.7
-      node-fetch: 3.3.2
-      set-cookie-parser: 2.6.0
-      unpacker: 1.0.1
     dev: false
 
   /@noble/hashes@1.4.0:
@@ -7203,6 +7188,7 @@ packages:
 
   /workbox-google-analytics@7.0.0:
     resolution: {integrity: sha512-MEYM1JTn/qiC3DbpvP2BVhyIH+dV/5BjHk756u9VbwuAhu0QHyKscTnisQuz21lfRpOwiS9z4XdqeVAKol0bzg==}
+    deprecated: It is not compatible with newer versions of GA starting with v4, as long as you are using GAv3 it should be ok, but the package is not longer being maintained
     dependencies:
       workbox-background-sync: 7.0.0
       workbox-core: 7.0.0
@@ -7379,4 +7365,22 @@ packages:
       immer: 10.0.4
       react: 18.2.0
       use-sync-external-store: 1.2.0(react@18.2.0)
+    dev: false
+
+  github.com/sussy-code/sudo-providers/b14fb15438b016859c55429904daaa3de9964750:
+    resolution: {tarball: https://codeload.github.com/sussy-code/sudo-providers/tar.gz/b14fb15438b016859c55429904daaa3de9964750}
+    name: '@movie-web/providers'
+    version: 2.2.9
+    prepare: true
+    requiresBuild: true
+    dependencies:
+      cheerio: 1.0.0-rc.12
+      cookie: 0.6.0
+      crypto-js: 4.2.0
+      form-data: 4.0.0
+      iso-639-1: 3.1.2
+      nanoid: 3.3.7
+      node-fetch: 3.3.2
+      set-cookie-parser: 2.6.0
+      unpacker: 1.0.1
     dev: false
