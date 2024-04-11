@@ -258,10 +258,11 @@ export function Discover() {
         </h2>
         <div
           id={`carousel-${categorySlug}`}
-          className="flex whitespace-nowrap overflow-auto pb-2 scrollbar rounded-xl"
+          className="flex whitespace-nowrap overflow-auto rounded-xl"
           style={{
             scrollbarWidth: "thin",
-            scrollbarColor: `${bgColor} transparent`,
+            // scrollbarColor: `${bgColor} transparent`,
+            scrollbarColor: `transparent transparent`,
           }}
           ref={(el) => {
             carouselRefs.current[categorySlug] = el;
@@ -280,7 +281,7 @@ export function Discover() {
                   }`,
                 )
               }
-              className="text-center relative mt-4 mb-4 ml-[0.4em] mr-[0.2em]"
+              className="text-center relative mt-2 ml-[0.285em] mr-[0.2em]"
               style={{ flex: `0 0 ${movieWidth}` }} // Set a fixed width for each movie
             >
               <div className="relative transition-transform hover:scale-105 duration-[0.45s]">
@@ -310,7 +311,7 @@ export function Discover() {
           <button
             type="button"
             title="Back"
-            className="absolute top-1/2 transform -translate-y-1/2 z-10 left-5"
+            className="absolute pb-12 left-5 top-1/2 transform -translate-y-1/2 z-10"
             onClick={() => scrollCarousel(categorySlug, "left")}
           >
             <div className="cursor-pointer text-white flex justify-center items-center h-10 w-10 rounded-full bg-search-hoverBackground active:scale-110 transition-[transform,background-color] duration-200">
@@ -320,7 +321,7 @@ export function Discover() {
           <button
             type="button"
             title="Next"
-            className="absolute top-1/2 right-5 transform -translate-y-1/2 z-10"
+            className="absolute pb-12 right-5 top-1/2 transform -translate-y-1/2 z-10"
             onClick={() => scrollCarousel(categorySlug, "right")}
           >
             <div className="cursor-pointer text-white flex justify-center items-center h-10 w-10 rounded-full bg-search-hoverBackground active:scale-110 transition-[transform,background-color] duration-200">
@@ -514,7 +515,7 @@ export function Discover() {
                 {renderMovies(genreMovies[genre.id] || [], genre.name)}
               </div>
             ))}
-            <div className="flex items-center mt-6">
+            <div className="flex items-center">
               <Divider marginClass="mr-5" />
               <h1 className="text-4xl font-bold text-white mx-auto">Shows</h1>
               <Divider marginClass="ml-5" />
