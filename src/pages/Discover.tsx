@@ -258,7 +258,7 @@ export function Discover() {
         </h2>
         <div
           id={`carousel-${categorySlug}`}
-          className="flex whitespace-nowrap pt-3 overflow-auto rounded-xl overflow-x-hidden"
+          className="flex whitespace-nowrap pt-3 overflow-auto rounded-xl overflow-y-hidden"
           style={{
             scrollbarWidth: "thin",
             // scrollbarColor: `${bgColor} transparent`,
