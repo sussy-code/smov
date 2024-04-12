@@ -143,7 +143,8 @@ export function decodeTMDBId(
   };
 }
 
-const baseURL = "https://api.tmdb.org/3";
+const otherUrl = "https://api.tmdb.org/3";
+let baseURL = "https://api.themoviedb.org/3";
 
 const apiKey = conf().TMDB_READ_API_KEY;
 
@@ -155,13 +156,40 @@ const headers = {
 async function get<T>(url: string, params?: object): Promise<T> {
   if (!apiKey) throw new Error("TMDB API key not set");
 
-  const res = await mwFetch<any>(encodeURI(url), {
-    headers,
-    baseURL,
-    params: {
-      ...params,
-    },
-  });
+  const controller = new AbortController();
+  const { signal } = controller;
+
+  const timeoutId =
+    baseURL === otherUrl
+      ? setTimeout(() => controller.abort(), 15000)
+      : setTimeout(() => controller.abort(), 3000);
+  let res: Promise<T>;
+
+  try {
+    res = await mwFetch<any>(encodeURI(url), {
+      headers,
+      baseURL,
+      params: {
+        ...params,
+      },
+      signal,
+    });
+    clearTimeout(timeoutId);
+  } catch (err) {
+    if (baseURL !== otherUrl) {
+      baseURL = otherUrl;
+      res = await mwFetch<any>(encodeURI(url), {
+        headers,
+        baseURL,
+        params: {
+          ...params,
+        },
+      });
+    } else {
+      res = Promise.reject();
+    }
+  }
+
   return res;
 }
 
