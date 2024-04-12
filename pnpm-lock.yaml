@@ -23,7 +23,7 @@ dependencies:
     version: 1.0.3
   '@movie-web/providers':
     specifier: github:sussy-code/sudo-providers
-    version: github.com/sussy-code/sudo-providers/8de1c6cf887f55295d62174ca4ac6b4b8948f602
+    version: github.com/sussy-code/sudo-providers/dad78667d0a8a8ab66673ab9dac57a947fbe8b43
   '@noble/hashes':
     specifier: ^1.4.0
     version: 1.4.0
@@ -2101,7 +2101,7 @@ packages:
   /@surma/rollup-plugin-off-main-thread@2.2.3:
     resolution: {integrity: sha512-lR8q/9W7hZpMWweNiAKU7NQerBnzQQLvi8qnTDU/fxItPhtZVMbPV3lbCwjhIlNBe9Bbr5V+KHshvWmVSG9cxQ==}
     dependencies:
-      ejs: 3.1.9
+      ejs: 3.1.10
       json5: 2.2.3
       magic-string: 0.25.9
       string.prototype.matchall: 4.0.11
@@ -3338,8 +3338,8 @@ packages:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
     dev: true
 
-  /ejs@3.1.9:
-    resolution: {integrity: sha512-rC+QVNMJWv+MtPgkt0y+0rVEIdbtxVADApW9JXrUVlzHetgcyczP/E7DJmWJ4fJCZF2cPcBk0laWO9ZHMG3DmQ==}
+  /ejs@3.1.10:
+    resolution: {integrity: sha512-UeJmFfOrAQS8OJWPZ4qtgHyWExa088/MtK5UEyoJGFH67cDEXkZSviOiKRCZ4Xij0zxI3JECgYs3oKx+AizQBA==}
     engines: {node: '>=0.10.0'}
     hasBin: true
     dependencies:
@@ -7188,7 +7188,6 @@ packages:
 
   /workbox-google-analytics@7.0.0:
     resolution: {integrity: sha512-MEYM1JTn/qiC3DbpvP2BVhyIH+dV/5BjHk756u9VbwuAhu0QHyKscTnisQuz21lfRpOwiS9z4XdqeVAKol0bzg==}
-    deprecated: It is not compatible with newer versions of GA starting with v4, as long as you are using GAv3 it should be ok, but the package is not longer being maintained
     dependencies:
       workbox-background-sync: 7.0.0
       workbox-core: 7.0.0
@@ -7367,11 +7366,10 @@ packages:
       use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false
 
-  github.com/sussy-code/sudo-providers/8de1c6cf887f55295d62174ca4ac6b4b8948f602:
-    resolution: {tarball: https://codeload.github.com/sussy-code/sudo-providers/tar.gz/8de1c6cf887f55295d62174ca4ac6b4b8948f602}
+  github.com/sussy-code/sudo-providers/dad78667d0a8a8ab66673ab9dac57a947fbe8b43:
+    resolution: {tarball: https://codeload.github.com/sussy-code/sudo-providers/tar.gz/dad78667d0a8a8ab66673ab9dac57a947fbe8b43}
     name: '@movie-web/providers'
-    version: 2.2.9
-    prepare: true
+    version: 2.3.0
     requiresBuild: true
     dependencies:
       cheerio: 1.0.0-rc.12
