@@ -252,11 +252,11 @@ export function Discover() {
         </h2>
         <div
           id={`carousel-${categorySlug}`}
-          className="flex whitespace-nowrap pt-3 overflow-auto rounded-xl overflow-y-hidden"
+          className="flex whitespace-nowrap pt-4 overflow-auto scrollbar rounded-xl overflow-y-hidden"
           style={{
             scrollbarWidth: "thin",
             // scrollbarColor: `${bgColor} transparent`,
-            scrollbarColor: `transparent transparent`,
+            scrollbarColor: "transparent transparent",
           }}
           ref={(el) => {
             carouselRefs.current[categorySlug] = el;
