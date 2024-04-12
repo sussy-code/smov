@@ -156,13 +156,6 @@ const headers = {
 async function get<T>(url: string, params?: object): Promise<T> {
   if (!apiKey) throw new Error("TMDB API key not set");
 
-  const controller = new AbortController();
-  const { signal } = controller;
-
-  const timeoutId =
-    baseURL === otherUrl
-      ? setTimeout(() => controller.abort(), 15000)
-      : setTimeout(() => controller.abort(), 3000);
   let res: Promise<T>;
 
   try {
@@ -172,9 +165,8 @@ async function get<T>(url: string, params?: object): Promise<T> {
       params: {
         ...params,
       },
-      signal,
+      signal: AbortSignal.timeout(baseURL !== otherUrl ? 5000 : 30000),
     });
-    clearTimeout(timeoutId);
   } catch (err) {
     if (baseURL !== otherUrl) {
       baseURL = otherUrl;
