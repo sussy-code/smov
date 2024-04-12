@@ -2,7 +2,6 @@ import { ProviderControls, ScrapeMedia } from "@movie-web/providers";
 import classNames from "classnames";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
 import { useMountedState } from "react-use";
 import type { AsyncReturnType } from "type-fest";
 
@@ -39,7 +38,6 @@ export function ScrapingPart(props: ScrapingProps) {
   const { startScraping, sourceOrder, sources, currentSource } = useScrape();
   const isMounted = useMountedState();
   const { t } = useTranslation();
-  const navigate = useNavigate();
 
   const containerRef = useRef<HTMLDivElement | null>(null);
   const listRef = useRef<HTMLDivElement | null>(null);
@@ -163,7 +161,7 @@ export function ScrapingPart(props: ScrapingProps) {
             {t("notFound.goHome")}
           </Button>
           <Button
-            onClick={() => navigate(`/${window.location.href}`)}
+            onClick={() => window.location.reload()}
             theme="purple"
             padding="md:px-17 p-3"
             className="mt-6"
