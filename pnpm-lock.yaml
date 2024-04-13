@@ -23,7 +23,7 @@ dependencies:
     version: 1.0.3
   '@movie-web/providers':
     specifier: github:sussy-code/sudo-providers
-    version: github.com/sussy-code/sudo-providers/dad78667d0a8a8ab66673ab9dac57a947fbe8b43
+    version: github.com/sussy-code/sudo-providers/aa206a0330a96c97fc7bb44ace63575f2923174b
   '@noble/hashes':
     specifier: ^1.4.0
     version: 1.4.0
@@ -2840,7 +2840,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001609
-      electron-to-chromium: 1.4.735
+      electron-to-chromium: 1.4.736
       node-releases: 2.0.14
       update-browserslist-db: 1.0.13(browserslist@4.23.0)
 
@@ -3346,8 +3346,8 @@ packages:
       jake: 10.8.7
     dev: true
 
-  /electron-to-chromium@1.4.735:
-    resolution: {integrity: sha512-pkYpvwg8VyOTQAeBqZ7jsmpCjko1Qc6We1ZtZCjRyYbT5v4AIUKDy5cQTRotQlSSZmMr8jqpEt6JtOj5k7lR7A==}
+  /electron-to-chromium@1.4.736:
+    resolution: {integrity: sha512-Rer6wc3ynLelKNM4lOCg7/zPQj8tPOCB2hzD32PX9wd3hgRRi9MxEbmkFCokzcEhRVMiOVLjnL9ig9cefJ+6+Q==}
 
   /emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -7366,8 +7366,8 @@ packages:
       use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false
 
-  github.com/sussy-code/sudo-providers/dad78667d0a8a8ab66673ab9dac57a947fbe8b43:
-    resolution: {tarball: https://codeload.github.com/sussy-code/sudo-providers/tar.gz/dad78667d0a8a8ab66673ab9dac57a947fbe8b43}
+  github.com/sussy-code/sudo-providers/aa206a0330a96c97fc7bb44ace63575f2923174b:
+    resolution: {tarball: https://codeload.github.com/sussy-code/sudo-providers/tar.gz/aa206a0330a96c97fc7bb44ace63575f2923174b}
     name: '@movie-web/providers'
     version: 2.3.0
     requiresBuild: true
