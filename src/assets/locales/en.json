@@ -362,7 +362,8 @@
     },
     "nextEpisode": {
       "cancel": "Cancel",
-      "next": "Next episode"
+      "next": "Next episode",
+      "nextSeason": "Next season"
     },
     "playbackError": {
       "badge": "Playback error",
@@ -523,6 +524,9 @@
       "thumbnail": "Generate thumbnails",
       "thumbnailDescription": "Most of the time, videos don't have thumbnails. You can enable this setting to generate them on the fly but they can make your video slower.",
       "thumbnailLabel": "Generate thumbnails",
+      "autoplay": "Autoplay",
+      "autoplayDescription": "Automatically play the next episode in a series after reaching the end. Can be enabled by users with the browser extension, a custom proxy, or with the default setup if allowed by the host.",
+      "autoplayLabel": "Autoplay",
       "title": "Preferences"
     },
     "reset": "Reset",

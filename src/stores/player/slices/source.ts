@@ -169,6 +169,8 @@ export const createSourceSlice: MakeSlice<SourceSlice> = (set, get) => ({
       s.captionList = captions;
       s.interface.error = undefined;
       s.status = playerStatus.PLAYING;
+      s.audioTracks = [];
+      s.currentAudioTrack = null;
     });
     const store = get();
     store.redisplaySource(startAt);
