@@ -22,8 +22,8 @@ dependencies:
     specifier: ^1.0.3
     version: 1.0.3
   '@movie-web/providers':
-    specifier: ^2.2.9
-    version: 2.2.9
+    specifier: ^2.3.0
+    version: 2.3.0
   '@noble/hashes':
     specifier: ^1.3.3
     version: 1.3.3
@@ -274,7 +274,7 @@ devDependencies:
     version: 0.5.9(prettier@3.1.1)
   rollup-plugin-visualizer:
     specifier: ^5.11.0
-    version: 5.11.0(@rollup/wasm-node@4.14.1)
+    version: 5.11.0(@rollup/wasm-node@4.14.2)
   tailwind-scrollbar:
     specifier: ^3.0.5
     version: 3.0.5(tailwindcss@3.4.0)
@@ -3050,8 +3050,8 @@ packages:
     engines: {node: '>= 14'}
     dev: false
 
-  /@movie-web/providers@2.2.9:
-    resolution: {integrity: sha512-NHsyplM9Oe4DK3lIkNaEk0CqoQ6IqlaWXeDh01jj+DH4I4EJjSD4ow7OTeAC+BLz3Gwj6fh/vaE2WBGevPTDkQ==}
+  /@movie-web/providers@2.3.0:
+    resolution: {integrity: sha512-jr3C9alAODEyxgWSBMZ6LlrubrZCfpraTuunf7sPpY19WcV8rHbfz1kxeLdBXC2BqPfgQmipVr+KsXvCQqKhXw==}
     requiresBuild: true
     dependencies:
       cheerio: 1.0.0-rc.12
@@ -3175,7 +3175,7 @@ packages:
     engines: {node: '>=14.0.0'}
     dev: false
 
-  /@rollup/plugin-babel@5.3.1(@babel/core@7.24.3)(@rollup/wasm-node@4.14.1):
+  /@rollup/plugin-babel@5.3.1(@babel/core@7.24.3)(@rollup/wasm-node@4.14.2):
     resolution: {integrity: sha512-WFfdLWU/xVWKeRQnKmIAQULUI7Il0gZnBIH/ZFO069wYIfPu+8zrfp/KMW0atmELoRDq8FbiP3VCss9MhCut7Q==}
     engines: {node: '>= 10.0.0'}
     peerDependencies:
@@ -3188,36 +3188,36 @@ packages:
     dependencies:
       '@babel/core': 7.24.3
       '@babel/helper-module-imports': 7.24.3
-      '@rollup/pluginutils': 3.1.0(@rollup/wasm-node@4.14.1)
-      rollup: /@rollup/wasm-node@4.14.1
+      '@rollup/pluginutils': 3.1.0(@rollup/wasm-node@4.14.2)
+      rollup: /@rollup/wasm-node@4.14.2
     dev: true
 
-  /@rollup/plugin-node-resolve@11.2.1(@rollup/wasm-node@4.14.1):
+  /@rollup/plugin-node-resolve@11.2.1(@rollup/wasm-node@4.14.2):
     resolution: {integrity: sha512-yc2n43jcqVyGE2sqV5/YCmocy9ArjVAP/BeXyTtADTBBX6V0e5UMqwO8CdQ0kzjb6zu5P1qMzsScCMRvE9OlVg==}
     engines: {node: '>= 10.0.0'}
     peerDependencies:
       rollup: npm:@rollup/wasm-node
     dependencies:
-      '@rollup/pluginutils': 3.1.0(@rollup/wasm-node@4.14.1)
+      '@rollup/pluginutils': 3.1.0(@rollup/wasm-node@4.14.2)
       '@types/resolve': 1.17.1
       builtin-modules: 3.3.0
       deepmerge: 4.3.1
       is-module: 1.0.0
       resolve: 1.22.8
-      rollup: /@rollup/wasm-node@4.14.1
+      rollup: /@rollup/wasm-node@4.14.2
     dev: true
 
-  /@rollup/plugin-replace@2.4.2(@rollup/wasm-node@4.14.1):
+  /@rollup/plugin-replace@2.4.2(@rollup/wasm-node@4.14.2):
     resolution: {integrity: sha512-IGcu+cydlUMZ5En85jxHH4qj2hta/11BHq95iHEyb2sbgiN0eCdzvUcHw5gt9pBL5lTi4JDYJ1acCoMGpTvEZg==}
     peerDependencies:
       rollup: npm:@rollup/wasm-node
     dependencies:
-      '@rollup/pluginutils': 3.1.0(@rollup/wasm-node@4.14.1)
+      '@rollup/pluginutils': 3.1.0(@rollup/wasm-node@4.14.2)
       magic-string: 0.25.9
-      rollup: /@rollup/wasm-node@4.14.1
+      rollup: /@rollup/wasm-node@4.14.2
     dev: true
 
-  /@rollup/pluginutils@3.1.0(@rollup/wasm-node@4.14.1):
+  /@rollup/pluginutils@3.1.0(@rollup/wasm-node@4.14.2):
     resolution: {integrity: sha512-GksZ6pr6TpIjHm8h9lSQ8pi8BE9VeubNT0OMJ3B5uZJ8pz73NPiqOtCog/x2/QzM1ENChPKxMDhiQuRHsqc+lg==}
     engines: {node: '>= 8.0.0'}
     peerDependencies:
@@ -3226,11 +3226,11 @@ packages:
       '@types/estree': 0.0.39
       estree-walker: 1.0.1
       picomatch: 2.3.1
-      rollup: /@rollup/wasm-node@4.14.1
+      rollup: /@rollup/wasm-node@4.14.2
     dev: true
 
-  /@rollup/wasm-node@4.14.1:
-    resolution: {integrity: sha512-w5GZ2p1F7tOop6WJxa5x0Ot1s6eVPKOlEo5hmWT3KGxv0naGqiGJa/fz7S/it06nzgS3fmkDbtDfpAYwqOMKRQ==}
+  /@rollup/wasm-node@4.14.2:
+    resolution: {integrity: sha512-iwZbxtvP/0icwPWExUZWfA3A2jqQkDY38E8R5onRY2ALFmom0k7e37n9WDcJMMRcx/pdenfN8NaSohzX9LiDEQ==}
     engines: {node: '>=18.0.0', npm: '>=8.0.0'}
     hasBin: true
     dependencies:
@@ -6557,7 +6557,7 @@ packages:
       '@babel/plugin-syntax-typescript': 7.23.3(@babel/core@7.23.6)
       '@babel/types': 7.23.6
       kleur: 4.1.5
-      rollup: /@rollup/wasm-node@4.14.1
+      rollup: /@rollup/wasm-node@4.14.2
       unplugin: 1.5.1
     transitivePeerDependencies:
       - supports-color
@@ -7529,7 +7529,7 @@ packages:
       glob: 7.2.3
     dev: true
 
-  /rollup-plugin-terser@7.0.2(@rollup/wasm-node@4.14.1):
+  /rollup-plugin-terser@7.0.2(@rollup/wasm-node@4.14.2):
     resolution: {integrity: sha512-w3iIaU4OxcF52UUXiZNsNeuXIMDvFrr+ZXK6bFZ0Q60qyVfq4uLptoS4bbq3paG3x216eQllFZX7zt6TIImguQ==}
     deprecated: This package has been deprecated and is no longer maintained. Please use @rollup/plugin-terser
     peerDependencies:
@@ -7537,12 +7537,12 @@ packages:
     dependencies:
       '@babel/code-frame': 7.24.2
       jest-worker: 26.6.2
-      rollup: /@rollup/wasm-node@4.14.1
+      rollup: /@rollup/wasm-node@4.14.2
       serialize-javascript: 4.0.0
       terser: 5.30.0
     dev: true
 
-  /rollup-plugin-visualizer@5.11.0(@rollup/wasm-node@4.14.1):
+  /rollup-plugin-visualizer@5.11.0(@rollup/wasm-node@4.14.2):
     resolution: {integrity: sha512-exM0Ms2SN3AgTzMeW7y46neZQcyLY7eKwWAop1ZoRTCZwyrIRdMMJ6JjToAJbML77X/9N8ZEpmXG4Z/Clb9k8g==}
     engines: {node: '>=14'}
     hasBin: true
@@ -7554,7 +7554,7 @@ packages:
     dependencies:
       open: 8.4.2
       picomatch: 2.3.1
-      rollup: /@rollup/wasm-node@4.14.1
+      rollup: /@rollup/wasm-node@4.14.2
       source-map: 0.7.4
       yargs: 17.7.2
     dev: true
@@ -8692,7 +8692,7 @@ packages:
       '@types/node': 20.10.5
       esbuild: 0.19.10
       postcss: 8.4.32
-      rollup: /@rollup/wasm-node@4.14.1
+      rollup: /@rollup/wasm-node@4.14.2
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
@@ -8959,9 +8959,9 @@ packages:
       '@babel/core': 7.24.3
       '@babel/preset-env': 7.24.3(@babel/core@7.24.3)
       '@babel/runtime': 7.24.1
-      '@rollup/plugin-babel': 5.3.1(@babel/core@7.24.3)(@rollup/wasm-node@4.14.1)
-      '@rollup/plugin-node-resolve': 11.2.1(@rollup/wasm-node@4.14.1)
-      '@rollup/plugin-replace': 2.4.2(@rollup/wasm-node@4.14.1)
+      '@rollup/plugin-babel': 5.3.1(@babel/core@7.24.3)(@rollup/wasm-node@4.14.2)
+      '@rollup/plugin-node-resolve': 11.2.1(@rollup/wasm-node@4.14.2)
+      '@rollup/plugin-replace': 2.4.2(@rollup/wasm-node@4.14.2)
       '@surma/rollup-plugin-off-main-thread': 2.2.3
       ajv: 8.12.0
       common-tags: 1.8.2
@@ -8970,8 +8970,8 @@ packages:
       glob: 7.2.3
       lodash: 4.17.21
       pretty-bytes: 5.6.0
-      rollup: /@rollup/wasm-node@4.14.1
-      rollup-plugin-terser: 7.0.2(@rollup/wasm-node@4.14.1)
+      rollup: /@rollup/wasm-node@4.14.2
+      rollup-plugin-terser: 7.0.2(@rollup/wasm-node@4.14.2)
       source-map: 0.8.0-beta.0
       stringify-object: 3.3.0
       strip-comments: 2.0.1
@@ -9016,7 +9016,6 @@ packages:
 
   /workbox-google-analytics@7.0.0:
     resolution: {integrity: sha512-MEYM1JTn/qiC3DbpvP2BVhyIH+dV/5BjHk756u9VbwuAhu0QHyKscTnisQuz21lfRpOwiS9z4XdqeVAKol0bzg==}
-    deprecated: It is not compatible with newer versions of GA starting with v4, as long as you are using GAv3 it should be ok, but the package is not longer being maintained
     dependencies:
       workbox-background-sync: 7.0.0
       workbox-core: 7.0.0
