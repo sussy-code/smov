@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { useCallback } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useAsync } from "react-use";
 
@@ -10,7 +10,9 @@ import { usePlayerMeta } from "@/components/player/hooks/usePlayerMeta";
 import { Transition } from "@/components/utils/Transition";
 import { PlayerMeta } from "@/stores/player/slices/source";
 import { usePlayerStore } from "@/stores/player/store";
+import { usePreferencesStore } from "@/stores/preferences";
 import { useProgressStore } from "@/stores/progress";
+import { isAutoplayAllowed } from "@/utils/autoplay";
 
 import { hasAired } from "../utils/aired";
 
@@ -101,6 +103,7 @@ export function NextEpisodeButton(props: {
     (s) => s.setShouldStartFromBeginning,
   );
   const updateItem = useProgressStore((s) => s.updateItem);
+  const enableAutoplay = usePreferencesStore((s) => s.enableAutoplay);
 
   const isLastEpisode =
     meta?.episode?.number === meta?.episodes?.at(-1)?.number;
@@ -117,6 +120,7 @@ export function NextEpisodeButton(props: {
   );
 
   let show = false;
+  const hasAutoplayed = useRef(false);
   if (showingState === "always") show = true;
   else if (showingState === "hover" && props.controlsShowing) show = true;
   if (isHidden || status !== "playing" || duration === 0) show = false;
@@ -163,6 +167,18 @@ export function NextEpisodeButton(props: {
     isLastEpisode,
     nextSeason,
   ]);
+
+  useEffect(() => {
+    if (!enableAutoplay || metaType !== "show") return;
+    const onePercent = duration / 100;
+    const isEnding = time >= duration - onePercent && duration !== 0;
+
+    if (duration === 0) hasAutoplayed.current = false;
+    if (isEnding && isAutoplayAllowed() && !hasAutoplayed.current) {
+      hasAutoplayed.current = true;
+      loadNextEpisode();
+    }
+  }, [duration, enableAutoplay, loadNextEpisode, metaType, time]);
 
   if (!meta?.episode || !nextEp) return null;
   if (metaType !== "show") return null;
