@@ -7,7 +7,7 @@
       "title": "D'où vient le contenu ?"
     },
     "q2": {
-      "body": "Il est impossible de demander un film ou une série, car movie-web ne gère aucun contenu. Le contenu est récupéré en explorant d'autres sites sur Internet.",
+      "body": "Il est impossible de demander un film ou une série, car sudo-flix ne gère aucun contenu. Le contenu est récupéré en explorant d'autres sites sur Internet.",
       "title": "Où puis-je demander une série ou un film ?"
     },
     "q3": {
@@ -82,7 +82,7 @@
   "footer": {
     "legal": {
       "disclaimer": "Avertissement",
-      "disclaimerText": "movie-web ne stocke pas de fichiers, mais propose des liens vers des services externes. Les problèmes juridiques doivent être traités avec les fournisseurs et les hébergeurs de fichiers. Les fichiers multimédias diffusés par les fournisseurs de vidéos ne sont pas couverts par movie-web."
+      "disclaimerText": "sudo-flix ne stocke pas de fichiers, mais propose des liens vers des services externes. Les problèmes juridiques doivent être traités avec les fournisseurs et les hébergeurs de fichiers. Les fichiers multimédias diffusés par les fournisseurs de vidéos ne sont pas couverts par sudo-flix."
     },
     "links": {
       "discord": "Discord",
@@ -138,9 +138,7 @@
       },
       "morning": {
         "default": "Que voulez-vous regarder ce matin ?",
-        "extra": [
-          "Les films, c'est comme les voyages : ça nous ouvre l'esprit"
-        ]
+        "extra": ["Les films, c'est comme les voyages : ça nous ouvre l'esprit"]
       },
       "night": {
         "default": "Que voulez-vous regarder ce soir ?",
@@ -257,7 +255,7 @@
         "disclaimer": "Les téléchargements sont effectués directement par le fournisseur. sudo-flix n'a aucun contrôle sur la manière dont les téléchargements sont effectués.",
         "downloadSubtitle": "Télécharger les sous-titres",
         "downloadVideo": "Télécharger la vidéo",
-        "hlsDisclaimer": "Les téléchargements sont effectués directement auprès du fournisseur. movie-web n'a aucun contrôle sur la façon dont les téléchargements sont fournis.<br /><br />Veuillez noter que vous téléchargez une liste de lecture HLS, <bold>il n'est pas recommandé de la télécharger si vous n'êtes pas familier avec les formats de streaming avancés</bold>. Essayez différentes sources pour différents formats.",
+        "hlsDisclaimer": "Les téléchargements sont effectués directement auprès du fournisseur. sudo-flix n'a aucun contrôle sur la façon dont les téléchargements sont fournis.<br /><br />Veuillez noter que vous téléchargez une liste de lecture HLS, <bold>il n'est pas recommandé de la télécharger si vous n'êtes pas familier avec les formats de streaming avancés</bold>. Essayez différentes sources pour différents formats.",
         "onAndroid": {
           "1": "Pour télécharger sur Android, cliquez sur le bouton de téléchargement, puis, sur la nouvelle page, <bold>tapez et maintenez</bold> sur la vidéo, et sélectionnez <bold>enregistrer</bold>.",
           "shortTitle": "Télécharger / Android",
@@ -386,7 +384,7 @@
         "badge": "Extension désactivée",
         "enableExtension": "Activer l'extension",
         "homeButton": "Revenir à l'accueil",
-        "text": "Vous avez installé l'extension movie-web. Pour commencer à l'utiliser, vous devez activer l'extension pour ce site.",
+        "text": "Vous avez installé l'extension sudo-flix. Pour commencer à l'utiliser, vous devez activer l'extension pour ce site.",
         "title": "Veuillez activer l'extension"
       },
       "items": {
@@ -417,7 +415,7 @@
   },
   "screens": {
     "dmca": {
-      "text": "Bienvenue sur la page de contact DMCA de movie-web ! Nous respectons les droits de propriété intellectuelle et souhaitons répondre rapidement à toute question relative aux droits d'auteur. Si vous pensez que votre œuvre protégée par des droits d'auteur a été utilisée de manière inappropriée sur notre plateforme, veuillez envoyer une notification DMCA détaillée à l'adresse électronique ci-dessous. Veuillez inclure une description du matériel protégé par des droits d'auteur, vos coordonnées et une déclaration de bonne foi. Nous nous engageons à résoudre ces problèmes rapidement et vous remercions pour votre coopération pour que movie-web reste un lieu respectueux de la créativité et des droits d'auteur.",
+      "text": "Bienvenue sur la page de contact DMCA de sudo-flix ! Nous respectons les droits de propriété intellectuelle et souhaitons répondre rapidement à toute question relative aux droits d'auteur. Si vous pensez que votre œuvre protégée par des droits d'auteur a été utilisée de manière inappropriée sur notre plateforme, veuillez envoyer une notification DMCA détaillée à l'adresse électronique ci-dessous. Veuillez inclure une description du matériel protégé par des droits d'auteur, vos coordonnées et une déclaration de bonne foi. Nous nous engageons à résoudre ces problèmes rapidement et vous remercions pour votre coopération pour que sudo-flix reste un lieu respectueux de la créativité et des droits d'auteur.",
       "title": "DMCA"
     },
     "loadingApp": "Chargement de l'application",

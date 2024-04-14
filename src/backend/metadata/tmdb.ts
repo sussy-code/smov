@@ -17,7 +17,7 @@ import {
   TMDBShowData,
   TMDBShowSearchResult,
 } from "./types/tmdb";
-import { proxiedFetch } from "../helpers/fetch";
+import { mwFetch } from "../helpers/fetch";
 
 export function mediaTypeToTMDB(type: MWMediaType): TMDBContentTypes {
   if (type === MWMediaType.MOVIE) return TMDBContentTypes.MOVIE;

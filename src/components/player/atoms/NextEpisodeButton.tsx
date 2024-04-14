@@ -167,6 +167,19 @@ export function NextEpisodeButton(props: {
     nextSeason,
   ]);
 
+  const startCurrentEpisodeFromBeginning = useCallback(() => {
+    if (!meta || !meta.episode) return;
+    const metaCopy = { ...meta };
+    setShouldStartFromBeginning(true);
+    setDirectMeta(metaCopy);
+    props.onChange?.(metaCopy);
+    const defaultProgress = { duration: 0, watched: 0 };
+    updateItem({
+      meta: metaCopy,
+      progress: defaultProgress,
+    });
+  }, [setDirectMeta, meta, props, setShouldStartFromBeginning, updateItem]);
+
   useEffect(() => {
     if (!enableAutoplay || metaType !== "show") return;
     const onePercent = duration / 100;

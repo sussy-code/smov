@@ -138,9 +138,7 @@
       },
       "morning": {
         "default": "Kateri film ali serijo bi si želeli ogledati ob tem jutru?",
-        "extra": [
-          "Slišala sem, da je film \"Pred sončnim vzhodom\" odličen"
-        ]
+        "extra": ["Slišala sem, da je film \"Pred sončnim vzhodom\" odličen"]
       },
       "night": {
         "default": "Kateri film ali serijo bi si želeli ogledati nocoj?",
@@ -386,7 +384,7 @@
         "badge": "Razširitev brskalnika je onemogočena",
         "enableExtension": "Vklopi razširitev brskalnika",
         "homeButton": "Pojdi domov",
-        "text": "Namestili ste razširitev movie-web. Če jo želite začeti uporabljati, morate razširitev omogočiti za to spletno mesto.",
+        "text": "Namestili ste razširitev sudo-flix. Če jo želite začeti uporabljati, morate razširitev omogočiti za to spletno mesto.",
         "title": "Prosim vklopite razširitev brskalnika"
       },
       "items": {

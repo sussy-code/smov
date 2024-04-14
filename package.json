@@ -1,5 +1,5 @@
 {
-  "name": "movie-web",
+  "name": "sudo-flix",
   "version": "4.7.0",
   "private": true,
   "homepage": "https://github.com/movie-web/movie-web",
@@ -30,8 +30,8 @@
     "@headlessui/react": "^1.7.18",
     "@ladjs/country-language": "^1.0.3",
     "@movie-web/providers": "github:sussy-code/sudo-providers",
-    "@noble/hashes": "^1.3.3",
-    "@plasmohq/messaging": "^0.6.1",
+    "@noble/hashes": "^1.4.0",
+    "@plasmohq/messaging": "^0.6.2",
     "@react-spring/web": "^9.7.3",
     "@scure/bip39": "^1.3.0",
     "@sozialhelden/ietf-language-tags": "^5.4.2",
