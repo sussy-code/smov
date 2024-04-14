@@ -156,10 +156,10 @@ const headers = {
 async function get<T>(url: string, params?: object): Promise<T> {
   if (!apiKey) throw new Error("TMDB API key not set");
 
-  let res: Promise<T>;
+  let res: T;
 
   try {
-    res = await mwFetch<any>(encodeURI(url), {
+    res = await mwFetch<T>(encodeURI(url), {
       headers,
       baseURL,
       params: {
@@ -170,7 +170,7 @@ async function get<T>(url: string, params?: object): Promise<T> {
   } catch (err) {
     if (baseURL !== otherUrl) {
       baseURL = otherUrl;
-      res = await mwFetch<any>(encodeURI(url), {
+      res = await mwFetch<T>(encodeURI(url), {
         headers,
         baseURL,
         params: {
