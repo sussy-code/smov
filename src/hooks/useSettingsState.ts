@@ -51,6 +51,7 @@ export function useSettingsState(
       }
     | undefined,
   enableThumbnails: boolean,
+  enableAutoplay: boolean,
 ) {
   const [proxyUrlsState, setProxyUrls, resetProxyUrls, proxyUrlsChanged] =
     useDerived(proxyUrls);
@@ -84,6 +85,12 @@ export function useSettingsState(
     resetEnableThumbnails,
     enableThumbnailsChanged,
   ] = useDerived(enableThumbnails);
+  const [
+    enableAutoplayState,
+    setEnableAutoplayState,
+    resetEnableAutoplay,
+    enableAutoplayChanged,
+  ] = useDerived(enableAutoplay);
 
   function reset() {
     resetTheme();
@@ -95,6 +102,7 @@ export function useSettingsState(
     resetDeviceName();
     resetProfile();
     resetEnableThumbnails();
+    resetEnableAutoplay();
   }
 
   const changed =
@@ -105,7 +113,8 @@ export function useSettingsState(
     backendUrlChanged ||
     proxyUrlsChanged ||
     profileChanged ||
-    enableThumbnailsChanged;
+    enableThumbnailsChanged ||
+    enableAutoplayChanged;
 
   return {
     reset,
@@ -149,6 +158,11 @@ export function useSettingsState(
       state: enableThumbnailsState,
       set: setEnableThumbnailsState,
       changed: enableThumbnailsChanged,
+    },
+    enableAutoplay: {
+      state: enableAutoplayState,
+      set: setEnableAutoplayState,
+      changed: enableAutoplayChanged,
     },
   };
 }

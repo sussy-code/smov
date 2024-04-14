@@ -5,6 +5,8 @@ import { immer } from "zustand/middleware/immer";
 export interface PreferencesStore {
   enableThumbnails: boolean;
   setEnableThumbnails(v: boolean): void;
+  enableAutoplay: boolean;
+  setEnableAutoplay(v: boolean): void;
 }
 
 export const usePreferencesStore = create(
@@ -14,6 +16,12 @@ export const usePreferencesStore = create(
       setEnableThumbnails(v) {
         set((s) => {
           s.enableThumbnails = v;
+        });
+      },
+      enableAutoplay: false,
+      setEnableAutoplay(v) {
+        set((s) => {
+          s.enableAutoplay = v;
         });
       },
     })),

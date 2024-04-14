@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { useTranslation } from "react-i18next";
 
 import { Toggle } from "@/components/buttons/Toggle";
@@ -5,6 +6,7 @@ import { FlagIcon } from "@/components/FlagIcon";
 import { Dropdown } from "@/components/form/Dropdown";
 import { Heading1 } from "@/components/utils/Text";
 import { appLanguageOptions } from "@/setup/i18n";
+import { isAutoplayAllowed } from "@/utils/autoplay";
 import { getLocaleInfo, sortLangCodes } from "@/utils/language";
 
 export function PreferencesPart(props: {
@@ -12,9 +14,13 @@ export function PreferencesPart(props: {
   setLanguage: (l: string) => void;
   enableThumbnails: boolean;
   setEnableThumbnails: (v: boolean) => void;
+  enableAutoplay: boolean;
+  setEnableAutoplay: (v: boolean) => void;
 }) {
   const { t } = useTranslation();
   const sorted = sortLangCodes(appLanguageOptions.map((item) => item.code));
+
+  const allowAutoplay = isAutoplayAllowed();
 
   const options = appLanguageOptions
     .sort((a, b) => sorted.indexOf(a.code) - sorted.indexOf(b.code))
@@ -59,6 +65,32 @@ export function PreferencesPart(props: {
           <Toggle enabled={props.enableThumbnails} />
           <p className="flex-1 text-white font-bold">
             {t("settings.preferences.thumbnailLabel")}
+          </p>
+        </div>
+      </div>
+      <div>
+        <p className="text-white font-bold mb-3">
+          {t("settings.preferences.autoplay")}
+        </p>
+        <p className="max-w-[25rem] font-medium">
+          {t("settings.preferences.autoplayDescription")}
+        </p>
+        <div
+          onClick={() =>
+            allowAutoplay
+              ? props.setEnableAutoplay(!props.enableAutoplay)
+              : null
+          }
+          className={classNames(
+            "bg-dropdown-background hover:bg-dropdown-hoverBackground select-none my-4 cursor-pointer space-x-3 flex items-center max-w-[25rem] py-3 px-4 rounded-lg",
+            allowAutoplay
+              ? "cursor-pointer opacity-100 pointer-events-auto"
+              : "cursor-not-allowed opacity-50 pointer-events-none",
+          )}
+        >
+          <Toggle enabled={props.enableAutoplay && allowAutoplay} />
+          <p className="flex-1 text-white font-bold">
+            {t("settings.preferences.autoplayLabel")}
           </p>
         </div>
       </div>
