@@ -143,40 +143,37 @@ export function decodeTMDBId(
   };
 }
 
-const baseURL = "https://api.themoviedb.org/3";
-const otherUrl = "https://api.tmdb.org/3";
-let useFallback = false;
+const tmdbBaseUrl1 = "https://api.themoviedb.org/3";
+const tmdbBaseUrl2 = "https://api.tmdb.org/3";
 
 const apiKey = conf().TMDB_READ_API_KEY;
 
-const headers = {
+const tmdbHeaders = {
   accept: "application/json",
   Authorization: `Bearer ${apiKey}`,
 };
 
 async function get<T>(url: string, params?: object): Promise<T> {
   if (!apiKey) throw new Error("TMDB API key not set");
-  let res: T;
   try {
-    res = await mwFetch<T>(encodeURI(url), {
-      headers,
-      baseURL: !useFallback ? baseURL : otherUrl,
+    return await mwFetch<T>(encodeURI(url), {
+      headers: tmdbHeaders,
+      baseURL: tmdbBaseUrl1,
       params: {
         ...params,
       },
-      signal: AbortSignal.timeout(!useFallback ? 5000 : 30000),
+      signal: AbortSignal.timeout(5000),
     });
   } catch (err) {
-    useFallback = true;
-    res = await mwFetch<T>(encodeURI(url), {
-      headers,
-      baseURL: otherUrl,
+    return mwFetch<T>(encodeURI(url), {
+      headers: tmdbHeaders,
+      baseURL: tmdbBaseUrl2,
       params: {
         ...params,
       },
+      signal: AbortSignal.timeout(30000),
     });
   }
-  return res;
 }
 
 export async function multiSearch(
