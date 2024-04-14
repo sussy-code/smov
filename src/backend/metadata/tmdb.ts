@@ -144,6 +144,8 @@ export function decodeTMDBId(
 }
 
 const baseURL = "https://api.themoviedb.org/3";
+const otherUrl = "https://api.tmdb.org/3";
+let useFallback = false;
 
 const apiKey = conf().TMDB_READ_API_KEY;
 
@@ -154,14 +156,26 @@ const headers = {
 
 async function get<T>(url: string, params?: object): Promise<T> {
   if (!apiKey) throw new Error("TMDB API key not set");
-
-  const res = await mwFetch<any>(encodeURI(url), {
-    headers,
-    baseURL,
-    params: {
-      ...params,
-    },
-  });
+  let res: T;
+  try {
+    res = await mwFetch<T>(encodeURI(url), {
+      headers,
+      baseURL: !useFallback ? baseURL : otherUrl,
+      params: {
+        ...params,
+      },
+      signal: AbortSignal.timeout(!useFallback ? 5000 : 30000),
+    });
+  } catch (err) {
+    useFallback = true;
+    res = await mwFetch<T>(encodeURI(url), {
+      headers,
+      baseURL: otherUrl,
+      params: {
+        ...params,
+      },
+    });
+  }
   return res;
 }
 
