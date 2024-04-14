@@ -1,7 +1,10 @@
 import classNames from "classnames";
 import { useCallback, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
+import { useAsync } from "react-use";
 
+import { getMetaFromId } from "@/backend/metadata/getmeta";
+import { MWMediaType, MWSeasonMeta } from "@/backend/metadata/types/mw";
 import { Icon, Icons } from "@/components/Icon";
 import { usePlayerMeta } from "@/components/player/hooks/usePlayerMeta";
 import { Transition } from "@/components/utils/Transition";
@@ -10,6 +13,8 @@ import { usePlayerStore } from "@/stores/player/store";
 import { usePreferencesStore } from "@/stores/preferences";
 import { useProgressStore } from "@/stores/progress";
 import { isAutoplayAllowed } from "@/utils/autoplay";
+
+import { hasAired } from "../utils/aired";
 
 function shouldShowNextEpisodeButton(
   time: number,
@@ -41,6 +46,45 @@ function Button(props: {
   );
 }
 
+function useSeasons(mediaId: string, isLastEpisode: boolean = false) {
+  const state = useAsync(async () => {
+    if (isLastEpisode) {
+      const data = await getMetaFromId(MWMediaType.SERIES, mediaId ?? "");
+      if (data?.meta.type !== MWMediaType.SERIES) return null;
+      return data.meta.seasons;
+    }
+  }, [mediaId, isLastEpisode]);
+
+  return state;
+}
+
+function useNextSeasonEpisode(
+  nextSeason: MWSeasonMeta | undefined,
+  mediaId: string,
+) {
+  const state = useAsync(async () => {
+    if (nextSeason) {
+      const data = await getMetaFromId(
+        MWMediaType.SERIES,
+        mediaId ?? "",
+        nextSeason?.id,
+      );
+      if (data?.meta.type !== MWMediaType.SERIES) return null;
+
+      const nextSeasonEpisodes = data?.meta?.seasonData?.episodes
+        .filter((episode) => hasAired(episode.air_date))
+        .map((episode) => ({
+          number: episode.number,
+          title: episode.title,
+          tmdbId: episode.id,
+        }));
+
+      if (nextSeasonEpisodes.length > 0) return nextSeasonEpisodes[0];
+    }
+  }, [mediaId, nextSeason?.id]);
+  return state;
+}
+
 export function NextEpisodeButton(props: {
   controlsShowing: boolean;
   onChange?: (meta: PlayerMeta) => void;
@@ -61,6 +105,20 @@ export function NextEpisodeButton(props: {
   const updateItem = useProgressStore((s) => s.updateItem);
   const enableAutoplay = usePreferencesStore((s) => s.enableAutoplay);
 
+  const isLastEpisode =
+    meta?.episode?.number === meta?.episodes?.at(-1)?.number;
+
+  const seasons = useSeasons(meta?.tmdbId ?? "", isLastEpisode);
+
+  const nextSeason = seasons.value?.find(
+    (season) => season.number === (meta?.season?.number ?? 0) + 1,
+  );
+
+  const nextSeasonEpisode = useNextSeasonEpisode(
+    nextSeason,
+    meta?.tmdbId ?? "",
+  );
+
   let show = false;
   const hasAutoplayed = useRef(false);
   if (showingState === "always") show = true;
@@ -74,14 +132,23 @@ export function NextEpisodeButton(props: {
       ? bottom
       : "bottom-[calc(3rem+env(safe-area-inset-bottom))]";
 
-  const nextEp = meta?.episodes?.find(
-    (v) => v.number === (meta?.episode?.number ?? 0) + 1,
-  );
+  const nextEp = isLastEpisode
+    ? nextSeasonEpisode.value
+    : meta?.episodes?.find(
+        (v) => v.number === (meta?.episode?.number ?? 0) + 1,
+      );
 
   const loadNextEpisode = useCallback(() => {
     if (!meta || !nextEp) return;
     const metaCopy = { ...meta };
     metaCopy.episode = nextEp;
+    metaCopy.season =
+      isLastEpisode && nextSeason
+        ? {
+            ...nextSeason,
+            tmdbId: nextSeason.id,
+          }
+        : metaCopy.season;
     setShouldStartFromBeginning(true);
     setDirectMeta(metaCopy);
     props.onChange?.(metaCopy);
@@ -97,6 +164,8 @@ export function NextEpisodeButton(props: {
     props,
     setShouldStartFromBeginning,
     updateItem,
+    isLastEpisode,
+    nextSeason,
   ]);
 
   useEffect(() => {
@@ -137,7 +206,9 @@ export function NextEpisodeButton(props: {
           className="bg-buttons-primary hover:bg-buttons-primaryHover text-buttons-primaryText flex justify-center items-center"
         >
           <Icon className="text-xl mr-1" icon={Icons.SKIP_EPISODE} />
-          {t("player.nextEpisode.next")}
+          {isLastEpisode && nextEp
+            ? t("player.nextEpisode.nextSeason")
+            : t("player.nextEpisode.next")}
         </Button>
       </div>
     </Transition>

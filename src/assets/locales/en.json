@@ -362,7 +362,8 @@
     },
     "nextEpisode": {
       "cancel": "Cancel",
-      "next": "Next episode"
+      "next": "Next episode",
+      "nextSeason": "Next season"
     },
     "playbackError": {
       "badge": "Playback error",

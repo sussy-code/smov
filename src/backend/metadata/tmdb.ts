@@ -143,26 +143,37 @@ export function decodeTMDBId(
   };
 }
 
-const baseURL = "https://api.themoviedb.org/3";
+const tmdbBaseUrl1 = "https://api.themoviedb.org/3";
+const tmdbBaseUrl2 = "https://api.tmdb.org/3";
 
 const apiKey = conf().TMDB_READ_API_KEY;
 
-const headers = {
+const tmdbHeaders = {
   accept: "application/json",
   Authorization: `Bearer ${apiKey}`,
 };
 
 async function get<T>(url: string, params?: object): Promise<T> {
   if (!apiKey) throw new Error("TMDB API key not set");
-
-  const res = await mwFetch<any>(encodeURI(url), {
-    headers,
-    baseURL,
-    params: {
-      ...params,
-    },
-  });
-  return res;
+  try {
+    return await mwFetch<T>(encodeURI(url), {
+      headers: tmdbHeaders,
+      baseURL: tmdbBaseUrl1,
+      params: {
+        ...params,
+      },
+      signal: AbortSignal.timeout(5000),
+    });
+  } catch (err) {
+    return mwFetch<T>(encodeURI(url), {
+      headers: tmdbHeaders,
+      baseURL: tmdbBaseUrl2,
+      params: {
+        ...params,
+      },
+      signal: AbortSignal.timeout(30000),
+    });
+  }
 }
 
 export async function multiSearch(
