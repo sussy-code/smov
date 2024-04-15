@@ -25,3 +25,11 @@ export function getProviders() {
     target: targets.BROWSER,
   });
 }
+
+export function getAllProviders() {
+  return makeProviders({
+    fetcher: makeStandardFetcher(fetch),
+    target: targets.BROWSER_EXTENSION,
+    consistentIpForRequests: true,
+  });
+}

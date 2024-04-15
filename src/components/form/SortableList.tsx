@@ -22,6 +22,7 @@ import { Icon, Icons } from "../Icon";
 export interface Item {
   id: string;
   name: string;
+  disabled?: boolean;
 }
 
 function SortableItem(props: { item: Item }) {
@@ -40,11 +41,13 @@ function SortableItem(props: { item: Item }) {
       {...attributes}
       {...listeners}
       className={classNames(
-        "bg-dropdown-background hover:bg-dropdown-hoverBackground select-none cursor-pointer space-x-3 flex items-center max-w-[25rem] py-3 px-4 rounded-lg touch-none",
-        transform && "cursor-grabbing",
+        "bg-dropdown-background hover:bg-dropdown-hoverBackground select-none space-x-3 flex items-center max-w-[25rem] py-3 px-4 rounded-lg touch-none",
+        props.item.disabled && "opacity-50",
+        transform ? "cursor-grabbing" : "cursor-grab",
       )}
     >
       <span className="flex-1 text-white font-bold">{props.item.name}</span>
+      {props.item.disabled && <Icon icon={Icons.WARNING} />}
       <Icon icon={Icons.MENU} />
     </div>
   );
