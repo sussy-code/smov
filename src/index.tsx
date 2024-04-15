@@ -31,6 +31,7 @@ import { SettingsSyncer } from "@/stores/subtitles/SettingsSyncer";
 import { ThemeProvider } from "@/stores/theme";
 import { TurnstileProvider } from "@/stores/turnstile";
 
+import { extensionInfo } from "./backend/extension/messaging";
 import { initializeChromecast } from "./setup/chromecast";
 import { initializeOldStores } from "./stores/__old/migrations";
 
@@ -140,6 +141,15 @@ function TheRouter(props: { children: ReactNode }) {
   return <HashRouter>{props.children}</HashRouter>;
 }
 
+// Checks if the extension is installed
+function ExtensionInfoLoader() {
+  useAsync(async () => {
+    await extensionInfo();
+  }, []);
+
+  return null;
+}
+
 const container = document.getElementById("root");
 const root = createRoot(container!);
 
@@ -149,6 +159,7 @@ root.render(
       <TurnstileProvider />
       <HelmetProvider>
         <Suspense fallback={<LoadingScreen type="lazy" />}>
+          <ExtensionInfoLoader />
           <ThemeProvider applyGlobal>
             <ProgressSyncer />
             <BookmarkSyncer />
