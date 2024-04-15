@@ -1,7 +1,6 @@
 import classNames from "classnames";
 import { useTranslation } from "react-i18next";
 
-import { getCachedMetadata } from "@/backend/helpers/providerApi";
 import { getProviders } from "@/backend/providers/providers";
 import { Toggle } from "@/components/buttons/Toggle";
 import { FlagIcon } from "@/components/FlagIcon";
