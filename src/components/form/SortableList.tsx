@@ -45,7 +45,7 @@ function SortableItem(props: { id: string }) {
   );
 }
 
-export function DraggableList(props: {
+export function SortableList(props: {
   items: string[];
   setItems: (items: string[]) => void;
 }) {
