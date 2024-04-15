@@ -19,9 +19,14 @@ import classNames from "classnames";
 
 import { Icon, Icons } from "../Icon";
 
-function SortableItem(props: { id: string }) {
+export interface Item {
+  id: string;
+  name: string;
+}
+
+function SortableItem(props: { item: Item }) {
   const { attributes, listeners, setNodeRef, transform, transition } =
-    useSortable({ id: props.id });
+    useSortable({ id: props.item.id });
 
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -39,15 +44,15 @@ function SortableItem(props: { id: string }) {
         transform && "cursor-grabbing",
       )}
     >
-      <span className="flex-1 text-white font-bold">{props.id}</span>
+      <span className="flex-1 text-white font-bold">{props.item.name}</span>
       <Icon icon={Icons.MENU} />
     </div>
   );
 }
 
 export function SortableList(props: {
-  items: string[];
-  setItems: (items: string[]) => void;
+  items: Item[];
+  setItems: (items: Item[]) => void;
 }) {
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -61,8 +66,8 @@ export function SortableList(props: {
     if (!over) return;
     if (active.id !== over.id) {
       const currentItems = props.items;
-      const oldIndex = currentItems.indexOf(active.id as string);
-      const newIndex = currentItems.indexOf(over.id as string);
+      const oldIndex = currentItems.findIndex((item) => item.id === active.id);
+      const newIndex = currentItems.findIndex((item) => item.id === over.id);
       const newItems = arrayMove(currentItems, oldIndex, newIndex);
       props.setItems(newItems);
     }
@@ -79,8 +84,8 @@ export function SortableList(props: {
         strategy={verticalListSortingStrategy}
       >
         <div className="flex flex-col gap-2">
-          {props.items.map((id) => (
-            <SortableItem key={id} id={id} />
+          {props.items.map((item) => (
+            <SortableItem key={item.id} item={item} />
           ))}
         </div>
       </SortableContext>

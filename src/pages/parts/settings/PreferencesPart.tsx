@@ -1,6 +1,8 @@
 import classNames from "classnames";
 import { useTranslation } from "react-i18next";
 
+import { getCachedMetadata } from "@/backend/helpers/providerApi";
+import { getProviders } from "@/backend/providers/providers";
 import { Toggle } from "@/components/buttons/Toggle";
 import { FlagIcon } from "@/components/FlagIcon";
 import { Dropdown } from "@/components/form/Dropdown";
@@ -107,8 +109,16 @@ export function PreferencesPart(props: {
         </p>
 
         <SortableList
-          items={props.sourceOrder}
-          setItems={props.setSourceOrder}
+          items={props.sourceOrder.map((id) => ({
+            id,
+            name:
+              getProviders()
+                .listSources()
+                .find((s) => s.id === id)?.name || id,
+          }))}
+          setItems={(items) =>
+            props.setSourceOrder(items.map((item) => item.id))
+          }
         />
       </div>
     </div>
