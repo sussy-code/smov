@@ -1,12 +1,12 @@
 {
-  "name": "sudo-flix",
-  "short_name": "sudo-flix",
+  "name": "flixify",
+  "short_name": "flixify",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#120f1d",
   "lang": "en",
   "scope": "/",
-  "description": "Watch your favorite shows and movies for free with no ads ever! (っ'ヮ'c)",
+  "description": "Watch your favorite shows and movies for free with no ads ever! Flixify is the best streaming service for you!",
   "theme_color": "#120f1d",
   "icons": [
     {

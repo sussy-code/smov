@@ -1,0 +1,7 @@
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>Flixify Search</ShortName>
+  <Description>Search movies and shows on Flixify</Description>
+  <Url type="text/html" method="get" template="https://www.example.com/search?q={searchTerms}"/>
+  <Url type="application/x-suggestions+json" rel="suggestions" template="https://www.example.com/suggestions?q={searchTerms}"/>
+  <Image width="16" height="16" type="image/x-icon">https://www.example.com/favicon.ico</Image>
+</OpenSearchDescription>
