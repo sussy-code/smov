@@ -1,5 +1,5 @@
 # Sudo-Flix
-Sudo-Flix is a mirror of [Movie-Web](https://github.com/movie-web/movie-web) with some changes...
+Flexify is a mirror of [Movie-Web](https://github.com/movie-web/movie-web) with some changes...
 
 **I *do not* endorse piracy of any kind I simply enjoy programming and large user counts.**
 
@@ -28,8 +28,8 @@ Sudo-Flix is a mirror of [Movie-Web](https://github.com/movie-web/movie-web) wit
 ## Running Locally
 Type the following commands into your terminal / command line to run Sudo-Flix locally
 ```bash
-git clone https://github.com/sussy-code/smov.git
-cd sudo-flix
+git clone https://github.com/solomonchidera/Flixify.git
+cd Flixify
 git pull
 pnpm install
 pnpm run dev
@@ -39,8 +39,8 @@ Then you can visit the local instance [here](http://localhost:5173) or, at local
 
 ## Updating Instances
 
-### sudo-flix
-To update a sudo-flix instance you can type the below commands into a terminal at the root of your project.
+### Flixify
+To update a flixify instance you can type the below commands into a terminal at the root of your project.
 ```bash
 git remote add upstream https://github.com/sussy-code/smov.git
 git fetch sudo-flix  # Grab the contents of the new remote source
@@ -71,5 +71,5 @@ git push  # Push to YOUR repository
 
 
 ## Contact Me
-**Discord:** *.baddeveloper*  
-**Email:** *[dev@sudo-flix.lol](mailto:dev@sudo-flix.lol)*
+**Discord:** *solochidera*  
+**Email:** *[dev@sudo-flix.lol](mailto:solochidera10@gmail.com)*
