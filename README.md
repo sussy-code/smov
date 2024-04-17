@@ -1,5 +1,5 @@
-# Sudo-Flix
-Flexify is a mirror of [Movie-Web](https://github.com/movie-web/movie-web) with some changes...
+# Flixify
+Flixify is a mirror of [Movie-Web](https://github.com/movie-web/movie-web) with some changes...
 
 **I *do not* endorse piracy of any kind I simply enjoy programming and large user counts.**
 
