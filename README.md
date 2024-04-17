@@ -72,4 +72,4 @@ git push  # Push to YOUR repository
 
 ## Contact Me
 **Discord:** *solochidera*  
-**Email:** *[dev@sudo-flix.lol](mailto:solochidera10@gmail.com)*
+**Email:** *[solomon](mailto:solochidera10@gmail.com)*
