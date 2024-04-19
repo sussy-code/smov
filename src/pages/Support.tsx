@@ -111,7 +111,7 @@ export function SupportPage() {
             </Item>,
             <Item title={t("support.q2.title")}>
               <Trans i18nKey="support.q2.body">
-                <MwLink to="https://github.com/sussy-code/smov" />
+                <MwLink to="https://github.com/SolomonChidera/Flixify" />
               </Trans>
             </Item>,
           ]}
