@@ -49,7 +49,7 @@ function Button(props: {
 function useSeasons(mediaId: string, isLastEpisode: boolean = false) {
   const state = useAsync(async () => {
     if (isLastEpisode) {
-      const data = await getMetaFromId(MWMediaType.SERIES, mediaId ?? "");
+      const data = await getMetaFromId(MWMediaType.SERIES, mediaId);
       if (data?.meta.type !== MWMediaType.SERIES) return null;
       return data.meta.seasons;
     }
@@ -64,9 +64,10 @@ function useNextSeasonEpisode(
 ) {
   const state = useAsync(async () => {
     if (nextSeason) {
+      if (!mediaId) return;
       const data = await getMetaFromId(
         MWMediaType.SERIES,
-        mediaId ?? "",
+        mediaId,
         nextSeason?.id,
       );
       if (data?.meta.type !== MWMediaType.SERIES) return null;
@@ -106,7 +107,9 @@ export function NextEpisodeButton(props: {
   const enableAutoplay = usePreferencesStore((s) => s.enableAutoplay);
 
   const isLastEpisode =
-    meta?.episode?.number === meta?.episodes?.at(-1)?.number;
+    !meta?.episode?.number || !meta?.episodes?.at(-1)?.number
+      ? false
+      : meta.episode.number === meta.episodes.at(-1)!.number;
 
   const seasons = useSeasons(meta?.tmdbId ?? "", isLastEpisode);
 
