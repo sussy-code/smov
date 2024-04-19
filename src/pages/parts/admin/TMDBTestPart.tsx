@@ -73,7 +73,7 @@ export function TMDBTestPart() {
                   icon={Icons.CIRCLE_CHECK}
                   className="text-video-scraping-success mr-2"
                 />
-                TMDB is working as expected
+                TMDB is working as expected.
               </p>
             ) : (
               <>
@@ -82,7 +82,7 @@ export function TMDBTestPart() {
                     icon={Icons.CIRCLE_EXCLAMATION}
                     className="text-video-scraping-error mr-2"
                   />
-                  TMDB is not working
+                  TMDB is not working.
                 </p>
                 <p>{status.errorText}</p>
               </>
