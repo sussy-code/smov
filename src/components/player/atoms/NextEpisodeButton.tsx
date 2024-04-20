@@ -52,7 +52,7 @@ function useSeasons(
 ) {
   const state = useAsync(async () => {
     if (isLastEpisode) {
-      if (!mediaId) return;
+      if (!mediaId) return null;
       const data = await getMetaFromId(MWMediaType.SERIES, mediaId);
       if (data?.meta.type !== MWMediaType.SERIES) return null;
       return data.meta.seasons;
@@ -68,7 +68,7 @@ function useNextSeasonEpisode(
 ) {
   const state = useAsync(async () => {
     if (nextSeason) {
-      if (!mediaId) return;
+      if (!mediaId) return null;
       const data = await getMetaFromId(
         MWMediaType.SERIES,
         mediaId,
