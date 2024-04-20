@@ -195,7 +195,7 @@ function ParticlesCanvas() {
         imageParticleCount = particleCount * 0.075;
         break;
 
-      case (month === 4 && day === 20) || Math.random() < 0.25:
+      case month + 1 === 4 && day === 20:
         imageOverride = [
           {
             image: "/lightbar-images/weed.png",
