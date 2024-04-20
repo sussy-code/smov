@@ -153,8 +153,8 @@ devDependencies:
     specifier: ^7.24.1
     version: 7.24.1(@babel/core@7.24.4)
   '@rollup/wasm-node':
-    specifier: ^4.14.3
-    version: 4.14.3
+    specifier: ^4.15.0
+    version: 4.15.0
   '@types/chromecast-caf-sender':
     specifier: ^1.0.9
     version: 1.0.9
@@ -217,7 +217,7 @@ devDependencies:
     version: 6.21.0(eslint@8.57.0)(typescript@5.4.5)
   '@vitejs/plugin-react':
     specifier: ^4.2.1
-    version: 4.2.1(vite@5.2.9)
+    version: 4.2.1(vite@5.2.10)
   autoprefixer:
     specifier: ^10.4.19
     version: 10.4.19(postcss@8.4.38)
@@ -277,7 +277,7 @@ devDependencies:
     version: 0.5.14(prettier@3.2.5)
   rollup-plugin-visualizer:
     specifier: ^5.12.0
-    version: 5.12.0(@rollup/wasm-node@4.14.3)
+    version: 5.12.0(@rollup/wasm-node@4.15.0)
   tailwind-scrollbar:
     specifier: ^3.1.0
     version: 3.1.0(tailwindcss@3.4.3)
@@ -294,20 +294,20 @@ devDependencies:
     specifier: ^5.4.5
     version: 5.4.5
   vite:
-    specifier: ^5.2.9
-    version: 5.2.9(@types/node@20.12.7)
+    specifier: ^5.2.10
+    version: 5.2.10(@types/node@20.12.7)
   vite-plugin-checker:
     specifier: ^0.6.4
-    version: 0.6.4(eslint@8.57.0)(typescript@5.4.5)(vite@5.2.9)
+    version: 0.6.4(eslint@8.57.0)(typescript@5.4.5)(vite@5.2.10)
   vite-plugin-package-version:
     specifier: ^1.1.0
-    version: 1.1.0(vite@5.2.9)
+    version: 1.1.0(vite@5.2.10)
   vite-plugin-pwa:
     specifier: ^0.17.5
-    version: 0.17.5(vite@5.2.9)(workbox-build@7.0.0)(workbox-window@7.0.0)
+    version: 0.17.5(vite@5.2.10)(workbox-build@7.0.0)(workbox-window@7.0.0)
   vite-plugin-static-copy:
     specifier: ^1.0.3
-    version: 1.0.3(vite@5.2.9)
+    version: 1.0.3(vite@5.2.10)
   vitest:
     specifier: ^1.5.0
     version: 1.5.0(@types/node@20.12.7)(jsdom@23.2.0)
@@ -2013,7 +2013,7 @@ packages:
     engines: {node: '>=14.0.0'}
     dev: false
 
-  /@rollup/plugin-babel@5.3.1(@babel/core@7.24.4)(@rollup/wasm-node@4.14.3):
+  /@rollup/plugin-babel@5.3.1(@babel/core@7.24.4)(@rollup/wasm-node@4.15.0):
     resolution: {integrity: sha512-WFfdLWU/xVWKeRQnKmIAQULUI7Il0gZnBIH/ZFO069wYIfPu+8zrfp/KMW0atmELoRDq8FbiP3VCss9MhCut7Q==}
     engines: {node: '>= 10.0.0'}
     peerDependencies:
@@ -2026,36 +2026,36 @@ packages:
     dependencies:
       '@babel/core': 7.24.4
       '@babel/helper-module-imports': 7.24.3
-      '@rollup/pluginutils': 3.1.0(@rollup/wasm-node@4.14.3)
-      rollup: /@rollup/wasm-node@4.14.3
+      '@rollup/pluginutils': 3.1.0(@rollup/wasm-node@4.15.0)
+      rollup: /@rollup/wasm-node@4.15.0
     dev: true
 
-  /@rollup/plugin-node-resolve@11.2.1(@rollup/wasm-node@4.14.3):
+  /@rollup/plugin-node-resolve@11.2.1(@rollup/wasm-node@4.15.0):
     resolution: {integrity: sha512-yc2n43jcqVyGE2sqV5/YCmocy9ArjVAP/BeXyTtADTBBX6V0e5UMqwO8CdQ0kzjb6zu5P1qMzsScCMRvE9OlVg==}
     engines: {node: '>= 10.0.0'}
     peerDependencies:
       rollup: npm:@rollup/wasm-node
     dependencies:
-      '@rollup/pluginutils': 3.1.0(@rollup/wasm-node@4.14.3)
+      '@rollup/pluginutils': 3.1.0(@rollup/wasm-node@4.15.0)
       '@types/resolve': 1.17.1
       builtin-modules: 3.3.0
       deepmerge: 4.3.1
       is-module: 1.0.0
       resolve: 1.22.8
-      rollup: /@rollup/wasm-node@4.14.3
+      rollup: /@rollup/wasm-node@4.15.0
     dev: true
 
-  /@rollup/plugin-replace@2.4.2(@rollup/wasm-node@4.14.3):
+  /@rollup/plugin-replace@2.4.2(@rollup/wasm-node@4.15.0):
     resolution: {integrity: sha512-IGcu+cydlUMZ5En85jxHH4qj2hta/11BHq95iHEyb2sbgiN0eCdzvUcHw5gt9pBL5lTi4JDYJ1acCoMGpTvEZg==}
     peerDependencies:
       rollup: npm:@rollup/wasm-node
     dependencies:
-      '@rollup/pluginutils': 3.1.0(@rollup/wasm-node@4.14.3)
+      '@rollup/pluginutils': 3.1.0(@rollup/wasm-node@4.15.0)
       magic-string: 0.25.9
-      rollup: /@rollup/wasm-node@4.14.3
+      rollup: /@rollup/wasm-node@4.15.0
     dev: true
 
-  /@rollup/pluginutils@3.1.0(@rollup/wasm-node@4.14.3):
+  /@rollup/pluginutils@3.1.0(@rollup/wasm-node@4.15.0):
     resolution: {integrity: sha512-GksZ6pr6TpIjHm8h9lSQ8pi8BE9VeubNT0OMJ3B5uZJ8pz73NPiqOtCog/x2/QzM1ENChPKxMDhiQuRHsqc+lg==}
     engines: {node: '>= 8.0.0'}
     peerDependencies:
@@ -2064,11 +2064,11 @@ packages:
       '@types/estree': 0.0.39
       estree-walker: 1.0.1
       picomatch: 2.3.1
-      rollup: /@rollup/wasm-node@4.14.3
+      rollup: /@rollup/wasm-node@4.15.0
     dev: true
 
-  /@rollup/wasm-node@4.14.3:
-    resolution: {integrity: sha512-UyFUQV/iAu/Wt6rY6uQMYBQlfTMsynzYVIz6i7s9ySwjoG9WDNgtkK1TrazCSrUFbmuPZi2gbJm6VWdJCVw2yA==}
+  /@rollup/wasm-node@4.15.0:
+    resolution: {integrity: sha512-nI+lxSZ+oFIP4MuyN8tUWepHl55BxmMnUts097dvLEBJvTbqGrLACfmvCq0RcNQsJXd539kIOdF0HHX1eJ7sfQ==}
     engines: {node: '>=18.0.0', npm: '>=8.0.0'}
     hasBin: true
     dependencies:
@@ -2457,7 +2457,7 @@ packages:
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
     dev: true
 
-  /@vitejs/plugin-react@4.2.1(vite@5.2.9):
+  /@vitejs/plugin-react@4.2.1(vite@5.2.10):
     resolution: {integrity: sha512-oojO9IDc4nCUUi8qIR11KoQm0XFFLIwsRBwHRR4d/88IWghn1y6ckz/bJ8GHDCsYEJee8mDzqtJxh15/cisJNQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
@@ -2468,7 +2468,7 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.24.1(@babel/core@7.24.4)
       '@types/babel__core': 7.20.5
       react-refresh: 0.14.0
-      vite: 5.2.9(@types/node@20.12.7)
+      vite: 5.2.10(@types/node@20.12.7)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -2840,7 +2840,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001611
-      electron-to-chromium: 1.4.744
+      electron-to-chromium: 1.4.745
       node-releases: 2.0.14
       update-browserslist-db: 1.0.13(browserslist@4.23.0)
 
@@ -3350,8 +3350,8 @@ packages:
       jake: 10.8.7
     dev: true
 
-  /electron-to-chromium@1.4.744:
-    resolution: {integrity: sha512-nAGcF0yeKKfrP13LMFr5U1eghfFSvFLg302VUFzWlcjPOnUYd52yU5x6PBYrujhNbc4jYmZFrGZFK+xasaEzVA==}
+  /electron-to-chromium@1.4.745:
+    resolution: {integrity: sha512-tRbzkaRI5gbUn5DEvF0dV4TQbMZ5CLkWeTAXmpC9IrYT+GE+x76i9p+o3RJ5l9XmdQlI1pPhVtE9uNcJJ0G0EA==}
 
   /emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -4971,7 +4971,7 @@ packages:
       '@babel/plugin-syntax-typescript': 7.24.1(@babel/core@7.24.4)
       '@babel/types': 7.24.0
       kleur: 4.1.5
-      rollup: /@rollup/wasm-node@4.14.3
+      rollup: /@rollup/wasm-node@4.15.0
       unplugin: 1.10.1
     transitivePeerDependencies:
       - supports-color
@@ -5886,7 +5886,7 @@ packages:
       glob: 7.2.3
     dev: true
 
-  /rollup-plugin-terser@7.0.2(@rollup/wasm-node@4.14.3):
+  /rollup-plugin-terser@7.0.2(@rollup/wasm-node@4.15.0):
     resolution: {integrity: sha512-w3iIaU4OxcF52UUXiZNsNeuXIMDvFrr+ZXK6bFZ0Q60qyVfq4uLptoS4bbq3paG3x216eQllFZX7zt6TIImguQ==}
     deprecated: This package has been deprecated and is no longer maintained. Please use @rollup/plugin-terser
     peerDependencies:
@@ -5894,12 +5894,12 @@ packages:
     dependencies:
       '@babel/code-frame': 7.24.2
       jest-worker: 26.6.2
-      rollup: /@rollup/wasm-node@4.14.3
+      rollup: /@rollup/wasm-node@4.15.0
       serialize-javascript: 4.0.0
       terser: 5.30.3
     dev: true
 
-  /rollup-plugin-visualizer@5.12.0(@rollup/wasm-node@4.14.3):
+  /rollup-plugin-visualizer@5.12.0(@rollup/wasm-node@4.15.0):
     resolution: {integrity: sha512-8/NU9jXcHRs7Nnj07PF2o4gjxmm9lXIrZ8r175bT9dK8qoLlvKTwRMArRCMgpMGlq8CTLugRvEmyMeMXIU2pNQ==}
     engines: {node: '>=14'}
     hasBin: true
@@ -5911,7 +5911,7 @@ packages:
     dependencies:
       open: 8.4.2
       picomatch: 2.3.1
-      rollup: /@rollup/wasm-node@4.14.3
+      rollup: /@rollup/wasm-node@4.15.0
       source-map: 0.7.4
       yargs: 17.7.2
     dev: true
@@ -6741,7 +6741,7 @@ packages:
       debug: 4.3.4
       pathe: 1.1.2
       picocolors: 1.0.0
-      vite: 5.2.9(@types/node@20.12.7)
+      vite: 5.2.10(@types/node@20.12.7)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -6753,7 +6753,7 @@ packages:
       - terser
     dev: true
 
-  /vite-plugin-checker@0.6.4(eslint@8.57.0)(typescript@5.4.5)(vite@5.2.9):
+  /vite-plugin-checker@0.6.4(eslint@8.57.0)(typescript@5.4.5)(vite@5.2.10):
     resolution: {integrity: sha512-2zKHH5oxr+ye43nReRbC2fny1nyARwhxdm0uNYp/ERy4YvU9iZpNOsueoi/luXw5gnpqRSvjcEPxXbS153O2wA==}
     engines: {node: '>=14.16'}
     peerDependencies:
@@ -6797,22 +6797,22 @@ packages:
       strip-ansi: 6.0.1
       tiny-invariant: 1.3.3
       typescript: 5.4.5
-      vite: 5.2.9(@types/node@20.12.7)
+      vite: 5.2.10(@types/node@20.12.7)
       vscode-languageclient: 7.0.0
       vscode-languageserver: 7.0.0
       vscode-languageserver-textdocument: 1.0.11
       vscode-uri: 3.0.8
     dev: true
 
-  /vite-plugin-package-version@1.1.0(vite@5.2.9):
+  /vite-plugin-package-version@1.1.0(vite@5.2.10):
     resolution: {integrity: sha512-TPoFZXNanzcaKCIrC3e2L/TVRkkRLB6l4RPN/S7KbG7rWfyLcCEGsnXvxn6qR7fyZwXalnnSN/I9d6pSFjHpEA==}
     peerDependencies:
       vite: '>=2.0.0-beta.69'
     dependencies:
-      vite: 5.2.9(@types/node@20.12.7)
+      vite: 5.2.10(@types/node@20.12.7)
     dev: true
 
-  /vite-plugin-pwa@0.17.5(vite@5.2.9)(workbox-build@7.0.0)(workbox-window@7.0.0):
+  /vite-plugin-pwa@0.17.5(vite@5.2.10)(workbox-build@7.0.0)(workbox-window@7.0.0):
     resolution: {integrity: sha512-UxRNPiJBzh4tqU/vc8G2TxmrUTzT6BqvSzhszLk62uKsf+npXdvLxGDz9C675f4BJi6MbD2tPnJhi5txlMzxbQ==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
@@ -6823,14 +6823,14 @@ packages:
       debug: 4.3.4
       fast-glob: 3.3.2
       pretty-bytes: 6.1.1
-      vite: 5.2.9(@types/node@20.12.7)
+      vite: 5.2.10(@types/node@20.12.7)
       workbox-build: 7.0.0
       workbox-window: 7.0.0
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /vite-plugin-static-copy@1.0.3(vite@5.2.9):
+  /vite-plugin-static-copy@1.0.3(vite@5.2.10):
     resolution: {integrity: sha512-hBCCz6T0uNI3oF5oJ/Ju73rhoR+ADrJ2iLAea5+wA7kpQ8clYgY8BD+GL0w0BrqsYCbgBITOByBP/3y9Y+h93A==}
     engines: {node: ^18.0.0 || >=20.0.0}
     peerDependencies:
@@ -6840,11 +6840,11 @@ packages:
       fast-glob: 3.3.2
       fs-extra: 11.2.0
       picocolors: 1.0.0
-      vite: 5.2.9(@types/node@20.12.7)
+      vite: 5.2.10(@types/node@20.12.7)
     dev: true
 
-  /vite@5.2.9(@types/node@20.12.7):
-    resolution: {integrity: sha512-uOQWfuZBlc6Y3W/DTuQ1Sr+oIXWvqljLvS881SVmAj00d5RdgShLcuXWxseWPd4HXwiYBFW/vXHfKFeqj9uQnw==}
+  /vite@5.2.10(@types/node@20.12.7):
+    resolution: {integrity: sha512-PAzgUZbP7msvQvqdSD+ErD5qGnSFiGOoWmV5yAKUEI0kdhjbH6nMWVyZQC/hSc4aXwc0oJ9aEdIiF9Oje0JFCw==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
@@ -6874,7 +6874,7 @@ packages:
       '@types/node': 20.12.7
       esbuild: 0.20.2
       postcss: 8.4.38
-      rollup: /@rollup/wasm-node@4.14.3
+      rollup: /@rollup/wasm-node@4.15.0
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
@@ -6923,7 +6923,7 @@ packages:
       strip-literal: 2.1.0
       tinybench: 2.7.0
       tinypool: 0.8.4
-      vite: 5.2.9(@types/node@20.12.7)
+      vite: 5.2.10(@types/node@20.12.7)
       vite-node: 1.5.0(@types/node@20.12.7)
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
@@ -7130,9 +7130,9 @@ packages:
       '@babel/core': 7.24.4
       '@babel/preset-env': 7.24.4(@babel/core@7.24.4)
       '@babel/runtime': 7.24.4
-      '@rollup/plugin-babel': 5.3.1(@babel/core@7.24.4)(@rollup/wasm-node@4.14.3)
-      '@rollup/plugin-node-resolve': 11.2.1(@rollup/wasm-node@4.14.3)
-      '@rollup/plugin-replace': 2.4.2(@rollup/wasm-node@4.14.3)
+      '@rollup/plugin-babel': 5.3.1(@babel/core@7.24.4)(@rollup/wasm-node@4.15.0)
+      '@rollup/plugin-node-resolve': 11.2.1(@rollup/wasm-node@4.15.0)
+      '@rollup/plugin-replace': 2.4.2(@rollup/wasm-node@4.15.0)
       '@surma/rollup-plugin-off-main-thread': 2.2.3
       ajv: 8.12.0
       common-tags: 1.8.2
@@ -7141,8 +7141,8 @@ packages:
       glob: 7.2.3
       lodash: 4.17.21
       pretty-bytes: 5.6.0
-      rollup: /@rollup/wasm-node@4.14.3
-      rollup-plugin-terser: 7.0.2(@rollup/wasm-node@4.14.3)
+      rollup: /@rollup/wasm-node@4.15.0
+      rollup-plugin-terser: 7.0.2(@rollup/wasm-node@4.15.0)
       source-map: 0.8.0-beta.0
       stringify-object: 3.3.0
       strip-comments: 2.0.1
