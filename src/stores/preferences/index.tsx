@@ -18,7 +18,7 @@ export const usePreferencesStore = create(
           s.enableThumbnails = v;
         });
       },
-      enableAutoplay: false,
+      enableAutoplay: true,
       setEnableAutoplay(v) {
         set((s) => {
           s.enableAutoplay = v;
