@@ -41,6 +41,7 @@ import th from "@/assets/locales/th.json";
 import tok from "@/assets/locales/tok.json";
 import tr from "@/assets/locales/tr.json";
 import uk from "@/assets/locales/uk.json";
+import uwu from "@/assets/locales/uwu.json";
 import vi from "@/assets/locales/vi.json";
 import zhhant from "@/assets/locales/zh-Hant.json";
 import zh from "@/assets/locales/zh.json";
@@ -62,6 +63,7 @@ export const locales = {
   sv,
   pirate,
   cat,
+  uwu,
   minion,
   lv,
   th,

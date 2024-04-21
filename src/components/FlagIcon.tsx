@@ -33,6 +33,13 @@ export function FlagIcon(props: FlagIconProps) {
       </div>
     );
 
+  if (props.langCode === "uwu")
+    return (
+      <div className="w-8 h-6 rounded bg-[#222] flex justify-center items-center">
+        <img src="/flags/uwu.png" className="w-6 h-6" />
+      </div>
+    );
+
   if (props.langCode === "minion")
     return (
       <div className="w-8 h-6 rounded bg-[#ffff1a] flex justify-center items-center">

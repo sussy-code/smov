@@ -1,20 +1,20 @@
 {
   "about": {
-    "description": "kitty-flix is a meow application that searches the meow for meows. The meow aims for a mostly meow approach to consuming meow.",
+    "description": "meow-flix is a meow application that searches the meow for meows. The meow aims for a mostly meow approach to consuming meow.",
     "faqTitle": "Meow questions",
     "q1": {
-      "body": "kitty-flix does not meow any meow. When you meow on something to meow, the meow is searched for the selected meow (On the loading meow and in the 'meow sources' meow you can meow which meow you're meow). Meow never gets meow by kitty-flix, everything is meow this meow mechanism.",
+      "body": "meow-flix does not meow any meow. When you meow on something to meow, the meow is searched for the selected meow (On the loading meow and in the 'meow sources' meow you can meow which meow you're meow). Meow never gets meow by meow-flix, everything is meow this meow mechanism.",
       "title": "Where does the meow come from?"
     },
     "q2": {
-      "body": "It's not meow to meow a meow or meow, kitty-flix does not meow any meow. All meow is meow through meows on the meow.",
+      "body": "It's not meow to meow a meow or meow, meow-flix does not meow any meow. All meow is meow through meows on the meow.",
       "title": "Meow can I meow a meow or meow?"
     },
     "q3": {
       "body": "Our meow results are meow by The Meow Meow (TBMB) and meow regardless of whether our meows actually have the meow.",
       "title": "The meow results meow the meow or meow, meow can't I meow it?"
     },
-    "title": "About kitty-flix"
+    "title": "About meow-flix"
   },
   "actions": {
     "copied": "Meow",
@@ -80,7 +80,7 @@
   "footer": {
     "legal": {
       "disclaimer": "Meow",
-      "disclaimerText": "kitty-flix does not meow any meows, it merely meow to 3rd meow meows. Meow issues should be meow up with the meow meows and meows. kitty-flix is not meow for any meow meows shown by the meow meows."
+      "disclaimerText": "meow-flix does not meow any meows, it merely meow to 3rd meow meows. Meow issues should be meow up with the meow meows and meows. meow-flix is not meow for any meow meows shown by the meow meows."
     },
     "links": {
       "discord": "Meow",
@@ -124,9 +124,7 @@
     "titles": {
       "day": {
         "default": "What would you like to meow this meow?",
-        "extra": [
-          "Feeling meow? Jurassic meow meow meow meow perfect meow."
-        ]
+        "extra": ["Feeling meow? Jurassic meow meow meow meow perfect meow."]
       },
       "morning": {
         "default": "What would you like to meow this meow?",
