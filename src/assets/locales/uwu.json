@@ -33,7 +33,7 @@
     "copy": "Copy"
   },
   "auth": {
-    "createAccount": "Don't have an account yet 😬 <-<-<0>Cweate an account.</0>",
+    "createAccount": "Don't have an account yet 😬 <0>Cweate an account.</0>",
     "deviceNameLabel": "Device nyame",
     "deviceNamePlaceholder": "Pewsonyaw phonye",
     "generate": {
@@ -69,7 +69,7 @@
       },
       "noHostTitle": "Sewvew nyot configuwed?!!",
       "noHost": "The sewvew has nyot been configuwed, thewefowe you cannyot ^w^ cweate an account",
-      "host": "You awe connyecting t-to <-<-<0>{{hostname}}</0> - pwease confiwm you twust i-it befowe making an account...",
+      "host": "You awe connyecting t-to <0>{{hostname}}</0> - pwease confiwm you twust i-it befowe making an account...",
       "no": "Go back",
       "title": "Do you twust this sewvew?!!",
       "yes": "I twust this sewvew !!!"
