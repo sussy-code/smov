@@ -1,17 +1,18 @@
 # Sudo-Flix
+[![Sudo-Flix Image](.github/Sudo-Flix.png)](https://github.com/itzCozi)  
 Sudo-Flix is a mirror of [Movie-Web](https://github.com/movie-web/movie-web) with some changes...
 
 **I *do not* endorse piracy of any kind I simply enjoy programming and large user counts.**
-
 
 ## Links And Resources
 | Service        | Link                                               | Source Code                                              |
 |----------------|----------------------------------------------------|----------------------------------------------------------|
 | Movie-Web Docs | [movie-web-docs](https://movie-web.github.io/docs) | [Source Code](https://github.com/movie-web/docs)         |
 | Extension      | [movie-web plugin](https://shorturl.at/iqzES)      | [Source Code](https://github.com/movie-web/extension)    |
-| Proxy          | [sudo-proxy](https://sudo-proxy1.sudo-flix.lol)    | [Source Code](https://gitlab.com/sudo-flix/simple-proxy) |
+| Proxy          | [sudo-proxy](https://sudo-proxy.up.railway.app)    | [Source Code](https://gitlab.com/sudo-flix/simple-proxy) |
 | Backend        | [sudo-backend](https://backend.sudo-flix.lol)      | [Source Code](https://github.com/movie-web/backend)      |
-| Frontend       | [sudo-flix](https://sudo-flix.lol)                 | [Source Code](https://github.com/sussy-code/smov)  |
+| Frontend       | [sudo-flix](https://sudo-flix.lol)                 | [Source Code](https://github.com/sussy-code/smov)        |
+| NSBX           | [NSBX API](https://nsbx.ru)                        | N/A                                                      |
 
 **I provide these if you are not able to host yourself, though I do encourage hosting the frontend.**
 
@@ -72,4 +73,5 @@ git push  # Push to YOUR repository
 
 ## Contact Me
 **Discord:** *.baddeveloper*  
-**Email:** *[dev@sudo-flix.lol](mailto:dev@sudo-flix.lol)*
+**Email:** *[dev@sudo-flix.lol](mailto:dev@sudo-flix.lol)*  
+**Github:** *[itzCozi](https://github.com/itzCozi)*
