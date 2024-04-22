@@ -8,8 +8,6 @@ body {
   min-height: 100vh;
   min-height: 100dvh;
   font-size: 1.0248em;
-  scrollbar-width: none; /* Hide scrollbar for Firefox */
-  -ms-overflow-style: none; /* Hide scrollbar for Internet Explorer and Edge */
 }
 
 html[data-full],

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
@@ -439,6 +440,15 @@ export function Discover() {
   return (
     <HomeLayout showBg={showBg}>
       <div className="mb-16 sm:mb-2">
+        <Helmet>
+          {/* Hide scrollbar lmao */}
+          <style type="text/css">{`
+            html, body {
+              scrollbar-width: none;
+              -ms-overflow-style: none;
+            }
+          `}</style>
+        </Helmet>
         <PageTitle subpage k="global.pages.discover" />
         <ThinContainer>
           <div className="mt-44 space-y-16 text-center">

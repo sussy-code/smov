@@ -42,6 +42,11 @@ export function HomePage() {
     <HomeLayout showBg={showBg}>
       <div className="mb-16 sm:mb-24">
         <Helmet>
+          <style type="text/css">{`
+            html, body {
+              scrollbar-gutter: stable;
+            }
+          `}</style>
           <title>{t("global.name")}</title>
         </Helmet>
         <HeroPart searchParams={searchParams} setIsSticky={setShowBg} />
