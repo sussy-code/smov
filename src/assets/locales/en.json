@@ -312,7 +312,7 @@
       },
       "episodes": {
         "button": "Episodes",
-        "emptyState": "There are no episodes in this season, check back later (sorry)!",
+        "emptyState": "There are no episodes in this season, check back later (sorry :3)...",
         "episodeBadge": "E{{episode}}",
         "loadingError": "Error loading season",
         "loadingList": "Loading...",
@@ -368,7 +368,7 @@
         },
         "title": "Subtitles",
         "unknownLanguage": "Unknown",
-        "dropSubtitleFile": "Drop subtitle file here"
+        "dropSubtitleFile": "Drop subtitle file here! >_<"
       }
     },
     "metadata": {
@@ -396,7 +396,7 @@
       "notFound": {
         "badge": "Not found",
         "homeButton": "Back to home",
-        "text": "We couldn't find the media you requested. Either it's been removed or you tampered with the URL (naughty).",
+        "text": "We couldn't find the media you requested. Either it's been removed or you tampered with the URL (naughty, naughty).",
         "title": "Couldn't find that media."
       }
     },
@@ -415,7 +415,7 @@
         "errorNotSupported": "The media or media provider object is not supported."
       },
       "homeButton": "Go home",
-      "text": "There was an error trying to play the media 😖. Please try again.",
+      "text": "There was an error trying to play the media 😖. Please try again!",
       "title": "Failed to play video!"
     },
     "scraping": {
