@@ -1,6 +1,5 @@
 # Sudo-Flix
 [![Sudo-Flix Image](.github/Sudo-Flix.png)](https://github.com/itzCozi)  
-Sudo-Flix is a mirror of [Movie-Web](https://github.com/movie-web/movie-web) with some changes...
 
 **I *do not* endorse piracy of any kind I simply enjoy programming and large user counts.**
 
