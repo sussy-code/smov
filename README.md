@@ -37,9 +37,7 @@ pnpm run dev
 Then you can visit the local instance [here](http://localhost:5173) or, at local host on port 5173.
 
 
-## Updating Instances
-
-### sudo-flix
+## Updating a sudo-flix Instance
 To update a sudo-flix instance you can type the below commands into a terminal at the root of your project.
 ```bash
 git remote add upstream https://github.com/sussy-code/smov.git
@@ -51,24 +49,6 @@ git add .  # Add all changes made during merge and conflict fixing
 git commit -m "Update sudo-flix instance (merge upstream/main)"
 git push  # Push to YOUR repository
 ```
-
-### movie-web
-To update a movie-web instance you can type the below commands into a terminal at the root of your project.  
-movie-web has two branches `master` and `dev` sudo-flix always merges the dev branch to get the most recent updates, master is just a stable branch.
-
-**Note:** To change the target branch for your merge simply replace `master` with `dev` or any other existing branch on the movie-web [repository](https://github.com/movie-web/movie-web).
-
-```bash
-git remote add movie-web https://github.com/movie-web/movie-web.git
-git fetch movie-web  # Grab the contents of the new remote source
-git checkout <YOUR_MAIN_BRANCH>  # Most likely this would be `origin/main`
-git merge movie-web/master
-# * Fix any conflicts present during merge *
-git add .  # Add all changes made during merge and conflict fixing
-git commit -m "Update movie-web instance (merge movie-web/master)"
-git push  # Push to YOUR repository
-```
-
 
 ## Contact Me
 **Discord:** *.baddeveloper*  
