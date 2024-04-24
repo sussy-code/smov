@@ -293,13 +293,13 @@ export function Discover() {
                     loading="lazy"
                     className="rounded-xl relative"
                   />
-                  <h1 className="group relative pt-2 text-[13.5px] whitespace-normal duration-[0.35s] break-words font-semibold text-white opacity-0 group-hover:opacity-100">
+                  <h1 className="group relative pt-2 text-[13.5px] whitespace-normal duration-[0.35s] font-semibold text-white opacity-0 group-hover:opacity-100">
                     {isTVShow
-                      ? (media.name?.length ?? 0) > 36
-                        ? `${media.name?.slice(0, 36)}...`
+                      ? (media.name?.length ?? 0) > 32
+                        ? `${media.name?.slice(0, 32)}...`
                         : media.name
-                      : (media.title?.length ?? 0) > 36
-                        ? `${media.title?.slice(0, 36)}...`
+                      : (media.title?.length ?? 0) > 32
+                        ? `${media.title?.slice(0, 32)}...`
                         : media.title}
                   </h1>
                 </Flare.Base>
@@ -312,7 +312,7 @@ export function Discover() {
           <button
             type="button"
             title="Back"
-            className="absolute pb-2 left-5 top-1/2 transform -translate-y-3/4 z-10"
+            className="absolute left-5 top-1/2 transform -translate-y-3/4 z-10"
             onClick={() => scrollCarousel(categorySlug, "left")}
           >
             <div className="cursor-pointer text-white flex justify-center items-center h-10 w-10 rounded-full bg-search-hoverBackground active:scale-110 transition-[transform,background-color] duration-200">
@@ -322,7 +322,7 @@ export function Discover() {
           <button
             type="button"
             title="Next"
-            className="absolute pb-2 right-5 top-1/2 transform -translate-y-3/4 z-10"
+            className="absolute right-5 top-1/2 transform -translate-y-3/4 z-10"
             onClick={() => scrollCarousel(categorySlug, "right")}
           >
             <div className="cursor-pointer text-white flex justify-center items-center h-10 w-10 rounded-full bg-search-hoverBackground active:scale-110 transition-[transform,background-color] duration-200">
