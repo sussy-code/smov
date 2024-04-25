@@ -52,4 +52,5 @@ git push  # Push to YOUR repository
 
 
 ## Contact Me
+pls dont I have no clue of anything if you need help he is samrt:
 **Email:** *[dev@sudo-flix.lol](mailto:dev@sudo-flix.lol)* 
