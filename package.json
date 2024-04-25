@@ -2,7 +2,7 @@
   "name": "sudo-flix",
   "version": "4.7.0",
   "private": true,
-  "homepage": "https://github.com/movie-web/movie-web",
+  "homepage": "https://github.com/sussy-code/smov",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
