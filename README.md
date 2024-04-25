@@ -6,10 +6,10 @@
 ## Links And Resources
 | Service        | Link                                                             | Source Code                                              |
 |----------------|------------------------------------------------------------------|----------------------------------------------------------|
-| Movie-Web Docs | [movie-web-docs](https://movie-web.github.io/docs)               | [Source Code](https://github.com/movie-web/docs)         |
-| Extension      | [movie-web plugin](https://shorturl.at/iqzES)                    | [Source Code](https://github.com/movie-web/extension)    |
-| Proxy          | [sudo-proxy](https://sudo-proxy.up.railway.app)                  | [Source Code](https://gitlab.com/sudo-flix/simple-proxy) |
-| Backend        | [sudo-backend](https://backend.sudo-flix.lol)                    | [Source Code](https://github.com/movie-web/backend)      |
+| Sudo-Flix Docs | Coming soon                                                      | N/A                                                      |
+| Extension      | Coming soon                                                      | N/A                                                      |
+| Proxy          | [sudo-proxy](https://sudo-proxy.up.railway.app)                  | [Source Code](https://github.com/sussy-code/sudo-proxy)  |             
+| Backend        | [sudo-backend](https://backend.sudo-flix.lol)                    | [Source Code](https://github.com/sussy-code/backend)     |
 | Frontend       | [sudo-flix](https://sudo-flix.lol), [2](https://flix.kanded.xyz) | [Source Code](https://github.com/sussy-code/smov)        |
 | NSBX           | [NSBX API](https://nsbx.ru)                                      | N/A                                                      |
 
@@ -19,8 +19,8 @@
 ## Referrers
 - [Priacy Subreddit Megathread](https://www.reddit.com/r/Piracy/s/iymSloEpXn)
 - [Toon's Instances](https://erynith.github.io/movie-web-instances)
-- [Movie-Web Docs](https://movie-web.github.io/docs/instances)
-- [Movie-Web Discord](https://movie-web.github.io/links/discord)
+- Sudo-Flix Docs | Coming soon
+- [Sudo-Flix Discord](https://discord.gg/9XyDcpmnmg)
 - Search Engines: DuckDuckGo, Bing, Google
 - Rentry.co? (This ones a mystery)
 
@@ -49,8 +49,3 @@ git add .  # Add all changes made during merge and conflict fixing
 git commit -m "Update sudo-flix instance (merge upstream/main)"
 git push  # Push to YOUR repository
 ```
-
-## Contact Me
-**Discord:** *.baddeveloper*  
-**Email:** *[dev@sudo-flix.lol](mailto:dev@sudo-flix.lol)*  
-**Github:** *[itzCozi](https://github.com/itzCozi)*
