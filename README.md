@@ -49,3 +49,7 @@ git add .  # Add all changes made during merge and conflict fixing
 git commit -m "Update sudo-flix instance (merge upstream/main)"
 git push  # Push to YOUR repository
 ```
+
+
+## Contact Me
+**Email:** *[dev@sudo-flix.lol](mailto:dev@sudo-flix.lol)* 
