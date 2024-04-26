@@ -6,13 +6,13 @@
 ## Links And Resources
 | Service        | Link                                                             | Source Code                                              |
 |----------------|------------------------------------------------------------------|----------------------------------------------------------|
-| Sudo-Flix Docs | [sudo-docs](https://sussy-code.github.io/docs)                   | [Source Code](https://github.com/sussy-code/docs)        |
-| Extension      | [extension](https://sussy-code.github.io/docs/extension)         | [Source Code](https://github.com/sussy-code/browser-ext) |
-| Proxy          | [sudo-proxy](https://sudo-proxy.up.railway.app)                  | [Source Code](https://github.com/sussy-code/sudo-proxy)  |             
-| Backend        | [sudo-backend](https://backend.sudo-flix.lol)                    | [Source Code](https://github.com/sussy-code/backend)     |
-| Frontend       | [sudo-flix](https://sudo-flix.lol), [2](https://flix.kanded.xyz) | [Source Code](https://github.com/sussy-code/smov)        |
+| Sudo-Flix Docs | [sudo-docs](https://sussy-code.github.io/docs)                   | [source code](https://github.com/sussy-code/docs)        |
+| Extension      | [extension](https://sussy-code.github.io/docs/extension)         | [source code](https://github.com/sussy-code/browser-ext) |
+| Proxy          | [sudo-proxy](https://sudo-proxy.up.railway.app)                  | [source code](https://github.com/sussy-code/sudo-proxy)  |             
+| Backend        | [sudo-backend](https://backend.sudo-flix.lol)                    | [source code](https://github.com/sussy-code/backend)     |
+| Frontend       | [sudo-flix](https://sudo-flix.lol), [2](https://flix.kanded.xyz) | [source code](https://github.com/sussy-code/smov)        |
 
-**I provide these if you are not able to host yourself, though I do encourage hosting the frontend.**
+***I provide these if you are not able to host yourself, though I do encourage hosting the frontend.***
 
 
 ## Referrers
@@ -21,7 +21,7 @@
 - [Sudo-Flix docs](https://sussy-code.github.io/docs)
 - [Sudo-Flix Discord](https://discord.gg/9XyDcpmnmg)
 - Search Engines: DuckDuckGo, Bing, Google
-- Rentry.co? (This ones a mystery)
+- Rentry.co
 
 
 ## Running Locally
