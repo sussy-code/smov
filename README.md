@@ -1,5 +1,5 @@
 # Sudo-Flix
-[![Sudo-Flix Image](.github/Sudo-Flix.png)](https://github.com/itzCozi)  
+[![Sudo-Flix Image](.github/Sudo-Flix.png)](https://docs.sudo-flix.lol)  
 
 **I *do not* endorse piracy of any kind I simply enjoy programming and large user counts.**
 
