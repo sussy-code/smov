@@ -11,7 +11,6 @@
 | Proxy          | [sudo-proxy](https://sudo-proxy.up.railway.app)                  | [Source Code](https://github.com/sussy-code/sudo-proxy)  |             
 | Backend        | [sudo-backend](https://backend.sudo-flix.lol)                    | [Source Code](https://github.com/sussy-code/backend)     |
 | Frontend       | [sudo-flix](https://sudo-flix.lol), [2](https://flix.kanded.xyz) | [Source Code](https://github.com/sussy-code/smov)        |
-| NSBX           | [NSBX API](https://nsbx.ru)                                      | N/A                                                      |
 
 **I provide these if you are not able to host yourself, though I do encourage hosting the frontend.**
 
