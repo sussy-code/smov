@@ -437,7 +437,7 @@
         "homeButton": "Go home",
         "enableExtension": "Enable extension",
         "title": "Please enable the extension",
-        "text": "You've installed the movie-web extension. To start using it, you need to enable the extension for this site."
+        "text": "You've installed the sudo-flix extension. To start using it, you need to enable the extension for this site."
       }
     },
     "time": {
@@ -457,7 +457,7 @@
     "title": "Support",
     "text": "sudo-flix is designed to be as user-friendly as possible. However, people still have questions and issues. This page is here to help resolve these shortcomings",
     "q1": {
-      "body": "Well, you can join the official <0>movie-web discord</0> and ask questions there or you can email the one provided at the bottom of this page.",
+      "body": "Well, you can join the official <0>sudo-flix discord</0> and ask questions there or you can email the one provided at the bottom of this page.",
       "title": "Where can I get help?"
     },
     "q2": {
