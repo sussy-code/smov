@@ -1,13 +1,12 @@
+// Based mfs only use only one 500 line file instead of ten 50 line files.
 import React, { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
-import { ThinContainer } from "@/components/layout/ThinContainer";
-import { WideContainer } from "@/components/layout/WideContainer";
+import { ThiccContainer } from "@/components/layout/ThinContainer";
 import { Divider } from "@/components/utils/Divider";
 import { Flare } from "@/components/utils/Flare";
-import { HomeLayout } from "@/pages/layouts/HomeLayout";
 import { conf } from "@/setup/config";
 import {
   Category,
@@ -19,13 +18,13 @@ import {
   tvCategories,
 } from "@/utils/discover";
 
+import { SubPageLayout } from "./layouts/SubPageLayout";
 import { PageTitle } from "./parts/util/PageTitle";
 import { get } from "../backend/metadata/tmdb";
 import { Icon, Icons } from "../components/Icon";
 
 export function Discover() {
   const { t } = useTranslation();
-  const [showBg] = useState<boolean>(false);
   const [genres, setGenres] = useState<Genre[]>([]);
   const [randomMovie, setRandomMovie] = useState<Movie | null>(null);
   const [genreMovies, setGenreMovies] = useState<{
@@ -248,7 +247,7 @@ export function Discover() {
             : `${category} Movies`;
     return (
       <div className="relative overflow-hidden mt-2">
-        <h2 className="text-2xl cursor-default font-bold text-white sm:text-3xl md:text-2xl mx-auto pl-6">
+        <h2 className="text-2xl cursor-default font-bold text-white sm:text-3xl md:text-2xl mx-auto pl-5">
           {displayCategory}
         </h2>
         <div
@@ -438,7 +437,7 @@ export function Discover() {
   }, [countdown]);
 
   return (
-    <HomeLayout showBg={showBg}>
+    <SubPageLayout>
       <div className="mb-16 sm:mb-2">
         <Helmet>
           {/* Hide scrollbar lmao */}
@@ -450,113 +449,101 @@ export function Discover() {
           `}</style>
         </Helmet>
         <PageTitle subpage k="global.pages.discover" />
-        <ThinContainer>
-          <div className="mt-44 space-y-16 text-center">
-            <div className="relative z-10 mb-16">
-              <h1 className="text-4xl cursor-default font-bold text-white">
-                {t("global.pages.discover")}
-              </h1>
-            </div>
+        <div className="mt-44 space-y-16 text-center">
+          <div className="relative z-10 mb-16">
+            <h1 className="text-4xl cursor-default font-bold text-white">
+              {t("global.pages.discover")}
+            </h1>
           </div>
-        </ThinContainer>
+        </div>
       </div>
-      <WideContainer>
-        <>
-          <div className="flex items-center justify-center mb-6">
-            <button
-              type="button"
-              className="flex items-center space-x-2 rounded-full px-4 text-white py-2 bg-pill-background bg-opacity-50 hover:bg-pill-backgroundHover transition-[background,transform] duration-100 hover:scale-105"
-              onClick={handleRandomMovieClick}
+      <ThiccContainer>
+        <div className="flex items-center justify-center mb-6">
+          <button
+            type="button"
+            className="flex items-center space-x-2 rounded-full px-4 text-white py-2 bg-pill-background bg-opacity-50 hover:bg-pill-backgroundHover transition-[background,transform] duration-100 hover:scale-105"
+            onClick={handleRandomMovieClick}
+          >
+            <span className="flex items-center">
+              {countdown !== null && countdown > 0 ? (
+                <div className="flex items-center inline-block">
+                  <span>Cancel Countdown</span>
+                  <Icon
+                    icon={Icons.X}
+                    className="text-2xl ml-[4.5px] mb-[-0.7px]"
+                  />
+                </div>
+              ) : (
+                <div className="flex items-center inline-block">
+                  <span>Watch Something New</span>
+                  <img
+                    src="/lightbar-images/dice.svg"
+                    alt="Small Image"
+                    style={{
+                      marginLeft: "8px",
+                    }}
+                  />
+                </div>
+              )}
+            </span>
+          </button>
+        </div>
+        {randomMovie && (
+          <div className="mt-4 mb-4 text-center">
+            <p>
+              Now Playing <span className="font-bold">{randomMovie.title}</span>{" "}
+              in {countdown}
+            </p>
+          </div>
+        )}
+        <div className="flex flex-col">
+          {categories.map((category) => (
+            <div
+              key={category.name}
+              id={`carousel-${category.name.toLowerCase().replace(/ /g, "-")}`}
+              className="mt-8"
             >
-              <span className="flex items-center">
-                {countdown !== null && countdown > 0 ? (
-                  <div className="flex items-center inline-block">
-                    <span>Cancel Countdown</span>
-                    <Icon
-                      icon={Icons.X}
-                      className="text-2xl ml-[4.5px] mb-[-0.7px]"
-                    />
-                  </div>
-                ) : (
-                  <div className="flex items-center inline-block">
-                    <span>Watch Something New</span>
-                    <img
-                      src="/lightbar-images/dice.svg"
-                      alt="Small Image"
-                      style={{
-                        marginLeft: "8px",
-                      }}
-                    />
-                  </div>
-                )}
-              </span>
-            </button>
-          </div>
-          {randomMovie && (
-            <div className="mt-4 mb-4 text-center">
-              <p>
-                Now Playing{" "}
-                <span className="font-bold">{randomMovie.title}</span> in{" "}
-                {countdown}
-              </p>
+              {renderMovies(categoryMovies[category.name] || [], category.name)}
             </div>
-          )}
-          <div className="flex flex-col">
-            {categories.map((category) => (
-              <div
-                key={category.name}
-                id={`carousel-${category.name
-                  .toLowerCase()
-                  .replace(/ /g, "-")}`}
-                className="mt-8"
-              >
-                {renderMovies(
-                  categoryMovies[category.name] || [],
-                  category.name,
-                )}
-              </div>
-            ))}
-            {genres.map((genre) => (
-              <div
-                key={genre.id}
-                id={`carousel-${genre.name.toLowerCase().replace(/ /g, "-")}`}
-                className="mt-8"
-              >
-                {renderMovies(genreMovies[genre.id] || [], genre.name)}
-              </div>
-            ))}
-            <div className="flex items-center">
-              <Divider marginClass="mr-5" />
-              <h1 className="text-4xl font-bold text-white mx-auto">Shows</h1>
-              <Divider marginClass="ml-5" />
+          ))}
+          {genres.map((genre) => (
+            <div
+              key={genre.id}
+              id={`carousel-${genre.name.toLowerCase().replace(/ /g, "-")}`}
+              className="mt-8"
+            >
+              {renderMovies(genreMovies[genre.id] || [], genre.name)}
             </div>
-            {tvCategories.map((category) => (
-              <div
-                key={category.name}
-                id={`carousel-${category.name
-                  .toLowerCase()
-                  .replace(/ /g, "-")}`}
-                className="mt-8"
-              >
-                {renderMovies(
-                  categoryShows[category.name] || [],
-                  category.name,
-                  true,
-                )}
-              </div>
-            ))}
-            {tvGenres.map((genre) => (
-              <div
-                key={genre.id}
-                id={`carousel-${genre.name.toLowerCase().replace(/ /g, "-")}`}
-                className="mt-8"
-              >
-                {renderMovies(tvShowGenres[genre.id] || [], genre.name, true)}
-              </div>
-            ))}
+          ))}
+          <div className="flex items-center">
+            <Divider marginClass="mr-5" />
+            <h1 className="text-4xl font-bold text-white mx-auto">Shows</h1>
+            <Divider marginClass="ml-5" />
           </div>
-        </>
-      </WideContainer>
-    </HomeLayout>
+          {tvCategories.map((category) => (
+            <div
+              key={category.name}
+              id={`carousel-${category.name.toLowerCase().replace(/ /g, "-")}`}
+              className="mt-8"
+            >
+              {renderMovies(
+                categoryShows[category.name] || [],
+                category.name,
+                true,
+              )}
+            </div>
+          ))}
+          {tvGenres.map((genre) => (
+            <div
+              key={genre.id}
+              id={`carousel-${genre.name.toLowerCase().replace(/ /g, "-")}`}
+              className="mt-8"
+            >
+              {renderMovies(tvShowGenres[genre.id] || [], genre.name, true)}
+            </div>
+          ))}
+        </div>
+      </ThiccContainer>
+    </SubPageLayout>
   );
 }
