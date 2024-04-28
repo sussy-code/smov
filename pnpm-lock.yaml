@@ -22,8 +22,8 @@ dependencies:
     specifier: ^1.0.3
     version: 1.0.3
   '@movie-web/providers':
-    specifier: github:sussy-code/sudo-providers
-    version: github.com/sussy-code/sudo-providers/ba13d8fe4e0b5f95bedc3643516fc7172634957c
+    specifier: github:sussy-code/providers
+    version: github.com/sussy-code/providers/7dfd025aadd87a41c592f489590896c4fb8ca413
   '@noble/hashes':
     specifier: ^1.4.0
     version: 1.4.0
@@ -73,8 +73,8 @@ dependencies:
     specifier: ^23.11.2
     version: 23.11.2
   immer:
-    specifier: ^10.0.4
-    version: 10.0.4
+    specifier: ^10.1.1
+    version: 10.1.1
   jwt-decode:
     specifier: ^4.0.0
     version: 4.0.0
@@ -140,7 +140,7 @@ dependencies:
     version: 2.1.2
   zustand:
     specifier: ^4.5.2
-    version: 4.5.2(@types/react@18.3.1)(immer@10.0.4)(react@18.3.1)
+    version: 4.5.2(@types/react@18.3.1)(immer@10.1.1)(react@18.3.1)
 
 devDependencies:
   '@babel/core':
@@ -2179,8 +2179,8 @@ packages:
       '@babel/types': 7.24.0
     dev: true
 
-  /@types/chrome@0.0.266:
-    resolution: {integrity: sha512-QSQWJTL7NjZElvq/6/E5C1+pHgEP8UAJzwoz7M4vSJ7AECt6NNehJ+tU6snnvuTqZOBjFCivvitYo5+8tNPmhg==}
+  /@types/chrome@0.0.267:
+    resolution: {integrity: sha512-vnCWPpYjazSPRMNmybRH+0q4f738F+Pbbls4ZPFsPr9/4TTNJyK1OLZDpSnghnEWb4stfmIUtq/GegnlfD4sPA==}
     dependencies:
       '@types/filesystem': 0.0.36
       '@types/har-format': 1.2.15
@@ -2189,7 +2189,7 @@ packages:
   /@types/chromecast-caf-sender@1.0.9:
     resolution: {integrity: sha512-+u4Y5O4OkkNjG+V2l2Cnsw6pSYS+lg4Jlnxh+FVVqdnXp+M8R4Umor1C3JA6u/iXCpTmIndOaBvZa3bMhGZgnw==}
     dependencies:
-      '@types/chrome': 0.0.266
+      '@types/chrome': 0.0.267
     dev: true
 
   /@types/crypto-js@4.2.2:
@@ -2761,7 +2761,7 @@ packages:
       postcss: '>=8.4.31'
     dependencies:
       browserslist: 4.23.0
-      caniuse-lite: 1.0.30001612
+      caniuse-lite: 1.0.30001613
       fraction.js: 4.3.7
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -2865,7 +2865,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001612
+      caniuse-lite: 1.0.30001613
       electron-to-chromium: 1.4.750
       node-releases: 2.0.14
       update-browserslist-db: 1.0.13(browserslist@4.23.0)
@@ -2905,8 +2905,8 @@ packages:
     engines: {node: '>= 6'}
     dev: true
 
-  /caniuse-lite@1.0.30001612:
-    resolution: {integrity: sha512-lFgnZ07UhaCcsSZgWW0K5j4e69dK1u/ltrL9lTUiFOwNHs12S3UMIEYgBV0Z6C6hRDev7iRnMzzYmKabYdXF9g==}
+  /caniuse-lite@1.0.30001613:
+    resolution: {integrity: sha512-BNjJULJfOONQERivfxte7alLfeLW4QnwHvNW4wEcLEbXfV6VSCYvr+REbf2Sojv8tC1THpjPXBxWgDbq4NtLWg==}
 
   /chai@4.4.1:
     resolution: {integrity: sha512-13sOfMv2+DWduEU+/xbun3LScLoqN17nBeTLUsmDfKdoiC1fr0n9PU4guu4AhRcOVFk/sW8LyZWHuhWtQZiF+g==}
@@ -4381,8 +4381,8 @@ packages:
     engines: {node: '>= 4'}
     dev: true
 
-  /immer@10.0.4:
-    resolution: {integrity: sha512-cuBuGK40P/sk5IzWa9QPUaAdvPHjkk1c+xYsd9oZw+YQQEV+10G0P5uMpGctZZKnyQ+ibRO08bD25nWLmYi2pw==}
+  /immer@10.1.1:
+    resolution: {integrity: sha512-s2MPrmjovJcoMaHtx6K11Ra7oD05NT97w1IC5zpMkT6Atjr7H8LjaDd81iIxUYpMKSRRNMJE703M1Fhr/TctHw==}
     dev: false
 
   /import-fresh@3.3.0:
@@ -7368,7 +7368,7 @@ packages:
     engines: {node: '>=12.20'}
     dev: true
 
-  /zustand@4.5.2(@types/react@18.3.1)(immer@10.0.4)(react@18.3.1):
+  /zustand@4.5.2(@types/react@18.3.1)(immer@10.1.1)(react@18.3.1):
     resolution: {integrity: sha512-2cN1tPkDVkwCy5ickKrI7vijSjPksFRfqS6237NzT0vqSsztTNnQdHw9mmN7uBdk3gceVXU0a+21jFzFzAc9+g==}
     engines: {node: '>=12.7.0'}
     peerDependencies:
@@ -7384,13 +7384,13 @@ packages:
         optional: true
     dependencies:
       '@types/react': 18.3.1
-      immer: 10.0.4
+      immer: 10.1.1
       react: 18.3.1
       use-sync-external-store: 1.2.0(react@18.3.1)
     dev: false
 
-  github.com/sussy-code/sudo-providers/ba13d8fe4e0b5f95bedc3643516fc7172634957c:
-    resolution: {tarball: https://codeload.github.com/sussy-code/sudo-providers/tar.gz/ba13d8fe4e0b5f95bedc3643516fc7172634957c}
+  github.com/sussy-code/providers/7dfd025aadd87a41c592f489590896c4fb8ca413:
+    resolution: {tarball: https://codeload.github.com/sussy-code/providers/tar.gz/7dfd025aadd87a41c592f489590896c4fb8ca413}
     name: '@movie-web/providers'
     version: 2.3.0
     requiresBuild: true
