@@ -1,5 +1,5 @@
 import { useAutoAnimate } from "@formkit/auto-animate/react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { EditButton } from "@/components/buttons/EditButton";
@@ -12,7 +12,11 @@ import { useProgressStore } from "@/stores/progress";
 import { shouldShowProgress } from "@/stores/progress/utils";
 import { MediaItem } from "@/utils/mediaTypes";
 
-export function WatchingPart() {
+export function WatchingPart({
+  onItemsChange,
+}: {
+  onItemsChange: (hasItems: boolean) => void;
+}) {
   const { t } = useTranslation();
   const bookmarks = useBookmarkStore((s) => s.bookmarks);
   const progressItems = useProgressStore((s) => s.items);
@@ -38,6 +42,10 @@ export function WatchingPart() {
     });
     return output;
   }, [progressItems, bookmarks]);
+
+  useEffect(() => {
+    onItemsChange(sortedProgressItems.length > 0);
+  }, [sortedProgressItems, onItemsChange]);
 
   if (sortedProgressItems.length === 0) return null;
 

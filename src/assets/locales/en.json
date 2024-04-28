@@ -147,7 +147,18 @@
           ">ᴗ<"
         ]
       },
-      "sectionTitle": "Search results"
+      "empty": {
+        "default": "Welcome, find media to watch here!",
+        "extra": [
+          "There's nothing here :(",
+          "So empty...",
+          "Such emptiness.",
+          "Hi new user :3"
+        ]
+      },
+      "sectionTitle": "Search results",
+      "discoverMore": "Discover more",
+      "discover": "Discover"
     },
     "titles": {
       "day": {
