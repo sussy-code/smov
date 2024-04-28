@@ -162,7 +162,6 @@
     },
     "menu": {
       "about": "À propos de nous",
-      "donation": "Faire un don",
       "logout": "Se déconnecter",
       "register": "Synchroniser au Cloud",
       "settings": "Paramètres",

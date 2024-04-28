@@ -159,7 +159,6 @@
     },
     "menu": {
       "about": "서비스 소개",
-      "donation": "후원",
       "logout": "로그아웃",
       "register": "클라우드 동기화",
       "settings": "설정",

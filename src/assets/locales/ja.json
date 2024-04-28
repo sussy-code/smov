@@ -103,7 +103,6 @@
   "navigation": {
     "menu": {
       "about": "会社概要",
-      "donation": "寄付",
       "logout": "退室",
       "register": "クラウドに同期して",
       "settings": "設定"

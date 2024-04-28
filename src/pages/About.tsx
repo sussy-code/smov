@@ -67,9 +67,6 @@ export function AboutPage() {
             <Question title={t("about.q5.title")}>
               {t("about.q5.body")}
             </Question>,
-            <Question title={t("about.q6.title")}>
-              {t("about.q6.body")}
-            </Question>,
           ]}
         />
         <div
