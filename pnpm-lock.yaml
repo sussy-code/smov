@@ -23,7 +23,7 @@ dependencies:
     version: 1.0.3
   '@movie-web/providers':
     specifier: github:sussy-code/providers
-    version: github.com/sussy-code/providers/7dfd025aadd87a41c592f489590896c4fb8ca413
+    version: github.com/sussy-code/providers/30511f11e8bc3f8b26be356d0db59acc100cf92e
   '@noble/hashes':
     specifier: ^1.4.0
     version: 1.4.0
@@ -4751,7 +4751,7 @@ packages:
       whatwg-encoding: 3.1.1
       whatwg-mimetype: 4.0.0
       whatwg-url: 14.0.0
-      ws: 8.16.0
+      ws: 8.17.0
       xml-name-validator: 5.0.0
     transitivePeerDependencies:
       - bufferutil
@@ -7301,8 +7301,8 @@ packages:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
     dev: true
 
-  /ws@8.16.0:
-    resolution: {integrity: sha512-HS0c//TP7Ina87TfiPUz1rQzMhHrl/SG2guqRcTOIUYD2q8uhUdNHZYJUaQ8aTGPzCh+c6oawMKW35nFl1dxyQ==}
+  /ws@8.17.0:
+    resolution: {integrity: sha512-uJq6108EgZMAl20KagGkzCKfMEjxmKvZHG7Tlq0Z6nOky7YF7aq4mOx6xK8TJ/i1LeK4Qus7INktacctDgY8Ow==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
       bufferutil: ^4.0.1
@@ -7389,8 +7389,8 @@ packages:
       use-sync-external-store: 1.2.0(react@18.3.1)
     dev: false
 
-  github.com/sussy-code/providers/7dfd025aadd87a41c592f489590896c4fb8ca413:
-    resolution: {tarball: https://codeload.github.com/sussy-code/providers/tar.gz/7dfd025aadd87a41c592f489590896c4fb8ca413}
+  github.com/sussy-code/providers/30511f11e8bc3f8b26be356d0db59acc100cf92e:
+    resolution: {tarball: https://codeload.github.com/sussy-code/providers/tar.gz/30511f11e8bc3f8b26be356d0db59acc100cf92e}
     name: '@movie-web/providers'
     version: 2.3.0
     requiresBuild: true
