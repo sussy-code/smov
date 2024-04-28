@@ -14,6 +14,7 @@ import {
 } from "@/backend/helpers/providerApi";
 import { getLoadbalancedProviderApiUrl } from "@/backend/providers/fetchers";
 import { getProviders } from "@/backend/providers/providers";
+import { usePreferencesStore } from "@/stores/preferences";
 
 export interface ScrapingItems {
   id: string;
@@ -156,6 +157,8 @@ export function useScrape() {
     startScrape,
   } = useBaseScrape();
 
+  const preferredSourceOrder = usePreferencesStore((s) => s.sourceOrder);
+
   const startScraping = useCallback(
     async (media: ScrapeMedia) => {
       const providerApiUrl = getLoadbalancedProviderApiUrl();
@@ -181,6 +184,7 @@ export function useScrape() {
       const providers = getProviders();
       const output = await providers.runAll({
         media,
+        sourceOrder: preferredSourceOrder,
         events: {
           init: initEvent,
           start: startEvent,
@@ -199,6 +203,7 @@ export function useScrape() {
       discoverEmbedsEvent,
       getResult,
       startScrape,
+      preferredSourceOrder,
     ],
   );
 

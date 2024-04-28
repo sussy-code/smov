@@ -11,6 +11,7 @@ import {
 import { getSessions, updateSession } from "@/backend/accounts/sessions";
 import { updateSettings } from "@/backend/accounts/settings";
 import { editUser } from "@/backend/accounts/user";
+import { getAllProviders } from "@/backend/providers/providers";
 import { Button } from "@/components/buttons/Button";
 import { WideContainer } from "@/components/layout/WideContainer";
 import { UserIcons } from "@/components/UserIcon";
@@ -126,6 +127,9 @@ export function SettingsPage() {
   const enableAutoplay = usePreferencesStore((s) => s.enableAutoplay);
   const setEnableAutoplay = usePreferencesStore((s) => s.setEnableAutoplay);
 
+  const sourceOrder = usePreferencesStore((s) => s.sourceOrder);
+  const setSourceOrder = usePreferencesStore((s) => s.setSourceOrder);
+
   const account = useAuthStore((s) => s.account);
   const updateProfile = useAuthStore((s) => s.setAccountProfile);
   const updateDeviceName = useAuthStore((s) => s.updateDeviceName);
@@ -149,7 +153,24 @@ export function SettingsPage() {
     account?.profile,
     enableThumbnails,
     enableAutoplay,
+    sourceOrder,
   );
+
+  const availableSources = useMemo(() => {
+    const sources = getAllProviders().listSources();
+    const sourceIDs = sources.map((s) => s.id);
+    const stateSources = state.sourceOrder.state;
+
+    // Filter out sources that are not in `stateSources` and are in `sources`
+    const updatedSources = stateSources.filter((ss) => sourceIDs.includes(ss));
+
+    // Add sources from `sources` that are not in `stateSources`
+    const missingSources = sources
+      .filter((s) => !stateSources.includes(s.id))
+      .map((s) => s.id);
+
+    return [...updatedSources, ...missingSources];
+  }, [state.sourceOrder.state]);
 
   useEffect(() => {
     setPreviewTheme(activeTheme ?? "default");
@@ -202,6 +223,7 @@ export function SettingsPage() {
 
     setEnableThumbnails(state.enableThumbnails.state);
     setEnableAutoplay(state.enableAutoplay.state);
+    setSourceOrder(state.sourceOrder.state);
     setAppLanguage(state.appLanguage.state);
     setTheme(state.theme.state);
     setSubStyling(state.subtitleStyling.state);
@@ -228,6 +250,7 @@ export function SettingsPage() {
     setEnableThumbnails,
     state,
     setEnableAutoplay,
+    setSourceOrder,
     setAppLanguage,
     setTheme,
     setSubStyling,
@@ -278,6 +301,8 @@ export function SettingsPage() {
             setEnableThumbnails={state.enableThumbnails.set}
             enableAutoplay={state.enableAutoplay.state}
             setEnableAutoplay={state.enableAutoplay.set}
+            sourceOrder={availableSources}
+            setSourceOrder={state.sourceOrder.set}
           />
         </div>
         <div id="settings-appearance" className="mt-48">

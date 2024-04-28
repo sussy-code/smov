@@ -10,7 +10,7 @@ import { createRoot } from "react-dom/client";
 import { HelmetProvider } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 import { BrowserRouter, HashRouter } from "react-router-dom";
-import { useAsync } from "react-use";
+import { useAsync, useAsyncFn } from "react-use";
 
 import { Button } from "@/components/buttons/Button";
 import { Icon, Icons } from "@/components/Icon";
@@ -31,6 +31,10 @@ import { SettingsSyncer } from "@/stores/subtitles/SettingsSyncer";
 import { ThemeProvider } from "@/stores/theme";
 import { TurnstileProvider } from "@/stores/turnstile";
 
+import {
+  extensionInfo,
+  isExtensionActiveCached,
+} from "./backend/extension/messaging";
 import { initializeChromecast } from "./setup/chromecast";
 import { initializeOldStores } from "./stores/__old/migrations";
 
@@ -149,6 +153,23 @@ function TheRouter(props: { children: ReactNode }) {
   return <HashRouter>{props.children}</HashRouter>;
 }
 
+// Checks if the extension is installed
+function ExtensionStatus() {
+  const { t } = useTranslation();
+  const [state] = useAsyncFn(async () => {
+    if (!isExtensionActiveCached) {
+      return extensionInfo();
+    }
+  });
+
+  if (state.loading) {
+    return <LoadingScreen type="lazy" />;
+  }
+  if (state.error) {
+    return <ErrorScreen>{t("screens.loadingUserError.reload")}</ErrorScreen>;
+  }
+  return null;
+}
 const container = document.getElementById("root");
 const root = createRoot(container!);
 
@@ -158,6 +179,7 @@ root.render(
       <TurnstileProvider />
       <HelmetProvider>
         <Suspense fallback={<LoadingScreen type="lazy" />}>
+          <ExtensionStatus />
           <ThemeProvider applyGlobal>
             <ProgressSyncer />
             <BookmarkSyncer />

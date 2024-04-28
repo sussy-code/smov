@@ -1,9 +1,13 @@
 import classNames from "classnames";
+import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
+import { getAllProviders, getProviders } from "@/backend/providers/providers";
+import { Button } from "@/components/buttons/Button";
 import { Toggle } from "@/components/buttons/Toggle";
 import { FlagIcon } from "@/components/FlagIcon";
 import { Dropdown } from "@/components/form/Dropdown";
+import { SortableList } from "@/components/form/SortableList";
 import { Heading1 } from "@/components/utils/Text";
 import { appLanguageOptions } from "@/setup/i18n";
 import { isAutoplayAllowed } from "@/utils/autoplay";
@@ -16,6 +20,8 @@ export function PreferencesPart(props: {
   setEnableThumbnails: (v: boolean) => void;
   enableAutoplay: boolean;
   setEnableAutoplay: (v: boolean) => void;
+  sourceOrder: string[];
+  setSourceOrder: (v: string[]) => void;
 }) {
   const { t } = useTranslation();
   const sorted = sortLangCodes(appLanguageOptions.map((item) => item.code));
@@ -33,6 +39,17 @@ export function PreferencesPart(props: {
   const selected = options.find(
     (item) => item.id === getLocaleInfo(props.language)?.code,
   );
+
+  const allSources = getAllProviders().listSources();
+
+  const sourceItems = useMemo(() => {
+    const currentDeviceSources = getProviders().listSources();
+    return props.sourceOrder.map((id) => ({
+      id,
+      name: allSources.find((s) => s.id === id)?.name || id,
+      disabled: !currentDeviceSources.find((s) => s.id === id),
+    }));
+  }, [props.sourceOrder, allSources]);
 
   return (
     <div className="space-y-12">
@@ -93,6 +110,29 @@ export function PreferencesPart(props: {
             {t("settings.preferences.autoplayLabel")}
           </p>
         </div>
+      </div>
+
+      <div className="flex flex-col gap-3">
+        <p className="text-white font-bold">
+          {t("settings.preferences.sourceOrder")}
+        </p>
+        <p className="max-w-[25rem] font-medium">
+          {t("settings.preferences.sourceOrderDescription")}
+        </p>
+
+        <SortableList
+          items={sourceItems}
+          setItems={(items) =>
+            props.setSourceOrder(items.map((item) => item.id))
+          }
+        />
+        <Button
+          className="max-w-[25rem]"
+          theme="secondary"
+          onClick={() => props.setSourceOrder(allSources.map((s) => s.id))}
+        >
+          {t("settings.reset")}
+        </Button>
       </div>
     </div>
   );
