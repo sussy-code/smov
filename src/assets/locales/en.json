@@ -201,7 +201,8 @@
       "logout": "Log out",
       "register": "Sync to sudo-cloud",
       "settings": "Settings",
-      "support": "Support"
+      "support": "Support",
+      "discover": "Discover"
     }
   },
   "notFound": {

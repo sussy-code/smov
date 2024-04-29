@@ -1,10 +1,8 @@
 import { useEffect } from "react";
-import { Trans, useTranslation } from "react-i18next";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import { Icon, Icons } from "@/components/Icon";
 import { useBannerStore, useRegisterBanner } from "@/stores/banner";
-import type { ExtensionStatus } from "@/utils/extension";
 
 export function Banner(props: {
   children: React.ReactNode;
@@ -53,83 +51,6 @@ export function Banner(props: {
       </div>
     </div>
   );
-}
-
-// This jawn is for advertising the extension for le skids
-export function ExtensionBanner(props: {
-  location?: string;
-  extensionState: ExtensionStatus;
-}) {
-  const navigate = useNavigate();
-  const setLocation = useBannerStore((s) => s.setLocation);
-  const currentLocation = useBannerStore((s) => s.location);
-  const loc = props.location ?? null;
-  const { pathname } = useLocation();
-  const isEligible = !(
-    /CrOS/.test(navigator.userAgent) ||
-    /TV/.test(navigator.userAgent) ||
-    /iPhone|iPad|iPod/i.test(navigator.userAgent)
-  );
-
-  useEffect(() => {
-    if (loc) {
-      setLocation(loc);
-      return () => {
-        setLocation(null);
-      };
-    }
-  }, [setLocation, loc]);
-
-  const hideBannerFlag = sessionStorage.getItem("hideBanner");
-  if (hideBannerFlag) {
-    return null;
-  }
-
-  if (currentLocation !== loc || pathname === "/onboarding/extension")
-    return null;
-
-  // Show the banner with a 36.5% chance or not if users don't meet requirements
-  if (isEligible && Math.random() < 0.365) {
-    let bannerText = "";
-    switch (props.extensionState) {
-      case "noperms":
-        bannerText = "The extension does'nt have the necessary permissions.";
-        break;
-      case "outdated":
-        bannerText =
-          "Your extension is outdated. Please update it <bold>here</bold>.";
-        break;
-      case "disallowed":
-        bannerText =
-          "The extension is not enabled, click <bold>here</bold> to fix it.";
-        break;
-      case "failed":
-        bannerText =
-          "The extension is broken... Please click <bold>here</bold>.";
-        break;
-      default:
-        bannerText =
-          "You don't have the extension! Download it <bold>here</bold> for better quality.";
-        break;
-    }
-
-    return (
-      <Banner id="extension" type="info">
-        <div
-          onClick={() => navigate("/onboarding/extension")}
-          style={{ cursor: "pointer" }}
-        >
-          <Trans
-            i18nKey={bannerText}
-            components={{
-              bold: <span className="font-bold" />,
-            }}
-          />
-        </div>
-      </Banner>
-    );
-  }
-  return null;
 }
 
 export function BannerLocation(props: { location?: string }) {

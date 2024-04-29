@@ -275,34 +275,32 @@ export function Discover() {
                   }`,
                 )
               }
-              className="text-center relative mt-3 ml-[0.285em] mb-3 mr-[0.2em]"
+              className="text-center relative mt-3 ml-[0.285em] mb-3 mr-[0.2em] transition-transform hover:scale-105 duration-[0.45s]"
               style={{ flex: `0 0 ${movieWidth}` }} // Set a fixed width for each movie
             >
-              <div className="relative transition-transform hover:scale-105 duration-[0.45s]">
-                <Flare.Base className="group cursor-pointer rounded-xl relative p-[0.65em] bg-background-main transition-colors duration-300">
-                  <Flare.Light
-                    flareSize={300}
-                    cssColorVar="--colors-mediaCard-hoverAccent"
-                    backgroundClass="bg-mediaCard-hoverBackground duration-200"
-                    className="rounded-xl bg-background-main group-hover:opacity-100"
-                  />
-                  <img
-                    src={`https://image.tmdb.org/t/p/w500${media.poster_path}`}
-                    alt="failed to fetch :("
-                    loading="lazy"
-                    className="rounded-xl relative"
-                  />
-                  <h1 className="group relative pt-2 text-[13.5px] whitespace-normal duration-[0.35s] font-semibold text-white opacity-0 group-hover:opacity-100">
-                    {isTVShow
-                      ? (media.name?.length ?? 0) > 32
-                        ? `${media.name?.slice(0, 32)}...`
-                        : media.name
-                      : (media.title?.length ?? 0) > 32
-                        ? `${media.title?.slice(0, 32)}...`
-                        : media.title}
-                  </h1>
-                </Flare.Base>
-              </div>
+              <Flare.Base className="group cursor-pointer rounded-xl relative p-[0.65em] bg-background-main transition-colors duration-300 bg-transparent">
+                <Flare.Light
+                  flareSize={300}
+                  cssColorVar="--colors-mediaCard-hoverAccent"
+                  backgroundClass="bg-mediaCard-hoverBackground duration-200"
+                  className="rounded-xl bg-background-main group-hover:opacity-100"
+                />
+                <img
+                  src={`https://image.tmdb.org/t/p/w500${media.poster_path}`}
+                  alt="failed to fetch :("
+                  loading="lazy"
+                  className="rounded-xl relative"
+                />
+                <h1 className="group relative pt-2 text-[13.5px] whitespace-normal duration-[0.35s] font-semibold text-white opacity-0 group-hover:opacity-100">
+                  {isTVShow
+                    ? (media.name?.length ?? 0) > 32
+                      ? `${media.name?.slice(0, 32)}...`
+                      : media.name
+                    : (media.title?.length ?? 0) > 32
+                      ? `${media.title?.slice(0, 32)}...`
+                      : media.title}
+                </h1>
+              </Flare.Base>
             </a>
           ))}
         </div>
