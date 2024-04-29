@@ -235,6 +235,13 @@ export function Discover() {
     setIsHovered(false);
   };
 
+  useEffect(() => {
+    window.addEventListener("mouseleave", handleMouseLeave);
+    return () => {
+      window.removeEventListener("mouseleave", handleMouseLeave);
+    };
+  }, []);
+
   function renderMovies(medias: Media[], category: string, isTVShow = false) {
     const categorySlug = `${category.toLowerCase().replace(/ /g, "-")}${Math.random()}`; // Convert the category to a slug
     const displayCategory =
