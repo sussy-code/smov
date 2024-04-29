@@ -245,6 +245,7 @@ export function Discover() {
           : isTVShow
             ? `${category} Shows`
             : `${category} Movies`;
+    // https://tailwindcss.com/docs/border-style
     return (
       <div className="relative overflow-hidden mt-2">
         <h2 className="text-2xl cursor-default font-bold text-white sm:text-3xl md:text-2xl mx-auto pl-5">
