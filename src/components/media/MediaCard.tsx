@@ -67,7 +67,7 @@ function MediaCardContent({
 
   return (
     <Flare.Base
-      className={`group -m-3 mb-2 rounded-xl bg-background-main transition-colors duration-100 focus:relative focus:z-10 ${
+      className={`group -m-[0.705em] rounded-xl bg-background-main transition-colors duration-300 focus:relative focus:z-10 ${
         canLink ? "hover:bg-mediaCard-hoverBackground tabbable" : ""
       }`}
       tabIndex={canLink ? 0 : -1}
@@ -82,13 +82,13 @@ function MediaCardContent({
         })}
       />
       <Flare.Child
-        className={`pointer-events-auto relative mb-2 p-3 transition-transform duration-100 ${
+        className={`pointer-events-auto relative mb-2 p-[0.5em] transition-transform duration-300 ${
           canLink ? "group-hover:scale-95" : "opacity-60"
         }`}
       >
         <div
           className={classNames(
-            "relative mb-4 pb-[150%] w-full overflow-hidden rounded-xl bg-mediaCard-hoverBackground bg-cover bg-center transition-[border-radius] duration-100",
+            "relative mb-4 pb-[150%] w-full overflow-hidden rounded-xl bg-mediaCard-hoverBackground bg-cover bg-center transition-[border-radius] duration-300",
             {
               "group-hover:rounded-lg": canLink,
             },
@@ -149,13 +149,13 @@ function MediaCardContent({
           ) : null}
 
           <div
-            className={`absolute inset-0 flex items-center justify-center bg-mediaCard-badge bg-opacity-80 transition-opacity duration-200 ${
+            className={`absolute inset-0 flex items-center justify-center bg-mediaCard-badge bg-opacity-80 transition-opacity duration-500 ${
               closable ? "opacity-100" : "pointer-events-none opacity-0"
             }`}
           >
             <IconPatch
               clickable
-              className="text-2xl text-mediaCard-badgeText"
+              className="text-2xl text-mediaCard-badgeText transition-transform hover:scale-110 duration-500"
               onClick={() => closable && onClose?.()}
               icon={Icons.X}
             />
