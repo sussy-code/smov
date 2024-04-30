@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
+import { get } from "@/backend/metadata/tmdb";
 import { ThiccContainer } from "@/components/layout/ThinContainer";
 import { Divider } from "@/components/utils/Divider";
 import { Flare } from "@/components/utils/Flare";
@@ -20,7 +21,7 @@ import {
 
 import { SubPageLayout } from "./layouts/SubPageLayout";
 import { PageTitle } from "./parts/util/PageTitle";
-import { get } from "../backend/metadata/tmdb";
+import placeholderImageLogo from "../../public/placeholder.png";
 import { Icon, Icons } from "../components/Icon";
 
 export function Discover() {
@@ -56,6 +57,15 @@ export function Discover() {
           language: "en-US",
         });
 
+        // Shuffle the movies
+        for (let i = data.results.length - 1; i > 0; i -= 1) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [data.results[i], data.results[j]] = [
+            data.results[j],
+            data.results[i],
+          ];
+        }
+
         setCategoryMovies((prevCategoryMovies) => ({
           ...prevCategoryMovies,
           [category.name]: data.results,
@@ -77,6 +87,15 @@ export function Discover() {
           api_key: conf().TMDB_READ_API_KEY,
           language: "en-US",
         });
+
+        // Shuffle the TV shows
+        for (let i = data.results.length - 1; i > 0; i -= 1) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [data.results[i], data.results[j]] = [
+            data.results[j],
+            data.results[i],
+          ];
+        }
 
         setCategoryShows((prevCategoryShows) => ({
           ...prevCategoryShows,
@@ -126,6 +145,16 @@ export function Discover() {
           with_genres: genreId.toString(),
           language: "en-US",
         });
+
+        // Shuffle the TV shows
+        for (let i = data.results.length - 1; i > 0; i -= 1) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [data.results[i], data.results[j]] = [
+            data.results[j],
+            data.results[i],
+          ];
+        }
+
         setTVShowGenres((prevTVShowGenres) => ({
           ...prevTVShowGenres,
           [genreId]: data.results,
@@ -273,7 +302,8 @@ export function Discover() {
           onMouseLeave={handleMouseLeave}
           onWheel={(e) => handleWheel(e, categorySlug)}
         >
-          {medias.slice(0, 20).map((media) => (
+          {/* Ik its an odd number and i dont give a shit */}
+          {medias.slice(0, 26).map((media) => (
             <a
               key={media.id}
               onClick={() =>
@@ -294,8 +324,12 @@ export function Discover() {
                   className="rounded-xl bg-background-main group-hover:opacity-100"
                 />
                 <img
-                  src={`https://image.tmdb.org/t/p/w500${media.poster_path}`}
-                  alt="failed to fetch :("
+                  src={
+                    media.poster_path
+                      ? `https://image.tmdb.org/t/p/w500${media.poster_path}`
+                      : placeholderImageLogo
+                  }
+                  alt={media.poster_path ? "" : "failed to fetch :("}
                   loading="lazy"
                   className="rounded-xl relative"
                 />
@@ -415,6 +449,13 @@ export function Discover() {
 
           movies.push(...data.results);
         }
+
+        // Shuffle the movies
+        for (let i = movies.length - 1; i > 0; i -= 1) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [movies[i], movies[j]] = [movies[j], movies[i]];
+        }
+
         setGenreMovies((prevGenreMovies) => ({
           ...prevGenreMovies,
           [genreId]: movies,
