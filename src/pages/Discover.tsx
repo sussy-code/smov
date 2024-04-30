@@ -303,7 +303,7 @@ export function Discover() {
           onWheel={(e) => handleWheel(e, categorySlug)}
         >
           {/* Ik its an odd number and i dont give a shit */}
-          {medias.slice(0, 26).map((media) => (
+          {medias.slice(0, 23).map((media) => (
             <a
               key={media.id}
               onClick={() =>
