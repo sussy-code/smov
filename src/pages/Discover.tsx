@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
+import { get } from "@/backend/metadata/tmdb";
 import { ThiccContainer } from "@/components/layout/ThinContainer";
 import { Divider } from "@/components/utils/Divider";
 import { Flare } from "@/components/utils/Flare";
@@ -20,7 +21,7 @@ import {
 
 import { SubPageLayout } from "./layouts/SubPageLayout";
 import { PageTitle } from "./parts/util/PageTitle";
-import { get } from "../backend/metadata/tmdb";
+import placeholderImageLogo from "../../public/placeholder.png";
 import { Icon, Icons } from "../components/Icon";
 
 export function Discover() {
@@ -56,6 +57,15 @@ export function Discover() {
           language: "en-US",
         });
 
+        // Shuffle the movies
+        for (let i = data.results.length - 1; i > 0; i -= 1) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [data.results[i], data.results[j]] = [
+            data.results[j],
+            data.results[i],
+          ];
+        }
+
         setCategoryMovies((prevCategoryMovies) => ({
           ...prevCategoryMovies,
           [category.name]: data.results,
@@ -77,6 +87,15 @@ export function Discover() {
           api_key: conf().TMDB_READ_API_KEY,
           language: "en-US",
         });
+
+        // Shuffle the TV shows
+        for (let i = data.results.length - 1; i > 0; i -= 1) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [data.results[i], data.results[j]] = [
+            data.results[j],
+            data.results[i],
+          ];
+        }
 
         setCategoryShows((prevCategoryShows) => ({
           ...prevCategoryShows,
@@ -107,8 +126,8 @@ export function Discover() {
           [data.genres[i], data.genres[j]] = [data.genres[j], data.genres[i]];
         }
 
-        // Fetch only the first 5 TV show genres
-        setTVGenres(data.genres.slice(0, 5));
+        // Fetch only the first 6 TV show genres
+        setTVGenres(data.genres.slice(0, 6));
       } catch (error) {
         console.error("Error fetching TV show genres:", error);
       }
@@ -126,6 +145,16 @@ export function Discover() {
           with_genres: genreId.toString(),
           language: "en-US",
         });
+
+        // Shuffle the TV shows
+        for (let i = data.results.length - 1; i > 0; i -= 1) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [data.results[i], data.results[j]] = [
+            data.results[j],
+            data.results[i],
+          ];
+        }
+
         setTVShowGenres((prevTVShowGenres) => ({
           ...prevTVShowGenres,
           [genreId]: data.results,
@@ -209,7 +238,7 @@ export function Discover() {
       if (movieElements.length > 0) {
         const posterWidth = movieElements[0].offsetWidth;
         const visibleMovies = Math.floor(carousel.offsetWidth / posterWidth);
-        const scrollAmount = posterWidth * visibleMovies * 0.6;
+        const scrollAmount = posterWidth * visibleMovies * 0.62;
         if (e.deltaY < 5) {
           carousel.scrollBy({ left: -scrollAmount, behavior: "smooth" });
         } else {
@@ -235,6 +264,13 @@ export function Discover() {
     setIsHovered(false);
   };
 
+  useEffect(() => {
+    window.addEventListener("mouseleave", handleMouseLeave);
+    return () => {
+      window.removeEventListener("mouseleave", handleMouseLeave);
+    };
+  }, []);
+
   function renderMovies(medias: Media[], category: string, isTVShow = false) {
     const categorySlug = `${category.toLowerCase().replace(/ /g, "-")}${Math.random()}`; // Convert the category to a slug
     const displayCategory =
@@ -245,6 +281,7 @@ export function Discover() {
           : isTVShow
             ? `${category} Shows`
             : `${category} Movies`;
+    // https://tailwindcss.com/docs/border-style
     return (
       <div className="relative overflow-hidden mt-2">
         <h2 className="text-2xl cursor-default font-bold text-white sm:text-3xl md:text-2xl mx-auto pl-5">
@@ -286,8 +323,12 @@ export function Discover() {
                   className="rounded-xl bg-background-main group-hover:opacity-100"
                 />
                 <img
-                  src={`https://image.tmdb.org/t/p/w500${media.poster_path}`}
-                  alt="failed to fetch :("
+                  src={
+                    media.poster_path
+                      ? `https://image.tmdb.org/t/p/w500${media.poster_path}`
+                      : placeholderImageLogo
+                  }
+                  alt={media.poster_path ? "" : "failed to fetch :("}
                   loading="lazy"
                   className="rounded-xl relative"
                 />
@@ -396,8 +437,8 @@ export function Discover() {
     const fetchMoviesForGenre = async (genreId: number) => {
       try {
         const movies: any[] = [];
-        for (let page = 1; page <= 5; page += 1) {
-          // Fetch only 5 pages
+        for (let page = 1; page <= 6; page += 1) {
+          // Fetch only 6 pages
           const data = await get<any>("/discover/movie", {
             api_key: conf().TMDB_READ_API_KEY,
             with_genres: genreId.toString(),
@@ -407,6 +448,13 @@ export function Discover() {
 
           movies.push(...data.results);
         }
+
+        // Shuffle the movies
+        for (let i = movies.length - 1; i > 0; i -= 1) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [movies[i], movies[j]] = [movies[j], movies[i]];
+        }
+
         setGenreMovies((prevGenreMovies) => ({
           ...prevGenreMovies,
           [genreId]: movies,
