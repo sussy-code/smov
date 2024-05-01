@@ -126,8 +126,8 @@ export function Discover() {
           [data.genres[i], data.genres[j]] = [data.genres[j], data.genres[i]];
         }
 
-        // Fetch only the first 5 TV show genres
-        setTVGenres(data.genres.slice(0, 5));
+        // Fetch only the first 6 TV show genres
+        setTVGenres(data.genres.slice(0, 6));
       } catch (error) {
         console.error("Error fetching TV show genres:", error);
       }
@@ -238,7 +238,7 @@ export function Discover() {
       if (movieElements.length > 0) {
         const posterWidth = movieElements[0].offsetWidth;
         const visibleMovies = Math.floor(carousel.offsetWidth / posterWidth);
-        const scrollAmount = posterWidth * visibleMovies * 0.6;
+        const scrollAmount = posterWidth * visibleMovies * 0.62;
         if (e.deltaY < 5) {
           carousel.scrollBy({ left: -scrollAmount, behavior: "smooth" });
         } else {
@@ -302,8 +302,7 @@ export function Discover() {
           onMouseLeave={handleMouseLeave}
           onWheel={(e) => handleWheel(e, categorySlug)}
         >
-          {/* Ik its an odd number and i dont give a shit */}
-          {medias.slice(0, 23).map((media) => (
+          {medias.slice(0, 20).map((media) => (
             <a
               key={media.id}
               onClick={() =>
@@ -438,8 +437,8 @@ export function Discover() {
     const fetchMoviesForGenre = async (genreId: number) => {
       try {
         const movies: any[] = [];
-        for (let page = 1; page <= 5; page += 1) {
-          // Fetch only 5 pages
+        for (let page = 1; page <= 6; page += 1) {
+          // Fetch only 6 pages
           const data = await get<any>("/discover/movie", {
             api_key: conf().TMDB_READ_API_KEY,
             with_genres: genreId.toString(),
