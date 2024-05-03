@@ -38,7 +38,7 @@ export function MediaBookmarkButton({ media }: MediaBookmarkProps) {
     <IconPatch
       onClick={toggleBookmark}
       icon={isBookmarked ? Icons.BOOKMARK : Icons.BOOKMARK_OUTLINE}
-      className="p-3 opacity-80 transition-opacity duration-200 hover:opacity-100"
+      className="p-2 opacity-75 transition-opacity transition-transform duration-300 hover:opacity-95 hover:scale-110"
     />
   );
 }

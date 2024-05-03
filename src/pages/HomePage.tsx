@@ -68,8 +68,10 @@ export function HomePage() {
           <SearchListPart searchQuery={search} />
         ) : (
           <>
-            <BookmarksPart onItemsChange={setShowBookmarks} />
-            <WatchingPart onItemsChange={setShowWatching} />
+            <div className="flex flex-col gap-8">
+              <BookmarksPart onItemsChange={setShowBookmarks} />
+              <WatchingPart onItemsChange={setShowWatching} />
+            </div>
             {!(showBookmarks || showWatching) ? (
               <div className="flex flex-col items-center justify-center">
                 <p className="text-[18.5px] pb-3">{emptyText}</p>
