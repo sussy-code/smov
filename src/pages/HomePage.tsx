@@ -34,6 +34,8 @@ function useSearch(search: string) {
   };
 }
 
+// What the sigma?
+
 export function HomePage() {
   const { t } = useTranslation();
   const { t: randomT } = useRandomTranslation();
