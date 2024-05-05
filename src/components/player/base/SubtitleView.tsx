@@ -59,6 +59,7 @@ export function CaptionCue({
           styling.backgroundBlur !== 0
             ? `blur(${Math.floor(styling.backgroundBlur * 64)}px)`
             : "none",
+        fontWeight: styling.bold ? "bold" : "normal",
       }}
     >
       <span

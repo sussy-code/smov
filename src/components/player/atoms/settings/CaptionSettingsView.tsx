@@ -280,6 +280,17 @@ export function CaptionSettingsView({ id }: { id: string }) {
         />
         <div className="flex justify-between items-center">
           <Menu.FieldTitle>
+            {t("settings.subtitles.textBoldLabel")}
+          </Menu.FieldTitle>
+          <div className="flex justify-center items-center">
+            <Toggle
+              enabled={styling.bold}
+              onClick={() => updateStyling({ bold: !styling.bold })}
+            />
+          </div>
+        </div>
+        <div className="flex justify-between items-center">
+          <Menu.FieldTitle>
             {t("settings.subtitles.colorLabel")}
           </Menu.FieldTitle>
           <div className="flex justify-center items-center">

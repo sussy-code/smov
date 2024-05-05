@@ -23,6 +23,11 @@ export interface SubtitleStyling {
    * background blur, ranges between 0 and 1
    */
   backgroundBlur: number;
+
+  /**
+   * bold, boolean
+   */
+  bold: boolean;
 }
 
 export interface SubtitleStore {
@@ -58,6 +63,7 @@ export const useSubtitleStore = create(
         backgroundOpacity: 0.5,
         size: 1,
         backgroundBlur: 0.5,
+        bold: false,
       },
       resetSubtitleSpecificSettings() {
         set((s) => {
@@ -81,6 +87,7 @@ export const useSubtitleStore = create(
             s.styling.color = newStyling.color.toLowerCase();
           if (newStyling.size !== undefined)
             s.styling.size = Math.min(10, Math.max(0.01, newStyling.size));
+          if (newStyling.bold !== undefined) s.styling.bold = newStyling.bold;
         });
       },
       setLanguage(lang) {
