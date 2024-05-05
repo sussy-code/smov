@@ -215,7 +215,7 @@ export function CaptionsView({ id }: { id: string }) {
             <button
               type="button"
               onClick={() => router.navigate("/captions/settings")}
-              className="py-1 -my-1 px-3 -mx-3 rounded tabbable"
+              className="-mr-2 -my-1 px-2 p-[0.4em] rounded tabbable hover:bg-video-context-light hover:bg-opacity-10"
             >
               {t("player.menus.subtitles.customizeLabel")}
             </button>
