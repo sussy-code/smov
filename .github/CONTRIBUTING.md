@@ -34,7 +34,7 @@ There are two places where to request features or report bugs:
 
 ### Discord Server
 If you do not have a GitHub account or want to discuss a feature or bug with us before making an issue, you can join our Discord server.  
-<iframe src="https://discord.com/widget?id=1232477552665428018&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+[Join bruh](https://discord.gg/mxhcENzG2j)
 
 ### GitHub Issues
 To make a GitHub issue for sudo-flix, please visit the [new issue page](https://github.com/sussy-code/smov/issues/new/choose) where you can pick either the "Bug Report" or "Feature Request" template.
