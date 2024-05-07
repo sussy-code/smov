@@ -69,7 +69,7 @@ export default defineConfig(({ mode }) => {
         manifest: {
           name: "sudo-flix",
           short_name: "sudo-flix",
-          description: "A mirror of movie-web",
+          description: "Watch your favorite shows and movies for free with no ads ever! (っ'ヮ'c)",
           theme_color: "#120f1d",
           background_color: "#120f1d",
           display: "standalone",
