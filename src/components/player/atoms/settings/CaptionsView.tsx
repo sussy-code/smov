@@ -6,6 +6,7 @@ import { useAsyncFn } from "react-use";
 import { convert } from "subsrt-ts";
 
 import { subtitleTypeList } from "@/backend/helpers/subs";
+import { IconPatch } from "@/components/buttons/IconPatch";
 import { FileDropHandler } from "@/components/DropFile";
 import { FlagIcon } from "@/components/FlagIcon";
 import { Icon, Icons } from "@/components/Icon";
@@ -215,7 +216,7 @@ export function CaptionsView({ id }: { id: string }) {
             <button
               type="button"
               onClick={() => router.navigate("/captions/settings")}
-              className="-mr-2 -my-1 px-2 p-[0.4em] rounded tabbable hover:bg-video-context-light hover:bg-opacity-10"
+              className="-mr-2 -my-1 px-2 p-[0.4em] rounded tabbable duration-200 hover:bg-video-context-light hover:bg-opacity-10"
             >
               {t("player.menus.subtitles.customizeLabel")}
             </button>
@@ -231,8 +232,14 @@ export function CaptionsView({ id }: { id: string }) {
         }}
         onDrop={(event) => onDrop(event)}
       >
-        <div className="mt-3">
+        <div className="flex flex-row gap-2 mt-3">
           <Input value={searchQuery} onInput={setSearchQuery} />
+          <button
+            type="button"
+            className="p-2 rounded tabbable duration-200 hover:bg-video-context-light hover:bg-opacity-10"
+          >
+            <Icon icon={Icons.WEB} />
+          </button>
         </div>
         <Menu.ScrollToActiveSection className="!pt-1 mt-2 pb-3">
           <CaptionOption
