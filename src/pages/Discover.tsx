@@ -224,53 +224,6 @@ export function Discover() {
     }
   }, [movieWidth]);
 
-  let isScrolling = false;
-  function handleWheel(e: React.WheelEvent, categorySlug: string) {
-    if (isScrolling) {
-      return;
-    }
-
-    isScrolling = true;
-
-    const carousel = carouselRefs.current[categorySlug];
-    if (carousel) {
-      const movieElements = carousel.getElementsByTagName("a");
-      if (movieElements.length > 0) {
-        const posterWidth = movieElements[0].offsetWidth;
-        const visibleMovies = Math.floor(carousel.offsetWidth / posterWidth);
-        const scrollAmount = posterWidth * visibleMovies * 0.62;
-        if (e.deltaY < 5) {
-          carousel.scrollBy({ left: -scrollAmount, behavior: "smooth" });
-        } else {
-          carousel.scrollBy({ left: scrollAmount, behavior: "smooth" });
-        }
-      }
-    }
-
-    setTimeout(() => {
-      isScrolling = false;
-    }, 345); // Disable scrolling every 3 milliseconds after interaction (only for mouse wheel doe)
-  }
-
-  const [isHovered, setIsHovered] = useState(false);
-
-  const handleMouseEnter = () => {
-    document.body.style.overflow = "hidden";
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    document.body.style.overflow = "auto";
-    setIsHovered(false);
-  };
-
-  useEffect(() => {
-    window.addEventListener("mouseleave", handleMouseLeave);
-    return () => {
-      window.removeEventListener("mouseleave", handleMouseLeave);
-    };
-  }, []);
-
   function renderMovies(medias: Media[], category: string, isTVShow = false) {
     const categorySlug = `${category.toLowerCase().replace(/ /g, "-")}${Math.random()}`; // Convert the category to a slug
     const displayCategory =
@@ -298,9 +251,6 @@ export function Discover() {
           ref={(el) => {
             carouselRefs.current[categorySlug] = el;
           }}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          onWheel={(e) => handleWheel(e, categorySlug)}
         >
           {medias.slice(0, 20).map((media) => (
             <a
