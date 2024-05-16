@@ -6,7 +6,6 @@ import { useAsyncFn } from "react-use";
 import { convert } from "subsrt-ts";
 
 import { subtitleTypeList } from "@/backend/helpers/subs";
-import { IconPatch } from "@/components/buttons/IconPatch";
 import { FileDropHandler } from "@/components/DropFile";
 import { FlagIcon } from "@/components/FlagIcon";
 import { Icon, Icons } from "@/components/Icon";
@@ -236,6 +235,7 @@ export function CaptionsView({ id }: { id: string }) {
           <Input value={searchQuery} onInput={setSearchQuery} />
           <button
             type="button"
+            onClick={() => router.navigate("/captions/scrape")}
             className="p-2 rounded tabbable duration-200 hover:bg-video-context-light hover:bg-opacity-10"
           >
             <Icon icon={Icons.WEB} />

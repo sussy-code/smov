@@ -376,6 +376,12 @@
         "title": "Subtitles",
         "unknownLanguage": "Unknown",
         "dropSubtitleFile": "Drop subtitle file here! >_<"
+      },
+      "scraping": {
+        "settings": {
+          "backlink": "Subtitle scraping"
+        },
+        "title": "Subtitle scraping"
       }
     },
     "metadata": {

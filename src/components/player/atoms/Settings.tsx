@@ -15,6 +15,7 @@ import { useOverlayRouter } from "@/hooks/useOverlayRouter";
 import { usePlayerStore } from "@/stores/player/store";
 
 import { AudioView } from "./settings/AudioView";
+import { CaptionScrapingView } from "./settings/CaptionScrapingView";
 import { CaptionSettingsView } from "./settings/CaptionSettingsView";
 import { CaptionsView } from "./settings/CaptionsView";
 import { DownloadRoutes } from "./settings/Downloads";
@@ -60,6 +61,11 @@ function SettingsOverlay({ id }: { id: string }) {
         <OverlayPage id={id} path="/captions/settings" width={343} height={450}>
           <Menu.Card>
             <CaptionSettingsView id={id} />
+          </Menu.Card>
+        </OverlayPage>
+        <OverlayPage id={id} path="/captions/scrape" width={343} height={450}>
+          <Menu.Card>
+            <CaptionScrapingView id={id} />
           </Menu.Card>
         </OverlayPage>
         <OverlayPage id={id} path="/source" width={343} height={431}>
