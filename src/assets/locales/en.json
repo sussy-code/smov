@@ -375,6 +375,8 @@
         },
         "title": "Subtitles",
         "unknownLanguage": "Unknown",
+        "empty": "There are no provided subtitles for this.",
+        "scrapeButton": "Scrape captions",
         "dropSubtitleFile": "Drop subtitle file here! >_<"
       },
       "scraping": {

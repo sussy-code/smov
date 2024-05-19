@@ -39,6 +39,10 @@ export interface SubtitleStore {
   styling: SubtitleStyling;
   overrideCasing: boolean;
   delay: number;
+  scrapeSubtitlesLang: string | null;
+  scrapeSubtitles: string | null; // id of scraped subtitles if available
+  setScrapeSubtitlesLang(lang: string | null): void;
+  setScrapeSubtitles(id: string | null): void;
   updateStyling(newStyling: Partial<SubtitleStyling>): void;
   setLanguage(language: string | null): void;
   setCustomSubs(): void;
@@ -58,6 +62,8 @@ export const useSubtitleStore = create(
       lastSelectedLanguage: null,
       overrideCasing: false,
       delay: 0,
+      scrapeSubtitles: null,
+      scrapeSubtitlesLang: null,
       styling: {
         color: "#ffffff",
         backgroundOpacity: 0.5,
@@ -116,6 +122,16 @@ export const useSubtitleStore = create(
         set((s) => {
           s.lastSelectedLanguage = lang;
           s.lastSync.lastSelectedLanguage = lang;
+        });
+      },
+      setScrapeSubtitles(id) {
+        set((s) => {
+          s.scrapeSubtitles = id;
+        });
+      },
+      setScrapeSubtitlesLang(lang) {
+        set((s) => {
+          s.scrapeSubtitlesLang = lang;
         });
       },
     })),

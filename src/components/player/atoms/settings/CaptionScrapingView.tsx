@@ -1,18 +1,16 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useAsyncFn } from "react-use";
 import { convert } from "subsrt-ts";
 
-import { Icon, Icons } from "@/components/Icon";
-import { useCaptions } from "@/components/player/hooks/useCaptions";
+import { proxiedFetch } from "@/backend/helpers/fetch";
 import { Menu } from "@/components/player/internals/ContextMenu";
 import { useOverlayRouter } from "@/hooks/useOverlayRouter";
 import { usePlayerStore } from "@/stores/player/store";
 import { getPrettyLanguageNameFromLocale } from "@/utils/language";
 
-import { CaptionOption } from "./CaptionsView";
+import { ScrapedCaptionOption } from "./CaptionsView";
 
-type FetchType = {
+export type FetchType = {
   id: string;
   url: string;
   type: string;
@@ -24,8 +22,7 @@ async function search(imdbId: string, season?: number, episode?: number) {
   const base = "https://rest.opensubtitles.org";
   const headers = { "X-User-Agent": "VLSub 0.10.2" };
   const url = `${base}/search/${season && episode ? `episode-${episode}/` : ""}imdbid-${imdbId}${season ? `/season-${season}` : ""}`;
-  const res = await fetch(url, { headers });
-  const data = await res.json();
+  const data = await proxiedFetch(url, { headers });
   let subtitles = data.map(
     (sub: { SubDownloadLink: string; SubFormat: string; ISO639: string }) => {
       const caption = sub.SubDownloadLink.replace(".gz", "").replace(
@@ -61,15 +58,7 @@ export function CaptionScrapingView({ id }: { id: string }) {
   const imdbID = meta?.imdbId ? meta.imdbId.slice(2) : "";
   const [data, setData] = useState<FetchType[]>([]);
   const setCaption = usePlayerStore((s) => s.setCaption);
-  const [selectedCaptionId, setSelectedCaptionId] = useState<
-    string | undefined
-  >();
-  const selectedId = usePlayerStore((s) => s.caption.selected?.id);
-
-  useEffect(() => {
-    setSelectedCaptionId(selectedId);
-    console.log(selectedId);
-  }, [selectedId]);
+  const [selectedCaptionId] = useState<string | undefined>();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -87,23 +76,24 @@ export function CaptionScrapingView({ id }: { id: string }) {
       </Menu.BackLink>
       <Menu.ScrollToActiveSection className="!pt-1 mt-2 pb-3">
         {data.map((v) => (
-          <CaptionOption
+          <ScrapedCaptionOption
             // key must use index to prevent url collisions
             key={v.id}
+            id={v.id}
             countryCode={v.language}
             selected={v.id === selectedCaptionId}
             onClick={async () => {
-              const text = await (await fetch(v.url)).text();
+              const text = await (await proxiedFetch(v.url)).text();
               const converted = convert(text, "srt");
               setCaption({
-                language: "custom",
+                language: v.language,
                 srtData: converted,
-                id: "custom-caption",
+                id: `scraped - ${v.language}`,
               });
             }}
           >
             {getPrettyLanguageNameFromLocale(v.language)}
-          </CaptionOption>
+          </ScrapedCaptionOption>
         ))}
       </Menu.ScrollToActiveSection>
     </>

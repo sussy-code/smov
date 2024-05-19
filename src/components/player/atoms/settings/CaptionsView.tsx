@@ -50,6 +50,44 @@ export function CaptionOption(props: {
   );
 }
 
+export function ScrapedCaptionOption(props: {
+  countryCode: string;
+  children: React.ReactNode;
+  selected?: boolean;
+  loading?: boolean;
+  onClick?: () => void;
+  error?: React.ReactNode;
+  id: string;
+}) {
+  const { scrapeSubtitles, setScrapeSubtitles } = useSubtitleStore();
+  const { setScrapeSubtitlesLang } = useSubtitleStore();
+
+  return (
+    <SelectableLink
+      selected={props.id === scrapeSubtitles}
+      loading={props.loading}
+      error={props.error}
+      onClick={() => {
+        if (props.onClick) {
+          props.onClick();
+        }
+        setScrapeSubtitles(props.id);
+        setScrapeSubtitlesLang(props.countryCode);
+      }}
+    >
+      <span
+        data-active-link={props.selected ? true : undefined}
+        className="flex items-center"
+      >
+        <span data-code={props.countryCode} className="mr-3 inline-flex">
+          <FlagIcon langCode={props.countryCode} />
+        </span>
+        <span>{props.children}</span>
+      </span>
+    </SelectableLink>
+  );
+}
+
 function CustomCaptionOption() {
   const { t } = useTranslation();
   const lang = usePlayerStore((s) => s.caption.selected?.language);
@@ -249,7 +287,20 @@ export function CaptionsView({ id }: { id: string }) {
             {t("player.menus.subtitles.offChoice")}
           </CaptionOption>
           <CustomCaptionOption />
-          {content}
+          {content.length === 0 && (
+            <div className="p-2 rounded-xl bg-video-context-light text-xl bg-opacity-10 font-large text-center">
+              <div className="flex flex-col items-center justify-center gap-3">
+                {t("player.menus.subtitles.empty")}
+                <button
+                  type="button"
+                  onClick={() => router.navigate("/captions/scrape")}
+                  className="p-1 w-3/4 rounded tabbable duration-200 bg-opacity-10 bg-video-context-light hover:bg-opacity-20"
+                >
+                  {t("player.menus.subtitles.scrapeButton")}
+                </button>
+              </div>
+            </div>
+          )}
         </Menu.ScrollToActiveSection>
       </FileDropHandler>
     </>
