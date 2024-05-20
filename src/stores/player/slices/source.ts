@@ -7,6 +7,7 @@ import {
   selectQuality,
 } from "@/stores/player/utils/qualities";
 import { useQualityStore } from "@/stores/quality";
+import { useSubtitleStore } from "@/stores/subtitles";
 import { ValuesOf } from "@/utils/typeguard";
 
 export const playerStatus = {
@@ -54,6 +55,7 @@ export interface CaptionListItem {
   url: string;
   needsProxy: boolean;
   hls?: boolean;
+  scrapeSubtitles?: string | null;
 }
 
 export interface AudioTrack {
@@ -88,6 +90,11 @@ export interface SourceSlice {
   setSourceId(id: string | null): void;
   enableAutomaticQuality(): void;
   redisplaySource(startAt: number): void;
+}
+
+function clearScrapeSubtitles() {
+  const clearSubtitles = useSubtitleStore.getState().clearScrapeSubtitles;
+  clearSubtitles();
 }
 
 export function metaToScrapeMedia(meta: PlayerMeta): ScrapeMedia {
@@ -148,6 +155,9 @@ export const createSourceSlice: MakeSlice<SourceSlice> = (set, get) => ({
   setCaption(caption) {
     const store = get();
     store.display?.setCaption(caption);
+    if (!caption?.id.includes("scraped -")) {
+      clearScrapeSubtitles();
+    }
     set((s) => {
       s.caption.selected = caption;
     });

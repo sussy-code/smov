@@ -40,8 +40,10 @@ async function search(imdbId: string, season?: number, episode?: number) {
   );
 
   subtitles = subtitles.reduce((unique: FetchType[], o: FetchType) => {
-    if (!unique.find((obj: FetchType) => obj.language === o.language)) {
-      unique.push(o);
+    if (getPrettyLanguageNameFromLocale(o.language) !== null) {
+      if (!unique.find((obj: FetchType) => obj.language === o.language)) {
+        unique.push(o);
+      }
     }
     return unique;
   }, []);
@@ -55,19 +57,54 @@ export function CaptionScrapingView({ id }: { id: string }) {
   const { t } = useTranslation();
   const router = useOverlayRouter(id);
   const meta = usePlayerStore((s) => s.meta);
-  const imdbID = meta?.imdbId ? meta.imdbId.slice(2) : "";
+  const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState<FetchType[]>([]);
   const setCaption = usePlayerStore((s) => s.setCaption);
+  const imdbID = meta?.imdbId ? meta.imdbId.slice(2) : "";
   const [selectedCaptionId] = useState<string | undefined>();
 
+  const subs = data.map((v) => (
+    <ScrapedCaptionOption
+      // key must use index to prevent url collisions
+      key={v.id}
+      id={v.id}
+      countryCode={v.language}
+      selected={v.id === selectedCaptionId}
+      onClick={async () => {
+        const text = await (await proxiedFetch(v.url)).text();
+        const converted = convert(text, "srt");
+        setCaption({
+          language: v.language,
+          srtData: converted,
+          id: `scraped - ${v.language}`,
+        });
+      }}
+    >
+      {getPrettyLanguageNameFromLocale(v.language)}
+    </ScrapedCaptionOption>
+  ));
   useEffect(() => {
     const fetchData = async () => {
       const result = await search(imdbID);
       setData(result);
+      setIsLoading(false);
     };
 
     fetchData();
   }, [imdbID]);
+
+  if (isLoading) {
+    return (
+      <>
+        <Menu.BackLink onClick={() => router.navigate("/captions")}>
+          {t("player.menus.scraping.settings.backlink")}
+        </Menu.BackLink>
+        <Menu.ScrollToActiveSection className="!pt-2 mt-2 pb-3">
+          <p className="text-center text-xl">Scraping subtitles...</p>
+        </Menu.ScrollToActiveSection>
+      </>
+    );
+  }
 
   return (
     <>
@@ -75,26 +112,13 @@ export function CaptionScrapingView({ id }: { id: string }) {
         {t("player.menus.scraping.settings.backlink")}
       </Menu.BackLink>
       <Menu.ScrollToActiveSection className="!pt-1 mt-2 pb-3">
-        {data.map((v) => (
-          <ScrapedCaptionOption
-            // key must use index to prevent url collisions
-            key={v.id}
-            id={v.id}
-            countryCode={v.language}
-            selected={v.id === selectedCaptionId}
-            onClick={async () => {
-              const text = await (await proxiedFetch(v.url)).text();
-              const converted = convert(text, "srt");
-              setCaption({
-                language: v.language,
-                srtData: converted,
-                id: `scraped - ${v.language}`,
-              });
-            }}
-          >
-            {getPrettyLanguageNameFromLocale(v.language)}
-          </ScrapedCaptionOption>
-        ))}
+        {data.length === 0 ? (
+          <p className="text-center text-xl">
+            Couldn&apos;t find any subtitles :(
+          </p>
+        ) : (
+          subs
+        )}
       </Menu.ScrollToActiveSection>
     </>
   );

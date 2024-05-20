@@ -22,14 +22,16 @@ import {
   sortLangCodes,
 } from "@/utils/language";
 
-export function CaptionOption(props: {
+export interface CaptionOption {
   countryCode?: string;
   children: React.ReactNode;
   selected?: boolean;
   loading?: boolean;
   onClick?: () => void;
   error?: React.ReactNode;
-}) {
+}
+
+export function CaptionOption(props: CaptionOption) {
   return (
     <SelectableLink
       selected={props.selected}
@@ -50,41 +52,23 @@ export function CaptionOption(props: {
   );
 }
 
-export function ScrapedCaptionOption(props: {
-  countryCode: string;
-  children: React.ReactNode;
-  selected?: boolean;
-  loading?: boolean;
-  onClick?: () => void;
-  error?: React.ReactNode;
-  id: string;
-}) {
-  const { scrapeSubtitles, setScrapeSubtitles } = useSubtitleStore();
-  const { setScrapeSubtitlesLang } = useSubtitleStore();
-
+export function ScrapedCaptionOption(props: CaptionOption & { id: string }) {
+  const { scrapeSubtitles, setScrapeSubtitles, setScrapeSubtitlesLang } =
+    useSubtitleStore();
   return (
-    <SelectableLink
+    <CaptionOption
+      {...props}
       selected={props.id === scrapeSubtitles}
-      loading={props.loading}
-      error={props.error}
       onClick={() => {
         if (props.onClick) {
           props.onClick();
         }
         setScrapeSubtitles(props.id);
-        setScrapeSubtitlesLang(props.countryCode);
+        if (props.countryCode) {
+          setScrapeSubtitlesLang(props.countryCode);
+        }
       }}
-    >
-      <span
-        data-active-link={props.selected ? true : undefined}
-        className="flex items-center"
-      >
-        <span data-code={props.countryCode} className="mr-3 inline-flex">
-          <FlagIcon langCode={props.countryCode} />
-        </span>
-        <span>{props.children}</span>
-      </span>
-    </SelectableLink>
+    />
   );
 }
 
@@ -288,7 +272,7 @@ export function CaptionsView({ id }: { id: string }) {
           </CaptionOption>
           <CustomCaptionOption />
           {content.length === 0 && (
-            <div className="p-2 rounded-xl bg-video-context-light text-xl bg-opacity-10 font-large text-center">
+            <div className="p-4 rounded-xl bg-video-context-light bg-opacity-10 font-medium text-center">
               <div className="flex flex-col items-center justify-center gap-3">
                 {t("player.menus.subtitles.empty")}
                 <button

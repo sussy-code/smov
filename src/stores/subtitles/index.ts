@@ -50,6 +50,7 @@ export interface SubtitleStore {
   setDelay(delay: number): void;
   importSubtitleLanguage(lang: string | null): void;
   resetSubtitleSpecificSettings(): void;
+  clearScrapeSubtitles(): void;
 }
 
 export const useSubtitleStore = create(
@@ -132,6 +133,13 @@ export const useSubtitleStore = create(
       setScrapeSubtitlesLang(lang) {
         set((s) => {
           s.scrapeSubtitlesLang = lang;
+          s.enabled = true;
+        });
+      },
+      clearScrapeSubtitles() {
+        set((s) => {
+          s.scrapeSubtitles = null;
+          s.scrapeSubtitlesLang = null;
         });
       },
     })),
