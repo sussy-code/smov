@@ -36,6 +36,9 @@ export interface SubtitleStore {
   };
   enabled: boolean;
   lastSelectedLanguage: string | null;
+  lastScrapedLanguage: string | null;
+  lastScraped: string | null;
+  scrapedSubtitlesLast: boolean;
   styling: SubtitleStyling;
   overrideCasing: boolean;
   delay: number;
@@ -61,6 +64,9 @@ export const useSubtitleStore = create(
         lastSelectedLanguage: null,
       },
       lastSelectedLanguage: null,
+      lastScrapedLanguage: null,
+      lastScraped: null,
+      scrapedSubtitlesLast: false,
       overrideCasing: false,
       delay: 0,
       scrapeSubtitles: null,
@@ -100,7 +106,10 @@ export const useSubtitleStore = create(
       setLanguage(lang) {
         set((s) => {
           s.enabled = !!lang;
-          if (lang) s.lastSelectedLanguage = lang;
+          if (lang) {
+            s.lastSelectedLanguage = lang;
+            s.scrapedSubtitlesLast = false;
+          }
         });
       },
       setCustomSubs() {
@@ -123,6 +132,7 @@ export const useSubtitleStore = create(
         set((s) => {
           s.lastSelectedLanguage = lang;
           s.lastSync.lastSelectedLanguage = lang;
+          s.scrapedSubtitlesLast = false;
         });
       },
       setScrapeSubtitles(id) {
@@ -135,11 +145,14 @@ export const useSubtitleStore = create(
           if (lang) {
             s.scrapeSubtitlesLang = lang;
             s.enabled = true;
+            s.scrapedSubtitlesLast = true;
           }
         });
       },
       clearScrapeSubtitles() {
         set((s) => {
+          s.lastScraped = s.scrapeSubtitles;
+          s.lastScrapedLanguage = s.scrapeSubtitlesLang;
           s.scrapeSubtitles = null;
           s.scrapeSubtitlesLang = null;
         });

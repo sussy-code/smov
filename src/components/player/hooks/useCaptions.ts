@@ -1,6 +1,7 @@
 import { useCallback, useMemo } from "react";
-import subsrt from "subsrt-ts";
+import subsrt, { convert } from "subsrt-ts";
 
+import { proxiedFetch } from "@/backend/helpers/fetch";
 import { downloadCaption, downloadWebVTT } from "@/backend/helpers/subs";
 import { Caption } from "@/stores/player/slices/source";
 import { usePlayerStore } from "@/stores/player/store";
@@ -19,6 +20,12 @@ export function useCaptions() {
   );
   const setCaption = usePlayerStore((s) => s.setCaption);
   const lastSelectedLanguage = useSubtitleStore((s) => s.lastSelectedLanguage);
+  const scrapedSubtitlesLast = useSubtitleStore((s) => s.scrapedSubtitlesLast);
+  const scrapedSubtitles = useSubtitleStore((s) => s.lastScraped);
+  const scrapedSubtitlesLang = useSubtitleStore((s) => s.lastScrapedLanguage);
+
+  const setScrapeSubtitles = useSubtitleStore((s) => s.setScrapeSubtitles);
+  const setScrapedLanguage = useSubtitleStore((s) => s.setScrapeSubtitlesLang);
 
   const captionList = usePlayerStore((s) => s.captionList);
   const getHlsCaptionList = usePlayerStore((s) => s.display?.getCaptionList);
@@ -106,10 +113,31 @@ export function useCaptions() {
   }, [setCaption, setLanguage]);
 
   const selectLastUsedLanguage = useCallback(async () => {
-    const language = lastSelectedLanguage ?? "en";
-    await selectLanguage(language);
-    return true;
-  }, [lastSelectedLanguage, selectLanguage]);
+    if (scrapedSubtitles && scrapedSubtitlesLang && scrapedSubtitlesLast) {
+      setScrapeSubtitles(scrapedSubtitles);
+      setScrapedLanguage(scrapedSubtitlesLang);
+      const text = await (await proxiedFetch(scrapedSubtitles)).text();
+      const converted = convert(text, "srt");
+      setCaption({
+        language: scrapedSubtitlesLang,
+        srtData: converted,
+        id: `scraped - ${scrapedSubtitlesLang}`,
+      });
+    } else {
+      const language = lastSelectedLanguage ?? "en";
+      await selectLanguage(language);
+      return true;
+    }
+  }, [
+    lastSelectedLanguage,
+    selectLanguage,
+    scrapedSubtitlesLast,
+    scrapedSubtitles,
+    scrapedSubtitlesLang,
+    setScrapeSubtitles,
+    setScrapedLanguage,
+    setCaption,
+  ]);
 
   const toggleLastUsed = useCallback(async () => {
     if (enabled) disable();
