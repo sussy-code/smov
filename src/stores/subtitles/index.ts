@@ -132,8 +132,10 @@ export const useSubtitleStore = create(
       },
       setScrapeSubtitlesLang(lang) {
         set((s) => {
-          s.scrapeSubtitlesLang = lang;
-          s.enabled = true;
+          if (lang) {
+            s.scrapeSubtitlesLang = lang;
+            s.enabled = true;
+          }
         });
       },
       clearScrapeSubtitles() {
