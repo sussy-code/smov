@@ -102,5 +102,6 @@ export function convertProviderCaption(
     language: v.language,
     url: v.url,
     needsProxy: v.hasCorsRestrictions,
+    opensubtitles: v.opensubtitles,
   }));
 }

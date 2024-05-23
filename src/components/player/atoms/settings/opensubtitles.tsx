@@ -1,12 +1,9 @@
 import classNames from "classnames";
 import Fuse from "fuse.js";
-import { type DragEvent, useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useAsyncFn } from "react-use";
-import { convert } from "subsrt-ts";
 
-import { subtitleTypeList } from "@/backend/helpers/subs";
-import { FileDropHandler } from "@/components/DropFile";
 import { FlagIcon } from "@/components/FlagIcon";
 import { Icon, Icons } from "@/components/Icon";
 import { useCaptions } from "@/components/player/hooks/useCaptions";
@@ -16,7 +13,6 @@ import { SelectableLink } from "@/components/player/internals/ContextMenu/Links"
 import { useOverlayRouter } from "@/hooks/useOverlayRouter";
 import { CaptionListItem } from "@/stores/player/slices/source";
 import { usePlayerStore } from "@/stores/player/store";
-import { useSubtitleStore } from "@/stores/subtitles";
 import {
   getPrettyLanguageNameFromLocale,
   sortLangCodes,
@@ -50,45 +46,6 @@ export function CaptionOption(props: {
   );
 }
 
-function CustomCaptionOption() {
-  const { t } = useTranslation();
-  const lang = usePlayerStore((s) => s.caption.selected?.language);
-  const setCaption = usePlayerStore((s) => s.setCaption);
-  const setCustomSubs = useSubtitleStore((s) => s.setCustomSubs);
-  const fileInput = useRef<HTMLInputElement>(null);
-
-  return (
-    <CaptionOption
-      selected={lang === "custom"}
-      onClick={() => fileInput.current?.click()}
-    >
-      {t("player.menus.subtitles.customChoice")}
-      <input
-        className="hidden"
-        ref={fileInput}
-        accept={subtitleTypeList.join(",")}
-        type="file"
-        onChange={(e) => {
-          if (!e.target.files) return;
-          const reader = new FileReader();
-          reader.addEventListener("load", (event) => {
-            if (!event.target || typeof event.target.result !== "string")
-              return;
-            const converted = convert(event.target.result, "srt");
-            setCaption({
-              language: "custom",
-              srtData: converted,
-              id: "custom-caption",
-            });
-            setCustomSubs();
-          });
-          reader.readAsText(e.target.files[0], "utf-8");
-        }}
-      />
-    </CaptionOption>
-  );
-}
-
 function useSubtitleList(subs: CaptionListItem[], searchQuery: string) {
   const { t: translate } = useTranslation();
   const unknownChoice = translate("player.menus.subtitles.unknownLanguage");
@@ -99,7 +56,7 @@ function useSubtitleList(subs: CaptionListItem[], searchQuery: string) {
         languageName:
           getPrettyLanguageNameFromLocale(t.language) ?? unknownChoice,
       }))
-      .filter((x) => !x.opensubtitles);
+      .filter((x) => x.opensubtitles);
     const sorted = sortLangCodes(input.map((t) => t.language));
     let results = input.sort((a, b) => {
       return sorted.indexOf(a.language) - sorted.indexOf(b.language);
@@ -118,44 +75,17 @@ function useSubtitleList(subs: CaptionListItem[], searchQuery: string) {
   }, [subs, searchQuery, unknownChoice]);
 }
 
-export function CaptionsView({ id }: { id: string }) {
+export function OpenSubtitlesCaptionView({ id }: { id: string }) {
   const { t } = useTranslation();
   const router = useOverlayRouter(id);
   const selectedCaptionId = usePlayerStore((s) => s.caption.selected?.id);
   const [currentlyDownloading, setCurrentlyDownloading] = useState<
     string | null
   >(null);
-  const { selectCaptionById, disable } = useCaptions();
+  const { selectCaptionById } = useCaptions();
   const captionList = usePlayerStore((s) => s.captionList);
   const getHlsCaptionList = usePlayerStore((s) => s.display?.getCaptionList);
-  const [dragging, setDragging] = useState(false);
-  const setCaption = usePlayerStore((s) => s.setCaption);
-
-  function onDrop(event: DragEvent<HTMLDivElement>) {
-    const files = event.dataTransfer.files;
-    const firstFile = files[0];
-    if (!files || !firstFile) return;
-
-    const fileExtension = `.${firstFile.name.split(".").pop()}`;
-    if (!fileExtension || !subtitleTypeList.includes(fileExtension)) {
-      return;
-    }
-
-    const reader = new FileReader();
-    reader.addEventListener("load", (e) => {
-      if (!e.target || typeof e.target.result !== "string") return;
-
-      const converted = convert(e.target.result, "srt");
-
-      setCaption({
-        language: "custom",
-        srtData: converted,
-        id: "custom-caption",
-      });
-    });
-
-    reader.readAsText(firstFile);
-  }
+  const [dragging] = useState(false);
 
   const captions = useMemo(
     () =>
@@ -212,7 +142,7 @@ export function CaptionsView({ id }: { id: string }) {
         </div>
 
         <Menu.BackLink
-          onClick={() => router.navigate("/")}
+          onClick={() => router.navigate("/captions")}
           rightSide={
             <button
               type="button"
@@ -226,34 +156,14 @@ export function CaptionsView({ id }: { id: string }) {
           {t("player.menus.subtitles.title")}
         </Menu.BackLink>
       </div>
-      <FileDropHandler
-        className={`transition duration-300 ${dragging ? "opacity-20" : ""}`}
-        onDraggingChange={(isDragging) => {
-          setDragging(isDragging);
-        }}
-        onDrop={(event) => onDrop(event)}
-      >
-        <div className="flex flex-row gap-2 mt-3">
-          <Input value={searchQuery} onInput={setSearchQuery} />
-          <button
-            type="button"
-            onClick={() => router.navigate("/captions/opensubtitles")}
-            className="p-2 rounded tabbable duration-200 hover:bg-video-context-light hover:bg-opacity-10"
-          />
-        </div>
-        <Menu.ScrollToActiveSection className="!pt-1 mt-2 pb-3">
-          <CaptionOption
-            onClick={() => disable()}
-            selected={!selectedCaptionId}
-          >
-            {t("player.menus.subtitles.offChoice")}
-          </CaptionOption>
-          <CustomCaptionOption />
-          {content}
-        </Menu.ScrollToActiveSection>
-      </FileDropHandler>
+      <div className="mt-3">
+        <Input value={searchQuery} onInput={setSearchQuery} />
+      </div>
+      <Menu.ScrollToActiveSection className="!pt-1 mt-2 pb-3">
+        {content}
+      </Menu.ScrollToActiveSection>
     </>
   );
 }
 
-export default CaptionsView;
+export default OpenSubtitlesCaptionView;
