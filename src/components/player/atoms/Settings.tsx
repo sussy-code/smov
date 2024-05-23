@@ -62,7 +62,7 @@ function SettingsOverlay({ id }: { id: string }) {
           id={id}
           path="/captions/opensubtitles"
           width={343}
-          height={450}
+          height={431}
         >
           <Menu.Card>
             <OpenSubtitlesCaptionView id={id} />

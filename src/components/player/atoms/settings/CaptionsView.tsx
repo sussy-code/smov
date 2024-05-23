@@ -29,6 +29,7 @@ export function CaptionOption(props: {
   loading?: boolean;
   onClick?: () => void;
   error?: React.ReactNode;
+  chevron?: boolean;
 }) {
   return (
     <SelectableLink
@@ -36,6 +37,7 @@ export function CaptionOption(props: {
       loading={props.loading}
       error={props.error}
       onClick={props.onClick}
+      chevron={props.chevron}
     >
       <span
         data-active-link={props.selected ? true : undefined}
@@ -233,13 +235,8 @@ export function CaptionsView({ id }: { id: string }) {
         }}
         onDrop={(event) => onDrop(event)}
       >
-        <div className="flex flex-row gap-2 mt-3">
+        <div className="mt-3">
           <Input value={searchQuery} onInput={setSearchQuery} />
-          <button
-            type="button"
-            onClick={() => router.navigate("/captions/opensubtitles")}
-            className="p-2 rounded tabbable duration-200 hover:bg-video-context-light hover:bg-opacity-10"
-          />
         </div>
         <Menu.ScrollToActiveSection className="!pt-1 mt-2 pb-3">
           <CaptionOption
@@ -249,6 +246,13 @@ export function CaptionsView({ id }: { id: string }) {
             {t("player.menus.subtitles.offChoice")}
           </CaptionOption>
           <CustomCaptionOption />
+          <CaptionOption
+            onClick={() => router.navigate("/captions/opensubtitles")}
+            selected={useSubtitleStore((s) => s.isOpenSubtitles)}
+            chevron
+          >
+            {t("player.menus.subtitles.OpenSubtitlesChoice")}
+          </CaptionOption>
           {content}
         </Menu.ScrollToActiveSection>
       </FileDropHandler>

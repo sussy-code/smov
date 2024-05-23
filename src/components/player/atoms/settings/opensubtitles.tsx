@@ -127,33 +127,8 @@ export function OpenSubtitlesCaptionView({ id }: { id: string }) {
   return (
     <>
       <div>
-        <div
-          className={classNames(
-            "absolute inset-0 flex items-center justify-center text-white z-10 pointer-events-none transition-opacity duration-300",
-            dragging ? "opacity-100" : "opacity-0",
-          )}
-        >
-          <div className="flex flex-col items-center">
-            <Icon className="text-5xl mb-4" icon={Icons.UPLOAD} />
-            <span className="text-xl weight font-medium">
-              {t("player.menus.subtitles.dropSubtitleFile")}
-            </span>
-          </div>
-        </div>
-
-        <Menu.BackLink
-          onClick={() => router.navigate("/captions")}
-          rightSide={
-            <button
-              type="button"
-              onClick={() => router.navigate("/captions/settings")}
-              className="-mr-2 -my-1 px-2 p-[0.4em] rounded tabbable hover:bg-video-context-light hover:bg-opacity-10"
-            >
-              {t("player.menus.subtitles.customizeLabel")}
-            </button>
-          }
-        >
-          {t("player.menus.subtitles.title")}
+        <Menu.BackLink onClick={() => router.navigate("/captions")}>
+          {t("player.menus.subtitles.OpenSubtitlesChoice")}
         </Menu.BackLink>
       </div>
       <div className="mt-3">
