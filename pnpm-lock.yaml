@@ -31,8 +31,8 @@ dependencies:
     specifier: ^1.0.3
     version: 1.0.3
   '@movie-web/providers':
-    specifier: github:ztpn/providers#smov-subs
-    version: github.com/ztpn/providers/abe74f016ef316346b40275c79ec08a344fcd6a7
+    specifier: github:sussy-code/providers
+    version: github.com/sussy-code/providers/9b6eb8417c7e2cd2c4265b7102ac5ed299022a42
   '@noble/hashes':
     specifier: ^1.4.0
     version: 1.4.0
@@ -7430,8 +7430,8 @@ packages:
       use-sync-external-store: 1.2.0(react@18.3.1)
     dev: false
 
-  github.com/ztpn/providers/abe74f016ef316346b40275c79ec08a344fcd6a7:
-    resolution: {tarball: https://codeload.github.com/ztpn/providers/tar.gz/abe74f016ef316346b40275c79ec08a344fcd6a7}
+  github.com/sussy-code/providers/9b6eb8417c7e2cd2c4265b7102ac5ed299022a42:
+    resolution: {tarball: https://codeload.github.com/sussy-code/providers/tar.gz/9b6eb8417c7e2cd2c4265b7102ac5ed299022a42}
     name: '@movie-web/providers'
     version: 2.3.0
     prepare: true
