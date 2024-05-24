@@ -18,7 +18,7 @@ import { AudioView } from "./settings/AudioView";
 import { CaptionSettingsView } from "./settings/CaptionSettingsView";
 import { CaptionsView } from "./settings/CaptionsView";
 import { DownloadRoutes } from "./settings/Downloads";
-import { OpenSubtitlesCaptionView } from "./settings/opensubtitles";
+import { OpenSubtitlesCaptionView } from "./settings/Opensubtitles";
 import { PlaybackSettingsView } from "./settings/PlaybackSettingsView";
 import { QualityView } from "./settings/QualityView";
 import { SettingsMenu } from "./settings/SettingsMenu";

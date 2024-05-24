@@ -235,8 +235,15 @@ export function CaptionsView({ id }: { id: string }) {
         }}
         onDrop={(event) => onDrop(event)}
       >
-        <div className="mt-3">
+        <div className="mt-3 flex flex-row gap-2">
           <Input value={searchQuery} onInput={setSearchQuery} />
+          <button
+            type="button"
+            onClick={() => router.navigate("/captions/opensubtitles")}
+            className="p-[0.5em] rounded tabbable hover:bg-video-context-hoverColor hover:bg-opacity-50"
+          >
+            <Icon icon={Icons.WEB} />
+          </button>
         </div>
         <Menu.ScrollToActiveSection className="!pt-1 mt-2 pb-3">
           <CaptionOption
@@ -246,13 +253,6 @@ export function CaptionsView({ id }: { id: string }) {
             {t("player.menus.subtitles.offChoice")}
           </CaptionOption>
           <CustomCaptionOption />
-          <CaptionOption
-            onClick={() => router.navigate("/captions/opensubtitles")}
-            selected={useSubtitleStore((s) => s.isOpenSubtitles)}
-            chevron
-          >
-            {t("player.menus.subtitles.OpenSubtitlesChoice")}
-          </CaptionOption>
           {content}
         </Menu.ScrollToActiveSection>
       </FileDropHandler>

@@ -1,11 +1,9 @@
-import classNames from "classnames";
 import Fuse from "fuse.js";
 import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useAsyncFn } from "react-use";
 
 import { FlagIcon } from "@/components/FlagIcon";
-import { Icon, Icons } from "@/components/Icon";
 import { useCaptions } from "@/components/player/hooks/useCaptions";
 import { Menu } from "@/components/player/internals/ContextMenu";
 import { Input } from "@/components/player/internals/ContextMenu/Input";
@@ -85,7 +83,6 @@ export function OpenSubtitlesCaptionView({ id }: { id: string }) {
   const { selectCaptionById } = useCaptions();
   const captionList = usePlayerStore((s) => s.captionList);
   const getHlsCaptionList = usePlayerStore((s) => s.display?.getCaptionList);
-  const [dragging] = useState(false);
 
   const captions = useMemo(
     () =>

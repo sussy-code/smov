@@ -254,13 +254,18 @@ export function Discover() {
 
   const [isHovered, setIsHovered] = useState(false);
 
+  useEffect(() => {
+    if (!isHovered) {
+      document.body.style.overflow = "auto";
+    }
+  }, [isHovered]);
+
   const handleMouseEnter = () => {
     document.body.style.overflow = "hidden";
     setIsHovered(true);
   };
 
   const handleMouseLeave = () => {
-    document.body.style.overflow = "auto";
     setIsHovered(false);
   };
 
