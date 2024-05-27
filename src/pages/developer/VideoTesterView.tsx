@@ -5,10 +5,14 @@ import { Dropdown } from "@/components/form/Dropdown";
 import { usePlayer } from "@/components/player/hooks/usePlayer";
 import { Title } from "@/components/text/Title";
 import { TextInputControl } from "@/components/text-inputs/TextInputControl";
+import { useAuth } from "@/hooks/auth/useAuth";
 import { PlaybackErrorPart } from "@/pages/parts/player/PlaybackErrorPart";
 import { PlayerPart } from "@/pages/parts/player/PlayerPart";
+import { conf } from "@/setup/config";
 import { PlayerMeta, playerStatus } from "@/stores/player/slices/source";
 import { SourceSliceSource, StreamType } from "@/stores/player/utils/qualities";
+
+import { NoPermissions } from "../parts/errors/NoPermissions";
 
 const testMeta: PlayerMeta = {
   releaseYear: 2010,
@@ -31,6 +35,7 @@ export default function VideoTesterView() {
   const { status, playMedia, setMeta } = usePlayer();
   const [selected, setSelected] = useState("mp4");
   const [inputSource, setInputSource] = useState("");
+  const { loggedIn } = useAuth();
 
   const start = useCallback(
     (url: string, type: StreamType) => {
@@ -56,6 +61,8 @@ export default function VideoTesterView() {
     },
     [playMedia, setMeta],
   );
+
+  if (!loggedIn && conf().DISABLE_FETCH_WITHOUT_LOGIN) return <NoPermissions />;
 
   return (
     <PlayerPart backUrl="/">

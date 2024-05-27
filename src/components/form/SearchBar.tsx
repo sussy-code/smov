@@ -11,6 +11,7 @@ export interface SearchBarProps {
   onChange: (value: string, force: boolean) => void;
   onUnFocus: (newSearch?: string) => void;
   value: string;
+  disabled?: boolean;
 }
 
 export const SearchBarInput = forwardRef<HTMLInputElement, SearchBarProps>(
@@ -56,6 +57,7 @@ export const SearchBarInput = forwardRef<HTMLInputElement, SearchBarProps>(
             value={props.value}
             className="w-full flex-1 bg-transparent px-4 py-4 pl-12 text-search-text placeholder-search-placeholder focus:outline-none sm:py-4 sm:pr-2"
             placeholder={props.placeholder}
+            disabled={props.disabled}
           />
 
           {props.value.length > 0 && (

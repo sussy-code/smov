@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import Sticky from "react-sticky-el";
 import { useWindowSize } from "react-use";
 
@@ -6,8 +7,10 @@ import { SearchBarInput } from "@/components/form/SearchBar";
 import { ThinContainer } from "@/components/layout/ThinContainer";
 import { useSlashFocus } from "@/components/player/hooks/useSlashFocus";
 import { HeroTitle } from "@/components/text/HeroTitle";
+import { useAuth } from "@/hooks/auth/useAuth";
 import { useRandomTranslation } from "@/hooks/useRandomTranslation";
 import { useSearchQuery } from "@/hooks/useSearchQuery";
+import { conf } from "@/setup/config";
 import { useBannerSize } from "@/stores/banner";
 
 export interface HeroPartProps {
@@ -28,8 +31,10 @@ function getTimeOfDay(date: Date): "night" | "morning" | "day" | "420" {
 
 export function HeroPart({ setIsSticky, searchParams }: HeroPartProps) {
   const { t: randomT } = useRandomTranslation();
+  const { t } = useTranslation();
   const [search, setSearch, setSearchUnFocus] = searchParams;
   const [, setShowBg] = useState(false);
+  const { loggedIn } = useAuth();
   const bannerSize = useBannerSize();
   const stickStateChanged = useCallback(
     (isFixed: boolean) => {
@@ -55,7 +60,10 @@ export function HeroPart({ setIsSticky, searchParams }: HeroPartProps) {
 
   const time = getTimeOfDay(new Date());
   const title = randomT(`home.titles.${time}`);
-  const placeholder = randomT(`home.search.placeholder`);
+  const placeholder =
+    loggedIn || !conf().DISABLE_FETCH_WITHOUT_LOGIN
+      ? randomT(`home.search.placeholder`)
+      : t("home.search.placeholder.notAllowed");
   const inputRef = useRef<HTMLInputElement>(null);
   useSlashFocus(inputRef);
 
@@ -76,9 +84,10 @@ export function HeroPart({ setIsSticky, searchParams }: HeroPartProps) {
             <SearchBarInput
               ref={inputRef}
               onChange={setSearch}
-              value={search}
+              value={loggedIn ? search : ""}
               onUnFocus={setSearchUnFocus}
               placeholder={placeholder ?? ""}
+              disabled={!loggedIn && conf().DISABLE_FETCH_WITHOUT_LOGIN}
             />
           </Sticky>
         </div>

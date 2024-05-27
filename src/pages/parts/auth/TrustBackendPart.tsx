@@ -1,9 +1,9 @@
 import { useMemo } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import { useAsync } from "react-use";
+import { AsyncState } from "react-use/lib/useAsync";
 
-import { MetaResponse, getBackendMeta } from "@/backend/accounts/meta";
+import { MetaResponse } from "@/backend/accounts/meta";
 import { Button } from "@/components/buttons/Button";
 import { Icon, Icons } from "@/components/Icon";
 import {
@@ -16,6 +16,7 @@ import { MwLink } from "@/components/text/Link";
 import { useBackendUrl } from "@/hooks/auth/useBackendUrl";
 
 interface TrustBackendPartProps {
+  result: AsyncState<MetaResponse | undefined>;
   onNext?: (meta: MetaResponse) => void;
 }
 
@@ -26,10 +27,6 @@ export function TrustBackendPart(props: TrustBackendPartProps) {
     () => (backendUrl ? new URL(backendUrl).hostname : undefined),
     [backendUrl],
   );
-  const result = useAsync(() => {
-    if (!backendUrl) return Promise.resolve(null);
-    return getBackendMeta(backendUrl);
-  }, [backendUrl]);
   const { t } = useTranslation();
 
   let cardContent = (
@@ -40,13 +37,16 @@ export function TrustBackendPart(props: TrustBackendPartProps) {
       <p>{t("auth.trust.failed.text")}</p>
     </>
   );
-  if (result.loading) cardContent = <Loading />;
-  if (result.value)
+
+  if (!props.result.value) cardContent = <Loading />;
+  else
     cardContent = (
       <>
-        <h3 className="text-white font-bold text-lg">{result.value.name}</h3>
-        {result.value.description ? (
-          <p className="text-center">{result.value.description}</p>
+        <h3 className="text-white font-bold text-lg">
+          {props.result.value.name}
+        </h3>
+        {props.result.value.description ? (
+          <p className="text-center">{props.result.value.description}</p>
         ) : null}
       </>
     );
@@ -82,7 +82,9 @@ export function TrustBackendPart(props: TrustBackendPartProps) {
             </Button>
             <Button
               theme="purple"
-              onClick={() => result.value && props.onNext?.(result.value)}
+              onClick={() =>
+                props.result.value && props.onNext?.(props.result.value)
+              }
             >
               {t("auth.trust.yes")}
             </Button>

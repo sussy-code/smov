@@ -5,7 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { ThinContainer } from "@/components/layout/ThinContainer";
 import { Ol } from "@/components/utils/Ol";
 import { Heading1, Heading2, Paragraph } from "@/components/utils/Text";
+import { useAuth } from "@/hooks/auth/useAuth";
 import { PageTitle } from "@/pages/parts/util/PageTitle";
+import { conf } from "@/setup/config";
 
 import { SubPageLayout } from "./layouts/SubPageLayout";
 
@@ -42,6 +44,7 @@ export function Button(props: {
 export function AboutPage() {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const { loggedIn } = useAuth();
 
   return (
     <SubPageLayout>
@@ -73,18 +76,22 @@ export function AboutPage() {
           style={{ display: "flex", justifyContent: "space-between" }}
           className="pt-2 w-full"
         >
-          <Button
-            className="py-px mt-8 box-content bg-buttons-secondary hover:bg-buttons-secondaryHover bg-opacity-90 text-buttons-secondaryText justify-center items-center"
-            onClick={() => navigate("/discover")}
-          >
-            Discover
-          </Button>
-          <Button
-            className="py-px mt-8 box-content bg-buttons-secondary hover:bg-buttons-secondaryHover bg-opacity-90 text-buttons-secondaryText justify-center items-center"
-            onClick={() => navigate("/support")}
-          >
-            Support
-          </Button>
+          {loggedIn && conf().DISABLE_FETCH_WITHOUT_LOGIN ? null : (
+            <Button
+              className="py-px mt-8 box-content bg-buttons-secondary hover:bg-buttons-secondaryHover bg-opacity-90 text-buttons-secondaryText justify-center items-center"
+              onClick={() => navigate("/discover")}
+            >
+              Discover
+            </Button>
+          )}
+          {conf().DISABLE_LINK_BUTTONS ? null : (
+            <Button
+              className="py-px mt-8 box-content bg-buttons-secondary hover:bg-buttons-secondaryHover bg-opacity-90 text-buttons-secondaryText justify-center items-center"
+              onClick={() => navigate("/support")}
+            >
+              Support
+            </Button>
+          )}
         </div>
       </ThinContainer>
     </SubPageLayout>

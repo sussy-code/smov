@@ -22,10 +22,16 @@ export function LargeCardText(props: {
   title: string;
   children?: React.ReactNode;
   icon?: React.ReactNode;
+  className?: string;
 }) {
   return (
-    <div className="flex flex-col items-center text-center mb-8">
-      <div className="flex flex-col items-center text-center max-w-[318px]">
+    <div
+      className={classNames(
+        "flex flex-col items-center text-center",
+        props.className || "mb-8",
+      )}
+    >
+      <div className="flex flex-col items-center text-center max-w-[458px]">
         {props.icon ? (
           <div className="text-2xl mb-4 text-largeCard-icon">{props.icon}</div>
         ) : null}
@@ -41,9 +47,10 @@ export function LargeCardText(props: {
 export function LargeCardButtons(props: {
   children: React.ReactNode;
   splitAlign?: boolean;
+  className?: string;
 }) {
   return (
-    <div className="mt-12">
+    <div className={props.className || "mt-12"}>
       <div
         className={classNames("mx-auto", {
           "flex flex-row-reverse justify-between items-center":

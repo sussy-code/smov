@@ -18,6 +18,7 @@ import { useBookmarkStore } from "@/stores/bookmarks";
 import { useProgressStore } from "@/stores/progress";
 
 interface LoginFormPartProps {
+  disableRegistration?: boolean;
   onLogin?: () => void;
 }
 
@@ -101,11 +102,13 @@ export function LoginFormPart(props: LoginFormPartProps) {
           {t("auth.login.submit")}
         </Button>
       </LargeCardButtons>
-      <p className="text-center mt-6">
-        <Trans i18nKey="auth.createAccount">
-          <MwLink to="/register">.</MwLink>
-        </Trans>
-      </p>
+      {!props.disableRegistration ? (
+        <p className="text-center mt-6">
+          <Trans i18nKey="auth.createAccount">
+            <MwLink to="/register">.</MwLink>
+          </Trans>
+        </p>
+      ) : null}
     </LargeCard>
   );
 }

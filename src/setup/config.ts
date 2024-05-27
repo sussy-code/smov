@@ -24,6 +24,8 @@ interface Config {
   ONBOARDING_FIREFOX_EXTENSION_INSTALL_LINK: string;
   ONBOARDING_PROXY_INSTALL_LINK: string;
   ALLOW_AUTOPLAY: boolean;
+  DISABLE_LINK_BUTTONS: boolean;
+  DISABLE_FETCH_WITHOUT_LOGIN: boolean;
 }
 
 export interface RuntimeConfig {
@@ -44,6 +46,8 @@ export interface RuntimeConfig {
   ONBOARDING_CHROME_EXTENSION_INSTALL_LINK: string | null;
   ONBOARDING_FIREFOX_EXTENSION_INSTALL_LINK: string | null;
   ONBOARDING_PROXY_INSTALL_LINK: string | null;
+  DISABLE_LINK_BUTTONS: boolean;
+  DISABLE_FETCH_WITHOUT_LOGIN: boolean;
 }
 
 const env: Record<keyof Config, undefined | string> = {
@@ -67,6 +71,8 @@ const env: Record<keyof Config, undefined | string> = {
   CDN_REPLACEMENTS: import.meta.env.VITE_CDN_REPLACEMENTS,
   HAS_ONBOARDING: import.meta.env.VITE_HAS_ONBOARDING,
   ALLOW_AUTOPLAY: import.meta.env.VITE_ALLOW_AUTOPLAY,
+  DISABLE_LINK_BUTTONS: import.meta.env.VITE_DISABLE_LINK_BUTTONS,
+  DISABLE_FETCH_WITHOUT_LOGIN: import.meta.env.VITE_DISABLE_FETCH_WITHOUT_LOGIN,
 };
 
 function coerceUndefined(value: string | null | undefined): string | undefined {
@@ -127,5 +133,8 @@ export function conf(): RuntimeConfig {
           .filter((s) => s.length > 0),
       )
       .filter((v) => v.length === 2), // The format is <beforeA>:<afterA>,<beforeB>:<afterB>
+    DISABLE_LINK_BUTTONS: getKey("DISABLE_LINK_BUTTONS", "false") === "true",
+    DISABLE_FETCH_WITHOUT_LOGIN:
+      getKey("DISABLE_FETCH_WITHOUT_LOGIN", "false") === "true",
   };
 }

@@ -11,6 +11,7 @@ import {
 
 import { convertLegacyUrl, isLegacyUrl } from "@/backend/metadata/getmeta";
 import { generateQuickSearchMediaUrl } from "@/backend/metadata/tmdb";
+import { useAuth } from "@/hooks/auth/useAuth";
 import { useOnlineListener } from "@/hooks/usePing";
 import { AboutPage } from "@/pages/About";
 import { AdminPage } from "@/pages/admin/AdminPage";
@@ -30,6 +31,8 @@ import { Layout } from "@/setup/Layout";
 import { useHistoryListener } from "@/stores/history";
 import { LanguageProvider } from "@/stores/language";
 
+import { conf } from "./config";
+
 const DeveloperPage = lazy(() => import("@/pages/DeveloperPage"));
 const TestView = lazy(() => import("@/pages/developer/TestView"));
 const PlayerView = lazyWithPreload(() => import("@/pages/PlayerView"));
@@ -41,14 +44,21 @@ SettingsPage.preload();
 function LegacyUrlView({ children }: { children: ReactElement }) {
   const location = useLocation();
   const navigate = useNavigate();
+  const { loggedIn } = useAuth();
 
   useEffect(() => {
+    if (!loggedIn && conf().DISABLE_FETCH_WITHOUT_LOGIN) {
+      if (location.pathname === "/") return;
+      navigate("/", { replace: true });
+      return;
+    }
+
     const url = location.pathname;
     if (!isLegacyUrl(url)) return;
     convertLegacyUrl(location.pathname).then((convertedUrl) => {
       navigate(convertedUrl ?? "/", { replace: true });
     });
-  }, [location.pathname, navigate]);
+  }, [location.pathname, loggedIn, navigate]);
 
   if (isLegacyUrl(location.pathname)) return null;
   return children;
@@ -57,16 +67,19 @@ function LegacyUrlView({ children }: { children: ReactElement }) {
 function QuickSearch() {
   const { query } = useParams<{ query: string }>();
   const navigate = useNavigate();
+  const { loggedIn } = useAuth();
 
   useEffect(() => {
-    if (query) {
+    if (!loggedIn && conf().DISABLE_FETCH_WITHOUT_LOGIN) {
+      navigate("/", { replace: true });
+    } else if (query) {
       generateQuickSearchMediaUrl(query).then((url) => {
         navigate(url ?? "/", { replace: true });
       });
     } else {
       navigate("/", { replace: true });
     }
-  }, [query, navigate]);
+  }, [query, navigate, loggedIn]);
 
   return null;
 }
@@ -74,14 +87,17 @@ function QuickSearch() {
 function QueryView() {
   const { query } = useParams<{ query: string }>();
   const navigate = useNavigate();
+  const { loggedIn } = useAuth();
 
   useEffect(() => {
-    if (query) {
+    if (!loggedIn && conf().DISABLE_FETCH_WITHOUT_LOGIN) {
+      navigate("/", { replace: true });
+    } else if (query) {
       navigate(`/browse/${query}`, { replace: true });
     } else {
       navigate("/", { replace: true });
     }
-  }, [query, navigate]);
+  }, [query, navigate, loggedIn]);
 
   return null;
 }

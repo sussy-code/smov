@@ -2,8 +2,16 @@ import { Navigation } from "@/components/layout/Navigation";
 import { ThinContainer } from "@/components/layout/ThinContainer";
 import { ArrowLink } from "@/components/text/ArrowLink";
 import { Title } from "@/components/text/Title";
+import { useAuth } from "@/hooks/auth/useAuth";
+import { conf } from "@/setup/config";
+
+import { NoPermissions } from "./parts/errors/NoPermissions";
 
 export default function DeveloperPage() {
+  const { loggedIn } = useAuth();
+
+  if (!loggedIn && conf().DISABLE_FETCH_WITHOUT_LOGIN) return <NoPermissions />;
+
   return (
     <div className="py-48">
       <Navigation />

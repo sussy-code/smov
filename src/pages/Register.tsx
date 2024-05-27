@@ -1,17 +1,21 @@
 import { useState } from "react";
 import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 import { useNavigate } from "react-router-dom";
+import { useAsync } from "react-use";
 
-import { MetaResponse } from "@/backend/accounts/meta";
+import { MetaResponse, getBackendMeta } from "@/backend/accounts/meta";
+import { Loading } from "@/components/layout/Loading";
 import { SubPageLayout } from "@/pages/layouts/SubPageLayout";
 import {
   AccountCreatePart,
   AccountProfile,
 } from "@/pages/parts/auth/AccountCreatePart";
 import { PassphraseGeneratePart } from "@/pages/parts/auth/PassphraseGeneratePart";
+import { RegistrationDisabled } from "@/pages/parts/auth/RegistrationDisabled";
 import { TrustBackendPart } from "@/pages/parts/auth/TrustBackendPart";
 import { VerifyPassphrase } from "@/pages/parts/auth/VerifyPassphrasePart";
 import { PageTitle } from "@/pages/parts/util/PageTitle";
+import { conf } from "@/setup/config";
 
 function CaptchaProvider(props: {
   siteKey: string | null;
@@ -32,12 +36,29 @@ export function RegisterPage() {
   const [account, setAccount] = useState<null | AccountProfile>(null);
   const [siteKey, setSiteKey] = useState<string | null>(null);
 
+  const backendUrl = conf().BACKEND_URL;
+
+  const backendMeta = useAsync(async () => {
+    if (!backendUrl) return;
+    return getBackendMeta(backendUrl);
+  }, [backendUrl]);
+
+  if (backendMeta.value?.registrationDisabled) {
+    return (
+      <SubPageLayout>
+        <RegistrationDisabled />
+      </SubPageLayout>
+    );
+  }
+
   return (
     <CaptchaProvider siteKey={siteKey}>
       <SubPageLayout>
         <PageTitle subpage k="global.pages.register" />
-        {step === 0 ? (
+        {backendMeta.loading ? <Loading /> : null}
+        {step === 0 && !backendMeta.loading ? (
           <TrustBackendPart
+            result={backendMeta}
             onNext={(meta: MetaResponse) => {
               setSiteKey(
                 meta.hasCaptcha && meta.captchaClientKey

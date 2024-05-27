@@ -52,8 +52,8 @@ function ConfigValue(props: { name: string; children?: ReactNode }) {
 }
 
 export function ConfigValuesPart() {
-  const [accountNumber, setAccountNumber] = useState<string | null>(null);
-  const [allAccounts, setAllAccounts] = useState<string | null>(null);
+  const [accountNumber, setAccountNumber] = useState<string>("Loading..");
+  const [allAccounts, setAllAccounts] = useState<string>("Loading..");
   const normalRouter = conf().NORMAL_ROUTER;
   const appVersion = conf().APP_VERSION;
   const backendUrl = conf().BACKEND_URL;
@@ -61,18 +61,20 @@ export function ConfigValuesPart() {
   useEffect(() => {
     getAccountNumber()
       .then((number) => {
-        setAccountNumber(number);
+        setAccountNumber(number ?? "0");
       })
       .catch((error) => {
         console.error("Error fetching account number:", error);
+        setAccountNumber("Unknown");
       });
 
     getAllAccounts()
       .then((accounts) => {
-        setAllAccounts(accounts);
+        setAllAccounts(accounts ?? "0");
       })
       .catch((error) => {
         console.error("Error fetching all accounts:", error);
+        setAllAccounts("Unknown");
       });
   }, []);
 

@@ -87,29 +87,35 @@ export function Navigation(props: NavigationProps) {
               >
                 <BrandPill clickable header />
               </Link>
-              <a
-                href={conf().DISCORD_LINK}
-                target="_blank"
-                rel="noreferrer"
-                className="text-xl text-white tabbable rounded-full"
-              >
-                <IconPatch icon={Icons.DISCORD} clickable downsized />
-              </a>
-              <a
-                href={conf().GITHUB_LINK}
-                target="_blank"
-                rel="noreferrer"
-                className="text-xl text-white tabbable rounded-full"
-              >
-                <IconPatch icon={Icons.GITHUB} clickable downsized />
-              </a>
-              <a
-                onClick={() => navigate("/discover")}
-                rel="noreferrer"
-                className="text-xl text-white tabbable rounded-full"
-              >
-                <IconPatch icon={Icons.RISING_STAR} clickable downsized />
-              </a>
+              {conf().DISABLE_LINK_BUTTONS ? null : (
+                <>
+                  <a
+                    href={conf().DISCORD_LINK}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-xl text-white tabbable rounded-full"
+                  >
+                    <IconPatch icon={Icons.DISCORD} clickable downsized />
+                  </a>
+                  <a
+                    href={conf().GITHUB_LINK}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-xl text-white tabbable rounded-full"
+                  >
+                    <IconPatch icon={Icons.GITHUB} clickable downsized />
+                  </a>
+                </>
+              )}
+              {!loggedIn && conf().DISABLE_FETCH_WITHOUT_LOGIN ? null : (
+                <a
+                  onClick={() => navigate("/discover")}
+                  rel="noreferrer"
+                  className="text-xl text-white tabbable rounded-full"
+                >
+                  <IconPatch icon={Icons.RISING_STAR} clickable downsized />
+                </a>
+              )}
             </div>
             <div className="relative pointer-events-auto">
               <LinksDropdown>

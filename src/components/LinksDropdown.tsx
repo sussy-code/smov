@@ -90,7 +90,7 @@ export function LinksDropdown(props: { children: React.ReactNode }) {
     () => (seed ? base64ToBuffer(seed) : null),
     [seed],
   );
-  const { logout } = useAuth();
+  const { logout, loggedIn } = useAuth();
 
   useEffect(() => {
     function onWindowClick(evt: MouseEvent) {
@@ -142,9 +142,11 @@ export function LinksDropdown(props: { children: React.ReactNode }) {
           <DropdownLink href="/about" icon={Icons.CIRCLE_QUESTION}>
             {t("navigation.menu.about")}
           </DropdownLink>
-          <DropdownLink href="/discover" icon={Icons.RISING_STAR}>
-            {t("navigation.menu.discover")}
-          </DropdownLink>
+          {!loggedIn && conf().DISABLE_FETCH_WITHOUT_LOGIN ? null : (
+            <DropdownLink href="/discover" icon={Icons.RISING_STAR}>
+              {t("navigation.menu.discover")}
+            </DropdownLink>
+          )}
           {deviceName ? (
             <DropdownLink
               className="!text-type-danger opacity-75 hover:opacity-100"
@@ -154,19 +156,26 @@ export function LinksDropdown(props: { children: React.ReactNode }) {
               {t("navigation.menu.logout")}
             </DropdownLink>
           ) : null}
-          <Divider />
-          <div className="my-4 flex justify-center items-center gap-4">
-            <CircleDropdownLink
-              href={conf().DISCORD_LINK}
-              icon={Icons.DISCORD}
-            />
-            <CircleDropdownLink href={conf().GITHUB_LINK} icon={Icons.GITHUB} />
-            <CircleDropdownLink
-              href={conf().TWITTER_LINK}
-              icon={Icons.TWITTER}
-            />
-            <CircleDropdownLink href="/support" icon={Icons.MAIL} />
-          </div>
+          {conf().DISABLE_LINK_BUTTONS ? null : (
+            <>
+              <Divider />
+              <div className="my-4 flex justify-center items-center gap-4">
+                <CircleDropdownLink
+                  href={conf().DISCORD_LINK}
+                  icon={Icons.DISCORD}
+                />
+                <CircleDropdownLink
+                  href={conf().GITHUB_LINK}
+                  icon={Icons.GITHUB}
+                />
+                <CircleDropdownLink
+                  href={conf().TWITTER_LINK}
+                  icon={Icons.TWITTER}
+                />
+                <CircleDropdownLink href="/support" icon={Icons.MAIL} />
+              </div>
+            </>
+          )}
         </div>
       </Transition>
     </div>
