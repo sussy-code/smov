@@ -19,6 +19,7 @@ export function useCaptions() {
   );
   const setCaption = usePlayerStore((s) => s.setCaption);
   const lastSelectedLanguage = useSubtitleStore((s) => s.lastSelectedLanguage);
+  const setIsOpenSubtitles = useSubtitleStore((s) => s.setIsOpenSubtitles);
 
   const captionList = usePlayerStore((s) => s.captionList);
   const getHlsCaptionList = usePlayerStore((s) => s.display?.getCaptionList);
@@ -77,11 +78,13 @@ export function useCaptions() {
         captionToSet.srtData = srtData;
       }
 
+      setIsOpenSubtitles(!!caption.opensubtitles);
       setCaption(captionToSet);
       resetSubtitleSpecificSettings();
       setLanguage(caption.language);
     },
     [
+      setIsOpenSubtitles,
       setLanguage,
       captions,
       setCaption,
@@ -101,9 +104,10 @@ export function useCaptions() {
   );
 
   const disable = useCallback(async () => {
+    setIsOpenSubtitles(false);
     setCaption(null);
     setLanguage(null);
-  }, [setCaption, setLanguage]);
+  }, [setCaption, setLanguage, setIsOpenSubtitles]);
 
   const selectLastUsedLanguage = useCallback(async () => {
     const language = lastSelectedLanguage ?? "en";

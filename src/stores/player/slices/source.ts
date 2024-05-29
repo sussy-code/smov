@@ -54,6 +54,7 @@ export interface CaptionListItem {
   url: string;
   needsProxy: boolean;
   hls?: boolean;
+  opensubtitles?: boolean;
 }
 
 export interface AudioTrack {

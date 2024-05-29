@@ -368,6 +368,7 @@
         "customChoice": "Drop or upload file",
         "customizeLabel": "Customize",
         "offChoice": "Off",
+        "OpenSubtitlesChoice": "OpenSubtitles",
         "settings": {
           "backlink": "Custom subtitles",
           "delay": "Subtitle delay",
@@ -375,7 +376,9 @@
         },
         "title": "Subtitles",
         "unknownLanguage": "Unknown",
-        "dropSubtitleFile": "Drop subtitle file here! >_<"
+        "dropSubtitleFile": "Drop subtitle file here! >_<",
+        "scrapeButton": "Scrape subtitles",
+        "empty": "There are no provided subtitles for this."
       }
     },
     "metadata": {
