@@ -3,7 +3,7 @@ import bg from "@/assets/locales/bg.json";
 import bn from "@/assets/locales/bn.json";
 import ca from "@/assets/locales/ca.json";
 import caVl from "@/assets/locales/ca@valencia.json";
-import cat from "@/assets/locales/cat.json";
+import cat from "@/assets/locales/catspeak.json";
 import cs from "@/assets/locales/cs.json";
 import de from "@/assets/locales/de.json";
 import el from "@/assets/locales/el.json";
