@@ -36,11 +36,13 @@ export interface SubtitleStore {
   };
   enabled: boolean;
   lastSelectedLanguage: string | null;
+  isOpenSubtitles: boolean;
   styling: SubtitleStyling;
   overrideCasing: boolean;
   delay: number;
   updateStyling(newStyling: Partial<SubtitleStyling>): void;
   setLanguage(language: string | null): void;
+  setIsOpenSubtitles(isOpenSubtitles: boolean): void;
   setCustomSubs(): void;
   setOverrideCasing(enabled: boolean): void;
   setDelay(delay: number): void;
@@ -56,6 +58,7 @@ export const useSubtitleStore = create(
         lastSelectedLanguage: null,
       },
       lastSelectedLanguage: null,
+      isOpenSubtitles: false,
       overrideCasing: false,
       delay: 0,
       styling: {
@@ -94,6 +97,11 @@ export const useSubtitleStore = create(
         set((s) => {
           s.enabled = !!lang;
           if (lang) s.lastSelectedLanguage = lang;
+        });
+      },
+      setIsOpenSubtitles(isOpenSubtitles) {
+        set((s) => {
+          s.isOpenSubtitles = isOpenSubtitles;
         });
       },
       setCustomSubs() {

@@ -28,6 +28,9 @@ export function DmcaPage() {
             components={{
               bold: <span className="font-bold text-white" />,
             }}
+            values={{
+              dmca: conf().DMCA_EMAIL,
+            }}
           />
         </Paragraph>
         <Paragraph className="flex space-x-3 items-center">
