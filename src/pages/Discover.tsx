@@ -293,7 +293,7 @@ export function Discover() {
     isScrolling = true;
 
     const carousel = carouselRefs.current[categorySlug];
-    if (carousel) {
+    if (carousel && !e.deltaX) {
       const movieElements = carousel.getElementsByTagName("a");
       if (movieElements.length > 0) {
         const posterWidth = movieElements[0].offsetWidth;
