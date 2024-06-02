@@ -1,6 +1,6 @@
 {
     "about": {
-        "description": "sudo-flix è un'applicazione web che ricerca dei stream sull'internet. Il team cerca di usare un approccio prevalentemente minimalista per usufruire del contenuto.",
+        "description": "sudo-flix è un fork di movie-web che garantisce di rimanere attivo anche dopo la chiusura di movie-web.app. sudo-flix.lol funziona su un VPS privato e ospitato autonomamente. Gestisco questo sito in perdita; non ci sono annunci a causa della mia fede nei media liberi.",
         "faqTitle": "Domande comuni",
         "q1": {
             "body": "sudo-flix non ospita alcun contento. Quando clicci su qualcosa da guardare, sudo-flix cerca l'internet per media di vostra scelta (Sull schermata di caricamento e nell tab 'sorgenti video' si può vedere quale sorgente si sta utilizzando). I media non sono mai caricati da sudo-flix, tutto è attraverso questo meccanismo di ricerca.",
@@ -11,12 +11,17 @@
             "title": "Dove posso richiedere una serie o un film?"
         },
         "q3": {
-            "body": "Nostri risultati sono alimentati da «The Movie Database (TMDB)» e visualizzare indipendentemente dal fatto che nostri sorgenti hanno effettivamente il contenuto.",
+            "body": "I nostri risultati sono alimentati da «The Movie Database (TMDB)» e visualizzare indipendentemente dal fatto che nostri sorgenti hanno effettivamente il contenuto.",
             "title": "I risultati di ricerca mostrano la serie o il film, perché non posso riprodurlo?"
         },
-        "title": "Su di sudo-flix",
+        "title": "Su di sudo-flix (^▽^)",
         "q4": {
-            "title": "E i miei dati?"
+            "title": "E i miei dati?",
+            "body": "Tutti i dati vengono sincronizzati con il back-end sudo che è diverso dal back-end della community ed è ospitato in modo indipendente da me, chiunque è libero di utilizzare anche questo."
+        },
+        "q5": {
+            "body": "be', sudo-flix ha un account Twitter che può essere trovato nel fondo della pagina insieme ad un link al codice sorgente su Github.",
+            "title": "Come posso sapere di più?"
         }
     },
     "actions": {
@@ -24,59 +29,59 @@
         "copy": "Copia"
     },
     "auth": {
-        "createAccount": "Non hai ancora un account? <0>Crea un account.</0>",
+        "createAccount": "Non hai ancora un account 😬 <0>Crea un account.</0>",
         "deviceNameLabel": "Nome del dispositivo",
         "deviceNamePlaceholder": "Telefono personale",
         "generate": {
-            "description": "La tua frase password agisce come il tuo nome utente e password. Assicurati di tenerla al sicuro dato che ti servirà per accedere al tuo account",
-            "next": "Ho salvato il mio frase password",
-            "passphraseFrameLabel": "Frase password",
-            "title": "La tua frase password"
+            "description": "La tua frase d'accesso funziona come nome utente e password. Assicurati di tenerla al sicuro poiché dovrai inserirla per accedere al tuo account. <bold>NON perdere la tua frase d'accesso!</bold>",
+            "next": "Ho salvato la mia frase d'accesso",
+            "passphraseFrameLabel": "Frase d'accesso",
+            "title": "La tua frase d'accesso"
         },
-        "hasAccount": "Hai già un account? <0>Accedi.</0>",
+        "hasAccount": "Hai già un account? <0>Accedi qua.</0>",
         "login": {
-            "description": "Inserisci la tua frase password per accedere al vostro account",
-            "deviceLengthError": "Inserisci un nome per il dispositivo",
-            "passphraseLabel": "Frase password di 12 parole",
-            "passphrasePlaceholder": "Frase password",
+            "description": "Inserisci la tua frase d'accesso per accedere al tuo account",
+            "deviceLengthError": "Inserisci un nome al dispositivo",
+            "passphraseLabel": "Frase d'accesso di 12 parole",
+            "passphrasePlaceholder": "Frase d'accesso",
             "submit": "Accedi",
-            "title": "Accedi al vostro account",
-            "validationError": "Frase password incompleta o sbagliata"
+            "title": "Accedi al tuo account",
+            "validationError": "Frase d'accesso incompleta o sbagliata /ᐠ. .ᐟ\\"
         },
         "register": {
             "information": {
                 "color1": "Colore profilo uno",
                 "color2": "Colore profilo due",
-                "header": "Inserisci un nome per il tuo dispositivo e seleziona, un colore e un'icona utente a tua scelta",
+                "header": "Inserisci un nome per il tuo dispositivo poi seleziona un colore e un'icona utente a tua scelta!",
                 "icon": "Icona utente",
-                "next": "Avanti",
+                "next": "Prossimo",
                 "title": "Informazioni sull'account"
             }
         },
         "trust": {
             "failed": {
-                "text": "L'avete configurata correttamente?",
+                "text": "L'hai configurata correttamente?",
                 "title": "Impossibile raggiungere il server"
             },
-            "host": "Ti stai collegando a <0>{{hostname}}</0> - conferma la tua fiducia prima di creare un account",
+            "host": "Ti stai collegando a <0>{{hostname}}</0> - conferma la tua fiducia prima di creare un account...",
             "no": "Indietro",
-            "noHost": "Il server non è configurato, quindi non si può creare un account",
+            "noHost": "Questo server non è configurato, quindi non puoi creare un account",
             "noHostTitle": "Server non è configurato!",
             "title": "Ti fidi di questo server?",
-            "yes": "Mi fido di questo server"
+            "yes": "Mi fido di questo server 🤞"
         },
         "verify": {
-            "description": "Inserisci il tuo frase password da prima per confermare che è salvato per creare un account",
+            "description": "Inserisci la tua frase d'accesso di prima per confermare che l'hai salvata e per creare il tuo account",
             "invalidData": "I dati non sono validi",
-            "noMatch": "Frase password non corrisponde",
-            "passphraseLabel": "La propria frase password di 12 parole",
+            "noMatch": "Frase d'accesso non corrisponde 😭",
+            "passphraseLabel": "La tua frase d'accesso di 12 parole",
             "recaptchaFailed": "Validazione ReCaptcha fallita",
             "register": "Crea account",
-            "title": "Conferma la propria frase password"
+            "title": "Conferma la tua frase d'accesso"
         }
     },
     "errors": {
-        "badge": "Si è rotto",
+        "badge": "Si è rotto 💀",
         "details": "Dettagli errore",
         "reloadPage": "Ricarica la pagina",
         "showError": "Mostra dettagli dell'errore",
@@ -84,26 +89,29 @@
     },
     "footer": {
         "legal": {
-            "disclaimer": "Disclaimer",
-            "disclaimerText": "sudo-flix non ospita qualsiasi file, si collega solo a fonti di terze parti. Se avete problemi legali, rivolgetevi ai file host e ai provider. sudo-flix non è responsabile per i file multimediali mostrati dai video provider."
+            "disclaimer": "Disclaimer ◝(ᵔᵕᵔ)◜",
+            "disclaimerText": "Nota: sudo-flix non ospita alcun file ma visualizza solo il contenuto di fornitori di terze parti. Le questioni legali dovrebbero essere affrontate con loro."
         },
         "links": {
             "discord": "Discord",
             "dmca": "DMCA",
-            "github": "GitHub"
+            "github": "GitHub",
+            "twitter": "Twitter"
         },
-        "tagline": "Guardate i vostri preferiti programmi televisivi e film con questo app di streaming open source."
+        "tagline": "Guarda i tuoi preferiti programmi televisivi e film gratis senza publicità! (っ'ヮ'c)"
     },
     "global": {
         "name": "sudo-flix",
         "pages": {
-            "about": "Su di sudo-flix",
+            "about": "Su sudo-flix",
             "dmca": "DMCA",
             "login": "Accedi",
-            "onboarding": "Setup",
+            "onboarding": "Configura",
             "pagetitle": "{{title}} - sudo-flix",
-            "register": "Registrarsi",
-            "settings": "Impostazioni"
+            "register": "Registrati",
+            "settings": "Impostazioni",
+            "discover": "Scopri",
+            "support": "Supporto"
         }
     },
     "home": {
@@ -111,44 +119,66 @@
             "sectionTitle": "Segnalibri"
         },
         "continueWatching": {
-            "sectionTitle": "Continua a guardare"
+            "sectionTitle": "Continua a guardare..."
         },
         "mediaList": {
-            "stopEditing": "Smettere di modificare"
+            "stopEditing": "Smetti di modificare"
         },
         "search": {
-            "allResults": "È tutto ciò che abbiamo!",
-            "failed": "Impossibile trovare i media, riprova!",
+            "allResults": "È tutto quello che abbiamo...",
+            "failed": "Impossibile trovare il media, riprova!",
             "loading": "Caricamento...",
-            "noResults": "Non abbiamo trovato nulla!",
+            "noResults": "Non abbiamo trovato nulla :(",
             "placeholder": {
                 "default": "Cosa vuoi guardare?",
                 "extra": [
-                    "Cosa vorresti esplorare?",
-                    "Cosa c’è nella tua lista di guardare?",
-                    "Cos’è il vostro preferito film?",
-                    "Cos’è il vostro preferito serie?"
+                    "Di cosa hai voglia?",
+                    "Dovremmo eliminare la cronologia del browser?",
+                    "Cosa vuoi trasmettere in streaming?",
+                    "Sudo-Flix è il sito migliore di sempre!",
+                    "Cosa c'è nella tua lista oggi?",
+                    "Com'è stata la tua giornata?",
+                    "Colpa mia, il sito non funziona mai...",
+                    "sudo-flix non è semplicemente il migliore?",
+                    ">ᴗ<"
                 ]
             },
-            "sectionTitle": "Risultati della ricerca"
+            "sectionTitle": "Risultati di ricerca",
+            "empty": {
+                "default": "Benvenuto, trova i media da guardare qui!",
+                "extra": [
+                    "Non c'è niente qui :(",
+                    "così vuoto...",
+                    "Che vuoto.",
+                    "Ciao nuovo utente :3"
+                ]
+            },
+            "discoverMore": "Scopri di più",
+            "discover": "Scopri"
         },
         "titles": {
             "day": {
                 "default": "Cosa vorresti guardare questo pomeriggio?",
                 "extra": [
-                    "Senti avventuroso? Jurassic Park potrebbe essere la scelta perfetta."
+                    "Viva sudo-flix!"
                 ]
             },
             "morning": {
                 "default": "Cosa vorresti guardare questa mattina?",
                 "extra": [
-                    "Ho sentito che «Prima Dell'alba» è buono"
+                    "Viva sudo-flix!"
                 ]
             },
             "night": {
                 "default": "Cosa vorresti guardare questa sera?",
                 "extra": [
-                    "Stanco? Ho sentito che L'esorciccio è buono."
+                    "Viva sudo-flix!"
+                ]
+            },
+            "420": {
+                "default": "Cosa ti piacerebbe guardare questo 20/4?",
+                "extra": [
+                    "Buon 20/4 🥳!"
                 ]
             }
         }
@@ -159,46 +189,48 @@
             "movie": "Film",
             "show": "Serie"
         },
-        "unreleased": "Inedito"
+        "unreleased": "Non publicato"
     },
     "navigation": {
         "banner": {
-            "offline": "Controlla la tua connessione internet"
+            "offline": "Controlla la tua connessione internet, stupida oca! 🦢"
         },
         "menu": {
             "about": "Su di sudo-flix",
             "logout": "Esci",
-            "register": "Sincronizzare con il cloud",
+            "register": "Sincronizza al sudo-cloud",
             "settings": "Impostazioni",
-            "support": "Impostazioni"
+            "support": "Supporto",
+            "discover": "Scopri"
         }
     },
     "notFound": {
         "badge": "Non trovato",
         "goHome": "Torna alla pagina iniziale",
-        "message": "Abbiamo cercato ovunque: sotto i bidoni, nell'armadio, dietro il proxy, ma alla fine non siamo riusciti a trovare la pagina che stai cercando.",
-        "title": "Impossibile trovare quella pagina"
+        "message": "Abbiamo cercato ovunque: sotto i bidoni, nell'armadio, dietro il proxy, ma alla fine non siamo riusciti a trovare la pagina che stai cercando. (ಥ﹏ಥ)",
+        "title": "Impossibile trovare quella pagina",
+        "reloadButton": "Riprova"
     },
     "onboarding": {
         "defaultConfirm": {
             "cancel": "Annulla",
-            "confirm": "Utilizzare setup predefinita",
-            "description": "Il setup predefinita non offre i migliori stream e può essere incredibilmente lento.",
+            "confirm": "Utilizza impostazione predefinita",
+            "description": "La impostazione predefinita non offre i migliori stream e può essere incredibilmente lenta. ( ͠° ͟ʖ ͡°)",
             "title": "Sei sicuro?"
         },
         "extension": {
             "back": "Torna indietro",
-            "explainer": "Utilizzando l'estensione del browser, è possibile ottenere i stream ottimi che abbiamo da offrire. Basta una semplice installazione.",
-            "explainerIos": "Purtroppo, l'estensione del browser non è supportato su iOS, premere <bold>Torna indietro</bold> per scegliere un'altra opzione.",
-            "extensionHelp": "Se avete installato l'estensione ma non viene rilevata. <bold>Apri l'estensione attraverso il menu delle estensioni del browser</bold> e seguire i passaggi sullo schermo.",
+            "explainer": "Utilizzando l'estensione del browser, puoi ottenere le migliori stream che abbiamo da offrire. Con solo una semplice installazione. 👌",
+            "explainerIos": "Purtroppo, l'estensione del browser non è supportata su iOS, premere <bold>Torna indietro</bold> per scegliere un'altra opzione.",
+            "extensionHelp": "Se avete installato l'estensione ma non viene rilevata, <bold>Apri l'estensione attraverso il menu delle estensioni del browser</bold> e seguire i passaggi sullo schermo.",
             "linkChrome": "Installa l'estensione su Chrome",
             "linkFirefox": "Installa l'estensione su Firefox",
-            "notDetecting": "Installato su Chrome ma il sito non lo rileva? Prova a ricaricare la pagina!",
+            "notDetecting": "Installato su Chrome, ma il sito non lo rileva? Prova a ricaricare la pagina!",
             "notDetectingAction": "Ricarica pagina",
             "status": {
-                "disallowed": "L'estensione non è attivato per questa pagina",
+                "disallowed": "L'estensione non è attivata per questa pagina (,,>﹏<,,)",
                 "disallowedAction": "Attiva l'estensione",
-                "failed": "Richiesta di stato fallita",
+                "failed": "Impossibile richiedere lo stato",
                 "loading": "In attesa di installare l'estensione",
                 "outdated": "Versione dell'estensione troppo vecchia",
                 "success": "L'estensione funziona come previsto!"
@@ -216,30 +248,30 @@
                 "label": "URL proxy",
                 "placeholder": "https://"
             },
-            "link": "Impare a creare un proxy",
+            "link": "Impara a creare un proxy",
             "submit": "Invia proxy",
             "title": "Creiamo un nuovo proxy"
         },
         "start": {
-            "explainer": "Per ottenere i migliori streaming possibili, è necessario scegliere il metodo di streaming da utilizzare.",
+            "explainer": "Per ottenere le migliori stream possibili, è necessario scegliere il metodo di streaming da utilizzare.",
             "options": {
                 "default": {
-                    "text": "Non voglio stream di buona qualità, <0 /> <1>usa setup predefinita</1>"
+                    "text": "Non voglio stream di buona qualità, <0 /> <1>usa impostazione predefinita ▄︻デ══━一 ʕ•͡-•ʔ</1>"
                 },
                 "extension": {
                     "action": "Installa l'estensione",
-                    "description": "Installate l'estensione del browser per accedere alle migliori sorgenti.",
-                    "quality": "Migliore qualità",
+                    "description": "Installa l'estensione del browser e ottieni accesso alle migliori sorgenti, ma ricordati di abilitarla per questo sito.",
+                    "quality": "Qualiotà migliore",
                     "title": "Estensione del browser"
                 },
                 "proxy": {
-                    "action": "Setup proxy",
-                    "description": "Configurate un proxy in soli 5 minuti e ottenete l'accesso a ottimi fonti.",
-                    "quality": "Buona qualità",
+                    "action": "Imposta proxy",
+                    "description": "Imposta un proxy gratis in soli 5 minuti e ottieni accesso a ottimi fonti...",
+                    "quality": "Qualità buona",
                     "title": "Proxy personalizzato"
                 }
             },
-            "title": "Configuriamo sudo-flix"
+            "title": "Configuriamo sudo-flix 🥳"
         }
     },
     "overlays": {
@@ -251,27 +283,27 @@
             "short": "Indietro"
         },
         "casting": {
-            "enabled": "Casting al dispositivo.."
+            "enabled": "Trasmissione al dispositivo 🎬"
         },
         "menus": {
             "downloads": {
-                "copyHlsPlaylist": "Copia link HLS playlist",
+                "copyHlsPlaylist": "Copia link playlist HLS",
                 "disclaimer": "I download vengono effettuati direttamente dal provider. sudo-flix non ha il controllo sulle modalità di fornitura dei download.",
                 "downloadSubtitle": "Scarica sottotitolo attuale",
                 "downloadVideo": "Scarica video",
-                "hlsDisclaimer": "I download vengono effettuati direttamente dal provider. sudo-flix non ha il controllo sul modo in cui i download vengono forniti.<br /><br />Nota che se state scaricando un playlist HLS, <bold>non è raccomandato di scaricare se non si ha familiarità con i formati di streaming avanzati</bold>. Prova altri sorgenti per diversi formati.",
+                "hlsDisclaimer": "I download vengono effettuati direttamente dal provider. sudo-flix non ha il controllo sul modo in cui vengono forniti i download.<br /><br />Tieni presente che stai scaricando una playlist HLS, <bold>non è consigliabile scaricarla se non hai familiarità con i formati di streaming avanzati</bold>. Prova diverse fonti per diversi formati.",
                 "onAndroid": {
-                    "1": "Per scaricare su Android, fai clic sul pulsante di scaricare, e poi nella nuova paggina, <bold>toccare e tenere premuto</bold> sul video, e selezionare <bold>salva</bold>.",
+                    "1": "Per scaricare su Android, fai clic sul pulsante di download quindi, nella nuova pagina, <bold>tocca e tieni premuto</bold> sul video, quindi seleziona <bold>salva</bold>.",
                     "shortTitle": "Scarica / Android",
                     "title": "Scaricare su Android"
                 },
                 "onIos": {
-                    "1": "Per scaricare su iOS, fai clic sul pulsante di scaricare, e poi nella nuova paggina, fai clic su <bold><ios_share /></bold> e poi<bold>Salva su FIle <ios_files /></bold>.",
+                    "1": "Per scaricare su iOS, fai clic sul pulsante di scaricare, e poi nella nuova paggina, fai clic su <bold><ios_share /></bold> poi<bold>Salva su FIle <ios_files /></bold>.",
                     "shortTitle": "Scarica / iOS",
                     "title": "Scaricare su iOS"
                 },
                 "onPc": {
-                    "1": "Sul PC, fare clic sul pulsante di downloa, e poi nella nuova pagina, fai clic destro sul video e selezionare <bold>Salva video come</bold>",
+                    "1": "Sul PC, fare clic sul pulsante di download, poi nella nuova pagina, fai clic destro sul video e selezionare <bold>Salva video come</bold>",
                     "shortTitle": "Scarica / PC",
                     "title": "Scaricare su PC"
                 },
@@ -279,12 +311,13 @@
             },
             "episodes": {
                 "button": "Episodi",
-                "emptyState": "Non ci sono episodi in questa stagione, controlla più tardi!",
+                "emptyState": "Non ci sono episodi in questa stagione, controlla più tardi (scusa :3)...",
                 "episodeBadge": "E{{episode}}",
                 "loadingError": "Errore nel caricare la stagione",
                 "loadingList": "Caricamento...",
                 "loadingTitle": "Caricamento...",
-                "unairedEpisodes": "Uno o più episodi di questa stagione sono stati disabilitati perché non sono ancora andati in onda."
+                "unairedEpisodes": "Uno o più episodi di questa stagione sono stati disabilitati perché non sono ancora andati in onda.",
+                "seasons": "Stagioni"
             },
             "playback": {
                 "speedLabel": "Velocità di riproduzione",
@@ -292,8 +325,8 @@
             },
             "quality": {
                 "automaticLabel": "Qualità automatica",
-                "hint": "Si può provare <0>cambiare sorgente</0> per prendere diverse opzioni di qualità.",
-                "iosNoQuality": "A causa delle limitazioni imposti da Apple, la selezione della qualità non è disponibile su iOS per questa sorgente. Si può provare a <0>passare a un'altra sorgente</0> per scegliere opzioni di qualità diverse.",
+                "hint": "Si può provare a <0>cambiare sorgente</0> per avere diverse opzioni di qualità.",
+                "iosNoQuality": "A causa delle limitazioni definite da Apple (comuni IOS L), la selezione della qualità non è disponibile su iOS per questa fonte. Puoi provare a <0>passare a un'altra sorgente</0> per ottenere opzioni di qualità diverse.",
                 "title": "Qualità"
             },
             "settings": {
@@ -309,78 +342,83 @@
             },
             "sources": {
                 "failed": {
-                    "text": "Si è verificato un errore trovare i video, provare con un'altra sorgente.",
+                    "text": "Si è verificato un errore durante il tentativo di trovare il video... Provare con una fonte diversa?",
                     "title": "Impossibile raschiare"
                 },
                 "noEmbeds": {
-                    "text": "Non è stato possibile trovare alcun embed, provare con un'altra sorgente.",
-                    "title": "Nessun embed trovato"
+                    "text": "Non siamo riusciti a trovare alcun incorporamento, prova una fonte diversa.",
+                    "title": "Nessun incorporamento trovato"
                 },
                 "noStream": {
-                    "text": "Questa fonte non ha flussi per questo film o serie.",
-                    "title": "Nessun flusso"
+                    "text": "Questa fonte non ha streaming per questo film o programma. /ᐠ - ˕ -マ Ⳋ",
+                    "title": "Nessuno streaming :("
                 },
                 "title": "Sorgenti",
                 "unknownOption": "Sconosciuto"
             },
             "subtitles": {
                 "customChoice": "Trascina o carica il file",
-                "customizeLabel": "Personalizzare",
-                "dropSubtitleFile": "Trascina il file dei sottotitoli qui",
-                "offChoice": "Spento",
+                "customizeLabel": "Personalizza",
+                "dropSubtitleFile": "Trascina il file dei sottotitoli qui! >_<",
+                "offChoice": "Spegni",
                 "settings": {
                     "backlink": "Sottotitoli personalizzati",
-                    "delay": "Ritardo del sottotitolo",
-                    "fixCapitals": "Correggere la capitalizzazione"
+                    "delay": "Ritardo dei sottotitoli",
+                    "fixCapitals": "Correggi le maiuscole"
                 },
                 "title": "Sottotitoli",
-                "unknownLanguage": "Sconosciuto"
+                "unknownLanguage": "Sconosciuto",
+                "OpenSubtitlesChoice": "OpenSubtitles",
+                "scrapeButton": "Raschia i sottotitoli",
+                "empty": "Non ci sono sottotitoli forniti per questo fornitore."
             }
         },
         "metadata": {
             "api": {
-                "text": "Impossibile caricare metadati API, verifica la connessione internet.",
-                "title": "Impossibile caricare metadati API"
+                "text": "Impossibile caricare i metadati dell'API, controlla la tua connessione Internet.",
+                "title": "Impossibile caricare i metadati dell'API"
             },
             "dmca": {
                 "badge": "Rimosso",
-                "text": "Questa media non è più disponibile a causa di un notizia takedown o un rivendicazione di copyright.",
-                "title": "I media sono stati rimossi"
+                "text": "Questo media non è più disponibile a causa di un avviso di rimozione o di un reclamo sul copyright. 😨",
+                "title": "Il media è stato rimosso"
             },
             "extensionPermission": {
-                "badge": "Permesso mancato",
+                "badge": "Autorizzazione mancante",
                 "button": "Usa l'estensione",
-                "text": "Avete l'estensione del browser, ma serve il vostro permesso per iniziare usare l'estensione.",
+                "text": "Hai l'estensione del browser, ma abbiamo bisogno della tua autorizzazione per iniziare a utilizzare l'estensione. (¬_¬)",
                 "title": "Configura l'estensione"
             },
             "failed": {
                 "badge": "Fallito",
                 "homeButton": "Vai alla pagina iniziale",
-                "text": "Impossibile caricare i metadati da TMDB. Verifica che TMDB è offline o bloccato sulla propria connessione Internet.",
+                "text": "Impossibile caricare i metadati del media da TMDB. Controlla se TMDB è inattivo o bloccato sulla tua connessione Internet.",
                 "title": "Impossibile caricare i metadati"
             },
             "notFound": {
                 "badge": "Non trovato",
                 "homeButton": "Torna alla pagina iniziale",
-                "text": "Non siamo riusciti a trovare il media richiesto. È stato rimosso o hai manomesso l'URL.",
+                "text": "Non siamo riusciti a trovare il supporto richiesto. O è stato rimosso o hai manomesso l'URL (cattivo, cattivo).",
                 "title": "Impossibile trovare quel media."
             }
         },
         "nextEpisode": {
             "cancel": "Cancella",
-            "next": "Prossimo episodio"
+            "next": "Prossimo episodio",
+            "replay": "Riguarda",
+            "nextSeason": "Prossima stagione"
         },
         "playbackError": {
             "badge": "Errore di riproduzione",
             "errors": {
-                "errorAborted": "Il recupero del media è stato interrotto dalla richiesta dell'utente.",
-                "errorDecode": "Nonostante sia stato precedentemente stabilito che è utilizzabile, si è verificato un errore decodifica della risorsa multimediale, con conseguente errore.",
-                "errorGenericMedia": "Errore multimediale sconosciuto si è verificato.",
-                "errorNetwork": "Si è verificato un errore di rete che ha impedito il recupero del supporto, nonostante fosse precedentemente disponibile.",
-                "errorNotSupported": "L'oggetto media o media provider non è supportato."
+                "errorAborted": "Il recupero dei media è stato interrotto dalla richiesta dell'utente.",
+                "errorDecode": "Nonostante fosse stato precedentemente stabilito che era utilizzabile, si è verificato un errore durante il tentativo di decodificare la risorsa multimediale, risultando in un errore.",
+                "errorGenericMedia": "Si è verificato un errore multimediale sconosciuto.",
+                "errorNetwork": "Si è verificato qualche tipo di errore di rete che ha impedito il recupero corretto del media, nonostante fosse stato precedentemente disponibile.",
+                "errorNotSupported": "L'oggetto multimediale o fornitore di contenuti multimediali non è supportato."
             },
             "homeButton": "Torna a pagina iniziale",
-            "text": "Si è verificato un errore cercando di riprodurre i media. Riprova.",
+            "text": "Si è verificato un errore durante il tentativo di riprodurre i contenuti multimediali 😖. Riprova!",
             "title": "Impossibile riprodurre il video!"
         },
         "scraping": {
@@ -388,51 +426,53 @@
                 "badge": "L'estensione è disabilitata",
                 "enableExtension": "Abilita l'estensione",
                 "homeButton": "Torna alla pagina iniziale",
-                "text": "Avete installato l'estensione sudo-flix. Per iniziare a usarla, è necessario abilitare l'estensione per questo sito.",
+                "text": "Hai installato l'estensione sudo-flix. Per iniziare a usarla, devi abilitare l'estensione per questo sito.",
                 "title": "Abilita l'estensione"
             },
             "items": {
                 "failure": "Si è verificato un errore",
-                "notFound": "Non ha il video",
+                "notFound": "Non ha il video (╥﹏╥)",
                 "pending": "Controllo per video..."
             },
             "notFound": {
                 "badge": "Non trovato",
                 "detailsButton": "Mostra i dettagli",
                 "homeButton": "Torna a pagina iniziale",
-                "text": "Abbiamo cercato tra i nostri fornitori e non abbiamo trovato i media che state cercando! Non ospitiamo i media e non abbiamo alcun controllo su ciò che è disponibile. Per maggiori dettagli, fare clic su \"Mostra i dettagli\" qui sotto.",
-                "title": "Non siamo riusciti a trovare quello"
+                "text": "Abbiamo cercato tra i nostri fornitori e non siamo riusciti a trovare i media che stai cercando! Non ospitiamo i media e non abbiamo alcun controllo su ciò che è disponibile. Fare clic su \"Mostra dettagli\" di seguito per ulteriori dettagli.",
+                "title": "Non siamo riusciti a trovarlo",
+                "discoverButton": "Scopri di più"
             }
         },
         "time": {
             "regular": "{{timeWatched}} / {{duration}}",
-            "remaining": "{{timeLeft}} rimasto • Finisce a {{timeFinished, datetime}}",
+            "remaining": "{{timeLeft}} rimasto • Finisce alle {{timeFinished, datetime}}",
             "shortRegular": "{{timeWatched}}",
             "shortRemaining": "-{{timeLeft}}"
         },
         "turnstile": {
-            "description": "Verifica che siate umani completando il Captcha sulla destra. Questo serve a mantenere sudo-flix sicuro!",
-            "error": "Impossibile verificare la vostra umanità. Riprova.",
-            "title": "Dobbiamo verificare che lei sia umano.",
-            "verifyingHumanity": "Verificare la vostra umanità..."
+            "description": "Per favore dimostra la tua umanità completando il Captcha a destra. Questo serve a mantenere sudo-flix.lol al sicuro!",
+            "error": "Impossibile verificare la vostra umanità! Riprova.",
+            "title": "Sei un Robot 🤖?",
+            "verifyingHumanity": "Verificando la tua umanità... (^▽^)👍"
         }
     },
     "screens": {
         "dmca": {
-            "text": "Benvenuti nella pagina di contatto DMCA di sudo-flix! Rispettiamo i diritti di proprietà intellettuale e vogliamo risolvere rapidamente qualsiasi problema di copyright. Se ritenete che il vostro lavoro protetto da copyright sia stato utilizzato in modo improprio sulla nostra piattaforma, inviate una notizia DMCA all'indirizzo e-mail indicato di seguito. Dovresti includere una descrizione del materiale protetto da copyright, i propri dati di contatto e una dichiarazione di buona fede. Ci impegniamo a risolvere tempestivamente questi problemi e apprezziamo la vostra collaborazione per mantenere sudo-flix un luogo che rispetta la creatività e i diritti d'autore.",
-            "title": "DMCA"
+            "text": "Benvenuto nella pagina dei contatti DMCA di sudo-flix. Se ritieni che la tua opera protetta da copyright sia stata utilizzata in modo improprio sulla nostra piattaforma (😢), invia una notifica DMCA dettagliata a: <bold>{{dmca}}</bold> di seguito. Si prega di includere una descrizione del materiale protetto da copyright, i dettagli di contatto e una dichiarazione di buona fede. Ci impegniamo a risolvere tempestivamente queste questioni e apprezziamo la tua collaborazione.",
+            "title": "DMCA :("
         },
         "loadingApp": "Caricamento dell'applicazione",
-        "loadingUser": "Caricamento del vostro profilo",
+        "loadingUser": "Caricamento del tuo profilo",
         "loadingUserError": {
             "logout": "Esci",
             "reset": "Ripristino del server personalizzato",
-            "text": "Impossibile caricare il vostro profilo",
-            "textWithReset": "Impossibile caricare il vostro profile dal server personalizzato, vorresti ripristinare il server predefinito?"
+            "text": "Impossibile caricare il tuo profilo",
+            "textWithReset": "Impossibile caricare il tuo profilo dal tuo server personalizzato, vorresti ripristinare al server predefinito?",
+            "reload": "Ricarica"
         },
         "migration": {
-            "failed": "Impossible migrare i propri dati.",
-            "inProgress": "Attendere, stiamo migrando i propri dati."
+            "failed": "Impossibile eseguire la migrazione dei dati. 😿",
+            "inProgress": "Per favore aspetta, stiamo migrando i tuoi dati. Non dovrebbe volerci molto tempo..."
         }
     },
     "settings": {
@@ -445,12 +485,12 @@
             },
             "actions": {
                 "delete": {
-                    "button": "Eliminare l'account",
-                    "confirmButton": "Eliminare l'account",
-                    "confirmDescription": "Sei sicuro che vuoi eliminare il vostro account? Tutti i dati andranno persi!",
+                    "button": "Elimina l'account",
+                    "confirmButton": "Elimina l'account",
+                    "confirmDescription": "Sei sicuro di voler eliminare il tuo account? Tutti i tuoi dati andranno persi! ૮₍˶Ó﹏Ò ⑅₎ა",
                     "confirmTitle": "Sei sicuro?",
-                    "text": "Questa azione è irreversibile. Tutti i propri dati verranno eliminati e non sarà possibile recuperare nulla.",
-                    "title": "Eliminare l'account"
+                    "text": "Questa azione è irreversibile. Tutti i dati verranno cancellati e nulla potrà essere recuperato.",
+                    "title": "Elimina l'account"
                 },
                 "title": "Azioni"
             },
@@ -461,18 +501,23 @@
                 "title": "Dispositivi"
             },
             "profile": {
-                "finish": "Finire di modificare",
-                "firstColor": "Colore del profilo uno",
-                "secondColor": "Colore del profilo due",
-                "title": "Modifica l'immagine del profilo",
+                "finish": "Termina la modifica",
+                "firstColor": "Colore profilo uno",
+                "secondColor": "Colore profilo due",
+                "title": "Modifica l'immagine profilo",
                 "userIcon": "Icona utente"
             },
             "register": {
                 "cta": "Inizia",
-                "text": "Condividete i progressi di film o serie tra i dispositivi e manteneteli sincronizzati.",
-                "title": "Sincronizzazione con il cloud"
+                "text": "Condividi i progressi dei tuoi film e serie tra dispositivi e mantienili sincronizzati. ( ̧⸝⸝⍢⸝⸝)ෆ",
+                "title": "Sincronizza col cloud"
             },
-            "title": "Account"
+            "title": "Account",
+            "admin": {
+                "title": "Pannello di Amministrazione",
+                "text": "Utilizza strumenti realizzati per testare le condizioni di sudo-flix.",
+                "button": "Controlla"
+            }
         },
         "appearance": {
             "activeTheme": "Attivo",
@@ -487,74 +532,99 @@
         },
         "connections": {
             "server": {
-                "description": "Se si desideri connettersi a un backend personalizzato per memorizzare i dati, attivare questo e fornire l'URL. <0>Istruzioni.</0>",
+                "description": "Se desideri connetterti a un backend personalizzato per archiviare i tuoi dati, abilitalo e fornisci l'URL. <0>Istruzioni.</0>",
                 "label": "Server personalizzato",
                 "urlLabel": "URL del server personalizzato"
             },
             "setup": {
-                "doSetup": "Fare setup",
+                "doSetup": "Effettua la configurazione",
                 "errorStatus": {
-                    "description": "Sembra che uno o più articoli in questo setup serve la vostra attenzione.",
-                    "title": "Qualcosa serve la vostra attenzione"
+                    "description": "Sembra che uno o più elementi in questa configurazione richiedano la tua attenzione.",
+                    "title": "Qualcosa ha bisogno della tua attenzione 😱"
                 },
-                "itemError": "C'è un errore in questo setup. Eseguire nuovamente il setup per correggerlo.",
+                "itemError": "C'è qualcosa che non va in questa impostazione. Ripeti la configurazione per risolverlo. (ᴗ_ ᴗ。)",
                 "items": {
-                    "default": "Setup predefinita",
+                    "default": "Configurazione predefinita",
                     "extension": "Estensione",
                     "proxy": "Proxy personalizzato"
                 },
-                "redoSetup": "Rifare setup",
+                "redoSetup": "Rifare configurazione",
                 "successStatus": {
-                    "description": "Tutto è pronto per iniziare a guardare i vostri media preferiti.",
-                    "title": "Tutto è setup!"
+                    "description": "Tutto è pronto per iniziare a guardare i tuoi contenuti multimediali preferiti. (๑>◡<๑)",
+                    "title": "Tutto è configurato!"
                 },
                 "unsetStatus": {
-                    "description": "Fare clic sul pulsante a destra per avviare il setup.",
-                    "title": "Non l'avete completato il setup"
+                    "description": "Fare clic sul pulsante a destra per avviare il processo di configurazione.",
+                    "title": "Non hai completato la configurazione"
                 }
             },
             "title": "Connessioni",
             "workers": {
-                "addButton": "Aggiungere un nuovo lavoratore",
-                "description": "Per far funzionare l'applicazione, tutto il traffico viene instradato attraverso i proxy. Abilitare questa opzione se si desidera portare i propri lavoratori. <0>Istruzioni.</0>",
-                "emptyState": "Non ci sono ancora lavoratori, aggiungetene uno sotto",
-                "label": "Utilizzare proxy worker personalizzati",
-                "urlLabel": "URL dei lavoratori",
+                "addButton": "Aggiungi nuovo lavoratore",
+                "description": "Per far funzionare l'applicazione, tutto il traffico viene instradato tramite proxy. Abilita questa opzione se vuoi portare i tuoi lavoratori. <0>Istruzioni.</0>",
+                "emptyState": "Non ci sono ancora lavoratori (｡•́︿•̀｡), aggiungine uno qui sotto",
+                "label": "Utilizza proxy worker personalizzati",
+                "urlLabel": "URL dei worker",
                 "urlPlaceholder": "https://"
             }
         },
         "preferences": {
-            "language": "Lingua di applicazione",
-            "languageDescription": "Lingua applicato all'intera applicazione.",
-            "thumbnail": "Generare miniature",
-            "thumbnailDescription": "Nella maggior parte dei casi, i video non hanno miniature. È possibile attivare questa impostazione per generarle quando è necessario, ma possono rendere il video più lento.",
-            "thumbnailLabel": "Generare miniature",
-            "title": "Preferenze"
+            "language": "Lingua dell'applicazione",
+            "languageDescription": "Lingua applicata all'intera applicazione, solo l'inglese contiene cose stupide 🙁.",
+            "thumbnail": "Genera miniature",
+            "thumbnailDescription": "Nella maggior parte dei casi, i video non hanno miniature. Puoi abilitare questa impostazione per generarli al volo, ma possono rallentare il tuo video.",
+            "thumbnailLabel": "Genera miniature",
+            "title": "Preferenze",
+            "sourceOrderDescription": "Trascina e rilascia per riordinare le fonti. Ciò determinerà l'ordine in cui verranno controllate le fonti per i media che stai tentando di guardare. Se una fonte è disattivata, significa che non è disponibile sul tuo dispositivo.",
+            "autoplay": "Riproduzione automatica",
+            "autoplayDescription": "Riproduci automaticamente l'episodio successivo di una serie dopo aver raggiunto la fine. Può essere abilitato dagli utenti con l'estensione del browser, un proxy personalizzato o con la configurazione predefinita se consentito dall'host.",
+            "autoplayLabel": "Riproduzione automatica",
+            "sourceOrder": "Riordina le fonti"
         },
-        "reset": "Reset",
+        "reset": "Ripristina",
         "save": "Salva",
         "sidebar": {
             "info": {
                 "appVersion": "Versione dell'app",
-                "backendUrl": "URL backend",
-                "backendVersion": "Versione backend",
-                "hostname": "Hostname",
+                "backendUrl": "URL back-end",
+                "backendVersion": "Versione back-end",
+                "hostname": "Nome host",
                 "insecure": "Insicuro",
-                "notLoggedIn": "Non sei connesso",
+                "notLoggedIn": "Non sei loggato",
                 "secure": "Sicuro",
-                "title": "Informazioni dell'app",
+                "title": "Statistiche dell'app (per nerd) 🤓",
                 "unknownVersion": "Sconosciuto",
                 "userId": "ID utente"
             }
         },
         "subtitles": {
-            "backgroundBlurLabel": "Sfocatura di sfondo",
-            "backgroundLabel": "Opacità di sfondo",
+            "backgroundBlurLabel": "Sfocatura dello sfondo",
+            "backgroundLabel": "Opacità dello sfondo",
             "colorLabel": "Colore",
-            "previewQuote": "Cantami o Diva del pelide Achille l'ira funesta.",
+            "previewQuote": "Preferiresti avere una figlia puttana o un figlio gay? 🤔",
             "textSizeLabel": "Dimensione testo",
-            "title": "Sottotitoli"
+            "title": "Sottotitoli",
+            "textBoldLabel": "Testo in grassetto"
         },
-        "unsaved": "Le modifiche non sono state salvate"
+        "unsaved": "Hai modifiche non salvate... ฅ^•ﻌ•^ฅ"
+    },
+    "support": {
+        "q2": {
+            "body": "Abbiamo un <0>GitHub</0> in cui puoi creare un problema dettagliato nel nostro repository. Inoltre, se lo desideri, puoi creare una richiesta pull per risolvere tu stesso il problema.",
+            "title": "Come posso segnalare un bug o un problema?"
+        },
+        "title": "Supporto",
+        "text": "sudo-flix è progettato per essere il più intuitivo possibile. Tuttavia, le persone hanno ancora domande e problemi. Questa pagina è qui per aiutare a risolvere queste carenze",
+        "q1": {
+            "body": "Be', puoi unirti al <0>Discord di sudo-flix</0> ufficiale e porre domande lì oppure puoi inviare un'e-mail a quella fornita in fondo a questa pagina.",
+            "title": "Dove posso ottenere aiuto?"
+        }
+    },
+    "downtimeNotice": {
+        "message": "sudo-flix.lol sta riscontrando problemi con alcuni provider, se non riesci a trovare o riprodurre uno show, cambia la fonte. È previsto che questo errore persista durante i tempi indicati di seguito.",
+        "badge": "Problemi",
+        "goHome": "Vai alla pagina iniziale",
+        "timeFrame": "<bold>31 Marzo 5:00 - 11:00 </bold>",
+        "title": "Problemi col fornitore"
     }
 }
