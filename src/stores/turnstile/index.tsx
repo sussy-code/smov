@@ -111,7 +111,7 @@ export function TurnstileProvider(props: {
     >
       <Turnstile
         sitekey={siteKey}
-        theme={"light"}
+        theme="light"
         onLoad={(widgetId, bound) => {
           idRef.current = widgetId;
           setTurnstile(widgetId, bound, !!props.isInPopout);

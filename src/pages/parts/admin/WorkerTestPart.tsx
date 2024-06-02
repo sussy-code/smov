@@ -91,7 +91,8 @@ export function WorkerTestPart() {
         const error = err as Error;
         error.message = error.message.replace(worker.url, "WORKER_URL");
         if (
-          error.message === '[Cloudflare Turnstile] Invalid or missing type for parameter "sitekey", expected "string", got "object".'
+          error.message ===
+          '[Cloudflare Turnstile] Invalid or missing type for parameter "sitekey", expected "string", got "object".'
         ) {
           updateWorker(worker.id, {
             id: worker.id,
