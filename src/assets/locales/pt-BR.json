@@ -1,20 +1,20 @@
 {
   "about": {
-    "description": "sudo-flix é uma aplicação web que busca na internet por streams. A equipe visa uma abordagem principalmente minimalista para consumir conteúdo.",
+    "description": "purplelight é uma aplicação web que busca na internet por streams. A equipe visa uma abordagem principalmente minimalista para consumir conteúdo.",
     "faqTitle": "Perguntas comuns",
     "q1": {
-      "body": "sudo-flix não hospeda nenhum conteúdo. Quando você clica em algo para assistir, a internet é pesquisada pela mídia selecionada (Na tela de carregamento e na aba 'fontes de vídeo' você pode ver qual fonte está usando). A mídia nunca é carregada pelo sudo-flix, tudo é através deste mecanismo de busca.",
+      "body": "purplelight não hospeda nenhum conteúdo. Quando você clica em algo para assistir, a internet é pesquisada pela mídia selecionada (Na tela de carregamento e na aba 'fontes de vídeo' você pode ver qual fonte está usando). A mídia nunca é carregada pelo purplelight, tudo é através deste mecanismo de busca.",
       "title": "De onde vem o conteúdo?"
     },
     "q2": {
-      "body": "Não é possível solicitar um filme ou série, o sudo-flix não gerencia nenhum conteúdo. Todo o conteúdo é visualizado através de fontes na internet.",
+      "body": "Não é possível solicitar um filme ou série, o purplelight não gerencia nenhum conteúdo. Todo o conteúdo é visualizado através de fontes na internet.",
       "title": "Onde posso solicitar um filme ou série?"
     },
     "q3": {
       "body": "Nossos resultados de pesquisa são alimentados pelo The Movie Database (TMDB) e são exibidos independentemente de nossas fontes terem ou não o conteúdo.",
       "title": "Os resultados da pesquisa mostram o filme ou série, por que não consigo reproduzi-lo?"
     },
-    "title": "Sobre o sudo-flix"
+    "title": "Sobre o purplelight"
   },
   "actions": {
     "copied": "Copiado",
@@ -82,7 +82,7 @@
   "footer": {
     "legal": {
       "disclaimer": "Aviso legal",
-      "disclaimerText": "sudo-flix não hospeda nenhum arquivo, apenas fornece links para serviços de terceiros. Questões legais devem ser tratadas com os hosts de arquivos e provedores. sudo-flix não é responsável por quaisquer arquivos de mídia exibidos pelos provedores de vídeo."
+      "disclaimerText": "purplelight não hospeda nenhum arquivo, apenas fornece links para serviços de terceiros. Questões legais devem ser tratadas com os hosts de arquivos e provedores. purplelight não é responsável por quaisquer arquivos de mídia exibidos pelos provedores de vídeo."
     },
     "links": {
       "discord": "Discord",
@@ -92,13 +92,13 @@
     "tagline": "Assista seus programas e filmes favoritos com este aplicativo de streaming de código aberto."
   },
   "global": {
-    "name": "sudo-flix",
+    "name": "purplelight",
     "pages": {
       "about": "Sobre",
       "dmca": "DMCA",
       "login": "Entrar",
       "onboarding": "Configuração",
-      "pagetitle": "{{title}} - sudo-flix",
+      "pagetitle": "{{title}} - purplelight",
       "register": "Registrar",
       "settings": "Configurações"
     }
@@ -232,7 +232,7 @@
           "title": "Proxy personalizado"
         }
       },
-      "title": "Vamos juntos configurar o sudo-flix"
+      "title": "Vamos juntos configurar o purplelight"
     }
   },
   "overlays": {
@@ -249,10 +249,10 @@
     "menus": {
       "downloads": {
         "copyHlsPlaylist": "Copiar link da playlist HLS",
-        "disclaimer": "Os downloads são feitos diretamente do provedor. sudo-flix não tem controle sobre como os downloads são fornecidos.",
+        "disclaimer": "Os downloads são feitos diretamente do provedor. purplelight não tem controle sobre como os downloads são fornecidos.",
         "downloadSubtitle": "Baixar legenda atual",
         "downloadVideo": "Baixar vídeo",
-        "hlsDisclaimer": "Os downloads são feitos diretamente do provedor. sudo-flix não tem controle sobre como os downloads são fornecidos.<br /><br />Por favor, note que você está baixando uma playlist HLS, <bold>isso é destinado para usuários familiarizados com streaming multimídia avançado.</bold>. Experimente outras fontes para formatos diferentes.",
+        "hlsDisclaimer": "Os downloads são feitos diretamente do provedor. purplelight não tem controle sobre como os downloads são fornecidos.<br /><br />Por favor, note que você está baixando uma playlist HLS, <bold>isso é destinado para usuários familiarizados com streaming multimídia avançado.</bold>. Experimente outras fontes para formatos diferentes.",
         "onAndroid": {
           "1": "Para baixar no Android, clique no botão de download e, na nova página, <bold>toque e segure</bold> no vídeo, depois selecione <bold>salvar</bold>.",
           "shortTitle": "Baixar / Android",
@@ -381,7 +381,7 @@
         "badge": "Extensão desativada",
         "enableExtension": "Ativar extensão",
         "homeButton": "Ir para o início",
-        "text": "Você instalou a extensão sudo-flix. Para começar a usá-la, você precisa ativar a extensão neste site.",
+        "text": "Você instalou a extensão purplelight. Para começar a usá-la, você precisa ativar a extensão neste site.",
         "title": "Por favor, ative a extensão"
       },
       "items": {
@@ -404,7 +404,7 @@
       "shortRemaining": "-{{timeLeft}}"
     },
     "turnstile": {
-      "description": "Por favor, confirme que você é um humano completando o Captcha à direita. Isso é para manter sudo-flix seguro!",
+      "description": "Por favor, confirme que você é um humano completando o Captcha à direita. Isso é para manter purplelight seguro!",
       "error": "Falha ao verificar sua humanidade. Por favor, tente novamente.",
       "title": "Precisamos verificar se você é humano.",
       "verifyingHumanity": "Verificando sua humanidade..."
@@ -412,7 +412,7 @@
   },
   "screens": {
     "dmca": {
-      "text": "Bem-vindo à página de contato do DMCA do sudo-flix! Respeitamos os direitos de propriedade intelectual e queremos resolver quaisquer preocupações com direitos autorais rapidamente. Se você acredita que seu trabalho protegido por direitos autorais foi usado indevidamente em nossa plataforma, envie um aviso detalhado de DMCA para o e-mail abaixo. Inclua uma descrição do material protegido por direitos autorais, seus detalhes de contato e uma declaração de crença de boa fé. Estamos comprometidos em resolver essas questões prontamente e agradecemos sua cooperação em manter o sudo-flix um lugar que respeita a criatividade e os direitos autorais.",
+      "text": "Bem-vindo à página de contato do DMCA do purplelight! Respeitamos os direitos de propriedade intelectual e queremos resolver quaisquer preocupações com direitos autorais rapidamente. Se você acredita que seu trabalho protegido por direitos autorais foi usado indevidamente em nossa plataforma, envie um aviso detalhado de DMCA para o e-mail abaixo. Inclua uma descrição do material protegido por direitos autorais, seus detalhes de contato e uma declaração de crença de boa fé. Estamos comprometidos em resolver essas questões prontamente e agradecemos sua cooperação em manter o purplelight um lugar que respeita a criatividade e os direitos autorais.",
       "title": "DMCA"
     },
     "loadingApp": "Carregando aplicativo",

@@ -89,7 +89,7 @@
   },
   "footer": {
     "legal": {
-      "disclaimer": "Disclaimer ◝(ᵔᵕᵔ)◜",
+      "disclaimer": "Disclaimer",
       "disclaimerText": "Please note: purplelight does not host any files itself but instead only display's content from 3rd party providers. Legal issues should be taken up with them."
     },
     "links": {
@@ -469,7 +469,7 @@
     "title": "Support",
     "text": "purplelight is designed to be as user-friendly as possible. However, people still have questions and issues. This page is here to help resolve these shortcomings",
     "q1": {
-      "body": "Well, you can join the official <0>sudo-flix discord</0> (purplelight is based off this) and ask questions there or you can email the one provided at the bottom of this page.",
+      "body": "Well, you can join the official <0>purplelight discord</0> (purplelight is based off this) and ask questions there or you can email the one provided at the bottom of this page.",
       "title": "Where can I get help?"
     },
     "q2": {
@@ -591,7 +591,7 @@
     },
     "preferences": {
       "language": "Application language",
-      "languageDescription": "Language applied to the entire application, only English has silly stuff, for now. Help translate at https://weblate.tinypixel.uk",
+      "languageDescription": "Language applied to the entire application, only English has silly stuff, for now. Help translate at https://weblate.tinypixel.uk. Note: English has the most up-to-date translation. Other languages may have in-accurate information.",
       "thumbnail": "Generate thumbnails",
       "thumbnailDescription": "Most of the time, videos don't have thumbnails. You can enable this setting to generate them on the fly but they can make your video slower.",
       "thumbnailLabel": "Generate thumbnails",

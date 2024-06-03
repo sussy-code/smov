@@ -1,20 +1,20 @@
 {
   "about": {
-    "description": "sudo-flix internette akışlar için tarama yapan bir web uygulamasıdır. Ekip, içerik tüketmeye karşı ekseriyetle minimalist bir yaklaşım sergilemektedir.",
+    "description": "purplelight internette akışlar için tarama yapan bir web uygulamasıdır. Ekip, içerik tüketmeye karşı ekseriyetle minimalist bir yaklaşım sergilemektedir.",
     "faqTitle": "Sıkça sorulan sorular",
     "q1": {
-      "body": "sudo-flix herhangi bir içerik barındırmaz. İzlemek için bir şeye tıkladığınızda, seçilen medya için internette arama yapılır (Yükleme ekranında ve 'video kaynakları' sekmesinde hangi kaynağı kullandığınızı görebilirsiniz). Medya hiçbir zaman sudo-flix tarafından yüklenmez, her şey bu arama mekanizması aracılığıyla gerçekleşir.",
+      "body": "purplelight herhangi bir içerik barındırmaz. İzlemek için bir şeye tıkladığınızda, seçilen medya için internette arama yapılır (Yükleme ekranında ve 'video kaynakları' sekmesinde hangi kaynağı kullandığınızı görebilirsiniz). Medya hiçbir zaman purplelight tarafından yüklenmez, her şey bu arama mekanizması aracılığıyla gerçekleşir.",
       "title": "İçerikler nereden geliyor?"
     },
     "q2": {
-      "body": "Bir dizi veya film talep etmek mümkün değildir, sudo-flix içeriklerin hiçbirini yönetmez. Tüm içerikler internet üzerindeki kaynaklar aracılığıyla görüntülenir.",
+      "body": "Bir dizi veya film talep etmek mümkün değildir, purplelight içeriklerin hiçbirini yönetmez. Tüm içerikler internet üzerindeki kaynaklar aracılığıyla görüntülenir.",
       "title": "Bir dizi veya filmi nereden talep edebilirim?"
     },
     "q3": {
       "body": "Arama sonuçlarımız The Movie Database (TMDB) tarafından desteklenmektedir ve kaynaklarımızın içeriğe gerçekten sahip olup olmadığına bakılmaksızın görüntülenir.",
       "title": "Arama sonuçları diziyi veya filmi gösteriyor, neden oynatamıyorum?"
     },
-    "title": "sudo-flix hakkında"
+    "title": "purplelight hakkında"
   },
   "actions": {
     "copied": "Kopyalandı",
@@ -82,7 +82,7 @@
   "footer": {
     "legal": {
       "disclaimer": "Sorumluluk Reddi",
-      "disclaimerText": "sudo-flix herhangi bir dosya barındırmaz, yalnızca 3. parti hizmetlere bağlantı verir. Yasal meseleler, dosya barındırıcıları ve sağlayıcıları ile görüşülmelidir. sudo-flix, video sağlayıcıları tarafından gösterilen hiçbir medya dosyasından sorumlu değildir."
+      "disclaimerText": "purplelight herhangi bir dosya barındırmaz, yalnızca 3. parti hizmetlere bağlantı verir. Yasal meseleler, dosya barındırıcıları ve sağlayıcıları ile görüşülmelidir. purplelight, video sağlayıcıları tarafından gösterilen hiçbir medya dosyasından sorumlu değildir."
     },
     "links": {
       "discord": "Discord",
@@ -92,13 +92,13 @@
     "tagline": "Bu açık kaynaklı akış uygulamasıyla en sevdiğiniz dizileri ve filmleri izleyin."
   },
   "global": {
-    "name": "sudo-flix",
+    "name": "purplelight",
     "pages": {
       "about": "Hakkında",
       "dmca": "DMCA",
       "login": "Giriş yap",
       "onboarding": "Kur",
-      "pagetitle": "{{title}} - sudo-flix",
+      "pagetitle": "{{title}} - purplelight",
       "register": "Kayıt ol",
       "settings": "Ayarlar"
     }
@@ -232,7 +232,7 @@
           "title": "Özel Proxy"
         }
       },
-      "title": "sudo-flix ile sizi hazır hale getirelim"
+      "title": "purplelight ile sizi hazır hale getirelim"
     }
   },
   "overlays": {
@@ -249,10 +249,10 @@
     "menus": {
       "downloads": {
         "copyHlsPlaylist": "HLS oynatma listesi bağlantısını kopyala",
-        "disclaimer": "İndirme bağlantıları doğrudan sağlayıcının kendisinden alınır. sudo-flix'in sağlanan indirme bağlantıları üzerinde hiçbir konrolü yoktur.",
+        "disclaimer": "İndirme bağlantıları doğrudan sağlayıcının kendisinden alınır. purplelight'in sağlanan indirme bağlantıları üzerinde hiçbir konrolü yoktur.",
         "downloadSubtitle": "Geçerli altyazıyı indir",
         "downloadVideo": "Videoyu indir",
-        "hlsDisclaimer": "İndirmeler doğrudan sağlayıcıdan alınır. sudo-flix, indirmelerin nasıl sağlanacağı üzerinde kontrole sahip değildir.<br /><br />Lütfen bir HLS oynatma listesi indirdiğinizi unutmayın; <bold>ileri seviye bilginiz yoksa indirmeniz önerilmez. akış biçimleri</bold>. Farklı formatlar için farklı kaynakları deneyin.",
+        "hlsDisclaimer": "İndirmeler doğrudan sağlayıcıdan alınır. purplelight, indirmelerin nasıl sağlanacağı üzerinde kontrole sahip değildir.<br /><br />Lütfen bir HLS oynatma listesi indirdiğinizi unutmayın; <bold>ileri seviye bilginiz yoksa indirmeniz önerilmez. akış biçimleri</bold>. Farklı formatlar için farklı kaynakları deneyin.",
         "onAndroid": {
           "1": "Android'e indirmek için önce indir butonuna basın, sonra açılan yeni sayfada video üzerine <bold>basılı tutun</bold>, ardından <bold>Videoyu indir</bold> seçeneğini seçin.",
           "shortTitle": "İndir / Android",
@@ -381,7 +381,7 @@
         "badge": "Eklenti devre dışı",
         "enableExtension": "Eklentiyi etkinleştir",
         "homeButton": "Eve git",
-        "text": "sudo-flix uzantısını kurdunuz. Kullanmaya başlamak için, uzantıyı bu site için etkinleştirmeniz gerekiyor.",
+        "text": "purplelight uzantısını kurdunuz. Kullanmaya başlamak için, uzantıyı bu site için etkinleştirmeniz gerekiyor.",
         "title": "Lütfen eklentiyi etkinleştirin"
       },
       "items": {
@@ -404,7 +404,7 @@
       "shortRemaining": "-{{timeLeft}}"
     },
     "turnstile": {
-      "description": "Lütfen sağ taraftaki Captcha'yı çözerek insan olduğunuzu doğrulayın. Bu, sudo-flix'i güvende tutmak içindir!",
+      "description": "Lütfen sağ taraftaki Captcha'yı çözerek insan olduğunuzu doğrulayın. Bu, purplelight'i güvende tutmak içindir!",
       "error": "İnsan olduğunuz doğrulanamadı. Lütfen tekrar deneyin.",
       "title": "İnsan olduğunuzu doğrulamamız gerekiyor.",
       "verifyingHumanity": "İnsan olduğunuz doğrulanıyor..."
@@ -412,7 +412,7 @@
   },
   "screens": {
     "dmca": {
-      "text": "sudo-flix'in DMCA iletişim sayfasına hoş geldiniz! Fikri mülkiyet haklarına saygı duyuyoruz ve telif hakkıyla ilgili endişeleri hızlı bir şekilde ele almak istiyoruz. Telif hakkıyla korunan çalışmanızın platformumuzda uygunsuz şekilde kullanıldığını düşünüyorsanız lütfen aşağıdaki e-postaya ayrıntılı bir DMCA bildirimi gönderin. Lütfen telif hakkıyla korunan materyalin açıklamasını, iletişim bilgilerinizi ve iyi niyet beyanınızı ekleyin. Bu sorunları derhal çözmeye kararlıyız ve ayrıca sudo-flix'i yaratıcılığa ve telif haklarına saygılı bir yer olarak tutma konusundaki işbirliğiniz için teşekkür ederiz.",
+      "text": "purplelight'in DMCA iletişim sayfasına hoş geldiniz! Fikri mülkiyet haklarına saygı duyuyoruz ve telif hakkıyla ilgili endişeleri hızlı bir şekilde ele almak istiyoruz. Telif hakkıyla korunan çalışmanızın platformumuzda uygunsuz şekilde kullanıldığını düşünüyorsanız lütfen aşağıdaki e-postaya ayrıntılı bir DMCA bildirimi gönderin. Lütfen telif hakkıyla korunan materyalin açıklamasını, iletişim bilgilerinizi ve iyi niyet beyanınızı ekleyin. Bu sorunları derhal çözmeye kararlıyız ve ayrıca purplelight'i yaratıcılığa ve telif haklarına saygılı bir yer olarak tutma konusundaki işbirliğiniz için teşekkür ederiz.",
       "title": "DMCA"
     },
     "loadingApp": "Uygulama yükleniyor",

@@ -1,20 +1,20 @@
 {
   "about": {
-    "description": "sudo-flix is een webapplicatie die het internet afzoekt naar streams. Het team streeft naar een minimalistische benadering van het consumeren van inhoud.",
+    "description": "purplelight is een webapplicatie die het internet afzoekt naar streams. Het team streeft naar een minimalistische benadering van het consumeren van inhoud.",
     "faqTitle": "Veelgestelde vragen",
     "q1": {
-      "body": "sudo-flix host geen inhoud. Wanneer je op iets klikt om te bekijken, wordt het internet afgezocht naar de geselecteerde media (op het laadscherm en in het tabblad 'videobronnen' kun je zien welke bron je gebruikt). Media wordt nooit geüpload door sudo-flix, alles gaat via dit zoekmechanisme.",
+      "body": "purplelight host geen inhoud. Wanneer je op iets klikt om te bekijken, wordt het internet afgezocht naar de geselecteerde media (op het laadscherm en in het tabblad 'videobronnen' kun je zien welke bron je gebruikt). Media wordt nooit geüpload door purplelight, alles gaat via dit zoekmechanisme.",
       "title": "Waar komt de content vandaan?"
     },
     "q2": {
-      "body": "Het is niet mogelijk om een show of film aan te vragen, sudo-flix beheert geen content. Alle inhoud wordt bekeken via bronnen op het internet.",
+      "body": "Het is niet mogelijk om een show of film aan te vragen, purplelight beheert geen content. Alle inhoud wordt bekeken via bronnen op het internet.",
       "title": "Waar kan ik een show of film aanvragen?"
     },
     "q3": {
       "body": "Onze zoekresultaten worden aangestuurd door The Movie Database (TMDB) en worden weergegeven ongeacht of onze bronnen de inhoud daadwerkelijk hebben.",
       "title": "De zoekresultaten tonen de show of film, waarom kan ik hem niet afspelen?"
     },
-    "title": "Over sudo-flix"
+    "title": "Over purplelight"
   },
   "actions": {
     "copied": "Gekopieerd",
@@ -82,7 +82,7 @@
   "footer": {
     "legal": {
       "disclaimer": "Disclaimer",
-      "disclaimerText": "sudo-flix host geen bestanden, maar linkt alleen naar diensten van derden. Juridische kwesties moeten worden opgenomen met de bestandshosts en providers. sudo-flix is niet verantwoordelijk voor mediabestanden die worden getoond door de videoproviders."
+      "disclaimerText": "purplelight host geen bestanden, maar linkt alleen naar diensten van derden. Juridische kwesties moeten worden opgenomen met de bestandshosts en providers. purplelight is niet verantwoordelijk voor mediabestanden die worden getoond door de videoproviders."
     },
     "links": {
       "discord": "Discord",
@@ -92,13 +92,13 @@
     "tagline": "Bekijk je favoriete shows en films met deze open source streaming app."
   },
   "global": {
-    "name": "sudo-flix",
+    "name": "purplelight",
     "pages": {
       "about": "Over",
       "dmca": "DMCA",
       "login": "Login",
       "onboarding": "Instellen",
-      "pagetitle": "{{title}} - sudo-flix",
+      "pagetitle": "{{title}} - purplelight",
       "register": "Registreren",
       "settings": "Instellingen"
     }
@@ -232,7 +232,7 @@
           "title": "Eigen proxy"
         }
       },
-      "title": "Laten we beginnen met het instellen van sudo-flix"
+      "title": "Laten we beginnen met het instellen van purplelight"
     }
   },
   "overlays": {
@@ -249,10 +249,10 @@
     "menus": {
       "downloads": {
         "copyHlsPlaylist": "HLS-afspeellijstlink kopiëren",
-        "disclaimer": "Downloads worden direct bij de bron opgehaald. sudo-flix heeft geen controle over het bestand dat je ontvangt.",
+        "disclaimer": "Downloads worden direct bij de bron opgehaald. purplelight heeft geen controle over het bestand dat je ontvangt.",
         "downloadSubtitle": "Download huidige ondertiteling",
         "downloadVideo": "Download filmpje",
-        "hlsDisclaimer": "Downloads worden rechtstreeks van de aanbieder gehaald. sudo-flix heeft geen controle over de manier waarop de downloads worden aangeboden.<br /><br />Houd er rekening mee dat u nu een HLS-afspeellijst downloadt, het wordt <bold>afgeraden deze te downloaden als u niet bekend bent met geavanceerde streamingbestandstypen</bold>. Probeer verschillende bronnen voor verschillende streamingbestandstypen.",
+        "hlsDisclaimer": "Downloads worden rechtstreeks van de aanbieder gehaald. purplelight heeft geen controle over de manier waarop de downloads worden aangeboden.<br /><br />Houd er rekening mee dat u nu een HLS-afspeellijst downloadt, het wordt <bold>afgeraden deze te downloaden als u niet bekend bent met geavanceerde streamingbestandstypen</bold>. Probeer verschillende bronnen voor verschillende streamingbestandstypen.",
         "onAndroid": {
           "1": "Om te downloaden op Android, klik je op de downloadknop en vervolgens, op de nieuwe pagina, <bold>tap and hold</bold> op de video en selecteer <bold>save</bold>.",
           "shortTitle": "Download / Android",
@@ -381,7 +381,7 @@
         "badge": "Extensie uitgeschakeld",
         "enableExtension": "Extensie inschakelen",
         "homeButton": "Naar hoofdpagina",
-        "text": "Je hebt de sudo-flix extensie geïnstalleerd. Om deze te gebruiken, moet je de extensie inschakelen voor deze site.",
+        "text": "Je hebt de purplelight extensie geïnstalleerd. Om deze te gebruiken, moet je de extensie inschakelen voor deze site.",
         "title": "Activeer alstublieft de extensie"
       },
       "items": {
@@ -404,7 +404,7 @@
       "shortRemaining": "-{{timeLeft}}"
     },
     "turnstile": {
-      "description": "Bevestig dat u een mens bent door de Captcha aan de rechterkant in te vullen. Dit is om sudo-flix veilig te houden!",
+      "description": "Bevestig dat u een mens bent door de Captcha aan de rechterkant in te vullen. Dit is om purplelight veilig te houden!",
       "error": "Kan uw menselijkheid niet verifiëren. Probeer het opnieuw.",
       "title": "We moeten verifiëren dat u een mens bent.",
       "verifyingHumanity": "Je menselijkheid verifiëren..."
@@ -412,7 +412,7 @@
   },
   "screens": {
     "dmca": {
-      "text": "Welkom op de DMCA-contactpagina van sudo-flix! Wij respecteren intellectuele eigendomsrechten en willen eventuele problemen met auteursrechten snel aanpakken. Als u van mening bent dat uw auteursrechtelijk beschermde werk onjuist is gebruikt op ons platform, stuur dan een gedetailleerde DMCA-kennisgeving naar het onderstaande e-mailadres. Vermeld een beschrijving van het auteursrechtelijk beschermde materiaal, uw contactgegevens en een verklaring dat u te goeder trouw bent. Wij zetten ons in om deze zaken snel op te lossen en waarderen uw medewerking om sudo-flix een plek te houden waar creativiteit en auteursrechten worden gerespecteerd.",
+      "text": "Welkom op de DMCA-contactpagina van purplelight! Wij respecteren intellectuele eigendomsrechten en willen eventuele problemen met auteursrechten snel aanpakken. Als u van mening bent dat uw auteursrechtelijk beschermde werk onjuist is gebruikt op ons platform, stuur dan een gedetailleerde DMCA-kennisgeving naar het onderstaande e-mailadres. Vermeld een beschrijving van het auteursrechtelijk beschermde materiaal, uw contactgegevens en een verklaring dat u te goeder trouw bent. Wij zetten ons in om deze zaken snel op te lossen en waarderen uw medewerking om purplelight een plek te houden waar creativiteit en auteursrechten worden gerespecteerd.",
       "title": "DMCA"
     },
     "loadingApp": "Toepassing laden",
