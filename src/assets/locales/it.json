@@ -404,9 +404,9 @@
         },
         "nextEpisode": {
             "cancel": "Cancella",
-            "next": "Prossimo episodio",
+            "next": "Prossimo",
             "replay": "Riguarda",
-            "nextSeason": "Prossima stagione"
+            "nextSeason": "Prossimo"
         },
         "playbackError": {
             "badge": "Errore di riproduzione",
