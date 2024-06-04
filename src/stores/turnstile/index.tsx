@@ -101,7 +101,7 @@ export function TurnstileProvider(props: {
   isInPopout?: boolean;
   onUpdateShow?: (show: boolean) => void;
 }) {
-  const siteKey = conf().TURNSTILE_KEY;
+  const siteKey = conf().TURNSTILE_KEY?.toString();
   const idRef = useRef<string | null>(null);
   const setTurnstile = useTurnstileStore((s) => s.setTurnstile);
   const processToken = useTurnstileStore((s) => s.processToken);

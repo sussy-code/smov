@@ -20,7 +20,10 @@ export interface OverlayProps {
 function TurnstileInteractive() {
   const { t } = useTranslation();
   const [show, setShow] = useState(false);
-  getTurnstile();
+
+  useEffect(() => {
+    getTurnstile();
+  }, []);
 
   // this may not rerender with different dom structure, must be exactly the same always
   return (
