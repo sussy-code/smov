@@ -268,7 +268,15 @@ export function Discover() {
     }
   }, [movieWidth]);
 
+  const browser = !!window.chrome; // detect chromium browser
+  let isScrolling = false;
+
   function handleWheel(e: React.WheelEvent, categorySlug: string) {
+    if (isScrolling) {
+      return;
+    }
+
+    isScrolling = true;
     const carousel = carouselRefs.current[categorySlug];
     if (carousel) {
       const movieElements = carousel.getElementsByTagName("a");
@@ -279,6 +287,15 @@ export function Discover() {
           scrollCarousel(categorySlug, "right");
         }
       }
+    }
+
+    if (browser) {
+      setTimeout(() => {
+        isScrolling = false;
+      }, 345); // disable scrolling after 345 milliseconds for chromium-based browsers
+    } else {
+      // immediately reset isScrolling for non-chromium browsers
+      isScrolling = false;
     }
   }
 
