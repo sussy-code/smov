@@ -81,6 +81,9 @@ export async function getTurnstileToken() {
   const turnstile = getTurnstile();
   try {
     // I hate turnstile
+    if (turnstile.controls.isExpired()) {
+      turnstile.controls.reset();
+    }
     (window as any).turnstile.execute(
       document.querySelector(`#${turnstile.id}`),
       {},

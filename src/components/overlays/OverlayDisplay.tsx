@@ -9,7 +9,7 @@ import {
   useInternalOverlayRouter,
   useRouterAnchorUpdate,
 } from "@/hooks/useOverlayRouter";
-import { TurnstileProvider } from "@/stores/turnstile";
+import { TurnstileProvider, getTurnstile } from "@/stores/turnstile";
 
 export interface OverlayProps {
   id: string;
@@ -20,6 +20,7 @@ export interface OverlayProps {
 function TurnstileInteractive() {
   const { t } = useTranslation();
   const [show, setShow] = useState(false);
+  getTurnstile();
 
   // this may not rerender with different dom structure, must be exactly the same always
   return (
