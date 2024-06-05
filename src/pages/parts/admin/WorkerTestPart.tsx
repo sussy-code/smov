@@ -90,21 +90,11 @@ export function WorkerTestPart() {
       } catch (err) {
         const error = err as Error;
         error.message = error.message.replace(worker.url, "WORKER_URL");
-        if (
-          error.message ===
-          '[Cloudflare Turnstile] Invalid or missing type for parameter "sitekey", expected "string", got "object".'
-        ) {
-          updateWorker(worker.id, {
-            id: worker.id,
-            status: "success",
-          });
-        } else {
-          updateWorker(worker.id, {
-            id: worker.id,
-            status: "error",
-            error,
-          });
-        }
+        updateWorker(worker.id, {
+          id: worker.id,
+          status: "error",
+          error,
+        });
       }
     });
 

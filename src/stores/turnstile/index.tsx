@@ -81,9 +81,6 @@ export async function getTurnstileToken() {
   const turnstile = getTurnstile();
   try {
     // I hate turnstile
-    if (turnstile.controls.isExpired()) {
-      turnstile.controls.reset();
-    }
     (window as any).turnstile.execute(
       document.querySelector(`#${turnstile.id}`),
       {},
@@ -101,7 +98,7 @@ export function TurnstileProvider(props: {
   isInPopout?: boolean;
   onUpdateShow?: (show: boolean) => void;
 }) {
-  const siteKey = conf().TURNSTILE_KEY?.toString();
+  const siteKey = conf().TURNSTILE_KEY;
   const idRef = useRef<string | null>(null);
   const setTurnstile = useTurnstileStore((s) => s.setTurnstile);
   const processToken = useTurnstileStore((s) => s.processToken);
