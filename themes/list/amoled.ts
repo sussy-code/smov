@@ -132,8 +132,8 @@ export default createTheme({
         hoverAccent: tokens.shade.c100,
         hoverShadow: tokens.black,
         shadow: tokens.shade.c800,
-        barColor: tokens.ash.c800,
-        barFillColor: tokens.ash.c600,
+        barColor: tokens.ash.c200,
+        barFillColor: tokens.purple.c100,
         badge: tokens.shade.c700,
         badgeText: tokens.ash.c100
       },
@@ -171,8 +171,8 @@ export default createTheme({
             secondary: tokens.shade.c200,
             inactive: tokens.shade.c50,
             icon: tokens.shade.c50,
-            iconActivated: tokens.shade.c200,
-            activated: tokens.blue.c300
+            iconActivated: tokens.purple.c200,
+            activated: tokens.purple.c100
           }
         },
 
@@ -212,9 +212,9 @@ export default createTheme({
       },
 
       progress: {
-        background: tokens.ash.c800,
-        preloaded: tokens.ash.c800,
-        filled: tokens.ash.c600
+        background: tokens.ash.c50,
+        preloaded: tokens.ash.c50,
+        filled: tokens.purple.c200
       },
 
       video: {
@@ -232,7 +232,7 @@ export default createTheme({
         },
 
         audio: {
-          set: tokens.ash.c600
+          set: tokens.purple.c200
         },
 
         context: {
