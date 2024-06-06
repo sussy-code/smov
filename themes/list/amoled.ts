@@ -246,8 +246,8 @@ export default createTheme({
           buttonOverInputHover: tokens.ash.c500,
           inputPlaceholder: tokens.ash.c200,
           cardBorder: tokens.ash.c700,
-          slider: tokens.ash.c800,
-          sliderFilled: tokens.ash.c600,
+          slider: tokens.ash.c50,
+          sliderFilled: tokens.purple.c200,
 
           buttons: {
             list: tokens.ash.c700,
