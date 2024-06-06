@@ -30,6 +30,11 @@ const availableThemes = [
     selector: "theme-gray",
     key: "settings.appearance.themes.gray",
   },
+  {
+    id: "amoled",
+    selector: "theme-amoled",
+    key: "settings.appearance.themes.amoled",
+  },
 ];
 
 function ThemePreview(props: {

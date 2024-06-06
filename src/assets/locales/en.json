@@ -545,7 +545,8 @@
         "default": "Default",
         "gray": "Gray",
         "red": "Red",
-        "teal": "Teal"
+        "teal": "Teal",
+        "amoled": "AMOLED"
       },
       "title": "Appearance"
     },
