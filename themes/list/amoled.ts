@@ -1,31 +1,39 @@
 import { createTheme } from "../types";
 
 const tokens = {
+  black: "#000000",
+  white: "#FFFFFF",
+  semantic: {
+    silver: {
+      c100: "#DEDEDE",
+      c200: "#B6CAD7",
+      c300: "#8EA3B0",
+      c400: "#617A8A",
+    },
+  },
   purple: {
     c50: "#aaafff",
     c100: "#8288fe",
     c200: "#5a62eb",
     c300: "#454cd4",
     c400: "#333abe",
-    c500: "#000000",
+    c500: "#292d86",
     c600: "#1f2363",
     c700: "#191b4a",
     c800: "#111334",
-    c900: "#0b0d22",
-    c1000: "#292d86"
+    c900: "#0b0d22"
   },
   shade: {
-    c25: "#9c9c9c",
     c50: "#7c7c7c",
     c100: "#666666",
-    c200: "#333333", 
-    c300: "#000000",
-    c400: "#0d0d0d",
-    c500: "#000000",
-    c600: "#0d0d0d",
-    c700: "#0d0d0d",
+    c200: "#4f4f4f",
+    c300: "#404040",
+    c400: "#343434",
+    c500: "#282828",
+    c600: "#202020",
+    c700: "#1a1a1a",
     c800: "#151515",
-    c900: "#000000"
+    c900: "#0e0e0e"
   },
   ash: {
     c50: "#8d8d8d",
@@ -42,16 +50,16 @@ const tokens = {
   blue: {
     c50: "#ccccd6",
     c100: "#a2a2a2",
-    c200: "#1e1e1e",
+    c200: "#868686",
     c300: "#646464",
-    c400: "#141414",
-    c500: "#000000",
+    c400: "#4e4e4e",
+    c500: "#383838",
     c600: "#2e2e2e",
     c700: "#272727",
     c800: "#181818",
     c900: "#0f0f0f"
   }
-};
+}
 
 export default createTheme({
   name: "amoled",
@@ -63,10 +71,9 @@ export default createTheme({
       },
 
       pill: {
-        background: tokens.shade.c700,
-        backgroundHover: tokens.shade.c800,
+        background: tokens.black,
+        backgroundHover: tokens.shade.c500,
         highlight: tokens.blue.c200,
-
         activeBackground: tokens.shade.c700,
       },
 
@@ -76,27 +83,26 @@ export default createTheme({
       },
 
       lightBar: {
-        light: tokens.blue.c400
+        light: tokens.shade.c900,
       },
 
       buttons: {
         toggle: tokens.purple.c300,
         toggleDisabled: tokens.ash.c500,
-
         secondary: tokens.ash.c700,
         secondaryHover: tokens.ash.c700,
         purple: tokens.purple.c600,
-        purpleHover: tokens.purple.c1000,
+        purpleHover: tokens.purple.c400,
         cancel: tokens.shade.c700,
         cancelHover: tokens.shade.c800
       },
 
       background: {
-        main: tokens.shade.c900,
-        secondary: tokens.shade.c700,
-        secondaryHover: tokens.shade.c400,
-        accentA: tokens.purple.c500,
-        accentB: tokens.blue.c500
+        main: tokens.black,
+        secondary: tokens.black,
+        secondaryHover: tokens.black,
+        accentA: tokens.black,
+        accentB: tokens.black
       },
 
       modal: {
@@ -114,18 +120,18 @@ export default createTheme({
       },
 
       search: {
-        background: tokens.shade.c500,
-        hoverBackground: tokens.shade.c600,
-        focused: tokens.shade.c400,
-        placeholder: tokens.shade.c100,
-        icon: tokens.shade.c100
+        background: tokens.shade.c800,
+        hoverBackground: tokens.shade.c900,
+        focused: tokens.shade.c700,
+        placeholder: tokens.shade.c200,
+        icon: tokens.shade.c500
       },
 
       mediaCard: {
-        hoverBackground: tokens.shade.c600,
+        hoverBackground: tokens.shade.c900,
         hoverAccent: tokens.shade.c100,
-        hoverShadow: tokens.shade.c900,
-        shadow: tokens.shade.c700,
+        hoverShadow: tokens.black,
+        shadow: tokens.shade.c800,
         barColor: tokens.ash.c800,
         barFillColor: tokens.ash.c600,
         badge: tokens.shade.c700,
@@ -138,13 +144,13 @@ export default createTheme({
       },
 
       dropdown: {
-        background: tokens.shade.c600,
-        altBackground: tokens.shade.c600,
-        hoverBackground: tokens.shade.c600,
+        background: tokens.shade.c800,
+        altBackground: tokens.black,
+        hoverBackground: tokens.shade.c700,
         text: tokens.shade.c50,
         secondary: tokens.shade.c100,
         border: tokens.shade.c400,
-        contentBackground: tokens.shade.c500
+        contentBackground: tokens.black
       },
 
       authentication: {
@@ -158,7 +164,7 @@ export default createTheme({
 
       settings: {
         sidebar: {
-          activeLink: tokens.shade.c600,
+          activeLink: tokens.shade.c800,
           badge: tokens.shade.c900,
 
           type: {
@@ -171,13 +177,13 @@ export default createTheme({
         },
 
         card: {
-          border: tokens.shade.c400,
-          background: tokens.shade.c400,
-          altBackground: tokens.shade.c400
+          border: tokens.shade.c700,
+          background: tokens.shade.c700,
+          altBackground: tokens.shade.c700
         },
 
         saveBar: {
-          background: tokens.shade.c600
+          background: tokens.black
         }
       },
 
@@ -186,7 +192,7 @@ export default createTheme({
       },
 
       errors: {
-        card: tokens.shade.c700,
+        card: tokens.black,
         border: tokens.ash.c500,
 
         type: {
@@ -220,7 +226,7 @@ export default createTheme({
         },
 
         scraping: {
-          card: tokens.shade.c700,
+          card: tokens.black,
           loading: tokens.purple.c200,
           noresult: tokens.ash.c100
         },
@@ -230,7 +236,7 @@ export default createTheme({
         },
 
         context: {
-          background: tokens.shade.c600,
+          background: tokens.black,
           light: tokens.shade.c50,
           border: tokens.ash.c600,
           hoverColor: tokens.ash.c600,
@@ -252,7 +258,8 @@ export default createTheme({
 
           type: {
             secondary: tokens.ash.c200,
-            accent: tokens.purple.c200
+            accent: tokens.purple.c200,
+            main: tokens.semantic.silver.c300
           }
         }
       }
