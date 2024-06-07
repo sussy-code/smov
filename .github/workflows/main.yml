@@ -1,0 +1,18 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger remote build
+        run: |
+          curl -X POST http://sertwo.tinypixel.uk:9000/hooks/docker-compose-build \
+          -H "Content-Type: application/json" \
+          -H "X-Hub-Signature: sha1=$(echo -n '{}${{ secrets.SuperSecret }}' | openssl sha1 -hmac '${{ secrets.SuperSecret }}' | sed 's/^.* //')" \
+          -d '{}'
