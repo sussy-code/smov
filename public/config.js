@@ -10,7 +10,7 @@ window.__CONFIG__ = {
   VITE_DMCA_EMAIL: null,
 
   // Whether to disable hash-based routing, leave this as false if you don't know what this is
-  VITE_NORMAL_ROUTER: false,
+  VITE_NORMAL_ROUTER: true,
 
   // The backend URL to communicate with
   VITE_BACKEND_URL: null,
