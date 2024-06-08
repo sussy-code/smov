@@ -108,6 +108,10 @@ export function TurnstileProvider(props: {
     >
       <Turnstile
         siteKey={siteKey}
+        options={{
+          refreshExpired: "never",
+          theme: "light",
+        }}
         onLoadScript={() => {
           setTurnstile(widgetId, "sudo", !!props.isInPopout);
         }}
