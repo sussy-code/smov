@@ -300,20 +300,14 @@ export function Discover() {
   }
 
   const [isHovered, setIsHovered] = useState(false);
-
-  const handleMouseEnter = () => {
-    document.body.style.overflow = "hidden";
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
+  const toggleHover = (isHovering: boolean) => setIsHovered(isHovering);
 
   useEffect(() => {
-    if (!isHovered) {
+    document.body.style.overflow = isHovered ? "hidden" : "auto";
+
+    return () => {
       document.body.style.overflow = "auto";
-    }
+    };
   }, [isHovered]);
 
   function renderMovies(medias: Media[], category: string, isTVShow = false) {
@@ -344,8 +338,8 @@ export function Discover() {
           ref={(el) => {
             carouselRefs.current[categorySlug] = el;
           }}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
+          onMouseEnter={() => toggleHover(true)}
+          onMouseLeave={() => toggleHover(false)}
           onWheel={(e) => handleWheel(e, categorySlug)}
         >
           {medias
