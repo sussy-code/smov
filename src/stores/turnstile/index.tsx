@@ -76,11 +76,6 @@ export function isTurnstileInitialized() {
 export async function getTurnstileToken() {
   const turnstile = getTurnstile();
   try {
-    // I hate turnstile
-    (window as any).turnstile.execute(
-      document.querySelector(`#${turnstile.id}`),
-      {},
-    );
     const token = await useTurnstileStore.getState().getToken();
     reportCaptchaSolve(true);
     return token;
@@ -99,7 +94,6 @@ export function TurnstileProvider(props: {
   const setTurnstile = useTurnstileStore((s) => s.setTurnstile);
   const processToken = useTurnstileStore((s) => s.processToken);
   if (!siteKey) return null;
-  const widgetId = idRef.current || "sudo-turnstile";
   return (
     <div
       className={classNames({
@@ -109,19 +103,20 @@ export function TurnstileProvider(props: {
       <Turnstile
         siteKey={siteKey}
         options={{
-          refreshExpired: "never",
+          refreshExpired: "auto",
           theme: "light",
         }}
-        onLoadScript={() => {
+        onWidgetLoad={(widgetId) => {
+          idRef.current = widgetId;
           setTurnstile(widgetId, "sudo", !!props.isInPopout);
         }}
         onError={() => {
-          const id = "sudo-turnstile";
+          const id = idRef.current;
           if (!id) return;
           processToken(null, id);
         }}
         onSuccess={(token) => {
-          const id = "sudo-turnstile";
+          const id = idRef.current;
           if (!id) return;
           processToken(token, id);
           props.onUpdateShow?.(false);
