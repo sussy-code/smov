@@ -30,6 +30,9 @@ dependencies:
   '@ladjs/country-language':
     specifier: ^1.0.3
     version: 1.0.3
+  '@marsidev/react-turnstile':
+    specifier: ^0.7.1
+    version: 0.7.1(react-dom@18.3.1)(react@18.3.1)
   '@movie-web/providers':
     specifier: github:sussy-code/providers
     version: github.com/sussy-code/providers/b04c921b5533e6f53a58c3a0406d90ad2f076c05
@@ -1955,6 +1958,16 @@ packages:
   /@ladjs/country-language@1.0.3:
     resolution: {integrity: sha512-FJROu9/hh4eqVAGDyfL8vpv6Vb0qKHX1ozYLRZ+beUzD5xFf+3r0J+SVIWKviEa7W524Qvqou+ta1WrsRgzxGw==}
     engines: {node: '>= 14'}
+    dev: false
+
+  /@marsidev/react-turnstile@0.7.1(react-dom@18.3.1)(react@18.3.1):
+    resolution: {integrity: sha512-SGa0cweJ2mP1RRi9oJJrlPpZHvlklLqu8tlXDLEbsQ/WExM8Ng9cr9439lZcnu8+tfeVpQIe8qFB1UU5uE+KlQ==}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+    dependencies:
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
     dev: false
 
   /@noble/hashes@1.4.0:
@@ -7434,7 +7447,6 @@ packages:
     resolution: {tarball: https://codeload.github.com/sussy-code/providers/tar.gz/b04c921b5533e6f53a58c3a0406d90ad2f076c05}
     name: '@movie-web/providers'
     version: 2.3.0
-    prepare: true
     requiresBuild: true
     dependencies:
       cheerio: 1.0.0-rc.12
