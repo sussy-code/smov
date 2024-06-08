@@ -1,6 +1,6 @@
+import { Turnstile } from "@marsidev/react-turnstile";
 import classNames from "classnames";
 import { useRef } from "react";
-import Turnstile, { BoundTurnstileObject } from "react-turnstile";
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 
@@ -10,16 +10,12 @@ import { conf } from "@/setup/config";
 export interface TurnstileStore {
   isInWidget: boolean;
   turnstiles: {
-    controls: BoundTurnstileObject;
+    controls: any;
     isInPopout: boolean;
     id: string;
   }[];
   cbs: ((token: string | null) => void)[];
-  setTurnstile(
-    id: string,
-    v: BoundTurnstileObject | null,
-    isInPopout: boolean,
-  ): void;
+  setTurnstile(id: string, v: any, isInPopout: boolean): void;
   getToken(): Promise<string>;
   processToken(token: string | null, widgetId: string): void;
 }
@@ -80,11 +76,6 @@ export function isTurnstileInitialized() {
 export async function getTurnstileToken() {
   const turnstile = getTurnstile();
   try {
-    // I hate turnstile
-    (window as any).turnstile.execute(
-      document.querySelector(`#${turnstile.id}`),
-      {},
-    );
     const token = await useTurnstileStore.getState().getToken();
     reportCaptchaSolve(true);
     return token;
@@ -110,18 +101,21 @@ export function TurnstileProvider(props: {
       })}
     >
       <Turnstile
-        sitekey={siteKey}
-        theme="light"
-        onLoad={(widgetId, bound) => {
+        siteKey={siteKey}
+        options={{
+          refreshExpired: "auto",
+          theme: "light",
+        }}
+        onWidgetLoad={(widgetId) => {
           idRef.current = widgetId;
-          setTurnstile(widgetId, bound, !!props.isInPopout);
+          setTurnstile(widgetId, "sudo", !!props.isInPopout);
         }}
         onError={() => {
           const id = idRef.current;
           if (!id) return;
           processToken(null, id);
         }}
-        onVerify={(token) => {
+        onSuccess={(token) => {
           const id = idRef.current;
           if (!id) return;
           processToken(token, id);
@@ -130,8 +124,6 @@ export function TurnstileProvider(props: {
         onBeforeInteractive={() => {
           props.onUpdateShow?.(true);
         }}
-        refreshExpired="never"
-        execution="render"
       />
     </div>
   );
