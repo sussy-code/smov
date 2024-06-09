@@ -1,553 +1,557 @@
 {
-  "about": {
-    "description": "sudo-flix internette akışlar için tarama yapan bir web uygulamasıdır. Ekip, içerik tüketmeye karşı ekseriyetle minimalist bir yaklaşım sergilemektedir.",
-    "faqTitle": "Sıkça sorulan sorular",
-    "q1": {
-      "body": "sudo-flix herhangi bir içerik barındırmaz. İzlemek için bir şeye tıkladığınızda, seçilen medya için internette arama yapılır (Yükleme ekranında ve 'video kaynakları' sekmesinde hangi kaynağı kullandığınızı görebilirsiniz). Medya hiçbir zaman sudo-flix tarafından yüklenmez, her şey bu arama mekanizması aracılığıyla gerçekleşir.",
-      "title": "İçerikler nereden geliyor?"
+    "about": {
+        "description": "sudo-flix internette akışlar için tarama yapan bir web uygulamasıdır. Ekip, içerik tüketmeye karşı ekseriyetle minimalist bir yaklaşım sergilemektedir.",
+        "faqTitle": "Sıkça sorulan sorular",
+        "q1": {
+            "body": "sudo-flix herhangi bir içerik barındırmaz. İzlemek için bir şeye tıkladığınızda, seçilen medya için internette arama yapılır (Yükleme ekranında ve 'video kaynakları' sekmesinde hangi kaynağı kullandığınızı görebilirsiniz). Medya hiçbir zaman sudo-flix tarafından yüklenmez, her şey bu arama mekanizması aracılığıyla gerçekleşir.",
+            "title": "İçerikler nereden geliyor?"
+        },
+        "q2": {
+            "body": "Bir dizi veya film talep etmek mümkün değildir, sudo-flix içeriklerin hiçbirini yönetmez. Tüm içerikler internet üzerindeki kaynaklar aracılığıyla görüntülenir.",
+            "title": "Bir dizi veya filmi nereden talep edebilirim?"
+        },
+        "q3": {
+            "body": "Arama sonuçlarımız The Movie Database (TMDB) tarafından desteklenmektedir ve kaynaklarımızın içeriğe gerçekten sahip olup olmadığına bakılmaksızın görüntülenir.",
+            "title": "Arama sonuçları diziyi veya filmi gösteriyor, neden oynatamıyorum?"
+        },
+        "title": "sudo-flix hakkında"
     },
-    "q2": {
-      "body": "Bir dizi veya film talep etmek mümkün değildir, sudo-flix içeriklerin hiçbirini yönetmez. Tüm içerikler internet üzerindeki kaynaklar aracılığıyla görüntülenir.",
-      "title": "Bir dizi veya filmi nereden talep edebilirim?"
+    "actions": {
+        "copied": "Kopyalandı",
+        "copy": "Kopyala"
     },
-    "q3": {
-      "body": "Arama sonuçlarımız The Movie Database (TMDB) tarafından desteklenmektedir ve kaynaklarımızın içeriğe gerçekten sahip olup olmadığına bakılmaksızın görüntülenir.",
-      "title": "Arama sonuçları diziyi veya filmi gösteriyor, neden oynatamıyorum?"
+    "auth": {
+        "createAccount": "Henüz bir hesabınız yok mu? <0>Hesap oluşturun.</0>",
+        "deviceNameLabel": "Cihaz ismi",
+        "deviceNamePlaceholder": "Kişisel telefon",
+        "generate": {
+            "description": "Şifreleme anahtarınız, kullanıcı adınız ve parolanız olarak işlev görür. Hesabınıza giriş yapmak için bu parolayı girmeniz gerekeceğinden onu güvende tuttuğunuzdan emin olun",
+            "next": "Şifreleme anahtarımı kaydettim",
+            "passphraseFrameLabel": "Şifreleme anahtarı",
+            "title": "Şifreleme anahtarınız"
+        },
+        "hasAccount": "Zaten hesabınız var mı?<0>Giriş yapın.</0>",
+        "login": {
+            "description": "Hesabınıza giriş yapmak için lütfen şifreleme anahtarınızı girin",
+            "deviceLengthError": "Lütfen bir cihaz ismi girin",
+            "passphraseLabel": "12 kelimelik şifreleme anahtarı",
+            "passphrasePlaceholder": "Şifreleme anahtarı",
+            "submit": "Giriş yap",
+            "title": "Hesabınıza giriş yapın",
+            "validationError": "Yanlış veya eksik şifreleme anahtarı"
+        },
+        "register": {
+            "information": {
+                "color1": "Birinci hesap rengi",
+                "color2": "İkinci hesap rengi",
+                "header": "Cihazınız için bir isim girin, zevkinize göre renk ve kullanıcı simgesi seçin",
+                "icon": "Kullanıcı simgesi",
+                "next": "İleri",
+                "title": "Hesap bilgisi"
+            }
+        },
+        "trust": {
+            "failed": {
+                "text": "Doğru şekilde yapılandırdınız mı?",
+                "title": "Sunucuya ulaşılamadı"
+            },
+            "host": "<0>{{hostname}}</0> adlı sunucuya bağlanıyorsunuz - lütfen hesap oluşturmadan önce sunucuya güvendiğinizi onaylayın",
+            "no": "Geri dön",
+            "noHost": "Sunucu henüz yapılandırılmadığı için hesap oluşturamazsınız",
+            "noHostTitle": "Sunucu kullanılamıyor!",
+            "title": "Bu sunucuya güveniyor musunuz?",
+            "yes": "Bu sunucuya güveniyorum"
+        },
+        "verify": {
+            "description": "Kaydettiğinizi doğrulamak ve hesabınızı oluşturmak için önceki aşamada gösterilen şifreleme anahtarınızı girin",
+            "invalidData": "Veri geçersiz",
+            "noMatch": "Şifreleme anahtarı eşleşmiyor",
+            "passphraseLabel": "12 kelimelik şifreleme anahtarınız",
+            "recaptchaFailed": "ReCaptcha doğrulaması başarısız",
+            "register": "Hesap oluştur",
+            "title": "Şifreleme anahtarınızı doğrulayın"
+        }
     },
-    "title": "sudo-flix hakkında"
-  },
-  "actions": {
-    "copied": "Kopyalandı",
-    "copy": "Kopyala"
-  },
-  "auth": {
-    "createAccount": "Henüz bir hesabınız yok mu? <0>Hesap oluşturun.</0>",
-    "deviceNameLabel": "Cihaz ismi",
-    "deviceNamePlaceholder": "Kişisel telefon",
-    "generate": {
-      "description": "Şifreleme anahtarınız, kullanıcı adınız ve parolanız olarak işlev görür. Hesabınıza giriş yapmak için bu parolayı girmeniz gerekeceğinden onu güvende tuttuğunuzdan emin olun",
-      "next": "Şifreleme anahtarımı kaydettim",
-      "passphraseFrameLabel": "Şifreleme anahtarı",
-      "title": "Şifreleme anahtarınız"
+    "errors": {
+        "badge": "Bir şeyler ters gitti",
+        "details": "Hata detayları",
+        "reloadPage": "Sayfayı yenile",
+        "showError": "Hata ayrıntılarını göster",
+        "title": "Bir hatayla karşılaştık!"
     },
-    "hasAccount": "Zaten hesabınız var mı?<0>Giriş yapın.</0>",
-    "login": {
-      "description": "Hesabınıza giriş yapmak için lütfen şifreleme anahtarınızı girin",
-      "deviceLengthError": "Lütfen bir cihaz ismi girin",
-      "passphraseLabel": "12 kelimelik şifreleme anahtarı",
-      "passphrasePlaceholder": "Şifreleme anahtarı",
-      "submit": "Giriş yap",
-      "title": "Hesabınıza giriş yapın",
-      "validationError": "Yanlış veya eksik şifreleme anahtarı"
+    "footer": {
+        "legal": {
+            "disclaimer": "Sorumluluk Reddi",
+            "disclaimerText": "sudo-flix herhangi bir dosya barındırmaz, yalnızca 3. parti hizmetlere bağlantı verir. Yasal meseleler, dosya barındırıcıları ve sağlayıcıları ile görüşülmelidir. sudo-flix, video sağlayıcıları tarafından gösterilen hiçbir medya dosyasından sorumlu değildir."
+        },
+        "links": {
+            "discord": "Discord",
+            "dmca": "DMCA",
+            "github": "GitHub"
+        },
+        "tagline": "Bu açık kaynaklı akış uygulamasıyla en sevdiğiniz dizileri ve filmleri izleyin."
     },
-    "register": {
-      "information": {
-        "color1": "Birinci hesap rengi",
-        "color2": "İkinci hesap rengi",
-        "header": "Cihazınız için bir isim girin, zevkinize göre renk ve kullanıcı simgesi seçin",
-        "icon": "Kullanıcı simgesi",
-        "next": "İleri",
-        "title": "Hesap bilgisi"
-      }
+    "global": {
+        "name": "sudo-flix",
+        "pages": {
+            "about": "Hakkında",
+            "dmca": "DMCA",
+            "login": "Giriş yap",
+            "onboarding": "Kur",
+            "pagetitle": "{{title}} - sudo-flix",
+            "register": "Kayıt ol",
+            "settings": "Ayarlar"
+        }
     },
-    "trust": {
-      "failed": {
-        "text": "Doğru şekilde yapılandırdınız mı?",
-        "title": "Sunucuya ulaşılamadı"
-      },
-      "host": "<0>{{hostname}}</0> adlı sunucuya bağlanıyorsunuz - lütfen hesap oluşturmadan önce sunucuya güvendiğinizi onaylayın",
-      "no": "Geri dön",
-      "noHost": "Sunucu henüz yapılandırılmadığı için hesap oluşturamazsınız",
-      "noHostTitle": "Sunucu kullanılamıyor!",
-      "title": "Bu sunucuya güveniyor musunuz?",
-      "yes": "Bu sunucuya güveniyorum"
+    "home": {
+        "bookmarks": {
+            "sectionTitle": "Yerimleri"
+        },
+        "continueWatching": {
+            "sectionTitle": "İzlemeye devam edin"
+        },
+        "mediaList": {
+            "stopEditing": "Düzenlemeyi bırak"
+        },
+        "search": {
+            "allResults": "Bu kadarını bulabildik!",
+            "failed": "Medya bulunamadı, tekrar deneyin!",
+            "loading": "Yükleniyor...",
+            "noResults": "Hiçbir şey bulamadık!",
+            "placeholder": {
+                "default": "Ne izlemek istersiniz?",
+                "extra": [
+                    "Ne keşfetmek istiyorsunuz?",
+                    "İzleme listenizde neler var?",
+                    "Favori filmin ne?",
+                    "En sevdiğiniz dizi ne?"
+                ]
+            },
+            "sectionTitle": "Arama sonuçları"
+        },
+        "titles": {
+            "day": {
+                "default": "Bu öğleden sonra ne izlemek istersiniz?",
+                "extra": [
+                    "Maceraperest mi hissediyorsun? Jurassic Park iyi bir seçim olabilir."
+                ]
+            },
+            "morning": {
+                "default": "Bu sabah ne izlemek istersiniz?",
+                "extra": [
+                    "Before Sunrise'a iyi diyorlar"
+                ]
+            },
+            "night": {
+                "default": "Bu akşam ne izlemek istersiniz?",
+                "extra": [
+                    "Yoruldun mu? The Exorcist'e iyi diyorlar."
+                ]
+            }
+        }
     },
-    "verify": {
-      "description": "Kaydettiğinizi doğrulamak ve hesabınızı oluşturmak için önceki aşamada gösterilen şifreleme anahtarınızı girin",
-      "invalidData": "Veri geçersiz",
-      "noMatch": "Şifreleme anahtarı eşleşmiyor",
-      "passphraseLabel": "12 kelimelik şifreleme anahtarınız",
-      "recaptchaFailed": "ReCaptcha doğrulaması başarısız",
-      "register": "Hesap oluştur",
-      "title": "Şifreleme anahtarınızı doğrulayın"
-    }
-  },
-  "errors": {
-    "badge": "Bir şeyler ters gitti",
-    "details": "Hata detayları",
-    "reloadPage": "Sayfayı yenile",
-    "showError": "Hata ayrıntılarını göster",
-    "title": "Bir hatayla karşılaştık!"
-  },
-  "footer": {
-    "legal": {
-      "disclaimer": "Sorumluluk Reddi",
-      "disclaimerText": "sudo-flix herhangi bir dosya barındırmaz, yalnızca 3. parti hizmetlere bağlantı verir. Yasal meseleler, dosya barındırıcıları ve sağlayıcıları ile görüşülmelidir. sudo-flix, video sağlayıcıları tarafından gösterilen hiçbir medya dosyasından sorumlu değildir."
+    "media": {
+        "episodeDisplay": "S{{season}} B{{episode}}",
+        "types": {
+            "movie": "Film",
+            "show": "Dizi"
+        },
+        "unreleased": "Yayınlanmamış"
     },
-    "links": {
-      "discord": "Discord",
-      "dmca": "DMCA",
-      "github": "GitHub"
+    "navigation": {
+        "banner": {
+            "offline": "İnternet bağlantınızı kontrol ediniz"
+        },
+        "menu": {
+            "about": "Hakkımızda",
+            "logout": "Çıkış yap",
+            "register": "Buluta eşitle",
+            "settings": "Ayarlar",
+            "support": "Destekle"
+        }
     },
-    "tagline": "Bu açık kaynaklı akış uygulamasıyla en sevdiğiniz dizileri ve filmleri izleyin."
-  },
-  "global": {
-    "name": "sudo-flix",
-    "pages": {
-      "about": "Hakkında",
-      "dmca": "DMCA",
-      "login": "Giriş yap",
-      "onboarding": "Kur",
-      "pagetitle": "{{title}} - sudo-flix",
-      "register": "Kayıt ol",
-      "settings": "Ayarlar"
-    }
-  },
-  "home": {
-    "bookmarks": {
-      "sectionTitle": "Yerimleri"
+    "notFound": {
+        "badge": "Bulunamadı",
+        "goHome": "Ana sayfaya dön",
+        "message": "Her yere baktık: bazanın altına, dolabın içine hatta ara sunucuya ama maalesef aradığınız sayfayı bulamadık.",
+        "title": "Sayfa bulunamadı"
     },
-    "continueWatching": {
-      "sectionTitle": "İzlemeye devam edin"
-    },
-    "mediaList": {
-      "stopEditing": "Düzenlemeyi bırak"
-    },
-    "search": {
-      "allResults": "Bu kadarını bulabildik!",
-      "failed": "Medya bulunamadı, tekrar deneyin!",
-      "loading": "Yükleniyor...",
-      "noResults": "Hiçbir şey bulamadık!",
-      "placeholder": {
-        "default": "Ne izlemek istersiniz?",
-        "extra": [
-          "Ne keşfetmek istiyorsunuz?",
-          "İzleme listenizde neler var?",
-          "Favori filmin ne?",
-          "En sevdiğiniz dizi ne?"
-        ]
-      },
-      "sectionTitle": "Arama sonuçları"
-    },
-    "titles": {
-      "day": {
-        "default": "Bu öğleden sonra ne izlemek istersiniz?",
-        "extra": [
-          "Maceraperest mi hissediyorsun? Jurassic Park iyi bir seçim olabilir."
-        ]
-      },
-      "morning": {
-        "default": "Bu sabah ne izlemek istersiniz?",
-        "extra": ["Before Sunrise'a iyi diyorlar"]
-      },
-      "night": {
-        "default": "Bu akşam ne izlemek istersiniz?",
-        "extra": ["Yoruldun mu? The Exorcist'e iyi diyorlar."]
-      }
-    }
-  },
-  "media": {
-    "episodeDisplay": "S{{season}} B{{episode}}",
-    "types": {
-      "movie": "Film",
-      "show": "Dizi"
-    },
-    "unreleased": "Yayınlanmamış"
-  },
-  "navigation": {
-    "banner": {
-      "offline": "İnternet bağlantınızı kontrol ediniz"
-    },
-    "menu": {
-      "about": "Hakkımızda",
-      "logout": "Çıkış yap",
-      "register": "Buluta eşitle",
-      "settings": "Ayarlar",
-      "support": "Destekle"
-    }
-  },
-  "notFound": {
-    "badge": "Bulunamadı",
-    "goHome": "Ana sayfaya dön",
-    "message": "Her yere baktık: bazanın altına, dolabın içine hatta ara sunucuya ama maalesef aradığınız sayfayı bulamadık.",
-    "title": "Sayfa bulunamadı"
-  },
-  "onboarding": {
-    "defaultConfirm": {
-      "cancel": "İptal Et",
-      "confirm": "Ön Tanımlı Ayarları Kullan",
-      "description": "Varsayılan ayarlar en iyi akış hizmetlerini sunmayabilir ve oldukça yavaş olabilir.",
-      "title": "Emin misiniz?"
-    },
-    "extension": {
-      "back": "Geri Dön",
-      "explainer": "Tarayıcı uzantısını kullanarak, size sunduğumuz en iyi akışlara erişebilirsiniz. Kurulumu ise oldukça basit.",
-      "explainerIos": "Ne yazık ki, tarayıcı uzantısı iOS cihazlarında desteklenmemektedir. <bold>Geri Dön</bold> düğmesine basarak başka bir seçenek seçebilirsiniz.",
-      "extensionHelp": "Eklenti yüklediyseniz ancak algılamıyorsa, <bold>tarayıcınızın uzantı menüsünden eklentiyi açın</bold> ve ekran adımları takip edin.",
-      "linkChrome": "Chrome uzantısını yükleyin",
-      "linkFirefox": "Firefox uzantısını yükleyin",
-      "notDetecting": "Chrome'a yüklendi, ancak site algılamıyor mu? Sayfayı yenileyin!",
-      "notDetectingAction": "Sayfayı yenile",
-      "status": {
-        "disallowed": "Bu sayfa için uzantı etkinleştirilmemiş",
-        "disallowedAction": "Uzantıyı etkinleştir",
-        "failed": "Durum bilgisi alınamadı",
-        "loading": "Uzantıyı yüklemenizi bekliyoruz",
-        "outdated": "Uzantınız çok eski",
-        "success": "Uzantı sorunsuz çalışıyor!"
-      },
-      "submit": "Devam Et",
-      "title": "Hadi bir uzantıyla başlayalım"
-    },
-    "proxy": {
-      "back": "Geri Dön",
-      "explainer": "Ara sunucu yöntemiyle, yüksek kalitede yayınlara kolayca erişin.",
-      "input": {
-        "errorConnection": "Proxy'ye bağlanılamadı",
-        "errorInvalidUrl": "Geçerli bir URL değil",
-        "errorNotProxy": "Proxy bekleniyordu, web sitesine yönlendirildi",
-        "label": "Proxy URL",
-        "placeholder": "https://"
-      },
-      "link": "Proxy oluşturmayı öğrenin",
-      "submit": "Proxy'yi Gönder",
-      "title": "Hadi yeni bir proxy oluşturalım"
-    },
-    "start": {
-      "explainer": "En iyi akış deneyimi için kullanmak istediğiniz akış yöntemini seçmeniz gerekiyor.",
-      "options": {
-        "default": {
-          "text": "Yüksek kaliteli akış istemiyorum,<0 /> <1>varsayılan ayarı kullanın</1>"
+    "onboarding": {
+        "defaultConfirm": {
+            "cancel": "İptal Et",
+            "confirm": "Ön Tanımlı Ayarları Kullan",
+            "description": "Varsayılan ayarlar en iyi akış hizmetlerini sunmayabilir ve oldukça yavaş olabilir.",
+            "title": "Emin misiniz?"
         },
         "extension": {
-          "action": "Uzantıyı Yükle",
-          "description": "En iyi kaynaklara erişmek için tarayıcı uzantısını yükleyin.",
-          "quality": "En yüksek kalite",
-          "title": "Tarayıcı uzantısı"
+            "back": "Geri Dön",
+            "explainer": "Tarayıcı uzantısını kullanarak, size sunduğumuz en iyi akışlara erişebilirsiniz. Kurulumu ise oldukça basit.",
+            "explainerIos": "Ne yazık ki, tarayıcı uzantısı iOS cihazlarında desteklenmemektedir. <bold>Geri Dön</bold> düğmesine basarak başka bir seçenek seçebilirsiniz.",
+            "extensionHelp": "Eklenti yüklediyseniz ancak algılamıyorsa, <bold>tarayıcınızın uzantı menüsünden eklentiyi açın</bold> ve ekran adımları takip edin.",
+            "linkChrome": "Chrome uzantısını yükleyin",
+            "linkFirefox": "Firefox uzantısını yükleyin",
+            "notDetecting": "Chrome'a yüklendi, ancak site algılamıyor mu? Sayfayı yenileyin!",
+            "notDetectingAction": "Sayfayı yenile",
+            "status": {
+                "disallowed": "Bu sayfa için uzantı etkinleştirilmemiş",
+                "disallowedAction": "Uzantıyı etkinleştir",
+                "failed": "Durum bilgisi alınamadı",
+                "loading": "Uzantıyı yüklemenizi bekliyoruz",
+                "outdated": "Uzantınız çok eski",
+                "success": "Uzantı sorunsuz çalışıyor!"
+            },
+            "submit": "Devam Et",
+            "title": "Hadi bir uzantıyla başlayalım"
         },
         "proxy": {
-          "action": "Proxy'yi Kur",
-          "description": "Sadece 5 dakikada proxy kurun ve harika kaynaklara erişin.",
-          "quality": "İyi kalite",
-          "title": "Özel Proxy"
+            "back": "Geri Dön",
+            "explainer": "Ara sunucu yöntemiyle, yüksek kalitede yayınlara kolayca erişin.",
+            "input": {
+                "errorConnection": "Proxy'ye bağlanılamadı",
+                "errorInvalidUrl": "Geçerli bir URL değil",
+                "errorNotProxy": "Proxy bekleniyordu, web sitesine yönlendirildi",
+                "label": "Proxy URL",
+                "placeholder": "https://"
+            },
+            "link": "Proxy oluşturmayı öğrenin",
+            "submit": "Proxy'yi Gönder",
+            "title": "Hadi yeni bir proxy oluşturalım"
+        },
+        "start": {
+            "explainer": "En iyi akış deneyimi için kullanmak istediğiniz akış yöntemini seçmeniz gerekiyor.",
+            "options": {
+                "default": {
+                    "text": "Yüksek kaliteli akış istemiyorum,<0 /> <1>varsayılan ayarı kullanın</1>"
+                },
+                "extension": {
+                    "action": "Uzantıyı Yükle",
+                    "description": "En iyi kaynaklara erişmek için tarayıcı uzantısını yükleyin.",
+                    "quality": "En yüksek kalite",
+                    "title": "Tarayıcı uzantısı"
+                },
+                "proxy": {
+                    "action": "Proxy'yi Kur",
+                    "description": "Sadece 5 dakikada proxy kurun ve harika kaynaklara erişin.",
+                    "quality": "İyi kalite",
+                    "title": "Özel Proxy"
+                }
+            },
+            "title": "sudo-flix ile sizi hazır hale getirelim"
         }
-      },
-      "title": "sudo-flix ile sizi hazır hale getirelim"
-    }
-  },
-  "overlays": {
-    "close": "Kapat"
-  },
-  "player": {
-    "back": {
-      "default": "Ana sayfaya dön",
-      "short": "Geri dön"
     },
-    "casting": {
-      "enabled": "Cihaza yansıtılıyor..."
+    "overlays": {
+        "close": "Kapat"
     },
-    "menus": {
-      "downloads": {
-        "copyHlsPlaylist": "HLS oynatma listesi bağlantısını kopyala",
-        "disclaimer": "İndirme bağlantıları doğrudan sağlayıcının kendisinden alınır. sudo-flix'in sağlanan indirme bağlantıları üzerinde hiçbir konrolü yoktur.",
-        "downloadSubtitle": "Geçerli altyazıyı indir",
-        "downloadVideo": "Videoyu indir",
-        "hlsDisclaimer": "İndirmeler doğrudan sağlayıcıdan alınır. sudo-flix, indirmelerin nasıl sağlanacağı üzerinde kontrole sahip değildir.<br /><br />Lütfen bir HLS oynatma listesi indirdiğinizi unutmayın; <bold>ileri seviye bilginiz yoksa indirmeniz önerilmez. akış biçimleri</bold>. Farklı formatlar için farklı kaynakları deneyin.",
-        "onAndroid": {
-          "1": "Android'e indirmek için önce indir butonuna basın, sonra açılan yeni sayfada video üzerine <bold>basılı tutun</bold>, ardından <bold>Videoyu indir</bold> seçeneğini seçin.",
-          "shortTitle": "İndir / Android",
-          "title": "Android'e indirme"
+    "player": {
+        "back": {
+            "default": "Ana sayfaya dön",
+            "short": "Geri dön"
         },
-        "onIos": {
-          "1": "iOS'a indirmek için öncelikle indir butonuna basın, sonra açılan yeni sayfada <bold><ios_share /></bold>'e basın, hemen ardından <bold>Dosyalara Kaydet <ios_files /></bold>'e basın.",
-          "shortTitle": "İndir / iOS",
-          "title": "iOS'a indirme"
+        "casting": {
+            "enabled": "Cihaza yansıtılıyor..."
         },
-        "onPc": {
-          "1": "Bilgisayarda önce indir butonuna tıklayın, sonra ise açılan yeni sayfada videoya sağ tıklayın ve <bold>Videoyu farklı kaydet </bold> seçeneğini seçin",
-          "shortTitle": "İndir / Bilgisayar",
-          "title": "Bilgisayara indirme"
+        "menus": {
+            "downloads": {
+                "copyHlsPlaylist": "HLS oynatma listesi bağlantısını kopyala",
+                "disclaimer": "İndirme bağlantıları doğrudan sağlayıcının kendisinden alınır. sudo-flix'in sağlanan indirme bağlantıları üzerinde hiçbir konrolü yoktur.",
+                "downloadSubtitle": "Geçerli altyazıyı indir",
+                "downloadVideo": "Videoyu indir",
+                "hlsDisclaimer": "İndirmeler doğrudan sağlayıcıdan alınır. sudo-flix, indirmelerin nasıl sağlanacağı üzerinde kontrole sahip değildir.<br /><br />Lütfen bir HLS oynatma listesi indirdiğinizi unutmayın; <bold>ileri seviye bilginiz yoksa indirmeniz önerilmez. akış biçimleri</bold>. Farklı formatlar için farklı kaynakları deneyin.",
+                "onAndroid": {
+                    "1": "Android'e indirmek için önce indir butonuna basın, sonra açılan yeni sayfada video üzerine <bold>basılı tutun</bold>, ardından <bold>Videoyu indir</bold> seçeneğini seçin.",
+                    "shortTitle": "İndir / Android",
+                    "title": "Android'e indirme"
+                },
+                "onIos": {
+                    "1": "iOS'a indirmek için öncelikle indir butonuna basın, sonra açılan yeni sayfada <bold><ios_share /></bold>'e basın, hemen ardından <bold>Dosyalara Kaydet <ios_files /></bold>'e basın.",
+                    "shortTitle": "İndir / iOS",
+                    "title": "iOS'a indirme"
+                },
+                "onPc": {
+                    "1": "Bilgisayarda önce indir butonuna tıklayın, sonra ise açılan yeni sayfada videoya sağ tıklayın ve <bold>Videoyu farklı kaydet </bold> seçeneğini seçin",
+                    "shortTitle": "İndir / Bilgisayar",
+                    "title": "Bilgisayara indirme"
+                },
+                "title": "İndir"
+            },
+            "episodes": {
+                "button": "Bölümler",
+                "emptyState": "Bu sezonda hiç bölüm yok, sonra tekrar deneyin!",
+                "episodeBadge": "B{{episode}}",
+                "loadingError": "Sezon yüklenirken hata oluştu",
+                "loadingList": "Yükleniyor...",
+                "loadingTitle": "Yükleniyor...",
+                "unairedEpisodes": "Bu sezondaki bir veya daha fazla bölüm henüz yayınlanmadığı için devre dışı bırakılmıştır."
+            },
+            "playback": {
+                "speedLabel": "Oynatma hızı",
+                "title": "Oynatma ayarları"
+            },
+            "quality": {
+                "automaticLabel": "Otomatik kalite",
+                "hint": "Farklı kalite seçenekleri elde etmek için <0>kaynak değiştirmeyi</0> deneyebilirsiniz.",
+                "iosNoQuality": "Apple tarafından tanımlanan sınırlamalar nedeniyle, iOS'ta bu kaynak için kalite seçimi mevcut değildir. Farklı kalite seçenekleri elde etmek için <0>başka bir kaynağa geçmeyi</0> deneyebilirsiniz.",
+                "title": "Kalite"
+            },
+            "settings": {
+                "audioItem": "Ses",
+                "downloadItem": "İndir",
+                "enableSubtitles": "Altyazıları Etkinleştir",
+                "experienceSection": "İzleme deneyimi",
+                "playbackItem": "Oynatma ayarları",
+                "qualityItem": "Kalite",
+                "sourceItem": "Video kaynakları",
+                "subtitleItem": "Altyazı ayarları",
+                "videoSection": "Video ayarları"
+            },
+            "sources": {
+                "failed": {
+                    "text": "Video bulunmaya çalışılırken sorun oluştu, lütfen farklı bir kaynak deneyin.",
+                    "title": "Video alınırken sorun oluştu"
+                },
+                "noEmbeds": {
+                    "text": "Herhangi bir video bulamadık, lütfen farklı bir kaynak deneyin.",
+                    "title": "Video bulunamadı"
+                },
+                "noStream": {
+                    "text": "Bu kaynakta bu film ya da dizi için akış bulunmamaktadır.",
+                    "title": "Akış yok"
+                },
+                "title": "Kaynaklar",
+                "unknownOption": "Bilinmeyen"
+            },
+            "subtitles": {
+                "customChoice": "Dosya sürükleyin veya yükleyin",
+                "customizeLabel": "Seçenekler",
+                "dropSubtitleFile": "Altyazı dosyasını buraya sürükleyin",
+                "offChoice": "Kapat",
+                "settings": {
+                    "backlink": "Kişisel altyazılar",
+                    "delay": "Altyazı gecikmesi",
+                    "fixCapitals": "Büyük harf kullanımını düzelt"
+                },
+                "title": "Altyazılar",
+                "unknownLanguage": "Bilinmeyen"
+            }
         },
-        "title": "İndir"
-      },
-      "episodes": {
-        "button": "Bölümler",
-        "emptyState": "Bu sezonda hiç bölüm yok, sonra tekrar deneyin!",
-        "episodeBadge": "B{{episode}}",
-        "loadingError": "Sezon yüklenirken hata oluştu",
-        "loadingList": "Yükleniyor...",
-        "loadingTitle": "Yükleniyor...",
-        "unairedEpisodes": "Bu sezondaki bir veya daha fazla bölüm henüz yayınlanmadığı için devre dışı bırakılmıştır."
-      },
-      "playback": {
-        "speedLabel": "Oynatma hızı",
-        "title": "Oynatma ayarları"
-      },
-      "quality": {
-        "automaticLabel": "Otomatik kalite",
-        "hint": "Farklı kalite seçenekleri elde etmek için <0>kaynak değiştirmeyi</0> deneyebilirsiniz.",
-        "iosNoQuality": "Apple tarafından tanımlanan sınırlamalar nedeniyle, iOS'ta bu kaynak için kalite seçimi mevcut değildir. Farklı kalite seçenekleri elde etmek için <0>başka bir kaynağa geçmeyi</0> deneyebilirsiniz.",
-        "title": "Kalite"
-      },
-      "settings": {
-        "audioItem": "Ses",
-        "downloadItem": "İndir",
-        "enableSubtitles": "Altyazıları Etkinleştir",
-        "experienceSection": "İzleme deneyimi",
-        "playbackItem": "Oynatma ayarları",
-        "qualityItem": "Kalite",
-        "sourceItem": "Video kaynakları",
-        "subtitleItem": "Altyazı ayarları",
-        "videoSection": "Video ayarları"
-      },
-      "sources": {
-        "failed": {
-          "text": "Video bulunmaya çalışılırken sorun oluştu, lütfen farklı bir kaynak deneyin.",
-          "title": "Video alınırken sorun oluştu"
+        "metadata": {
+            "api": {
+                "text": "API üstverisi yüklenemedi, lütfen internet bağlantınızı kontrol edin.",
+                "title": "API üstverisi yüklenemedi"
+            },
+            "dmca": {
+                "badge": "Kaldırıldı",
+                "text": "Üzgünüz, bu içerik telif hakkı ihlali veya yayından kaldırma bildirimi nedeniyle kullanılamıyor.",
+                "title": "İçerik kaldırıldı"
+            },
+            "extensionPermission": {
+                "badge": "İzin Gerekli",
+                "button": "Uzantıyı kullanın",
+                "text": "Tarayıcı uzantısını yüklemişsiniz, ancak uzantıyı kullanmaya başlamak için izninize ihtiyacımız var.",
+                "title": "Uzantıyı Kişiselleştir"
+            },
+            "failed": {
+                "badge": "Başarısız oldu",
+                "homeButton": "Ana sayfaya dön",
+                "text": "Medyanın üstverisi TMDB'den alınamadı. Lütfen TMDB'nin göküp çökmediğini veya internet bağlantınız üzerinden engellenmediğini kontrol edin.",
+                "title": "Üstveri yüklenemedi"
+            },
+            "notFound": {
+                "badge": "Bulunamadı",
+                "homeButton": "Ana sayfaya dön",
+                "text": "İstediğiniz medyayı bulamadık. URL'yi yanlış girdiniz ya da medya kaldırıldı.",
+                "title": "Medya bulunamadı."
+            }
         },
-        "noEmbeds": {
-          "text": "Herhangi bir video bulamadık, lütfen farklı bir kaynak deneyin.",
-          "title": "Video bulunamadı"
+        "nextEpisode": {
+            "cancel": "Vazgeç",
+            "next": "Sonraki bölüm"
         },
-        "noStream": {
-          "text": "Bu kaynakta bu film ya da dizi için akış bulunmamaktadır.",
-          "title": "Akış yok"
+        "playbackError": {
+            "badge": "Oynatma hatası",
+            "errors": {
+                "errorAborted": "Medyanın alınması kullanıcının isteği üzerine iptal edildi.",
+                "errorDecode": "Daha önce kullanılabilir olduğu belirlenmiş olmasına rağmen, medya kaynağının kodu çözülmeye çalışılırken bir hata oluştu ve bu da bir hataya neden oldu.",
+                "errorGenericMedia": "Bilinmeyen medya hatası oluştu.",
+                "errorNetwork": "Medya önceden mevcut olsa da başarıyla alınmasını engelleyen bir tür ağ hatası oluştu.",
+                "errorNotSupported": "Medya veya medya sağlayıcısı desteklenmiyor."
+            },
+            "homeButton": "Ana sayfaya git",
+            "text": "Medya oynatılmaya çalışılırken bir hata oluştu. Lütfen tekrar deneyin.",
+            "title": "Video oynatılamadı!"
         },
-        "title": "Kaynaklar",
-        "unknownOption": "Bilinmeyen"
-      },
-      "subtitles": {
-        "customChoice": "Dosya sürükleyin veya yükleyin",
-        "customizeLabel": "Seçenekler",
-        "dropSubtitleFile": "Altyazı dosyasını buraya sürükleyin",
-        "offChoice": "Kapat",
-        "settings": {
-          "backlink": "Kişisel altyazılar",
-          "delay": "Altyazı gecikmesi",
-          "fixCapitals": "Büyük harf kullanımını düzelt"
+        "scraping": {
+            "extensionFailure": {
+                "badge": "Eklenti devre dışı",
+                "enableExtension": "Eklentiyi etkinleştir",
+                "homeButton": "Eve git",
+                "text": "sudo-flix uzantısını kurdunuz. Kullanmaya başlamak için, uzantıyı bu site için etkinleştirmeniz gerekiyor.",
+                "title": "Lütfen eklentiyi etkinleştirin"
+            },
+            "items": {
+                "failure": "Hata oluştu",
+                "notFound": "Video mevcut değil",
+                "pending": "Videolar aranıyor..."
+            },
+            "notFound": {
+                "badge": "Bulunamadı",
+                "detailsButton": "Ayrıntıları göster",
+                "homeButton": "Ana sayfaya git",
+                "text": "Sağlayıcılarımız arasında arama yaptık ve aradığınız medyayı bulamadık! Medyaları barındırmıyoruz ve mevcut olanlar üzerinde hiçbir kontrolümüz yok. Daha fazla ayrıntı için lütfen aşağıdaki 'Ayrıntıları göster' seçeneğine tıklayın.",
+                "title": "Bunu bulamadık"
+            }
         },
-        "title": "Altyazılar",
-        "unknownLanguage": "Bilinmeyen"
-      }
-    },
-    "metadata": {
-      "api": {
-        "text": "API üstverisi yüklenemedi, lütfen internet bağlantınızı kontrol edin.",
-        "title": "API üstverisi yüklenemedi"
-      },
-      "dmca": {
-        "badge": "Kaldırıldı",
-        "text": "Üzgünüz, bu içerik telif hakkı ihlali veya yayından kaldırma bildirimi nedeniyle kullanılamıyor.",
-        "title": "İçerik kaldırıldı"
-      },
-      "extensionPermission": {
-        "badge": "İzin Gerekli",
-        "button": "Uzantıyı kullanın",
-        "text": "Tarayıcı uzantısını yüklemişsiniz, ancak uzantıyı kullanmaya başlamak için izninize ihtiyacımız var.",
-        "title": "Uzantıyı Kişiselleştir"
-      },
-      "failed": {
-        "badge": "Başarısız oldu",
-        "homeButton": "Ana sayfaya dön",
-        "text": "Medyanın üstverisi TMDB'den alınamadı. Lütfen TMDB'nin göküp çökmediğini veya internet bağlantınız üzerinden engellenmediğini kontrol edin.",
-        "title": "Üstveri yüklenemedi"
-      },
-      "notFound": {
-        "badge": "Bulunamadı",
-        "homeButton": "Ana sayfaya dön",
-        "text": "İstediğiniz medyayı bulamadık. URL'yi yanlış girdiniz ya da medya kaldırıldı.",
-        "title": "Medya bulunamadı."
-      }
-    },
-    "nextEpisode": {
-      "cancel": "Vazgeç",
-      "next": "Sonraki bölüm"
-    },
-    "playbackError": {
-      "badge": "Oynatma hatası",
-      "errors": {
-        "errorAborted": "Medyanın alınması kullanıcının isteği üzerine iptal edildi.",
-        "errorDecode": "Daha önce kullanılabilir olduğu belirlenmiş olmasına rağmen, medya kaynağının kodu çözülmeye çalışılırken bir hata oluştu ve bu da bir hataya neden oldu.",
-        "errorGenericMedia": "Bilinmeyen medya hatası oluştu.",
-        "errorNetwork": "Medya önceden mevcut olsa da başarıyla alınmasını engelleyen bir tür ağ hatası oluştu.",
-        "errorNotSupported": "Medya veya medya sağlayıcısı desteklenmiyor."
-      },
-      "homeButton": "Ana sayfaya git",
-      "text": "Medya oynatılmaya çalışılırken bir hata oluştu. Lütfen tekrar deneyin.",
-      "title": "Video oynatılamadı!"
-    },
-    "scraping": {
-      "extensionFailure": {
-        "badge": "Eklenti devre dışı",
-        "enableExtension": "Eklentiyi etkinleştir",
-        "homeButton": "Eve git",
-        "text": "sudo-flix uzantısını kurdunuz. Kullanmaya başlamak için, uzantıyı bu site için etkinleştirmeniz gerekiyor.",
-        "title": "Lütfen eklentiyi etkinleştirin"
-      },
-      "items": {
-        "failure": "Hata oluştu",
-        "notFound": "Video mevcut değil",
-        "pending": "Videolar aranıyor..."
-      },
-      "notFound": {
-        "badge": "Bulunamadı",
-        "detailsButton": "Ayrıntıları göster",
-        "homeButton": "Ana sayfaya git",
-        "text": "Sağlayıcılarımız arasında arama yaptık ve aradığınız medyayı bulamadık! Medyaları barındırmıyoruz ve mevcut olanlar üzerinde hiçbir kontrolümüz yok. Daha fazla ayrıntı için lütfen aşağıdaki 'Ayrıntıları göster' seçeneğine tıklayın.",
-        "title": "Bunu bulamadık"
-      }
-    },
-    "time": {
-      "regular": "{{timeWatched}} / {{duration}}",
-      "remaining": "{{timeLeft}} kaldı • {{timeFinished, datetime}}'de bitiyor",
-      "shortRegular": "{{timeWatched}}",
-      "shortRemaining": "-{{timeLeft}}"
-    },
-    "turnstile": {
-      "description": "Lütfen sağ taraftaki Captcha'yı çözerek insan olduğunuzu doğrulayın. Bu, sudo-flix'i güvende tutmak içindir!",
-      "error": "İnsan olduğunuz doğrulanamadı. Lütfen tekrar deneyin.",
-      "title": "İnsan olduğunuzu doğrulamamız gerekiyor.",
-      "verifyingHumanity": "İnsan olduğunuz doğrulanıyor..."
-    }
-  },
-  "screens": {
-    "dmca": {
-      "text": "sudo-flix'in DMCA iletişim sayfasına hoş geldiniz! Fikri mülkiyet haklarına saygı duyuyoruz ve telif hakkıyla ilgili endişeleri hızlı bir şekilde ele almak istiyoruz. Telif hakkıyla korunan çalışmanızın platformumuzda uygunsuz şekilde kullanıldığını düşünüyorsanız lütfen aşağıdaki e-postaya ayrıntılı bir DMCA bildirimi gönderin. Lütfen telif hakkıyla korunan materyalin açıklamasını, iletişim bilgilerinizi ve iyi niyet beyanınızı ekleyin. Bu sorunları derhal çözmeye kararlıyız ve ayrıca sudo-flix'i yaratıcılığa ve telif haklarına saygılı bir yer olarak tutma konusundaki işbirliğiniz için teşekkür ederiz.",
-      "title": "DMCA"
-    },
-    "loadingApp": "Uygulama yükleniyor",
-    "loadingUser": "Profiliniz yükleniyor",
-    "loadingUserError": {
-      "logout": "Çıkış yap",
-      "reset": "Özel sunucuyu sıfırla",
-      "text": "Profiliniz yüklenemedi",
-      "textWithReset": "Profiliniz özel sunucunuzdan yüklenemedi, varsayılan sunucuya sıfırlamak ister misiniz?"
-    },
-    "migration": {
-      "failed": "Verileriniz taşınamadı.",
-      "inProgress": "Lütfen bekleyin, verilerinizi taşıyoruz. Bu çok uzun sürmez."
-    }
-  },
-  "settings": {
-    "account": {
-      "accountDetails": {
-        "deviceNameLabel": "Cihaz adı",
-        "deviceNamePlaceholder": "Kişisel telefon",
-        "editProfile": "Düzenle",
-        "logoutButton": "Çıkış yap"
-      },
-      "actions": {
-        "delete": {
-          "button": "Hesabı sil",
-          "confirmButton": "Hesabı sil",
-          "confirmDescription": "Hesabınızı silmek istediğinize emin misiniz? Tüm verileriniz kaybedilecek!",
-          "confirmTitle": "Emin misiniz?",
-          "text": "Bu işlem geri alınamaz. Tüm veriler silinir ve hiçbir şey kurtarılamaz.",
-          "title": "Hesabı sil"
+        "time": {
+            "regular": "{{timeWatched}} / {{duration}}",
+            "remaining": "{{timeLeft}} kaldı • {{timeFinished, datetime}}'de bitiyor",
+            "shortRegular": "{{timeWatched}}",
+            "shortRemaining": "-{{timeLeft}}"
         },
-        "title": "Eylemler"
-      },
-      "devices": {
-        "deviceNameLabel": "Cihaz adı",
-        "failed": "Oturumlar yüklenemedi",
-        "removeDevice": "Sil",
-        "title": "Cihazlar"
-      },
-      "profile": {
-        "finish": "Düzenlemeyi bitir",
-        "firstColor": "Birinci profil rengi",
-        "secondColor": "İkinci profil rengi",
-        "title": "Profil resmini düzenle",
-        "userIcon": "Kullanıcı simgesi"
-      },
-      "register": {
-        "cta": "Hadi başlayalım",
-        "text": "İzleme ilerlemenizi cihazlar arasında paylaşın ve eşit tutun.",
-        "title": "Buluta eşitle"
-      },
-      "title": "Hesap"
-    },
-    "appearance": {
-      "activeTheme": "Aktif",
-      "themes": {
-        "blue": "Mavi",
-        "default": "Varsayılan",
-        "gray": "Gri",
-        "red": "Kırmızı",
-        "teal": "Turkuaz"
-      },
-      "title": "Görünüm"
-    },
-    "connections": {
-      "server": {
-        "description": "Verilerinizi depolamak için özel bir arkayüze bağlanmak istiyorsanız, bunu etkinleştirin ve URL'yi sağlayın. <0>Yönergeler.</0>",
-        "label": "Özel sunucu",
-        "urlLabel": "Özel sunucu URL'si"
-      },
-      "setup": {
-        "doSetup": "Başlayın",
-        "errorStatus": {
-          "description": "Kurulumda dikkat etmeniz gereken bir veya daha fazla öğe var gibi görünüyor.",
-          "title": "Dikkatinizi gerektiren bir şey var"
-        },
-        "itemError": "Kurulum sırasında bir hata oluşmuş olabilir. Sorunu çözmek için kurulum adımlarını tekrar izleyin.",
-        "items": {
-          "default": "Varsayılan ayarlar",
-          "extension": "Tarayıcı uzantısı",
-          "proxy": "Özel Proxy"
-        },
-        "redoSetup": "Kurulumu tekrar yapın",
-        "successStatus": {
-          "description": "Sevdiğiniz şeyleri izlemek için her şey hazır. Başlayın ve keyfini çıkarın.",
-          "title": "Tamam!"
-        },
-        "unsetStatus": {
-          "description": "Kurulum sürecini başlatmak için lütfen sağdaki düğmeye tıklayın.",
-          "title": "Kurulumu tamamlamadınız"
+        "turnstile": {
+            "description": "Lütfen sağ taraftaki Captcha'yı çözerek insan olduğunuzu doğrulayın. Bu, sudo-flix'i güvende tutmak içindir!",
+            "error": "İnsan olduğunuz doğrulanamadı. Lütfen tekrar deneyin.",
+            "title": "İnsan olduğunuzu doğrulamamız gerekiyor.",
+            "verifyingHumanity": "İnsan olduğunuz doğrulanıyor..."
         }
-      },
-      "title": "Bağlantılar",
-      "workers": {
-        "addButton": "Yeni işleyici ekle",
-        "description": "Uygulamanın çalışması için tüm trafik vekil sunucular üzerinden yönlendirilir. Kendi işleyicilerinizi getirmek istiyorsanız bunu etkinleştirin.<0>Yönergeler.</0>",
-        "emptyState": "Henüz işleyici yok, aşağıya bir tane ekleyin",
-        "label": "Özel vekil sunucu işleyici kullan",
-        "urlLabel": "İşleyici URL'leri",
-        "urlPlaceholder": "https://"
-      }
     },
-    "preferences": {
-      "language": "Uygulama dili",
-      "languageDescription": "Uygulamanın tamamı için seçili dil",
-      "thumbnail": "Küçük resimler oluştur",
-      "thumbnailDescription": "Çoğu video için ön izleme görseli bulunmaz. Bu ayarı etkinleştirerek anında oluşturulmasını sağlayabilirsiniz, ancak bu videonuzu yavaşlatabilir.",
-      "thumbnailLabel": "Küçük resim oluştur",
-      "title": "Ayarlar"
+    "screens": {
+        "dmca": {
+            "text": "sudo-flix'in DMCA iletişim sayfasına hoş geldiniz! Fikri mülkiyet haklarına saygı duyuyoruz ve telif hakkıyla ilgili endişeleri hızlı bir şekilde ele almak istiyoruz. Telif hakkıyla korunan çalışmanızın platformumuzda uygunsuz şekilde kullanıldığını düşünüyorsanız lütfen aşağıdaki e-postaya ayrıntılı bir DMCA bildirimi gönderin. Lütfen telif hakkıyla korunan materyalin açıklamasını, iletişim bilgilerinizi ve iyi niyet beyanınızı ekleyin. Bu sorunları derhal çözmeye kararlıyız ve ayrıca sudo-flix'i yaratıcılığa ve telif haklarına saygılı bir yer olarak tutma konusundaki işbirliğiniz için teşekkür ederiz.",
+            "title": "DMCA"
+        },
+        "loadingApp": "Uygulama yükleniyor",
+        "loadingUser": "Profiliniz yükleniyor",
+        "loadingUserError": {
+            "logout": "Çıkış yap",
+            "reset": "Özel sunucuyu sıfırla",
+            "text": "Profiliniz yüklenemedi",
+            "textWithReset": "Profiliniz özel sunucunuzdan yüklenemedi, varsayılan sunucuya sıfırlamak ister misiniz?"
+        },
+        "migration": {
+            "failed": "Verileriniz taşınamadı.",
+            "inProgress": "Lütfen bekleyin, verilerinizi taşıyoruz. Bu çok uzun sürmez."
+        }
     },
-    "reset": "Sıfırla",
-    "save": "Kaydet",
-    "sidebar": {
-      "info": {
-        "appVersion": "Uygulama sürümü",
-        "backendUrl": "Arkayüz URL'si",
-        "backendVersion": "Arkayüz sürümü",
-        "hostname": "Ana makine adı",
-        "insecure": "Güvensiz",
-        "notLoggedIn": "Giriş yapmadınız",
-        "secure": "Güvenli",
-        "title": "Uygulama bilgisi",
-        "unknownVersion": "Bilinmeyen",
-        "userId": "Kullanıcı Kimliği"
-      }
-    },
-    "subtitles": {
-      "backgroundBlurLabel": "Arka plan bulanıklığı",
-      "backgroundLabel": "Arka plan opaklığı",
-      "colorLabel": "Renk",
-      "previewQuote": "Korkmamalıyım. Korku aklın katilidir.",
-      "textSizeLabel": "Yazı boyutu",
-      "title": "Altyazılar"
-    },
-    "unsaved": "Kaydedilmemiş değişiklikleriniz mevcut"
-  }
+    "settings": {
+        "account": {
+            "accountDetails": {
+                "deviceNameLabel": "Cihaz adı",
+                "deviceNamePlaceholder": "Kişisel telefon",
+                "editProfile": "Düzenle",
+                "logoutButton": "Çıkış yap"
+            },
+            "actions": {
+                "delete": {
+                    "button": "Hesabı sil",
+                    "confirmButton": "Hesabı sil",
+                    "confirmDescription": "Hesabınızı silmek istediğinize emin misiniz? Tüm verileriniz kaybedilecek!",
+                    "confirmTitle": "Emin misiniz?",
+                    "text": "Bu işlem geri alınamaz. Tüm veriler silinir ve hiçbir şey kurtarılamaz.",
+                    "title": "Hesabı sil"
+                },
+                "title": "Eylemler"
+            },
+            "devices": {
+                "deviceNameLabel": "Cihaz adı",
+                "failed": "Oturumlar yüklenemedi",
+                "removeDevice": "Sil",
+                "title": "Cihazlar"
+            },
+            "profile": {
+                "finish": "Düzenlemeyi bitir",
+                "firstColor": "Birinci profil rengi",
+                "secondColor": "İkinci profil rengi",
+                "title": "Profil resmini düzenle",
+                "userIcon": "Kullanıcı simgesi"
+            },
+            "register": {
+                "cta": "Hadi başlayalım",
+                "text": "İzleme ilerlemenizi cihazlar arasında paylaşın ve eşit tutun.",
+                "title": "Buluta eşitle"
+            },
+            "title": "Hesap"
+        },
+        "appearance": {
+            "activeTheme": "Aktif",
+            "themes": {
+                "blue": "Mavi",
+                "default": "Varsayılan",
+                "gray": "Gri",
+                "red": "Kırmızı",
+                "teal": "Turkuaz"
+            },
+            "title": "Görünüm"
+        },
+        "connections": {
+            "server": {
+                "description": "Verilerinizi depolamak için özel bir arkayüze bağlanmak istiyorsanız, bunu etkinleştirin ve URL'yi sağlayın. <0>Yönergeler.</0>",
+                "label": "Özel sunucu",
+                "urlLabel": "Özel sunucu URL'si"
+            },
+            "setup": {
+                "doSetup": "Başlayın",
+                "errorStatus": {
+                    "description": "Kurulumda dikkat etmeniz gereken bir veya daha fazla öğe var gibi görünüyor.",
+                    "title": "Dikkatinizi gerektiren bir şey var"
+                },
+                "itemError": "Kurulum sırasında bir hata oluşmuş olabilir. Sorunu çözmek için kurulum adımlarını tekrar izleyin.",
+                "items": {
+                    "default": "Varsayılan ayarlar",
+                    "extension": "Tarayıcı uzantısı",
+                    "proxy": "Özel Proxy"
+                },
+                "redoSetup": "Kurulumu tekrar yapın",
+                "successStatus": {
+                    "description": "Sevdiğiniz şeyleri izlemek için her şey hazır. Başlayın ve keyfini çıkarın.",
+                    "title": "Tamam!"
+                },
+                "unsetStatus": {
+                    "description": "Kurulum sürecini başlatmak için lütfen sağdaki düğmeye tıklayın.",
+                    "title": "Kurulumu tamamlamadınız"
+                }
+            },
+            "title": "Bağlantılar",
+            "workers": {
+                "addButton": "Yeni işleyici ekle",
+                "description": "Uygulamanın çalışması için tüm trafik vekil sunucular üzerinden yönlendirilir. Kendi işleyicilerinizi getirmek istiyorsanız bunu etkinleştirin.<0>Yönergeler.</0>",
+                "emptyState": "Henüz işleyici yok, aşağıya bir tane ekleyin",
+                "label": "Özel vekil sunucu işleyici kullan",
+                "urlLabel": "İşleyici URL'leri",
+                "urlPlaceholder": "https://"
+            }
+        },
+        "preferences": {
+            "language": "Uygulama dili",
+            "languageDescription": "Uygulamanın tamamı için seçili dil",
+            "thumbnail": "Küçük resimler oluştur",
+            "thumbnailDescription": "Çoğu video için ön izleme görseli bulunmaz. Bu ayarı etkinleştirerek anında oluşturulmasını sağlayabilirsiniz, ancak bu videonuzu yavaşlatabilir.",
+            "thumbnailLabel": "Küçük resim oluştur",
+            "title": "Ayarlar"
+        },
+        "reset": "Sıfırla",
+        "save": "Kaydet",
+        "sidebar": {
+            "info": {
+                "appVersion": "Uygulama sürümü",
+                "backendUrl": "Arkayüz URL'si",
+                "backendVersion": "Arkayüz sürümü",
+                "hostname": "Ana makine adı",
+                "insecure": "Güvensiz",
+                "notLoggedIn": "Giriş yapmadınız",
+                "secure": "Güvenli",
+                "title": "Uygulama bilgisi",
+                "unknownVersion": "Bilinmeyen",
+                "userId": "Kullanıcı Kimliği"
+            }
+        },
+        "subtitles": {
+            "backgroundBlurLabel": "Arka plan bulanıklığı",
+            "backgroundLabel": "Arka plan opaklığı",
+            "colorLabel": "Renk",
+            "previewQuote": "Korkmamalıyım. Korku aklın katilidir.",
+            "textSizeLabel": "Yazı boyutu",
+            "title": "Altyazılar"
+        },
+        "unsaved": "Kaydedilmemiş değişiklikleriniz mevcut"
+    }
 }
