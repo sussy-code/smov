@@ -20,6 +20,7 @@ const defaultLanguageCodes: string[] = [
   "bn-BD",
   "cs-CZ",
   "ca-AD",
+  "da-DK",
   "de-DE",
   "el-GR",
   "en-US",

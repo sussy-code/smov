@@ -4,6 +4,7 @@ import bn from "@/assets/locales/bn.json";
 import ca from "@/assets/locales/ca.json";
 import caVl from "@/assets/locales/ca@valencia.json";
 import cs from "@/assets/locales/cs.json";
+import da from "@/assets/locales/da.json";
 import de from "@/assets/locales/de.json";
 import el from "@/assets/locales/el.json";
 import en from "@/assets/locales/en.json";
@@ -51,6 +52,7 @@ export const locales = {
   ca,
   "ca-ES": caVl,
   cs,
+  da,
   de,
   fr,
   it,
