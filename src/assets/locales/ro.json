@@ -1,543 +1,547 @@
 {
-  "about": {
-    "description": "sudo-flix este o aplicație web care caută fluxuri pe internet. Echipa urmărește o abordare mai ales minimalistă a consumului de conținut.",
-    "faqTitle": "Întrebări obișnuite",
-    "q1": {
-      "body": "sudo-flix nu găzduiește niciun conținut. Când faceți clic pe ceva pentru a viziona, pe Internet este căutat media selectată (Pe ecranul de încărcare și în fila „Surse video”, puteți vedea ce sursă utilizați). Media nu este niciodată încărcată de sudo-flix, totul se face prin acest mecanism de căutare.",
-      "title": "De unde vine conținutul?"
+    "about": {
+        "description": "sudo-flix este o aplicație web care caută fluxuri pe internet. Echipa urmărește o abordare mai ales minimalistă a consumului de conținut.",
+        "faqTitle": "Întrebări obișnuite",
+        "q1": {
+            "body": "sudo-flix nu găzduiește niciun conținut. Când faceți clic pe ceva pentru a viziona, pe Internet este căutat media selectată (Pe ecranul de încărcare și în fila „Surse video”, puteți vedea ce sursă utilizați). Media nu este niciodată încărcată de sudo-flix, totul se face prin acest mecanism de căutare.",
+            "title": "De unde vine conținutul?"
+        },
+        "q2": {
+            "body": "Nu este posibil să solicitați o emisiune sau un film, sudo-flix nu gestionează niciun conținut. Tot conținutul este vizualizat prin surse de internet.",
+            "title": "Unde pot solicita o emisiune sau un film?"
+        },
+        "q3": {
+            "body": "Rezultatele căutării noastre sunt furnizate de The Movie Database (TMDB) și afișați indiferent dacă sursele noastre au de fapt conținutul.",
+            "title": "Rezultatele căutării afișează emisiunea sau filmul, de ce nu îl pot reda?"
+        },
+        "title": "Despre sudo-flix"
     },
-    "q2": {
-      "body": "Nu este posibil să solicitați o emisiune sau un film, sudo-flix nu gestionează niciun conținut. Tot conținutul este vizualizat prin surse de internet.",
-      "title": "Unde pot solicita o emisiune sau un film?"
+    "actions": {
+        "copied": "Copiat",
+        "copy": "Copiați"
     },
-    "q3": {
-      "body": "Rezultatele căutării noastre sunt furnizate de The Movie Database (TMDB) și afișați indiferent dacă sursele noastre au de fapt conținutul.",
-      "title": "Rezultatele căutării afișează emisiunea sau filmul, de ce nu îl pot reda?"
+    "auth": {
+        "createAccount": "Nu aveți încă un cont? <0>Creați un cont.</0>",
+        "deviceNameLabel": "Nume dispozitiv",
+        "deviceNamePlaceholder": "Telefon personal",
+        "generate": {
+            "description": "Fraza de acces acționează ca nume de utilizator și parolă. Asigurați-vă că îl păstrați în siguranță, deoarece va trebui să îl introduceți pentru a vă conecta la contul dvs",
+            "next": "Mi-am salvat fraza de acces",
+            "passphraseFrameLabel": "Frază de acces",
+            "title": "Fraza dvs. de acces"
+        },
+        "hasAccount": "ai deja un cont? <0>Autentificați-vă aici.</0>",
+        "login": {
+            "description": "Vă rugăm să introduceți fraza de acces pentru a vă conecta la contul dvs",
+            "deviceLengthError": "Introduceți un nume de dispozitiv",
+            "passphraseLabel": "Expresie de acces din 12 cuvinte",
+            "passphrasePlaceholder": "Frază de acces",
+            "submit": "Conectează te",
+            "title": "conecteaza-te la contul tau",
+            "validationError": "Fraza de acces este incorectă sau incompletă"
+        },
+        "register": {
+            "information": {
+                "color1": "Culoarea profilului unu",
+                "color2": "Culoarea profilului doi",
+                "header": "Introduceți un nume pentru dispozitivul dvs. și alegeți culorile și o pictogramă de utilizator la alegerea dvs",
+                "icon": "Pictograma utilizatorului",
+                "next": "Următorul",
+                "title": "Informații despre cont"
+            }
+        },
+        "trust": {
+            "failed": {
+                "text": "L-ai configurat corect?",
+                "title": "Nu s-a putut ajunge la server"
+            },
+            "host": "Vă conectați la <0>{{hostname}}</0> - vă rugăm să confirmați că aveți încredere înainte de a vă crea un cont",
+            "no": "Întoarce-te",
+            "noHost": "Serverul nu a fost configurat, deci nu vă puteți crea un cont",
+            "noHostTitle": "Serverul nu este configurat!",
+            "title": "Ai încredere în acest server?",
+            "yes": "Am încredere în acest server"
+        },
+        "verify": {
+            "description": "Introduceți expresia de acces de mai devreme pentru a confirma că ați salvat-o și pentru a vă crea contul",
+            "invalidData": "Datele nu sunt valide",
+            "noMatch": "Fraza de acces nu se potrivește",
+            "passphraseLabel": "Fraza dvs. de acces de 12 cuvinte",
+            "recaptchaFailed": "Validarea ReCaptcha a eșuat",
+            "register": "Creează cont",
+            "title": "Confirmați-vă fraza de acces"
+        }
     },
-    "title": "Despre sudo-flix"
-  },
-  "actions": {
-    "copied": "Copiat",
-    "copy": "Copiați"
-  },
-  "auth": {
-    "createAccount": "Nu aveți încă un cont? <0>Creați un cont.</0>",
-    "deviceNameLabel": "Nume dispozitiv",
-    "deviceNamePlaceholder": "Telefon personal",
-    "generate": {
-      "description": "Fraza de acces acționează ca nume de utilizator și parolă. Asigurați-vă că îl păstrați în siguranță, deoarece va trebui să îl introduceți pentru a vă conecta la contul dvs",
-      "next": "Mi-am salvat fraza de acces",
-      "passphraseFrameLabel": "Frază de acces",
-      "title": "Fraza dvs. de acces"
+    "errors": {
+        "badge": "S-a spart",
+        "details": "Detalii despre eroare",
+        "reloadPage": "Reîncărcați pagina",
+        "showError": "Afișați detalii despre eroare",
+        "title": "Am intampinat o eroare!"
     },
-    "hasAccount": "ai deja un cont? <0>Autentificați-vă aici.</0>",
-    "login": {
-      "description": "Vă rugăm să introduceți fraza de acces pentru a vă conecta la contul dvs",
-      "deviceLengthError": "Introduceți un nume de dispozitiv",
-      "passphraseLabel": "Expresie de acces din 12 cuvinte",
-      "passphrasePlaceholder": "Frază de acces",
-      "submit": "Conectează te",
-      "title": "conecteaza-te la contul tau",
-      "validationError": "Fraza de acces este incorectă sau incompletă"
+    "footer": {
+        "legal": {
+            "disclaimer": "Declinare a răspunderii",
+            "disclaimerText": "sudo-flix nu găzduiește niciun fișier, ci doar trimite la servicii terțe. Problemele juridice ar trebui abordate cu gazdele și furnizorii de fișiere. sudo-flix nu este responsabil pentru niciun fișier media afișat de furnizorii de video."
+        },
+        "links": {
+            "discord": "Discord",
+            "dmca": "DMCA",
+            "github": "GitHub"
+        },
+        "tagline": "Urmăriți emisiunile și filmele preferate cu această aplicație de streaming open source."
     },
-    "register": {
-      "information": {
-        "color1": "Culoarea profilului unu",
-        "color2": "Culoarea profilului doi",
-        "header": "Introduceți un nume pentru dispozitivul dvs. și alegeți culorile și o pictogramă de utilizator la alegerea dvs",
-        "icon": "Pictograma utilizatorului",
-        "next": "Următorul",
-        "title": "Informații despre cont"
-      }
+    "global": {
+        "name": "sudo-flix",
+        "pages": {
+            "about": "Despre",
+            "dmca": "DMCA",
+            "login": "Log in",
+            "onboarding": "Configurație",
+            "pagetitle": "{{title}} - sudo-flix",
+            "register": "Inregistreaza-te",
+            "settings": "Setări"
+        }
     },
-    "trust": {
-      "failed": {
-        "text": "L-ai configurat corect?",
-        "title": "Nu s-a putut ajunge la server"
-      },
-      "host": "Vă conectați la <0>{{hostname}}</0> - vă rugăm să confirmați că aveți încredere înainte de a vă crea un cont",
-      "no": "Întoarce-te",
-      "noHost": "Serverul nu a fost configurat, deci nu vă puteți crea un cont",
-      "noHostTitle": "Serverul nu este configurat!",
-      "title": "Ai încredere în acest server?",
-      "yes": "Am încredere în acest server"
+    "home": {
+        "bookmarks": {
+            "sectionTitle": "Marcaje"
+        },
+        "continueWatching": {
+            "sectionTitle": "Continuați vizionarea"
+        },
+        "mediaList": {
+            "stopEditing": "Opriți editarea"
+        },
+        "search": {
+            "allResults": "Asta e tot ce avem!",
+            "failed": "Găsire media eșuată, încearcă din nou!",
+            "loading": "Se încarcă...",
+            "noResults": "Nu am putut găsi nimic!",
+            "placeholder": {
+                "default": "La ce dorești să te uiți?",
+                "extra": [
+                    "Ce vrei să explorezi?",
+                    "Ce e pe lista dvs. de urmărire?",
+                    "Care e filmul tău preferat?",
+                    "Care e serialul tău preferat?"
+                ]
+            },
+            "sectionTitle": "Rezultate de căutare"
+        },
+        "titles": {
+            "day": {
+                "default": "La ce vrei să te uiți după-amiaza asta?",
+                "extra": [
+                    "Te simți aventuros? Jurassic Park ar putea fi o alegere perfectă."
+                ]
+            },
+            "morning": {
+                "default": "La ce dorești să te in uiți dimineață aceasta?",
+                "extra": [
+                    "Aud că Before Sunrise este bun"
+                ]
+            },
+            "night": {
+                "default": "La ce dorești să te uiți în astă seară?",
+                "extra": [
+                    "Obosit? Aud că The Exorcist is good."
+                ]
+            }
+        }
     },
-    "verify": {
-      "description": "Introduceți expresia de acces de mai devreme pentru a confirma că ați salvat-o și pentru a vă crea contul",
-      "invalidData": "Datele nu sunt valide",
-      "noMatch": "Fraza de acces nu se potrivește",
-      "passphraseLabel": "Fraza dvs. de acces de 12 cuvinte",
-      "recaptchaFailed": "Validarea ReCaptcha a eșuat",
-      "register": "Creează cont",
-      "title": "Confirmați-vă fraza de acces"
-    }
-  },
-  "errors": {
-    "badge": "S-a spart",
-    "details": "Detalii despre eroare",
-    "reloadPage": "Reîncărcați pagina",
-    "showError": "Afișați detalii despre eroare",
-    "title": "Am intampinat o eroare!"
-  },
-  "footer": {
-    "legal": {
-      "disclaimer": "Declinare a răspunderii",
-      "disclaimerText": "sudo-flix nu găzduiește niciun fișier, ci doar trimite la servicii terțe. Problemele juridice ar trebui abordate cu gazdele și furnizorii de fișiere. sudo-flix nu este responsabil pentru niciun fișier media afișat de furnizorii de video."
+    "media": {
+        "episodeDisplay": "S{{season}} E{{episode}}",
+        "types": {
+            "movie": "Film",
+            "show": "Spectacol"
+        }
     },
-    "links": {
-      "discord": "Discord",
-      "dmca": "DMCA",
-      "github": "GitHub"
+    "navigation": {
+        "banner": {
+            "offline": "Verificați-vă conexiunea de internet"
+        },
+        "menu": {
+            "about": "Despre noi",
+            "logout": "Deconectați-vă",
+            "register": "Sincronizare în cloud",
+            "settings": "Setări",
+            "support": "Ajutor"
+        }
     },
-    "tagline": "Urmăriți emisiunile și filmele preferate cu această aplicație de streaming open source."
-  },
-  "global": {
-    "name": "sudo-flix",
-    "pages": {
-      "about": "Despre",
-      "dmca": "DMCA",
-      "login": "Log in",
-      "onboarding": "Configurație",
-      "pagetitle": "{{title}} - sudo-flix",
-      "register": "Inregistreaza-te",
-      "settings": "Setări"
-    }
-  },
-  "home": {
-    "bookmarks": {
-      "sectionTitle": "Marcaje"
+    "notFound": {
+        "badge": "Nu a fost găsit",
+        "goHome": "Înapoi acasă",
+        "message": "Ne-am uitat peste tot: sub pubele, în dulap, În spatele proxy-ului dar din păcate nu am găsit pagina pe care dumneavoastră o căutați.",
+        "title": "N-am putut găsi pagina"
     },
-    "continueWatching": {
-      "sectionTitle": "Continuați vizionarea"
-    },
-    "mediaList": {
-      "stopEditing": "Opriți editarea"
-    },
-    "search": {
-      "allResults": "Asta e tot ce avem!",
-      "failed": "Găsire media eșuată, încearcă din nou!",
-      "loading": "Se încarcă...",
-      "noResults": "Nu am putut găsi nimic!",
-      "placeholder": {
-        "default": "La ce dorești să te uiți?",
-        "extra": [
-          "Ce vrei să explorezi?",
-          "Ce e pe lista dvs. de urmărire?",
-          "Care e filmul tău preferat?",
-          "Care e serialul tău preferat?"
-        ]
-      },
-      "sectionTitle": "Rezultate de căutare"
-    },
-    "titles": {
-      "day": {
-        "default": "La ce vrei să te uiți după-amiaza asta?",
-        "extra": [
-          "Te simți aventuros? Jurassic Park ar putea fi o alegere perfectă."
-        ]
-      },
-      "morning": {
-        "default": "La ce dorești să te in uiți dimineață aceasta?",
-        "extra": ["Aud că Before Sunrise este bun"]
-      },
-      "night": {
-        "default": "La ce dorești să te uiți în astă seară?",
-        "extra": ["Obosit? Aud că The Exorcist is good."]
-      }
-    }
-  },
-  "media": {
-    "episodeDisplay": "S{{season}} E{{episode}}",
-    "types": {
-      "movie": "Film",
-      "show": "Spectacol"
-    }
-  },
-  "navigation": {
-    "banner": {
-      "offline": "Verificați-vă conexiunea de internet"
-    },
-    "menu": {
-      "about": "Despre noi",
-      "logout": "Deconectați-vă",
-      "register": "Sincronizare în cloud",
-      "settings": "Setări",
-      "support": "Ajutor"
-    }
-  },
-  "notFound": {
-    "badge": "Nu a fost găsit",
-    "goHome": "Înapoi acasă",
-    "message": "Ne-am uitat peste tot: sub pubele, în dulap, În spatele proxy-ului dar din păcate nu am găsit pagina pe care dumneavoastră o căutați.",
-    "title": "N-am putut găsi pagina"
-  },
-  "onboarding": {
-    "defaultConfirm": {
-      "cancel": "Anulare",
-      "confirm": "Folosește configurația implicită",
-      "description": "Configurația implicită nu are cele mai bune fluxuri și poate fi insuportabil de înceată.",
-      "title": "Sunteți sigur(ă)?"
-    },
-    "extension": {
-      "back": "Înapoi",
-      "explainer": "Folosind această extensie de browser, puteți obține cele mai bune fluxuri pe care le avem de oferit. Cu doar o simplă instalare.",
-      "explainerIos": "Din păcate, extensia de browser nu e suportată pe iOS, Apăsați <bold>Înapoi</bold> pentru a alege altă opțiune.",
-      "extensionHelp": "Dacă ați instalat extensia dar nu e detectată, <bold>deschideți extensia din meniul extensiilor al browserului dvs.</bold> și urmăriți pașii de pe ecran.",
-      "linkChrome": "Instalare extensie pentru Chrome",
-      "linkFirefox": "Instalare extensie pentru Firefox",
-      "notDetecting": "Instalată pe Chrome dar site-ul nu o detectează? Încerați să reîmprospătați pagina!",
-      "notDetectingAction": "Reîncarcă pagina",
-      "status": {
-        "disallowed": "Extensia nu e activată pentru această pagină",
-        "disallowedAction": "Activare extensie",
-        "failed": "Nu s-a putut obține statusul",
-        "loading": "Așteptăm să vă instalați extensia",
-        "outdated": "Versiunea extensiei este prea veche",
-        "success": "Extensia funcționează conform așteptărilor!"
-      },
-      "submit": "Continuare",
-      "title": "Să începem cu o extensie"
-    },
-    "proxy": {
-      "back": "Înapoi",
-      "explainer": "Cu metoda proxy, puteți obține fluxuri de calitate prin a face un proxy cu autoservire.",
-      "input": {
-        "errorConnection": "Nu s-a putut conecta la proxy",
-        "errorInvalidUrl": "URL invalid",
-        "errorNotProxy": "Am așteptat un proxy dar am primit un site web",
-        "label": "URL-ul proxy-ului",
-        "placeholder": "https://"
-      },
-      "link": "Învață cum se face un proxy",
-      "submit": "Validare proxy",
-      "title": "Să facem un proxy nou"
-    },
-    "start": {
-      "explainer": "Pentru a obține cele mai bune fluxuri posibile, va trebui să alegeți ce metodă de streaming vreți să folosiți.",
-      "options": {
-        "default": {
-          "text": "Nu vreau fluxuri de calitate,<0 /> <1>folosește configurația implicită</1>"
+    "onboarding": {
+        "defaultConfirm": {
+            "cancel": "Anulare",
+            "confirm": "Folosește configurația implicită",
+            "description": "Configurația implicită nu are cele mai bune fluxuri și poate fi insuportabil de înceată.",
+            "title": "Sunteți sigur(ă)?"
         },
         "extension": {
-          "action": "Instalare extensie",
-          "description": "Instalați extensia browser și obțineți acces la cele mai bune surse.",
-          "quality": "Cea mai bună calitate",
-          "title": "Extensie browser"
+            "back": "Înapoi",
+            "explainer": "Folosind această extensie de browser, puteți obține cele mai bune fluxuri pe care le avem de oferit. Cu doar o simplă instalare.",
+            "explainerIos": "Din păcate, extensia de browser nu e suportată pe iOS, Apăsați <bold>Înapoi</bold> pentru a alege altă opțiune.",
+            "extensionHelp": "Dacă ați instalat extensia dar nu e detectată, <bold>deschideți extensia din meniul extensiilor al browserului dvs.</bold> și urmăriți pașii de pe ecran.",
+            "linkChrome": "Instalare extensie pentru Chrome",
+            "linkFirefox": "Instalare extensie pentru Firefox",
+            "notDetecting": "Instalată pe Chrome dar site-ul nu o detectează? Încerați să reîmprospătați pagina!",
+            "notDetectingAction": "Reîncarcă pagina",
+            "status": {
+                "disallowed": "Extensia nu e activată pentru această pagină",
+                "disallowedAction": "Activare extensie",
+                "failed": "Nu s-a putut obține statusul",
+                "loading": "Așteptăm să vă instalați extensia",
+                "outdated": "Versiunea extensiei este prea veche",
+                "success": "Extensia funcționează conform așteptărilor!"
+            },
+            "submit": "Continuare",
+            "title": "Să începem cu o extensie"
         },
         "proxy": {
-          "action": "Configurare proxy",
-          "description": "Configurați un proxy în doar 5 minute și obținți acces la resurse grozave.",
-          "quality": "Calitate bună",
-          "title": "Proxy personalizat"
+            "back": "Înapoi",
+            "explainer": "Cu metoda proxy, puteți obține fluxuri de calitate prin a face un proxy cu autoservire.",
+            "input": {
+                "errorConnection": "Nu s-a putut conecta la proxy",
+                "errorInvalidUrl": "URL invalid",
+                "errorNotProxy": "Am așteptat un proxy dar am primit un site web",
+                "label": "URL-ul proxy-ului",
+                "placeholder": "https://"
+            },
+            "link": "Învață cum se face un proxy",
+            "submit": "Validare proxy",
+            "title": "Să facem un proxy nou"
+        },
+        "start": {
+            "explainer": "Pentru a obține cele mai bune fluxuri posibile, va trebui să alegeți ce metodă de streaming vreți să folosiți.",
+            "options": {
+                "default": {
+                    "text": "Nu vreau fluxuri de calitate,<0 /> <1>folosește configurația implicită</1>"
+                },
+                "extension": {
+                    "action": "Instalare extensie",
+                    "description": "Instalați extensia browser și obțineți acces la cele mai bune surse.",
+                    "quality": "Cea mai bună calitate",
+                    "title": "Extensie browser"
+                },
+                "proxy": {
+                    "action": "Configurare proxy",
+                    "description": "Configurați un proxy în doar 5 minute și obținți acces la resurse grozave.",
+                    "quality": "Calitate bună",
+                    "title": "Proxy personalizat"
+                }
+            },
+            "title": "Hai să configurăm sudo-flix"
         }
-      },
-      "title": "Hai să configurăm sudo-flix"
-    }
-  },
-  "overlays": {
-    "close": "Închide"
-  },
-  "player": {
-    "back": {
-      "default": "Înapoi acasă",
-      "short": "Înapoi"
     },
-    "casting": {
-      "enabled": "Casting pe dispozitiv..."
+    "overlays": {
+        "close": "Închide"
     },
-    "menus": {
-      "downloads": {
-        "copyHlsPlaylist": "Copiere link către lista de redare HLS",
-        "disclaimer": "Descărcările sunt luate direct de la furnizor. sudo-flix nu are control cum descărcările sunt furnizate.",
-        "downloadSubtitle": "Descărcați subtitlul curente",
-        "downloadVideo": "Descarcă video",
-        "hlsDisclaimer": "Descărcările sunt preluate direct de la furnizor. sudo-flix nu are control asupra modului în care sunt furnizate descărcările.<br /><br />Vă rugăm să rețineți că descărcați o listă de redare HLS, <bold>nu este recomandat să o descărcați dacă nu sunteți familiari cu formate avasate de streaming</bold>. Încercați surse diferite pentru formate diferte.",
-        "onAndroid": {
-          "1": "Pentru a descărca pe android, apăsați butonul de descărcare apoi în pagina nouă,<bold>apăsați și țineți</bold> pe video, apoi selectați <bold>salvează</bold>.",
-          "shortTitle": "Descărcare / Android",
-          "title": "Descărcare pe Android"
+    "player": {
+        "back": {
+            "default": "Înapoi acasă",
+            "short": "Înapoi"
         },
-        "onIos": {
-          "1": "Pentru a instala pe iOS, apăsați butonul de instalare apoi în pagina nouă apăsați <bold><ios_share /></bold>, apoi <bold>Salvează in File <ios_files /></bold>.",
-          "shortTitle": "Descărcare / iOS",
-          "title": "Descărcare pe iOS"
+        "casting": {
+            "enabled": "Casting pe dispozitiv..."
         },
-        "onPc": {
-          "1": "Pe calculator, apăsați butonul de descărcare apoi în pagina nouă, apăsați click drept pe video și selectați <bold> Salvați videoul ca</bold>",
-          "shortTitle": "Descarcă / Calculator",
-          "title": "Descărcare pe calculator"
+        "menus": {
+            "downloads": {
+                "copyHlsPlaylist": "Copiere link către lista de redare HLS",
+                "disclaimer": "Descărcările sunt luate direct de la furnizor. sudo-flix nu are control cum descărcările sunt furnizate.",
+                "downloadSubtitle": "Descărcați subtitlul curente",
+                "downloadVideo": "Descarcă video",
+                "hlsDisclaimer": "Descărcările sunt preluate direct de la furnizor. sudo-flix nu are control asupra modului în care sunt furnizate descărcările.<br /><br />Vă rugăm să rețineți că descărcați o listă de redare HLS, <bold>nu este recomandat să o descărcați dacă nu sunteți familiari cu formate avasate de streaming</bold>. Încercați surse diferite pentru formate diferte.",
+                "onAndroid": {
+                    "1": "Pentru a descărca pe android, apăsați butonul de descărcare apoi în pagina nouă,<bold>apăsați și țineți</bold> pe video, apoi selectați <bold>salvează</bold>.",
+                    "shortTitle": "Descărcare / Android",
+                    "title": "Descărcare pe Android"
+                },
+                "onIos": {
+                    "1": "Pentru a instala pe iOS, apăsați butonul de instalare apoi în pagina nouă apăsați <bold><ios_share /></bold>, apoi <bold>Salvează in File <ios_files /></bold>.",
+                    "shortTitle": "Descărcare / iOS",
+                    "title": "Descărcare pe iOS"
+                },
+                "onPc": {
+                    "1": "Pe calculator, apăsați butonul de descărcare apoi în pagina nouă, apăsați click drept pe video și selectați <bold> Salvați videoul ca</bold>",
+                    "shortTitle": "Descarcă / Calculator",
+                    "title": "Descărcare pe calculator"
+                },
+                "title": "Descarcă"
+            },
+            "episodes": {
+                "button": "Episoade",
+                "emptyState": "Nu sunt episoade in sezonul acesta, reveniți mai târziu!",
+                "episodeBadge": "E{{episode}}",
+                "loadingError": "Eroare la încărcarea sezonul",
+                "loadingList": "Se încarcă...",
+                "loadingTitle": "Se încarcă...",
+                "unairedEpisodes": "Unul sau mai multe episoade din sezonul acesta sunt indisponibile deoarece incă nu au venit încă."
+            },
+            "playback": {
+                "speedLabel": "Viteză de redare",
+                "title": "Setările de redare"
+            },
+            "quality": {
+                "automaticLabel": "Calitate automată",
+                "hint": "Puteți încerca <0>Schimbarea sursei</0> pentru a primi opțiuni de calitate diferită.",
+                "iosNoQuality": "Din cauza limitărilor definite de Apple, selecția calității nu este disponibilă pe iOS pentru această sursă. Puteți încerca să <0>treceți la altă sursă</0> pentru a obține diferite opțiuni de calitate.",
+                "title": "Calitate"
+            },
+            "settings": {
+                "downloadItem": "Descarcă",
+                "enableSubtitles": "Activează subtitlurile",
+                "experienceSection": "Experiență de vizionare",
+                "playbackItem": "Setări de redare",
+                "qualityItem": "Calitate",
+                "sourceItem": "Surse video",
+                "subtitleItem": "Setările subtitlului",
+                "videoSection": "Setări video"
+            },
+            "sources": {
+                "failed": {
+                    "text": "Aici a fost o eroare încercând să găsim video, încercați o altă sursă.",
+                    "title": "Nu s-a răzuit"
+                },
+                "noEmbeds": {
+                    "text": "Nu am putut găsi nicio incorporare, vă rog să încercați o altă sursă.",
+                    "title": "Nu a fost găsită nicio încorporare"
+                },
+                "noStream": {
+                    "text": "Sursa aceasta nu are niciun flux pentru acest film sau serial.",
+                    "title": "Niciun flux"
+                },
+                "title": "Surse",
+                "unknownOption": "Necunoscut"
+            },
+            "subtitles": {
+                "customChoice": "Selectați subtitlul din filă",
+                "customizeLabel": "Costumizează",
+                "offChoice": "Oprit",
+                "settings": {
+                    "backlink": "Subtitluri personalizate",
+                    "delay": "Intârziera subtitlurilor",
+                    "fixCapitals": "Fixați capitalizația"
+                },
+                "title": "Subtitluri",
+                "unknownLanguage": "Necunoscut"
+            }
         },
-        "title": "Descarcă"
-      },
-      "episodes": {
-        "button": "Episoade",
-        "emptyState": "Nu sunt episoade in sezonul acesta, reveniți mai târziu!",
-        "episodeBadge": "E{{episode}}",
-        "loadingError": "Eroare la încărcarea sezonul",
-        "loadingList": "Se încarcă...",
-        "loadingTitle": "Se încarcă...",
-        "unairedEpisodes": "Unul sau mai multe episoade din sezonul acesta sunt indisponibile deoarece incă nu au venit încă."
-      },
-      "playback": {
-        "speedLabel": "Viteză de redare",
-        "title": "Setările de redare"
-      },
-      "quality": {
-        "automaticLabel": "Calitate automată",
-        "hint": "Puteți încerca <0>Schimbarea sursei</0> pentru a primi opțiuni de calitate diferită.",
-        "iosNoQuality": "Din cauza limitărilor definite de Apple, selecția calității nu este disponibilă pe iOS pentru această sursă. Puteți încerca să <0>treceți la altă sursă</0> pentru a obține diferite opțiuni de calitate.",
-        "title": "Calitate"
-      },
-      "settings": {
-        "downloadItem": "Descarcă",
-        "enableSubtitles": "Activează subtitlurile",
-        "experienceSection": "Experiență de vizionare",
-        "playbackItem": "Setări de redare",
-        "qualityItem": "Calitate",
-        "sourceItem": "Surse video",
-        "subtitleItem": "Setările subtitlului",
-        "videoSection": "Setări video"
-      },
-      "sources": {
-        "failed": {
-          "text": "Aici a fost o eroare încercând să găsim video, încercați o altă sursă.",
-          "title": "Nu s-a răzuit"
+        "metadata": {
+            "api": {
+                "text": "Metadatele API nu au putut fi încărcate, vă rugăm să vă verificați conexiunea la internet.",
+                "title": "Nu s-a putut incărca API metadata"
+            },
+            "dmca": {
+                "badge": "Șters",
+                "text": "Această medie nu mai este valabilă din vina copyright-ului.",
+                "title": "Media a fost ștearsă"
+            },
+            "extensionPermission": {
+                "badge": "Permisune pierdută",
+                "button": "Folosește extensia",
+                "text": "Tu ai extensia, dar noi avem nevoie de permisiune ca să începem să folosim extensia.",
+                "title": "Configurează extensia"
+            },
+            "failed": {
+                "badge": "Eșuat",
+                "homeButton": "Du-te acasă :)",
+                "text": "Nu s-au putut încărca metadatele media din TMDB. Vă rugăm să verificați dacă TMDB este oprit sau blocat pe conexiunea ta. la internet.",
+                "title": "Nu s-au încărcat metadatele"
+            },
+            "notFound": {
+                "badge": "Nu a fost găsit",
+                "homeButton": "Înapoi acasă :)",
+                "text": "Nu am putut găsi media pe care ați cerut-o. Poate este ștearsă sau ați manipulat adresa URL.",
+                "title": "Nu am putut găsi acel media."
+            }
         },
-        "noEmbeds": {
-          "text": "Nu am putut găsi nicio incorporare, vă rog să încercați o altă sursă.",
-          "title": "Nu a fost găsită nicio încorporare"
+        "nextEpisode": {
+            "cancel": "Anulare",
+            "next": "Episodul următor"
         },
-        "noStream": {
-          "text": "Sursa aceasta nu are niciun flux pentru acest film sau serial.",
-          "title": "Niciun flux"
+        "playbackError": {
+            "badge": "Eroare la redare",
+            "errors": {
+                "errorAborted": "Preluarea media a fost întreruptă la cererea utilizatorului.",
+                "errorDecode": "În ciuda faptului că anterior a fost determinată a fi utilizabilă, a apărut o eroare în timpul încercării de a decoda resursa media, rezultând o eroare.",
+                "errorGenericMedia": "Eroare media cumva sa întâmplat.",
+                "errorNetwork": "A apărut o eroare de rețea care a împiedicat preluarea cu succes a suportului media, în ciuda faptului că fusese disponibil anterior.",
+                "errorNotSupported": "Obiectul media sau furnizorul media nu este acceptat."
+            },
+            "homeButton": "Du-te acasă :)",
+            "text": "A apărut o eroare la încercarea de a reda media. Vă rugăm să încercați din nou.",
+            "title": "O eroare la redarea videoului!"
         },
-        "title": "Surse",
-        "unknownOption": "Necunoscut"
-      },
-      "subtitles": {
-        "customChoice": "Selectați subtitlul din filă",
-        "customizeLabel": "Costumizează",
-        "offChoice": "Oprit",
-        "settings": {
-          "backlink": "Subtitluri personalizate",
-          "delay": "Intârziera subtitlurilor",
-          "fixCapitals": "Fixați capitalizația"
+        "scraping": {
+            "items": {
+                "failure": "Sa întâmplat o eraore",
+                "notFound": "Nu are acel video",
+                "pending": "Verificând pentru videouri..."
+            },
+            "notFound": {
+                "badge": "Nu a fost găsit",
+                "detailsButton": "Arată detalii",
+                "homeButton": "Du-te acasă",
+                "text": "Am căutat prin furnizorii noștri și nu putem găsi media pe care o căutați! Nu găzduim mass-media și nu avem control asupra a ceea ce este disponibil. Vă rugăm să faceți clic pe „Afișați detalii” de mai jos pentru mai multe detalii.",
+                "title": "Nu am putut găsi aia"
+            }
         },
-        "title": "Subtitluri",
-        "unknownLanguage": "Necunoscut"
-      }
-    },
-    "metadata": {
-      "api": {
-        "text": "Metadatele API nu au putut fi încărcate, vă rugăm să vă verificați conexiunea la internet.",
-        "title": "Nu s-a putut incărca API metadata"
-      },
-      "dmca": {
-        "badge": "Șters",
-        "text": "Această medie nu mai este valabilă din vina copyright-ului.",
-        "title": "Media a fost ștearsă"
-      },
-      "extensionPermission": {
-        "badge": "Permisune pierdută",
-        "button": "Folosește extensia",
-        "text": "Tu ai extensia, dar noi avem nevoie de permisiune ca să începem să folosim extensia.",
-        "title": "Configurează extensia"
-      },
-      "failed": {
-        "badge": "Eșuat",
-        "homeButton": "Du-te acasă :)",
-        "text": "Nu s-au putut încărca metadatele media din TMDB. Vă rugăm să verificați dacă TMDB este oprit sau blocat pe conexiunea ta. la internet.",
-        "title": "Nu s-au încărcat metadatele"
-      },
-      "notFound": {
-        "badge": "Nu a fost găsit",
-        "homeButton": "Înapoi acasă :)",
-        "text": "Nu am putut găsi media pe care ați cerut-o. Poate este ștearsă sau ați manipulat adresa URL.",
-        "title": "Nu am putut găsi acel media."
-      }
-    },
-    "nextEpisode": {
-      "cancel": "Anulare",
-      "next": "Episodul următor"
-    },
-    "playbackError": {
-      "badge": "Eroare la redare",
-      "errors": {
-        "errorAborted": "Preluarea media a fost întreruptă la cererea utilizatorului.",
-        "errorDecode": "În ciuda faptului că anterior a fost determinată a fi utilizabilă, a apărut o eroare în timpul încercării de a decoda resursa media, rezultând o eroare.",
-        "errorGenericMedia": "Eroare media cumva sa întâmplat.",
-        "errorNetwork": "A apărut o eroare de rețea care a împiedicat preluarea cu succes a suportului media, în ciuda faptului că fusese disponibil anterior.",
-        "errorNotSupported": "Obiectul media sau furnizorul media nu este acceptat."
-      },
-      "homeButton": "Du-te acasă :)",
-      "text": "A apărut o eroare la încercarea de a reda media. Vă rugăm să încercați din nou.",
-      "title": "O eroare la redarea videoului!"
-    },
-    "scraping": {
-      "items": {
-        "failure": "Sa întâmplat o eraore",
-        "notFound": "Nu are acel video",
-        "pending": "Verificând pentru videouri..."
-      },
-      "notFound": {
-        "badge": "Nu a fost găsit",
-        "detailsButton": "Arată detalii",
-        "homeButton": "Du-te acasă",
-        "text": "Am căutat prin furnizorii noștri și nu putem găsi media pe care o căutați! Nu găzduim mass-media și nu avem control asupra a ceea ce este disponibil. Vă rugăm să faceți clic pe „Afișați detalii” de mai jos pentru mai multe detalii.",
-        "title": "Nu am putut găsi aia"
-      }
-    },
-    "time": {
-      "regular": "{{timeWatched}} / {{duration}}",
-      "remaining": "{{timeLeft}} rămas • Se termină la{{timeFinished, datetime}}",
-      "shortRegular": "{{timeWatched}}",
-      "shortRemaining": "-{{timeLeft}}"
-    },
-    "turnstile": {
-      "description": "Vă rog să vă verificați umanitatea completând acest captcha in partea dreapta. Asta este pentru a pastra sudo-flix sigur!",
-      "error": "Verificarea umanității tale a eșuat. Încercați din nou.",
-      "title": "Noi trebuie să verificăm dacă sunteți un om.",
-      "verifyingHumanity": "Verificați-vă umanitatea voastră..."
-    }
-  },
-  "screens": {
-    "dmca": {
-      "text": "Bun venit pe pagina de contact DMCA a sudo-flix! Respectăm drepturile de proprietate intelectuală și dorim să abordăm rapid orice problemă privind drepturile de autor. Dacă credeți că lucrarea dumneavoastră protejată prin drepturi de autor a fost utilizată necorespunzător pe platforma noastră, vă rugăm să trimiteți o notificare detaliată DMCA la e-mailul de mai jos. Vă rugăm să includeți o descriere a materialului protejat prin drepturi de autor, detaliile dvs. de contact și o declarație de bună credință. Ne angajăm să rezolvăm aceste probleme cu promptitudine și apreciem cooperarea dumneavoastră pentru a menține sudo-flix un loc care respectă creativitatea și drepturile de autor.",
-      "title": "DMCA"
-    },
-    "loadingApp": "Se încarcă aplicația",
-    "loadingUser": "Se încarcă profilul tău",
-    "loadingUserError": {
-      "logout": "Deconectare",
-      "reset": "Resetare servere personalizate",
-      "text": "Nu s-a încărcat profilul dvs",
-      "textWithReset": "Nu s-a încărcat profilul dvs. de pe serverul personalizat, doriți să reveniți la serverul implicit?"
-    },
-    "migration": {
-      "failed": "Eroare la migrarea datelor voastre.",
-      "inProgress": "Vă rugăm să așteptați, migrăm datele dvs. Acest lucru nu ar trebui să dureze mult."
-    }
-  },
-  "settings": {
-    "account": {
-      "accountDetails": {
-        "deviceNameLabel": "Numele dispozitivului",
-        "deviceNamePlaceholder": "Telefonul personal",
-        "editProfile": "Editează",
-        "logoutButton": "Deconectați-vă"
-      },
-      "actions": {
-        "delete": {
-          "button": "Șterge contul",
-          "confirmButton": "Șterge contul",
-          "confirmDescription": "Ești sigur că vrei să ștergi contul tău? Toate datele tale vor dispărea!",
-          "confirmTitle": "Ești sigur?",
-          "text": "Acțiunea asta este ireversibilă. Toate datele tale vor dispărea și nimic nu va putea fi recuperat.",
-          "title": "Șterge contul"
+        "time": {
+            "regular": "{{timeWatched}} / {{duration}}",
+            "remaining": "{{timeLeft}} rămas • Se termină la{{timeFinished, datetime}}",
+            "shortRegular": "{{timeWatched}}",
+            "shortRemaining": "-{{timeLeft}}"
         },
-        "title": "Acțiuni"
-      },
-      "devices": {
-        "deviceNameLabel": "Numele dispozitivului",
-        "failed": "Eroare la încărcarea sesiunii",
-        "removeDevice": "Șterge",
-        "title": "Dispozitive"
-      },
-      "profile": {
-        "finish": "Termină editarea",
-        "firstColor": "Culoarea profilului unu",
-        "secondColor": "Culoare profilului doi",
-        "title": "Editează poza de profil",
-        "userIcon": "Iconița utilizatorului"
-      },
-      "register": {
-        "cta": "Începeți",
-        "text": "Partajați progresul vizionării între dispozitive și păstrați-le sincronizate.",
-        "title": "Sincronizare în cloud"
-      },
-      "title": "Cont"
-    },
-    "appearance": {
-      "activeTheme": "Activ",
-      "themes": {
-        "blue": "Albastru",
-        "default": "Implicit",
-        "gray": "Gri",
-        "red": "Roșu",
-        "teal": "Albastru verziu"
-      },
-      "title": "Aparență"
-    },
-    "connections": {
-      "server": {
-        "description": "Dacă doriți să vă conectați la un backend personalizat pentru a vă stoca datele, activați acest lucru și furnizați adresa URL. <0>Instrucțiuni.</0>",
-        "label": "Server personalizat",
-        "urlLabel": "Adresa URL personalizată a serverului"
-      },
-      "setup": {
-        "doSetup": "Configurează",
-        "errorStatus": {
-          "description": "Se pare că unul sau mai multe obiecte din această configurație au nevoie de atenția ta.",
-          "title": "Ceva are nevoie de atenția ta"
-        },
-        "itemError": "Ceva nu e bine cu această setare. Parcurge configurația din nou pentru a o corecta.",
-        "items": {
-          "default": "Configurație implicită",
-          "extension": "Extensie",
-          "proxy": "Proxy personalizat"
-        },
-        "redoSetup": "Refă configurația",
-        "successStatus": {
-          "description": "Toate sunt la locul lor ca să începeți să urmariți conținutul preferat.",
-          "title": "Totul este pregătit!"
-        },
-        "unsetStatus": {
-          "description": "Apăsați butonul din dreapta pentru a începe procesul de configurare.",
-          "title": "Nu ați parcurs configurația"
+        "turnstile": {
+            "description": "Vă rog să vă verificați umanitatea completând acest captcha in partea dreapta. Asta este pentru a pastra sudo-flix sigur!",
+            "error": "Verificarea umanității tale a eșuat. Încercați din nou.",
+            "title": "Noi trebuie să verificăm dacă sunteți un om.",
+            "verifyingHumanity": "Verificați-vă umanitatea voastră..."
         }
-      },
-      "title": "Conexiuni",
-      "workers": {
-        "addButton": "Adaugă un nou muncitor",
-        "description": "Pentru ca aplicația să funcționeze, tot traficul este direcționat prin proxy. Activați acest lucru dacă doriți să vă aduceți proprii lucrători. <0>Instrucțiuni.</0>",
-        "emptyState": "Niciun muncitor incă, adaugă unu",
-        "label": "Utilizați lucrători proxy personalizați",
-        "urlLabel": "Adresele URL ale lucrătorilor",
-        "urlPlaceholder": "https://"
-      }
     },
-    "preferences": {
-      "language": "Limba aplicației",
-      "languageDescription": "Limba aplicată întregii aplicații.",
-      "thumbnail": "Generați pictograme",
-      "thumbnailDescription": "De cele mai multe ori videoclipurile nu au pictograme. Puteți activa această setare pentru a le genera din mers, dar vă pot încetini videoclipul.",
-      "thumbnailLabel": "Generați pictograme",
-      "title": "Preferințe"
+    "screens": {
+        "dmca": {
+            "text": "Bun venit pe pagina de contact DMCA a sudo-flix! Respectăm drepturile de proprietate intelectuală și dorim să abordăm rapid orice problemă privind drepturile de autor. Dacă credeți că lucrarea dumneavoastră protejată prin drepturi de autor a fost utilizată necorespunzător pe platforma noastră, vă rugăm să trimiteți o notificare detaliată DMCA la e-mailul de mai jos. Vă rugăm să includeți o descriere a materialului protejat prin drepturi de autor, detaliile dvs. de contact și o declarație de bună credință. Ne angajăm să rezolvăm aceste probleme cu promptitudine și apreciem cooperarea dumneavoastră pentru a menține sudo-flix un loc care respectă creativitatea și drepturile de autor.",
+            "title": "DMCA"
+        },
+        "loadingApp": "Se încarcă aplicația",
+        "loadingUser": "Se încarcă profilul tău",
+        "loadingUserError": {
+            "logout": "Deconectare",
+            "reset": "Resetare servere personalizate",
+            "text": "Nu s-a încărcat profilul dvs",
+            "textWithReset": "Nu s-a încărcat profilul dvs. de pe serverul personalizat, doriți să reveniți la serverul implicit?"
+        },
+        "migration": {
+            "failed": "Eroare la migrarea datelor voastre.",
+            "inProgress": "Vă rugăm să așteptați, migrăm datele dvs. Acest lucru nu ar trebui să dureze mult."
+        }
     },
-    "reset": "Resetare",
-    "save": "Salvează",
-    "sidebar": {
-      "info": {
-        "appVersion": "Versiunea aplicației",
-        "backendUrl": "URL de backend",
-        "backendVersion": "Versiunea backend",
-        "hostname": "Numele gazdei",
-        "insecure": "Nesigur",
-        "notLoggedIn": "Nu sunteți autentificat",
-        "secure": "Securizat",
-        "title": "Informația aplicației",
-        "unknownVersion": "Necunoscut",
-        "userId": "ID-ul utilizatorului"
-      }
-    },
-    "subtitles": {
-      "backgroundBlurLabel": "Blurarea fundalului",
-      "backgroundLabel": "Opacitatea fundalului",
-      "colorLabel": "Culoare",
-      "previewQuote": "nu trebuie să mă tem. Frica este ucigașul minții.",
-      "textSizeLabel": "Dimensiunea textului",
-      "title": "Subtitluri"
-    },
-    "unsaved": "Aveți modificări nesalvate"
-  }
+    "settings": {
+        "account": {
+            "accountDetails": {
+                "deviceNameLabel": "Numele dispozitivului",
+                "deviceNamePlaceholder": "Telefonul personal",
+                "editProfile": "Editează",
+                "logoutButton": "Deconectați-vă"
+            },
+            "actions": {
+                "delete": {
+                    "button": "Șterge contul",
+                    "confirmButton": "Șterge contul",
+                    "confirmDescription": "Ești sigur că vrei să ștergi contul tău? Toate datele tale vor dispărea!",
+                    "confirmTitle": "Ești sigur?",
+                    "text": "Acțiunea asta este ireversibilă. Toate datele tale vor dispărea și nimic nu va putea fi recuperat.",
+                    "title": "Șterge contul"
+                },
+                "title": "Acțiuni"
+            },
+            "devices": {
+                "deviceNameLabel": "Numele dispozitivului",
+                "failed": "Eroare la încărcarea sesiunii",
+                "removeDevice": "Șterge",
+                "title": "Dispozitive"
+            },
+            "profile": {
+                "finish": "Termină editarea",
+                "firstColor": "Culoarea profilului unu",
+                "secondColor": "Culoare profilului doi",
+                "title": "Editează poza de profil",
+                "userIcon": "Iconița utilizatorului"
+            },
+            "register": {
+                "cta": "Începeți",
+                "text": "Partajați progresul vizionării între dispozitive și păstrați-le sincronizate.",
+                "title": "Sincronizare în cloud"
+            },
+            "title": "Cont"
+        },
+        "appearance": {
+            "activeTheme": "Activ",
+            "themes": {
+                "blue": "Albastru",
+                "default": "Implicit",
+                "gray": "Gri",
+                "red": "Roșu",
+                "teal": "Albastru verziu"
+            },
+            "title": "Aparență"
+        },
+        "connections": {
+            "server": {
+                "description": "Dacă doriți să vă conectați la un backend personalizat pentru a vă stoca datele, activați acest lucru și furnizați adresa URL. <0>Instrucțiuni.</0>",
+                "label": "Server personalizat",
+                "urlLabel": "Adresa URL personalizată a serverului"
+            },
+            "setup": {
+                "doSetup": "Configurează",
+                "errorStatus": {
+                    "description": "Se pare că unul sau mai multe obiecte din această configurație au nevoie de atenția ta.",
+                    "title": "Ceva are nevoie de atenția ta"
+                },
+                "itemError": "Ceva nu e bine cu această setare. Parcurge configurația din nou pentru a o corecta.",
+                "items": {
+                    "default": "Configurație implicită",
+                    "extension": "Extensie",
+                    "proxy": "Proxy personalizat"
+                },
+                "redoSetup": "Refă configurația",
+                "successStatus": {
+                    "description": "Toate sunt la locul lor ca să începeți să urmariți conținutul preferat.",
+                    "title": "Totul este pregătit!"
+                },
+                "unsetStatus": {
+                    "description": "Apăsați butonul din dreapta pentru a începe procesul de configurare.",
+                    "title": "Nu ați parcurs configurația"
+                }
+            },
+            "title": "Conexiuni",
+            "workers": {
+                "addButton": "Adaugă un nou muncitor",
+                "description": "Pentru ca aplicația să funcționeze, tot traficul este direcționat prin proxy. Activați acest lucru dacă doriți să vă aduceți proprii lucrători. <0>Instrucțiuni.</0>",
+                "emptyState": "Niciun muncitor incă, adaugă unu",
+                "label": "Utilizați lucrători proxy personalizați",
+                "urlLabel": "Adresele URL ale lucrătorilor",
+                "urlPlaceholder": "https://"
+            }
+        },
+        "preferences": {
+            "language": "Limba aplicației",
+            "languageDescription": "Limba aplicată întregii aplicații.",
+            "thumbnail": "Generați pictograme",
+            "thumbnailDescription": "De cele mai multe ori videoclipurile nu au pictograme. Puteți activa această setare pentru a le genera din mers, dar vă pot încetini videoclipul.",
+            "thumbnailLabel": "Generați pictograme",
+            "title": "Preferințe"
+        },
+        "reset": "Resetare",
+        "save": "Salvează",
+        "sidebar": {
+            "info": {
+                "appVersion": "Versiunea aplicației",
+                "backendUrl": "URL de backend",
+                "backendVersion": "Versiunea backend",
+                "hostname": "Numele gazdei",
+                "insecure": "Nesigur",
+                "notLoggedIn": "Nu sunteți autentificat",
+                "secure": "Securizat",
+                "title": "Informația aplicației",
+                "unknownVersion": "Necunoscut",
+                "userId": "ID-ul utilizatorului"
+            }
+        },
+        "subtitles": {
+            "backgroundBlurLabel": "Blurarea fundalului",
+            "backgroundLabel": "Opacitatea fundalului",
+            "colorLabel": "Culoare",
+            "previewQuote": "nu trebuie să mă tem. Frica este ucigașul minții.",
+            "textSizeLabel": "Dimensiunea textului",
+            "title": "Subtitluri"
+        },
+        "unsaved": "Aveți modificări nesalvate"
+    }
 }

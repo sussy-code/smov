@@ -1,551 +1,557 @@
 {
-  "about": {
-    "description": "sudo-flix 是一款在互联网上搜寻流媒体的网络应用程序。团队致力于让用户采取最简约的方式消费内容。",
-    "faqTitle": "常见问题",
-    "q1": {
-      "body": "sudo-flix 不托管任何内容。您点选观看内容时，系统均从互联网搜寻（在加载提示页和“视频源”选项卡中，您可以看到正在使用的源）。媒体从未在 sudo-flix 中上传，所有内容均通过搜索机制而得。",
-      "title": "内容来自哪里？"
+    "about": {
+        "description": "sudo-flix 是一款在互联网上搜寻流媒体的网络应用程序。团队致力于让用户采取最简约的方式消费内容。",
+        "faqTitle": "常见问题",
+        "q1": {
+            "body": "sudo-flix 不托管任何内容。您点选观看内容时，系统均从互联网搜寻（在加载提示页和“视频源”选项卡中，您可以看到正在使用的源）。媒体从未在 sudo-flix 中上传，所有内容均通过搜索机制而得。",
+            "title": "内容来自哪里？"
+        },
+        "q2": {
+            "body": "无法主动请求影视剧或其他节目，sudo-flix 不管理任何内容。所有内容均从互联网视频源获取并供您观看。",
+            "title": "我可以从哪里请求观看影视剧或其他节目？"
+        },
+        "q3": {
+            "body": "我们的搜索结果由电影数据库（TMDB）驱动，无论视频源是否有对应内容，均会显示结果。",
+            "title": "搜索结果中已显示了影视剧或其他节目，为何我无法播放？"
+        },
+        "title": "关于 sudo-flix"
     },
-    "q2": {
-      "body": "无法主动请求影视剧或其他节目，sudo-flix 不管理任何内容。所有内容均从互联网视频源获取并供您观看。",
-      "title": "我可以从哪里请求观看影视剧或其他节目？"
+    "actions": {
+        "copied": "已复制",
+        "copy": "复制"
     },
-    "q3": {
-      "body": "我们的搜索结果由电影数据库（TMDB）驱动，无论视频源是否有对应内容，均会显示结果。",
-      "title": "搜索结果中已显示了影视剧或其他节目，为何我无法播放？"
+    "auth": {
+        "createAccount": "还没有账户？ <0>创建一个</0>",
+        "deviceNameLabel": "设备名称",
+        "deviceNamePlaceholder": "如：我的手机",
+        "generate": {
+            "description": "您的密码短语相当于用户名与密码。由于您需要输入它来登录账户，请确保将其存放到安全位置",
+            "next": "我已保存密码短语",
+            "passphraseFrameLabel": "密码短语",
+            "title": "您的密码短语"
+        },
+        "hasAccount": "已经拥有账户？<0>点击此处登录。</0>",
+        "login": {
+            "description": "请输入密码短语以登录您的账户",
+            "deviceLengthError": "请输入设备名称",
+            "passphraseLabel": "12 词密码短语",
+            "passphrasePlaceholder": "密码短语",
+            "submit": "登录",
+            "title": "登录您的账户",
+            "validationError": "密码短语不正确或不完整"
+        },
+        "register": {
+            "information": {
+                "color1": "头像配色一",
+                "color2": "头像配色二",
+                "header": "为您的设备输入名称，并选取一组代表色和一个用户图标",
+                "icon": "用户图标",
+                "next": "下一步",
+                "title": "账户信息"
+            }
+        },
+        "trust": {
+            "failed": {
+                "text": "您的配置是否正确？",
+                "title": "服务器无法接通"
+            },
+            "host": "您正在连接到 <0>{{hostname}}</0> - 在创建账户前，确保您信任它",
+            "no": "返回",
+            "noHost": "服务器尚未进行配置，因此您无法创建账户",
+            "noHostTitle": "未配置服务器！",
+            "title": "您是否信任这个服务器？",
+            "yes": "我信任这个服务器"
+        },
+        "verify": {
+            "description": "请输入早先的密码短语，以确认您已经保存它，并创建您的账户",
+            "invalidData": "数据无效",
+            "noMatch": "密码短语不匹配",
+            "passphraseLabel": "您的 12 词密码短语",
+            "recaptchaFailed": "ReCaptcha 验证失败",
+            "register": "创建账户",
+            "title": "确认您的密码短语"
+        }
     },
-    "title": "关于 sudo-flix"
-  },
-  "actions": {
-    "copied": "已复制",
-    "copy": "复制"
-  },
-  "auth": {
-    "createAccount": "还没有账户？ <0>创建一个</0>",
-    "deviceNameLabel": "设备名称",
-    "deviceNamePlaceholder": "如：我的手机",
-    "generate": {
-      "description": "您的密码短语相当于用户名与密码。由于您需要输入它来登录账户，请确保将其存放到安全位置",
-      "next": "我已保存密码短语",
-      "passphraseFrameLabel": "密码短语",
-      "title": "您的密码短语"
+    "errors": {
+        "badge": "坏了",
+        "details": "错误细节",
+        "reloadPage": "刷新页面",
+        "showError": "显示错误细节",
+        "title": "我们遇到了错误！"
     },
-    "hasAccount": "已经拥有账户？<0>点击此处登录。</0>",
-    "login": {
-      "description": "请输入密码短语以登录您的账户",
-      "deviceLengthError": "请输入设备名称",
-      "passphraseLabel": "12 词密码短语",
-      "passphrasePlaceholder": "密码短语",
-      "submit": "登录",
-      "title": "登录您的账户",
-      "validationError": "密码短语不正确或不完整"
+    "footer": {
+        "legal": {
+            "disclaimer": "免责声明",
+            "disclaimerText": "sudo-flix 不托管任何文件，仅链接到第三方服务。 法律问题应由文件托管者和内容提供者解决。 sudo-flix 对视频提供者显示的任何媒体文件不承担任何责任。"
+        },
+        "links": {
+            "discord": "Discord",
+            "dmca": "DMCA",
+            "github": "GitHub"
+        },
+        "tagline": "在这个开源流媒体应用上观看你最喜爱的影视剧或其他节目。"
     },
-    "register": {
-      "information": {
-        "color1": "头像配色一",
-        "color2": "头像配色二",
-        "header": "为您的设备输入名称，并选取一组代表色和一个用户图标",
-        "icon": "用户图标",
-        "next": "下一步",
-        "title": "账户信息"
-      }
+    "global": {
+        "name": "sudo-flix",
+        "pages": {
+            "about": "关于",
+            "dmca": "DMCA",
+            "login": "登录",
+            "onboarding": "设定",
+            "pagetitle": "{{title}} - sudo-flix",
+            "register": "注册",
+            "settings": "设置"
+        }
     },
-    "trust": {
-      "failed": {
-        "text": "您的配置是否正确？",
-        "title": "服务器无法接通"
-      },
-      "host": "您正在连接到 <0>{{hostname}}</0> - 在创建账户前，确保您信任它",
-      "no": "返回",
-      "noHost": "服务器尚未进行配置，因此您无法创建账户",
-      "noHostTitle": "未配置服务器！",
-      "title": "您是否信任这个服务器？",
-      "yes": "我信任这个服务器"
+    "home": {
+        "bookmarks": {
+            "sectionTitle": "书签"
+        },
+        "continueWatching": {
+            "sectionTitle": "继续观看"
+        },
+        "mediaList": {
+            "stopEditing": "停止编辑"
+        },
+        "search": {
+            "allResults": "以上是我们能找到的所有结果！",
+            "failed": "查找媒体失败，请重试！",
+            "loading": "载入中……",
+            "noResults": "我们找不到任何结果！",
+            "placeholder": {
+                "default": "您想看些什么？",
+                "extra": [
+                    "您想探索些什么？",
+                    "您的片单上都有啥？",
+                    "您最喜欢的影片是什么？",
+                    "您最喜欢的剧目是什么？"
+                ]
+            },
+            "sectionTitle": "搜索结果"
+        },
+        "titles": {
+            "day": {
+                "default": "您今天下午想看什么？",
+                "extra": [
+                    "想要来场冒险？《侏罗纪公园》可能是最佳选项。"
+                ]
+            },
+            "morning": {
+                "default": "您今早想看什么？",
+                "extra": [
+                    "我听说《爱在黎明破晓前》不错"
+                ]
+            },
+            "night": {
+                "default": "您今晚想看什么？",
+                "extra": [
+                    "累了？我听说《驱魔人》不错。"
+                ]
+            }
+        }
     },
-    "verify": {
-      "description": "请输入早先的密码短语，以确认您已经保存它，并创建您的账户",
-      "invalidData": "数据无效",
-      "noMatch": "密码短语不匹配",
-      "passphraseLabel": "您的 12 词密码短语",
-      "recaptchaFailed": "ReCaptcha 验证失败",
-      "register": "创建账户",
-      "title": "确认您的密码短语"
-    }
-  },
-  "errors": {
-    "badge": "坏了",
-    "details": "错误细节",
-    "reloadPage": "刷新页面",
-    "showError": "显示错误细节",
-    "title": "我们遇到了错误！"
-  },
-  "footer": {
-    "legal": {
-      "disclaimer": "免责声明",
-      "disclaimerText": "sudo-flix 不托管任何文件，仅链接到第三方服务。 法律问题应由文件托管者和内容提供者解决。 sudo-flix 对视频提供者显示的任何媒体文件不承担任何责任。"
+    "media": {
+        "episodeDisplay": "第{{season}}季 第{{episode}}集",
+        "types": {
+            "movie": "电影",
+            "show": "电视节目"
+        },
+        "unreleased": "未发布"
     },
-    "links": {
-      "discord": "Discord",
-      "dmca": "DMCA",
-      "github": "GitHub"
+    "navigation": {
+        "banner": {
+            "offline": "请检查您的互联网连接"
+        },
+        "menu": {
+            "about": "关于我们",
+            "logout": "登出",
+            "register": "同步到云端",
+            "settings": "设置",
+            "support": "支持"
+        }
     },
-    "tagline": "在这个开源流媒体应用上观看你最喜爱的影视剧或其他节目。"
-  },
-  "global": {
-    "name": "sudo-flix",
-    "pages": {
-      "about": "关于",
-      "dmca": "DMCA",
-      "login": "登录",
-      "onboarding": "设定",
-      "pagetitle": "{{title}} - sudo-flix",
-      "register": "注册",
-      "settings": "设置"
-    }
-  },
-  "home": {
-    "bookmarks": {
-      "sectionTitle": "书签"
+    "notFound": {
+        "badge": "未找到",
+        "goHome": "返回首页",
+        "message": "我们已经到处找过了：不管是废纸篓下、橱柜中还是代理服务之外，但最终并没有发现您查找的页面。",
+        "title": "无法找到页面"
     },
-    "continueWatching": {
-      "sectionTitle": "继续观看"
-    },
-    "mediaList": {
-      "stopEditing": "停止编辑"
-    },
-    "search": {
-      "allResults": "以上是我们能找到的所有结果！",
-      "failed": "查找媒体失败，请重试！",
-      "loading": "载入中……",
-      "noResults": "我们找不到任何结果！",
-      "placeholder": {
-        "default": "您想看些什么？",
-        "extra": [
-          "您想探索些什么？",
-          "您的片单上都有啥？",
-          "您最喜欢的影片是什么？",
-          "您最喜欢的剧目是什么？"
-        ]
-      },
-      "sectionTitle": "搜索结果"
-    },
-    "titles": {
-      "day": {
-        "default": "您今天下午想看什么？",
-        "extra": ["想要来场冒险？《侏罗纪公园》可能是最佳选项。"]
-      },
-      "morning": {
-        "default": "您今早想看什么？",
-        "extra": ["我听说《爱在黎明破晓前》不错"]
-      },
-      "night": {
-        "default": "您今晚想看什么？",
-        "extra": ["累了？我听说《驱魔人》不错。"]
-      }
-    }
-  },
-  "media": {
-    "episodeDisplay": "第{{season}}季 第{{episode}}集",
-    "types": {
-      "movie": "电影",
-      "show": "电视节目"
-    },
-    "unreleased": "未发布"
-  },
-  "navigation": {
-    "banner": {
-      "offline": "请检查您的互联网连接"
-    },
-    "menu": {
-      "about": "关于我们",
-      "logout": "登出",
-      "register": "同步到云端",
-      "settings": "设置",
-      "support": "支持"
-    }
-  },
-  "notFound": {
-    "badge": "未找到",
-    "goHome": "返回首页",
-    "message": "我们已经到处找过了：不管是废纸篓下、橱柜中还是代理服务之外，但最终并没有发现您查找的页面。",
-    "title": "无法找到页面"
-  },
-  "onboarding": {
-    "defaultConfirm": {
-      "cancel": "取消",
-      "confirm": "使用默认设定",
-      "description": "默认设定不具备最好的视频流，并且播放速度可能慢得难以忍受。",
-      "title": "您确定吗？"
-    },
-    "extension": {
-      "back": "返回",
-      "explainer": "使用浏览器扩展，您可以获得我们提供的最佳串流。只需简单的安装即可。",
-      "explainerIos": "很遗憾，浏览器扩展不被 iOS 支持，单击<bold>返回</bold>以选择其他选项。",
-      "extensionHelp": "如您已安装扩展程序但未被检测到，<bold>请从浏览器的扩展菜单打开扩展</bold> 并按屏幕上的指示操作。",
-      "linkChrome": "安装 Chrome 扩展程序",
-      "linkFirefox": "安装 Firefox 扩展程序",
-      "notDetecting": "已在 Chrome 上安装，但网站未能检测到？尝试刷新页面！",
-      "notDetectingAction": "刷新页面",
-      "status": {
-        "disallowed": "扩展程序未对本页面启用",
-        "disallowedAction": "启用扩展程序",
-        "failed": "请求状态失败",
-        "loading": "正等待您安装扩展程序",
-        "outdated": "扩展版本过旧",
-        "success": "扩展程序工作正常！"
-      },
-      "submit": "继续",
-      "title": "让我们从扩展程序开始"
-    },
-    "proxy": {
-      "back": "返回",
-      "explainer": "使用代理方式，您可以通过自助代理服务获得高质量的串流。",
-      "input": {
-        "errorConnection": "无法连接到代理",
-        "errorInvalidUrl": "URL 无效",
-        "errorNotProxy": "检测到常规网站，链接应指向代理",
-        "label": "代理 URL",
-        "placeholder": "https://"
-      },
-      "link": "了解如何设置代理",
-      "submit": "提交代理",
-      "title": "让我们设置新的代理"
-    },
-    "start": {
-      "explainer": "为了尽可能获得最佳串流，您将要选择使用何种串流方法。",
-      "options": {
-        "default": {
-          "text": "我不想使用高质量串流，<0 /> <1>使用默认设定</1>"
+    "onboarding": {
+        "defaultConfirm": {
+            "cancel": "取消",
+            "confirm": "使用默认设定",
+            "description": "默认设定不具备最好的视频流，并且播放速度可能慢得难以忍受。",
+            "title": "您确定吗？"
         },
         "extension": {
-          "action": "安装扩展程序",
-          "description": "安装浏览器扩展并获取最佳视频源。",
-          "quality": "最佳质量",
-          "title": "浏览器扩展"
+            "back": "返回",
+            "explainer": "使用浏览器扩展，您可以获得我们提供的最佳串流。只需简单的安装即可。",
+            "explainerIos": "很遗憾，浏览器扩展不被 iOS 支持，单击<bold>返回</bold>以选择其他选项。",
+            "extensionHelp": "如您已安装扩展程序但未被检测到，<bold>请从浏览器的扩展菜单打开扩展</bold> 并按屏幕上的指示操作。",
+            "linkChrome": "安装 Chrome 扩展程序",
+            "linkFirefox": "安装 Firefox 扩展程序",
+            "notDetecting": "已在 Chrome 上安装，但网站未能检测到？尝试刷新页面！",
+            "notDetectingAction": "刷新页面",
+            "status": {
+                "disallowed": "扩展程序未对本页面启用",
+                "disallowedAction": "启用扩展程序",
+                "failed": "请求状态失败",
+                "loading": "正等待您安装扩展程序",
+                "outdated": "扩展版本过旧",
+                "success": "扩展程序工作正常！"
+            },
+            "submit": "继续",
+            "title": "让我们从扩展程序开始"
         },
         "proxy": {
-          "action": "设定代理",
-          "description": "在 5 分钟内设定好代理并获取优质资源。",
-          "quality": "高质量",
-          "title": "自定义代理"
+            "back": "返回",
+            "explainer": "使用代理方式，您可以通过自助代理服务获得高质量的串流。",
+            "input": {
+                "errorConnection": "无法连接到代理",
+                "errorInvalidUrl": "URL 无效",
+                "errorNotProxy": "检测到常规网站，链接应指向代理",
+                "label": "代理 URL",
+                "placeholder": "https://"
+            },
+            "link": "了解如何设置代理",
+            "submit": "提交代理",
+            "title": "让我们设置新的代理"
+        },
+        "start": {
+            "explainer": "为了尽可能获得最佳串流，您将要选择使用何种串流方法。",
+            "options": {
+                "default": {
+                    "text": "我不想使用高质量串流，<0 /> <1>使用默认设定</1>"
+                },
+                "extension": {
+                    "action": "安装扩展程序",
+                    "description": "安装浏览器扩展并获取最佳视频源。",
+                    "quality": "最佳质量",
+                    "title": "浏览器扩展"
+                },
+                "proxy": {
+                    "action": "设定代理",
+                    "description": "在 5 分钟内设定好代理并获取优质资源。",
+                    "quality": "高质量",
+                    "title": "自定义代理"
+                }
+            },
+            "title": "让我们为您设定 sudo-flix"
         }
-      },
-      "title": "让我们为您设定 sudo-flix"
-    }
-  },
-  "overlays": {
-    "close": "关闭"
-  },
-  "player": {
-    "back": {
-      "default": "返回首页",
-      "short": "返回"
     },
-    "casting": {
-      "enabled": "正在投放到设备…"
+    "overlays": {
+        "close": "关闭"
     },
-    "menus": {
-      "downloads": {
-        "copyHlsPlaylist": "复制 HLS 播放列表链接",
-        "disclaimer": "下载内容是直接从内容提供者获取的。sudo-flix 无法控制下载内容如何被提供。",
-        "downloadSubtitle": "下载当前字幕",
-        "downloadVideo": "下载视频",
-        "hlsDisclaimer": "下载内容是直接从内容提供者获取的。sudo-flix 无法控制下载内容如何被提供。<br /><br />请注意，您正在下载 HLS 播放列表，<bold>如您不熟悉高级流媒体格式，我们不推荐此操作</bold>。如需下载其他格式，请尝试切换视频源。",
-        "onAndroid": {
-          "1": "要从 Android 下载，先点击下载按钮，之后在新的页面上， <bold>点击并按住</bold>视频，然后选择 <bold>保存</bold>。",
-          "shortTitle": "下载 / Android",
-          "title": "正在 Android 上下载"
+    "player": {
+        "back": {
+            "default": "返回首页",
+            "short": "返回"
         },
-        "onIos": {
-          "1": "要从 iOS 下载，点击下载按钮，之后在新的页面上，点击 <bold><ios_share /></bold>，然后<bold>保存到文件 <ios_files /></bold>。",
-          "shortTitle": "下载 / iOS",
-          "title": "正在 iOS 上下载"
+        "casting": {
+            "enabled": "正在投放到设备…"
         },
-        "onPc": {
-          "1": "在 PC 上，点击下载按钮，之后在新的页面上，右击视频并选择 <bold>另存视频为</bold>",
-          "shortTitle": "下载 / PC",
-          "title": "正在 PC 上下载"
+        "menus": {
+            "downloads": {
+                "copyHlsPlaylist": "复制 HLS 播放列表链接",
+                "disclaimer": "下载内容是直接从内容提供者获取的。sudo-flix 无法控制下载内容如何被提供。",
+                "downloadSubtitle": "下载当前字幕",
+                "downloadVideo": "下载视频",
+                "hlsDisclaimer": "下载内容是直接从内容提供者获取的。sudo-flix 无法控制下载内容如何被提供。<br /><br />请注意，您正在下载 HLS 播放列表，<bold>如您不熟悉高级流媒体格式，我们不推荐此操作</bold>。如需下载其他格式，请尝试切换视频源。",
+                "onAndroid": {
+                    "1": "要从 Android 下载，先点击下载按钮，之后在新的页面上， <bold>点击并按住</bold>视频，然后选择 <bold>保存</bold>。",
+                    "shortTitle": "下载 / Android",
+                    "title": "正在 Android 上下载"
+                },
+                "onIos": {
+                    "1": "要从 iOS 下载，点击下载按钮，之后在新的页面上，点击 <bold><ios_share /></bold>，然后<bold>保存到文件 <ios_files /></bold>。",
+                    "shortTitle": "下载 / iOS",
+                    "title": "正在 iOS 上下载"
+                },
+                "onPc": {
+                    "1": "在 PC 上，点击下载按钮，之后在新的页面上，右击视频并选择 <bold>另存视频为</bold>",
+                    "shortTitle": "下载 / PC",
+                    "title": "正在 PC 上下载"
+                },
+                "title": "下载"
+            },
+            "episodes": {
+                "button": "分集",
+                "emptyState": "该季暂无剧集，请稍后再来！",
+                "episodeBadge": "第{{episode}}集",
+                "loadingError": "加载分季时发生错误",
+                "loadingList": "载入中……",
+                "loadingTitle": "载入中……",
+                "unairedEpisodes": "本季中的一集或多集已因尚未播出而被禁用。"
+            },
+            "playback": {
+                "speedLabel": "播放速度",
+                "title": "播放设置"
+            },
+            "quality": {
+                "automaticLabel": "自动质量",
+                "hint": "您可以尝试<0>切换视频源</0>以获取不同的质量选项。",
+                "iosNoQuality": "由于苹果施加的限制，该视频源的质量选择在 iOS 上不可用。您可以尝试<0>切换到其他视频源</0>以获取不同的质量选项。",
+                "title": "质量"
+            },
+            "settings": {
+                "audioItem": "音频",
+                "downloadItem": "下载",
+                "enableSubtitles": "启用字幕",
+                "experienceSection": "观看体验",
+                "playbackItem": "播放设置",
+                "qualityItem": "质量",
+                "sourceItem": "视频源",
+                "subtitleItem": "字幕设置",
+                "videoSection": "视频设置"
+            },
+            "sources": {
+                "failed": {
+                    "text": "尝试获取任何视频时均发生错误，请尝试其他视频源。",
+                    "title": "刮取失败"
+                },
+                "noEmbeds": {
+                    "text": "我们无法找到任何嵌入内容，请尝试其他视频源。",
+                    "title": "未找到嵌入内容"
+                },
+                "noStream": {
+                    "text": "此视频源没有该影片或节目的串流。",
+                    "title": "没有流"
+                },
+                "title": "视频源",
+                "unknownOption": "未知"
+            },
+            "subtitles": {
+                "customChoice": "拖入或上传文件",
+                "customizeLabel": "自定义",
+                "dropSubtitleFile": "将字幕拖入这里",
+                "offChoice": "关闭",
+                "settings": {
+                    "backlink": "自定义字幕",
+                    "delay": "字幕延时",
+                    "fixCapitals": "修整大小写"
+                },
+                "title": "字幕",
+                "unknownLanguage": "未知"
+            }
         },
-        "title": "下载"
-      },
-      "episodes": {
-        "button": "分集",
-        "emptyState": "该季暂无剧集，请稍后再来！",
-        "episodeBadge": "第{{episode}}集",
-        "loadingError": "加载分季时发生错误",
-        "loadingList": "载入中……",
-        "loadingTitle": "载入中……",
-        "unairedEpisodes": "本季中的一集或多集已因尚未播出而被禁用。"
-      },
-      "playback": {
-        "speedLabel": "播放速度",
-        "title": "播放设置"
-      },
-      "quality": {
-        "automaticLabel": "自动质量",
-        "hint": "您可以尝试<0>切换视频源</0>以获取不同的质量选项。",
-        "iosNoQuality": "由于苹果施加的限制，该视频源的质量选择在 iOS 上不可用。您可以尝试<0>切换到其他视频源</0>以获取不同的质量选项。",
-        "title": "质量"
-      },
-      "settings": {
-        "audioItem": "音频",
-        "downloadItem": "下载",
-        "enableSubtitles": "启用字幕",
-        "experienceSection": "观看体验",
-        "playbackItem": "播放设置",
-        "qualityItem": "质量",
-        "sourceItem": "视频源",
-        "subtitleItem": "字幕设置",
-        "videoSection": "视频设置"
-      },
-      "sources": {
-        "failed": {
-          "text": "尝试获取任何视频时均发生错误，请尝试其他视频源。",
-          "title": "刮取失败"
+        "metadata": {
+            "api": {
+                "text": "无法载入 API 元数据，请检查您的互联网连接。",
+                "title": "载入 API 元数据失败"
+            },
+            "dmca": {
+                "badge": "已移除",
+                "text": "由于收到删除通知或版权声索，此媒体不再可用。",
+                "title": "媒体已被移除"
+            },
+            "extensionPermission": {
+                "badge": "缺失权限",
+                "button": "使用扩展程序",
+                "text": "您已安装浏览器扩展，但我们需要您的许可才能启用它。",
+                "title": "配置扩展程序"
+            },
+            "failed": {
+                "badge": "失败",
+                "homeButton": "返回首页",
+                "text": "无法从 TMDB 载入媒体的元数据。请检查 TMDB 是否掉线或在您的网络连接中被屏蔽。",
+                "title": "载入元数据失败"
+            },
+            "notFound": {
+                "badge": "未找到",
+                "homeButton": "返回首页",
+                "text": "我们无法找到您请求的媒体。它可能已被删除，或您篡改了 URL.",
+                "title": "无法找到媒体。"
+            }
         },
-        "noEmbeds": {
-          "text": "我们无法找到任何嵌入内容，请尝试其他视频源。",
-          "title": "未找到嵌入内容"
+        "nextEpisode": {
+            "cancel": "取消",
+            "next": "下一集"
         },
-        "noStream": {
-          "text": "此视频源没有该影片或节目的串流。",
-          "title": "没有流"
+        "playbackError": {
+            "badge": "播放错误",
+            "errors": {
+                "errorAborted": "媒体获取已根据用户请求中止。",
+                "errorDecode": "尽管媒体资源此前已确定可用，但在尝试解码时产生问题，导致错误。",
+                "errorGenericMedia": "发生了未知的媒体错误。",
+                "errorNetwork": "发生了一些网络错误，导致媒体无法成功获取，尽管此前它可用。",
+                "errorNotSupported": "该媒体或媒体提供者对象不被支持。"
+            },
+            "homeButton": "返回首页",
+            "text": "尝试播放媒体时发生错误。请重试。",
+            "title": "视频播放失败！"
         },
-        "title": "视频源",
-        "unknownOption": "未知"
-      },
-      "subtitles": {
-        "customChoice": "拖入或上传文件",
-        "customizeLabel": "自定义",
-        "dropSubtitleFile": "将字幕拖入这里",
-        "offChoice": "关闭",
-        "settings": {
-          "backlink": "自定义字幕",
-          "delay": "字幕延时",
-          "fixCapitals": "修整大小写"
+        "scraping": {
+            "extensionFailure": {
+                "badge": "扩展程序已禁用",
+                "enableExtension": "启用扩展程序",
+                "homeButton": "返回首页",
+                "text": "您已经安装 sudo-flix 扩展程序。要开始使用，您需要为此站点启用扩展。",
+                "title": "请启用扩展程序"
+            },
+            "items": {
+                "failure": "发生了错误",
+                "notFound": "没有视频",
+                "pending": "正在检测视频…"
+            },
+            "notFound": {
+                "badge": "未找到",
+                "detailsButton": "显示细节",
+                "homeButton": "返回首页",
+                "text": "我们已在所有内容提供者中搜索，但无法发现您搜寻的媒体内容！我们并不托管媒体内容，也无法控制有什么内容可用。请点击下方的“显示细节”了解更多。",
+                "title": "我们无法找到它"
+            }
         },
-        "title": "字幕",
-        "unknownLanguage": "未知"
-      }
-    },
-    "metadata": {
-      "api": {
-        "text": "无法载入 API 元数据，请检查您的互联网连接。",
-        "title": "载入 API 元数据失败"
-      },
-      "dmca": {
-        "badge": "已移除",
-        "text": "由于收到删除通知或版权声索，此媒体不再可用。",
-        "title": "媒体已被移除"
-      },
-      "extensionPermission": {
-        "badge": "缺失权限",
-        "button": "使用扩展程序",
-        "text": "您已安装浏览器扩展，但我们需要您的许可才能启用它。",
-        "title": "配置扩展程序"
-      },
-      "failed": {
-        "badge": "失败",
-        "homeButton": "返回首页",
-        "text": "无法从 TMDB 载入媒体的元数据。请检查 TMDB 是否掉线或在您的网络连接中被屏蔽。",
-        "title": "载入元数据失败"
-      },
-      "notFound": {
-        "badge": "未找到",
-        "homeButton": "返回首页",
-        "text": "我们无法找到您请求的媒体。它可能已被删除，或您篡改了 URL.",
-        "title": "无法找到媒体。"
-      }
-    },
-    "nextEpisode": {
-      "cancel": "取消",
-      "next": "下一集"
-    },
-    "playbackError": {
-      "badge": "播放错误",
-      "errors": {
-        "errorAborted": "媒体获取已根据用户请求中止。",
-        "errorDecode": "尽管媒体资源此前已确定可用，但在尝试解码时产生问题，导致错误。",
-        "errorGenericMedia": "发生了未知的媒体错误。",
-        "errorNetwork": "发生了一些网络错误，导致媒体无法成功获取，尽管此前它可用。",
-        "errorNotSupported": "该媒体或媒体提供者对象不被支持。"
-      },
-      "homeButton": "返回首页",
-      "text": "尝试播放媒体时发生错误。请重试。",
-      "title": "视频播放失败！"
-    },
-    "scraping": {
-      "extensionFailure": {
-        "badge": "扩展程序已禁用",
-        "enableExtension": "启用扩展程序",
-        "homeButton": "返回首页",
-        "text": "您已经安装 sudo-flix 扩展程序。要开始使用，您需要为此站点启用扩展。",
-        "title": "请启用扩展程序"
-      },
-      "items": {
-        "failure": "发生了错误",
-        "notFound": "没有视频",
-        "pending": "正在检测视频…"
-      },
-      "notFound": {
-        "badge": "未找到",
-        "detailsButton": "显示细节",
-        "homeButton": "返回首页",
-        "text": "我们已在所有内容提供者中搜索，但无法发现您搜寻的媒体内容！我们并不托管媒体内容，也无法控制有什么内容可用。请点击下方的“显示细节”了解更多。",
-        "title": "我们无法找到它"
-      }
-    },
-    "time": {
-      "regular": "{{timeWatched}} / {{duration}}",
-      "remaining": "剩余 {{timeLeft}} • 完结于 {{timeFinished, datetime}}",
-      "shortRegular": "{{timeWatched}}",
-      "shortRemaining": "-{{timeLeft}}"
-    },
-    "turnstile": {
-      "description": "请完成右侧的验证码以验证您是人类。这是为了确保 sudo-flix 的安全！",
-      "error": "验证失败。请重试。",
-      "title": "我们需要验证您是不是人类。",
-      "verifyingHumanity": "正在验证您是否为人类…"
-    }
-  },
-  "screens": {
-    "dmca": {
-      "text": "欢迎来到 sudo-flix 的 DMCA 联系页面！我们尊重知识产权，并希望迅速解决任何版权问题。如果您认为您的版权作品在我们的平台上被不当使用，请发送详细的 DMCA 通知至以下邮箱。同时请附上受版权保护的材料的描述、您的具体联系方式以及善意信念声明。 我们承诺及时解决这些问题，并感谢您的合作，让 sudo-flix 成为尊重创意和版权之地。",
-      "title": "DMCA"
-    },
-    "loadingApp": "正在载入应用程序",
-    "loadingUser": "正在载入您的个人资料",
-    "loadingUserError": {
-      "logout": "登出",
-      "reset": "重设自定义服务器",
-      "text": "载入您的个人资料失败",
-      "textWithReset": "从您的自定义服务器载入个人资料失败，您想重设到默认服务器吗？"
-    },
-    "migration": {
-      "failed": "迁移您的数据失败。",
-      "inProgress": "请稍候，我们正在迁移您的数据。这不会花很多时间。"
-    }
-  },
-  "settings": {
-    "account": {
-      "accountDetails": {
-        "deviceNameLabel": "设备名称",
-        "deviceNamePlaceholder": "如：个人电话",
-        "editProfile": "编辑",
-        "logoutButton": "登出"
-      },
-      "actions": {
-        "delete": {
-          "button": "删除账户",
-          "confirmButton": "删除账户",
-          "confirmDescription": "您确定要删除账户吗？所有数据将会丢失！",
-          "confirmTitle": "您确定吗？",
-          "text": "此操作不可逆。所有数据将被删除且无法恢复。",
-          "title": "删除账户"
+        "time": {
+            "regular": "{{timeWatched}} / {{duration}}",
+            "remaining": "剩余 {{timeLeft}} • 完结于 {{timeFinished, datetime}}",
+            "shortRegular": "{{timeWatched}}",
+            "shortRemaining": "-{{timeLeft}}"
         },
-        "title": "操作"
-      },
-      "devices": {
-        "deviceNameLabel": "设备名称",
-        "failed": "载入会话失败",
-        "removeDevice": "移除",
-        "title": "设备"
-      },
-      "profile": {
-        "finish": "完成编辑",
-        "firstColor": "个人资料颜色 1",
-        "secondColor": "个人资料颜色 2",
-        "title": "编辑个人资料图像",
-        "userIcon": "用户图标"
-      },
-      "register": {
-        "cta": "开始使用",
-        "text": "在设备之间共享并持续同步您的观看进度。",
-        "title": "同步到云端"
-      },
-      "title": "账户"
-    },
-    "appearance": {
-      "activeTheme": "已激活",
-      "themes": {
-        "blue": "蓝色",
-        "default": "默认",
-        "gray": "灰色",
-        "red": "红色",
-        "teal": "青色"
-      },
-      "title": "外观"
-    },
-    "connections": {
-      "server": {
-        "description": "若您想连接到自定义后端保存数据，请启用此选项并提供 URL。 <0>查看指引</0>",
-        "label": "自定义服务器",
-        "urlLabel": "自定义服务器 URL"
-      },
-      "setup": {
-        "doSetup": "进行设定",
-        "errorStatus": {
-          "description": "看起来此配置中的一项或多项需要您的注意。",
-          "title": "有件事需要您的注意"
-        },
-        "itemError": "此设置存在错误。再次进行设定过程以修复它。",
-        "items": {
-          "default": "默认设定",
-          "extension": "扩展程序",
-          "proxy": "自定义代理"
-        },
-        "redoSetup": "重新进行设定",
-        "successStatus": {
-          "description": "一切已经就绪，您可以开始观赏喜爱的媒体了。",
-          "title": "一切就绪！"
-        },
-        "unsetStatus": {
-          "description": "请单击右侧的按钮开始进行设定。",
-          "title": "您尚未完成设定"
+        "turnstile": {
+            "description": "请完成右侧的验证码以验证您是人类。这是为了确保 sudo-flix 的安全！",
+            "error": "验证失败。请重试。",
+            "title": "我们需要验证您是不是人类。",
+            "verifyingHumanity": "正在验证您是否为人类…"
         }
-      },
-      "title": "连接",
-      "workers": {
-        "addButton": "添加新的 Worker",
-        "description": "要让应用程序正常运作，所有流量会通过代理路由。若您想使用自己的 Worker，请启用该选项。 <0>查看指引</0>",
-        "emptyState": "还没有 Worker，在下方添加一个",
-        "label": "使用自定义代理 Worker",
-        "urlLabel": "Worker URL",
-        "urlPlaceholder": "https://"
-      }
     },
-    "preferences": {
-      "language": "应用程序语言",
-      "languageDescription": "作用于整个应用程序的语言。",
-      "thumbnail": "生成缩略图",
-      "thumbnailDescription": "大多数时候，视频没有缩略图。您可以启用此设置以在视频播放时动态生成它们，但此选项可能会拖慢视频速度。",
-      "thumbnailLabel": "生成缩略图",
-      "title": "偏好设置"
+    "screens": {
+        "dmca": {
+            "text": "欢迎来到 sudo-flix 的 DMCA 联系页面！我们尊重知识产权，并希望迅速解决任何版权问题。如果您认为您的版权作品在我们的平台上被不当使用，请发送详细的 DMCA 通知至以下邮箱。同时请附上受版权保护的材料的描述、您的具体联系方式以及善意信念声明。 我们承诺及时解决这些问题，并感谢您的合作，让 sudo-flix 成为尊重创意和版权之地。",
+            "title": "DMCA"
+        },
+        "loadingApp": "正在载入应用程序",
+        "loadingUser": "正在载入您的个人资料",
+        "loadingUserError": {
+            "logout": "登出",
+            "reset": "重设自定义服务器",
+            "text": "载入您的个人资料失败",
+            "textWithReset": "从您的自定义服务器载入个人资料失败，您想重设到默认服务器吗？"
+        },
+        "migration": {
+            "failed": "迁移您的数据失败。",
+            "inProgress": "请稍候，我们正在迁移您的数据。这不会花很多时间。"
+        }
     },
-    "reset": "重设",
-    "save": "保存",
-    "sidebar": {
-      "info": {
-        "appVersion": "应用版本",
-        "backendUrl": "后端 URL",
-        "backendVersion": "后端版本",
-        "hostname": "主机名",
-        "insecure": "不安全",
-        "notLoggedIn": "您尚未登录",
-        "secure": "安全",
-        "title": "应用信息",
-        "unknownVersion": "未知",
-        "userId": "用户 ID"
-      }
-    },
-    "subtitles": {
-      "backgroundBlurLabel": "背景模糊",
-      "backgroundLabel": "背景不透明度",
-      "colorLabel": "颜色",
-      "previewQuote": "我不能害怕。恐惧是心灵的杀手。",
-      "textSizeLabel": "字体大小",
-      "title": "字幕"
-    },
-    "unsaved": "您有未保存的更改"
-  }
+    "settings": {
+        "account": {
+            "accountDetails": {
+                "deviceNameLabel": "设备名称",
+                "deviceNamePlaceholder": "如：个人电话",
+                "editProfile": "编辑",
+                "logoutButton": "登出"
+            },
+            "actions": {
+                "delete": {
+                    "button": "删除账户",
+                    "confirmButton": "删除账户",
+                    "confirmDescription": "您确定要删除账户吗？所有数据将会丢失！",
+                    "confirmTitle": "您确定吗？",
+                    "text": "此操作不可逆。所有数据将被删除且无法恢复。",
+                    "title": "删除账户"
+                },
+                "title": "操作"
+            },
+            "devices": {
+                "deviceNameLabel": "设备名称",
+                "failed": "载入会话失败",
+                "removeDevice": "移除",
+                "title": "设备"
+            },
+            "profile": {
+                "finish": "完成编辑",
+                "firstColor": "个人资料颜色 1",
+                "secondColor": "个人资料颜色 2",
+                "title": "编辑个人资料图像",
+                "userIcon": "用户图标"
+            },
+            "register": {
+                "cta": "开始使用",
+                "text": "在设备之间共享并持续同步您的观看进度。",
+                "title": "同步到云端"
+            },
+            "title": "账户"
+        },
+        "appearance": {
+            "activeTheme": "已激活",
+            "themes": {
+                "blue": "蓝色",
+                "default": "默认",
+                "gray": "灰色",
+                "red": "红色",
+                "teal": "青色"
+            },
+            "title": "外观"
+        },
+        "connections": {
+            "server": {
+                "description": "若您想连接到自定义后端保存数据，请启用此选项并提供 URL。 <0>查看指引</0>",
+                "label": "自定义服务器",
+                "urlLabel": "自定义服务器 URL"
+            },
+            "setup": {
+                "doSetup": "进行设定",
+                "errorStatus": {
+                    "description": "看起来此配置中的一项或多项需要您的注意。",
+                    "title": "有件事需要您的注意"
+                },
+                "itemError": "此设置存在错误。再次进行设定过程以修复它。",
+                "items": {
+                    "default": "默认设定",
+                    "extension": "扩展程序",
+                    "proxy": "自定义代理"
+                },
+                "redoSetup": "重新进行设定",
+                "successStatus": {
+                    "description": "一切已经就绪，您可以开始观赏喜爱的媒体了。",
+                    "title": "一切就绪！"
+                },
+                "unsetStatus": {
+                    "description": "请单击右侧的按钮开始进行设定。",
+                    "title": "您尚未完成设定"
+                }
+            },
+            "title": "连接",
+            "workers": {
+                "addButton": "添加新的 Worker",
+                "description": "要让应用程序正常运作，所有流量会通过代理路由。若您想使用自己的 Worker，请启用该选项。 <0>查看指引</0>",
+                "emptyState": "还没有 Worker，在下方添加一个",
+                "label": "使用自定义代理 Worker",
+                "urlLabel": "Worker URL",
+                "urlPlaceholder": "https://"
+            }
+        },
+        "preferences": {
+            "language": "应用程序语言",
+            "languageDescription": "作用于整个应用程序的语言。",
+            "thumbnail": "生成缩略图",
+            "thumbnailDescription": "大多数时候，视频没有缩略图。您可以启用此设置以在视频播放时动态生成它们，但此选项可能会拖慢视频速度。",
+            "thumbnailLabel": "生成缩略图",
+            "title": "偏好设置"
+        },
+        "reset": "重设",
+        "save": "保存",
+        "sidebar": {
+            "info": {
+                "appVersion": "应用版本",
+                "backendUrl": "后端 URL",
+                "backendVersion": "后端版本",
+                "hostname": "主机名",
+                "insecure": "不安全",
+                "notLoggedIn": "您尚未登录",
+                "secure": "安全",
+                "title": "应用信息",
+                "unknownVersion": "未知",
+                "userId": "用户 ID"
+            }
+        },
+        "subtitles": {
+            "backgroundBlurLabel": "背景模糊",
+            "backgroundLabel": "背景不透明度",
+            "colorLabel": "颜色",
+            "previewQuote": "我不能害怕。恐惧是心灵的杀手。",
+            "textSizeLabel": "字体大小",
+            "title": "字幕"
+        },
+        "unsaved": "您有未保存的更改"
+    }
 }

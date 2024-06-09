@@ -1,538 +1,537 @@
 {
-  "about": {
-    "description": "Ahoy there! \"sudo-flix\" be a fine vessel on the digital seas, a web application scourin' the vast internet for streams. The crew be settin' their sights on a mostly minimalistic approach to enjoyin' the booty of entertainment. Arrr!",
-    "faqTitle": "Common queries",
-    "q1": {
-      "body": "Arrr! \"sudo-flix\" be a noble ship that don't harbor any content itself. When ye click to set yer eyes on a treasure, the application sets sail across the internet, scourin' the vast seas for the chosen media. Check the loading screen and the 'video sources' tab to spy on which source be providin' the entertainment. No media be uploaded by \"sudo-flix\" — it be all through this searchin' mechanism, savvy?",
-      "title": "From which cove does the content emerge, me heartie?"
+    "about": {
+        "description": "Ahoy there! \"sudo-flix\" be a fine vessel on the digital seas, a web application scourin' the vast internet for streams. The crew be settin' their sights on a mostly minimalistic approach to enjoyin' the booty of entertainment. Arrr!",
+        "faqTitle": "Common queries",
+        "q1": {
+            "body": "Arrr! \"sudo-flix\" be a noble ship that don't harbor any content itself. When ye click to set yer eyes on a treasure, the application sets sail across the internet, scourin' the vast seas for the chosen media. Check the loading screen and the 'video sources' tab to spy on which source be providin' the entertainment. No media be uploaded by \"sudo-flix\" — it be all through this searchin' mechanism, savvy?",
+            "title": "From which cove does the content emerge, me heartie?"
+        },
+        "q2": {
+            "body": "Avast, ye landlubber! Be warned, ye can't be requestin' a show or movie on \"sudo-flix,\" for it don't manage any content. All the booty ye set yer eyes on be viewed through sources sailin' the internet. The ship merely be a vessel, not a keeper of the treasures. Navigate wisely, me heartie!",
+            "title": "Where be I able to make a hearty request for a show or movie?"
+        },
+        "q3": {
+            "body": "Arrr, set yer sights on this, me matey! Our search results be fueled by The Movie Database (TMDB), showin' the way regardless of whether our sources in the vast digital seas actually bear the coveted content. It be a guide, not a promise of a sure find. Navigate the waters wisely, for the winds of the internet can be fickle!",
+            "title": "Why be the search results unveilin' the show or movie, yet I can't set sail to watch it?"
+        },
+        "title": "The tales of \"sudo-flix\""
     },
-    "q2": {
-      "body": "Avast, ye landlubber! Be warned, ye can't be requestin' a show or movie on \"sudo-flix,\" for it don't manage any content. All the booty ye set yer eyes on be viewed through sources sailin' the internet. The ship merely be a vessel, not a keeper of the treasures. Navigate wisely, me heartie!",
-      "title": "Where be I able to make a hearty request for a show or movie?"
+    "actions": {
+        "copied": "Copied",
+        "copy": "Copy"
     },
-    "q3": {
-      "body": "Arrr, set yer sights on this, me matey! Our search results be fueled by The Movie Database (TMDB), showin' the way regardless of whether our sources in the vast digital seas actually bear the coveted content. It be a guide, not a promise of a sure find. Navigate the waters wisely, for the winds of the internet can be fickle!",
-      "title": "Why be the search results unveilin' the show or movie, yet I can't set sail to watch it?"
+    "auth": {
+        "createAccount": "Don't have a ship yet? <0>Hoist the sails and make yer own</0>",
+        "deviceNameLabel": "Ship name",
+        "deviceNamePlaceholder": "Muad'Dib's Pirate Ship",
+        "generate": {
+            "description": "If ye lose this, ye be a silly goose and will be posted on the wall of shame™️",
+            "next": "Ahoy! I've stashed me secret code away for safe keepin'.",
+            "passphraseFrameLabel": "Secret Code",
+            "title": "Yer Passphrase"
+        },
+        "hasAccount": "Arrr! Ye already got a ship on the seas? <0>Board here, me heartie!</0>",
+        "login": {
+            "description": "Arr, ye be askin' for the key to me top-secret lair, also known as The Fortress of Wordsmithery, accessed only by recitin' the sacred incantation of the 12-word passphrase!",
+            "deviceLengthError": "Bestow a name upon yer contraption, me heartie!",
+            "passphraseLabel": "12-Word Passphrase",
+            "passphrasePlaceholder": "Passphrase",
+            "submit": "Hoist Anchor",
+            "title": "Hoist the Jolly Roger",
+            "validationError": "Arr, incorrect or incomplete passphrase"
+        },
+        "register": {
+            "information": {
+                "color1": "First Mate color",
+                "color2": "Second Mate color",
+                "header": "Enter a moniker for yer ship and choose a pirate icon and colors, arrr!",
+                "icon": "Pirate icon",
+                "next": "Forward",
+                "title": "Pirate Account information"
+            }
+        },
+        "trust": {
+            "failed": {
+                "text": "Did ye configure it correctly?",
+                "title": "Failed to reach the backend"
+            },
+            "host": "Do ye trust <0>{{hostname}}</0>?",
+            "no": "Abandon Ship",
+            "title": "Do ye trust this ship?",
+            "yes": "Trust"
+        },
+        "verify": {
+            "description": "If ye already lost it, how will ye ever be able to take care of a wee buccaneer?",
+            "invalidData": "Data be not valid",
+            "noMatch": "Passphrase doesn't match",
+            "passphraseLabel": "Yer passphrase",
+            "recaptchaFailed": "ReCaptcha validation failed",
+            "register": "Forge yer account, matey!",
+            "title": "Enter yer passphrase"
+        }
     },
-    "title": "The tales of \"sudo-flix\""
-  },
-  "actions": {
-    "copied": "Copied",
-    "copy": "Copy"
-  },
-  "auth": {
-    "createAccount": "Don't have a ship yet? <0>Hoist the sails and make yer own</0>",
-    "deviceNameLabel": "Ship name",
-    "deviceNamePlaceholder": "Muad'Dib's Pirate Ship",
-    "generate": {
-      "description": "If ye lose this, ye be a silly goose and will be posted on the wall of shame™️",
-      "next": "Ahoy! I've stashed me secret code away for safe keepin'.",
-      "passphraseFrameLabel": "Secret Code",
-      "title": "Yer Passphrase"
+    "errors": {
+        "badge": "Shiver me timbers",
+        "details": "Ahoy! What be the secrets of the glitch?",
+        "reloadPage": "Reload the page",
+        "showError": "Reveal the details of the error, me matey",
+        "title": "That be an error, Captain"
     },
-    "hasAccount": "Arrr! Ye already got a ship on the seas? <0>Board here, me heartie!</0>",
-    "login": {
-      "description": "Arr, ye be askin' for the key to me top-secret lair, also known as The Fortress of Wordsmithery, accessed only by recitin' the sacred incantation of the 12-word passphrase!",
-      "deviceLengthError": "Bestow a name upon yer contraption, me heartie!",
-      "passphraseLabel": "12-Word Passphrase",
-      "passphrasePlaceholder": "Passphrase",
-      "submit": "Hoist Anchor",
-      "title": "Hoist the Jolly Roger",
-      "validationError": "Arr, incorrect or incomplete passphrase"
+    "footer": {
+        "legal": {
+            "disclaimer": "Disclaimer",
+            "disclaimerText": "sudo-flix does not host any files, it merely links to 3rd party services. Legal issues should be taken up with the file hosts and providers. sudo-flix be not responsible for any media files shown by the video providers."
+        },
+        "links": {
+            "discord": "Discord",
+            "dmca": "DMCA",
+            "github": "GitHub"
+        },
+        "tagline": "Watch yer favorite shows and movies with this open source streaming ship."
     },
-    "register": {
-      "information": {
-        "color1": "First Mate color",
-        "color2": "Second Mate color",
-        "header": "Enter a moniker for yer ship and choose a pirate icon and colors, arrr!",
-        "icon": "Pirate icon",
-        "next": "Forward",
-        "title": "Pirate Account information"
-      }
+    "global": {
+        "name": "sudo-flix",
+        "pages": {
+            "about": "About",
+            "dmca": "DMCA",
+            "login": "Login",
+            "onboarding": "Setup",
+            "pagetitle": "{{title}} - sudo-flix",
+            "register": "Forge yer account, matey!",
+            "settings": "Settings"
+        }
     },
-    "trust": {
-      "failed": {
-        "text": "Did ye configure it correctly?",
-        "title": "Failed to reach the backend"
-      },
-      "host": "Do ye trust <0>{{hostname}}</0>?",
-      "no": "Abandon Ship",
-      "title": "Do ye trust this ship?",
-      "yes": "Trust"
+    "home": {
+        "bookmarks": {
+            "sectionTitle": "Bookmarks"
+        },
+        "continueWatching": {
+            "sectionTitle": "Continue Watchin'"
+        },
+        "mediaList": {
+            "stopEditing": "Stop editin'"
+        },
+        "search": {
+            "allResults": "That's all we have, me heartie!",
+            "failed": "Arrrr failed to find media, try again!",
+            "loading": "Hold yer horses, me heartie!",
+            "noResults": "We couldn't find anythin', arrr!",
+            "placeholder": {
+                "default": "What do ye want to watch?"
+            },
+            "sectionTitle": "Searchin' results"
+        },
+        "titles": {
+            "day": {
+                "default": "What be yer fancy for this fine afternoon's viewing, me heartie?",
+                "extra": [
+                    "Feelin' adventurous? Pirates of the Caribbean might be the perfect choice."
+                ]
+            },
+            "morning": {
+                "default": "What be yer fancy for this mornin's viewing, me heartie?",
+                "extra": [
+                    "I be hearin' that 'Before Sunrise' be a fine choice, me heartie"
+                ]
+            },
+            "night": {
+                "default": "What be yer desire for the night's entertainment, me heartie?",
+                "extra": [
+                    "Feelin' weary, are ye? I be hearin' 'The Exorcist' be a good pick to stir the spirits, me heartie."
+                ]
+            }
+        }
     },
-    "verify": {
-      "description": "If ye already lost it, how will ye ever be able to take care of a wee buccaneer?",
-      "invalidData": "Data be not valid",
-      "noMatch": "Passphrase doesn't match",
-      "passphraseLabel": "Yer passphrase",
-      "recaptchaFailed": "ReCaptcha validation failed",
-      "register": "Forge yer account, matey!",
-      "title": "Enter yer passphrase"
-    }
-  },
-  "errors": {
-    "badge": "Shiver me timbers",
-    "details": "Ahoy! What be the secrets of the glitch?",
-    "reloadPage": "Reload the page",
-    "showError": "Reveal the details of the error, me matey",
-    "title": "That be an error, Captain"
-  },
-  "footer": {
-    "legal": {
-      "disclaimer": "Disclaimer",
-      "disclaimerText": "sudo-flix does not host any files, it merely links to 3rd party services. Legal issues should be taken up with the file hosts and providers. sudo-flix be not responsible for any media files shown by the video providers."
+    "media": {
+        "episodeDisplay": "S{{season}} E{{episode}}",
+        "types": {
+            "movie": "Film",
+            "show": "Show"
+        }
     },
-    "links": {
-      "discord": "Discord",
-      "dmca": "DMCA",
-      "github": "GitHub"
+    "navigation": {
+        "banner": {
+            "offline": "Check yer internet connection"
+        },
+        "menu": {
+            "about": "About us",
+            "logout": "Abandon ship",
+            "register": "Sync to the cloud",
+            "settings": "Settings",
+            "support": "Support"
+        }
     },
-    "tagline": "Watch yer favorite shows and movies with this open source streaming ship."
-  },
-  "global": {
-    "name": "sudo-flix",
-    "pages": {
-      "about": "About",
-      "dmca": "DMCA",
-      "login": "Login",
-      "onboarding": "Setup",
-      "pagetitle": "{{title}} - sudo-flix",
-      "register": "Forge yer account, matey!",
-      "settings": "Settings"
-    }
-  },
-  "home": {
-    "bookmarks": {
-      "sectionTitle": "Bookmarks"
+    "notFound": {
+        "badge": "Not found",
+        "goHome": "Back to home port",
+        "message": "We looked everywhere: under the bins, in the closet, behind the proxy but ultimately couldn't find the treasure map ye be lookin' for.",
+        "title": "Couldn't find that treasure map"
     },
-    "continueWatching": {
-      "sectionTitle": "Continue Watchin'"
-    },
-    "mediaList": {
-      "stopEditing": "Stop editin'"
-    },
-    "search": {
-      "allResults": "That's all we have, me heartie!",
-      "failed": "Arrrr failed to find media, try again!",
-      "loading": "Hold yer horses, me heartie!",
-      "noResults": "We couldn't find anythin', arrr!",
-      "placeholder": {
-        "default": "What do ye want to watch?",
-        "extra": []
-      },
-      "sectionTitle": "Searchin' results"
-    },
-    "titles": {
-      "day": {
-        "default": "What be yer fancy for this fine afternoon's viewing, me heartie?",
-        "extra": [
-          "Feelin' adventurous? Pirates of the Caribbean might be the perfect choice."
-        ]
-      },
-      "morning": {
-        "default": "What be yer fancy for this mornin's viewing, me heartie?",
-        "extra": [
-          "I be hearin' that 'Before Sunrise' be a fine choice, me heartie"
-        ]
-      },
-      "night": {
-        "default": "What be yer desire for the night's entertainment, me heartie?",
-        "extra": [
-          "Feelin' weary, are ye? I be hearin' 'The Exorcist' be a good pick to stir the spirits, me heartie."
-        ]
-      }
-    }
-  },
-  "media": {
-    "episodeDisplay": "S{{season}} E{{episode}}",
-    "types": {
-      "movie": "Film",
-      "show": "Show"
-    }
-  },
-  "navigation": {
-    "banner": {
-      "offline": "Check yer internet connection"
-    },
-    "menu": {
-      "about": "About us",
-      "logout": "Abandon ship",
-      "register": "Sync to the cloud",
-      "settings": "Settings",
-      "support": "Support"
-    }
-  },
-  "notFound": {
-    "badge": "Not found",
-    "goHome": "Back to home port",
-    "message": "We looked everywhere: under the bins, in the closet, behind the proxy but ultimately couldn't find the treasure map ye be lookin' for.",
-    "title": "Couldn't find that treasure map"
-  },
-  "onboarding": {
-    "defaultConfirm": {
-      "cancel": "Cancel",
-      "confirm": "Use default setup",
-      "description": "The default setup does nah 'ave the best streams 'n can be unbearably slow.",
-      "title": "Are ye sure?"
-    },
-    "extension": {
-      "back": "Go back",
-      "explainer": "Usin' the browser extension, ye can get the best streams we 'ave t' offer. Wit' jus' a simple install.",
-      "explainerIos": "Unfortunately, the browser extension ain't supported on iOS, Press <bold>Go back</bold> t' choose another option.",
-      "extensionHelp": "If ye've installed the extension but 'tisn't detected, <bold>open the extension through yer browsers extension menu</bold> 'n follow the steps on screen.",
-      "linkChrome": "Install Chrome extension",
-      "linkFirefox": "Install Firefox extension",
-      "notDetecting": "Installed on Chrome, but the site ain't detecting it? Give the page a good reload!",
-      "notDetectingAction": "Reload page",
-      "status": {
-        "disallowed": "Extension ain't enabled fer this page",
-        "disallowedAction": "Enable extension",
-        "failed": "Failed t' request status",
-        "loading": "Waitin' fer ye t' install the extension",
-        "outdated": "Extension version too ole",
-        "success": "Extension be workin' as expected!"
-      },
-      "submit": "Continue",
-      "title": "Let's start wit' an extension"
-    },
-    "proxy": {
-      "back": "Go back",
-      "explainer": "Wit' the proxy method, ye can get great quality streams by makin' a self-service proxy.",
-      "input": {
-        "errorConnection": "Couldn't connect t' proxy",
-        "errorInvalidUrl": "Ain't a valid URL",
-        "errorNotProxy": "Expected a proxy but got a website",
-        "label": "Proxy URL",
-        "placeholder": "https://"
-      },
-      "link": "Learn how t' make a proxy",
-      "submit": "Submit proxy",
-      "title": "Let's make a new proxy"
-    },
-    "start": {
-      "explainer": "T' get the best streams possible, ye will needs t' choose which streamin' method ye wants t' use.",
-      "options": {
-        "default": {
-          "text": "I don't wants good quality streams,<0 /> <1>use the default setup</1>"
+    "onboarding": {
+        "defaultConfirm": {
+            "cancel": "Cancel",
+            "confirm": "Use default setup",
+            "description": "The default setup does nah 'ave the best streams 'n can be unbearably slow.",
+            "title": "Are ye sure?"
         },
         "extension": {
-          "action": "Install extension",
-          "description": "Install browser extension 'n gain access t' the best sources.",
-          "quality": "Best quality",
-          "title": "Browser extension"
+            "back": "Go back",
+            "explainer": "Usin' the browser extension, ye can get the best streams we 'ave t' offer. Wit' jus' a simple install.",
+            "explainerIos": "Unfortunately, the browser extension ain't supported on iOS, Press <bold>Go back</bold> t' choose another option.",
+            "extensionHelp": "If ye've installed the extension but 'tisn't detected, <bold>open the extension through yer browsers extension menu</bold> 'n follow the steps on screen.",
+            "linkChrome": "Install Chrome extension",
+            "linkFirefox": "Install Firefox extension",
+            "notDetecting": "Installed on Chrome, but the site ain't detecting it? Give the page a good reload!",
+            "notDetectingAction": "Reload page",
+            "status": {
+                "disallowed": "Extension ain't enabled fer this page",
+                "disallowedAction": "Enable extension",
+                "failed": "Failed t' request status",
+                "loading": "Waitin' fer ye t' install the extension",
+                "outdated": "Extension version too ole",
+                "success": "Extension be workin' as expected!"
+            },
+            "submit": "Continue",
+            "title": "Let's start wit' an extension"
         },
         "proxy": {
-          "action": "Setup proxy",
-          "description": "Setup a proxy in jus' 5 minutes 'n gain access t' great sources.",
-          "quality": "Good quality",
-          "title": "Custom proxy"
+            "back": "Go back",
+            "explainer": "Wit' the proxy method, ye can get great quality streams by makin' a self-service proxy.",
+            "input": {
+                "errorConnection": "Couldn't connect t' proxy",
+                "errorInvalidUrl": "Ain't a valid URL",
+                "errorNotProxy": "Expected a proxy but got a website",
+                "label": "Proxy URL",
+                "placeholder": "https://"
+            },
+            "link": "Learn how t' make a proxy",
+            "submit": "Submit proxy",
+            "title": "Let's make a new proxy"
+        },
+        "start": {
+            "explainer": "T' get the best streams possible, ye will needs t' choose which streamin' method ye wants t' use.",
+            "options": {
+                "default": {
+                    "text": "I don't wants good quality streams,<0 /> <1>use the default setup</1>"
+                },
+                "extension": {
+                    "action": "Install extension",
+                    "description": "Install browser extension 'n gain access t' the best sources.",
+                    "quality": "Best quality",
+                    "title": "Browser extension"
+                },
+                "proxy": {
+                    "action": "Setup proxy",
+                    "description": "Setup a proxy in jus' 5 minutes 'n gain access t' great sources.",
+                    "quality": "Good quality",
+                    "title": "Custom proxy"
+                }
+            },
+            "title": "Let's get ye setup wit' sudo-flix"
         }
-      },
-      "title": "Let's get ye setup wit' sudo-flix"
-    }
-  },
-  "overlays": {
-    "close": "Close"
-  },
-  "player": {
-    "back": {
-      "default": "Back to home port",
-      "short": "Back"
     },
-    "casting": {
-      "enabled": "Casting to the contraption, setting sail..."
+    "overlays": {
+        "close": "Close"
     },
-    "menus": {
-      "downloads": {
-        "disclaimer": "Downloads be taken directly from the provider. sudo-flix does not have control over how the downloads be provided.",
-        "downloadSubtitle": "Download current subtitle",
-        "downloadVideo": "Download film",
-        "hlsDisclaimer": "Loot are taken directly from the provider. sudo-flix does nah 'ave control o'er how the loot are provided. <br /><br />Please note that ye be downloadin' an HLS playlist, <bold>'tisn't recommended t' download if ye be nah familiar wit' advanced streamin' formats</bold>. Try different sources fer different formats.",
-        "onAndroid": {
-          "1": "To download on Android, <bold>tap and hold</bold> on the film, then select <bold>save</bold>.",
-          "shortTitle": "Download / Android",
-          "title": "Downloadin' on Android"
+    "player": {
+        "back": {
+            "default": "Back to home port",
+            "short": "Back"
         },
-        "onIos": {
-          "1": "To download on iOS, click <bold><ios_share /></bold>, then <bold>Save to Files <ios_files /></bold>. All that's left to do now be to pick a nice and cozy chest for yer film!",
-          "shortTitle": "Download / iOS",
-          "title": "Downloadin' on iOS"
+        "casting": {
+            "enabled": "Casting to the contraption, setting sail..."
         },
-        "onPc": {
-          "1": "On PC, right click the film and select <bold>Save film as</bold>",
-          "shortTitle": "Download / PC",
-          "title": "Downloadin' on PC"
+        "menus": {
+            "downloads": {
+                "disclaimer": "Downloads be taken directly from the provider. sudo-flix does not have control over how the downloads be provided.",
+                "downloadSubtitle": "Download current subtitle",
+                "downloadVideo": "Download film",
+                "hlsDisclaimer": "Loot are taken directly from the provider. sudo-flix does nah 'ave control o'er how the loot are provided. <br /><br />Please note that ye be downloadin' an HLS playlist, <bold>'tisn't recommended t' download if ye be nah familiar wit' advanced streamin' formats</bold>. Try different sources fer different formats.",
+                "onAndroid": {
+                    "1": "To download on Android, <bold>tap and hold</bold> on the film, then select <bold>save</bold>.",
+                    "shortTitle": "Download / Android",
+                    "title": "Downloadin' on Android"
+                },
+                "onIos": {
+                    "1": "To download on iOS, click <bold><ios_share /></bold>, then <bold>Save to Files <ios_files /></bold>. All that's left to do now be to pick a nice and cozy chest for yer film!",
+                    "shortTitle": "Download / iOS",
+                    "title": "Downloadin' on iOS"
+                },
+                "onPc": {
+                    "1": "On PC, right click the film and select <bold>Save film as</bold>",
+                    "shortTitle": "Download / PC",
+                    "title": "Downloadin' on PC"
+                },
+                "title": "Buried Treasure"
+            },
+            "episodes": {
+                "button": "Episodes",
+                "emptyState": "There be no episodes in this season, check back later!",
+                "episodeBadge": "E{{episode}}",
+                "loadingError": "Error loadin' season",
+                "loadingList": "Loading...",
+                "loadingTitle": "Loading...",
+                "unairedEpisodes": "One or more episodes in this season 'ave been disabled 'cause they haven't been shipped yet."
+            },
+            "playback": {
+                "speedLabel": "Playback speed",
+                "title": "Playback settings"
+            },
+            "quality": {
+                "automaticLabel": "Automatic quality",
+                "hint": "Ye can try <0>switchin' source</0> to get different quality options.",
+                "iosNoQuality": "Due to Apple-defined limitations, quality selection be not available on iOS for this source. Ye can try <0>switchin' to another source</0> to get different quality options.",
+                "title": "Quality"
+            },
+            "settings": {
+                "downloadItem": "Buried Treasure",
+                "enableSubtitles": "Unfurl the subtitles",
+                "experienceSection": "Viewing Experience",
+                "playbackItem": "Playback settings",
+                "qualityItem": "Quality",
+                "sourceItem": "Video sources",
+                "subtitleItem": "Set yer subtitle course",
+                "videoSection": "Video settings"
+            },
+            "sources": {
+                "failed": {
+                    "text": "We were unable to find any videos for this source. Don't come bitchin' to us about it, just try another source.",
+                    "title": "Failed to scrape"
+                },
+                "noEmbeds": {
+                    "text": "We were unable to find any embeds for this source, please try another.",
+                    "title": "No embeds found"
+                },
+                "noStream": {
+                    "text": "This source has no streams for this film or show.",
+                    "title": "No stream"
+                },
+                "title": "Sources",
+                "unknownOption": "Unknown"
+            },
+            "subtitles": {
+                "customChoice": "Select subtitle from file",
+                "customizeLabel": "Tailor it to yer liking",
+                "offChoice": "Off",
+                "settings": {
+                    "backlink": "Custom subtitles",
+                    "delay": "Subtitle delay",
+                    "fixCapitals": "Mend the capital letters"
+                },
+                "title": "Subtitles",
+                "unknownLanguage": "Unknown"
+            }
         },
-        "title": "Buried Treasure"
-      },
-      "episodes": {
-        "button": "Episodes",
-        "emptyState": "There be no episodes in this season, check back later!",
-        "episodeBadge": "E{{episode}}",
-        "loadingError": "Error loadin' season",
-        "loadingList": "Loading...",
-        "loadingTitle": "Loading...",
-        "unairedEpisodes": "One or more episodes in this season 'ave been disabled 'cause they haven't been shipped yet."
-      },
-      "playback": {
-        "speedLabel": "Playback speed",
-        "title": "Playback settings"
-      },
-      "quality": {
-        "automaticLabel": "Automatic quality",
-        "hint": "Ye can try <0>switchin' source</0> to get different quality options.",
-        "iosNoQuality": "Due to Apple-defined limitations, quality selection be not available on iOS for this source. Ye can try <0>switchin' to another source</0> to get different quality options.",
-        "title": "Quality"
-      },
-      "settings": {
-        "downloadItem": "Buried Treasure",
-        "enableSubtitles": "Unfurl the subtitles",
-        "experienceSection": "Viewing Experience",
-        "playbackItem": "Playback settings",
-        "qualityItem": "Quality",
-        "sourceItem": "Video sources",
-        "subtitleItem": "Set yer subtitle course",
-        "videoSection": "Video settings"
-      },
-      "sources": {
-        "failed": {
-          "text": "We were unable to find any videos for this source. Don't come bitchin' to us about it, just try another source.",
-          "title": "Failed to scrape"
+        "metadata": {
+            "api": {
+                "text": "Could nah load API metadata, please check yer internet connection.",
+                "title": "Failed t' load API metadata"
+            },
+            "dmca": {
+                "badge": "Removed",
+                "text": "This media be no longer available due t' a takedown notice or copyright claim.",
+                "title": "Media has been scuttled"
+            },
+            "extensionPermission": {
+                "badge": "Permission Missin'",
+                "button": "Use extension",
+                "text": "Ye 'ave the browser extension, but we needs yer permission t' get started usin' the extension.",
+                "title": "Configure the extension"
+            },
+            "failed": {
+                "badge": "Failed",
+                "homeButton": "Go home port",
+                "text": "Oh, me apologies, sweetie! The itty-bitty sudo-flix did its utmost bestest, but alas, no wucky videos to be spotted anywhere (´⊙ω⊙`) Please don't be angwy, wittle sudo-flix ish twying so hard. Can ye find it in yer heart to forgive? UwU 💖",
+                "title": "Failed to load meta data"
+            },
+            "notFound": {
+                "badge": "Not found",
+                "homeButton": "Back to home port",
+                "text": "We couldn't find the media ye requested. Either it's been removed or ye tampered with the URL.",
+                "title": "Couldn't find that media."
+            }
         },
-        "noEmbeds": {
-          "text": "We were unable to find any embeds for this source, please try another.",
-          "title": "No embeds found"
+        "nextEpisode": {
+            "cancel": "Cancel",
+            "next": "Next episode"
         },
-        "noStream": {
-          "text": "This source has no streams for this film or show.",
-          "title": "No stream"
+        "playbackError": {
+            "badge": "Not found",
+            "errors": {
+                "errorAborted": "The fetchin' of the associated resource was aborted by the user's request.",
+                "errorDecode": "Despite havin' previously been determined to be usable, an error occurred while tryin' to decode the media resource, resultin' in an error.",
+                "errorGenericMedia": "Unknown media error occurred",
+                "errorNetwork": "Some kind of network error occurred which prevented the media from bein' successfully fetched, despite havin' previously been available.",
+                "errorNotSupported": "The associated resource or media provider object has been found to be unsuitable."
+            },
+            "homeButton": "Go home port",
+            "text": "Oh, me apologies, sweetie! The itty-bitty sudo-flix did its utmost bestest, but alas, no wucky videos to be spotted anywhere (´⊙ω⊙`) Please don't be angwy, wittle sudo-flix ish twying so hard. Can ye find it in yer heart to forgive? UwU 💖",
+            "title": "Whoops, it broke!"
         },
-        "title": "Sources",
-        "unknownOption": "Unknown"
-      },
-      "subtitles": {
-        "customChoice": "Select subtitle from file",
-        "customizeLabel": "Tailor it to yer liking",
-        "offChoice": "Off",
-        "settings": {
-          "backlink": "Custom subtitles",
-          "delay": "Subtitle delay",
-          "fixCapitals": "Mend the capital letters"
+        "scraping": {
+            "items": {
+                "failure": "Error occurred",
+                "notFound": "Doesn't have the video",
+                "pending": "Checkin' for videos..."
+            },
+            "notFound": {
+                "badge": "Not found",
+                "detailsButton": "Show details",
+                "homeButton": "Go home port",
+                "text": "Oh, me apologies, sweetie! The itty-bitty sudo-flix did its utmost bestest, but alas, no wucky videos to be spotted anywhere (´⊙ω⊙`) Please don't be angwy, wittle sudo-flix ish twying so hard. Can ye find it in yer heart to forgive? UwU 💖",
+                "title": "Goo goo gaa gaa"
+            }
         },
-        "title": "Subtitles",
-        "unknownLanguage": "Unknown"
-      }
-    },
-    "metadata": {
-      "api": {
-        "text": "Could nah load API metadata, please check yer internet connection.",
-        "title": "Failed t' load API metadata"
-      },
-      "dmca": {
-        "badge": "Removed",
-        "text": "This media be no longer available due t' a takedown notice or copyright claim.",
-        "title": "Media has been scuttled"
-      },
-      "extensionPermission": {
-        "badge": "Permission Missin'",
-        "button": "Use extension",
-        "text": "Ye 'ave the browser extension, but we needs yer permission t' get started usin' the extension.",
-        "title": "Configure the extension"
-      },
-      "failed": {
-        "badge": "Failed",
-        "homeButton": "Go home port",
-        "text": "Oh, me apologies, sweetie! The itty-bitty sudo-flix did its utmost bestest, but alas, no wucky videos to be spotted anywhere (´⊙ω⊙`) Please don't be angwy, wittle sudo-flix ish twying so hard. Can ye find it in yer heart to forgive? UwU 💖",
-        "title": "Failed to load meta data"
-      },
-      "notFound": {
-        "badge": "Not found",
-        "homeButton": "Back to home port",
-        "text": "We couldn't find the media ye requested. Either it's been removed or ye tampered with the URL.",
-        "title": "Couldn't find that media."
-      }
-    },
-    "nextEpisode": {
-      "cancel": "Cancel",
-      "next": "Next episode"
-    },
-    "playbackError": {
-      "badge": "Not found",
-      "errors": {
-        "errorAborted": "The fetchin' of the associated resource was aborted by the user's request.",
-        "errorDecode": "Despite havin' previously been determined to be usable, an error occurred while tryin' to decode the media resource, resultin' in an error.",
-        "errorGenericMedia": "Unknown media error occurred",
-        "errorNetwork": "Some kind of network error occurred which prevented the media from bein' successfully fetched, despite havin' previously been available.",
-        "errorNotSupported": "The associated resource or media provider object has been found to be unsuitable."
-      },
-      "homeButton": "Go home port",
-      "text": "Oh, me apologies, sweetie! The itty-bitty sudo-flix did its utmost bestest, but alas, no wucky videos to be spotted anywhere (´⊙ω⊙`) Please don't be angwy, wittle sudo-flix ish twying so hard. Can ye find it in yer heart to forgive? UwU 💖",
-      "title": "Whoops, it broke!"
-    },
-    "scraping": {
-      "items": {
-        "failure": "Error occurred",
-        "notFound": "Doesn't have the video",
-        "pending": "Checkin' for videos..."
-      },
-      "notFound": {
-        "badge": "Not found",
-        "detailsButton": "Show details",
-        "homeButton": "Go home port",
-        "text": "Oh, me apologies, sweetie! The itty-bitty sudo-flix did its utmost bestest, but alas, no wucky videos to be spotted anywhere (´⊙ω⊙`) Please don't be angwy, wittle sudo-flix ish twying so hard. Can ye find it in yer heart to forgive? UwU 💖",
-        "title": "Goo goo gaa gaa"
-      }
-    },
-    "time": {
-      "regular": "{{timeWatched}} / {{duration}}",
-      "remaining": "{{timeLeft}} left • Finish at {{timeFinished, datetime}}",
-      "shortRegular": "{{timeWatched}}",
-      "shortRemaining": "-{{timeLeft}}"
-    },
-    "turnstile": {
-      "description": "Please verify that ye be human by completin' the Captcha on right. 'tis t' keep sudo-flix safe!",
-      "error": "Failed t' verify yer piracy. Please try again.",
-      "title": "We needs t' verify that ye're real pirate.",
-      "verifyingHumanity": "Verifyin' yer piracy..."
-    }
-  },
-  "screens": {
-    "dmca": {
-      "text": "Ahoy t' sudo-flix's DMCA contact page! We respect intellectual property rights 'n wants t' address any copyright concerns swiftly. If ye believe yer copyrighted work has been improperly used on our platform, please send a detailed DMCA notice t' the email below. Please include a description o' the copyrighted material, yer contact details, 'n a statement o' good faith belief. We be committed t' resolvin' these matters promptly 'n appreciate yer cooperation in keepin' sudo-flix a galleon that respects creativity 'n copyrights.",
-      "title": "DMCA"
-    },
-    "loadingApp": "Loadin' application",
-    "loadingUser": "Loadin' yer pirate profile",
-    "loadingUserError": {
-      "logout": "Logout",
-      "reset": "Reset custom ship",
-      "text": "Failed to load yer pirate profile",
-      "textWithReset": "Failed to load yer pirate profile from yer custom ship, want to reset back to default?"
-    },
-    "migration": {
-      "failed": "Failed to migrate yer booty.",
-      "inProgress": "Please hold, we be migratin' yer booty. This shouldn't take long."
-    }
-  },
-  "settings": {
-    "account": {
-      "accountDetails": {
-        "deviceNameLabel": "Ship name",
-        "deviceNamePlaceholder": "Fremen tablet",
-        "editProfile": "Edit",
-        "logoutButton": "Abandon ship"
-      },
-      "actions": {
-        "delete": {
-          "button": "Abandon ship for all eternity",
-          "confirmButton": "Abandon ship for all eternity",
-          "confirmDescription": "Arrr ye sure ye want to abandon yer ship for all eternity? All yer booty will be lost!",
-          "confirmTitle": "Arrr ye sure?",
-          "text": "This action be irreversible. All booty will be deleted and nothin' can be recovered.",
-          "title": "Abandon ship for all eternity"
+        "time": {
+            "regular": "{{timeWatched}} / {{duration}}",
+            "remaining": "{{timeLeft}} left • Finish at {{timeFinished, datetime}}",
+            "shortRegular": "{{timeWatched}}",
+            "shortRemaining": "-{{timeLeft}}"
         },
-        "title": "Actions"
-      },
-      "devices": {
-        "deviceNameLabel": "Ship name",
-        "failed": "Failed to load sessions",
-        "removeDevice": "Abandon ship",
-        "title": "Shipmates"
-      },
-      "profile": {
-        "finish": "Finish editing",
-        "firstColor": "First color",
-        "secondColor": "Second color",
-        "title": "Edit Pirate Portrait",
-        "userIcon": "Pirate icon"
-      },
-      "register": {
-        "cta": "Get started",
-        "text": "Instantly share yer watch progress between devices and keep 'em synced.",
-        "title": "Sync to the Cloud"
-      },
-      "title": "Treasure Chest"
-    },
-    "appearance": {
-      "activeTheme": "Active",
-      "themes": {
-        "blue": "Blue",
-        "default": "Default",
-        "gray": "Gray",
-        "red": "Red",
-        "teal": "Teal"
-      },
-      "title": "Appearance"
-    },
-    "connections": {
-      "server": {
-        "description": "To make the application function, all traffic be routed through proxies. Enable this if ye want to bring yer own sailors. <0>Instructions.</0>",
-        "label": "Custom ship",
-        "urlLabel": "Custom ship URL"
-      },
-      "setup": {
-        "doSetup": "Do setup",
-        "errorStatus": {
-          "description": "It seems that one or more items in this setup needs yer attention.",
-          "title": "Somethin' needs yer attention"
-        },
-        "itemError": "Thar be somethin' wrong wit' this settin'. Go through setup again t' fix it.",
-        "items": {
-          "default": "Default setup",
-          "extension": "Extension",
-          "proxy": "Custom proxy"
-        },
-        "redoSetup": "Redo setup",
-        "successStatus": {
-          "description": "All things are in ship fer ye t' start watchin' yer favourite media.",
-          "title": "Everythin' be set up!"
-        },
-        "unsetStatus": {
-          "description": "Please skewer the button t' starb'rd t' start the setup process.",
-          "title": "Ye haven't gone through setup"
+        "turnstile": {
+            "description": "Please verify that ye be human by completin' the Captcha on right. 'tis t' keep sudo-flix safe!",
+            "error": "Failed t' verify yer piracy. Please try again.",
+            "title": "We needs t' verify that ye're real pirate.",
+            "verifyingHumanity": "Verifyin' yer piracy..."
         }
-      },
-      "title": "Connections",
-      "workers": {
-        "addButton": "Recruit new sailor",
-        "description": "To make the application function, all traffic be routed through proxies. Enable this if ye want to bring yer own sailors. <0>Instructions.</0>",
-        "emptyState": "No sailors yet, add one below",
-        "label": "Use custom proxy sailors",
-        "urlLabel": "Sailor URLs",
-        "urlPlaceholder": "https://"
-      }
     },
-    "preferences": {
-      "language": "Application language",
-      "languageDescription": "Language applied t' the entire application.",
-      "thumbnail": "Generate thumbnails",
-      "thumbnailDescription": "Most o' the time, videos don't 'ave thumbnails. Ye can enable this settin' t' generate 'em on the trip but they can make yer video slower.",
-      "thumbnailLabel": "Generate thumbnails",
-      "title": "Preferences"
+    "screens": {
+        "dmca": {
+            "text": "Ahoy t' sudo-flix's DMCA contact page! We respect intellectual property rights 'n wants t' address any copyright concerns swiftly. If ye believe yer copyrighted work has been improperly used on our platform, please send a detailed DMCA notice t' the email below. Please include a description o' the copyrighted material, yer contact details, 'n a statement o' good faith belief. We be committed t' resolvin' these matters promptly 'n appreciate yer cooperation in keepin' sudo-flix a galleon that respects creativity 'n copyrights.",
+            "title": "DMCA"
+        },
+        "loadingApp": "Loadin' application",
+        "loadingUser": "Loadin' yer pirate profile",
+        "loadingUserError": {
+            "logout": "Logout",
+            "reset": "Reset custom ship",
+            "text": "Failed to load yer pirate profile",
+            "textWithReset": "Failed to load yer pirate profile from yer custom ship, want to reset back to default?"
+        },
+        "migration": {
+            "failed": "Failed to migrate yer booty.",
+            "inProgress": "Please hold, we be migratin' yer booty. This shouldn't take long."
+        }
     },
-    "reset": "Reset",
-    "save": "Save",
-    "sidebar": {
-      "info": {
-        "appVersion": "App version",
-        "backendUrl": "Backend URL",
-        "backendVersion": "Backend version",
-        "hostname": "Ship name",
-        "insecure": "Insecure",
-        "notLoggedIn": "Not logged in",
-        "secure": "Secure",
-        "title": "App information",
-        "unknownVersion": "Unknown",
-        "userId": "Pirate ID"
-      }
-    },
-    "subtitles": {
-      "backgroundLabel": "Background opacity",
-      "colorLabel": "Color",
-      "previewQuote": "I must not fear. Fear is the mind-killer.",
-      "textSizeLabel": "Text size",
-      "title": "Subtitles"
-    },
-    "unsaved": "Ye have unsaved changes"
-  }
+    "settings": {
+        "account": {
+            "accountDetails": {
+                "deviceNameLabel": "Ship name",
+                "deviceNamePlaceholder": "Fremen tablet",
+                "editProfile": "Edit",
+                "logoutButton": "Abandon ship"
+            },
+            "actions": {
+                "delete": {
+                    "button": "Abandon ship for all eternity",
+                    "confirmButton": "Abandon ship for all eternity",
+                    "confirmDescription": "Arrr ye sure ye want to abandon yer ship for all eternity? All yer booty will be lost!",
+                    "confirmTitle": "Arrr ye sure?",
+                    "text": "This action be irreversible. All booty will be deleted and nothin' can be recovered.",
+                    "title": "Abandon ship for all eternity"
+                },
+                "title": "Actions"
+            },
+            "devices": {
+                "deviceNameLabel": "Ship name",
+                "failed": "Failed to load sessions",
+                "removeDevice": "Abandon ship",
+                "title": "Shipmates"
+            },
+            "profile": {
+                "finish": "Finish editing",
+                "firstColor": "First color",
+                "secondColor": "Second color",
+                "title": "Edit Pirate Portrait",
+                "userIcon": "Pirate icon"
+            },
+            "register": {
+                "cta": "Get started",
+                "text": "Instantly share yer watch progress between devices and keep 'em synced.",
+                "title": "Sync to the Cloud"
+            },
+            "title": "Treasure Chest"
+        },
+        "appearance": {
+            "activeTheme": "Active",
+            "themes": {
+                "blue": "Blue",
+                "default": "Default",
+                "gray": "Gray",
+                "red": "Red",
+                "teal": "Teal"
+            },
+            "title": "Appearance"
+        },
+        "connections": {
+            "server": {
+                "description": "To make the application function, all traffic be routed through proxies. Enable this if ye want to bring yer own sailors. <0>Instructions.</0>",
+                "label": "Custom ship",
+                "urlLabel": "Custom ship URL"
+            },
+            "setup": {
+                "doSetup": "Do setup",
+                "errorStatus": {
+                    "description": "It seems that one or more items in this setup needs yer attention.",
+                    "title": "Somethin' needs yer attention"
+                },
+                "itemError": "Thar be somethin' wrong wit' this settin'. Go through setup again t' fix it.",
+                "items": {
+                    "default": "Default setup",
+                    "extension": "Extension",
+                    "proxy": "Custom proxy"
+                },
+                "redoSetup": "Redo setup",
+                "successStatus": {
+                    "description": "All things are in ship fer ye t' start watchin' yer favourite media.",
+                    "title": "Everythin' be set up!"
+                },
+                "unsetStatus": {
+                    "description": "Please skewer the button t' starb'rd t' start the setup process.",
+                    "title": "Ye haven't gone through setup"
+                }
+            },
+            "title": "Connections",
+            "workers": {
+                "addButton": "Recruit new sailor",
+                "description": "To make the application function, all traffic be routed through proxies. Enable this if ye want to bring yer own sailors. <0>Instructions.</0>",
+                "emptyState": "No sailors yet, add one below",
+                "label": "Use custom proxy sailors",
+                "urlLabel": "Sailor URLs",
+                "urlPlaceholder": "https://"
+            }
+        },
+        "preferences": {
+            "language": "Application language",
+            "languageDescription": "Language applied t' the entire application.",
+            "thumbnail": "Generate thumbnails",
+            "thumbnailDescription": "Most o' the time, videos don't 'ave thumbnails. Ye can enable this settin' t' generate 'em on the trip but they can make yer video slower.",
+            "thumbnailLabel": "Generate thumbnails",
+            "title": "Preferences"
+        },
+        "reset": "Reset",
+        "save": "Save",
+        "sidebar": {
+            "info": {
+                "appVersion": "App version",
+                "backendUrl": "Backend URL",
+                "backendVersion": "Backend version",
+                "hostname": "Ship name",
+                "insecure": "Insecure",
+                "notLoggedIn": "Not logged in",
+                "secure": "Secure",
+                "title": "App information",
+                "unknownVersion": "Unknown",
+                "userId": "Pirate ID"
+            }
+        },
+        "subtitles": {
+            "backgroundLabel": "Background opacity",
+            "colorLabel": "Color",
+            "previewQuote": "I must not fear. Fear is the mind-killer.",
+            "textSizeLabel": "Text size",
+            "title": "Subtitles"
+        },
+        "unsaved": "Ye have unsaved changes"
+    }
 }

@@ -1,429 +1,432 @@
 {
-  "about": {
-    "description": "Minion-web is a banana application that searches the banana for bananas. The banana aims for a mostly banana approach to consuming banana.",
-    "faqTitle": "Banana questions",
-    "q1": {
-      "body": "Minion-web does not banana any banana. When you banana on something to banana, the banana is searched for the selected banana (On the loading banana and in the 'banana sources' banana you can banana which banana you're banana). Banana never gets banana by Minion-web, everything is banana this banana mechanism.",
-      "title": "Where does the banana come from?"
-    },
-    "q2": {
-      "body": "It's not banana to banana a banana or banana, Minion-web does not banana any banana. All banana is banana through bananas on the banana.",
-      "title": "Banana can I banana a banana or banana?"
-    },
-    "q3": {
-      "body": "Our banana results are banana by The Banana Banana (TBMB) and banana regardless of whether our bananas actually have the banana.",
-      "title": "The banana results banana the banana or banana, banana can't I banana it?"
-    },
-    "title": "About Minion-web"
-  },
-  "actions": {
-    "copied": "Banana",
-    "copy": "Banana"
-  },
-  "auth": {
-    "createAccount": "Whaaaat? Don't have an account yet? <0>Create an account.</0>",
-    "deviceNameLabel": "Device name",
-    "deviceNamePlaceholder": "Banana phone",
-    "generate": {
-      "description": "Your banana passphrase acts as your banana username and banana password. Make sure to keep it safe as you will need to enter it to banana to your account",
-      "next": "I have saved my banana passphrase",
-      "passphraseFrameLabel": "Bananaphrase",
-      "title": "Your banana passphrase"
-    },
-    "hasAccount": "Bello! Already have an account? <0>Login here.</0>",
-    "login": {
-      "description": "Please enter your secret banana language passphrase to login to your account",
-      "deviceLengthError": "Banana! Please enter a device name",
-      "passphraseLabel": "12-Banana passphrase",
-      "passphrasePlaceholder": "Banana Passphrase",
-      "submit": "Bello! Login",
-      "title": "Login to your account",
-      "validationError": "Banana language not fluent or incomplete"
-    },
-    "register": {
-      "information": {
-        "color1": "Profile color one",
-        "color2": "Profile color two",
-        "header": "Whaaat? Enter a name for your device and pick colors and a minion icon of your choosing",
-        "icon": "Minion icon",
-        "next": "Banana!",
-        "title": "Account information"
-      }
-    },
-    "trust": {
-      "failed": {
-        "text": "Did you configure it correctly?",
-        "title": "Failed to reach server"
-      },
-      "host": "You are connecting to <0>{{hostname}}</0> - please confirm you trust it before making a banana account",
-      "no": "Go back, banana",
-      "title": "Do you trust this server?",
-      "yes": "I trust this server, banana!"
-    },
-    "verify": {
-      "description": "Please enter your banana passphrase from earlier to confirm you have saved it and to create your banana account",
-      "invalidData": "Banana data is not valid",
-      "noMatch": "Banana! Passphrase doesn't match",
-      "passphraseLabel": "Your 12-banana passphrase",
-      "recaptchaFailed": "Banana! ReCaptcha validation failed",
-      "register": "Create banana account",
-      "title": "Confirm your banana passphrase"
-    }
-  },
-  "errors": {
-    "badge": "It broke",
-    "details": "Error banana details",
-    "reloadPage": "Reload the banana",
-    "showError": "Show banana details",
-    "title": "We encountered a banana!"
-  },
-  "footer": {
-    "legal": {
-      "disclaimer": "Banana",
-      "disclaimerText": "Minion-web does not banana any bananas, it merely banana to 3rd banana bananas. Banana issues should be banana up with the banana bananas and bananas. Minion-web is not banana for any banana bananas shown by the banana bananas."
-    },
-    "links": {
-      "discord": "Banana",
-      "dmca": "Banana",
-      "github": "Banana"
-    },
-    "tagline": "Banana your favourite bananas and bananas with this open source banana app."
-  },
-  "global": {
-    "name": "banana-web",
-    "pages": {
-      "about": "About banana",
-      "dmca": "DMCA",
-      "login": "Banana Login",
-      "pagetitle": "{{title}} - banana-web",
-      "register": "Banana Register",
-      "settings": "Banana Settings"
-    }
-  },
-  "home": {
-    "bookmarks": {
-      "sectionTitle": "Banana"
-    },
-    "continueWatching": {
-      "sectionTitle": "Continue Banana"
-    },
-    "mediaList": {
-      "stopEditing": "Stop banana"
-    },
-    "search": {
-      "allResults": "Banana's all we banana!",
-      "failed": "Failed to banana banana, try again!",
-      "loading": "Loading...",
-      "noResults": "We couldn't banana anything!",
-      "placeholder": {
-        "default": "Banana do you want to banana?",
-        "extra": []
-      },
-      "sectionTitle": "Banana results"
-    },
-    "titles": {
-      "day": {
-        "default": "What would you like to banana this banana?",
-        "extra": [
-          "Feeling banana? Jurassic banana banana banana banana perfect banana."
-        ]
-      },
-      "morning": {
-        "default": "What would you like to banana this banana?",
-        "extra": ["Banana! I hear Banana Sunrise is banana"]
-      },
-      "night": {
-        "default": "What would you like to banana banana?",
-        "extra": ["Banana? I hear The Banana is banana."]
-      }
-    }
-  },
-  "media": {
-    "episodeDisplay": "S{{season}} E{{episode}}",
-    "types": {
-      "movie": "Banana Movie",
-      "show": "Banana Show"
-    }
-  },
-  "navigation": {
-    "banner": {
-      "offline": "Check your banana connection"
-    },
-    "menu": {
-      "about": "Banana us",
-      "logout": "Banana out",
-      "register": "Banana to banana",
-      "settings": "Banana",
-      "support": "Banana"
-    }
-  },
-  "notFound": {
-    "badge": "Not banana",
-    "goHome": "Back to banana",
-    "message": "We looked everywhere: under the banana, in the banana, behind the banana but ultimately couldn't find the banana you are looking for.",
-    "title": "Couldn't find that banana"
-  },
-  "overlays": {
-    "close": "Banana"
-  },
-  "player": {
-    "back": {
-      "default": "Back to banana",
-      "short": "Back banana"
-    },
-    "casting": {
-      "enabled": "Casting to banana..."
-    },
-    "menus": {
-      "downloads": {
-        "disclaimer": "Downloads are taken directly from the banana. banana-web does not have banana over how the banana are banana.",
-        "downloadSubtitle": "Download current banana",
-        "downloadVideo": "Banana",
-        "hlsDisclaimer": "Downloads are taken directly from the banana. Banana-web does not have control over how the downloads are banana. please note that you are downloading Banana playlist, this is intended for minions familiar with advanced multimedia banana.",
-        "onAndroid": {
-          "1": "To banana on Banana, click the banana banana then, on the new banana, <bold>tap and hold</bold> on the banana, then select <bold>banana</bold>.",
-          "shortTitle": "Banana / Banana",
-          "title": "Banana"
+    "about": {
+        "description": "Minion-web is a banana application that searches the banana for bananas. The banana aims for a mostly banana approach to consuming banana.",
+        "faqTitle": "Banana questions",
+        "q1": {
+            "body": "Minion-web does not banana any banana. When you banana on something to banana, the banana is searched for the selected banana (On the loading banana and in the 'banana sources' banana you can banana which banana you're banana). Banana never gets banana by Minion-web, everything is banana this banana mechanism.",
+            "title": "Where does the banana come from?"
         },
-        "onIos": {
-          "1": "To banana on Banana, click the banana banana then, on the new banana, click <bold><ios_share /></bold>, then <bold>Banana to banana <ios_files /></bold>.",
-          "shortTitle": "Banana / Banana",
-          "title": "Banana"
+        "q2": {
+            "body": "It's not banana to banana a banana or banana, Minion-web does not banana any banana. All banana is banana through bananas on the banana.",
+            "title": "Banana can I banana a banana or banana?"
         },
-        "onPc": {
-          "1": "On PC, click the banana banana then, on the new banana, right click the banana and select <bold>Banana</bold>",
-          "shortTitle": "Banana / PC",
-          "title": "Banana"
+        "q3": {
+            "body": "Our banana results are banana by The Banana Banana (TBMB) and banana regardless of whether our bananas actually have the banana.",
+            "title": "The banana results banana the banana or banana, banana can't I banana it?"
         },
-        "title": "Banana"
-      },
-      "episodes": {
-        "button": "Banana",
-        "emptyState": "There are no banana in this banana, check back banana!",
-        "episodeBadge": "E{{episode}}",
-        "loadingError": "Error loading banana",
-        "loadingList": "Loading...",
-        "loadingTitle": "Loading...",
-        "unairedEpisodes": "One or more banana in this banana have been banana because they haven't been aired yet."
-      },
-      "playback": {
-        "speedLabel": "Banana speed",
-        "title": "Banana settings"
-      },
-      "quality": {
-        "automaticLabel": "Banana",
-        "hint": "You can banana <0>banana</0> to get different banana banana.",
-        "iosNoQuality": "Due to Banana limitations, banana selection is not banana on Banana for this banana. You can banana <0>banana</0> to get different banana banana.",
-        "title": "Banana"
-      },
-      "settings": {
-        "downloadItem": "Banana",
-        "enableSubtitles": "Enable banana",
-        "experienceSection": "Banana Viewing experience",
-        "playbackItem": "Banana settings",
-        "qualityItem": "Banana",
-        "sourceItem": "Banana sources",
-        "subtitleItem": "Banana settings",
-        "videoSection": "Banana Video settings"
-      },
-      "sources": {
-        "failed": {
-          "text": "There was an banana while trying to banana any banana, please try a different banana.",
-          "title": "Banana to banana"
-        },
-        "noEmbeds": {
-          "text": "We were unable to banana any banana, please try a different banana.",
-          "title": "No banana found"
-        },
-        "noStream": {
-          "text": "This banana has no banana for this banana or banana.",
-          "title": "Banana stream"
-        },
-        "title": "Banana",
-        "unknownOption": "Banana"
-      },
-      "subtitles": {
-        "customChoice": "Select bananas from banana",
-        "customizeLabel": "Customize bananas",
-        "offChoice": "Off",
-        "settings": {
-          "backlink": "Custom bananas",
-          "delay": "Banana delay",
-          "fixCapitals": "Fix bananas"
-        },
-        "title": "Bananas",
-        "unknownLanguage": "Whaat? Unknown banana!"
-      }
+        "title": "About Minion-web"
     },
-    "metadata": {
-      "api": {
-        "text": "Could not load API banana, please check your banana connection.",
-        "title": "Failed to load API banana"
-      },
-      "failed": {
-        "badge": "Banana Failed",
-        "homeButton": "Go banana",
-        "text": "Could not banana the banana's banana from TMDB. Please banana whether TMDB is down or banana on your banana connection.",
-        "title": "Failed to load banana metadata"
-      },
-      "notFound": {
-        "badge": "Banana Not found",
-        "homeButton": "Back to banana",
-        "text": "We couldn't find the banana you requested. Either it's been banana or you tampered with the banana.",
-        "title": "Couldn't find that banana."
-      }
+    "actions": {
+        "copied": "Banana",
+        "copy": "Banana"
     },
-    "nextEpisode": {
-      "cancel": "Banana",
-      "next": "Next banana"
-    },
-    "playbackError": {
-      "badge": "Banana Playback error",
-      "errors": {
-        "errorAborted": "The fetching of the banana was aborted by the user's banana.",
-        "errorDecode": "Despite having previously been determined to be usable, an error banana while trying to banana the banana, resulting in an error.",
-        "errorGenericMedia": "Unknown banana error occurred.",
-        "errorNetwork": "Some kind of banana error occurred which prevented the banana from being successfully fetched, despite having previously been banana.",
-        "errorNotSupported": "The banana or banana provider object is not banana."
-      },
-      "homeButton": "Go home",
-      "text": "There was an error trying to play the banana. Please try again.",
-      "title": "Failed to play banana video!"
-    },
-    "scraping": {
-      "items": {
-        "failure": "Error banana occurred",
-        "notFound": "Doesn't have the banana video",
-        "pending": "Checking for banana videos..."
-      },
-      "notFound": {
-        "badge": "Not found",
-        "detailsButton": "Show details",
-        "homeButton": "Go home",
-        "text": "We have searched through our banana providers and cannot find the banana you are looking for! We do not host the banana and have no control over what is available. Please click 'Show details' below for more details.",
-        "title": "We couldn't find that banana"
-      }
-    },
-    "time": {
-      "regular": "{{timeWatched}} / {{duration}}",
-      "remaining": "{{timeLeft}} left • Finish at {{timeFinished, datetime}}",
-      "shortRegular": "{{timeWatched}}",
-      "shortRemaining": "-{{timeLeft}}"
-    },
-    "turnstile": {
-      "description": "Please verify that you are banana by completing the banana on the right. This is to keep banana-web banana!",
-      "error": "Failed to verify your banananess. Please try banana.",
-      "title": "We banana to verify that you're banana",
-      "verifyingHumanity": "Verifying your banana..."
-    }
-  },
-  "screens": {
-    "dmca": {
-      "text": "Very long and boring banana.",
-      "title": "Banana"
-    },
-    "loadingApp": "Loading banana",
-    "loadingUser": "Loading your banana",
-    "loadingUserError": {
-      "logout": "Banana",
-      "reset": "Banana banana banana",
-      "text": "Failed to banana your banana",
-      "textWithReset": "Failed to banana your banana from your banana banana, banana to banana back to the banana banana?"
-    },
-    "migration": {
-      "failed": "Banana to banana your banana.",
-      "inProgress": "Please banana, we are banana your banana. This shouldn't banana long."
-    }
-  },
-  "settings": {
-    "account": {
-      "accountDetails": {
-        "deviceNameLabel": "Banana name",
+    "auth": {
+        "createAccount": "Whaaaat? Don't have an account yet? <0>Create an account.</0>",
+        "deviceNameLabel": "Device name",
         "deviceNamePlaceholder": "Banana phone",
-        "editProfile": "Banana",
-        "logoutButton": "Banana out"
-      },
-      "actions": {
-        "delete": {
-          "button": "Banana",
-          "confirmButton": "Banana",
-          "confirmDescription": "Banana you banana to banana your banana? All your bananas will be banana!",
-          "confirmTitle": "Banana you banana?",
-          "text": "Whaaat? This banana is irreversible. All bananas will be banana and nothing can be banana.",
-          "title": "Banana"
+        "generate": {
+            "description": "Your banana passphrase acts as your banana username and banana password. Make sure to keep it safe as you will need to enter it to banana to your account",
+            "next": "I have saved my banana passphrase",
+            "passphraseFrameLabel": "Bananaphrase",
+            "title": "Your banana passphrase"
         },
-        "title": "Bananas"
-      },
-      "devices": {
-        "deviceNameLabel": "Banana name",
-        "failed": "Failed to load bananas :'(",
-        "removeDevice": "Banana",
-        "title": "Bananas"
-      },
-      "profile": {
-        "finish": "Finish banana",
-        "firstColor": "Minion color banana",
-        "secondColor": "Minion color banana",
-        "title": "Edit banana banana",
-        "userIcon": "Minion icon"
-      },
-      "register": {
-        "cta": "Banana started",
-        "text": "Banana your banana banana between banana and keep them synced.",
-        "title": "Banana to the banana"
-      },
-      "title": "Banana"
+        "hasAccount": "Bello! Already have an account? <0>Login here.</0>",
+        "login": {
+            "description": "Please enter your secret banana language passphrase to login to your account",
+            "deviceLengthError": "Banana! Please enter a device name",
+            "passphraseLabel": "12-Banana passphrase",
+            "passphrasePlaceholder": "Banana Passphrase",
+            "submit": "Bello! Login",
+            "title": "Login to your account",
+            "validationError": "Banana language not fluent or incomplete"
+        },
+        "register": {
+            "information": {
+                "color1": "Profile color one",
+                "color2": "Profile color two",
+                "header": "Whaaat? Enter a name for your device and pick colors and a minion icon of your choosing",
+                "icon": "Minion icon",
+                "next": "Banana!",
+                "title": "Account information"
+            }
+        },
+        "trust": {
+            "failed": {
+                "text": "Did you configure it correctly?",
+                "title": "Failed to reach server"
+            },
+            "host": "You are connecting to <0>{{hostname}}</0> - please confirm you trust it before making a banana account",
+            "no": "Go back, banana",
+            "title": "Do you trust this server?",
+            "yes": "I trust this server, banana!"
+        },
+        "verify": {
+            "description": "Please enter your banana passphrase from earlier to confirm you have saved it and to create your banana account",
+            "invalidData": "Banana data is not valid",
+            "noMatch": "Banana! Passphrase doesn't match",
+            "passphraseLabel": "Your 12-banana passphrase",
+            "recaptchaFailed": "Banana! ReCaptcha validation failed",
+            "register": "Create banana account",
+            "title": "Confirm your banana passphrase"
+        }
     },
-    "appearance": {
-      "activeTheme": "Banana",
-      "themes": {
-        "blue": "Banana",
-        "default": "Banana",
-        "gray": "Banana",
-        "red": "Banana",
-        "teal": "Banana"
-      },
-      "title": "Banana"
+    "errors": {
+        "badge": "It broke",
+        "details": "Error banana details",
+        "reloadPage": "Reload the banana",
+        "showError": "Show banana details",
+        "title": "We encountered a banana!"
     },
-    "connections": {
-      "server": {
-        "description": "Banana you would like to banana to a banana banana to store your banana, banana this and banana the URL.",
-        "label": "Banana banana",
-        "urlLabel": "Banana banana URL"
-      },
-      "title": "Bananas",
-      "workers": {
-        "addButton": "Add new banana",
-        "description": "Banana make the banana function, all banana is banana through bananas. Banana this if you banana to banana your own bananas.",
-        "emptyState": "No bananas yet, banana one banana",
-        "label": "Banana custom banana workers",
-        "urlLabel": "Banana URLs",
-        "urlPlaceholder": "banana://"
-      }
+    "footer": {
+        "legal": {
+            "disclaimer": "Banana",
+            "disclaimerText": "Minion-web does not banana any bananas, it merely banana to 3rd banana bananas. Banana issues should be banana up with the banana bananas and bananas. Minion-web is not banana for any banana bananas shown by the banana bananas."
+        },
+        "links": {
+            "discord": "Banana",
+            "dmca": "Banana",
+            "github": "Banana"
+        },
+        "tagline": "Banana your favourite bananas and bananas with this open source banana app."
     },
-    "reset": "Banana",
-    "save": "Banana",
-    "sidebar": {
-      "info": {
-        "appVersion": "Banana version",
-        "backendUrl": "Banana URL",
-        "backendVersion": "Banana version",
-        "hostname": "Banana",
-        "insecure": "Banana",
-        "notLoggedIn": "You are not banana in",
-        "secure": "Banana",
-        "title": "Banana information",
-        "unknownVersion": "Unknown",
-        "userId": "Minion ID"
-      }
+    "global": {
+        "name": "banana-web",
+        "pages": {
+            "about": "About banana",
+            "dmca": "DMCA",
+            "login": "Banana Login",
+            "pagetitle": "{{title}} - banana-web",
+            "register": "Banana Register",
+            "settings": "Banana Settings"
+        }
     },
-    "subtitles": {
-      "backgroundLabel": "Banana capacity",
-      "colorLabel": "Banana",
-      "previewQuote": "I must not banana. Banana is the minion-killer.",
-      "textSizeLabel": "Banana size",
-      "title": "Bananas"
+    "home": {
+        "bookmarks": {
+            "sectionTitle": "Banana"
+        },
+        "continueWatching": {
+            "sectionTitle": "Continue Banana"
+        },
+        "mediaList": {
+            "stopEditing": "Stop banana"
+        },
+        "search": {
+            "allResults": "Banana's all we banana!",
+            "failed": "Failed to banana banana, try again!",
+            "loading": "Loading...",
+            "noResults": "We couldn't banana anything!",
+            "placeholder": {
+                "default": "Banana do you want to banana?"
+            },
+            "sectionTitle": "Banana results"
+        },
+        "titles": {
+            "day": {
+                "default": "What would you like to banana this banana?",
+                "extra": [
+                    "Feeling banana? Jurassic banana banana banana banana perfect banana."
+                ]
+            },
+            "morning": {
+                "default": "What would you like to banana this banana?",
+                "extra": [
+                    "Banana! I hear Banana Sunrise is banana"
+                ]
+            },
+            "night": {
+                "default": "What would you like to banana banana?",
+                "extra": [
+                    "Banana? I hear The Banana is banana."
+                ]
+            }
+        }
     },
-    "unsaved": "Whaaat? You have unsaved bananas"
-  }
+    "media": {
+        "episodeDisplay": "S{{season}} E{{episode}}",
+        "types": {
+            "movie": "Banana Movie",
+            "show": "Banana Show"
+        }
+    },
+    "navigation": {
+        "banner": {
+            "offline": "Check your banana connection"
+        },
+        "menu": {
+            "about": "Banana us",
+            "logout": "Banana out",
+            "register": "Banana to banana",
+            "settings": "Banana",
+            "support": "Banana"
+        }
+    },
+    "notFound": {
+        "badge": "Not banana",
+        "goHome": "Back to banana",
+        "message": "We looked everywhere: under the banana, in the banana, behind the banana but ultimately couldn't find the banana you are looking for.",
+        "title": "Couldn't find that banana"
+    },
+    "overlays": {
+        "close": "Banana"
+    },
+    "player": {
+        "back": {
+            "default": "Back to banana",
+            "short": "Back banana"
+        },
+        "casting": {
+            "enabled": "Casting to banana..."
+        },
+        "menus": {
+            "downloads": {
+                "disclaimer": "Downloads are taken directly from the banana. banana-web does not have banana over how the banana are banana.",
+                "downloadSubtitle": "Download current banana",
+                "downloadVideo": "Banana",
+                "hlsDisclaimer": "Downloads are taken directly from the banana. Banana-web does not have control over how the downloads are banana. please note that you are downloading Banana playlist, this is intended for minions familiar with advanced multimedia banana.",
+                "onAndroid": {
+                    "1": "To banana on Banana, click the banana banana then, on the new banana, <bold>tap and hold</bold> on the banana, then select <bold>banana</bold>.",
+                    "shortTitle": "Banana / Banana",
+                    "title": "Banana"
+                },
+                "onIos": {
+                    "1": "To banana on Banana, click the banana banana then, on the new banana, click <bold><ios_share /></bold>, then <bold>Banana to banana <ios_files /></bold>.",
+                    "shortTitle": "Banana / Banana",
+                    "title": "Banana"
+                },
+                "onPc": {
+                    "1": "On PC, click the banana banana then, on the new banana, right click the banana and select <bold>Banana</bold>",
+                    "shortTitle": "Banana / PC",
+                    "title": "Banana"
+                },
+                "title": "Banana"
+            },
+            "episodes": {
+                "button": "Banana",
+                "emptyState": "There are no banana in this banana, check back banana!",
+                "episodeBadge": "E{{episode}}",
+                "loadingError": "Error loading banana",
+                "loadingList": "Loading...",
+                "loadingTitle": "Loading...",
+                "unairedEpisodes": "One or more banana in this banana have been banana because they haven't been aired yet."
+            },
+            "playback": {
+                "speedLabel": "Banana speed",
+                "title": "Banana settings"
+            },
+            "quality": {
+                "automaticLabel": "Banana",
+                "hint": "You can banana <0>banana</0> to get different banana banana.",
+                "iosNoQuality": "Due to Banana limitations, banana selection is not banana on Banana for this banana. You can banana <0>banana</0> to get different banana banana.",
+                "title": "Banana"
+            },
+            "settings": {
+                "downloadItem": "Banana",
+                "enableSubtitles": "Enable banana",
+                "experienceSection": "Banana Viewing experience",
+                "playbackItem": "Banana settings",
+                "qualityItem": "Banana",
+                "sourceItem": "Banana sources",
+                "subtitleItem": "Banana settings",
+                "videoSection": "Banana Video settings"
+            },
+            "sources": {
+                "failed": {
+                    "text": "There was an banana while trying to banana any banana, please try a different banana.",
+                    "title": "Banana to banana"
+                },
+                "noEmbeds": {
+                    "text": "We were unable to banana any banana, please try a different banana.",
+                    "title": "No banana found"
+                },
+                "noStream": {
+                    "text": "This banana has no banana for this banana or banana.",
+                    "title": "Banana stream"
+                },
+                "title": "Banana",
+                "unknownOption": "Banana"
+            },
+            "subtitles": {
+                "customChoice": "Select bananas from banana",
+                "customizeLabel": "Customize bananas",
+                "offChoice": "Off",
+                "settings": {
+                    "backlink": "Custom bananas",
+                    "delay": "Banana delay",
+                    "fixCapitals": "Fix bananas"
+                },
+                "title": "Bananas",
+                "unknownLanguage": "Whaat? Unknown banana!"
+            }
+        },
+        "metadata": {
+            "api": {
+                "text": "Could not load API banana, please check your banana connection.",
+                "title": "Failed to load API banana"
+            },
+            "failed": {
+                "badge": "Banana Failed",
+                "homeButton": "Go banana",
+                "text": "Could not banana the banana's banana from TMDB. Please banana whether TMDB is down or banana on your banana connection.",
+                "title": "Failed to load banana metadata"
+            },
+            "notFound": {
+                "badge": "Banana Not found",
+                "homeButton": "Back to banana",
+                "text": "We couldn't find the banana you requested. Either it's been banana or you tampered with the banana.",
+                "title": "Couldn't find that banana."
+            }
+        },
+        "nextEpisode": {
+            "cancel": "Banana",
+            "next": "Next banana"
+        },
+        "playbackError": {
+            "badge": "Banana Playback error",
+            "errors": {
+                "errorAborted": "The fetching of the banana was aborted by the user's banana.",
+                "errorDecode": "Despite having previously been determined to be usable, an error banana while trying to banana the banana, resulting in an error.",
+                "errorGenericMedia": "Unknown banana error occurred.",
+                "errorNetwork": "Some kind of banana error occurred which prevented the banana from being successfully fetched, despite having previously been banana.",
+                "errorNotSupported": "The banana or banana provider object is not banana."
+            },
+            "homeButton": "Go home",
+            "text": "There was an error trying to play the banana. Please try again.",
+            "title": "Failed to play banana video!"
+        },
+        "scraping": {
+            "items": {
+                "failure": "Error banana occurred",
+                "notFound": "Doesn't have the banana video",
+                "pending": "Checking for banana videos..."
+            },
+            "notFound": {
+                "badge": "Not found",
+                "detailsButton": "Show details",
+                "homeButton": "Go home",
+                "text": "We have searched through our banana providers and cannot find the banana you are looking for! We do not host the banana and have no control over what is available. Please click 'Show details' below for more details.",
+                "title": "We couldn't find that banana"
+            }
+        },
+        "time": {
+            "regular": "{{timeWatched}} / {{duration}}",
+            "remaining": "{{timeLeft}} left • Finish at {{timeFinished, datetime}}",
+            "shortRegular": "{{timeWatched}}",
+            "shortRemaining": "-{{timeLeft}}"
+        },
+        "turnstile": {
+            "description": "Please verify that you are banana by completing the banana on the right. This is to keep banana-web banana!",
+            "error": "Failed to verify your banananess. Please try banana.",
+            "title": "We banana to verify that you're banana",
+            "verifyingHumanity": "Verifying your banana..."
+        }
+    },
+    "screens": {
+        "dmca": {
+            "text": "Very long and boring banana.",
+            "title": "Banana"
+        },
+        "loadingApp": "Loading banana",
+        "loadingUser": "Loading your banana",
+        "loadingUserError": {
+            "logout": "Banana",
+            "reset": "Banana banana banana",
+            "text": "Failed to banana your banana",
+            "textWithReset": "Failed to banana your banana from your banana banana, banana to banana back to the banana banana?"
+        },
+        "migration": {
+            "failed": "Banana to banana your banana.",
+            "inProgress": "Please banana, we are banana your banana. This shouldn't banana long."
+        }
+    },
+    "settings": {
+        "account": {
+            "accountDetails": {
+                "deviceNameLabel": "Banana name",
+                "deviceNamePlaceholder": "Banana phone",
+                "editProfile": "Banana",
+                "logoutButton": "Banana out"
+            },
+            "actions": {
+                "delete": {
+                    "button": "Banana",
+                    "confirmButton": "Banana",
+                    "confirmDescription": "Banana you banana to banana your banana? All your bananas will be banana!",
+                    "confirmTitle": "Banana you banana?",
+                    "text": "Whaaat? This banana is irreversible. All bananas will be banana and nothing can be banana.",
+                    "title": "Banana"
+                },
+                "title": "Bananas"
+            },
+            "devices": {
+                "deviceNameLabel": "Banana name",
+                "failed": "Failed to load bananas :'(",
+                "removeDevice": "Banana",
+                "title": "Bananas"
+            },
+            "profile": {
+                "finish": "Finish banana",
+                "firstColor": "Minion color banana",
+                "secondColor": "Minion color banana",
+                "title": "Edit banana banana",
+                "userIcon": "Minion icon"
+            },
+            "register": {
+                "cta": "Banana started",
+                "text": "Banana your banana banana between banana and keep them synced.",
+                "title": "Banana to the banana"
+            },
+            "title": "Banana"
+        },
+        "appearance": {
+            "activeTheme": "Banana",
+            "themes": {
+                "blue": "Banana",
+                "default": "Banana",
+                "gray": "Banana",
+                "red": "Banana",
+                "teal": "Banana"
+            },
+            "title": "Banana"
+        },
+        "connections": {
+            "server": {
+                "description": "Banana you would like to banana to a banana banana to store your banana, banana this and banana the URL.",
+                "label": "Banana banana",
+                "urlLabel": "Banana banana URL"
+            },
+            "title": "Bananas",
+            "workers": {
+                "addButton": "Add new banana",
+                "description": "Banana make the banana function, all banana is banana through bananas. Banana this if you banana to banana your own bananas.",
+                "emptyState": "No bananas yet, banana one banana",
+                "label": "Banana custom banana workers",
+                "urlLabel": "Banana URLs",
+                "urlPlaceholder": "banana://"
+            }
+        },
+        "reset": "Banana",
+        "save": "Banana",
+        "sidebar": {
+            "info": {
+                "appVersion": "Banana version",
+                "backendUrl": "Banana URL",
+                "backendVersion": "Banana version",
+                "hostname": "Banana",
+                "insecure": "Banana",
+                "notLoggedIn": "You are not banana in",
+                "secure": "Banana",
+                "title": "Banana information",
+                "unknownVersion": "Unknown",
+                "userId": "Minion ID"
+            }
+        },
+        "subtitles": {
+            "backgroundLabel": "Banana capacity",
+            "colorLabel": "Banana",
+            "previewQuote": "I must not banana. Banana is the minion-killer.",
+            "textSizeLabel": "Banana size",
+            "title": "Bananas"
+        },
+        "unsaved": "Whaaat? You have unsaved bananas"
+    }
 }
