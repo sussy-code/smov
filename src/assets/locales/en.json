@@ -457,7 +457,7 @@
       "shortRemaining": "-{{timeLeft}}"
     },
     "turnstile": {
-      "description": "Please prove your humanity by completing the quick Captcha on the right. This is to keep sudo-flix safe!",
+      "description": "Please prove your humanity by completing the quick challenge, this is to keep sudo-flix safe.",
       "error": "Failed to verify your humanity! Please try again.",
       "title": "Are You a Robot 🤖?",
       "verifyingHumanity": "Verifying your humanity... (^▽^)👍"

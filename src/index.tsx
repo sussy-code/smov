@@ -29,7 +29,6 @@ import { changeAppLanguage, useLanguageStore } from "@/stores/language";
 import { ProgressSyncer } from "@/stores/progress/ProgressSyncer";
 import { SettingsSyncer } from "@/stores/subtitles/SettingsSyncer";
 import { ThemeProvider } from "@/stores/theme";
-import { TurnstileProvider } from "@/stores/turnstile";
 
 import {
   extensionInfo,

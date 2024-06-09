@@ -74,7 +74,6 @@ export function isTurnstileInitialized() {
 }
 
 export async function getTurnstileToken() {
-  const turnstile = getTurnstile();
   try {
     const token = await useTurnstileStore.getState().getToken();
 
