@@ -176,6 +176,7 @@ const root = createRoot(container!);
 root.render(
   <StrictMode>
     <ErrorBoundary>
+      <TurnstileProvider />
       <HelmetProvider>
         <Suspense fallback={<LoadingScreen type="lazy" />}>
           <ExtensionStatus />
