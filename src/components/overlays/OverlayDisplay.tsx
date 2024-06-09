@@ -29,7 +29,7 @@ function TurnstileInteractive() {
   return (
     <div
       className={classNames(
-        "absolute w-full max-w-[43em] max-h-full p-5 md:p-10 rounded-lg bg-dropdown-altBackground select-none z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform overflow-auto",
+        "absolute w-full max-w-[43em] max-h-full p-5 m-3 md:p-10 rounded-lg bg-dropdown-altBackground select-none z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform overflow-auto",
         show ? "" : "hidden",
       )}
     >
