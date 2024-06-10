@@ -75,8 +75,8 @@ export default createTheme({
   extend: {
     colors: {
       themePreview: {
-        primary: tokens.blue.c500,
-        secondary: tokens.shade.c700
+        primary: tokens.black.c80,
+        secondary: tokens.black.c100
       },
 
       pill: {
