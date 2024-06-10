@@ -549,7 +549,8 @@
         "default": "Default",
         "gray": "Gray",
         "red": "Red",
-        "teal": "Teal"
+        "teal": "Teal",
+        "blck": "BLCK"
       },
       "title": "Appearance"
     },
