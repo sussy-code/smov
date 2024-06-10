@@ -33,7 +33,7 @@ function TurnstileInteractive() {
         show ? "" : "hidden",
       )}
     >
-      <div className="w-full h-full grid lg:grid-cols-[1fr,auto] gap-4 md:gap-7 items-center">
+      <div className="w-full h-full grid lg:grid-cols-[1fr,auto] gap-6 md:gap-7 items-center">
         <div className="text-left">
           <h2 className="text-type-emphasis font-bold text-lg md:text-xl mb-4 md:mb-6">
             {t("player.turnstile.title")}
