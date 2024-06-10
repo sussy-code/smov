@@ -157,7 +157,7 @@ export function ConnectionsPart(props: BackendEditProps & ProxyEditProps) {
     <div>
       <Heading1 border>{t("settings.connections.title")}</Heading1>
       <div className="space-y-6">
-        <SetupPart />
+        {/* <SetupPart />  Removed due to NSBX limitations */}
         <ProxyEdit
           proxyUrls={props.proxyUrls}
           setProxyUrls={props.setProxyUrls}
