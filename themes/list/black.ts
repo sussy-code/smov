@@ -1,8 +1,14 @@
 import { createTheme } from "../types";
 
 const tokens = {
-  black: "#000000",
   white: "#FFFFFF",
+  black: {
+    c50: "#000000",
+    c100: "#0d0d0d",
+    c125: "#141414",
+    c150: "#1a1a1a",
+    c200: "#262626"
+  },
   semantic: {
     silver: {
       c100: "#DEDEDE",
@@ -62,7 +68,7 @@ const tokens = {
 }
 
 export default createTheme({
-  name: "amoled",
+  name: "black",
   extend: {
     colors: {
       themePreview: {
@@ -71,8 +77,8 @@ export default createTheme({
       },
 
       pill: {
-        background: tokens.black,
-        backgroundHover: tokens.shade.c500,
+        background: tokens.black.c100,
+        backgroundHover: tokens.black.c125,
         highlight: tokens.blue.c200,
         activeBackground: tokens.shade.c700,
       },
@@ -88,21 +94,21 @@ export default createTheme({
 
       buttons: {
         toggle: tokens.purple.c300,
-        toggleDisabled: tokens.ash.c500,
-        secondary: tokens.ash.c700,
-        secondaryHover: tokens.ash.c700,
+        toggleDisabled: tokens.black.c200,
+        secondary: tokens.black.c100,
+        secondaryHover: tokens.black.c150,
         purple: tokens.purple.c600,
         purpleHover: tokens.purple.c400,
-        cancel: tokens.shade.c700,
-        cancelHover: tokens.shade.c800
+        cancel: tokens.black.c100,
+        cancelHover: tokens.black.c150
       },
 
       background: {
-        main: tokens.black,
-        secondary: tokens.black,
-        secondaryHover: tokens.black,
-        accentA: tokens.black,
-        accentB: tokens.black
+        main: tokens.black.c50,
+        secondary: tokens.black.c50,
+        secondaryHover: tokens.black.c50,
+        accentA: tokens.black.c50,
+        accentB: tokens.black.c50
       },
 
       modal: {
@@ -120,9 +126,9 @@ export default createTheme({
       },
 
       search: {
-        background: tokens.shade.c800,
+        background: tokens.black.c100,
         hoverBackground: tokens.shade.c900,
-        focused: tokens.shade.c700,
+        focused: tokens.black.c125,
         placeholder: tokens.shade.c200,
         icon: tokens.shade.c500
       },
@@ -130,7 +136,7 @@ export default createTheme({
       mediaCard: {
         hoverBackground: tokens.shade.c900,
         hoverAccent: tokens.shade.c100,
-        hoverShadow: tokens.black,
+        hoverShadow: tokens.black.c50,
         shadow: tokens.shade.c800,
         barColor: tokens.ash.c200,
         barFillColor: tokens.purple.c100,
@@ -139,24 +145,24 @@ export default createTheme({
       },
 
       largeCard: {
-        background: tokens.shade.c600,
+        background: tokens.black.c100,
         icon: tokens.purple.c400
       },
 
       dropdown: {
-        background: tokens.shade.c800,
-        altBackground: tokens.black,
-        hoverBackground: tokens.shade.c700,
+        background: tokens.black.c100,
+        altBackground: tokens.black.c50,
+        hoverBackground: tokens.black.c150,
         text: tokens.shade.c50,
         secondary: tokens.shade.c100,
         border: tokens.shade.c400,
-        contentBackground: tokens.black
+        contentBackground: tokens.black.c50
       },
 
       authentication: {
         border: tokens.shade.c300,
-        inputBg: tokens.shade.c600,
-        inputBgHover: tokens.shade.c500,
+        inputBg: tokens.black.c100,
+        inputBgHover: tokens.black.c150,
         wordBackground: tokens.shade.c500,
         copyText: tokens.shade.c100,
         copyTextHover: tokens.ash.c50
@@ -164,13 +170,13 @@ export default createTheme({
 
       settings: {
         sidebar: {
-          activeLink: tokens.shade.c800,
+          activeLink: tokens.black.c100,
           badge: tokens.shade.c900,
 
           type: {
             secondary: tokens.shade.c200,
             inactive: tokens.shade.c50,
-            icon: tokens.shade.c50,
+            icon: tokens.black.c200,
             iconActivated: tokens.purple.c200,
             activated: tokens.purple.c100
           }
@@ -178,12 +184,12 @@ export default createTheme({
 
         card: {
           border: tokens.shade.c700,
-          background: tokens.shade.c700,
-          altBackground: tokens.shade.c700
+          background: tokens.black.c100,
+          altBackground: tokens.black.c100
         },
 
         saveBar: {
-          background: tokens.black
+          background: tokens.black.c50
         }
       },
 
@@ -192,7 +198,7 @@ export default createTheme({
       },
 
       errors: {
-        card: tokens.black,
+        card: tokens.black.c50,
         border: tokens.ash.c500,
 
         type: {
@@ -201,7 +207,7 @@ export default createTheme({
       },
 
       about: {
-        circle: tokens.ash.c500,
+        circle: tokens.black.c100,
         circleText: tokens.ash.c50
       },
 
@@ -226,9 +232,9 @@ export default createTheme({
         },
 
         scraping: {
-          card: tokens.black,
+          card: tokens.black.c50,
           loading: tokens.purple.c200,
-          noresult: tokens.ash.c100
+          noresult: tokens.black.c200
         },
 
         audio: {
@@ -236,17 +242,17 @@ export default createTheme({
         },
 
         context: {
-          background: tokens.black,
+          background: tokens.black.c50,
           light: tokens.shade.c50,
           border: tokens.ash.c600,
           hoverColor: tokens.ash.c600,
           buttonFocus: tokens.ash.c500,
           flagBg: tokens.ash.c500,
-          inputBg: tokens.ash.c600,
+          inputBg: tokens.black.c100,
           buttonOverInputHover: tokens.ash.c500,
           inputPlaceholder: tokens.ash.c200,
           cardBorder: tokens.ash.c700,
-          slider: tokens.ash.c50,
+          slider: tokens.black.c200,
           sliderFilled: tokens.purple.c200,
 
           buttons: {
