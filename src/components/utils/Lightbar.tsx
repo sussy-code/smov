@@ -205,6 +205,20 @@ function ParticlesCanvas() {
         imageParticleCount = particleCount / 6.25;
         break;
 
+      case month + 1 === 6 && day === 9:
+        imageOverride = [
+          {
+            image: "/lightbar-images/heart.svg",
+            sizeRange: [32, 14] as [number, number],
+          },
+          {
+            image: "/lightbar-images/wine.png",
+            sizeRange: [15, 35] as [number, number],
+          },
+        ];
+        imageParticleCount = particleCount / 6.25;
+        break;
+
       case Math.random() < 0.2:
         imageOverride = [
           {

@@ -181,6 +181,10 @@
       "420": {
         "default": "What would you like to watch this 4/20?",
         "extra": ["Happy 4/20 🥳!"]
+      },
+      "69": {
+        "default": "Up for something spicy?",
+        "extra": ["Happy 69 day 😘!"]
       }
     }
   },
