@@ -31,9 +31,9 @@ const availableThemes = [
     key: "settings.appearance.themes.gray",
   },
   {
-    id: "black",
-    selector: "theme-black",
-    key: "settings.appearance.themes.black",
+    id: "blck",
+    selector: "theme-blck",
+    key: "settings.appearance.themes.blck",
   },
 ];
 

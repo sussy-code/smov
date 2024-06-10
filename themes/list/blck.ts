@@ -4,10 +4,13 @@ const tokens = {
   white: "#FFFFFF",
   black: {
     c50: "#000000",
+    c75: "#030303",
+    c80: "#080808",
     c100: "#0d0d0d",
     c125: "#141414",
     c150: "#1a1a1a",
-    c200: "#262626"
+    c200: "#262626",
+    c250: "#333333"
   },
   semantic: {
     silver: {
@@ -68,7 +71,7 @@ const tokens = {
 }
 
 export default createTheme({
-  name: "black",
+  name: "blck",
   extend: {
     colors: {
       themePreview: {
@@ -104,11 +107,11 @@ export default createTheme({
       },
 
       background: {
-        main: tokens.black.c50,
-        secondary: tokens.black.c50,
-        secondaryHover: tokens.black.c50,
-        accentA: tokens.black.c50,
-        accentB: tokens.black.c50
+        main: tokens.black.c75,
+        secondary: tokens.black.c75,
+        secondaryHover: tokens.black.c75,
+        accentA: tokens.black.c75,
+        accentB: tokens.black.c75
       },
 
       modal: {
@@ -135,7 +138,7 @@ export default createTheme({
 
       mediaCard: {
         hoverBackground: tokens.shade.c900,
-        hoverAccent: tokens.shade.c100,
+        hoverAccent: tokens.black.c250,
         hoverShadow: tokens.black.c50,
         shadow: tokens.shade.c800,
         barColor: tokens.ash.c200,
@@ -151,7 +154,7 @@ export default createTheme({
 
       dropdown: {
         background: tokens.black.c100,
-        altBackground: tokens.black.c50,
+        altBackground: tokens.black.c80,
         hoverBackground: tokens.black.c150,
         text: tokens.shade.c50,
         secondary: tokens.shade.c100,
@@ -198,7 +201,7 @@ export default createTheme({
       },
 
       errors: {
-        card: tokens.black.c50,
+        card: tokens.black.c75,
         border: tokens.ash.c500,
 
         type: {
