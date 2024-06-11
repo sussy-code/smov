@@ -18,12 +18,14 @@ function Base(props: {
   children?: ReactNode;
   tabIndex?: number;
   onKeyUp?: (e: React.KeyboardEvent<HTMLDivElement>) => void;
+  onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
 }) {
   return (
     <div
       tabIndex={props.tabIndex}
       className={c(props.className, "relative")}
       onKeyUp={props.onKeyUp}
+      onClick={props.onClick}
     >
       {props.children}
     </div>

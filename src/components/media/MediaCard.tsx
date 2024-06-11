@@ -25,6 +25,7 @@ export interface MediaCardProps {
   percentage?: number;
   closable?: boolean;
   onClose?: () => void;
+  onClick?: () => void;
 }
 
 function checkReleased(media: MediaItem): boolean {
@@ -48,6 +49,7 @@ function MediaCardContent({
   percentage,
   closable,
   onClose,
+  onClick,
 }: MediaCardProps) {
   const { t } = useTranslation();
   const percentageString = `${Math.round(percentage ?? 0).toFixed(0)}%`;
@@ -75,6 +77,7 @@ function MediaCardContent({
       }`}
       tabIndex={canLink ? 0 : -1}
       onKeyUp={(e) => e.key === "Enter" && e.currentTarget.click()}
+      onClick={onClick}
     >
       <Flare.Light
         flareSize={300}

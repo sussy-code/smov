@@ -1,5 +1,6 @@
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 
+import { usePlayerStore } from "@/stores/player/store";
 import { useProgressStore } from "@/stores/progress";
 import {
   ShowProgressResult,
@@ -38,6 +39,17 @@ export function WatchedMediaCard(props: WatchedMediaCardProps) {
     ? (itemToDisplay.progress.watched / itemToDisplay.progress.duration) * 100
     : undefined;
 
+  const setPlayingTitle = usePlayerStore((state) => state.setPlayingTitle);
+
+  const handleClick = useCallback(() => {
+    setPlayingTitle(props.media.id, props.media.title, props.media.type);
+    console.log(
+      usePlayerStore.getState().playingTitle.title,
+      usePlayerStore.getState().playingTitle.id,
+      usePlayerStore.getState().playingTitle.type,
+    );
+  }, [setPlayingTitle, props.media.id, props.media.title, props.media.type]);
+
   return (
     <MediaCard
       media={props.media}
@@ -46,6 +58,7 @@ export function WatchedMediaCard(props: WatchedMediaCardProps) {
       percentage={percentage}
       onClose={props.onClose}
       closable={props.closable}
+      onClick={handleClick}
     />
   );
 }
