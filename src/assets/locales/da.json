@@ -180,6 +180,12 @@
                 "extra": [
                     "Glædelig 4/20 🥳!"
                 ]
+            },
+            "69": {
+                "default": "Har du lyst til at \"hygge\"?",
+                "extra": [
+                    "Glædelig 69-dag 😘!"
+                ]
             }
         }
     },
@@ -456,7 +462,7 @@
             "shortRemaining": "-{{timeLeft}}"
         },
         "turnstile": {
-            "description": "Bevis at du er et menneske ved at udfylde Captcha'en til højre. Dette er for at holde sudo-flix.lol sikker!",
+            "description": "Bevis at du er et menneske ved at udføre den hurtige opgave, det er for at holde sudo-flix sikker.",
             "verifyingHumanity": "Bekræfter at du er et menneske... (^▽^)👍",
             "title": "Er du en robot 🤖?",
             "error": "Kunne ikke bekræfte at du er et menneske! Prøv venligst igen."
@@ -544,7 +550,8 @@
                 "default": "Standard",
                 "gray": "Grå",
                 "red": "Rød",
-                "teal": "Blågrøn"
+                "teal": "Blågrøn",
+                "blck": "BLCK"
             },
             "title": "Udseende"
         },
