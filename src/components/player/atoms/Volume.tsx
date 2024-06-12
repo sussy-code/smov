@@ -62,6 +62,19 @@ export function Volume(props: Props) {
     [volume, setVolume],
   );
 
+  const getVolumeIcon = (volumeLevel: number) => {
+    if (volumeLevel === 0) {
+      return Icons.VOLUME_X;
+    }
+    if (volumeLevel > 0 && volumeLevel <= 0.33) {
+      return Icons.VOLUME_LOW;
+    }
+    if (volumeLevel > 0.33 && volumeLevel <= 0.66) {
+      return Icons.VOLUME_MED;
+    }
+    return Icons.VOLUME;
+  };
+
   return (
     <div
       className={props.className}
@@ -71,7 +84,7 @@ export function Volume(props: Props) {
     >
       <div className="pointer-events-auto flex cursor-pointer items-center py-0 touch-none">
         <div className="px-4 text-2xl text-white" onClick={handleClick}>
-          <Icon icon={percentage > 0 ? Icons.VOLUME : Icons.VOLUME_X} />
+          <Icon icon={getVolumeIcon(percentage / 100)} />
         </div>
         <div
           className={`linear -ml-2 w-0 overflow-hidden transition-[width,opacity] duration-300 ${
