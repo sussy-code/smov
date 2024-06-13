@@ -19,4 +19,6 @@ window.__CONFIG__ = {
   VITE_DISALLOWED_IDS: "",
 
   VITE_ALLOW_AUTOPLAY: true,
+
+  VITE_TURNSTILE_KEY: "",
 };
