@@ -1,4 +1,3 @@
-// Based mfs only use only one 500 line file instead of ten 50 line files.
 import { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
@@ -6,8 +5,9 @@ import { useNavigate } from "react-router-dom";
 
 import { get } from "@/backend/metadata/tmdb";
 import { ThiccContainer } from "@/components/layout/ThinContainer";
+import { MediaGrid } from "@/components/media/MediaGrid";
+import { WatchedMediaCard } from "@/components/media/WatchedMediaCard";
 import { Divider } from "@/components/utils/Divider";
-import { Flare } from "@/components/utils/Flare";
 import { conf } from "@/setup/config";
 import {
   Category,
@@ -18,6 +18,7 @@ import {
   categories,
   tvCategories,
 } from "@/utils/discover";
+import { convertToMediaItem } from "@/utils/mediaUtils";
 
 import { SubPageLayout } from "./layouts/SubPageLayout";
 import { PageTitle } from "./parts/util/PageTitle";
@@ -311,7 +312,7 @@ export function Discover() {
   }, [isHovered]);
 
   function renderMovies(medias: Media[], category: string, isTVShow = false) {
-    const categorySlug = `${category.toLowerCase().replace(/ /g, "-")}${Math.random()}`; // Convert the category to a slug
+    const categorySlug = `${category.toLowerCase().replace(/ /g, "-")}${Math.random()}`;
     const displayCategory =
       category === "Now Playing"
         ? "In Cinemas"
@@ -321,27 +322,12 @@ export function Discover() {
             ? `${category} Shows`
             : `${category} Movies`;
 
-    // https://tailwindcss.com/docs/border-style
     return (
       <div className="relative overflow-hidden mt-2">
         <h2 className="text-2xl cursor-default font-bold text-white sm:text-3xl md:text-2xl mx-auto pl-5">
           {displayCategory}
         </h2>
-        <div
-          id={`carousel-${categorySlug}`}
-          className="flex whitespace-nowrap pt-4 overflow-auto scrollbar rounded-xl overflow-y-hidden"
-          style={{
-            scrollbarWidth: "thin",
-            // scrollbarColor: `${bgColor} transparent`,
-            scrollbarColor: "transparent transparent",
-          }}
-          ref={(el) => {
-            carouselRefs.current[categorySlug] = el;
-          }}
-          onMouseEnter={() => toggleHover(true)}
-          onMouseLeave={() => toggleHover(false)}
-          onWheel={(e) => handleWheel(e, categorySlug)}
-        >
+        <MediaGrid>
           {medias
             .filter((media, index, self) => {
               return (
@@ -353,48 +339,17 @@ export function Discover() {
             })
             .slice(0, 20)
             .map((media) => (
-              <a
+              <div
                 key={media.id}
-                onClick={() =>
-                  navigate(
-                    `/media/tmdb-${isTVShow ? "tv" : "movie"}-${media.id}-${
-                      isTVShow ? media.name : media.title
-                    }`,
-                  )
-                }
                 className="text-center relative mt-3 mx-[0.285em] mb-3 transition-transform hover:scale-105 duration-[0.45s]"
-                style={{ flex: `0 0 ${movieWidth}` }} // Set a fixed width for each movie
+                style={{ flex: `0 0 ${movieWidth}` }}
               >
-                <Flare.Base className="group cursor-pointer rounded-xl relative p-[0.65em] bg-background-main transition-colors duration-300 bg-transparent">
-                  <Flare.Light
-                    flareSize={300}
-                    cssColorVar="--colors-mediaCard-hoverAccent"
-                    backgroundClass="bg-mediaCard-hoverBackground duration-200"
-                    className="rounded-xl bg-background-main group-hover:opacity-100"
-                  />
-                  <img
-                    src={
-                      media.poster_path
-                        ? `https://image.tmdb.org/t/p/w500${media.poster_path}`
-                        : "/placeholder.png"
-                    }
-                    alt={media.poster_path ? "" : "failed to fetch :("}
-                    loading="lazy"
-                    className="rounded-xl relative"
-                  />
-                  <h1 className="group relative pt-2 text-[13.5px] whitespace-normal duration-[0.35s] font-semibold text-white opacity-0 group-hover:opacity-100">
-                    {isTVShow
-                      ? (media.name?.length ?? 0) > 32
-                        ? `${media.name?.slice(0, 32)}...`
-                        : media.name
-                      : (media.title?.length ?? 0) > 32
-                        ? `${media.title?.slice(0, 32)}...`
-                        : media.title}
-                  </h1>
-                </Flare.Base>
-              </a>
+                <WatchedMediaCard
+                  media={convertToMediaItem(media, isTVShow ? "show" : "movie")}
+                />
+              </div>
             ))}
-        </div>
+        </MediaGrid>
 
         <div className="flex items-center justify-center">
           <button
