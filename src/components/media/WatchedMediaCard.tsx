@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from "react";
+import { useCallback, useMemo, useState } from "react";
 
 import { usePlayerStore } from "@/stores/player/store";
 import { useProgressStore } from "@/stores/progress";
@@ -7,6 +7,7 @@ import {
   shouldShowProgress,
 } from "@/stores/progress/utils";
 import { MediaItem } from "@/utils/mediaTypes";
+import { PopupModal } from "./PopupModal";
 
 import { MediaCard } from "./MediaCard";
 
@@ -38,11 +39,12 @@ export function WatchedMediaCard(props: WatchedMediaCardProps) {
   const percentage = itemToDisplay?.show
     ? (itemToDisplay.progress.watched / itemToDisplay.progress.duration) * 100
     : undefined;
-
   const setPlayingTitle = usePlayerStore((state) => state.setPlayingTitle);
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
 
   const handleClick = useCallback(() => {
     setPlayingTitle(props.media.id, props.media.title, props.media.type);
+    setIsPopupVisible(!isPopupVisible);
     console.log(
       usePlayerStore.getState().playingTitle.title,
       usePlayerStore.getState().playingTitle.id,
@@ -50,15 +52,19 @@ export function WatchedMediaCard(props: WatchedMediaCardProps) {
     );
   }, [setPlayingTitle, props.media.id, props.media.title, props.media.type]);
 
+
   return (
-    <MediaCard
-      media={props.media}
-      series={formatSeries(itemToDisplay)}
-      linkable
-      percentage={percentage}
-      onClose={props.onClose}
-      closable={props.closable}
-      onClick={handleClick}
-    />
+    <>
+      <MediaCard
+        media={props.media}
+        series={formatSeries(itemToDisplay)}
+        linkable
+        percentage={percentage}
+        onClose={props.onClose}
+        closable={props.closable}
+        onClick={handleClick}
+      />
+      <PopupModal isVisible={isPopupVisible} onClose={() => setIsPopupVisible(false)} />
+    </>
   );
 }

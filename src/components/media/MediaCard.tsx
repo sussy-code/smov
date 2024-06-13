@@ -201,15 +201,12 @@ export function MediaCard(props: MediaCardProps) {
 
   if (!canLink) return <span>{content}</span>;
   return (
-    <Link
-      to={link}
+    <div
       tabIndex={-1}
-      className={classNames(
-        "tabbable",
-        props.closable ? "hover:cursor-default" : "",
-      )}
+      className={classNames("tabbable", props.closable ? "hover:cursor-default" : "")}
+      onClick={props.onClick}
     >
       {content}
-    </Link>
+    </div>
   );
 }
