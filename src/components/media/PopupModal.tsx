@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 
 import { MediaItem } from "@/utils/mediaTypes";
+import { get } from "@/backend/metadata/tmdb";
+import { conf } from "@/setup/config";
 
 interface PopupModalProps {
   isVisible: boolean;
@@ -13,7 +15,6 @@ interface PopupModalProps {
   media: MediaItem;
 }
 
-// Define the type for the style state
 type StyleState = {
   opacity: number;
   visibility: "visible" | "hidden" | undefined;
@@ -26,18 +27,17 @@ export function PopupModal({
   media,
 }: PopupModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
-  // Use the StyleState type for the style state
   const [style, setStyle] = useState<StyleState>({
     opacity: 0,
     visibility: "hidden",
   });
+  // Use any or a more generic type here
+  const [data, setData] = useState<any>(null);
+  const [error, setError] = useState<string | null>(null); // State for storing API errors
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (
-        modalRef.current &&
-        !modalRef.current.contains(event.target as Node)
-      ) {
+      if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
         onClose();
       }
     }
@@ -56,10 +56,35 @@ export function PopupModal({
     }
   }, [isVisible]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      if (!isVisible) return; // Ensure fetchData does not proceed if the modal is not visible
+  
+      try {
+        const mediaTypePath = media.type === 'show' ? 'tv' : media.type;
+        const result = await get<any>(`/${mediaTypePath}/${media.id}`, {
+          api_key: conf().TMDB_READ_API_KEY,
+          language: "en-US",
+        });
+        setData(result);
+        setError(null); // Reset error state on successful fetch
+      } catch (err) {
+        setError('Failed to fetch media data');
+        console.error(err);
+      }
+    };
+  
+    fetchData();
+  }, [media.id, media.type, isVisible]); // Dependency array remains the same
+
   if (!isVisible && style.visibility === "hidden") return null;
 
-  // In hindsight we dont need the store but lets keep it until discover
-  // page works bc maybe we have to hack it into there
+  console.log(data);
+  // Handle error state in the UI
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
   return (
     <div
       className="fixed inset-0 bg-opacity-50 flex justify-center items-center z-50 transition-opacity duration-100"
@@ -67,10 +92,15 @@ export function PopupModal({
     >
       <div
         ref={modalRef}
-        className="min-w-96 min-h-64 rounded-xl bg-mediaCard-hoverBackground flex justify-center items-center transition-opacity duration-200"
+        className="rounded-xl p-3 bg-mediaCard-hoverBackground flex justify-center items-center transition-opacity duration-200 w-full max-w-3xl"
         style={{ opacity: style.opacity }}
       >
-        {media.title}
+        <div className="aspect-w-16 aspect-h-9 w-full">
+          <img 
+            src={`https://image.tmdb.org/t/p/original/${data?.backdrop_path}`} 
+            className="rounded-xl object-cover w-full h-full" 
+          />
+        </div>
       </div>
     </div>
   );
