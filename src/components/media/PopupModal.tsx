@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import Skeleton from "react-loading-skeleton";
 import { useNavigate } from "react-router-dom";
 
 import { get } from "@/backend/metadata/tmdb";
@@ -23,11 +24,14 @@ type StyleState = {
   visibility: "visible" | "hidden" | undefined;
 };
 
-const formatRuntime = (minutes: number): string => {
-  const hours = Math.floor(minutes / 60);
-  const mins = minutes % 60;
-  return `${hours}h ${mins}m`;
-};
+function formatRuntime(runtime: number) {
+  const hours = Math.floor(runtime / 60);
+  const minutes = runtime % 60;
+  if (hours > 0) {
+    return `${hours}h ${minutes}m`;
+  }
+  return `${minutes}m`;
+}
 
 export function PopupModal({
   isVisible,
@@ -152,49 +156,73 @@ export function PopupModal({
         className="rounded-xl p-3 m-6 bg-modal-background flex justify-center items-center transition-opacity duration-200 w-full max-w-3xl"
         style={{ opacity: style.opacity }}
       >
-        <div className="aspect-w-16 aspect-h-9 w-full">
-          <img
-            src={`https://image.tmdb.org/t/p/original/${data?.backdrop_path}`}
-            className="rounded-xl object-cover w-full h-full"
-          />
+        <div className="aspect-w-16 aspect-h-9 w-full overflow-y-auto">
+          <div className="rounded-xl w-full h-full">
+            {data?.backdrop_path ? (
+              <img
+                src={`https://image.tmdb.org/t/p/original/${data.backdrop_path}`}
+                className="rounded-xl object-cover w-full h-full"
+              />
+            ) : (
+              <Skeleton />
+            )}
+          </div>
           <div className="flex pt-3 items-center gap-4">
             <h1 className="relative text-2xl whitespace-normal font-bold text-white">
-              {data?.title || data?.name}
+              {data?.title || data?.name ? (
+                data?.title || data?.name
+              ) : (
+                <Skeleton />
+              )}
             </h1>
             <div className="font-semibold">
               {media.type === "movie" ? (
-                <div className="px-2 py-1 bg-search-background rounded">
-                  <span>{displayCertification}</span>
-                </div>
+                displayCertification ? (
+                  <div className="px-2 py-1 bg-search-background rounded">
+                    <span>{displayCertification}</span>
+                  </div>
+                ) : (
+                  <div className="animate-pulse h-6 w-12 bg-gray-300 rounded" />
+                )
               ) : (
                 <div className="px-2 py-1 bg-search-background rounded">
                   <span>
                     {(() => {
-                      mediaInfo?.results?.find(
+                      const releaseInfo = mediaInfo?.results?.find(
                         (result: any) => result.iso_3166_1 === "US",
                       );
-                      return usReleaseInfo && usReleaseInfo.rating
-                        ? usReleaseInfo.rating
-                        : "Not Rated";
+                      return releaseInfo && releaseInfo.rating ? (
+                        releaseInfo.rating
+                      ) : (
+                        <div className="animate-pulse inline-block h-6 w-12 bg-gray-300 rounded" />
+                      );
                     })()}
                   </span>
                 </div>
               )}
             </div>
             <div className="flex flex-row gap-2 font-bold">
-              {media.type === "movie" &&
-                data?.runtime &&
-                formatRuntime(data.runtime)}
+              {media.type === "movie" ? (
+                data?.runtime ? (
+                  formatRuntime(data.runtime)
+                ) : (
+                  <div className="animate-pulse h-6 w-16 bg-gray-300 rounded" />
+                )
+              ) : null}
               <div>
-                {media.type === "movie"
-                  ? data?.release_date
-                    ? String(data.release_date).split("-")[0]
-                    : null
-                  : media.type === "show"
-                    ? data?.first_air_date
-                      ? String(data.first_air_date).split("-")[0]
-                      : null
-                    : null}
+                {media.type === "movie" ? (
+                  data?.release_date ? (
+                    String(data.release_date).split("-")[0]
+                  ) : (
+                    <div className="animate-pulse h-6 w-12 bg-gray-300 rounded" />
+                  )
+                ) : media.type === "show" ? (
+                  data?.first_air_date ? (
+                    String(data.first_air_date).split("-")[0]
+                  ) : (
+                    <div className="animate-pulse h-6 w-12 bg-gray-300 rounded" />
+                  )
+                ) : null}
               </div>
             </div>
           </div>
@@ -212,18 +240,25 @@ export function PopupModal({
                 );
               })}
             </div>
-            {data?.genres?.map((genre: { name: string }) => (
-              <div
-                key={genre.name}
-                className="px-2 py-1 bg-mediaCard-hoverBackground rounded hover:bg-search-background cursor-default duration-200 transition-colors"
-              >
-                {genre.name}
-              </div>
-            ))}
+            {data?.genres?.length > 0
+              ? data.genres.map((genre: { name: string }) => (
+                  <div
+                    key={genre.name}
+                    className="px-2 py-1 bg-mediaCard-hoverBackground rounded hover:bg-search-background cursor-default duration-200 transition-colors"
+                  >
+                    {genre.name}
+                  </div>
+                ))
+              : Array.from({ length: 3 }).map((_) => (
+                  <div className="animate-pulse h-6 w-24 bg-gray-300 rounded" />
+                ))}
           </div>
-          <p className="relative whitespace-normal font-medium">
+          <div
+            className="relative whitespace-normal font-medium overflow-y-auto"
+            style={{ maxHeight: "100px" }}
+          >
             {data?.overview}
-          </p>
+          </div>
           <div className="flex justify-center items-center mt-4 mb-1">
             <Button
               theme="purple"

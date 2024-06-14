@@ -65,6 +65,7 @@
     "react-helmet-async": "^2.0.4",
     "react-i18next": "^14.1.1",
     "react-lazy-with-preload": "^2.2.1",
+    "react-loading-skeleton": "^3.4.0",
     "react-router-dom": "^6.23.0",
     "react-sticky-el": "^2.1.0",
     "react-use": "^17.5.0",
