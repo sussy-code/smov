@@ -51,15 +51,9 @@ export function WatchedMediaCard(props: WatchedMediaCardProps) {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
 
   const handleClick = useCallback(() => {
-    setPlayingTitle(props.media.id, props.media.title, props.media.type);
+    setPlayingTitle(props.media.id, props.media.type);
     setIsPopupVisible(!isPopupVisible);
-  }, [
-    setPlayingTitle,
-    isPopupVisible,
-    props.media.id,
-    props.media.title,
-    props.media.type,
-  ]);
+  }, [setPlayingTitle, isPopupVisible, props.media.id, props.media.type]);
 
   return (
     <>

@@ -13,12 +13,11 @@ export interface PlayingSlice {
   };
   playingTitle: {
     id: string;
-    title: string;
     type: string;
   };
   play(): void;
   pause(): void;
-  setPlayingTitle(id: string, title: string, type: string): void;
+  setPlayingTitle(id: string, type: string): void;
 }
 
 export const createPlayingSlice: MakeSlice<PlayingSlice> = (set) => ({
@@ -49,11 +48,10 @@ export const createPlayingSlice: MakeSlice<PlayingSlice> = (set) => ({
       state.mediaPlaying.isPaused = true;
     });
   },
-  setPlayingTitle(id: string, title: string, type: string) {
+  setPlayingTitle(id: string, type: string) {
     set((state) => {
       state.playingTitle.id = id;
       state.playingTitle.type = type;
-      state.playingTitle.title = title;
     });
   },
 });
