@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { usePlayerStore } from "@/stores/player/store";
 import { useProgressStore } from "@/stores/progress";
@@ -7,9 +7,9 @@ import {
   shouldShowProgress,
 } from "@/stores/progress/utils";
 import { MediaItem } from "@/utils/mediaTypes";
-import { PopupModal } from "./PopupModal";
 
 import { MediaCard } from "./MediaCard";
+import { PopupModal } from "./PopupModal";
 
 function formatSeries(series?: ShowProgressResult | null) {
   if (!series || !series.episode || !series.season) return undefined;
@@ -39,19 +39,27 @@ export function WatchedMediaCard(props: WatchedMediaCardProps) {
   const percentage = itemToDisplay?.show
     ? (itemToDisplay.progress.watched / itemToDisplay.progress.duration) * 100
     : undefined;
+
+  const currentTitle = usePlayerStore((state) => state.playingTitle);
+  const [playingTitle, setPlayingTitleState] = useState(currentTitle);
+
+  useEffect(() => {
+    setPlayingTitleState(currentTitle);
+  }, [currentTitle]);
+
   const setPlayingTitle = usePlayerStore((state) => state.setPlayingTitle);
   const [isPopupVisible, setIsPopupVisible] = useState(false);
 
   const handleClick = useCallback(() => {
     setPlayingTitle(props.media.id, props.media.title, props.media.type);
     setIsPopupVisible(!isPopupVisible);
-    console.log(
-      usePlayerStore.getState().playingTitle.title,
-      usePlayerStore.getState().playingTitle.id,
-      usePlayerStore.getState().playingTitle.type,
-    );
-  }, [setPlayingTitle, props.media.id, props.media.title, props.media.type]);
-
+  }, [
+    setPlayingTitle,
+    isPopupVisible,
+    props.media.id,
+    props.media.title,
+    props.media.type,
+  ]);
 
   return (
     <>
@@ -64,7 +72,12 @@ export function WatchedMediaCard(props: WatchedMediaCardProps) {
         closable={props.closable}
         onClick={handleClick}
       />
-      <PopupModal isVisible={isPopupVisible} onClose={() => setIsPopupVisible(false)} />
+      <PopupModal
+        isVisible={isPopupVisible}
+        onClose={() => setIsPopupVisible(false)}
+        playingTitle={currentTitle}
+        media={props.media}
+      />
     </>
   );
 }

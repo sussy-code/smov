@@ -203,7 +203,10 @@ export function MediaCard(props: MediaCardProps) {
   return (
     <div
       tabIndex={-1}
-      className={classNames("tabbable", props.closable ? "hover:cursor-default" : "")}
+      className={classNames(
+        "tabbable",
+        props.closable ? "hover:cursor-default" : "",
+      )}
       onClick={props.onClick}
     >
       {content}
