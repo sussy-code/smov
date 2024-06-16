@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { get } from "@/backend/metadata/tmdb";
 import { conf } from "@/setup/config";
 import { MediaItem } from "@/utils/mediaTypes";
-import { EpisodeSelector } from "./ModalEpisodeSelector";
 
+import { EpisodeSelector } from "./ModalEpisodeSelector";
 import { Button } from "../buttons/Button";
 import { Icon, Icons } from "../Icon";
 
@@ -154,7 +154,7 @@ export function PopupModal({
     >
       <div
         ref={modalRef}
-        className="rounded-xl p-3 m-8 bg-modal-background flex justify-center items-center transition-opacity duration-100 max-w-full sm:max-w-xl"
+        className="rounded-xl p-3 m-4 sm:m-8 bg-modal-background flex justify-center items-center transition-opacity duration-100 max-w-full sm:max-w-xl w-full sm:w-auto"
         style={{ opacity: style.opacity }}
       >
         <div className="aspect-w-16 aspect-h-9 overflow-y-auto w-full sm:w-auto">
@@ -194,11 +194,9 @@ export function PopupModal({
                       const releaseInfo = mediaInfo?.results?.find(
                         (result: any) => result.iso_3166_1 === "US",
                       );
-                      return releaseInfo && releaseInfo.rating ? (
-                        releaseInfo.rating
-                      ) : (
-                        <Skeleton />
-                      );
+                      return releaseInfo && releaseInfo.rating
+                        ? releaseInfo.rating
+                        : "NR";
                     })()}
                   </span>
                 </div>
@@ -245,25 +243,22 @@ export function PopupModal({
             </div>
             {data?.genres?.length > 0
               ? data.genres.map((genre: { name: string }) => (
-                  <div
-                    key={genre.name}
-                    className="px-2 py-1 bg-mediaCard-hoverBackground rounded hover:bg-search-background cursor-default duration-200 transition-colors"
-                  >
-                    {genre.name}
+                  <div key={genre.name} className="inline-block">
+                    <div className="px-2 py-1 bg-mediaCard-hoverBackground rounded hover:bg-search-background cursor-default duration-200 transition-colors transform hover:scale-110">
+                      {genre.name}
+                    </div>
                   </div>
                 ))
-              : Array.from({ length: 3 }).map((_) => <Skeleton />)}
+              : Array.from({ length: 3 }).map((_) => (
+                  <div className="inline-block">
+                    <Skeleton />
+                  </div>
+                ))}
           </div>
-          <div className="relative whitespace-normal font-medium overflow-y-auto max-h-40">
+          <div className="relative whitespace-normal font-medium overflow-y-auto max-h-32">
             {data?.overview}
           </div>
-          <div>
-            {isTVShow ? (
-              <EpisodeSelector
-                tmdbId={media.id}
-              />
-              ): null}
-          </div>
+          <div>{isTVShow ? <EpisodeSelector tmdbId={media.id} /> : null}</div>
           <div className="flex justify-center items-center mt-4 mb-1">
             <Button
               theme="purple"
