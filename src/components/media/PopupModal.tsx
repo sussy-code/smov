@@ -153,22 +153,24 @@ export function PopupModal({
     >
       <div
         ref={modalRef}
-        className="rounded-xl p-3 m-6 bg-modal-background flex justify-center items-center transition-opacity duration-200 w-full max-w-3xl"
+        className="rounded-xl p-3 m-8 bg-modal-background flex justify-center items-center transition-opacity duration-100 max-w-full sm:max-w-xl"
         style={{ opacity: style.opacity }}
       >
-        <div className="aspect-w-16 aspect-h-9 w-full overflow-y-auto">
-          <div className="rounded-xl w-full h-full">
+        <div className="aspect-w-16 aspect-h-9 overflow-y-auto w-full sm:w-auto">
+          <div className="rounded-xl">
             {data?.backdrop_path ? (
               <img
                 src={`https://image.tmdb.org/t/p/original/${data.backdrop_path}`}
+                alt={media.poster ? "" : "failed to fetch :("}
                 className="rounded-xl object-cover w-full h-full"
+                loading="lazy"
               />
             ) : (
               <Skeleton />
             )}
           </div>
           <div className="flex pt-3 items-center gap-4">
-            <h1 className="relative text-2xl whitespace-normal font-bold text-white">
+            <h1 className="relative text-xl sm:text-2xl whitespace-normal font-bold text-white">
               {data?.title || data?.name ? (
                 data?.title || data?.name
               ) : (
@@ -182,7 +184,7 @@ export function PopupModal({
                     <span>{displayCertification}</span>
                   </div>
                 ) : (
-                  <div className="animate-pulse h-6 w-12 bg-gray-300 rounded" />
+                  <Skeleton />
                 )
               ) : (
                 <div className="px-2 py-1 bg-search-background rounded">
@@ -194,7 +196,7 @@ export function PopupModal({
                       return releaseInfo && releaseInfo.rating ? (
                         releaseInfo.rating
                       ) : (
-                        <div className="animate-pulse inline-block h-6 w-12 bg-gray-300 rounded" />
+                        <Skeleton />
                       );
                     })()}
                   </span>
@@ -206,7 +208,7 @@ export function PopupModal({
                 data?.runtime ? (
                   formatRuntime(data.runtime)
                 ) : (
-                  <div className="animate-pulse h-6 w-16 bg-gray-300 rounded" />
+                  <Skeleton />
                 )
               ) : null}
               <div>
@@ -214,13 +216,13 @@ export function PopupModal({
                   data?.release_date ? (
                     String(data.release_date).split("-")[0]
                   ) : (
-                    <div className="animate-pulse h-6 w-12 bg-gray-300 rounded" />
+                    <Skeleton />
                   )
                 ) : media.type === "show" ? (
                   data?.first_air_date ? (
                     String(data.first_air_date).split("-")[0]
                   ) : (
-                    <div className="animate-pulse h-6 w-12 bg-gray-300 rounded" />
+                    <Skeleton />
                   )
                 ) : null}
               </div>
@@ -249,14 +251,9 @@ export function PopupModal({
                     {genre.name}
                   </div>
                 ))
-              : Array.from({ length: 3 }).map((_) => (
-                  <div className="animate-pulse h-6 w-24 bg-gray-300 rounded" />
-                ))}
+              : Array.from({ length: 3 }).map((_) => <Skeleton />)}
           </div>
-          <div
-            className="relative whitespace-normal font-medium overflow-y-auto"
-            style={{ maxHeight: "100px" }}
-          >
+          <div className="relative whitespace-normal font-medium overflow-y-auto max-h-40">
             {data?.overview}
           </div>
           <div className="flex justify-center items-center mt-4 mb-1">
@@ -267,7 +264,7 @@ export function PopupModal({
                   `/media/tmdb-${isTVShow ? "tv" : "movie"}-${media.id}-${media.title}`,
                 )
               }
-              className="text-2xl font-bold hover:bg-purple-700 transition-all duration-[0.3s] hover:scale-105"
+              className="text-xl sm:text-2xl font-bold hover:bg-purple-700 transition-all duration-[0.3s] hover:scale-105"
             >
               <div className="flex flex-row gap-2 items-center">
                 <Icon icon={Icons.PLAY} />
