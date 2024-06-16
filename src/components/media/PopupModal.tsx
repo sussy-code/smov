@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { get } from "@/backend/metadata/tmdb";
 import { conf } from "@/setup/config";
 import { MediaItem } from "@/utils/mediaTypes";
+import { EpisodeSelector } from "./ModalEpisodeSelector";
 
 import { Button } from "../buttons/Button";
 import { Icon, Icons } from "../Icon";
@@ -255,6 +256,13 @@ export function PopupModal({
           </div>
           <div className="relative whitespace-normal font-medium overflow-y-auto max-h-40">
             {data?.overview}
+          </div>
+          <div>
+            {isTVShow ? (
+              <EpisodeSelector
+                tmdbId={media.id}
+              />
+              ): null}
           </div>
           <div className="flex justify-center items-center mt-4 mb-1">
             <Button
