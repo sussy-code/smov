@@ -37,6 +37,7 @@ function formatRuntime(runtime: number) {
 export function PopupModal({
   isVisible,
   onClose,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   playingTitle,
   media,
 }: PopupModalProps) {
@@ -48,6 +49,8 @@ export function PopupModal({
   const [data, setData] = useState<any>(null);
   const [mediaInfo, setMediaInfo] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [menuOpen, setMenuOpen] = useState<boolean>(false); // Added definition for menuOpen
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -149,7 +152,7 @@ export function PopupModal({
 
   return (
     <div
-      className="fixed inset-0 bg-opacity-50 flex justify-center items-center z-50 transition-opacity duration-100"
+      className="fixed inset-0 bg-opacity-50 flex justify-center items-center z-50 transition-opacity duration-100 overflow-y-auto"
       style={{ opacity: style.opacity, visibility: style.visibility }}
     >
       <div
@@ -249,8 +252,9 @@ export function PopupModal({
                     </div>
                   </div>
                 ))
-              : Array.from({ length: 3 }).map((_) => (
-                  <div className="inline-block">
+              : Array.from({ length: 3 }).map((_, i) => (
+                  // eslint-disable-next-line react/no-array-index-key
+                  <div key={i} className="inline-block">
                     <Skeleton />
                   </div>
                 ))}
