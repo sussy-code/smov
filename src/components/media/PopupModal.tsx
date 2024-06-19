@@ -152,7 +152,7 @@ export function PopupModal({
 
   return (
     <div
-      className="fixed inset-0 bg-opacity-50 flex justify-center items-center sm:items-start z-50 transition-opacity duration-100 top-10 sm:top-10"
+      className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center sm:items-start z-50 transition-opacity duration-100 top-10 sm:top-10"
       style={{ opacity: style.opacity, visibility: style.visibility }}
     >
       <div
