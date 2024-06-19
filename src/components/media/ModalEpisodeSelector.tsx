@@ -47,7 +47,7 @@ export function EpisodeSelector({ tmdbId }: ModalEpisodeSelectorProps) {
 
   return (
     <div className="flex flex-row">
-      <div className="sm:w-96 w-96 sm:block flex-auto overflow-y-scroll overflow-x-hidden max-h-52 scrollbar-track-gray-300">
+      <div className="sm:w-96 w-96 sm:block flex-auto cursor-pointer overflow-y-scroll overflow-x-hidden max-h-52 scrollbar-track-gray-300">
         {seasonsData.map((season) => (
           <div
             key={season.season_number}
@@ -58,7 +58,7 @@ export function EpisodeSelector({ tmdbId }: ModalEpisodeSelectorProps) {
           </div>
         ))}
       </div>
-      <div className="flex-auto mt-4 sm:mt-0 sm:ml-4 overflow-y-auto overflow-x-hidden max-h-52 order-1 sm:order-2">
+      <div className="flex-auto mt-4 cursor-pointer sm:mt-0 sm:ml-4 overflow-y-auto overflow-x-hidden max-h-52 order-1 sm:order-2">
         <div className="grid grid-cols-3 gap-2">
           {selectedSeason ? (
             selectedSeason.episodes.map(
