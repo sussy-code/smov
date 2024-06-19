@@ -17,48 +17,39 @@ export function BookmarksPart({
   onItemsChange: (hasItems: boolean) => void;
 }) {
   const { t } = useTranslation();
-  const progressItems = useProgressStore((state) => state.items);
-  const bookmarks = useBookmarkStore((state) => state.bookmarks);
-  const removeBookmark = useBookmarkStore((state) => state.removeBookmark);
+  const progressItems = useProgressStore((s) => s.items);
+  const bookmarks = useBookmarkStore((s) => s.bookmarks);
+  const removeBookmark = useBookmarkStore((s) => s.removeBookmark);
   const [editing, setEditing] = useState(false);
   const [gridRef] = useAutoAnimate<HTMLDivElement>();
 
   const items = useMemo(() => {
-    // Transform bookmarks object into an array of MediaItem
-    const transformedItems: MediaItem[] = Object.keys(bookmarks).map((id) => {
-      const { title, year, poster, type, updatedAt } = bookmarks[id];
-      return {
-        id,
-        title,
-        year,
-        poster,
-        type,
-        updatedAt,
-        seasons: type === "show" ? [] : undefined, // Ensure seasons is defined for 'show' type
-      };
+    let output: MediaItem[] = [];
+    Object.entries(bookmarks).forEach((entry) => {
+      output.push({
+        id: entry[0],
+        ...entry[1],
+      });
     });
+    output = output.sort((a, b) => {
+      const bookmarkA = bookmarks[a.id];
+      const bookmarkB = bookmarks[b.id];
+      const progressA = progressItems[a.id];
+      const progressB = progressItems[b.id];
 
-    // Sort items based on the latest update time
-    transformedItems.sort((a, b) => {
-      const aUpdatedAt = Math.max(
-        bookmarks[a.id].updatedAt,
-        progressItems[a.id]?.updatedAt ?? 0,
-      );
-      const bUpdatedAt = Math.max(
-        bookmarks[b.id].updatedAt,
-        progressItems[b.id]?.updatedAt ?? 0,
-      );
-      return bUpdatedAt - aUpdatedAt;
+      const dateA = Math.max(bookmarkA.updatedAt, progressA?.updatedAt ?? 0);
+      const dateB = Math.max(bookmarkB.updatedAt, progressB?.updatedAt ?? 0);
+
+      return dateB - dateA;
     });
-
-    return transformedItems;
+    return output;
   }, [bookmarks, progressItems]);
 
   useEffect(() => {
-    onItemsChange(items.length > 0); // Notify parent component if there are items
+    onItemsChange(items.length > 0);
   }, [items, onItemsChange]);
 
-  if (items.length === 0) return null; // If there are no items, return null
+  if (items.length === 0) return null;
 
   return (
     <div>
@@ -69,12 +60,12 @@ export function BookmarksPart({
         <EditButton editing={editing} onEdit={setEditing} />
       </SectionHeading>
       <MediaGrid ref={gridRef}>
-        {items.map((item) => (
+        {items.map((v) => (
           <WatchedMediaCard
-            key={item.id}
-            media={item}
+            key={v.id}
+            media={v}
             closable={editing}
-            onClose={() => removeBookmark(item.id)}
+            onClose={() => removeBookmark(v.id)}
           />
         ))}
       </MediaGrid>

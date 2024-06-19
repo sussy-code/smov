@@ -152,7 +152,7 @@ export function PopupModal({
 
   return (
     <div
-      className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center sm:items-start z-50 transition-opacity duration-100 top-10 sm:top-10"
+      className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center z-50 transition-opacity duration-100"
       style={{ opacity: style.opacity, visibility: style.visibility }}
     >
       <div
@@ -259,9 +259,8 @@ export function PopupModal({
                     </div>
                   </div>
                 ))
-              : Array.from({ length: 3 }).map((_, i) => (
-                  // eslint-disable-next-line react/no-array-index-key
-                  <div key={i} className="inline-block">
+              : Array.from({ length: 3 }).map((_) => (
+                  <div className="inline-block">
                     <Skeleton />
                   </div>
                 ))}
@@ -269,7 +268,11 @@ export function PopupModal({
           <div className="relative whitespace-normal font-medium overflow-y-auto max-h-32">
             {data?.overview}
           </div>
-          <div>{isTVShow ? <EpisodeSelector tmdbId={media.id} /> : null}</div>
+          <div className="pt-3">
+            {isTVShow ? (
+              <EpisodeSelector tmdbId={media.id} mediaTitle={media.title} />
+            ) : null}
+          </div>
           <div className="flex justify-center items-center mt-4 mb-1">
             <Button
               theme="purple"

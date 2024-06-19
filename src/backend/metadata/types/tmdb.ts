@@ -1,309 +1,289 @@
-import slugify from "slugify";
-
-import { conf } from "@/setup/config";
-import { MediaItem } from "@/utils/mediaTypes";
-
-import { MWMediaMeta, MWMediaType, MWSeasonMeta } from "./types/mw";
-import {
-  ExternalIdMovieSearchResult,
-  TMDBContentTypes,
-  TMDBEpisodeShort,
-  TMDBMediaResult,
-  TMDBMovieData,
-  TMDBMovieSearchResult,
-  TMDBSearchResult,
-  TMDBSeason,
-  TMDBSeasonMetaResult,
-  TMDBShowData,
-  TMDBShowSearchResult,
-} from "./types/tmdb";
-import { mwFetch } from "../helpers/fetch";
-
-export function mediaTypeToTMDB(type: MWMediaType): TMDBContentTypes {
-  if (type === MWMediaType.MOVIE) return TMDBContentTypes.MOVIE;
-  if (type === MWMediaType.SERIES) return TMDBContentTypes.TV;
-  throw new Error("unsupported type");
+export enum TMDBContentTypes {
+  MOVIE = "movie",
+  TV = "tv",
 }
 
-export function mediaItemTypeToMediaType(type: MediaItem["type"]): MWMediaType {
-  if (type === "movie") return MWMediaType.MOVIE;
-  if (type === "show") return MWMediaType.SERIES;
-  throw new Error("unsupported type");
-}
-
-export function TMDBMediaToMediaType(type: TMDBContentTypes): MWMediaType {
-  if (type === TMDBContentTypes.MOVIE) return MWMediaType.MOVIE;
-  if (type === TMDBContentTypes.TV) return MWMediaType.SERIES;
-  throw new Error("unsupported type");
-}
-
-export function TMDBMediaToMediaItemType(
-  type: TMDBContentTypes,
-): MediaItem["type"] {
-  if (type === TMDBContentTypes.MOVIE) return "movie";
-  if (type === TMDBContentTypes.TV) return "show";
-  throw new Error("unsupported type");
-}
-
-export function formatTMDBMeta(
-  media: TMDBMediaResult,
-  season?: TMDBSeasonMetaResult,
-): MWMediaMeta {
-  const type = TMDBMediaToMediaType(media.object_type);
-  let seasons: undefined | MWSeasonMeta[];
-  if (type === MWMediaType.SERIES) {
-    seasons = media.seasons
-      ?.sort((a, b) => a.season_number - b.season_number)
-      .map(
-        (v): MWSeasonMeta => ({
-          title: v.title,
-          id: v.id.toString(),
-          number: v.season_number,
-        }),
-      );
-  }
-
-  return {
-    title: media.title,
-    id: media.id.toString(),
-    year: media.original_release_date?.getFullYear()?.toString(),
-    poster: media.poster,
-    type,
-    seasons: seasons as any,
-    seasonData: season
-      ? {
-          id: season.id.toString(),
-          number: season.season_number,
-          title: season.title,
-          episodes: season.episodes
-            .sort((a, b) => a.episode_number - b.episode_number)
-            .map((v) => ({
-              id: v.id.toString(),
-              number: v.episode_number,
-              title: v.title,
-              air_date: v.air_date,
-            })),
-        }
-      : (undefined as any),
-  };
-}
-
-export function formatTMDBMetaToMediaItem(media: TMDBMediaResult): MediaItem {
-  const type = TMDBMediaToMediaItemType(media.object_type);
-
-  // Define the basic structure of MediaItem
-  const mediaItem: MediaItem = {
-    title: media.title,
-    id: media.id.toString(),
-    year: media.original_release_date?.getFullYear() ?? 0,
-    release_date: media.original_release_date,
-    poster: media.poster,
-    type,
-    seasons: undefined,
-  };
-
-  // If it's a TV show, include the seasons information
-  if (type === "show") {
-    const seasons = media.seasons?.map((season) => ({
-      title: season.title,
-      id: season.id.toString(),
-      number: season.season_number,
-    }));
-    mediaItem.seasons = seasons as MWSeasonMeta[];
-  }
-
-  return mediaItem;
-}
-
-export function TMDBIdToUrlId(
-  type: MWMediaType,
-  tmdbId: string,
-  title: string,
-) {
-  return [
-    "tmdb",
-    mediaTypeToTMDB(type),
-    tmdbId,
-    slugify(title, { lower: true, strict: true }),
-  ].join("-");
-}
-
-export function TMDBMediaToId(media: MWMediaMeta): string {
-  return TMDBIdToUrlId(media.type, media.id, media.title);
-}
-
-export function mediaItemToId(media: MediaItem): string {
-  return TMDBIdToUrlId(
-    mediaItemTypeToMediaType(media.type),
-    media.id,
-    media.title,
-  );
-}
-
-export function decodeTMDBId(
-  paramId: string,
-): { id: string; type: MWMediaType } | null {
-  const [prefix, type, id] = paramId.split("-", 3);
-  if (prefix !== "tmdb") return null;
-  let mediaType;
-  try {
-    mediaType = TMDBMediaToMediaType(type as TMDBContentTypes);
-  } catch {
-    return null;
-  }
-  return {
-    type: mediaType,
-    id,
-  };
-}
-
-const tmdbBaseUrl1 = "https://api.themoviedb.org/3";
-const tmdbBaseUrl2 = "https://api.tmdb.org/3";
-
-const apiKey = conf().TMDB_READ_API_KEY;
-
-const tmdbHeaders = {
-  accept: "application/json",
-  Authorization: `Bearer ${apiKey}`,
+export type TMDBSeasonShort = {
+  title: string;
+  id: number;
+  season_number: number;
 };
 
-function abortOnTimeout(timeout: number): AbortSignal {
-  const controller = new AbortController();
-  setTimeout(() => controller.abort(), timeout);
-  return controller.signal;
-}
+export type TMDBEpisodeShort = {
+  title: string;
+  id: number;
+  episode_number: number;
+  air_date: string;
+};
 
-export async function get<T>(url: string, params?: object): Promise<T> {
-  if (!apiKey) throw new Error("TMDB API key not set");
-  try {
-    return await mwFetch<T>(encodeURI(url), {
-      headers: tmdbHeaders,
-      baseURL: tmdbBaseUrl1,
-      params: {
-        ...params,
-      },
-      signal: abortOnTimeout(5000),
-    });
-  } catch (err) {
-    return mwFetch<T>(encodeURI(url), {
-      headers: tmdbHeaders,
-      baseURL: tmdbBaseUrl2,
-      params: {
-        ...params,
-      },
-      signal: abortOnTimeout(30000),
-    });
-  }
-}
+export type TMDBMediaResult = {
+  title: string;
+  poster?: string;
+  id: number;
+  original_release_date?: Date;
+  object_type: TMDBContentTypes;
+  seasons?: TMDBSeasonShort[];
+};
 
-export async function multiSearch(
-  query: string,
-): Promise<(TMDBMovieSearchResult | TMDBShowSearchResult)[]> {
-  const data = await get<TMDBSearchResult>("search/multi", {
-    query,
-    include_adult: false,
-    language: "en-US",
-    page: 1,
-  });
-  // filter out results that aren't movies or shows
-  const results = data.results.filter(
-    (r) =>
-      r.media_type === TMDBContentTypes.MOVIE ||
-      r.media_type === TMDBContentTypes.TV,
-  );
-  return results;
-}
+export type TMDBSeasonMetaResult = {
+  title: string;
+  id: string;
+  season_number: number;
+  episodes: TMDBEpisodeShort[];
+};
 
-export async function generateQuickSearchMediaUrl(
-  query: string,
-): Promise<string | undefined> {
-  const data = await multiSearch(query);
-  if (data.length === 0) return undefined;
-  const result = data[0];
-  const title =
-    result.media_type === TMDBContentTypes.MOVIE ? result.title : result.name;
-
-  return `/media/${TMDBIdToUrlId(
-    TMDBMediaToMediaType(result.media_type),
-    result.id.toString(),
-    title,
-  )}`;
-}
-
-// Conditional type which for inferring the return type based on the content type
-type MediaDetailReturn<T extends TMDBContentTypes> =
-  T extends TMDBContentTypes.MOVIE
-    ? TMDBMovieData
-    : T extends TMDBContentTypes.TV
-      ? TMDBShowData
-      : never;
-
-export function getMediaDetails<
-  T extends TMDBContentTypes,
-  TReturn = MediaDetailReturn<T>,
->(id: string, type: T): Promise<TReturn> {
-  if (type === TMDBContentTypes.MOVIE) {
-    return get<TReturn>(`/movie/${id}`, { append_to_response: "external_ids" });
-  }
-  if (type === TMDBContentTypes.TV) {
-    return get<TReturn>(`/tv/${id}`, { append_to_response: "external_ids" });
-  }
-  throw new Error("Invalid media type");
-}
-
-export function getMediaPoster(posterPath: string | null): string | undefined {
-  if (posterPath) return `https://image.tmdb.org/t/p/w342/${posterPath}`;
-}
-
-export async function getEpisodes(
-  id: string,
-  season: number,
-): Promise<TMDBEpisodeShort[]> {
-  const data = await get<TMDBSeason>(`/tv/${id}/season/${season}`);
-  return data.episodes.map((e) => ({
-    id: e.id,
-    episode_number: e.episode_number,
-    title: e.name,
-    air_date: e.air_date,
-  }));
-}
-
-export async function getMovieFromExternalId(
-  imdbId: string,
-): Promise<string | undefined> {
-  const data = await get<ExternalIdMovieSearchResult>(`/find/${imdbId}`, {
-    external_source: "imdb_id",
-  });
-
-  const movie = data.movie_results[0];
-  if (!movie) return undefined;
-
-  return movie.id.toString();
-}
-
-export function formatTMDBSearchResult(
-  result: TMDBMovieSearchResult | TMDBShowSearchResult,
-  mediatype: TMDBContentTypes,
-): TMDBMediaResult {
-  const type = TMDBMediaToMediaType(mediatype);
-  if (type === MWMediaType.SERIES) {
-    const show = result as TMDBShowSearchResult;
-    return {
-      title: show.name,
-      poster: getMediaPoster(show.poster_path),
-      id: show.id,
-      original_release_date: new Date(show.first_air_date),
-      object_type: mediatype,
-    };
-  }
-
-  const movie = result as TMDBMovieSearchResult;
-
-  return {
-    title: movie.title,
-    poster: getMediaPoster(movie.poster_path),
-    id: movie.id,
-    original_release_date: new Date(movie.release_date),
-    object_type: mediatype,
+export interface TMDBShowData {
+  adult: boolean;
+  backdrop_path: string | null;
+  created_by: {
+    id: number;
+    credit_id: string;
+    name: string;
+    gender: number;
+    profile_path: string | null;
+  }[];
+  episode_run_time: number[];
+  first_air_date: string;
+  genres: {
+    id: number;
+    name: string;
+  }[];
+  homepage: string;
+  id: number;
+  in_production: boolean;
+  languages: string[];
+  last_air_date: string;
+  last_episode_to_air: {
+    id: number;
+    name: string;
+    overview: string;
+    vote_average: number;
+    vote_count: number;
+    air_date: string;
+    episode_number: number;
+    production_code: string;
+    runtime: number | null;
+    season_number: number;
+    show_id: number;
+    still_path: string | null;
+  } | null;
+  name: string;
+  next_episode_to_air: {
+    id: number;
+    name: string;
+    overview: string;
+    vote_average: number;
+    vote_count: number;
+    air_date: string;
+    episode_number: number;
+    production_code: string;
+    runtime: number | null;
+    season_number: number;
+    show_id: number;
+    still_path: string | null;
+  } | null;
+  networks: {
+    id: number;
+    logo_path: string;
+    name: string;
+    origin_country: string;
+  }[];
+  number_of_episodes: number;
+  number_of_seasons: number;
+  origin_country: string[];
+  original_language: string;
+  original_name: string;
+  overview: string;
+  popularity: number;
+  poster_path: string | null;
+  production_companies: {
+    id: number;
+    logo_path: string | null;
+    name: string;
+    origin_country: string;
+  }[];
+  production_countries: {
+    iso_3166_1: string;
+    name: string;
+  }[];
+  seasons: {
+    air_date: string;
+    episode_count: number;
+    id: number;
+    name: string;
+    overview: string;
+    poster_path: string | null;
+    season_number: number;
+  }[];
+  spoken_languages: {
+    english_name: string;
+    iso_639_1: string;
+    name: string;
+  }[];
+  status: string;
+  tagline: string;
+  type: string;
+  vote_average: number;
+  vote_count: number;
+  external_ids: {
+    imdb_id: string | null;
   };
+}
+
+export interface TMDBMovieData {
+  adult: boolean;
+  backdrop_path: string | null;
+  belongs_to_collection: {
+    id: number;
+    name: string;
+    poster_path: string | null;
+    backdrop_path: string | null;
+  } | null;
+  budget: number;
+  genres: {
+    id: number;
+    name: string;
+  }[];
+  homepage: string | null;
+  id: number;
+  imdb_id: string | null;
+  original_language: string;
+  original_title: string;
+  overview: string | null;
+  popularity: number;
+  poster_path: string | null;
+  production_companies: {
+    id: number;
+    logo_path: string | null;
+    name: string;
+    origin_country: string;
+  }[];
+  production_countries: {
+    iso_3166_1: string;
+    name: string;
+  }[];
+  release_date: string;
+  revenue: number;
+  runtime: number | null;
+  spoken_languages: {
+    english_name: string;
+    iso_639_1: string;
+    name: string;
+  }[];
+  status: string;
+  tagline: string | null;
+  title: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
+  external_ids: {
+    imdb_id: string | null;
+  };
+}
+
+export interface TMDBEpisodeResult {
+  season: number;
+  number: number;
+  title: string;
+  ids: {
+    trakt: number;
+    tvdb: number;
+    imdb: string;
+    tmdb: number;
+  };
+}
+
+export interface TMDBEpisode {
+  air_date: string;
+  episode_number: number;
+  id: number;
+  name: string;
+  overview: string;
+  production_code: string;
+  runtime: number;
+  season_number: number;
+  show_id: number;
+  still_path: string | null;
+  vote_average: number;
+  vote_count: number;
+  crew: any[];
+  guest_stars: any[];
+}
+
+export interface TMDBSeason {
+  _id: string;
+  air_date: string;
+  episodes: TMDBEpisode[];
+  name: string;
+  overview: string;
+  id: number;
+  poster_path: string | null;
+  season_number: number;
+}
+
+export interface ExternalIdMovieSearchResult {
+  movie_results: {
+    adult: boolean;
+    backdrop_path: string;
+    id: number;
+    title: string;
+    original_language: string;
+    original_title: string;
+    overview: string;
+    poster_path: string;
+    media_type: string;
+    genre_ids: number[];
+    popularity: number;
+    release_date: string;
+    video: boolean;
+    vote_average: number;
+    vote_count: number;
+  }[];
+  person_results: any[];
+  tv_results: any[];
+  tv_episode_results: any[];
+  tv_season_results: any[];
+}
+
+export interface TMDBMovieSearchResult {
+  adult: boolean;
+  backdrop_path: string;
+  id: number;
+  title: string;
+  original_language: string;
+  original_title: string;
+  overview: string;
+  poster_path: string;
+  media_type: TMDBContentTypes.MOVIE;
+  genre_ids: number[];
+  popularity: number;
+  release_date: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
+}
+
+export interface TMDBShowSearchResult {
+  adult: boolean;
+  backdrop_path: string;
+  id: number;
+  name: string;
+  original_language: string;
+  original_name: string;
+  overview: string;
+  poster_path: string;
+  media_type: TMDBContentTypes.TV;
+  genre_ids: number[];
+  popularity: number;
+  first_air_date: string;
+  vote_average: number;
+  vote_count: number;
+  origin_country: string[];
+}
+
+export interface TMDBSearchResult {
+  page: number;
+  results: (TMDBMovieSearchResult | TMDBShowSearchResult)[];
+  total_pages: number;
+  total_results: number;
 }
