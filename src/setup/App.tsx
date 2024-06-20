@@ -134,6 +134,7 @@ function App() {
               </LegacyUrlView>
             }
           />
+
           <Route path="/browse/:query?" element={<HomePage />} />
           <Route path="/" element={<HomePage />} />
           <Route path="/register" element={<RegisterPage />} />
