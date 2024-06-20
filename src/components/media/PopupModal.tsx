@@ -20,6 +20,29 @@ interface PopupModalProps {
   media: MediaItem;
 }
 
+interface MediaData {
+  backdrop_path?: string;
+  title?: string;
+  name?: string;
+  runtime?: number;
+  release_date?: string;
+  first_air_date?: string;
+  vote_average?: number;
+  genres?: Array<{ name: string }>;
+  overview?: string;
+}
+
+interface MediaInfo {
+  results?: Array<{
+    iso_3166_1: string;
+    rating?: string;
+    release_dates?: Array<{
+      certification: string;
+      release_date: string;
+    }>;
+  }>;
+}
+
 type StyleState = {
   opacity: number;
   visibility: "visible" | "hidden" | undefined;
@@ -46,11 +69,10 @@ export function PopupModal({
     opacity: 0,
     visibility: "hidden",
   });
-  const [data, setData] = useState<any>(null);
-  const [mediaInfo, setMediaInfo] = useState<any>(null);
+  const [data, setData] = useState<MediaData | null>(null);
+  const [mediaInfo, setMediaInfo] = useState<MediaInfo | null>(null);
   const [error, setError] = useState<string | null>(null);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [menuOpen, setMenuOpen] = useState<boolean>(false); // Added definition for menuOpen
+  // const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -62,7 +84,6 @@ export function PopupModal({
         onClose();
       }
     }
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
@@ -83,7 +104,7 @@ export function PopupModal({
 
       try {
         const mediaTypePath = media.type === "show" ? "tv" : media.type;
-        const result = await get<any>(`/${mediaTypePath}/${media.id}`, {
+        const result = await get<MediaData>(`/${mediaTypePath}/${media.id}`, {
           api_key: conf().TMDB_READ_API_KEY,
           language: "en-US",
         });
@@ -107,7 +128,7 @@ export function PopupModal({
         const mediaTypeForAPI = media.type === "show" ? "tv" : media.type;
         const endpointSuffix =
           media.type === "show" ? "content_ratings" : "release_dates";
-        const result = await get<any>(
+        const result = await get<MediaInfo>(
           `/${mediaTypeForAPI}/${media.id}/${endpointSuffix}`,
           {
             api_key: conf().TMDB_READ_API_KEY,
@@ -126,10 +147,7 @@ export function PopupModal({
   }, [media.id, media.type, isVisible]);
 
   if (!isVisible && style.visibility === "hidden") return null;
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+  if (error) return <div>Error: {error}</div>;
 
   const isTVShow = media.type === "show";
   const usReleaseInfo = mediaInfo?.results?.find(
@@ -158,11 +176,7 @@ export function PopupModal({
       <div
         ref={modalRef}
         className="rounded-xl bg-modal-background flex flex-col justify-center items-center transition-opacity duration-100 max-w-full sm:max-w-xl w-full sm:w-auto sm:h-auto overflow-y-auto p-4"
-        style={{
-          opacity: style.opacity,
-          maxHeight: "90vh",
-          height: "auto",
-        }}
+        style={{ opacity: style.opacity, maxHeight: "90vh", height: "auto" }}
       >
         <div className="aspect-w-16 aspect-h-9 w-full sm:w-auto">
           <div className="rounded-xl">
@@ -172,9 +186,7 @@ export function PopupModal({
                 alt={media.poster ? "" : "failed to fetch :("}
                 className="rounded-xl object-cover w-full h-full"
                 loading="lazy"
-                style={{
-                  maxHeight: "60vh",
-                }}
+                style={{ maxHeight: "60vh" }}
               />
             ) : (
               <Skeleton />
@@ -239,19 +251,17 @@ export function PopupModal({
           </div>
           <div className="flex flex-row gap-3 pb-3 pt-2">
             <div className="flex items-center space-x-[2px] font-semibold">
-              {Array.from({ length: 5 }, (_, index) => {
-                return (
-                  <span key={index}>
-                    {index < Math.round(Number(data?.vote_average) / 2) ? (
-                      <Icon icon={Icons.STAR} />
-                    ) : (
-                      <Icon icon={Icons.STAR_BORDER} />
-                    )}
-                  </span>
-                );
-              })}
+              {Array.from({ length: 5 }, (_, index) => (
+                <span key={index}>
+                  {index < Math.round(Number(data?.vote_average) / 2) ? (
+                    <Icon icon={Icons.STAR} />
+                  ) : (
+                    <Icon icon={Icons.STAR_BORDER} />
+                  )}
+                </span>
+              ))}
             </div>
-            {data?.genres?.length > 0
+            {data?.genres && data.genres.length > 0
               ? data.genres.map((genre: { name: string }) => (
                   <div key={genre.name} className="inline-block">
                     <div className="px-2 py-1 bg-mediaCard-hoverBackground rounded hover:bg-search-background cursor-default duration-200 transition-colors transform hover:scale-110">
@@ -259,8 +269,9 @@ export function PopupModal({
                     </div>
                   </div>
                 ))
-              : Array.from({ length: 3 }).map((_) => (
-                  <div className="inline-block">
+              : Array.from({ length: 3 }).map((_, idx) => (
+                  // eslint-disable-next-line react/no-array-index-key
+                  <div className="inline-block" key={idx}>
                     <Skeleton />
                   </div>
                 ))}
