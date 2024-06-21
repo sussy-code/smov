@@ -14,7 +14,15 @@
             "body": "Nos résultats de recherche sont alimentés par The Movie Database (TMDB) et s'affichent indépendamment de la disponibilité réelle du contenu dans nos sources.",
             "title": "Les résultats de la recherche affichent la série ou le film, pourquoi ne puis-je pas le lire ?"
         },
-        "title": "À propos de sudo-flix"
+        "title": "À propos de sudo-flix",
+        "q4": {
+            "body": "La synchronisation de toutes les données se fait sur la sudo-backend, qui diffère de la backend de communauté et est hébergé indépendamment par moi. Tout le monde peut également l'utiliser.",
+            "title": "Qu'en est-il de mes données ?"
+        },
+        "q5": {
+            "body": "Sudo-flix possède un compte twitter qui peut être trouvé en bas de cette page ainsi qu'un lien vers le code source sur Github.",
+            "title": "Comment puis-je en savoir plus ?"
+        }
     },
     "actions": {
         "copied": "Copié",
@@ -87,7 +95,8 @@
         "links": {
             "discord": "Discord",
             "dmca": "DMCA",
-            "github": "GitHub"
+            "github": "GitHub",
+            "twitter": "Twitter"
         },
         "tagline": "Regardez vos séries et films préférés avec cette application de streaming open source."
     },
@@ -100,7 +109,9 @@
             "onboarding": "Mise en place",
             "pagetitle": "{{title}} - sudo-flix",
             "register": "Créer un compte",
-            "settings": "Paramètres"
+            "settings": "Paramètres",
+            "discover": "Découvrir",
+            "support": "Support"
         }
     },
     "home": {
