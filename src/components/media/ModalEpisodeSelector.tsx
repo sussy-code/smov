@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { get } from "@/backend/metadata/tmdb";
+import { Flare } from "@/components/utils/Flare";
 import { conf } from "@/setup/config";
 
 interface ModalEpisodeSelectorProps {
@@ -57,8 +58,8 @@ export function EpisodeSelector({
   }, [handleSeasonSelect, tmdbId]);
 
   return (
-    <div className="flex flex-row">
-      <div className="sm:w-96 w-96 sm:block cursor-pointer overflow-y-scroll overflow-x-hidden max-h-60 max-w-24">
+    <div className="flex flex-row relative">
+      <div className="w-24 sm:w-96 cursor-pointer overflow-y-auto overflow-x-hidden max-h-60 z-10">
         {seasonsData.map((season) => (
           <div
             key={season.season_number}
@@ -76,8 +77,8 @@ export function EpisodeSelector({
           </div>
         ))}
       </div>
-      <div className="flex-auto mt-4 cursor-pointer sm:mt-0 sm:ml-4 overflow-y-auto overflow-x-hidden max-h-60 order-1 sm:order-2">
-        <div className="grid grid-cols-3 gap-2">
+      <div className="flex-auto mt-4 sm:mt-0 sm:ml-4 cursor-pointer overflow-x-auto overflow-y-hidden sm:overflow-y-auto sm:overflow-x-hidden max-h-60 max-w-[70vw] z-0">
+        <div className="flex sm:grid sm:grid-cols-3 sm:gap-2">
           {selectedSeason ? (
             selectedSeason.episodes.map(
               (episode: {
@@ -87,23 +88,31 @@ export function EpisodeSelector({
                 show_id: number;
                 id: number;
               }) => (
-                <div
+                <Flare.Base
                   key={episode.episode_number}
                   onClick={() =>
                     navigate(
                       `/media/tmdb-tv-${tmdbId}-${mediaTitle}/${episode.show_id}/${episode.id}`,
                     )
                   }
-                  className="bg-mediaCard-hoverBackground rounded p-2 hover:scale-95 transition-transform transition-border-color duration-[0.28s] ease-in-out transform-origin-center"
+                  className="group cursor-pointer rounded-xl relative p-[0.65em] bg-background-main transition-colors duration-[0.28s] flex-shrink-0 w-48 sm:w-auto mr-2 sm:mr-0"
                 >
-                  <img
-                    src={`https://image.tmdb.org/t/p/w500/${episode.still_path}`}
-                    className="w-full h-auto rounded"
+                  <Flare.Light
+                    flareSize={300}
+                    cssColorVar="--colors-mediaCard-hoverAccent"
+                    backgroundClass="bg-mediaCard-hoverBackground duration-200"
+                    className="rounded-xl bg-background-main group-hover:opacity-100"
                   />
-                  <p className="text-center text-[0.95em] mt-2">
-                    {episode.name}
-                  </p>
-                </div>
+                  <div className="relative z-10">
+                    <img
+                      src={`https://image.tmdb.org/t/p/w500/${episode.still_path}`}
+                      className="w-full h-auto rounded"
+                    />
+                    <p className="text-center text-[0.95em] mt-2">
+                      {episode.name}
+                    </p>
+                  </div>
+                </Flare.Base>
               ),
             )
           ) : (
