@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { get } from "@/backend/metadata/tmdb";
+import { Flare } from "@/components/utils/Flare";
 import { conf } from "@/setup/config";
 
 interface ModalEpisodeSelectorProps {
@@ -100,29 +101,35 @@ export function EpisodeSelector({
                 still_path: string;
                 id: number;
               }) => (
-                <div
+                <Flare.Base
                   key={episode.id}
                   onClick={() => {
                     const url = `/media/tmdb-tv-${tmdbId}-${mediaTitle}/${selectedSeason.id}/${episode.id}`;
-                    // eslint-disable-next-line no-console
                     console.log(`Navigating to: ${url}`);
-                    // eslint-disable-next-line no-console
                     console.log(
                       `Season ID: ${selectedSeason.id}, Episode ID: ${episode.id}`,
                     );
                     navigate(url);
                   }}
-                  className="bg-mediaCard-hoverBackground rounded p-2 hover:scale-95 transition-transform transition-border-color duration-[0.28s] ease-in-out transform-origin-center"
+                  className="group cursor-pointer rounded-xl relative p-[0.65em] bg-background-main transition-colors duration-[0.28s]"
                 >
-                  <img
-                    src={`https://image.tmdb.org/t/p/w500/${episode.still_path}`}
-                    className="w-full h-auto rounded"
-                    alt={episode.name}
+                  <Flare.Light
+                    flareSize={300}
+                    cssColorVar="--colors-mediaCard-hoverAccent"
+                    backgroundClass="bg-mediaCard-hoverBackground duration-200"
+                    className="rounded-xl bg-background-main group-hover:opacity-100"
                   />
-                  <p className="text-center text-[0.95em] mt-2">
-                    {`S${selectedSeason.season_number}E${episode.episode_number}: ${episode.name}`}
-                  </p>
-                </div>
+                  <div className="relative z-10">
+                    <img
+                      src={`https://image.tmdb.org/t/p/w500/${episode.still_path}`}
+                      className="w-full h-auto rounded"
+                      alt={episode.name}
+                    />
+                    <p className="text-center text-[0.95em] mt-2">
+                      {`S${selectedSeason.season_number}E${episode.episode_number}: ${episode.name}`}
+                    </p>
+                  </div>
+                </Flare.Base>
               ),
             )
           ) : (
