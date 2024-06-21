@@ -77,7 +77,7 @@ export function EpisodeSelector({
           </div>
         ))}
       </div>
-      <div className="flex-auto mt-4 sm:mt-0 sm:ml-4 overflow-x-auto overflow-y-hidden sm:overflow-y-auto sm:overflow-x-hidden max-h-60 max-w-[70vw] z-0">
+      <div className="flex-auto mt-4 sm:mt-0 sm:ml-4 cursor-pointer overflow-x-auto overflow-y-hidden sm:overflow-y-auto sm:overflow-x-hidden max-h-60 max-w-[70vw] z-0">
         <div className="flex sm:grid sm:grid-cols-3 sm:gap-2">
           {selectedSeason ? (
             selectedSeason.episodes.map(
