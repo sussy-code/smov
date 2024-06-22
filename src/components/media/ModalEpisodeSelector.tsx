@@ -28,6 +28,7 @@ export function EpisodeSelector({
             language: "en-US",
           },
         );
+        // console.log("Fetched season details:", seasonDetails);
         setSelectedSeason(seasonDetails);
       } catch (err) {
         console.error(err);
@@ -43,6 +44,7 @@ export function EpisodeSelector({
           api_key: conf().TMDB_READ_API_KEY,
           language: "en-US",
         });
+        // console.log("Fetched show details:", showDetails);
         setSeasonsData(showDetails.seasons);
         if (showDetails.seasons[0] === 0) {
           // Default to first season
@@ -85,16 +87,15 @@ export function EpisodeSelector({
                 episode_number: number;
                 name: string;
                 still_path: string;
-                show_id: number;
-                id: number;
+                id: string;
               }) => (
                 <Flare.Base
                   key={episode.episode_number}
-                  onClick={() =>
-                    navigate(
-                      `/media/tmdb-tv-${tmdbId}-${mediaTitle}/${episode.show_id}/${episode.id}`,
-                    )
-                  }
+                  onClick={() => {
+                    const navigateUrl = `/media/tmdb-tv-${tmdbId}-${mediaTitle}/${selectedSeason.id}/${episode.id}`;
+                    // console.log("Navigating to:", navigateUrl);
+                    navigate(navigateUrl);
+                  }}
                   className="group cursor-pointer rounded-xl relative p-[0.65em] bg-background-main transition-colors duration-[0.28s] flex-shrink-0 w-48 sm:w-auto mr-2 sm:mr-0"
                 >
                   <Flare.Light
@@ -109,7 +110,7 @@ export function EpisodeSelector({
                       className="w-full h-auto rounded"
                     />
                     <p className="text-center text-[0.95em] mt-2">
-                      {episode.name}
+                      E{episode.episode_number}: {episode.name}
                     </p>
                   </div>
                 </Flare.Base>
