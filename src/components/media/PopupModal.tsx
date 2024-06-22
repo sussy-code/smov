@@ -60,7 +60,8 @@ function formatRuntime(runtime: number) {
 export function PopupModal({
   isVisible,
   onClose,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars 
+  // idk just needed to add this line for commit
   playingTitle,
   media,
 }: PopupModalProps) {
