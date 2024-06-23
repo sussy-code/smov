@@ -91,28 +91,14 @@ export function formatTMDBMeta(
 export function formatTMDBMetaToMediaItem(media: TMDBMediaResult): MediaItem {
   const type = TMDBMediaToMediaItemType(media.object_type);
 
-  // Define the basic structure of MediaItem
-  const mediaItem: MediaItem = {
+  return {
     title: media.title,
     id: media.id.toString(),
     year: media.original_release_date?.getFullYear() ?? 0,
     release_date: media.original_release_date,
     poster: media.poster,
     type,
-    seasons: undefined,
   };
-
-  // If it's a TV show, include the seasons information
-  if (type === "show") {
-    const seasons = media.seasons?.map((season) => ({
-      title: season.title,
-      id: season.id.toString(),
-      number: season.season_number,
-    }));
-    mediaItem.seasons = seasons as MWSeasonMeta[];
-  }
-
-  return mediaItem;
 }
 
 export function TMDBIdToUrlId(
