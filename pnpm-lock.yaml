@@ -35,7 +35,7 @@ dependencies:
     version: 0.7.1(react-dom@18.3.1)(react@18.3.1)
   '@movie-web/providers':
     specifier: github:ztpn/smovproviders#wyzie
-    version: github.com/ztpn/smovproviders/525979a30199d80dad6da9e0d209c2f7b5bea029
+    version: github.com/ztpn/smovproviders/c6fc313e195a161edbec9aa13b58609d8ad8406e
   '@noble/hashes':
     specifier: ^1.4.0
     version: 1.4.0
@@ -7576,8 +7576,8 @@ packages:
       use-sync-external-store: 1.2.0(react@18.3.1)
     dev: false
 
-  github.com/ztpn/smovproviders/525979a30199d80dad6da9e0d209c2f7b5bea029:
-    resolution: {tarball: https://codeload.github.com/ztpn/smovproviders/tar.gz/525979a30199d80dad6da9e0d209c2f7b5bea029}
+  github.com/ztpn/smovproviders/c6fc313e195a161edbec9aa13b58609d8ad8406e:
+    resolution: {tarball: https://codeload.github.com/ztpn/smovproviders/tar.gz/c6fc313e195a161edbec9aa13b58609d8ad8406e}
     name: '@movie-web/providers'
     version: 2.3.0
     requiresBuild: true
