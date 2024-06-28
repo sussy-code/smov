@@ -67,7 +67,7 @@ export function ScrapingPart(props: ScrapingProps) {
       if (!videoLoaded) {
         window.location.reload();
       }
-    }, 10000); // 10 seconds
+    }, 20000); // 20 seconds
 
     return () => clearTimeout(timer);
   }, [videoLoaded]);
