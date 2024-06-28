@@ -65,28 +65,19 @@ export function ScrapingPart(props: ScrapingProps) {
   useEffect(() => {
     const timer = setTimeout(() => {
       if (!videoLoaded) {
-        const currentIndex = sourceOrder.findIndex(
-          (s) => s.id === currentSource,
-        );
-        localStorage.setItem("lastScrapedIndex", (currentIndex + 1).toString());
         window.location.reload();
       }
     }, 10000); // 10 seconds
 
     return () => clearTimeout(timer);
-  }, [videoLoaded, sourceOrder, currentSource]);
+  }, [videoLoaded]);
 
   const started = useRef(false);
   useEffect(() => {
     if (started.current) return;
     started.current = true;
     (async () => {
-      const lastScrapedIndex = parseInt(
-        localStorage.getItem("lastScrapedIndex") || "0",
-        10,
-      );
-      localStorage.removeItem("lastScrapedIndex"); // Clear it after reading
-      const output = await startScraping(props.media, lastScrapedIndex);
+      const output = await startScraping(props.media);
       if (!isMounted()) return;
       props.onResult?.(
         resultRef.current.sources,
@@ -100,7 +91,7 @@ export function ScrapingPart(props: ScrapingProps) {
         ),
       );
       props.onGetStream?.(output);
-      setVideoLoaded(true);
+      setVideoLoaded(true); // Add this line here
     })().catch(() => setFailedStartScrape(true));
   }, [startScraping, props, report, isMounted]);
 
