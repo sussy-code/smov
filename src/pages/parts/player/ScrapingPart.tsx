@@ -91,7 +91,7 @@ export function ScrapingPart(props: ScrapingProps) {
         ),
       );
       props.onGetStream?.(output);
-      setVideoLoaded(true); // Add this line here
+      setVideoLoaded(true);
     })().catch(() => setFailedStartScrape(true));
   }, [startScraping, props, report, isMounted]);
 
