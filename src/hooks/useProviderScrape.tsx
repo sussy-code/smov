@@ -160,7 +160,8 @@ export function useScrape() {
   const preferredSourceOrder = usePreferencesStore((s) => s.sourceOrder);
 
   const startScraping = useCallback(
-    async (media: ScrapeMedia) => {
+    // Change: Added startIndex parameter with default value 0
+    async (media: ScrapeMedia, startIndex: number = 0) => {
       const providerApiUrl = getLoadbalancedProviderApiUrl();
       if (providerApiUrl && !isExtensionActiveCached()) {
         startScrape();
@@ -184,7 +185,8 @@ export function useScrape() {
       const providers = getProviders();
       const output = await providers.runAll({
         media,
-        sourceOrder: preferredSourceOrder,
+        // Change: Use slice to start from startIndex
+        sourceOrder: preferredSourceOrder.slice(startIndex),
         events: {
           init: initEvent,
           start: startEvent,
