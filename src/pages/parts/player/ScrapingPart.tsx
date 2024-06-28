@@ -109,13 +109,6 @@ export function ScrapingPart(props: ScrapingProps) {
       className="h-full w-full relative dir-neutral:origin-top-left flex"
       ref={containerRef}
     >
-      {/* Add the new loading message here */}
-      {!videoLoaded && (
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-10">
-          <p>{t("player.turnstile.loadingVideo")}</p>
-          <p>{t("player.turnstile.autoRefresh")}</p>
-        </div>
-      )}
       {!sourceOrder || sourceOrder.length === 0 ? (
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center flex flex-col justify-center z-0">
           <Loading className="mb-8" />
