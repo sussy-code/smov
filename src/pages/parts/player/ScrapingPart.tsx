@@ -40,7 +40,6 @@ export function ScrapingPart(props: ScrapingProps) {
   const { t } = useTranslation();
 
   const [videoLoaded, setVideoLoaded] = useState(false);
-  const [reloadCount, setReloadCount] = useState(0);
 
   const containerRef = useRef<HTMLDivElement | null>(null);
   const listRef = useRef<HTMLDivElement | null>(null);
@@ -65,14 +64,13 @@ export function ScrapingPart(props: ScrapingProps) {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (!videoLoaded && reloadCount < 2) {
-        setReloadCount(reloadCount + 1);
+      if (!videoLoaded) {
         window.location.reload();
       }
     }, 10000); // 10 seconds
 
     return () => clearTimeout(timer);
-  }, [videoLoaded, reloadCount]);
+  }, [videoLoaded]);
 
   const started = useRef(false);
   useEffect(() => {
