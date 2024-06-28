@@ -39,6 +39,8 @@ export function ScrapingPart(props: ScrapingProps) {
   const isMounted = useMountedState();
   const { t } = useTranslation();
 
+  const [videoLoaded, setVideoLoaded] = useState(false);
+
   const containerRef = useRef<HTMLDivElement | null>(null);
   const listRef = useRef<HTMLDivElement | null>(null);
   const [failedStartScrape, setFailedStartScrape] = useState<boolean>(false);
@@ -60,6 +62,16 @@ export function ScrapingPart(props: ScrapingProps) {
     };
   }, [sourceOrder, sources]);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (!videoLoaded) {
+        window.location.reload();
+      }
+    }, 10000); // 10 seconds
+
+    return () => clearTimeout(timer);
+  }, [videoLoaded]);
+
   const started = useRef(false);
   useEffect(() => {
     if (started.current) return;
@@ -79,6 +91,7 @@ export function ScrapingPart(props: ScrapingProps) {
         ),
       );
       props.onGetStream?.(output);
+      setVideoLoaded(true); // Add this line here
     })().catch(() => setFailedStartScrape(true));
   }, [startScraping, props, report, isMounted]);
 
@@ -96,6 +109,13 @@ export function ScrapingPart(props: ScrapingProps) {
       className="h-full w-full relative dir-neutral:origin-top-left flex"
       ref={containerRef}
     >
+      {/* Add the new loading message here */}
+      {!videoLoaded && (
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-10">
+          <p>{t("player.turnstile.loadingVideo")}</p>
+          <p>{t("player.turnstile.autoRefresh")}</p>
+        </div>
+      )}
       {!sourceOrder || sourceOrder.length === 0 ? (
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center flex flex-col justify-center z-0">
           <Loading className="mb-8" />
