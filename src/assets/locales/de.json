@@ -1,6 +1,6 @@
 {
     "about": {
-        "description": "sudo-flix ist eine Web-App, welche das Internet nach Streams durchsucht. Das Team versucht einen minimalistischen Ansatz umzusetzen.",
+        "description": "space-flix ist eine Web-App, welche das Internet nach Streams durchsucht. Das Team versucht einen minimalistischen Ansatz umzusetzen.",
         "faqTitle": "Häufig gestellte Fragen",
         "q1": {
             "body": "sudo-flix hostet keinen eigenen Inhalt. Wenn du auf etwas zum Anschauen klickst, wird das Internet danach durchsucht (Auf dem Ladebildschirm und im Tab \"Videoquellen\" kannst du einstellen, welche Quellen verwendet werden sollen). sudo-flix lädt keine Videos hoch, alleVideos stammen aus der Suche.",
