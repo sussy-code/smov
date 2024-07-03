@@ -118,10 +118,17 @@ export function KeyboardEvents() {
 
       // Utils
       if (keyL === "f") dataRef.current.display?.toggleFullscreen();
-      if (k === " " || keyL === "k")
-        dataRef.current.display?.[
-          dataRef.current.mediaPlaying.isPaused ? "play" : "pause"
-        ]();
+      if (k === " " || keyL === "k") {
+        if (
+          evt.target &&
+          (evt.target as HTMLInputElement).nodeName === "BUTTON"
+        ) {
+          return;
+        }
+
+        const action = dataRef.current.mediaPlaying.isPaused ? "play" : "pause";
+        dataRef.current.display?.[action]();
+      }
       if (k === "Escape") dataRef.current.router.close();
 
       // captions
