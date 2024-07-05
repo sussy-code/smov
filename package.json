@@ -1,8 +1,8 @@
 {
-  "name": "sudo-flix",
+  "name": "space-flix",
   "version": "4.7.0",
   "private": true,
-  "homepage": "https://github.com/sussy-code/smov",
+  "homepage": "https://github.com/michaelwlt/smov",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
