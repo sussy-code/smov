@@ -239,7 +239,7 @@ export function CaptionsView({
             rightSide={
               <button
                 type="button"
-                onClick={() => router.navigate("/captions/settings")}
+                onClick={() => router.navigate("/captions/settingsOverlay")}
                 className="-mr-2 -my-1 px-2 p-[0.4em] rounded tabbable hover:bg-video-context-light hover:bg-opacity-10"
               >
                 {t("player.menus.subtitles.customizeLabel")}
@@ -257,21 +257,8 @@ export function CaptionsView({
         }}
         onDrop={(event) => onDrop(event)}
       >
-        <div className="mt-3 flex flex-row gap-2">
+        <div className="mt-3">
           <Input value={searchQuery} onInput={setSearchQuery} />
-          <button
-            type="button"
-            onClick={() =>
-              router.navigate(
-                backLink
-                  ? "/captions/opensubtitles"
-                  : "/captions/opensubtitlesOverlay",
-              )
-            }
-            className="p-[0.5em] rounded tabbable hover:bg-video-context-hoverColor hover:bg-opacity-50"
-          >
-            <Icon icon={Icons.WEB} />
-          </button>
         </div>
         <Menu.ScrollToActiveSection className="!pt-1 mt-2 pb-3">
           <CaptionOption
@@ -281,6 +268,19 @@ export function CaptionsView({
             {t("player.menus.subtitles.offChoice")}
           </CaptionOption>
           <CustomCaptionOption />
+          <CaptionOption
+            onClick={() =>
+              router.navigate(
+                backLink
+                  ? "/captions/opensubtitles"
+                  : "/captions/opensubtitlesOverlay",
+              )
+            }
+            selected={useSubtitleStore((s) => s.isOpenSubtitles)}
+            chevron
+          >
+            {t("player.menus.subtitles.OpenSubtitlesChoice")}
+          </CaptionOption>
           {content.length === 0 ? (
             <div className="p-4 rounded-xl bg-video-context-light bg-opacity-10 font-medium text-center">
               <div className="flex flex-col items-center justify-center gap-3">
