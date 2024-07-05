@@ -120,7 +120,13 @@ function useSubtitleList(subs: CaptionListItem[], searchQuery: string) {
   }, [subs, searchQuery, unknownChoice]);
 }
 
-export function CaptionsView({ id }: { id: string }) {
+export function CaptionsView({
+  id,
+  backLink,
+}: {
+  id: string;
+  backLink?: true;
+}) {
   const { t } = useTranslation();
   const router = useOverlayRouter(id);
   const selectedCaptionId = usePlayerStore((s) => s.caption.selected?.id);
@@ -213,20 +219,36 @@ export function CaptionsView({ id }: { id: string }) {
           </div>
         </div>
 
-        <Menu.BackLink
-          onClick={() => router.navigate("/")}
-          rightSide={
-            <button
-              type="button"
-              onClick={() => router.navigate("/captions/settings")}
-              className="-mr-2 -my-1 px-2 p-[0.4em] rounded tabbable hover:bg-video-context-light hover:bg-opacity-10"
-            >
-              {t("player.menus.subtitles.customizeLabel")}
-            </button>
-          }
-        >
-          {t("player.menus.subtitles.title")}
-        </Menu.BackLink>
+        {backLink ? (
+          <Menu.BackLink
+            onClick={() => router.navigate("/")}
+            rightSide={
+              <button
+                type="button"
+                onClick={() => router.navigate("/captions/settings")}
+                className="-mr-2 -my-1 px-2 p-[0.4em] rounded tabbable hover:bg-video-context-light hover:bg-opacity-10"
+              >
+                {t("player.menus.subtitles.customizeLabel")}
+              </button>
+            }
+          >
+            {t("player.menus.subtitles.title")}
+          </Menu.BackLink>
+        ) : (
+          <Menu.Title
+            rightSide={
+              <button
+                type="button"
+                onClick={() => router.navigate("/captions/settings")}
+                className="-mr-2 -my-1 px-2 p-[0.4em] rounded tabbable hover:bg-video-context-light hover:bg-opacity-10"
+              >
+                {t("player.menus.subtitles.customizeLabel")}
+              </button>
+            }
+          >
+            {t("player.menus.subtitles.title")}
+          </Menu.Title>
+        )}
       </div>
       <FileDropHandler
         className={`transition duration-300 ${dragging ? "opacity-20" : ""}`}
@@ -239,7 +261,13 @@ export function CaptionsView({ id }: { id: string }) {
           <Input value={searchQuery} onInput={setSearchQuery} />
           <button
             type="button"
-            onClick={() => router.navigate("/captions/opensubtitles")}
+            onClick={() =>
+              router.navigate(
+                backLink
+                  ? "/captions/opensubtitles"
+                  : "/captions/opensubtitlesOverlay",
+              )
+            }
             className="p-[0.5em] rounded tabbable hover:bg-video-context-hoverColor hover:bg-opacity-50"
           >
             <Icon icon={Icons.WEB} />
@@ -259,7 +287,13 @@ export function CaptionsView({ id }: { id: string }) {
                 {t("player.menus.subtitles.empty")}
                 <button
                   type="button"
-                  onClick={() => router.navigate("/captions/opensubtitles")}
+                  onClick={() =>
+                    router.navigate(
+                      backLink
+                        ? "/captions/opensubtitles"
+                        : "/captions/opensubtitlesOverlay",
+                    )
+                  }
                   className="p-1 w-3/4 rounded tabbable duration-200 bg-opacity-10 bg-video-context-light hover:bg-opacity-20"
                 >
                   {t("player.menus.subtitles.scrapeButton")}

@@ -55,6 +55,12 @@ function SettingsOverlay({ id }: { id: string }) {
         </OverlayPage>
         <OverlayPage id={id} path="/captions" width={343} height={431}>
           <Menu.CardWithScrollable>
+            <CaptionsView id={id} backLink />
+          </Menu.CardWithScrollable>
+        </OverlayPage>
+        {/* This is used by the captions shortcut in bottomControls of player */}
+        <OverlayPage id={id} path="/captionsOverlay" width={343} height={431}>
+          <Menu.CardWithScrollable>
             <CaptionsView id={id} />
           </Menu.CardWithScrollable>
         </OverlayPage>
@@ -66,6 +72,17 @@ function SettingsOverlay({ id }: { id: string }) {
         >
           <Menu.Card>
             <OpenSubtitlesCaptionView id={id} />
+          </Menu.Card>
+        </OverlayPage>
+        {/* This is used by the captions shortcut in bottomControls of player */}
+        <OverlayPage
+          id={id}
+          path="/captions/opensubtitlesOverlay"
+          width={343}
+          height={431}
+        >
+          <Menu.Card>
+            <OpenSubtitlesCaptionView id={id} overlayBackLink />
           </Menu.Card>
         </OverlayPage>
         <OverlayPage id={id} path="/captions/settings" width={343} height={450}>

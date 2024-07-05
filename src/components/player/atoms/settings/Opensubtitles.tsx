@@ -73,7 +73,13 @@ function useSubtitleList(subs: CaptionListItem[], searchQuery: string) {
   }, [subs, searchQuery, unknownChoice]);
 }
 
-export function OpenSubtitlesCaptionView({ id }: { id: string }) {
+export function OpenSubtitlesCaptionView({
+  id,
+  overlayBackLink,
+}: {
+  id: string;
+  overlayBackLink?: boolean;
+}) {
   const { t } = useTranslation();
   const router = useOverlayRouter(id);
   const selectedCaptionId = usePlayerStore((s) => s.caption.selected?.id);
@@ -124,7 +130,11 @@ export function OpenSubtitlesCaptionView({ id }: { id: string }) {
   return (
     <>
       <div>
-        <Menu.BackLink onClick={() => router.navigate("/captions")}>
+        <Menu.BackLink
+          onClick={() =>
+            router.navigate(overlayBackLink ? "/captionsOverlay" : "/captions")
+          }
+        >
           {t("player.menus.subtitles.OpenSubtitlesChoice")}
         </Menu.BackLink>
       </div>
