@@ -515,7 +515,7 @@
                 "addButton": "Neuen Worker hinzufügen",
                 "description": "Damit die App funktioniert werden alle Anfrage durch einen Proxy geleitet. Aktiviere dies, falls du deinen eigenen Worker verwenden willst. <0>Anweisungen.</0>",
                 "emptyState": "Keine Worker vorhanden, füge einen unten hinzu",
-                "label": "Verwenden deinen eigenen Worker-Proxys",
+                "label": "Verwenden deinen eigenen Worker-Proxy",
                 "urlLabel": "Worker-URLs",
                 "urlPlaceholder": "https://"
             }
@@ -523,8 +523,8 @@
         "preferences": {
             "language": "App-Sprache",
             "languageDescription": "Sprache für die ganze App.",
-            "thumbnail": "Miniaturansichten generieren",
-            "thumbnailDescription": "Meistens haben Videos keine Miniaturansicht. Du kannst diese Einstellung anmachen, um sie automatisch zu generieren, aber sie können dein Video langsamer machen.",
+            "thumbnail": "Thumbnails generieren",
+            "thumbnailDescription": "Meistens haben Videos keine Thumbnails. Du kannst diese Einstellung anpassen, um sie automatisch zu generieren, aber sie können den Videostream verlangsamen.",
             "thumbnailLabel": "Miniaturansichten generieren",
             "title": "Einstellungen"
         },
