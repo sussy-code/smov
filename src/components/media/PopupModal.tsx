@@ -60,8 +60,6 @@ function formatRuntime(runtime: number) {
 export function PopupModal({
   isVisible,
   onClose,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars 
-  // idk just needed to add this line for commit
   playingTitle,
   media,
 }: PopupModalProps) {
@@ -171,28 +169,25 @@ export function PopupModal({
 
   return (
     <div
-      className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center z-50 transition-opacity duration-100"
+      className="fixed inset-0 flex justify-center items-center z-50 transition-opacity duration-100"
       style={{ opacity: style.opacity, visibility: style.visibility }}
     >
       <div
         ref={modalRef}
-        className="rounded-xl bg-modal-background flex flex-col justify-center items-center transition-opacity duration-100 max-w-full sm:max-w-xl w-full sm:w-auto sm:h-auto overflow-y-auto p-4"
-        style={{ opacity: style.opacity, maxHeight: "90vh", height: "auto" }}
+        className="rounded-xl mx-4 min-w-[23em] overflow-x-hidden bg-modal-background flex flex-col justify-center items-center transition-opacity duration-100 sm:max-w-xl sm:w-auto sm:h-auto overflow-y-auto p-4"
+        style={{ opacity: style.opacity, height: "auto" }}
       >
-        <div className="aspect-w-16 aspect-h-9 w-full sm:w-auto">
-          <div className="rounded-xl">
-            {data?.backdrop_path ? (
-              <img
-                src={`https://image.tmdb.org/t/p/original/${data.backdrop_path}`}
-                alt={media.poster ? "" : "failed to fetch :("}
-                className="rounded-xl object-cover w-full h-full"
-                loading="lazy"
-                style={{ maxHeight: "60vh" }}
-              />
-            ) : (
-              <Skeleton />
-            )}
-          </div>
+        <div className="aspect-w-16 aspect-h-9 w-full sm:w-auto rounded-xl">
+          {data?.backdrop_path ? (
+            <img
+              src={`https://image.tmdb.org/t/p/original/${data.backdrop_path}`}
+              alt={media.poster ? "" : "failed to fetch :("}
+              className="rounded-xl object-cover"
+              loading="lazy"
+            />
+          ) : (
+            <Skeleton />
+          )}
           <div className="flex pt-3 items-center gap-4">
             <h1 className="relative text-xl sm:text-2xl whitespace-normal font-bold text-white">
               {data?.title || data?.name ? (
@@ -262,22 +257,24 @@ export function PopupModal({
                 </span>
               ))}
             </div>
-            {data?.genres && data.genres.length > 0
-              ? data.genres.map((genre: { name: string }) => (
-                  <div key={genre.name} className="inline-block">
-                    <div className="px-2 py-1 bg-mediaCard-hoverBackground rounded hover:bg-search-background cursor-default duration-200 transition-colors transform hover:scale-110">
-                      {genre.name}
+            <div className="flex flex-row gap-3 flex-wrap">
+              {data?.genres && data.genres.length > 0
+                ? data.genres.map((genre: { name: string }) => (
+                    <div key={genre.name}>
+                      <div className="px-2 py-1 text-[0.95em] bg-mediaCard-hoverBackground rounded hover:bg-search-background cursor-default duration-200 transition-colors transform hover:scale-110">
+                        {genre.name}
+                      </div>
                     </div>
-                  </div>
-                ))
-              : Array.from({ length: 3 }).map((_, idx) => (
-                  // eslint-disable-next-line react/no-array-index-key
-                  <div className="inline-block" key={idx}>
-                    <Skeleton />
-                  </div>
-                ))}
+                  ))
+                : Array.from({ length: 3 }).map((_, idx) => (
+                    // eslint-disable-next-line react/no-array-index-key
+                    <div key={idx}>
+                      <Skeleton />
+                    </div>
+                  ))}
+            </div>
           </div>
-          <div className="relative whitespace-normal font-medium overflow-y-auto max-h-32">
+          <div className="relative whitespace-normal font-medium overflow-y-auto max-h-28">
             {data?.overview}
           </div>
           <div className="pt-3">
@@ -285,7 +282,7 @@ export function PopupModal({
               <EpisodeSelector tmdbId={media.id} mediaTitle={media.title} />
             ) : null}
           </div>
-          <div className="flex justify-center items-center mt-4 mb-1">
+          <div className="flex justify-center items-center mt-3 mb-1">
             <Button
               theme="purple"
               onClick={() =>

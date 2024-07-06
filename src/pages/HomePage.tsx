@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { To, useNavigate } from "react-router-dom";
 
 import { WideContainer } from "@/components/layout/WideContainer";
 import { useDebounce } from "@/hooks/useDebounce";
@@ -48,6 +48,11 @@ export function HomePage() {
   const [showBookmarks, setShowBookmarks] = useState(false);
   const [showWatching, setShowWatching] = useState(false);
 
+  const handleClick = (path: To) => {
+    window.scrollTo(0, 0);
+    navigate(path);
+  };
+
   return (
     <HomeLayout showBg={showBg}>
       <div className="mb-16 sm:mb-24">
@@ -77,7 +82,7 @@ export function HomePage() {
                 <p className="text-[18.5px] pb-3">{emptyText}</p>
                 <Button
                   className="px-py p-[0.35em] mt-3 rounded-xl text-type-dimmed box-content text-[18px] bg-largeCard-background text-buttons-secondaryText justify-center items-center"
-                  onClick={() => navigate("/discover")}
+                  onClick={() => handleClick("/discover")}
                 >
                   {t("home.search.discover")}
                 </Button>

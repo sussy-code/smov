@@ -61,7 +61,7 @@ export function EpisodeSelector({
 
   return (
     <div className="flex flex-row relative">
-      <div className="w-24 sm:w-96 cursor-pointer overflow-y-auto overflow-x-hidden max-h-60 z-10">
+      <div className="w-24 min-w-20 cursor-pointer overflow-y-auto overflow-x-hidden max-h-56 z-10 scrollbar-hide">
         {seasonsData.map((season) => (
           <div
             key={season.season_number}
@@ -79,8 +79,8 @@ export function EpisodeSelector({
           </div>
         ))}
       </div>
-      <div className="flex-auto mt-4 sm:mt-0 sm:ml-4 cursor-pointer overflow-x-auto overflow-y-hidden sm:overflow-y-auto sm:overflow-x-hidden max-h-60 max-w-[70vw] z-0">
-        <div className="flex sm:grid sm:grid-cols-3 sm:gap-2">
+      <div className="flex-auto sm:mt-0 sm:ml-4 cursor-pointer overflow-x-auto overflow-y-hidden sm:overflow-y-auto sm:overflow-x-hidden max-h-56 max-w-[70vw]">
+        <div className="flex sm:grid sm:grid-cols-3 sm:gap-2 gap-1">
           {selectedSeason ? (
             selectedSeason.episodes.map(
               (episode: {
@@ -92,11 +92,11 @@ export function EpisodeSelector({
                 <Flare.Base
                   key={episode.episode_number}
                   onClick={() => {
-                    const navigateUrl = `/media/tmdb-tv-${tmdbId}-${mediaTitle}/${selectedSeason.id}/${episode.id}`;
-                    // console.log("Navigating to:", navigateUrl);
-                    navigate(navigateUrl);
+                    navigate(
+                      `/media/tmdb-tv-${tmdbId}-${mediaTitle}/${selectedSeason.id}/${episode.id}`,
+                    );
                   }}
-                  className="group cursor-pointer rounded-xl relative p-[0.65em] bg-background-main transition-colors duration-[0.28s] flex-shrink-0 w-48 sm:w-auto mr-2 sm:mr-0"
+                  className="group cursor-pointer rounded-xl relative p-[0.6em] bg-background-secondary transition-colors duration-[0.25s] flex-shrink-0 w-44 max-h-48 sm:w-auto mr-2 sm:mr-0"
                 >
                   <Flare.Light
                     flareSize={300}
@@ -109,9 +109,11 @@ export function EpisodeSelector({
                       src={`https://image.tmdb.org/t/p/w500/${episode.still_path}`}
                       className="w-full h-auto rounded"
                     />
-                    <p className="text-center text-[0.95em] mt-2">
-                      E{episode.episode_number}: {episode.name}
-                    </p>
+                    <div className="text-center my-2 overflow-hidden">
+                      <p className="text-[0.95em] overflow-ellipsis whitespace-wrap">
+                        E{episode.episode_number}: {episode.name}
+                      </p>
+                    </div>
                   </div>
                 </Flare.Base>
               ),

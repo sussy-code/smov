@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { To, useNavigate } from "react-router-dom";
 
 import { base64ToBuffer, decryptData } from "@/backend/accounts/crypto";
 import { UserAvatar } from "@/components/Avatar";
@@ -24,8 +24,12 @@ function GoToLink(props: {
   const navigate = useNavigate();
 
   const goTo = (href: string) => {
-    if (href.startsWith("http")) window.open(href, "_blank");
-    else navigate(href);
+    if (href.startsWith("http")) {
+      window.open(href, "_blank");
+    } else {
+      window.scrollTo(0, 0);
+      navigate(href);
+    }
   };
 
   return (

@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, To, useNavigate } from "react-router-dom";
 
 import { NoUserAvatar, UserAvatar } from "@/components/Avatar";
 import { IconPatch } from "@/components/buttons/IconPatch";
@@ -23,6 +23,11 @@ export function Navigation(props: NavigationProps) {
   const bannerHeight = useBannerSize();
   const navigate = useNavigate();
   const { loggedIn } = useAuth();
+
+  const handleClick = (path: To) => {
+    window.scrollTo(0, 0);
+    navigate(path);
+  };
 
   return (
     <>
@@ -79,11 +84,12 @@ export function Navigation(props: NavigationProps) {
         }}
       >
         <div className={classNames("fixed left-0 right-0 flex items-center")}>
-          <div className="px-7 py-5 relative z-[60] flex flex-1 items-center justify-between">
+          <div className="px-7 py-3 relative z-[60] flex flex-1 items-center justify-between">
             <div className="flex items-center space-x-1.5 ssm:space-x-3 pointer-events-auto">
               <Link
                 className="block tabbable rounded-full text-xs ssm:text-base"
                 to="/"
+                onClick={() => window.scrollTo(0, 0)}
               >
                 <BrandPill clickable header />
               </Link>
@@ -104,7 +110,7 @@ export function Navigation(props: NavigationProps) {
                 <IconPatch icon={Icons.GITHUB} clickable downsized />
               </a>
               <a
-                onClick={() => navigate("/discover")}
+                onClick={() => handleClick("/discover")}
                 rel="noreferrer"
                 className="text-xl text-white tabbable rounded-full"
               >
