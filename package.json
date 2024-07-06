@@ -33,7 +33,7 @@
     "@headlessui/react": "^1.7.19",
     "@ladjs/country-language": "^1.0.3",
     "@marsidev/react-turnstile": "^0.7.1",
-    "@movie-web/providers": "github:ztpn/smovproviders#wyzie",
+    "@movie-web/providers": "github:sussy-code/providers",
     "@noble/hashes": "^1.4.0",
     "@plasmohq/messaging": "^0.6.2",
     "@react-spring/web": "^9.7.3",
