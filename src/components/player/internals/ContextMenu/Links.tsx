@@ -123,34 +123,14 @@ export function SelectableLink(props: {
   children?: ReactNode;
   disabled?: boolean;
   error?: ReactNode;
-  chevron?: boolean;
 }) {
   let rightContent;
   if (props.selected) {
-    if (props.chevron) {
-      rightContent = (
-        <span className="flex items-center">
-          <Icon
-            icon={Icons.CIRCLE_CHECK}
-            className="text-xl text-video-context-type-accent"
-          />
-          <Icon
-            className="text-white text-xl ml-1 -mr-1.5"
-            icon={Icons.CHEVRON_RIGHT}
-          />
-        </span>
-      );
-    } else {
-      rightContent = (
-        <Icon
-          icon={Icons.CIRCLE_CHECK}
-          className="text-xl text-video-context-type-accent"
-        />
-      );
-    }
-  } else if (props.chevron) {
     rightContent = (
-      <Icon className="text-xl ml-1 -mr-1.5" icon={Icons.CHEVRON_RIGHT} />
+      <Icon
+        icon={Icons.CIRCLE_CHECK}
+        className="text-xl text-video-context-type-accent"
+      />
     );
   }
   if (props.error)
