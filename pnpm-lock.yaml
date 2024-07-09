@@ -35,7 +35,7 @@ dependencies:
     version: 0.7.1(react-dom@18.3.1)(react@18.3.1)
   '@movie-web/providers':
     specifier: github:sussy-code/providers
-    version: github.com/sussy-code/providers/c3ca2fed228c698dadc602f048ab66a06eefa638
+    version: github.com/sussy-code/providers/183edd099eb5c5d07955e730b1e97a3ce3ef9a92
   '@noble/hashes':
     specifier: ^1.4.0
     version: 1.4.0
@@ -7571,8 +7571,8 @@ packages:
       use-sync-external-store: 1.2.0(react@18.3.1)
     dev: false
 
-  github.com/sussy-code/providers/c3ca2fed228c698dadc602f048ab66a06eefa638:
-    resolution: {tarball: https://codeload.github.com/sussy-code/providers/tar.gz/c3ca2fed228c698dadc602f048ab66a06eefa638}
+  github.com/sussy-code/providers/183edd099eb5c5d07955e730b1e97a3ce3ef9a92:
+    resolution: {tarball: https://codeload.github.com/sussy-code/providers/tar.gz/183edd099eb5c5d07955e730b1e97a3ce3ef9a92}
     name: '@movie-web/providers'
     version: 2.3.0
     prepare: true
