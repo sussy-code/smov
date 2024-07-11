@@ -9,7 +9,7 @@ import { MwLink } from "@/components/text/Link";
 import { AuthInputBox } from "@/components/text-inputs/AuthInputBox";
 import { Divider } from "@/components/utils/Divider";
 import { Heading1 } from "@/components/utils/Text";
-import { SetupPart } from "@/pages/parts/settings/SetupPart";
+// import { SetupPart } from "@/pages/parts/settings/SetupPart";
 
 interface ProxyEditProps {
   proxyUrls: string[] | null;
