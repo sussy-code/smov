@@ -38,7 +38,7 @@ importers:
         version: 0.7.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@movie-web/providers':
         specifier: github:sussy-code/providers
-        version: https://codeload.github.com/sussy-code/providers/tar.gz/183edd099eb5c5d07955e730b1e97a3ce3ef9a92
+        version: https://codeload.github.com/sussy-code/providers/tar.gz/387b5d89020db15c56715298a6da8b399c99fe8c
       '@noble/hashes':
         specifier: ^1.4.0
         version: 1.4.0
@@ -1197,8 +1197,8 @@ packages:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
 
-  '@movie-web/providers@https://codeload.github.com/sussy-code/providers/tar.gz/183edd099eb5c5d07955e730b1e97a3ce3ef9a92':
-    resolution: {tarball: https://codeload.github.com/sussy-code/providers/tar.gz/183edd099eb5c5d07955e730b1e97a3ce3ef9a92}
+  '@movie-web/providers@https://codeload.github.com/sussy-code/providers/tar.gz/387b5d89020db15c56715298a6da8b399c99fe8c':
+    resolution: {tarball: https://codeload.github.com/sussy-code/providers/tar.gz/387b5d89020db15c56715298a6da8b399c99fe8c}
     version: 2.3.0
 
   '@noble/hashes@1.4.0':
@@ -2010,8 +2010,8 @@ packages:
     engines: {node: '>=0.10.0'}
     hasBin: true
 
-  electron-to-chromium@1.4.826:
-    resolution: {integrity: sha512-zULpSu/wQI4X9qWAHabbi0ZUfJ/bEFTA6bfdXlg6HSf5XS7A8vMdzpJC4r5Ws/5E5NGdrNHmXgvGewGuHMxhPQ==}
+  electron-to-chromium@1.4.827:
+    resolution: {integrity: sha512-VY+J0e4SFcNfQy19MEoMdaIcZLmDCprqvBtkii1WTCTQHpRvf5N8+3kTYCgL/PcntvwQvmMJWTuDPsq+IlhWKQ==}
 
   emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -5247,7 +5247,7 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@movie-web/providers@https://codeload.github.com/sussy-code/providers/tar.gz/183edd099eb5c5d07955e730b1e97a3ce3ef9a92':
+  '@movie-web/providers@https://codeload.github.com/sussy-code/providers/tar.gz/387b5d89020db15c56715298a6da8b399c99fe8c':
     dependencies:
       cheerio: 1.0.0-rc.12
       cookie: 0.6.0
@@ -5862,7 +5862,7 @@ snapshots:
   browserslist@4.23.2:
     dependencies:
       caniuse-lite: 1.0.30001641
-      electron-to-chromium: 1.4.826
+      electron-to-chromium: 1.4.827
       node-releases: 2.0.14
       update-browserslist-db: 1.1.0(browserslist@4.23.2)
 
@@ -6182,7 +6182,7 @@ snapshots:
     dependencies:
       jake: 10.9.1
 
-  electron-to-chromium@1.4.826: {}
+  electron-to-chromium@1.4.827: {}
 
   emoji-regex@8.0.0: {}
 
