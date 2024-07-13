@@ -126,8 +126,8 @@ export function CaptionsView({
   }
 
   const selectedLanguagePretty = selectedCaptionLanguage
-    ? getPrettyLanguageNameFromLocale(selectedCaptionLanguage) ??
-      t("player.menus.subtitles.unknownLanguage")
+    ? (getPrettyLanguageNameFromLocale(selectedCaptionLanguage) ??
+      t("player.menus.subtitles.unknownLanguage"))
     : undefined;
 
   return (

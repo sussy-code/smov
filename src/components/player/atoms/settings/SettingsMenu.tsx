@@ -35,13 +35,13 @@ export function SettingsMenu({ id }: { id: string }) {
   const { toggleLastUsed } = useCaptions();
 
   const selectedLanguagePretty = selectedCaptionLanguage
-    ? getPrettyLanguageNameFromLocale(selectedCaptionLanguage) ??
-      t("player.menus.subtitles.unknownLanguage")
+    ? (getPrettyLanguageNameFromLocale(selectedCaptionLanguage) ??
+      t("player.menus.subtitles.unknownLanguage"))
     : undefined;
 
   const selectedAudioLanguagePretty = currentAudioTrack
-    ? getPrettyLanguageNameFromLocale(currentAudioTrack.language) ??
-      t("player.menus.subtitles.unknownLanguage")
+    ? (getPrettyLanguageNameFromLocale(currentAudioTrack.language) ??
+      t("player.menus.subtitles.unknownLanguage"))
     : undefined;
 
   const source = usePlayerStore((s) => s.source);

@@ -266,7 +266,10 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
     videoElement.addEventListener("canplay", () => emit("loading", false));
     videoElement.addEventListener("waiting", () => emit("loading", true));
     videoElement.addEventListener("volumechange", () =>
-      emit("volumechange", videoElement?.muted ? 0 : videoElement?.volume ?? 0),
+      emit(
+        "volumechange",
+        videoElement?.muted ? 0 : (videoElement?.volume ?? 0),
+      ),
     );
     videoElement.addEventListener("timeupdate", () =>
       emit("time", videoElement?.currentTime ?? 0),
