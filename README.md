@@ -19,7 +19,7 @@
 - [Piracy Subreddit Megathread](https://www.reddit.com/r/Piracy/s/iymSloEpXn)
 - [Toon's Instances](https://erynith.github.io/movie-web-instances)
 - [Sudo-Flix docs](https://sussy-code.github.io/docs)
-- [Sudo-Flix Discord](https://discord.gg/r5cYshWM4G)
+- [Sudo-Flix Discord](https://docs.sudo-flix.lol/links/discord)
 - Search Engines: DuckDuckGo, Bing, Google
 - Rentry.co
 
