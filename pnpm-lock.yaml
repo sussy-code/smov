@@ -38,7 +38,7 @@ importers:
         version: 0.7.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@movie-web/providers':
         specifier: github:sussy-code/providers
-        version: https://codeload.github.com/sussy-code/providers/tar.gz/27b1b487476bdd9911af255348cebe88e23cfbcc
+        version: https://codeload.github.com/sussy-code/providers/tar.gz/a2f0ea0f6f4f6b52e32b3fdd60b69a1ed06f09ca
       '@noble/hashes':
         specifier: ^1.4.0
         version: 1.4.0
@@ -1197,8 +1197,8 @@ packages:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
 
-  '@movie-web/providers@https://codeload.github.com/sussy-code/providers/tar.gz/27b1b487476bdd9911af255348cebe88e23cfbcc':
-    resolution: {tarball: https://codeload.github.com/sussy-code/providers/tar.gz/27b1b487476bdd9911af255348cebe88e23cfbcc}
+  '@movie-web/providers@https://codeload.github.com/sussy-code/providers/tar.gz/a2f0ea0f6f4f6b52e32b3fdd60b69a1ed06f09ca':
+    resolution: {tarball: https://codeload.github.com/sussy-code/providers/tar.gz/a2f0ea0f6f4f6b52e32b3fdd60b69a1ed06f09ca}
     version: 2.3.0
 
   '@noble/hashes@1.4.0':
@@ -1735,8 +1735,8 @@ packages:
     resolution: {integrity: sha512-QOSvevhslijgYwRx6Rv7zKdMF8lbRmx+uQGx2+vDc+KI/eBnsy9kit5aj23AgGu3pa4t9AgwbnXWqS+iOY+2aA==}
     engines: {node: '>= 6'}
 
-  caniuse-lite@1.0.30001641:
-    resolution: {integrity: sha512-Phv5thgl67bHYo1TtMY/MurjkHhV4EDaCosezRXgZ8jzA/Ub+wjxAvbGvjoFENStinwi5kCyOYV3mi5tOGykwA==}
+  caniuse-lite@1.0.30001642:
+    resolution: {integrity: sha512-3XQ0DoRgLijXJErLSl+bLnJ+Et4KqV1PY6JJBGAFlsNsz31zeAIncyeZfLCabHK/jtSh+671RM9YMldxjUPZtA==}
 
   chai@4.4.1:
     resolution: {integrity: sha512-13sOfMv2+DWduEU+/xbun3LScLoqN17nBeTLUsmDfKdoiC1fr0n9PU4guu4AhRcOVFk/sW8LyZWHuhWtQZiF+g==}
@@ -5250,7 +5250,7 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@movie-web/providers@https://codeload.github.com/sussy-code/providers/tar.gz/27b1b487476bdd9911af255348cebe88e23cfbcc':
+  '@movie-web/providers@https://codeload.github.com/sussy-code/providers/tar.gz/a2f0ea0f6f4f6b52e32b3fdd60b69a1ed06f09ca':
     dependencies:
       cheerio: 1.0.0-rc.12
       cookie: 0.6.0
@@ -5798,7 +5798,7 @@ snapshots:
   autoprefixer@10.4.19(postcss@8.4.39):
     dependencies:
       browserslist: 4.23.2
-      caniuse-lite: 1.0.30001641
+      caniuse-lite: 1.0.30001642
       fraction.js: 4.3.7
       normalize-range: 0.1.2
       picocolors: 1.0.1
@@ -5864,7 +5864,7 @@ snapshots:
 
   browserslist@4.23.2:
     dependencies:
-      caniuse-lite: 1.0.30001641
+      caniuse-lite: 1.0.30001642
       electron-to-chromium: 1.4.827
       node-releases: 2.0.14
       update-browserslist-db: 1.1.0(browserslist@4.23.2)
@@ -5887,7 +5887,7 @@ snapshots:
 
   camelcase-css@2.0.1: {}
 
-  caniuse-lite@1.0.30001641: {}
+  caniuse-lite@1.0.30001642: {}
 
   chai@4.4.1:
     dependencies:
