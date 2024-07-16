@@ -38,7 +38,7 @@ dependencies:
     version: 0.7.2(react-dom@18.3.1)(react@18.3.1)
   '@movie-web/providers':
     specifier: github:sussy-code/providers
-    version: github.com/sussy-code/providers/183edd099eb5c5d07955e730b1e97a3ce3ef9a92
+    version: github.com/sussy-code/providers/abc65a7bb4d975dfaeec38a44a5df81ac5bc1476
   '@noble/hashes':
     specifier: ^1.4.0
     version: 1.4.0
@@ -7672,10 +7672,11 @@ packages:
       use-sync-external-store: 1.2.0(react@18.3.1)
     dev: false
 
-  github.com/sussy-code/providers/183edd099eb5c5d07955e730b1e97a3ce3ef9a92:
-    resolution: {tarball: https://codeload.github.com/sussy-code/providers/tar.gz/183edd099eb5c5d07955e730b1e97a3ce3ef9a92}
+  github.com/sussy-code/providers/abc65a7bb4d975dfaeec38a44a5df81ac5bc1476:
+    resolution: {tarball: https://codeload.github.com/sussy-code/providers/tar.gz/abc65a7bb4d975dfaeec38a44a5df81ac5bc1476}
     name: '@movie-web/providers'
     version: 2.3.0
+    prepare: true
     requiresBuild: true
     dependencies:
       cheerio: 1.0.0-rc.12
