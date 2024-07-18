@@ -145,7 +145,7 @@ function MediaCardContent({
             </>
           ) : null}
 
-          {canLink && searchQuery.length > 0 ? (
+          {searchQuery.length > 0 ? (
             <div className="absolute" onClick={(e) => e.preventDefault()}>
               <MediaBookmarkButton media={media} />
             </div>
