@@ -216,7 +216,13 @@ export function CaptionSetting(props: {
 
 export const colors = ["#ffffff", "#b0b0b0", "#80b1fa", "#e2e535"];
 
-export function CaptionSettingsView({ id }: { id: string }) {
+export function CaptionSettingsView({
+  id,
+  overlayBackLink,
+}: {
+  id: string;
+  overlayBackLink?: boolean;
+}) {
   const { t } = useTranslation();
   const router = useOverlayRouter(id);
   const styling = useSubtitleStore((s) => s.styling);
@@ -228,7 +234,11 @@ export function CaptionSettingsView({ id }: { id: string }) {
 
   return (
     <>
-      <Menu.BackLink onClick={() => router.navigate("/captions")}>
+      <Menu.BackLink
+        onClick={() =>
+          router.navigate(overlayBackLink ? "/captionsOverlay" : "/captions")
+        }
+      >
         {t("player.menus.subtitles.settings.backlink")}
       </Menu.BackLink>
       <Menu.Section className="space-y-6 pb-5">

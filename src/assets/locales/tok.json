@@ -1,474 +1,468 @@
 {
-    "about": {
-        "description": "ilo Muwi-We li lukin li wile e sitelen. kulupu lawa li lawa pona",
-        "faqTitle": "sona wile",
-        "q1": {
-            "body": "ilo Muwi-We li mama ala e sitelen. sina lukin e sitelen la mi alasa e sitelen lon lipu ale. (sina ken sona e mama sitelen lon tenpo alasa lon poki 'mama'.) sitelen li awen ala lon ilo Muwi-We. ale li lon alasa ni",
-            "title": "sitelen li tan seme?"
-        },
-        "q2": {
-            "body": "sina ken ala wile alasa e sitelen. ilo Muwi-We li lawa ala e sitelen. sitelen li tan lipu mama ante",
-            "title": "mi wile alasa e sitelen lon seme?"
-        },
-        "q3": {
-            "body": "sitelen lon lukin ilo li tan lipu The Movie Database (lipu TMDB). jo li ante ala e ni",
-            "title": "sitelen pi wile mi li lon lukin ilo. seme la mi ken ala lukin e ona?"
-        },
-        "title": "ilo Muwi-We la"
+  "about": {
+    "description": "ilo Muwi-We li lukin li wile e sitelen. kulupu lawa li lawa pona",
+    "faqTitle": "sona wile",
+    "q1": {
+      "body": "ilo Muwi-We li mama ala e sitelen. sina lukin e sitelen la mi alasa e sitelen lon lipu ale. (sina ken sona e mama sitelen lon tenpo alasa lon poki 'mama'.) sitelen li awen ala lon ilo Muwi-We. ale li lon alasa ni",
+      "title": "sitelen li tan seme?"
     },
-    "actions": {
-        "copied": "sama a",
-        "copy": "o sama"
+    "q2": {
+      "body": "sina ken ala wile alasa e sitelen. ilo Muwi-We li lawa ala e sitelen. sitelen li tan lipu mama ante",
+      "title": "mi wile alasa e sitelen lon seme?"
     },
-    "auth": {
-        "createAccount": "sina jo ala e lipu open la <0>o pali e lipu open</0>",
-        "deviceNameLabel": "nimi ilo",
-        "deviceNamePlaceholder": "ilo mi",
-        "generate": {
-            "description": "nimi open sina li lon nasin open pi lipu open sina. o awen pona e ona. sina open e lipu open sina la sina wile pana e nimi open ale sina",
-            "next": "mi jo e nimi open mi",
-            "passphraseFrameLabel": "nimi open",
-            "title": "nimi open sina"
-        },
-        "hasAccount": "sina jo e lipu open la <0>o pana e nimi sina</0>",
-        "login": {
-            "description": "lipu open sina la o sitelen e nimi ale sina",
-            "deviceLengthError": "o pana e nimi ilo",
-            "passphraseLabel": "nimi open 12",
-            "passphrasePlaceholder": "nimi open",
-            "submit": "o open",
-            "title": "o pana e nimi sina",
-            "validationError": "pakala"
-        },
-        "register": {
-            "information": {
-                "color1": "kule nanpa wan",
-                "color2": "kule nanpa tu",
-                "header": "o pana e nimi pi ilo sina e kule e sitelen",
-                "icon": "sitelen",
-                "next": "o pana",
-                "title": "lipu open"
-            }
-        },
-        "trust": {
-            "failed": {
-                "text": "nasin ale sina li pona anu seme?",
-                "title": "toki tawa lawa ilo li pakala"
-            },
-            "host": "lawa ilo sina li <0>{{hostname}}</0> - ona li pona tawa sina la sina ken pali e lipu open",
-            "no": "o weka",
-            "noHost": "lawa ilo ni li open ala li nasin ala la, sina ken ala pali e lipu open",
-            "noHostTitle": "lawa ilo li open ala a!",
-            "title": "lawa ilo ni li pona tawa sina anu seme?",
-            "yes": "lawa ilo ni li pona"
-        },
-        "verify": {
-            "description": "sina awen e nimi open sina la o pana e nimi open",
-            "invalidData": "pakala",
-            "noMatch": "nimi li sama ala",
-            "passphraseLabel": "nimi open 12 sina",
-            "recaptchaFailed": "nasin ReCaptcha li pakala",
-            "register": "o pali e lipu open",
-            "title": "nimi open sina"
-        }
+    "q3": {
+      "body": "sitelen lon lukin ilo li tan lipu The Movie Database (lipu TMDB). jo li ante ala e ni",
+      "title": "sitelen pi wile mi li lon lukin ilo. seme la mi ken ala lukin e ona?"
     },
-    "errors": {
-        "badge": "pakala a",
-        "details": "pakala",
-        "reloadPage": "o sin e lipu",
-        "showError": "o pana e sona pakala",
-        "title": "mi kama pakala a!"
+    "title": "ilo Muwi-We la"
+  },
+  "actions": {
+    "copied": "sama a",
+    "copy": "o sama"
+  },
+  "auth": {
+    "createAccount": "sina jo ala e lipu open la <0>o pali e lipu open</0>",
+    "deviceNameLabel": "nimi ilo",
+    "deviceNamePlaceholder": "ilo mi",
+    "generate": {
+      "description": "nimi open sina li lon nasin open pi lipu open sina. o awen pona e ona. sina open e lipu open sina la sina wile pana e nimi open ale sina",
+      "next": "mi jo e nimi open mi",
+      "passphraseFrameLabel": "nimi open",
+      "title": "nimi open sina"
     },
-    "footer": {
-        "legal": {
-            "disclaimer": "o sona e ni:",
-            "disclaimerText": "ilo Muwi-We li mama ala e ijo sitelen. ona li toki taso tawa ilo ante. utala nasin li lon la o toki tawa ona pi ilo ante. sitelen ale li tan ala ilo Muwi-We"
-        },
-        "links": {
-            "discord": "kulupu Siko",
-            "dmca": "DMCA",
-            "github": "lipu Kita"
-        },
-        "tagline": "o lukin e sitelen ale pi wile sina kepeken ilo ni"
+    "hasAccount": "sina jo e lipu open la <0>o pana e nimi sina</0>",
+    "login": {
+      "description": "lipu open sina la o sitelen e nimi ale sina",
+      "deviceLengthError": "o pana e nimi ilo",
+      "passphraseLabel": "nimi open 12",
+      "passphrasePlaceholder": "nimi open",
+      "submit": "o open",
+      "title": "o pana e nimi sina",
+      "validationError": "pakala"
     },
-    "global": {
-        "name": "ilo Muwi-We",
-        "pages": {
-            "about": "o sona",
-            "dmca": "DMCA",
-            "login": "o open",
-            "onboarding": "o pali",
-            "pagetitle": "{{title}} - ilo Muwi-We",
-            "register": "o pali open",
-            "settings": "o ante"
-        }
+    "register": {
+      "information": {
+        "color1": "kule nanpa wan",
+        "color2": "kule nanpa tu",
+        "header": "o pana e nimi pi ilo sina e kule e sitelen",
+        "icon": "sitelen",
+        "next": "o pana",
+        "title": "lipu open"
+      }
     },
-    "home": {
-        "bookmarks": {
-            "sectionTitle": "poki awen"
-        },
-        "continueWatching": {
-            "sectionTitle": "o awen lukin"
-        },
-        "mediaList": {
-            "stopEditing": "o pini ante"
-        },
-        "search": {
-            "allResults": "pini a!",
-            "failed": "lukin li pakala a! o alasa sin",
-            "loading": "alasa...",
-            "noResults": "ijo li lon ala a!",
-            "placeholder": {
-                "default": "sina wile lukin e seme?",
-                "extra": [
-                    "sina wile alasa e seme?",
-                    "sina wile lukin e seme?",
-                    "sitelen nanpa wan sina li seme?",
-                    "sitelen nanpa wan sina li seme?"
-                ]
-            },
-            "sectionTitle": "mi lukin e ni:"
-        },
-        "titles": {
-            "day": {
-                "default": "tenpo suno ni la sina wile lukin e seme?",
-                "extra": [
-                    "sina pilin alasa la o lukin e sitelen Jurassic Park"
-                ]
-            },
-            "morning": {
-                "default": "tenpo sin ni la sina wile lukin e seme?",
-                "extra": [
-                    "ken la sitelen Before Sunrise li pona"
-                ]
-            },
-            "night": {
-                "default": "tenpo pimeja ni la sina wile lukin e seme?",
-                "extra": [
-                    "sina pilin lape anu seme? o alasa lukin e sitelen Exorcist"
-                ]
-            }
-        }
+    "trust": {
+      "failed": {
+        "text": "nasin ale sina li pona anu seme?",
+        "title": "toki tawa lawa ilo li pakala"
+      },
+      "host": "lawa ilo sina li <0>{{hostname}}</0> - ona li pona tawa sina la sina ken pali e lipu open",
+      "no": "o weka",
+      "noHost": "lawa ilo ni li open ala li nasin ala la, sina ken ala pali e lipu open",
+      "noHostTitle": "lawa ilo li open ala a!",
+      "title": "lawa ilo ni li pona tawa sina anu seme?",
+      "yes": "lawa ilo ni li pona"
     },
-    "media": {
-        "episodeDisplay": "S{{season}} E{{episode}}",
-        "types": {
-            "movie": "sitelen wan",
-            "show": "sitelen kulupu"
-        }
-    },
-    "navigation": {
-        "banner": {
-            "offline": "wawa linja sina li seme?"
-        },
-        "menu": {
-            "about": "mi",
-            "logout": "o weka sona e sina",
-            "register": "Sync to cloud",
-            "settings": "o ante",
-            "support": "o supa"
-        }
-    },
-    "notFound": {
-        "badge": "lon ala",
-        "goHome": "o tawa weka",
-        "message": "mi lukin lon anpa poki, lon insa tomo, lon monsi ilo. taso mi lukin ala e lipu pi wile sina",
-        "title": "mi ken ala lukin e lipu ona"
-    },
-    "onboarding": {
-        "defaultConfirm": {
-            "cancel": "ala"
-        },
-        "start": {
-            "title": "o open e ilo Muwi-We"
-        }
-    },
-    "overlays": {
-        "close": "o pini"
-    },
-    "player": {
-        "back": {
-            "default": "o tawa weka",
-            "short": "o tawa"
-        },
-        "casting": {
-            "enabled": "mi pana e sitelen tawa ilo ante..."
-        },
-        "menus": {
-            "downloads": {
-                "disclaimer": "sina kama jo e sitelen tawa ilo sina tan lipu mama. ilo Muwi-We li lawa ala e nasin jo",
-                "downloadSubtitle": "o jo e nimi toki",
-                "downloadVideo": "o jo e sitelen",
-                "hlsDisclaimer": "jo li tan mama. ilo Muwi-We li lawa ala e nasin jo. o sona e ni: sina jo e lipu sitelen HLS. ni li tawa jan pi sona sitelen",
-                "onAndroid": {
-                    "1": "ilo Android la o luka e nena 'o jo'. lon lipu sin la <bold>o luka wawa</bold> e sitelen. o luka e nena 'o jo'",
-                    "shortTitle": "Android ) o jo",
-                    "title": "o jo lon ilo Android"
-                },
-                "onIos": {
-                    "1": "ilo iOS la o luka e nena 'o jo'. lon lipu sin la o luka e <bold><ios_share /></bold>, e <bold>o jo poki <ios_files /></bold>.",
-                    "shortTitle": "iOS ) o jo",
-                    "title": "o jo lon ilo iOS"
-                },
-                "onPc": {
-                    "1": "ilo suli la o luka e nena 'o jo e sitelen'. lon lipu sin la o luka ante e sitelen. o luka e nena <bold>'o jo e sitelen lon nimi ante'</bold>",
-                    "shortTitle": "ilo suli ) o jo",
-                    "title": "o jo lon ilo suli"
-                },
-                "title": "kama jo"
-            },
-            "episodes": {
-                "button": "sitelen mute",
-                "emptyState": "kulupu ni li jo ala e sitelen. o lukin lon tenpo ante a!",
-                "episodeBadge": "E{{episode}}",
-                "loadingError": "alasa li pakala",
-                "loadingList": "alasa...",
-                "loadingTitle": "alasa...",
-                "unairedEpisodes": "sitelen li lon ala lukin la ken la sina lukin ala e ona"
-            },
-            "playback": {
-                "speedLabel": "tenpo lukin",
-                "title": "nasin pali"
-            },
-            "quality": {
-                "automaticLabel": "ilo o lawa",
-                "hint": "ante pi pona lukin la sina ken <0>ante e mama</0>",
-                "iosNoQuality": "tan lawa pi esun Apple la ante pi pona lukin li ken ala lon ilo iOS. ante pi pona lukin la o alasa <0>ante e mama</0>",
-                "title": "pona lukin"
-            },
-            "settings": {
-                "downloadItem": "o jo",
-                "enableSubtitles": "nimi toki",
-                "experienceSection": "nasin lukin",
-                "playbackItem": "nasin pali",
-                "qualityItem": "pona lukin",
-                "sourceItem": "mama sitelen",
-                "subtitleItem": "nimi toki",
-                "videoSection": "nasin sitelen"
-            },
-            "sources": {
-                "failed": {
-                    "text": "lukin sitelen li pakala. o alasa e mama ante.",
-                    "title": "pakala jo"
-                },
-                "noEmbeds": {
-                    "text": "mi lukin ala e lipu. o alasa e mama ante.",
-                    "title": "lipu li lon ala"
-                },
-                "noStream": {
-                    "text": "lipu mama ni li jo ala e sitelen ni",
-                    "title": "sitelen li lon ala"
-                },
-                "title": "mama",
-                "unknownOption": "mi sona ala"
-            },
-            "subtitles": {
-                "customChoice": "o pana tan ilo",
-                "customizeLabel": "o ante",
-                "offChoice": "ala",
-                "settings": {
-                    "backlink": "nimi toki ante",
-                    "delay": "o ante e tenpo nimi",
-                    "fixCapitals": "o pona e suli nimi"
-                },
-                "title": "nimi toki",
-                "unknownLanguage": "mi sona ala"
-            }
-        },
-        "metadata": {
-            "dmca": {
-                "badge": "weka",
-                "text": "wile weka li kama tan mama sitelen la sitelen ni li ken ala",
-                "title": "sitelen li weka"
-            },
-            "extensionPermission": {
-                "button": "o kepeken namako"
-            },
-            "failed": {
-                "badge": "pakala",
-                "homeButton": "o tawa weka",
-                "text": "mi pakala alasa e sona sitelen tan lipu TMDB. ken la ona li lape anu moli",
-                "title": "mi pakala alasa e sona sitelen"
-            },
-            "notFound": {
-                "badge": "lon ala",
-                "homeButton": "o tawa weka",
-                "text": "mi lukin ala e lipu pi wile sina. lipu li weka anu ante",
-                "title": "mi lukin ala e ona"
-            }
-        },
-        "nextEpisode": {
-            "cancel": "o ala",
-            "next": "o sitelen sin"
-        },
-        "playbackError": {
-            "badge": "pakala lukin",
-            "errors": {
-                "errorAborted": "jan li pini alasa e sitelen",
-                "errorDecode": "sitelen li kama ante la pakala li kama lon",
-                "errorGenericMedia": "pakala sitelen pi sona ala li lon",
-                "errorNetwork": "pakala linja li pakala e alasa sitelen",
-                "errorNotSupported": "mi ken ala supa e sitelen anu mama sitelen"
-            },
-            "homeButton": "o tawa weka",
-            "text": "mi alasa lukin e sitelen. taso pakala li lon. o alasa sin",
-            "title": "mi pakala lukin a"
-        },
-        "scraping": {
-            "items": {
-                "failure": "mi pakala",
-                "notFound": "sitelen li lon ala",
-                "pending": "mi alasa e sitelen..."
-            },
-            "notFound": {
-                "badge": "lon ala",
-                "detailsButton": "o pana e sona",
-                "homeButton": "o tawa weka",
-                "text": "mi lukin e lipu mama ale mi. taso mi lukin ala e ijo pi wile sina. mi mama ala e sitelen. mi lawa ala e sitelen. o luka e nena anpa",
-                "title": "mi lukin ala e ona"
-            }
-        },
-        "time": {
-            "regular": "{{timeWatched}} / {{duration}}",
-            "remaining": "tenpo {{timeLeft}} la o awen • tenpo {{timeFinished, datetime}} la ona li pini",
-            "shortRegular": "{{timeWatched}}",
-            "shortRemaining": "-{{timeLeft}}"
-        },
-        "turnstile": {
-            "description": "sina jan la o pali e ilo Captcha lon poka ni. mi wile awen e ilo Muwi-We a!",
-            "error": "mi lukin e ni: ken la sina jan ala. o alasa sin",
-            "title": "sina o jan",
-            "verifyingHumanity": "sina jan ala jan?"
-        }
-    },
-    "screens": {
-        "dmca": {
-            "title": "DMCA"
-        },
-        "loadingApp": "mi alasa e ilo",
-        "loadingUser": "mi alasa e lipu sina",
-        "loadingUserError": {
-            "logout": "o weka sona e sina",
-            "reset": "o sin e lawa ilo sina",
-            "text": "alasa li pakala",
-            "textWithReset": "alasa tan lawa ilo sina li pakala. sina wile e lawa ilo mi anu seme?"
-        },
-        "migration": {
-            "failed": "tawa pi sona sina li pakala",
-            "inProgress": "o awen lili. mi alasa tawa e sona sina"
-        }
-    },
-    "settings": {
-        "account": {
-            "accountDetails": {
-                "deviceNameLabel": "nimi ilo",
-                "deviceNamePlaceholder": "ilo",
-                "editProfile": "o ante",
-                "logoutButton": "o weka sona e ona"
-            },
-            "actions": {
-                "delete": {
-                    "button": "o weka e ale",
-                    "confirmButton": "o weka e ale",
-                    "confirmDescription": "weka ni li suli li wawa mute a! sona ale sina li ken ala kama lon tenpo ante a!",
-                    "confirmTitle": "sina wile e ni anu seme?",
-                    "text": "tenpo kama la sina ken ala ante e weka ni. ale li kama weka",
-                    "title": "o weka e ale"
-                },
-                "title": "pali"
-            },
-            "devices": {
-                "deviceNameLabel": "nimi ilo",
-                "failed": "alasa li pakala",
-                "removeDevice": "o weka",
-                "title": "ilo"
-            },
-            "profile": {
-                "finish": "o ante",
-                "firstColor": "kule nanpa wan",
-                "secondColor": "kule nanpa tu",
-                "title": "o ante e sitelen",
-                "userIcon": "sitelen"
-            },
-            "register": {
-                "cta": "o open",
-                "text": "o sama e lipu open sina tawa ilo sina ante",
-                "title": "o sama e lipu"
-            },
-            "title": "lipu open"
-        },
-        "appearance": {
-            "activeTheme": "lon",
-            "themes": {
-                "blue": "laso",
-                "default": "sama",
-                "gray": "pimeja",
-                "red": "loje",
-                "teal": "laso walo"
-            },
-            "title": "kule"
-        },
-        "connections": {
-            "server": {
-                "description": "sina wile e poki sona ante la o pana e nimi ona lon ni: <0>nasin</0>",
-                "label": "lawa ante",
-                "urlLabel": "nimi pi lawa ante"
-            },
-            "setup": {
-                "doSetup": "o pali",
-                "errorStatus": {
-                    "description": "ni li wile e lukin sina",
-                    "title": "o lukin"
-                },
-                "itemError": "ni li pakala. o pali sin",
-                "items": {
-                    "default": "pali sama",
-                    "extension": "namako"
-                },
-                "redoSetup": "o pali sin",
-                "successStatus": {
-                    "description": "ijo ale li pona. sina ken lukin e sitelen ale pi wile sina",
-                    "title": "pali li pini a!"
-                },
-                "unsetStatus": {
-                    "description": "o luka e nena lon poka ni tawa open pali",
-                    "title": "sina pali ala"
-                }
-            },
-            "title": "kulupu",
-            "workers": {
-                "urlPlaceholder": "https://"
-            }
-        },
-        "preferences": {
-            "language": "toki ilo",
-            "languageDescription": "ilo li toki kepeken toki ni",
-            "thumbnail": "o pali e sitelen awen",
-            "thumbnailDescription": "tenpo mute la, sitelen tawa li jo ala e sitelen awen. sina wile e sitelen lili pi lukin wan la o lon e ni. taso, ni li ken suli ike e tenpo sitelen sina",
-            "thumbnailLabel": "o pali e sitelen awen",
-            "title": "wile"
-        },
-        "reset": "o weka e ante",
-        "save": "o ante",
-        "sidebar": {
-            "info": {
-                "appVersion": "nanpa ilo",
-                "hostname": "nimi mama",
-                "insecure": "ike",
-                "notLoggedIn": "mi sona ala e sina",
-                "secure": "pona",
-                "title": "sona ilo",
-                "unknownVersion": "mi sona ala",
-                "userId": "nanpa sina"
-            }
-        },
-        "subtitles": {
-            "backgroundLabel": "kon",
-            "colorLabel": "kule",
-            "previewQuote": "kijetesantakalu tonsi li lanpan ala lanpan e soko?",
-            "textSizeLabel": "suli",
-            "title": "nimi toki"
-        },
-        "unsaved": "ante sina li awen ala"
+    "verify": {
+      "description": "sina awen e nimi open sina la o pana e nimi open",
+      "invalidData": "pakala",
+      "noMatch": "nimi li sama ala",
+      "passphraseLabel": "nimi open 12 sina",
+      "recaptchaFailed": "nasin ReCaptcha li pakala",
+      "register": "o pali e lipu open",
+      "title": "nimi open sina"
     }
+  },
+  "errors": {
+    "badge": "pakala a",
+    "details": "pakala",
+    "reloadPage": "o sin e lipu",
+    "showError": "o pana e sona pakala",
+    "title": "mi kama pakala a!"
+  },
+  "footer": {
+    "legal": {
+      "disclaimer": "o sona e ni:",
+      "disclaimerText": "ilo Muwi-We li mama ala e ijo sitelen. ona li toki taso tawa ilo ante. utala nasin li lon la o toki tawa ona pi ilo ante. sitelen ale li tan ala ilo Muwi-We"
+    },
+    "links": {
+      "discord": "kulupu Siko",
+      "dmca": "DMCA",
+      "github": "lipu Kita"
+    },
+    "tagline": "o lukin e sitelen ale pi wile sina kepeken ilo ni"
+  },
+  "global": {
+    "name": "ilo Muwi-We",
+    "pages": {
+      "about": "o sona",
+      "dmca": "DMCA",
+      "login": "o open",
+      "onboarding": "o pali",
+      "pagetitle": "{{title}} - ilo Muwi-We",
+      "register": "o pali open",
+      "settings": "o ante"
+    }
+  },
+  "home": {
+    "bookmarks": {
+      "sectionTitle": "poki awen"
+    },
+    "continueWatching": {
+      "sectionTitle": "o awen lukin"
+    },
+    "mediaList": {
+      "stopEditing": "o pini ante"
+    },
+    "search": {
+      "allResults": "pini a!",
+      "failed": "lukin li pakala a! o alasa sin",
+      "loading": "alasa...",
+      "noResults": "ijo li lon ala a!",
+      "placeholder": {
+        "default": "sina wile lukin e seme?",
+        "extra": [
+          "sina wile alasa e seme?",
+          "sina wile lukin e seme?",
+          "sitelen nanpa wan sina li seme?",
+          "sitelen nanpa wan sina li seme?"
+        ]
+      },
+      "sectionTitle": "mi lukin e ni:"
+    },
+    "titles": {
+      "day": {
+        "default": "tenpo suno ni la sina wile lukin e seme?",
+        "extra": ["sina pilin alasa la o lukin e sitelen Jurassic Park"]
+      },
+      "morning": {
+        "default": "tenpo sin ni la sina wile lukin e seme?",
+        "extra": ["ken la sitelen Before Sunrise li pona"]
+      },
+      "night": {
+        "default": "tenpo pimeja ni la sina wile lukin e seme?",
+        "extra": ["sina pilin lape anu seme? o alasa lukin e sitelen Exorcist"]
+      }
+    }
+  },
+  "media": {
+    "episodeDisplay": "S{{season}} E{{episode}}",
+    "types": {
+      "movie": "sitelen wan",
+      "show": "sitelen kulupu"
+    }
+  },
+  "navigation": {
+    "banner": {
+      "offline": "wawa linja sina li seme?"
+    },
+    "menu": {
+      "about": "mi",
+      "logout": "o weka sona e sina",
+      "register": "Sync to sudo-cloud",
+      "settings": "o ante",
+      "support": "o supa"
+    }
+  },
+  "notFound": {
+    "badge": "lon ala",
+    "goHome": "o tawa weka",
+    "message": "mi lukin lon anpa poki, lon insa tomo, lon monsi ilo. taso mi lukin ala e lipu pi wile sina",
+    "title": "mi ken ala lukin e lipu ona"
+  },
+  "onboarding": {
+    "defaultConfirm": {
+      "cancel": "ala"
+    },
+    "start": {
+      "title": "o open e ilo Muwi-We"
+    }
+  },
+  "overlays": {
+    "close": "o pini"
+  },
+  "player": {
+    "back": {
+      "default": "o tawa weka",
+      "short": "o tawa"
+    },
+    "casting": {
+      "enabled": "mi pana e sitelen tawa ilo ante..."
+    },
+    "menus": {
+      "downloads": {
+        "disclaimer": "sina kama jo e sitelen tawa ilo sina tan lipu mama. ilo Muwi-We li lawa ala e nasin jo",
+        "downloadSubtitle": "o jo e nimi toki",
+        "downloadVideo": "o jo e sitelen",
+        "hlsDisclaimer": "jo li tan mama. ilo Muwi-We li lawa ala e nasin jo. o sona e ni: sina jo e lipu sitelen HLS. ni li tawa jan pi sona sitelen",
+        "onAndroid": {
+          "1": "ilo Android la o luka e nena 'o jo'. lon lipu sin la <bold>o luka wawa</bold> e sitelen. o luka e nena 'o jo'",
+          "shortTitle": "Android ) o jo",
+          "title": "o jo lon ilo Android"
+        },
+        "onIos": {
+          "1": "ilo iOS la o luka e nena 'o jo'. lon lipu sin la o luka e <bold><ios_share /></bold>, e <bold>o jo poki <ios_files /></bold>.",
+          "shortTitle": "iOS ) o jo",
+          "title": "o jo lon ilo iOS"
+        },
+        "onPc": {
+          "1": "ilo suli la o luka e nena 'o jo e sitelen'. lon lipu sin la o luka ante e sitelen. o luka e nena <bold>'o jo e sitelen lon nimi ante'</bold>",
+          "shortTitle": "ilo suli ) o jo",
+          "title": "o jo lon ilo suli"
+        },
+        "title": "kama jo"
+      },
+      "episodes": {
+        "button": "sitelen mute",
+        "emptyState": "kulupu ni li jo ala e sitelen. o lukin lon tenpo ante a!",
+        "episodeBadge": "E{{episode}}",
+        "loadingError": "alasa li pakala",
+        "loadingList": "alasa...",
+        "loadingTitle": "alasa...",
+        "unairedEpisodes": "sitelen li lon ala lukin la ken la sina lukin ala e ona"
+      },
+      "playback": {
+        "speedLabel": "tenpo lukin",
+        "title": "nasin pali"
+      },
+      "quality": {
+        "automaticLabel": "ilo o lawa",
+        "hint": "ante pi pona lukin la sina ken <0>ante e mama</0>",
+        "iosNoQuality": "tan lawa pi esun Apple la ante pi pona lukin li ken ala lon ilo iOS. ante pi pona lukin la o alasa <0>ante e mama</0>",
+        "title": "pona lukin"
+      },
+      "settings": {
+        "downloadItem": "o jo",
+        "enableSubtitles": "nimi toki",
+        "experienceSection": "nasin lukin",
+        "playbackItem": "nasin pali",
+        "qualityItem": "pona lukin",
+        "sourceItem": "mama sitelen",
+        "subtitleItem": "nimi toki",
+        "videoSection": "nasin sitelen"
+      },
+      "sources": {
+        "failed": {
+          "text": "lukin sitelen li pakala. o alasa e mama ante.",
+          "title": "pakala jo"
+        },
+        "noEmbeds": {
+          "text": "mi lukin ala e lipu. o alasa e mama ante.",
+          "title": "lipu li lon ala"
+        },
+        "noStream": {
+          "text": "lipu mama ni li jo ala e sitelen ni",
+          "title": "sitelen li lon ala"
+        },
+        "title": "mama",
+        "unknownOption": "mi sona ala"
+      },
+      "subtitles": {
+        "customChoice": "o pana tan ilo",
+        "customizeLabel": "o ante",
+        "offChoice": "ala",
+        "settings": {
+          "backlink": "nimi toki ante",
+          "delay": "o ante e tenpo nimi",
+          "fixCapitals": "o pona e suli nimi"
+        },
+        "title": "nimi toki",
+        "unknownLanguage": "mi sona ala"
+      }
+    },
+    "metadata": {
+      "dmca": {
+        "badge": "weka",
+        "text": "wile weka li kama tan mama sitelen la sitelen ni li ken ala",
+        "title": "sitelen li weka"
+      },
+      "extensionPermission": {
+        "button": "o kepeken namako"
+      },
+      "failed": {
+        "badge": "pakala",
+        "homeButton": "o tawa weka",
+        "text": "mi pakala alasa e sona sitelen tan lipu TMDB. ken la ona li lape anu moli",
+        "title": "mi pakala alasa e sona sitelen"
+      },
+      "notFound": {
+        "badge": "lon ala",
+        "homeButton": "o tawa weka",
+        "text": "mi lukin ala e lipu pi wile sina. lipu li weka anu ante",
+        "title": "mi lukin ala e ona"
+      }
+    },
+    "nextEpisode": {
+      "cancel": "o ala",
+      "next": "o sitelen sin"
+    },
+    "playbackError": {
+      "badge": "pakala lukin",
+      "errors": {
+        "errorAborted": "jan li pini alasa e sitelen",
+        "errorDecode": "sitelen li kama ante la pakala li kama lon",
+        "errorGenericMedia": "pakala sitelen pi sona ala li lon",
+        "errorNetwork": "pakala linja li pakala e alasa sitelen",
+        "errorNotSupported": "mi ken ala supa e sitelen anu mama sitelen"
+      },
+      "homeButton": "o tawa weka",
+      "text": "mi alasa lukin e sitelen. taso pakala li lon. o alasa sin",
+      "title": "mi pakala lukin a"
+    },
+    "scraping": {
+      "items": {
+        "failure": "mi pakala",
+        "notFound": "sitelen li lon ala",
+        "pending": "mi alasa e sitelen..."
+      },
+      "notFound": {
+        "badge": "lon ala",
+        "detailsButton": "o pana e sona",
+        "homeButton": "o tawa weka",
+        "text": "mi lukin e lipu mama ale mi. taso mi lukin ala e ijo pi wile sina. mi mama ala e sitelen. mi lawa ala e sitelen. o luka e nena anpa",
+        "title": "mi lukin ala e ona"
+      }
+    },
+    "time": {
+      "regular": "{{timeWatched}} / {{duration}}",
+      "remaining": "tenpo {{timeLeft}} la o awen • tenpo {{timeFinished, datetime}} la ona li pini",
+      "shortRegular": "{{timeWatched}}",
+      "shortRemaining": "-{{timeLeft}}"
+    },
+    "turnstile": {
+      "description": "sina jan la o pali e ilo Captcha lon poka ni. mi wile awen e ilo Muwi-We a!",
+      "error": "mi lukin e ni: ken la sina jan ala. o alasa sin",
+      "title": "sina o jan",
+      "verifyingHumanity": "sina jan ala jan?"
+    }
+  },
+  "screens": {
+    "dmca": {
+      "title": "DMCA"
+    },
+    "loadingApp": "mi alasa e ilo",
+    "loadingUser": "mi alasa e lipu sina",
+    "loadingUserError": {
+      "logout": "o weka sona e sina",
+      "reset": "o sin e lawa ilo sina",
+      "text": "alasa li pakala",
+      "textWithReset": "alasa tan lawa ilo sina li pakala. sina wile e lawa ilo mi anu seme?"
+    },
+    "migration": {
+      "failed": "tawa pi sona sina li pakala",
+      "inProgress": "o awen lili. mi alasa tawa e sona sina"
+    }
+  },
+  "settings": {
+    "account": {
+      "accountDetails": {
+        "deviceNameLabel": "nimi ilo",
+        "deviceNamePlaceholder": "ilo",
+        "editProfile": "o ante",
+        "logoutButton": "o weka sona e ona"
+      },
+      "actions": {
+        "delete": {
+          "button": "o weka e ale",
+          "confirmButton": "o weka e ale",
+          "confirmDescription": "weka ni li suli li wawa mute a! sona ale sina li ken ala kama lon tenpo ante a!",
+          "confirmTitle": "sina wile e ni anu seme?",
+          "text": "tenpo kama la sina ken ala ante e weka ni. ale li kama weka",
+          "title": "o weka e ale"
+        },
+        "title": "pali"
+      },
+      "devices": {
+        "deviceNameLabel": "nimi ilo",
+        "failed": "alasa li pakala",
+        "removeDevice": "o weka",
+        "title": "ilo"
+      },
+      "profile": {
+        "finish": "o ante",
+        "firstColor": "kule nanpa wan",
+        "secondColor": "kule nanpa tu",
+        "title": "o ante e sitelen",
+        "userIcon": "sitelen"
+      },
+      "register": {
+        "cta": "o open",
+        "text": "o sama e lipu open sina tawa ilo sina ante",
+        "title": "o sama e lipu"
+      },
+      "title": "lipu open"
+    },
+    "appearance": {
+      "activeTheme": "lon",
+      "themes": {
+        "blue": "laso",
+        "default": "sama",
+        "gray": "pimeja",
+        "red": "loje",
+        "teal": "laso walo"
+      },
+      "title": "kule"
+    },
+    "connections": {
+      "server": {
+        "description": "sina wile e poki sona ante la o pana e nimi ona lon ni: <0>nasin</0>",
+        "label": "lawa ante",
+        "urlLabel": "nimi pi lawa ante"
+      },
+      "setup": {
+        "doSetup": "o pali",
+        "errorStatus": {
+          "description": "ni li wile e lukin sina",
+          "title": "o lukin"
+        },
+        "itemError": "ni li pakala. o pali sin",
+        "items": {
+          "default": "pali sama",
+          "extension": "namako"
+        },
+        "redoSetup": "o pali sin",
+        "successStatus": {
+          "description": "ijo ale li pona. sina ken lukin e sitelen ale pi wile sina",
+          "title": "pali li pini a!"
+        },
+        "unsetStatus": {
+          "description": "o luka e nena lon poka ni tawa open pali",
+          "title": "sina pali ala"
+        }
+      },
+      "title": "kulupu",
+      "workers": {
+        "urlPlaceholder": "https://"
+      }
+    },
+    "preferences": {
+      "language": "toki ilo",
+      "languageDescription": "ilo li toki kepeken toki ni",
+      "thumbnail": "o pali e sitelen awen",
+      "thumbnailDescription": "tenpo mute la, sitelen tawa li jo ala e sitelen awen. sina wile e sitelen lili pi lukin wan la o lon e ni. taso, ni li ken suli ike e tenpo sitelen sina",
+      "thumbnailLabel": "o pali e sitelen awen",
+      "title": "wile"
+    },
+    "reset": "o weka e ante",
+    "save": "o ante",
+    "sidebar": {
+      "info": {
+        "appVersion": "nanpa ilo",
+        "hostname": "nimi mama",
+        "insecure": "ike",
+        "notLoggedIn": "mi sona ala e sina",
+        "secure": "pona",
+        "title": "sona ilo",
+        "unknownVersion": "mi sona ala",
+        "userId": "nanpa sina"
+      }
+    },
+    "subtitles": {
+      "backgroundLabel": "kon",
+      "colorLabel": "kule",
+      "previewQuote": "kijetesantakalu tonsi li lanpan ala lanpan e soko?",
+      "textSizeLabel": "suli",
+      "title": "nimi toki"
+    },
+    "unsaved": "ante sina li awen ala"
+  }
 }

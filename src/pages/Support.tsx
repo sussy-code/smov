@@ -106,7 +106,7 @@ export function SupportPage() {
           items={[
             <Item title={t("support.q1.title")}>
               <Trans i18nKey="support.q1.body">
-                <MwLink to="https://discord.gg/r5cYshWM4G" />
+                <MwLink to="https://docs.sudo-flix.lol/links/discord" />
               </Trans>
             </Item>,
             <Item title={t("support.q2.title")}>

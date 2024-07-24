@@ -2,11 +2,16 @@ import {
   DndContext,
   DragEndEvent,
   KeyboardSensor,
-  PointerSensor,
+  MouseSensor,
+  TouchSensor,
   closestCenter,
   useSensor,
   useSensors,
 } from "@dnd-kit/core";
+import {
+  restrictToParentElement,
+  restrictToVerticalAxis,
+} from "@dnd-kit/modifiers";
 import {
   SortableContext,
   arrayMove,
@@ -41,7 +46,7 @@ function SortableItem(props: { item: Item }) {
       {...attributes}
       {...listeners}
       className={classNames(
-        "bg-dropdown-background hover:bg-dropdown-hoverBackground select-none space-x-3 flex items-center max-w-[25rem] py-3 px-4 rounded-lg touch-none",
+        "bg-dropdown-background hover:bg-dropdown-hoverBackground select-none space-x-3 flex items-center max-w-[25rem] py-3 px-4 rounded-lg touch-manipulation",
         props.item.disabled && "opacity-50",
         transform ? "cursor-grabbing" : "cursor-grab",
       )}
@@ -58,7 +63,13 @@ export function SortableList(props: {
   setItems: (items: Item[]) => void;
 }) {
   const sensors = useSensors(
-    useSensor(PointerSensor),
+    useSensor(TouchSensor, {
+      activationConstraint: {
+        delay: 75,
+        tolerance: 1,
+      },
+    }),
+    useSensor(MouseSensor),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
     }),
@@ -81,6 +92,7 @@ export function SortableList(props: {
       sensors={sensors}
       collisionDetection={closestCenter}
       onDragEnd={handleDragEnd}
+      modifiers={[restrictToVerticalAxis, restrictToParentElement]}
     >
       <SortableContext
         items={props.items}

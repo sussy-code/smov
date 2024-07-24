@@ -1,546 +1,540 @@
 {
-    "about": {
-        "description": "sudo-flix je webová aplikace, která vyhledává na internetu proudy médií. Cílem týmu je převážně minimalistický přístup ke konzumaci obsahu.",
-        "faqTitle": "Často kladené otázky",
-        "q1": {
-            "body": "sudo-flix nehostuje žádný obsah. Když kliknete na něco, co chcete sledovat, na internetu se vyhledá vybrané médium (Na obrazovce načítání a na kartě 'zdroje videa' můžete vidět, který zdroj používáte). Média se nikdy nenahrávají sudo-flixem, vše probíhá prostřednictvím tohoto vyhledávacího mechanismu.",
-            "title": "Kde bereme obsah?"
-        },
-        "q2": {
-            "body": "Není možné požádat o pořad nebo film, sudo-flix nespravuje žádný obsah. Veškerý obsah je prohlížen prostřednictvím zdrojů na internetu.",
-            "title": "Kde můžu požádat o pořad nebo film?"
-        },
-        "q3": {
-            "body": "Naše výsledky vyhledávání jsou založeny na The Movie Database (TMDB) a zobrazují se bez ohledu na to, zda naše zdroje skutečně obsah mají.",
-            "title": "Ve výsledcích vyhledávání se zobrazuje pořad nebo film, proč jej nemůžu přehrát?"
-        },
-        "title": "O sudo-flixu"
+  "about": {
+    "description": "sudo-flix je webová aplikace, která vyhledává na internetu proudy médií. Cílem týmu je převážně minimalistický přístup ke konzumaci obsahu.",
+    "faqTitle": "Často kladené otázky",
+    "q1": {
+      "body": "sudo-flix nehostuje žádný obsah. Když kliknete na něco, co chcete sledovat, na internetu se vyhledá vybrané médium (Na obrazovce načítání a na kartě 'zdroje videa' můžete vidět, který zdroj používáte). Média se nikdy nenahrávají sudo-flixem, vše probíhá prostřednictvím tohoto vyhledávacího mechanismu.",
+      "title": "Kde bereme obsah?"
     },
-    "actions": {
-        "copied": "Zkopírováno",
-        "copy": "Zkopírovat"
+    "q2": {
+      "body": "Není možné požádat o pořad nebo film, sudo-flix nespravuje žádný obsah. Veškerý obsah je prohlížen prostřednictvím zdrojů na internetu.",
+      "title": "Kde můžu požádat o pořad nebo film?"
     },
-    "auth": {
-        "createAccount": "Ještě nemáte účet? <0>Vytvořte si účet.</0>",
-        "deviceNameLabel": "Název zařízení",
-        "deviceNamePlaceholder": "Osobní telefon",
-        "generate": {
-            "description": "Vaše přístupová fráze se chová jako vaše přezdívka a heslo. Uchovejte jí v bezpečí, protože jí budete muset zadat, abyste se mohli přihlásit ke svému účtu",
-            "next": "Uložil jsem si moji přístupovou frázi",
-            "passphraseFrameLabel": "Přístupová fráze",
-            "title": "Vaše přístupová fráze"
-        },
-        "hasAccount": "Již máte účet? <0> Přihlaste se zde.</0>",
-        "login": {
-            "description": "Pro přihlášení ke svému účtu zadejte svou přístupovou frázi",
-            "deviceLengthError": "Zadejte název zařízení",
-            "passphraseLabel": "12slovná přístupová fráze",
-            "passphrasePlaceholder": "Přístupová fráze",
-            "submit": "Přihlásit",
-            "title": "Přihlaste se ke svému účtu",
-            "validationError": "Nesprávná nebo neúplná přístupová fráze"
-        },
-        "register": {
-            "information": {
-                "color1": "První barva profilu",
-                "color2": "Druhá barva profilu",
-                "header": "Zadejte název pro vaše zařízení a vyberte barvy a ikonu uživatele podle vašeho výběru",
-                "icon": "Ikona uživatele",
-                "next": "Další",
-                "title": "Informace o účtu"
-            }
-        },
-        "trust": {
-            "failed": {
-                "text": "Nastavili jste to správně?",
-                "title": "Selhalo připojení k serveru"
-            },
-            "host": "Připojujete se k <0>{{hostname}}</0> - potvrďte, že mu věříte před vytvořením účtu",
-            "no": "Zpět",
-            "noHost": "Server nebyl nakonfigurován, tudíž si nemůžete vytvořit účet",
-            "noHostTitle": "Server není nakonfigurován!",
-            "title": "Věříte tomuto serveru?",
-            "yes": "Věřím tomuto serveru"
-        },
-        "verify": {
-            "description": "Zadejte prosím svou přístupovou frázi, abyste potvrdili, že jste si ji uložili, a vytvořte si účet",
-            "invalidData": "Data nejsou platná",
-            "noMatch": "Přístupová fráze neodpovídá",
-            "passphraseLabel": "Vaše 12slovná přístupová fráze",
-            "recaptchaFailed": "ReCaptcha ověření se nezdařilo",
-            "register": "Založit účet",
-            "title": "Potvrďte vaši přístupovou frázi"
-        }
+    "q3": {
+      "body": "Naše výsledky vyhledávání jsou založeny na The Movie Database (TMDB) a zobrazují se bez ohledu na to, zda naše zdroje skutečně obsah mají.",
+      "title": "Ve výsledcích vyhledávání se zobrazuje pořad nebo film, proč jej nemůžu přehrát?"
     },
-    "errors": {
-        "badge": "Rozbilo se to",
-        "details": "Detaily chyby",
-        "reloadPage": "Znovu načíst stránku",
-        "showError": "Ukázat detaily chyby",
-        "title": "Narazili jsme na chybu!"
+    "title": "O sudo-flixu"
+  },
+  "actions": {
+    "copied": "Zkopírováno",
+    "copy": "Zkopírovat"
+  },
+  "auth": {
+    "createAccount": "Ještě nemáte účet? <0>Vytvořte si účet.</0>",
+    "deviceNameLabel": "Název zařízení",
+    "deviceNamePlaceholder": "Osobní telefon",
+    "generate": {
+      "description": "Vaše přístupová fráze se chová jako vaše přezdívka a heslo. Uchovejte jí v bezpečí, protože jí budete muset zadat, abyste se mohli přihlásit ke svému účtu",
+      "next": "Uložil jsem si moji přístupovou frázi",
+      "passphraseFrameLabel": "Přístupová fráze",
+      "title": "Vaše přístupová fráze"
     },
-    "footer": {
-        "legal": {
-            "disclaimer": "Zřeknutí odpovědnosti",
-            "disclaimerText": "sudo-flix nehostuje žádné soubory, pouze odkazuje na služby třetích stran. Právní záležitosti by měly být řešeny s hostiteli souborů a poskytovateli. sudo-flix nenese odpovědnost za žádné mediální soubory zobrazené poskytovateli videa."
-        },
-        "links": {
-            "discord": "Discord",
-            "dmca": "DMCA",
-            "github": "GitHub"
-        },
-        "tagline": "Sledujte své oblíbené pořady a filmy s touto aplikací pro streamování s otevřeným zdrojovým kódem."
+    "hasAccount": "Již máte účet? <0> Přihlaste se zde.</0>",
+    "login": {
+      "description": "Pro přihlášení ke svému účtu zadejte svou přístupovou frázi",
+      "deviceLengthError": "Zadejte název zařízení",
+      "passphraseLabel": "12slovná přístupová fráze",
+      "passphrasePlaceholder": "Přístupová fráze",
+      "submit": "Přihlásit",
+      "title": "Přihlaste se ke svému účtu",
+      "validationError": "Nesprávná nebo neúplná přístupová fráze"
     },
-    "global": {
-        "name": "sudo-flix",
-        "pages": {
-            "about": "O nás",
-            "dmca": "DMCA",
-            "login": "Přihlásit se",
-            "onboarding": "Nastavení",
-            "pagetitle": "{{title}} - sudo-flix",
-            "register": "Zaregistrovat se",
-            "settings": "Nastavení"
-        }
+    "register": {
+      "information": {
+        "color1": "První barva profilu",
+        "color2": "Druhá barva profilu",
+        "header": "Zadejte název pro vaše zařízení a vyberte barvy a ikonu uživatele podle vašeho výběru",
+        "icon": "Ikona uživatele",
+        "next": "Další",
+        "title": "Informace o účtu"
+      }
     },
-    "home": {
-        "bookmarks": {
-            "sectionTitle": "Záložky"
-        },
-        "continueWatching": {
-            "sectionTitle": "Pokračujte ve sledování"
-        },
-        "mediaList": {
-            "stopEditing": "Přestat upravovat"
-        },
-        "search": {
-            "allResults": "To je vše co máme!",
-            "failed": "Nepodařilo se najít média, zkuste to znovu!",
-            "loading": "Načítání...",
-            "noResults": "Nemohli jsme nic najít!",
-            "placeholder": {
-                "default": "Co si přejete sledovat?",
-                "extra": [
-                    "Co chcete objevit?",
-                    "Co je na vašem seznamu sledovaných filmů?",
-                    "Jaký je váš oblíbený film?",
-                    "Jaký je tvůj oblíbený seriál?"
-                ]
-            },
-            "sectionTitle": "Výsledky vyhledávání"
-        },
-        "titles": {
-            "day": {
-                "default": "Na co byste se chtěli dnes odpoledne dívat?",
-                "extra": [
-                    "Chceš zažít dobrodružství? Jurský Park je pro tebe."
-                ]
-            },
-            "morning": {
-                "default": "Na co byste se chtěli dnes ráno dívat?",
-                "extra": [
-                    "Slyšel jsem, že Před úsvitem je super"
-                ]
-            },
-            "night": {
-                "default": "Na co byste se chtěli dnes večer dívat?",
-                "extra": [
-                    "Unaven? Slyšel jsem, že Vymítač ďábla je super."
-                ]
-            }
-        }
+    "trust": {
+      "failed": {
+        "text": "Nastavili jste to správně?",
+        "title": "Selhalo připojení k serveru"
+      },
+      "host": "Připojujete se k <0>{{hostname}}</0> - potvrďte, že mu věříte před vytvořením účtu",
+      "no": "Zpět",
+      "noHost": "Server nebyl nakonfigurován, tudíž si nemůžete vytvořit účet",
+      "noHostTitle": "Server není nakonfigurován!",
+      "title": "Věříte tomuto serveru?",
+      "yes": "Věřím tomuto serveru"
     },
-    "media": {
-        "episodeDisplay": "S{{season}} E{{episode}}",
-        "types": {
-            "movie": "Film",
-            "show": "Seriál"
-        }
+    "verify": {
+      "description": "Zadejte prosím svou přístupovou frázi, abyste potvrdili, že jste si ji uložili, a vytvořte si účet",
+      "invalidData": "Data nejsou platná",
+      "noMatch": "Přístupová fráze neodpovídá",
+      "passphraseLabel": "Vaše 12slovná přístupová fráze",
+      "recaptchaFailed": "ReCaptcha ověření se nezdařilo",
+      "register": "Založit účet",
+      "title": "Potvrďte vaši přístupovou frázi"
+    }
+  },
+  "errors": {
+    "badge": "Rozbilo se to",
+    "details": "Detaily chyby",
+    "reloadPage": "Znovu načíst stránku",
+    "showError": "Ukázat detaily chyby",
+    "title": "Narazili jsme na chybu!"
+  },
+  "footer": {
+    "legal": {
+      "disclaimer": "Zřeknutí odpovědnosti",
+      "disclaimerText": "sudo-flix nehostuje žádné soubory, pouze odkazuje na služby třetích stran. Právní záležitosti by měly být řešeny s hostiteli souborů a poskytovateli. sudo-flix nenese odpovědnost za žádné mediální soubory zobrazené poskytovateli videa."
     },
-    "navigation": {
-        "banner": {
-            "offline": "Zkontrolujte své internetové připojení"
-        },
-        "menu": {
-            "about": "O nás",
-            "logout": "Odhlásit se",
-            "register": "Synchronizovat do cloudu",
-            "settings": "Nastavení",
-            "support": "Podpořte nás"
-        }
+    "links": {
+      "discord": "Discord",
+      "dmca": "DMCA",
+      "github": "GitHub"
     },
-    "notFound": {
-        "badge": "Nenalezeno",
-        "goHome": "Zpátky domů",
-        "message": "Dívali jsme se všude: pod koši, ve skříni, za proxy, ale nakonec jsme nemohli najít stránku, kterou hledáte.",
-        "title": "Tuto stránku se nepodařilo najít"
+    "tagline": "Sledujte své oblíbené pořady a filmy s touto aplikací pro streamování s otevřeným zdrojovým kódem."
+  },
+  "global": {
+    "name": "sudo-flix",
+    "pages": {
+      "about": "O nás",
+      "dmca": "DMCA",
+      "login": "Přihlásit se",
+      "onboarding": "Nastavení",
+      "pagetitle": "{{title}} - sudo-flix",
+      "register": "Zaregistrovat se",
+      "settings": "Nastavení"
+    }
+  },
+  "home": {
+    "bookmarks": {
+      "sectionTitle": "Záložky"
     },
-    "onboarding": {
-        "defaultConfirm": {
-            "cancel": "Zrušit",
-            "confirm": "Použít výchozí nastavení",
-            "description": "Výchozí nastavení nemá nejlepší streamy a může být strašně pomalá.",
-            "title": "Jste si jist?"
+    "continueWatching": {
+      "sectionTitle": "Pokračujte ve sledování"
+    },
+    "mediaList": {
+      "stopEditing": "Přestat upravovat"
+    },
+    "search": {
+      "allResults": "To je vše co máme!",
+      "failed": "Nepodařilo se najít média, zkuste to znovu!",
+      "loading": "Načítání...",
+      "noResults": "Nemohli jsme nic najít!",
+      "placeholder": {
+        "default": "Co si přejete sledovat?",
+        "extra": [
+          "Co chcete objevit?",
+          "Co je na vašem seznamu sledovaných filmů?",
+          "Jaký je váš oblíbený film?",
+          "Jaký je tvůj oblíbený seriál?"
+        ]
+      },
+      "sectionTitle": "Výsledky vyhledávání"
+    },
+    "titles": {
+      "day": {
+        "default": "Na co byste se chtěli dnes odpoledne dívat?",
+        "extra": ["Chceš zažít dobrodružství? Jurský Park je pro tebe."]
+      },
+      "morning": {
+        "default": "Na co byste se chtěli dnes ráno dívat?",
+        "extra": ["Slyšel jsem, že Před úsvitem je super"]
+      },
+      "night": {
+        "default": "Na co byste se chtěli dnes večer dívat?",
+        "extra": ["Unaven? Slyšel jsem, že Vymítač ďábla je super."]
+      }
+    }
+  },
+  "media": {
+    "episodeDisplay": "S{{season}} E{{episode}}",
+    "types": {
+      "movie": "Film",
+      "show": "Seriál"
+    }
+  },
+  "navigation": {
+    "banner": {
+      "offline": "Zkontrolujte své internetové připojení"
+    },
+    "menu": {
+      "about": "O nás",
+      "logout": "Odhlásit se",
+      "register": "Synchronizovat do sudo-cloudu",
+      "settings": "Nastavení",
+      "support": "Podpořte nás"
+    }
+  },
+  "notFound": {
+    "badge": "Nenalezeno",
+    "goHome": "Zpátky domů",
+    "message": "Dívali jsme se všude: pod koši, ve skříni, za proxy, ale nakonec jsme nemohli najít stránku, kterou hledáte.",
+    "title": "Tuto stránku se nepodařilo najít"
+  },
+  "onboarding": {
+    "defaultConfirm": {
+      "cancel": "Zrušit",
+      "confirm": "Použít výchozí nastavení",
+      "description": "Výchozí nastavení nemá nejlepší streamy a může být strašně pomalá.",
+      "title": "Jste si jist?"
+    },
+    "extension": {
+      "back": "Zpět",
+      "explainer": "Pomocí rozšíření prohlížeče můžete získat nejlepší streamy, které nabízíme. S pouhou instalací.",
+      "explainerIos": "Bohužel rozšíření není podporováno na iOS. Stiskněte <bold>Zpět</bold> pro výběr jiné možnosti.",
+      "extensionHelp": "Pokud jste rozšíření nainstalovali, ale nebylo zjištěno, <bold>otevřete rozšíření pomocí nabídky rozšíření ve vašem prohlížeči</bold> a postupujte podle pokynů na obrazovce.",
+      "linkChrome": "Instalovat rozšíření pro Chrome",
+      "linkFirefox": "Instalovat rozšíření pro Firefox",
+      "notDetecting": "Nainstalováno na Chromu, ale stránka to nezaznamenala? Skuste přenačíst stránku!",
+      "notDetectingAction": "Obnovit stránku",
+      "status": {
+        "disallowed": "Rozšíření není pro tuto stránku povoleno",
+        "disallowedAction": "Povolit rozšíření",
+        "failed": "Nezdařilo se získávání stavu",
+        "loading": "Čekání na instalaci rozšíření",
+        "outdated": "Verze rozšíření je příliš stará",
+        "success": "Rozšíření funguje podle očekávání!"
+      },
+      "submit": "Pokračovat",
+      "title": "Začněme s rozšířením"
+    },
+    "proxy": {
+      "back": "Zpět",
+      "explainer": "Pomocí metody proxy můžete získat streamy ve skvělé kvalitě vytvořením proxy serveru.",
+      "input": {
+        "errorConnection": "Nelze se připojit k proxy",
+        "errorInvalidUrl": "Adresa URL není platná",
+        "errorNotProxy": "Byla očekávaná proxy, ale byla předána webová stránka",
+        "label": "Proxy URL",
+        "placeholder": "https://"
+      },
+      "link": "Naučit se vytvořit proxy",
+      "submit": "Předložit proxy",
+      "title": "Pojďme uďelat novou proxy"
+    },
+    "start": {
+      "explainer": "Abyste získali co nejlepší streamy, musíte zvolit, kterou streamovací metodu chcete použít.",
+      "options": {
+        "default": {
+          "text": "Nechci zdroje s dobrou kvalitou,<0 /> <1>použít výchozí nastavení</1>"
         },
         "extension": {
-            "back": "Zpět",
-            "explainer": "Pomocí rozšíření prohlížeče můžete získat nejlepší streamy, které nabízíme. S pouhou instalací.",
-            "explainerIos": "Bohužel rozšíření není podporováno na iOS. Stiskněte <bold>Zpět</bold> pro výběr jiné možnosti.",
-            "extensionHelp": "Pokud jste rozšíření nainstalovali, ale nebylo zjištěno, <bold>otevřete rozšíření pomocí nabídky rozšíření ve vašem prohlížeči</bold> a postupujte podle pokynů na obrazovce.",
-            "linkChrome": "Instalovat rozšíření pro Chrome",
-            "linkFirefox": "Instalovat rozšíření pro Firefox",
-            "notDetecting": "Nainstalováno na Chromu, ale stránka to nezaznamenala? Skuste přenačíst stránku!",
-            "notDetectingAction": "Obnovit stránku",
-            "status": {
-                "disallowed": "Rozšíření není pro tuto stránku povoleno",
-                "disallowedAction": "Povolit rozšíření",
-                "failed": "Nezdařilo se získávání stavu",
-                "loading": "Čekání na instalaci rozšíření",
-                "outdated": "Verze rozšíření je příliš stará",
-                "success": "Rozšíření funguje podle očekávání!"
-            },
-            "submit": "Pokračovat",
-            "title": "Začněme s rozšířením"
+          "action": "Nainstalujte si rozšíření",
+          "description": "Nainstalujte si rozšíření prohlížeče a získejte přístup k nejlepším zdrojům.",
+          "quality": "Nejlepší kvalita",
+          "title": "Rozšíření prohlížeče"
         },
         "proxy": {
-            "back": "Zpět",
-            "explainer": "Pomocí metody proxy můžete získat streamy ve skvělé kvalitě vytvořením proxy serveru.",
-            "input": {
-                "errorConnection": "Nelze se připojit k proxy",
-                "errorInvalidUrl": "Adresa URL není platná",
-                "errorNotProxy": "Byla očekávaná proxy, ale byla předána webová stránka",
-                "label": "Proxy URL",
-                "placeholder": "https://"
-            },
-            "link": "Naučit se vytvořit proxy",
-            "submit": "Předložit proxy",
-            "title": "Pojďme uďelat novou proxy"
-        },
-        "start": {
-            "explainer": "Abyste získali co nejlepší streamy, musíte zvolit, kterou streamovací metodu chcete použít.",
-            "options": {
-                "default": {
-                    "text": "Nechci zdroje s dobrou kvalitou,<0 /> <1>použít výchozí nastavení</1>"
-                },
-                "extension": {
-                    "action": "Nainstalujte si rozšíření",
-                    "description": "Nainstalujte si rozšíření prohlížeče a získejte přístup k nejlepším zdrojům.",
-                    "quality": "Nejlepší kvalita",
-                    "title": "Rozšíření prohlížeče"
-                },
-                "proxy": {
-                    "action": "Nastavit proxy",
-                    "description": "Nastavte si proxy během 5 minut, pro získání přístupu k skvělým zdrojům.",
-                    "quality": "Dobrá kvalita",
-                    "title": "Vlastní proxy"
-                }
-            },
-            "title": "Pojďme vám nastavit sudo-flix"
+          "action": "Nastavit proxy",
+          "description": "Nastavte si proxy během 5 minut, pro získání přístupu k skvělým zdrojům.",
+          "quality": "Dobrá kvalita",
+          "title": "Vlastní proxy"
         }
-    },
-    "overlays": {
-        "close": "Zavřít"
-    },
-    "player": {
-        "back": {
-            "default": "Zpátky domů",
-            "short": "Zpět"
-        },
-        "casting": {
-            "enabled": "Odesílání do zařízení..."
-        },
-        "menus": {
-            "downloads": {
-                "disclaimer": "Stahování probíhá přímo u poskytovatele. sudo-flix nemá kontrolu nad tím, jak jsou stahování poskytovány.",
-                "downloadSubtitle": "Stáhnout aktuální titulky",
-                "downloadVideo": "Stáhnout video",
-                "hlsDisclaimer": "Stahování probíhá přímo u poskytovatele. sudo-flix nemá kontrolu nad tím, jak jsou stahování poskytovány.<br /><br />Vezměte prosím na vědomí, že stahujete HLS playlist,<bold> který není doporučen stahovat pokud nejste obeznámeni s pokročilým streamováním médií</bold>. Raději skuste jiný zdroj pro jiný formát.",
-                "onAndroid": {
-                    "1": "Na Androidu klikněte na tlačítko stahování, poté na nové stránce <bold>klepněte a podržte</bold> na videu a poté vyberte <bold>uložit</bold>.",
-                    "shortTitle": "Stahování / Android",
-                    "title": "Stahování na Androidu"
-                },
-                "onIos": {
-                    "1": "Na iOS klikněte na tlačítko stahování a poté na nové stránce klikněte na <bold><ios_share /></bold> a poté na <bold>Uložit do souborů <ios_files /></bold>.",
-                    "shortTitle": "Stahování / iOS",
-                    "title": "Stahování na iOS"
-                },
-                "onPc": {
-                    "1": "Na počítači klikněte na tlačítko stahování, poté na nové stránce klikněte pravým tlačítkem na video a vyberte <bold>Uložit video jako</bold>",
-                    "shortTitle": "Stahování / počítač",
-                    "title": "Stahování na počítači"
-                },
-                "title": "Stáhnout"
-            },
-            "episodes": {
-                "button": "Epizody",
-                "emptyState": "V této sezóně nejsou žádné epizody, vraťte se později!",
-                "episodeBadge": "E{{episode}}",
-                "loadingError": "Chyba při načítání sezóny",
-                "loadingList": "Načítání...",
-                "loadingTitle": "Načítání...",
-                "unairedEpisodes": "Jedna nebo více epizod v této sezóně nejsou dostupné, protože ještě nebyly odvysílány."
-            },
-            "playback": {
-                "speedLabel": "Rychlost přehrávání",
-                "title": "Nastavení přehrávání"
-            },
-            "quality": {
-                "automaticLabel": "Automatická kvalita",
-                "hint": "Chcete-li získat jinou kvalitu, můžete zkusit <0>přepnout zdroj</0>.",
-                "iosNoQuality": "Kvůli omezením definovaným společností Apple není pro tento zdroj v iOS k dispozici výběr kvality. Chcete-li získat jinou kvalitu, můžete zkusit <0>přepnout zdroj</0>.",
-                "title": "Kvalita"
-            },
-            "settings": {
-                "downloadItem": "Stáhnout",
-                "enableSubtitles": "Zapnout titulky",
-                "experienceSection": "Zážitek sledování",
-                "playbackItem": "Nastavení přehrávání",
-                "qualityItem": "Kvalita",
-                "sourceItem": "Zdroje videa",
-                "subtitleItem": "Nastavení titulků",
-                "videoSection": "Nastavení videa"
-            },
-            "sources": {
-                "failed": {
-                    "text": "Při pokusu o nalezení videí došlo k chybě. Zkuste prosím jiný zdroj.",
-                    "title": "Nepodařilo se extrahovat data"
-                },
-                "noEmbeds": {
-                    "text": "Nepodařilo se nám najít žádný vklad, zkuste prosím jiný zdroj.",
-                    "title": "Žádné vklady"
-                },
-                "noStream": {
-                    "text": "Tento zdroj nemá pro tento film nebo pořad žádné proudy média.",
-                    "title": "Žádný proud média"
-                },
-                "title": "Zdroje",
-                "unknownOption": "Neznámý"
-            },
-            "subtitles": {
-                "customChoice": "Vybrat titulky ze souboru",
-                "customizeLabel": "Přizpůsobit",
-                "offChoice": "Vypnuto",
-                "settings": {
-                    "backlink": "Vlastní titulky",
-                    "delay": "Posunutí titulků",
-                    "fixCapitals": "Opravit velká písmena"
-                },
-                "title": "Titulky",
-                "unknownLanguage": "Neznámé"
-            }
-        },
-        "metadata": {
-            "api": {
-                "text": "Metadata API nelze načíst, zkontrolujte prosím vaše připojení k internetu.",
-                "title": "Nepodařilo se načíst API metadata"
-            },
-            "dmca": {
-                "badge": "Odstraněno",
-                "text": "Toto média není dostupné, kvůli oznámení o zastavení šíření nebo nároku na autorská práva.",
-                "title": "Média byla odstraněna"
-            },
-            "extensionPermission": {
-                "badge": "Chybí povolení",
-                "button": "Použít rozšíření",
-                "text": "Máte rozšíření, ale k jeho použití potřebujeme vaše povolení.",
-                "title": "Konfigurace rozšíření"
-            },
-            "failed": {
-                "badge": "Neúspěšný",
-                "homeButton": "Jít domů",
-                "text": "Nelze načíst metadata média z TMDB. Zkontrolujte, zda není TMDB nefunkční nebo blokovaný na vašem internetovém připojení.",
-                "title": "Načtení metadat se nezdařilo"
-            },
-            "notFound": {
-                "badge": "Nenalezeno",
-                "homeButton": "Zpátky domů",
-                "text": "Nemohli jsme najít média o které jste požádali. Buď bylo odstraňeno, nebo jste manipulovali s URL.",
-                "title": "Nemohli jsme najít Vaše média."
-            }
-        },
-        "nextEpisode": {
-            "cancel": "Zrušit",
-            "next": "Další epizoda"
-        },
-        "playbackError": {
-            "badge": "Chyba přehrávání",
-            "errors": {
-                "errorAborted": "Načítání média bylo přerušeno uživatelem.",
-                "errorDecode": "Navzdory tomu, že bylo dříve určeno jako použitelné došlo při pokusu o dekódování média k chybě.",
-                "errorGenericMedia": "Nastala chyba neznámého média.",
-                "errorNetwork": "Nastala nějaká chyba síťě, která zabránila načtení média, přestože bylo předtím dostupné.",
-                "errorNotSupported": "Médium nebo poskytovatel média není podporovaný."
-            },
-            "homeButton": "Jít domů",
-            "text": "Nastala chyba při přehrávání média. Prosíme skuste to znovu.",
-            "title": "Video se nepodařilo přehrát!"
-        },
-        "scraping": {
-            "items": {
-                "failure": "Nastala chyba",
-                "notFound": "Nemá toto video",
-                "pending": "Ověřování videí..."
-            },
-            "notFound": {
-                "badge": "Nenalezeno",
-                "detailsButton": "Zobrazit podrobnosti",
-                "homeButton": "Jít domů",
-                "text": "Prohledali jsme naše poskytovatele a nenašli jsme média, která hledáte! Nehostujeme žádné média a nemáme žádnou kontrolu nad tím, co je k dispozici. Pro více podrobností klikněte níže na 'Zobrazit podrobnosti'.",
-                "title": "Nedokázali jsme to najít"
-            }
-        },
-        "time": {
-            "regular": "{{timeWatched}} / {{duration}}",
-            "remaining": "{{timeLeft}} zbývá • Dokončeno v {{timeFinished, datetime}}",
-            "shortRegular": "{{timeWatched}}",
-            "shortRemaining": "-{{timeLeft}}"
-        },
-        "turnstile": {
-            "description": "Ověřte, prosím, že jste člověk, vyplněním Captchy napravo. Toto je pro zajištění bezpečnosti sudo-flix!",
-            "error": "Nepodařilo se ověřit vaši lidskost. Zkuste to prosím znovu.",
-            "title": "Potřebujeme ověřit, zda jste člověk.",
-            "verifyingHumanity": "Ověřování vaši lidskosti..."
-        }
-    },
-    "screens": {
-        "dmca": {
-            "text": "Vítejte na DMCA kontaktní stránce sudo-flixu! Respektujeme práva duševního vlastnictví a chceme rychle řešit jakékoli problémy s autorským právem. Pokud se domníváte, že vaše dílo chráněné autorskými právy bylo na naší platformě neoprávněně použito, zašlete prosím podrobné oznámení DMCA na níže uvedený e-mail. Uveďte prosím popis materiálu chráněného autorským právem, své kontaktní údaje a prohlášení o dobré víře. Jsme odhodláni tyto záležitosti rychle vyřešit a oceňujeme vaši spolupráci při udržování sudo-flixu jako místa, které respektuje kreativitu a autorská práva.",
-            "title": "DMCA"
-        },
-        "loadingApp": "Načítání aplikace",
-        "loadingUser": "Načítání vášeho profilu",
-        "loadingUserError": {
-            "logout": "Odhlásit se",
-            "reset": "Resetovat vlastní server",
-            "text": "Nezdařilo se načíst váš profil",
-            "textWithReset": "Nezdařilo se načíst váš profil z vašeho serveru, chcete ho přepnout na výchozí server?"
-        },
-        "migration": {
-            "failed": "Migrace dat se nezdařila.",
-            "inProgress": "Počkejte prosím, migrujeme vaše data. Nemělo by to trvat dlouho."
-        }
-    },
-    "settings": {
-        "account": {
-            "accountDetails": {
-                "deviceNameLabel": "Název zařízení",
-                "deviceNamePlaceholder": "Osobní telefon",
-                "editProfile": "Upravit",
-                "logoutButton": "Odhlásit se"
-            },
-            "actions": {
-                "delete": {
-                    "button": "Smazat účet",
-                    "confirmButton": "Smazat účet",
-                    "confirmDescription": "Jste si jisti, že chcete smazat váš účet? Všechny data budou ztracena!",
-                    "confirmTitle": "Jste si jisti?",
-                    "text": "Tato akce nejde vrátit. Všechny data budou smazána a nic nepůjde zachránit.",
-                    "title": "Smazat účet"
-                },
-                "title": "Akce"
-            },
-            "devices": {
-                "deviceNameLabel": "Název zařízení",
-                "failed": "Načtení relací se nezdařilo",
-                "removeDevice": "Odstranit",
-                "title": "Zařízení"
-            },
-            "profile": {
-                "finish": "Dokončit",
-                "firstColor": "První barva profilu",
-                "secondColor": "Druhá barva profilu",
-                "title": "Upravit profilovou fotografii",
-                "userIcon": "Ikona uživatele"
-            },
-            "register": {
-                "cta": "Začněte",
-                "text": "Sdílejte průběh sledování mezi zařízeními a udržujte je synchronizovaná.",
-                "title": "Synchronizace do cloudu"
-            },
-            "title": "Účet"
-        },
-        "appearance": {
-            "activeTheme": "Aktivní",
-            "themes": {
-                "blue": "Modrá",
-                "default": "Výchozí",
-                "gray": "Šedá",
-                "red": "Červená",
-                "teal": "Modrozelená"
-            },
-            "title": "Vzhled"
-        },
-        "connections": {
-            "server": {
-                "description": "Pokud se chcete připojit k vlastnímu backendu pro ukládání dat, povolte toto a zadejte URL adresu. <0>Instrukce.</0>",
-                "label": "Vlastní server",
-                "urlLabel": "URL adresa vlastního serveru"
-            },
-            "setup": {
-                "doSetup": "Proveďte nastavení",
-                "errorStatus": {
-                    "description": "Vypadá to, že jedna nebo více položek v tomto nastavení potřebuje vaši pozornost.",
-                    "title": "Něco potřebuje vaši pozornost"
-                },
-                "itemError": "S tímto nastavením je něco špatně. Projděte znovu nastavením abyste to opravili.",
-                "items": {
-                    "default": "Výchozí nastavení",
-                    "extension": "Rozšíření",
-                    "proxy": "Vlastní proxy"
-                },
-                "redoSetup": "Proveďte znovu nastavení",
-                "successStatus": {
-                    "description": "Všechny věci jsou připraveny, abyste mohli začít sledovat svá oblíbená média.",
-                    "title": "Všechno je nastaveno!"
-                },
-                "unsetStatus": {
-                    "description": "Prosím klikněte na vedlejší tlačítko abyste začali proces nastavování.",
-                    "title": "Neprošli jste nastavením"
-                }
-            },
-            "title": "Spojení",
-            "workers": {
-                "addButton": "Přidat nového pracovníka",
-                "description": "Aby byla aplikace funkční, veškerá trafika prochází přes proxy. Povolte toto, pokud chcete používat svoje vlastní pracovníky. <0>Instrukce.</0>",
-                "emptyState": "Zatím žádní pracovníci, přidej jednoho dolů",
-                "label": "Použít vlastní proxy pracovníky",
-                "urlLabel": "URL adresy pracovníků",
-                "urlPlaceholder": "https://"
-            }
-        },
-        "preferences": {
-            "language": "Jazyk aplikace",
-            "languageDescription": "Jazyk aplikován na celou aplikaci.",
-            "thumbnail": "Generovat miniatury",
-            "thumbnailDescription": "Videa většinou nemají miniatury. Toto nastavení můžete povolit, ale mohou zpomalit vaše video.",
-            "thumbnailLabel": "Generovat miniatury",
-            "title": "Preference"
-        },
-        "reset": "Resetovat",
-        "save": "Uložit",
-        "sidebar": {
-            "info": {
-                "appVersion": "Verze aplikace",
-                "backendUrl": "URL backendu",
-                "backendVersion": "Verze backendu",
-                "hostname": "Název hostitele",
-                "insecure": "nebezpečný",
-                "notLoggedIn": "Nejste přihlášen",
-                "secure": "bezpečný",
-                "title": "Informace o aplikaci",
-                "unknownVersion": "Neznámo",
-                "userId": "Uživatelské ID"
-            }
-        },
-        "subtitles": {
-            "backgroundBlurLabel": "Rozostření pozadí",
-            "backgroundLabel": "Neprůhlednost pozadí",
-            "colorLabel": "Barva",
-            "previewQuote": "Nesmím se bát. Strach zabíjí myšlení.",
-            "textSizeLabel": "Velikost textu",
-            "title": "Titulky"
-        },
-        "unsaved": "Máte neuložené změny"
+      },
+      "title": "Pojďme vám nastavit sudo-flix"
     }
+  },
+  "overlays": {
+    "close": "Zavřít"
+  },
+  "player": {
+    "back": {
+      "default": "Zpátky domů",
+      "short": "Zpět"
+    },
+    "casting": {
+      "enabled": "Odesílání do zařízení..."
+    },
+    "menus": {
+      "downloads": {
+        "disclaimer": "Stahování probíhá přímo u poskytovatele. sudo-flix nemá kontrolu nad tím, jak jsou stahování poskytovány.",
+        "downloadSubtitle": "Stáhnout aktuální titulky",
+        "downloadVideo": "Stáhnout video",
+        "hlsDisclaimer": "Stahování probíhá přímo u poskytovatele. sudo-flix nemá kontrolu nad tím, jak jsou stahování poskytovány.<br /><br />Vezměte prosím na vědomí, že stahujete HLS playlist,<bold> který není doporučen stahovat pokud nejste obeznámeni s pokročilým streamováním médií</bold>. Raději skuste jiný zdroj pro jiný formát.",
+        "onAndroid": {
+          "1": "Na Androidu klikněte na tlačítko stahování, poté na nové stránce <bold>klepněte a podržte</bold> na videu a poté vyberte <bold>uložit</bold>.",
+          "shortTitle": "Stahování / Android",
+          "title": "Stahování na Androidu"
+        },
+        "onIos": {
+          "1": "Na iOS klikněte na tlačítko stahování a poté na nové stránce klikněte na <bold><ios_share /></bold> a poté na <bold>Uložit do souborů <ios_files /></bold>.",
+          "shortTitle": "Stahování / iOS",
+          "title": "Stahování na iOS"
+        },
+        "onPc": {
+          "1": "Na počítači klikněte na tlačítko stahování, poté na nové stránce klikněte pravým tlačítkem na video a vyberte <bold>Uložit video jako</bold>",
+          "shortTitle": "Stahování / počítač",
+          "title": "Stahování na počítači"
+        },
+        "title": "Stáhnout"
+      },
+      "episodes": {
+        "button": "Epizody",
+        "emptyState": "V této sezóně nejsou žádné epizody, vraťte se později!",
+        "episodeBadge": "E{{episode}}",
+        "loadingError": "Chyba při načítání sezóny",
+        "loadingList": "Načítání...",
+        "loadingTitle": "Načítání...",
+        "unairedEpisodes": "Jedna nebo více epizod v této sezóně nejsou dostupné, protože ještě nebyly odvysílány."
+      },
+      "playback": {
+        "speedLabel": "Rychlost přehrávání",
+        "title": "Nastavení přehrávání"
+      },
+      "quality": {
+        "automaticLabel": "Automatická kvalita",
+        "hint": "Chcete-li získat jinou kvalitu, můžete zkusit <0>přepnout zdroj</0>.",
+        "iosNoQuality": "Kvůli omezením definovaným společností Apple není pro tento zdroj v iOS k dispozici výběr kvality. Chcete-li získat jinou kvalitu, můžete zkusit <0>přepnout zdroj</0>.",
+        "title": "Kvalita"
+      },
+      "settings": {
+        "downloadItem": "Stáhnout",
+        "enableSubtitles": "Zapnout titulky",
+        "experienceSection": "Zážitek sledování",
+        "playbackItem": "Nastavení přehrávání",
+        "qualityItem": "Kvalita",
+        "sourceItem": "Zdroje videa",
+        "subtitleItem": "Nastavení titulků",
+        "videoSection": "Nastavení videa"
+      },
+      "sources": {
+        "failed": {
+          "text": "Při pokusu o nalezení videí došlo k chybě. Zkuste prosím jiný zdroj.",
+          "title": "Nepodařilo se extrahovat data"
+        },
+        "noEmbeds": {
+          "text": "Nepodařilo se nám najít žádný vklad, zkuste prosím jiný zdroj.",
+          "title": "Žádné vklady"
+        },
+        "noStream": {
+          "text": "Tento zdroj nemá pro tento film nebo pořad žádné proudy média.",
+          "title": "Žádný proud média"
+        },
+        "title": "Zdroje",
+        "unknownOption": "Neznámý"
+      },
+      "subtitles": {
+        "customChoice": "Vybrat titulky ze souboru",
+        "customizeLabel": "Přizpůsobit",
+        "offChoice": "Vypnuto",
+        "settings": {
+          "backlink": "Vlastní titulky",
+          "delay": "Posunutí titulků",
+          "fixCapitals": "Opravit velká písmena"
+        },
+        "title": "Titulky",
+        "unknownLanguage": "Neznámé"
+      }
+    },
+    "metadata": {
+      "api": {
+        "text": "Metadata API nelze načíst, zkontrolujte prosím vaše připojení k internetu.",
+        "title": "Nepodařilo se načíst API metadata"
+      },
+      "dmca": {
+        "badge": "Odstraněno",
+        "text": "Toto média není dostupné, kvůli oznámení o zastavení šíření nebo nároku na autorská práva.",
+        "title": "Média byla odstraněna"
+      },
+      "extensionPermission": {
+        "badge": "Chybí povolení",
+        "button": "Použít rozšíření",
+        "text": "Máte rozšíření, ale k jeho použití potřebujeme vaše povolení.",
+        "title": "Konfigurace rozšíření"
+      },
+      "failed": {
+        "badge": "Neúspěšný",
+        "homeButton": "Jít domů",
+        "text": "Nelze načíst metadata média z TMDB. Zkontrolujte, zda není TMDB nefunkční nebo blokovaný na vašem internetovém připojení.",
+        "title": "Načtení metadat se nezdařilo"
+      },
+      "notFound": {
+        "badge": "Nenalezeno",
+        "homeButton": "Zpátky domů",
+        "text": "Nemohli jsme najít média o které jste požádali. Buď bylo odstraňeno, nebo jste manipulovali s URL.",
+        "title": "Nemohli jsme najít Vaše média."
+      }
+    },
+    "nextEpisode": {
+      "cancel": "Zrušit",
+      "next": "Další epizoda"
+    },
+    "playbackError": {
+      "badge": "Chyba přehrávání",
+      "errors": {
+        "errorAborted": "Načítání média bylo přerušeno uživatelem.",
+        "errorDecode": "Navzdory tomu, že bylo dříve určeno jako použitelné došlo při pokusu o dekódování média k chybě.",
+        "errorGenericMedia": "Nastala chyba neznámého média.",
+        "errorNetwork": "Nastala nějaká chyba síťě, která zabránila načtení média, přestože bylo předtím dostupné.",
+        "errorNotSupported": "Médium nebo poskytovatel média není podporovaný."
+      },
+      "homeButton": "Jít domů",
+      "text": "Nastala chyba při přehrávání média. Prosíme skuste to znovu.",
+      "title": "Video se nepodařilo přehrát!"
+    },
+    "scraping": {
+      "items": {
+        "failure": "Nastala chyba",
+        "notFound": "Nemá toto video",
+        "pending": "Ověřování videí..."
+      },
+      "notFound": {
+        "badge": "Nenalezeno",
+        "detailsButton": "Zobrazit podrobnosti",
+        "homeButton": "Jít domů",
+        "text": "Prohledali jsme naše poskytovatele a nenašli jsme média, která hledáte! Nehostujeme žádné média a nemáme žádnou kontrolu nad tím, co je k dispozici. Pro více podrobností klikněte níže na 'Zobrazit podrobnosti'.",
+        "title": "Nedokázali jsme to najít"
+      }
+    },
+    "time": {
+      "regular": "{{timeWatched}} / {{duration}}",
+      "remaining": "{{timeLeft}} zbývá • Dokončeno v {{timeFinished, datetime}}",
+      "shortRegular": "{{timeWatched}}",
+      "shortRemaining": "-{{timeLeft}}"
+    },
+    "turnstile": {
+      "description": "Ověřte, prosím, že jste člověk, vyplněním Captchy napravo. Toto je pro zajištění bezpečnosti sudo-flix!",
+      "error": "Nepodařilo se ověřit vaši lidskost. Zkuste to prosím znovu.",
+      "title": "Potřebujeme ověřit, zda jste člověk.",
+      "verifyingHumanity": "Ověřování vaši lidskosti..."
+    }
+  },
+  "screens": {
+    "dmca": {
+      "text": "Vítejte na DMCA kontaktní stránce sudo-flixu! Respektujeme práva duševního vlastnictví a chceme rychle řešit jakékoli problémy s autorským právem. Pokud se domníváte, že vaše dílo chráněné autorskými právy bylo na naší platformě neoprávněně použito, zašlete prosím podrobné oznámení DMCA na níže uvedený e-mail. Uveďte prosím popis materiálu chráněného autorským právem, své kontaktní údaje a prohlášení o dobré víře. Jsme odhodláni tyto záležitosti rychle vyřešit a oceňujeme vaši spolupráci při udržování sudo-flixu jako místa, které respektuje kreativitu a autorská práva.",
+      "title": "DMCA"
+    },
+    "loadingApp": "Načítání aplikace",
+    "loadingUser": "Načítání vášeho profilu",
+    "loadingUserError": {
+      "logout": "Odhlásit se",
+      "reset": "Resetovat vlastní server",
+      "text": "Nezdařilo se načíst váš profil",
+      "textWithReset": "Nezdařilo se načíst váš profil z vašeho serveru, chcete ho přepnout na výchozí server?"
+    },
+    "migration": {
+      "failed": "Migrace dat se nezdařila.",
+      "inProgress": "Počkejte prosím, migrujeme vaše data. Nemělo by to trvat dlouho."
+    }
+  },
+  "settings": {
+    "account": {
+      "accountDetails": {
+        "deviceNameLabel": "Název zařízení",
+        "deviceNamePlaceholder": "Osobní telefon",
+        "editProfile": "Upravit",
+        "logoutButton": "Odhlásit se"
+      },
+      "actions": {
+        "delete": {
+          "button": "Smazat účet",
+          "confirmButton": "Smazat účet",
+          "confirmDescription": "Jste si jisti, že chcete smazat váš účet? Všechny data budou ztracena!",
+          "confirmTitle": "Jste si jisti?",
+          "text": "Tato akce nejde vrátit. Všechny data budou smazána a nic nepůjde zachránit.",
+          "title": "Smazat účet"
+        },
+        "title": "Akce"
+      },
+      "devices": {
+        "deviceNameLabel": "Název zařízení",
+        "failed": "Načtení relací se nezdařilo",
+        "removeDevice": "Odstranit",
+        "title": "Zařízení"
+      },
+      "profile": {
+        "finish": "Dokončit",
+        "firstColor": "První barva profilu",
+        "secondColor": "Druhá barva profilu",
+        "title": "Upravit profilovou fotografii",
+        "userIcon": "Ikona uživatele"
+      },
+      "register": {
+        "cta": "Začněte",
+        "text": "Sdílejte průběh sledování mezi zařízeními a udržujte je synchronizovaná.",
+        "title": "Synchronizace do sudo-cloudu"
+      },
+      "title": "Účet"
+    },
+    "appearance": {
+      "activeTheme": "Aktivní",
+      "themes": {
+        "blue": "Modrá",
+        "default": "Výchozí",
+        "gray": "Šedá",
+        "red": "Červená",
+        "teal": "Modrozelená"
+      },
+      "title": "Vzhled"
+    },
+    "connections": {
+      "server": {
+        "description": "Pokud se chcete připojit k vlastnímu backendu pro ukládání dat, povolte toto a zadejte URL adresu. <0>Instrukce.</0>",
+        "label": "Vlastní server",
+        "urlLabel": "URL adresa vlastního serveru"
+      },
+      "setup": {
+        "doSetup": "Proveďte nastavení",
+        "errorStatus": {
+          "description": "Vypadá to, že jedna nebo více položek v tomto nastavení potřebuje vaši pozornost.",
+          "title": "Něco potřebuje vaši pozornost"
+        },
+        "itemError": "S tímto nastavením je něco špatně. Projděte znovu nastavením abyste to opravili.",
+        "items": {
+          "default": "Výchozí nastavení",
+          "extension": "Rozšíření",
+          "proxy": "Vlastní proxy"
+        },
+        "redoSetup": "Proveďte znovu nastavení",
+        "successStatus": {
+          "description": "Všechny věci jsou připraveny, abyste mohli začít sledovat svá oblíbená média.",
+          "title": "Všechno je nastaveno!"
+        },
+        "unsetStatus": {
+          "description": "Prosím klikněte na vedlejší tlačítko abyste začali proces nastavování.",
+          "title": "Neprošli jste nastavením"
+        }
+      },
+      "title": "Spojení",
+      "workers": {
+        "addButton": "Přidat nového pracovníka",
+        "description": "Aby byla aplikace funkční, veškerá trafika prochází přes proxy. Povolte toto, pokud chcete používat svoje vlastní pracovníky. <0>Instrukce.</0>",
+        "emptyState": "Zatím žádní pracovníci, přidej jednoho dolů",
+        "label": "Použít vlastní proxy pracovníky",
+        "urlLabel": "URL adresy pracovníků",
+        "urlPlaceholder": "https://"
+      }
+    },
+    "preferences": {
+      "language": "Jazyk aplikace",
+      "languageDescription": "Jazyk aplikován na celou aplikaci.",
+      "thumbnail": "Generovat miniatury",
+      "thumbnailDescription": "Videa většinou nemají miniatury. Toto nastavení můžete povolit, ale mohou zpomalit vaše video.",
+      "thumbnailLabel": "Generovat miniatury",
+      "title": "Preference"
+    },
+    "reset": "Resetovat",
+    "save": "Uložit",
+    "sidebar": {
+      "info": {
+        "appVersion": "Verze aplikace",
+        "backendUrl": "URL backendu",
+        "backendVersion": "Verze backendu",
+        "hostname": "Název hostitele",
+        "insecure": "nebezpečný",
+        "notLoggedIn": "Nejste přihlášen",
+        "secure": "bezpečný",
+        "title": "Informace o aplikaci",
+        "unknownVersion": "Neznámo",
+        "userId": "Uživatelské ID"
+      }
+    },
+    "subtitles": {
+      "backgroundBlurLabel": "Rozostření pozadí",
+      "backgroundLabel": "Neprůhlednost pozadí",
+      "colorLabel": "Barva",
+      "previewQuote": "Nesmím se bát. Strach zabíjí myšlení.",
+      "textSizeLabel": "Velikost textu",
+      "title": "Titulky"
+    },
+    "unsaved": "Máte neuložené změny"
+  }
 }

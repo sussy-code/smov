@@ -110,8 +110,8 @@ export default createTheme({
         main: tokens.black.c75,
         secondary: tokens.black.c75,
         secondaryHover: tokens.black.c75,
-        accentA: tokens.black.c75,
-        accentB: tokens.black.c75
+        accentA: tokens.purple.c600,
+        accentB: tokens.black.c100
       },
 
       modal: {

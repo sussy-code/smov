@@ -59,7 +59,7 @@ export default defineConfig(({ mode }) => {
         registerType: "autoUpdate",
         workbox: {
           maximumFileSizeToCacheInBytes: 4000000, // 4mb
-          globIgnores: ["**ping.txt**"],
+          globIgnores: ["!assets/**/*"],
         },
         includeAssets: [
           "favicon.ico",
