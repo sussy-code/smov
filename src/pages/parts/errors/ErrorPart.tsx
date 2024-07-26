@@ -50,6 +50,13 @@ export function ErrorPart(props: { error: any; errorInfo: any }) {
               >
                 {t("errors.showError")}
               </ButtonPlain>
+              <ButtonPlain
+                theme="purple"
+                className="mt-6 p-2.5 md:px-12"
+                onClick={() => window.location.assign("/")}
+              >
+                {t("player.metadata.failed.homeButton")}
+              </ButtonPlain>
             </div>
           </ErrorContainer>
         </ErrorLayout>
