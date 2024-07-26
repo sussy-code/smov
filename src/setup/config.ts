@@ -52,8 +52,7 @@ const env: Record<keyof Config, undefined | string> = {
   GITHUB_LINK: undefined,
   DISCORD_LINK: undefined,
   TWITTER_LINK: undefined,
-  ONBOARDING_CHROME_EXTENSION_INSTALL_LINK:
-    "https://docs.undi.rest/extension",
+  ONBOARDING_CHROME_EXTENSION_INSTALL_LINK: "https://docs.undi.rest/extension",
   ONBOARDING_FIREFOX_EXTENSION_INSTALL_LINK: import.meta.env
     .VITE_ONBOARDING_FIREFOX_EXTENSION_INSTALL_LINK,
   ONBOARDING_PROXY_INSTALL_LINK: import.meta.env
