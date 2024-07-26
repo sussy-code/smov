@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { useCallback } from "react";
+import { useCallback, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
@@ -12,6 +12,9 @@ import { MediaItem } from "@/utils/mediaTypes";
 import { MediaBookmarkButton } from "./MediaBookmark";
 import { IconPatch } from "../buttons/IconPatch";
 import { Icons } from "../Icon";
+
+// Constants
+const LONG_PRESS_DURATION = 1000; // 1 second
 
 export interface MediaCardProps {
   media: MediaItem;
@@ -175,6 +178,7 @@ function MediaCardContent({
 
 export function MediaCard(props: MediaCardProps) {
   const content = <MediaCardContent {...props} />;
+  const pressTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   const isReleased = useCallback(
     () => checkReleased(props.media),
@@ -196,6 +200,36 @@ export function MediaCard(props: MediaCardProps) {
     }
   }
 
+  const handleLongPress = () => {
+    // Programmatically click the edit button
+    const editButton = document.getElementById("edit-button");
+    if (editButton) {
+      (editButton as HTMLButtonElement).click();
+    }
+  };
+
+  const handleTouchStart = () => {
+    pressTimerRef.current = setTimeout(handleLongPress, LONG_PRESS_DURATION);
+  };
+
+  const handleTouchEnd = () => {
+    if (pressTimerRef.current) {
+      clearTimeout(pressTimerRef.current);
+      pressTimerRef.current = null;
+    }
+  };
+
+  const handleMouseDown = () => {
+    pressTimerRef.current = setTimeout(handleLongPress, LONG_PRESS_DURATION);
+  };
+
+  const handleMouseUp = () => {
+    if (pressTimerRef.current) {
+      clearTimeout(pressTimerRef.current);
+      pressTimerRef.current = null;
+    }
+  };
+
   if (!canLink) return <span>{content}</span>;
   return (
     <Link
@@ -205,6 +239,10 @@ export function MediaCard(props: MediaCardProps) {
         "tabbable",
         props.closable ? "hover:cursor-default" : "",
       )}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
     >
       {content}
     </Link>
