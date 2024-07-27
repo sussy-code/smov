@@ -145,11 +145,11 @@ function MediaCardContent({
             </>
           ) : null}
 
-          {searchQuery.length > 0 ? (
+          {true && (
             <div className="absolute" onClick={(e) => e.preventDefault()}>
               <MediaBookmarkButton media={media} />
             </div>
-          ) : null}
+          )}
 
           <div
             className={`absolute inset-0 flex items-center justify-center bg-mediaCard-badge bg-opacity-80 transition-opacity duration-500 ${
