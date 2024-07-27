@@ -8,9 +8,6 @@ body {
   min-height: 100vh;
   min-height: 100dvh;
   font-size: 1.0248em;
-  touch-action: none; /* Standard */
-  -ms-touch-action: none; /* Internet Explorer 10 and 11 */
-  -webkit-touch-callout: none; /* Safari */
 }
 
 html[data-full],
