@@ -14,7 +14,7 @@ import { IconPatch } from "../buttons/IconPatch";
 import { Icons } from "../Icon";
 
 // Constants
-const LONG_PRESS_DURATION = 1000; // 1 second
+const LONG_PRESS_DURATION = 500; // 0.5 seconds
 
 export interface MediaCardProps {
   media: MediaItem;
