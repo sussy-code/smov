@@ -88,7 +88,7 @@ function MediaCardContent({
         })}
       />
       <Flare.Child
-        className={`pointer-events-auto relative mb-2 p-[0.4em] transition-transform duration-300 no-touch-action ${
+        className={`pointer-events-auto relative mb-2 p-[0.4em] transition-transform duration-300 ${
           canLink ? "group-hover:scale-95" : "opacity-60"
         }`}
       >
