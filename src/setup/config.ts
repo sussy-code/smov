@@ -52,8 +52,7 @@ const env: Record<keyof Config, undefined | string> = {
   GITHUB_LINK: undefined,
   DISCORD_LINK: undefined,
   TWITTER_LINK: undefined,
-  ONBOARDING_CHROME_EXTENSION_INSTALL_LINK:
-    "https://docs.sudo-flix.lol/extension",
+  ONBOARDING_CHROME_EXTENSION_INSTALL_LINK: "https://docs.undi.rest/extension",
   ONBOARDING_FIREFOX_EXTENSION_INSTALL_LINK: import.meta.env
     .VITE_ONBOARDING_FIREFOX_EXTENSION_INSTALL_LINK,
   ONBOARDING_PROXY_INSTALL_LINK: import.meta.env
@@ -97,11 +96,11 @@ export function conf(): RuntimeConfig {
     DMCA_EMAIL: getKey("DMCA_EMAIL"),
     ONBOARDING_CHROME_EXTENSION_INSTALL_LINK: getKey(
       "ONBOARDING_CHROME_EXTENSION_INSTALL_LINK",
-      "https://docs.sudo-flix.lol/extension",
+      "https://docs.undi.rest/extension",
     ),
     ONBOARDING_FIREFOX_EXTENSION_INSTALL_LINK: getKey(
       "ONBOARDING_FIREFOX_EXTENSION_INSTALL_LINK",
-      "https://docs.sudo-flix.lol/extension",
+      "https://docs.undi.rest/extension",
     ),
     ONBOARDING_PROXY_INSTALL_LINK: getKey("ONBOARDING_PROXY_INSTALL_LINK"),
     BACKEND_URL: getKey("BACKEND_URL", BACKEND_URL),
