@@ -5,3 +5,9 @@
 .hover\:flare-enabled:hover .flare-light {
   opacity: 1 !important;
 }
+
+.no-touch-action {
+  touch-action: none; /* Standard */
+  -ms-touch-action: none; /* Internet Explorer 10 and 11 */
+  -webkit-touch-callout: none; /* Safari */
+}
