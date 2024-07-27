@@ -73,7 +73,7 @@ function MediaCardContent({
 
   return (
     <Flare.Base
-      className={`group -m-[0.705em] rounded-xl bg-background-main transition-colors duration-300 focus:relative focus:z-10 ${
+      className={`group -m-[0.705em] rounded-xl bg-background-main transition-colors duration-300 focus:relative focus:z-10 no-touch-action ${
         canLink
           ? "hover:bg-mediaCard-hoverBackground tabbable no-touch-action"
           : ""
@@ -86,11 +86,12 @@ function MediaCardContent({
         cssColorVar="--colors-mediaCard-hoverAccent"
         backgroundClass="bg-mediaCard-hoverBackground duration-100"
         className={classNames({
-          "rounded-xl bg-background-main group-hover:opacity-100": canLink,
+          "rounded-xl bg-background-main group-hover:opacity-100 no-touch-action":
+            canLink,
         })}
       />
       <Flare.Child
-        className={`pointer-events-auto relative mb-2 p-[0.4em] transition-transform duration-300 ${
+        className={`no-touch-action pointer-events-auto relative mb-2 p-[0.4em] transition-transform duration-300 no-touch-action ${
           canLink ? "group-hover:scale-95" : "opacity-60"
         }`}
       >

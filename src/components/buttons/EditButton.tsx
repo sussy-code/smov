@@ -42,7 +42,7 @@ export function EditButton(props: EditButtonProps) {
         <button
           type="button"
           onClick={onClick}
-          className="fixed bottom-9 right-7 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-background-secondary text-white transition-[background-color,transform,box-shadow] hover:bg-background-secondaryHover hover:scale-110 cursor-pointer"
+          className="fixed bottom-9 right-7 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-background-secondary text-white border-2 border-green-500 transition-[background-color,transform,box-shadow] hover:bg-background-secondaryHover hover:scale-110 cursor-pointer"
         >
           <Icon icon={Icons.CHECKMARK} />
         </button>
