@@ -41,7 +41,7 @@ importers:
         version: 0.7.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@movie-web/providers':
         specifier: github:sussy-code/providers
-        version: https://codeload.github.com/sussy-code/providers/tar.gz/412b42585f1b50a0ba25deef932a462171743e6c
+        version: https://codeload.github.com/sussy-code/providers/tar.gz/d261a3baab252d2474c930169e149dfa5fda8075
       '@noble/hashes':
         specifier: ^1.4.0
         version: 1.4.0
@@ -1202,8 +1202,8 @@ packages:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
 
-  '@movie-web/providers@https://codeload.github.com/sussy-code/providers/tar.gz/412b42585f1b50a0ba25deef932a462171743e6c':
-    resolution: {tarball: https://codeload.github.com/sussy-code/providers/tar.gz/412b42585f1b50a0ba25deef932a462171743e6c}
+  '@movie-web/providers@https://codeload.github.com/sussy-code/providers/tar.gz/d261a3baab252d2474c930169e149dfa5fda8075':
+    resolution: {tarball: https://codeload.github.com/sussy-code/providers/tar.gz/d261a3baab252d2474c930169e149dfa5fda8075}
     version: 2.3.0
 
   '@noble/hashes@1.4.0':
@@ -4043,8 +4043,8 @@ packages:
   vscode-languageserver-protocol@3.16.0:
     resolution: {integrity: sha512-sdeUoAawceQdgIfTI+sdcwkiK2KU+2cbEYA0agzM2uqaUy2UpnnGHtWTHVEtS0ES4zHU0eMFRGN+oQgDxlD66A==}
 
-  vscode-languageserver-textdocument@1.0.11:
-    resolution: {integrity: sha512-X+8T3GoiwTVlJbicx/sIAF+yuJAqz8VvwJyoMVhwEMoEKE/fkDmrqUgDMyBECcM2A2frVZIUj5HI/ErRXCfOeA==}
+  vscode-languageserver-textdocument@1.0.12:
+    resolution: {integrity: sha512-cxWNPesCnQCcMPeenjKKsOCKQZ/L6Tv19DTRIGuLWe32lyzWhihGVJ/rcckZXJxfdKCFvRLS3fpBIsV/ZGX4zA==}
 
   vscode-languageserver-types@3.16.0:
     resolution: {integrity: sha512-k8luDIWJWyenLc5ToFQQMaSrqCHiLwyKPHKPQZ5zz21vM+vIVUSvsRpcbiECH4WR88K2XZqc4ScRcZ7nk/jbeA==}
@@ -5259,7 +5259,7 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@movie-web/providers@https://codeload.github.com/sussy-code/providers/tar.gz/412b42585f1b50a0ba25deef932a462171743e6c':
+  '@movie-web/providers@https://codeload.github.com/sussy-code/providers/tar.gz/d261a3baab252d2474c930169e149dfa5fda8075':
     dependencies:
       cheerio: 1.0.0-rc.12
       cookie: 0.6.0
@@ -8257,7 +8257,7 @@ snapshots:
       vite: 5.3.5(@types/node@20.14.13)(terser@5.31.3)
       vscode-languageclient: 7.0.0
       vscode-languageserver: 7.0.0
-      vscode-languageserver-textdocument: 1.0.11
+      vscode-languageserver-textdocument: 1.0.12
       vscode-uri: 3.0.8
     optionalDependencies:
       eslint: 8.57.0
@@ -8346,7 +8346,7 @@ snapshots:
       vscode-jsonrpc: 6.0.0
       vscode-languageserver-types: 3.16.0
 
-  vscode-languageserver-textdocument@1.0.11: {}
+  vscode-languageserver-textdocument@1.0.12: {}
 
   vscode-languageserver-types@3.16.0: {}
 
