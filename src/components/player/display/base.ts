@@ -35,6 +35,7 @@ const levelConversionMap: Record<number, SourceQuality> = {
   1080: "1080",
   720: "720",
   480: "480",
+  2160: "4k",
 };
 
 function hlsLevelToQuality(level?: Level): SourceQuality | null {
@@ -148,10 +149,10 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
       if (!Hls.isSupported()) throw new Error("HLS not supported");
       if (!hls) {
         hls = new Hls({
-          maxBufferSize: 500 * 1000 * 1000, // 500 mb of buffering, should load more fragments at once
+          maxBufferSize: 500 * 1000 * 1000,
           fragLoadPolicy: {
             default: {
-              maxLoadTimeMs: 30 * 1000, // allow it load extra long, fragments are slow if requested for the first time on an origin
+              maxLoadTimeMs: 30 * 1000,
               maxTimeToFirstByteMs: 30 * 1000,
               errorRetry: {
                 maxNumRetry: 2,
@@ -308,6 +309,10 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
     videoElement.addEventListener("ratechange", () => {
       if (videoElement) emit("playbackrate", videoElement.playbackRate);
     });
+
+    videoElement.addEventListener("durationchange", () => {
+      emit("duration", videoElement?.duration ?? 0);
+    });
   }
 
   function unloadSource() {
@@ -330,8 +335,8 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
 
   function fullscreenChange() {
     isFullscreen =
-      !!document.fullscreenElement || // other browsers
-      !!(document as any).webkitFullscreenElement; // safari
+      !!document.fullscreenElement ||
+      !!(document as any).webkitFullscreenElement;
     emit("fullscreen", isFullscreen);
     if (!isFullscreen) emit("needstrack", false);
   }
@@ -385,7 +390,6 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
       if (active === isSeeking) return;
       isSeeking = active;
 
-      // if it was playing when starting to seek, play again
       if (!active) {
         if (!isPausedBeforeSeeking) this.play();
         return;
@@ -396,7 +400,6 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
     },
     setTime(t) {
       if (!videoElement) return;
-      // clamp time between 0 and max duration
       let time = Math.min(t, videoElement.duration);
       time = Math.max(0, time);
 
@@ -405,21 +408,17 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
       videoElement.currentTime = time;
     },
     async setVolume(v) {
-      // clamp time between 0 and 1
       let volume = Math.min(v, 1);
       volume = Math.max(0, volume);
 
-      // actually set
       lastVolume = v;
       if (!videoElement) return;
-      videoElement.muted = volume === 0; // Muted attribute is always supported
+      videoElement.muted = volume === 0;
 
-      // update state
       const isChangeable = await canChangeVolume();
       if (isChangeable) {
         videoElement.volume = volume;
       } else {
-        // For browsers where it can't be changed
         emit("volumechange", volume === 0 ? 0 : 1);
       }
     },
@@ -433,7 +432,6 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
         return;
       }
 
-      // enter fullscreen
       isFullscreen = true;
       emit("fullscreen", isFullscreen);
       if (!canFullscreen() || fscreen.fullscreenElement) return;
@@ -492,16 +490,12 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
       return hls?.subtitleTracks ?? [];
     },
     async setSubtitlePreference(lang) {
-      // default subtitles are already loaded by hls.js
       const track = hls?.subtitleTracks.find((t) => t.lang === lang);
       if (track?.details !== undefined) return Promise.resolve();
 
-      // need to wait a moment before hls loads the subtitles
       const promise = new Promise<void>((resolve, reject) => {
         languagePromises.set(lang, resolve);
 
-        // reject after some time, if hls.js fails to load the subtitles
-        // for any reason
         setTimeout(() => {
           reject();
           languagePromises.delete(lang);
