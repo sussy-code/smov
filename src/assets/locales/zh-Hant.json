@@ -1,20 +1,20 @@
 {
     "about": {
-        "description": "sudo-flix 是一款在互聯網上搜尋串流媒體的網路應用程式。團隊致力於讓使用者以最簡約的方式觀看內容。",
+        "description": "cinewhirl 是一款在互聯網上搜尋串流媒體的網路應用程式。團隊致力於讓使用者以最簡約的方式觀看內容。",
         "faqTitle": "常見問題",
         "q1": {
-            "body": "sudo-flix 不託管任何內容。您點選觀看內容時，系統均從互聯網搜尋（在加載提示頁和“視頻源”選項卡中，您可以看到正在使用的源）。媒體從未在 sudo-flix 中上傳，所有內容均通過搜索機制而得。",
+            "body": "cinewhirl 不託管任何內容。您點選觀看內容時，系統均從互聯網搜尋（在加載提示頁和“視頻源”選項卡中，您可以看到正在使用的源）。媒體從未在 cinewhirl 中上傳，所有內容均通過搜索機制而得。",
             "title": "內容來自哪裡？"
         },
         "q2": {
-            "body": "無法主動要求影視劇或其他節目，sudo-flix 不管理任何內容。所有內容均從網路影片來源取得並供您觀看。",
+            "body": "無法主動要求影視劇或其他節目，cinewhirl 不管理任何內容。所有內容均從網路影片來源取得並供您觀看。",
             "title": "我可以從哪裡請求觀看影視劇或其他節目？"
         },
         "q3": {
             "body": "我們的搜尋結果由電影資料庫（TMDB）驅動，無論視訊來源是否有對應內容，都會顯示結果。",
             "title": "搜尋結果中已顯示了電視劇或其他節目，為何我無法播放？"
         },
-        "title": "關於 sudo-flix"
+        "title": "關於 cinewhirl"
     },
     "actions": {
         "copied": "已複製",
@@ -82,7 +82,7 @@
     "footer": {
         "legal": {
             "disclaimer": "免責聲明",
-            "disclaimerText": "sudo-flix 不託管任何文件，僅連結至第三方服務。法律問題應由文件託管者和內容提供者解決。 sudo-flix 對影片提供者顯示的任何媒體檔案不承擔任何責任。"
+            "disclaimerText": "cinewhirl 不託管任何文件，僅連結至第三方服務。法律問題應由文件託管者和內容提供者解決。 cinewhirl 對影片提供者顯示的任何媒體檔案不承擔任何責任。"
         },
         "links": {
             "discord": "Discord",
@@ -92,13 +92,13 @@
         "tagline": "使用這個開源串流媒體應用程式觀看您最喜歡的節目和電影。"
     },
     "global": {
-        "name": "sudo-flix",
+        "name": "cinewhirl",
         "pages": {
             "about": "關於",
             "dmca": "DMCA",
             "login": "登入",
             "onboarding": "設定",
-            "pagetitle": "{{title}} - sudo-flix",
+            "pagetitle": "{{title}} - cinewhirl",
             "register": "註冊",
             "settings": "設定"
         }
@@ -236,7 +236,7 @@
                     "title": "自訂代理伺服器"
                 }
             },
-            "title": "讓我們為您設定 sudo-flix"
+            "title": "讓我們為您設定 cinewhirl"
         }
     },
     "overlays": {
@@ -253,10 +253,10 @@
         "menus": {
             "downloads": {
                 "copyHlsPlaylist": "複製 HLS 播放清單鏈接",
-                "disclaimer": "視頻直接從供應商處獲取。sudo-flix 無法控制下載的提供方式。",
+                "disclaimer": "視頻直接從供應商處獲取。cinewhirl 無法控制下載的提供方式。",
                 "downloadSubtitle": "下載當前字幕",
                 "downloadVideo": "下載視頻",
-                "hlsDisclaimer": "下載直接從供應商處獲取。sudo-flix 無法控制下載的提供方式。<br /><br /> 請注意，您正在下載 HLS 播放清單， <bold>如果您不熟悉高級流媒體格式，則不建議下載 </bold> 。嘗試使用不同格式的不同來源。",
+                "hlsDisclaimer": "下載直接從供應商處獲取。cinewhirl 無法控制下載的提供方式。<br /><br /> 請注意，您正在下載 HLS 播放清單， <bold>如果您不熟悉高級流媒體格式，則不建議下載 </bold> 。嘗試使用不同格式的不同來源。",
                 "onAndroid": {
                     "1": "要在 Android 上下載，請按下下載按鈕，然後在新頁面上<bold>點擊並按住 </bold>視頻，然後選擇 <bold>保存</bold>。",
                     "shortTitle": "下載 / Android",
@@ -408,7 +408,7 @@
             "shortRemaining": "-{{timeLeft}}"
         },
         "turnstile": {
-            "description": "請通過右側的驗證碼來確認您是人類。這是為了保護 sudo-flix 的安全！",
+            "description": "請通過右側的驗證碼來確認您是人類。這是為了保護 cinewhirl 的安全！",
             "error": "無法驗證您是一個人類。請再試一次。",
             "title": "我們需要驗證您是否為人類。",
             "verifyingHumanity": "正在驗證您是不是一個人類..."
@@ -416,7 +416,7 @@
     },
     "screens": {
         "dmca": {
-            "text": "歡迎來到sudo-flix的DMCA聯繫頁面！我們尊重智慧財產權，並希望迅速解決任何版權問題。如果您認為您的版權作品在我們的平臺上被不當使用，請向以下電子郵件發送詳細的DMCA通知。請附上受版權保護材料的描述、您的聯繫方式以及善意信念的聲明。我們致力於迅速解決這些問題，並感謝您的合作，使電影網成為一個尊重創意和版權的地方。",
+            "text": "歡迎來到cinewhirl的DMCA聯繫頁面！我們尊重智慧財產權，並希望迅速解決任何版權問題。如果您認為您的版權作品在我們的平臺上被不當使用，請向以下電子郵件發送詳細的DMCA通知。請附上受版權保護材料的描述、您的聯繫方式以及善意信念的聲明。我們致力於迅速解決這些問題，並感謝您的合作，使電影網成為一個尊重創意和版權的地方。",
             "title": "DMCA"
         },
         "loadingApp": "正在載入應用程式",
