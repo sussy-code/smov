@@ -1,20 +1,20 @@
 {
   "about": {
-    "description": "sudo-flix ist eine Web-App, welche das Internet nach Streams durchsucht. Das Team versucht einen minimalistischen Ansatz umzusetzen.",
+    "description": "cinewhirl ist eine Web-App, welche das Internet nach Streams durchsucht. Das Team versucht einen minimalistischen Ansatz umzusetzen.",
     "faqTitle": "Häufig gestellte Fragen",
     "q1": {
-      "body": "sudo-flix hostet keinen eigenen Inhalt. Wenn du auf etwas zum Anschauen klickst, wird das Internet danach durchsucht (Auf dem Ladebildschirm und im Tab \"Videoquellen\" kannst du einstellen, welche Quellen verwendet werden sollen). sudo-flix lädt keine Videos hoch, alleVideos stammen aus der Suche.",
+      "body": "cinewhirl hostet keinen eigenen Inhalt. Wenn du auf etwas zum Anschauen klickst, wird das Internet danach durchsucht (Auf dem Ladebildschirm und im Tab \"Videoquellen\" kannst du einstellen, welche Quellen verwendet werden sollen). cinewhirl lädt keine Videos hoch, alleVideos stammen aus der Suche.",
       "title": "Woher stammen die Videos?"
     },
     "q2": {
-      "body": "Das Anfragen von Serien oder Filmen ist nicht möglich. sudo-flix verwaltet keine Inhalte. Alle Videos stammen vom Quellen aus dem Internet.",
+      "body": "Das Anfragen von Serien oder Filmen ist nicht möglich. cinewhirl verwaltet keine Inhalte. Alle Videos stammen vom Quellen aus dem Internet.",
       "title": "Wo kann ich eine Serie oder einen Film anfragen?"
     },
     "q3": {
       "body": "Unsere Suchergebnisse werden von The Movie Database (TMDB) bereitgestellt und, egal ob unsere Videoquellen über dieses Video verfügen, angezeigt.",
       "title": "Die Suche zeigt eine Serie oder einen Film an, warum kann ich den dann nicht abspielen?"
     },
-    "title": "Über sudo-flix"
+    "title": "Über cinewhirl"
   },
   "actions": {
     "copied": "Kopiert",
@@ -82,7 +82,7 @@
   "footer": {
     "legal": {
       "disclaimer": "Hinweis",
-      "disclaimerText": "sudo-flix hostet keine Dateien, sondern verlinkt lediglich auf Dienste Dritter. Rechtliche Fragen sollten mit den Dateihostern und -anbietern geklärt werden. sudo-flix übernimmt keine Verantwortung für die von den Videoanbietern angezeigten Mediendateien."
+      "disclaimerText": "cinewhirl hostet keine Dateien, sondern verlinkt lediglich auf Dienste Dritter. Rechtliche Fragen sollten mit den Dateihostern und -anbietern geklärt werden. cinewhirl übernimmt keine Verantwortung für die von den Videoanbietern angezeigten Mediendateien."
     },
     "links": {
       "discord": "Discord",
@@ -92,13 +92,13 @@
     "tagline": "Schau deine Lieblingsserien und Filme mit dieser quelloffenen Streaming App."
   },
   "global": {
-    "name": "sudo-flix",
+    "name": "cinewhirl",
     "pages": {
       "about": "Über",
       "dmca": "DMCA",
       "login": "Anmelden",
       "onboarding": "Einrichtung",
-      "pagetitle": "{{title}} - sudo-flix",
+      "pagetitle": "{{title}} - cinewhirl",
       "register": "Registrieren",
       "settings": "Einstellungen"
     }
@@ -232,7 +232,7 @@
           "title": "Eigene Proxy"
         }
       },
-      "title": "Lass uns mit der Einrichtung von sudo-flix starten"
+      "title": "Lass uns mit der Einrichtung von cinewhirl starten"
     }
   },
   "overlays": {
@@ -249,10 +249,10 @@
     "menus": {
       "downloads": {
         "copyHlsPlaylist": "HLS-Playlist Link kopieren",
-        "disclaimer": "Videos werden direkt vom Provider heruntergeladen. sudo-flix hat keinen Einfluss darauf, wie Downloads bereitgestellt werden.",
+        "disclaimer": "Videos werden direkt vom Provider heruntergeladen. cinewhirl hat keinen Einfluss darauf, wie Downloads bereitgestellt werden.",
         "downloadSubtitle": "Aktuelle Untertitel herunterladen",
         "downloadVideo": "Video herunterladen",
-        "hlsDisclaimer": "sudo-flix hat keinen Einfluss darauf, wie Downloads bereitgestellt werden. Downloads werden direkt vom Anbieter bezogen. <br /><br />Bitte beachte, dass du eine HLS-Wiedergabeliste herunterlädst, <bold>dies ist nicht empfohlen für Nutzer die nicht mit Erweiterten Streaming Formaten vertraut sind</bold>. Probiere andere Anbieter für andere Formate.",
+        "hlsDisclaimer": "cinewhirl hat keinen Einfluss darauf, wie Downloads bereitgestellt werden. Downloads werden direkt vom Anbieter bezogen. <br /><br />Bitte beachte, dass du eine HLS-Wiedergabeliste herunterlädst, <bold>dies ist nicht empfohlen für Nutzer die nicht mit Erweiterten Streaming Formaten vertraut sind</bold>. Probiere andere Anbieter für andere Formate.",
         "onAndroid": {
           "1": "Um auf Android Herunterzuladen, tippe auf den Download-Button, <bold>tippe und halte</bold> auf der neuen Seite auf das Video und wähle <bold>Speichern</bold> aus.",
           "shortTitle": "Download / Android",
@@ -381,7 +381,7 @@
         "badge": "Erweiterung deaktiviert",
         "enableExtension": "Erweiterung aktivieren",
         "homeButton": "Zur Startseite",
-        "text": "Du hast die sudo-flixe Erweiterung installiert. Um die Erweiterung zu benutzen, musst du sie für diese Seite aktivieren.",
+        "text": "Du hast die cinewhirle Erweiterung installiert. Um die Erweiterung zu benutzen, musst du sie für diese Seite aktivieren.",
         "title": "Bitte aktiviere die Erweiterung"
       },
       "items": {
@@ -404,7 +404,7 @@
       "shortRemaining": "-{{timeLeft}}"
     },
     "turnstile": {
-      "description": "Bitte verifiziere deine Menschlichkeit mit dem Captcha auf der Rechten Seite. Dies ist um sudo-flix sicher zu halten!",
+      "description": "Bitte verifiziere deine Menschlichkeit mit dem Captcha auf der Rechten Seite. Dies ist um cinewhirl sicher zu halten!",
       "error": "Menschlichkeit konnte nicht verifiziert werden. Bitte versuche es erneut.",
       "title": "Wir müssen sicherstellen, dass du Menschlich bist.",
       "verifyingHumanity": "Verifiziere deine Menschlichkeit..."
@@ -412,7 +412,7 @@
   },
   "screens": {
     "dmca": {
-      "text": "Willkommen zu sudo-flixs DMCA-Kontaktseite! Wir respektieren geistiges Eigentum und wollen uns schnell um urheberrechtlichen Anliegen kümmern. Falls du glaubst, dass dein urheberrechtlich geschütztes Werk unsachgemäß auf unserer Plattform verwendet wurde, sende uns bitte eine genaue DMCA-Anfrage an die unten stehende E-Mail. Diese sollte eine Beschreibung des urheberrechtlich geschützten Material, deine Kontaktinformationen sowie einer Erklärung des guten Glaubens beinhalten. Wir sind engagiert diese Anliegen schnell zu lösen und schätzen deine Hilfe dabei sudo-flix zu einer Plattform, welche Kreativität und Urheberrechte respektiert.",
+      "text": "Willkommen zu cinewhirls DMCA-Kontaktseite! Wir respektieren geistiges Eigentum und wollen uns schnell um urheberrechtlichen Anliegen kümmern. Falls du glaubst, dass dein urheberrechtlich geschütztes Werk unsachgemäß auf unserer Plattform verwendet wurde, sende uns bitte eine genaue DMCA-Anfrage an die unten stehende E-Mail. Diese sollte eine Beschreibung des urheberrechtlich geschützten Material, deine Kontaktinformationen sowie einer Erklärung des guten Glaubens beinhalten. Wir sind engagiert diese Anliegen schnell zu lösen und schätzen deine Hilfe dabei cinewhirl zu einer Plattform, welche Kreativität und Urheberrechte respektiert.",
       "title": "DMCA"
     },
     "loadingApp": "Die App wird geladen",
