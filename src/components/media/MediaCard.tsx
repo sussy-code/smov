@@ -7,6 +7,7 @@ import { mediaItemToId } from "@/backend/metadata/tmdb";
 import { DotList } from "@/components/text/DotList";
 import { Flare } from "@/components/utils/Flare";
 import { useIsMobile } from "@/hooks/useIsMobile";
+import { useSearchQuery } from "@/hooks/useSearchQuery";
 import { MediaItem } from "@/utils/mediaTypes";
 
 import { MediaBookmarkButton } from "./MediaBookmark";
@@ -57,6 +58,8 @@ function MediaCardContent({
   const canLink = linkable && !closable && isReleased();
 
   const dotListContent = [t(`media.types.${media.type}`)];
+
+  const [searchQuery] = useSearchQuery();
 
   const { isMobile } = useIsMobile();
 
@@ -153,6 +156,12 @@ function MediaCardContent({
           >
             <MediaBookmarkButton media={media} />
           </div>
+
+          {searchQuery.length > 0 ? (
+            <div className="absolute" onClick={(e) => e.preventDefault()}>
+              <MediaBookmarkButton media={media} />
+            </div>
+          ) : null}
 
           <div
             className={`absolute inset-0 flex items-center justify-center bg-mediaCard-badge bg-opacity-80 transition-opacity duration-500 ${
