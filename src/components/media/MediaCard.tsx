@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import { mediaItemToId } from "@/backend/metadata/tmdb";
 import { DotList } from "@/components/text/DotList";
 import { Flare } from "@/components/utils/Flare";
-import { useSearchQuery } from "@/hooks/useSearchQuery";
 import { MediaItem } from "@/utils/mediaTypes";
 
 import { MediaBookmarkButton } from "./MediaBookmark";
@@ -57,8 +56,6 @@ function MediaCardContent({
   const canLink = linkable && !closable && isReleased();
 
   const dotListContent = [t(`media.types.${media.type}`)];
-
-  const [searchQuery] = useSearchQuery();
 
   if (media.year) {
     dotListContent.push(media.year.toFixed());
@@ -145,11 +142,9 @@ function MediaCardContent({
             </>
           ) : null}
 
-          {true && (
-            <div className="absolute" onClick={(e) => e.preventDefault()}>
-              <MediaBookmarkButton media={media} />
-            </div>
-          )}
+          <div className="absolute" onClick={(e) => e.preventDefault()}>
+            <MediaBookmarkButton media={media} />
+          </div>
 
           <div
             className={`absolute inset-0 flex items-center justify-center bg-mediaCard-badge bg-opacity-80 transition-opacity duration-500 ${
