@@ -142,7 +142,10 @@ function MediaCardContent({
             </>
           ) : null}
 
-          <div className="absolute" onClick={(e) => e.preventDefault()}>
+          <div
+            className="absolute bookmark-button"
+            onClick={(e) => e.preventDefault()}
+          >
             <MediaBookmarkButton media={media} />
           </div>
 
