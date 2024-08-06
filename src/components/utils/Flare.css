@@ -14,9 +14,3 @@
 .group:hover .bookmark-button {
   opacity: 1;
 }
-
-@media (max-width: 1024px) {
-  .bookmark-button {
-    opacity: 1 !important;
-  }
-}
