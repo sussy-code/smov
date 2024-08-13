@@ -1,8 +1,10 @@
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 
+import { Icons } from "@/components/Icon";
 import { BrandPill } from "@/components/layout/BrandPill";
 import { Player } from "@/components/player";
 import { useShouldShowControls } from "@/components/player/hooks/useShouldShowControls";
+import { VideoPlayerButton } from "@/components/player/internals/Button";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { PlayerMeta, playerStatus } from "@/stores/player/slices/source";
 import { usePlayerStore } from "@/stores/player/store";
@@ -19,6 +21,9 @@ export function PlayerPart(props: PlayerPartProps) {
   const status = usePlayerStore((s) => s.status);
   const { isMobile } = useIsMobile();
   const isLoading = usePlayerStore((s) => s.mediaPlaying.isLoading);
+
+  // Add widescreen status
+  const [isWideScreen, setIsWideScreen] = useState(false);
 
   return (
     <Player.Container onLoad={props.onLoad} showingControls={showTargets}>
@@ -114,14 +119,44 @@ export function PlayerPart(props: PlayerPartProps) {
               <>
                 <Player.Captions />
                 <Player.Settings />
+
+                {/* Expand button */}
+                <div>
+                  <VideoPlayerButton
+                    icon={isWideScreen ? Icons.SHRINK : Icons.STRETCH}
+                    className="text-white"
+                    onClick={() => {
+                      const videoElement =
+                        document.getElementById("video-element");
+                      if (videoElement) {
+                        videoElement.classList.toggle("object-cover");
+                        setIsWideScreen(!isWideScreen);
+                      }
+                    }}
+                  />
+                </div>
               </>
             ) : null}
             <Player.Fullscreen />
           </div>
         </div>
-        <div className="grid grid-cols-[2.5rem,1fr,2.5rem] gap-3 lg:hidden">
+        <div className="grid grid-cols-[2.5rem,1fr,2.5rem] gap-3 lg:hidden grid-left">
           <div />
           <div className="flex justify-center space-x-3">
+            {/* Expand button */}
+            {status === playerStatus.PLAYING && (
+              <VideoPlayerButton
+                icon={isWideScreen ? Icons.SHRINK : Icons.STRETCH}
+                className="text-white"
+                onClick={() => {
+                  const videoElement = document.getElementById("video-element");
+                  if (videoElement) {
+                    videoElement.classList.toggle("object-cover");
+                    setIsWideScreen(!isWideScreen);
+                  }
+                }}
+              />
+            )}
             {status === playerStatus.PLAYING ? <Player.Pip /> : null}
             <Player.Episodes />
             {status === playerStatus.PLAYING ? <Player.Settings /> : null}
