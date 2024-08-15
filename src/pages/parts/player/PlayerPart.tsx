@@ -20,6 +20,11 @@ export function PlayerPart(props: PlayerPartProps) {
   const { isMobile } = useIsMobile();
   const isLoading = usePlayerStore((s) => s.mediaPlaying.isLoading);
 
+  // Detect if running as a PWA on iOS
+  const isIOSPWA =
+    /iPad|iPhone|iPod/i.test(navigator.userAgent) &&
+    window.matchMedia("(display-mode: standalone)").matches;
+
   return (
     <Player.Container onLoad={props.onLoad} showingControls={showTargets}>
       {props.children}
@@ -122,12 +127,19 @@ export function PlayerPart(props: PlayerPartProps) {
         <div className="grid grid-cols-[2.5rem,1fr,2.5rem] gap-3 lg:hidden">
           <div />
           <div className="flex justify-center space-x-3">
-            {status === playerStatus.PLAYING ? <Player.Pip /> : null}
+            {/* Disable PiP for iOS PWA */}
+            {!isIOSPWA &&
+              (status === playerStatus.PLAYING ? <Player.Pip /> : null)}
             <Player.Episodes />
             {status === playerStatus.PLAYING ? <Player.Settings /> : null}
           </div>
           <div>
-            <Player.Fullscreen />
+            {/* Disable for iOS PWA */}
+            {!isIOSPWA && (
+              <div>
+                <Player.Fullscreen />
+              </div>
+            )}
           </div>
         </div>
       </Player.BottomControls>
