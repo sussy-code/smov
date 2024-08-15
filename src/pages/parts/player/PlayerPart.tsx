@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 
+import IosPwaLimitations from "@/components/buttons/IosPwaLimitations";
 import { BrandPill } from "@/components/layout/BrandPill";
 import { Player } from "@/components/player";
 import { useShouldShowControls } from "@/components/player/hooks/useShouldShowControls";
@@ -138,6 +139,12 @@ export function PlayerPart(props: PlayerPartProps) {
             {!isIOSPWA && (
               <div>
                 <Player.Fullscreen />
+              </div>
+            )}
+            {/* Add info for iOS PWA */}
+            {isIOSPWA && (
+              <div>
+                <IosPwaLimitations />
               </div>
             )}
           </div>
