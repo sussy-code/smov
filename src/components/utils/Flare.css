@@ -5,3 +5,12 @@
 .hover\:flare-enabled:hover .flare-light {
   opacity: 1 !important;
 }
+
+.bookmark-button {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.group:hover .bookmark-button {
+  opacity: 1;
+}
