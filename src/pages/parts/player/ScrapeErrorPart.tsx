@@ -11,7 +11,11 @@ import { Paragraph } from "@/components/text/Paragraph";
 import { Title } from "@/components/text/Title";
 import { ScrapingItems, ScrapingSegment } from "@/hooks/useProviderScrape";
 import { ErrorContainer, ErrorLayout } from "@/pages/layouts/ErrorLayout";
-import { getExtensionState } from "@/utils/extension";
+import {
+  ExtensionVersion,
+  getExtensionState,
+  getExtensionVersion,
+} from "@/utils/extension";
 import type { ExtensionStatus } from "@/utils/extension";
 import { getProviderApiUrls } from "@/utils/proxyUrls";
 
@@ -30,6 +34,8 @@ export function ScrapeErrorPart(props: ScrapeErrorPartProps) {
   const location = useLocation();
   const [extensionState, setExtensionState] =
     useState<ExtensionStatus>("unknown");
+  const [extensionVersion, setExtensionVersion] =
+    useState<ExtensionVersion>("unknown");
   const navigate = useNavigate();
 
   const error = useMemo(() => {
@@ -51,6 +57,9 @@ export function ScrapeErrorPart(props: ScrapeErrorPartProps) {
   useEffect(() => {
     getExtensionState().then((state: ExtensionStatus) => {
       setExtensionState(state);
+    });
+    getExtensionVersion().then((state: ExtensionVersion) => {
+      setExtensionVersion(state);
     });
   }, [t]);
 
@@ -98,6 +107,49 @@ export function ScrapeErrorPart(props: ScrapeErrorPartProps) {
         </ErrorContainer>
       </ErrorLayout>
     );
+  }
+
+  // Ill do the rest later :shrug:
+  if (extensionVersion === ExtensionVersion.Version_1_1_5) {
+    <ErrorLayout>
+      <ErrorContainer>
+        <IconPill icon={Icons.LOCK}>
+          {t("player.scraping.extensionFailure.badge")}
+        </IconPill>
+        <Title>{t("player.scraping.extensionFailure.title")}</Title>
+        <Paragraph>
+          <Trans
+            i18nKey="player.scraping.extensionFailure.text"
+            components={{
+              bold: <span className="font-bold" style={{ color: "#cfcfcf" }} />,
+            }}
+          />
+        </Paragraph>
+        <div className="flex gap-3">
+          <Button
+            href="/"
+            theme="secondary"
+            padding="md:px-12 p-2.5"
+            className="mt-6"
+          >
+            {t("player.scraping.extensionFailure.homeButton")}
+          </Button>
+          <Button
+            onClick={() => {
+              sendPage({
+                page: "PermissionGrant",
+                redirectUrl: window.location.href,
+              });
+            }}
+            theme="purple"
+            padding="md:px-12 p-2.5"
+            className="mt-6"
+          >
+            {t("player.scraping.extensionFailure.enableExtension")}
+          </Button>
+        </div>
+      </ErrorContainer>
+    </ErrorLayout>;
   }
 
   return (

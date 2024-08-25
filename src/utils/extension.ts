@@ -9,6 +9,11 @@ export type ExtensionStatus =
   | "outdated"
   | "success";
 
+export enum ExtensionVersion {
+  unknown = "unknown",
+  Version_1_1_5 = "1.1.5",
+}
+
 export async function getExtensionState(): Promise<ExtensionStatus> {
   const info = await extensionInfo();
   if (!info) return "unknown"; // cant talk to extension
@@ -17,4 +22,15 @@ export async function getExtensionState(): Promise<ExtensionStatus> {
   if (!info.hasPermission) return "noperms"; // extension has no perms to do it's tasks
   if (!isAllowedExtensionVersion(info.version)) return "outdated"; // extension is too old
   return "success"; // no problems
+}
+
+export async function getExtensionVersion(): Promise<ExtensionVersion> {
+  const info = await extensionInfo();
+  if (!info || !info.success) return ExtensionVersion.unknown; // we dont know info
+  switch (info.version) {
+    case ExtensionVersion.Version_1_1_5:
+      return ExtensionVersion.Version_1_1_5;
+    default:
+      return ExtensionVersion.unknown;
+  }
 }
