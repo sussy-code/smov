@@ -10,14 +10,6 @@ body {
   font-size: 1.0248em;
 }
 
-/* Disable scroll in player (PWA improvement) */
-html.no-scroll,
-body.no-scroll {
-  overflow: hidden !important;
-  height: 100% !important;
-  touch-action: none !important;
-}
-
 html[data-full],
 html[data-full] body {
   overscroll-behavior-y: none;
