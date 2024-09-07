@@ -20,8 +20,9 @@ import {
 } from "@/utils/discover";
 
 import { SubPageLayout } from "./layouts/SubPageLayout";
-import { PageTitle } from "./parts/util/PageTitle";
 import { Icon, Icons } from "../components/Icon";
+// eslint-disable-next-line import/order
+import { PageTitle } from "./parts/util/PageTitle";
 
 export function Discover() {
   const { t } = useTranslation();
