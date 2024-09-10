@@ -168,19 +168,25 @@ export function CaptionsPart(props: {
                 />
               ))}
               {/* Add Color Picker */}
-              <input
-                type="color"
-                value={props.styling.color}
-                onChange={(e) => {
-                  const color = e.target.value;
-                  handleStylingChange({ ...props.styling, color });
-                  subtitleStore.updateStyling({
-                    ...props.styling,
-                    color,
-                  });
-                }}
-                className="w-10 h-10 border rounded-md cursor-pointer"
-              />
+              <div className="relative">
+                <input
+                  type="color"
+                  value={props.styling.color}
+                  onChange={(e) => {
+                    const color = e.target.value;
+                    handleStylingChange({ ...props.styling, color });
+                    subtitleStore.updateStyling({
+                      ...props.styling,
+                      color,
+                    });
+                  }}
+                  className="absolute opacity-0 cursor-pointer w-8 h-8"
+                />
+                <div
+                  className="w-8 h-8 border-2 border-gray-300 rounded-full"
+                  style={{ backgroundColor: props.styling.color }}
+                />
+              </div>
             </div>
           </div>
         </div>

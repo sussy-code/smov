@@ -328,15 +328,21 @@ export function CaptionSettingsView({
               />
             ))}
             {/* Add Color Picker */}
-            <input
-              type="color"
-              value={styling.color}
-              onChange={(e) => {
-                const color = e.target.value;
-                handleStylingChange({ ...styling, color });
-              }}
-              className="w-10 h-10 border rounded-md cursor-pointer"
-            />
+            <div className="relative inline-block">
+              <input
+                type="color"
+                value={styling.color}
+                onChange={(e) => {
+                  const color = e.target.value;
+                  handleStylingChange({ ...styling, color });
+                }}
+                className="absolute opacity-0 cursor-pointer w-10 h-10"
+              />
+              <div
+                className="w-10 h-10 border-2 border-gray-300 rounded-full"
+                style={{ backgroundColor: styling.color }}
+              />
+            </div>
           </div>
         </div>
       </Menu.Section>
