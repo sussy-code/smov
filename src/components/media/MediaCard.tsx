@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import { mediaItemToId } from "@/backend/metadata/tmdb";
 import { DotList } from "@/components/text/DotList";
 import { Flare } from "@/components/utils/Flare";
-import { useIsMobile } from "@/hooks/useIsMobile";
 import { useSearchQuery } from "@/hooks/useSearchQuery";
 import { MediaItem } from "@/utils/mediaTypes";
 
@@ -60,8 +59,6 @@ function MediaCardContent({
   const dotListContent = [t(`media.types.${media.type}`)];
 
   const [searchQuery] = useSearchQuery();
-
-  const { isMobile } = useIsMobile();
 
   if (media.year) {
     dotListContent.push(media.year.toFixed());
@@ -149,9 +146,7 @@ function MediaCardContent({
           ) : null}
 
           <div
-            className={classNames("absolute", {
-              "bookmark-button": !isMobile,
-            })}
+            className="absolute bookmark-button"
             onClick={(e) => e.preventDefault()}
           >
             <MediaBookmarkButton media={media} />
