@@ -3,10 +3,10 @@
     "faqTitle": "Ofte stillede spørgsmål",
     "q1": {
       "title": "Hvor kommer indholdet fra?",
-      "body": "sudo-flix er ikke udbyder af indholdet. Når du klikker på et medie for at se det, søges der på internettet efter det valgte medie (på indlæsningsskærmen og i fanen 'videokilder' kan du se, hvilken kilde du bruger). Medier bliver aldrig uploadet af sudo-flix, alt sker gennem denne søgemaskine."
+      "body": "P-Stream er ikke udbyder af indholdet. Når du klikker på et medie for at se det, søges der på internettet efter det valgte medie (på indlæsningsskærmen og i fanen 'videokilder' kan du se, hvilken kilde du bruger). Medier bliver aldrig uploadet af P-Stream, alt sker gennem denne søgemaskine."
     },
     "q2": {
-      "body": "Det er ikke muligt at anmode om en serie eller film, sudo-flix administrerer ikke noget indhold. Alt indhold ses gennem kilder på internettet.",
+      "body": "Det er ikke muligt at anmode om en serie eller film, P-Stream administrerer ikke noget indhold. Alt indhold ses gennem kilder på internettet.",
       "title": "Hvor kan jeg ønske en serie eller film?"
     },
     "q3": {
@@ -18,11 +18,11 @@
       "body": "Alle oplysninger synkroniseres til sudo-backend, som er anderledes end community-backend og hostes selvstændigt af mig, men alle er velkomne til at bruge den."
     },
     "q5": {
-      "body": "Sudo-flix har en twitter-bruger, som du kan finde i bunden af denne side, samt et link til kildekoden på Github.",
+      "body": "P-Stream har en twitter-bruger, som du kan finde i bunden af denne side, samt et link til kildekoden på Github.",
       "title": "Hvordan kan jeg finde ud af mere?"
     },
-    "title": "Om sudo-flix (^▽^)",
-    "description": "sudo-flix er en variant af movie-web, som er sikret at forblive oppe, selv efter at movie-web.app er lukket ned. sudo-flix.lol kører på en privat, selvhostet VPS. Jeg driver denne hjemmeside med underskud; der er ingen reklamer på grund af min tro på gratis medie."
+    "title": "Om P-Stream (^▽^)",
+    "description": "P-Stream er en variant af movie-web, som er sikret at forblive oppe, selv efter at movie-web.app er lukket ned. P-Stream.lol kører på en privat, selvhostet VPS. Jeg driver denne hjemmeside med underskud; der er ingen reklamer på grund af min tro på gratis medie."
   },
   "actions": {
     "copied": "Kopieret",
@@ -90,7 +90,7 @@
   "footer": {
     "legal": {
       "disclaimer": "Ansvarsfraskrivelse ◝(ᵔᵕᵔ)◜",
-      "disclaimerText": "Bemærk: sudo-flix hoster ikke selv nogen filer, men viser i stedet kun indhold fra tredjepartsudbydere. Lovmæssige forhold bør afklares med dem."
+      "disclaimerText": "Bemærk: P-Stream hoster ikke selv nogen filer, men viser i stedet kun indhold fra tredjepartsudbydere. Lovmæssige forhold bør afklares med dem."
     },
     "links": {
       "discord": "Discord",
@@ -101,14 +101,14 @@
     "tagline": "Se dine favoritserier og -film gratis og uden reklamer! (っ'ヮ'c)"
   },
   "global": {
-    "name": "sudo-flix",
+    "name": "P-Stream",
     "pages": {
       "about": "Om os",
       "dmca": "DMCA",
       "support": "Support",
       "login": "Log ind",
       "onboarding": "Opsætning",
-      "pagetitle": "{{title}} - sudo-flix",
+      "pagetitle": "{{title}} - P-Stream",
       "register": "Registrer",
       "settings": "Indstillinger",
       "discover": "Opdag"
@@ -131,11 +131,11 @@
           "Hvad har du lyst til?",
           "Skal vi slette din browserhistorik?",
           "Hvad ønsker du at streame?",
-          "Sudo-Flix er den bedste side nogensinde!",
+          "P-Stream er den bedste side nogensinde!",
           "Hvad er der på din favoritliste i dag?",
           "Hvordan har din dag været?",
           "Min fejl, siden virker aldrig...",
-          "Er sudo-flix ikke bare det bedste?",
+          "Er P-Stream ikke bare det bedste?",
           ">ᴗ<"
         ],
         "default": "Hvad har du lyst til at se?"
@@ -159,14 +159,14 @@
     "titles": {
       "day": {
         "default": "Hvad vil du gerne se i eftermiddag?",
-        "extra": ["Længe leve sudo-flix!"]
+        "extra": ["Længe leve P-Stream!"]
       },
       "morning": {
         "default": "Hvad vil du gerne se her til morgen?",
-        "extra": ["Længe leve sudo-flix!"]
+        "extra": ["Længe leve P-Stream!"]
       },
       "night": {
-        "extra": ["Længe leve sudo-flix!"],
+        "extra": ["Længe leve P-Stream!"],
         "default": "Hvad vil du gerne se i aften?"
       },
       "420": {
@@ -212,7 +212,7 @@
     "timeFrame": "<bold>31. marts kl. 23:00 - 5:00 EST</bold>",
     "goHome": "Gå til hjem",
     "title": "Problemer med udbydere",
-    "message": "sudo-flix.lol har igen problemer med nogle udbydere. Hvis du ikke kan finde eller afspille et afsnit, skal du skifte kilde. Vi forventer, at denne fejl fortsætter i tidsrummet nedenfor."
+    "message": "P-Stream.lol har igen problemer med nogle udbydere. Hvis du ikke kan finde eller afspille et afsnit, skal du skifte kilde. Vi forventer, at denne fejl fortsætter i tidsrummet nedenfor."
   },
   "onboarding": {
     "defaultConfirm": {
@@ -273,7 +273,7 @@
           "text": "Jeg vil ikke have god kvalitet, <0 /> <1>brug standardopsætningen ▄︻デ══━一 ʕ-͡--ʔ</1>"
         }
       },
-      "title": "Lad os få dig sat op med sudo-flix 🥳",
+      "title": "Lad os få dig sat op med P-Stream 🥳",
       "explainer": "For at få de bedst mulige streams skal du vælge, hvilken streamingmetode du vil bruge."
     }
   },
@@ -309,8 +309,8 @@
           "1": "På PC skal du klikke på download-knappen og derefter højreklikke på videoen på den nye side og vælge <bold>Gem video som</bold>"
         },
         "title": "Download",
-        "hlsDisclaimer": "Downloads tages direkte fra udbyderen. sudo-flix har ikke kontrol over, hvordan downloads leveres.<br /><br />Vær opmærksom på, at du downloader en HLS-playliste, <bold>det anbefales ikke at downloade, hvis du ikke er bekendt med avancerede streamingformater</bold>. Prøv forskellige kilder til forskellige formater.",
-        "disclaimer": "Downloads tages direkte fra udbyderen. sudo-flix har ikke kontrol over, hvordan downloads leveres."
+        "hlsDisclaimer": "Downloads tages direkte fra udbyderen. P-Stream har ikke kontrol over, hvordan downloads leveres.<br /><br />Vær opmærksom på, at du downloader en HLS-playliste, <bold>det anbefales ikke at downloade, hvis du ikke er bekendt med avancerede streamingformater</bold>. Prøv forskellige kilder til forskellige formater.",
+        "disclaimer": "Downloads tages direkte fra udbyderen. P-Stream har ikke kontrol over, hvordan downloads leveres."
       },
       "episodes": {
         "button": "Episoder",
@@ -430,7 +430,7 @@
       "extensionFailure": {
         "homeButton": "Gå til hjem",
         "badge": "Udvidelse deaktiveret",
-        "text": "Du har installeret sudo-flix-udvidelsen. For at begynde at bruge den skal du aktivere udvidelsen for dette websted.",
+        "text": "Du har installeret P-Stream-udvidelsen. For at begynde at bruge den skal du aktivere udvidelsen for dette websted.",
         "enableExtension": "Aktiver udvidelse",
         "title": "Aktiver venligst udvidelsen"
       },
@@ -452,7 +452,7 @@
       "shortRemaining": "-{{timeLeft}}"
     },
     "turnstile": {
-      "description": "Bevis at du er et menneske ved at udføre den hurtige opgave, det er for at holde sudo-flix sikker.",
+      "description": "Bevis at du er et menneske ved at udføre den hurtige opgave, det er for at holde P-Stream sikker.",
       "verifyingHumanity": "Bekræfter at du er et menneske... (^▽^)👍",
       "title": "Er du en robot 🤖?",
       "error": "Kunne ikke bekræfte at du er et menneske! Prøv venligst igen."
@@ -461,19 +461,19 @@
   "support": {
     "title": "Support",
     "q1": {
-      "body": "Du kan deltage i den officielle <0>sudo-flix discord</0> og stille spørgsmål der, eller du kan sende en e-mail til den, der er angivet nederst på denne side.",
+      "body": "Du kan deltage i den officielle <0>P-Stream discord</0> og stille spørgsmål der, eller du kan sende en e-mail til den, der er angivet nederst på denne side.",
       "title": "Hvor kan jeg få hjælp?"
     },
     "q2": {
       "title": "Hvordan kan jeg rapportere en fejl eller et problem?",
       "body": "Vi har en <0>GitHub</0>, hvor du kan oprette et detaljeret problem i vores repository. Hvis du ønsker det, kan du desuden oprette en pull request for selv at løse problemet."
     },
-    "text": "sudo-flix er designet til at være så brugervenlig som muligt. Men folk har stadig spørgsmål og problemer. Denne side er her for at hjælpe med at løse disse problemer"
+    "text": "P-Stream er designet til at være så brugervenlig som muligt. Men folk har stadig spørgsmål og problemer. Denne side er her for at hjælpe med at løse disse problemer"
   },
   "screens": {
     "dmca": {
       "title": "DMCA :(",
-      "text": "Velkommen til sudo-flix' DMCA-kontaktside. Hvis du mener, at dit ophavsretligt beskyttede arbejde er blevet brugt forkert på vores platform (😢), bedes du sende en detaljeret DMCA-meddelelse til: <bold>{{dmca}}</bold> nedenfor. Inkluder venligst en beskrivelse af det ophavsretligt beskyttede materiale, dine kontaktoplysninger og en erklæring om, at du er i god tro. Vi er forpligtet til at løse disse sager hurtigt og sætter pris på dit samarbejde."
+      "text": "Velkommen til P-Stream' DMCA-kontaktside. Hvis du mener, at dit ophavsretligt beskyttede arbejde er blevet brugt forkert på vores platform (😢), bedes du sende en detaljeret DMCA-meddelelse til: <bold>{{dmca}}</bold> nedenfor. Inkluder venligst en beskrivelse af det ophavsretligt beskyttede materiale, dine kontaktoplysninger og en erklæring om, at du er i god tro. Vi er forpligtet til at løse disse sager hurtigt og sætter pris på dit samarbejde."
     },
     "loadingApp": "Indlæser applikation",
     "loadingUser": "Indlæser din profil",
@@ -505,7 +505,7 @@
       },
       "admin": {
         "title": "Administratorpanel",
-        "text": "Brug værktøjer, der er lavet til at teste sudo-flix' tilstand.",
+        "text": "Brug værktøjer, der er lavet til at teste P-Stream' tilstand.",
         "button": "Tjek det ud"
       },
       "actions": {

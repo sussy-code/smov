@@ -1,20 +1,20 @@
 {
   "about": {
-    "description": "sudo-flix je webová aplikace, která vyhledává na internetu proudy médií. Cílem týmu je převážně minimalistický přístup ke konzumaci obsahu.",
+    "description": "P-Stream je webová aplikace, která vyhledává na internetu proudy médií. Cílem týmu je převážně minimalistický přístup ke konzumaci obsahu.",
     "faqTitle": "Často kladené otázky",
     "q1": {
-      "body": "sudo-flix nehostuje žádný obsah. Když kliknete na něco, co chcete sledovat, na internetu se vyhledá vybrané médium (Na obrazovce načítání a na kartě 'zdroje videa' můžete vidět, který zdroj používáte). Média se nikdy nenahrávají sudo-flixem, vše probíhá prostřednictvím tohoto vyhledávacího mechanismu.",
+      "body": "P-Stream nehostuje žádný obsah. Když kliknete na něco, co chcete sledovat, na internetu se vyhledá vybrané médium (Na obrazovce načítání a na kartě 'zdroje videa' můžete vidět, který zdroj používáte). Média se nikdy nenahrávají P-Streamem, vše probíhá prostřednictvím tohoto vyhledávacího mechanismu.",
       "title": "Kde bereme obsah?"
     },
     "q2": {
-      "body": "Není možné požádat o pořad nebo film, sudo-flix nespravuje žádný obsah. Veškerý obsah je prohlížen prostřednictvím zdrojů na internetu.",
+      "body": "Není možné požádat o pořad nebo film, P-Stream nespravuje žádný obsah. Veškerý obsah je prohlížen prostřednictvím zdrojů na internetu.",
       "title": "Kde můžu požádat o pořad nebo film?"
     },
     "q3": {
       "body": "Naše výsledky vyhledávání jsou založeny na The Movie Database (TMDB) a zobrazují se bez ohledu na to, zda naše zdroje skutečně obsah mají.",
       "title": "Ve výsledcích vyhledávání se zobrazuje pořad nebo film, proč jej nemůžu přehrát?"
     },
-    "title": "O sudo-flixu"
+    "title": "O P-Streamu"
   },
   "actions": {
     "copied": "Zkopírováno",
@@ -82,7 +82,7 @@
   "footer": {
     "legal": {
       "disclaimer": "Zřeknutí odpovědnosti",
-      "disclaimerText": "sudo-flix nehostuje žádné soubory, pouze odkazuje na služby třetích stran. Právní záležitosti by měly být řešeny s hostiteli souborů a poskytovateli. sudo-flix nenese odpovědnost za žádné mediální soubory zobrazené poskytovateli videa."
+      "disclaimerText": "P-Stream nehostuje žádné soubory, pouze odkazuje na služby třetích stran. Právní záležitosti by měly být řešeny s hostiteli souborů a poskytovateli. P-Stream nenese odpovědnost za žádné mediální soubory zobrazené poskytovateli videa."
     },
     "links": {
       "discord": "Discord",
@@ -92,13 +92,13 @@
     "tagline": "Sledujte své oblíbené pořady a filmy s touto aplikací pro streamování s otevřeným zdrojovým kódem."
   },
   "global": {
-    "name": "sudo-flix",
+    "name": "P-Stream",
     "pages": {
       "about": "O nás",
       "dmca": "DMCA",
       "login": "Přihlásit se",
       "onboarding": "Nastavení",
-      "pagetitle": "{{title}} - sudo-flix",
+      "pagetitle": "{{title}} - P-Stream",
       "register": "Zaregistrovat se",
       "settings": "Nastavení"
     }
@@ -229,7 +229,7 @@
           "title": "Vlastní proxy"
         }
       },
-      "title": "Pojďme vám nastavit sudo-flix"
+      "title": "Pojďme vám nastavit P-Stream"
     }
   },
   "overlays": {
@@ -245,10 +245,10 @@
     },
     "menus": {
       "downloads": {
-        "disclaimer": "Stahování probíhá přímo u poskytovatele. sudo-flix nemá kontrolu nad tím, jak jsou stahování poskytovány.",
+        "disclaimer": "Stahování probíhá přímo u poskytovatele. P-Stream nemá kontrolu nad tím, jak jsou stahování poskytovány.",
         "downloadSubtitle": "Stáhnout aktuální titulky",
         "downloadVideo": "Stáhnout video",
-        "hlsDisclaimer": "Stahování probíhá přímo u poskytovatele. sudo-flix nemá kontrolu nad tím, jak jsou stahování poskytovány.<br /><br />Vezměte prosím na vědomí, že stahujete HLS playlist,<bold> který není doporučen stahovat pokud nejste obeznámeni s pokročilým streamováním médií</bold>. Raději skuste jiný zdroj pro jiný formát.",
+        "hlsDisclaimer": "Stahování probíhá přímo u poskytovatele. P-Stream nemá kontrolu nad tím, jak jsou stahování poskytovány.<br /><br />Vezměte prosím na vědomí, že stahujete HLS playlist,<bold> který není doporučen stahovat pokud nejste obeznámeni s pokročilým streamováním médií</bold>. Raději skuste jiný zdroj pro jiný formát.",
         "onAndroid": {
           "1": "Na Androidu klikněte na tlačítko stahování, poté na nové stránce <bold>klepněte a podržte</bold> na videu a poté vyberte <bold>uložit</bold>.",
           "shortTitle": "Stahování / Android",
@@ -391,7 +391,7 @@
       "shortRemaining": "-{{timeLeft}}"
     },
     "turnstile": {
-      "description": "Ověřte, prosím, že jste člověk, vyplněním Captchy napravo. Toto je pro zajištění bezpečnosti sudo-flix!",
+      "description": "Ověřte, prosím, že jste člověk, vyplněním Captchy napravo. Toto je pro zajištění bezpečnosti P-Stream!",
       "error": "Nepodařilo se ověřit vaši lidskost. Zkuste to prosím znovu.",
       "title": "Potřebujeme ověřit, zda jste člověk.",
       "verifyingHumanity": "Ověřování vaši lidskosti..."
@@ -399,7 +399,7 @@
   },
   "screens": {
     "dmca": {
-      "text": "Vítejte na DMCA kontaktní stránce sudo-flixu! Respektujeme práva duševního vlastnictví a chceme rychle řešit jakékoli problémy s autorským právem. Pokud se domníváte, že vaše dílo chráněné autorskými právy bylo na naší platformě neoprávněně použito, zašlete prosím podrobné oznámení DMCA na níže uvedený e-mail. Uveďte prosím popis materiálu chráněného autorským právem, své kontaktní údaje a prohlášení o dobré víře. Jsme odhodláni tyto záležitosti rychle vyřešit a oceňujeme vaši spolupráci při udržování sudo-flixu jako místa, které respektuje kreativitu a autorská práva.",
+      "text": "Vítejte na DMCA kontaktní stránce P-Streamu! Respektujeme práva duševního vlastnictví a chceme rychle řešit jakékoli problémy s autorským právem. Pokud se domníváte, že vaše dílo chráněné autorskými právy bylo na naší platformě neoprávněně použito, zašlete prosím podrobné oznámení DMCA na níže uvedený e-mail. Uveďte prosím popis materiálu chráněného autorským právem, své kontaktní údaje a prohlášení o dobré víře. Jsme odhodláni tyto záležitosti rychle vyřešit a oceňujeme vaši spolupráci při udržování P-Streamu jako místa, které respektuje kreativitu a autorská práva.",
       "title": "DMCA"
     },
     "loadingApp": "Načítání aplikace",
