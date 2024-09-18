@@ -74,8 +74,8 @@ export function HomePage() {
         ) : (
           <>
             <div className="flex flex-col gap-8">
-              <BookmarksPart onItemsChange={setShowBookmarks} />
               <WatchingPart onItemsChange={setShowWatching} />
+              <BookmarksPart onItemsChange={setShowBookmarks} />
             </div>
             {!(showBookmarks || showWatching) ? (
               <div className="flex flex-col items-center justify-center">

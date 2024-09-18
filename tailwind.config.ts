@@ -12,6 +12,9 @@ const config: Config = {
       /* breakpoints */
       screens: {
         ssm: "400px",
+        '2xl': '1921px', // Custom breakpoint for screens at least 1920px wide
+        '3xl': '2650px', // Custom breakpoint for screens at least 2650px wide
+        '4xl': '3840px', // Custom breakpoint for screens at least 4096px wide
       },
 
       /* fonts */

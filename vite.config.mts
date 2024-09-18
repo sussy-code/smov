@@ -70,8 +70,8 @@ export default defineConfig(({ mode }) => {
           name: "sudo-flix",
           short_name: "sudo-flix",
           description: "Watch your favorite shows and movies for free with no ads ever! (っ'ヮ'c)",
-          theme_color: "#120f1d",
-          background_color: "#120f1d",
+          theme_color: "#000000",
+          background_color: "#000000",
           display: "standalone",
           start_url: "/",
           icons: [

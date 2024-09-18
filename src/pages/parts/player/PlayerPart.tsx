@@ -1,7 +1,10 @@
 import { ReactNode } from "react";
+import { useParams } from "react-router-dom";
 
+import { Icon, Icons } from "@/components/Icon";
 import { BrandPill } from "@/components/layout/BrandPill";
 import { Player } from "@/components/player";
+import { usePlayerMeta } from "@/components/player/hooks/usePlayerMeta";
 import { useShouldShowControls } from "@/components/player/hooks/useShouldShowControls";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { PlayerMeta, playerStatus } from "@/stores/player/slices/source";
@@ -15,10 +18,17 @@ export interface PlayerPartProps {
 }
 
 export function PlayerPart(props: PlayerPartProps) {
+  const params = useParams<{
+    media: string;
+    episode?: string;
+    season?: string;
+  }>();
+  const media = params.media;
   const { showTargets, showTouchTargets } = useShouldShowControls();
   const status = usePlayerStore((s) => s.status);
   const { isMobile } = useIsMobile();
   const isLoading = usePlayerStore((s) => s.mediaPlaying.isLoading);
+  const { playerMeta: meta } = usePlayerMeta();
 
   return (
     <Player.Container onLoad={props.onLoad} showingControls={showTargets}>
@@ -60,6 +70,30 @@ export function PlayerPart(props: PlayerPartProps) {
             <Player.BackLink url={props.backUrl} />
             <span className="text mx-3 text-type-secondary">/</span>
             <Player.Title />
+
+            <button
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                if (!media) return;
+                const id = media
+                  .replace("tmdb-tv-", "")
+                  .replace("tmdb-movie-", "");
+                let url;
+                if (meta?.type === "movie") {
+                  url = `https://www.themoviedb.org/movie/${id}`;
+                } else {
+                  url = `https://www.themoviedb.org/tv/${id}`;
+                }
+                window.open(url, "_blank");
+              }}
+            >
+              <Icon
+                className="text-xs font-semibold text-type-secondary"
+                icon={Icons.CIRCLE_QUESTION}
+              />
+            </button>
+
             <Player.BookmarkButton />
           </div>
           <div className="text-center hidden xl:flex justify-center items-center">

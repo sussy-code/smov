@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 html,
 body {
+  font-family: "Lato", sans-serif !important;
   @apply bg-background-main font-main text-type-text;
   min-height: 100vh;
   min-height: 100dvh;
@@ -77,6 +79,16 @@ html[data-no-scroll], html[data-no-scroll] body {
 .min-h-screen {
   min-height: 100vh;
   min-height: 100dvh;
+}
+
+.info-button {
+  display: inline-block;
+  padding: 0.75em;
+  margin: -0.75em;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: translate(-15px, -10px)
 }
 
 /*generated with Input range slider CSS style generator (version 20211225)
