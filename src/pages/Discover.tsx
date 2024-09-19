@@ -20,8 +20,8 @@ import {
 } from "@/utils/discover";
 
 import { SubPageLayout } from "./layouts/SubPageLayout";
-import { Icon, Icons } from "../components/Icon";
 import { PageTitle } from "./parts/util/PageTitle";
+import { Icon, Icons } from "../components/Icon";
 
 export function Discover() {
   const { t } = useTranslation();
