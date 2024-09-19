@@ -95,7 +95,7 @@ export function SupportPage() {
             <Button
               className="py px-4 box-content bg-buttons-secondary hover:bg-buttons-secondaryHover bg-opacity-90 text-buttons-secondaryText justify-center items-center inline-block"
               onClick={() =>
-                window.open("https://sussy-code.github.io/docs", "_blank")
+                window.open("https://docs.undi.rest", "_blank")
               }
             >
               Sudo-Flix Docs
