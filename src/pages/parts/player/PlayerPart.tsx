@@ -7,6 +7,8 @@ import { useIsMobile } from "@/hooks/useIsMobile";
 import { PlayerMeta, playerStatus } from "@/stores/player/slices/source";
 import { usePlayerStore } from "@/stores/player/store";
 
+import { ScrapingPartInterruptButton } from "./ScrapingPart";
+
 export interface PlayerPartProps {
   children?: ReactNode;
   backUrl: string;
@@ -80,7 +82,10 @@ export function PlayerPart(props: PlayerPartProps) {
       </Player.TopControls>
 
       <Player.BottomControls show={showTargets}>
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center justify-center space-x-3 h-full">
+          {status === playerStatus.SCRAPING ? (
+            <ScrapingPartInterruptButton />
+          ) : null}
           {status === playerStatus.PLAYING ? (
             <>
               {isMobile ? <Player.Time short /> : null}
