@@ -99,6 +99,46 @@ export function DiscoverContent() {
   const [genreMovies, setGenreMovies] = useState<{
     [genreId: number]: Movie[];
   }>({});
+
+  const [providerMovies, setProviderMovies] = useState<{
+    [providerId: string]: Movie[];
+  }>({});
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [selectedProvider, setSelectedProvider] = useState({
+    name: "",
+    id: "",
+  });
+  const [providerTVShows, setProviderTVShows] = useState<{
+    [providerId: string]: Movie[];
+  }>({});
+  const [selectedTVProvider, setSelectedTVProvider] = useState({
+    name: "",
+    id: "",
+  });
+  const movieProviders = [
+    { name: "Netflix", id: "8" },
+    { name: "Apple TV", id: "2" },
+    { name: "Amazon Prime Video", id: "10" },
+    { name: "Hulu", id: "15" },
+    { name: "Max", id: "1899" },
+    { name: "Paramount Plus", id: "531" },
+    { name: "Disney Plus", id: "337" },
+    { name: "Shudder", id: "99" },
+    // More movie providers can be added here
+  ];
+
+  const tvProviders = [
+    { name: "Netflix", id: "8" },
+    { name: "Apple TV+", id: "350" },
+    { name: "Amazon Prime Video", id: "119" },
+    { name: "Paramount Plus", id: "531" },
+    { name: "Hulu", id: "15" },
+    { name: "Max", id: "1899" },
+    { name: "Disney Plus", id: "337" },
+    { name: "fubuTV", id: "257" },
+    // More TV providers can be added here
+  ];
+
   const [countdown, setCountdown] = useState<number | null>(null);
   const navigate = useNavigate();
   const [categoryShows, setCategoryShows] = useState<{
@@ -335,6 +375,77 @@ export function DiscoverContent() {
     genres.forEach((genre) => fetchMoviesForGenre(genre.id));
   }, [genres]);
 
+  // Fetch Movies By Provider
+  const fetchMoviesByProvider = async (providerId: string) => {
+    try {
+      const movies: any[] = [];
+      // eslint-disable-next-line no-plusplus
+      for (let page = 1; page <= 3; page++) {
+        const data = await get<any>("/discover/movie", {
+          api_key: conf().TMDB_READ_API_KEY,
+          language: "en-US",
+          page: page.toString(),
+          with_watch_providers: providerId,
+          watch_region: "US", // You can set a specific region if required
+        });
+
+        movies.push(...data.results);
+      }
+      setProviderMovies((prev) => ({
+        ...prev,
+        [providerId]: movies,
+      }));
+    } catch (error) {
+      console.error(`Error fetching movies for provider ${providerId}:`, error);
+    }
+  };
+
+  useEffect(() => {
+    const randomMovieProvider =
+      movieProviders[Math.floor(Math.random() * movieProviders.length)];
+    setSelectedProvider(randomMovieProvider); // Store the selected provider
+
+    fetchMoviesByProvider(randomMovieProvider.id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Fetch TV Shows By Provider
+  const fetchTVByProvider = async (providerId: string) => {
+    try {
+      const series: any[] = [];
+      // eslint-disable-next-line no-plusplus
+      for (let page = 1; page <= 3; page++) {
+        const data = await get<any>("/discover/tv", {
+          api_key: conf().TMDB_READ_API_KEY,
+          language: "en-US",
+          page: page.toString(),
+          with_watch_providers: providerId,
+          watch_region: "US", // You can set a specific region if required
+        });
+
+        series.push(...data.results);
+      }
+      setProviderTVShows((prev) => ({
+        ...prev,
+        [providerId]: series,
+      }));
+    } catch (error) {
+      console.error(
+        `Error fetching tv shows for provider ${providerId}:`,
+        error,
+      );
+    }
+  };
+
+  useEffect(() => {
+    const randomTVProvider =
+      tvProviders[Math.floor(Math.random() * tvProviders.length)];
+    setSelectedTVProvider(randomTVProvider); // Store the selected provider
+
+    fetchTVByProvider(randomTVProvider.id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   function scrollCarousel(categorySlug: string, direction: string) {
     const carousel = carouselRefs.current[categorySlug];
     if (carousel) {
@@ -414,11 +525,15 @@ export function DiscoverContent() {
         ? "In Cinemas"
         : category === "Editor Picks" // Check for "Editor Picks" specifically
           ? category
-          : category.includes("Movie")
-            ? `${category}s`
-            : isTVShow
-              ? `${category} Shows`
-              : `${category} Movies`;
+          : category === `Popular Movies on ${selectedProvider.name}`
+            ? `Popular Movies on ${selectedProvider.name}`
+            : category === `Popular Shows on ${selectedTVProvider.name}`
+              ? `Popular Shows on ${selectedTVProvider.name}`
+              : category.includes("Movie")
+                ? `${category}s`
+                : isTVShow
+                  ? `${category} Shows`
+                  : `${category} Movies`;
 
     // https://tailwindcss.com/docs/border-style
     return (
@@ -821,6 +936,38 @@ export function DiscoverContent() {
               {renderMovies(editorPicksData, "Editor Picks")}
             </div>
           )}
+        </div>
+        <div className="flex items-center mt-5 mb-4">
+          <Divider marginClass="mr-5" />
+          <h1 className="text-4xl font-bold text-white mx-auto whitespace-nowrap">
+            Popular
+          </h1>
+          <Divider marginClass="ml-5" />
+        </div>
+        <div
+          key={`carousel-providers-${selectedProvider.id}`}
+          id="carousel-providers"
+          className=""
+        >
+          {selectedProvider.id &&
+            providerMovies[selectedProvider.id] &&
+            renderMovies(
+              providerMovies[selectedProvider.id],
+              `Popular Movies on ${selectedProvider.name}`,
+            )}
+        </div>
+        <div
+          key={`carousel-tv-providers-${selectedTVProvider.id}`}
+          id="carousel-tv-providers"
+          className=""
+        >
+          {selectedTVProvider.id &&
+            providerTVShows[selectedTVProvider.id] &&
+            renderMovies(
+              providerTVShows[selectedTVProvider.id],
+              `Popular Shows on ${selectedTVProvider.name}`,
+              true,
+            )}
         </div>
         <div className="flex items-center mt-5">
           <Divider marginClass="mr-5" />
