@@ -68,9 +68,12 @@ function ScrollToTopButton() {
     <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
       {/* Glow Effect (Behind the Button) */}
       <div
-        className="absolute inset-0 mx-auto h-[50px] w-[200px] rounded-full blur-[50px] opacity-50 pointer-events-none z-0"
+        className={`absolute inset-0 mx-auto h-[50px] w-[200px] rounded-full blur-[50px] opacity-50 pointer-events-none z-0 ${
+          isVisible ? "opacity-100 visible" : "opacity-0 invisible"
+        }`}
         style={{
           backgroundImage: `linear-gradient(to right, rgba(var(--colors-buttons-purpleHover)), rgba(var(--colors-progress-filled)))`,
+          transition: "opacity 0.4s ease-in-out, transform 0.4s ease-in-out",
         }}
       />
 
