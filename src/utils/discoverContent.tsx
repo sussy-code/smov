@@ -159,12 +159,20 @@ export function DiscoverContent() {
 
   // State to track selected category (movies or TV shows)
   const [selectedCategory, setSelectedCategory] = useState("movies");
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
 
-  // Handle category change
+  // Handle category change for both event (from <select>) and string (from custom dropdown)
   const handleCategoryChange = (
-    event: React.ChangeEvent<HTMLSelectElement>,
+    eventOrValue: React.ChangeEvent<HTMLSelectElement> | string,
   ) => {
-    setSelectedCategory(event.target.value);
+    if (typeof eventOrValue === "string") {
+      // Handle case where a string value is passed (from custom dropdown)
+      setSelectedCategory(eventOrValue);
+    } else {
+      // Handle the <select> change event
+      setSelectedCategory(eventOrValue.target.value);
+    }
+    setDropdownOpen(false); // Close dropdown after selection
   };
 
   useEffect(() => {
@@ -964,27 +972,50 @@ export function DiscoverContent() {
         </div>
       )}
       <div className="mt-8 p-4 w-full max-w-screen-xl mx-auto">
-        {/* Dropdown for selecting the category */}
-        <div className="flex justify-center mb-4">
-          <select
-            className="text-2xl font-bold p-2 bg-transparent text-center cursor-pointer"
-            value={selectedCategory}
-            onChange={handleCategoryChange}
+        <div className="relative flex justify-center mb-4">
+          {/* Custom dropdown button */}
+          <button
+            type="button"
+            className="text-2xl font-bold p-2 bg-transparent text-center rounded-full cursor-pointer flex items-center"
+            onClick={() => setDropdownOpen(!isDropdownOpen)}
           >
-            <option value="movies">Movies</option>
-            <option value="tvshows">TV Shows</option>
-          </select>
+            {selectedCategory === "movies" ? "Movies" : "TV Shows"}
+            <Icon
+              icon={isDropdownOpen ? Icons.CHEVRON_UP : Icons.CHEVRON_DOWN}
+              className="ml-2 text-2xl"
+            />
+          </button>
+
+          {/* Dropdown options */}
+          {isDropdownOpen && (
+            <ul className="absolute top-full mb-1 rounded-lg bg-dropdown-background py-3 px-5 text-left text-white shadow-md border-2 border-gray-800 focus:outline-none tabbable cursor-pointer">
+              <li
+                className={`cursor-pointer p-2 hover:text-gray-300 ${selectedCategory === "movies" ? "font-bold" : ""}`}
+                onClick={() => handleCategoryChange("movies")}
+              >
+                Movies
+              </li>
+              <li
+                className={`cursor-pointer p-2 hover:text-gray-300 ${selectedCategory === "tvshows" ? "font-bold" : ""}`}
+                onClick={() => handleCategoryChange("tvshows")}
+              >
+                TV Shows
+              </li>
+            </ul>
+          )}
         </div>
 
         {/* Render Movies */}
         {selectedCategory === "movies" && (
           <>
             <div className="flex justify-center overflow-x-auto">
-              <div className="">
-                {renderScrollButton("tv-providers", "left")}
-              </div>
+              {isMobile && (
+                <div className="">
+                  {renderScrollButton("providers", "left")}
+                </div>
+              )}
               <div
-                id="button-carousel-tv-providers"
+                id="button-carousel-providers"
                 className="flex mb-4 overflow-x-auto scroll-smooth"
                 style={{
                   scrollbarWidth: "thin",
@@ -995,9 +1026,11 @@ export function DiscoverContent() {
                   {renderMovieProviderButtons()}
                 </div>
               </div>
-              <div className="">
-                {renderScrollButton("tv-providers", "right")}
-              </div>
+              {isMobile && (
+                <div className="">
+                  {renderScrollButton("providers", "right")}
+                </div>
+              )}
             </div>
             <div className="flex mb-4 overflow-x-auto">
               <div className="">{renderScrollButton("movies", "left")}</div>
@@ -1023,9 +1056,11 @@ export function DiscoverContent() {
         {selectedCategory === "tvshows" && (
           <>
             <div className="flex justify-center overflow-x-auto">
-              <div className="">
-                {renderScrollButton("tv-providers", "left")}
-              </div>
+              {isMobile && (
+                <div className="">
+                  {renderScrollButton("tv-providers", "left")}
+                </div>
+              )}
               <div
                 id="button-carousel-tv-providers"
                 className="flex mb-4 overflow-x-auto scroll-smooth"
@@ -1038,9 +1073,11 @@ export function DiscoverContent() {
                   {renderTvProviderButtons()}
                 </div>
               </div>
-              <div className="">
-                {renderScrollButton("tv-providers", "right")}
-              </div>
+              {isMobile && (
+                <div className="">
+                  {renderScrollButton("tv-providers", "right")}
+                </div>
+              )}
             </div>
             <div className="flex mb-4 overflow-x-auto">
               <div className="">{renderScrollButton("tvshows", "left")}</div>
@@ -1109,9 +1146,12 @@ export function DiscoverContent() {
           id="carousel-providers"
         >
           <div className="flex justify-center overflow-x-auto">
+            {isMobile && (
+              <div className="">{renderScrollButton("providers", "left")}</div>
+            )}
             <div
               id="button-carousel-providers"
-              className="flex mt-0 overflow-x-auto scroll-smooth"
+              className="flex mb-4 overflow-x-auto scroll-smooth"
               style={{
                 scrollbarWidth: "thin",
                 scrollbarColor: "transparent transparent",
@@ -1121,6 +1161,9 @@ export function DiscoverContent() {
                 {renderMovieProviderButtons()}
               </div>
             </div>
+            {isMobile && (
+              <div className="">{renderScrollButton("providers", "right")}</div>
+            )}
           </div>
           {selectedProvider.id ? (
             providerMovies[selectedProvider.id] &&
@@ -1175,9 +1218,14 @@ export function DiscoverContent() {
           id="carousel-tv-providers"
         >
           <div className="flex justify-center overflow-x-auto">
+            {isMobile && (
+              <div className="">
+                {renderScrollButton("tv-providers", "left")}
+              </div>
+            )}
             <div
               id="button-carousel-tv-providers"
-              className="flex mt-0 overflow-x-auto scroll-smooth"
+              className="flex mb-4 overflow-x-auto scroll-smooth"
               style={{
                 scrollbarWidth: "thin",
                 scrollbarColor: "transparent transparent",
@@ -1187,6 +1235,11 @@ export function DiscoverContent() {
                 {renderTvProviderButtons()}
               </div>
             </div>
+            {isMobile && (
+              <div className="">
+                {renderScrollButton("tv-providers", "right")}
+              </div>
+            )}
           </div>
           {selectedTVProvider.id ? (
             providerTVShows[selectedTVProvider.id] &&
