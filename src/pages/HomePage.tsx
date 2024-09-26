@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
-import { To, useNavigate } from "react-router-dom";
 
 import { Spinner } from "@/components/layout/Spinner";
 import { WideContainer } from "@/components/layout/WideContainer";
@@ -41,18 +40,12 @@ export function HomePage() {
   const { t } = useTranslation();
   const { t: randomT } = useRandomTranslation();
   const emptyText = randomT(`home.search.empty`);
-  const navigate = useNavigate();
   const [showBg, setShowBg] = useState<boolean>(false);
   const searchParams = useSearchQuery();
   const [search] = searchParams;
   const s = useSearch(search);
   const [showBookmarks, setShowBookmarks] = useState(false);
   const [showWatching, setShowWatching] = useState(false);
-
-  const handleClick = (path: To) => {
-    window.scrollTo(0, 0);
-    navigate(path);
-  };
 
   // State to track whether content is loading or loaded
   const [loading, setLoading] = useState(true);
