@@ -37,6 +37,10 @@ html[data-no-scroll], html[data-no-scroll] body {
   overflow: hidden;
 }
 
+.top-content {
+  padding-top: calc(env(safe-area-inset-top) - 20px);
+}
+
 .roll {
   animation: roll 1s;
 }
