@@ -45,13 +45,13 @@ export function Discover() {
         <div
           className="absolute inset-0 mx-auto h-[400px] max-w-[800px] rounded-full blur-[100px] opacity-20 transform -translate-y-[100px] pointer-events-none"
           style={{
-            backgroundImage: `linear-gradient(to right, rgba(var(--colors-global-accentA)), rgba(var(--colors-buttons-toggle)))`,
+            backgroundImage: `linear-gradient(to right, rgba(var(--colors-buttons-purpleHover)), rgba(var(--colors-progress-filled)))`,
           }}
         />
         <h1
           className="relative text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text z-10"
           style={{
-            backgroundImage: `linear-gradient(to right, rgba(var(--colors-global-accentA)), rgba(var(--colors-buttons-toggle)))`,
+            backgroundImage: `linear-gradient(to right, rgba(var(--colors-buttons-purpleHover)), rgba(var(--colors-progress-filled)))`,
           }}
         >
           {t("global.pages.discover")} Movies & TV
