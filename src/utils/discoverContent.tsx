@@ -982,7 +982,7 @@ export function DiscoverContent() {
             {selectedCategory === "movies" ? "Movies" : "TV Shows"}
             <Icon
               icon={isDropdownOpen ? Icons.CHEVRON_UP : Icons.CHEVRON_DOWN}
-              className="ml-2 text-2xl"
+              className="ml-2 text-2xl pt-1"
             />
           </button>
 
