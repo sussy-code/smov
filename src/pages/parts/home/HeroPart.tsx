@@ -39,20 +39,30 @@ export function HeroPart({ setIsSticky, searchParams }: HeroPartProps) {
     },
     [setShowBg, setIsSticky],
   );
+  const { width: windowWidth, height: windowHeight } = useWindowSize();
 
-  const { width: windowWidth } = useWindowSize();
+  // Detect if running as a PWA on iOS
+  const isIOSPWA =
+    /iPad|iPhone|iPod/i.test(navigator.userAgent) &&
+    window.matchMedia("(display-mode: standalone)").matches;
 
-  const topSpacing = 16;
+  const topSpacing = isIOSPWA ? 60 : 16;
   const [stickyOffset, setStickyOffset] = useState(topSpacing);
+
+  const isLandscape = windowHeight < windowWidth && isIOSPWA;
+  const adjustedOffset = isLandscape
+    ? -40 // landscape
+    : 0; // portrait
+
   useEffect(() => {
-    if (windowWidth > 1200) {
+    if (windowWidth > 1280) {
       // On large screens the bar goes inline with the nav elements
       setStickyOffset(topSpacing);
     } else {
       // On smaller screens the bar goes below the nav elements
-      setStickyOffset(topSpacing + 60);
+      setStickyOffset(topSpacing + 60 + adjustedOffset);
     }
-  }, [windowWidth]);
+  }, [adjustedOffset, topSpacing, windowWidth]);
 
   const time = getTimeOfDay(new Date());
   const title = randomT(`home.titles.${time}`);
