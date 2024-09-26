@@ -980,6 +980,9 @@ export function DiscoverContent() {
         {selectedCategory === "movies" && (
           <>
             <div className="flex justify-center overflow-x-auto">
+              <div className="">
+                {renderScrollButton("tv-providers", "left")}
+              </div>
               <div
                 id="button-carousel-tv-providers"
                 className="flex mb-4 overflow-x-auto scroll-smooth"
@@ -992,9 +995,12 @@ export function DiscoverContent() {
                   {renderMovieProviderButtons()}
                 </div>
               </div>
+              <div className="">
+                {renderScrollButton("tv-providers", "right")}
+              </div>
             </div>
             <div className="flex mb-4 overflow-x-auto">
-              {!isMobile && <div>{renderScrollButton("movies", "left")}</div>}
+              <div className="">{renderScrollButton("movies", "left")}</div>
               <div
                 id="button-carousel-movies"
                 className="flex mb-4 overflow-x-auto scroll-smooth"
@@ -1008,9 +1014,7 @@ export function DiscoverContent() {
                   {renderMovieButtons()}
                 </div>
               </div>
-              {!isMobile && (
-                <div className="">{renderScrollButton("movies", "right")}</div>
-              )}
+              <div className="">{renderScrollButton("movies", "right")}</div>
             </div>
           </>
         )}
@@ -1019,6 +1023,9 @@ export function DiscoverContent() {
         {selectedCategory === "tvshows" && (
           <>
             <div className="flex justify-center overflow-x-auto">
+              <div className="">
+                {renderScrollButton("tv-providers", "left")}
+              </div>
               <div
                 id="button-carousel-tv-providers"
                 className="flex mb-4 overflow-x-auto scroll-smooth"
@@ -1031,11 +1038,12 @@ export function DiscoverContent() {
                   {renderTvProviderButtons()}
                 </div>
               </div>
+              <div className="">
+                {renderScrollButton("tv-providers", "right")}
+              </div>
             </div>
             <div className="flex mb-4 overflow-x-auto">
-              {!isMobile && (
-                <div className="">{renderScrollButton("tvshows", "left")}</div>
-              )}
+              <div className="">{renderScrollButton("tvshows", "left")}</div>
               <div
                 id="button-carousel-tvshows"
                 className="flex mb-4 overflow-x-auto scroll-smooth"
@@ -1049,9 +1057,7 @@ export function DiscoverContent() {
                   {renderTvButtons()}
                 </div>
               </div>
-              {!isMobile && (
-                <div className="">{renderScrollButton("tvshows", "right")}</div>
-              )}
+              <div className="">{renderScrollButton("tvshows", "right")}</div>
             </div>
           </>
         )}
