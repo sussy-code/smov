@@ -34,7 +34,7 @@
     "@headlessui/react": "^1.7.19",
     "@ladjs/country-language": "^1.0.3",
     "@marsidev/react-turnstile": "^0.7.2",
-    "@movie-web/providers": "github:sussy-code/providers",
+    "@movie-web/providers": "file:./node_modules/providers-e62c98ba05db4fbdc61c519ea07921c82e9f3641",
     "@noble/hashes": "^1.5.0",
     "@plasmohq/messaging": "^0.6.2",
     "@react-spring/web": "^9.7.4",
