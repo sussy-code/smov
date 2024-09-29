@@ -991,7 +991,7 @@ export function DiscoverContent() {
 
           {/* Dropdown options */}
           {isDropdownOpen && (
-            <ul className="absolute top-full mb-1 rounded-lg bg-dropdown-background py-3 px-5 text-left text-white shadow-md border-2 border-gray-800 focus:outline-none tabbable cursor-pointer">
+            <ul className="absolute top-full z-50 mb-1 rounded-lg bg-dropdown-background py-3 px-5 text-left text-white shadow-md border-2 border-gray-800 focus:outline-none tabbable cursor-pointer">
               <li
                 className={`cursor-pointer p-2 hover:text-gray-300 ${selectedCategory === "movies" ? "font-bold" : ""}`}
                 onClick={() => handleCategoryChange("movies")}
