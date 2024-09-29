@@ -82,6 +82,7 @@ export function WatchingPart({
   return (
     <div
       className="relative"
+      style={{ userSelect: "none" }} // Disable text selection
       onContextMenu={(e: React.MouseEvent<HTMLDivElement>) =>
         e.preventDefault()
       } // Prevent right-click context menu
