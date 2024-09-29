@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 
-import { Spinner } from "@/components/layout/Spinner";
+import { Loading } from "@/components/layout/Loading";
 import DiscoverContent from "@/utils/discoverContent";
 
 import { SubPageLayout } from "./layouts/SubPageLayout";
@@ -64,7 +64,7 @@ export function Discover() {
       {/* Conditional rendering: show loading screen or the content */}
       {loading ? (
         <div className="flex flex-col justify-center items-center h-64 space-y-4">
-          <Spinner />
+          <Loading />
           <p className="text-lg font-medium text-gray-400 animate-pulse mt-4">
             Fetching the latest movies & TV shows...
           </p>
