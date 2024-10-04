@@ -1239,6 +1239,7 @@ export function DiscoverContent() {
                   renderMovies(
                     providerTVShows[selectedTVProvider.id],
                     `Popular Shows on ${selectedTVProvider.name}`,
+                    true,
                   )
                 ) : (
                   <p className="text-center text-gray-600">
