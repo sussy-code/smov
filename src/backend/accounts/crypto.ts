@@ -71,7 +71,11 @@ export function base64ToBuffer(data: string) {
 }
 
 export function base64ToStringBuffer(data: string) {
-  return forge.util.createBuffer(base64ToBuffer(data));
+  const sharedArrayBuffer = base64ToBuffer(data).buffer;
+  const arrayBuffer = new ArrayBuffer(sharedArrayBuffer.byteLength);
+  new Uint8Array(arrayBuffer).set(new Uint8Array(sharedArrayBuffer));
+
+  return forge.util.createBuffer(arrayBuffer);
 }
 
 export function stringBufferToBase64(buffer: forge.util.ByteStringBuffer) {
@@ -91,7 +95,7 @@ export async function encryptData(data: string, secret: Uint8Array) {
 
   const cipher = forge.cipher.createCipher(
     "AES-GCM",
-    forge.util.createBuffer(secret),
+    forge.util.createBuffer(String.fromCharCode(...secret)),
   );
   cipher.start({
     iv,
@@ -115,7 +119,7 @@ export function decryptData(data: string, secret: Uint8Array) {
 
   const decipher = forge.cipher.createDecipher(
     "AES-GCM",
-    forge.util.createBuffer(secret),
+    forge.util.createBuffer(String.fromCharCode(...secret)),
   );
   decipher.start({
     iv: base64ToStringBuffer(iv),
