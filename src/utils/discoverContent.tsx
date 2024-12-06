@@ -36,6 +36,11 @@ const editorPicks = [
   { id: 264660, type: "movie" }, // Ex Machina
   { id: 92591, type: "movie" }, // Bernie
   { id: 976893, type: "movie" }, // Perfect Days
+  { id: 71912, type: "show" }, // The Witcher
+  { id: 13187, type: "movie" }, // A Charlie Brown Christmas
+  { id: 11527, type: "movie" }, // Excalibur
+  { id: 120, type: "movie" }, // LOTR: The Fellowship of the Ring
+  { id: 157336, type: "movie" }, // Interstellar
 ];
 
 function ScrollToTopButton() {
