@@ -1,6 +1,5 @@
 import { detect } from "detect-browser";
 import fscreen from "fscreen";
-import Hls from "hls.js";
 
 export const isSafari = /^((?!chrome|android).)*safari/i.test(
   navigator.userAgent,
