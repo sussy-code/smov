@@ -228,7 +228,7 @@
     "defaultConfirm": {
       "cancel": "Cancel",
       "confirm": "Use default setup",
-      "description": "The default setup does not have the best streams and can be unbearably slow. ( ͠° ͟ʖ ͡°)",
+      "description": "The default setup does not have the best streams and can be unbearably slow.",
       "title": "Are you sure?"
     },
     "extension": {
@@ -269,7 +269,7 @@
       "explainer": "To get the best streams possible, you will need to choose which streaming method you want to use.",
       "options": {
         "default": {
-          "text": "I don't want good quality streams,<0 /> <1>use the default setup ▄︻デ══━一 ʕ•͡-•ʔ</1>"
+          "text": "I don't want good quality streams, use the default setup."
         },
         "extension": {
           "action": "Install extension",
