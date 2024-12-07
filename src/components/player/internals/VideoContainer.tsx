@@ -101,6 +101,7 @@ function VideoElement() {
 
   return (
     <video
+      id="video-element"
       className="absolute inset-0 w-full h-screen bg-black"
       autoPlay
       playsInline
