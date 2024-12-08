@@ -6,13 +6,12 @@ import { Link } from "react-router-dom";
 import { mediaItemToId } from "@/backend/metadata/tmdb";
 import { DotList } from "@/components/text/DotList";
 import { Flare } from "@/components/utils/Flare";
-import { useIsMobile } from "@/hooks/useIsMobile";
 import { useSearchQuery } from "@/hooks/useSearchQuery";
 import { MediaItem } from "@/utils/mediaTypes";
 
 import { MediaBookmarkButton } from "./MediaBookmark";
 import { IconPatch } from "../buttons/IconPatch";
-import { Icons } from "../Icon";
+import { Icon, Icons } from "../Icon";
 
 export interface MediaCardProps {
   media: MediaItem;
@@ -60,8 +59,6 @@ function MediaCardContent({
   const dotListContent = [t(`media.types.${media.type}`)];
 
   const [searchQuery] = useSearchQuery();
-
-  const { isMobile } = useIsMobile();
 
   if (media.year) {
     dotListContent.push(media.year.toFixed());
@@ -149,9 +146,7 @@ function MediaCardContent({
           ) : null}
 
           <div
-            className={classNames("absolute", {
-              "bookmark-button": !isMobile,
-            })}
+            className="absolute bookmark-button"
             onClick={(e) => e.preventDefault()}
           >
             <MediaBookmarkButton media={media} />
@@ -179,7 +174,29 @@ function MediaCardContent({
         <h1 className="mb-1 line-clamp-3 max-h-[4.5rem] text-ellipsis break-words font-bold text-white">
           <span>{media.title}</span>
         </h1>
-        <DotList className="text-xs" content={dotListContent} />
+        <div className="media-info-container justify-content-center flex flex-wrap">
+          <DotList className="text-xs" content={dotListContent} />
+          <button
+            className="info-button"
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+
+              const searchParam = encodeURIComponent(encodeURI(media.id));
+              const url =
+                media.type === "movie"
+                  ? `https://www.themoviedb.org/movie/${searchParam}`
+                  : `https://www.themoviedb.org/tv/${searchParam}`;
+
+              window.open(url, "_blank");
+            }}
+          >
+            <Icon
+              className="text-xs font-semibold text-type-secondary"
+              icon={Icons.CIRCLE_QUESTION}
+            />
+          </button>
+        </div>
       </Flare.Child>
     </Flare.Base>
   );

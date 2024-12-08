@@ -1,6 +1,6 @@
 {
   "packageManager": "pnpm@9.14.4",
-  "name": "sudo-flix",
+  "name": "P-Stream",
   "version": "4.7.0",
   "private": true,
   "homepage": "https://github.com/sussy-code/smov",
@@ -12,7 +12,8 @@
     "preview": "vite preview",
     "lint": "eslint --ext .tsx,.ts src",
     "lint:fix": "eslint --fix --ext .tsx,.ts src",
-    "lint:report": "eslint --ext .tsx,.ts --output-file eslint_report.json --format json src"
+    "lint:report": "eslint --ext .tsx,.ts --output-file eslint_report.json --format json src",
+    "preinstall": "npx -y only-allow pnpm"
   },
   "browserslist": {
     "production": [
@@ -34,7 +35,7 @@
     "@headlessui/react": "^1.7.19",
     "@ladjs/country-language": "^1.0.3",
     "@marsidev/react-turnstile": "^0.7.2",
-    "@movie-web/providers": "github:sussy-code/providers",
+    "@movie-web/providers": "github:Pasithea0/smov-providers",
     "@noble/hashes": "^1.5.0",
     "@plasmohq/messaging": "^0.6.2",
     "@react-spring/web": "^9.7.4",

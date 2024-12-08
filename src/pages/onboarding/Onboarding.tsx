@@ -23,6 +23,14 @@ function VerticalLine(props: { className?: string }) {
   );
 }
 
+function HorizontalLine(props: { className?: string }) {
+  return (
+    <div className={classNames("w-full grid justify-center", props.className)}>
+      <div className="h-px w-10 bg-onboarding-divider" />
+    </div>
+  );
+}
+
 export function OnboardingPage() {
   const navigate = useNavigateOnboarding();
   const skipModal = useModal("skip");
@@ -60,7 +68,7 @@ export function OnboardingPage() {
           {t("onboarding.start.explainer")}
         </Paragraph>
 
-        <div className="w-full flex flex-col md:flex-row gap-3">
+        <div className="w-full flex flex-col md:flex-row gap-3 pb-6">
           <Card onClick={() => navigate("/onboarding/extension")}>
             <CardContent
               colorClass="!text-onboarding-best"
@@ -89,30 +97,19 @@ export function OnboardingPage() {
         </div>
         {noProxies ? null : (
           <>
-            <p className="text-center hidden md:block mt-12">
-              <Trans i18nKey="onboarding.start.options.default.text">
-                <br />
-                <a
-                  onClick={skipModal.show}
-                  type="button"
-                  className="text-onboarding-link hover:opacity-75 cursor-pointer"
-                />
-              </Trans>
-            </p>
-            <div className=" max-w-[300px] mx-auto md:hidden mt-12 ">
-              <Button
-                className="!text-type-text !bg-opacity-50"
-                theme="secondary"
-                onClick={skipModal.show}
-              >
-                <span>
-                  <Trans i18nKey="onboarding.start.options.default.text">
-                    <span />
-                    <span />
-                  </Trans>
-                </span>
-              </Button>
+            <div className="w-full flex flex-col md:flex-row">
+              <HorizontalLine className="items-end pb-6" />
             </div>
+            <Card onClick={skipModal.show}>
+              <CardContent
+                colorClass="!text-onboarding-bad"
+                title={t("onboarding.defaultConfirm.confirm")}
+                subtitle=""
+                description={t("onboarding.defaultConfirm.description")}
+              >
+                <Trans i18nKey="onboarding.start.options.default.text" />
+              </CardContent>
+            </Card>
           </>
         )}
       </CenterContainer>
