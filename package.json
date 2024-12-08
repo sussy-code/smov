@@ -8,6 +8,7 @@
     "dev": "vite",
     "build": "vite build",
     "build:pwa": "cross-env VITE_PWA_ENABLED=true vite build",
+    "update-and-build": "pnpm update @movie-web/providers && pnpm run build",
     "test": "vitest run",
     "preview": "vite preview",
     "lint": "eslint --ext .tsx,.ts src",
