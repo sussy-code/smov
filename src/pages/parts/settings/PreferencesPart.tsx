@@ -112,27 +112,29 @@ export function PreferencesPart(props: {
         </div>
       </div>
 
-      <div className="flex flex-col gap-3">
-        <p className="text-white font-bold">
-          {t("settings.preferences.sourceOrder")}
-        </p>
-        <p className="max-w-[25rem] font-medium">
-          {t("settings.preferences.sourceOrderDescription")}
-        </p>
+      <div id="source-order" className="mt-4">
+        <div className="flex flex-col gap-3">
+          <p className="text-white font-bold">
+            {t("settings.preferences.sourceOrder")}
+          </p>
+          <p className="max-w-[25rem] font-medium">
+            {t("settings.preferences.sourceOrderDescription")}
+          </p>
 
-        <SortableList
-          items={sourceItems}
-          setItems={(items) =>
-            props.setSourceOrder(items.map((item) => item.id))
-          }
-        />
-        <Button
-          className="max-w-[25rem]"
-          theme="secondary"
-          onClick={() => props.setSourceOrder(allSources.map((s) => s.id))}
-        >
-          {t("settings.reset")}
-        </Button>
+          <SortableList
+            items={sourceItems}
+            setItems={(items) =>
+              props.setSourceOrder(items.map((item) => item.id))
+            }
+          />
+          <Button
+            className="max-w-[25rem]"
+            theme="secondary"
+            onClick={() => props.setSourceOrder(allSources.map((s) => s.id))}
+          >
+            {t("settings.reset")}
+          </Button>
+        </div>
       </div>
     </div>
   );
