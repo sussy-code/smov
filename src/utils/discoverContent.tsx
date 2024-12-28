@@ -561,7 +561,7 @@ export function DiscoverContent() {
     // https://tailwindcss.com/docs/border-style
     return (
       <div className="relative overflow-hidden">
-        <h2 className="mt-2 text-2xl cursor-default font-bold text-white sm:text-3xl md:text-2xl mx-auto pl-5">
+        <h2 className="mt-2 text-2xl cursor-default font-bold text-white sm:text-3xl md:text-2xl mx-auto pl-5 text-balance">
           {displayCategory}
         </h2>
         <div
@@ -957,7 +957,7 @@ export function DiscoverContent() {
                 </div>
               ) : (
                 <div className="flex items-center inline-block">
-                  <span>Watch Something New</span>
+                  <span>Watch Something Random</span>
                   <img
                     src="/lightbar-images/dice.svg"
                     alt="Small Image"
@@ -996,7 +996,7 @@ export function DiscoverContent() {
 
           {/* Dropdown options */}
           {isDropdownOpen && (
-            <ul className="absolute top-full z-50 mb-1 rounded-lg bg-dropdown-background py-3 px-5 text-left text-white shadow-md border-2 border-gray-800 focus:outline-none tabbable cursor-pointer">
+            <ul className="absolute top-full mb-1 rounded-lg bg-dropdown-background py-3 px-5 text-left text-white shadow-md border-2 border-gray-800 focus:outline-none tabbable cursor-pointer z-50">
               <li
                 className={`cursor-pointer p-2 hover:text-gray-300 ${selectedCategory === "movies" ? "font-bold" : ""}`}
                 onClick={() => handleCategoryChange("movies")}
@@ -1016,7 +1016,7 @@ export function DiscoverContent() {
         {/* Render Movies */}
         {selectedCategory === "movies" && (
           <>
-            <div className="flex justify-center overflow-x-auto -mx-6">
+            <div className="flex justify-center overflow-x-auto">
               {isMobile && (
                 <div className="">
                   {renderScrollButton("providers", "left")}
@@ -1024,7 +1024,7 @@ export function DiscoverContent() {
               )}
               <div
                 id="button-carousel-providers"
-                className="flex mb-4 overflow-x-auto scroll-smooth"
+                className="flex lg:px-4 mb-4 overflow-x-auto scroll-smooth z-40"
                 style={{
                   scrollbarWidth: "thin",
                   scrollbarColor: "transparent transparent",
@@ -1040,11 +1040,11 @@ export function DiscoverContent() {
                 </div>
               )}
             </div>
-            <div className="flex mb-4 overflow-x-auto -mx-6">
+            <div className="flex mb-4 overflow-x-auto">
               <div className="">{renderScrollButton("movies", "left")}</div>
               <div
                 id="button-carousel-movies"
-                className="flex mb-4 overflow-x-auto scroll-smooth"
+                className="flex lg:px-4 mb-4 overflow-x-auto scroll-smooth"
                 style={{
                   scrollbarWidth: "thin",
                   scrollbarColor: "transparent transparent",
@@ -1063,7 +1063,7 @@ export function DiscoverContent() {
         {/* Render Shows */}
         {selectedCategory === "tvshows" && (
           <>
-            <div className="flex justify-center overflow-x-auto -mx-6">
+            <div className="flex justify-center overflow-x-auto">
               {isMobile && (
                 <div className="">
                   {renderScrollButton("tv-providers", "left")}
@@ -1071,7 +1071,7 @@ export function DiscoverContent() {
               )}
               <div
                 id="button-carousel-tv-providers"
-                className="flex mb-4 overflow-x-auto scroll-smooth"
+                className="flex lg:px-4 mb-4 overflow-x-auto scroll-smooth z-40"
                 style={{
                   scrollbarWidth: "thin",
                   scrollbarColor: "transparent transparent",
@@ -1087,11 +1087,11 @@ export function DiscoverContent() {
                 </div>
               )}
             </div>
-            <div className="flex mb-4 overflow-x-auto -mx-6">
+            <div className="flex mb-4 overflow-x-auto">
               <div className="">{renderScrollButton("tvshows", "left")}</div>
               <div
                 id="button-carousel-tvshows"
-                className="flex mb-4 overflow-x-auto scroll-smooth"
+                className="flex lg:px-4 mb-4 overflow-x-auto scroll-smooth"
                 style={{
                   scrollbarWidth: "thin",
                   scrollbarColor: "transparent transparent",
