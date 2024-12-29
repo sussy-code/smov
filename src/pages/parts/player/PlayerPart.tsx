@@ -172,11 +172,9 @@ export function PlayerPart(props: PlayerPartProps) {
             ) : null}
             {status === playerStatus.PLAYBACK_ERROR ||
             status === playerStatus.PLAYING ? (
-              <>
-                <Player.Captions />
-                <Player.Settings />
-              </>
+              <Player.Captions />
             ) : null}
+            <Player.Settings />
             {/* Fullscreen on when not shifting */}
             {!isShifting && <Player.Fullscreen />}
 
@@ -195,7 +193,7 @@ export function PlayerPart(props: PlayerPartProps) {
             {!isIOSPWA &&
               (status === playerStatus.PLAYING ? <Player.Pip /> : null)}
             <Player.Episodes />
-            {status === playerStatus.PLAYING ? <Player.Settings /> : null}
+            <Player.Settings />
             {/* Expand button for iOS PWA only */}
             {isIOSPWA && status === playerStatus.PLAYING && <Widescreen />}
           </div>
