@@ -15,6 +15,8 @@ import { SearchListPart } from "@/pages/parts/search/SearchListPart";
 import { SearchLoadingPart } from "@/pages/parts/search/SearchLoadingPart";
 import DiscoverContent from "@/utils/discoverContent";
 
+import { PopupModal } from "./parts/home/PopupModal";
+
 function useSearch(search: string) {
   const [searching, setSearching] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
@@ -63,6 +65,22 @@ export function HomePage() {
     simulateLoading();
   }, []);
 
+  const [showModal, setShowModal] = useState(() => {
+    const isSafari =
+      typeof navigator !== "undefined" &&
+      /Safari/.test(navigator.userAgent) &&
+      !/Chrome/.test(navigator.userAgent);
+
+    const isMac =
+      typeof navigator !== "undefined" && /Mac/.test(navigator.platform);
+
+    const isIOS =
+      typeof navigator !== "undefined" &&
+      /iPhone|iPad|iPod/.test(navigator.userAgent);
+
+    return isSafari && (isMac || isIOS);
+  });
+
   return (
     <HomeLayout showBg={showBg}>
       <div className="mb-16 sm:mb-24">
@@ -74,6 +92,42 @@ export function HomePage() {
           `}</style>
           <title>{t("global.name")}</title>
         </Helmet>
+
+        {/* Popup Modal */}
+        {showModal && (
+          <PopupModal
+            title="Issue on Safari (iOS/macOS)"
+            message={
+              <p>
+                Due to a recent update, many P-Stream sources are broken on iOS
+                and macOS.
+                <br />
+                The only available source on Safari right now is SoaperTV.
+                <br />
+                <br />
+                <strong>Workaround: </strong>
+                Please switch to Chrome on desktop where all sources are still
+                working. (And where the extension is available!)
+                <br />
+                <br />
+                I&apos;m working on a fix. For updates on this issue please join
+                the{" "}
+                <a
+                  href="https://discord.com/invite/7z6znYgrTG"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-onboarding-link"
+                >
+                  P-Stream Discord
+                </a>
+                . Sorry for the inconvenience.
+              </p>
+            }
+            onClose={() => setShowModal(false)}
+          />
+        )}
+        {/* END */}
+
         <HeroPart searchParams={searchParams} setIsSticky={setShowBg} />
       </div>
       <WideContainer>
