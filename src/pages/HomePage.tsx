@@ -110,8 +110,8 @@ export function HomePage() {
                 still working. (And where the extension is available!)
                 <br />
                 <br />
-                I&apos;m working on a fix. For updates on this issue please join
-                the{" "}
+                I&apos;m looking into a fix. For updates on this issue please
+                join the{" "}
                 <a
                   href="https://discord.com/invite/7z6znYgrTG"
                   target="_blank"
