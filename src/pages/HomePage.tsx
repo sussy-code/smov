@@ -106,8 +106,8 @@ export function HomePage() {
                 <br />
                 <br />
                 <strong>Workaround: </strong>
-                Please switch to Chrome on desktop where all sources are still
-                working. (And where the extension is available!)
+                Please switch to <u>Chrome on desktop</u> where all sources are
+                still working. (And where the extension is available!)
                 <br />
                 <br />
                 I&apos;m working on a fix. For updates on this issue please join
