@@ -93,7 +93,7 @@ export function HomePage() {
           <title>{t("global.name")}</title>
         </Helmet>
 
-        {/* Popup Modal */}
+        {/* Popup Modal 
         {showModal && (
           <PopupModal
             title="Issue on Safari (iOS/macOS)"
@@ -126,7 +126,7 @@ export function HomePage() {
             onClose={() => setShowModal(false)}
           />
         )}
-        {/* END */}
+        END */}
 
         <HeroPart searchParams={searchParams} setIsSticky={setShowBg} />
       </div>
