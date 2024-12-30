@@ -102,7 +102,7 @@ export function HomePage() {
                 Due to a recent update, many P-Stream sources are broken on iOS
                 and macOS.
                 <br />
-                The only available source on Safari right now is SoaperTV.
+                The only available source on Safari right now is Autoembed.
                 <br />
                 <br />
                 <strong>Workaround: </strong>
