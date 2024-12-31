@@ -145,8 +145,8 @@
   "media": {
     "episodeDisplay": "S{{season}} E{{episode}}",
     "types": {
-      "movie": "Film",
-      "show": "Show"
+      "movie": "Pirate Tale",
+      "show": "Sea Saga"
     }
   },
   "navigation": {
@@ -156,7 +156,7 @@
     "menu": {
       "about": "About us",
       "logout": "Abandon ship",
-      "register": "Sync to the sudo-cloud",
+      "register": "Send it to the Cloud, matey!",
       "settings": "Settings",
       "support": "Support"
     }
@@ -453,7 +453,7 @@
       "register": {
         "cta": "Get started",
         "text": "Instantly share yer watch progress between devices and keep 'em synced.",
-        "title": "Sync to the sudo-cloud"
+        "title": "Sync to the Cloud"
       },
       "title": "Treasure Chest"
     },

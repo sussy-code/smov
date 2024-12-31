@@ -160,7 +160,7 @@
     "menu": {
       "about": "Despre noi",
       "logout": "Deconectați-vă",
-      "register": "Sincronizare în sudo-cloud",
+      "register": "Sincronizare în Cloud",
       "settings": "Setări",
       "support": "Ajutor"
     }
@@ -458,7 +458,7 @@
       "register": {
         "cta": "Începeți",
         "text": "Partajați progresul vizionării între dispozitive și păstrați-le sincronizate.",
-        "title": "Sincronizare în sudo-cloud"
+        "title": "Sincronizare în Cloud"
       },
       "title": "Cont"
     },

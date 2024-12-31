@@ -161,7 +161,7 @@
     "menu": {
       "about": "Over ons",
       "logout": "Log uit",
-      "register": "Synchroniseren met de sudo-cloud",
+      "register": "Synchroniseren met de Cloud",
       "settings": "Instellingen",
       "support": "Ondersteuning"
     }
@@ -468,7 +468,7 @@
       "register": {
         "cta": "Aan de slag",
         "text": "Deel uw kijkvoortgang tussen apparaten en houd ze gesynchroniseerd.",
-        "title": "Synchroniseren met de sudo-cloud"
+        "title": "Synchroniseren met de Cloud"
       },
       "title": "Account"
     },

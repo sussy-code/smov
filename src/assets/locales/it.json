@@ -190,7 +190,7 @@
     "menu": {
       "about": "Su di P-Stream",
       "logout": "Esci",
-      "register": "Sincronizza al sudo-cloud",
+      "register": "Sincronizza al Cloud",
       "settings": "Impostazioni",
       "support": "Supporto",
       "discover": "Scopri"
@@ -507,7 +507,7 @@
       "register": {
         "cta": "Inizia",
         "text": "Condividi i progressi dei tuoi film e serie tra dispositivi e mantienili sincronizzati. ( ̧⸝⸝⍢⸝⸝)ෆ",
-        "title": "Sincronizza col sudo-cloud"
+        "title": "Sincronizza col Cloud"
       },
       "title": "Account",
       "admin": {

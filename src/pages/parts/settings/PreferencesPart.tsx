@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import { useMemo } from "react";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 import { getAllProviders, getProviders } from "@/backend/providers/providers";
 import { Button } from "@/components/buttons/Button";
@@ -50,6 +51,8 @@ export function PreferencesPart(props: {
       disabled: !currentDeviceSources.find((s) => s.id === id),
     }));
   }, [props.sourceOrder, allSources]);
+
+  const navigate = useNavigate();
 
   return (
     <div className="space-y-12">
@@ -126,9 +129,19 @@ export function PreferencesPart(props: {
             <p className="text-white font-bold">
               {t("settings.preferences.sourceOrder")}
             </p>
-            <p className="max-w-[25rem] font-medium">
-              {t("settings.preferences.sourceOrderDescription")}
-            </p>
+            <div className="max-w-[25rem] font-medium">
+              <Trans
+                i18nKey="settings.preferences.sourceOrderDescription"
+                components={{
+                  bold: (
+                    <span
+                      className="text-type-link font-bold cursor-pointer"
+                      onClick={() => navigate("/onboarding/extension")}
+                    />
+                  ),
+                }}
+              />
+            </div>
 
             <SortableList
               items={sourceItems}

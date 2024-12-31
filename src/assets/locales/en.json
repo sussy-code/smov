@@ -1,6 +1,6 @@
 {
   "about": {
-    "description": "P-Stream is a fork of movie-web that is ensured to stay up even after the shutdown of movie-web.app. P-Stream.lol runs on a private, self-hosted VPS. I run this site at a loss; there are no ads due to my beliefs in free media.",
+    "description": "P-Stream is a fork of movie-web that is ensured to stay up even after the shutdown of movie-web.app. P-Stream runs on a private, self-hosted VPS. I run this site at a loss; there are no ads due to my beliefs in free media.",
     "faqTitle": "Common questions",
     "q1": {
       "body": "P-Stream does not host any content. When you click on something to watch, the internet is searched for the selected media (On the loading screen and in the 'video sources' tab you can see which source you're using). Media never gets uploaded by P-Stream, everything is through this searching mechanism.",
@@ -15,11 +15,11 @@
       "title": "The search results display the show or movie, why can't I play it?"
     },
     "q4": {
-      "body": "All data is synced to the sudo-backend which is different than the community backend and is independently hosted by me, anyone is free to use this as well.",
+      "body": "All data is synced to the community backend, anyone is free to use this as well.",
       "title": "What about my data and stuff?"
     },
     "q5": {
-      "body": "Well P-Stream has a twitter account that can be found in the footer of this page as well as a link to the source code on Github.",
+      "body": "P-Stream has a Discord server that can be found at the header of this page!",
       "title": "How can I find out more?"
     },
     "title": "About P-Stream (^▽^)"
@@ -204,7 +204,7 @@
     "menu": {
       "about": "About us",
       "logout": "Log out",
-      "register": "Sync to sudo-cloud",
+      "register": "Sync to Cloud",
       "settings": "Settings",
       "support": "Support",
       "discover": "Discover"
@@ -214,7 +214,7 @@
     "badge": "Not found",
     "goHome": "Back to home",
     "reloadButton": "Try again",
-    "message": "We looked everywhere: under the bins, in the closet, behind the proxy but ultimately couldn't find the page you are looking for. (ಥ﹏ಥ)",
+    "message": "We looked everywhere: under the bins, in the closet, behind the proxy, but ultimately couldn't find the page you are looking for. (ಥ﹏ಥ)",
     "title": "Couldn't find that page"
   },
   "downtimeNotice": {
@@ -557,7 +557,7 @@
       "register": {
         "cta": "Get started",
         "text": "Share your watch progress between devices and keep them synced. ( ̧⸝⸝⍢⸝⸝)ෆ",
-        "title": "Sync to the sudo-cloud"
+        "title": "Sync to the Cloud"
       },
       "title": "Account"
     },
@@ -621,7 +621,7 @@
       "autoplayDescription": "Automatically play the next episode in a series after reaching the end. Can be enabled by users with the browser extension, a custom proxy, or with the default setup if allowed by the host.",
       "autoplayLabel": "Autoplay",
       "sourceOrder": "Reordering sources",
-      "sourceOrderDescription": "Drag and drop to reorder sources. This will determine the order in which sources are checked for the media you are trying to watch. If a source is greyed out, it means it is not available on your device.",
+      "sourceOrderDescription": "Drag and drop to reorder sources. This will determine the order in which sources are checked for the media you are trying to watch. If a source is greyed out, it means the <bold>extension</bold> is required for that source.",
       "title": "Preferences"
     },
     "reset": "Reset",
@@ -635,7 +635,7 @@
         "insecure": "Insecure",
         "notLoggedIn": "You are not logged in",
         "secure": "Secure",
-        "title": "App stats (for nerds) 🤓",
+        "title": "App stats",
         "unknownVersion": "Unknown",
         "userId": "User ID"
       }
@@ -644,8 +644,8 @@
       "backgroundLabel": "Background opacity",
       "backgroundBlurLabel": "Background blur",
       "colorLabel": "Color",
-      "previewQuote": "Would you rather have a thot daughter or a gay son? 🤔",
-      "textSizeLabel": "Text size",
+      "previewQuote": "Convinced life is meaningless, I lack the courage of my conviction.",
+      "textSizeLabel": "Text size (mini preview not to scale)",
       "title": "Subtitles",
       "textBoldLabel": "Bold text"
     },
