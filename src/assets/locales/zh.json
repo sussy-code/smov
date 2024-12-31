@@ -443,7 +443,12 @@
           "text": "此操作不可逆。所有数据将被删除且无法恢复。",
           "title": "删除账户"
         },
-        "title": "操作"
+        "title": "操作",
+        "logoutAllDevices": {
+          "title": "结束所有会话",
+          "text": "这将会登出所有与您的账户关联的设备。",
+          "button": "登出所有设备"
+        }
       },
       "devices": {
         "deviceNameLabel": "设备名称",

@@ -445,7 +445,12 @@
           "text": "Deze actie is onomkeerbaar. Alle gegevens worden verwijderd en er kan niets worden hersteld.",
           "title": "Account verwijderen"
         },
-        "title": "Acties"
+        "title": "Acties",
+        "logoutAllDevices": {
+          "title": "Eindig alle sessies",
+          "text": "Dit zal je afmelden van alle apparaten die gekoppeld zijn aan je account.",
+          "button": "Log uit van alle apparaten"
+        }
       },
       "devices": {
         "deviceNameLabel": "Apparaatnaam",

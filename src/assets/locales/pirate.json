@@ -430,7 +430,12 @@
           "text": "This action be irreversible. All booty will be deleted and nothin' can be recovered.",
           "title": "Abandon ship for all eternity"
         },
-        "title": "Actions"
+        "title": "Actions",
+        "logoutAllDevices": {
+          "title": "Abandon Ships",
+          "text": "Surrender all ships and abandon all booty.",
+          "button": "Log Out of All Devices"
+        }
       },
       "devices": {
         "deviceNameLabel": "Ship name",

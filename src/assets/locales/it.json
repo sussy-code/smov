@@ -484,7 +484,12 @@
           "text": "Questa azione è irreversibile. Tutti i dati verranno cancellati e nulla potrà essere recuperato.",
           "title": "Elimina l'account"
         },
-        "title": "Azioni"
+        "title": "Azioni",
+        "logoutAllDevices": {
+          "title": "Termina tutte le sessioni",
+          "text": "Questo ti disconnetterà da tutti i dispositivi collegati al tuo account.",
+          "button": "Esci da tutti i dispositivi"
+        }
       },
       "devices": {
         "deviceNameLabel": "Nome dispositivo",

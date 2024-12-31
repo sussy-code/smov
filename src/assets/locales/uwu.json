@@ -495,7 +495,12 @@
           "text": "This action is iwwevewsibwe. aww >w< data wiww be deweted and nyothing *runs away* c-can be wecuvwed.",
           "title": "Dewete account"
         },
-        "title": "Actions :3"
+        "title": "Actions :3",
+        "logoutAllDevices": {
+          "title": "End Awll Sessions",
+          "text": "This wwill siwn uwu wout from awll dewices winked to wur account.",
+          "button": "Wog Out of Awll Devwices"
+        }
       },
       "devices": {
         "deviceNameLabel": "Device nyame",

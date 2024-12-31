@@ -445,7 +445,12 @@
           "text": "Diese Aktion kann nicht rückgängig gemacht werden. Alle Daten werden gelöscht und können nicht wiederhergestellt werden.",
           "title": "Konto löschen"
         },
-        "title": "Aktionen"
+        "title": "Aktionen",
+        "logoutAllDevices": {
+          "title": "Alle Sitzungen beenden",
+          "text": "Dies wird dich von allen Geräten abmelden, die mit deinem Konto verbunden sind.",
+          "button": "Von allen Geräten abmelden"
+        }
       },
       "devices": {
         "deviceNameLabel": "Gerätename",

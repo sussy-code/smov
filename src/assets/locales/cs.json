@@ -426,13 +426,18 @@
       "actions": {
         "delete": {
           "button": "Smazat účet",
-          "confirmButton": "Smazat účet",
-          "confirmDescription": "Jste si jisti, že chcete smazat váš účet? Všechny data budou ztracena!",
-          "confirmTitle": "Jste si jisti?",
-          "text": "Tato akce nejde vrátit. Všechny data budou smazána a nic nepůjde zachránit.",
+          "confirmButton": "Potvrdit smazání",
+          "confirmDescription": "Jste si jisti, že chcete smazat váš účet? Všechna data budou ztracena!",
+          "confirmTitle": "Potvrdit smazání",
+          "text": "Tato akce je nevratná. Všechna data budou smazána a nic nebude možné obnovit.",
           "title": "Smazat účet"
         },
-        "title": "Akce"
+        "title": "Akce",
+        "logoutAllDevices": {
+          "title": "Ukončit všechny relace",
+          "text": "Toto vás odhlásí ze všech zařízení připojených k vašemu účtu.",
+          "button": "Odhlásit se ze všech zařízení"
+        }
       },
       "devices": {
         "deviceNameLabel": "Název zařízení",

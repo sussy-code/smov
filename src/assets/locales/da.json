@@ -511,13 +511,18 @@
       "actions": {
         "delete": {
           "title": "Slet profil",
-          "confirmButton": "Slet profil",
+          "confirmButton": "Bekræft sletning",
           "button": "Slet profil",
           "confirmDescription": "Er du sikker på, at du vil slette din profil? Alle dine data vil gå tabt! ૮₍˶Ó﹏Ò ⑅₎ა",
           "confirmTitle": "Er du sikker?",
           "text": "Denne handling er permanent. Alle data slettes, og intet kan gendannes."
         },
-        "title": "Handlinger"
+        "title": "Handlinger",
+        "logoutAllDevices": {
+          "title": "Afslut alle sessioner",
+          "text": "Dette vil logge dig ud fra alle enheder, der er tilknyttet din konto.",
+          "button": "Log ud af alle enheder"
+        }
       },
       "profile": {
         "finish": "Afslut redigering",

@@ -321,7 +321,12 @@
           "text": "Denna åtgärd är oåterkallelig. All data kommer att raderas och kan inte återställas.",
           "title": "Ta bort konto"
         },
-        "title": "Åtgärder"
+        "title": "Åtgärder",
+        "logoutAllDevices": {
+          "title": "Avsluta alla sessioner",
+          "text": "Detta loggar ut dig från alla enheter kopplade till ditt konto.",
+          "button": "Logga ut från alla enheter"
+        }
       },
       "devices": {
         "deviceNameLabel": "Enhetens namn",

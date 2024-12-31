@@ -432,12 +432,17 @@
         "delete": {
           "button": "Eliminar conta",
           "confirmButton": "Eliminar conta",
-          "confirmDescription": "Estas seguro/a que queres eliminar a túa conta? Todos os datos serán eliminados!",
+          "confirmDescription": "Estás seguro/a de que queres eliminar a túa conta? Todos os datos serán eliminados!",
           "confirmTitle": "Estás seguro/a?",
           "text": "Esta acción é irreversible. Todos os datos serán eliminados e nada poderá ser recuperado.",
           "title": "Eliminar conta"
         },
-        "title": "Accións"
+        "title": "Accións",
+        "logoutAllDevices": {
+          "title": "Finalizar todas as sesións",
+          "text": "Isto pechará a túa sesión en todos os dispositivos vinculados á túa conta.",
+          "button": "Pechar sesión en todos os dispositivos"
+        }
       },
       "devices": {
         "deviceNameLabel": "Nome do dispositivo",

@@ -458,7 +458,12 @@
           "text": "Cette action est irréversible. Toutes les données seront supprimées et rien ne pourra être récupéré.",
           "title": "Supprimer le compte"
         },
-        "title": "Actions"
+        "title": "Actions",
+        "logoutAllDevices": {
+          "title": "Mettre fin à toutes les sessions",
+          "text": "Cela vous déconnectera de tous les appareils liés à votre compte.",
+          "button": "Se déconnecter de tous les appareils"
+        }
       },
       "devices": {
         "deviceNameLabel": "Nom de l'appareil",

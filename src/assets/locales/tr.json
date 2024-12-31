@@ -445,7 +445,12 @@
           "text": "Bu işlem geri alınamaz. Tüm veriler silinir ve hiçbir şey kurtarılamaz.",
           "title": "Hesabı sil"
         },
-        "title": "Eylemler"
+        "title": "Eylemler",
+        "logoutAllDevices": {
+          "title": "Tüm Oturumları Sonlandır",
+          "text": "Bu işlem, hesabınıza bağlı tüm cihazlardan çıkış yapmanızı sağlar.",
+          "button": "Tüm Cihazlardan Çıkış Yap"
+        }
       },
       "devices": {
         "deviceNameLabel": "Cihaz adı",

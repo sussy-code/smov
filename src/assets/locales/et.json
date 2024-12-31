@@ -445,7 +445,12 @@
           "text": "See toiming on pöördumatu. Kõik andmed kustutatakse ja midagi ei saa taastada.",
           "title": "Kustuta konto"
         },
-        "title": "Tegevused"
+        "title": "Tegevused",
+        "logoutAllDevices": {
+          "title": "Lõpeta kõik sessioonid",
+          "text": "See logib teid välja kõikidest seadmetest, mis on seotud teie kontoga.",
+          "button": "Logi välja kõikidest seadmetest"
+        }
       },
       "devices": {
         "deviceNameLabel": "Seadme nimi",

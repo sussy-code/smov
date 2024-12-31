@@ -435,7 +435,12 @@
           "text": "Það er ekki hægt að taka þetta til baka. Öll gögn munu verða eydd og ekkert getur verið tekið til baka.",
           "title": "Eyða reikningi"
         },
-        "title": "Aðgerðir"
+        "title": "Aðgerðir",
+        "logoutAllDevices": {
+          "title": "Enda allar sesjónir",
+          "text": "Þetta mun útskrifa þig af öllum tækjum sem tengd eru reikningnum þínum.",
+          "button": "Útskrá frá öllum tækjum"
+        }
       },
       "devices": {
         "deviceNameLabel": "Nafn tækis",

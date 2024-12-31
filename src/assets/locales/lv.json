@@ -321,7 +321,12 @@
           "text": "Šī darbība ir neatgriezeniska. Visi dati tiks dzēsti, un neko nevarēs atgūt.",
           "title": "Dzēst kontu"
         },
-        "title": "Darbības"
+        "title": "Darbības",
+        "logoutAllDevices": {
+          "title": "Beigt visas sesijas",
+          "text": "Šī darbība izrakstīs jūs no visiem ierīcēm, kas saistītas ar jūsu kontu.",
+          "button": "Izrakstīties no visām ierīcēm"
+        }
       },
       "devices": {
         "deviceNameLabel": "Ierīces vārds",

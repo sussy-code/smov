@@ -437,7 +437,12 @@
           "text": "Działanie to jest nieodwracalne. Wszystkie dane zostaną usunięte i nie będzie można ich odzyskać.",
           "title": "Usuń konto"
         },
-        "title": "Działania"
+        "title": "Działania",
+        "logoutAllDevices": {
+          "title": "Zakończ wszystkie sesje",
+          "text": "To wyloguje Cię ze wszystkich urządzeń powiązanych z Twoim kontem.",
+          "button": "Wyloguj się ze wszystkich urządzeń"
+        }
       },
       "devices": {
         "deviceNameLabel": "Nazwa urządzenia",

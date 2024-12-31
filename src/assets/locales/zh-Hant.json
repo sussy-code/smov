@@ -443,7 +443,12 @@
           "text": "此操作不可逆轉。所有數據將被刪除，且無法恢復。",
           "title": "刪除帳戶"
         },
-        "title": "操作"
+        "title": "操作",
+        "logoutAllDevices": {
+          "title": "結束所有會話",
+          "text": "這將會登出所有與您的帳戶連結的裝置。",
+          "button": "登出所有裝置"
+        }
       },
       "devices": {
         "deviceNameLabel": "設備名稱",

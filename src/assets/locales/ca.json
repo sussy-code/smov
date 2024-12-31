@@ -429,13 +429,18 @@
       "actions": {
         "delete": {
           "button": "Elimina el compte",
-          "confirmButton": "Elimina el compte",
+          "confirmButton": "Confirmar eliminació",
           "confirmDescription": "Segur que voleu eliminar el compte? Es perdran totes les dades!",
-          "confirmTitle": "Segur?",
-          "text": "Aquesta acció és irreversible. Totes les dades s'eliminaran i no es podrà recuperar res.",
+          "confirmTitle": "Confirmar eliminació",
+          "text": "Aquesta acció és irreversible. Totes les dades s'eliminaran i no es podran recuperar.",
           "title": "Elimina el compte"
         },
-        "title": "Accions"
+        "title": "Accions",
+        "logoutAllDevices": {
+          "title": "Finalitzar totes les sessions",
+          "text": "Això us desconnectarà de tots els dispositius vinculats al vostre compte.",
+          "button": "Tancar sessió a tots els dispositius"
+        }
       },
       "devices": {
         "deviceNameLabel": "Nom del dispositiu",

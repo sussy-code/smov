@@ -412,7 +412,12 @@
           "text": "Tindakan ini tidak dapat dibatalkan. Seluruh data akan dihapus dan tidak dapat dipulihkan.",
           "title": "Hapus akun"
         },
-        "title": "Tindakan"
+        "title": "Tindakan",
+        "logoutAllDevices": {
+          "title": "Akhiri Semua Sesi",
+          "text": "Ini akan mengeluarkan anda dari semua perangkat yang terhubung dengan akun anda.",
+          "button": "Keluar dari Semua Perangkat"
+        }
       },
       "devices": {
         "deviceNameLabel": "Nama perangkat",

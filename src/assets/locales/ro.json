@@ -435,7 +435,12 @@
           "text": "Acțiunea asta este ireversibilă. Toate datele tale vor dispărea și nimic nu va putea fi recuperat.",
           "title": "Șterge contul"
         },
-        "title": "Acțiuni"
+        "title": "Acțiuni",
+        "logoutAllDevices": {
+          "title": "Încheie toate sesiunele",
+          "text": "Aceasta te va deconecta de pe toate dispozitivele asociate contului tău.",
+          "button": "Ieși din toate dispozitivele"
+        }
       },
       "devices": {
         "deviceNameLabel": "Numele dispozitivului",

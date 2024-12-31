@@ -445,7 +445,12 @@
           "text": "Esta ação é irreversível. Todos os dados serão excluídos e nada poderá ser recuperado.",
           "title": "Excluir conta"
         },
-        "title": "Ações"
+        "title": "Ações",
+        "logoutAllDevices": {
+          "title": "Encerrar todas as sessões",
+          "text": "Isso irá desconectar você de todos os dispositivos vinculados à sua conta.",
+          "button": "Sair de todos os dispositivos"
+        }
       },
       "devices": {
         "deviceNameLabel": "Nome do dispositivo",
