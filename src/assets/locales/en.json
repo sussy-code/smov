@@ -220,8 +220,7 @@
   "downtimeNotice": {
     "badge": "Issues",
     "goHome": "Go home",
-    "message": "P-Stream.lol is experiencing issues with some providers again, if you cant find or play a show please change the source. Expect this error to persist throughout the below times.",
-    "timeFrame": "<bold>March 31th 11:00 PM - 5:00 AM EST</bold>",
+    "message": "P-Stream is experiencing issues with some providers again, if you cant find or play a show please change the source. Expect this error to persist throughout the below times.",
     "title": "Provider issues"
   },
   "onboarding": {

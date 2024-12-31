@@ -209,7 +209,6 @@
   },
   "downtimeNotice": {
     "badge": "Problemer",
-    "timeFrame": "<bold>31. marts kl. 23:00 - 5:00 EST</bold>",
     "goHome": "Gå til hjem",
     "title": "Problemer med udbydere",
     "message": "P-Stream.lol har igen problemer med nogle udbydere. Hvis du ikke kan finde eller afspille et afsnit, skal du skifte kilde. Vi forventer, at denne fejl fortsætter i tidsrummet nedenfor."
