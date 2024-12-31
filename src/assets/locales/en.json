@@ -535,7 +535,12 @@
           "text": "This action is irreversible. All data will be deleted and nothing can be recovered.",
           "title": "Delete account"
         },
-        "title": "Actions"
+        "title": "Actions",
+        "logoutAllDevices": {
+          "title": "End All Sessions",
+          "text": "This will sign you out from all devices linked to your account.",
+          "button": "Log Out of All Devices"
+        }
       },
       "devices": {
         "deviceNameLabel": "Device name",

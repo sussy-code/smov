@@ -10,6 +10,8 @@ import { useAuthData } from "@/hooks/auth/useAuthData";
 import { useBackendUrl } from "@/hooks/auth/useBackendUrl";
 import { useAuthStore } from "@/stores/auth";
 
+import { signOutAllDevices } from "./DeviceListPart";
+
 export function AccountActionsPart() {
   const { t } = useTranslation();
   const url = useBackendUrl();
@@ -29,6 +31,29 @@ export function AccountActionsPart() {
   return (
     <div>
       <Heading2 border>{t("settings.account.actions.title")}</Heading2>
+
+      {/* Logout All Devices Section */}
+      <SolidSettingsCard
+        paddingClass="px-6 py-12 mb-10"
+        className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12"
+      >
+        <div>
+          <Heading3>
+            {" "}
+            {t("settings.account.actions.logoutAllDevices.title")}
+          </Heading3>
+          <p className="text-type-text">
+            {t("settings.account.actions.logoutAllDevices.text")}
+          </p>
+        </div>
+        <div className="flex justify-start lg:justify-end items-center">
+          <Button theme="danger" onClick={signOutAllDevices}>
+            {t("settings.account.actions.logoutAllDevices.button")}
+          </Button>
+        </div>
+      </SolidSettingsCard>
+
+      {/* Delete Account Section */}
       <SolidSettingsCard
         paddingClass="px-6 py-12"
         className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12"
