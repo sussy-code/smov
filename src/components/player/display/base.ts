@@ -170,7 +170,12 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
         });
         hls.on(Hls.Events.ERROR, (event, data) => {
           console.error("HLS error", data);
-          if (data.fatal && src?.url === data.frag?.baseurl) {
+          if (
+            data.fatal &&
+            src?.url === data.frag?.baseurl &&
+            data.error.message !==
+              "This SourceBuffer has been removed from the parent media source."
+          ) {
             emit("error", {
               message: data.error.message,
               stackTrace: data.error.stack,
