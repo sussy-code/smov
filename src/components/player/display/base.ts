@@ -174,7 +174,7 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
             data.fatal &&
             src?.url === data.frag?.baseurl &&
             data.error.message !==
-              "This SourceBuffer has been removed from the parent media source."
+              "Failed to execute 'appendBuffer' on 'SourceBuffer': This SourceBuffer has been removed from the parent media source."
           ) {
             emit("error", {
               message: data.error.message,
