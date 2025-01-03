@@ -51,6 +51,19 @@ export function FlagIcon(props: FlagIconProps) {
       </div>
     );
 
+  if (props.langCode === "futhark")
+    return (
+      <div className="w-8 h-6 rounded bg-gray-800 flex flex-col">
+        <div className="flex-1 bg-brown-800" />
+        <div className="h-2 bg-yellow-600 flex justify-center items-center">
+          <span className="text-white text-lg translate-y-[-2px] font-bold z-50">
+            ᚠ
+          </span>
+        </div>
+        <div className="flex-1 bg-gray-600" />
+      </div>
+    );
+
   // Galicia - Not a country (Is a region of Spain) so have to add the flag manually
   if (props.langCode === "gl-ES")
     return (

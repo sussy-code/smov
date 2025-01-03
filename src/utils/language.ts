@@ -84,6 +84,11 @@ const extraLanguages: Record<string, LocaleInfo> = {
     name: "Toki pona",
     nativeName: "Toki pona",
   },
+  futhark: {
+    code: "futhark",
+    name: "Elder Futhark (EN)",
+    nativeName: "ᛖᛚᛞᛖᚱ ᚠᚢᚦᚨᚱᚲ",
+  },
 };
 
 function populateLanguageCode(language: string): string {
