@@ -187,12 +187,13 @@ export function getCountryCodeForLocale(locale: string): string | null {
  */
 export function getLocaleInfo(locale: string): LocaleInfo | null {
   const realLocale = populateLanguageCode(locale);
+
+  document.body.style.wordSpacing = "normal";
+
   const extraLang = extraLanguages[realLocale];
   if (extraLang) {
     if (extraLang.code === "futhark") {
       document.body.style.wordSpacing = "5px";
-    } else {
-      document.body.style.wordSpacing = "normal";
     }
     return extraLang;
   }
