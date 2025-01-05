@@ -155,8 +155,7 @@ export function MigrationDirectPage() {
         ) : (
           <div className="flex flex-col items-center text-center mb-8">
             <Paragraph className="max-w-[320px] text-md">
-              You must be logged in to migrate your data! Please go back and
-              login to continue.
+              {t("migration.loginRequired")}
             </Paragraph>
             <Button
               theme="purple"
