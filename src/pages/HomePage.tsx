@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 
+import { Icons } from "@/components/Icon";
+import { IconPill } from "@/components/layout/IconPill";
 import { Loading } from "@/components/layout/Loading";
 import { WideContainer } from "@/components/layout/WideContainer";
 import { useDebounce } from "@/hooks/useDebounce";
@@ -65,6 +67,8 @@ export function HomePage() {
     simulateLoading();
   }, []);
 
+  /* 
+  // Safari Notice
   const [showModal, setShowModal] = useState(() => {
     const isSafari =
       typeof navigator !== "undefined" &&
@@ -80,9 +84,34 @@ export function HomePage() {
 
     return isSafari && (isMac || isIOS);
   });
+  */
+
+  // One time notice
+  const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    const isDismissed = localStorage.getItem("popupDismissed");
+    if (!isDismissed) {
+      setShowModal(true);
+    }
+  }, []);
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    localStorage.setItem("popupDismissed", "true");
+  };
 
   return (
     <HomeLayout showBg={showBg}>
+      <a
+        onClick={() => setShowModal(true)}
+        className="text-l lg:text-lg text-white tabbable rounded-full z-50 fixed top-5 right-[7.5rem]"
+        style={{ animation: "pulse 1s infinite" }}
+      >
+        <IconPill icon={Icons.WARNING}>
+          <span className="font-bold select-none">READ</span>
+        </IconPill>
+      </a>
       <div className="mb-16 sm:mb-24">
         <Helmet>
           <style type="text/css">{`
@@ -93,40 +122,90 @@ export function HomePage() {
           <title>{t("global.name")}</title>
         </Helmet>
 
-        {/* Popup Modal 
         {showModal && (
           <PopupModal
-            title="Issue on Safari (iOS/macOS)"
+            styles="max-w-2xl" // max-w-md for short
+            title="We’re changing our backend server!"
             message={
-              <p>
-                Due to a recent update, many P-Stream sources are broken on iOS
-                and macOS.
+              <div>
+                <p>
+                  On <strong>January 8th</strong>, the backend server will
+                  change from:
+                </p>
+                <p>
+                  <strong>server.vidbinge.com</strong> →{" "}
+                  <strong>server.fifthwit.tech</strong>
+                </p>
                 <br />
-                The only available source on Safari right now is Autoembed.
+                <p>
+                  You will need to <strong>manually move your data</strong> to
+                  the new server or choose to continue using the old server by
+                  updating your settings.
+                </p>
                 <br />
+                <p>
+                  <strong>What You Need to Know:</strong>
+                </p>
+                <ul>
+                  <li>
+                    1. <strong>Manually Moving Data:</strong> Your data (e.g.,
+                    bookmarks) will not be automatically transferred. You’ll
+                    need to re-create it on the new server. Follow the steps
+                    below to move your data.
+                  </li>
+                  <li>
+                    2. <strong>Staying on the Old Server:</strong> If you don’t
+                    want to change to the new server, your data will remain safe
+                    on <strong>server.vidbinge.com</strong>. You can change the
+                    Backend URL in your settings to
+                    &quot;https://server.vidbinge.com&quot;.
+                  </li>
+                </ul>
                 <br />
-                <strong>Workaround: </strong>
-                Please switch to <u>Chrome on desktop</u> where all sources are
-                still working. (And where the extension is available!)
+                <p>
+                  <strong>Steps to Move Your Data:</strong>
+                </p>
+                <ol>
+                  <li>
+                    1. Screenshot or write down your bookmarked shows and
+                    movies.
+                  </li>
+                  <li>
+                    2. Go to the <strong>Settings</strong> page.
+                  </li>
+                  <li>
+                    3. Scroll down to{" "}
+                    <strong>Connections &gt; Custom Server</strong>.
+                  </li>
+                  <li>
+                    4. Input the new server URL:{" "}
+                    <strong>https://server.fifthwit.tech</strong>
+                  </li>
+                  <li>
+                    5. Create a <strong>new account</strong> on the new server.
+                  </li>
+                  <li>6. Find your media and rebookmark it.</li>
+                </ol>
                 <br />
-                <br />
-                I&apos;m looking into a fix. For updates on this issue please
-                join the{" "}
-                <a
-                  href="https://discord.com/invite/7z6znYgrTG"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-onboarding-link"
-                >
-                  P-Stream Discord
-                </a>
-                . Sorry for the inconvenience.
-              </p>
+                <p>
+                  Thank you for your understanding and support during this
+                  transition! If you have questions or need help, feel free to
+                  reach out on the{" "}
+                  <a
+                    href="https://discord.com/invite/7z6znYgrTG"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-type-link"
+                  >
+                    P-Stream Discord
+                  </a>
+                  !
+                </p>
+              </div>
             }
-            onClose={() => setShowModal(false)}
+            onClose={handleCloseModal}
           />
         )}
-        END */}
 
         <HeroPart searchParams={searchParams} setIsSticky={setShowBg} />
       </div>

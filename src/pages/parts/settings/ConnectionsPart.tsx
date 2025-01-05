@@ -143,8 +143,18 @@ function BackendEdit({ backendUrl, setBackendUrl }: BackendEditProps) {
           <Divider marginClass="my-6 px-8 box-content -mx-8" />
           <p className="text-white font-bold mb-3">
             {t("settings.connections.server.urlLabel")}
+            <p className="font-medium text-type-link">
+              New default server: https://server.fifthwit.tech
+            </p>
+            <p className="font-medium text-type-secondary">
+              Old default server: https://server.vidbinge.com
+            </p>
           </p>
-          <AuthInputBox onChange={setBackendUrl} value={backendUrl ?? ""} />
+          <AuthInputBox
+            onChange={setBackendUrl}
+            value={backendUrl ?? ""}
+            placeholder="https://"
+          />
         </>
       ) : null}
     </SettingsCard>
@@ -157,7 +167,7 @@ export function ConnectionsPart(props: BackendEditProps & ProxyEditProps) {
     <div>
       <Heading1 border>{t("settings.connections.title")}</Heading1>
       <div className="space-y-6">
-        <SetupPart /> {/* I was wondering what heppened to this badddev >:( */}
+        <SetupPart /> {/* I was wondering what happened to this badddev >:( */}
         <ProxyEdit
           proxyUrls={props.proxyUrls}
           setProxyUrls={props.setProxyUrls}
