@@ -112,6 +112,7 @@
       "pagetitle": "{{title}} - sudo-flix",
       "register": "Register",
       "settings": "Settings",
+      "migration": "Migrate Account",
       "jip": "Jip"
     }
   },
