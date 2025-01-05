@@ -23,6 +23,8 @@ export function PreferencesPart(props: {
   setEnableAutoplay: (v: boolean) => void;
   sourceOrder: string[];
   setSourceOrder: (v: string[]) => void;
+  enableDiscover: boolean;
+  setEnableDiscover: (v: boolean) => void;
 }) {
   const { t } = useTranslation();
   const sorted = sortLangCodes(appLanguageOptions.map((item) => item.code));
@@ -118,6 +120,25 @@ export function PreferencesPart(props: {
               <Toggle enabled={props.enableAutoplay && allowAutoplay} />
               <p className="flex-1 text-white font-bold">
                 {t("settings.preferences.autoplayLabel")}
+              </p>
+            </div>
+          </div>
+
+          {/* Show Discover Preference */}
+          <div>
+            <p className="text-white font-bold mb-3">
+              {t("settings.preferences.discover")}
+            </p>
+            <p className="max-w-[25rem] font-medium">
+              {t("settings.preferences.discoverDescription")}
+            </p>
+            <div
+              onClick={() => props.setEnableDiscover(!props.enableDiscover)}
+              className="bg-dropdown-background hover:bg-dropdown-hoverBackground select-none my-4 cursor-pointer space-x-3 flex items-center max-w-[25rem] py-3 px-4 rounded-lg"
+            >
+              <Toggle enabled={props.enableDiscover} />
+              <p className="flex-1 text-white font-bold">
+                {t("settings.preferences.discoverLabel")}
               </p>
             </div>
           </div>

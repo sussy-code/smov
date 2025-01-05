@@ -622,7 +622,10 @@
       "autoplayLabel": "Autoplay",
       "sourceOrder": "Reordering sources",
       "sourceOrderDescription": "Drag and drop to reorder sources. This will determine the order in which sources are checked for the media you are trying to watch. If a source is greyed out, it means the <bold>extension</bold> is required for that source.",
-      "title": "Preferences"
+      "title": "Preferences",
+      "discover": "Discover section",
+      "discoverDescription": "Show the Discover section on the Homepage below your bookmarked media. Enabling this can increase load times. This setting is enabled by default.",
+      "discoverLabel": "Discover section"
     },
     "reset": "Reset",
     "save": "Save",

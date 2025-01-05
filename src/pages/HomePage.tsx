@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
+import { To, useNavigate } from "react-router-dom";
 
 import { Icons } from "@/components/Icon";
 import { IconPill } from "@/components/layout/IconPill";
@@ -16,8 +17,10 @@ import { HeroPart } from "@/pages/parts/home/HeroPart";
 import { WatchingPart } from "@/pages/parts/home/WatchingPart";
 import { SearchListPart } from "@/pages/parts/search/SearchListPart";
 import { SearchLoadingPart } from "@/pages/parts/search/SearchLoadingPart";
+import { usePreferencesStore } from "@/stores/preferences";
 import DiscoverContent from "@/utils/discoverContent";
 
+import { Button } from "./About";
 import { PopupModal } from "./parts/home/PopupModal";
 
 function useSearch(search: string) {
@@ -45,12 +48,20 @@ export function HomePage() {
   const { t } = useTranslation();
   const { t: randomT } = useRandomTranslation();
   const emptyText = randomT(`home.search.empty`);
+  const navigate = useNavigate();
   const [showBg, setShowBg] = useState<boolean>(false);
   const searchParams = useSearchQuery();
   const [search] = searchParams;
   const s = useSearch(search);
   const [showBookmarks, setShowBookmarks] = useState(false);
   const [showWatching, setShowWatching] = useState(false);
+
+  const handleClick = (path: To) => {
+    window.scrollTo(0, 0);
+    navigate(path);
+  };
+
+  const enableDiscover = usePreferencesStore((state) => state.enableDiscover);
 
   // State to track whether content is loading or loaded
   const [loading, setLoading] = useState(true);
@@ -234,19 +245,32 @@ export function HomePage() {
         ) : null}
       </WideContainer>
       {/* Conditional rendering: show loading screen or the content */}
-      {loading ? (
-        <div className="flex flex-col justify-center items-center h-64 space-y-4">
-          <Loading />
-          <p className="text-lg font-medium text-gray-400 animate-pulse mt-4">
-            Fetching the latest movies & TV shows...
-          </p>
-          <p className="text-sm text-gray-500">
-            Please wait while we load the best recommendations for you.
-          </p>
-        </div>
+      {enableDiscover ? (
+        loading ? (
+          <div className="flex flex-col justify-center items-center h-64 space-y-4">
+            <Loading />
+            <p className="text-lg font-medium text-gray-400 animate-pulse mt-4">
+              Fetching the latest movies & TV shows...
+            </p>
+            <p className="text-sm text-gray-500">
+              Please wait while we load the best recommendations for you.
+            </p>
+          </div>
+        ) : (
+          <div className="pt-10 px-0 w-full max-w-[100dvw] justify-center items-center">
+            <DiscoverContent />
+          </div>
+        )
       ) : (
-        <div className="pt-10 px-0 w-full max-w-[100dvw] justify-center items-center">
-          <DiscoverContent />
+        <div className="flex flex-col justify-center items-center h-40 space-y-4">
+          <div className="flex flex-col items-center justify-center">
+            <Button
+              className="px-py p-[0.35em] mt-3 rounded-xl text-type-dimmed box-content text-[18px] bg-largeCard-background justify-center items-center"
+              onClick={() => handleClick("/discover")}
+            >
+              {t("home.search.discover")}
+            </Button>
+          </div>
         </div>
       )}
     </HomeLayout>

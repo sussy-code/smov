@@ -140,6 +140,9 @@ export function SettingsPage() {
   const sourceOrder = usePreferencesStore((s) => s.sourceOrder);
   const setSourceOrder = usePreferencesStore((s) => s.setSourceOrder);
 
+  const enableDiscover = usePreferencesStore((s) => s.enableDiscover);
+  const setEnableDiscover = usePreferencesStore((s) => s.setEnableDiscover);
+
   const account = useAuthStore((s) => s.account);
   const updateProfile = useAuthStore((s) => s.setAccountProfile);
   const updateDeviceName = useAuthStore((s) => s.updateDeviceName);
@@ -163,6 +166,7 @@ export function SettingsPage() {
     account?.profile,
     enableThumbnails,
     enableAutoplay,
+    enableDiscover,
     sourceOrder,
   );
 
@@ -233,6 +237,7 @@ export function SettingsPage() {
 
     setEnableThumbnails(state.enableThumbnails.state);
     setEnableAutoplay(state.enableAutoplay.state);
+    setEnableDiscover(state.enableDiscover.state);
     setSourceOrder(state.sourceOrder.state);
     setAppLanguage(state.appLanguage.state);
     setTheme(state.theme.state);
@@ -260,6 +265,7 @@ export function SettingsPage() {
     setEnableThumbnails,
     state,
     setEnableAutoplay,
+    setEnableDiscover,
     setSourceOrder,
     setAppLanguage,
     setTheme,
@@ -311,6 +317,8 @@ export function SettingsPage() {
             setEnableThumbnails={state.enableThumbnails.set}
             enableAutoplay={state.enableAutoplay.state}
             setEnableAutoplay={state.enableAutoplay.set}
+            enableDiscover={state.enableDiscover.state}
+            setEnableDiscover={state.enableDiscover.set}
             sourceOrder={availableSources}
             setSourceOrder={state.sourceOrder.set}
           />
