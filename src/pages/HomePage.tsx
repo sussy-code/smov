@@ -6,6 +6,7 @@ import { Icons } from "@/components/Icon";
 import { IconPill } from "@/components/layout/IconPill";
 import { Loading } from "@/components/layout/Loading";
 import { WideContainer } from "@/components/layout/WideContainer";
+import { useAuth } from "@/hooks/auth/useAuth";
 import { useDebounce } from "@/hooks/useDebounce";
 import { useRandomTranslation } from "@/hooks/useRandomTranslation";
 import { useSearchQuery } from "@/hooks/useSearchQuery";
@@ -101,11 +102,17 @@ export function HomePage() {
     localStorage.setItem("popupDismissed", "true");
   };
 
+  const { loggedIn } = useAuth();
+
   return (
     <HomeLayout showBg={showBg}>
       <a
         onClick={() => setShowModal(true)}
-        className="text-l lg:text-lg text-white tabbable rounded-full z-50 fixed top-5 right-[7.5rem]"
+        className={` text-white tabbable rounded-full z-50 fixed top-5 ${
+          loggedIn
+            ? "right-[7.5rem] lg:right-[12.5rem] lg:text-2xl"
+            : "right-[7.5rem] text-xl lg:text-lg"
+        }`}
         style={{ animation: "pulse 1s infinite" }}
       >
         <IconPill icon={Icons.WARNING}>
