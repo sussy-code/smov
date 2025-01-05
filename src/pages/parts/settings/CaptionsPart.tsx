@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 
+import { Button } from "@/components/buttons/Button";
 import { Toggle } from "@/components/buttons/Toggle";
 import { Icon, Icons } from "@/components/Icon";
 import {
@@ -89,6 +90,17 @@ export function CaptionsPart(props: {
     subtitleStore.updateStyling(newStyling);
   };
 
+  const resetSubStyling = () => {
+    subtitleStore.resetStyling();
+    props.setStyling({
+      color: "#ffffff",
+      backgroundOpacity: 0.5,
+      size: 1,
+      backgroundBlur: 0.5,
+      bold: false,
+    });
+  };
+
   return (
     <div>
       <Heading1 border>{t("settings.subtitles.title")}</Heading1>
@@ -117,7 +129,7 @@ export function CaptionsPart(props: {
                 backgroundBlur: v / 100,
               })
             }
-            value={props.styling.backgroundBlur * 1}
+            value={props.styling.backgroundBlur * 100}
             textTransformer={(s) => `${s}%`}
           />
           <CaptionSetting
@@ -200,6 +212,13 @@ export function CaptionsPart(props: {
           styling={props.styling}
           onToggle={() => setFullscreenPreview((s) => !s)}
         />
+        <Button
+          className="w-full md:w-auto"
+          theme="secondary"
+          onClick={resetSubStyling}
+        >
+          {t("settings.reset")}
+        </Button>
       </div>
     </div>
   );

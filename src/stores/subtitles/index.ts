@@ -41,6 +41,7 @@ export interface SubtitleStore {
   overrideCasing: boolean;
   delay: number;
   updateStyling(newStyling: Partial<SubtitleStyling>): void;
+  resetStyling(): void;
   setLanguage(language: string | null): void;
   setIsOpenSubtitles(isOpenSubtitles: boolean): void;
   setCustomSubs(): void;
@@ -91,6 +92,17 @@ export const useSubtitleStore = create(
           if (newStyling.size !== undefined)
             s.styling.size = Math.min(10, Math.max(0.01, newStyling.size));
           if (newStyling.bold !== undefined) s.styling.bold = newStyling.bold;
+        });
+      },
+      resetStyling() {
+        set((s) => {
+          s.styling = {
+            color: "#ffffff",
+            backgroundOpacity: 0.5,
+            size: 1,
+            backgroundBlur: 0.5,
+            bold: false,
+          };
         });
       },
       setLanguage(lang) {

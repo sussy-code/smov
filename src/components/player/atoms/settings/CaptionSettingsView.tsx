@@ -2,6 +2,7 @@ import classNames from "classnames";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import { Button } from "@/components/buttons/Button";
 import { Toggle } from "@/components/buttons/Toggle";
 import { Icon, Icons } from "@/components/Icon";
 import { Menu } from "@/components/player/internals/ContextMenu";
@@ -241,6 +242,16 @@ export function CaptionSettingsView({
     updateStyling(newStyling);
   };
 
+  const resetSubStyling = () => {
+    subtitleStore.updateStyling({
+      color: "#ffffff",
+      backgroundOpacity: 0.5,
+      size: 1,
+      backgroundBlur: 0.5,
+      bold: false,
+    });
+  };
+
   return (
     <>
       <Menu.BackLink
@@ -344,6 +355,13 @@ export function CaptionSettingsView({
             </div>
           </div>
         </div>
+        <Button
+          className="w-full md:w-auto"
+          theme="secondary"
+          onClick={resetSubStyling}
+        >
+          {t("settings.reset")}
+        </Button>
       </Menu.Section>
     </>
   );
