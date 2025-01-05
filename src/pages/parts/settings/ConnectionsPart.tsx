@@ -9,7 +9,8 @@ import { MwLink } from "@/components/text/Link";
 import { AuthInputBox } from "@/components/text-inputs/AuthInputBox";
 import { Divider } from "@/components/utils/Divider";
 import { Heading1 } from "@/components/utils/Text";
-// import { SetupPart } from "@/pages/parts/settings/SetupPart";
+import { SetupPart } from "@/pages/parts/settings/SetupPart";
+import { useAuthStore } from "@/stores/auth";
 
 interface ProxyEditProps {
   proxyUrls: string[] | null;
@@ -116,6 +117,7 @@ function ProxyEdit({ proxyUrls, setProxyUrls }: ProxyEditProps) {
 
 function BackendEdit({ backendUrl, setBackendUrl }: BackendEditProps) {
   const { t } = useTranslation();
+  const user = useAuthStore();
   return (
     <SettingsCard>
       <div className="flex justify-between items-center gap-4">
@@ -130,6 +132,18 @@ function BackendEdit({ backendUrl, setBackendUrl }: BackendEditProps) {
               </MwLink>
             </Trans>
           </p>
+          {user.account && (
+            <div>
+              <br />
+              <p className="max-w-[20rem] font-medium">
+                <Trans i18nKey="settings.connections.server.migration.description">
+                  <MwLink to="/migration">
+                    {t("settings.connections.server.migration.link")}
+                  </MwLink>
+                </Trans>
+              </p>
+            </div>
+          )}
         </div>
         <div>
           <Toggle
