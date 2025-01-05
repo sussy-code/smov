@@ -58,7 +58,7 @@ export default function VideoTesterView() {
   );
 
   return (
-    <PlayerPart backUrl="/">
+    <PlayerPart backUrl="/dev">
       {status === playerStatus.IDLE ? (
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="w-full max-w-4xl rounded-xl bg-video-scraping-card p-10 m-4">

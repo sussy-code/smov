@@ -8,6 +8,7 @@ import { Navigation } from "@/components/layout/Navigation";
 import { Title } from "@/components/text/Title";
 import { Paragraph } from "@/components/utils/Text";
 import { ErrorContainer, ErrorLayout } from "@/pages/layouts/ErrorLayout";
+import { maintenanceTime } from "@/setup/App";
 
 type MaintenancePageProps = {
   onHomeButtonClick: () => void;
@@ -30,14 +31,7 @@ function MaintenancePage({ onHomeButtonClick }: MaintenancePageProps) {
             </IconPill>
             <Title>{t("downtimeNotice.title")}</Title>
             <Paragraph>{t("downtimeNotice.message")}</Paragraph>
-            <Trans
-              i18nKey="downtimeNotice.timeFrame"
-              components={{
-                bold: (
-                  <span className="font-bold" style={{ color: "#cfcfcf" }} />
-                ),
-              }}
-            />
+            <span className="font-bold text-white">{maintenanceTime}</span>
             <div className="flex gap-3">
               <Button
                 onClick={onHomeButtonClick}

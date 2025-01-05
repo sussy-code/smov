@@ -6,6 +6,7 @@ import { SearchBarInput } from "@/components/form/SearchBar";
 import { ThinContainer } from "@/components/layout/ThinContainer";
 import { useSlashFocus } from "@/components/player/hooks/useSlashFocus";
 import { HeroTitle } from "@/components/text/HeroTitle";
+import { useIsTV } from "@/hooks/useIsTv";
 import { useRandomTranslation } from "@/hooks/useRandomTranslation";
 import { useSearchQuery } from "@/hooks/useSearchQuery";
 import { useBannerSize } from "@/stores/banner";
@@ -39,20 +40,32 @@ export function HeroPart({ setIsSticky, searchParams }: HeroPartProps) {
     },
     [setShowBg, setIsSticky],
   );
+  const { width: windowWidth, height: windowHeight } = useWindowSize();
 
-  const { width: windowWidth } = useWindowSize();
+  const { isTV } = useIsTV();
 
-  const topSpacing = 16;
+  // Detect if running as a PWA on iOS
+  const isIOSPWA =
+    /iPad|iPhone|iPod/i.test(navigator.userAgent) &&
+    window.matchMedia("(display-mode: standalone)").matches;
+
+  const topSpacing = isIOSPWA ? 60 : 16;
   const [stickyOffset, setStickyOffset] = useState(topSpacing);
+
+  const isLandscape = windowHeight < windowWidth && isIOSPWA;
+  const adjustedOffset = isLandscape
+    ? -40 // landscape
+    : 0; // portrait
+
   useEffect(() => {
-    if (windowWidth > 1200) {
+    if (windowWidth > 1280) {
       // On large screens the bar goes inline with the nav elements
       setStickyOffset(topSpacing);
     } else {
       // On smaller screens the bar goes below the nav elements
-      setStickyOffset(topSpacing + 60);
+      setStickyOffset(topSpacing + 60 + adjustedOffset);
     }
-  }, [windowWidth]);
+  }, [adjustedOffset, topSpacing, windowWidth]);
 
   const time = getTimeOfDay(new Date());
   const title = randomT(`home.titles.${time}`);
@@ -64,7 +77,9 @@ export function HeroPart({ setIsSticky, searchParams }: HeroPartProps) {
     <ThinContainer>
       <div className="mt-44 space-y-16 text-center">
         <div className="relative z-10 mb-16">
-          <HeroTitle className="mx-auto max-w-md">{title}</HeroTitle>
+          {isTV && search.length > 0 ? null : (
+            <HeroTitle className="mx-auto max-w-md">{title}</HeroTitle>
+          )}
         </div>
         <div className="relative h-20 z-30">
           <Sticky

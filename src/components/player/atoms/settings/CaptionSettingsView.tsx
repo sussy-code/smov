@@ -2,12 +2,13 @@ import classNames from "classnames";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+import { Button } from "@/components/buttons/Button";
 import { Toggle } from "@/components/buttons/Toggle";
 import { Icon, Icons } from "@/components/Icon";
 import { Menu } from "@/components/player/internals/ContextMenu";
 import { useOverlayRouter } from "@/hooks/useOverlayRouter";
 import { useProgressBar } from "@/hooks/useProgressBar";
-import { useSubtitleStore } from "@/stores/subtitles";
+import { SubtitleStyling, useSubtitleStore } from "@/stores/subtitles";
 
 export function ColorOption(props: {
   color: string;
@@ -214,7 +215,7 @@ export function CaptionSetting(props: {
   );
 }
 
-export const colors = ["#ffffff", "#b0b0b0", "#80b1fa", "#e2e535"];
+export const colors = ["#ffffff", "#80b1fa", "#e2e535", "#10B239FF"];
 
 export function CaptionSettingsView({
   id,
@@ -225,12 +226,31 @@ export function CaptionSettingsView({
 }) {
   const { t } = useTranslation();
   const router = useOverlayRouter(id);
-  const styling = useSubtitleStore((s) => s.styling);
-  const overrideCasing = useSubtitleStore((s) => s.overrideCasing);
-  const delay = useSubtitleStore((s) => s.delay);
-  const setOverrideCasing = useSubtitleStore((s) => s.setOverrideCasing);
-  const setDelay = useSubtitleStore((s) => s.setDelay);
-  const updateStyling = useSubtitleStore((s) => s.updateStyling);
+  const subtitleStore = useSubtitleStore();
+  const styling = subtitleStore.styling;
+  const overrideCasing = subtitleStore.overrideCasing;
+  const delay = subtitleStore.delay;
+  const setOverrideCasing = subtitleStore.setOverrideCasing;
+  const setDelay = subtitleStore.setDelay;
+  const updateStyling = subtitleStore.updateStyling;
+
+  useEffect(() => {
+    subtitleStore.updateStyling(styling);
+  }, [styling, subtitleStore]);
+
+  const handleStylingChange = (newStyling: SubtitleStyling) => {
+    updateStyling(newStyling);
+  };
+
+  const resetSubStyling = () => {
+    subtitleStore.updateStyling({
+      color: "#ffffff",
+      backgroundOpacity: 0.5,
+      size: 1,
+      backgroundBlur: 0.5,
+      bold: false,
+    });
+  };
 
   return (
     <>
@@ -270,7 +290,9 @@ export function CaptionSettingsView({
           <div className="flex justify-center items-center">
             <Toggle
               enabled={styling.bold}
-              onClick={() => updateStyling({ bold: !styling.bold })}
+              onClick={() =>
+                handleStylingChange({ ...styling, bold: !styling.bold })
+              }
             />
           </div>
         </div>
@@ -279,7 +301,9 @@ export function CaptionSettingsView({
           label={t("settings.subtitles.backgroundLabel")}
           max={100}
           min={0}
-          onChange={(v) => updateStyling({ backgroundOpacity: v / 100 })}
+          onChange={(v) =>
+            handleStylingChange({ ...styling, backgroundOpacity: v / 100 })
+          }
           value={styling.backgroundOpacity * 100}
           textTransformer={(s) => `${s}%`}
         />
@@ -287,7 +311,9 @@ export function CaptionSettingsView({
           label={t("settings.subtitles.backgroundBlurLabel")}
           max={100}
           min={0}
-          onChange={(v) => updateStyling({ backgroundBlur: v / 100 })}
+          onChange={(v) =>
+            handleStylingChange({ ...styling, backgroundBlur: v / 100 })
+          }
           value={styling.backgroundBlur * 100}
           textTransformer={(s) => `${s}%`}
         />
@@ -296,24 +322,46 @@ export function CaptionSettingsView({
           max={200}
           min={1}
           textTransformer={(s) => `${s}%`}
-          onChange={(v) => updateStyling({ size: v / 100 })}
+          onChange={(v) => handleStylingChange({ ...styling, size: v / 100 })}
           value={styling.size * 100}
         />
         <div className="flex justify-between items-center">
           <Menu.FieldTitle>
             {t("settings.subtitles.colorLabel")}
           </Menu.FieldTitle>
-          <div className="flex justify-center items-center">
-            {colors.map((v) => (
+          <div className="flex justify-center items-center space-x-2">
+            {colors.map((color) => (
               <ColorOption
-                onClick={() => updateStyling({ color: v })}
-                color={v}
-                active={styling.color === v}
-                key={v}
+                key={color}
+                color={color}
+                active={styling.color === color}
+                onClick={() => handleStylingChange({ ...styling, color })}
               />
             ))}
+            {/* Add Color Picker */}
+            <div className="relative inline-block">
+              <input
+                type="color"
+                value={styling.color}
+                onChange={(e) => {
+                  const color = e.target.value;
+                  handleStylingChange({ ...styling, color });
+                }}
+                className="absolute opacity-0 cursor-pointer w-10 h-10"
+              />
+              <div style={{ color: styling.color }}>
+                <Icon icon={Icons.BRUSH} className="text-2xl" />
+              </div>
+            </div>
           </div>
         </div>
+        <Button
+          className="w-full md:w-auto"
+          theme="secondary"
+          onClick={resetSubStyling}
+        >
+          {t("settings.reset")}
+        </Button>
       </Menu.Section>
     </>
   );

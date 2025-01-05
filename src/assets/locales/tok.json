@@ -158,7 +158,7 @@
     "menu": {
       "about": "mi",
       "logout": "o weka sona e sina",
-      "register": "Sync to sudo-cloud",
+      "register": "Sync to Cloud",
       "settings": "o ante",
       "support": "o supa"
     }
@@ -369,7 +369,12 @@
           "text": "tenpo kama la sina ken ala ante e weka ni. ale li kama weka",
           "title": "o weka e ale"
         },
-        "title": "pali"
+        "title": "pali",
+        "logoutAllDevices": {
+          "title": "kama ala e sona ale",
+          "text": "tenpo ni la sina ken ala kama lon e sona ale ale.",
+          "button": "kama ala e sona ale"
+        }
       },
       "devices": {
         "deviceNameLabel": "nimi ilo",

@@ -52,6 +52,7 @@ export function useSettingsState(
     | undefined,
   enableThumbnails: boolean,
   enableAutoplay: boolean,
+  enableDiscover: boolean,
   sourceOrder: string[],
 ) {
   const [proxyUrlsState, setProxyUrls, resetProxyUrls, proxyUrlsChanged] =
@@ -93,6 +94,12 @@ export function useSettingsState(
     enableAutoplayChanged,
   ] = useDerived(enableAutoplay);
   const [
+    enableDiscoverState,
+    setEnableDiscoverState,
+    resetEnableDiscover,
+    enableDiscoverChanged,
+  ] = useDerived(enableDiscover);
+  const [
     sourceOrderState,
     setSourceOrderState,
     resetSourceOrder,
@@ -110,6 +117,7 @@ export function useSettingsState(
     resetProfile();
     resetEnableThumbnails();
     resetEnableAutoplay();
+    resetEnableDiscover();
     resetSourceOrder();
   }
 
@@ -123,6 +131,7 @@ export function useSettingsState(
     profileChanged ||
     enableThumbnailsChanged ||
     enableAutoplayChanged ||
+    enableDiscoverChanged ||
     sourceOrderChanged;
 
   return {
@@ -172,6 +181,11 @@ export function useSettingsState(
       state: enableAutoplayState,
       set: setEnableAutoplayState,
       changed: enableAutoplayChanged,
+    },
+    enableDiscover: {
+      state: enableDiscoverState,
+      set: setEnableDiscoverState,
+      changed: enableDiscoverChanged,
     },
     sourceOrder: {
       state: sourceOrderState,

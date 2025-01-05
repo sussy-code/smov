@@ -11,6 +11,12 @@ import { Transition } from "@/components/utils/Transition";
 import { usePlayerStore } from "@/stores/player/store";
 import { SubtitleStyling, useSubtitleStore } from "@/stores/subtitles";
 
+// Clean-up function to remove unwanted subtitle tags
+function cleanSubtitleText(text: string): string {
+  // Remove unwanted tags like \an1, \pos, \i1, etc.
+  return text.replace(/\\[a-zA-Z0-9(),\s\-_]+/g, "").replace(/\}\s*/g, "");
+}
+
 const wordOverrides: Record<string, string> = {
   i: "I",
 };
@@ -37,9 +43,12 @@ export function CaptionCue({
       .replaceAll(/ i'/g, " I'")
       .replaceAll(/\r?\n/g, "<br />");
 
+    // Clean the subtitle text before sanitizing it
+    const cleanedText = cleanSubtitleText(textWithNewlines);
+
     // https://www.w3.org/TR/webvtt1/#dom-construction-rules
     // added a <br /> for newlines
-    const html = sanitize(textWithNewlines, {
+    const html = sanitize(cleanedText, {
       ALLOWED_TAGS: ["c", "b", "i", "u", "span", "ruby", "rt", "br"],
       ADD_TAGS: ["v", "lang"],
       ALLOWED_ATTR: ["title", "lang"],

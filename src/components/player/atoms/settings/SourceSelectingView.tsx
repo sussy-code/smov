@@ -2,6 +2,7 @@ import { ReactNode, useEffect, useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
 
 import { getCachedMetadata } from "@/backend/helpers/providerApi";
+import { Button } from "@/components/buttons/Button";
 import { Loading } from "@/components/layout/Loading";
 import {
   useEmbedScraping,
@@ -146,6 +147,13 @@ export function SourceSelectionView({
     <>
       <Menu.BackLink onClick={() => router.navigate("/")}>
         {t("player.menus.sources.title")}
+        <Button
+          theme="purple"
+          onClick={() => window.open("/settings#source-order")}
+          className="w-half h-8 ml-[95px]"
+        >
+          {t("settings.account.accountDetails.editProfile")}
+        </Button>
       </Menu.BackLink>
       <Menu.Section className="pb-4">
         {sources.map((v) => (

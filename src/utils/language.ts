@@ -84,6 +84,11 @@ const extraLanguages: Record<string, LocaleInfo> = {
     name: "Toki pona",
     nativeName: "Toki pona",
   },
+  futhark: {
+    code: "futhark",
+    name: "Elder Futhark (EN)",
+    nativeName: "ᛖᛚᛞᛖᚱ ᚠᚢᚦᚨᚱᚲ",
+  },
 };
 
 function populateLanguageCode(language: string): string {
@@ -182,8 +187,16 @@ export function getCountryCodeForLocale(locale: string): string | null {
  */
 export function getLocaleInfo(locale: string): LocaleInfo | null {
   const realLocale = populateLanguageCode(locale);
+
+  document.body.style.wordSpacing = "normal";
+
   const extraLang = extraLanguages[realLocale];
-  if (extraLang) return extraLang;
+  if (extraLang) {
+    if (extraLang.code === "futhark") {
+      document.body.style.wordSpacing = "5px";
+    }
+    return extraLang;
+  }
 
   const tag = getTag(realLocale, true);
   if (!tag?.language?.Subtag) return null;

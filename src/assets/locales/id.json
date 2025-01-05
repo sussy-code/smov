@@ -1,20 +1,20 @@
 {
   "about": {
-    "description": "sudo-flix adalah website yang mengumpulkan sumber media streaming dari internet. Didesain khusus dengan pendekatan minimalis agar mempermudah konsumsi konten.",
+    "description": "P-Stream adalah website yang mengumpulkan sumber media streaming dari internet. Didesain khusus dengan pendekatan minimalis agar mempermudah konsumsi konten.",
     "faqTitle": "Pertanyaan umum",
     "q1": {
-      "body": "sudo-flix tidak menyimpan berkas media apapun. Ketika anda mengklik sesuatu untuk ditonton, aplikasi akan mencari berkas media di internet (saat media dimuat dan pada tab 'sumber media' anda dapat melihat sumber mana yang digunakan). sudo-flix tidak pernah mengunggah media apapun, semua media didapat melalui mekanisme pencarian di internet.",
+      "body": "P-Stream tidak menyimpan berkas media apapun. Ketika anda mengklik sesuatu untuk ditonton, aplikasi akan mencari berkas media di internet (saat media dimuat dan pada tab 'sumber media' anda dapat melihat sumber mana yang digunakan). P-Stream tidak pernah mengunggah media apapun, semua media didapat melalui mekanisme pencarian di internet.",
       "title": "Dari mana konten berasal?"
     },
     "q2": {
-      "body": "Kami tidak menerima permintaan penambahan serial televisi atau film, sudo-flix tidak mengelola konten apapun. Semua konten ditonton melalui sumber-sumber dari internet.",
+      "body": "Kami tidak menerima permintaan penambahan serial televisi atau film, P-Stream tidak mengelola konten apapun. Semua konten ditonton melalui sumber-sumber dari internet.",
       "title": "Di mana saya dapat meminta serial televisi atau film untuk ditambahkan?"
     },
     "q3": {
       "body": "Hasil pencarian aplikasi ini menggunakan API milik The Movie Database (TMDB) dan menampilkan semua hasil pencarian terlepas dari apakah sumber media tersebut dapat ditemukan di penyedia pihak ketiga atau tidak.",
       "title": "Hasil pencarian menampilkan serial televisi atau film yang saya cari, tapi mengapa saya tidak bisa memutarnya?"
     },
-    "title": "Tentang sudo-flix"
+    "title": "Tentang P-Stream"
   },
   "actions": {
     "copied": "Disalin",
@@ -82,7 +82,7 @@
   "footer": {
     "legal": {
       "disclaimer": "Sanggahan",
-      "disclaimerText": "sudo-flix tidak menyimpan berkas media apapun, aplikasi ini hanya menampilkan tautan dari pihak ketiga. Sengketa hukum harus diajukan langsung kepada penyedia pihak ketiga. sudo-flix tidak bertanggung jawab atas berkas media yang ditampilkan oleh penyedia pihak ketiga."
+      "disclaimerText": "P-Stream tidak menyimpan berkas media apapun, aplikasi ini hanya menampilkan tautan dari pihak ketiga. Sengketa hukum harus diajukan langsung kepada penyedia pihak ketiga. P-Stream tidak bertanggung jawab atas berkas media yang ditampilkan oleh penyedia pihak ketiga."
     },
     "links": {
       "discord": "Discord",
@@ -92,13 +92,13 @@
     "tagline": "Tonton serial televisi dan film favorit anda dengan aplikasi streaming sumber terbuka ini."
   },
   "global": {
-    "name": "sudo-flix",
+    "name": "P-Stream",
     "pages": {
       "about": "Tentang",
       "dmca": "DMCA",
       "login": "Masuk",
       "onboarding": "Penyiapan",
-      "pagetitle": "{{title}} - sudo-flix",
+      "pagetitle": "{{title}} - P-Stream",
       "register": "Daftar",
       "settings": "Pengaturan"
     }
@@ -161,7 +161,7 @@
     "menu": {
       "about": "Tentang kami",
       "logout": "Keluar",
-      "register": "Sinkronkan ke sudo-cloud",
+      "register": "Sinkronkan ke Cloud",
       "settings": "Pengaturan",
       "support": "Bantuan"
     }
@@ -249,7 +249,7 @@
         "disclaimer": "Tautan unduhan diambil langsung dari penyedia pihak ketiga. Aplikasi ini tidak memiliki kendali bagaimana unduhan disediakan.",
         "downloadSubtitle": "Unduh subtitle saat ini",
         "downloadVideo": "Unduh media",
-        "hlsDisclaimer": "Unduhan didapatkan langsung dari penyedia. sudo-flix tidak memiliki kendali bagaimana unduan disediakan.<br /><br />Harap diperhatikan bahwa Anda mengunduh daftar putar HLS, <bold>ini tidak direkomendasikan untuk diunduh jika Anda tidak terbiasa dengan format streaming tingkat lanjut</bold>Coba sumber berbeda untuk format berbeda.",
+        "hlsDisclaimer": "Unduhan didapatkan langsung dari penyedia. P-Stream tidak memiliki kendali bagaimana unduan disediakan.<br /><br />Harap diperhatikan bahwa Anda mengunduh daftar putar HLS, <bold>ini tidak direkomendasikan untuk diunduh jika Anda tidak terbiasa dengan format streaming tingkat lanjut</bold>Coba sumber berbeda untuk format berbeda.",
         "onAndroid": {
           "1": "Untuk mengunduh di Android, klik tombol unduh, lalu di halaman baru <bold>klik dan tahan</bold> pada video, lalu pilih <bold>simpan</bold>.",
           "shortTitle": "Unduh / Android",
@@ -379,7 +379,7 @@
   },
   "screens": {
     "dmca": {
-      "text": "Selamat datang di halaman kontak DMCA sudo-flix! Kami menghormati hak kekayaan intelektual dan ingin menangani masalah hak cipta dengan cepat. Jika anda yakin bahwa karya berhak cipta anda telah digunakan secara tidak benar di platform kami, silakan kirim pemberitahuan DMCA secara terperinci ke email di bawah ini. Mohon sertakan deskripsi materi berhak cipta, detail kontak anda, dan pernyataan itikad baik. Kami berkomitmen untuk menyelesaikan masalah ini sesegera mungkin dan kami menghargai kerja sama anda dalam menjaga sudo-flix sebagai tempat yang menghormati kreativitas dan hak cipta.",
+      "text": "Selamat datang di halaman kontak DMCA P-Stream! Kami menghormati hak kekayaan intelektual dan ingin menangani masalah hak cipta dengan cepat. Jika anda yakin bahwa karya berhak cipta anda telah digunakan secara tidak benar di platform kami, silakan kirim pemberitahuan DMCA secara terperinci ke email di bawah ini. Mohon sertakan deskripsi materi berhak cipta, detail kontak anda, dan pernyataan itikad baik. Kami berkomitmen untuk menyelesaikan masalah ini sesegera mungkin dan kami menghargai kerja sama anda dalam menjaga P-Stream sebagai tempat yang menghormati kreativitas dan hak cipta.",
       "title": "DMCA"
     },
     "loadingApp": "Memuat aplikasi",
@@ -412,7 +412,12 @@
           "text": "Tindakan ini tidak dapat dibatalkan. Seluruh data akan dihapus dan tidak dapat dipulihkan.",
           "title": "Hapus akun"
         },
-        "title": "Tindakan"
+        "title": "Tindakan",
+        "logoutAllDevices": {
+          "title": "Akhiri Semua Sesi",
+          "text": "Ini akan mengeluarkan anda dari semua perangkat yang terhubung dengan akun anda.",
+          "button": "Keluar dari Semua Perangkat"
+        }
       },
       "devices": {
         "deviceNameLabel": "Nama perangkat",
@@ -430,7 +435,7 @@
       "register": {
         "cta": "Memulai",
         "text": "Bagikan dan sinkronkan antar perangkat progres tontonan anda.",
-        "title": "Sinkronkan ke sudo-cloud"
+        "title": "Sinkronkan ke Cloud"
       },
       "title": "Akun"
     },

@@ -73,7 +73,7 @@ export function AccountEditPart(props: {
               onChange={(value) => props.setDeviceName(value)}
             />
             <div className="flex space-x-3">
-              <Button theme="danger" onClick={logout}>
+              <Button className="logout-button" theme="danger" onClick={logout}>
                 {t("settings.account.accountDetails.logoutButton")}
               </Button>
             </div>

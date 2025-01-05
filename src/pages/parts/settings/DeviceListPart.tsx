@@ -13,6 +13,14 @@ import { Heading2 } from "@/components/utils/Text";
 import { useBackendUrl } from "@/hooks/auth/useBackendUrl";
 import { useAuthStore } from "@/stores/auth";
 
+export const signOutAllDevices = () => {
+  const buttons = document.querySelectorAll(".logout-button");
+
+  buttons.forEach((button) => {
+    (button as HTMLElement).click();
+  });
+};
+
 export function Device(props: {
   name: string;
   id: string;
@@ -41,7 +49,12 @@ export function Device(props: {
         <p className="text-white">{props.name}</p>
       </div>
       {!props.isCurrent ? (
-        <Button theme="danger" loading={result.loading} onClick={exec}>
+        <Button
+          theme="danger"
+          className="logout-button"
+          loading={result.loading}
+          onClick={exec}
+        >
           {t("settings.account.devices.removeDevice")}
         </Button>
       ) : null}

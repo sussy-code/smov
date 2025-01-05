@@ -1,6 +1,5 @@
 import { detect } from "detect-browser";
 import fscreen from "fscreen";
-import Hls from "hls.js";
 
 export const isSafari = /^((?!chrome|android).)*safari/i.test(
   navigator.userAgent,
@@ -50,7 +49,7 @@ export function canWebkitPictureInPicture(): boolean {
 }
 
 export function canPlayHlsNatively(video: HTMLVideoElement): boolean {
-  if (Hls.isSupported()) return false; // no need to play natively
+  // if (Hls.isSupported()) return false; // no need to play natively
   return !!video.canPlayType("application/vnd.apple.mpegurl");
 }
 

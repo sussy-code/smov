@@ -1,26 +1,26 @@
 {
   "about": {
-    "description": "sudo-flix è un fork di movie-web che garantisce di rimanere attivo anche dopo la chiusura di movie-web.app. sudo-flix.lol funziona su un VPS privato e ospitato autonomamente. Gestisco questo sito in perdita; non ci sono annunci a causa della mia fede nei media liberi.",
+    "description": "P-Stream è un fork di movie-web che garantisce di rimanere attivo anche dopo la chiusura di movie-web.app. P-Stream.lol funziona su un VPS privato e ospitato autonomamente. Gestisco questo sito in perdita; non ci sono annunci a causa della mia fede nei media liberi.",
     "faqTitle": "Domande comuni",
     "q1": {
-      "body": "sudo-flix non ospita alcun contento. Quando clicci su qualcosa da guardare, sudo-flix cerca l'internet per media di vostra scelta (Sull schermata di caricamento e nell tab 'sorgenti video' si può vedere quale sorgente si sta utilizzando). I media non sono mai caricati da sudo-flix, tutto è attraverso questo meccanismo di ricerca.",
+      "body": "P-Stream non ospita alcun contento. Quando clicci su qualcosa da guardare, P-Stream cerca l'internet per media di vostra scelta (Sull schermata di caricamento e nell tab 'sorgenti video' si può vedere quale sorgente si sta utilizzando). I media non sono mai caricati da P-Stream, tutto è attraverso questo meccanismo di ricerca.",
       "title": "Da dove arriva il contenuto?"
     },
     "q2": {
-      "body": "Non è possibile richiedere uno show o un film, sudo-flix non gestisce alcun contenuto. Tutti i contenuti sono visualizzati da sorgenti online.",
+      "body": "Non è possibile richiedere uno show o un film, P-Stream non gestisce alcun contenuto. Tutti i contenuti sono visualizzati da sorgenti online.",
       "title": "Dove posso richiedere una serie o un film?"
     },
     "q3": {
       "body": "I nostri risultati sono alimentati da «The Movie Database (TMDB)» e visualizzare indipendentemente dal fatto che nostri sorgenti hanno effettivamente il contenuto.",
       "title": "I risultati di ricerca mostrano la serie o il film, perché non posso riprodurlo?"
     },
-    "title": "Su di sudo-flix (^▽^)",
+    "title": "Su di P-Stream (^▽^)",
     "q4": {
       "title": "E i miei dati?",
       "body": "Tutti i dati vengono sincronizzati con il back-end sudo che è diverso dal back-end della community ed è ospitato in modo indipendente da me, chiunque è libero di utilizzare anche questo."
     },
     "q5": {
-      "body": "be', sudo-flix ha un account Twitter che può essere trovato nel fondo della pagina insieme ad un link al codice sorgente su Github.",
+      "body": "be', P-Stream ha un account Twitter che può essere trovato nel fondo della pagina insieme ad un link al codice sorgente su Github.",
       "title": "Come posso sapere di più?"
     }
   },
@@ -90,7 +90,7 @@
   "footer": {
     "legal": {
       "disclaimer": "Disclaimer ◝(ᵔᵕᵔ)◜",
-      "disclaimerText": "Nota: sudo-flix non ospita alcun file ma visualizza solo il contenuto di fornitori di terze parti. Le questioni legali dovrebbero essere affrontate con loro."
+      "disclaimerText": "Nota: P-Stream non ospita alcun file ma visualizza solo il contenuto di fornitori di terze parti. Le questioni legali dovrebbero essere affrontate con loro."
     },
     "links": {
       "discord": "Discord",
@@ -101,13 +101,13 @@
     "tagline": "Guarda i tuoi preferiti programmi televisivi e film gratis senza publicità! (っ'ヮ'c)"
   },
   "global": {
-    "name": "sudo-flix",
+    "name": "P-Stream",
     "pages": {
-      "about": "Su sudo-flix",
+      "about": "Su P-Stream",
       "dmca": "DMCA",
       "login": "Accedi",
       "onboarding": "Configura",
-      "pagetitle": "{{title}} - sudo-flix",
+      "pagetitle": "{{title}} - P-Stream",
       "register": "Registrati",
       "settings": "Impostazioni",
       "discover": "Scopri",
@@ -135,11 +135,11 @@
           "Di cosa hai voglia?",
           "Dovremmo eliminare la cronologia del browser?",
           "Cosa vuoi trasmettere in streaming?",
-          "Sudo-Flix è il sito migliore di sempre!",
+          "P-Stream è il sito migliore di sempre!",
           "Cosa c'è nella tua lista oggi?",
           "Com'è stata la tua giornata?",
           "Colpa mia, il sito non funziona mai...",
-          "sudo-flix non è semplicemente il migliore?",
+          "P-Stream non è semplicemente il migliore?",
           ">ᴗ<"
         ]
       },
@@ -159,15 +159,15 @@
     "titles": {
       "day": {
         "default": "Cosa vorresti guardare questo pomeriggio?",
-        "extra": ["Viva sudo-flix!"]
+        "extra": ["Viva P-Stream!"]
       },
       "morning": {
         "default": "Cosa vorresti guardare questa mattina?",
-        "extra": ["Viva sudo-flix!"]
+        "extra": ["Viva P-Stream!"]
       },
       "night": {
         "default": "Cosa vorresti guardare questa sera?",
-        "extra": ["Viva sudo-flix!"]
+        "extra": ["Viva P-Stream!"]
       },
       "420": {
         "default": "Cosa ti piacerebbe guardare questo 20/4?",
@@ -188,9 +188,9 @@
       "offline": "Controlla la tua connessione internet, stupida oca! 🦢"
     },
     "menu": {
-      "about": "Su di sudo-flix",
+      "about": "Su di P-Stream",
       "logout": "Esci",
-      "register": "Sincronizza al sudo-cloud",
+      "register": "Sincronizza al Cloud",
       "settings": "Impostazioni",
       "support": "Supporto",
       "discover": "Scopri"
@@ -263,7 +263,7 @@
           "title": "Proxy personalizzato"
         }
       },
-      "title": "Configuriamo sudo-flix 🥳"
+      "title": "Configuriamo P-Stream 🥳"
     }
   },
   "overlays": {
@@ -280,10 +280,10 @@
     "menus": {
       "downloads": {
         "copyHlsPlaylist": "Copia link playlist HLS",
-        "disclaimer": "I download vengono effettuati direttamente dal provider. sudo-flix non ha il controllo sulle modalità di fornitura dei download.",
+        "disclaimer": "I download vengono effettuati direttamente dal provider. P-Stream non ha il controllo sulle modalità di fornitura dei download.",
         "downloadSubtitle": "Scarica sottotitolo attuale",
         "downloadVideo": "Scarica video",
-        "hlsDisclaimer": "I download vengono effettuati direttamente dal provider. sudo-flix non ha il controllo sul modo in cui vengono forniti i download.<br /><br />Tieni presente che stai scaricando una playlist HLS, <bold>non è consigliabile scaricarla se non hai familiarità con i formati di streaming avanzati</bold>. Prova diverse fonti per diversi formati.",
+        "hlsDisclaimer": "I download vengono effettuati direttamente dal provider. P-Stream non ha il controllo sul modo in cui vengono forniti i download.<br /><br />Tieni presente che stai scaricando una playlist HLS, <bold>non è consigliabile scaricarla se non hai familiarità con i formati di streaming avanzati</bold>. Prova diverse fonti per diversi formati.",
         "onAndroid": {
           "1": "Per scaricare su Android, fai clic sul pulsante di download quindi, nella nuova pagina, <bold>tocca e tieni premuto</bold> sul video, quindi seleziona <bold>salva</bold>.",
           "shortTitle": "Scarica / Android",
@@ -418,7 +418,7 @@
         "badge": "L'estensione è disabilitata",
         "enableExtension": "Abilita l'estensione",
         "homeButton": "Torna alla pagina iniziale",
-        "text": "Hai installato l'estensione sudo-flix. Per iniziare a usarla, devi abilitare l'estensione per questo sito.",
+        "text": "Hai installato l'estensione P-Stream. Per iniziare a usarla, devi abilitare l'estensione per questo sito.",
         "title": "Abilita l'estensione"
       },
       "items": {
@@ -442,7 +442,7 @@
       "shortRemaining": "-{{timeLeft}}"
     },
     "turnstile": {
-      "description": "Per favore dimostra la tua umanità completando il Captcha a destra. Questo serve a mantenere sudo-flix.lol al sicuro!",
+      "description": "Per favore dimostra la tua umanità completando il Captcha a destra. Questo serve a mantenere P-Stream.lol al sicuro!",
       "error": "Impossibile verificare la vostra umanità! Riprova.",
       "title": "Sei un Robot 🤖?",
       "verifyingHumanity": "Verificando la tua umanità... (^▽^)👍"
@@ -450,7 +450,7 @@
   },
   "screens": {
     "dmca": {
-      "text": "Benvenuto nella pagina dei contatti DMCA di sudo-flix. Se ritieni che la tua opera protetta da copyright sia stata utilizzata in modo improprio sulla nostra piattaforma (😢), invia una notifica DMCA dettagliata a: <bold>{{dmca}}</bold> di seguito. Si prega di includere una descrizione del materiale protetto da copyright, i dettagli di contatto e una dichiarazione di buona fede. Ci impegniamo a risolvere tempestivamente queste questioni e apprezziamo la tua collaborazione.",
+      "text": "Benvenuto nella pagina dei contatti DMCA di P-Stream. Se ritieni che la tua opera protetta da copyright sia stata utilizzata in modo improprio sulla nostra piattaforma (😢), invia una notifica DMCA dettagliata a: <bold>{{dmca}}</bold> di seguito. Si prega di includere una descrizione del materiale protetto da copyright, i dettagli di contatto e una dichiarazione di buona fede. Ci impegniamo a risolvere tempestivamente queste questioni e apprezziamo la tua collaborazione.",
       "title": "DMCA :("
     },
     "loadingApp": "Caricamento dell'applicazione",
@@ -484,7 +484,12 @@
           "text": "Questa azione è irreversibile. Tutti i dati verranno cancellati e nulla potrà essere recuperato.",
           "title": "Elimina l'account"
         },
-        "title": "Azioni"
+        "title": "Azioni",
+        "logoutAllDevices": {
+          "title": "Termina tutte le sessioni",
+          "text": "Questo ti disconnetterà da tutti i dispositivi collegati al tuo account.",
+          "button": "Esci da tutti i dispositivi"
+        }
       },
       "devices": {
         "deviceNameLabel": "Nome dispositivo",
@@ -502,12 +507,12 @@
       "register": {
         "cta": "Inizia",
         "text": "Condividi i progressi dei tuoi film e serie tra dispositivi e mantienili sincronizzati. ( ̧⸝⸝⍢⸝⸝)ෆ",
-        "title": "Sincronizza col sudo-cloud"
+        "title": "Sincronizza col Cloud"
       },
       "title": "Account",
       "admin": {
         "title": "Pannello di Amministrazione",
-        "text": "Utilizza strumenti realizzati per testare le condizioni di sudo-flix.",
+        "text": "Utilizza strumenti realizzati per testare le condizioni di P-Stream.",
         "button": "Controlla"
       }
     },
@@ -606,17 +611,16 @@
       "title": "Come posso segnalare un bug o un problema?"
     },
     "title": "Supporto",
-    "text": "sudo-flix è progettato per essere il più intuitivo possibile. Tuttavia, le persone hanno ancora domande e problemi. Questa pagina è qui per aiutare a risolvere queste carenze",
+    "text": "P-Stream è progettato per essere il più intuitivo possibile. Tuttavia, le persone hanno ancora domande e problemi. Questa pagina è qui per aiutare a risolvere queste carenze",
     "q1": {
-      "body": "Be', puoi unirti al <0>Discord di sudo-flix</0> ufficiale e porre domande lì oppure puoi inviare un'e-mail a quella fornita in fondo a questa pagina.",
+      "body": "Be', puoi unirti al <0>Discord di P-Stream</0> ufficiale e porre domande lì oppure puoi inviare un'e-mail a quella fornita in fondo a questa pagina.",
       "title": "Dove posso ottenere aiuto?"
     }
   },
   "downtimeNotice": {
-    "message": "sudo-flix.lol sta riscontrando problemi con alcuni provider, se non riesci a trovare o riprodurre uno show, cambia la fonte. È previsto che questo errore persista durante i tempi indicati di seguito.",
+    "message": "P-Stream.lol sta riscontrando problemi con alcuni provider, se non riesci a trovare o riprodurre uno show, cambia la fonte. È previsto che questo errore persista durante i tempi indicati di seguito.",
     "badge": "Problemi",
     "goHome": "Vai alla pagina iniziale",
-    "timeFrame": "<bold>31 Marzo 5:00 - 11:00 </bold>",
     "title": "Problemi col fornitore"
   }
 }

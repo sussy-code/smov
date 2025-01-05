@@ -9,8 +9,9 @@ import { MwLink } from "@/components/text/Link";
 import { AuthInputBox } from "@/components/text-inputs/AuthInputBox";
 import { Divider } from "@/components/utils/Divider";
 import { Heading1 } from "@/components/utils/Text";
-// import { SetupPart } from "@/pages/parts/settings/SetupPart";
+import { SetupPart } from "@/pages/parts/settings/SetupPart";
 import { useAuthStore } from "@/stores/auth";
+
 
 interface ProxyEditProps {
   proxyUrls: string[] | null;
@@ -157,8 +158,18 @@ function BackendEdit({ backendUrl, setBackendUrl }: BackendEditProps) {
           <Divider marginClass="my-6 px-8 box-content -mx-8" />
           <p className="text-white font-bold mb-3">
             {t("settings.connections.server.urlLabel")}
+            <p className="font-medium text-type-link">
+              New default server: https://server.fifthwit.tech
+            </p>
+            <p className="font-medium text-type-secondary">
+              Old default server: https://server.vidbinge.com
+            </p>
           </p>
-          <AuthInputBox onChange={setBackendUrl} value={backendUrl ?? ""} />
+          <AuthInputBox
+            onChange={setBackendUrl}
+            value={backendUrl ?? ""}
+            placeholder="https://"
+          />
         </>
       ) : null}
     </SettingsCard>
@@ -171,7 +182,7 @@ export function ConnectionsPart(props: BackendEditProps & ProxyEditProps) {
     <div>
       <Heading1 border>{t("settings.connections.title")}</Heading1>
       <div className="space-y-6">
-        {/* <SetupPart />  Removed due to NSBX limitations */}
+        <SetupPart /> {/* I was wondering what happened to this badddev >:( */}
         <ProxyEdit
           proxyUrls={props.proxyUrls}
           setProxyUrls={props.setProxyUrls}

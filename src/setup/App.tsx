@@ -88,6 +88,8 @@ function QueryView() {
   return null;
 }
 
+export const maintenanceTime = "March 31th 11:00 PM - 5:00 AM EST";
+
 function App() {
   useHistoryListener();
   useOnlineListener();

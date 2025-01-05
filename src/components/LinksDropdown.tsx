@@ -143,6 +143,11 @@ export function LinksDropdown(props: { children: React.ReactNode }) {
           <DropdownLink href="/settings" icon={Icons.SETTINGS}>
             {t("navigation.menu.settings")}
           </DropdownLink>
+          {process.env.NODE_ENV === "development" ? (
+            <DropdownLink href="/dev" icon={Icons.COMPRESS}>
+              Development
+            </DropdownLink>
+          ) : null}
           <DropdownLink href="/about" icon={Icons.CIRCLE_QUESTION}>
             {t("navigation.menu.about")}
           </DropdownLink>
@@ -163,11 +168,6 @@ export function LinksDropdown(props: { children: React.ReactNode }) {
             <CircleDropdownLink
               href={conf().DISCORD_LINK}
               icon={Icons.DISCORD}
-            />
-            <CircleDropdownLink href={conf().GITHUB_LINK} icon={Icons.GITHUB} />
-            <CircleDropdownLink
-              href={conf().TWITTER_LINK}
-              icon={Icons.TWITTER}
             />
             <CircleDropdownLink href="/support" icon={Icons.MAIL} />
           </div>

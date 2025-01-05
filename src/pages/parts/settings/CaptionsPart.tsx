@@ -1,8 +1,9 @@
 import classNames from "classnames";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 
+import { Button } from "@/components/buttons/Button";
 import { Toggle } from "@/components/buttons/Toggle";
 import { Icon, Icons } from "@/components/Icon";
 import {
@@ -14,7 +15,7 @@ import { Menu } from "@/components/player/internals/ContextMenu";
 import { CaptionCue } from "@/components/player/Player";
 import { Heading1 } from "@/components/utils/Text";
 import { Transition } from "@/components/utils/Transition";
-import { SubtitleStyling } from "@/stores/subtitles";
+import { SubtitleStyling, useSubtitleStore } from "@/stores/subtitles";
 
 export function CaptionPreview(props: {
   fullscreen?: boolean;
@@ -78,6 +79,28 @@ export function CaptionsPart(props: {
   const { t } = useTranslation();
   const [fullscreenPreview, setFullscreenPreview] = useState(false);
 
+  const subtitleStore = useSubtitleStore();
+
+  useEffect(() => {
+    subtitleStore.updateStyling(props.styling);
+  }, [props.styling, subtitleStore, subtitleStore.updateStyling]);
+
+  const handleStylingChange = (newStyling: SubtitleStyling) => {
+    props.setStyling(newStyling);
+    subtitleStore.updateStyling(newStyling);
+  };
+
+  const resetSubStyling = () => {
+    subtitleStore.resetStyling();
+    props.setStyling({
+      color: "#ffffff",
+      backgroundOpacity: 0.5,
+      size: 1,
+      backgroundBlur: 0.5,
+      bold: false,
+    });
+  };
+
   return (
     <div>
       <Heading1 border>{t("settings.subtitles.title")}</Heading1>
@@ -88,7 +111,10 @@ export function CaptionsPart(props: {
             max={100}
             min={0}
             onChange={(v) =>
-              props.setStyling({ ...props.styling, backgroundOpacity: v / 100 })
+              handleStylingChange({
+                ...props.styling,
+                backgroundOpacity: v / 100,
+              })
             }
             value={props.styling.backgroundOpacity * 100}
             textTransformer={(s) => `${s}%`}
@@ -98,7 +124,10 @@ export function CaptionsPart(props: {
             max={100}
             min={0}
             onChange={(v) =>
-              props.setStyling({ ...props.styling, backgroundBlur: v / 100 })
+              handleStylingChange({
+                ...props.styling,
+                backgroundBlur: v / 100,
+              })
             }
             value={props.styling.backgroundBlur * 100}
             textTransformer={(s) => `${s}%`}
@@ -109,7 +138,10 @@ export function CaptionsPart(props: {
             min={1}
             textTransformer={(s) => `${s}%`}
             onChange={(v) =>
-              props.setStyling({ ...props.styling, size: v / 100 })
+              handleStylingChange({
+                ...props.styling,
+                size: v / 100,
+              })
             }
             value={props.styling.size * 100}
           />
@@ -121,7 +153,7 @@ export function CaptionsPart(props: {
               <Toggle
                 enabled={props.styling.bold}
                 onClick={() =>
-                  props.setStyling({
+                  handleStylingChange({
                     ...props.styling,
                     bold: !props.styling.bold,
                   })
@@ -133,17 +165,39 @@ export function CaptionsPart(props: {
             <Menu.FieldTitle>
               {t("settings.subtitles.colorLabel")}
             </Menu.FieldTitle>
-            <div className="flex justify-center items-center">
+            <div className="flex justify-center items-center space-x-2">
               {colors.map((v) => (
                 <ColorOption
                   onClick={() =>
-                    props.setStyling({ ...props.styling, color: v })
+                    handleStylingChange({
+                      ...props.styling,
+                      color: v,
+                    })
                   }
                   color={v}
                   active={props.styling.color === v}
                   key={v}
                 />
               ))}
+              {/* Add Color Picker */}
+              <div className="relative">
+                <input
+                  type="color"
+                  value={props.styling.color}
+                  onChange={(e) => {
+                    const color = e.target.value;
+                    handleStylingChange({ ...props.styling, color });
+                    subtitleStore.updateStyling({
+                      ...props.styling,
+                      color,
+                    });
+                  }}
+                  className="absolute opacity-0 cursor-pointer w-8 h-8"
+                />
+                <div style={{ color: props.styling.color }}>
+                  <Icon icon={Icons.BRUSH} className="text-2xl" />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -158,6 +212,13 @@ export function CaptionsPart(props: {
           styling={props.styling}
           onToggle={() => setFullscreenPreview((s) => !s)}
         />
+        <Button
+          className="w-full md:w-auto"
+          theme="secondary"
+          onClick={resetSubStyling}
+        >
+          {t("settings.reset")}
+        </Button>
       </div>
     </div>
   );

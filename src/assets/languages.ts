@@ -13,6 +13,7 @@ import et from "@/assets/locales/et.json";
 import fa from "@/assets/locales/fa.json";
 import fi from "@/assets/locales/fi-FI.json";
 import fr from "@/assets/locales/fr.json";
+import futhark from "@/assets/locales/futhark.json";
 import gl from "@/assets/locales/gl.json";
 import gu from "@/assets/locales/gu.json";
 import he from "@/assets/locales/he.json";
@@ -67,6 +68,7 @@ export const locales = {
   kitty,
   uwu,
   minion,
+  futhark,
   lv,
   th,
   ne,
