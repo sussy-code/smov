@@ -3,7 +3,6 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 import { Button } from "@/components/buttons/Button";
-import { Toggle } from "@/components/buttons/Toggle";
 import { SettingsCard } from "@/components/layout/SettingsCard";
 import { CenterContainer } from "@/components/layout/ThinContainer";
 import { AuthInputBox } from "@/components/text-inputs/AuthInputBox";
@@ -22,11 +21,9 @@ export function MigrationDirectPage() {
   const navigate = useNavigate();
   const { migrate } = useMigration();
   const [backendUrl, setBackendUrl] = useState("");
-  const [recaptchaToken, setRecaptchaToken] = useState<string | undefined>();
   const [status, setStatus] = useState<
     "idle" | "success" | "error" | "processing"
   >("idle");
-  const [needscaptcha, setNeedscaptcha] = useState(false);
   const updateBackendUrl = useAuthStore((state) => state.setBackendUrl);
 
   const handleMigration = useCallback(async () => {
@@ -38,7 +35,7 @@ export function MigrationDirectPage() {
 
     try {
       setStatus("processing");
-      const account = await migrate(backendUrl, recaptchaToken);
+      const account = await migrate(backendUrl);
       if (account) {
         setStatus("success");
         await logout();
@@ -50,11 +47,7 @@ export function MigrationDirectPage() {
       console.error("Error during migration:", error);
       setStatus("error");
     }
-  }, [backendUrl, recaptchaToken, migrate, updateBackendUrl, logout]);
-
-  const handleToggleChange = () => {
-    setNeedscaptcha(!needscaptcha);
-  };
+  }, [backendUrl, migrate, updateBackendUrl, logout]);
 
   const continueButton = () => {
     if (status === "success") {
@@ -90,35 +83,6 @@ export function MigrationDirectPage() {
                   </>
                 )}
               </SettingsCard>
-
-              <div className="flex items-center gap-4">
-                <Toggle enabled={needscaptcha} onClick={handleToggleChange} />
-                <p
-                  className={`flex-1 font-bold ${
-                    needscaptcha ? "text-white" : "text-type-secondary"
-                  }`}
-                >
-                  {t("migration.toggleLable")}
-                </p>
-              </div>
-              {needscaptcha && (
-                <SettingsCard>
-                  <div className="flex justify-between items-center">
-                    <p className="font-bold text-white">
-                      {t("migration.recaptchaLabel")}
-                    </p>
-                  </div>
-                  {recaptchaToken !== null && (
-                    <>
-                      <Divider marginClass="my-6 px-8 box-content -mx-8" />
-                      <AuthInputBox
-                        value={recaptchaToken ?? ""}
-                        onChange={(val) => setRecaptchaToken(val)}
-                      />
-                    </>
-                  )}
-                </SettingsCard>
-              )}
 
               <div className="text-center">
                 {status !== "success" && (
