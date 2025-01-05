@@ -203,6 +203,7 @@
     "backendLabel": "Destination Backend URL",
     "recaptchaLabel": "ReCaptcha Key (Optional)",
     "toggleLable": "Needs ReCaptcha?",
+    "loginRequired": "You must be logged in to migrate your data! Please go back and login to continue.",
     "status": {
       "error": "Failed to migrate your data. 😿",
       "success": "Your data has been migrated successfully! 🎉"
