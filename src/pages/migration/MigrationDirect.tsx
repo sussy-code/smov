@@ -9,6 +9,7 @@ import { CenterContainer } from "@/components/layout/ThinContainer";
 import { AuthInputBox } from "@/components/text-inputs/AuthInputBox";
 import { Divider } from "@/components/utils/Divider";
 import { Heading2, Paragraph } from "@/components/utils/Text";
+import { useAuth } from "@/hooks/auth/useAuth";
 import { useMigration } from "@/hooks/auth/useMigration";
 import { MinimalPageLayout } from "@/pages/layouts/MinimalPageLayout";
 import { PageTitle } from "@/pages/parts/util/PageTitle";
@@ -17,6 +18,7 @@ import { useAuthStore } from "@/stores/auth";
 export function MigrationDirectPage() {
   const { t } = useTranslation();
   const user = useAuthStore();
+  const { logout } = useAuth();
   const navigate = useNavigate();
   const { migrate } = useMigration();
   const [backendUrl, setBackendUrl] = useState("");
@@ -25,6 +27,7 @@ export function MigrationDirectPage() {
     "idle" | "success" | "error" | "processing"
   >("idle");
   const [needscaptcha, setNeedscaptcha] = useState(false);
+  const updateBackendUrl = useAuthStore((state) => state.setBackendUrl);
 
   const handleMigration = useCallback(async () => {
     if (!backendUrl) {
@@ -38,6 +41,8 @@ export function MigrationDirectPage() {
       const account = await migrate(backendUrl, recaptchaToken);
       if (account) {
         setStatus("success");
+        await logout();
+        updateBackendUrl(backendUrl);
       } else {
         setStatus("error");
       }
@@ -45,10 +50,16 @@ export function MigrationDirectPage() {
       console.error("Error during migration:", error);
       setStatus("error");
     }
-  }, [backendUrl, recaptchaToken, migrate]);
+  }, [backendUrl, recaptchaToken, migrate, updateBackendUrl, logout]);
 
   const handleToggleChange = () => {
     setNeedscaptcha(!needscaptcha);
+  };
+
+  const continueButton = () => {
+    if (status === "success") {
+      navigate("/login");
+    }
   };
 
   return (
@@ -123,7 +134,7 @@ export function MigrationDirectPage() {
                     <Button
                       theme="purple"
                       className="mt-4"
-                      onClick={() => navigate("/login")}
+                      onClick={continueButton}
                     >
                       {t("migration.button.login")}
                     </Button>
