@@ -217,6 +217,24 @@
           "action": "Download data"
         }
       }
+    },
+    "direct": {
+      "title": "Direct migration",
+      "description": "Enter the destination backend URL to migrate your current account data to a new backend. This keeps your passphrase the same!",
+      "backendLabel": "Destination Backend URL",
+      "recaptchaLabel": "ReCaptcha Key (Optional)",
+      "toggleLable": "Needs ReCaptcha?",
+      "loginRequired": "You must be logged in to migrate your data! Please go back and login to continue.",
+      "status": {
+        "error": "Failed to migrate your data. 😿",
+        "success": "Your data has been migrated successfully! 🎉"
+      },
+      "button": {
+        "migrate": "Migrate",
+        "processing": "Processing...",
+        "home": "Go home",
+        "login": "Continue to login"
+      }
     }
   },
   "navigation": {
@@ -596,7 +614,11 @@
       "server": {
         "description": "If you would like to connect to a custom backend to store your data, enable this and provide the URL. <0>Instructions.</0>",
         "label": "Custom server",
-        "urlLabel": "Custom server URL"
+        "urlLabel": "Custom server URL",
+        "migration": {
+          "description": "<0>Migrate my data</0> to a new server. ",
+          "link": "Migrate my data"
+        }
       },
       "setup": {
         "doSetup": "Do setup",

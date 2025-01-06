@@ -86,12 +86,12 @@ export function useMigration() {
   };
 
   const migrate = useCallback(
-    async (backendUrl: string, recaptchaToken: string) => {
+    async (backendUrl: string, recaptchaToken?: string) => {
       if (!currentAccount) return;
 
       const { challenge } = await getRegisterChallengeToken(
         backendUrl,
-        recaptchaToken,
+        recaptchaToken || undefined, // Pass undefined if token is not provided
       );
       const keys = await keysFromSeed(base64ToBuffer(currentAccount.seed));
       const signature = await signChallenge(keys, challenge);
