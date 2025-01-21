@@ -103,16 +103,6 @@ export function AccountSettings(props: {
 }
 
 export function SettingsPage() {
-  useEffect(() => {
-    const hash = window.location.hash;
-    if (hash) {
-      const element = document.querySelector(hash);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
-    }
-  }, []);
-
   const { t } = useTranslation();
   const activeTheme = useThemeStore((s) => s.theme);
   const setTheme = useThemeStore((s) => s.setTheme);
@@ -311,7 +301,7 @@ export function SettingsPage() {
         <div className="mt-10">
           <AdminPanelPart />
         </div>
-        <div id="settings-preferences" className="mt-28">
+        <div id="settings-preferences" className="mt-48">
           <PreferencesPart
             language={state.appLanguage.state}
             setLanguage={state.appLanguage.set}
@@ -325,20 +315,20 @@ export function SettingsPage() {
             setEnableSourceOrder={state.enableSourceOrder.set}
           />
         </div>
-        <div id="settings-appearance" className="mt-28">
+        <div id="settings-appearance" className="mt-48">
           <ThemePart
             active={previewTheme ?? "default"}
             inUse={activeTheme ?? "default"}
             setTheme={setThemeWithPreview}
           />
         </div>
-        <div id="settings-captions" className="mt-28">
+        <div id="settings-captions" className="mt-48">
           <CaptionsPart
             styling={state.subtitleStyling.state}
             setStyling={state.subtitleStyling.set}
           />
         </div>
-        <div id="settings-connection" className="mt-28">
+        <div id="settings-connection" className="mt-48">
           <ConnectionsPart
             backendUrl={state.backendUrl.state}
             setBackendUrl={state.backendUrl.set}
