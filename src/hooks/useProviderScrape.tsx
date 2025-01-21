@@ -158,6 +158,7 @@ export function useScrape() {
   } = useBaseScrape();
 
   const preferredSourceOrder = usePreferencesStore((s) => s.sourceOrder);
+  const enableSourceOrder = usePreferencesStore((s) => s.enableSourceOrder);
 
   const startScraping = useCallback(
     async (media: ScrapeMedia) => {
@@ -184,7 +185,8 @@ export function useScrape() {
       const providers = getProviders();
       const output = await providers.runAll({
         media,
-        sourceOrder: preferredSourceOrder,
+        // Only pass sourceOrder if enableSourceOrder is true
+        sourceOrder: enableSourceOrder ? preferredSourceOrder : undefined,
         events: {
           init: initEvent,
           start: startEvent,
@@ -204,6 +206,7 @@ export function useScrape() {
       getResult,
       startScrape,
       preferredSourceOrder,
+      enableSourceOrder,
     ],
   );
 

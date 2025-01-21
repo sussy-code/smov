@@ -22,6 +22,8 @@ export function PreferencesPart(props: {
   setEnableAutoplay: (v: boolean) => void;
   sourceOrder: string[];
   setSourceOrder: (v: string[]) => void;
+  enableSourceOrder: boolean;
+  setEnableSourceOrder: (v: boolean) => void;
 }) {
   const { t } = useTranslation();
   const sorted = sortLangCodes(appLanguageOptions.map((item) => item.code));
@@ -119,20 +121,33 @@ export function PreferencesPart(props: {
         <p className="max-w-[25rem] font-medium">
           {t("settings.preferences.sourceOrderDescription")}
         </p>
-
-        <SortableList
-          items={sourceItems}
-          setItems={(items) =>
-            props.setSourceOrder(items.map((item) => item.id))
-          }
-        />
-        <Button
-          className="max-w-[25rem]"
-          theme="secondary"
-          onClick={() => props.setSourceOrder(allSources.map((s) => s.id))}
+        <div
+          onClick={() => props.setEnableSourceOrder(!props.enableSourceOrder)}
+          className="bg-dropdown-background hover:bg-dropdown-hoverBackground select-none my-4 cursor-pointer space-x-3 flex items-center max-w-[25rem] py-3 px-4 rounded-lg"
         >
-          {t("settings.reset")}
-        </Button>
+          <Toggle enabled={props.enableSourceOrder} />
+          <p className="flex-1 text-white font-bold">
+            {t("settings.preferences.sourceOrderEnableLabel")}
+          </p>
+        </div>
+
+        {props.enableSourceOrder && (
+          <div className="w-full flex flex-col gap-4">
+            <SortableList
+              items={sourceItems}
+              setItems={(items) =>
+                props.setSourceOrder(items.map((item) => item.id))
+              }
+            />
+            <Button
+              className="max-w-[25rem]"
+              theme="secondary"
+              onClick={() => props.setSourceOrder(allSources.map((s) => s.id))}
+            >
+              {t("settings.reset")}
+            </Button>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -618,7 +618,8 @@
       "autoplayLabel": "Autoplay",
       "sourceOrder": "Reordering sources",
       "sourceOrderDescription": "Drag and drop to reorder sources. This will determine the order in which sources are checked for the media you are trying to watch. If a source is greyed out, it means it is not available on your device.",
-      "title": "Preferences"
+      "title": "Preferences",
+      "sourceOrderEnableLabel": "Custom source order"
     },
     "reset": "Reset",
     "save": "Save",

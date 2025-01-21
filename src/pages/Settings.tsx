@@ -103,6 +103,16 @@ export function AccountSettings(props: {
 }
 
 export function SettingsPage() {
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const element = document.querySelector(hash);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, []);
+
   const { t } = useTranslation();
   const activeTheme = useThemeStore((s) => s.theme);
   const setTheme = useThemeStore((s) => s.setTheme);
@@ -130,6 +140,11 @@ export function SettingsPage() {
   const sourceOrder = usePreferencesStore((s) => s.sourceOrder);
   const setSourceOrder = usePreferencesStore((s) => s.setSourceOrder);
 
+  const enableSourceOrder = usePreferencesStore((s) => s.enableSourceOrder);
+  const setEnableSourceOrder = usePreferencesStore(
+    (s) => s.setEnableSourceOrder,
+  );
+
   const account = useAuthStore((s) => s.account);
   const updateProfile = useAuthStore((s) => s.setAccountProfile);
   const updateDeviceName = useAuthStore((s) => s.updateDeviceName);
@@ -154,6 +169,7 @@ export function SettingsPage() {
     enableThumbnails,
     enableAutoplay,
     sourceOrder,
+    enableSourceOrder,
   );
 
   const availableSources = useMemo(() => {
@@ -228,6 +244,7 @@ export function SettingsPage() {
     setTheme(state.theme.state);
     setSubStyling(state.subtitleStyling.state);
     setProxySet(state.proxyUrls.state?.filter((v) => v !== "") ?? null);
+    setEnableSourceOrder(state.enableSourceOrder.state);
 
     if (state.profile.state) {
       updateProfile(state.profile.state);
@@ -259,6 +276,7 @@ export function SettingsPage() {
     updateProfile,
     logout,
     setBackendUrl,
+    setEnableSourceOrder,
   ]);
   return (
     <SubPageLayout>
@@ -293,7 +311,7 @@ export function SettingsPage() {
         <div className="mt-10">
           <AdminPanelPart />
         </div>
-        <div id="settings-preferences" className="mt-48">
+        <div id="settings-preferences" className="mt-28">
           <PreferencesPart
             language={state.appLanguage.state}
             setLanguage={state.appLanguage.set}
@@ -303,22 +321,24 @@ export function SettingsPage() {
             setEnableAutoplay={state.enableAutoplay.set}
             sourceOrder={availableSources}
             setSourceOrder={state.sourceOrder.set}
+            enableSourceOrder={state.enableSourceOrder.state}
+            setEnableSourceOrder={state.enableSourceOrder.set}
           />
         </div>
-        <div id="settings-appearance" className="mt-48">
+        <div id="settings-appearance" className="mt-28">
           <ThemePart
             active={previewTheme ?? "default"}
             inUse={activeTheme ?? "default"}
             setTheme={setThemeWithPreview}
           />
         </div>
-        <div id="settings-captions" className="mt-48">
+        <div id="settings-captions" className="mt-28">
           <CaptionsPart
             styling={state.subtitleStyling.state}
             setStyling={state.subtitleStyling.set}
           />
         </div>
-        <div id="settings-connection" className="mt-48">
+        <div id="settings-connection" className="mt-28">
           <ConnectionsPart
             backendUrl={state.backendUrl.state}
             setBackendUrl={state.backendUrl.set}
