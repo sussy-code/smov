@@ -1,9 +1,9 @@
-import classNames from "classnames";
 import { Trans, useTranslation } from "react-i18next";
 
 import { Button } from "@/components/buttons/Button";
 import { Stepper } from "@/components/layout/Stepper";
 import { CenterContainer } from "@/components/layout/ThinContainer";
+import { VerticalLine } from "@/components/layout/VerticalLine";
 import { Modal, ModalCard, useModal } from "@/components/overlays/Modal";
 import { Heading1, Heading2, Paragraph } from "@/components/utils/Text";
 import { MinimalPageLayout } from "@/pages/layouts/MinimalPageLayout";
@@ -14,14 +14,6 @@ import {
 import { Card, CardContent, Link } from "@/pages/onboarding/utils";
 import { PageTitle } from "@/pages/parts/util/PageTitle";
 import { getProxyUrls } from "@/utils/proxyUrls";
-
-function VerticalLine(props: { className?: string }) {
-  return (
-    <div className={classNames("w-full grid justify-center", props.className)}>
-      <div className="w-px h-10 bg-onboarding-divider" />
-    </div>
-  );
-}
 
 export function OnboardingPage() {
   const navigate = useNavigateOnboarding();
@@ -73,7 +65,9 @@ export function OnboardingPage() {
           </Card>
           <div className="hidden md:grid grid-rows-[1fr,auto,1fr] justify-center gap-4">
             <VerticalLine className="items-end" />
-            <span className="text-xs uppercase font-bold">or</span>
+            <span className="text-xs uppercase font-bold">
+              {t("onboarding.start.options.or")}
+            </span>
             <VerticalLine />
           </div>
           <Card onClick={() => navigate("/onboarding/proxy")}>
