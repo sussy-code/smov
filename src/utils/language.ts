@@ -1,5 +1,6 @@
 import countryLanguages, { LanguageObj } from "@ladjs/country-language";
 import { getTag } from "@sozialhelden/ietf-language-tags";
+import { iso6393To1 } from "iso-639-3";
 
 const languageOrder = ["en", "hi", "fr", "de", "nl", "pt"];
 
@@ -99,7 +100,10 @@ function populateLanguageCode(language: string): string {
  * @returns pretty format for language, null if it no info can be found for language
  */
 export function getPrettyLanguageNameFromLocale(locale: string): string | null {
-  const tag = getTag(locale, true);
+  const tag =
+    locale.length === 3
+      ? getTag(iso6393To1[locale] ?? locale, true)
+      : getTag(locale, true);
   const lang = tag?.language?.Description?.[0] ?? null;
   if (!lang) return null;
 
