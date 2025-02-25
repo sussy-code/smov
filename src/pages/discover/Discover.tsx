@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 
-import { Loading } from "@/components/layout/Loading";
 import DiscoverContent from "@/pages/discover/discoverContent";
 
 import { SubPageLayout } from "../layouts/SubPageLayout";
@@ -10,25 +8,6 @@ import { PageTitle } from "../parts/util/PageTitle";
 
 export function Discover() {
   const { t } = useTranslation();
-
-  // Stupid method to "simulate" loading so the user understands this takes a white to load.
-  // TO DO: Lazy load all the media cards 💀
-
-  // State to track whether content is loading or loaded
-  const [loading, setLoading] = useState(true);
-
-  // Simulate loading media cards
-  useEffect(() => {
-    const simulateLoading = async () => {
-      // Simulate a loading time with setTimeout or fetch data here
-      await new Promise((resolve) => {
-        setTimeout(resolve, 2000);
-      }); // Simulate 2s loading time
-      setLoading(false); // After loading, set loading to false
-    };
-
-    simulateLoading();
-  }, []);
 
   return (
     <SubPageLayout>
@@ -64,20 +43,7 @@ export function Discover() {
         </p>
       </div>
 
-      {/* Conditional rendering: show loading screen or the content */}
-      {loading ? (
-        <div className="flex flex-col justify-center items-center h-64 space-y-4">
-          <Loading />
-          <p className="text-lg font-medium text-gray-400 animate-pulse mt-4">
-            Fetching the latest movies & TV shows...
-          </p>
-          <p className="text-sm text-gray-500">
-            Please wait while we load the best recommendations for you.
-          </p>
-        </div>
-      ) : (
-        <DiscoverContent />
-      )}
+      <DiscoverContent />
     </SubPageLayout>
   );
 }
