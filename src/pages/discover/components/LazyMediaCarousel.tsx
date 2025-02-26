@@ -10,7 +10,6 @@ interface LazyMediaCarouselProps {
   category?: Category | null;
   genre?: Genre | null;
   mediaType: "movie" | "tv";
-  movieWidth: string;
   isMobile: boolean;
   carouselRefs: React.MutableRefObject<{
     [key: string]: HTMLDivElement | null;
@@ -21,7 +20,6 @@ export function LazyMediaCarousel({
   category,
   genre,
   mediaType,
-  movieWidth,
   isMobile,
   carouselRefs,
 }: LazyMediaCarouselProps) {
@@ -57,7 +55,6 @@ export function LazyMediaCarousel({
           medias={medias}
           category={categoryName}
           isTVShow={mediaType === "tv"}
-          movieWidth={movieWidth}
           isMobile={isMobile}
           carouselRefs={carouselRefs}
         />
