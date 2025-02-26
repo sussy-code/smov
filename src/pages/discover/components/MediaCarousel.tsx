@@ -64,7 +64,7 @@ export function MediaCarousel({
 
   return (
     <>
-      <h2 className="ml-2 md:ml-8 mt-2 text-2xl cursor-default font-bold text-white md:text-2xl mx-auto pl-5 text-balance z-[99]">
+      <h2 className="ml-2 md:ml-8 mt-2 text-2xl cursor-default font-bold text-white md:text-2xl mx-auto pl-5 text-balance">
         {displayCategory}
       </h2>
       <div className="relative overflow-hidden carousel-container">
