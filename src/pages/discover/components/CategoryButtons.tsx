@@ -41,7 +41,7 @@ export function CategoryButtons({
   );
 
   return (
-    <div className="flex mb-4 overflow-x-auto">
+    <div className="flex overflow-x-auto">
       {(showAlwaysScroll || isMobile) && renderScrollButton("left")}
 
       <div

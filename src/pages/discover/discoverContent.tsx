@@ -264,7 +264,7 @@ export function DiscoverContent() {
   };
 
   return (
-    <div>
+    <div className="pt-6">
       {/* Random Movie Button */}
       <RandomMovieButton
         countdown={countdown}
@@ -273,7 +273,7 @@ export function DiscoverContent() {
       />
 
       {/* Category Tabs */}
-      <div className="mt-8 p-4 w-full max-w-screen-xl mx-auto">
+      <div className="mt-8 pb-2 w-full max-w-screen-xl mx-auto">
         <div className="relative flex justify-center mb-4">
           <div className="flex space-x-4">
             {["movies", "tvshows"].map((category) => (

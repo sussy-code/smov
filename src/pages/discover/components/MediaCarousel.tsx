@@ -62,6 +62,14 @@ export function MediaCarousel({
 
   const displayCategory = getDisplayCategory(category, isTVShow);
 
+  const filteredMedias = medias
+    .filter(
+      (media, index, self) =>
+        index ===
+        self.findIndex((m) => m.id === media.id && m.title === media.title),
+    )
+    .slice(0, 20);
+
   return (
     <>
       <h2 className="ml-2 md:ml-8 mt-2 text-2xl cursor-default font-bold text-white md:text-2xl mx-auto pl-5 text-balance">
@@ -70,54 +78,43 @@ export function MediaCarousel({
       <div className="relative overflow-hidden carousel-container">
         <div
           id={`carousel-${categorySlug}`}
-          className="flex whitespace-nowrap pt-0 pb-4 overflow-auto scrollbar rounded-xl overflow-y-hidden"
+          className="grid grid-flow-col auto-cols-max gap-4 pt-0 pb-4 overflow-auto scrollbar rounded-xl overflow-y-hidden md:pl-8 md:pr-8"
           ref={(el) => {
             carouselRefs.current[categorySlug] = el;
           }}
           onWheel={handleWheel}
         >
-          {medias
-            .filter(
-              (media, index, self) =>
-                index ===
-                self.findIndex(
-                  (m) => m.id === media.id && m.title === media.title,
-                ),
-            )
-            .slice(0, 25)
-            .map((media, index, array) => (
-              <div
-                onContextMenu={(e: React.MouseEvent<HTMLDivElement>) =>
-                  e.preventDefault()
-                }
+          <div className="md:w-12" />
+
+          {filteredMedias.map((media) => (
+            <div
+              onContextMenu={(e: React.MouseEvent<HTMLDivElement>) =>
+                e.preventDefault()
+              }
+              key={media.id}
+              className="relative mt-4 group cursor-pointer user-select-none rounded-xl p-2 bg-transparent transition-colors duration-300 w-[10rem] md:w-[11.5rem] h-auto"
+            >
+              <MediaCard
+                linkable
                 key={media.id}
-                className={`relative mt-4 group cursor-pointer user-select-none rounded-xl p-2 bg-background-main transition-colors duration-300 bg-transparent min-w-[200px] max-w-[200px] max-h-[500px] ${
-                  index === 0
-                    ? "ml-6 md:ml-[6.5rem] mr-[0.2em] md:mr-[0.5em]"
-                    : index === array.length - 1
-                      ? "mr-6 md:mr-[6.5rem] ml-[0.2em] md:ml-[0.5em]"
-                      : "mx-2 md:mx-3"
-                }`}
-              >
-                <MediaCard
-                  linkable
-                  key={media.id}
-                  media={{
-                    id: media.id.toString(),
-                    title: media.title || media.name || "",
-                    poster: `https://image.tmdb.org/t/p/w342${media.poster_path}`,
-                    type: isTVShow ? "show" : "movie",
-                    year: isTVShow
-                      ? media.first_air_date
-                        ? parseInt(media.first_air_date.split("-")[0], 10)
-                        : undefined
-                      : media.release_date
-                        ? parseInt(media.release_date.split("-")[0], 10)
-                        : undefined,
-                  }}
-                />
-              </div>
-            ))}
+                media={{
+                  id: media.id.toString(),
+                  title: media.title || media.name || "",
+                  poster: `https://image.tmdb.org/t/p/w342${media.poster_path}`,
+                  type: isTVShow ? "show" : "movie",
+                  year: isTVShow
+                    ? media.first_air_date
+                      ? parseInt(media.first_air_date.split("-")[0], 10)
+                      : undefined
+                    : media.release_date
+                      ? parseInt(media.release_date.split("-")[0], 10)
+                      : undefined,
+                }}
+              />
+            </div>
+          ))}
+
+          <div className="md:w-12" />
         </div>
 
         {!isMobile && (
