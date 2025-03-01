@@ -23,7 +23,7 @@ export function useIntersectionObserver(
       },
       {
         ...options,
-        rootMargin: options.rootMargin || "200px 0px",
+        rootMargin: options.rootMargin || "400px 0px",
       },
     );
 
