@@ -26,9 +26,8 @@ export function LazyMediaCarousel({
   const [medias, setMedias] = useState<Media[]>([]);
 
   // Use intersection observer to detect when this component is visible
-  const { targetRef, isIntersecting, hasIntersected } = useIntersectionObserver(
+  const { targetRef, isIntersecting } = useIntersectionObserver(
     { rootMargin: "200px" }, // Load when within 200px of viewport
-    true, // Only trigger once
   );
 
   // Use the lazy loading hook to fetch data when visible
@@ -36,7 +35,7 @@ export function LazyMediaCarousel({
     genre || null,
     category || null,
     mediaType,
-    hasIntersected,
+    isIntersecting,
   );
 
   // Update medias when data is loaded

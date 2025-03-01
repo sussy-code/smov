@@ -8,20 +8,24 @@ interface IntersectionObserverOptions {
 
 export function useIntersectionObserver(
   options: IntersectionObserverOptions = {},
-  onceOnly = false,
 ) {
   const [isIntersecting, setIsIntersecting] = useState(false);
   const [hasIntersected, setHasIntersected] = useState(false);
   const targetRef = useRef<Element | null>(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      setIsIntersecting(entry.isIntersecting);
-
-      if (entry.isIntersecting && !hasIntersected) {
-        setHasIntersected(true);
-      }
-    }, options);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsIntersecting(entry.isIntersecting);
+        if (entry.isIntersecting) {
+          setHasIntersected(true);
+        }
+      },
+      {
+        ...options,
+        rootMargin: options.rootMargin || "200px 0px",
+      },
+    );
 
     const currentTarget = targetRef.current;
     if (currentTarget) {
@@ -33,11 +37,7 @@ export function useIntersectionObserver(
         observer.unobserve(currentTarget);
       }
     };
-  }, [options, hasIntersected]);
+  }, [options]);
 
-  // If onceOnly is true, we only care if it has ever intersected
-  // Otherwise, we care about the current intersection state
-  const shouldLoad = onceOnly ? hasIntersected : isIntersecting;
-
-  return { targetRef, isIntersecting: shouldLoad, hasIntersected };
+  return { targetRef, isIntersecting, hasIntersected };
 }
