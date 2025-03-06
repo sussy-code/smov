@@ -78,7 +78,7 @@ export function MediaCarousel({
       <div className="relative overflow-hidden carousel-container">
         <div
           id={`carousel-${categorySlug}`}
-          className="grid grid-flow-col auto-cols-max gap-4 pt-0 pb-4 overflow-auto scrollbar rounded-xl overflow-y-hidden md:pl-8 md:pr-8"
+          className="grid grid-flow-col auto-cols-max gap-4 pt-0 pb-4 overflow-x-scroll scrollbar rounded-xl overflow-y-hidden md:pl-8 md:pr-8"
           ref={(el) => {
             carouselRefs.current[categorySlug] = el;
           }}
