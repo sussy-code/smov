@@ -1,3 +1,4 @@
+import { iso6393To1 } from "iso-639-3";
 import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -53,10 +54,16 @@ export function AudioView({ id }: { id: string }) {
           <AudioOption
             key={v.id}
             selected={v.id === currentAudioTrack?.id}
-            langCode={v.language}
+            langCode={
+              v.language.length === 3
+                ? (iso6393To1[v.language] ?? v.language)
+                : v.language
+            }
             onClick={audioTracks.includes(v) ? () => change(v) : undefined}
           >
-            {getPrettyLanguageNameFromLocale(v.language) ?? unknownChoice}
+            {getPrettyLanguageNameFromLocale(v.language) ??
+              v.label ??
+              unknownChoice}
           </AudioOption>
         ))}
       </Menu.Section>

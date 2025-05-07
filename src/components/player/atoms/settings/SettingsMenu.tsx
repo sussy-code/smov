@@ -41,6 +41,7 @@ export function SettingsMenu({ id }: { id: string }) {
 
   const selectedAudioLanguagePretty = currentAudioTrack
     ? (getPrettyLanguageNameFromLocale(currentAudioTrack.language) ??
+      currentAudioTrack.label ??
       t("player.menus.subtitles.unknownLanguage"))
     : undefined;
 
