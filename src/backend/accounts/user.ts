@@ -158,6 +158,7 @@ export async function deleteUser(
   account: AccountWithToken,
 ): Promise<UserResponse> {
   return ofetch<UserResponse>(`/users/${account.userId}`, {
+    method: "DELETE",
     headers: getAuthHeaders(account.token),
     baseURL: url,
   });
