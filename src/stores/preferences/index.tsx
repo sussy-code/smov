@@ -6,10 +6,12 @@ export interface PreferencesStore {
   enableThumbnails: boolean;
   enableAutoplay: boolean;
   sourceOrder: string[];
+  enableSourceOrder: boolean;
 
   setEnableThumbnails(v: boolean): void;
   setEnableAutoplay(v: boolean): void;
   setSourceOrder(v: string[]): void;
+  setEnableSourceOrder(v: boolean): void;
 }
 
 export const usePreferencesStore = create(
@@ -18,6 +20,7 @@ export const usePreferencesStore = create(
       enableThumbnails: false,
       enableAutoplay: true,
       sourceOrder: [],
+      enableSourceOrder: false,
       setEnableThumbnails(v) {
         set((s) => {
           s.enableThumbnails = v;
@@ -31,6 +34,11 @@ export const usePreferencesStore = create(
       setSourceOrder(v) {
         set((s) => {
           s.sourceOrder = v;
+        });
+      },
+      setEnableSourceOrder(v) {
+        set((s) => {
+          s.enableSourceOrder = v;
         });
       },
     })),
