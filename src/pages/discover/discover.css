@@ -1,0 +1,56 @@
+.carousel-container {
+  position: relative;
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0), /* Left edge */
+    rgba(0, 0, 0, 1) 80px, /* visible after 80px */
+    rgba(0, 0, 0, 1) calc(100% - 80px), /* invisible 80px from right */
+    rgba(0, 0, 0, 0) 100% /* Right edge */
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 1) 80px,
+    rgba(0, 0, 0, 1) calc(100% - 80px),
+    rgba(0, 0, 0, 0) 100%
+  );
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .carousel-container {
+    mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0), /* Left edge */
+    rgba(0, 0, 0, 1) 20px, /* visible after 80px */
+    rgba(0, 0, 0, 1) calc(100% - 20px), /* invisible 80px from right */
+    rgba(0, 0, 0, 0) 100% /* Right edge */
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 1) 20px,
+    rgba(0, 0, 0, 1) calc(100% - 20px),
+    rgba(0, 0, 0, 0) 100%
+  );
+  }
+}
+
+h2 {
+  position: relative;
+  z-index: 2;
+}
+
+button {
+  position: relative;
+  z-index: 2;
+}
+
+.scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar {
+  scrollbar-width: none !important;
+  -ms-overflow-style: -ms-autohiding-scrollbar !important;
+}
